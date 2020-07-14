@@ -1,0 +1,2 @@
+#Evita que se pueda entrar a las carpetas que componen el directorio "app" escibiendo en la dirección url
+	Options -Indexes 

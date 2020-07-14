@@ -1,0 +1,9 @@
+#Mapea la url y redirecciona a index.php si se escribe en la url un archivo que no existe
+<IfModule mod_rewrite.c>
+	Options -Multiviews
+	RewriteEngine On
+	RewriteBase /proyectos/PidoRapido/public
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
