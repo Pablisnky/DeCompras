@@ -9,7 +9,7 @@
       </footer>
 </div> 
 
-<script type="text/javascript" src="<?php echo RUTA_URL;?>/javascript/funcionesVarias.js"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL;?>/public/javascript/funcionesVarias.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/Funciones_Ajax.js'?>"></script> 
 
 </body>
