@@ -1,6 +1,6 @@
 <?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
 
-    <section style='padding-top: 10%;'>
+    <section class="section_2">
         <div class='contenedor_4'>
             <div class='contenedor_6'>
                 <div class="contenedor_9">
@@ -70,11 +70,11 @@
             <div class='contenedor_6'>
                 <div class="contenedor_9">
                     <div>
-                        <span class="icon-newspaper span_3" onclick="//Llamar_Maquinas()"></span>
-                        <h2 class='h2_1' onclick="//Llamar_Maquinas()">MAQUINAS POR TIEMPO</h2>
+                        <span class="icon-newspaper span_3" onclick="Llamar_Maquinas()"></span>
+                        <h2 class='h2_1' onclick="Llamar_Maquinas(); ocultarDiv('Mostrar_Maquinas')">MAQUINAS POR TIEMPO</h2>
                     </div>
                     <div>
-                        <span class="icon-arrow-down2 span_4" onclick="//Llamar_Maquinas()"></span>
+                        <span class="icon-arrow-down2 span_4" onclick="Llamar_Maquinas()"></span>
                     </div>
                 </div>
                 <div id="Mostrar_Maquinas"></div> 
