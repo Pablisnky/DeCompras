@@ -50,7 +50,11 @@
         }
 
         public function Maquinas(){
-            $this->vista("paginas/vitrina_V", "Maquinas");
+            //Se CONSULTAN las máquinas
+            $Consulta = $this->ConsultaVitrina_M->consultarMaquinas();
+            $Datos = $Consulta->fetchAll(PDO::FETCH_BOTH);
+
+            $this->vista("paginas/vitrina_V", $Datos);
         }
     }
 ?>    
