@@ -56,4 +56,14 @@
                 return false;
             }
         }
+
+        public function consultarMaquinas(){
+            $stmt = $this->dbh->prepare("SELECT * FROM maquinas");      
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return false;
+            }
+        }
     }
