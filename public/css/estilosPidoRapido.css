@@ -26,6 +26,26 @@ body, html{
 	display: flex;/*para centrar verticalmente el div hijo*/
 	align-items: center;/*para centrar verticalmente el div hijo*/
 }
+.button_1{/*vitrina*/
+	background-color:rgb(78, 43, 43);
+	color: white;
+	padding: 5% 10%;
+	cursor: pointer;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border: none;
+	margin: 0px !important;
+}
+.button_2{/*vitrina*/
+	background-color:rgb(78, 43, 43);
+	color: white;
+	padding: 5% 10%;
+	cursor: pointer;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border: none;
+	margin: 0px !important;
+}
 .header_1{/*header*/
 	background-color: brown;
 	height: 15%;
@@ -46,7 +66,7 @@ body, html{
 }
 .contenedor_4{/*inicio*/
 	width: 80%;
-	margin: auto;
+	margin:3% auto;
 }
 .contenedor_6{/*inicio*/
 	margin-bottom: 3%;
@@ -67,15 +87,23 @@ body, html{
 .contenedor_10{/*vitrina*/
 	display: grid;
 	grid-template-columns: 35fr 35fr 35fr;
+	grid-column-gap: 3%;
+	grid-row-gap: 5%;
 	width: 100%;
 	margin: auto;
 }
 .contenedor_11{/*vitrina*/
 	display: grid;
 	grid-template-columns: 50fr 50fr;
-	grid-template-rows: 40fr 5fr 5fr;
-	height: 250px;
-	margin: 5%;
+	grid-template-rows: 40fr 5fr ;
+	height: 300px;
+	margin: 2%;
+	margin-bottom: 0px;
+}
+.contenedor_11:hover{/*inicio*/
+	background-color: rgba(165, 42, 42, 0.3);
+	cursor: pointer;
+	border-radius: 15px;
 }
 .contenedor_12{/*vitrina*/
 	grid-column-start: 1;
@@ -83,10 +111,41 @@ body, html{
 	border-color: black;
 	border-style: solid;
 	border-width: 1px;
+	margin: 2% auto;
+	width: 95%;
 	max-height: 100%;
 }
+.contenedor_13{/*vitrina*/
+	background-color: rgb(239, 245, 245);
+	width: 20%;
+	margin:10% auto;
+	padding: 2%;
+	border-radius: 15px;
+}
+.contenedor_14{/*vitrina*/
+	background-color: ;
+	display: none;
+	grid-template-columns: 50fr 50fr;
+	grid-row-gap: 20%;
+	margin: 2%;
+	margin-top: 0%;
+	padding-bottom: 12%;
+	padding-right: 2%;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+.contenedor_15{/*inicio*/
+	border-radius: 15px;
+}
+.contenedor_16{/*vitrina*/
+	text-align: right;
+}
+.contenedor_17{
+	text-align:right; 
+	grid-column-start: 1;	
+	grid-column-end:4;
+}
 .footer{
-	font-weight: bold;
 	padding-top: 2%;
 }
 .h2_1{/*inicio*/
@@ -99,6 +158,7 @@ body, html{
 	color: white;
 	text-align: center;
 	font-size: 1.3em;
+	font-weight: bold;
 	padding-top: 0.5%;
 }
 .h5_1{/*footer*/
@@ -106,13 +166,87 @@ body, html{
 	text-align: center;
 	font-size: 1.1em;
 }
-.label_1{/*vitrina*/
+.input_1{/*vitrina*/
+	border: none;
+	text-align: right;
+	padding-right: 5%;
+}
+.input_2{/*vitrina*/
+	background-color:rgb(44, 29, 29) ;
+	color: white;
+	border: none;
+	margin: -5px !important;
+	width: 30%;
+	text-align: center;
 	padding: 5%;
-	font-size: 1em;
+}
+.input_3{/*vitrina*/
+	background-color: rgba(165, 42, 42, 0);
+	font-weight: bold;
+	padding: 2%;
+	border: none;
+}
+.input_4{/*vitrina*/
+	display: block;
+	border: none;
+	border-radius: 5px;
 	width: 80%;
+	text-align: center;
+	font-size: 1.1em;
+	padding: 1%;
+	margin:auto !important;
+}
+.label_1{/*vitrina*/
+	width: 30%;
+	font-size: 1em;
+}
+.label_3{/*vitrina*/
+	display: block;
+	text-align: center;
+	font-size: 1.3em;
+	font-weight: bold;
+	margin: 5% !important;
+}
+.label_4{/*vitrina*/	
+	background-color: rgb(31, 161, 118);
+	color:white ;
+	margin: 4% auto;
+	text-align: center;
+	display: block;
+	width: 60% !important;
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 3%;
+	border-radius: 10px;
+}
+.label_4:hover{/*vitrina*/	
+	background-color: rgb(19, 102, 74);
+	cursor: pointer;
+}
+.label_5{/*vitrina*/
+	/* width: 100% !important; */
+	/* display: block; */
+	font-size: 1em;
+	background-color: rgb(78, 43, 43);
+	color: white;
+	padding: 2%;
+	cursor: pointer;
+	border-radius: 10px;
 }
 .section_1{/*vitrina*/
 	padding-top: 1%;
+}
+.section_2{/*inicio*/
+	padding-top: 10%; 
+}
+.section_3{/*vitrina*/
+	background-color: rgba(0, 0, 0, 0.8);
+	display: none;
+	position: fixed;
+	top: 0vw;
+	left: 0vh;
+	width: 100%;
+	height: 100%;
 }
 .span_1{/*header*/
 	color: white;
@@ -134,5 +268,13 @@ body, html{
 	float: left;
 	font-size: 1.2em;
 	margin-right: 1%;
-
+}
+.span_5{/*vitrina*/
+	font-weight: bold;
+	font-size: 1.3em;
+	position: relative;
+	left: 95%;
+}
+.span_5:hover{/*vitrina*/
+	cursor: pointer;
 }
