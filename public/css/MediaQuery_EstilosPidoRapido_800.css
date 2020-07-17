@@ -1,0 +1,63 @@
+@media (max-width: 800px){/*aplicaría en cualquier medio con dimensiones menores a lo indicado*/
+
+.header_1{/*header*/
+	height: 10%;
+}
+.contenedor_1{/*header*/
+	margin-left: 5%;
+}
+.contenedor_6{/*inicio*/
+	margin-bottom: 10%;
+}
+.contenedor_7{
+	margin-top: 15%;
+	min-height: 35%;
+}
+.contenedor_8{/*footer*/
+	margin-top: 50% !important;
+}
+.contenedor_10{/*vitrina*/
+	grid-template-columns: 100fr;
+	width: 100%;
+}
+.contenedor_13{/*vitrina*/
+	width: 70%;
+	margin:30% auto;
+}
+.footer{
+	padding-top: 5%;
+	font-weight: normal;
+}
+.h2_1{/*inicio*/
+	font-size: 1em;
+}
+.h4_1{/*footer*/
+	font-size: 1em;
+	font-weight: normal;
+}
+.h5_1{/*footer*/
+	font-size: 0.9em;
+}
+.input_3{/*vitrina*/
+	width: 100%;
+}
+.label_1{/*vitrina*/
+	padding: 3%;
+	font-size: 0.9em;
+}
+.section_2{/*inicio*/
+	padding-top: 33%; 
+}
+.span_2{/*header*/
+	font-size: 1em !important;
+	padding: 18%;
+}
+.span_3{/*inicio*/
+	font-size: 1.2em;
+}
+.span_4{/*inicio*/
+	font-size: 1em;
+
+}
+
+}
