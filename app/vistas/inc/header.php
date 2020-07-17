@@ -16,6 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/ropa/style_ropa.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/flecha/style_flecha.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_estilosPidoRapido_800.css"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'>
 		<!-- <link rel="shortcut icon" type="image/png" href="../images/logo_aplicacion/logo_Mira_horebi.png"> -->
     </head>
