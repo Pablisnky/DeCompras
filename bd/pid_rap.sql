@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2020 a las 02:17:15
+-- Tiempo de generación: 17-07-2020 a las 03:25:40
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.3.19
 
@@ -113,8 +113,11 @@ CREATE TABLE `departamentos` (
 
 INSERT INTO `departamentos` (`ID_Departamento`, `nombre_Departamento`) VALUES
 (1, 'Ropa'),
-(2, 'Licores'),
-(3, 'Calzado');
+(2, 'Delivery'),
+(3, 'Bar'),
+(4, 'Alimentos'),
+(5, 'Productos'),
+(6, 'Maquinas');
 
 -- --------------------------------------------------------
 
@@ -161,42 +164,28 @@ INSERT INTO `productos` (`ID_Producto`, `nombre`, `precio`, `unidadVenta`) VALUE
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `remeras`
---
-
-CREATE TABLE `remeras` (
-  `ID_Remera` int(11) NOT NULL,
-  `ID_Frabicante` int(11) NOT NULL,
-  `ID_Departamento` int(11) NOT NULL,
-  `ID_Seccion` int(11) NOT NULL,
-  `talla` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `color` varchar(20) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `ropa`
 --
 
 CREATE TABLE `ropa` (
-  `ID_Ropa` int(11) NOT NULL,
+  `ID_Producto` int(11) NOT NULL,
   `nombre` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `precio` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `unidadVenta` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `modelo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `talla` varchar(10) COLLATE utf8_spanish_ci NOT NULL
+  `ID_Departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ropa`
 --
 
-INSERT INTO `ropa` (`ID_Ropa`, `nombre`, `precio`, `unidadVenta`, `modelo`, `talla`) VALUES
-(1, 'Remera gris', '500', '', '', ''),
-(2, 'Remera blanca', '500', '', '', ''),
-(3, 'Remera negra', '500', '', '', ''),
-(4, 'Botines de futbol', '1800', '', '', '');
+INSERT INTO `ropa` (`ID_Producto`, `nombre`, `precio`, `unidadVenta`, `modelo`, `ID_Departamento`) VALUES
+(1, 'Remera gris', '500', '', '', 1),
+(2, 'Remera blanca', '500', '', '', 1),
+(3, 'Remera negra', '500', '', '', 1),
+(4, 'Botines de futbol', '1800', '', '', 1),
+(5, 'Short', '150', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -258,16 +247,11 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`ID_Producto`);
 
 --
--- Indices de la tabla `remeras`
---
-ALTER TABLE `remeras`
-  ADD PRIMARY KEY (`ID_Remera`);
-
---
 -- Indices de la tabla `ropa`
 --
 ALTER TABLE `ropa`
-  ADD PRIMARY KEY (`ID_Ropa`);
+  ADD PRIMARY KEY (`ID_Producto`),
+  ADD KEY `Dep_Rop` (`ID_Departamento`);
 
 --
 -- Indices de la tabla `secciones`
@@ -301,7 +285,7 @@ ALTER TABLE `delivery`
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
 ALTER TABLE `departamentos`
-  MODIFY `ID_Departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -310,22 +294,26 @@ ALTER TABLE `productos`
   MODIFY `ID_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `remeras`
---
-ALTER TABLE `remeras`
-  MODIFY `ID_Remera` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `ropa`
 --
 ALTER TABLE `ropa`
-  MODIFY `ID_Ropa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
   MODIFY `ID_Seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `ropa`
+--
+ALTER TABLE `ropa`
+  ADD CONSTRAINT `Dep_Rop` FOREIGN KEY (`ID_Departamento`) REFERENCES `departamentos` (`ID_Departamento`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
