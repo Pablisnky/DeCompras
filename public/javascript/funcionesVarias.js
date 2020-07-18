@@ -14,14 +14,32 @@ function ocultarDiv(id){
 
 //************************************************************************************************
 //Llamada desde vitrina_V
-    function verOpciones(contador, contador_2){      
-        //Se captura el valor de los id dinanmicos que se genern y se guarda en ID_Dinamico
-        window.localStorage.setItem('ID_Dinamico', contador);
-        window.localStorage.setItem('ID_contenedorSombreado', contador_2);
-        let H = localStorage.getItem("ID_Dinamico");
-        let I = localStorage.getItem("ID_contenedorSombreado");
-        console.log("ID_Dinamico= " + H);  
-        console.log("ID_contenedorSombreado= " + I);  
+    function verOpciones(Cont_Sombreado, Cont_Dinamico, Talla, contador_4, Leyenda, Precio, Cantidad, Incre_Decre){      
+        //Se captura el valor de los id dinanmicos que se genern y se guarda en ID_cont_sombreado
+        window.localStorage.setItem('ID_cont_sombreado', Cont_Sombreado);
+        window.localStorage.setItem('ID_cont_dinamico', Cont_Dinamico);
+        window.localStorage.setItem('ID_input_talla', Talla);
+        window.localStorage.setItem('ID_IntputTotal', contador_4);
+        window.localStorage.setItem('ID_leyenda', Leyenda);
+        window.localStorage.setItem('ID_precio', Precio);
+        window.localStorage.setItem('ID_cantidad', Cantidad);
+        window.localStorage.setItem('ID_incre_decre', Incre_Decre);
+
+        let I = localStorage.getItem("ID_cont_dinamico");
+        let H = localStorage.getItem("ID_cont_sombreado");
+        let J = localStorage.getItem("ID_cantidad");
+        let K = localStorage.getItem("ID_input_talla");
+        let L = localStorage.getItem("ID_precio");
+        let O = localStorage.getItem("ID_leyenda");
+        let P = localStorage.getItem("ID_incre_decre");
+ 
+        console.log("ID_cont_dinamico= " + I); 
+        console.log("ID_cont_sombreado= " + H);  
+        console.log("ID_cantidad= " + J); 
+        console.log("ID_talla= " + K);
+        console.log("ID_Precio= " + L);
+        console.log("ID_Leyenda= " + O);
+        console.log("ID_incremento_decremento= " + P);
                 
         document.getElementById("Mostrar_Opciones").style.display = "block";
         document.getElementsByTagName("html")[0].style.overflow = "hidden";
@@ -38,8 +56,8 @@ function ocultarDiv(id){
 //************************************************************************************************
 //Llamada desde funcionesVarias.js 
     function CerrarModal(){
-        let Z = document.getElementsByClassName("contenedor_14").id = localStorage.getItem('ID_Dinamico'); 
-        console.log("El ID del contenedor: " + Z);
+        let Z = document.getElementsByClassName("contenedor_14").id = localStorage.getItem('ID_cont_sombreado'); 
+        console.log("ID contenedor dinamico: " + Z);
         document.getElementById(Z).style.display = "grid";
         document.getElementById("Mostrar_Opciones").style.display = "none";
         document.getElementsByTagName("html")[0].style.overflow = "visible";
@@ -47,11 +65,9 @@ function ocultarDiv(id){
 
 //************************************************************************************************
 //Envia el valor de la opcion del producto seleccionado aL html que llamada desde vitrina_V
-    function transferirOpcion(ID_inputTalla){
+    function transferirOpcion(){
         //Se captura el valor del elemento con id dinanmico que contiene el tamaño de la prenda 
-        window.localStorage.setItem('ID_InputTalla', ID_inputTalla);
-        let F = document.getElementsByClassName("label_l").id = localStorage.getItem('ID_InputTalla');
-        console.log("ID_InputT= " + F);  
+        let F = document.getElementsByClassName("label_1a").id = localStorage.getItem('ID_input_talla'); 
 
         let Opcion = document.getElementsByName("talla");
         for(var i=0; i<Opcion.length; i++){
@@ -59,11 +75,11 @@ function ocultarDiv(id){
                 Opcion= Opcion[i].value;
                 //Despues de recorrer las opciones se guarda la opcion checkeada en un localStorage
                 window.localStorage.setItem('tamanioPrenda', Opcion);
-                console.log("La talla de la prenda es: " + localStorage.getItem("tamanioPrenda"));
-                console.log("El ID del input talla= " + F);
+                console.log("Talla de la prenda: " + localStorage.getItem("tamanioPrenda"));
+                console.log("ID input talla= " + F);
     
-                // Se cambia el valor de la talla            
-                // document.getElementById(F).value = localStorage.getItem("tamanioPrenda");   
+                // Se cambia el valor de la talla    
+                document.getElementById(F).value=localStorage.getItem("tamanioPrenda");           
             }
         }
         
@@ -71,40 +87,25 @@ function ocultarDiv(id){
         CerrarModal();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //************************************************************************************************
-//Llamada desde vitrina_V
+//Llamada desde vitrina_V          
 function incrementar(){
-    valor = document.getElementById("Item");
-    if(valor.value < 10){
-        A = valor.value ++;
+    // let J = localStorage.getItem("ID_cantidad");
+    let C = document.getElementsByClassName("input2a").id = localStorage.getItem("ID_incre_decre"); 
+    console.log("ID_producto a incrementar= " + C);
+
+    let D =  document.getElementsByClassName("label_1e").id = localStorage.getItem("ID_cantidad");
+      
+    let valor = document.getElementById(C).value;
+    console.log("Cantidad pedida= " + valor);
+    
+    if(valor < 10){
+        A = valor++;
         A++;
-        document.getElementById("Cantidad").value = A;
-        console.log(A);
+        document.getElementById(C).value = A;
+        document.getElementById(D).value = A;
+
+        console.log("Numero de productos= " + A);
     }
     pedidoParcial();
 }
@@ -124,15 +125,23 @@ function decrementar(){
 } 
 
 //************************************************************************************************
-//Llamada desde vitrina_V
+//Llamada desde funcionesVarias.js 
 function pedidoParcial(){
+    let J = document.getElementsByClassName("label_1b").id = localStorage.getItem("ID_IntputTotal"); 
+    let L = document.getElementsByClassName("label_1c").id = localStorage.getItem("ID_leyenda");  
+    let M = document.getElementsByClassName("label_1d").value = localStorage.getItem("ID_precio"); 
+    let N = document.getElementsByClassName("label_1e").id =localStorage.getItem('ID_cantidad');   
     
-    let Cantidad = document.getElementById("Cantidad").value;
-    let Precio = document.getElementById("Precio").value;
+    let Cantidad = document.getElementById(M).value;
+    let Precio = document.getElementById(N).value;
 
-    let Total = Cantidad * Precio;    
-    document.getElementById("Total").value = Total;
+    let Total = Cantidad * Precio;   
+    console.log("Precio total: " + Total); 
+    document.getElementById(J).value = Total;
 
-    document.getElementById("Leyenda").value = Cantidad + " x " + localStorage.getItem("tamanioPrenda") + " = " + Total;    
+
+    document.getElementById(L).value = Cantidad + " x " + localStorage.getItem("tamanioPrenda") + " = " + " $" + Total;    
     console.log(Total);
 }
+
+//************************************************************************************************
