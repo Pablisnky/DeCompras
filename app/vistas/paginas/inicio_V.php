@@ -12,7 +12,7 @@
                         <span class="icon-arrow-down2 span_4" onclick="Llamar_Delivery()"></span>
                     </div>
                 </div>
-                <div id="Mostrar_Delivery"></div> 
+                <div class="contenedor_5" id="Mostrar_Delivery"></div> 
             </div>
 
             <div class='contenedor_6'>
@@ -25,7 +25,7 @@
                         <span class="icon-arrow-down2 span_4" onclick="Llamar_Ropa()"></span>
                     </div>
                 </div>
-                <div id="Mostrar_Ropa"></div> 
+                <div class="contenedor_5" id="Mostrar_Ropa"></div> 
             </div>
 
             <div class='contenedor_6'>
@@ -38,7 +38,7 @@
                         <span class="icon-arrow-down2 span_4" onclick="Llamar_Bar()"></span>
                     </div>
                 </div>
-                <div id="Mostrar_Bar"></div> 
+                <div class="contenedor_5" id="Mostrar_Bar"></div> 
             </div>
 
             <div class='contenedor_6'>
@@ -51,7 +51,7 @@
                         <span class="icon-arrow-down2 span_4" onclick="Llamar_Alimentos()"></span>
                     </div>
                 </div>  
-                <div id="Mostrar_Alimentos"></div> 
+                <div class="contenedor_5" id="Mostrar_Alimentos"></div> 
             </div>
 
             <div class='contenedor_6'>
@@ -64,7 +64,7 @@
                         <span class="icon-arrow-down2 span_4" onclick="Llamar_Productos()"></span>
                     </div>
                 </div>
-                <div id="Mostrar_Productos"></div> 
+                <div class="contenedor_5" id="Mostrar_Productos"></div> 
             </div>
 
             <div class='contenedor_6'>
@@ -77,7 +77,7 @@
                         <span class="icon-arrow-down2 span_4" onclick="Llamar_Maquinas()"></span>
                     </div>
                 </div>
-                <div id="Mostrar_Maquinas"></div> 
+                <div class="contenedor_5" id="Mostrar_Maquinas"></div> 
             </div>
         </div>
     </section>

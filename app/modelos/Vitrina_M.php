@@ -8,27 +8,7 @@
         }
         
         public function consultarDelivery(){
-            $stmt = $this->dbh->prepare("SELECT * FROM delivery");      
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return false;
-            }
-        }
-
-        public function consultarLicoresRest(){
-            $stmt = $this->dbh->prepare("SELECT * FROM bar_resto");      
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return false;
-            }
-        }
-
-        public function consultarAlimentos(){
-            $stmt = $this->dbh->prepare("SELECT * FROM alimentos");      
+            $stmt = $this->dbh->prepare("SELECT * FROM secciones INNER JOIN opciones ON secciones.ID_Seccion=opciones.ID_Seccion WHERE secciones.ID_Departamento = 2 GROUP BY seccion");      
             if($stmt->execute()){
                 return $stmt;
             }
@@ -38,7 +18,7 @@
         }
 
         public function consultarRopa(){
-            $stmt = $this->dbh->prepare("SELECT * FROM ropa");      
+            $stmt = $this->dbh->prepare("SELECT * FROM secciones INNER JOIN opciones ON secciones.ID_Seccion=opciones.ID_Seccion WHERE secciones.ID_Departamento = 1 GROUP BY seccion");      
             if($stmt->execute()){
                 return $stmt;
             }
@@ -46,24 +26,43 @@
                 return false;
             }
         }
+        // public function consultarLicoresRest(){
+        //     $stmt = $this->dbh->prepare("SELECT * FROM bar_resto");      
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
-        public function consultarProductos(){
-            $stmt = $this->dbh->prepare("SELECT * FROM productos");      
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return false;
-            }
-        }
+        // public function consultarAlimentos(){
+        //     $stmt = $this->dbh->prepare("SELECT * FROM alimentos");      
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
-        public function consultarMaquinas(){
-            $stmt = $this->dbh->prepare("SELECT * FROM maquinas");      
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return false;
-            }
-        }
+        // public function consultarProductos(){
+        //     $stmt = $this->dbh->prepare("SELECT * FROM productos");      
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
+
+        // public function consultarMaquinas(){
+        //     $stmt = $this->dbh->prepare("SELECT * FROM maquinas");      
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
     }

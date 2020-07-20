@@ -20,9 +20,9 @@
 	grid-template-columns: 100fr;
 	width: 100%;
 }
-.contenedor_13{/*vitrina*/
+.contenedor_13{/*opciones*/
 	width: 70%;
-	margin:30% auto;
+	margin:4% auto;
 }
 .footer{
 	padding-top: 5%;
@@ -44,6 +44,7 @@
 .label_1{/*vitrina*/
 	padding: 3%;
 	font-size: 0.9em;
+	width: 100% !important;
 }
 .section_2{/*inicio*/
 	padding-top: 33%; 

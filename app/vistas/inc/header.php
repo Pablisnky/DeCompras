@@ -32,7 +32,7 @@
 				<div class="contenedor_1">
 					<span class="icon-search span_1 span_2"></span>
 				</div>
-			</div>
+			</div> 
 		</header>
 
    <!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

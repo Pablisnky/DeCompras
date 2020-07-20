@@ -166,3 +166,32 @@ function respuesta_Maquinas(){
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
     }
 }
+
+//-------------------------------------------------------------------------------------------------
+function llamar_Opciones(Departamento, NombreProducto){//Es llamada desde inicio_V.php
+    window.localStorage.setItem('Departamento', Departamento);
+    window.localStorage.setItem('NombreProducto', NombreProducto);
+    let A = localStorage.getItem("Departamento");
+    let B = localStorage.getItem("NombreProducto");
+    var url="Opciones_C/index/" + A + "/" + B;
+    http_request.open('GET', url, true);    
+    peticion.onreadystatechange = respuesta_Opciones;
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    peticion.send("null");
+}                                                           
+function respuesta_Opciones(){
+    if(peticion.readyState == 4){
+        if(peticion.status == 200){
+            document.getElementById("Mostrar_Opciones").style.display = "block";
+            document.getElementsByTagName("html")[0].style.overflow = "hidden";
+            document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
+            // document.getElementById('Loading').style.display = 'none';
+        } 
+        else{
+            alert('Hubo problemas con la petición.');
+        }
+    }
+    else{ //en caso contrario, mostramos un gif simulando una precarga
+        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    }
+}
