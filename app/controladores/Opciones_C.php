@@ -6,9 +6,9 @@
         }
         
         //Los parametros se resiven desde vFunciones_Ajax.js
-        public function index($ID_Departamento, $NombreProducto){            
+        public function index($ID_Departamento, $NombreProducto, $Agregacion, $Cont_Padre, $Cont_a_Clonar){            
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
-
+            
             switch($NombreProducto){
                 case 'KitBaby':
                     $NombreProducto = 'Kit Baby';
@@ -25,8 +25,15 @@
             }
 
             $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Departamento, $NombreProducto);   
-            $Datos = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
-                 
+            $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
+            
+            $Datos=[
+                "Inf_Consulta" => $Consulta,
+                "AgregarNodo" => $Agregacion,
+                "Cont_Pad" => $Cont_Padre,
+                "Cont_a_Clonar" => $Cont_a_Clonar
+            ];
+            
             $this->vista("paginas/opciones_V", $Datos);
         }
 

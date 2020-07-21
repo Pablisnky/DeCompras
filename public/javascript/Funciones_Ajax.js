@@ -168,12 +168,18 @@ function respuesta_Maquinas(){
 }
 
 //-------------------------------------------------------------------------------------------------
-function llamar_Opciones(Departamento, NombreProducto){//Es llamada desde inicio_V.php
+function llamar_Opciones(Departamento, NombreProducto, agregacion, Contenedor_Padre, Contenedor_A_Clonar){//Es llamada desde inicio_V.php
     window.localStorage.setItem('Departamento', Departamento);
     window.localStorage.setItem('NombreProducto', NombreProducto);
+    window.localStorage.setItem('Aniadeagregacion', agregacion);
+    window.localStorage.setItem('ID_contenedor_padre', Contenedor_Padre);
+    window.localStorage.setItem('ID_contenedor_a_clonar', Contenedor_A_Clonar);
     let A = localStorage.getItem("Departamento");
     let B = localStorage.getItem("NombreProducto");
-    var url="Opciones_C/index/" + A + "/" + B;
+    let C = localStorage.getItem("Aniadeagregacion");
+    let D = localStorage.getItem("ID_contenedor_padre");
+    let E = localStorage.getItem("ID_contenedor_a_clonar");
+    var url="Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E;
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_Opciones;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -183,7 +189,7 @@ function respuesta_Opciones(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){
             document.getElementById("Mostrar_Opciones").style.display = "block";
-            document.getElementsByTagName("html")[0].style.overflow = "hidden";
+            // document.getElementsByTagName("html")[0].style.overflow = "hidden";
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
             // document.getElementById('Loading').style.display = 'none';
         } 
@@ -195,3 +201,32 @@ function respuesta_Opciones(){
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
     }
 }
+
+// //-------------------------------------------------------------------------------------------------
+// function llamar_agregar_Opciones(Departamento, NombreProducto){//Es llamada desde inicio_V.php
+//     window.localStorage.setItem('Departamento', Departamento);
+//     window.localStorage.setItem('NombreProducto', NombreProducto);
+//     let A = localStorage.getItem("Departamento");
+//     let B = localStorage.getItem("NombreProducto");
+//     var url="Opciones_C/agregar/" + A + "/" + B;
+//     http_request.open('GET', url, true);    
+//     peticion.onreadystatechange = respuesta_Opciones;
+//     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+//     peticion.send("null");
+// }                                                           
+// function respuesta_Opciones(){
+//     if(peticion.readyState == 4){
+//         if(peticion.status == 200){
+//             document.getElementById("Mostrar_Opciones").style.display = "block";
+//             document.getElementsByTagName("html")[0].style.overflow = "hidden";
+//             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
+//             // document.getElementById('Loading').style.display = 'none';
+//         } 
+//         else{
+//             alert('Hubo problemas con la petición.');
+//         }
+//     }
+//     else{ //en caso contrario, mostramos un gif simulando una precarga
+//         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+//     }
+// }

@@ -110,6 +110,7 @@ body, html{
 	border-radius: 15px;
 }
 .contenedor_12{/*vitrina*/
+	background-color: red;
 	grid-column-start: 1;
 	grid-column-end: 3;
 	border-color: black;
@@ -178,6 +179,10 @@ body, html{
 	color: white;
 	text-align: center;
 	font-size: 1.1em;
+}
+.image_1{/*formasPago_V.php*/
+	width: 100%;
+	object-fit: fill ;	
 }
 .input_1{/*vitrina*/
 	border: none;

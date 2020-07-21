@@ -2,12 +2,10 @@ let Pulsar = false
 function ocultarDiv(id){
     if(Pulsar == false){
         Pulsar = true;
-        // console.log(Pulsar);
         document.getElementById(id).style.display = "block";
     }
     else{
         Pulsar = false;
-        // console.log(Pulsar);
         document.getElementById(id).style.display = "none";
     }
 }
@@ -33,13 +31,13 @@ function ocultarDiv(id){
         let O = localStorage.getItem("ID_leyenda");
         let P = localStorage.getItem("ID_incre_decre");
  
-        // console.log("ID_cont_dinamico= " + I); 
+        //  console.log("ID_cont_dinamico= " + I); 
         // console.log("ID_cont_sombreado= " + H);  
         // console.log("ID_cantidad= " + J); 
         // console.log("ID_talla= " + K);
         // console.log("ID_Precio= " + L);
-        // console.log("ID_Leyenda= " + O);
-        // console.log("ID_incremento_decremento= " + P);
+        console.log("ID_Leyenda= " + O);
+        console.log("ID_incremento_decremento= " + P);
                 
         document.getElementById(I).style.backgroundColor = "rgba(165, 42, 42, 0.3)";
     }
@@ -64,22 +62,22 @@ function ocultarDiv(id){
 
 //************************************************************************************************
 //Envia el valor de la opcion del producto seleccionado aL html que llamada desde vitrina_V
-    function transferirOpcion(){
-        //Se captura el valor del elemento con id dinanmico que contiene el tamaño de la prenda 
-        // let F = document.getElementsByClassName("label_1a").id = localStorage.getItem('ID_input_talla'); 
+    function transferirOpcion(form){
+        Opcion = form.opcion;
 
-        let Opcion = document.getElementsByName("opcion");
+        //Se captura el valor del elemento con id dinanmico que contiene el tamaño de la prenda 
+        let F = document.getElementsByClassName("label_1a").id = localStorage.getItem('ID_input_talla'); 
         
         for(var i=0; i<Opcion.length; i++){
             if(Opcion[i].checked){
                 Opcion= Opcion[i].value;
                 //Despues de recorrer las opciones se guarda la opcion checkeada en un localStorage
-                window.localStorage.setItem('tamanioPrenda', Opcion);
-                console.log("Talla de la prenda: " + localStorage.getItem("tamanioPrenda"));
-                console.log("ID input talla= " + F);
+                window.localStorage.setItem('OpcionSeleccionada', Opcion);
+                console.log("Opcion seleccionada: " + localStorage.getItem("OpcionSeleccionada"));
+                // console.log("ID input t= " + F); 
     
-                // Se cambia el valor de la talla    
-                document.getElementById(F).value = localStorage.getItem("tamanioPrenda");           
+                // Se muestra el valor de la opcion seleccionada   
+                document.getElementById(F).value = localStorage.getItem("OpcionSeleccionada");           
             }
         }
         
@@ -91,10 +89,10 @@ function ocultarDiv(id){
 //Llamada desde vitrina_V          
 function incrementar(Boton_Inc){
     //Se accede al nodo donde esta el display de incremento/decremento
-        window.localStorage.setItem('ID_boton_inc', Boton_Inc);   
+    window.localStorage.setItem('ID_boton_inc', Boton_Inc);   
     //Contenedor a clonar
     let BB = localStorage.getItem("ID_boton_inc"); 
-    console.log("ID_Boton incremento= " + BB);
+    console.log("ID_Boton_Incremento= " + BB);
     let CC = localStorage.getItem("ID_nuevo_nodo");
     console.log("ID nuevo modo= " + CC);
 
@@ -151,34 +149,58 @@ function pedidoParcial(){
     // console.log("Precio total: " + Total); 
     document.getElementById(J).value = Total;
 
-    document.getElementById(L).value = Cantidad + " x " + localStorage.getItem("tamanioPrenda") + " = " + " $" + Total;    
+    document.getElementById(L).value = Cantidad + " x " + localStorage.getItem("OpcionSeleccionada") + " = " + " $" + Total;    
     // console.log(Total);
 }
 
 //************************************************************************************************
-//Llamada desde vitrina.js 
+//Llamada desde opciones_V.php 
 let orden = 1;
-function AgregaOpcion(Cont_AgregaOpcion, Cont_A_Clonar){
-    window.localStorage.setItem('ID_cont_agreg__opcion', Cont_AgregaOpcion); 
-    window.localStorage.setItem('ID_cont_a_clonar', Cont_A_Clonar);    
-    // console.log("Contenedor padre: " + localStorage.getItem("ID_cont_agreg__opcion"));
+function AgregaOpcion(form, C_Padre, C_AClonar){
+    Opcion = form.opcion;
+    window.localStorage.setItem('ID_cont_agreg__opcion', C_Padre); 
+    window.localStorage.setItem('ID_cont_a_clonar', C_AClonar);    
+    console.log("Contenedor padre: " + localStorage.getItem("ID_cont_agreg__opcion"));
+    console.log("Contenedor a clonar: " + localStorage.getItem("ID_cont_a_clonar"));
+
+    // Se captura el valor del elemento con id dinanmico que contiene el tamaño de la prenda 
+    // let F = document.getElementsByClassName("label_1a").id = localStorage.getItem('ID_input_talla'); 
+    
+    for(var i=0; i<Opcion.length; i++){
+        if(Opcion[i].checked){
+            Opcion= Opcion[i].value;
+            // Despues de recorrer las opciones se guarda la opcion checkeada en un localStorage
+            window.localStorage.setItem('OpcionSeleccionada', Opcion);
+            console.log("Opcion seleccionada: " + localStorage.getItem("OpcionSeleccionada"));
+            // console.log("ID input t= " + F); 
+
+            // Se muestra el valor de la opcion seleccionada   
+            // document.getElementById(F).value = localStorage.getItem("OpcionSeleccionada");           
+        }
+    }
 
     //Contenedor a clonar
     let BB = localStorage.getItem("ID_cont_a_clonar"); 
     let clonar = document.getElementById(BB);
-    // console.log("Contenedor a clonar: " + clonar);
+    console.log("Contenedor a clonar: " + clonar);
 
     //Se crea el clon
-    let clon_E = clonar.cloneNode(true);  
-    clon_E.style.id = 'enlaces_' + orden;
+    let clon_E = clonar.cloneNode(true); 
+
+    //Se da un ID al nuevo elemento
+    let G = clon_E.style.id = 'Nuevo_Clon_' + orden;
     orden++;  
+    
+    let H = clon_E.style.id ;
+    console.log("ID_nuevo_nodo: " + H); 
+    // window.localStorage.setItem('ID_nuevo_nodo', clon_E.style.id);  
 
-    // console.log("ID_nuevo_nodo: " + clon_E.style.id); 
-    window.localStorage.setItem('ID_nuevo_nodo', clon_E.style.id);  
-
+    //Se especifica el div padre donde se insertará el nuevo nodo
     nodoPadre = clonar.id = localStorage.getItem("ID_cont_agreg__opcion");
-    console.log("ID_Nodo_Padre: " + nodoPadre); 
     document.getElementById(nodoPadre).appendChild(clon_E);
+    
+    pedidoParcial()
+    CerrarModal();
 }
 
 //************************************************************************************************
