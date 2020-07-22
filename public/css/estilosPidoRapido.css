@@ -110,7 +110,6 @@ body, html{
 	border-radius: 15px;
 }
 .contenedor_12{/*vitrina*/
-	background-color: red;
 	grid-column-start: 1;
 	grid-column-end: 3;
 	border-color: black;
@@ -182,7 +181,7 @@ body, html{
 }
 .image_1{/*formasPago_V.php*/
 	width: 100%;
-	object-fit: fill ;	
+	object-fit: scale-down ;	
 }
 .input_1{/*vitrina*/
 	border: none;
@@ -199,10 +198,7 @@ body, html{
 	padding: 5%;
 }
 .input_3{/*vitrina*/
-	background-color: rgba(165, 42, 42, 0);
-	font-weight: bold;
-	padding: 2%;
-	border: none;
+	display:none;
 }
 .input_4{/*vitrina*/
 	display: block;
