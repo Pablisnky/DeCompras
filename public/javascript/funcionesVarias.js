@@ -1,14 +1,26 @@
-let Pulsar = false
-function ocultarDiv(id){
-    if(Pulsar == false){
-        Pulsar = true;
-        document.getElementById(id).style.display = "block";
-    }
-    else{
-        Pulsar = false;
-        document.getElementById(id).style.display = "none";
-    }
+//Llamada desde inicio_V.php
+window.addEventListener('load', inicializarEventos, false);
+
+function inicializarEventos(){
+    document.getElementById('H2_1').addEventListener('click',function(){ocultar("Mostrar_Delivery")});
+    document.getElementById('H2_2').addEventListener('click',function(){ocultar("Mostrar_Ropa")});
+    document.getElementById('H2_3').addEventListener('click',function(){ocultar("Mostrar_Bar")});
+    document.getElementById('H2_4').addEventListener('click',function(){ocultar("Mostrar_Alimentos")});
+    document.getElementById('H2_5').addEventListener('click',function(){ocultar("Mostrar_Productos")});
+    document.getElementById('H2_6').addEventListener('click',function(){ocultar("Mostrar_Maquinas")});
 }
+
+    let Status = false
+    function ocultar(id){
+        if(Status == false){
+            Status = true;
+            document.getElementById(id).style.display = "block";
+        }
+        else{
+            Status = false;
+            document.getElementById(id).style.display = "none";
+        }
+    }
 
 //************************************************************************************************
 //Llamada desde vitrina_V
@@ -79,8 +91,7 @@ function ocultarDiv(id){
                 // Se muestra el valor de la opcion seleccionada   
                 document.getElementById(F).value = localStorage.getItem("OpcionSeleccionada");           
             }
-        }
-        
+        }        
         pedidoParcial()
         CerrarModal();
     }
@@ -157,11 +168,9 @@ function pedidoParcial(){
 //Llamada desde opciones_V.php 
 let orden = 1;
 function AgregaOpcion(form, C_Padre, C_AClonar){
-    Opcion = form.opcion;
-    window.localStorage.setItem('ID_cont_agreg__opcion', C_Padre); 
-    window.localStorage.setItem('ID_cont_a_clonar', C_AClonar);    
-    console.log("Contenedor padre: " + localStorage.getItem("ID_cont_agreg__opcion"));
-    console.log("Contenedor a clonar: " + localStorage.getItem("ID_cont_a_clonar"));
+    Opcion = form;
+    let BB = C_Padre;
+    let CC = C_AClonar;
 
     // Se captura el valor del elemento con id dinanmico que contiene el tamaño de la prenda 
     // let F = document.getElementsByClassName("label_1a").id = localStorage.getItem('ID_input_talla'); 
@@ -179,26 +188,34 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
         }
     }
 
-    //Contenedor a clonar
-    let BB = localStorage.getItem("ID_cont_a_clonar"); 
+    //Contenedor a clonar 
     let clonar = document.getElementById(BB);
+
+    //Aqui se puede ver dos resultados diferentes del mismo elemento
     console.log("Contenedor a clonar: " + clonar);
+    console.log(document.getElementById(BB))
 
     //Se crea el clon
     let clon_E = clonar.cloneNode(true); 
 
     //Se da un ID al nuevo elemento
-    let G = clon_E.style.id = 'Nuevo_Clon_' + orden;
+    let G = clon_E.style.id = orden;
     orden++;  
     
-    let H = clon_E.style.id ;
-    console.log("ID_nuevo_nodo: " + H); 
-    // window.localStorage.setItem('ID_nuevo_nodo', clon_E.style.id);  
+    //Se coloca un prefijo al ID del nuevo nodo
+    let NuevoNodo = G 
+    console.log('ID_nuevo_nodo: ' + NuevoNodo);  
 
     //Se especifica el div padre donde se insertará el nuevo nodo
-    nodoPadre = clonar.id = localStorage.getItem("ID_cont_agreg__opcion");
+    nodoPadre = clonar.id = document.getElementById(CC);
     document.getElementById(nodoPadre).appendChild(clon_E);
     
+
+
+
+
+
+    console.log(document.getElementById("Nuevo_Nodo_2"));
     pedidoParcial()
     CerrarModal();
 }
