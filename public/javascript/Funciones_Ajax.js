@@ -30,6 +30,20 @@ var http_request = false;
         } 
 
 //-------------------------------------------------------------------------------------------------
+//Llamada desde inicio_V.php
+// window.addEventListener('load', inicializarEventosAjax, false);
+
+// function inicializarEventosAjax(){
+    document.getElementById('H2_1').addEventListener('click', Llamar_Delivery, false);
+    document.getElementById('H2_2').addEventListener('click', Llamar_Ropa, false);
+    document.getElementById('H2_3').addEventListener('click', Llamar_Bar, false);
+    document.getElementById('H2_4').addEventListener('click', Llamar_Alimentos, false);
+    document.getElementById('H2_5').addEventListener('click', Llamar_Productos, false);
+    document.getElementById('H2_6').addEventListener('click', Llamar_Maquinas, false);
+// }
+
+//-------------------------------------------------------------------------------------------------
+
     function Llamar_Delivery(){//Es llamada desde inicio_V.php
         var url="Vitrina_C/Delivery";
         http_request.open('GET',url,true);    
