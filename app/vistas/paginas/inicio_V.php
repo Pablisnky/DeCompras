@@ -6,7 +6,7 @@
                 <div class="contenedor_9">
                     <div>
                         <span class="icon-newspaper span_3"></span>
-                        <h2 class='h2_1' id="H2_1">DELIVERY Y ROTISERIA</h2>
+                        <h2 class='h2_1' id="H2_1">COMIDA RAPIDA</h2>
                     </div>
                     <div>
                         <span class="icon-arrow-down2 span_4"></span>
@@ -19,7 +19,7 @@
                 <div class="contenedor_9">
                     <div>
                         <span class="icon-newspaper span_3"></span>
-                        <h2 class='h2_1' id="H2_2">ROPA E INDUMENTARIA</h2>
+                        <h2 class='h2_1' id="H2_2">SUPERMERCADOS Y ABASTOS</h2>
                     </div>
                     <div>
                         <span class="icon-arrow-down2 span_4"></span>
@@ -32,7 +32,7 @@
                 <div class="contenedor_9">
                     <div>
                         <span class="icon-newspaper span_3"></span>
-                        <h2 class='h2_1' id="H2_3">BAR Y RESTO</h2>
+                        <h2 class='h2_1' id="H2_3">BODEGA Y QUINCALLERÍA</h2>
                     </div>
                     <div>
                         <span class="icon-arrow-down2 span_4"></span>
@@ -45,7 +45,7 @@
                 <div class="contenedor_9">
                     <div>
                         <span class="icon-newspaper span_3"></span>
-                        <h2 class='h2_1' id="H2_4">ALIMENTOS FRESCOS</h2>
+                        <h2 class='h2_1' id="H2_4">ALIMENTOS</h2>
                     </div>
                     <div>
                         <span class="icon-arrow-down2 span_4"></span>
@@ -58,7 +58,7 @@
                 <div class="contenedor_9">
                     <div>
                         <span class="icon-newspaper span_3"></span>
-                        <h2 class='h2_1' id="H2_5">PRODUCTOS Y RETAIL</h2>
+                        <h2 class='h2_1' id="H2_5">FARMACIA</h2>
                     </div>
                     <div>
                         <span class="icon-arrow-down2 span_4"></span>
@@ -71,7 +71,7 @@
                 <div class="contenedor_9">
                     <div>
                         <span class="icon-newspaper span_3"></span>
-                        <h2 class='h2_1' id="H2_6">MAQUINAS POR TIEMPO</h2>
+                        <h2 class='h2_1' id="H2_6">FERRETRÍA</h2>
                     </div>
                     <div>
                         <span class="icon-arrow-down2 span_4"></span>
