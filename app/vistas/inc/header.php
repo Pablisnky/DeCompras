@@ -12,6 +12,7 @@
 		<meta name="HandheldFriendly" content="true">
 		<meta http-equiv="expires" content="12 de julio de 2020">
 
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/carrito/style_carrito.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/lupa/style_lupa.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/ropa/style_ropa.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/flecha/style_flecha.css"/>
@@ -26,11 +27,19 @@
 				<div class="contenedor_1">
 					<a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">
 						<img class="imagen_1" src="<?php echo RUTA_URL;?>/public/images/logo.png" width="50" height="50" alt="" loading="lazy">
-						<span class="span_1">PrimeroApp</span>
+						<span class="span_1">Comprando</span>
 					</a>
 				</div>
 				<div class="contenedor_1">
-					<span class="icon-search span_1 span_2"></span>
+					<div class="contenedor_22">
+						<div class="contenedor_21">
+							<span class="span_6">4</span>
+							<span class="icon-cart span_1 span_2"></span>
+						</div>
+						<div>
+							<span class="icon-search span_1 span_2"></span>
+						</div>
+					</div>
 				</div>
 			</div> 
 		</header>
