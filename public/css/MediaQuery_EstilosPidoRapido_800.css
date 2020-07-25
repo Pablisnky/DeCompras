@@ -18,7 +18,7 @@
 }
 .contenedor_10{/*vitrina*/
 	grid-template-columns: 100fr;
-	width: 100%;
+	width: 90%;
 }
 .contenedor_13{/*opciones*/
 	width: 90%;
@@ -45,6 +45,11 @@
 	padding: 3%;
 	font-size: 0.9em;
 	width: 100% !important;
+}
+.p_1{/*vitrina*/
+	padding-top: 30%;
+	font-size: 1.4em;
+	text-align: center;
 }
 .section_2{/*inicio*/
 	padding-top: 33%; 
