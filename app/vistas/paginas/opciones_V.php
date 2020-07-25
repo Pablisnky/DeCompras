@@ -10,7 +10,7 @@
                 foreach($Datos['Inf_Consulta'] as $row){
                     $Opcion = $row['opciones'];
                     ?>                      
-                    <input id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" type="radio" name="opcion" value="<?php echo $Opcion;?>" onclick="transferirOpcion(this.form)" hidden/>
+                    <input class="input_3" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" type="radio" name="opcion" value="<?php echo $Opcion;?>" onclick="transferirOpcion(this.form)"/>
                     <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4"><?php echo $Opcion;?></label> 
                     <?php 
                     $ContadorLabel++;
@@ -18,12 +18,12 @@
             }
             else{
                 $ContadorLabel = 1;
-                $ContPadre = $Datos["Cont_Pad"]; //Trae el ID del contenedor padre
+                $ContPadre = $Datos["Cont_Pad"];//Trae el ID del contenedor padre
                 $ContAClonar = $Datos["Cont_a_Clonar"];//Trae elID del contenedor a Clonar
                 foreach($Datos['Inf_Consulta'] as $row){
                     $Opcion = $row['opciones'];
                     ?>                      
-                    <input id="<?php echo 'ContadorLabel_' . $ContadorLabel?>" type="radio" name="opcion" value="<?php echo $Opcion?>" onclick="AgregaOpcion(this.form, '<?php echo $ContPadre?>','<?php echo $ContAClonar;?>')" hidden>
+                    <input class="input_3" id="<?php echo 'ContadorLabel_' . $ContadorLabel?>" type="radio" name="opcion" value="<?php echo $Opcion?>" onclick="AgregaOpcion(this.form, '<?php echo $ContPadre?>','<?php echo $ContAClonar;?>')"/>
                     <label for="<?php echo 'ContadorLabel_' . $ContadorLabel?>" class="label_4"><?php echo $Opcion?></label> 
                     <?php 
                 $ContadorLabel++;
