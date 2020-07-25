@@ -1,30 +1,35 @@
-<!-- Archivo insertado via Ajax en inicio_V.php -->
+<?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
+
 <section class="section_1">
-    <div class='contenedor_10'>
+    <?php 
+    foreach($Datos['NombreTienda'] as $Tienda){
+        $Tienda;
+    }?>
+    <p class="p_1">Bienvenido al menu de <?php echo $Tienda?></p>
+    <div class="contenedor_10 contenedor_23">
         <?php
         $Contador = 1;
-        foreach($Datos as $row){
+        foreach($Datos['Inf_Productos'] as $row){
             $ID_Producto = $row[0];
-            $Nombre = $row['seccion'];
-            $Precio = $row['precio'];
-            $Opcion = $row['opciones'];
-            $ID_Departamento = $row['ID_Departamento'];                
+            $Producto = $row['producto'];
+            // $Precio = $row['precio'];
+            // $Opcion = $row['opciones'];
+            $ID_Tienda = $row['ID_Tienda'];                
             ?> 
             <section>
                 <div class="contenedor_15" id="<?php echo 'Cont_Dinamico_' . $Contador;?>">
-                <article><!--Imagen de presentacion de la seccion del Departamento -->
-                    <div class='contenedor_11' onclick="verOpciones('<?php echo 'Cont_Sombreado_' .$Contador;?>','<?php echo 'Cont_Dinamico_' . $Contador;?>','<?php echo 'Talla_' . $Contador;?>','<?php echo 3 . $Contador;?>','<?php echo 'Leyenda_'. $Contador;?>','<?php echo 'Precio_' . $Contador;?>','<?php echo 'Cantidad_' . $Contador;?>','<?php echo 'Item_'. $Contador;?>'); llamar_Opciones('<?php echo $ID_Departamento;?>','<?php echo $Nombre;?>', 'No','No','No')">
+                <article>
+                    <div class='contenedor_11' onclick="verOpciones('<?php echo 'Cont_Sombreado_' .$Contador;?>','<?php echo 'Cont_Dinamico_' . $Contador;?>','<?php echo 'Producto' . $Contador;?>','<?php echo 3 . $Contador;?>','<?php echo 'Leyenda_'. $Contador;?>','<?php echo 'Precio_' . $Contador;?>','<?php echo 'Cantidad_' . $Contador;?>','<?php echo 'Item_'. $Contador;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Producto;?>', 'No','No','No')">
                         <div class="contenedor_12">
                             <figure>
                                 <img class="image_1" src="" alt="Imagen"/>
                             </figure>
                         </div>
                         <div>
-                            <label class="label_1"><?php echo $Nombre;?></label>
+                            <label class="label_1"><?php echo $Producto;?></label>
                         </div>
                         <div style="text-align:right;">
-                            <label class="label_2">$ <?php echo $Precio;?></label>
-                            <input class="input_3" id="<?php echo 'Precio_' . $Contador;?>" value="<?php echo $Precio;?>"/>                           
+                            <input class="input_3" id="<?php echo 'Precio_' . $Contador;?>" value="<?php //echo $Precio;?>"/>                           
                         </div>
                         <?php 
                         if(!empty($UnidadVenta)){ ?>
@@ -42,22 +47,22 @@
                                     <!-- cantidad -->
                                     <input type="text" class="label_1e input_3" id="<?php echo 'Cantidad_' . $Contador;?>" value="1"/>
                                     <!-- talla -->
-                                    <input type="text" class="label_1a input_3" id="<?php echo 'Talla_' . $Contador;?>" value="<?php echo $Opcion ?>"/>
+                                    <input type="text" class="label_1a input_3" id="<?php echo 'Producto' . $Contador;?>" value="<?php echo $Opcion ?>"/>
                                     <!-- Precio -->
                                     <input type="text" class="label_1d input_3" id="<?php echo 3 . $Contador;?>"/>
                                     <!-- Leyenda -->
-                                    <input type="text" class="label_1c" id="<?php echo 'Leyenda_'. $Contador;?>"/>
+                                    <input type="text" class="input_2a" id="<?php echo 'Leyenda_'. $Contador;?>"/>
                                 </div> 
                                 <div class="contenedor_16">
-                                    <button class="button_1" id="boton" onclick="decrementar();">-</button>
+                                    <button class="menos" id="boton"onclick="Pre_decremento()">-</button>
                                     <input class="input_2 input2a" type="text" id="<?php echo 'Item_'. $Contador;?>"  value="1" disabled="disabled"/>
-                                    <button class="button_2" id="<?php echo 'BotonInc_' .  $Contador;?>" onclick="incrementar()">+</button>
+                                    <button class="mas" id="<?php echo 'BotonInc_' .  $Contador;?>" onclick="Pre_incremento()">+</button>
                                 </div> 
                             </div>
                         </div>
                         <div class="contenedor_18">
                             <div class="contenedor_17">
-                                <label class="label_5" onclick="llamar_Opciones('<?php echo $ID_Departamento;?>','<?php echo $Nombre;?>','Si','<?php echo 'Cont_Agrega_Opcion_' . $Contador;?>','<?php echo 'Cont_A_Clonar_' . $Contador;?>')">Agregar otra opción</label> 
+                                <label class="label_5" onclick="llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Producto;?>','Si','<?php echo 'Cont_Agrega_Opcion_' . $Contador;?>','<?php echo 'Cont_A_Clonar_' . $Contador;?>')">Agregar otra opción</label> 
                             </div> 
                             <div>
                                 <input class="input_4" type="text" name="AgregarOpc" placeholder="Agregar aclaración"/>
@@ -78,3 +83,5 @@
 <!--Trae por medio de Ajax las opciones de cada pedido, los valores los toma desde opciones_V.php -->
     <div id="Mostrar_Opciones"></div>
 </section>
+
+<?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
