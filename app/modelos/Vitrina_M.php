@@ -7,8 +7,9 @@
             parent::__construct();  
         }
         
-        public function consultarDelivery(){
-            $stmt = $this->dbh->prepare("SELECT * FROM secciones INNER JOIN opciones ON secciones.ID_Seccion=opciones.ID_Seccion WHERE secciones.ID_Departamento = 2 GROUP BY seccion");      
+        public function consultarProductos($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT * FROM productos INNER JOIN tiendas_productos ON productos.ID_Producto=tiendas_productos.ID_Producto WHERE tiendas_productos.ID_Tienda = :Tienda");  
+            $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
             if($stmt->execute()){
                 return $stmt;
             }
@@ -17,8 +18,9 @@
             }
         }
 
-        public function consultarRopa(){
-            $stmt = $this->dbh->prepare("SELECT * FROM secciones INNER JOIN opciones ON secciones.ID_Seccion=opciones.ID_Seccion WHERE secciones.ID_Departamento = 1 GROUP BY seccion");      
+        public function consultarNombreTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT nombre_Tien FROM tiendas WHERE ID_Tienda = :Tienda");  
+            $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);       
             if($stmt->execute()){
                 return $stmt;
             }
@@ -26,43 +28,4 @@
                 return false;
             }
         }
-        // public function consultarLicoresRest(){
-        //     $stmt = $this->dbh->prepare("SELECT * FROM bar_resto");      
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
-
-        // public function consultarAlimentos(){
-        //     $stmt = $this->dbh->prepare("SELECT * FROM alimentos");      
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
-
-        // public function consultarProductos(){
-        //     $stmt = $this->dbh->prepare("SELECT * FROM productos");      
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
-
-        // public function consultarMaquinas(){
-        //     $stmt = $this->dbh->prepare("SELECT * FROM maquinas");      
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
     }
