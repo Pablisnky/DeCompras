@@ -18,8 +18,8 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/flecha/style_flecha.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_estilosPidoRapido_800.css"/>
+		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'>
-		<!-- <link rel="shortcut icon" type="image/png" href="../images/logo_aplicacion/logo_Mira_horebi.png"> -->
     </head>
     <body>		
 		<header class="header_1">
@@ -27,7 +27,7 @@
 				<div class="contenedor_1">
 					<a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">
 						<img class="imagen_1" src="<?php echo RUTA_URL;?>/public/images/logo.png" width="50" height="50" alt="" loading="lazy">
-						<span class="span_1">Comprando</span>
+						<span class="span_1">DeCompras</span>
 					</a>
 				</div>
 				<div class="contenedor_1">
