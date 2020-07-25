@@ -30,22 +30,18 @@ var http_request = false;
         } 
 
 //-------------------------------------------------------------------------------------------------
-//Llamada desde inicio_V.php
-// window.addEventListener('load', inicializarEventosAjax, false);
-
-// function inicializarEventosAjax(){
-    document.getElementById('H2_1').addEventListener('click', Llamar_Delivery, false);
-    document.getElementById('H2_2').addEventListener('click', Llamar_Ropa, false);
+    //Este set de seis funciones son invocadas desde incio_V.php
+    document.getElementById('H2_1').addEventListener('click', Llamar_ComidaRapida, false);
+    document.getElementById('H2_2').addEventListener('click', Llamar_Supermercado, false);
     document.getElementById('H2_3').addEventListener('click', Llamar_Bar, false);
     document.getElementById('H2_4').addEventListener('click', Llamar_Alimentos, false);
     document.getElementById('H2_5').addEventListener('click', Llamar_Productos, false);
     document.getElementById('H2_6').addEventListener('click', Llamar_Maquinas, false);
-// }
 
 //-------------------------------------------------------------------------------------------------
 
-    function Llamar_Delivery(){//Es llamada desde inicio_V.php
-        var url="Vitrina_C/Delivery";
+    function Llamar_ComidaRapida(){
+        var url="Tiendas_C/index/Comida_Rapida";
         http_request.open('GET',url,true);    
         peticion.onreadystatechange = respuesta_Delivery;
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -67,8 +63,8 @@ var http_request = false;
     }
     
 //-------------------------------------------------------------------------------------------------
-    function Llamar_Ropa(){//Es llamada desde inicio_V.php
-        var url="Vitrina_C/Ropa";
+    function Llamar_Supermercado(){//Es llamada desde inicio_V.php
+        var url="Tiendas_C/index/Supermercado";
         http_request.open('GET',url,true);    
         peticion.onreadystatechange = respuesta_Ropa;
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -182,18 +178,18 @@ function respuesta_Maquinas(){
 }
 
 //-------------------------------------------------------------------------------------------------
-function llamar_Opciones(Departamento, NombreProducto, agregacion, Contenedor_Padre, Contenedor_A_Clonar){//Es llamada desde inicio_V.php
-    window.localStorage.setItem('Departamento', Departamento);
+function llamar_Opciones(ID_Tienda, NombreProducto, agregacion, Contenedor_Padre, Contenedor_A_Clonar){//Es llamada desde vitrina_V.php
+    window.localStorage.setItem('ID_Tienda', ID_Tienda);
     window.localStorage.setItem('NombreProducto', NombreProducto);
     window.localStorage.setItem('Aniadeagregacion', agregacion);
     window.localStorage.setItem('ID_contenedor_padre', Contenedor_Padre);
     window.localStorage.setItem('ID_contenedor_a_clonar', Contenedor_A_Clonar);
-    let A = localStorage.getItem("Departamento");
+    let A = localStorage.getItem("ID_Tienda");
     let B = localStorage.getItem("NombreProducto");
     let C = localStorage.getItem("Aniadeagregacion");
     let D = localStorage.getItem("ID_contenedor_padre");
     let E = localStorage.getItem("ID_contenedor_a_clonar");
-    var url="Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E;
+    var url="../../Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E;
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_Opciones;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -217,10 +213,10 @@ function respuesta_Opciones(){
 }
 
 // //-------------------------------------------------------------------------------------------------
-// function llamar_agregar_Opciones(Departamento, NombreProducto){//Es llamada desde inicio_V.php
-//     window.localStorage.setItem('Departamento', Departamento);
+// function llamar_agregar_Opciones(ID_Tienda, NombreProducto){//Es llamada desde inicio_V.php
+//     window.localStorage.setItem('ID_Tienda', ID_Tienda);
 //     window.localStorage.setItem('NombreProducto', NombreProducto);
-//     let A = localStorage.getItem("Departamento");
+//     let A = localStorage.getItem("ID_Tienda");
 //     let B = localStorage.getItem("NombreProducto");
 //     var url="Opciones_C/agregar/" + A + "/" + B;
 //     http_request.open('GET', url, true);    
