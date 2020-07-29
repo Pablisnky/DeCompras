@@ -6,6 +6,9 @@
 .contenedor_1{/*header*/
 	margin-left: 5%;
 }
+.contenedor_3{/*header*/
+	grid-template-columns: 65fr 35fr;
+}
 .contenedor_6{/*inicio*/
 	margin-bottom: 10%;
 }
@@ -16,13 +19,21 @@
 .contenedor_8{/*footer*/
 	margin-top: 50% !important;
 }
-.contenedor_10{/*vitrina*/
+.contenedor_10, .contenedor_10a{/*vitrina - tiendas*/
 	grid-template-columns: 100fr;
 	width: 90%;
 }
 .contenedor_13{/*opciones*/
 	width: 90%;
 	margin:4% auto;
+}
+.contenedor_16{/*vitrina*/
+	text-align: right;
+	margin-top: 4%;
+	margin-right: auto;
+}
+.contenedor_19{
+	grid-template-columns: 75fr 25fr;
 }
 .footer{
 	padding-top: 5%;
@@ -54,9 +65,12 @@
 .section_2{/*inicio*/
 	padding-top: 33%; 
 }
+.span_1{/*header*/
+	margin-top: 10%;
+}
 .span_2{/*header*/
-	font-size: 1em !important;
-	padding: 18%;
+	font-size: 1.3em !important;
+	padding: 10%;
 }
 .span_3{/*inicio*/
 	font-size: 1.2em;

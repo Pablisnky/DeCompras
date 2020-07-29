@@ -1,6 +1,6 @@
 <!-- Archivo insertado via Ajax desde funcionesAjax.js por la función Llamar_ComidaRapida() en inicio_V.php -->
-<section class="section_1">
-    <div class='contenedor_10'>
+<section class="/*section_1*/">
+    <div class='contenedor_10a'>
         <?php
         $Contador = 1;
         foreach($Datos as $row){

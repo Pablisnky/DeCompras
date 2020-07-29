@@ -1,4 +1,6 @@
 <?php
+//Archivo llamado desde Funciones_Ajax.js por medio de la función llamar_Opciones()
+
     class Opciones_C extends Controlador{
 
         public function __construct(){
@@ -19,6 +21,9 @@
                 case 'PizzaGrande':
                     $Producto = 'Pizza Grande';
                 break;    
+                case 'Paparellena':
+                    $Producto = 'Papa rellena';
+                break;    
             }
 
             $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Producto);   
@@ -32,34 +37,6 @@
             ];
             
             $this->vista("paginas/opciones_V", $Datos);
-        }
-
-            
-
-            
-        //Los parametros se resiven desde funcionesVarias.js por medio de verOpciones()
-        // public function Delivery($DatosAgrupados){
-        //     //$DatosAgrupados contiene una cadena con las variable Departamento y ID_Producto separados por coma, se convierte en array para separar los elementos
-        //     $DatosAgrupados = explode(",", $DatosAgrupados);
-        //     // print_r($DatosAgrupados);
-            
-        //     $Departamento = $DatosAgrupados[0];
-        //     $ID_Producto = $DatosAgrupados[1];
-
-        //     $Indicadores = $this->ConsultaOpcionesProducto_M->consultarOpcionesDelivery($Departamento, $ID_Producto);   
-
-        //     $Datos = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
-                       
-        //     foreach($Datos as $row){
-        //         $Talla = $row[''];
-        //     }
-
-        //     $this->vista("paginas/opcionesProducto_V", $Datos);
-
-        //     $Datos = $Indicadores ;
-
-        //     $this->vista("paginas/vitrina_V", $Datos);
-        // }
-        
+        }        
     }
 ?>    

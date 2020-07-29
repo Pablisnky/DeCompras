@@ -16,4 +16,4 @@ define("NOMBRESITIO","DeCompras");
 define("DB_HOST","localhost");
 define("DB_USUARIO","root");
 define("DB_PASSWORD","");
-define("DB_NOMBRE","pid_rap");
+define("DB_NOMBRE","pido_rap");

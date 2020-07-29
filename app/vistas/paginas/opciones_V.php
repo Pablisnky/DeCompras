@@ -8,10 +8,12 @@
             if($Datos["AgregarNodo"] == 'No'){
                 $ContadorLabel = 1;
                 foreach($Datos['Inf_Consulta'] as $row){
-                    $Opcion = $row['opciones'];
+                    $ID_Opcion =  $row['ID_Opcion'];
+                    $Opcion = $row['opcion'];
+                    $Precio = $row['precio'];
                     ?>                      
-                    <input class="input_3" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" type="radio" name="opcion" value="<?php echo $Opcion;?>" onclick="transferirOpcion(this.form)"/>
-                    <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4"><?php echo $Opcion;?></label> 
+                    <input class="input_3" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" type="radio" name="opcion" value="<?php echo $ID_Opcion.",".$Opcion .",". $Precio;?>" onclick="transferirOpcion(this.form)"/>
+                    <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4"><pre><?php echo $Opcion    . "         ".    $Precio . " Bs";?></pre></label> 
                     <?php 
                     $ContadorLabel++;
                 }
@@ -21,10 +23,12 @@
                 $ContPadre = $Datos["Cont_Pad"];//Trae el ID del contenedor padre
                 $ContAClonar = $Datos["Cont_a_Clonar"];//Trae elID del contenedor a Clonar
                 foreach($Datos['Inf_Consulta'] as $row){
-                    $Opcion = $row['opciones'];
+                    $ID_Opcion =  $row['ID_Opcion'];
+                    $Opcion = $row['opcion'];
+                    $Precio = $row['precio'];
                     ?>                      
-                    <input class="input_3" id="<?php echo 'ContadorLabel_' . $ContadorLabel?>" type="radio" name="opcion" value="<?php echo $Opcion?>" onclick="AgregaOpcion(this.form, '<?php echo $ContPadre?>','<?php echo $ContAClonar;?>')"/>
-                    <label for="<?php echo 'ContadorLabel_' . $ContadorLabel?>" class="label_4"><?php echo $Opcion?></label> 
+                    <input class="input_3" id="<?php echo 'ContadorLabel_' . $ContadorLabel?>" type="radio" name="opcion" value="<?php echo $ID_Opcion.",".$Opcion .",". $Precio;?>" onclick="AgregaOpcion(this.form, '<?php echo $ContPadre?>','<?php echo $ContAClonar;?>')"/>
+                    <label for="<?php echo 'ContadorLabel_' . $ContadorLabel?>" class="label_4"><pre><?php echo $Opcion    . "         ".    $Precio . " Bs";?></pre></label> 
                     <?php 
                 $ContadorLabel++;
                 }
