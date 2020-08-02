@@ -8,6 +8,7 @@
         }
         
         public function index($ID_Tienda){
+            //Se CONSULTAN los productos de una tienda en particular
             $Consulta_1 = $this->ConsultaVitrina_M->consultarProductos($ID_Tienda);
             $Productos = $Consulta_1->fetchAll(PDO::FETCH_BOTH);  
 

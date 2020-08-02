@@ -12,7 +12,6 @@
 		<meta name="HandheldFriendly" content="true"/>
 		<meta http-equiv="expires" content="12 de julio de 2020"/>
 
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/carrito/style_carrito.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/lupa/style_lupa.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_estilosPidoRapido_800.css"/>
@@ -20,24 +19,14 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>		
-		<header class="header_1">
-			<div class="contenedor_1">
-				<a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">
-					<span class="span_1" id="Span_1">PedidoRemoto</span>
-				</a>
-			</div>
-			<div class="contenedor_21 Blink" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito()">
-				<div class="contenedor_31">
-					<input type="text" class="input_5" id="input_5" readonly="readondly"/>
-					<span class="icon-cart span_2"></span>
-				</div>
-			</div>
-			<div class="contenedor_22">
-				<div class="contenedor_32">
-					<span class="icon-search span_2"></span>
-				</div>
-			</div>
-		</header>
+		<div class="contenedor_35">
+			<a class="a_3" href="">Afiliaciones</a>
+			<a class="a_3" href="">Instrucciones</a>
+			<a class="a_3" href="">Ciudades</a>
+		</div>
+        <div class="contenedor_34">
+            <span class="icon-search span_2"></span>
+        </div>
 		<article>
 			<noscript>
 				<p>Bienvenido a PedidoRemoto.com</p>

@@ -1,10 +1,18 @@
 @media (max-width: 800px){/*aplicaría en cualquier medio con dimensiones menores a lo indicado*/
 
-.header_1{/*header*/
-	height: 10%;
+.boton{/*carrito - recibePedido*/
+	font-size: 0.9em;
+	width: 70% ;
+}
+.boton_1{/*carrito*/
+	width: 30% !important;
+	height: 50px;
+	line-height: 20px;
+	padding-top: 1.5%;
 }
 .contenedor_1{/*header*/
-	margin-left: 5%;
+	margin-left: 1%;
+	padding-left: 0%;
 }
 .contenedor_3{/*header*/
 	grid-template-columns: 65fr 35fr;
@@ -35,12 +43,48 @@
 .contenedor_19{
 	grid-template-columns: 75fr 25fr;
 }
+.contenedor_20{/*carrito*/
+	overflow-x: auto;
+	padding-bottom: 10%;
+}
+.contenedor_21{/*header.php*/
+	width: 60%;
+}
+.contenedor_24{/*carrito */
+	width: 95%;
+	margin:5% auto;
+	padding: 1%;
+	border-radius: 15px;
+}
+.contenedor_26{/*carrito*/
+	margin-top: 15%;
+	width: 100%;
+}
+.contenedor_28{/*carrito*/
+	padding: 5%;
+}
+.contenedor_31{/*header*/
+	width: 60%;
+	padding: 0%;
+}
+.contenedor_32{/*header*/
+	margin-right: 20%;
+	width: 45%;
+	padding: 6%;
+}
 .footer{
 	padding-top: 5%;
 	font-weight: normal;
 }
+.h1_1{/*carrito*/
+	margin-top: 2%;
+	font-size: 1.1em;
+}
 .h2_1{/*inicio*/
 	font-size: 1em;
+}
+.h2_2{/*carrito*/
+	font-size: 0.9em;
 }
 .h4_1{/*footer*/
 	font-size: 1em;
@@ -49,8 +93,25 @@
 .h5_1{/*footer*/
 	font-size: 0.9em;
 }
+.header_1{/*header*/
+	height: 10%;
+}
+.hr_1{/*carrito*/
+	width: 28%;
+}
 .input_3{/*vitrina*/
 	width: 100%;
+}
+.input_5{/*header*/
+	padding-top: 2%;
+}
+.input_6{/*carrito*/
+	font-size: 0.9em;
+	width: 50px !important;
+}
+.input_8{/*carrito*/
+	width: 100%;
+	height: 30px;
 }
 .label_1{/*vitrina*/
 	padding: 3%;
@@ -66,18 +127,39 @@
 	padding-top: 33%; 
 }
 .span_1{/*header*/
-	margin-top: 10%;
+	margin-top: 15%;
+	font-size: 1em;
+}
+.span_1a{/*header*/
+	display: none;
 }
 .span_2{/*header*/
 	font-size: 1.3em !important;
-	padding: 10%;
+	padding: 5%;
 }
 .span_3{/*inicio*/
 	font-size: 1.2em;
 }
 .span_4{/*inicio*/
 	font-size: 1em;
-
 }
-
+.textarea_1{/*carrito*/
+	width: 300px;
+}
+.td_1, .td_2, .td_3{/*carrito*/
+	font-size: 0.9em;
+}
+.th_1{/*carrito*/
+	width: 15%;
+}
+.th_2{/*carrito*/
+	width: 50%;
+}
+.th_4{/*carrito*/
+	height: 30px;
+	font-size: 0.6em;
+}
+.th_5{/*carrito*/
+	width: 15%;
+}
 }

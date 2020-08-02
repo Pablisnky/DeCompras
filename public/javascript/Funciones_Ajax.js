@@ -39,53 +39,6 @@ var http_request = false;
     // document.getElementById('H2_6').addEventListener('click', Llamar_Maquinas, false);
 
 //-------------------------------------------------------------------------------------------------
-
-    function Llamar_ComidaRapida(){
-        var url="Tiendas_C/index/Comida_Rapida";
-        http_request.open('GET',url,true);    
-        peticion.onreadystatechange = ComidaRapida;
-        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
-        peticion.send("null");
-    }                                                           
-    function ComidaRapida(){
-        if(peticion.readyState == 4){
-            if(peticion.status == 200){
-                document.getElementById('Mostrar_ComidaRapida').innerHTML = peticion.responseText;
-                // document.getElementById('Loading').style.display = 'none';
-            } 
-            else{
-                alert('Hubo problemas con la petición.');
-            }
-        }
-        else{ //en caso contrario, mostramos un gif simulando una precarga
-            // document.getElementById('Mostrar_ComidaRapida').innerHTML='Cargando registros';
-        }
-    }
-    
-//-------------------------------------------------------------------------------------------------
-    function Llamar_Supermercado(){//Es llamada desde inicio_V.php
-        var url="Tiendas_C/index/Supermercado";
-        http_request.open('GET',url,true);    
-        peticion.onreadystatechange = respuesta_Ropa;
-        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
-        peticion.send("null");
-    }                                                           
-    function respuesta_Ropa(){
-        if(peticion.readyState == 4){
-            if(peticion.status == 200){
-                document.getElementById('Mostrar_Supermercado').innerHTML=peticion.responseText;
-                // document.getElementById('Loading').style.display = 'none';
-            } 
-            else{
-                alert('Hubo problemas con la petición.');
-            }
-        }
-        else{ //en caso contrario, mostramos un gif simulando una precarga
-            // document.getElementById('Mostrar_Ropa').innerHTML='Cargando registros';
-        }
-    }
-    
-//-------------------------------------------------------------------------------------------------
 function llamar_Opciones(ID_Tienda, NombreProducto, agregacion, Contenedor_Padre, Contenedor_A_Clonar){//Es llamada desde vitrina_V.php
     window.localStorage.setItem('ID_Tienda', ID_Tienda);
     window.localStorage.setItem('NombreProducto', NombreProducto);
@@ -107,9 +60,7 @@ function respuesta_Opciones(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){
             document.getElementById("Mostrar_Opciones").style.display = "block";
-            // document.getElementsByTagName("html")[0].style.overflow = "hidden";
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
-            // document.getElementById('Loading').style.display = 'none';
         } 
         else{
             alert('Hubo problemas con la petición.');
@@ -118,4 +69,31 @@ function respuesta_Opciones(){
     else{ //en caso contrario, mostramos un gif simulando una precarga
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
     }
+}
+    
+//-------------------------------------------------------------------------------------------------
+//llamada desde funcionesVarias.js por medio de PedidoEnCarrito()
+function llamar_PedidoEnCarrito(){
+    var url="../../Carrito_C/index/";
+    http_request.open('GET', url, true);    
+    peticion.onreadystatechange = respuesta_PedidoEnCarrito;
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    peticion.send("null");
+}                                                           
+function respuesta_PedidoEnCarrito(){
+    if(peticion.readyState == 4){
+        if(peticion.status == 200){            
+            document.getElementById("Mostrar_TodoPedido").style.display = "block"
+            window.scroll(0, 0);
+            document.getElementById('Mostrar_TodoPedido').innerHTML = peticion.responseText;
+        } 
+        else{
+            alert('Hubo problemas con la petición.');
+        }
+    }
+    else{ //en caso contrario, mostramos un gif simulando una precarga
+        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    }
+    
+    PedidoEnCarrito()
 }
