@@ -26,7 +26,7 @@
 					<span class="span_1" id="Span_1">PedidoRemoto</span>
 				</a>
 			</div>
-			<div class="contenedor_21 Blink" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito()">
+			<div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito()">
 				<div class="contenedor_31">
 					<input type="text" class="input_5" id="input_5" readonly="readondly"/>
 					<span class="icon-cart span_2"></span>

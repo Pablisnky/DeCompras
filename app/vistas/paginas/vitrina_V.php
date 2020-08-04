@@ -1,16 +1,15 @@
-<?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
-
-<section>
-    <?php 
+<?php 
+    include(RUTA_APP . '/vistas/inc/header.php');  
+    
     foreach($Datos['NombreTienda'] as $NombreTienda){
         $NombreTienda;
-    }?>
-    <p class="p_1"><?php echo $NombreTienda?></p>
-    <div class="contenedor_10 contenedor_23">
+    }
+?>
+
+<section>
+    <h1 class="h1_3"><?php echo $NombreTienda?></h1>
+    <div class="contenedor_10">
         <?php
-        // echo "<pre>";
-        //     print_r($Datos['Inf_Productos']);
-        // echo "</pre>";
         $Contador = 1;
         foreach($Datos['Inf_Productos'] as $row){
             $ID_Producto = $row[0];
@@ -20,7 +19,7 @@
             <section>
                 <div id="<?php echo 'Cont_Dinamico_' . $Contador;?>">
                 <article>
-                    <div class='contenedor_11' onclick="verOpciones('<?php echo 'Cont_Sombreado_' .$Contador;?>','<?php echo 'Cont_Dinamico_' . $Contador;?>','<?php echo 'Producto_' . $Contador;?>','<?php echo 'Leyenda_'. $Contador;?>','<?php echo  'Precio_' . $Contador;?>','<?php echo 'Cantidad_' . $Contador;?>','<?php echo 'Total_'. $Contador;?>','<?php echo 'ID_Opcion_'. $Contador;?>','<?php echo 'Item_'. $Contador;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Producto;?>','No','No','No')">
+                    <div class='contenedor_11' onclick="verOpciones('<?php echo 'Cont_Sombreado_' .$Contador;?>','<?php echo 'Cont_SubSombreado_' . $Contador;?>','<?php echo 'Cont_Dinamico_' . $Contador;?>','<?php echo 'Producto_' . $Contador;?>','<?php echo 'Leyenda_'. $Contador;?>','<?php echo  'Precio_' . $Contador;?>','<?php echo 'Cantidad_' . $Contador;?>','<?php echo 'Total_'. $Contador;?>','<?php echo 'ID_Opcion_'. $Contador;?>','<?php echo 'Item_'. $Contador;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Producto;?>','No','No','No')">
                         <div class="contenedor_12">
                             <figure>
                                 <img class="image_1" src="" alt="Imagen"/>
@@ -49,14 +48,14 @@
                                     <!-- Leyenda -->
                                     <input type="text" class="input_2a" id="<?php echo 'Leyenda_'. $Contador;?>"/>
                                 </div> 
-                                <div class="contenedor_16">
-                                    <button class="menos" id="boton" onclick="Pre_decremento()">-</button>
+                                <div class="contenedor_16" id="Contenedor_16">
+                                    <button class="menos" id="boton">-</button>
                                     <input class="input_2" type="text" id="<?php echo 'Item_'. $Contador;?>"  value="1" disabled="disabled"/>
-                                    <button class="mas" id="boton" onclick="Pre_incremento()">+</button>
+                                    <button class="mas" id="boton">+</button>
                                 </div> 
                             </div>
                         </div>
-                        <div class="contenedor_18">
+                        <div class="contenedor_18" id="<?php echo 'Cont_SubSombreado_' . $Contador;?> ">
                             <div class="contenedor_17">
                                 <label class="label_5" onclick="llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Producto;?>','Si','<?php echo 'Cont_Agrega_Opcion_' . $Contador;?>','<?php echo 'Cont_A_Clonar_' . $Contador;?>')">Agregar otra opción</label> 
                             </div> 

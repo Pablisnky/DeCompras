@@ -1,7 +1,8 @@
 <?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
 
 <section>
-    <div class='contenedor_10a'>
+    <h1 class="h1_3">Tiendas de comida rapida</h1>
+    <div class='contenedor_10'>
         <?php
         $Contador = 1;
         foreach($Datos as $row){

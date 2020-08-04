@@ -10,7 +10,7 @@
 
 define("RUTA_APP", dirname(dirname(__FILE__)));
 define("RUTA_URL", "http://localhost/proyectos/PidoRapido");
-define("NOMBRESITIO","DeCompras");
+define("NOMBRESITIO","PedidoRemoto");
 
 //credenciales para conexion a la BD
 define("DB_HOST","localhost");

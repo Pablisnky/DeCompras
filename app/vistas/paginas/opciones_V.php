@@ -1,5 +1,10 @@
 <!-- Archivo cargado por petición Ajax desde funcionesAjax.js en la función llamar_Opciones() -->
 <section class="section_3">
+    <div class="contenedor_38">
+        <a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">
+            <span class="span_1" id="Span_1">PedidoRemoto</span>
+        </a>
+    </div>
     <form>
         <div class="contenedor_13">
             <span class="span_5" id="Span_5" onclick="CerrarModal_X()">X</span>
