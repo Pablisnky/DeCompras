@@ -10,6 +10,14 @@
 	line-height: 15px;
 	padding-top: 1.5%;
 }
+.boton_2{/*alert*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: yellow;
+	width: 30%;
+	height: 40px;
+	line-height: 35px;
+}
 .contenedor_1{/*header*/
 	margin-left: 1%;
 	padding-left: 3%;

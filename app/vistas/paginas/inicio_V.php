@@ -7,7 +7,6 @@
         </div>
         <h3><a class="a_2" href="#up">Categorías</a></h3>
     </section>
-
     <section class="section_2">
         <div class='contenedor_4'>
             <div class='contenedor_6' onclick="VerTiendas('Comida_Rapida')">
@@ -19,7 +18,7 @@
             </div>
 
             <div class='contenedor_6'>
-                <h2 class='h2_1' id="H2_3" onclick="VerTiendas('Bar')">ARTISTAS Y EMPRENDEDORES</h2>
+                <h2 class='h2_1' id="H2_3" onclick="VerTiendas('Bar')">ARTESANOS Y EMPRENDEDORES</h2>
             </div>
 
             <div class='contenedor_6'>

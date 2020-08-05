@@ -38,33 +38,47 @@
     <article>
         <div class="contenedor_24 contenedor_27" id="MuestraEnvioFactura">
             <h1 class="h1_1">Datos de despacho y factura</h1>
-            <form action="../../RecibePedido_C" method="post">
+            <form action="../../RecibePedido_C/recibePedido/" method="POST">
                 <div class="contenedor_28">
                     <div class="contenedor_29">
                         <label>Nombre</label>
-                        <input class="input_8" type="text" name="nombre"/>
+                        <input class="input_8" type="text" name="nombre" autocomplete="off"/>
                     </div>
                     <div class="contenedor_29">
                         <label>Apellido</label>
-                        <input class="input_8" type="text" name="apellido"/>
+                        <input class="input_8" type="text" name="apellido" autocomplete="off"/>
                     </div>
                     <div class="contenedor_29">
                         <label>Cedula / RIF</label>
-                        <input class="input_8" type="text" name="cedula"/>
+                        <input class="input_8" type="text" name="cedula" autocomplete="off"/>
                     </div>
                     <div class="contenedor_29">
                         <label>Telefono</label>
-                        <input class="input_8" type="text" name="telefono"/>
+                        <input class="input_8" type="text" name="telefono" autocomplete="off"/>
                     </div>
                     <div class="contenedor_29">
                         <label>Dirección</label>
-                        <textarea class="textarea_1" name="dirección"></textarea>
+                        <textarea class="textarea_1" name="direccion" autocomplete="off"></textarea>
                     </div>
                 </div>
                 <div class="contenedor_30">
+                    <input class="input_3" type="text" id="Pedido" name="pedido">
                     <input class="boton" type="submit" value="Comprar"/>
                 </div>
             </form>
         </div>
+
+        <!-- EN CONSTRUCCION - EN CONSTRUCCION - EN CONSTRUCCION - EN CONSTRUCCION -->
+        <!--  <article>
+            <div>
+               <p>¿Tienes algun despachador en especial con quien quieras recibir tu pedido?</p>
+                <label>Si</label>
+                <div>
+                    <p>Danos su código o su nombre</p>
+                    <p>Listo, lo ubicaremos y te confirmamos si esta disponible</p>
+                </div> 
+            </div>            
+        </article>-->
+        <!-- EN CONSTRUCCION - EN CONSTRUCCION - EN CONSTRUCCION - EN CONSTRUCCION -->
     </article>
 </section>

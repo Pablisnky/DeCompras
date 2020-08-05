@@ -20,9 +20,9 @@
     </head>
     <body>		
 		<div class="contenedor_35">
-			<a class="a_3" href="">Afiliaciones</a>
-			<a class="a_3" href="">Instrucciones</a>
-			<a class="a_3" href="">Ciudades</a>
+			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Afiliaciones</a>
+			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/instrucion';?>">Instrucciones</a>
+			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad';?>">Ciudades</a>
 		</div>
         <div class="contenedor_34">
             <span class="icon-search span_2"></span>

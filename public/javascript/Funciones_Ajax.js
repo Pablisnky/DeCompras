@@ -39,7 +39,8 @@ var http_request = false;
     // document.getElementById('H2_6').addEventListener('click', Llamar_Maquinas, false);
 
 //-------------------------------------------------------------------------------------------------
-function llamar_Opciones(ID_Tienda, NombreProducto, agregacion, Contenedor_Padre, Contenedor_A_Clonar){//Es llamada desde vitrina_V.php
+//Es llamada desde vitrina_V.php
+function llamar_Opciones(ID_Tienda, NombreProducto, agregacion, Contenedor_Padre, Contenedor_A_Clonar){
     window.localStorage.setItem('ID_Tienda', ID_Tienda);
     window.localStorage.setItem('NombreProducto', NombreProducto);
     window.localStorage.setItem('Aniadeagregacion', agregacion);
@@ -93,7 +94,33 @@ function respuesta_PedidoEnCarrito(){
     }
     else{ //en caso contrario, mostramos un gif simulando una precarga
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-    }
-    
+    }    
     PedidoEnCarrito()
 }
+
+//-------------------------------------------------------------------------------------------------
+    //Llamada desde funcionesVarias.js por medio de la funcion Pre_decremento()
+    function Llamar_AlertPersonalizado(){
+        var url="../../Vitrina_C/alertPersonal/";
+        http_request.open('GET', url, true);    
+        peticion.onreadystatechange = respuesta_AlertPersonalizado;
+        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        peticion.send("null");
+    }                                                           
+    function respuesta_AlertPersonalizado(){
+        if(peticion.readyState == 4){
+            if(peticion.status == 200){            
+                document.getElementById("Mostrar_Alert").style.display = "block"
+                window.scroll(0, 0);
+                document.getElementById('Mostrar_Alert').innerHTML = peticion.responseText;
+            } 
+            else{
+                alert('Hubo problemas con la petición.');
+            }
+        }
+        else{ //en caso contrario, mostramos un gif simulando una precarga
+            // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+        }
+    }
+
+//-------------------------------------------------------------------------------------------------

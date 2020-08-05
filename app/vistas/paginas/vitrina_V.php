@@ -84,4 +84,9 @@
     <div id="Mostrar_TodoPedido"></div>
 </section>
 
+<!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
+<section>
+    <div id="Mostrar_Alert"></div>
+</section>
+
 <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>

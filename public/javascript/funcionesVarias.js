@@ -469,19 +469,12 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                     return existe;
                 }
                 ProductoEditado(PedidoGlobal.Producto)  
-                
-                console.log("______Desde Pre_decremento - IF")
-                console.log("Array precio atomico")
-                console.log(DisplayCarrito)
-                console.log("Display carrito")
-                console.log(TotalDisplayCarrito)  
-                console.log("Formato precio")
-                console.log(Precio)
-                console.log("El producto pasado es = ")
-                console.log(PedidoGlobal.Producto)
             }        
-            else{
+            else{//Si no hay mas producto que eliminar
                 confirm("Desea eliminar el pedido de Empanadas")
+                //Se da un aviso para confirmar que se va a elminar el pedido de ese prosducto
+                // Llamar_AlertPersonalizado()
+                
 
                 //Input precio en el elemento hermano del click correspondiente; Aqui se muestra el precio
                 Precio = inputSeleccionadoLeyen.getElementsByClassName("input_1d")[0].value
@@ -533,24 +526,12 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                 //Se oculta el display carrito cuando el pedido sea de cero Bolivares y se quita el boton de agregar opcion
                 if(TotalDisplayCarrito == 0 ){ 
                     document.getElementById("Mostrar_Carrito").style.visibility = "hidden"
-                    // document.getElementById(localStorage.getItem('ID_cont_sub_sombreado')).style.display = "none"
-                    // document.getElementById(localStorage.getItem('ID_cont_sombreado')).style.display = "none"
-
-
-
-
-
                     Cont_Somb_A1 = document.getElementsByClassName("contenedor_14").id = localStorage.getItem('ID_cont_sombreado')
                     Cont_Somb_A2 = document.getElementsByClassName("contenedor_18").id = localStorage.getItem('ID_cont_sub_sombreado')
                     console.log(Cont_Somb_A1)
                     console.log(Cont_Somb_A2)
                     document.getElementById(Cont_Somb_A1).style.display = "none"
-                    document.getElementById(Cont_Somb_A2).style.display = "none"
-                    // document.getElementsByClassName("contenedor_11")[0].classList.remove('Blink')
-
-
-
-
+                    // document.getElementById(Cont_Somb_A2).style.display = "none"
                 }
                 else{
                     //Se busca el nodo padre que contiene el input donde esta el producto a eliminar
@@ -599,6 +580,12 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
         //Se muestra el monto de total de la compra incluyendo comision y envio
         document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
+
+        //Se envia todo el pedido que se encuenra en el array de objeto JSON 
+        //1.- Se convierte el JSON en un string
+        var sendJSON = JSON.stringify(AlCarro)
+        //2.- Se envia al input que lo almacena en la vista
+        document.getElementById('Pedido').value = sendJSON
         
         //Se muestra todo el pedido (cantidad - producto - precio unitario - precio por productos)
         for(i = 0; i < AlCarro.length; i++){
@@ -620,7 +607,17 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 
+//************************************************************************************************
+    //Llamada desde registro_V.phph
+    function AfilicacionDespachador(){
+        document.getElementById("Mostrar_Despachador").style.display = "block"
+    }
 
+//************************************************************************************************
+    //Llamada desde registro_V.phph
+    function AfilicacionComerciante(){
+        document.getElementById("Mostrar_Comerciante").style.display = "block"
+    }   
 
 //************************************************************************************************
     //Parapadeo display carrito, llamada desde Pre_incremento - Pre_decremento - transferirOpcion - AgregaOpcion
@@ -670,7 +667,6 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     //Llamada desde funcionesVarias.js 
     function CerrarModal(){
         let Z = document.getElementsByClassName("contenedor_15").id = localStorage.getItem('ID_cont_sombreado'); 
-        // console.log("ID contenedor dinamico: " + Z);
         document.getElementById(Z).style.display = "block";
         document.getElementById(Z).style.backgroundColor = "rgb(252, 252, 252)";
         document.getElementById("Mostrar_Opciones").style.display = "none";
@@ -678,17 +674,9 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     }
 
 //************************************************************************************************
-    //Oculta el div que contiene las categorias de la aplicacion - NO ESTA ACTIVA
-    let Status = false
+    //Oculta el div que contiene alert personalizado, llamada desde alert.php
     function ocultar(id){
-        if(Status == false){
-            Status = true;
-            document.getElementById(id).style.display = "block";
-        }
-        else{
-            Status = false;
             document.getElementById(id).style.display = "none";
-        }
     }
 
 //************************************************************************************************

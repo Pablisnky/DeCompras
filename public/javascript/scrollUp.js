@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
-    // Variables
+    
     var buttonUp = document.querySelector('a[href="#up"]');
     var easings = {
         linear(t) {
@@ -43,22 +43,18 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     };
 
-    // Functions
-    /**
-     * Animated scroll to up
-     */
-    function scrollUp(duration, easing) {
+    function scrollUp(duration, easing){
         var start = window.pageYOffset;
         var startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
         var documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
         var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
 
-        if ('requestAnimationFrame' in window === false) {
+        if('requestAnimationFrame' in window === false) {
             window.scroll(0, 0);
             return;
         }
-        // Animation
-        function scroll() {
+        
+        function scroll(){
             var now = 'now' in window.performance ? performance.now() : new Date().getTime();
             var time = Math.min(1, ((now - startTime) / duration));
             var timeFunction = easings[easing](time);
@@ -69,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(){
             }
             requestAnimationFrame(scroll);
         }
-        // Move
+        
         scroll();
     }
 
@@ -88,17 +84,12 @@ document.addEventListener("DOMContentLoaded", function(){
     //     }
     // }
 
-    // Events
-
-    // Click button
-    buttonUp.addEventListener('click', function() {
-        // Get attributes
+    buttonUp.addEventListener('click', function(){
         var duration = parseInt(buttonUp.getAttribute('duration')) || 1000;
         var easing = buttonUp.getAttribute('easing') || 'easeInOutQuad';
-        // Run
+        
         scrollUp(duration, easing);
     });
 
-    // Auto show and hide button
     // window.addEventListener('scroll', isVisibled);
 });

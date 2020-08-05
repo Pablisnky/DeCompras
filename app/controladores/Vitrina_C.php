@@ -21,5 +21,9 @@
 
             $this->vista("paginas/vitrina_V",  $Datos);
         }
+
+        public function alertPersonal(){
+            $this->vista("inc/alert");
+        }
     }
 ?>    
