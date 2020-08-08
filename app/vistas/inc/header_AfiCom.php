@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -13,28 +14,25 @@
 		<meta http-equiv="expires" content="12 de julio de 2020"/>
 
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/lupa/style_lupa.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/casita/style_casita.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/camion/style_camion.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/carrito/style_carrito.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_estilosPidoRapido_800.css"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>		
-		<div class="contenedor_35">
-			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Afiliaciones</a>
-			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad';?>">Ciudades</a>
-			<a class="a_3" href="<?php echo RUTA_URL . '/Login_C/';?>">Inicio sesión</a>
-		</div>
-        <div class="contenedor_34" onclick="muestraBusqueda()">
-            <span class="icon-search span_2"></span>
+		<header class="header_1">
+            <div class="contenedor_35">
+                <a class="a_3" href="<?php echo RUTA_URL . '/Publicacion_C/MisPublicaciones/';?>">Nueva publicación</a>
+                <a class="a_3" href="<?php echo RUTA_URL . '/Publicacion_C/';?>">Mis publicaciónes</a>	
+                <div class="Contenedor_52">
+                    <label class="label_8"><?php echo $_SESSION["Nombre"];?></label>
+                    <a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a>
+                </div>
+            </div>
+        </header>
+        <div class="contenedor_34 contenedor_34a">
+            <span class="icon-search  span_7"></span>
         </div>
-		<article>
-			<noscript>
-				<p>Bienvenido a PedidoRemoto.com</p>
-				<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
-			</noscript>
-		</article>
+        <h1 class="h1_3">Empanadas La 13</h1>
 
    <!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

@@ -102,6 +102,10 @@
 	top: 10%;
 	left: 1%;
 }
+.contenedor_51{/*inicio*/
+	width: 90%;
+	margin-left: 5%;
+}
 .footer{
 	padding-top: 5%;
 	font-weight: normal;
@@ -185,6 +189,9 @@
 }
 .span_4{/*inicio*/
 	font-size: 1em;
+}
+.span_6{/*inicio*/
+	font-size: 2em;
 }
 .textarea_1{/*carrito*/
 	width: 300px;

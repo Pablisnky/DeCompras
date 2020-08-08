@@ -16,14 +16,4 @@
                 return false;
             }
         }
-
-        // public function consultarOpcionesDelivery($Departamento, $ID_Producto){
-        //     $stmt = $this->dbh->prepare("SELECT * FROM delivery INNER JOIN descripcion_delivery ON delivery.ID_Producto=descripcion_delivery.ID_Producto WHERE ID_Tienda = $Departamento AND delivery.ID_Producto = $ID_Producto");      
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
     }

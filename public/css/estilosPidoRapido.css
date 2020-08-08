@@ -40,8 +40,17 @@ button{/*tiendas*/
 	padding: 0.5%;
 	letter-spacing: 0.5em;
 }
-.a_3{/*inicio*/
+.a_3{/*header_AfiCom*/
 	color:white;
+	width: 30%;
+	text-align: center;
+}
+.a_4{/*header_AfiCom*/
+	display: inline-block;
+	width: 100%;
+}
+.a_5{/*entrada*/
+	font-size: 0.8em;
 }
 .Blink{/*header*/
 	animation-name: blinker;
@@ -57,7 +66,7 @@ button{/*tiendas*/
 		opacity: 0; 
 		}
 	}
-.boton{/*carrito - recibePedido*/
+.boton{/*carrito - recibePedido - login - registro*/
 	background-color: rgb(51, 51, 51);
 	width: 45%;
 	height: 30px;
@@ -85,6 +94,9 @@ button{/*tiendas*/
 .boton_3{/*registro*/
 	height: 65px;
 	line-height: 30px;
+}
+.boton_4{/*registro*/
+	width: 30% !important;
 }
 .contenedor_1{/*header*/
 	padding-left: 3%;
@@ -144,9 +156,9 @@ button{/*tiendas*/
 	grid-template-columns: 35fr 35fr 35fr;
 	column-gap: 3%;
 	row-gap: 5%;
-	margin: 7% auto;
+	margin: 10% auto 4% auto;
 	width: 80%;
-	padding-top: 5%;
+	padding-top: 3%;
 }
 .contenedor_11{/*vitrina*/
 	display: grid;
@@ -234,6 +246,9 @@ button{/*tiendas*/
 .contenedor_22{/*header.php*/
 	width: 33%;
 }
+.contenedor_23{/*header.php*/
+	width: 33%;
+}
 .contenedor_24{/*carrito */
 	background-color: rgb(239, 245, 245);
 	width: 70%;
@@ -285,21 +300,28 @@ button{/*tiendas*/
 	margin-right: 20%;
 	width: 10%;
 }
-.contenedor_33{/*recibePedido afiliacion*/
+.contenedor_33{/*recibePedido - afiliacion*/
 	width: 30%;
-	margin: 5% auto;
-	text-align: center;
+	margin: 2% auto;
+	text-align: center; 
 }
 .contenedor_34{/*header_inicio*/
+	background-color:rgba(51, 51, 51, 1);
 	position: absolute;
 	top: 10%;
 	left: 90%;
-	background-color:rgba(51, 51, 51, 1);
 	border-radius: 10px;
 	padding: 1%;
 	width: 4%;
 }
-.contenedor_35{/*inicio*/
+.contenedor_34:hover{/*header_inicio*/
+	cursor: pointer;
+}
+.contenedor_34a{/*header_inicio*/
+	background-color:rgb(239, 245, 245);
+	z-index: 2;
+}
+.contenedor_35{/*header_AfiCom*/
 	background-color:rgba(51, 51, 51, 1);
 	width: 100%;
 	display: flex;
@@ -320,11 +342,11 @@ button{/*tiendas*/
 	margin-top: 2%;
 	margin-left: 4%;
 }
-.contenedor_39{/*RecibePedido*/
+.contenedor_39{/*RecibePedido - registro*/
 	height: 100%;
 }
 .contenedor_40{/*registro*/
-	padding-top: 10%;
+	padding-top: 15%;
 	width: 70%;
 	margin: auto;
 }
@@ -335,14 +357,99 @@ button{/*tiendas*/
 	margin: auto;
 	margin-top: 15%;
 }
-.contenedor_42{/*registro*/
+.contenedor_42{/*registroCom - registroDes*/
+	margin-top: 8% !important;
+	width: 80%;
+	margin: auto;
+	padding: 1%;
+}
+.contenedor_43{/*registro*/
+	display: none;
+}
+.contenedor_44{/*registro*/
+	width: 40%;
+	margin: 5% auto;
+}
+.contenedor_45{/*login*/
+	width: 90%;
+	margin: 1% auto;
+	text-align: center;
+}
+.contenedor_46{/*entrada - pubicacion*/
+	padding-top: 10%;
+	width: 80%;
+	height: 100%;
+	margin: auto;
+}
+.contenedor_47{/*publicacion*/
+	display: grid;
+	grid-template-columns: 30% 70%;
+}
+.contenedor_48{/*publicacion*/
+	background-color: yellow;
+}
+.contenedor_49{/*publicacion*/
+	width: 30%;
+	margin: 2% auto;
+	text-align: center;
+}
+.contenedor_50{/*login*/
+	width: 90%;
+	margin: 10% auto;
+	text-align: center;
+}
+.contenedor_51{/*inicio*/
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 60%;
+	margin-left: 20%;
+	position: absolute;
+	top: 75%;
+	left: 0%;
+}
+.contenedor_52{/*header_AfiCom*/
+	width: 10%;
+	z-index: 2;
+}
+.contenedor_53{/*inicio*/
+	background-color: rgb(239, 245, 245);
+	width: 70%;
+	height: 35%;
+	min-height: 30%;
+	margin: 2% auto;
+	border-radius: 15px;
+}
+.contenedor_54{/*inicio*/
+	display: none;
 	background-color: rgba(0, 0, 0, 0.8);
+	position: absolute;
 	height: 100%;
 	width: 100%;
-	display: none;
-	position: absolute;
-	top: 0%;
+	top:  0%;
 	left: 0%;
+}
+.contenedor_55{/*inicio*/
+	display: flex;
+	justify-content: space-around;
+	height: 100%;
+}
+.contenedor_56{/*inicio*/
+	width: 35%;
+}
+.contenedor_57{/*inicio*/
+	height: 60%;
+	width: 65%;	
+	padding-top: 1.5%;
+	border-left-color: rgb(51, 51, 51);
+	border-left-width: 1px;
+	border-left-style: solid;
+}
+.fieldset_1{/*registroCom - registroDes*/
+	width: 50%;
+	margin: 5% auto;
+	border-radius: 15px;
+	padding: 2% ;
 }
 .footer{
 	padding-top: 2%;
@@ -356,7 +463,7 @@ button{/*tiendas*/
 	font-size: 4.5em;
 	text-align: right;
 }
-.h1_3{/*tiendas - RecibePedido*/
+.h1_3{/*tiendas - RecibePedido - login - entrada*/
 	background-color:rgb(239, 245, 245);
 	color: rgb(51, 51, 51);
 	padding-top: 2%;
@@ -423,10 +530,23 @@ button{/*tiendas*/
     color: #333; /* old IE */
     background-color: #333; /* Modern Browsers */
 }
+.hr_3{/*login*/
+	width: 100%;
+    border: none;
+	height: 1px;
+	margin:5%  auto;
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+}
 .image_1{/*tiendas.php*/
 	width: 100%;
 	object-fit: contain ;
 	padding: 10%;	
+}
+.imagen_4{/*entrada*/
+	width:100px;
+	height: 100px;
+	margin-right: 5%;
 }
 .input_1{/*vitrina*/
 	border: none;
@@ -490,6 +610,26 @@ button{/*tiendas*/
 	width: 90%;
 	display: block;
 }
+.input_9{/*registroCom - registroDes*/
+	margin: 2% auto !important;
+	display: block;
+	font-size: 1em;
+	line-height: 30px;
+	width: 90%;
+	padding-left: 5%;
+	border-style: solid;
+	border-width: 1px;
+	border-color:  rgba(51, 51, 51, 0.3);
+}
+.input_10{/*inicio*/
+	vertical-align: middle;
+	font-size: 1em;
+	line-height: 30px;
+	width: 100%;
+	border-style: solid;
+	border-width: 1px;
+	border-color:  rgba(51, 51, 51, 0.3);
+}
 .label_1{/*vitrina*/
 	font-weight: bold;
 	width: 30%;
@@ -534,6 +674,26 @@ button{/*tiendas*/
 	cursor: pointer;
 	border-radius: 10px;
 }
+.label_6{/*RegistroCom_V - inicio*/
+	padding-left: 5%;
+	display: block;
+}
+.label_7{/*login*/
+	color: blueviolet;
+}
+.label_7:hover{/*login*/
+	cursor: pointer;
+}
+.label_8{/*header_AfiCom*/
+	color: white;
+	text-align: center;
+	display: block;
+}
+.legend_1{/*registro*/
+	font-size: 1.4em;
+	margin-left: 5%;
+	padding: 0% 2%;
+}
 .mas{/*vitrina*/
 	background-color:rgb(78, 43, 43);
 	color: white;
@@ -556,9 +716,8 @@ button{/*tiendas*/
 	margin: 0px !important;
 	width: 30%;
 }
-.p_1{/*alert*/
-	color:rgb(233, 215, 215);
-	padding-top: 7%;
+.p_1{/*alert - registro*/
+	color: rgb(51, 51, 51);
 	font-size: 1.9em;
 	text-align: center;
 }
@@ -570,13 +729,23 @@ button{/*tiendas*/
 .p_3{/*tiendas afiliacion*/
 	font-size: 1.6em;
 }
-.p_4{/*recibePedido*/
+.p_4{/*recibePedido login*/
 	margin-top: 3%;
 	text-align: center;
+	width: 100% !important;
 }
 .p_5{/*afiliacion*/
-	margin: 5% auto;
+	margin: 0% auto 5% auto;
 	text-align: center;
+}
+.p_6{/*entrada*/
+	margin: 2%;
+	text-align: center;
+}
+.p_7{/*inicio*/
+	font-size: 1.5em;
+	text-align: center;
+	margin-bottom: 2%;
 }
 .scrollNavigation[href="#top"]{
 	top: 0px
@@ -588,7 +757,7 @@ button{/*tiendas*/
 .section_2{/*inicio - afiliacion*/
 	padding-top: 3%; 
 }
-.section_3{/*vitrina - carrito*/
+.section_3{/*carrito*/
 	background-color: rgba(0, 0, 0, 0.8);
 	position: fixed;
 	top: 0vw;
@@ -601,6 +770,17 @@ button{/*tiendas*/
 	top: 0;
 	left: 0;
 	height: 400%;
+}
+.select_1{/*registroCom*/
+	margin: 2% auto !important;
+	display: block;
+	font-size: 1em;
+	height: 30px;
+	width: 90%;
+	padding-left: 5%;
+	border-style: solid;
+	border-width: 1px;
+	border-color:  rgba(51, 51, 51, 0.3);
 }
 .span_1{/*header*/
 	color: white;
@@ -630,8 +810,19 @@ button{/*tiendas*/
 .span_5:hover{/*vitrina*/
 	cursor: pointer;
 }
+.span_6{/*inicio*/
+	color:rgba(51, 51, 51, 1);
+	font-size: 2.5em;
+}
+.span_7{/*header_AfiCom*/
+	color:rgba(51, 51, 51, 1);
+	font-size: 1.5em;
+}
 .tabla{/*carrito*/
 	width: 100%;
+}
+.tabla_1{/*entrada*/	
+	border-collapse: collapse;
 }
 .td_1{/*carrito*/
 	text-align: center;
@@ -641,6 +832,9 @@ button{/*tiendas*/
 }
 .td_3{/*carrito*/
 	text-align: center;
+}
+.td_4{/*entrada*/
+	padding-left: 1%;
 }
 .textarea_1{/*carrito*/
 	width: 900px;
@@ -658,6 +852,24 @@ button{/*tiendas*/
 	background-color: rgba(51, 51, 51, 0.4);
 	height: 25px;
 	font-size: 0.9em;
+}
+.th_5{/*entrada*/
+	width: 3%;
+	text-align: left;
+}
+.th_6{/*entrada*/
+	width: 20%;
+	text-align: left;
+}
+.th_7{/*entrada*/
+	width: 50%;
+	text-align: left;
+}
+.th_8{/*entrada*/
+	text-align: left;
+}
+.tr_1:hover{/*entrada*/
+	background-color:rgb(239, 245, 245);
 }
 
 	

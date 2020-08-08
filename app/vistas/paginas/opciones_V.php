@@ -1,5 +1,5 @@
 <!-- Archivo cargado por petición Ajax desde funcionesAjax.js en la función llamar_Opciones() -->
-<section class="section_3">
+<section class="section_3" id="Section_3">
     <div class="contenedor_38">
         <a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">
             <span class="span_1" id="Span_1">PedidoRemoto</span>
@@ -7,7 +7,7 @@
     </div>
     <form>
         <div class="contenedor_13">
-            <span class="span_5" id="Span_5" onclick="CerrarModal_X()">X</span>
+            <span class="span_5" id="Span_5" onclick="CerrarModal_X('Section_3')">X</span>
             <label class="label_3">Elija una opción</label>         
             <?php   
             if($Datos["AgregarNodo"] == 'No'){

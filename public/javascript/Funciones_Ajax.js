@@ -124,3 +124,25 @@ function respuesta_PedidoEnCarrito(){
     }
 
 //-------------------------------------------------------------------------------------------------
+    // Llamada desde Publicacion_V.php 
+    function Llamar_BuscarOpciones(){
+        var A= document.getElementById("Categoria_pro").value//se inserta el precio del inmueble 
+        var url = "../../Publicacion_C/ConsultarOpciones/" + A
+        http_request.open('GET', url, true)  
+        peticion.onreadystatechange = respuesta_BuscarOpciones
+        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+        peticion.send("null")
+    }                                                           
+    function respuesta_BuscarOpciones(){
+        if(peticion.readyState == 4){
+            if(peticion.status == 200){    
+                document.getElementById('Descripcion_pro').innerHTML = peticion.responseText
+            } 
+            else{
+                alert('Hubo problemas con la petición.')
+            }
+        }
+        else{ //en caso contrario, mostramos un gif simulando una precarga
+            // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+        }
+    }

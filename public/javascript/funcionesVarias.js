@@ -113,7 +113,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     console.log(TotalDisplayCarrito)
 
     //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
-    MontoCarrito =document.getElementById("input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs."  
+    MontoCarrito =document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs."  
     
     //Muestra la leyenda del pedido
     Div_clon.getElementsByClassName("input_2a")[0].value = 1 + " " + Separado[1] + " = " + SeparadorMiles(Separado[2]) + " Bs."
@@ -153,17 +153,12 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
         //Se muestra el icono del carrito en el header
         document.getElementById("Mostrar_Carrito").style.visibility = "visible"
 
-
-
         Cont_Somb_1 = document.getElementsByClassName("contenedor_14").id = localStorage.getItem('ID_cont_sombreado')
         Cont_Somb_2 = document.getElementsByClassName("contenedor_18").id = localStorage.getItem('ID_cont_sub_sombreado')
         console.log(Cont_Somb_1)
         console.log(Cont_Somb_2)
         document.getElementById(Cont_Somb_1).style.display = "block"
         // document.getElementById(Cont_Somb_2).style.display = "block"
-
-
-
 
         //Se elimina el evento que llama al cuadro de opciones, ahora solo se puede llamar dede el boton de "Agregar otra opcion"
         // document.getElementsByClassName("contenedor_11")[0].removeEventListener("click", verOpciones)
@@ -231,7 +226,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                 console.log(Precio)
                 
                 //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
-                MontoCarrito =document.getElementById("input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
+                MontoCarrito =document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
                 
                 PedidoAtomico = new PedidoCar(1, Separado[1] , Separado[2], Separado[2])
                 AlCarro.push(PedidoAtomico) 
@@ -321,7 +316,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                 TotalDisplayCarrito = DisplayCarrito.reduce((a, b) => a + b);
                 
                 //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
-                MontoCarrito =document.getElementById("input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
+                MontoCarrito =document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
                 
                 //Muestra la leyenda del pedido por producto
                 inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + " = " + SeparadorMiles(Total) + " Bs."   
@@ -447,7 +442,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                 TotalDisplayCarrito = TotalDisplayCarrito - Precio
 
                 //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
-                MontoCarrito =document.getElementById("input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
+                MontoCarrito =document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
                 
                 //Muestra la leyenda del pedido por producto
                 inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + " = " + SeparadorMiles(Total) + " Bs." 
@@ -511,7 +506,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                 TotalDisplayCarrito = TotalDisplayCarrito - Precio
 
                 //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
-                MontoCarrito = document.getElementById("input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
+                MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
 
                 console.log("______Desde Pre_decremento - ELSE")
                 console.log("Array precio atomico")
@@ -594,30 +589,19 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     }
     
 //************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-//************************************************************************************************
-    //Llamada desde registro_V.phph
-    function AfilicacionDespachador(){
-        document.getElementById("Mostrar_Despachador").style.display = "block"
+    //Da una vista previa de la fotografia antes de guardarla en la BD. usada en publicacion_V.php
+    function muestraImg(){
+        var contenedor = document.getElementById("muestrasImg");
+        var archivos = document.getElementById("ImgInp").files;
+        for(i = 0; i < archivos.length; i++){
+            imgTag = document.createElement("img");
+            imgTag.height = 200;//ESTAS LINEAS NO SON "NECESARIAS"
+            imgTag.width = 400; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
+            imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
+            imgTag.src = URL.createObjectURL(archivos[i]);
+            contenedor.appendChild(imgTag);
+        }
     }
-
-//************************************************************************************************
-    //Llamada desde registro_V.phph
-    function AfilicacionComerciante(){
-        document.getElementById("Mostrar_Comerciante").style.display = "block"
-    }   
 
 //************************************************************************************************
     //Parapadeo display carrito, llamada desde Pre_incremento - Pre_decremento - transferirOpcion - AgregaOpcion
@@ -627,7 +611,6 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
         setTimeout(function(){
             document.getElementById("Mostrar_Carrito").classList.remove('Blink')
         }, 3000);
-        
     }
 
 //************************************************************************************************
@@ -708,12 +691,16 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 //************************************************************************************************
     //Llamada desde vitrina_V.php
-    function CerrarModal_X(){
-        document.getElementById("Mostrar_Opciones").style.display = "none";
+    function CerrarModal_X(id){
+        document.getElementById(id).style.display = "none";
         document.getElementsByTagName("html")[0].style.overflow = "visible";
     }
     
 //************************************************************************************************
+    //Llamada desde inicio_V.php
+    function muestraBusqueda(){
+        document.getElementById("Busqueda").style.display = "block";
+    }
 // function inicializarEventos(){
     //Este set de seis funciones son invocadas desde incio_V.php
     // document.getElementById('H2_1').addEventListener('click',function(){ocultar("Mostrar_ComidaRapida")});

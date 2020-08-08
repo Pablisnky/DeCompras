@@ -7,7 +7,7 @@
             $this->ConsultaOpciones_M = $this->modelo("Opciones_M");
         }
         
-        //Los parametros se resiven desde vFunciones_Ajax.js
+        //Los parametros se resiven desde Funciones_Ajax.js
         public function index($ID_Tienda, $Producto, $Agregacion, $Cont_Padre, $Cont_a_Clonar){            
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
             
@@ -28,7 +28,7 @@
 
             $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Producto);   
             $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
-            
+
             $Datos=[
                 "Inf_Consulta" => $Consulta,
                 "AgregarNodo" => $Agregacion,
