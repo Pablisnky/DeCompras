@@ -138,14 +138,14 @@ button{/*tiendas*/
 	border-style: solid !important;
 }
 .contenedor_6:hover{/*inicio*/
-	background-color:rgb(148, 163, 142) ;
+	background-color: rgba(165, 42, 42, 0.3);
 	cursor: pointer;
-	color: white;
 }
 .contenedor_7{/*footer*/
 	background-color:  rgb(233, 215, 215);
+	position: relative;
 	margin-top: 5%;
-	min-height: 35%;
+	height: 100%;
 }
 .contenedor_8{/*footer */
 	margin-top: 5% !important;
@@ -414,36 +414,64 @@ button{/*tiendas*/
 }
 .contenedor_53{/*inicio*/
 	background-color: rgb(239, 245, 245);
-	width: 70%;
-	height: 35%;
-	min-height: 30%;
-	margin: 2% auto;
+	width: 60%;
+	margin: 2% auto 1% auto;
 	border-radius: 15px;
 }
 .contenedor_54{/*inicio*/
 	display: none;
 	background-color: rgba(0, 0, 0, 0.8);
 	position: absolute;
-	height: 100%;
+	height: 200%;
 	width: 100%;
 	top:  0%;
 	left: 0%;
 }
 .contenedor_55{/*inicio*/
+	width: 60%;
+	margin: auto;
 	display: flex;
-	justify-content: space-around;
-	height: 100%;
+	justify-content: space-between;
 }
 .contenedor_56{/*inicio*/
-	width: 35%;
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.contenedor_56a{/*inicio*/
+	margin-left: 5%;
 }
 .contenedor_57{/*inicio*/
-	height: 60%;
 	width: 65%;	
-	padding-top: 1.5%;
-	border-left-color: rgb(51, 51, 51);
-	border-left-width: 1px;
-	border-left-style: solid;
+	margin: auto;
+	padding: 1.5%;
+}
+.contenedor_58{/*inicio*/
+	background-color: rgb(239, 245, 245);
+	display: none;
+	grid-template-columns: 21.2% 21.2% 21.2% 21.2%;
+	column-gap: 5% !important;
+	row-gap: 5%;
+	width: 80%;
+	margin: auto;
+	border-radius: 15px;
+	padding: 1.5%;
+}
+.contenedor_59{/*buscador*/
+	border-color: rgb(51, 51, 51);
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 15px;
+	margin: auto;
+	padding: 5%;
+	width: 100%;
+}
+.contenedor_59:hover{/*buscador*/
+	cursor: pointer !important;
+	background-color: rgba(165, 42, 42, 0.3);
 }
 .fieldset_1{/*registroCom - registroDes*/
 	width: 50%;
@@ -452,7 +480,8 @@ button{/*tiendas*/
 	padding: 2% ;
 }
 .footer{
-	padding-top: 2%;
+	height: 30%;
+	margin-top: 10%;
 }
 .h1_1{/*carrito*/
 	font-size: 1.4em;
@@ -499,9 +528,14 @@ button{/*tiendas*/
 	padding-top: 0.5%;
 }
 .h5_1{/*footer*/
-	color: white;
+	color: rgba(51, 51, 51, 1);
 	text-align: center;
-	font-size: 1.1em;
+	font-weight: normal;
+	font-size: 1em;
+	position: absolute;
+	width: 100%;
+	bottom: 1pt;
+	padding: 0.5% 0%;
 }
 .header_1{/*header*/
 	background-color: rgba(51, 51, 51, 1);
@@ -674,9 +708,9 @@ button{/*tiendas*/
 	cursor: pointer;
 	border-radius: 10px;
 }
-.label_6{/*RegistroCom_V - inicio*/
-	padding-left: 5%;
-	display: block;
+.label_6{/*inicio*/
+	text-align: right;
+	padding-right: 2%;
 }
 .label_7{/*login*/
 	color: blueviolet;
@@ -688,6 +722,18 @@ button{/*tiendas*/
 	color: white;
 	text-align: center;
 	display: block;
+}
+.label_9{/*buscador*/
+	display: block;
+	text-align: left;	
+	cursor: pointer;
+}
+.label_10{/*buscador*/
+	font-weight: bold;
+	text-align: center;
+}
+.label_11{/*RegistroCom_V*/
+	margin-left: 5%;
 }
 .legend_1{/*registro*/
 	font-size: 1.4em;
@@ -754,7 +800,7 @@ button{/*tiendas*/
 	background-color:rgb(233, 215, 215) ;
 	height: 100%;
 }
-.section_2{/*inicio - afiliacion*/
+.section_2{/*inicio*/
 	padding-top: 3%; 
 }
 .section_3{/*carrito*/

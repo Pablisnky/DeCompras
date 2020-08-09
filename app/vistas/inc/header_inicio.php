@@ -27,7 +27,7 @@
 			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad';?>">Ciudades</a>
 			<a class="a_3" href="<?php echo RUTA_URL . '/Login_C/';?>">Inicio sesión</a>
 		</div>
-        <div class="contenedor_34" onclick="muestraBusqueda()">
+        <div class="contenedor_34" id="Contenedor_34">
             <span class="icon-search span_2"></span>
         </div>
 		<article>

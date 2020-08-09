@@ -25,7 +25,7 @@
                     <input class="input_9" type="text" name="telefono_com" id="Telefono" placeholder="Telefono" onchange="" autocomplete="off">
                     <input class="input_9" type="text" name="direccion_com" id="Direccion" placeholder="Direccion"  autocomplete="off">
                     <input class="input_9" type="text" name="horario_com" id="Horario" placeholder="Horario"  autocomplete="off">
-                    <label class="label_6">Seleccione una categoria:</label>
+                    <label class="label_11">Seleccione una categoria:</label>
                     <select class="select_1" name="categoria_com">
                         <option></option>
                         <?php

@@ -12,7 +12,7 @@
             //CONSULTA el pedido solicitao por el usuario mediante el input buscador en Buscador_V.php
             $Consulta = $this->ConsultaBuscador_M->consultarBusquedaTienda($Buscar);
             $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
+            
             $this->vista("paginas/buscador_V", $Datos);
         }
     }

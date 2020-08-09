@@ -13,7 +13,7 @@
             $Horario = $row['horario_Tien'];                
             ?> 
             <section>
-                <div class="contenedor_15" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>')">
+                <div class="contenedor_15" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>', 'tiendas_V')">
                     <div class="contenedor_25">
                         <figure>
                             <img class="image_1" src="" alt="Imagen"/>

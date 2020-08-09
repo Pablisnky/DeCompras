@@ -615,16 +615,15 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 //************************************************************************************************
     //Funcion llamada desde tiendas_V.php
-    function vitrina(ID_Tienda){    
+    function vitrina(ID_Tienda, pagina){  
+        if(pagina == "tiendas_V"){
         window.open(`../../Vitrina_C/index/${ID_Tienda}`,"_self")
+        }
+        else if(pagina == "buscador_V"){
+            window.open(`Vitrina_C/index/${ID_Tienda}`,"_self")
+        }
     }
     
-//************************************************************************************************
-    //Llamada desde inicio_V.php
-    function VerTiendas(Tiendas){
-        window.open(`Tiendas_C/index/${Tiendas}`,"_self")
-    }
-
 //************************************************************************************************
     //Llamada desde carrito.php 
     function MuestraEnvioFactura(){
@@ -688,32 +687,6 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     function ocultarPedido(){       
         document.getElementById("Mostrar_TodoPedido").style.display = "none";
     }
-
-//************************************************************************************************
-    //Llamada desde vitrina_V.php
-    function CerrarModal_X(id){
-        document.getElementById(id).style.display = "none";
-        document.getElementsByTagName("html")[0].style.overflow = "visible";
-    }
-    
-//************************************************************************************************
-    //Llamada desde inicio_V.php
-    function muestraBusqueda(){
-        document.getElementById("Busqueda").style.display = "block";
-    }
-// function inicializarEventos(){
-    //Este set de seis funciones son invocadas desde incio_V.php
-    // document.getElementById('H2_1').addEventListener('click',function(){ocultar("Mostrar_ComidaRapida")});
-    // document.getElementById('H2_2').addEventListener('click',function(){ocultar("Mostrar_Supermercado")});
-    // document.getElementById('H2_3').addEventListener('click',function(){ocultar("Mostrar_Bar")});
-    // document.getElementById('H2_4').addEventListener('click',function(){ocultar("Mostrar_Alimentos")});
-    // document.getElementById('H2_5').addEventListener('click',function(){ocultar("Mostrar_Productos")});
-    // document.getElementById('H2_6').addEventListener('click',function(){ocultar("Mostrar_Maquinas")});
-
-    //Este set dos funciones son invocadas desde vitrina_V.php
-    // document.addEventListener('click', Pre_incremento, false)
-    // document.addEventListener('click', Pre_decremento, false)
-// }
 
 //************************************************************************************************
     
