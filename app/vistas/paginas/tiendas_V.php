@@ -1,7 +1,6 @@
 <?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
 
 <section>
-    <h1 class="h1_3">Tiendas de comida rapida</h1>
     <div class='contenedor_10'>
         <?php
         $Contador = 1;
@@ -13,7 +12,7 @@
             $Horario = $row['horario_Tien'];                
             ?> 
             <section>
-                <div class="contenedor_15" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>', 'tiendas_V')">
+                <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>', 'tiendas_V')">
                     <div class="contenedor_25">
                         <figure>
                             <img class="image_1" src="" alt="Imagen"/>

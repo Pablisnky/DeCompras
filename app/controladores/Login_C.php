@@ -7,7 +7,7 @@
         }
 
         //Es llamadao desde Registro_C.php - header_inicio.php
-        public function index(){
+        public function index($Datos){
             //Se verifica si el usuario esta memorizado en las cookie de su computadora y las compara con la BD, para recuperar sus datos y autorellenar el formulario de inicio de sesion, las cookies de registro de usuario se crearon en validarSesion.php
             if(isset($_COOKIE["id_usuario"]) AND isset($_COOKIE["clave"])){//Si la variable $_COOKIE esta establecida o creada
                 // echo "Cookie afiliado =" . $_COOKIE["id_usuario"] ."<br>";
@@ -26,7 +26,7 @@
             }
             else{
                 //Se carga la vista login_V
-                $this->vista("paginas/login_V");
+                $this->vista("paginas/login_V", $Datos);
             }
         }
 
@@ -79,14 +79,21 @@
                 //se descifra la contraseña con un algoritmo de desencriptado.
                 if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
 
-                    //SELECT para hallar el ID_Tienda correspondiente al afiliado
+                    //SELECT para hallar el ID_Tienda y el nombre de la tienda correspondiente al afiliado
                     $Consulta= $this->ConsultaLogin_M->consultarID_Tienda($ID_Afiliado);
                     while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
                         $ID_Tienda = $arr["ID_Tienda"];
+                        $ID_Afiliado = $arr["ID_AfiliadoCom"];
+                        $NombreTienda = $arr["nombre_Tien"];
                     }
-
-                    // Se crean las sesiones que se exigida en todas las páginas de su cuenta            
+                    // Se crea la sesiones que se exige en todas las páginas de su cuenta            
                     $_SESSION["ID_Tienda"] = $ID_Tienda;
+                    
+                    // Se crea la sesion que guarda el ID_Afiliado           
+                    $_SESSION["ID_Afiliado"] = $ID_Afiliado;
+
+                    // Se crea una sesión que almacena el nombre de la tienda           
+                    $_SESSION["Nombre_Tienda"] = $NombreTienda;
                     
                     //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
                     $_SESSION["Nombre"] = $Nombre;
@@ -101,7 +108,7 @@
                     //     $this->vista("paginas/Entrada_C");
                     // }
                     
-                    header("location:" . RUTA_URL . "/Entrada_C/");
+                    header("location:" . RUTA_URL . "/Cuenta_C/");
                 }
                 else{  ?>
                         <script>

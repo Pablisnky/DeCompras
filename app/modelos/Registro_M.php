@@ -93,33 +93,27 @@
                 return false;
             }
         }
-        // public function consultarUsuario($Cedula){         
-        //     //Se consulta en la tabla afiliado el ID_Afiliado del afiliado que se esta registrando
-        //     $this->db->Consulta("SELECT ID_Afiliado FROM afiliado WHERE cedula ='$Cedula'");
 
-        //     //registros() es un metodo de la clase Conexion_BD
-        //     $resultados =  $this->db->registro();
-        //     return $resultados;
-        // }
+        public function insertarBancos($Banco, $Titular, $NumeroCuenta, $Rif, $ID_Afiliado){    
+            foreach(array_keys($_POST['banco']) as $key){
+                $Banco = $_POST['banco'][$key];  
+                $Titular = $_POST['titular'][$key]; 
+                $NumeroCuenta = $_POST['numeroCuenta'][$key];
+                $Rif = $_POST['rif'][$key];     
 
-        // public function insertarClaveUsuario($Datos, $ClaveCifrada){
-        //     $this->db->Insertar("INSERT INTO usuario(ID_Afiliado, clave) VALUES(:ID_Afiliado, '$ClaveCifrada')");
+                $stmt = $this->dbh->prepare("INSERT INTO bancos(bancoNombre, bancoCuenta, bancoTitular, bancoRif, ID_Usuario) VALUES (:BancoNombre, :BancoCuenta, :BancoTitular, :BancoRif, :ID_Usuario)");
 
-        //     //Se traen los datos obtenidos en la consulta consultarUsuario
-        //     foreach($Datos["ID_Afiliado"] as $ID_Afiliado){
-        //         $NombreAfiliado = $ID_Afiliado -> ID_Afiliado;
-        //         echo "ID_Afiliado: " . $NombreAfiliado  . "<br>"; 
-        //     } 
+                //Se vinculan los valores de las sentencias preparadas
+                //ztmt es una abreviatura de statement 
+                $stmt->bindParam(':BancoNombre', $Banco);
+                $stmt->bindParam(':BancoCuenta', $NumeroCuenta);
+                $stmt->bindParam(':BancoTitular', $Titular);
+                $stmt->bindParam(':BancoRif', $Rif);
+                $stmt->bindParam(':ID_Usuario', $ID_Afiliado);
+                
+                //Se ejecuta la inserción de los datos en la tabla
+                $stmt->execute();
+            }
+        }
 
-        //     //Se vinculan los valores de las sentencias preparadas
-        //     $this->db->bind(':ID_Afiliado' , $ID_Afiliado);
-            
-        //     //Se ejecuta la inserción de los datos en la tabla
-        //     if($this->db->execute()){
-        //         return true;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
     }

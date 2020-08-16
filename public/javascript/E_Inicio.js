@@ -2,10 +2,7 @@
 document.getElementById("Contenedor_34").addEventListener('click', muestraBusqueda, false)
 
 //Escucha en inicio_V.php                        
-document.getElementById("Span_5a").addEventListener('click', function(){CerrarModal_X('Busqueda')})
-
-//Escucha en opciones_V.php                        
-// document.getElementById("Span_5b").addEventListener('click', function(){CerrarModal_X('Section_3')})
+document.getElementById("Span_5").addEventListener('click', function(){CerrarModal_X('Busqueda')})
 
 //Escucha en inicio_V.php                               
 document.getElementById("Contenedor_6a").addEventListener('click', function(){VerTiendas('Comida_Rapida')})
@@ -17,9 +14,6 @@ document.getElementById("Contenedor_6b").addEventListener('click', function(){Ve
 document.getElementById("Contenedor_6c").addEventListener('click', function(){VerTiendas('Bar')})
 
 //Escucha en inicio_V.php                               
-document.getElementById("Contenedor_6d").addEventListener('click', function(){VerTiendas('Alimentos')})
-
-//Escucha en inicio_V.php                               
 document.getElementById("Contenedor_6e").addEventListener('click', function(){VerTiendas('Productos')})
 
 //Escucha en inicio_V.php                               
@@ -28,27 +22,21 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
 //Escucha en inicio_V.php                               
 document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
 // *****************************************************************************************************
+    //Muestra la posicion en pantalla por medio de coordenadas
+    // var posicion = document.getElementById('Section_2js').getBoundingClientRect()
+    // console.log(posicion.top, posicion.right, posicion.bottom, posicion.left);
 
     //Actua en header_inicio.php
     function muestraBusqueda(){
         document.getElementById("Busqueda").style.display = "block"
     }
      
-
-    //Actua en inicio_V.php
-    function CerrarModal_X(id){
-        document.getElementById(id).style.display = "none"
-        document.getElementsByTagName("html")[0].style.overflow = "visible"
-    }
-
-
     //Actua desde inicio_V.php
     function VerTiendas(Tiendas){
         window.open(`Tiendas_C/index/${Tiendas}`,"_self")
     }
-    
-    
-    //Llamada desde inicio_V.phph; busca un pedido segun lo que escriba el usuario en el input
+        
+    //Busca un pedido segun lo que escriba el usuario en el input
     function Llamar_buscador(nombre){
         var divContenedor = document.getElementById("Buscar_Pedido")//se recibe desde inicio_V.php 
         console.log(divContenedor)       

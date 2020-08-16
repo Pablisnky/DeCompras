@@ -1,32 +1,27 @@
 <?php 
-require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
+    // session_start();
+
+    $ID_Tienda = $_SESSION["ID_Tienda"];
+    require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
 
     //Se verifica que la sesion del usuario halla sido creada y exista
-    // if(isset($_SESSION["ID_Afiliado"])){ 
-        // require(RUTA_APP . "/vistas/inc/header.php");
-        
-        //Se traen los datos obtenidos en la consulta Entrada_C
-        // foreach($Datos["Nombre"] as $Nombres){
-        //     $NombreAfiliado = $Nombres -> nombre;
-        //     // echo "Nombre: " . $NombreAfiliado  . "<br>"; 
-        // } 
-        $Contador = 1;
+    if(isset($_SESSION["ID_Tienda"])){ 
         ?>
 
-    <h1 class="h1_3">Empanadas la 13</h1>
         <div class="contenedor_46"> 
-            <p class="p_6">Stock de productos ofertados</p>
+            <p class="p_6">Productos ofertados</p>
             <table class="tabla_1">
                 <thead class="">
                     <th class="th_5"></th>
-                    <th class="">IMAGEN</th>
+                    <th class="th_9">IMAGEN</th>
                     <th class="th_6">PRODUCTO</th>
                     <th class="th_7">DESCRIPCION</th>
                     <th class="th_8">PRECIO</th>
-                    <th></th>
+                    <th class="th_10"></th>
                 </thead>   
                 <tbody>     
                     <?php
+                    $Contador = 1;
                     foreach($Datos as $arr) :
                         $Producto = $arr["producto"];
                         $Opcion = $arr["opcion"];
@@ -52,11 +47,11 @@ require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
         </div>
 
         <?php
-    // }
-    // else{
-    //     //la sesion no existe y se redirige a la pagina de inicio
-    //     header("location:" . RUTA_URL);
-    // }
+    }
+    else{
+        //la sesion no existe y se redirige a la pagina de inicio
+        header("location:" . RUTA_URL);
+    }
     
-    // include(RUTA_APP . "/vistas/inc/footer.php");
+    include(RUTA_APP . "/vistas/inc/footer.php");
     ?>

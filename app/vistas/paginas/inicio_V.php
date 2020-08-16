@@ -3,7 +3,8 @@
     <section class="section_1">
         <div class="contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
-            <h2 class="h2_4">Compras desde tu casa, despachos hasta tu casa</h2>
+            <!-- <h2 class="h2_4">solicitudes desde casa</h2> -->
+            <h2 class="h2_4">Tú tienda en toda la ciudad</h2>
         </div>
         <div class="contenedor_51">
             <div>
@@ -19,30 +20,31 @@
         <h3><a class="a_2" href="#up">Categorías</a></h3>
     </section>
     
-    <section class="section_2">
+    <section id="Section_2js">
         <div class='contenedor_4'>
-            <div class='contenedor_6' id="Contenedor_6a">
-                <h2 class='h2_1' id="H2_1">COMIDA RAPIDA</h2>
+            <div class='contenedor_6 borde_1' id="Contenedor_6a">
+                <h2 class='h2_1' id="H2_1">COMIDA</h2>
+                <span class="icon-spoon-knife span_8"></span>
             </div> 
 
-            <div class='contenedor_6' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
+                <span class="icon-barcode span_8"></span>
             </div>
 
-            <div class='contenedor_6' id="Contenedor_6c">
+            <div class='contenedor_6 borde_1' id="Contenedor_6c">
                 <h2 class='h2_1'>ARTESANOS Y EMPRENDEDORES</h2>
+                <span class="icon-pen span_8"></span>
             </div>
 
-            <div class='contenedor_6' id="Contenedor_6d">
-                <h2 class='h2_1'>ALIMENTOS FRESCOS</h2>
+            <div class='contenedor_6 borde_1' id="Contenedor_6e">
+                <h2 class='h2_1'>FARMACIA Y SALUD</h2>
+                <span class="icon-aid-kit span_8"></span>
             </div>
 
-            <div class='contenedor_6' id="Contenedor_6e">
-                <h2 class='h2_1'>FARMACIA</h2>
-            </div>
-
-            <div class='contenedor_6' id="Contenedor_6f">
-                <h2 class='h2_1'>FERRETRÍA</h2>
+            <div class='contenedor_6 borde_1' id="Contenedor_6f">
+                <h2 class='h2_1'>FERRETRÍA Y HOGAR</h2>
+                <span class="icon-hammer span_8"></span>
             </div>
         </div>
     </section>
@@ -50,7 +52,7 @@
     <section>
         <div class="contenedor_54" id="Busqueda">
             <div class="contenedor_53">
-                <span class="span_5" id="Span_5a">X</span>
+                <span class="span_5" id="Span_5">X</span>
                 <p class="p_7">Seleccione una ciudad y especifique su pedido</p>
                 <div class="contenedor_55">
                     <div class="contenedor_56">

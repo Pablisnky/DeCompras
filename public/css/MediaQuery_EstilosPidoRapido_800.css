@@ -1,10 +1,21 @@
 @media (max-width: 800px){/*aplicaría en cualquier medio con dimensiones menores a lo indicado*/
 
+	
+.a_1{/*header - afiliacion*/
+	top: 0%;
+	font-size: 1.3em;
+}
+.a_4{/*header_AfiCom*/
+	display: block;
+	width: 100% ;
+	text-align: right;
+	font-size: 0.9em;
+}
 .boton{/*carrito - recibePedido*/
 	font-size: 0.9em;
 	width: 70% ;
 }
-.boton_1{/*carrito*/
+.boton_1{/*carrito - recibePedido - login - afiliacion - registroCom*/
 	width: 30% !important;
 	height: 40px;
 	line-height: 15px;
@@ -18,6 +29,25 @@
 	height: 40px;
 	line-height: 35px;
 }
+.boton_3{/*afiliacion*/
+	height: 40px;
+	line-height: 20px;
+}
+.boton_4{/*afiliacion - registroCom - registroDes*/
+	width: 47% !important;
+}
+.br_2{/*carrito*/
+	display: block;
+}
+.comandoMenu{/*menuResponsive*/
+	display: inline-block;
+	margin-left: 3%;
+	margin-top: 20%;
+	padding-bottom: 0%;
+}
+/*.comandoMenu_2{menuResponsive
+	margin-top: 4%;
+}*/
 .contenedor_1{/*header*/
 	margin-left: 1%;
 	padding-left: 3%;
@@ -26,24 +56,24 @@
 	grid-template-columns: 65fr 35fr;
 }
 .contenedor_4{/*inicio - RecibePedido*/
-	grid-template-columns: 100%;
-	row-gap: 3%;
+	display: block;
 	width: 100%;
-	margin:0% auto;
+	margin:1% auto;
 }
 .contenedor_6{/*inicio*/
-	margin:auto
+	margin: 5% auto;	
+	width: 90%;
 }
 .contenedor_7{
-	margin-top: 15%;
+	margin-top: 0%;
 	min-height: 35%;
 }
 .contenedor_8{/*footer*/
 	margin-top: 50% !important;
 }
-.contenedor_10, .contenedor_10a{/*vitrina - tiendas*/
+.contenedor_10{/*vitrina - tiendas - afiliacion*/
 	grid-template-columns: 100fr;
-	padding-top: 45%;
+	margin: 35% auto;
 	width: 90%;
 	row-gap: 2%;
 }
@@ -79,6 +109,10 @@
 .contenedor_28{/*carrito*/
 	padding: 5%;
 }
+.contenedor_29{/*carrito*/
+	width: 100%;
+	font-size: 1.2em;
+}
 .contenedor_31{/*header*/
 	width: 60%;
 	padding: 0%;
@@ -88,10 +122,13 @@
 	width: 45%;
 	padding: 6%;
 }
+.contenedor_33{/*login*/
+	width: 50%;
+}
 .contenedor_34{/*header_inicio*/
 	top: 9%;
 	left: 80%;
-	padding: 1%;
+	padding: 1.5%;
 	width: 10%;
 }
 .contenedor_35{/*inicio*/
@@ -99,15 +136,114 @@
 }
 .contenedor_37{/*inicio*/
 	position: absolute;
-	top: 10%;
-	left: 1%;
+	top: 12%;
+	left: 3%;
 }
-.contenedor_51{/*inicio*/
+.contenedor_41{/*afiliacion*/
+	width: 95%;
+	margin-top: 55%;
+}
+.contenedor_42{/*registroCom - registroDes - login*/
+	width: 100%;
+	margin-top: 35%;
+}
+.contenedor_44{/*header_AfiCom*/ 
+	top: 10%;
+	left: 85%;
+}
+.contenedor_45{/*login*/
+	margin: 5% auto;
+}
+.contenedor_46{/*cuenta - cuenta_publicar - cuenta_editar*/
+	margin:35% auto;
+}
+.contenedor_47{/*cuenta_publicar*/
+	grid-template-columns: 100%;
+}
+.contenedor_48{/*afiliacion*/
+	margin-top: 5%;
+}
+.contenedor_50{/*login*/
+	width: 70%;
+	margin: 5% auto;
+	text-align: center;
+}
+.contenedor_51{/*inicio - ciudad*/
 	width: 90%;
 	margin-left: 5%;
 }
+.contenedor_52{/*header_AfiCom*/
+	top: 0%;
+	left: 60%;
+	padding-right: 4%;
+	width: 40%;
+}
+.contenedor_60{/*carrito*/
+	margin: 0%;
+}
+.contenedor_61{/*vitrina*/
+	top: 92%;
+	width: 100%;
+	margin-left:0%;
+	height: 6%;
+}
+.contenedor_64{/*carrito*/
+	float: none;
+	padding: 1%;
+	margin-left: 2%;
+	margin-bottom: 4%;
+	width: 95%;
+}
+.contenedor_65{/*carrito*/
+	width: 100%;
+}
+.contenedor_68{/*afiliacion*/
+	height: 100%;
+}
+.contenedor_69{/*tiendas - header*/
+	position: fixed;
+	top: 0%;
+	width: 100%;
+	height: 8%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contenedor_71{/*afiliacion*/
+	grid-column-start: 0;	
+	grid-column-end: 1;
+	padding-bottom: 0%;
+}
+.contenedor_73{/*ciudad*/
+	width: 90%;
+	grid-template-rows: 20%;
+}
+.contenedor_74{/*ciudad*/
+	row-gap: 10%;
+	margin-bottom: 50%;
+}
+.contenedor_75{/*ciudad*/
+	position: initial;
+}
+.fieldset_1{/*registroCom - registroDes*/
+	margin: 10% auto;
+	width: 90%;
+	padding: 2% ;
+}
 .footer{
-	padding-top: 5%;
+	margin-top: 0% !important;
+	padding-top: 0%;
 	font-weight: normal;
 }
 .h1_1{/*carrito*/
@@ -115,12 +251,15 @@
 	font-size: 1.1em;
 }
 .h1_2{/*inicio*/
-	font-size: 1.5em;
+	font-size: 2em;
 	text-align: left;
 }
-.h1_3{/*tiendas*/
+.h1_3{/*tiendas - vitrina - ciudad*/
 	font-size: 1.4em;
-	padding-top: 5%;
+	padding-top: 10%;
+}
+.h1_4{/*ciudad*/
+	padding: 2%;
 }
 .h2_1{/*inicio*/
 	font-size: 1em;
@@ -156,26 +295,99 @@
 	font-size: 0.9em;
 	width: 50px !important;
 }
-.input_8{/*carrito*/
+/* .input_8{/*carrito
 	width: 100%;
 	height: 30px;
+} */
+.input_9{/*registroCom - registroDes - carrito - login*/
+	margin: 3% auto !important;
+	font-size: 0.8em;
+	line-height: 30px;
+	width: 100%;
+	padding-left: 5%;
+}
+.input_11{/*carrito*/
+	padding-left: 0%;
+	width: 90%;
 }
 .label_1{/*vitrina*/
 	padding: 3%;
 	font-size: 0.9em;
 	width: 100% !important;
 }
-.p_1{/*vitrina*/
+.label_12{/*carrito*/
+	font-size: 0.9em;
+	padding: 1%;
+	display: inline-block;
+	margin-right: 5%;
+	margin-bottom: 0.5%;
+}
+.label_13{/*cuenta_editar*/
+	padding-left: 0%;
+	font-size: 0.9em;
+	margin-bottom: -3%;
+}
+.legend_1{/*registroCom - registroDes*/
+	font-size: 1.1em;
+	margin-left: 1%;
+}
+.li_1{/*carrito*/
+	line-height: 2em;
+}
+.li_2{/*ciudad*/
+	font-size: 1.1em;
+}
+.menuResponsive{/*Todas las páginas*/
+	padding-top: 0%;
+	width:48%; 
+	margin-left: -48%;/*oculta el menu responsive*/
+	transition: all 0.5s;
+}
+.menuResponsive ul{/*Todas las páginas*/
+	background-color:rgb(233, 215, 215);
+	border-bottom-color: rgb(51, 51, 51);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	flex-direction: column;
+	width: 100%;
+}
+.menuResponsive li{/*Todas las páginas*/
+	padding-left: 5%;
+	height: 40px;
+	padding-top: 5%;
+	flex-grow: 1;/*distribuye proporcionalmente los elementos internos en el eje horizontal, es necesario que el elemento padre tenga la propiedad display con el valor flex*/
+}
+.menuResponsive li a{/*header*/
+	color: rgb(51, 51, 51);
+	font-size: 15px;
+	width: 170px;
+	text-align: left;
+}
+.menuResponsive li a:hover{/*Todas las páginas*/
+	font-weight: bold;
+	font-size: 15px;
+}
+.p_1{/*alert - afiliacion*/
 	padding-top: 30%;
-	font-size: 1.4em;
+	font-size: 1.3em;
+}
+.p_4{/*login*/
+	margin-top: 20%;
+}
+.p_5{/*afiliacion*/
+	margin: 8% auto 1% auto;
 	text-align: center;
 }
+.p_8{/* afiliacion*/
+	padding-top: 3%;
+	font-size: 1.3em;
+}
 .section_2{/*inicio*/
-	padding-top: 10%; 
+	margin-top: 30%; 
 }
 .span_1{/*header*/
-	margin-top: 10%;
-	font-size: 1em;
+	margin-top: 5%;
+	font-size: 0.9em;
 }
 .span_1a{/*header*/
 	display: none;
@@ -194,7 +406,9 @@
 	font-size: 2em;
 }
 .textarea_1{/*carrito*/
-	width: 300px;
+	width: 100%;
+	padding-left: 5%;
+	margin-top: 2%;
 }
 .td_1, .td_2, .td_3{/*carrito*/
 	font-size: 0.9em;
@@ -211,5 +425,12 @@
 }
 .th_5{/*carrito*/
 	width: 15%;
+}
+.ul_1{/*carrito*/
+	margin-left: 5%;
+	padding: 0% 1%;
+}
+.ul_2{/*ciudad*/
+	padding-top: 5%;
 }
 }

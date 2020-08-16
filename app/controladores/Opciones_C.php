@@ -28,7 +28,6 @@
 
             $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Producto);   
             $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
-
             $Datos=[
                 "Inf_Consulta" => $Consulta,
                 "AgregarNodo" => $Agregacion,

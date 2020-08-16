@@ -10,7 +10,7 @@
         //Se da formato al precio, sin decimales y con separación de miles
         $Precio = number_format($Precio, 0, ",", ".");?>
         
-        <div class="contenedor_59" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>', 'buscador_V')">
+        <div class="contenedor_59 borde_1" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>', 'buscador_V')">
             <label class="label_9"><?php echo $Producto;?></label>
             <label class="label_9"><?php echo $Opcion;?></label>
             <label class="label_9"><?php echo $Precio;?> Bs.</label>

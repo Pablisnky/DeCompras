@@ -11,16 +11,16 @@
             $this->vista("paginas/afiliacion_V");
         }
 
-        public function afiliacion(){
-            $this->vista("paginas/afiliacion_V");
+        public function afiliacion($Datos){
+            $this->vista("paginas/afiliacion_V", $Datos);
         }
 
         public function instruccion(){
             $this->vista("paginas/instrucion_V");
         }
 
-        public function ciudad(){
-            $this->vista("paginas/ciudad_V");
+        public function ciudad($Datos){
+            $this->vista("paginas/ciudad_V", $Datos);
         }
     }
 ?>    

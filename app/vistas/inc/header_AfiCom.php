@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php 
+    // session_start();
+
+    //Sesiones creadas en Login_C.php
+    $Nombre = $_SESSION["Nombre"];
+    $NombreTienda = $_SESSION["Nombre_Tienda"];
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -13,26 +19,32 @@
 		<meta name="HandheldFriendly" content="true"/>
 		<meta http-equiv="expires" content="12 de julio de 2020"/>
 
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/lupa/style_lupa.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/menu/style_menu.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_estilosPidoRapido_800.css"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
-    <body>		
-		<header class="header_1">
-            <div class="contenedor_35">
-                <a class="a_3" href="<?php echo RUTA_URL . '/Publicacion_C/MisPublicaciones/';?>">Nueva publicación</a>
-                <a class="a_3" href="<?php echo RUTA_URL . '/Publicacion_C/';?>">Mis publicaciónes</a>	
-                <div class="Contenedor_52">
-                    <label class="label_8"><?php echo $_SESSION["Nombre"];?></label>
-                    <a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a>
-                </div>
-            </div>
-        </header>
-        <div class="contenedor_34 contenedor_34a">
-            <span class="icon-search  span_7"></span>
+    <body>	
+		<header class="contenedor_69">
+        	<a class="a_1"><?php echo $NombreTienda?></a>
+			<label id="ComandoMenu" class="comandoMenu" onclick="mostrarMenu()"><span class="icon-menu span_6" id="Span_6"></span></label>
+			<nav id="MenuResponsive" class="menuResponsive">
+				<ul id="MenuContenedor">
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Mi cuenta</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Mis publicaciónes</a></li>
+                    <li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Publicar/';?>">Nueva publicación</a></li>
+                    <li><a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a></li>
+				</ul>
+			</nav>
+		</header>	
+        <div class="contenedor_52">
+            <label class="label_8"><?php echo $Nombre;?></label>
+            <a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a>
         </div>
-        <h1 class="h1_3">Empanadas La 13</h1>
+        <!-- <div class="contenedor_34 contenedor_44">
+            <span class="icon-search span_7"></span>
+        </div> -->
 
    <!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
