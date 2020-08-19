@@ -45,15 +45,14 @@
         }      
 
         public function insertarTienda($RecibeDatos, $ID_AfiliadoCom){            
-            $stmt = $this->dbh->prepare("INSERT INTO tiendas(nombre_Tien, direccion_Tien, telefono_Tien, horario_Tien, categoria_Tien, ID_AfiliadoCom, fecha_afiliacion, hora_afiliacion) VALUES (:Nombre_Ti,:Direccion_Ti, :Telefono_Ti, :Horario_Ti, :Categoria_Tien, :ID_Afiliado_Ti, CURDATE(), time_format(NOW(), '%H:%i'))");
+            $stmt = $this->dbh->prepare("INSERT INTO tiendas(nombre_Tien, direccion_Tien, telefono_Tien, horario_Tien, ID_AfiliadoCom, fecha_afiliacion, hora_afiliacion) VALUES (:Nombre_Ti, :Direccion_Ti, :Telefono_Ti, :Horario_Ti, :ID_Afiliado_Ti, CURDATE(), time_format(NOW(), '%H:%i'))");
 
             //Se vinculan los valores de las sentencias preparadas
             //ztmt es una abreviatura de statement 
             $stmt->bindParam(':Nombre_Ti', $nombre_T);
-            $stmt->bindParam(':Direccion_Ti', $telefono_T);
-            $stmt->bindParam(':Telefono_Ti', $direccion_T);
+            $stmt->bindParam(':Direccion_Ti', $direccion_T);
+            $stmt->bindParam(':Telefono_Ti', $telefono_T);
             $stmt->bindParam(':Horario_Ti', $horario_T);
-            $stmt->bindParam(':Categoria_Tien', $categoria_T);
             $stmt->bindParam(':ID_Afiliado_Ti', $responsable_T);
 
             // insertar una fila
@@ -61,7 +60,6 @@
             $telefono_T = $RecibeDatos['Telefono_com'];
             $direccion_T = $RecibeDatos['Direccion_com'];
             $horario_T = $RecibeDatos['Horario_com'];
-            $categoria_T = $RecibeDatos['Categoria_com'];
             $responsable_T = $ID_AfiliadoCom;
             
             //Se ejecuta la inserción de los datos en la tabla
@@ -70,6 +68,22 @@
             }
             else{
                 return false;
+            }
+        }
+
+        public function insertarCategoriaTienda($Categoria, $ID_AfiliadoCom){  
+            foreach(array_keys($_POST['categoria']) as $key){
+                $Categoria = $_POST['categoria'][$key];  
+
+                $stmt = $this->dbh->prepare("INSERT INTO categoriatienda(categoria, ID_Afiliado) VALUES (:Categoria, :ID_Afiliado)");
+
+                //Se vinculan los valores de las sentencias preparadas
+                //stmt es una abreviatura de statement 
+                $stmt->bindParam(':Categoria', $Categoria);
+                $stmt->bindParam(':ID_Afiliado', $ID_AfiliadoCom);
+                
+                //Se ejecuta la inserción de los datos en la tabla
+                $stmt->execute();
             }
         }
 
@@ -99,12 +113,11 @@
                 $Banco = $_POST['banco'][$key];  
                 $Titular = $_POST['titular'][$key]; 
                 $NumeroCuenta = $_POST['numeroCuenta'][$key];
-                $Rif = $_POST['rif'][$key];     
+                $Rif = $_POST['rif'][$key];  
 
                 $stmt = $this->dbh->prepare("INSERT INTO bancos(bancoNombre, bancoCuenta, bancoTitular, bancoRif, ID_Usuario) VALUES (:BancoNombre, :BancoCuenta, :BancoTitular, :BancoRif, :ID_Usuario)");
 
-                //Se vinculan los valores de las sentencias preparadas
-                //ztmt es una abreviatura de statement 
+                //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement 
                 $stmt->bindParam(':BancoNombre', $Banco);
                 $stmt->bindParam(':BancoCuenta', $NumeroCuenta);
                 $stmt->bindParam(':BancoTitular', $Titular);
@@ -115,5 +128,4 @@
                 $stmt->execute();
             }
         }
-
     }

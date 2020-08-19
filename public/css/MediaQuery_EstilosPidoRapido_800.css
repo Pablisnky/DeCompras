@@ -36,14 +36,19 @@
 .boton_4{/*afiliacion - registroCom - registroDes*/
 	width: 47% !important;
 }
+.boton_5{/*cuenta_editar*/
+	margin-top: 5%;
+	margin-left: 0%;
+	width: 40% !important;
+}
 .br_2{/*carrito*/
 	display: block;
 }
 .comandoMenu{/*menuResponsive*/
-	display: inline-block;
-	margin-left: 3%;
-	margin-top: 20%;
-	padding-bottom: 0%;
+	background-color: white;
+	display: block;
+	margin-top: 16%;
+	padding: 1%;
 }
 /*.comandoMenu_2{menuResponsive
 	margin-top: 4%;
@@ -139,6 +144,9 @@
 	top: 12%;
 	left: 3%;
 }
+.contenedor_38/*afiliacion*/{
+	margin: 0% auto;
+}
 .contenedor_41{/*afiliacion*/
 	width: 95%;
 	margin-top: 55%;
@@ -159,6 +167,7 @@
 }
 .contenedor_47{/*cuenta_publicar*/
 	grid-template-columns: 100%;
+	width: 90%;
 }
 .contenedor_48{/*afiliacion*/
 	margin-top: 5%;
@@ -197,33 +206,21 @@
 .contenedor_65{/*carrito*/
 	width: 100%;
 }
+.contenedor_66{/*registroCom - registroDes*/
+	margin: 5% auto 35% auto;
+}
 .contenedor_68{/*afiliacion*/
 	height: 100%;
 }
 .contenedor_69{/*tiendas - header*/
-	position: fixed;
-	top: 0%;
-	width: 100%;
+	background-color: rgb(51, 51, 51);
 	height: 8%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .contenedor_71{/*afiliacion*/
 	grid-column-start: 0;	
 	grid-column-end: 1;
 	padding-bottom: 0%;
+	margin-top: 0%;
 }
 .contenedor_73{/*ciudad*/
 	width: 90%;
@@ -235,6 +232,23 @@
 }
 .contenedor_75{/*ciudad*/
 	position: initial;
+}
+.contenedor_76{/*Categorias_Ajax*/
+	grid-template-columns: 100%;
+	padding-left: 5%;
+}
+.contenedor_77{/*Categorias_Ajax_V.php*/
+	margin: 10% auto 1% auto;
+	width: 50%;
+}
+.contenedor_79{/*afiliacion*/
+	margin-top: 15%;
+} 
+.contenedor_80{/*registroCom - cuenta_editar*/
+	width: 100%;
+}
+.contenedor_82{/*cuenta_publicar*/
+	margin-top: 20%;
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
@@ -285,6 +299,10 @@
 .hr_1{/*carrito*/
 	width: 28%;
 }
+.imagen_3{/*cuenta_editar*/
+	width: 15% !important;
+	margin-bottom: 3%;
+}
 .input_3{/*vitrina*/
 	width: 100%;
 }
@@ -327,6 +345,9 @@
 	font-size: 0.9em;
 	margin-bottom: -3%;
 }
+.label_16{/*cuenta_editar*/
+	font-size: 0.9em;
+}
 .legend_1{/*registroCom - registroDes*/
 	font-size: 1.1em;
 	margin-left: 1%;
@@ -368,14 +389,14 @@
 	font-size: 15px;
 }
 .p_1{/*alert - afiliacion*/
-	padding-top: 30%;
+	padding-top: 20%;
 	font-size: 1.3em;
 }
 .p_4{/*login*/
 	margin-top: 20%;
 }
 .p_5{/*afiliacion*/
-	margin: 8% auto 1% auto;
+	margin: 2% auto 1% auto ;
 	text-align: center;
 }
 .p_8{/* afiliacion*/
@@ -384,6 +405,17 @@
 }
 .section_2{/*inicio*/
 	margin-top: 30%; 
+}
+.section_6{/*afiliacion*/
+	height: 150%;
+}
+.select_1{/*cuenta_publicar*/
+	margin: 2% auto !important;
+	display: block;
+	font-size: 1em;
+	height: 30px;
+	width: 100%;
+	padding-left: 5%;
 }
 .span_1{/*header*/
 	margin-top: 5%;
@@ -404,6 +436,9 @@
 }
 .span_6{/*inicio*/
 	font-size: 2em;
+}
+.span_10{/*registroCom - cuenta_editar*/
+	margin-left: 70% !important;
 }
 .textarea_1{/*carrito*/
 	width: 100%;

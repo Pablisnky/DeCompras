@@ -1,9 +1,10 @@
 //Cuando carga la página se registran los listener de clic para toda la ventana
-document.addEventListener("click", Pre_decremento);
-document.addEventListener("click", Pre_incremento);
+document.addEventListener("click", Pre_decremento)
+document.addEventListener("click", Pre_incremento)
 
-//Escucha en carrito_V.php                               
-document.getElementById("Submit").addEventListener('click', DesabilitarBoton,false)
+//Escucha en login_V.php     
+//Si activo este listener deja de funcionar el menu responsive cuando se hace click por fuera del menu                          
+// document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
 
 //Declarar el array que contiene los ID_Opcion que se añaden al carrito
 //Verificar para que sirve, creo que solo es util en la función decremento
@@ -138,8 +139,83 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 
+
+//************************************************************************************************
+    // Llamada desde registroCom_V.php selecciona tres categorias en los tipos de tiendas
+    var Limite = []
+    var Categoria = []
+    function transferirCategoria(){
+        console.log("______Desde transferir Categoria______")
+
+        //Se recoge la seleccion enviada desde Categorias_Ajax_V.php
+        Categoria = document.getElementsByClassName("categoria_js")
+
+        //Se declara una variable contador para asignarle el name al nuevo elemento creado
+        // name_dinamico = 1
+
+        //Se recorrer las categorias para verficar cuales estan seleccionadas
+        for(var i = 0; i<Categoria.length; i++){
+            if(Categoria[i].checked){
+                // Categoria= Categoria[i].value 
+                Categoria[i].value                  
+                console.log(Categoria[i].value)        
+                        
+                //Si no hay mas de tres categorias y si no estan repetidas
+                if(Limite.length <= 2 && Limite.includes(Categoria[i].value) == false){         
+                    //Se carga la categoria al array, este solo permitie tres elementos
+                    Limite.push(Categoria[i].value )
+                    console.log("El elemento se cargo al array")
+                    console.log(Limite)  
+
+                    //Se crea un nuevo input que cargara la categoria
+                    var NuevoElemento = document.createElement("input")
+
+                    //Se da propiedades al elemento creado
+                    NuevoElemento.value = Categoria[i].value 
+                    NuevoElemento.classList.add("input_9", "borde_2")
+                    NuevoElemento.name = "categoria[]"
+                    NuevoElemento.readOnly = true
+
+                    //Se especifica el elemento donde se va a insertar el nuevo elemento
+                    var ElementoPadre = document.getElementById("Fieldset")
+
+                    //Se inserta en el DOM elcreados input creado
+                    inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+                    // name_dinamico++   
+                }
+                else{
+                    console.log("Máximo categorias seleccionadas")
+                }                
+            }         
+        }    
+        CerrarCategoria() 
+    }
+
+//************************************************************************************************
+    // Llamada desde Categorias_Ajax_V.php
+    function CerrarCategoria(){        
+        document.getElementById("Mostrar_Categorias").style.display = "none"
+    }
+
 //************************************************************************************************
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************************************************
     //Guarda cada precio de los productos pedidos 
     DisplayCarrito = []  
 
@@ -607,7 +683,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 //************************************************************************************************
-    //Llamada desde carrito
+    //Llamada desde carrito_V.php para seleccionar si el despacho sera enviado o recogido en tienda
     function formaEntrega(){    
         console.log("______Desde forma_Entrega______")
         console.log(TotalDisplayCarrito)
@@ -658,9 +734,9 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 //************************************************************************************************
-    //Llamada desde carrito_V.php
+    //Llamada desde login_V.php
     function DesabilitarBoton(){
-        document.getElementById("Submit").value = "Enviando..."
+        document.getElementsByClassName("submit_js")[0].value = "Enviando ..."
     }
 
 //************************************************************************************************
@@ -668,6 +744,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     var div = document.getElementById("MenuResponsive")
     var span= document.getElementById("Span_6")
     window.addEventListener("click", function(e){
+        // console.log("_____Desde función anonima para ocultar menu_____")
         //obtiendo informacion del DOM del elemento donde se hizo click 
         var click = e.target
         if((div.style.marginLeft == "0%") && (click != div) && (click != span)){

@@ -17,7 +17,7 @@
                 <span class="icon-home2 span_6"></span>
             </div>
         </div>
-        <h3><a class="a_2" href="#up">Categorías</a></h3>
+        <h3><a class="a_2" id="Categoria" href="#up">Tiendas</a></h3>
     </section>
     
     <section id="Section_2js">

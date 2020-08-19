@@ -76,7 +76,7 @@ button{/*tiendas*/
 		opacity: 0; 
 		}
 	}
-.boton{/*carrito - recibePedido - login - afiliacion - registroCom*/
+.boton{/*carrito - recibePedido - login - afiliacion - registroCom - Categoria_Ajax*/
 	background-color: rgb(51, 51, 51);
 	width: 45%;
 	height: 30px;
@@ -174,13 +174,16 @@ button{/*tiendas*/
 .contenedor_7{/*footer*/
 	background-color:  rgb(233, 215, 215);
 	position: relative;
-	margin-top: 5%;
+	/* margin-top: 5%; */
 	height: 100%;
 	z-index: -1;
 }
 .contenedor_8{/*footer */
-	margin-top: 5% !important;
 	margin: auto;
+	position: absolute;
+	width: 100%;
+	bottom: 1pt;
+	padding: 0.5% 0%;
 }
 .contenedor_9{/*cuenta_editar - cuenta_publicar*/
 	border-radius: 15px;
@@ -274,7 +277,7 @@ button{/*tiendas*/
 .contenedor_23{/*header.php*/
 	width: 33%;
 }
-.contenedor_24{/*carrito */
+.contenedor_24{/*carrito - Categorias_Ajax*/
 	background-color: rgb(239, 245, 245);
 	width: 70%;
 	margin:2% auto;
@@ -412,7 +415,7 @@ button{/*tiendas*/
 }
 .contenedor_49{/*cuenta_publicar*/
 	width: 30%;
-	margin: 8% auto;
+	margin: 10% auto;
 	text-align: center;
 }
 .contenedor_50{/*login*/
@@ -542,7 +545,7 @@ button{/*tiendas*/
 .contenedor_66{/*registroCom - registroDes*/
 	text-align: center;
 	width: 70%;
-	margin: 5% auto;
+	margin: 5% auto 15% auto;
 }
 .contenedor_67{/*registroCom - registroDes*/
 	padding: 5% 0%;
@@ -551,7 +554,6 @@ button{/*tiendas*/
 	border-bottom-style: solid;
 }
 .contenedor_69{/*tiendas - header - header_AfiCom*/
-	background-color: rgb(51, 51, 51);;
 	position: fixed;
 	top: 0%;
 	width: 100%;
@@ -563,6 +565,7 @@ button{/*tiendas*/
 	grid-column-start: 1;	
 	grid-column-end: 4;
 	padding-bottom: 2%;
+	margin-top: 7%;
 }
 .contenedor_72{/*header_inicio*/
 	top: 10%;
@@ -578,6 +581,31 @@ button{/*tiendas*/
 /*.contenedor_74{cuenta_publicar
 	position: initial !important;
 }*/
+.contenedor_76{/*Categorias_Ajax*/
+	display: grid;
+	grid-template-columns: 32% 32% 32%;
+	column-gap: 2%;
+}
+.contenedor_77{/*Categorias_Ajax_V.php*/
+	margin:5% auto 1% auto;
+	text-align: center;
+	width: 30%;
+}
+.contenedor_78{/*Categorias_Ajax*/
+	width: 90%;
+	margin: auto;
+}
+.contenedor_80{/*registroCom - cuenta_editar*/
+	margin: 2% auto !important;
+	display: block;
+	font-size: 1em;
+	line-height: 30px;
+	width: 90%;
+	padding-left: 5%;
+}
+.contenedor_81{/*cuenta_editar*/
+	margin: -2% auto !important;
+}
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 50%;
 	margin: auto;
@@ -589,7 +617,7 @@ button{/*tiendas*/
 }
 .footer{
 	height: 30%;
-	margin-top: 10%;
+	/* margin-top: 10%; */
 }
 .h1_1{/*carrito*/
 	font-size: 1.4em;
@@ -643,10 +671,10 @@ button{/*tiendas*/
 	text-align: center;
 	font-weight: normal;
 	font-size: 1em;
-	position: absolute;
+	/* position: absolute;
 	width: 100%;
 	bottom: 1pt;
-	padding: 0.5% 0%;
+	padding: 0.5% 0%; */
 }
 .header_1{/*header*/
 	background-color: rgba(51, 51, 51, 1);
@@ -692,6 +720,12 @@ button{/*tiendas*/
 	width:100px;
 	height: 100px;
 	margin-right: 5%;
+}
+.imagen_3{/*cuenta_editar*/
+	margin: auto;
+	margin-bottom: 1%;
+	display: block;
+	width: 5% !important;
 }
 .imagen_2{/*cuenta_editar*/
 	margin: auto;
@@ -755,10 +789,6 @@ button{/*tiendas*/
 .input_7{/*carrito*/
 	font-weight: bold;
 }
-.input_8{/*carrito*/
-	/* width: 90%;
-	display: block; */
-}
 .input_9{/*registroCom - registroDes - carrito - login*/
 	margin: 2% auto !important;
 	display: block;
@@ -766,6 +796,9 @@ button{/*tiendas*/
 	line-height: 30px;
 	width: 90%;
 	padding-left: 5%;
+}
+.input_10{/*cuenta_publicar*/
+	width: 100%;
 }
 .input_11{/*carrito*/
 	text-align: center;
@@ -858,6 +891,19 @@ button{/*tiendas*/
 	font-size: 1em;
 	margin-bottom: -1%;
 }
+.label_14{/*Categorias_Ajax*/
+	line-height: 30px;
+}
+.label_15{/*registroCom*/
+	color: rgba(0, 0, 0, 0.6);
+}
+.label_16{/*registroCom*/
+	color: rgb(0, 0, 0);
+	font-weight: bold ;
+	font-size: 1em;
+	display: inline-block;
+	margin-left: -6% !important;
+}
 .legend_1{/*registroCom - registroDes - login*/
 	font-size: 1.4em;
 	margin-left: 5%;
@@ -898,7 +944,7 @@ button{/*tiendas*/
 	width: 30%;
 }
 .menuResponsive{/*da formato a barra de menu y contiene todos los enlaces de la misma, solo a la del header*/
-	background-color: rgb(51, 51, 51) !important;
+	background-color: rgb(51, 51, 51);
 	padding-top: 3.5%;
 	width: 100%;
 	display: flex;
@@ -906,7 +952,6 @@ button{/*tiendas*/
 	font-family:verdana;
 }
 .menuResponsive ul{/*Todas  las páginas*/
-	/* background-color:#040652 ; */
 	width: 95%;
 	margin:auto;
 	list-style: none;
@@ -996,7 +1041,10 @@ button{/*tiendas*/
 .section_5{/*afiliacion*/
 	height: 100%;
 }
-.select_1{/*registroCom*/
+.section_6{/*afiliacion*/
+	background-color: rgb(239, 245, 245);
+}
+.select_1{/*cuenta_publicar*/
 	margin: 2% auto !important;
 	display: block;
 	font-size: 1em;
@@ -1049,6 +1097,17 @@ button{/*tiendas*/
 	text-align: center;
 	padding-top: 25%;
 }
+.span_10{/*registroCom - cuenta_editar*/
+	display: inline-block;
+	margin-left: 80% !important;
+	font-size: 1.2em;
+	margin-top: 1.5%;
+	color: rgba(0, 0, 0, 0.6);
+}
+.span_11{/*registroCom*/
+	display: inline-block;
+	margin-left: 75%;
+}
 .tabla{/*carrito*/
 	width: 100%;
 }
@@ -1069,8 +1128,8 @@ button{/*tiendas*/
 .td_4{/*entrada*/
 	padding-left: 1%;
 }
-.textarea_1{/*carrito*/
-	width: 900px;
+.textarea_1{/*carrito - cuenta_publicar*/
+	width: 100%;
 }
 .th_1{/*carrito*/
 	width: 10%;

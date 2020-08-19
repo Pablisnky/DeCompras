@@ -13,7 +13,7 @@
                 </div> 
             </fieldset>  
             <div class="contenedor_50">
-                <input class="boton" type="submit" value="Entrar">
+                <input class="boton" id="Submit" type="submit" value="Entrar">
                 <p class="p_4">¿Olvidaste tu contraseña?</p>
                 <label class="label_7" onclick="NotificarContrasena()">Recuperala</label>
             </div>
@@ -38,4 +38,4 @@
 		
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>
 
-<script type="text/javascript" src="../javascript/validarFormularios.js"></script>
+<!-- <script type="text/javascript" src="../javascript/validarFormularios.js"></script> -->

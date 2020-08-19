@@ -2,7 +2,8 @@
             <footer class="footer">
                   <div class="contenedor_7"> 
                         <div class="contenedor_8">
-                        <h5 class="h5_1">horebi - Estudio de software</h5>
+                        <img class="imagen_3" alt="logo" src="<?php echo RUTA_URL;?>/public/images/logo.png"/>
+                        <h5 class="h5_1">hórebi - Estudio de software</h5>
                         </div>
                   </div> 
             </footer>

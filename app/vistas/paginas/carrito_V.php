@@ -5,7 +5,7 @@
 <section class="section_3 section_4">
     <div class="contenedor_24">
         <h1 class="h1_1">Tu orden</h1>
-        <dizv class="contenedor_20">
+        <div class="contenedor_20">
             <table class="tabla" id="Tabla">
                 <thead>
                     <tr>

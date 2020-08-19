@@ -1,13 +1,10 @@
 <?php 
-    // session_start();
-
     $ID_Tienda = $_SESSION["ID_Tienda"];
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
 
     //Se verifica que la sesion del usuario halla sido creada y exista
     if(isset($_SESSION["ID_Tienda"])){ 
         ?>
-
         <div class="contenedor_46"> 
             <p class="p_6">Productos ofertados</p>
             <table class="tabla_1">

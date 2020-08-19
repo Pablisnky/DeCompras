@@ -26,7 +26,7 @@
    
         public function recibeRegistro(){            
             // Se reciben todos los campos del formulario, desde registro_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["telefono_com"]) && !empty($_POST["direccion_com"]) && !empty($_POST["horario_com"]) && !empty($_POST["categoria_com"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])){
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["telefono_com"]) && !empty($_POST["direccion_com"]) && !empty($_POST["horario_com"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])){
                
                 $RecibeDatos = [
                     // Recibe datos de la persona responsable
@@ -41,7 +41,6 @@
                     'Telefono_com' => filter_input(INPUT_POST, "telefono_com", FILTER_SANITIZE_STRING),
                     'Direccion_com' => filter_input(INPUT_POST, "direccion_com", FILTER_SANITIZE_STRING),
                     'Horario_com' => filter_input(INPUT_POST, "horario_com", FILTER_SANITIZE_STRING),
-                    'Categoria_com' => filter_input(INPUT_POST, "categoria_com", FILTER_SANITIZE_STRING),
 
                     // Recibe datos de acceso
                     'Clave_Afcom' => filter_input(INPUT_POST, "clave_Afcom", FILTER_SANITIZE_STRING), 
@@ -67,21 +66,6 @@
                 // //Despues de evaluar con is_numeric se da un aviso en caso de fallo
                 // if($RecibeDatos["Cedula_Afcom"] == false){      
                 //     exit("La cedula debe ser solo números");
-                // }
-
-                foreach(array_keys($_POST['banco']) as $key){
-                    if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])){
-                        $Banco = $_POST['banco'][$key];  
-                        $Titular = $_POST['titular'][$key]; 
-                        $NumeroCuenta = $_POST['numeroCuenta'][$key];
-                        $Rif = $_POST['rif'][$key];
-                    }   
-                    else{
-                        echo "Ingrese datos bancarios completos";
-                        exit();
-                    }
-                }
-
             }
             else{
                 echo "Llene todos los campos del formulario de registro";
@@ -89,11 +73,39 @@
                 exit();
             }
 
+            // Recibe las categorias seleccionadas
+            foreach(array_keys($_POST['categoria']) as $key){
+                if(!empty($_POST['categoria'][$key])){
+                    $Categoria = $_POST['categoria'][$key];  
+                }   
+                else{
+                    echo "Ingrese al menos una categoría";
+                    exit();
+                }
+            }
+
+            //Recibe datos bancarios
+            foreach(array_keys($_POST['banco']) as $key){
+                if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])){
+                    $Banco = $_POST['banco'][$key];  
+                    $Titular = $_POST['titular'][$key]; 
+                    $NumeroCuenta = $_POST['numeroCuenta'][$key];
+                    $Rif = $_POST['rif'][$key];
+                }   
+                else{
+                    echo "Ingrese datos bancarios completos";
+                    exit();
+                }
+            }
+
             //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado
             $ID_AfiliadoCom = $this->ConsultaRegistro_M->insertarAfiliadoComercial($RecibeDatos);
            
             //Se INSERTAN los datos de la tienda en la BD
             $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);
+            
+            //Se INSERTAN las categorias en las que se encuentra una tienda
+            $this->ConsultaRegistro_M->insertarCategoriaTienda($Categoria, $ID_AfiliadoCom);
 
             //Se INSERTAN los datos bancarios de la tienda en la BD
             $this->ConsultaRegistro_M->insertarBancos($Banco, $Titular, $NumeroCuenta, $Rif, $ID_AfiliadoCom);

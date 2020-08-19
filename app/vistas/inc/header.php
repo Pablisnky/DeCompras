@@ -30,6 +30,7 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/afiliacion/Afiliaciones';?>">Afiliaciones</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Login_C/Inicio sesión';?>">Inicio sesión</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C/index/#Categoria';?>">Tiendas</a></li>
 					</li>
 				</ul>
 			</nav>
