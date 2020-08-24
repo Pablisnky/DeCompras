@@ -11,6 +11,10 @@
 	text-align: right;
 	font-size: 0.9em;
 }
+.ancla_2{/*cuenta_editar*/
+	margin-top: -5%;
+	height: 5px; 
+}
 .boton{/*carrito - recibePedido*/
 	font-size: 0.9em;
 	width: 70% ;
@@ -153,7 +157,7 @@
 }
 .contenedor_42{/*registroCom - registroDes - login*/
 	width: 100%;
-	margin-top: 35%;
+	margin-top: 30%;
 }
 .contenedor_44{/*header_AfiCom*/ 
 	top: 10%;
@@ -250,6 +254,12 @@
 .contenedor_82{/*cuenta_publicar*/
 	margin-top: 20%;
 }
+.contenedor_84{/*cuenta_editar*/
+	width: 1000px !important;
+	overflow-x: auto ;
+	/* grid-template-columns: 100%;
+	column-gap: 0%; */
+}
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
 	width: 90%;
@@ -328,6 +338,9 @@
 	padding-left: 0%;
 	width: 90%;
 }
+.input_12{/*cuenta_editar*/
+	width: 90%;
+}
 .label_1{/*vitrina*/
 	padding: 3%;
 	font-size: 0.9em;
@@ -399,12 +412,20 @@
 	margin: 2% auto 1% auto ;
 	text-align: center;
 }
+.p_6{/*cuenta_editar*/
+	margin-top: 5%;
+	font-size: 1.2em;
+}
 .p_8{/* afiliacion*/
 	padding-top: 3%;
 	font-size: 1.3em;
 }
 .section_2{/*inicio*/
 	margin-top: 30%; 
+}
+.section_9{/*cuenta_editar*/
+	/* width: 200%; */
+	
 }
 .section_6{/*afiliacion*/
 	height: 150%;
@@ -437,8 +458,9 @@
 .span_6{/*inicio*/
 	font-size: 2em;
 }
-.span_10{/*registroCom - cuenta_editar*/
-	margin-left: 70% !important;
+.span_10{/*cuenta_deditar*/
+	margin-left: 1% !important;
+	/* margin-top: 5%; */
 }
 .textarea_1{/*carrito*/
 	width: 100%;

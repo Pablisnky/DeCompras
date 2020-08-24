@@ -7,6 +7,7 @@
             $this->ConsultaVitrina_M = $this->modelo("Vitrina_M");
         }
         
+        //Metodo cargado desde funcionesVarias por medio de window.open en funcion vitrina()
         public function index($ID_Tienda){
             //Se CONSULTAN los productos de una tienda en particular
             $Consulta_1 = $this->ConsultaVitrina_M->consultarProductos($ID_Tienda);

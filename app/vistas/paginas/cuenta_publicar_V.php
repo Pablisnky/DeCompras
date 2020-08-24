@@ -4,6 +4,7 @@
     $ID_Tienda = $_SESSION["ID_Tienda"];
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
 
+
     //se invoca la sesion que tiene el ID_Afiliado creada en validarSesion.php
     // $ID_Afiliado= $_SESSION["ID_Afiliado"];
 //     echo $ID_Afiliado . "<br>";
@@ -26,7 +27,13 @@
                     <label class="boton" for="File_1">Buscar imagen</label>
                     <input class="input_3" id="File_1"  type="file"/>
                 </div>
-                <div class="contenedor_82">                    
+                <div class="contenedor_82">
+                    <label class="">Seccion</label>
+                    <!-- Select alimentado desde Select_Ajax_V.php con las secciones que el uausrio cargó en su cuenta -->
+                    <select class="select_1 borde_2" id="Select_2" onclick="Llamar_seccion()">
+                        <option></option>
+                    </select>          
+                    <div id="Borrar"></div>          
                     <label class="">Producto</label>
                     <input class="input_9 input_10 borde_2" type="text" name="producto">
 
@@ -38,10 +45,24 @@
                 </div>
             </div>
             <div class="contenedor_49">
-                <input class="input_3" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
+                <input class="input_3" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
                 <input class="boton " type="submit" value="Guardar"/>
             </div>
         </form>
+        <div id="Borrar"></div>
     </div>
+
+            <!-- <p>Pablo, no haz clasificado tu tienda en alguna categoria, ve a configurar y añade una o hasta tres categorias, tambien debes generar las secciones donde se organizaras los productos que cargues al mostrador.</p> -->
+    <?php 
+    if(empty($Datos['secciones'])){  ?>
+        <section class="section_3"  id="Ejemplo_Secciones">
+            <div class="contenedor_24">
+                    <p>Pablo, no tienes secciones donde colocar los producto, ve a configuración y añade secciones donde organizar tus productos</p>
+                <div class="contenedor_87">
+                    <label class="boton boton_4" id="Label_1">Cerrar</label>
+                </div>
+            </div>
+        </section>  <?php
+    }   ?>
 
 	<?php include(RUTA_APP . "/vistas/inc/footer.php");?>

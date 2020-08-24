@@ -7,7 +7,7 @@
             parent::__construct();  
         }
         
-        //Se CONSULTAN los productos de la tienda seleccionada, llamada desde funcionesVarios.js en la funcion vitrina()
+        //SELECT de los productos de la tienda seleccionada
         public function consultarProductos($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT * FROM productos INNER JOIN tiendas_productos ON productos.ID_Producto=tiendas_productos.ID_Producto WHERE tiendas_productos.ID_Tienda = :Tienda");  
             $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             

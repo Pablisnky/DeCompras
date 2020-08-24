@@ -10,7 +10,7 @@ CREATE TABLE `afiliado_com` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `afiliado_com` (`ID_AfiliadoCom`, `nombre_AfiCom`, `apellido_AfiCom`, `cedula_AfiCom`, `telefono_AfiCom`, `correo_AfiCom`, `fecha_AfiCom`, `hora_AfiCom`) VALUES
-(1, 'Pablo', 'Cabeza', '12728036', '04143541194', 'pcabeza7@gmail.com', '2020-08-16', '08:46:00');
+(13, 'Pablo', '', '', '', 'pcabeza7@gmail.com', '2020-08-23', '17:02:00');
 
 CREATE TABLE `afiliado_comingreso` (
   `ID_AfiliadoComIngreso` int(11) NOT NULL,
@@ -19,20 +19,16 @@ CREATE TABLE `afiliado_comingreso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO `afiliado_comingreso` (`ID_AfiliadoComIngreso`, `ID_Afiliado`, `claveCifrada`) VALUES
-(1, 1, '$2y$10$0sWSQGbsxeKOH///EQ4HCerUKxL2H5gvYmUPj7hvOby293DHklb7G');
+(24, 13, '$2y$10$jlTedFjS/fSeSPenz7LE6.h8ZXhrQKV2s5uubZo.O0bsww5sS4FOi');
 
 CREATE TABLE `bancos` (
   `ID_Banco` int(11) NOT NULL,
+  `ID_Usuario` int(11) NOT NULL,
   `bancoNombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `bancoCuenta` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `bancoTitular` int(100) NOT NULL,
-  `bancoRif` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `ID_Usuario` int(11) NOT NULL
+  `bancoTitular` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `bancoRif` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
-INSERT INTO `bancos` (`ID_Banco`, `bancoNombre`, `bancoCuenta`, `bancoTitular`, `bancoRif`, `ID_Usuario`) VALUES
-(1, 'Mercantil', '86739204859305874738', 0, 'J-34598654', 1),
-(2, 'Banesco', '86749234858290126573', 0, 'J-34598654', 1);
 
 CREATE TABLE `categorias` (
   `ID_Categoria` int(11) NOT NULL,
@@ -41,7 +37,11 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`ID_Categoria`, `categoria`) VALUES
 (1, 'Comida Rapida'),
-(2, 'Material médico quirúrgico');
+(2, 'Material médico quirúrgico'),
+(3, 'Supermecado'),
+(4, 'Bodega'),
+(5, 'Panadería'),
+(6, 'Ferretería');
 
 CREATE TABLE `opciones` (
   `ID_Opcion` int(11) NOT NULL,
@@ -72,26 +72,40 @@ CREATE TABLE `productos_opciones` (
   `precio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+CREATE TABLE `secciones` (
+  `ID_Seccion` int(11) NOT NULL,
+  `ID_Tienda` int(11) NOT NULL,
+  `seccion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `secciones` (`ID_Seccion`, `ID_Tienda`, `seccion`) VALUES
+(19, 225, 'Jugos'),
+(20, 225, 'Empanadas'),
+(21, 225, 'Refrescos'),
+(22, 225, 'Papas rellenas');
+
 CREATE TABLE `tiendas` (
   `ID_Tienda` int(11) NOT NULL,
   `nombre_Tien` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `direccion_Tien` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion_Tien` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `telefono_Tien` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `horario_Tien` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `categoria_Tien` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `rif_Tien` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_afiliacion` date NOT NULL,
   `hora_afiliacion` time NOT NULL,
   `ID_AfiliadoCom` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO `tiendas` (`ID_Tienda`, `nombre_Tien`, `direccion_Tien`, `telefono_Tien`, `horario_Tien`, `categoria_Tien`, `fecha_afiliacion`, `hora_afiliacion`, `ID_AfiliadoCom`) VALUES
-(1, 'Empanadas La 13 ', '98562345434', 'Calle 13 con Av. Ver', 'Lunes a Domingo', 'Comida Rapida', '2020-08-16', '08:46:00', 1);
+INSERT INTO `tiendas` (`ID_Tienda`, `nombre_Tien`, `direccion_Tien`, `telefono_Tien`, `rif_Tien`, `fecha_afiliacion`, `hora_afiliacion`, `ID_AfiliadoCom`) VALUES
+(225, 'Empanadas La 13', '', '', '', '2020-08-23', '17:02:00', 13);
 
 CREATE TABLE `tiendas_categorias` (
   `ID_TC` int(11) NOT NULL,
   `ID_Tienda` int(11) NOT NULL,
   `ID_Categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `tiendas_categorias` (`ID_TC`, `ID_Tienda`, `ID_Categoria`) VALUES
+(53, 225, 1);
 
 CREATE TABLE `tiendas_productos` (
   `ID_TP` int(11) NOT NULL,
@@ -109,10 +123,14 @@ CREATE TABLE `usuarios` (
   `ID_Pedido` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+
+--****************************************************************************************************
 --****************************************************************************************************
 
+
 ALTER TABLE `afiliado_com`
-  ADD PRIMARY KEY (`ID_AfiliadoCom`);
+  ADD PRIMARY KEY (`ID_AfiliadoCom`),
+  ADD KEY `CorreoUnico` (`correo_AfiCom`);
 
 ALTER TABLE `afiliado_comingreso`
   ADD PRIMARY KEY (`ID_AfiliadoComIngreso`);
@@ -132,17 +150,14 @@ ALTER TABLE `pedidos`
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`ID_Producto`);
 
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ID_Usuario`);
+ALTER TABLE `secciones`
+  ADD PRIMARY KEY (`ID_Seccion`);
 
 ALTER TABLE `tiendas`
   ADD PRIMARY KEY (`ID_Tienda`);
 
-ALTER TABLE `productos_opciones`
-  ADD PRIMARY KEY (`ID_PO`);
-  -- ADD KEY `OPC_PRO` (`ID_Opcion`),    (Este indice se coloca cuando se hace el Constraint)
-  -- ADD KEY `PRO_OPC` (`ID_Producto`),    (Este indice se coloca cuando se hace el Constraint)
-  -- ADD KEY `PRO_TIE` (`ID_Tienda`);    (Este indice se coloca cuando se hace el Constraint)
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`ID_Usuario`);
 
 ALTER TABLE `tiendas_categorias`
   ADD PRIMARY KEY (`ID_TC`);
@@ -154,19 +169,28 @@ ALTER TABLE `tiendas_productos`
   -- ADD KEY `PRO_TIN` (`ID_Producto`),    (Este indice se coloca cuando se hace el Constraint)
   -- ADD KEY `TIN_PRO` (`ID_Tienda`);    (Este indice se coloca cuando se hace el Constraint)
 
+ALTER TABLE `productos_opciones`
+  ADD PRIMARY KEY (`ID_PO`);
+  -- ADD KEY `OPC_PRO` (`ID_Opcion`),    (Este indice se coloca cuando se hace el Constraint)
+  -- ADD KEY `PRO_OPC` (`ID_Producto`),    (Este indice se coloca cuando se hace el Constraint)
+  -- ADD KEY `PRO_TIE` (`ID_Tienda`);    (Este indice se coloca cuando se hace el Constraint)
+
+
+--****************************************************************************************************
 --****************************************************************************************************
 
+
 ALTER TABLE `afiliado_com`
-  MODIFY `ID_AfiliadoCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_AfiliadoCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 ALTER TABLE `afiliado_comingreso`
-  MODIFY `ID_AfiliadoComIngreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_AfiliadoComIngreso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 ALTER TABLE `bancos`
-  MODIFY `ID_Banco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Banco` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `categorias`
-  MODIFY `ID_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 ALTER TABLE `opciones`
   MODIFY `ID_Opcion` int(11) NOT NULL AUTO_INCREMENT;
@@ -180,11 +204,14 @@ ALTER TABLE `productos`
 ALTER TABLE `productos_opciones`
   MODIFY `ID_PO` int(11) NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `secciones`
+  MODIFY `ID_Seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 ALTER TABLE `tiendas`
-  MODIFY `ID_Tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
 
 ALTER TABLE `tiendas_categorias`
-  MODIFY `ID_TC` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_TC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 ALTER TABLE `tiendas_productos`
   MODIFY `ID_TP` int(11) NOT NULL AUTO_INCREMENT;
@@ -192,7 +219,10 @@ ALTER TABLE `tiendas_productos`
 ALTER TABLE `usuarios`
   MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT;
 
+
 --****************************************************************************************************
+--****************************************************************************************************
+
 
 ALTER TABLE `productos_opciones`
   ADD CONSTRAINT `OPC_PRO` FOREIGN KEY (`ID_Opcion`) REFERENCES `opciones` (`ID_Opcion`) ON DELETE NO ACTION ON UPDATE NO ACTION,

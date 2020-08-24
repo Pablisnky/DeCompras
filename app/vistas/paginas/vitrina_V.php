@@ -6,13 +6,7 @@
     }
 ?>
 
-<section>
-    <div class="contenedor_69">
-        <a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">
-            <span class="span_1" id="Span_1">PedidoRemoto</span>
-        </a>
-        <h1 class="h1_3"><?php echo $NombreTienda?></h1>
-    </div>
+<section class="section_5">
     <div class="contenedor_10">
         <?php
         $Contador = 1;
@@ -41,17 +35,17 @@
                                 <div class="contenedor_19" id="<?php echo 'Cont_A_Clonar_' . $Contador;?>">
                                     <div>
                                         <!-- cantidad -->
-                                        <input type="text" class="input_1e input_3" id="<?php echo 'Cantidad_' . $Contador;?>" value="1"/>
+                                        <input type="text" class="input_1e         " id="<?php echo 'Cantidad_' . $Contador;?>" value="1"/>
                                         <!-- producto -->
-                                        <input type="text" class="input_1a input_3" name="Desc_Producto" id="<?php echo 'Producto_' . $Contador;?>" value="<?php echo $Producto ?>"/>
-                                        <!-- opcion -->
-                                        <input type="text" class="input_1c input_3" name="opcion" id="<?php echo 'Opcion_' . $Contador;?>" value="<?php echo $Opcion ?>"/>
+                                        <input type="text" class="input_1a         " name="Desc_Producto" id="<?php echo 'Producto_' . $Contador;?>" value="<?php echo $Producto ?>"/>
+                                        <!-- opcion - alimentado desde FuncionesVarias.js  -->
+                                        <input type="text" class="input_1c         " name="opcion" id="<?php echo 'Opcion_' . $Contador;?>" value="<?php echo $Opcion?>"/>
                                         <!-- ID_Opcion --> 
-                                        <input type="text" class="input_1b input_3" id="<?php echo 'ID_Opcion_' . $Contador;?>" value="<?php echo $ID_Opcion?>"/>
+                                        <input type="text" class="input_1b         " id="<?php echo 'ID_Opcion_' . $Contador;?>" value="<?php echo $ID_Opcion?>"/>
                                         <!-- Precio - alimentado desde FuncionesVarias.js  -->
-                                        <input type="text" class="input_1d input_3" id="<?php echo 'Precio_' . $Contador;?>"/>
+                                        <input type="text" class="input_1d         " id="<?php echo 'Precio_' . $Contador;?>"/>
                                         <!-- Total - alimentado desde FuncionesVarias.js -->
-                                        <input type="text" class="input_1f input_3" id="<?php echo 'Total_' . $Contador;?>"/>
+                                        <input type="text" class="input_1f         " id="<?php echo 'Total_' . $Contador;?>"/>
                                         <!-- Leyenda - alimentado desde FuncionesVarias.js  -->
                                         <input type="text" class="input_2a" id="<?php echo 'Leyenda_'. $Contador;?>"/>
                                     </div> 

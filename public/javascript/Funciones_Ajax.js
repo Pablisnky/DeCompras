@@ -30,14 +30,12 @@ var http_request = false
         } 
 
 //-------------------------------------------------------------------------------------------------
-//Escucha desde cuenta_editar_V.php 
-document.getElementById('Label_13').addEventListener('click', Llamar_categorias, false)
+//Escucha desde cuenta_editar_V.php
+// document.getElementById('Label_13').addEventListener('click', Llamar_categorias, false)
 
 //Escucha en inicio_V.php                            
 // document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
 
-//Escucha en cuenta_publicar.php                            
-document.getElementById("Producto").addEventListener('keyup', function(){Llamar_producto(this.value)})
 //-------------------------------------------------------------------------------------------------
 //Es llamada desde vitrina_V.php no agrega clon
 function llamar_Opciones_1(ID_Tienda, NombreProducto, ID_Cont_Dinamico, agregacion, Contenedor_Padre, Contenedor_A_Clonar){
@@ -163,45 +161,44 @@ function respuesta_PedidoEnCarrito(){
             // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
         }
     }
-
-//-------------------------------------------------------------------------------------------------
-    // Llamada desde Publicacion_V.php 
-    function Llamar_BuscarOpciones(){
-        var A= document.getElementById("Categoria_pro").value//se inserta el precio del inmueble 
-        var url = "../../Publicacion_C/ConsultarOpciones/" + A
-        http_request.open('GET', url, true)  
-        peticion.onreadystatechange = respuesta_BuscarOpciones
-        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
-        peticion.send("null")
-    }                                                           
-    function respuesta_BuscarOpciones(){
-        if(peticion.readyState == 4){
-            if(peticion.status == 200){    
-                document.getElementById('Descripcion_pro').innerHTML = peticion.responseText
-            } 
-            else{
-                alert('Hubo problemas con la petición.')
-            }
-        }
-        else{ //en caso contrario, mostramos un gif simulando una precarga
-            // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-        }
-    }
     
 //-------------------------------------------------------------------------------------------------
-    // Llamada desde Publicacion_V.php 
-    function Llamar_categorias(){
-        var url = "../Cuenta_C/Categorias/"
+    // Llamada desde cuenta_editar_V.php 
+    // function Llamar_categorias(){
+    //     var url = "../Cuenta_C/Categorias/"
+    //     http_request.open('GET', url, true)  
+    //     peticion.onreadystatechange = respuesta_categorias
+    //     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+    //     peticion.send("null")
+    // }                                                           
+    // function respuesta_categorias(){
+    //     if(peticion.readyState == 4){
+    //         if(peticion.status == 200){    
+    //             document.getElementById("Mostrar_Categorias").style.display = "block"
+    //             document.getElementById('Mostrar_Categorias').innerHTML = peticion.responseText
+    //         } 
+    //         else{
+    //             alert('Hubo problemas con la petición.')
+    //         }
+    //     }
+    //     else{ //en caso contrario, mostramos un gif simulando una precarga
+    //         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    //     }
+    // }
+
+//-------------------------------------------------------------------------------------------------
+    //Llamada desde cuenta_publicar_V.php 
+    function Llamar_seccion(){
+        var url = "../../Cuenta_C/Secciones/"
         http_request.open('GET', url, true)  
-        peticion.onreadystatechange = respuesta_categorias
+        peticion.onreadystatechange = respuesta_seccion
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
         peticion.send("null")
     }                                                           
-    function respuesta_categorias(){
+    function respuesta_seccion(){
         if(peticion.readyState == 4){
             if(peticion.status == 200){    
-                document.getElementById("Mostrar_Categorias").style.display = "block"
-                document.getElementById('Mostrar_Categorias').innerHTML = peticion.responseText
+                document.getElementById("Borrar").innerHTML = peticion.responseText
             } 
             else{
                 alert('Hubo problemas con la petición.')
@@ -252,39 +249,4 @@ function respuesta_PedidoEnCarrito(){
     }
 
 //-------------------------------------------------------------------------------------------------
-    // Llamada desde cuenta_publicar_V.php 
-    // Busca un producto segun lo que escriba el usuario en el input
-    function Llamar_producto(nombre){
-        // var divContenedor = document.getElementById("Buscar_Pedido")//se recibe desde inicio_V.php 
-        console.log(divContenedor)       
-        var xmlhttp
-        if(window.XMLHttpRequest){ //Mozilla, Safari, Chrome...
-            xmlhttp = new XMLHttpRequest()
-            console.log(xmlhttp)
-        } 
-        else{ 
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
-            if(!xmlhttp){
-                alert('No es posible crear una instancia XMLHTTP')
-                return false
-            }
-            else{
-                alert("Instancia creada exitosamente")
-            }     
-        }
-        
-        if(nombre.length === ""){//sino hay nada escrito en el input de buscar, no se ejecuta ninguna accion
-            divContenedor.innerHTML = ""
-        }
-        else{//si hay algo escrito en el input de buscar se ejecuta la peticion de Ajax
-            xmlhttp.onreadystatechange = function(){
-                if(xmlhttp.readyState === 4 && this.status === 200){
-                    divContenedor.innerHTML = xmlhttp.responseText
-                    console.log(xmlhttp.readyState)
-                }  
-            }          
-            xmlhttp.open("GET", "Buscador_C/buscarProducto/" + nombre, true)
-            //se envia la informacion cargada en el input por el usuario al servidor, true, significa que se va a hacer de manera asincrona se utiliza el metodo send para enviar.               
-            xmlhttp.send()
-        }
-    }
+   

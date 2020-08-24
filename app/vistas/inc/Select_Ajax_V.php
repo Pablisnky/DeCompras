@@ -1,10 +1,11 @@
-<!-- Alimenta el select de Descripcion en publicacion_V.php -->
+<!-- Alimenta el select de categorias en cuenta_publicar_V.php viene de Funciones_Ajax.js-->
 <select>
-   <option></option>
+   <option></option> 
    <?php 
-   foreach($Datos as $row){
-       $Opcion = $row['opcion']; ?>
-   <option><?php echo $Opcion;?></option> 
-       <?php
-   }   ?>                
+   foreach($Datos['seccion'] as $row){
+       $SeccionTienda = $row['seccion']; ?>
+    <option><?php echo $SeccionTienda;?></option> 
+        <?php
+   }  
+ ?>                
 </select>    

@@ -29,6 +29,7 @@
     <body>		
 		<div class="contenedor_35">
 			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/afiliacion/Afiliaciones';?>">Afiliaciones</a>
+			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/Planes';?>">Planes</a>
 			<a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a>
 			<a class="a_3" href="<?php echo RUTA_URL . '/Login_C/Inicio sesión';?>">Inicio sesión</a>
 		</div>

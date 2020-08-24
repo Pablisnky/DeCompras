@@ -1,6 +1,8 @@
 <?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
 
-<section>
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/telefono/style_telefono.css"/>
+
+<section class="section_5">
     <div class='contenedor_10'>
         <?php
         $Contador = 1;
@@ -9,7 +11,7 @@
             $Nombre = $row['nombre_Tien'];
             $Direccion = $row['direccion_Tien'];
             $Telefono = $row['telefono_Tien'];
-            $Horario = $row['horario_Tien'];                
+            // $Horario = $row['horario_Tien'];                
             ?> 
             <section>
                 <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>', 'tiendas_V')">
@@ -22,8 +24,8 @@
                         <p class="p_2 p_3"><?php echo $Nombre?></p>
                         <p class="p_2"><?php echo $Direccion?></p>
                         <p class="p_2">San Felipe - Yaracuy</p>
-                        <p class="p_2"><?php echo $Telefono?></p>
-                        <p class="p_2"><?php echo $Horario?></p>
+                        <p class="p_2"><span class="icon-phone" style="display: inline;"></span> <?php echo $Telefono?></p>
+                        <!-- <p class="p_2"><?php echo $Horario?></p> -->
                     </div> 
                 </div>
             </section>

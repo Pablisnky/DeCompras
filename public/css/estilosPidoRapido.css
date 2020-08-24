@@ -62,6 +62,16 @@ button{/*tiendas*/
 	border-radius: 15px;
 	padding: 1%;
 }
+.a_6{/*cuenta_editar*/
+	display: block;
+}
+.ancla_2{/*cuenta_editar*/
+	display: block;
+	content: "marcador ";
+	margin-top: -5%;
+	height: 50px; 
+	visibility: hidden;
+}
 .Blink{/*header*/
 	animation-name: blinker;
 	animation-duration: 1s;
@@ -277,7 +287,7 @@ button{/*tiendas*/
 .contenedor_23{/*header.php*/
 	width: 33%;
 }
-.contenedor_24{/*carrito - Categorias_Ajax*/
+.contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar*/
 	background-color: rgb(239, 245, 245);
 	width: 70%;
 	margin:2% auto;
@@ -547,11 +557,14 @@ button{/*tiendas*/
 	width: 70%;
 	margin: 5% auto 15% auto;
 }
-.contenedor_67{/*registroCom - registroDes*/
-	padding: 5% 0%;
+.contenedor_67{/*cuenta_editar*/
+	/* background-color: red; */
+	padding: 5% 2%;
 	border-bottom-color: rgb(51, 51, 51);
 	border-bottom-width: 3px;
 	border-bottom-style: solid;
+	border-radius: 15px;
+	margin-top: 10%;
 }
 .contenedor_69{/*tiendas - header - header_AfiCom*/
 	position: fixed;
@@ -595,22 +608,55 @@ button{/*tiendas*/
 	width: 90%;
 	margin: auto;
 }
-.contenedor_80{/*registroCom - cuenta_editar*/
+.contenedor_80{/*cuenta_editar*/
 	margin: 2% auto !important;
-	display: block;
+	display: flex;
+	justify-items: center;
 	font-size: 1em;
-	line-height: 30px;
+	line-height: 25px;
 	width: 90%;
 	padding-left: 5%;
 }
 .contenedor_81{/*cuenta_editar*/
 	margin: -2% auto !important;
 }
+.contenedor_83{/*cuenta_editar*/
+	background-color: rgb(239, 245, 245);
+	padding: 1%;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	position: fixed;
+	top: 20%;
+	left: 80%;
+	width: 20%;	
+}
+.contenedor_84{/*cuenta_editar*/
+	display: grid;
+	grid-template-columns: 20% 20% 20% 20%;
+	grid-template-rows: min-content !important;
+	column-gap: 5%;
+}
+.contenedor_85{/*cuenta_editar*/
+	display: grid;
+	grid-template-columns: 25% 70%;
+	grid-template-rows: min-content;
+	column-gap: 5%;
+}
+.contenedor_86{/*cuenta_editar*/
+	border-right-color: rgb(51, 51 ,51);
+	border-right-width: 1px;
+	border-right-style: solid;
+}
+.contenedor_87{/*cuenta_editar*/
+	grid-column-start: 1;
+	grid-column-end: 5; 
+	text-align: center;
+}
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 50%;
 	margin: auto;
 	border-radius: 15px;
-	padding: 2% ;
+	padding: 2%;
 }
 .fieldset_2{/*registroCom - registroDes*/
 	margin-top: 5%;
@@ -789,8 +835,8 @@ button{/*tiendas*/
 .input_7{/*carrito*/
 	font-weight: bold;
 }
-.input_9{/*registroCom - registroDes - carrito - login*/
-	margin: 2% auto !important;
+.input_9{/*registroCom - registroDes - carrito - login - cuenta_publicar*/
+	margin: 0% auto 2% auto !important;
 	display: block;
 	font-size: 1em;
 	line-height: 30px;
@@ -802,6 +848,11 @@ button{/*tiendas*/
 }
 .input_11{/*carrito*/
 	text-align: center;
+}
+.input_12{/*cuenta_editar*/
+	width: 85%;
+	margin-left: 5% !important;
+	display: inline-block;
 }
 .label_1{/*vitrina*/
 	font-weight: bold;
@@ -885,11 +936,12 @@ button{/*tiendas*/
 	padding: 1%;
 }
 .label_13{/*cuenta_editar*/
+	/* background-color: red; */
 	display: block;
 	font-weight: bold ;
 	padding-left: 5%;
 	font-size: 1em;
-	margin-bottom: -1%;
+	/* margin-top: 4%; */
 }
 .label_14{/*Categorias_Ajax*/
 	line-height: 30px;
@@ -897,11 +949,12 @@ button{/*tiendas*/
 .label_15{/*registroCom*/
 	color: rgba(0, 0, 0, 0.6);
 }
-.label_16{/*registroCom*/
-	color: rgb(0, 0, 0);
+.label_16{/*cuenta_editar*/
+	/* color: rgb(0, 0, 0); */
 	font-weight: bold ;
 	font-size: 1em;
 	display: inline-block;
+	margin: 2% auto;
 	margin-left: -6% !important;
 }
 .legend_1{/*registroCom - registroDes - login*/
@@ -931,6 +984,20 @@ button{/*tiendas*/
 	border: none;
 	margin: 0px !important;
 	width: 30%;
+}
+.marcador{/*cuenta_editar*/ 
+	color: rgb(51, 51 ,51);
+	text-align: right;
+	line-height: 30px;
+	display: block;
+	width: 100%;
+	font-size: 1.1em !important;
+}
+.marcador:hover{
+	cursor: pointer;
+	background-color: rgba(51, 51, 51, 0.2);
+	border-radius: 15px;
+	padding-right: 5%;
 }
 .menos{/*vitrina*/
 	background-color:rgb(78, 43, 43);
@@ -1000,9 +1067,9 @@ button{/*tiendas*/
 	text-align: center;
 }
 .p_6{/*entrada*/
-	padding-bottom: 1%;
 	text-align: center;
 	font-size: 1.5em;
+	margin-bottom: 3%;
 }
 .p_7{/*inicio*/
 	font-size: 1.5em;
@@ -1014,6 +1081,10 @@ button{/*tiendas*/
 	text-align: center;
 	font-size: 1.9em;
 }
+.p_9{/*cuenta_editar*/
+	grid-column-start: 1;
+	grid-column-end: 5;
+}
 .scrollNavigation[href="#top"]{
 	top: 0px
 }
@@ -1024,7 +1095,7 @@ button{/*tiendas*/
 .section_2{/*ciudad*/
 	padding-top: 3%; 
 }
-.section_3{/*carrito - opciones*/
+.section_3{/*carrito - opciones - cuenta_editar*/
 	background-color: rgba(0, 0, 0, 0.8);
 	position: fixed;
 	top: 0vw;
@@ -1038,19 +1109,23 @@ button{/*tiendas*/
 	left: 0;
 	height: 400%;
 }
-.section_5{/*afiliacion*/
+.section_5{/*afiliacion - tiendas*/
 	height: 100%;
 }
 .section_6{/*afiliacion*/
 	background-color: rgb(239, 245, 245);
 }
+.section_7{/*carrito - opciones - cuenta_editar*/
+	display:  none;
+}
 .select_1{/*cuenta_publicar*/
-	margin: 2% auto !important;
+	margin: 0% auto 2% auto;
 	display: block;
 	font-size: 1em;
-	height: 30px;
-	width: 90%;
+	height: 33px;
+	width: 100%;
 	padding-left: 5%;
+	line-height:40px;
 }
 .span_2{/*vitrina*/
 	font-size: 1.5em !important;
@@ -1101,12 +1176,30 @@ button{/*tiendas*/
 	display: inline-block;
 	margin-left: 80% !important;
 	font-size: 1.2em;
-	margin-top: 1.5%;
+	margin-top: 3%;
 	color: rgba(0, 0, 0, 0.6);
 }
 .span_11{/*registroCom*/
 	display: inline-block;
 	margin-left: 75%;
+}
+.span_12{/*cuenta_editar*/
+	margin-left: 2% !important;
+	margin-top: 0%;
+}
+.span_12:hover{/*cuenta_editar*/
+	cursor: pointer;
+}
+.span_13{/*cuenta_editar*/
+	display: inline-block;
+}
+.span_14{/*cuenta_editar*/
+	display: block;
+	padding-left: 90% !important;
+	margin-top: -2%;
+}
+.span_14:hover{/*cuenta_editar*/
+	cursor: pointer;
 }
 .tabla{/*carrito*/
 	width: 100%;
@@ -1130,6 +1223,7 @@ button{/*tiendas*/
 }
 .textarea_1{/*carrito - cuenta_publicar*/
 	width: 100%;
+	margin-bottom: 2%;
 }
 .th_1{/*carrito*/
 	width: 10%;

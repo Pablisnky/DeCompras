@@ -1,4 +1,4 @@
-<!-- Archivo cargado por petición Ajax desde funcionesAjax.js en la función llamar_Opciones() he insertado en vitrina_Vz.php -->
+<!-- Archivo cargado por petición Ajax desde funcionesAjax.js en la función llamar_Opciones() he insertado en vitrina_V.php -->
 <section class="section_3" id="Section_3">
     <div>
         <a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">

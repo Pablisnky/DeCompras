@@ -2,12 +2,23 @@
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
 
-//Escucha en login_V.php     
-//Si activo este listener deja de funcionar el menu responsive cuando se hace click por fuera del menu                          
+
+//Si activo los listener deja de funcionar el menu responsive cuando se hace click por fuera del menu 
+
+
+
+//Escucha en login_V.php                              
 // document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
+
+//Escucha en inicio_V.php - cuenta_editar_V.php  - cuenta_publicar_V.php                          
+document.getElementById("Label_1").addEventListener('click', function(){CerrarModal_X("Ejemplo_Secciones")})
 
 //Declarar el array que contiene los ID_Opcion que se añaden al carrito
 //Verificar para que sirve, creo que solo es util en la función decremento
+
+
+
+
 let PedidoCarrito = []
 
 //Declarar el array que contiene los detalles de cada pedido atomico(cantidad, producto, precio, total) cada detalle se inserta al array como un objeto JSON
@@ -40,7 +51,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 //************************************************************************************************
 
-//Llamada desde opciones_V.php 
+//Llamada desde opciones_V.php es llalamada cuando se agrega un clon
 let orden = 1
 function AgregaOpcion(form, C_Padre, C_AClonar){
     console.log("______Desde Agrega Opcion______")
@@ -141,52 +152,89 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 //************************************************************************************************
-    // Llamada desde registroCom_V.php selecciona tres categorias en los tipos de tiendas
-    var Limite = []
-    var Categoria = []
-    function transferirCategoria(){
+    //Llamada desde cuenta_editar.php selecciona tres categorias en los tipos de tiendas
+    function transferirCategoria(form){
+        //Se declara el array que contendra la cantidad de categorias seleccionadas
+        var TotalCategoria = []
+
         console.log("______Desde transferir Categoria______")
 
-        //Se recoge la seleccion enviada desde Categorias_Ajax_V.php
-        Categoria = document.getElementsByClassName("categoria_js")
+        //Se reciben los elementos del formulario mediante su atributo name
+        Categoria = form.categoria
 
-        //Se declara una variable contador para asignarle el name al nuevo elemento creado
-        // name_dinamico = 1
+        //Se convierte el parametro recibido en un array
+        // var categoria = Categorias.split(',')
+        // Se declara el array que contiene las categorias
+        var Limite = []
+        //Se verifica la cantidad de categorias seleccionadas
+        console.log(Categoria)
 
-        //Se recorrer las categorias para verficar cuales estan seleccionadas
+            //Se eliminan las categorias que estaban y se colocan las que estan en el array TotalCategoria
+            //Se busca el nodo padre que contiene el input donde esta el producto a eliminar
+            let DivHijo = document.getElementsByClassName("imput_6js")
+
+            //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos
+            Elementos = DivHijo.length
+            for(var i = 0; i<Elementos; i++){ 
+                console.log(Elementos) 
+                console.log("Eliminado")
+
+                DivHijo_2 = document.getElementsByClassName("imput_6js")[0]
+                let DivPadre = document.getElementById("Fieldset")
+                DivPadre.removeChild(DivHijo_2);  
+            }
+
+
+        //Se recorren las categorias para verficar cuales estan seleccionadas
         for(var i = 0; i<Categoria.length; i++){
             if(Categoria[i].checked){
-                // Categoria= Categoria[i].value 
-                Categoria[i].value                  
-                console.log(Categoria[i].value)        
-                        
-                //Si no hay mas de tres categorias y si no estan repetidas
-                if(Limite.length <= 2 && Limite.includes(Categoria[i].value) == false){         
-                    //Se carga la categoria al array, este solo permitie tres elementos
-                    Limite.push(Categoria[i].value )
-                    console.log("El elemento se cargo al array")
-                    console.log(Limite)  
+                CantidadCategoria = Categoria[i].value 
+                TotalCategoria.push(CantidadCategoria)   
+            }
+        }
+           
+        console.log(TotalCategoria.length)
+        //Se recoge la seleccion enviada desde CantidadCategorias_Ajax_V.php
+        // Categoria = document.getElementsByClassName("categoria_js")
 
-                    //Se crea un nuevo input que cargara la categoria
-                    var NuevoElemento = document.createElement("input")
+        //Se verifica que no hayan más de tres categorias selecionadas
+        if(TotalCategoria.length <= 3){
+        //     //Se recorren las categorias para verficar cuales estan seleccionadas
+        //     // for(var i = 0; i<Categoria.length; i++){
+        //     // if(Categoria[i].checked){
+        //     //     // Categoria= Categoria[i].value 
+        //     //     Categoria[i].value                  
+        //     //     // console.log(Categoria[i].value)        
+                                 
+            //Se carga la categoria al array, este solo permitie tres elementos
+            // Limite.push(Categoria[i].value )
+            console.log("Las categorias seleccionadas son")
+            console.log(TotalCategoria)  
 
-                    //Se da propiedades al elemento creado
-                    NuevoElemento.value = Categoria[i].value 
-                    NuevoElemento.classList.add("input_9", "borde_2")
-                    NuevoElemento.name = "categoria[]"
-                    NuevoElemento.readOnly = true
 
-                    //Se especifica el elemento donde se va a insertar el nuevo elemento
-                    var ElementoPadre = document.getElementById("Fieldset")
+            id_dinamico = 1
+            //Se da propiedades a los elementos creados
+            for(var i = 0; i<TotalCategoria.length; i++){
+                //Se crean los input que cargara la categorias contenidas en el array TotalCategoria
+                var NuevoElemento = document.createElement("input")
+                
+                NuevoElemento.value = TotalCategoria[i] 
+                NuevoElemento.classList.add("input_9", "borde_2", "imput_6js")
+                NuevoElemento.name = "categoria[]"
+                NuevoElemento.id = "Input_6js_" + id_dinamico
+                NuevoElemento.readOnly = true
 
-                    //Se inserta en el DOM elcreados input creado
-                    inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
-                    // name_dinamico++   
-                }
-                else{
-                    console.log("Máximo categorias seleccionadas")
-                }                
-            }         
+                //Se especifica el elemento donde se va a insertar el nuevo elemento
+                var ElementoPadre = document.getElementById("Fieldset")
+
+                //Se inserta en el DOM el input creado
+                inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+            }
+                   id_dinamico++   
+        }
+        else{
+            console.log("Máximo categorias seleccionadas")  
+            alert("Solo pueden seleccionarse tres categorias")   
         }    
         CerrarCategoria() 
     }
@@ -222,10 +270,11 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     //Guarda el monto total del pedido que se muestra en el display
     TotalDisplayCarrito = []  
 
+    //Llamada desde opciones:V.php
     function transferirOpcion(form){
         console.log("______Desde transferir Opcion______")
         Opcion = form.opcion
-        
+        console.log(Opcion)
         //Se sombrea el contenedor que tiene cargado un producto en el el carrito
         let I = localStorage.getItem("ID_cont_dinamico");                
         document.getElementById(I).style.backgroundColor = "rgba(51, 51, 51, 0.3)";
@@ -252,7 +301,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
             //Se captura el id dinamico del elemento que va a contener la opcion seleccionada, este elemento se crea cuando se hace click en un producto 
             Opc = document.getElementsByClassName("input_1c").id = localStorage.getItem('ID_Opcion')
-
+            console.log(Opc)
             //Se captura el id dinamico del elemento que va a contener el precio, este elemento se crea cuando se hace click en un producto 
             let Pre = document.getElementsByClassName("input_1d").id = localStorage.getItem('id_input_precio')
             
@@ -264,15 +313,17 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
             
             //Se captura el id dinamico del elemento que va a contener la leyenda,este elemento se crea cuando se hace click en un producto   
             let input_leyenda = localStorage.getItem('ID_inputleyenda')
+            console.log(input_leyenda)
 
-            //Se recorrer las opciones del producto para 
-            for(var i=0; i<Opcion.length; i++){
+            console.log(Opcion.length)
+            //Se recorrer las opciones del producto 
+            for(var i = 0; i<Opcion.length; i++){
                 if(Opcion[i].checked){
-                    Opcion= Opcion[i].value
-
+                    Opcion = Opcion[i].value
+                    console.log(Opcion[i].value)
                     //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el nombre y el precio separados por una coma, es necesario separar ambos valores
                     let Separado = Opcion.split(",")  
-
+                    console.log(Separado[0])
                     //Se obtiene el ID_Opcion contenido en "Separado"
                     Separado[0]
 
@@ -718,25 +769,9 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     }
    
 //************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//************************************************************************************************
     //Llamada desde login_V.php
     function DesabilitarBoton(){
-        document.getElementsByClassName("submit_js")[0].value = "Enviando ..."
+        document.getElementsByClassName("submit_js")[0].value = "Creando tienda ..."
     }
 
 //************************************************************************************************
@@ -747,6 +782,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
         // console.log("_____Desde función anonima para ocultar menu_____")
         //obtiendo informacion del DOM del elemento donde se hizo click 
         var click = e.target
+        console.log(click)
         if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
             div.style.marginLeft = "-48%"
         }
@@ -883,8 +919,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
         document.getElementById("Mostrar_TodoPedido").style.display = "none";
     }
 
-//************************************************************************************************
-    
+
 
     
     // console.log("Se eliminan todos los objetos de un mismo producto menos el ultimo")

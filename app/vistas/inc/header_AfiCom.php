@@ -32,9 +32,10 @@
 			<label id="ComandoMenu" class="comandoMenu" onclick="mostrarMenu()"><span class="icon-menu span_6" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Mi cuenta</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Mis publicaciónes</a></li>
-                    <li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Publicar/';?>">Nueva publicación</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Mi Tienda</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/';?>">Productos</a></li>
+                    <li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Publicar/';?>">Cargar producto</a></li>
                     <li><a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a></li>
 				</ul>
 			</nav>
