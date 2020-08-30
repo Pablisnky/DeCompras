@@ -1,12 +1,12 @@
 <?php include(RUTA_APP . '/vistas/inc/header_inicio.php');  ?>
 
-    <section class="section_1">
-        <div class="contenedor_37">
+    <section class="section_1" id="Section_1">
+        <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
             <!-- <h2 class="h2_4">solicitudes desde casa</h2> -->
-            <h2 class="h2_4">Tú tienda en toda la ciudad</h2>
+            <h2 class="h2_4">Tú tienda en todas las ciudades</h2>
         </div>
-        <div class="contenedor_51">
+        <div class="contenedor_51" id="Contenedor_51">
             <div>
                 <span class="icon-cart span_6"></span>
             </div>
@@ -17,19 +17,26 @@
                 <span class="icon-home2 span_6"></span>
             </div>
         </div>
-        <h3><a class="a_2" id="Categoria" href="#up">Tiendas</a></h3>
+        <div class="contenedor_88" id="Contenedor_88">
+            <label class="a_2" id="Tiendas" onclick="transicionTiendas()">Tiendas</label>
+        </div>
     </section>
     
     <section id="Section_2js">
         <div class='contenedor_4'>
             <div class='contenedor_6 borde_1' id="Contenedor_6a">
-                <h2 class='h2_1' id="H2_1">COMIDA</h2>
+                <h2 class='h2_1'>COMIDA</h2>
                 <span class="icon-spoon-knife span_8"></span>
             </div> 
 
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
                 <span class="icon-barcode span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>ROPA Y ZAPATO</h2>
+                <span class="icon-man-woman span_8"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6c">
@@ -80,5 +87,4 @@
 
 <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/scrollUp.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Inicio.js';?>"></script> 

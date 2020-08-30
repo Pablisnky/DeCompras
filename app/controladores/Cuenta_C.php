@@ -72,6 +72,12 @@
                 'secciones' => $Secciones
             ];
             
+            //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya las tiene creadas cuando vaya a cargar un producto
+            foreach($Datos['secciones'] as $Key){
+                $Seccion = $Key['seccion'];
+            }                   
+            $_SESSION['Seccion'] = $Seccion;
+            
             $this->vista("paginas/cuenta_publicar_V", $Datos);
         }
 
@@ -170,9 +176,9 @@
             // }
 
 
-// ************************************************************************************************
-//Procedimiento para INSERTAR la categoria de la tienda esto debe ser por medio de TRANSACCIONES
-// ************************************************************************************************
+            // **********************************************************************************
+            //Procedimiento para INSERTAR la categoria de la tienda esto debe ser por medio de TRANSACCIONES
+            // **********************************************************************************
             // 1-Se ELIMINAN todas las categorias que tiene la tienda
             $this->ConsultaCuenta_M->eliminarCategoriaTienda($this->ID_Tienda);
             
@@ -183,17 +189,17 @@
             //Se INSERTA la dependenciatransitiva entre la tienda y la categoria a la que pertenece
             $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);
 
-// ************************************************************************************************
-//Procedimiento para INSERTAR las secciones de la tienda estos deben ser por medio de TRANSACCIONES
-// ************************************************************************************************
+            // **********************************************************************************
+            //Procedimiento para INSERTAR las secciones de la tienda estos deben ser por medio de TRANSACCIONES
+            // **********************************************************************************
             // 1-Se ELIMINAN todas las secciones que tiene la tienda
             $this->ConsultaCuenta_M->eliminarSeccionesTienda($this->ID_Tienda);
 
             //2-Se INSERTAN las secciones de la tienda  
             $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $SeccionTienda);
             
-// ************************************************************************************************
-// ************************************************************************************************
+            // **********************************************************************************
+            // **********************************************************************************
 
             //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado
             $this->ConsultaCuenta_M->actualizarAfiliadoComercial($this->ID_Afiliado, $RecibeDatos);
@@ -233,7 +239,7 @@
             $this->vista("inc/Categorias_Ajax_V", $Datos);
         }
 
-        //Metodo llamado desde Funciones_Ajax.js
+        //Metodo invocado desde Funciones_Ajax.js
         public function Secciones(){
             //Muestra las secciones que tiene una tienda llamada desde Funciones_Ajax.js
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
@@ -242,16 +248,17 @@
             $Datos = [
                 'seccion' => $Seccion
             ];
-       
-            $this->vista("inc/Select_Ajax_V", $Datos);
+                   
+            $this->vista("inc/Secciones_Ajax_V", $Datos);
         }
 
         public function recibeProducto(){
             // Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
 
                 $RecibeProducto = [
                     //Recibe datos de la persona responsable
+                    'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
                     'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
                     'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
@@ -270,11 +277,27 @@
             //Se INSERTA la descripcion del producto en la BD y se retorna el ID recien insertado
             $ID_Opcion = $this->ConsultaCuenta_M->insertarDescripcionProducto($RecibeProducto);
 
-            //Se INSERTA la dependenciatransitiva entre producto, descripcion, tienda y precio
-            $this->ConsultaCuenta_M->insertarDT_ProOpcTie($RecibeProducto, $ID_Producto, $ID_Opcion);
+            //Se CONSULTA el ID_Seccion de la seccion del producto
+            $Consulta = $this->ConsultaCuenta_M->consultarID_Seccion($RecibeProducto);
+            $ID_Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+        
+            //Se INSERTA el ID_Seccion y el ID_Tienda del producto en la BD
+            // $Seccion = $this->ConsultaCuenta_M->insertarDT_SecPro($RecibeProducto, $ID_Seccion);
+
+            //Se INSERTA la dependenciatransitiva entre  producto, opciones
+            $this->ConsultaCuenta_M->insertarDT_ProOpc($ID_Producto, $ID_Opcion);
             
             //Se INSERTA la dependenciatransitiva entre producto y la tienda que ofrece el producto
-            $this->ConsultaCuenta_M->insertarDT_ProTie($RecibeProducto, $ID_Producto);
+            // $this->ConsultaCuenta_M->insertarDT_ProTie($RecibeProducto, $ID_Producto);
+
+            //Se INSERTA la dependenciatransitiva entre secciones y las opciones (en los casos que no hay especificidad de producto)            
+            $this->ConsultaCuenta_M->insertarDT_SecOpc($ID_Seccion, $ID_Opcion);
+
+            //Se INSERTA la dependenciatransitiva entre secciones y los productos
+            $this->ConsultaCuenta_M->insertarDT_SecPro($ID_Seccion, $ID_Producto);
+
+            //Se INSERTA la dependenciatransitiva en la tabla central
+            // $this->ConsultaCuenta_M->insertarDTC($RecibeProducto, $ID_Producto);
 
             //Se consulta el ID_Categoria de las categorias seleccionadas
             // $Consulta = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
@@ -284,6 +307,68 @@
             // $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categoria, $this->ID_Tienda);
 
             $this->vista("paginas/cuenta_publicar_V");
+        }
+                
+        //Metodo invocada desde cuenta_editar_pro_V.php
+        public function recibeAtualizarProducto(){
+            // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
+
+                $RecibeProducto = [
+                    //Recibe datos de la persona responsable
+                    'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
+                    'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
+                    'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
+                    'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
+                    'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
+                    'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
+                ];
+            }
+            else{
+                echo "Llene todos los campos del formulario de producto";
+                echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+                exit();
+            }
+
+            // Estas dos sentencias de actualización deben realizarce por medio de transsacciones
+            $this->ConsultaCuenta_M->actualizarOpcion($RecibeProducto);
+            $this->ConsultaCuenta_M->actualizarProducto($RecibeProducto);
+
+            $Datos = $this->Productos();
+            $this->vista("paginas/cuenta_productos_V", $Datos);
+        }
+
+        //metodo invocado desde cuenta_productos_V.php
+        public function actualizarProducto($ID_Producto){
+            //Consulta las especiicaciones de un producto determinado y de una tienda especifica
+            $Consulta = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
+            $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->vista("paginas/cuenta_editar_prod_V", $Datos);
+        }
+
+        //metodo invocado desde cuenta_productos_V.php
+        public function eliminarProducto($DatosAgrupados){
+            //$DatosAgrupados contiene una cadena con el ID_Opcion y ID_Producto separados por coma, se convierte en array para separar los elementos
+            
+            $DatosAgrupados = explode(",", $DatosAgrupados);
+            
+            $ID_Producto = $DatosAgrupados[0];
+            $ID_Opcion = $DatosAgrupados[1];
+
+            // *************************************************************************************
+            //La siguientes cinco consultas entran en el procedimeinto para ELIMINAR un producto de una tienda, esto debe hacerse mediante transacciones            
+            // *************************************************************************************
+            $this->ConsultaCuenta_M->eliminarProductoSeccion($ID_Producto);
+            $this->ConsultaCuenta_M->eliminarProductoOpcion($ID_Producto);
+            $this->ConsultaCuenta_M->eliminarProductoTienda($ID_Producto);
+            $this->ConsultaCuenta_M->eliminarOpcion($ID_Opcion);
+            $this->ConsultaCuenta_M->eliminarOpcionSeccion($ID_Opcion);            
+            // *************************************************************************************
+            // *************************************************************************************
+
+            $Datos = $this->Productos();
+            $this->vista("paginas/cuenta_productos_V", $Datos);
         }
     }
 ?>    

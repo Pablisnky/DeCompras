@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/camion/style_camion.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>		
 
-<section class="section_5">
+<section class="section_5" id="Section_5">
     <div class="contenedor_70">
         <p class="p_1">Tu tienda en toda la ciudad</p>
         <p class="p_8">Unete a nuestra red de comercialización de productos.</p>
@@ -21,18 +21,18 @@
         </div>
     </div>
     <div class="contenedor_41">
-        <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Quiero unirme como despachador</a>
-        <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Quiero unirme como comerciante</a>
+        <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>
+        <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Unirme como comerciante</a>
     </div>    
 </section>
-<section class="section_5 section_6">
+<section class=" section_6">
     <div class='contenedor_10 contenedor_38'>
         <div class="contenedor_71">
             <p class="p_1">Roles de afiliados</p>
         </div>
         <div class="">
             <p class="p_3 p_5">Usuario</p>
-            <p>Es el centro de atención de la aplicación, todo nuestro esfuerzo esta basado en crear un impacto positivo en la sociedad, enfocandonos en el uso eficaz del tiempo de nuestros usuarios, de modo que las trivialidades cotidianas no le hagan abandonar sus asuntos más importantes.</p>
+            <p>Es el centro de atención de la aplicación, la razón por la que las tiendas deben existir, nuestro esfuerzo esta basado en crear un impacto positivo en la sociedad, enfocandonos en el uso eficaz del tiempo de nuestros usuarios, de modo que las trivialidades cotidianas no le hagan abandonar sus asuntos más importantes.</p>
             <p>El usuario final no tiene necesidad de afiliación, el costo de uso de la plataforma es de 2 % sobre el monto total que arroje su pedido, más el costo de envio que es similar al del servicio de taxi local.</p>
         </div>        
         <div class="contenedor_79">

@@ -1,7 +1,42 @@
-document.getElementById("Label_4").addEventListener('click', nuevaCuentaBancaria, false)
-document.getElementById("Label_5").addEventListener('click', crearSeccion, false)
+
 document.addEventListener("click", preEliminarSeccion)
+
+//Escucha en cuenta_editar_V.php 
+document.getElementById("Label_4").addEventListener('click', nuevaCuentaBancaria, false)
+
+//Escucha en cuenta_editar_V.php 
+document.getElementById("Label_5").addEventListener('click', crearSeccion, false)
+
+//Escucha en cuenta_editar_V.php 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
+
+//Escucha en cuenta_editar_V.php 
+document.getElementById("Cedula").addEventListener('keyup', function(){formatoMiles(this)})
+
+//Escucha en cuenta_editar_V.php por medio de una función anonima debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
+document.getElementById('Label_13').addEventListener('click',function(event){ 
+    Llamar_categorias()
+}, false);
+
+//Escucha en cuenta_editar_V.php por medio de una función anonima debido a porque el manejador de eventos se encuentra en otro archivo                   
+document.getElementById("Label_1").addEventListener('click', function(){
+    CerrarModal_X("Ejemplo_Secciones")
+});
+
+// *****************************************************************************************************
+//Da el formato de separador de miles
+function formatoMiles(numero){
+    var num = numero.value.replace(/\./g,'')
+    if(!isNaN(num)){
+        num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.')
+        num = num.split('').reverse().join('').replace(/^[\.]/,'')
+        numero.value = num
+    }
+    else{ 
+        alert('Solo se permiten numeros')
+    numero.value = numero.value.replace(/[^\d\.]*/g,'')
+    }
+}
 
 // *****************************************************************************************************
 //Clona todo el div que continen los inputs que capturan los datos de una cuenta bancaria

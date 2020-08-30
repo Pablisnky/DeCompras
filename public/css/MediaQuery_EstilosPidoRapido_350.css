@@ -1,0 +1,80 @@
+@media screen and (max-width: 350px){
+
+.a_2{/*inicio*/
+	font-size: 1.3em;
+	border-radius: 8px;
+	padding: 0.1% 1% 0.1% 1.5%;
+	letter-spacing: 0.4em;
+}
+.comandoMenu{/*header - header_Tienda*/
+	margin-top: 13%;
+}
+.contenedor_10{/*tiendas - vitrina - afiliacion - planes*/
+	min-height: initial;
+}
+.contenedor_21{/*vitrina*/
+	margin-bottom: 0%;
+	padding-bottom: 0%;
+}
+.contenedor_31{/*vitrina*/
+	/* background-color: red; */
+	padding: 0%;
+}
+.contenedor_41{/*afiliacion*/
+	margin-top: 45%;
+}
+.contenedor_61{/*vitrina*/
+	z-index: 1;
+    top: 93%;
+	height: 7%;
+}
+.contenedor_84{/*cuenta_editar - planes*/
+	grid-template-columns: 100%;
+	width: 100% !important;
+}
+.contenedor_93{/*planes*/
+	padding-top: 25%;
+	margin:auto;
+	/* height: 100%; */
+}
+.contenedor_94{/*planes*/
+	width: 80%;
+	margin: 8% auto;
+}
+.input_5{/*vitrina*/
+	font-size: 0.9em !important;
+}
+.label_12{/*carrito - Secciones_Ajax*/
+	padding: 1% 2%;
+	margin-right: 1%;
+}
+.label_12:hover{/*carrito - Secciones_Ajax*/
+	padding: 1% 2%;
+}
+.label_17{/*header_Tienda*/
+	height: 1.5em;
+	line-height: 1.5em;
+	font-size: 1.5em;
+}
+.menuResponsive ul{/*Todas  las paginas*/
+	width: 100%;
+}
+.p_9{/*cuenta_editar - planes*/
+	grid-column-start: initial;
+	grid-column-end: initial;
+}
+.p_11{/*tiendas*/
+	font-size: 1.4em;
+	margin-bottom: 5%;
+}
+.section_5{/*afiliacion - tiendas - vitrina - planes*/
+	/* min-height: initial; */
+}
+.section_6{/*afiliacion*/
+	height: 250%;
+}
+.span_2{/*vitrina*/
+	font-size: 1.1em !important;
+}
+
+}

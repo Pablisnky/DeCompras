@@ -6,6 +6,18 @@
         public function __construct(){ 
             parent::__construct();  
         }
+
+        //SELECT de las secciones de la tienda seleccionada
+        public function consultarSecciones($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT seccion FROM secciones WHERE ID_Tienda = :Tienda  ORDER BY seccion");  
+            $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return false;
+            }
+        }
         
         //SELECT de los productos de la tienda seleccionada
         public function consultarProductos($ID_Tienda){

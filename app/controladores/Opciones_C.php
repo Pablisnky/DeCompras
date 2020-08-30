@@ -1,6 +1,5 @@
 <?php
 //Archivo llamado desde Funciones_Ajax.js por medio de la función llamar_Opciones()
-
     class Opciones_C extends Controlador{
 
         public function __construct(){
@@ -21,20 +20,20 @@
                 case 'PizzaGrande':
                     $Producto = 'Pizza Grande';
                 break;    
-                case 'Paparellena':
-                    $Producto = 'Papa rellena';
+                case 'Papasrellenas':
+                    $Producto = 'Papas rellenas';
                 break;    
             }
 
             $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Producto);   
             $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
             $Datos=[
-                "Inf_Consulta" => $Consulta,
+                "Opciones" => $Consulta, //opcion, ID_Opcion, precio, producto
                 "AgregarNodo" => $Agregacion,
                 "Cont_Pad" => $Cont_Padre,
                 "Cont_a_Clonar" => $Cont_a_Clonar
             ];
-            
+                    
             $this->vista("paginas/opciones_V", $Datos);
         }        
     }

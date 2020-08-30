@@ -6,7 +6,6 @@
             <div class="contenedor_76">
                 <?php                        
                 $ContadorCategoria = 1;
-                $CategoriaTienda = array();
                 //$Datos['categorias'] trae información de la consulta categorias() llamada desde Cuenta_C.php trae todas las categorias que hay en la plataforma
                 foreach($Datos['categorias'] as $row){
                     $Categoria = $row['categoria'];
@@ -18,8 +17,7 @@
                                 foreach($Datos['categoriasTienda'] as $row_2){
                                     $CategoriaT = $row_2['categoria']; 
                                 ?>
-                                    <input class="categoria_js" type="checkbox"  name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php echo $Categoria ?>"
-                                    <?php if($CategoriaT == $Categoria){echo 'checked';} 
+                                    <input class="categoria_js" type="checkbox"  name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php echo $Categoria;?>" <?php if($CategoriaT == $Categoria){echo 'checked';} 
                                 }?> /> <?php 
                             }
                             else{   ?>
@@ -30,14 +28,10 @@
                     <?php
                     $ContadorCategoria++;
                 }
-
-                //Se convierte el array en una cadena, los elementos se separan con ","
-                // $Cat_Tienda = implode(',', $Cat_Tienda);
-                // var_dump($Cat_Tienda );
                 ?>
             </div> 
             <div class="contenedor_77">
-                <input type="text" class="boton" onclick="transferirCategoria(this.form)" value="Cerrando">
+                <input type="text" class="boton" onclick="transferirCategoria(this.form)" value="Enviar">
             </div>
         </form>
     </div>

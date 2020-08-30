@@ -1,6 +1,6 @@
 <?php require(RUTA_APP . "/vistas/inc/header.php"); ?>
 
-<section>
+<section class="section_5">
 	<div class="contenedor_42">
         <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST">	
             <fieldset class="fieldset_1">
@@ -24,7 +24,6 @@
             <a class="" href="<?php echo RUTA_URL . '/Afiliacion_C';?>">Afiliate</a>
         </div>
     </div>
-</section>
     <div class="contenedor_43" id="Contenedor_43" onclick="OcultarDiv()">
         <form action="<?php echo RUTA_URL . '/Login_C/RecuperarClave';?>" method="POST" autocomplete="off">
             <fieldset class="Afiliacion_1" style="background-color: #F4FCFB; border-radius: 15px;">
@@ -35,7 +34,9 @@
             </fieldset>
         </form>
     </div>
+</section>
 		
+
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>
 
 <!-- <script type="text/javascript" src="../javascript/validarFormularios.js"></script> -->

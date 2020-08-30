@@ -1,15 +1,29 @@
 @media (max-width: 800px){/*aplicaría en cualquier medio con dimensiones menores a lo indicado*/
 
 	
-.a_1{/*header - afiliacion*/
+.a_1{/*header - header_AfiCom - afiliacion*/
 	top: 0%;
+	left: 15%;
 	font-size: 1.3em;
+	width: 85%;
+	text-align: right;
+	padding-right: 5%;
+}
+.a_3{/*header_inicio - header_AfiCom*/
+	width: 100% !important;
 }
 .a_4{/*header_AfiCom*/
 	display: block;
 	width: 100% ;
 	text-align: right;
 	font-size: 0.9em;
+}
+.a_7{/*header_Tienda*/
+	font-size: 1.3em;	
+	/* bottom: initial; */
+	/* left: 3%;
+	color: white;
+	font-size: 3em; */
 }
 .ancla_2{/*cuenta_editar*/
 	margin-top: -5%;
@@ -48,15 +62,20 @@
 .br_2{/*carrito*/
 	display: block;
 }
-.comandoMenu{/*menuResponsive*/
-	background-color: white;
+.comandoMenu_2{/*header_inicio* - header_AfiCom - header - header_Tienda*/
 	display: block;
-	margin-top: 16%;
 	padding: 1%;
+	margin-top: 1%;
+	margin-left: 2%;
+	z-index: 3;
 }
-/*.comandoMenu_2{menuResponsive
-	margin-top: 4%;
-}*/
+.contador{/*contacto.php  */
+	width: 10% !important;
+	margin: 0% 0% 2% 90%;
+	line-height: 16px;
+	font-size: 0.8em;
+	text-align: center;
+}
 .contenedor_1{/*header*/
 	margin-left: 1%;
 	padding-left: 3%;
@@ -80,15 +99,33 @@
 .contenedor_8{/*footer*/
 	margin-top: 50% !important;
 }
+.contenedor_9{/*cuenta_editar - cuenta_publicar*/
+	margin: 0% auto 7% auto;
+}
 .contenedor_10{/*vitrina - tiendas - afiliacion*/
 	grid-template-columns: 100fr;
-	margin: 35% auto;
+	margin: 20% auto;
 	width: 90%;
-	row-gap: 2%;
+	row-gap: 2%;/*espacio entre filas*/
+}
+.contenedor_11{/*vitrina*/
+	grid-template-rows: 80% 20% ;
+	row-gap: 5%;
+	width: 100%;
+	margin: 0% auto;
+	align-items: center;
+}
+.contenedor_12{/*vitrina*/
+	width: 70%;
+	max-height: 100%;
+	margin-bottom: 0%;
 }
 .contenedor_13{/*opciones*/
-	width: 90%;
-	margin:4% auto;
+	grid-template-columns: 100%;
+	width: 95%;
+	margin: 15% auto;
+	row-gap: 10%;/*espacio entre filas*/
+	margin: 15% auto;
 }
 .contenedor_16{/*vitrina*/
 	text-align: right;
@@ -135,10 +172,12 @@
 	width: 50%;
 }
 .contenedor_34{/*header_inicio*/
-	top: 9%;
-	left: 80%;
+	top: 0.5%;
+	left: 85%;
 	padding: 1.5%;
 	width: 10%;
+	position: fixed;
+	z-index: 2;
 }
 .contenedor_35{/*inicio*/
 	padding: 3% 0%;
@@ -153,7 +192,7 @@
 }
 .contenedor_41{/*afiliacion*/
 	width: 95%;
-	margin-top: 55%;
+	margin-top: 100%;
 }
 .contenedor_42{/*registroCom - registroDes - login*/
 	width: 100%;
@@ -166,8 +205,8 @@
 .contenedor_45{/*login*/
 	margin: 5% auto;
 }
-.contenedor_46{/*cuenta - cuenta_publicar - cuenta_editar*/
-	margin:35% auto;
+.contenedor_46{/*cuenta_publicar - cuenta_producto*/
+	margin: 20% auto;
 }
 .contenedor_47{/*cuenta_publicar*/
 	grid-template-columns: 100%;
@@ -195,7 +234,7 @@
 	margin: 0%;
 }
 .contenedor_61{/*vitrina*/
-	top: 92%;
+	top: 94%;
 	width: 100%;
 	margin-left:0%;
 	height: 6%;
@@ -216,9 +255,9 @@
 .contenedor_68{/*afiliacion*/
 	height: 100%;
 }
-.contenedor_69{/*tiendas - header*/
-	background-color: rgb(51, 51, 51);
+.contenedor_69{/*tiendas - header - header_inicio - header_Tienda*/
 	height: 8%;
+	/* z-index: 1; */
 }
 .contenedor_71{/*afiliacion*/
 	grid-column-start: 0;	
@@ -251,14 +290,16 @@
 .contenedor_80{/*registroCom - cuenta_editar*/
 	width: 100%;
 }
-.contenedor_82{/*cuenta_publicar*/
-	margin-top: 20%;
+.contenedor_84{/*cuenta_editar - planes*/
+	width: 100% !important;
+	grid-template-columns: 100%;
+	column-gap: 0%; 
 }
-.contenedor_84{/*cuenta_editar*/
-	width: 1000px !important;
-	overflow-x: auto ;
-	/* grid-template-columns: 100%;
-	column-gap: 0%; */
+.contenedor_89{/*Secciones_Ajax*/
+	grid-template-columns: 45% 45%;
+	column-gap: 4%;/*espacio entre columnas*/
+}
+.contenedor_90{/*opciones*/
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
@@ -270,17 +311,22 @@
 	padding-top: 0%;
 	font-weight: normal;
 }
-.h1_1{/*carrito*/
-	margin-top: 2%;
-	font-size: 1.1em;
+.h1_1{/*carrito registroCom*/
+	/* margin-top: 2%;
+	font-size: 1.1em; */
 }
 .h1_2{/*inicio*/
 	font-size: 2em;
 	text-align: left;
 }
-.h1_3{/*tiendas - vitrina - ciudad*/
-	font-size: 1.4em;
-	padding-top: 10%;
+.h1_3{/*tiendas*/
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+	margin-top: -5%;
+	margin-bottom: 3%;	
+	grid-column-start: initial;
+	grid-column-end: initial;
 }
 .h1_4{/*ciudad*/
 	padding: 2%;
@@ -309,6 +355,9 @@
 .hr_1{/*carrito*/
 	width: 28%;
 }
+.hr_4{/*header_Tienda*/
+	display: block;
+}
 .imagen_3{/*cuenta_editar*/
 	width: 15% !important;
 	margin-bottom: 3%;
@@ -319,16 +368,12 @@
 .input_5{/*header*/
 	padding-top: 2%;
 }
-.input_6{/*carrito*/
+.input_6{/*carrito cuenta_producto*/
 	font-size: 0.9em;
 	width: 50px !important;
 }
-/* .input_8{/*carrito
-	width: 100%;
-	height: 30px;
-} */
 .input_9{/*registroCom - registroDes - carrito - login*/
-	margin: 3% auto !important;
+	margin: 0% auto 4% auto !important;
 	font-size: 0.8em;
 	line-height: 30px;
 	width: 100%;
@@ -341,9 +386,20 @@
 .input_12{/*cuenta_editar*/
 	width: 90%;
 }
+.input_13{/*registroCom - registroDes - carrito - login*/
+	font-size: 0.8em;
+	line-height: 30px;
+	width: 100%;
+	padding-left: 5%;
+	width: 100%;
+}
+.input_14{/*cuenta_productos*/
+	text-align: center;
+	margin-left: 7%;
+}
 .label_1{/*vitrina*/
 	padding: 3%;
-	font-size: 0.9em;
+	font-size: 1.2em;
 	width: 100% !important;
 }
 .label_12{/*carrito*/
@@ -355,11 +411,22 @@
 }
 .label_13{/*cuenta_editar*/
 	padding-left: 0%;
-	font-size: 0.9em;
+	font-size: 1.1em;
 	margin-bottom: -3%;
 }
-.label_16{/*cuenta_editar*/
+.label_17{/*header_Tienda*/
+	/* width: 85%; */
+	margin-left: 15%;
+	height: 1.8em;
+	line-height: 1.8em;
+	font-size: 1.7em;
+}
+.label_18{/*cuenta_publicar*/
 	font-size: 0.9em;
+	text-align: center;
+	display: block;
+	margin: 5% auto;
+	/* margin-left: -6% !important; */
 }
 .legend_1{/*registroCom - registroDes*/
 	font-size: 1.1em;
@@ -374,32 +441,38 @@
 .menuResponsive{/*Todas las páginas*/
 	padding-top: 0%;
 	width:48%; 
+	margin-top: -12%;
 	margin-left: -48%;/*oculta el menu responsive*/
 	transition: all 0.5s;
 }
 .menuResponsive ul{/*Todas las páginas*/
-	background-color:rgb(233, 215, 215);
+	background-color:rgb(239, 245, 245);
 	border-bottom-color: rgb(51, 51, 51);
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	flex-direction: column;
 	width: 100%;
+	z-index: 5;
 }
 .menuResponsive li{/*Todas las páginas*/
-	padding-left: 5%;
 	height: 40px;
 	padding-top: 5%;
+	width: 100%;
 	flex-grow: 1;/*distribuye proporcionalmente los elementos internos en el eje horizontal, es necesario que el elemento padre tenga la propiedad display con el valor flex*/
 }
 .menuResponsive li a{/*header*/
 	color: rgb(51, 51, 51);
 	font-size: 15px;
-	width: 170px;
+	width: 100%;
 	text-align: left;
+	padding-left: 5%;
 }
 .menuResponsive li a:hover{/*Todas las páginas*/
-	font-weight: bold;
+	background-color: rgb(51, 51, 51) !important;
+	color: white;
+	/* font-weight: bold; */
 	font-size: 15px;
+	width: 100%;
 }
 .p_1{/*alert - afiliacion*/
 	padding-top: 20%;
@@ -416,19 +489,22 @@
 	margin-top: 5%;
 	font-size: 1.2em;
 }
-.p_8{/* afiliacion*/
-	padding-top: 3%;
+.p_8{/*afiliacion*/
+	padding-top: 20%;
 	font-size: 1.3em;
 }
 .section_2{/*inicio*/
 	margin-top: 30%; 
 }
-.section_9{/*cuenta_editar*/
-	/* width: 200%; */
-	
+.section_5{/*afiliacion - tiendas - vitrina*/
+	margin-top: 0%;
+	padding-top: 1%;
 }
 .section_6{/*afiliacion*/
 	height: 150%;
+}
+.section_8{/*Secciones_Ajax*/
+	padding-top: 25%;
 }
 .select_1{/*cuenta_publicar*/
 	margin: 2% auto !important;
@@ -437,13 +513,6 @@
 	height: 30px;
 	width: 100%;
 	padding-left: 5%;
-}
-.span_1{/*header*/
-	margin-top: 5%;
-	font-size: 0.9em;
-}
-.span_1a{/*header*/
-	display: none;
 }
 .span_2{/*header*/
 	font-size: 1.3em !important;
@@ -455,12 +524,30 @@
 .span_4{/*inicio*/
 	font-size: 1em;
 }
+.span_5{/*opciones*/
+	left: 90%;
+}
 .span_6{/*inicio*/
 	font-size: 2em;
 }
+.span_9{/*cuenta_publicar - opciones*/
+	padding-top: 5%;
+}
 .span_10{/*cuenta_deditar*/
 	margin-left: 1% !important;
-	/* margin-top: 5%; */
+}
+.span_15{/*header_inicio - header - header_AfiCom*/
+	display: block;
+	color: rgb(239, 245, 245);
+}
+.tapa{/*header_Tienda*/
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 400%!important;
+	background-color: rgba(0, 0, 0, 0.8);
 }
 .textarea_1{/*carrito*/
 	width: 100%;
@@ -489,5 +576,13 @@
 }
 .ul_2{/*ciudad*/
 	padding-top: 5%;
+}
+ul .menuContenedor_2{
+	display: none;
+	position: absolute;
+	margin-left: 48% !important;
+	margin-top: -10% !important;
+	/* width: 3%; */
+	/* padding-bottom: 10%; */
 }
 }

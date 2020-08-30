@@ -5,44 +5,46 @@
     //Se verifica que la sesion del usuario halla sido creada y exista
     if(isset($_SESSION["ID_Tienda"])){ 
         ?>
-        <div class="contenedor_46"> 
-            <p class="p_6">Productos ofertados</p>
-            <table class="tabla_1">
-                <thead class="">
-                    <th class="th_5"></th>
-                    <th class="th_9">IMAGEN</th>
-                    <th class="th_6">PRODUCTO</th>
-                    <th class="th_7">DESCRIPCION</th>
-                    <th class="th_8">PRECIO</th>
-                    <th class="th_10"></th>
-                </thead>   
-                <tbody>     
-                    <?php
-                    $Contador = 1;
-                    foreach($Datos as $arr) :
-                        $Producto = $arr["producto"];
-                        $Opcion = $arr["opcion"];
-                        $Precio = $arr["precio"];
+        <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
+        
+        <section class="section_5">
+            <div class="contenedor_46"> 
+                <h1 class="h1_1">Productos ofertados</h1>
+                <?php
+                $Contador = 1;
+                //$Datos viene del metodo consultarProductosTienda() en Cuenta_C
+                foreach($Datos as $arr) :
+                    $Seccion = $arr["seccion"];
+                    $Producto = $arr["producto"];
+                    $Opcion = $arr["opcion"];
+                    $Precio = $arr["precio"];
+                    $ID_Producto = $arr["ID_Producto"];
+                    $ID_Opcion = $arr["ID_Opcion"];
                             ?>
-                            <tr class="tr_1">
-                                <td><?php echo $Contador;?></td>
-                                <td class="">
-                                <img class="imagen_4"  src="<?php echo RUTA_URL?>/images/<?php echo $FotoInm->nombre_img;?>" alt="Foto"> 
-                                </td>
-                                <td class="td_4"><?php echo $Producto;?></td>
-                                <td class="td_4"><?php echo $Opcion;?></td>
-                                <td class="td_4"><?php echo $Precio;?></td>
-                                <td><a class="a_5" href="">Eliminar</a> / <a class="a_5" href="">Actualizar</a></td>
-                                <td></td>
-                            </tr> 
-                            <?php  
-                            $Contador ++;   
-                    endforeach;  
-                        ?> 
-                </tbody>
-            </table>   
-        </div>
-
+                    <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/>
+                    <div class="contenedor_95">
+                        <div class="contenedor_9 borde_2">
+                            <!-- <img class="imagen_2" alt="Imagen de producto" src="../images/Perfil.jpg"/> -->
+                            <div class="contenedor_97">
+                                <label for="File_1"><span class="icon-image span_8"></span></label>
+                            </div>
+                        </div>
+                        <div>
+                            <input class="input_8" type="text" value="<?php echo $Producto;?>"/>
+                            <input class="input_8" type="text" value="<?php echo $Opcion;?>"/>
+                            <input class="input_8" type="text" value="<?php echo $Precio;?>"/>
+                        </div>
+                        <div class="contenedor_96">                
+                            <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/actualizarProducto/' . $ID_Producto;?>">Actualizar</a>
+                            <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/eliminarProducto/' . $ID_Producto . ',' . $ID_Opcion?>">Eliminar</a>
+                        </div>
+                    </div>
+                    <?php  
+                    $Contador ++;   
+                endforeach;  
+                ?>  
+            </div>
+        </section>
         <?php
     }
     else{

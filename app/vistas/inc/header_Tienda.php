@@ -1,9 +1,10 @@
 <?php 
-    // session_start();
-
-    //Sesiones creadas en Login_C.php
-    $Nombre = $_SESSION["Nombre"];
-    $NombreTienda = $_SESSION["Nombre_Tienda"];
+	if(empty($Datos['NombreTienda'])){
+		$Membrete = "PedidoRemoto";
+	}
+	else{
+		$Membrete = $Datos['NombreTienda'];
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,6 +22,7 @@
 
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/menu/style_menu.css"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_estilosPidoRapido_800.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_estilosPidoRapido_350.css"/>
@@ -28,31 +30,21 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>	
-		<header class="contenedor_69">
-        	<a class="a_1"><?php echo $NombreTienda?></a>
+		<header class="contenedor_69 ">
+			<!-- $Datos viene de Vitrina_C -->
+            <label class="label_17"><?php echo $Membrete?></label> 
 			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Mi Tienda</a></li>
-					<li class="menuLi_1"><a>Productos</a>
-						<ul class="menuContenedor_2">
-							<li><a class="menuLi_2" href="">Empanadas</a></li>
-							<li><a class="menuLi_2" href="">ugos</a></li>
-							<li><a class="menuLi_2" href="">Refrescos</a></li>
-							<li><a class="menuLi_2" href="">Papas rellenas</a></li>
-							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/';?>">Todos</a></li>
-						</ul> 				
-					</li>
-                    <li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Publicar/';?>">Cargar producto</a></li>
-                    <li><a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a></li>
+					<li><a class="a_3" href="">Ofertas</a></li>
+					<li><a class="a_3" href="">Horario</a></li>
+					<li><a class="a_3" href="">Dirección</a></li>
+					<li><a class="a_3" href="">Empleo</a></li>
+					<hr class="hr_3 hr_4">
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Salir</a></li>
 				</ul>
 			</nav>
-		</header>	
-        <div class="contenedor_52">
-            <label class="label_8"><?php echo $Nombre;?></label>
-            <a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a>
-		</div>
+		</header>
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>

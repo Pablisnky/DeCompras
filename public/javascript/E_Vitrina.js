@@ -4,3 +4,52 @@ document.addEventListener('click',function(e){
         CerrarModal_X('Section_3')
     }
 })
+
+// *****************************************************************************************************
+ //Funcion anonima para ocultar el menu en responsive
+ window.addEventListener("click", function(e){
+     // console.log("_____Desde función anonima para ocultar menu_____")
+     //obtiendo informacion del DOM del elemento donde se hizo click 
+     var click = e.target
+     console.log(click)
+ }, false)
+
+// *****************************************************************************************************
+//seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos
+document.getElementById('Mostrar_TodoPedido').addEventListener('click', function(event){ 
+    console.log("Iniciando delegando eventos")
+    if((event.target.id == "Domicilio_No") || (event.target.id == "Domicilio_Si")){  
+        console.log("¡Delegaste el evento!")
+        console.log("______Desde forma_Entrega______")
+        console.log(TotalDisplayCarrito)
+        console.log(ComisionAplicacion)
+        let porNombre = document.getElementsByName("entrega")
+        //Se recorren todos los valores del radio button para encontrar el seleccionado
+        for(var i=0; i<porNombre.length; i++){
+            if(porNombre[i].checked){
+                E= porNombre[i].value;
+            }
+        }
+        //Se muestra la condicion de despacho
+        if(E == "Domicilio_No"){
+            document.getElementById("Despacho").innerHTML = "Recoger personalmente en tienda:<input type='text' class='input_6' value='0' readonly='readondly'/> Bs."
+            
+            //Se cambia el monto total del pedido incluyendo comision y envio
+            MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion)
+            
+            //Se muestra el monto de total de la compra incluyendo comision y envio
+            document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
+        }
+        else{
+            // <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
+            document.getElementById("Despacho").innerHTML = "Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly='readondly'/> Bs."
+            
+            //Se cambia el monto total del pedido incluyendo comision y envio
+            MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(3000)
+            
+            //Se muestra el monto de total de la compra incluyendo comision y envio
+            document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
+        }
+    }
+}, false);
+// *****************************************************************************************************

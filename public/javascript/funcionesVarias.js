@@ -1,28 +1,30 @@
+//Declarar el array que contiene los ID_Opcion que se añaden al carrito
+//Verificar para que sirve, creo que solo es util en la función decremento
+PedidoCarrito = []
+
+//Declarar el array que contiene los detalles de cada pedido atomico(cantidad, producto, precio, total) cada detalle se inserta al array como un objeto JSON
+AlCarro = []
+
+ //Guarda cada precio de los productos pedidos 
+ DisplayCarrito = []  
+
+ //Guarda el monto total del pedido que se muestra en el display
+ TotalDisplayCarrito = []  
 //Cuando carga la página se registran los listener de clic para toda la ventana
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
-
-
-//Si activo los listener deja de funcionar el menu responsive cuando se hace click por fuera del menu 
-
-
-
+ 
 //Escucha en login_V.php                              
 // document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
 
-//Escucha en inicio_V.php - cuenta_editar_V.php  - cuenta_publicar_V.php                          
-document.getElementById("Label_1").addEventListener('click', function(){CerrarModal_X("Ejemplo_Secciones")})
-
-//Declarar el array que contiene los ID_Opcion que se añaden al carrito
-//Verificar para que sirve, creo que solo es util en la función decremento
 
 
 
+// **************************************************************************************************
 
-let PedidoCarrito = []
+//Si activo los listener deja de funcionar el menu responsive cuando se hace click por fuera del menu 
 
-//Declarar el array que contiene los detalles de cada pedido atomico(cantidad, producto, precio, total) cada detalle se inserta al array como un objeto JSON
-let AlCarro = []
+  
 
 //Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito
 function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
@@ -52,7 +54,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 //************************************************************************************************
 
 //Llamada desde opciones_V.php es llalamada cuando se agrega un clon
-let orden = 1
+var orden = 1
 function AgregaOpcion(form, C_Padre, C_AClonar){
     console.log("______Desde Agrega Opcion______")
     let Opcion = form
@@ -115,6 +117,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
     PedidoAtomico = new PedidoCar(1, Separado[1] , Separado[2], Separado[3], Separado[3]);
     AlCarro.push(PedidoAtomico) 
+    // console.log(AlCarro)
 
     //Se especifica el div padre, donde se insertará el nuevo nodo
     document.getElementById(DivPadre).appendChild(Div_clon)
@@ -135,6 +138,48 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 }
 
 //************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************************************************
+    //Llamada desde cuenta_publicar.php selecciona una sección donde estará un producto
+    function transferirSeccion(form){
+        //Se declara el array que contendra la cantidad de categorias seleccionadas
+        // var TotalCategoria = []
+
+        console.log("______Desde transferir Seccion______")
+
+        //Se reciben los elementos del formulario mediante su atributo name
+        Seccion = form.seccion
+
+        //Se recorre todos los elementos para encontrar el que esta seleccionado
+        for(var i = 0; i<Seccion.length; i++){ 
+            if(Seccion[i].checked){
+                //Se toma el valor del seleccionado
+                Seleccionado = Seccion[i].value
+            }            
+        } 
+
+        //Se transfiere el valor del radio boton seleccionado al input del formulario
+        document.getElementById("Seccion").value = Seleccionado
+             
+        ocultar("MostrarSeccion") 
+    }
+
+//************************************************************************************************
+
 
 
 
@@ -264,17 +309,16 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 //************************************************************************************************
-    //Guarda cada precio de los productos pedidos 
-    DisplayCarrito = []  
-
-    //Guarda el monto total del pedido que se muestra en el display
-    TotalDisplayCarrito = []  
+   
 
     //Llamada desde opciones:V.php
     function transferirOpcion(form){
         console.log("______Desde transferir Opcion______")
+
+        //Se recibe el formulario desde opciones_V.php
         Opcion = form.opcion
         console.log(Opcion)
+
         //Se sombrea el contenedor que tiene cargado un producto en el el carrito
         let I = localStorage.getItem("ID_cont_dinamico");                
         document.getElementById(I).style.backgroundColor = "rgba(51, 51, 51, 0.3)";
@@ -296,34 +340,41 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
             //Se muestra la barra que contiene el icono del carrito
             document.getElementById("Contenedor_61").style.visibility = "visible"
 
-            //Se captura el id dinamico del elemento que va a contener el producto seleccionado, este elemento se crea cuando se hace click en un producto 
+            //Se captura el id dinamico del elemento que va a contener el producto seleccionado
             Pro = document.getElementsByClassName("input_1a").id = localStorage.getItem('ID_input_Producto')
+            console.log(Pro)
 
-            //Se captura el id dinamico del elemento que va a contener la opcion seleccionada, este elemento se crea cuando se hace click en un producto 
+            //Se captura el id dinamico del elemento que va a contener la opcion seleccionada
             Opc = document.getElementsByClassName("input_1c").id = localStorage.getItem('ID_Opcion')
             console.log(Opc)
-            //Se captura el id dinamico del elemento que va a contener el precio, este elemento se crea cuando se hace click en un producto 
+
+            //Se captura el id dinamico del elemento que va a contener el precio
             let Pre = document.getElementsByClassName("input_1d").id = localStorage.getItem('id_input_precio')
+            console.log(Pre)
             
-            //Se captura el id dinamico del elemento que va a contener el ID_Opcion, este elemento se crea cuando se hace click en un producto 
+            //Se captura el id dinamico del elemento que va a contener el ID_Opcion
             let ID_Opcion = document.getElementsByClassName("input_1b").id = localStorage.getItem('ID_input_opcion')
+            console.log(ID_Opcion)
             
-            //Se captura el id dinamico del elemento que va a contener el total,este elemento se crea cuando se hace click en un producto   
+            //Se captura el id dinamico del elemento que va a contener el total
             let Input_total = localStorage.getItem('ID_inputtotal')
+            console.log(Input_total)
             
-            //Se captura el id dinamico del elemento que va a contener la leyenda,este elemento se crea cuando se hace click en un producto   
+            //Se captura el id dinamico del elemento que va a contener la leyenda
             let input_leyenda = localStorage.getItem('ID_inputleyenda')
             console.log(input_leyenda)
 
             console.log(Opcion.length)
-            //Se recorrer las opciones del producto 
+            //Se recorren las opciones del producto 
             for(var i = 0; i<Opcion.length; i++){
                 if(Opcion[i].checked){
                     Opcion = Opcion[i].value
                     console.log(Opcion[i].value)
+
                     //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el nombre y el precio separados por una coma, es necesario separar ambos valores
                     let Separado = Opcion.split(",")  
-                    console.log(Separado[0])
+                    console.log(Separado)
+
                     //Se obtiene el ID_Opcion contenido en "Separado"
                     Separado[0]
 
@@ -339,7 +390,8 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                     //Se cambia el formato del precio
                     Precio = Precio.replace(".","")
                     Precio = Number(Precio)
-                    
+                    console.log(Precio)
+
                     //Se muestra el total, sera igual al precio porque es una unidad de producto
                     document.getElementById(Input_total).value = Separado[3] 
 
@@ -349,11 +401,11 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
                     //Se muestra el ID_Opcion(necesario en la funcion incrementar())
                     document.getElementById(ID_Opcion).value = Separado[0] 
                 
-                    //Se añade el producto carrito(no lo suma), basta con añadir el id_dinamico(ID_Opcion) por cadd unidad de produto añadida
+                    //Se añade el producto carrito(no lo suma), basta con añadir el id_dinamico(ID_Opcion) por cada unidad de produto añadida
                     PedidoCarrito.push(Separado[0])
-                    
-                    //Se ingresa el monto del nuevo pedido al array que contiene el monto total del pedido, este es el monto que se muestra en el display del carrito e informa al usuario de como va la cuenta
-                    
+                    console.log(PedidoCarrito)
+
+                    //Se ingresa el monto del nuevo pedido al array que contiene el monto total del pedido, este es el monto que se muestra en el display del carrito e informa al usuario de como va la cuenta                    
                     DisplayCarrito.push(Precio) 
                     TotalDisplayCarrito = DisplayCarrito.reduce((a, b) => a + b)
                     
@@ -684,7 +736,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 //************************************************************************************************
-    //LLamada desde .php
+    //LLamada desde Funciones_Ajax.js por medior de llamar_PedidoEnCarrito()
     function PedidoEnCarrito(){
         //Se muestra el monto de la compra en tienda, sin comisión y sin despacho
         console.log("______Desde Pedido en carrito______")
@@ -733,41 +785,7 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 
 
-//************************************************************************************************
-    //Llamada desde carrito_V.php para seleccionar si el despacho sera enviado o recogido en tienda
-    function formaEntrega(){    
-        console.log("______Desde forma_Entrega______")
-        console.log(TotalDisplayCarrito)
-        console.log(ComisionAplicacion)
-        let porNombre = document.getElementsByName("entrega");
-        //Se recorren todos los valores del radio button para encontrar el seleccionado
-        for(var i=0; i<porNombre.length; i++){
-            if(porNombre[i].checked){
-                E= porNombre[i].value;
-            }
-        }
-        //Se muestra la condicion de despacho
-        if(E == "Domicilio_No"){
-            document.getElementById("Despacho").innerHTML = "Recoger personalmente en tienda:<input type='text' class='input_6' value='0' readonly='readondly'/> Bs."
-            
-            //Se cambia el monto total del pedido incluyendo comision y envio
-            MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion)
-            
-            //Se muestra el monto de total de la compra incluyendo comision y envio
-            document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
-        }
-        else{
-            // <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
-            document.getElementById("Despacho").innerHTML = "Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly='readondly'/> Bs."
-            
-            //Se cambia el monto total del pedido incluyendo comision y envio
-            MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(3000)
-            
-            //Se muestra el monto de total de la compra incluyendo comision y envio
-            document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
-        }
-    }
-   
+
 //************************************************************************************************
     //Llamada desde login_V.php
     function DesabilitarBoton(){
@@ -775,31 +793,55 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     }
 
 //************************************************************************************************
-    //Funcion anonima para ocultar el menu en responsive
-    var div = document.getElementById("MenuResponsive")
-    var span= document.getElementById("Span_6")
+    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
+    let div = document.getElementById("MenuResponsive")
+    let span= document.getElementById("Span_6")
+    let B = document.getElementById("Tapa")
     window.addEventListener("click", function(e){
-        // console.log("_____Desde función anonima para ocultar menu_____")
+        console.log("_____Desde función anonima para ocultar menu_____")
         //obtiendo informacion del DOM del elemento donde se hizo click 
         var click = e.target
         console.log(click)
         if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
             div.style.marginLeft = "-48%"
+            B.style.display = "none"
+            // document.getElementsByTagName("Tapa").style.backgroundColor = "red"
+            //Se detiene la propagación de los eventos en caso de hacer click en un elemento que contenga algun evento
+            event.stopPropagation();
         }
-    }, false)
+    }, true)
 
 //************************************************************************************************
-    //Muestra el menu responsive  
+    //Muestra el menu principal responsive  
     function mostrarMenu(){  
-        var A= document.getElementById("MenuResponsive")
-        if(A.style.marginLeft < "0%"){//Se muestra el menu
-                A.style.marginLeft = "0%"
-            }
-        else if(A.style.marginLeft = "0%"){//Se oculta el menu
-                A.style.marginLeft = "-48%"
-            }
-    }
+        console.log("______Desde mostrarMenu()______")
+        let A = document.getElementById("MenuResponsive")
+        let B = document.getElementById("Tapa")
 
+        if(A.style.marginLeft < "0%"){//Se muestra el menu
+            A.style.marginLeft = "0%"
+            B.style.display = "block"
+        }
+        else if(A.style.marginLeft = "0%"){//Se oculta el menu
+            A.style.marginLeft = "-48%"
+            B.style.backgroundColor = "none"
+        }
+    }
+//************************************************************************************************
+    //Coloca la lista de categorias en el borde superior de la página 
+    function transicionTiendas(){  
+        // console.log("______Desde transicionTiendas()______")
+        let C = document.getElementById("Section_1")
+        let D = document.getElementById("Section_2js")
+        Coordenada = D.getBoundingClientRect()
+        
+        if(Coordenada.top > 100){
+            C.style.height = "7%"
+            document.getElementById("Contenedor_37").style.top = "-30%"
+            document.getElementById("Contenedor_51").style.top = "-30%"
+            document.getElementById("Contenedor_88").style.top = "-30%"
+        }
+    }
 //************************************************************************************************
     // Llamada desde PedidoCarrito.php
     function verTransferenciaBancaria(){
@@ -834,7 +876,6 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
  //Llamada desde inicio_V.php - opciones_V.php
  function CerrarModal_X(id){
     document.getElementById(id).style.display = "none"
-    document.getElementsByTagName("html")[0].style.overflow = "visible"
 }
 
 //************************************************************************************************
@@ -849,13 +890,9 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
 
 //************************************************************************************************
     //Funcion llamada desde tiendas_V.php
-    function vitrina(ID_Tienda, pagina){  
-        if(pagina == "tiendas_V"){
-        window.open(`../../Vitrina_C/index/${ID_Tienda}`,"_self")
-        }
-        else if(pagina == "buscador_V"){
-            window.open(`Vitrina_C/index/${ID_Tienda}`,"_self")
-        }
+    function vitrina(ID_Tienda, NombreTienda){  
+        window.open(`../../Vitrina_C/index/${ID_Tienda},${NombreTienda}`,"_self")      
+        console.log(ID_Tienda + NombreTienda)
     }
     
 //************************************************************************************************
@@ -918,10 +955,9 @@ function AgregaOpcion(form, C_Padre, C_AClonar){
     function ocultarPedido(){       
         document.getElementById("Mostrar_TodoPedido").style.display = "none";
     }
-
-
-
-    
+   
     // console.log("Se eliminan todos los objetos de un mismo producto menos el ultimo")
     // elementoEliminado = AlCarro.splice(-1);
     // console.log(elementoEliminado)  
+
+  

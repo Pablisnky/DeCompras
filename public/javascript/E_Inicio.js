@@ -30,9 +30,9 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
     }
 
 // *****************************************************************************************************
-
     //Actua desde inicio_V.php
     function VerTiendas(Tiendas){
+        console.log("_____Desde VerTiendas()_____")
         window.open(`Tiendas_C/index/${Tiendas}`,"_self")
     }
 

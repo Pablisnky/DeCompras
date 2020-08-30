@@ -1,61 +1,43 @@
 <?php require(RUTA_APP . "/vistas/inc/header.php"); ?>
 
-<section class="">
-    <div class="contenedor_24 contenedor_84">
-        <p class="p_6 p_9">Secciones según el tipo de tienda</p>
-        <div style="background-color: yellow;">
-            <label class="label_4">Supermercados y bodegas</label>
-            <ul class="ul_2">
-                <li>Viveres</li>
-                <li>Desinfectante</li>
-                <li>Verduras</li>
-                <li>Aseo personal</li>
-                <li>Cereales</li>
-                <li>Enlatados</li>
-                <li>...</li>
+<section class="section_5" id="Section_5">
+    <div class='contenedor_84 contenedor_93'>
+        <p class="p_6 p_9">Tú tienda en uno de nuestros planes</p>  
+        <div class="contenedor_94">
+            <P class="p_3 p_5">Emprendedor</P>
+            <p class="p_11">3 USD/mes</p>
+            <ul>
+                <li class="li_3"><p>Tiendas o proyectos con catalogo de hasta 20 productos</p></li>
+                <li class="li_3"><p>Código QR</p></li>
+            </ul>   
+        </div>
+        <div class="contenedor_94">
+            <p class="p_3 p_5">Básico</p>
+            <p class="p_11">6 USD/mes</p>
+            <ul>
+                <li class="li_3"><p>Tiendas con catalogo de hasta 100 productos</p></li>
+                <li class="li_3"><p>Código QR</p></li>
+            </ul>
+        </div>        
+        <div class="contenedor_94">
+            <P class="p_3 p_5">Mini tienda</P>
+            <p class="p_11">15 USD/mes</p>
+            <ul>
+                <li class="li_3"><p>Tiendas con catalogo de hasta 300 productos</p></li>
+                <li class="li_3"><p>Código QR</p></li>
             </ul>
         </div>
-        <div style="background-color: blue; ">
-            <label class="label_4">Venta de Comida rapida</label>
-            <ul class="ul_2">
-                <li>Hamburguesas</li>
-                <li>Perros caliente</li>
-                <li>Empanadas</li>
-                <li>Jugos</li>
-                <li>Refrescos</li>
-                <li>Pizzas</li>
-                <li>Helados</li>
-                <li>...</li>
+        <div class="contenedor_94">
+            <p class="p_3 p_5">Tienda</p>
+            <p class="p_11">25 USD/mes</p>
+            <ul>
+                <li class="li_3"><p>Tiendas con catalogo de más de 300 productos</p></li>
+                <li class="li_3"><p>Código QR</p></li>
             </ul>
-        </div>
-        <div>
-            <label class="label_4">Venta de repuesto automotriz</label>
-            <ul class="ul_2">
-                <li>Tren delantero</li>
-                <li>Sistema de freno</li>
-                <li>Partes electricas</li>
-                <li>Arranque</li>
-                <li>Gomas y suspención</li>
-                <li>...</li>
-            </ul>
-        </div>
-        <div>
-            <label class="label_4">Venta de Material médico quirurgico</label>
-            <ul class="ul_2">
-                <li>Stent</li>
-                <li>Inyectadoras</li>
-                <li>Termometros</li>
-                <li></li>
-                <li></li>
-                <li>...</li>
-            </ul>
-        </div>
-        <div class="contenedor_87">
-            <label class="boton boton_4" id="Label_1">Cerrar</label>
         </div>
     </div>
-</section>
+</section> 
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta.js';?>"></script> 
+<script type="text/javascript" src="<?php// echo RUTA_URL . '/public/javascript/E_Cuenta.js';?>"></script> 
 
-	<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/inc/footer.php");?>

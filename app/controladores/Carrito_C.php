@@ -7,10 +7,11 @@
             $this->ConsultaCarrito_M = $this->modelo("Carrito_M");
         }
     
-        public function index($PedidoCarrito){   
+        //Cargado desde Funciones_Ajax.js por medio de llamar_PedidoEnCarrito()
+        public function index(){   
             //SELECT que contien el producto y el precio
-            $Pedido = $this->ConsultaCarrito_M->consultarPedido($PedidoCarrito);   
-            $Datos = $Pedido->fetchAll(PDO::FETCH_ASSOC);
+            // $Pedido = $this->ConsultaCarrito_M->consultarPedido($PedidoCarrito);   
+            // $Datos = $Pedido->fetchAll(PDO::FETCH_ASSOC);
 
             //Se obtiene la cantidad de cada producto(pero por ID_Opcon se debe transformar ese Id en nombre de producto)
 

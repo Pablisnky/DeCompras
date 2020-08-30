@@ -30,8 +30,7 @@ var http_request = false
         } 
 
 //-------------------------------------------------------------------------------------------------
-//Escucha desde cuenta_editar_V.php
-// document.getElementById('Label_13').addEventListener('click', Llamar_categorias, false)
+
 
 //Escucha en inicio_V.php                            
 // document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
@@ -51,7 +50,7 @@ function llamar_Opciones_1(ID_Tienda, NombreProducto, ID_Cont_Dinamico, agregaci
     let C = localStorage.getItem("Aniadeagregacion")
     let D = localStorage.getItem("ID_contenedor_padre")
     let E = localStorage.getItem("ID_contenedor_a_clonar")
-    var url="../../Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E
+    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E
     http_request.open('GET', url, true)
     //Se define que función va hacer llamada cada vez que cuando cambie onreadystatechange
     peticion.onreadystatechange = respuesta_Opciones_1
@@ -89,7 +88,7 @@ function llamar_Opciones_2(ID_Tienda, NombreProducto, agregacion, Contenedor_Pad
     let C = localStorage.getItem("Aniadeagregacion")
     let D = localStorage.getItem("ID_contenedor_padre")
     let E = localStorage.getItem("ID_contenedor_a_clonar")
-    var url="../../Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E
+    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E
     http_request.open('GET', url, true)
     //Se define que función va hacer llamada cada vez que cuando cambie onreadystatechange
     peticion.onreadystatechange = respuesta_Opciones
@@ -112,7 +111,7 @@ function respuesta_Opciones(){
 }
 
 //-------------------------------------------------------------------------------------------------
-//llamada desde funcionesVarias.js por medio de PedidoEnCarrito()
+//llamada desde vitrina_V.php 
 function llamar_PedidoEnCarrito(){
     var url="../../Carrito_C/index/";
     http_request.open('GET', url, true);    
@@ -164,41 +163,18 @@ function respuesta_PedidoEnCarrito(){
     
 //-------------------------------------------------------------------------------------------------
     // Llamada desde cuenta_editar_V.php 
-    // function Llamar_categorias(){
-    //     var url = "../Cuenta_C/Categorias/"
-    //     http_request.open('GET', url, true)  
-    //     peticion.onreadystatechange = respuesta_categorias
-    //     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
-    //     peticion.send("null")
-    // }                                                           
-    // function respuesta_categorias(){
-    //     if(peticion.readyState == 4){
-    //         if(peticion.status == 200){    
-    //             document.getElementById("Mostrar_Categorias").style.display = "block"
-    //             document.getElementById('Mostrar_Categorias').innerHTML = peticion.responseText
-    //         } 
-    //         else{
-    //             alert('Hubo problemas con la petición.')
-    //         }
-    //     }
-    //     else{ //en caso contrario, mostramos un gif simulando una precarga
-    //         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-    //     }
-    // }
-
-//-------------------------------------------------------------------------------------------------
-    //Llamada desde cuenta_publicar_V.php 
-    function Llamar_seccion(){
-        var url = "../../Cuenta_C/Secciones/"
+    function Llamar_categorias(){
+        var url = "../Cuenta_C/Categorias/"
         http_request.open('GET', url, true)  
-        peticion.onreadystatechange = respuesta_seccion
+        peticion.onreadystatechange = respuesta_categorias
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
         peticion.send("null")
     }                                                           
-    function respuesta_seccion(){
+    function respuesta_categorias(){
         if(peticion.readyState == 4){
             if(peticion.status == 200){    
-                document.getElementById("Borrar").innerHTML = peticion.responseText
+                document.getElementById("Mostrar_Categorias").style.display = "block"
+                document.getElementById('Mostrar_Categorias').innerHTML = peticion.responseText
             } 
             else{
                 alert('Hubo problemas con la petición.')
@@ -210,6 +186,7 @@ function respuesta_PedidoEnCarrito(){
     }
 
 //-------------------------------------------------------------------------------------------------
+  
     // Llamada desde inicio_V.php 
     // Busca un pedido segun lo que escriba el usuario en el input
     function Llamar_buscador(nombre){

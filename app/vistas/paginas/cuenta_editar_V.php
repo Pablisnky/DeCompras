@@ -34,6 +34,7 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <div class="contenedor_42">    
+        <p class="p_6">Configurar cuenta</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off">
             <a id="marcador_01" class="ancla_2"></a>
             <fieldset class="fieldset_1">
@@ -43,28 +44,28 @@
                     <label class="boton" for="File_1">Buscar foto perfil</label>
                     <input class="input_3" id="File_1" type="file"/>
                 </div>
-                <label class="label_13">Nombre responsable tienda</label>
+                <label>Nombre responsable tienda</label>
                 <input class="input_9 borde_2" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
-                <label class="label_13">Apellido responsable tienda</label>
+                <label>Apellido responsable tienda</label>
                 <input class="input_9 borde_2" type="text" name="apellido_Afcom" id="Apellido"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off">
-                <label class="label_13">Cedula responsable tienda</label>
+                <label>Cedula responsable tienda</label>
                 <input class="input_9 borde_2" type="text" name="cedula_Afcom" id="Cedula"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off">
-                <label class="label_13">Telefono responsable tienda</label>
+                <label>Telefono responsable tienda</label>
                 <input class="input_9 borde_2" type="text" name="telefono_Afcom" id="Telefono"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off">
-                <label class="label_13">Correo responsable tienda</label>
+                <label>Correo responsable tienda</label>
                 <input class="input_9 borde_2" type="text" name="correo_Afcom" id="Correo" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
             <a id="marcador_02" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
                 <legend class="legend_1">Datos de tienda</legend>
-                <label class="label_13">Nombre tienda</label>
+                <label>Nombre tienda</label>
                 <input class="input_9 borde_2" type="text" name="nombre_com" id="Nombre" value="<?php echo $Nombre_Tien;?>" autocomplete="off">
-                <label class="label_13">Telefono tienda</label>
+                <label>Telefono tienda</label>
                 <input class="input_9 borde_2" type="text" name="telefono_com" id="Telefono" value="<?php echo $Direccion_Tien;?>" autocomplete="off">
-                <label class="label_13">Dirección tienda</label>
+                <label>Dirección tienda</label>
                 <input class="input_9 borde_2" type="text" name="direccion_com" id="Direccion" value="<?php echo $Telefono_Tien;?>"  autocomplete="off">
-                <label class="label_13">RIF tienda</label>
+                <label>RIF tienda</label>
                 <input class="input_9 borde_2" type="text" name="rif_com" value="<?php echo $Rif_Tien;?>"  autocomplete="off">
                 <div class="contenedor_80 contenedor_81" id="Label_13">
                     <label class="label_16">Categoria</label>
@@ -105,10 +106,10 @@
 
             <a id="marcador_04" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
+                <legend class="legend_1">Secciones</legend>
                 <div id="Contenedor_79">
-                    <legend class="legend_1">Secciones</legend>
-                    <p>Organiza tú tienda en secciones, añade tantas como consideres necesario para que tus productos esten bien acomodados en el mostrador. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
-                    <label class="label_13">Sección</label>
+                    <p class="p_12">Organiza tú tienda en secciones, añade tantas como consideres necesario para que tus productos esten bien acomodados en el mostrador. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
+                    <label>Sección</label>
                     <?php                    
                     foreach($Datos['secciones'] as $row){
                         $Seccion_Tien = $row['seccion'];
@@ -236,6 +237,6 @@
     </div>
 </section>
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta.js';?>"></script> 
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
 
-	<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
