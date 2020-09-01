@@ -30,8 +30,8 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>	
-		<header class="contenedor_69 ">
-			<!-- $Datos viene de Vitrina_C -->
+		<header class="contenedor_69">
+			<!-- $Membrete viene de Vitrina_C -->
             <label class="label_17"><?php echo $Membrete?></label> 
 			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">

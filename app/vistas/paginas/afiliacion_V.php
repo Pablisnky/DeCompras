@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/camion/style_camion.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>		
 
-<section class="section_5" id="Section_5">
+<section class="section_5">
     <div class="contenedor_70">
         <p class="p_1">Tu tienda en toda la ciudad</p>
         <p class="p_8">Unete a nuestra red de comercialización de productos.</p>

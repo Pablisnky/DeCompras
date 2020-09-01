@@ -18,33 +18,7 @@
                 <input class="input_9 borde_2" type="text" name="correo_Afcom" id="Correo" placeholder="Correo electronico" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
                 <input class="input_9 borde_2" type="text" name="nombre_com" id="Nombre" placeholder="Nombre tienda" autocomplete="off">
-                </fieldset>      
-            <!--<fieldset class="fieldset_1 fieldset_2" id="Fieldset">
-                <legend class="legend_1">Datos establecimiento comercial</legend>
-                <input class="input_9 borde_2" type="text" name="telefono_com" id="Telefono" placeholder="Telefono" autocomplete="off">
-                <input class="input_9 borde_2" type="text" name="direccion_com" id="Direccion" placeholder="Direccion"  autocomplete="off">
-                <input class="input_9 borde_2" type="text" name="rif_com" id="Rif" placeholder="Rif"  autocomplete="off">
-                <div class="contenedor_80 borde_2" id="Label_13">
-                    <label class="label_15">Categoria</label>
-                    <span class="icon-circle-down span_11"></span>
-                </div>
-                <!-- El input que tiene las categorias es creado desde javascript por medio de transferirCategoria() en funcionesVarias.js
-                
-            </fieldset>   -->
-            <!-- <fieldset class="fieldset_1 fieldset_2">
-                <legend class="legend_1">Datos cuentas bancarias</legend> 
-                <div id="Contenedor_69">
-                    <span>Los pagos de los pedidos realizados se depositan directamente a tus cuentas bancarias, agrega todas las que tengas disponibles para que los usuarios tengan opciones, los pedidos pagados en cuentas de otros bancos causan una demora de 24 hrs en el despacho del pedido para que verifiques la transferencia.</span>
-                    <!-- Las cuentas bancarias son añadidas desde E_RegistroCom.js -->
-                    <!-- <div class="contenedor_67" id="Contenedor_67">
-                        <input class="input_9 input_9JS borde_2" type="text" name="banco[]" id="Banco" placeholder="Banco" autocomplete="off">
-                        <input class="input_9 input_9JS borde_2" type="text" name="titular[]" id="Titular de la cuenta" placeholder="Titular"  autocomplete="off">
-                        <input class="input_9 input_9JS borde_2" type="text" name="numeroCuenta[]" id="NumeroCuenta" placeholder="Numero de cuenta" autocomplete="off">
-                        <input class="input_9 input_9JS borde_2" type="text" name="rif[]" id="Rif" placeholder="RIF"  autocomplete="off">
-                    </div> 
-                </div>
-                <label class="label_4" id="Label_4">Añadir cuenta bancaria</label>
-            </fieldset>              -->
+            </fieldset>      
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Datos de accceso a la plataforma</legend>  
                 <div>

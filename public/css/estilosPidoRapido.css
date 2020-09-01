@@ -232,19 +232,17 @@ button{/*tiendas*/
 	grid-template-rows: min-content;
 	column-gap: 3%;/*espacio entre columnas*/
 	row-gap: 5%;/*espacio entre filas*/
-	margin: 0% auto 4% auto;
-	padding-top: 4%;
+	margin: 10% auto 4% auto;
+	margin-top: 4%;
 	width: 85%;
 	height: 92%;
 }
 .contenedor_11{/*vitrina*/
 	/* background-color: yellow; */
-	display: grid;
-	grid-template-columns: 50fr 50fr;
-	grid-template-rows: 40fr 5fr ;
-	row-gap: 8%;
+	width: 80%;
 	height: 80%;
-	margin: 0% 2%;
+	margin: 0% auto;
+
 }
 .contenedor_11a:hover{/*vitrina*/
 	background-color: rgba(51, 51, 51, 0.3) !important;
@@ -275,12 +273,12 @@ button{/*tiendas*/
 .contenedor_14{/*vitrina*/
 	background-color: rgba(51, 51, 51, 0) !important;
 	display: none;
-	margin: 2%;
-	margin-top: 10%;
 	padding-bottom: 1%;
 	padding-right: 2%;
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
+	grid-column-start: 1;
+	grid-column-end: 3;
 }
 .contenedor_15{/*tiendas*/
 	width: 90%;
@@ -325,7 +323,7 @@ button{/*tiendas*/
 .contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Categorias_Ajax - Secciones_Ajax*/
 	background-color: rgb(239, 245, 245);
 	width: 70%;
-	margin:2% auto;
+	margin: 2% auto;
 	padding: 1%;
 	border-radius: 15px;
 }
@@ -357,7 +355,7 @@ button{/*tiendas*/
 	text-align: center;
 }
 .contenedor_31{/*vitrina*/
-	background-color: rgb(51, 51,s 51);
+	background-color: rgb(51, 51, 51);
 	border-radius: 10px;
 	padding: 2%;
 	margin: auto;
@@ -550,9 +548,9 @@ button{/*tiendas*/
 	border-top-width: 1px;
 	border-top-style: solid;
 }
-.contenedor_61{/*vitrina*/
-	visibility: hidden;
+.contenedor_61{/*vitrina - opciones*/
 	background-color: rgb(51, 51, 51);
+	visibility: hidden;
 	display: flex;/*para centrar verticalmente el div hijo*/
 	justify-content: space-around;
 	align-items: center;/*para centrar verticalmente el div hijo*/
@@ -563,6 +561,7 @@ button{/*tiendas*/
 	border-top-left-radius: 80px 60px;
 	border-top-right-radius: 80px 60px;
 	height: 8%;
+	z-index: 1;
 }
 .contenedor_62{/*carrito*/
 	margin-top: 5%;
@@ -606,7 +605,7 @@ button{/*tiendas*/
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	z-index: 5;
+	z-index:1;
 }
 .contenedor_70{/*afiliacion*/
 	padding-top: 10%;
@@ -708,22 +707,27 @@ button{/*tiendas*/
 	justify-content: center;/*centra horizontalmente*/
 }
 .contenedor_90{/*opciones*/	
+	background-color: rgb(233, 215, 215);
 	display: flex;
 	justify-content: center;
-	background-color: rgb(233, 215, 215);
+	align-items: center;
+	position: fixed;
+	top: 11.5%;
+	left: 0%;
+	width: 100%;
 }
 .contenedor_93{/*planes*/
 	padding-top: 10%;
-	/* width: 90%; */
+	width: 90%;
 	margin:auto;
 	height: 100%;
 }
 .contenedor_95{/*cuenta_productos - opciones*/
+	/* background-color: yellow; */
 	display: grid;
 	grid-template-columns: 50% 50%;
-	row-gap: 5%;/*espacio entre columnas*/
+	row-gap: 5px; /*espacio entre columnas*/
 	width: 100%;
-	/* margin-bottom: 10%; */
 }
 .contenedor_96{/*cuenta_productos*/
 	grid-column-start: 1;
@@ -752,7 +756,7 @@ button{/*tiendas*/
 	height: 30%;
 	/* margin-top: 10%; */
 }
-.h1_1{/*carrito - cuenta_productos - opciones*/
+.h1_1{/*carrito - cuenta_productos - opciones - tiendas*/
 	font-weight: normal;
 	text-align: center;
 	font-size: 1.4em;
@@ -762,17 +766,16 @@ button{/*tiendas*/
 	font-size: 4.5em;
 	text-align: right;
 }
-.h1_3{/*opciones*/	
+.h1_3{/*opciones - carrito*/	
+	/* background-color: red; */
 	margin-bottom: 0%;
-	height: 1em;
+	height: 1.5em;
 	line-height: 1.5em;
 	display: inline-block;
+	width: 100%;
 }
-.h1_4{/*ciudad*/
-	background-color: rgb(233, 215, 215);
-	color: initial;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
+.h1_4{/*ciudad - opciones*/
+	font-size: 1.1em;
 }
 .h2_1{/*inicio carrito*/
 	font-size: 1.1em;
@@ -802,8 +805,8 @@ button{/*tiendas*/
 	font-weight: normal;
 	text-align: center;
 	width: 100%;
-	grid-column-start: 1;
-	grid-column-end: 3;
+	/* grid-column-start: 1;
+	grid-column-end: 3; */
 }
 .h5_1{/*footer*/
 	color: rgba(51, 51, 51, 1);
@@ -889,6 +892,7 @@ button{/*tiendas*/
 }
 .input_2a{/*vitrina*/
 	background-color: rgba(165, 42, 42, 0);
+	/* background-color: red; */
 	font-size: 0.9em;
 	font-weight: bold;
 	border: none;
@@ -946,11 +950,22 @@ button{/*tiendas*/
 .input_14{/*cuenta_productos*/
 	text-align: center;
 }
+.input_15{/*vitrina*/
+	background-color: rgba(165, 42, 42, 0);
+	font-size: 0.9em;
+	font-weight: bold;
+	border: none;
+	text-align: center;
+	line-height: 30px;
+	height: 30px;
+	display: inline-block;
+	width: 100%;
+}
 .label_2{/*vitrina*/
 	font-weight: bold;
 	padding-right: 10%;
 }
-.label_4{/*opciones - registroCom*/	
+.label_4{/*opciones - */	
 	background-color: rgb(31, 161, 118);
 	color:white ;
 	margin: 3% auto;
@@ -1029,7 +1044,6 @@ button{/*tiendas*/
 	color: rgba(0, 0, 0, 0.6);
 }
 .label_16{/*cuenta_editar*/
-	/* font-weight: bold ; */
 	font-size: 1em;
 	display: inline-block;
 	margin: 2% auto;
@@ -1041,7 +1055,6 @@ button{/*tiendas*/
 	display:block;
 	color: white;
 	text-align: center;
-	/* z-index: 1; */
 	font-size: 2em;
 }
 .legend_1{/*registroCom - registroDes - login*/
@@ -1065,7 +1078,7 @@ button{/*tiendas*/
 	line-height: 1.5em;
 	padding-bottom: 5%;
 }
-.mas{/*vitrina*/
+.mas{/*opciones*/
 	background-color:rgb(78, 43, 43);
 	color: white;
 	padding: 5% 10%;
@@ -1090,7 +1103,7 @@ button{/*tiendas*/
 	border-radius: 15px;
 	padding-right: 5%;
 }
-.menos{/*vitrina*/
+.menos{/*opciones*/
 	background-color:rgb(78, 43, 43);
 	color: white;
 	padding: 5% 10%;
@@ -1237,6 +1250,7 @@ ul .menuContenedor_2{/*header.php #040652  index.php*/
 	left: 0;
 	width: 100%;
 	height: 400%;
+	z-index: 1;
 }
 .section_5{/*afiliacion - tiendas - vitrina - planes - cuenta_producto*/
 	min-height: 100%;
@@ -1277,8 +1291,6 @@ ul .menuContenedor_2{/*header.php #040652  index.php*/
 	font-weight: bold;
 	font-size: 1.5em;
 	padding: 0.3%;
-	position: relative;
-	left: 40%;
 	width: 2.5%;
 }
 .span_5:hover{/*opciones*/
@@ -1293,14 +1305,14 @@ ul .menuContenedor_2{/*header.php #040652  index.php*/
 	font-size: 1.5em;
 }
 .span_8{/*inicio*/
-	color:rgb(51, 51, 51);
+	color:rgba(51, 51, 51, 0.5);
 	font-size: 4em;
 	text-align: center;
 	line-height: 2em;
 	display: block;
 }
 .span_9{/*cuenta_publicar - vitrina*/
-	color:rgb(51, 51, 51);
+	color:rgba(51, 51, 51, 0.5);
 	font-size: 7em;
 	width: 90%;
 	height: 100%;

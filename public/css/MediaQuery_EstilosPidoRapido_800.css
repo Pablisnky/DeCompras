@@ -109,9 +109,6 @@
 	row-gap: 2%;/*espacio entre filas*/
 }
 .contenedor_11{/*vitrina*/
-	grid-template-rows: 80% 20% ;
-	row-gap: 5%;
-	width: 100%;
 	margin: 0% auto;
 	align-items: center;
 }
@@ -122,10 +119,9 @@
 }
 .contenedor_13{/*opciones*/
 	grid-template-columns: 100%;
-	width: 95%;
-	margin: 15% auto;
-	row-gap: 10%;/*espacio entre filas*/
-	margin: 15% auto;
+	width: 100%;
+	row-gap: 40px;/*espacio entre filas*/
+	margin: 33% auto;
 }
 .contenedor_16{/*vitrina*/
 	text-align: right;
@@ -300,6 +296,8 @@
 	column-gap: 4%;/*espacio entre columnas*/
 }
 .contenedor_90{/*opciones*/
+	top: 8%;
+	margin-bottom: 30% !important;
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
@@ -319,17 +317,13 @@
 	font-size: 2em;
 	text-align: left;
 }
-.h1_3{/*tiendas*/
-	font-size: 1.1em;
-	font-weight: bold;
-	text-align: center;
-	margin-top: -5%;
-	margin-bottom: 3%;	
-	grid-column-start: initial;
-	grid-column-end: initial;
+.h1_3{/*opciones - carrito*/
+	width: 85%;
+	height: 1em;
+	line-height: 1em;
 }
 .h1_4{/*ciudad*/
-	padding: 2%;
+	/* padding: 2%; */
 }
 .h2_1{/*inicio*/
 	font-size: 1em;
@@ -401,6 +395,9 @@
 	padding: 3%;
 	font-size: 1.2em;
 	width: 100% !important;
+}
+.label_4{/*opciones - */	
+	width: 60% !important;
 }
 .label_12{/*carrito*/
 	font-size: 0.9em;
@@ -525,7 +522,8 @@
 	font-size: 1em;
 }
 .span_5{/*opciones*/
-	left: 90%;
+	margin-top: 1%;
+	left: 10%;
 }
 .span_6{/*inicio*/
 	font-size: 2em;

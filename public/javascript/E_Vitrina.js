@@ -1,6 +1,18 @@
+
+//Se busca el alto del body de la pagina para garantizar que el alto del contenedor  a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
+//Cuando carga la página se registran los listener de clic para toda la ventana
+document.addEventListener("click", function(event){
+    if(event.target.id == 'Section_4'){
+        AltoVitrina = document.body.scrollHeight
+        console.log(AltoVitrina)
+        document.getElementById("contenedor_13").style.height =AltoVitrina +"px"
+        document.getElementById("contenedor_13").style.backgroundColor ="red"
+    }
+}, false)
+ 
 //Escucha desde opciones_V.php, archivo que se carga en vitrina_V.php desde Ajax; por medio de delegación de eventos, donde dentro de la función identificas cual fue el objetivo del click, ya sea por id o por clase o por etiqueta según sea tu necesidadtoma la etiqueta span donde se hace click
-document.addEventListener('click',function(e){
-    if(event.target.tagName.toLowerCase() === 'span'){
+document.addEventListener('click',function(event){
+    if(event.target.id == 'Span_3'){
         CerrarModal_X('Section_3')
     }
 })
@@ -11,7 +23,7 @@ document.addEventListener('click',function(e){
      // console.log("_____Desde función anonima para ocultar menu_____")
      //obtiendo informacion del DOM del elemento donde se hizo click 
      var click = e.target
-     console.log(click)
+    //  console.log(click)
  }, false)
 
 // *****************************************************************************************************
@@ -32,7 +44,7 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
         }
         //Se muestra la condicion de despacho
         if(E == "Domicilio_No"){
-            document.getElementById("Despacho").innerHTML = "Recoger personalmente en tienda:<input type='text' class='input_6' value='0' readonly='readondly'/> Bs."
+            document.getElementById("Despacho").innerHTML = "Recoger pedido en tienda:<input type='text' class='input_6' value='0' readonly='readondly'/> Bs."
             
             //Se cambia el monto total del pedido incluyendo comision y envio
             MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion)

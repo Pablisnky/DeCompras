@@ -25,7 +25,7 @@
     <section id="Section_2js">
         <div class='contenedor_4'>
             <div class='contenedor_6 borde_1' id="Contenedor_6a">
-                <h2 class='h2_1'>COMIDA</h2>
+                <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
                 <span class="icon-spoon-knife span_8"></span>
             </div> 
 
@@ -84,7 +84,7 @@
         </div>
     </section>
 
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Inicio.js';?>"></script>
 
 <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
-
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Inicio.js';?>"></script> 
+ 

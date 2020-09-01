@@ -1,10 +1,10 @@
-<?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
+<?php include(RUTA_APP . '/vistas/inc/header_Modal.php');  ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido_tablaMovil.css"/>
 
 <section class="section_4">
     <div class="contenedor_24">
-        <h1 class="h1_1">Tu orden</h1>
+        <h1 class="h1_1 h1_3">Tu orden</h1>
         <div class="contenedor_20">
             <table class="tabla" id="Tabla">
                 <thead>
@@ -29,7 +29,7 @@
         <div class="contenedor_63">  
             <div class="contenedor_64">     
                 <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"/>
-                <label class="label_12" for="Domicilio_No">Recoger personalmente en tienda, 0 Bs.</label>
+                <label class="label_12" for="Domicilio_No">Recoger pedido en tienda, 0 Bs.</label>
                 <br class="br_1">
                 <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" checked />
                 <label class="label_12" for="Domicilio_Si">Entrega a domicilio, 3.000 Bs.</label>

@@ -36,59 +36,15 @@ var http_request = false
 // document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
 
 //-------------------------------------------------------------------------------------------------
-//Es llamada desde vitrina_V.php no agrega clon
-function llamar_Opciones_1(ID_Tienda, NombreProducto, ID_Cont_Dinamico, agregacion, Contenedor_Padre, Contenedor_A_Clonar){
+//Es llamada desde vitrina_V.php
+function llamar_Opciones(ID_Tienda, NombreProducto, Cont_Dinamico){
     window.localStorage.setItem('ID_Tienda', ID_Tienda)
     window.localStorage.setItem('NombreProducto', NombreProducto)
-    window.localStorage.setItem('ID_Cont_Dinamico', ID_Cont_Dinamico)
-    window.localStorage.setItem('Aniadeagregacion', agregacion)
-    window.localStorage.setItem('ID_contenedor_padre', Contenedor_Padre)
-    window.localStorage.setItem('ID_contenedor_a_clonar', Contenedor_A_Clonar)
+    window.localStorage.setItem('ID_cont_dinamico', Cont_Dinamico)
     let A = localStorage.getItem("ID_Tienda")
     let B = localStorage.getItem("NombreProducto")
-    ID_Cont_Dinamico = localStorage.getItem("ID_Cont_Dinamico")
-    let C = localStorage.getItem("Aniadeagregacion")
-    let D = localStorage.getItem("ID_contenedor_padre")
-    let E = localStorage.getItem("ID_contenedor_a_clonar")
-    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E
-    http_request.open('GET', url, true)
-    //Se define que función va hacer llamada cada vez que cuando cambie onreadystatechange
-    peticion.onreadystatechange = respuesta_Opciones_1
-    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
-    peticion.send("null")
-    Cont_Din = document.getElementsByClassName("contenedor_60").id = localStorage.getItem('ID_Cont_Dinamico')
-}                                                           
-function respuesta_Opciones_1(){
-    if(document.getElementById(Cont_Din).style.backgroundColor != "rgba(51, 51, 51, 0.3)"){
-        if(peticion.readyState == 4){
-            if(peticion.status == 200){
-                document.getElementById("Mostrar_Opciones").style.display = "block";
-                document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
-            } 
-            else{
-                alert('Hubo problemas con la petición.')
-            }
-        }
-        else{ //en caso contrario, mostramos un gif simulando una precarga
-            // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-        }
-    }
-}
- 
-//-------------------------------------------------------------------------------------------------
-//Es llamada desde vitrina_V.php agrega un clon
-function llamar_Opciones_2(ID_Tienda, NombreProducto, agregacion, Contenedor_Padre, Contenedor_A_Clonar){
-    window.localStorage.setItem('ID_Tienda', ID_Tienda)
-    window.localStorage.setItem('NombreProducto', NombreProducto)
-    window.localStorage.setItem('Aniadeagregacion', agregacion)
-    window.localStorage.setItem('ID_contenedor_padre', Contenedor_Padre)
-    window.localStorage.setItem('ID_contenedor_a_clonar', Contenedor_A_Clonar)
-    let A = localStorage.getItem("ID_Tienda")
-    let B = localStorage.getItem("NombreProducto")
-    let C = localStorage.getItem("Aniadeagregacion")
-    let D = localStorage.getItem("ID_contenedor_padre")
-    let E = localStorage.getItem("ID_contenedor_a_clonar")
-    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B + "/" + C + "/" + D + "/" + E
+    let C = localStorage.getItem('ID_cont_dinamico')
+    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B + "/" + C
     http_request.open('GET', url, true)
     //Se define que función va hacer llamada cada vez que cuando cambie onreadystatechange
     peticion.onreadystatechange = respuesta_Opciones
@@ -98,8 +54,11 @@ function llamar_Opciones_2(ID_Tienda, NombreProducto, agregacion, Contenedor_Pad
 function respuesta_Opciones(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){
-            document.getElementById("Mostrar_Opciones").style.display = "block";
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
+            // AltoVitrina = document.body.scrollHeight
+            // console.log(AltoVitrina)
+            // document.getElementById("contenedor_13").style.height =AltoVitrina +"px"
+            // document.getElementById("contenedor_13").style.backgroundColor ="red"
         } 
         else{
             alert('Hubo problemas con la petición.')
@@ -107,6 +66,7 @@ function respuesta_Opciones(){
     }
     else{ //en caso contrario, mostramos un gif simulando una precarga
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    
     }
 }
 
