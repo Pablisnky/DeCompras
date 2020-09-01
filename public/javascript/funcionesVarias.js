@@ -308,7 +308,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     //     document.getElementById(I).style.backgroundColor = "rgba(51, 51, 51, 0.3)";
     //     document.getElementById(I).style.borderRadius = "15px";
 
-    //     Cont_Somb_1 = document.getElementsByClassName("contenedor_14").id = localStorage.getItem('ID_cont_sombreado')
+        Cont_Somb_1 = document.getElementsByClassName("contenedor_14").id = localStorage.getItem('ID_cont_sombreado')
     //     Cont_Somb_2 = document.getElementsByClassName("contenedor_18").id = localStorage.getItem('ID_cont_sub_sombreado')
 
     //     //Se verifica que ya se entro a los productos por medio del DIV principal, luego solo se puede accederpor el boton de "Agregar otra pcion" el cual genera los clones
@@ -476,8 +476,9 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     function verOpciones(Cont_Dinamico){ 
         console.log("______Desde verOpciones()______")     
         //Se captura el valor de id dinanmico del contnedor donde se hizo click
+        console.log(typeof(Cont_Dinamico))
         localStorage.setItem('ID_cont_dinamico', Cont_Dinamico)
-        // console.log(localStorage.getItem('ID_cont_dinamico')) 
+        console.log(localStorage.getItem('ID_cont_dinamico')) 
 
         //Se evalua si hay cargado algun producto en el carrito para mostrarlo en la pantalla de opciones
         console.log(AlCarro)
@@ -491,21 +492,12 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 
-
-
-
-
-
-
-
-
-
-
 //************************************************************************************************
     //Llamada desde opciones:V.php 
     function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda){
         console.log("______Desde agregarOpcion()______")        
         console.log(localStorage.getItem('ID_cont_dinamico')) 
+        
         //Se recibe el cotrol con el nombre "opcion" del formulario desde opciones_V.php
         Opcion = form.opcion
 
