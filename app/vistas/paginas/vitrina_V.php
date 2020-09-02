@@ -16,7 +16,7 @@
             ?> 
             <section id="Section_4">
                 <div id="<?php echo 'Cont_Dinamico_' . $Contador;?>">
-                    <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Dinamico_' . $Contador;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>')">
+                    <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Dinamico_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>')">
                         <div class="contenedor_12 borde_1">
                             <figure>
                                 <!-- Con un if se verifica si tiene imagen en BD; sino se muestra el icono -->

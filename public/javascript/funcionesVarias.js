@@ -2,7 +2,7 @@
 //Verificar para que sirve, creo que solo es util en la función decremento
 PedidoCarrito = []
 
-//Declarar el array que contiene los detalles de cada pedido atomico(cantidad, producto, precio, total) cada detalle se inserta al array como un objeto JSON
+//Declarar el array que contiene los detalles de cada pedido atomico(cantidad, producto, precio, total) cada detalle se inserta al array como un objeto JSON, es usado para alimentar "Tu Orden" en carrito_V.php
 AlCarro = []
 
 //Guarda cada precio de los productos pedidos 
@@ -12,18 +12,20 @@ DisplayCarrito = []
 TotalDisplayCarrito = []  
 
 // ************************************************************************************************** 
-//Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es de cir, cada vez que se hace click en esa página se esta llamanado a la función Pre_incremento  y Pre_decremento (IMPORTANTE: por esta razon es necesario colocar estas funciones en su arhcio E_Vitrina.js para que solo se escuchen cuando ese archivo se abra)
+//Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función Pre_incremento  y Pre_decremento (IMPORTANTE: por esta razon es necesario colocar estas funciones en su arhcio E_Vitrina.js para que solo se escuchen cuando ese archivo se abra)
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
+document.addEventListener("click", ProductosEnCarrito)
  
 //Escucha en login_V.php                              
 // document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
 // **************************************************************************************************  
 
 //Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito
-function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
-    this.Cantidad = Cantidad
+function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
+    this.Seccion = Seccion
     this.Producto = Producto
+    this.Cantidad = Cantidad
     this.Opcion = Opcion
     this.Precio = Precio
     this.Total = Total
@@ -46,7 +48,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 //************************************************************************************************
 
-//Llamada desde opciones_V.php es llalamada cuando se agrega un clon
+//invocada desde opciones_V.php es llalamada cuando se agrega un clon
 // var orden = 1
 // function AgregaOpcion(form, C_Padre, C_AClonar){
 //     console.log("______Desde Agrega Opcion______")
@@ -146,7 +148,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //Llamada desde cuenta_publicar.php selecciona una sección donde estará un producto
+    //invocada desde cuenta_publicar.php selecciona una sección donde estará un producto
     function transferirSeccion(form){
         //Se declara el array que contendra la cantidad de categorias seleccionadas
         // var TotalCategoria = []
@@ -189,7 +191,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //Llamada desde cuenta_editar.php selecciona tres categorias en los tipos de tiendas
+    //invocada desde cuenta_editar.php selecciona tres categorias en los tipos de tiendas
     function transferirCategoria(form){
         //Se declara el array que contendra la cantidad de categorias seleccionadas
         var TotalCategoria = []
@@ -275,7 +277,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     }
 
 //************************************************************************************************
-    // Llamada desde Categorias_Ajax_V.php
+    // invocada desde Categorias_Ajax_V.php
     function CerrarCategoria(){        
         document.getElementById("Mostrar_Categorias").style.display = "none"
     }
@@ -295,7 +297,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    // //Llamada desde opciones:V.php
+    // //invocada desde opciones:V.php
     // function transferirOpcion(form){
     //     console.log("______Desde transferir Opcion______")
 
@@ -425,7 +427,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //Llamada desde vitrina_V.php verifica si una seccion ya tiene productos seleccionados y los marca como seleccionados
+    //invocada desde vitrina_V.php verifica si una seccion ya tiene productos seleccionados y los marca como seleccionados
     // function verificarPedido(){ 
     //     console.log("______Desde funcion anonima para seleccionar productos ______")
 
@@ -443,19 +445,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     //     }
     // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//************************************************************************************************
 
 
 
@@ -472,18 +462,15 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //Llamada desde vitrina_V
-    function verOpciones(Cont_Dinamico){ 
+    //1- invocada desde vitrina_V identifica los elementos de la sección donde se hizo click.
+    function verOpciones(Cont_Dinamico, Seccion){ 
         console.log("______Desde verOpciones()______")     
-        //Se captura el valor de id dinanmico del contnedor donde se hizo click
-        console.log(typeof(Cont_Dinamico))
-        localStorage.setItem('ID_cont_dinamico', Cont_Dinamico)
-        console.log(localStorage.getItem('ID_cont_dinamico')) 
 
-        //Se evalua si hay cargado algun producto en el carrito para mostrarlo en la pantalla de opciones
-        console.log(AlCarro)
+        //Captura el valor del id dinanmico de la seccion donde se hizo click
+        localStorage.setItem('ContDinamico',Cont_Dinamico) 
 
-        //Se evaluan los productos que existen en la sección seleccionada
+        //Captura la seccion donde se hizo click
+        localStorage.setItem('SeccionCLick',Seccion) 
     }
 
 //************************************************************************************************
@@ -492,21 +479,35 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 
+
+
+
+
+
+
+
+
+
+
 //************************************************************************************************
-    //Llamada desde opciones:V.php 
-    function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda){
+    //2- invocada desde opciones_V.php añade un producto al carrito
+    function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, InputSeccion, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda){
         console.log("______Desde agregarOpcion()______")        
-        console.log(localStorage.getItem('ID_cont_dinamico')) 
+        console.log(localStorage.getItem('ContDinamico'))  
         
         //Se recibe el cotrol con el nombre "opcion" del formulario desde opciones_V.php
         Opcion = form.opcion
 
         //Se recibe el ID de la etiqueta donde se hizo click
         LabelClick = ID_Etiqueta
+        localStorage.setItem('BotonAgregar',LabelClick) 
 
         //Se recibe el ID del contenedor que va a mostrar la leyenda del producto donde se hizo click
         Cont_Leyenda_Click = ID_Cont_Leyenda
-        localStorage.setItem('ID_cont_LeyendaDdinamico',Cont_Leyenda_Click) 
+        localStorage.setItem('ID_cont_LeyendaDinamico',Cont_Leyenda_Click) 
+
+        //Se recibe la seccion del producto donde se hizo click
+        InputSeccion 
 
         //Se recibe el ID del input que va a mostrar la cantidad del producto donde se hizo click
         Input_CantidadClick = ID_InputCantidad
@@ -523,10 +524,9 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
         //Se recibe el ID del input que va a mostrar la opcion del producto donde se hizo click
         Input_TotalClick = ID_InputTotal
 
-        console.log(localStorage.getItem('ID_cont_LeyendaDdinamico')) 
         //Se recibe el ID del input que va a mostrar la opcion del producto donde se hizo click
         Input_LeyendaClick = ID_InputLeyenda
-        console.log(Input_LeyendaClick)
+        // console.log(Input_LeyendaClick)
 
         //Se guarda el Input_LeyendaClick en un localstorage para usarlo en TransferirPedido()
         // .localStorage.setItem('ID_InputDinamico_Leyanda', Input_LeyendaClick)
@@ -535,7 +535,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
         for(let i = 0; i<Opcion.length; i++){
             if(Opcion[i].checked){
                 Opcion = Opcion[i].value
-           
+                            
                 //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el producto, la opcion y el precio separados por una coma, es necesario separar estos valores, por lo que se convierte en un array
                 let Separado = Opcion.split(",")  
 
@@ -555,10 +555,10 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
                 document.getElementById(Input_OpcionClick).value = Separado[2]
                                 
                 //Se muestra el precio del producto donde se hizo click
-                Precio = document.getElementById(Input_PrecioClick).value = Separado[3]
+                Precio = document.getElementById(Input_PrecioClick).value = Separado[4]
                 
                 //Se muestra la leyenda del producto donde se hizo click
-                document.getElementById(Input_LeyendaClick).value = 1 + ' ' + Separado[1] + ' ' + Separado[2] + ' = ' + Separado[3] + ' Bs.'
+                document.getElementById(Input_LeyendaClick).value = 1 + ' ' + Separado[2] + ' ' + Separado[3] + ' = ' + Separado[4] + ' Bs.'
 
                 //Se cambia el formato del precio, solo numeros sin separador de miles
                 Precio = Precio.replace(".","")
@@ -577,10 +577,9 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
                 MontoCarrito =document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
                 
                 //Guarda en el objeto PedidoAtomico, detalles de cada articulo del pedido, cada detallees en si un array, por lo que se PedidoAtomico es un array de objetos
-                PedidoAtomico = new PedidoCar(1, Separado[1] , Separado[2], Separado[3], Separado[3])
+                PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4])
                 AlCarro.push(PedidoAtomico) 
-                console.log(AlCarro)
-                
+
                 //Se muestra la barra que contiene el icono del carrito
                 document.getElementById("Contenedor_61").style.visibility = "visible"
             
@@ -590,73 +589,81 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
             DisplayDestello()
         }
     }
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
-//Llamada desde opciones_V.php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************************************************
+    //3- invocada desde opciones_V.php muestra en cada seccion los productos que tiene cargado en carrito
     function TransferirPedido(){
         console.log("______Desde TransferirPedido()______")
-    
-        //Se especifica el elemento donde se va a insertar el nuevo elemento, este localStoorage se creo en verOpciones()
-        InputLeyendaDinamico = localStorage.getItem('ID_cont_dinamico')
-        console.log(InputLeyendaDinamico)
 
-        //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos
-        Leyendas = document.getElementsByClassName("leyenda_6js")
-        for(let i = 0; i<Leyendas; i++){ 
-            console.log(Leyendas[i].value) 
+        //Se especifica la seccion donde se va a insertar el nuevo elemento en vitrina_V.php, este localStoorage se creo en verOpciones()
+        InputLeyendaDinamico = localStorage.getItem('ContDinamico')
+        Padre = document.getElementById(InputLeyendaDinamico)
 
-            let DivPadre = document.getElementById("InputLeyendaDinamico")
-            
-            console.log(DivPadre) 
-            DivPadre.removeChild(Leyendas);  
+        //Se guarda la sección donde esta el producto cargado a pedido
+        Seccion = localStorage.getItem('SeccionCLick')        
+
+        //Se recorre todos los elementos que contengan la clase input_15 para eliminarlos
+        //Se especifica a que seccion pertenecen los productos que se van a eliminar
+        elementoHijo = Padre.getElementsByClassName("input_15")
+
+        //Se cuentan cuantos productos exiten
+        Elementos = elementoHijo.length
+
+        if(Elementos){
+            for(let i = 0; i<Elementos; i++){ 
+                //Por cada vuelta elimina el primer hijo con la clase "input_15"
+                Padre.removeChild(elementoHijo[0])
+            }
         }
 
-        let id_dinamico = 1
-        //Se crean los input que contendran las leyendas de los productos pedidos para mostrar en vitrina
-        //El objeto AlCarro contiene todo el pedido (cantidad - producto - opcion - precio unitario - precio por productos)
-        for(let i = 0; i<AlCarro.length; i++){
-            //Se crean los input que cargaran las leyendas contenidas en el array AlCarro
-            var NuevoElemento = document.createElement("input")
-            
-            //Se dan propiedades al nuevo elemento creado
-            NuevoElemento.value = AlCarro[i].Cantidad + ' ' + AlCarro[i].Producto + ' ' + AlCarro[i].Opcion + ' = ' + AlCarro[i].Total + ' Bs.'
-            NuevoElemento.classList.add("input_15")
-            NuevoElemento.name = "leyenda[]"
-            NuevoElemento.id = "Input_Leyenda_" + id_dinamico
-            NuevoElemento.readOnly = true
-            console.log(Leyendas)
+        //Se evaluaran solo los elementos de AlCarro que correspondan a la sección donde se hizo click
+        function ProductoEditado(Seccion){
+            var existe = false;
+            var filtered = AlCarro.filter(function(item){
+                return item.Seccion == Seccion; 
+            });
 
-            //Se especifica el elemento donde se va a insertar el nuevo elemento
-            InputLeyendaDinamico = localStorage.getItem('ID_cont_dinamico')
-            console.log(InputLeyendaDinamico)
-            var ElementoPadre = document.getElementById(InputLeyendaDinamico)
-            //Se inserta en el DOM el input creado
-            inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
-            id_dinamico++  
+            let id_dinamico = 1
+            for(let i = 0; i < filtered.length; i++){
+                //Se crean los input que cargaran las leyendas contenidas en el array filtered
+                var NuevoElemento = document.createElement("input")
+                
+                //Se dan propiedades al nuevo elemento creado
+                NuevoElemento.value = filtered[i].Cantidad + ' ' + filtered[i].Producto + ' ' + filtered[i].Opcion + ' = ' + filtered[i].Total + ' Bs.'
+                NuevoElemento.classList.add("input_15")
+                NuevoElemento.name = "leyenda"
+                NuevoElemento.id = "Input_Leyenda_" + id_dinamico
+                NuevoElemento.readOnly = true
+
+                //Se especifica el elemento donde se va a insertar el nuevo elemento            
+                var ElementoPadre = document.getElementById(InputLeyendaDinamico)
+                
+                //Se inserta en el DOM el input creado
+                inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+                id_dinamico++         
+            }
+            return existe;
         }
+        ProductoEditado(Seccion)       
     }
+
 //************************************************************************************************
-
-
-
-
-
-
 
 
 
@@ -673,7 +680,55 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-//Llamada desde opciones_V  
+    //invocada al cargarse vitrina_V.php especifican los elementos que ya estan cargados al carrito de compra
+    function ProductosEnCarrito(){      
+        console.log("______Desde ProductosEnCarrito()______")    
+
+        //Detectar el contenedor de la sección donde esta el producto introducido a carrito
+
+        //Detectar el contenedor del producto en opciones_V.php donde se hace click
+        // Cont_Producto = localStorage.getItem('ID_cont_LeyendaDinamico')
+        // console.log(Cont_Producto)
+
+        
+        //     document.getElementById(Cont_Producto).style.backgroundColor = "blue"
+
+        //     document.getElementById(Cont_Producto).style.display = "block"
+            // muestra el contenedor que tiene la leyenda y los botones de más y menos
+        
+    }    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************************************************************
+    //invocada desde opciones_V  
     function Pre_incremento(){  
         // console.log("______Desde Pre_incremento()______")
        
@@ -748,8 +803,8 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
                 //Muestra la leyenda del pedido por producto
                 inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + ' ' + Opcion + " = " + SeparadorMiles(Total) + " Bs."   
                 
-                //Se 
-                PedidoGlobal = new PedidoCar(Cantidades, Producto , Opcion, Precio, TotalDisplayCarrito);
+                //Se PedidoAtomico = new PedidoCar( Separado[2], 1, Separado[3], Separado[4], Separado[4])
+                PedidoGlobal = new PedidoCar('Faltaseccion', Cantidades, Producto , Opcion, Precio, TotalDisplayCarrito);
              
                 //Se verifica que el producto existe en el array AlCarro que contiene el pedidio y se edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden
                 function ProductoEditado(Opcion){
@@ -787,7 +842,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //Llamada desde vitrina_V
+    //invocada desde vitrina_V
     function Pre_decremento(){      
         // console.log("______Desde Pre_decremento()______")    
         //Detectar el boton de restar
@@ -970,7 +1025,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //LLamada desde Funciones_Ajax.js por medior de llamar_PedidoEnCarrito()
+    //invocada desde Funciones_Ajax.js por medior de llamar_PedidoEnCarrito()
     function PedidoEnCarrito(){
         //Se muestra el monto de la compra en tienda, sin comisión y sin despacho
         console.log("______Desde Pedido en carrito______")
@@ -1021,7 +1076,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //Llamada desde login_V.php
+    //invocada desde login_V.php
     function DesabilitarBoton(){
         document.getElementsByClassName("submit_js")[0].value = "Creando tienda ..."
     }
@@ -1062,6 +1117,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
             B.style.backgroundColor = "none"
         }
     }
+
 //************************************************************************************************
     //Coloca la lista de categorias en el borde superior de la página 
     function transicionTiendas(){  
@@ -1077,16 +1133,16 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
             document.getElementById("Contenedor_88").style.top = "-30%"
         }
     }
+
 //************************************************************************************************
-    // Llamada desde PedidoCarrito.php
+    // invocada desde PedidoCarrito.php
     function verTransferenciaBancaria(){
         document.getElementById("Contenedor_60a").style.display = "block"
         document.getElementById("Contenedor_60b").style.display = "none"
     }
 
 //************************************************************************************************
-
-    // Llamada desde PedidoCarrito.php
+    // invocada desde PedidoCarrito.php
     function verPagoMovil(){
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "block"
@@ -1108,13 +1164,13 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     }
     
 //************************************************************************************************
- //Llamada desde inicio_V.php - opciones_V.php
- function CerrarModal_X(id){
+    //invocada desde inicio_V.php - opciones_V.php
+    function CerrarModal_X(id){
     document.getElementById(id).style.display = "none"
 }
 
 //************************************************************************************************
-    //Parapadeo display carrito, llamada desde Pre_incremento - Pre_decremento - transferirOpcion - AgregaOpcion
+    //Parapadeo display carrito, invocada desde Pre_incremento - Pre_decremento - transferirOpcion - AgregaOpcion
     function DisplayDestello(){    
         document.getElementById("Mostrar_Carrito").classList.add('Blink')
 
@@ -1124,14 +1180,14 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     }
 
 //************************************************************************************************
-    //Funcion llamada desde tiendas_V.php
+    //Funcion invocada desde tiendas_V.php
     function vitrina(ID_Tienda, NombreTienda){  
         window.open(`../../Vitrina_C/index/${ID_Tienda},${NombreTienda}`,"_self")      
         console.log(ID_Tienda + NombreTienda)
     }
     
 //************************************************************************************************
-    //Llamada desde carrito.php 
+    //invocada desde carrito.php 
     function MuestraEnvioFactura(){
         document.getElementById("MuestraEnvioFactura").style.display = "block"
         document.getElementById("Contenedor_26").style.display = "none"
@@ -1152,7 +1208,7 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     }
 
 //************************************************************************************************
-    //Llamada desde funcionesVarias.js 
+    //invocada desde funcionesVarias.js 
     function CerrarModal(){
         let Z = document.getElementsByClassName("contenedor_15").id = localStorage.getItem('ID_cont_sombreado'); 
         document.getElementById(Z).style.display = "block";
@@ -1162,13 +1218,13 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     }
 
 //************************************************************************************************
-    //Oculta el div que contiene alert personalizado, llamada desde alert.php
+    //Oculta el div que contiene alert personalizado, invocada desde alert.php
     function ocultar(id){
         document.getElementById(id).style.display = "none";
     }
     
 //************************************************************************************************
-    //Llamada desde carrito_V.php
+    //invocada desde carrito_V.php
     function ocultarPedido(){       
         document.getElementById("Mostrar_TodoPedido").style.display = "none";
     }
@@ -1176,5 +1232,3 @@ function PedidoCar(Cantidad, Producto, Opcion, Precio, Total){
     // console.log("Se eliminan todos los objetos de un mismo producto menos el ultimo")
     // elementoEliminado = AlCarro.splice(-1);
     // console.log(elementoEliminado)  
-
-  

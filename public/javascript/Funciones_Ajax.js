@@ -36,17 +36,17 @@ var http_request = false
 // document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
 
 //-------------------------------------------------------------------------------------------------
-//Es llamada desde vitrina_V.php
-function llamar_Opciones(ID_Tienda, NombreProducto, Cont_Dinamico){
+//Es invocada desde vitrina_V.php muestra los productos que tiene una sección
+function llamar_Opciones(ID_Tienda, NombreProducto){
+    console.log("______Desde llamar_Opciones()______") 
     window.localStorage.setItem('ID_Tienda', ID_Tienda)
     window.localStorage.setItem('NombreProducto', NombreProducto)
-    window.localStorage.setItem('ID_cont_dinamico', Cont_Dinamico)
     let A = localStorage.getItem("ID_Tienda")
     let B = localStorage.getItem("NombreProducto")
-    let C = localStorage.getItem('ID_cont_dinamico')
-    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B + "/" + C
+
+    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B 
     http_request.open('GET', url, true)
-    //Se define que función va hacer llamada cada vez que cuando cambie onreadystatechange
+    //Se define que función va hacer invocada cada vez que cuando cambie onreadystatechange
     peticion.onreadystatechange = respuesta_Opciones
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null")
@@ -71,7 +71,7 @@ function respuesta_Opciones(){
 }
 
 //-------------------------------------------------------------------------------------------------
-//llamada desde vitrina_V.php 
+//invocada desde vitrina_V.php 
 function llamar_PedidoEnCarrito(){
     var url="../../Carrito_C/index/";
     http_request.open('GET', url, true);    
@@ -97,7 +97,7 @@ function respuesta_PedidoEnCarrito(){
 }
 
 //-------------------------------------------------------------------------------------------------
-    //Llamada desde funcionesVarias.js por medio de la funcion Pre_decremento()
+    //invocada desde funcionesVarias.js por medio de la funcion Pre_decremento()
     function Llamar_AlertPersonalizado(){
         var url="../../Vitrina_C/alertPersonal/"
         http_request.open('GET', url, true);    
@@ -122,7 +122,7 @@ function respuesta_PedidoEnCarrito(){
     }
     
 //-------------------------------------------------------------------------------------------------
-    // Llamada desde cuenta_editar_V.php 
+    // invocada desde cuenta_editar_V.php 
     function Llamar_categorias(){
         var url = "../Cuenta_C/Categorias/"
         http_request.open('GET', url, true)  
@@ -147,7 +147,7 @@ function respuesta_PedidoEnCarrito(){
 
 //-------------------------------------------------------------------------------------------------
   
-    // Llamada desde inicio_V.php 
+    // invocada desde inicio_V.php 
     // Busca un pedido segun lo que escriba el usuario en el input
     function Llamar_buscador(nombre){
         var divContenedor = document.getElementById("Buscar_Pedido")//se recibe desde inicio_V.php 
