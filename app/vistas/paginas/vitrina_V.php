@@ -15,8 +15,8 @@
             $Seccion = $row['seccion'];       
             ?> 
             <section id="Section_4">
-                <div id="<?php echo 'Cont_Dinamico_' . $Contador;?>">
-                    <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Dinamico_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>')">
+                <div id="<?php echo 'Cont_Seccion_' . $Contador;?>">
+                    <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>')">
                         <div class="contenedor_12 borde_1">
                             <figure>
                                 <!-- Con un if se verifica si tiene imagen en BD; sino se muestra el icono -->
@@ -27,7 +27,8 @@
                         <h2 class="h2_6"><?php echo $Seccion;?></h2>
                     </div>
 
-                    <!-- Se agregan via javascript elementos desde TransferirPedido() -->
+                    <!-- Se agregan las leyendas desde TransferirPedido() -->
+
                 </div>
             </section>
             <?php
@@ -46,7 +47,7 @@
     </div>
 </section>
 
-<!-- Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php -->
+<!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php -->
 <div id="Mostrar_Opciones"></div>
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información la toma de carrito_V.php -->

@@ -49,9 +49,10 @@ function llamar_Opciones(ID_Tienda, NombreProducto){
     //Se define que función va hacer invocada cada vez que cuando cambie onreadystatechange
     peticion.onreadystatechange = respuesta_Opciones
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
-    peticion.send("null")
+    peticion.send("null")    
 }                                                           
 function respuesta_Opciones(){
+    //console.log("______Desde llamar_Opciones() -> respuesta_Opciones______") 
     if(peticion.readyState == 4){
         if(peticion.status == 200){
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
@@ -59,15 +60,17 @@ function respuesta_Opciones(){
             // console.log(AltoVitrina)
             // document.getElementById("contenedor_13").style.height =AltoVitrina +"px"
             // document.getElementById("contenedor_13").style.backgroundColor ="red"
+            
+            //la función es llamada tres veces si se coloca fuera (No se porque)
+            ProductosEnCarrito()
         } 
         else{
             alert('Hubo problemas con la petición.')
         }
     }
     else{ //en caso contrario, mostramos un gif simulando una precarga
-        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-    
-    }
+        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';    
+    }    
 }
 
 //-------------------------------------------------------------------------------------------------

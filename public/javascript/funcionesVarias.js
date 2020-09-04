@@ -5,17 +5,22 @@ PedidoCarrito = []
 //Declarar el array que contiene los detalles de cada pedido atomico(cantidad, producto, precio, total) cada detalle se inserta al array como un objeto JSON, es usado para alimentar "Tu Orden" en carrito_V.php
 AlCarro = []
 
+//Declarar el array que contiene los detalles de las leyendas, cada detalle se inserta al array como un objeto JSON, es usado en opciones_V.php
+AlContenedor = []
+
 //Guarda cada precio de los productos pedidos 
 DisplayCarrito = []  
 
 //Guarda la suma del monto total del pedido que se muestra en el display del carrito de compras
 TotalDisplayCarrito = []  
 
+//Guarda los contenedores que muestran productos que han sido cargados al carrito
+ProductoEnCarrito = []
+
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función Pre_incremento  y Pre_decremento (IMPORTANTE: por esta razon es necesario colocar estas funciones en su arhcio E_Vitrina.js para que solo se escuchen cuando ese archivo se abra)
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
-document.addEventListener("click", ProductosEnCarrito)
  
 //Escucha en login_V.php                              
 // document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
@@ -30,8 +35,19 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
     this.Precio = Precio
     this.Total = Total
 }
-// ************************************************************************************************** 
 
+//Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito
+function ProductoCar(Cont_Seccion, Cont_Leyenda, Input_Leyenda, ID_Input_Leyenda, ID_Boton_Agregar){
+    this.Cont_Seccion = Cont_Seccion
+    this.Cont_Leyenda = Cont_Leyenda
+    this.Input_Leyenda = Input_Leyenda    
+    this.ID_Input_Leyenda = ID_Input_Leyenda
+    this.ID_Boton_Agregar = ID_Boton_Agregar
+
+}
+// ************************************************************************************************** 
+// PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4])
+// AlCarro.push(PedidoAtomico) 
 
 
 
@@ -463,11 +479,13 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
 
 //************************************************************************************************
     //1- invocada desde vitrina_V identifica los elementos de la sección donde se hizo click.
-    function verOpciones(Cont_Dinamico, Seccion){ 
+    function verOpciones(Cont_Seccion, Seccion){ 
         console.log("______Desde verOpciones()______")     
 
         //Captura el valor del id dinanmico de la seccion donde se hizo click
-        localStorage.setItem('ContDinamico',Cont_Dinamico) 
+        localStorage.setItem('ContSeccion', Cont_Seccion)         
+        LS_ID_Cont_Seccion = localStorage.getItem('ContSeccion')
+        console.log(LS_ID_Cont_Seccion)
 
         //Captura la seccion donde se hizo click
         localStorage.setItem('SeccionCLick',Seccion) 
@@ -491,23 +509,28 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
 
 //************************************************************************************************
     //2- invocada desde opciones_V.php añade un producto al carrito
-    function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, InputSeccion, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda){
-        console.log("______Desde agregarOpcion()______")        
-        console.log(localStorage.getItem('ContDinamico'))  
+    function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto){
+        console.log("______Desde agregarOpcion()______")     
         
-        //Se recibe el cotrol con el nombre "opcion" del formulario desde opciones_V.php
+        //Se recibe el control con el nombre "opcion" del formulario desde opciones_V.php
         Opcion = form.opcion
 
         //Se recibe el ID de la etiqueta donde se hizo click
         LabelClick = ID_Etiqueta
         localStorage.setItem('BotonAgregar',LabelClick) 
+        LS_ID_BotonAgregar = localStorage.getItem('BotonAgregar')
+console.log(LS_ID_BotonAgregar)
 
-        //Se recibe el ID del contenedor que va a mostrar la leyenda del producto donde se hizo click
+        //Se recibe el ID del contenedor de la leyenda del producto donde se hizo click
         Cont_Leyenda_Click = ID_Cont_Leyenda
         localStorage.setItem('ID_cont_LeyendaDinamico',Cont_Leyenda_Click) 
+        LS_ID_Cont_Leyenda = localStorage.getItem('ID_cont_LeyendaDinamico')
+console.log(LS_ID_Cont_Leyenda)
 
         //Se recibe la seccion del producto donde se hizo click
-        InputSeccion 
+         
+        localStorage.setItem('Seccion',InputSeccion) 
+        Seccion_tienda = localStorage.getItem('Seccion')
 
         //Se recibe el ID del input que va a mostrar la cantidad del producto donde se hizo click
         Input_CantidadClick = ID_InputCantidad
@@ -526,7 +549,12 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
 
         //Se recibe el ID del input que va a mostrar la opcion del producto donde se hizo click
         Input_LeyendaClick = ID_InputLeyenda
-        // console.log(Input_LeyendaClick)
+        localStorage.setItem('ID_InputLeyenda',Input_LeyendaClick)
+        LS_ID_InputLeyenda = localStorage.getItem('ID_InputLeyenda')
+
+        //Se recibe el ID del contenedor que muestra el producto donde se hizo click
+        ID_ContenedorProducto = ID_Cont_Producto
+        localStorage.setItem('ID_ContenedorProductoDina',ID_ContenedorProducto)
 
         //Se guarda el Input_LeyendaClick en un localstorage para usarlo en TransferirPedido()
         // .localStorage.setItem('ID_InputDinamico_Leyanda', Input_LeyendaClick)
@@ -546,7 +574,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
                 document.getElementById(Cont_Leyenda_Click).style.display = "block"
                 
                 //Se muestra la cantidad de producto donde se hizo click
-                document.getElementById(Input_CantidadClick).value = 1
+                A = document.getElementById(Input_CantidadClick).value = 1
 
                 //Se muestra el producto donde se hizo click
                 document.getElementById(Input_ProductoClick).value = Separado[1]
@@ -558,7 +586,8 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
                 Precio = document.getElementById(Input_PrecioClick).value = Separado[4]
                 
                 //Se muestra la leyenda del producto donde se hizo click
-                document.getElementById(Input_LeyendaClick).value = 1 + ' ' + Separado[2] + ' ' + Separado[3] + ' = ' + Separado[4] + ' Bs.'
+                InputLeyenda = document.getElementById(Input_LeyendaClick)
+                InputLeyenda.value = 1 + ' ' + Separado[2] + ' ' + Separado[3] + ' = ' + Separado[4] + ' Bs.'
 
                 //Se cambia el formato del precio, solo numeros sin separador de miles
                 Precio = Precio.replace(".","")
@@ -566,7 +595,8 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
                 
                 //Se añade el producto carrito(no lo suma), basta con añadir el id_dinamico(ID_Opcion) por cada unidad de produto añadida
                 PedidoCarrito.push(Separado[0])
-       
+console.log(PedidoCarrito)
+
                 //Se ingresa el monto del nuevo pedido al array que contiene todos los precios del pedido,                   
                 DisplayCarrito.push(Precio) 
 
@@ -588,6 +618,19 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
             } 
             DisplayDestello()
         }
+        //Detectar el contenedor del producto en opciones_V.php donde se hace click
+        // Cont_Producto = localStorage.getItem('ID_ContenedorProductoDina')
+        Cont_Seccion = document.getElementById(LS_ID_Cont_Seccion)
+console.log(Cont_Seccion)
+
+        Inp_Leyenda = document.getElementById(LS_ID_InputLeyenda)
+console.log(Inp_Leyenda)
+
+        //Guarda en el objeto "AlContenedor", la leyenda del producto segun su contenedor de seccion, cada detalle en si es un array, por lo que AlContenedor es un array de objetos
+        Contenedores = new ProductoCar(LS_ID_Cont_Seccion, LS_ID_Cont_Leyenda, Inp_Leyenda.value, LS_ID_InputLeyenda, LS_ID_BotonAgregar)
+// console.log(Contenedores)
+        AlContenedor.push(Contenedores) 
+console.log(AlContenedor)
     }
 
 //************************************************************************************************
@@ -612,7 +655,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
         console.log("______Desde TransferirPedido()______")
 
         //Se especifica la seccion donde se va a insertar el nuevo elemento en vitrina_V.php, este localStoorage se creo en verOpciones()
-        InputLeyendaDinamico = localStorage.getItem('ContDinamico')
+        InputLeyendaDinamico = localStorage.getItem('ContSeccion')
         Padre = document.getElementById(InputLeyendaDinamico)
 
         //Se guarda la sección donde esta el producto cargado a pedido
@@ -622,7 +665,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
         //Se especifica a que seccion pertenecen los productos que se van a eliminar
         elementoHijo = Padre.getElementsByClassName("input_15")
 
-        //Se cuentan cuantos productos exiten
+        //Se cuentan cuantos productos exiten ene el contenedor
         Elementos = elementoHijo.length
 
         if(Elementos){
@@ -641,6 +684,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
 
             let id_dinamico = 1
             for(let i = 0; i < filtered.length; i++){
+                existe = true;
                 //Se crean los input que cargaran las leyendas contenidas en el array filtered
                 var NuevoElemento = document.createElement("input")
                 
@@ -680,36 +724,37 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
 
 
 //************************************************************************************************
-    //invocada al cargarse vitrina_V.php especifican los elementos que ya estan cargados al carrito de compra
+    //invocada al cargarse llamar_Opciones() en Funciones_Ajax.js especifica los productos que ya estan cargados al carrito de compra y muestra su leyenda en la vista opciones_V.php
     function ProductosEnCarrito(){      
-        console.log("______Desde ProductosEnCarrito()______")    
+        console.log("______Desde ProductosEnCarrito()______")        
 
-        //Detectar el contenedor de la sección donde esta el producto introducido a carrito
-
-        //Detectar el contenedor del producto en opciones_V.php donde se hace click
-        // Cont_Producto = localStorage.getItem('ID_cont_LeyendaDinamico')
-        // console.log(Cont_Producto)
-
+console.log(AlContenedor)
         
-        //     document.getElementById(Cont_Producto).style.backgroundColor = "blue"
+            //Se filtran las leyendas que correspondan a la seccion seleccionada
+            var filtered = AlContenedor.filter(function(item){
+                return item.Cont_Seccion == LS_ID_Cont_Seccion 
+            })
+console.log(filtered)
 
-        //     document.getElementById(Cont_Producto).style.display = "block"
-            // muestra el contenedor que tiene la leyenda y los botones de más y menos
+            for(let i = 0; i < filtered.length; i++){
+                //Del objeto filtrado filtered se toma la propiedad Cont_Leyenda
+                filtered[i].Cont_Leyenda
+                filtered[i].Input_Leyenda
+                filtered[i].ID_Input_Leyenda  
+                filtered[i].ID_Boton_Agregar 
+
+                //Si el objeto "AlContenedor" tiene el array de un producto no se muestra el boton "Agregar" en este contenedor
+                document.getElementById(filtered[i].ID_Boton_Agregar).style.display = "none"
+                
+                //Detectar el contenedor de la leyenda del producto en opciones_V.php donde se hizo click  
+                document.getElementById(filtered[i].Cont_Leyenda).style.display = "block"
+
+                //Dar valor al input de la leyenda   
+                document.getElementById(filtered[i].ID_Input_Leyenda).style.display = "block"
+                document.getElementById(filtered[i].ID_Input_Leyenda).value = filtered[i].Input_Leyenda
+            }
         
     }    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
 
@@ -730,7 +775,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
 //************************************************************************************************
     //invocada desde opciones_V  
     function Pre_incremento(){  
-        // console.log("______Desde Pre_incremento()______")
+        console.log("______Desde Pre_incremento()______")
        
         //Detectar el boton donde se hace click
         let mas = document.getElementsByClassName("mas")//Se obtienen los botones [+]
@@ -763,9 +808,9 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
                 let Producto = inputSeleccionadoLeyen.getElementsByClassName("input_1a")[0].value
 
                 //Input seccion Aqui se muestra a seccion donde esta el producto
-                // let Seccion = inputSeleccionadoLeyen.getElementsByClassName("input_1b")[0].value
+                let Seccion = inputSeleccionadoLeyen.getElementsByClassName("input_1b")[0].value
 
-                //Input opcion Aqui se muestra la opcion
+                //Input opcion Aqui se muestra el ID_Opcion
                 let Opcion = inputSeleccionadoLeyen.getElementsByClassName("input_1c")[0].value
 
                 //input cantidad Aqui se mostrará la cantidad
@@ -804,7 +849,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
                 inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + ' ' + Opcion + " = " + SeparadorMiles(Total) + " Bs."   
                 
                 //Se PedidoAtomico = new PedidoCar( Separado[2], 1, Separado[3], Separado[4], Separado[4])
-                PedidoGlobal = new PedidoCar('Faltaseccion', Cantidades, Producto , Opcion, Precio, TotalDisplayCarrito);
+                PedidoGlobal = new PedidoCar(Seccion_tienda, Producto, Cantidades, Opcion, Precio, TotalDisplayCarrito);
              
                 //Se verifica que el producto existe en el array AlCarro que contiene el pedidio y se edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden
                 function ProductoEditado(Opcion){
@@ -1090,7 +1135,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
         // console.log("_____Desde función anonima para ocultar menu_____")
         //obtiendo informacion del DOM del elemento donde se hizo click 
         var click = e.target
-        console.log(click)
+        // console.log(click)
         AltoVitrina = document.body.scrollHeight
         if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
             div.style.marginLeft = "-48%"
@@ -1182,6 +1227,7 @@ function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
 //************************************************************************************************
     //Funcion invocada desde tiendas_V.php
     function vitrina(ID_Tienda, NombreTienda){  
+        console.log("______Desde vitrina()______")
         window.open(`../../Vitrina_C/index/${ID_Tienda},${NombreTienda}`,"_self")      
         console.log(ID_Tienda + NombreTienda)
     }

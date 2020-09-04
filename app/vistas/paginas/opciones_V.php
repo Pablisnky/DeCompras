@@ -19,10 +19,10 @@
 
                 //Se da formato al precio, sin decimales y con separación de miles
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
-                <div class="contenedor_95">
+                <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                     <div class="contenedor_9 borde_2">
                         <div class="contenedor_97">
-                            <label for="File_1"><span class="icon-image span_8"></span></label>
+                            <span class="icon-image span_8"></span>
                         </div>
                     </div>
                     <div>
@@ -31,7 +31,7 @@
                         <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs."/>
                         <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                         
-                        <input class="input_3" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo 'Seccion';?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>')"/>
+                        <input class="input_3" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>')"/>
                     </div> 
                     <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
                         <div class="contenedor_19">
