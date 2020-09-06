@@ -21,8 +21,8 @@
                     $ID_Producto = $arr["ID_Producto"];
                     $ID_Opcion = $arr["ID_Opcion"];
                             ?>
-                    <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/>
-                    <div class="contenedor_95">
+                    <!-- <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/> -->
+                    <div class="contenedor_95 contenedor_98">
                         <div class="contenedor_9 borde_2">
                             <!-- <img class="imagen_2" alt="Imagen de producto" src="../images/Perfil.jpg"/> -->
                             <div class="contenedor_97">
@@ -33,10 +33,10 @@
                             <input class="input_8" type="text" value="<?php echo $Producto;?>"/>
                             <input class="input_8" type="text" value="<?php echo $Opcion;?>"/>
                             <input class="input_8" type="text" value="<?php echo $Precio;?>"/>
-                        </div>
-                        <div class="contenedor_96">                
-                            <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/actualizarProducto/' . $ID_Producto;?>">Actualizar</a>
-                            <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/eliminarProducto/' . $ID_Producto . ',' . $ID_Opcion?>">Eliminar</a>
+                            <div class="contenedor_96">                
+                                <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/actualizarProducto/' . $ID_Producto;?>">Actualizar</a>
+                                <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/eliminarProducto/' . $ID_Producto . ',' . $ID_Opcion?>">Eliminar</a>
+                            </div>
                         </div>
                     </div>
                     <?php  

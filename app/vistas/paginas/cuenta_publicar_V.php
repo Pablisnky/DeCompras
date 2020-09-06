@@ -25,7 +25,7 @@
                     <div class="contenedor_9 borde_2">
                         <!-- <img class="imagen_2" alt="Fotografia del usuario" src="../images/Perfil.jpg"/> -->
                         <label for="File_1"><span class="icon-image span_9"></span></label>
-                        <input class="input_3" id="File_1" type="file"/>
+                        <input class="ocultar" id="File_1" type="file"/>
                     </div>
                     <div style="margin-top:5%">
                         <input class="input_13 borde_2" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"/>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="contenedor_49">
-                    <input class="input_3" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
+                    <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
                     <input class="boton " type="submit" value="Guardar"/>
                 </div>
             </form>

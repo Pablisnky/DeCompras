@@ -67,7 +67,7 @@
 	padding: 1%;
 	margin-top: 1%;
 	margin-left: 2%;
-	z-index: 3;
+	/* z-index: 3; */
 }
 .contador{/*contacto.php  */
 	width: 10% !important;
@@ -89,8 +89,9 @@
 	margin:1% auto;
 }
 .contenedor_6{/*inicio*/
-	margin: 5% auto;	
-	width: 90%;
+	margin: 10% auto;	
+	width: 60%;
+	height: 100px !important;
 }
 .contenedor_7{
 	margin-top: 0%;
@@ -275,6 +276,7 @@
 .contenedor_76{/*Categorias_Ajax*/
 	grid-template-columns: 100%;
 	padding-left: 5%;
+	margin-top: 10%;
 }
 .contenedor_77{/*Categorias_Ajax_V.php*/
 	margin: 10% auto 1% auto;
@@ -326,7 +328,7 @@
 	/* padding: 2%; */
 }
 .h2_1{/*inicio*/
-	font-size: 1em;
+	font-size: 0.9em;
 }
 .h2_2{/*carrito*/
 	font-size: 0.9em;
@@ -366,7 +368,7 @@
 	font-size: 0.9em;
 	width: 50px !important;
 }
-.input_9{/*registroCom - registroDes - carrito - login*/
+.input_9{/*registroCom - registroDes - carrito - login - cuenta_editar*/
 	margin: 0% auto 4% auto !important;
 	font-size: 0.8em;
 	line-height: 30px;
@@ -396,7 +398,7 @@
 	font-size: 1.2em;
 	width: 100% !important;
 }
-.label_4{/*opciones - */	
+.label_4{/*opciones - cuenta_editar*/	
 	width: 60% !important;
 }
 .label_12{/*carrito*/
@@ -425,6 +427,9 @@
 	margin: 5% auto;
 	/* margin-left: -6% !important; */
 }
+.label_19{/*cuenta_editar*/
+	width: 90% !important;
+}
 .legend_1{/*registroCom - registroDes*/
 	font-size: 1.1em;
 	margin-left: 1%;
@@ -438,7 +443,6 @@
 .menuResponsive{/*Todas las páginas*/
 	padding-top: 0%;
 	width:48%; 
-	margin-top: -12%;
 	margin-left: -48%;/*oculta el menu responsive*/
 	transition: all 0.5s;
 }
@@ -449,7 +453,6 @@
 	border-bottom-width: 1px;
 	flex-direction: column;
 	width: 100%;
-	z-index: 5;
 }
 .menuResponsive li{/*Todas las páginas*/
 	height: 40px;
@@ -528,6 +531,11 @@
 .span_6{/*inicio*/
 	font-size: 2em;
 }
+.span_8{/*inicio*/
+	font-size: 3em;
+	line-height: 1em;
+	/* background-color: yellow; */
+}
 .span_9{/*cuenta_publicar - opciones*/
 	padding-top: 5%;
 }
@@ -576,7 +584,7 @@
 	padding-top: 5%;
 }
 ul .menuContenedor_2{
-	display: none;
+	/* display: none; */
 	position: absolute;
 	margin-left: 48% !important;
 	margin-top: -10% !important;

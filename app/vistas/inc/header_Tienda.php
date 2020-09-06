@@ -1,4 +1,5 @@
 <?php 
+	//$Datos viene de Vitrina_C.php
 	if(empty($Datos['NombreTienda'])){
 		$Membrete = "PedidoRemoto";
 	}
@@ -41,7 +42,7 @@
 					<li><a class="a_3" href="">Dirección</a></li>
 					<li><a class="a_3" href="">Empleo</a></li>
 					<hr class="hr_3 hr_4">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Salir</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Salir de la tienda</a></li>
 				</ul>
 			</nav>
 		</header>

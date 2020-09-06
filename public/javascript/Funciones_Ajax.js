@@ -76,7 +76,8 @@ function respuesta_Opciones(){
 //-------------------------------------------------------------------------------------------------
 //invocada desde vitrina_V.php 
 function llamar_PedidoEnCarrito(){
-    var url="../../Carrito_C/index/";
+    console.log("______Desde llamar_PedidoEnCarrito()______")
+    var url="http://localhost/proyectos/PidoRapido/Carrito_C/index/";
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -86,6 +87,7 @@ function respuesta_PedidoEnCarrito(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){            
             document.getElementById("Mostrar_TodoPedido").style.display = "block"
+            //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
             document.getElementById('Mostrar_TodoPedido').innerHTML = peticion.responseText
         } 

@@ -31,7 +31,7 @@ button{/*tiendas*/
 	position: absolute;
 	top: 2%;
 	left: 4%;
-	z-index: 1;
+	/* z-index: 1; */
 	color: white;
 	font-size: 2em;
 }
@@ -157,10 +157,10 @@ button{/*tiendas*/
 .comandoMenu_2{/*header_inicio - header_AfiCom - header - header_Tienda*/
 	display: none;
 }
-.contador{/*contacto.php  */
+.contador{/*cuenta_publicar.php  */
 	width: 15% !important;
 	margin-right: auto !important;
-	/* height: 16px;	 */
+	color: rgba(51, 51, 51, 0.6);
 	line-height: 16px;
 	font-size: 0.8em;
 	text-align: center;
@@ -195,6 +195,7 @@ button{/*tiendas*/
 	width: 80%;
 }
 .contenedor_6{/*inicio*/
+	/* background-color: red; */
 	width: 25%;
 	margin: 2%;
 	height: 200px !important;
@@ -631,7 +632,7 @@ button{/*tiendas*/
 /*.contenedor_74{cuenta_publicar
 	position: initial !important;
 }*/
-.contenedor_76{/*Categorias_Ajax - Secciones_Ajax*/
+.contenedor_76{/*Categorias_Ajax*/
 	display: grid;
 	grid-template-columns: 32% 32% 32%;
 	column-gap: 2%;/*espacio entre columnas*/
@@ -726,14 +727,13 @@ button{/*tiendas*/
 	/* background-color: yellow; */
 	display: grid;
 	grid-template-columns: 50% 50%;
-	row-gap: 5px; /*espacio entre columnas*/
+	row-gap: 5px; /*espacio entre filas*/
 	width: 100%;
 }
 .contenedor_96{/*cuenta_productos*/
-	grid-column-start: 1;
-	grid-column-end: 3;
+	/* background-color: orange; */
 	display: flex;
-	width: 60%;
+	width: 100%;
 	margin: 1% auto;
 	justify-content: space-around;
 }
@@ -742,6 +742,10 @@ button{/*tiendas*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.contenedor_98{/*cuenta_productos*/
+	/* background-color: gray; */
+	margin-bottom: 10%;
 }
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 50%;
@@ -767,15 +771,18 @@ button{/*tiendas*/
 	text-align: right;
 }
 .h1_3{/*opciones - carrito*/	
-	/* background-color: red; */
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
-	display: inline-block;
+	display: inline_block;
 	width: 100%;
 }
 .h1_4{/*ciudad - opciones*/
 	font-size: 1.1em;
+}
+.h1_5{/*Categorias_Ajax*/
+	margin: 2% auto;
+	width: 100%;
 }
 .h2_1{/*inicio carrito*/
 	font-size: 1.1em;
@@ -902,9 +909,6 @@ button{/*tiendas*/
 	display: inline-block;
 	width: 100%;
 }
-.input_3{/*vitrina*/
-	display:none;
-}
 .input_5{/*vitrina*/
 	background-color: rgba(51, 51, 51, 0.3);
 	color: white;
@@ -932,7 +936,7 @@ button{/*tiendas*/
 	border: none;
 	margin-bottom: 1%;
 }
-.input_9{/*registroCom - registroDes - carrito - login - cuenta_publicar*/
+.input_9{/*registroCom - registroDes - carrito - login - cuenta_publicar - cuenta_editar*/
 	margin: 0% auto 2% auto !important;
 	display: block;
 	font-size: 0.8em;
@@ -966,7 +970,7 @@ button{/*tiendas*/
 	font-weight: bold;
 	padding-right: 10%;
 }
-.label_4{/*opciones - */	
+.label_4{/*opciones - cuenta_editar*/	
 	background-color: rgb(31, 161, 118);
 	color:white ;
 	margin: 3% auto;
@@ -1115,8 +1119,9 @@ button{/*tiendas*/
 	margin: 0px !important;
 	width: 30%;
 }
-ul .menuContenedor_2{/*header.php #040652  index.php*/
-	display: none;
+ul .menuContenedor_2{/*header_AfiCom*/
+	/* background-color: red; */
+	display: none !important;
 	position: absolute;
 	margin-left: 3%;
 	z-index: 5;
@@ -1157,22 +1162,25 @@ ul .menuContenedor_2{/*header.php #040652  index.php*/
 	width: 210px;
 }
 .menuLi_1:hover > ul{/*Se aplica un hover a un elemento seleccionando otro elemento distinto*/
-	display: block;
-	width: 50% !important;
+	display: block !important;
+	width: 180px !important;
 }
-.menuLi_2{/*header.php   index.php*/
+.menuLi_2{/*header_AfiCom*/
 	padding: 3% 5% !important;
 	text-align: left !important;
 	display: block;
 	width: 100% !important;
 }
 .menuLi_2:hover{/*header.php   index.php*/
-	/* text-align: left !important; */
-	/* display: block;
-	width: 250px !important; */
+	text-align: left !important;
+	display: block;
+	width: 250px !important;
 }
 .nav_1{/*header_inicio*/
 	padding-top: 1.5%;
+}
+.ocultar{/*vitrina*/
+	display: none;
 }
 .p_1{/*alert - afiliacion*/
 	color: rgb(51, 51, 51);
@@ -1265,6 +1273,9 @@ ul .menuContenedor_2{/*header.php #040652  index.php*/
 }
 .section_9{/*opciones*/
 	background-color: white;
+}
+.section_10{/*Categorias_Ajax*/
+	position: fixed;
 }
 .select_1{/*cuenta_publicar*/
 	margin: 0% auto 2% auto;

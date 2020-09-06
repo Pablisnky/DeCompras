@@ -13,9 +13,20 @@
             
             //Sesion creada en Login_C
             $this->ID_Afiliado = $_SESSION["ID_Afiliado"];
+            
+            //Se CONSULTAN las secciones de una tienda en particular
+            // $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            //     echo "<pre>";
+            //     print_r($Secciones);
+            //     echo "</pre>";
+        
+            // $this->vista("inc/header_AfiCom",  $Secciones);
         }
         
         public function index(){
+
             $this->vista("paginas/cuenta_V");
         }
 

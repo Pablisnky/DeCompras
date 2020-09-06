@@ -50,7 +50,7 @@
 <!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php -->
 <div id="Mostrar_Opciones"></div>
 
-<!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información la toma de carrito_V.php -->
+<!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información la toma de carrito_V.php invocada por la función llamar_PedidoEnCarrito() -->
 <section>
     <div id="Mostrar_TodoPedido"></div>
 </section>

@@ -4,7 +4,7 @@
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
             <!-- <h2 class="h2_4">solicitudes desde casa</h2> -->
-            <h2 class="h2_4">Tú tienda en todas las ciudades</h2>
+            <h2 class="h2_4">Tú tienda en toda la ciudad</h2>
         </div>
         <div class="contenedor_51" id="Contenedor_51">
             <div>

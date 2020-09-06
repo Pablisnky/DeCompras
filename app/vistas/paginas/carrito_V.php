@@ -1,10 +1,11 @@
+<!-- Archivo invocado desde Funciones_Ajax.js por medio de llamar_PedidoEnCarrito() -->
 <?php include(RUTA_APP . '/vistas/inc/header_Modal.php');  ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido_tablaMovil.css"/>
 
 <section class="section_4">
     <div class="contenedor_24">
-        <h1 class="h1_1 h1_3">Tu orden</h1>
+        <h1 class="h1_1 h1_3 h1_5">Tu orden</h1>
         <div class="contenedor_20">
             <table class="tabla" id="Tabla">
                 <thead>
@@ -18,10 +19,10 @@
                 <tbody>
                     <tr>
                         <!--tabla es rellenada desde funcionesVarias.js por medio de PedidoEnCarrito()-->
-                        <td><input type="text" class="input_3" id="Input_cantidadCar"/></td>
-                        <td><input type="text" class="input_3" id="Input_productoCar"/></td>
-                        <td><input type="text" class="input_3" id="Input_precioCar"/></td>
-                        <td><input type="text" class="input_3" id="Input_totalCar"/></td>
+                        <td><input type="text" class="ocultar" id="Input_cantidadCar"/></td>
+                        <td><input type="text" class="ocultar" id="Input_productoCar"/></td>
+                        <td><input type="text" class="ocultar" id="Input_precioCar"/></td>
+                        <td><input type="text" class="ocultar" id="Input_totalCar"/></td>
                     </tr>
                 </tbody>
             </table>
@@ -117,7 +118,7 @@
                         </div>
                     </div>
                     <div class="contenedor_30">
-                        <input class="input_3" type="text" id="Pedido" name="pedido">
+                        <input class="ocultar" type="text" id="Pedido" name="pedido">
                         <input class="boton" id="Submit" type="submit" value="Enviar"/>
                     </div>
                 </div>

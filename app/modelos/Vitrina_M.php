@@ -9,7 +9,7 @@
 
         //SELECT de las secciones de la tienda seleccionada
         public function consultarSecciones($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT seccion FROM secciones WHERE ID_Tienda = :Tienda  ORDER BY seccion");  
+            $stmt = $this->dbh->prepare("SELECT seccion FROM secciones WHERE ID_Tienda = :Tienda");  
             $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
             if($stmt->execute()){
                 return $stmt;

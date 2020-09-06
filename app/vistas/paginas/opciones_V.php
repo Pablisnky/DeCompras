@@ -16,6 +16,9 @@
                 $Opcion = $row['opcion'];                    
                 $Precio = $row['precio'];                
                 $Seccion = $row['seccion'];
+                // echo "<pre>";
+                // print_r($Datos['Opciones']);
+                // echo "</pre>";
 
                 //Se da formato al precio, sin decimales y con separación de miles
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
@@ -31,26 +34,26 @@
                         <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs."/>
                         <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                         
-                        <input class="input_3" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>')"/>
+                        <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $Seccion;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
                     </div> 
                     <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
                         <div class="contenedor_19">
                             <div>
-                                <!-- cantidad -->
-                                <input type="text" class="input_1e input_3" id="<?php echo 'Cantidad_' . $ContadorLabel;?>" value="1"/>
-                                <!-- seccion - alimentado desde FuncionesVarias.js  -->
-                                <input type="text" class="input_1g input_3" name="seccion" id="<?php echo 'Seccion';?>"/>
-                                <!-- producto - alimentado desde FuncionesVarias.js  -->
-                                <input type="text" class="input_1a input_3" name="Desc_Producto" id="<?php echo 'Producto_' . $ContadorLabel;?>"/>
-                                <!-- opcion - alimentado desde FuncionesVarias.js  -->
-                                <input type="text" class="input_1c input_3" name="opcion" id="<?php echo 'Opcion_' . $ContadorLabel;?>"/>
+                                <!-- cantidad alimentado desde FuncionesVarias.js agregarOpcion()-->
+                                <input type="text" class="input_1e ocultar" id="<?php echo 'Cantidad_' . $ContadorLabel;?>"/>
+                                <!-- seccion -->
+                                <input type="text" class="input_1g ocultar" name="seccion" id="<?php echo 'Seccion_' . $Seccion;?>"/>
+                                <!-- producto - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                                <input type="text" class="input_1a ocultar" name="Desc_Producto" id="<?php echo 'Producto_' . $ContadorLabel;?>"/>
+                                <!-- opcion alimentado desde FuncionesVarias.js agregarOpcion()-->
+                                <input type="text" class="input_1c ocultar" name="opcion" id="<?php echo 'Opcion_' . $ContadorLabel;?>"/>
                                 <!-- ID_Opcion --> 
-                                <input type="text" class="input_1b input_3"/> 
-                                <!-- Precio - alimentado desde FuncionesVarias.js  -->
-                                <input type="text" class="input_1d input_3" id="<?php echo 'Precio_' . $ContadorLabel;?>"/>
-                                <!-- Total - alimentado desde FuncionesVarias.js -->
-                                <input type="text" class="input_1f input_3" id="<?php echo 'Total_' . $ContadorLabel;?>"/>
-                                <!-- Leyenda - alimentado desde FuncionesVarias.js  -->
+                                <!-- <input type="text" class="input_1b"/> -->
+                                <!-- Precio - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                                <input type="text" class="input_1d ocultar" id="<?php echo 'Precio_' . $ContadorLabel;?>"/>
+                                <!-- Total - alimentado desde FuncionesVarias.js agregarOpcion()-->
+                                <input type="text" class="input_1f ocultar" id="<?php echo 'Total_' . $ContadorLabel;?>"/>
+                                <!-- Leyenda - alimentado desde FuncionesVarias.js agregarOpcion() -->
                                 <input class="input_2a" type="text" name="leyenda" id="<?php echo 'Leyenda_'. $ContadorLabel;?>"/>
                             </div> 
                             <div class="contenedor_16">

@@ -10,8 +10,9 @@
 //     echo $ID_Afiliado . "<br>";
 
     //Se llama la sesion  el Nombre creada en Login_C.php
-    // $nombre= $_SESSION["Nombre"];
+    // $nombre= $_SESSION["Nombre"];  
 
+    // SDatos viene de Cuenta_C/Editar
     foreach($Datos['datosResposable'] as $row){
         $Nombre_AfiCom =  $row['nombre_AfiCom'];
         $Apellido_AfiCom = $row['apellido_AfiCom']; 
@@ -42,7 +43,7 @@
                 <div class="contenedor_9">
                     <img class="imagen_2" alt="Fotografia del usuario" src="../images/Perfil.jpg"/>
                     <label class="boton" for="File_1">Buscar foto perfil</label>
-                    <input class="input_3" id="File_1" type="file"/>
+                    <input class="ocultar" id="File_1" type="file"/>
                 </div>
                 <label>Nombre responsable tienda</label>
                 <input class="input_9 borde_2" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
@@ -158,10 +159,10 @@
                         </div>
                         <?php
                      }  ?>
-                <label class="label_4" id="Label_4">Añadir cuenta bancaria</label>
+                <label class="label_4 label_19" id="Label_4">Añadir cuenta bancaria</label>
             </fieldset>   
             <div class="contenedor_49">
-                <input class="input_3" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
+                <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
                 <input class="boton " type="submit" value="Guardar"/>
             </div>
         </form>
@@ -172,8 +173,10 @@
             <a class="marcador" href="#marcador_04">Secciones</a>
             <a class="marcador" href="#marcador_05">Cuentas bancarias</a>
         </div> -->
-        <input type="checkbox"  id="Bienvenida">
-        <label for="Bienvenida">Desactivar página de bienvenida</label>
+        <div class="contenedor_45">
+            <input type="checkbox"  id="Bienvenida">
+            <label for="Bienvenida">Desactivar página de bienvenida</label>
+        </div>
     </div>
 
     <!--div alimentado via Ajax por medio de la funcion () -->
@@ -238,5 +241,6 @@
 </section>
 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
 
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

@@ -21,18 +21,18 @@
         }
 
         //SELECT de las secciones que tiene una tiendao
-        public function consultarSecciones($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT  seccion FROM secciones WHERE ID_Tienda = :ID_Tienda");
+        // public function consultarSecciones($ID_Tienda){
+        //     $stmt = $this->dbh->prepare("SELECT  seccion FROM secciones WHERE ID_Tienda = :ID_Tienda");
 
-            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+        //     $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return "No se pudo";
-            }
-        }
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return "No se pudo";
+        //     }
+        // }
 
         //SELECT de secciones de la tienda
         public function consultarSeccionesTienda($ID_Tienda){
