@@ -9,7 +9,7 @@
                 <input class="input_9 borde_2" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
                 <div class="contenedor_45">
                     <input type="checkbox" id="Recordar" name="recordar" value="1">
-                    <label for="Recordar">Recordar datos en este equipo.</label>
+                    <label class="label_20" for="Recordar">Recordar datos en este equipo.</label>
                 </div> 
             </fieldset>  
             <div class="contenedor_50">
@@ -37,6 +37,7 @@
 </section>
 		
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
-
 <!-- <script type="text/javascript" src="../javascript/validarFormularios.js"></script> -->
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
+
+<?php include(RUTA_APP . "/vistas/inc/footer.php");?>

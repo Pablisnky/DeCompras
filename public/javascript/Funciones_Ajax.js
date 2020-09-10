@@ -30,12 +30,6 @@ var http_request = false
         } 
 
 //-------------------------------------------------------------------------------------------------
-
-
-//Escucha en inicio_V.php                            
-// document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
-
-//-------------------------------------------------------------------------------------------------
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, NombreProducto){
     console.log("______Desde llamar_Opciones()______") 
@@ -55,11 +49,15 @@ function respuesta_Opciones(){
     //console.log("______Desde llamar_Opciones() -> respuesta_Opciones______") 
     if(peticion.readyState == 4){
         if(peticion.status == 200){
+            //Coloca el cursor en el top de la pagina
+            window.scroll(0, 0)
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
-            // AltoVitrina = document.body.scrollHeight
-            // console.log(AltoVitrina)
-            // document.getElementById("contenedor_13").style.height =AltoVitrina +"px"
-            // document.getElementById("contenedor_13").style.backgroundColor ="red"
+            
+            //Se consulta el alto de la página vitrina, este tamaño varia segun las secciones que tenga un tienda
+            AltoVitrina = document.body.scrollHeight
+
+            //Este alto se estable al div padre en opciones_V para garantizar que cubra todo el contenido de vitrina_V ya que opciones_V es un contenedor coloca via Ajax en vitrina_V
+            document.getElementById("Contenedor_13Js").style.height = AltoVitrina + "px"
             
             //la función es llamada tres veces si se coloca fuera (No se porque)
             ProductosEnCarrito()
@@ -147,46 +145,6 @@ function respuesta_PedidoEnCarrito(){
         }
         else{ //en caso contrario, mostramos un gif simulando una precarga
             // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-        }
-    }
-
-//-------------------------------------------------------------------------------------------------
-  
-    // invocada desde inicio_V.php 
-    // Busca un pedido segun lo que escriba el usuario en el input
-    function Llamar_buscador(nombre){
-        var divContenedor = document.getElementById("Buscar_Pedido")//se recibe desde inicio_V.php 
-        console.log(divContenedor)       
-        var xmlhttp
-        if(window.XMLHttpRequest){ //Mozilla, Safari, Chrome...
-            xmlhttp = new XMLHttpRequest()
-            console.log(xmlhttp)
-        } 
-        else{ 
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
-            if(!xmlhttp){
-                alert('No es posible crear una instancia XMLHTTP')
-                return false
-            }
-            else{
-                alert("Instancia creada exitosamente")
-            }     
-        }
-        
-        if(nombre.length === ""){//sino hay nada escrito en el input de buscar, no se ejecuta ninguna accion
-            divContenedor.innerHTML = ""
-        }
-        else{//si hay algo escrito en el input de buscar se ejecuta la peticion de Ajax
-            xmlhttp.onreadystatechange = function(){
-                if(xmlhttp.readyState === 4 && this.status === 200){
-                    divContenedor.innerHTML = xmlhttp.responseText
-                    console.log(xmlhttp.readyState)
-                }  
-            }          
-            document.getElementById("Buscar_Pedido").style.display = "grid"
-            xmlhttp.open("GET", "Buscador_C/buscarPedido/" + nombre, true)
-            //se envia la informacion cargada en el input por el usuario al servidor, true, significa que se va a hacer de manera asincrona se utiliza el metodo send para enviar.               
-            xmlhttp.send()
         }
     }
 

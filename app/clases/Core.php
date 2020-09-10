@@ -70,7 +70,9 @@ class Core{
         //Se verifica que la url este seteada
         if(isset($_GET["url"])){
             $url= rtrim($_GET["url"],'/');
-            $url= filter_var($url, FILTER_SANITIZE_URL);
+            //Al usar FILTER_SANITIZE_URL entre otras cosas se eliminan los espacios en blanco de los parametros enviados.
+            // $url= filter_var($url, FILTER_SANITIZE_URL);
+            //La cadena se convierte en un array para obtener en cad indice el controlador, el metodo y los parametros
             $url= explode('/',$url);
             return $url;
         }

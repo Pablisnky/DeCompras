@@ -26,6 +26,12 @@
             $stmt->bindValue(':id_afiliado', $ID_Afiliado, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt;
+        }
 
+        public function consultarUsuarioRecordado($Cookie_usuario){
+            $stmt = $this->dbh->prepare("SELECT correo_AfiCom FROM afiliado_com WHERE ID_AfiliadoCom = :ID_AFILIADO ");
+            $stmt->bindValue(':ID_AFILIADO', $Cookie_usuario, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt;
         }
     }

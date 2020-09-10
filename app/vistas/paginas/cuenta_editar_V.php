@@ -41,9 +41,9 @@
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Persona responsable</legend>
                 <div class="contenedor_9">
-                    <img class="imagen_2" alt="Fotografia del usuario" src="../images/Perfil.jpg"/>
+                    <!-- <img class="" alt="Fotografia del usuario" src="../images/Perfil.jpg"/> -->
                     <label class="boton" for="File_1">Buscar foto perfil</label>
-                    <input class="ocultar" id="File_1" type="file"/>
+                    <input class="ocultar" id="File_1" type="file"/> 
                 </div>
                 <label>Nombre responsable tienda</label>
                 <input class="input_9 borde_2" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">

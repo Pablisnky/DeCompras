@@ -10,17 +10,23 @@
         public function index($Datos){
             //Se verifica si el usuario esta memorizado en las cookie de su computadora y las compara con la BD, para recuperar sus datos y autorellenar el formulario de inicio de sesion, las cookies de registro de usuario se crearon en validarSesion.php
             if(isset($_COOKIE["id_usuario"]) AND isset($_COOKIE["clave"])){//Si la variable $_COOKIE esta establecida o creada
-                // echo "Cookie afiliado =" . $_COOKIE["id_usuario"] ."<br>";
-                // echo "Cookie clave =" .  $_COOKIE["clave"] ."<br>";
+                echo "Cookie afiliado =" . $_COOKIE["id_usuario"] ."<br>";
+                echo "Cookie clave =" .  $_COOKIE["clave"] ."<br>";
                 
                 $Cookie_usuario = $_COOKIE["id_usuario"];
+                $Cookie_clave = $_COOKIE["clave"];
                             
-                //Se CONSULTA el usuario registrados en el sistema con el correo dado como argumento
-                $usuarioRec= $this->ConsultaLogin_M->consultarUsuarioRecordado($Cookie_usuario);
+                //Se CONSULTA el correo registrado en el sistema con el ID_Usuario como argumento
+                $CorreoRecord = $this->ConsultaLogin_M->consultarUsuarioRecordado($Cookie_usuario);
+                while($arr = $CorreoRecord->fetch(PDO::FETCH_ASSOC)){
+                    $Correo = $arr['correo_AfiCom'];
+                }
+
                 $Datos=[
-                    "usuarioRecord"=>$usuarioRec,
+                    'correoRecord' => $Correo,
+                    'claveRecord' => $Cookie_clave
                 ];
-                    
+
                 //Se entra al formulario de sesion que esta rellenado con los datos del usuario
                 $this->vista("paginas/login_Vrecord", $Datos);
             }
@@ -111,11 +117,11 @@
                     header("location:" . RUTA_URL . "/Cuenta_C/");
                 }
                 else{  ?>
-                        <script>
-                            alert("USUARIO y CONTRASEÑA no son correctas");
-                            history.back();
-                        </script>
-                        <?php 
+                    <script>
+                        alert("USUARIO y CONTRASEÑA no son correctas");
+                        history.back();
+                    </script>
+                    <?php 
                 }    
             }   
         }

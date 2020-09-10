@@ -1,4 +1,3 @@
-
 //Se busca el alto del body de la pagina para garantizar que el alto del contenedor  a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
 //Cuando carga la página se registran los listener de clic para toda la ventana
 document.addEventListener("click", function(event){
@@ -6,7 +5,7 @@ document.addEventListener("click", function(event){
         AltoVitrina = document.body.scrollHeight
         console.log(AltoVitrina)
         document.getElementById("contenedor_13").style.height =AltoVitrina +"px"
-        document.getElementById("contenedor_13").style.backgroundColor ="red"
+        // document.getElementById("contenedor_13").style.backgroundColor ="red"
     }
 }, false)
  

@@ -49,7 +49,6 @@
 }
 .boton_3{/*afiliacion*/
 	height: 40px;
-	line-height: 20px;
 }
 .boton_4{/*afiliacion - registroCom - registroDes*/
 	width: 47% !important;
@@ -69,12 +68,9 @@
 	margin-left: 2%;
 	/* z-index: 3; */
 }
-.contador{/*contacto.php  */
+.contador{/*cuenta_editar_prod - cuenta_publicar*/	
+	margin-left: 90% !important;
 	width: 10% !important;
-	margin: 0% 0% 2% 90%;
-	line-height: 16px;
-	font-size: 0.8em;
-	text-align: center;
 }
 .contenedor_1{/*header*/
 	margin-left: 1%;
@@ -100,8 +96,9 @@
 .contenedor_8{/*footer*/
 	margin-top: 50% !important;
 }
-.contenedor_9{/*cuenta_editar - cuenta_publicar*/
-	margin: 0% auto 7% auto;
+.contenedor_9{/*cuenta_editar - cuenta_publicar - opciones*/
+	height: 100px;
+	margin: 0% auto;
 }
 .contenedor_10{/*vitrina - tiendas - afiliacion*/
 	grid-template-columns: 100fr;
@@ -110,19 +107,23 @@
 	row-gap: 2%;/*espacio entre filas*/
 }
 .contenedor_11{/*vitrina*/
-	margin: 0% auto;
+	margin: 12% auto 0% auto;
 	align-items: center;
+	width: 250px;
 }
 .contenedor_12{/*vitrina*/
 	width: 70%;
 	max-height: 100%;
 	margin-bottom: 0%;
 }
-.contenedor_13{/*opciones*/
+.contenedor_13{/*opciones - cuenta_productos*/
+	display: grid;
 	grid-template-columns: 100%;
 	width: 100%;
-	row-gap: 40px;/*espacio entre filas*/
-	margin: 33% auto;
+	margin: 20% auto;
+}
+.contenedor_13a{/*vitrina*/
+	margin-top: 10% !important;
 }
 .contenedor_16{/*vitrina*/
 	text-align: right;
@@ -189,11 +190,11 @@
 }
 .contenedor_41{/*afiliacion*/
 	width: 95%;
-	margin-top: 100%;
+	margin-left: 2.5%;
 }
 .contenedor_42{/*registroCom - registroDes - login*/
 	width: 100%;
-	margin-top: 30%;
+	margin-top: 25%;
 }
 .contenedor_44{/*header_AfiCom*/ 
 	top: 10%;
@@ -226,6 +227,30 @@
 	left: 60%;
 	padding-right: 4%;
 	width: 40%;
+}
+.contenedor_53{/*inicio*/
+	width: 90%;
+	margin: 15% auto 1% auto;
+}
+.contenedor_54{/*inicio*/
+	height: 300%;
+}
+.contenedor_55{/*inicio*/
+	width: 95%;
+	flex-direction: column;
+	margin: 5% auto;
+}
+.contenedor_56{/*inicio*/
+	width: 100%;
+	align-items: left;
+	margin-left: 0% !important;
+}
+.contenedor_57{/*inicio*/
+	width: 95%;	
+}
+.contenedor_58{/*inicio*/
+	grid-template-columns: 100%;
+	padding-bottom: 2.5%;
 }
 .contenedor_60{/*carrito*/
 	margin: 0%;
@@ -299,7 +324,31 @@
 }
 .contenedor_90{/*opciones*/
 	top: 8%;
-	margin-bottom: 30% !important;
+}
+.contenedor_95{/*cuenta_productos - opciones*/
+	width: 100%;
+	margin-bottom: 5%;
+}
+.contenedor_98{/*footer*/
+	display: flex;
+	justify-content: space-between;
+	position: initial;
+	width: 50%;
+	margin: auto;
+	padding-top: 2%;
+}
+.contenedor_99{/*afiliacion*/
+	margin: 15% auto;
+	width: 50% !important;
+	padding: 1% 2%;
+}
+.contenedor_103{/*cuenta*/
+	width: 90%;
+}
+.contenedor_104{/*cuenta*/
+	width: 100%;
+	margin: auto;
+	grid-template-columns: 100%;
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
@@ -312,8 +361,7 @@
 	font-weight: normal;
 }
 .h1_1{/*carrito registroCom*/
-	/* margin-top: 2%;
-	font-size: 1.1em; */
+	font-size: 1.1em;
 }
 .h1_2{/*inicio*/
 	font-size: 2em;
@@ -338,6 +386,9 @@
 	font-size: 0.9em;
 	top: 12%;
 }
+.h3_1{/*footer - afiliacion - planes*/
+	font-size: 0.6em;
+}
 .h4_1{/*footer*/
 	font-size: 1em;
 	font-weight: normal;
@@ -354,9 +405,12 @@
 .hr_4{/*header_Tienda*/
 	display: block;
 }
-.imagen_3{/*cuenta_editar*/
+.imagen_3{/*footer*/
 	width: 15% !important;
 	margin-bottom: 3%;
+}
+.imagen_5{/*cuenta_editar*/
+	width: 23%;
 }
 .input_3{/*vitrina*/
 	width: 100%;
@@ -382,12 +436,7 @@
 .input_12{/*cuenta_editar*/
 	width: 90%;
 }
-.input_13{/*registroCom - registroDes - carrito - login*/
-	font-size: 0.8em;
-	line-height: 30px;
-	width: 100%;
-	padding-left: 5%;
-	width: 100%;
+.input_13{/**/
 }
 .input_14{/*cuenta_productos*/
 	text-align: center;
@@ -400,6 +449,10 @@
 }
 .label_4{/*opciones - cuenta_editar*/	
 	width: 60% !important;
+}
+.label_6{/*inicio*/
+	width: 50px;
+	margin-right: 5%;
 }
 .label_12{/*carrito*/
 	font-size: 0.9em;
@@ -420,15 +473,15 @@
 	line-height: 1.8em;
 	font-size: 1.7em;
 }
-.label_18{/*cuenta_publicar*/
+.label_18{/*Seleccionees_Ajax*/
 	font-size: 0.9em;
-	text-align: center;
-	display: block;
-	margin: 5% auto;
-	/* margin-left: -6% !important; */
+	margin: 5% auto !important;
 }
 .label_19{/*cuenta_editar*/
 	width: 90% !important;
+}
+.label_20{/*login*/
+	font-size: 0.9em;
 }
 .legend_1{/*registroCom - registroDes*/
 	font-size: 1.1em;
@@ -439,6 +492,10 @@
 }
 .li_2{/*ciudad*/
 	font-size: 1.1em;
+}
+.menuLi_1:hover>ul{/*Se aplica un hover a un elemento seleccionando otro elemento distinto*/
+	display: block !important;
+	width: 180px !important;
 }
 .menuResponsive{/*Todas las páginas*/
 	padding-top: 0%;
@@ -489,6 +546,10 @@
 	margin-top: 5%;
 	font-size: 1.2em;
 }
+.p_7{/*inicio*/
+	width: 90%;
+	font-size: 1.1em;
+}
 .p_8{/*afiliacion*/
 	padding-top: 20%;
 	font-size: 1.3em;
@@ -504,15 +565,17 @@
 	height: 150%;
 }
 .section_8{/*Secciones_Ajax*/
-	padding-top: 25%;
+	padding-top: 15%;
 }
-.select_1{/*cuenta_publicar*/
-	margin: 2% auto !important;
-	display: block;
-	font-size: 1em;
+.section_9{/*opciones*/
+	padding-top: 8%;
+}
+.select_1{/*inicio*/
 	height: 30px;
-	width: 100%;
-	padding-left: 5%;
+	width: 75% !important;
+}
+.span_1{/*inicio*/
+	font-size: 3em !important;
 }
 .span_2{/*header*/
 	font-size: 1.3em !important;
@@ -531,13 +594,13 @@
 .span_6{/*inicio*/
 	font-size: 2em;
 }
-.span_8{/*inicio*/
-	font-size: 3em;
+.span_8{/*inicio - opciones*/
+	font-size: 5em;
 	line-height: 1em;
-	/* background-color: yellow; */
 }
 .span_9{/*cuenta_publicar - opciones*/
 	padding-top: 5%;
+	font-size: 6em;
 }
 .span_10{/*cuenta_deditar*/
 	margin-left: 1% !important;
@@ -545,6 +608,9 @@
 .span_15{/*header_inicio - header - header_AfiCom*/
 	display: block;
 	color: rgb(239, 245, 245);
+}
+.span_16{/*inicio*/
+	margin-left: 90%;
 }
 .tapa{/*header_Tienda*/
 	display: none;
@@ -584,11 +650,12 @@
 	padding-top: 5%;
 }
 ul .menuContenedor_2{
+	background-color: rgb(239, 245, 245) !important;
 	/* display: none; */
-	position: absolute;
-	margin-left: 48% !important;
+	/* left: 0%; */
+	/* margin-left: 48% !important; */
 	margin-top: -10% !important;
 	/* width: 3%; */
-	/* padding-bottom: 10%; */
+	padding-bottom: 10%; 
 }
 }

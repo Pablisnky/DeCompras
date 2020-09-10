@@ -21,9 +21,10 @@ ProductoEnCarrito = []
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función Pre_incremento  y Pre_decremento (IMPORTANTE: por esta razon es necesario colocar estas funciones en su arhcio E_Vitrina.js para que solo se escuchen cuando ese archivo se abra)
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
+
+//Escucha desde afiliacion_V.php - footer.php
+document.getElementById('Desarrollo_PWA').addEventListener('click', Documentacion_PWA,false)
  
-//Escucha en login_V.php                              
-// document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
 // **************************************************************************************************  
 
 //Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito
@@ -55,22 +56,6 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     this.Total = Total
 }
 // ************************************************************************************************** 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//************************************************************************************************
 
 
 
@@ -268,8 +253,8 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
 
 
 //************************************************************************************************
-    //2- invocada desde opciones_V.php añade un producto al carrito
-    function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion,ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan){
+    //invocada desde opciones_V.php añade un producto al carrito
+    function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion, ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan){
         console.log("______Desde agregarOpcion()______")     
         
         //Se recibe el control con el nombre "opcion" del formulario desde opciones_V.php
@@ -277,7 +262,7 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
 
         //Se recibe el ID de la etiqueta donde se hizo click
         LabelClick = ID_Etiqueta
-        localStorage.setItem('BotonAgregar',LabelClick) 
+        localStorage.setItem('BotonAgregar', LabelClick) 
         LS_ID_BotonAgregar = localStorage.getItem('BotonAgregar')
 
         //Se recibe el ID del contenedor de la leyenda del producto donde se hizo click
@@ -313,8 +298,7 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
         Input_TotalClick = ID_InputTotal
         localStorage.setItem('ID_InputTotal',Input_TotalClick)
         LS_ID_InputTotal = localStorage.getItem('ID_InputTotal')
-console.log(LS_ID_InputTotal)
-console.log(ID_InputTotal)
+
         //Se recibe el ID del input que va a mostrar la leyenda del producto donde se hizo click
         Input_LeyendaClick = ID_InputLeyenda
         localStorage.setItem('ID_InputLeyenda',Input_LeyendaClick)
@@ -328,7 +312,6 @@ console.log(ID_InputTotal)
         Input_DisplayCantClick = ID_InputDisplayCan
         localStorage.setItem('ID_InputDisplay',Input_DisplayCantClick)
         LS_ID_InputDisplayCant = localStorage.getItem('ID_InputDisplay')
-console.log(LS_ID_InputDisplayCant)
 
         //Se recorren las opciones del producto 
         for(let i = 0; i<Opcion.length; i++){
@@ -345,8 +328,8 @@ console.log(LS_ID_InputDisplayCant)
                 document.getElementById(Cont_Leyenda_Click).style.display = "block"
 
                 //Se muestra la seccion de la tienda donde se entro
-                document.getElementById(ID_InputSeccion).value = Seccion_tienda                
-                
+                document.getElementById(ID_InputSeccion).value = Seccion_tienda  
+
                 //Se muestra la cantidad de producto donde se hizo click
                 A = document.getElementById(Input_CantidadClick).value = 1
 
@@ -354,7 +337,7 @@ console.log(LS_ID_InputDisplayCant)
                 document.getElementById(Input_ProductoClick).value = Separado[1]
                 
                 //Se muestra el producto donde se hizo click
-                document.getElementById(Input_ProductoClick).value = Separado[2]
+                document.getElementById(Input_ProductoClick).value = Separado[2]             
                                 
                 //Se muestra la opcion de producto donde se hizo click
                 document.getElementById(Input_OpcionClick).value = Separado[3]
@@ -424,7 +407,7 @@ console.log(LS_ID_InputDisplayCant)
 
 
 //************************************************************************************************
-    //3- invocada desde opciones_V.php muestra en cada seccion los productos que tiene cargado en carrito
+    //invocada desde opciones_V.php muestra en cada seccion los productos que tiene cargado en carrito
     function TransferirPedido(){
         console.log("______Desde TransferirPedido()______")
 
@@ -578,7 +561,7 @@ console.log(LS_ID_InputDisplayCant)
                 inputSeleccionado.value = A
                 
                 //Input seccion Aqui se muestra la seccion de la tienda
-                let Seccion = inputSeleccionadoLeyen.getElementsByClassName("input_1g")[0].value
+                // let Seccion = inputSeleccionadoLeyen.getElementsByClassName("input_1g")[0].value
 
                 //ID_Producto desde BD 
                 let Producto = inputSeleccionadoLeyen.getElementsByClassName("input_1a")[0].value
@@ -612,19 +595,18 @@ console.log(LS_ID_InputDisplayCant)
                 //Se añade el producto al array PedidoCarrito, basta con añadir el id_dinamico(ID_Opcion) por cada unidad de produto añadida
 //                 PedidoCarrito.push(ID_Opcion)
 
-                
                 //Se añade el precio al array que contiene todos los montos individules por productos
                 DisplayCarrito.push(Precio)
 
                 //Se suma el precio del nuevo pedido al array que contiene el monto total del pedido
                 TotalDisplayCarrito = DisplayCarrito.reduce((a, b) => a + b);
                 
-                //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
+                //Muestra el monto del pedido en el display carrito(se encuentra en pie de página)
                 MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
               
                 //Se crea una nuevo array del objeto PedidoCar 
                 PedidoGlobal = new PedidoCar(Seccion_tienda, Producto, Cantidades, Opcion, Precio, TotalDisplayCarrito);
-             
+
                 //Se verifica que el producto existe en el array AlCarro que contiene el pedidio y se edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden
                 function ProductoEditado(Opcion){
                     var existe = false;
@@ -646,8 +628,7 @@ console.log(LS_ID_InputDisplayCant)
                     }
                     return existe;
                 }
-                ProductoEditado(PedidoGlobal.Opcion)  
-                console.log(AlCarro)         
+                ProductoEditado(PedidoGlobal.Opcion)          
             }  
             DisplayDestello()
         }  
@@ -672,18 +653,19 @@ console.log(LS_ID_InputDisplayCant)
 //************************************************************************************************
     //invocada desde vitrina_V
     function Pre_decremento(){      
-        // console.log("______Desde Pre_decremento()______")    
+        // console.log("______Desde Pre_decremento()______") 
+
         //Detectar el boton de restar
         var menos = document.getElementsByClassName("menos")//Se obtienen los botones menos [-]
-        var i
         var len = menos.length//Se cuentan cuantos botones menos hay  
         var boton
-        for(i = 0; i < len; i++){
+        for(let i = 0; i < len; i++){
             boton = menos[i]; //Se Encontrar el botón [-] seleccionado al hacer click
             boton.onclick = decrementar // Asignar la función decrementar() en su evento click.
         }    
         function decrementar(e){   
             console.log("______Desde decremento______") 
+            
             //Se obtiene el elemento padre donde se encuentra el boton menos al que se hizo click
             current = e.target.parentElement
 
@@ -706,28 +688,30 @@ console.log(LS_ID_InputDisplayCant)
                 inputSeleccionado.value = A
 
                 //Input producto en el elemento hermano del click correspondiente; Aqui se muestra el producto
-                Producto = inputSeleccionadoLeyen.getElementsByClassName("input_1a")[0].value
+                let Producto = inputSeleccionadoLeyen.getElementsByClassName("input_1a")[0].value
 
                 //Input opcion en el elemento hermano del click correspondiente; Aqui se muestra el producto
                 let Opcion = inputSeleccionadoLeyen.getElementsByClassName("input_1c")[0].value
 
                 //input cantidad en el elemento hermano del click correspondiente; Aqui se mostrará la cantidad
-                Cantidades = inputSeleccionadoLeyen.getElementsByClassName("input_1e")[0].value = A
-                                
+                let Cantidades = inputSeleccionadoLeyen.getElementsByClassName("input_1e")[0].value = A
+ 
                 //Input precio en el elemento hermano del click correspondiente; Aqui se muestra el precio
-                Precio = inputSeleccionadoLeyen.getElementsByClassName("input_1d")[0].value
+                let Precio = inputSeleccionadoLeyen.getElementsByClassName("input_1d")[0].value
+
+                //Se cambia el formato del precio
                 Precio = Precio.replace(".","")
                 Precio = Number(Precio)
                                 
                 //Se calcula el total
                 let Total = Cantidades * Precio    
-                
+                 
                 //Input total en el elemento hermano del click correspondiente; Aqui se mostrará el total
                 inputSeleccionadoLeyen.getElementsByClassName("input_1f")[0].value = Total
 
                 //Se busca el ID_Opcion del producto selecionado (Este ID fue asignado en la BD) para saber que producto contiene y añadirlo en el carrito
                 //input ID_Opcion en el elemento hermano del click correspondiente; Aqui se mostrará el ID_Opcion
-                ID_Opcion = inputSeleccionadoLeyen.getElementsByClassName("input_1b")[0].value
+                // ID_Opcion = inputSeleccionadoLeyen.getElementsByClassName("input_1b")[0].value
                 
                 //Se añade el precio del pedido a remover del array que contiene el monto total del pedido
                 // SinPunto = Precio.replace(".","")
@@ -736,10 +720,12 @@ console.log(LS_ID_InputDisplayCant)
 
                 //Se resta el precio del pedido al array que contiene el monto total del pedido
                 // TotalDisplayCarrito = Number(DisplayCarrito[0]) - Number(PrecioARestar);
+                
+                //Muestra la leyenda del pedido por producto
+                inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Opcion + " = " + SeparadorMiles(Total) + " Bs."    
 
                 //Busca por el precio dado y devuelve la posición de la primera ocurrencia.
                 let Eliminar = DisplayCarrito.indexOf(Precio)
-
                 //Elimina de PedidoCarrito la posicion del array guardada en "Eliminar"
                 DisplayCarrito.splice(Eliminar, 1)
 
@@ -747,14 +733,11 @@ console.log(LS_ID_InputDisplayCant)
                 TotalDisplayCarrito = TotalDisplayCarrito - Precio
 
                 //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
-                MontoCarrito =document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
-                
-                //Muestra la leyenda del pedido por producto
-                inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Opcion + " = " + SeparadorMiles(Total) + " Bs." 
+                MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs."  
 
-                //Se 
-                PedidoGlobal = new PedidoCar(Cantidades, Producto, Opcion, Precio, TotalDisplayCarrito);
-                
+                //Se crea una nuevo array del objeto PedidoCar 
+                PedidoGlobal = new PedidoCar(Seccion_tienda, Producto, Cantidades, Opcion, Precio, TotalDisplayCarrito);
+
                 //Se verifica que el producto existe en el array AlCarro que contiene el pedidio y si edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden
                 function ProductoEditado(Opcion){
                     var existe = false;
@@ -764,6 +747,15 @@ console.log(LS_ID_InputDisplayCant)
                             AlCarro[i].Cantidad = Cantidades
                             AlCarro[i].Total = Total
                             console.log(AlCarro)
+                        }
+                    }
+                    
+                    var existe = false;
+                    for(i = 0; i < AlContenedor.length; i++){
+                        if(AlCarro[i].Opcion == Opcion ){
+                            existe = true;
+                            AlContenedor[i].Cantidad = Cantidades
+                            AlContenedor[i].Total = Total
                         }
                     }
                     return existe;
@@ -902,11 +894,6 @@ console.log(LS_ID_InputDisplayCant)
 
 
 
-//************************************************************************************************
-    //invocada desde login_V.php
-    function DesabilitarBoton(){
-        document.getElementsByClassName("submit_js")[0].value = "Creando tienda ..."
-    }
 
 //************************************************************************************************
     //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
@@ -1015,6 +1002,13 @@ console.log(LS_ID_InputDisplayCant)
     }
     
 //************************************************************************************************
+    //Invocada desde afiliacion_V.php
+    function Documentacion_PWA(){  
+        console.log("______Desde Documentacion_PWA()______")    
+        window.open("http://localhost/proyectos/PidoRapido/Afiliacion_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");
+    }
+    
+//************************************************************************************************
     //invocada desde carrito.php 
     function MuestraEnvioFactura(){
         document.getElementById("MuestraEnvioFactura").style.display = "block"
@@ -1056,7 +1050,9 @@ console.log(LS_ID_InputDisplayCant)
     function ocultarPedido(){       
         document.getElementById("Mostrar_TodoPedido").style.display = "none";
     }
-   
+     
+//************************************************************************************************
+    //invocada desde header_inicio.php 
     // console.log("Se eliminan todos los objetos de un mismo producto menos el ultimo")
     // elementoEliminado = AlCarro.splice(-1);
     // console.log(elementoEliminado)  

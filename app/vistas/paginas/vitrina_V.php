@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
 <section class="section_5">	
-    <div class="contenedor_13">
+    <div class="contenedor_13 contenedor_13a">
         <?php
         $Contador = 1;
         //Se cargan todas las secciones que tenga una tienda
@@ -47,7 +47,7 @@
     </div>
 </section>
 
-<!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php -->
+<!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
 <div id="Mostrar_Opciones"></div>
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información la toma de carrito_V.php invocada por la función llamar_PedidoEnCarrito() -->

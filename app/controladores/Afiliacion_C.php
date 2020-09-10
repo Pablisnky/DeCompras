@@ -14,5 +14,9 @@
         public function registroAfiliacion(){
             $this->vista("paginas/registro_V");
         }
+
+        public function PWA(){
+            $this->vista("paginas/pwa_V");
+        }
     }
 ?>    

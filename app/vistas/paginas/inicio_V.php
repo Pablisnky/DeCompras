@@ -9,6 +9,7 @@
         <div class="contenedor_51" id="Contenedor_51">
             <div>
                 <span class="icon-cart span_6"></span>
+                <!-- <img class="span_6" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tienda.png"/> -->
             </div>
             <div>
                 <span class="icon-truck span_6"></span>
@@ -26,41 +27,41 @@
         <div class='contenedor_4'>
             <div class='contenedor_6 borde_1' id="Contenedor_6a">
                 <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
-                <span class="icon-spoon-knife span_8"></span>
+                <span class="icon-spoon-knife span_8 span_1"></span>
             </div> 
 
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
-                <span class="icon-barcode span_8"></span>
+                <span class="icon-barcode span_8 span_1"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>ROPA Y ZAPATO</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8 span_1"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6c">
                 <h2 class='h2_1'>ARTESANOS Y EMPRENDEDORES</h2>
-                <span class="icon-pen span_8"></span>
+                <span class="icon-pen span_8 span_1"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6e">
                 <h2 class='h2_1'>FARMACIA Y SALUD</h2>
-                <span class="icon-aid-kit span_8"></span>
+                <span class="icon-aid-kit span_8 span_1"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6f">
                 <h2 class='h2_1'>FERRETRÍA Y HOGAR</h2>
-                <span class="icon-hammer span_8"></span>
+                <span class="icon-hammer span_8 span_1"></span>
             </div>
         </div>
     </section>
     
-    <section>
+    <section><!--Buscador-->
         <div class="contenedor_54" id="Busqueda">
             <div class="contenedor_53">
-                <span class="span_5" id="Span_5">X</span>
-                <p class="p_7">Seleccione una ciudad y especifique su pedido</p>
+                <span class="span_5 span_16" id="Span_5">X</span>
+                <p class="p_7">Seleccione una ciudad y especifica tú pedido</p>
                 <div class="contenedor_55">
                     <div class="contenedor_56">
                         <label class="label_6">Estado</label>
@@ -76,7 +77,7 @@
                     </div>
                 </div>
                 <div class="contenedor_57">
-                    <input class="input_9" id="Input_9" type="text" placeholder="Pedido"/>
+                    <input class="input_9" id="Input_9" type="text" placeholder="Ingrese un producto"/>
                 </div>
             </div>
             <!--Carga mediante Ajax las tiendas disponibles para la busqueda solicitada desde buscador_V.php -->
@@ -85,6 +86,6 @@
     </section>
 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Inicio.js';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Inicio.js';?>"></script>
 
 <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
- 

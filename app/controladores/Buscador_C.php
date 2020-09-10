@@ -9,7 +9,7 @@
         }
 
         public function buscarPedido($Buscar){
-            //CONSULTA el pedido solicitado por el usuario mediante el input buscador en Buscador_V.php
+            //CONSULTA las tiendas donde exista el producto solicitado por el usuario mediante el input buscador en inicio_V.php
             $Consulta = $this->ConsultaBuscador_M->consultarBusquedaTienda($Buscar);
             $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             

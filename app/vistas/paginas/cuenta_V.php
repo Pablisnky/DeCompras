@@ -5,48 +5,61 @@
     //Se verifica que la sesion del usuario halla sido creada y exista
     if(isset($_SESSION["ID_Tienda"])){ 
         ?>
-        <div class="contenedor_46"> 
-            <p class="p_6">Empanadas La 13 C.A.</p>
-            <p>PedidoRemoto es como si alquilaras un local, el cual debes organizar y acondicionar para mostrar tus productos, por eso te damos una guia para ayudarte a levantar tu tienda en línea y muestres tus productos a toda la ciudad.</p>
-            <div>
-                <div>
-                    <ul>
-                        <li>Organiza su tienda por categorias</li>
-                        <p>Crea las categorias que creas conveniente para mostrar tus productos, te damos unos ejemplos de como pudieses ser las categorias, unavez creadas puedes modificarlas y agregar oquitar productos segun quieras oraganizar tu tienda</p>
-                    </ul>
+        <section class="section_5">
+            <div class="contenedor_103">
+                <h1 class="h1_7">Felicitaciones</h1>
+                <div class="contenedor_104">
+                    <div style="text-align: center;">
+                        <img class="" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tienda.png"/>
+                    </div>
+                    <div>
+                        <h1>Tú tienda digital ha sido creada.</h1>
+                        <br>
+                        <h2>Te daremos dos semanas completamente libre de pagos</h2> 
+                        <h2>Evalua la experiencia y descubre el plan que se ajusta a tus necesidades.</h2>
+                    </div>
                 </div>
                 <div>
-                    <ul>
-                        <li>Ahora agrupa tus productos por secciones</li>
-                        <p>Cada sección reune un mismo tipo de articulos, tu tienda en línea uede tener tantas secciones como tu quieras, puedes crear la sección de refrescos, la de jugos, la de cereales, la de repuestos de tren delanteros, etc. Todo según los productos que tu tienda tenga para mostrar.</p>
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li>Carga un producto</li>
-                        <p>En la seccion cargar producto del menu principal tienes un formulario donde puedes cargar los productos que tu tienda va a ofrecer</p>
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li>Da las especificaciones del producto</li>
-                        <p>Indica las caracteristicas de tu producto, tamaño, litros, peso, color, sabor  todo lo que describa tu producto. Ejemplo:</p>
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li>Indica el precio del producto</li>
-                        <p>El precio que muestre debe ser el precio con IVA, de modo que el usuario no encuentre sorpresas al final de la compra</p>
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li>Carga una imagen del producto</li>
-                    </ul>
+                    <p>Configurar tu tienda te llevará unos 20 minutos, y cargar un producto a penas unos segundos.</p>
                 </div>
             </div>
-        </div>
-
+        </section>
+        <section>
+            <div>
+                <p>Comenzamos</p>
+                <ol>
+                    <li>Completa tu perfil.</li>
+                    <p>Entra en la sección configurar del menú principal y carga toda la información solicitada respecto al reponsable de la tienda y amplia la información de la tienda.</p>
+                    <li>Indica la categoria de tu tienda</li>
+                        <p>Selecciona hasta tres categorias en las que tu tienda se ajuste, esto ayudará en las busquedas que relizan los usuarios de la plataforma.</p>
+                    <li>Crea las secciones de tu tienda</li>
+                        <p>Cada sección reune un mismo tipo de producto, tu tienda puede tener tantas secciones como tu quieras, si tu tienda es una bodega, puedes crear la sección de refrescos, la de jugos, la de cereales, la de enlatados, la granos, etc. Todo según los productos que tu tienda tenga para mostrar.</p></li>                   
+                </ol> 
+            </div>
+            <br>
+            <div>
+                <ol>
+                    <li>Carga un producto</li>
+                    <p>Entra al menu principal en el item "cargar productos" tienes un formulario donde puedes cargar los productos que tu tienda va a ofrecer</p>
+                    <li>Da las especificaciones del producto</li>
+                    <p>Indica las caracteristicas de tu producto, tamaño, litros, peso, color, sabor  todo lo que describa tu producto.</p>
+                    <li>Indica el precio del producto</li>
+                    <p>El precio que muestre cada producto debe ser el precio con IVA, de modo que el usuario no encuentre sorpresas al final de la compra</p>
+                    <li>Carga una imagen del producto</li>
+                </ol>
+            </div>
+            <br>
+            <div>
+                <ol>
+                    <li>Recibir un pedido</li>
+                    <p>Cuando un usuario realice una compra en tu tienda, recibiras una notificación via whatsapp y una notificación en la aplicación, razón por la cual debes descargarla. </p>                    
+                    <li>Verificar una compra</li>
+                    <p>La notificación de compra contiene la información necesarias para identificar al comprador, el despachador, el pedido y el número de transferencia bancaria.</p>
+                    <li>Prepara el despacho</li>
+                    <p>Una vez verificado el pago de la compra, procede a armar el pedido para que el despachador o el cliente retiren el pedido.</p>
+                </ol>
+            </div>
+        </section>
         <?php
     }
     else{

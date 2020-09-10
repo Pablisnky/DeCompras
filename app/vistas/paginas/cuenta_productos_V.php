@@ -8,12 +8,12 @@
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
         
         <section class="section_5">
-            <div class="contenedor_46"> 
-                <h1 class="h1_1">Productos ofertados</h1>
+            <div class="contenedor_13"> 
+                <h1 class="h1_1 h1_6">Productos ofertados</h1>
                 <?php
                 $Contador = 1;
                 //$Datos viene del metodo consultarProductosTienda() en Cuenta_C
-                foreach($Datos as $arr) :
+                foreach($Datos['productos'] as $arr) :
                     $Seccion = $arr["seccion"];
                     $Producto = $arr["producto"];
                     $Opcion = $arr["opcion"];
@@ -22,7 +22,7 @@
                     $ID_Opcion = $arr["ID_Opcion"];
                             ?>
                     <!-- <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/> -->
-                    <div class="contenedor_95 contenedor_98">
+                    <div class="contenedor_95 contenedor_101">
                         <div class="contenedor_9 borde_2">
                             <!-- <img class="imagen_2" alt="Imagen de producto" src="../images/Perfil.jpg"/> -->
                             <div class="contenedor_97">

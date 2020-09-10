@@ -17,10 +17,10 @@
                 <input class="input_9 borde_2" type="text" name="nombre_Afcom" id="Nombre" placeholder="Nombre del encargado" autocomplete="off"> 
                 <input class="input_9 borde_2" type="text" name="correo_Afcom" id="Correo" placeholder="Correo electronico" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
-                <input class="input_9 borde_2" type="text" name="nombre_com" id="Nombre" placeholder="Nombre tienda" autocomplete="off">
+                <input class="input_9 borde_2" type="text" name="nombre_com" id="Nombre" placeholder="Nombre de la tienda" autocomplete="off">
             </fieldset>      
             <fieldset class="fieldset_1 fieldset_2">
-                <legend class="legend_1">Datos de accceso a la plataforma</legend>  
+                <legend class="legend_1">Datos de accceso</legend>  
                 <div>
                     <input class="input_9 borde_2" type="password" name="clave_Afcom" id="Clave" placeholder="Contraseña" onchange="llamar_verificaClave()">
                     <div class="contenedor_3" id="Mostrar_verificaClave"></div><!-- recibe respuesta de ajax llamar_verificaClave()-->
@@ -28,7 +28,7 @@
                 </div>          
             </fieldset>        
             <div class="contenedor_66">            
-                <input class="boton boton_4" type="submit" name="Registrarse" value="Crear tienda">
+                <input class="boton boton_4" id="Submit" type="submit" name="Registrarse" value="Crear tienda">
             </div>  
         </form>
     </div>

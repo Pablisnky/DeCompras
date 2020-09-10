@@ -4,6 +4,7 @@
     class Cuenta_C extends Controlador{
         private $ID_Tienda;
         private $ID_Afiliado;
+        private $Seccion;
 
         public function __construct(){
             $this->ConsultaCuenta_M = $this->modelo("Cuenta_M");
@@ -13,27 +14,48 @@
             
             //Sesion creada en Login_C
             $this->ID_Afiliado = $_SESSION["ID_Afiliado"];
-            
-            //Se CONSULTAN las secciones de una tienda en particular
-            // $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-            
-            //     echo "<pre>";
-            //     print_r($Secciones);
-            //     echo "</pre>";
-        
-            // $this->vista("inc/header_AfiCom",  $Secciones);
         }
         
         public function index(){
+            //CONSULTA los productos de una sección  en especifico según la tienda
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            $Datos = [
+                'secciones' => $Secciones,
+            ];
 
-            $this->vista("paginas/cuenta_V");
+            // $this->vista("inc/header_AfiCom");
+            $this->vista("paginas/cuenta_V", $Datos);
         }
 
-        public function Productos(){
-            //CONSULTA los productos de una tienda en especifico
-            $Consulta = $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda);
-            $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+        public function Productos($Seccion){
+            // $Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
+            // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas
+            // - Recibirla la variable sin que se elimine el espacio entre palabras
+            //Provicionalmente se comento la sentencia que sanitiza la URL en Core.php que es donde se quitan los espacios en blancos
+            echo urldecode($Seccion);
+            if($Seccion  == 'Todos'){
+                //CONSULTA todos los productos de una tienda
+                $Consulta = $this->ConsultaCuenta_M->consultarTodosProductosTienda($this->ID_Tienda);
+                $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                //CONSULTA los productos de una sección  en especifico según la tienda
+                $Consulta = $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda, $Seccion);
+                $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            }
+            
+            //Se CONSULTAN las secciones de una tienda en particular
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+            $Datos = [
+                'secciones' => $Secciones,
+                'productos' => $Productos,
+            ];
+               
+            // $this->vista("inc/header_AfiCom", $Datos);
             $this->vista("paginas/cuenta_productos_V", $Datos);
         }
         
@@ -89,6 +111,7 @@
             }                   
             $_SESSION['Seccion'] = $Seccion;
             
+            // $this->vista("inc/header_AfiCom", $Datos);
             $this->vista("paginas/cuenta_publicar_V", $Datos);
         }
 
@@ -317,7 +340,9 @@
             // //Se INSERTA la dependenciatransitiva entre la tienda y la categoria a la que pertenece
             // $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categoria, $this->ID_Tienda);
 
-            $this->vista("paginas/cuenta_publicar_V");
+            //Redirecciona al controlador publicar para que cargue las secciones, si se envia directamente a la vista cuenta_publicar_V en el menu no apareceran las secciones de la tienda
+            // $this->vista("paginas/cuenta_publicar_V");            
+            $this->Publicar();
         }
                 
         //Metodo invocada desde cuenta_editar_pro_V.php
@@ -345,8 +370,11 @@
             $this->ConsultaCuenta_M->actualizarOpcion($RecibeProducto);
             $this->ConsultaCuenta_M->actualizarProducto($RecibeProducto);
 
-            $Datos = $this->Productos();
-            $this->vista("paginas/cuenta_productos_V", $Datos);
+            //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección
+            $Seccion = $RecibeProducto['Seccion'];
+            
+            $this->Productos($Seccion);
+            // $this->vista("paginas/cuenta_productos_V");
         }
 
         //metodo invocado desde cuenta_productos_V.php
@@ -378,8 +406,8 @@
             // *************************************************************************************
             // *************************************************************************************
 
-            $Datos = $this->Productos();
-            $this->vista("paginas/cuenta_productos_V", $Datos);
+            $this->Productos('Todos');
+            // $this->vista("paginas/cuenta_productos_V", $Datos);
         }
     }
 ?>    

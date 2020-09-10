@@ -19,11 +19,18 @@
                 <span class="icon-home2 span_6"></span>
             </div>
         </div>
-    </div>
-    <div class="contenedor_41">
-        <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>
-        <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Unirme como comerciante</a>
-    </div>    
+        <div class="contenedor_99 borde_1" id="Desarrollo_PWA">
+            <div>
+                <h3 class="h3_1">DESARROLLO</h3>
+                <h3 class="h3_1">MULTIPLATAFORMA</h3>
+            </div>
+            <img class="imagen_5" alt="Logo PWA" src="<?php echo RUTA_URL;?>/public/images/PWA.png"/>
+        </div>
+        <div class="contenedor_41">
+            <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>
+            <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Unirme como comerciante</a>
+        </div>  
+    </div>  
 </section>
 <section class=" section_6">
     <div class='contenedor_10 contenedor_38'>

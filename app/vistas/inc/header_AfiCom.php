@@ -4,10 +4,9 @@
 	$NombreTienda = $_SESSION["Nombre_Tienda"];
 	
 	// $Datos viene de Cuenta_C/__construct
-	// echo "<pre>";
-    // print_r($Secciones);
-    // echo "</pre>";
-	
+	// echo "<br><br><br><br><br><pre>";
+    // print_r($Datos['seccion']);
+	// echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,11 +40,16 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Mi Tienda</a></li>
 					<li class="menuLi_1"><a>Productos</a>
 						<ul class="menuContenedor_2">
-							<li><a class="menuLi_2" href="">Empanadas</a></li>
-							<li><a class="menuLi_2" href="">Jugos</a></li>
-							<li><a class="menuLi_2" href="">Refrescos</a></li>
-							<li><a class="menuLi_2" href="">Papas rellenas</a></li>
-							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/';?>">Todos</a></li>
+							<?php
+							foreach($Datos['secciones'] as $arr) :	
+								$Seccion = $arr['seccion'];?>
+							<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/Cuenta_C/Productos/' . urlencode($Seccion);?>"><?php echo $Seccion;?></a></li>	<?php
+							endforeach;?>
+
+
+
+
+							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/Todos';?>">Todos</a></li>
 						</ul> 	
 					</li>
                     <li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Publicar/';?>">Cargar producto</a></li>

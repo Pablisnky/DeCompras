@@ -1,13 +1,13 @@
 <!-- Archivo cargado por petición Ajax desde funcionesAjax.js en la función llamar_Opciones() he insertado en vitrina_V.php -->
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
-<section class="section_3 section_9" id="Section_3" >
+<section class="section_3 section_9" id="Section_3" > 
+    <div class="contenedor_90 p_9">
+        <h1 class="h1_1 h1_3 h1_4">Sección de <?php echo $Datos['Opciones'][0]['seccion'];?></h1>
+        <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
+    </div>
     <form>
-        <div class="contenedor_13">    
-            <div class="contenedor_90 p_9">
-                <h1 class="h1_1 h1_3 h1_4">Sección de Jugos</h1>
-                <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
-            </div>
+        <div class="contenedor_13" id="Contenedor_13Js">   
             <?php   
             $ContadorLabel = 1;
             foreach($Datos['Opciones'] as $row){
@@ -17,7 +17,7 @@
                 $Precio = $row['precio'];                
                 $Seccion = $row['seccion'];
                 // echo "<pre>";
-                // print_r($Datos['Opciones']);
+                // print_r($Datos['Opciones'][0]['seccion']);
                 // echo "</pre>";
 
                 //Se da formato al precio, sin decimales y con separación de miles
@@ -34,7 +34,7 @@
                         <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs."/>
                         <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                         
-                        <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $Seccion;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
+                        <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
                     </div> 
                     <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
                         <div class="contenedor_19">
@@ -42,7 +42,7 @@
                                 <!-- cantidad alimentado desde FuncionesVarias.js agregarOpcion()-->
                                 <input type="text" class="input_1e ocultar" id="<?php echo 'Cantidad_' . $ContadorLabel;?>"/>
                                 <!-- seccion -->
-                                <input type="text" class="input_1g ocultar" name="seccion" id="<?php echo 'Seccion_' . $Seccion;?>"/>
+                                <input type="text" class="input_1g ocultar" name="seccion" id="<?php echo 'Seccion_' . $ContadorLabel;?>"/>
                                 <!-- producto - alimentado desde FuncionesVarias.js agregarOpcion() -->
                                 <input type="text" class="input_1a ocultar" name="Desc_Producto" id="<?php echo 'Producto_' . $ContadorLabel;?>"/>
                                 <!-- opcion alimentado desde FuncionesVarias.js agregarOpcion()-->

@@ -37,9 +37,7 @@
                         <input class="input_13 borde_2" type="text" name="precio" placeholder="Precio (Solo números)"/>
                         <input class="contador" type="text" id="ContadorPre" value="13"/>
 
-                        <input class="input_9 borde_2" type="text" name="seccion" id="Seccion" placeholder="Sección" onclick="Llamar_seccion()">
-                        <!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->       
-                        <div id="Contenedor_80"></div>
+                        <input class="input_13 borde_2" type="text" name="seccion" id="Seccion" placeholder="Sección" onclick="Llamar_seccion()">
                     </div>
                 </div>
                 <div class="contenedor_49">
@@ -62,6 +60,11 @@
             </div>
         </section>  <?php
     }   ?>
+
+<!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->    
+<section>  
+    <div id="Contenedor_80"></div>
+</section> 
 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
