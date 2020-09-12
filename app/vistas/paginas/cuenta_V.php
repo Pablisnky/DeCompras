@@ -9,18 +9,18 @@
             <div class="contenedor_103">
                 <h1 class="h1_7">Felicitaciones</h1>
                 <div class="contenedor_104">
-                    <div style="text-align: center;">
+                    <div class="contenedor_97">
                         <img class="" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tienda.png"/>
                     </div>
                     <div>
-                        <h1>Tú tienda digital ha sido creada.</h1>
+                        <h1 class="h1_1">Tú tienda digital ha sido creada.</h1>
                         <br>
-                        <h2>Te daremos dos semanas completamente libre de pagos</h2> 
-                        <h2>Evalua la experiencia y descubre el plan que se ajusta a tus necesidades.</h2>
+                        <p class="p_6">Te daremos dos semanas completamente libre de pagos</p> 
+                        <p class="p_6">Evalua la experiencia y descubre el plan que se ajusta a tus necesidades.</p>
                     </div>
                 </div>
-                <div>
-                    <p>Configurar tu tienda te llevará unos 20 minutos, y cargar un producto a penas unos segundos.</p>
+                <div class="contenedor_105">
+                    <p class="p_6">Configurar tu tienda te llevará unos 20 minutos, y cargar un producto a penas unos segundos.</p>
                 </div>
             </div>
         </section>

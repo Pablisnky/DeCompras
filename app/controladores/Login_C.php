@@ -10,8 +10,8 @@
         public function index($Datos){
             //Se verifica si el usuario esta memorizado en las cookie de su computadora y las compara con la BD, para recuperar sus datos y autorellenar el formulario de inicio de sesion, las cookies de registro de usuario se crearon en validarSesion.php
             if(isset($_COOKIE["id_usuario"]) AND isset($_COOKIE["clave"])){//Si la variable $_COOKIE esta establecida o creada
-                echo "Cookie afiliado =" . $_COOKIE["id_usuario"] ."<br>";
-                echo "Cookie clave =" .  $_COOKIE["clave"] ."<br>";
+                // echo "Cookie afiliado =" . $_COOKIE["id_usuario"] ."<br>";
+                // echo "Cookie clave =" .  $_COOKIE["clave"] ."<br>";
                 
                 $Cookie_usuario = $_COOKIE["id_usuario"];
                 $Cookie_clave = $_COOKIE["clave"];

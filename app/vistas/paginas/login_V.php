@@ -5,8 +5,8 @@
         <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST">	
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Datos de acceso</legend>
-                <input class="input_9 borde_2" type="email" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off">                
-                <input class="input_9 borde_2" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
+                <input class="placeholder borde_2" type="email" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off">                
+                <input class="placeholder borde_2" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
                 <div class="contenedor_45">
                     <input type="checkbox" id="Recordar" name="recordar" value="1">
                     <label class="label_20" for="Recordar">Recordar datos en este equipo.</label>

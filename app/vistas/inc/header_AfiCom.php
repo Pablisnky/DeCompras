@@ -2,11 +2,6 @@
     //Sesiones creadas en Login_C.php
     $Nombre = $_SESSION["Nombre"];
 	$NombreTienda = $_SESSION["Nombre_Tienda"];
-	
-	// $Datos viene de Cuenta_C/__construct
-	// echo "<br><br><br><br><br><pre>";
-    // print_r($Datos['seccion']);
-	// echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,7 +27,7 @@
     </head>
     <body>	
 		<header class="contenedor_69">
-        	<a class="a_1"><?php echo $NombreTienda?></a>
+        	<a class="a_1 a_10"><?php echo $NombreTienda;?></a>
 			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">
@@ -41,14 +36,11 @@
 					<li class="menuLi_1"><a>Productos</a>
 						<ul class="menuContenedor_2">
 							<?php
+							//$Datos proviene de Cuenta_C/index -  Cuenta_C/productos -  Cuenta_C/editar -  Cuenta_C/publicar
 							foreach($Datos['secciones'] as $arr) :	
 								$Seccion = $arr['seccion'];?>
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/Cuenta_C/Productos/' . urlencode($Seccion);?>"><?php echo $Seccion;?></a></li>	<?php
 							endforeach;?>
-
-
-
-
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/Todos';?>">Todos</a></li>
 						</ul> 	
 					</li>

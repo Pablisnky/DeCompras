@@ -1,6 +1,7 @@
 <?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/telefono/style_telefono.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
 <section class="section_5">
     <div class='contenedor_10'>
@@ -16,9 +17,9 @@
             ?> 
             <section style=" margin-top: -5%">
                 <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>')">
-                    <div class="contenedor_25">
+                    <div class="contenedor_9">
                         <figure>
-                            <img class="image_1" src="" alt="Imagen"/>
+                            <img class="imagen_2" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tienda.png"/>
                         </figure>
                     </div>
                     <div>

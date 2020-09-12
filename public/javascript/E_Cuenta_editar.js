@@ -1,24 +1,21 @@
-
 document.addEventListener("click", preEliminarSeccion)
 
-//Escucha en cuenta_editar_V.php 
 document.getElementById("Label_4").addEventListener('click', nuevaCuentaBancaria, false)
 
-//Escucha en cuenta_editar_V.php 
 document.getElementById("Label_5").addEventListener('click', crearSeccion, false)
 
-//Escucha en cuenta_editar_V.php 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
-//Escucha en cuenta_editar_V.php 
 document.getElementById("Cedula").addEventListener('keyup', function(){formatoMiles(this)})
 
-//Escucha en cuenta_editar_V.php por medio de una función anonima debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
+// *****************************************************************************************************
+//FUNCIONES ANONIMAS
+// por medio de una función anonima debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
 document.getElementById('Label_13').addEventListener('click',function(event){ 
     Llamar_categorias()
 }, false);
 
-//Escucha en cuenta_editar_V.php por medio de una función anonima debido a porque el manejador de eventos se encuentra en otro archivo                   
+// por medio de una función anonima debido a porque el manejador de eventos se encuentra en otro archivo                   
 document.getElementById("Label_1").addEventListener('click', function(){
     CerrarModal_X("Ejemplo_Secciones")
 });
@@ -117,7 +114,6 @@ function formatoMiles(numero){
     }
 
 //************************************************************************************************
-    //Llamada desde cuenta_editar_V.php
     function mostrarSecciones(){
         document.getElementById("Ejemplo_Secciones").style.display = "grid"
     }   

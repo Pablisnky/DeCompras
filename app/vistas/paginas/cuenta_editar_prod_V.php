@@ -11,16 +11,17 @@
 
     //$Datos viene del metodo actualizarProducto() en Cuenta_C
     foreach($Datos as $arr) :
-        $ID_Producto = $arr["ID_Producto"];
-        $ID_Opcion = $arr["ID_Opcion"];
-        $Producto = $arr["producto"];
-        $Opcion = $arr["opcion"];
-        $Precio = $arr["precio"];
-        $Seccion = $arr["seccion"];
+        $ID_Producto = $arr['ID_Producto'];
+        $ID_Opcion = $arr['ID_Opcion'];
+        $Producto = $arr['producto'];
+        $Opcion = $arr['opcion'];
+        $Precio = $arr['precio'];
+        $Seccion = $arr['seccion'];
+        $Fotografia = $arr['fotografia'];
     endforeach;     ?>
     
-    <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
         
@@ -29,25 +30,24 @@
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off">
             <div class="contenedor_47">
                 <div class="contenedor_9 borde_2">
-                    <!-- <img class="imagen_2" alt="Fotografia del usuario" src="../images/Perfil.jpg"/> -->
-                    <label for="File_1"><span class="icon-image span_9"></span></label>
-                    <input class="ocultar" id="File_1" type="file"/>
+                    <label for="imgInp"><img class="imagen_2" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/></label>
+                    <input class="ocultar" name="imagen_EditarProducto" id="imgInp" type="file"/>
                 </div>
-                <div style="margin-top:5%">
+                <div>
                     <label>Producto</label>
-                    <input class="input_13 borde_2" type="text" name="producto" value="<?php echo $Producto;?>"/>
+                    <input class="placeholder placeholder_2 borde_2" type="text" name="producto" value="<?php echo $Producto;?>"/>
                     <input class="contador" type="text" id="ContadorPro" value="30"/>
 
                     <label>Descripcion</label>
-                    <input class="input_13 borde_2" type="text" name="descripcion" value="<?php echo $Opcion;?>"/>
+                    <input class="placeholder placeholder_2 borde_2" type="text" name="descripcion" value="<?php echo $Opcion;?>"/>
                     <input class="contador" type="text" id="ContadorDes" value="50"/>
 
                     <label>Precio</label>
-                    <input class="input_13 borde_2" type="text" name="precio" value="<?php echo $Precio;?>"/>
+                    <input class="placeholder placeholder_2 borde_2" type="text" name="precio" value="<?php echo $Precio;?>"/>
                     <input class="contador" type="text" id="ContadorPre" value="13"/>
 
                     <label>Sección</label>
-                    <input class="input_13 borde_2" type="text" name="seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion()">
+                    <input class="placeholder placeholder_2 borde_2" type="text" name="seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion()">
                     <!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->       
                     <div id="Contenedor_80"></div>
                 </div>
@@ -56,8 +56,27 @@
                 <input class="ocultar" type="text" name="id_producto" value="<?php echo $ID_Producto;?>">
                 <input class="ocultar" type="text" name="id_opcion" value="<?php echo $ID_Opcion;?>">
                 <input class="boton " type="submit" value="Guardar"/>
-            </div>
+            </div> 
         </form>
     </div>
+
+    <script> 
+        //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
+        function readImage(input){
+        console.log("______Desde readImage()______")
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function(){
+            // Código a ejecutar cuando se detecta un cambio de archivo
+            readImage(this);
+        });
+    </script>
 
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

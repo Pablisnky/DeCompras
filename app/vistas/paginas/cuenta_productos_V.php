@@ -20,13 +20,13 @@
                     $Precio = $arr["precio"];
                     $ID_Producto = $arr["ID_Producto"];
                     $ID_Opcion = $arr["ID_Opcion"];
+                    $Fotografia = $arr['fotografia'];
                             ?>
                     <!-- <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/> -->
                     <div class="contenedor_95 contenedor_101">
-                        <div class="contenedor_9 borde_2">
-                            <!-- <img class="imagen_2" alt="Imagen de producto" src="../images/Perfil.jpg"/> -->
+                        <div class="contenedor_9 "><!--borde_2-->
                             <div class="contenedor_97">
-                                <label for="File_1"><span class="icon-image span_8"></span></label>
+                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
                             </div>
                         </div>
                         <div>

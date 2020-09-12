@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div class="contenedor_57">
-                    <input class="input_9" id="Input_9" type="text" placeholder="Ingrese un producto"/>
+                    <input class="input_13" id="Input_9" type="text" placeholder="Ingrese un producto"/>
                 </div>
             </div>
             <!--Carga mediante Ajax las tiendas disponibles para la busqueda solicitada desde buscador_V.php -->

@@ -24,7 +24,9 @@ document.addEventListener("click", Pre_incremento)
 
 //Escucha desde afiliacion_V.php - footer.php
 document.getElementById('Desarrollo_PWA').addEventListener('click', Documentacion_PWA,false)
- 
+
+//Escucha desde cuenta_editar_prod.php 
+// document.getElementById('File_1').addEventListener('click', function(){readImage('File_1')}, false)
 // **************************************************************************************************  
 
 //Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito
@@ -933,7 +935,7 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     }
 
 //************************************************************************************************
-    //Coloca la lista de categorias en el borde superior de la página 
+    //Coloca la lista de categorias de tiendas en el borde superior de la página 
     function transicionTiendas(){  
         // console.log("______Desde transicionTiendas()______")
         let C = document.getElementById("Section_1")
@@ -963,20 +965,23 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     }
 
 //************************************************************************************************
-    //Da una vista previa de la fotografia antes de guardarla en la BD. usada en publicacion_V.php
+    //Da una vista previa de la fotografia antes de guardarla en la BD.
     function muestraImg(){
-        var contenedor = document.getElementById("muestrasImg");
-        var archivos = document.getElementById("ImgInp").files;
-        for(i = 0; i < archivos.length; i++){
-            imgTag = document.createElement("img");
-            imgTag.height = 200;//ESTAS LINEAS NO SON "NECESARIAS"
-            imgTag.width = 400; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
-            imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
-            imgTag.src = URL.createObjectURL(archivos[i]);
-            contenedor.appendChild(imgTag);
-        }
+        // var contenedor = document.getElementById("muestrasImg");
+        // var archivos = document.getElementById("ImgInp").files;
+        // for(i = 0; i < archivos.length; i++){
+        //     imgTag = document.createElement("img");
+        //     imgTag.height = 200;//ESTAS LINEAS NO SON "NECESARIAS"
+        //     imgTag.width = 400; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
+        //     imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
+        //     imgTag.src = URL.createObjectURL(archivos[i]);
+        //     contenedor.appendChild(imgTag);
+        // }
     }
-    
+
+//************************************************************************************************
+   
+
 //************************************************************************************************
     //invocada desde inicio_V.php - opciones_V.php
     function CerrarModal_X(id){

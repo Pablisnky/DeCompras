@@ -19,6 +19,7 @@
         $Cedula_AfiCom = $row['cedula_AfiCom'];
         $Telefono_AfiCom = $row['telefono_AfiCom'];
         $Correo_AfiCom = $row['correo_AfiCom'];
+        $Foto_AfiCom = $row['fotografia_AfiCom'];
     }
 
     foreach($Datos['datosTienda'] as $row){
@@ -32,7 +33,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
     <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
     <div class="contenedor_42">    
         <p class="p_6">Configurar cuenta</p>
@@ -41,34 +42,34 @@
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Persona responsable</legend>
                 <div class="contenedor_9">
-                    <!-- <img class="" alt="Fotografia del usuario" src="../images/Perfil.jpg"/> -->
-                    <label class="boton" for="File_1">Buscar foto perfil</label>
-                    <input class="ocultar" id="File_1" type="file"/> 
+                    <label for="imgInp"><img class="imagen_2" id="blah" alt="Fotografia del usuario" src="../images/perfiles/<?php echo$Foto_AfiCom;?>"/>
+                    <input class="ocultar" id="imgInp" name="imagen_Perfil" type="file"/></label>
                 </div>
-                <label>Nombre responsable tienda</label>
-                <input class="input_9 borde_2" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
+                <label class="">Nombre responsable tienda</label>
+                <input class="input_13 borde_2" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
+
                 <label>Apellido responsable tienda</label>
-                <input class="input_9 borde_2" type="text" name="apellido_Afcom" id="Apellido"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off">
+                <input class="input_13 borde_2" type="text" name="apellido_Afcom" id="Apellido"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off">
                 <label>Cedula responsable tienda</label>
-                <input class="input_9 borde_2" type="text" name="cedula_Afcom" id="Cedula"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off">
+                <input class="input_13 borde_2" type="text" name="cedula_Afcom" id="Cedula"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off">
                 <label>Telefono responsable tienda</label>
-                <input class="input_9 borde_2" type="text" name="telefono_Afcom" id="Telefono"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off">
+                <input class="input_13 borde_2" type="text" name="telefono_Afcom" id="Telefono"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off">
                 <label>Correo responsable tienda</label>
-                <input class="input_9 borde_2" type="text" name="correo_Afcom" id="Correo" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
+                <input class="input_13 borde_2" type="text" name="correo_Afcom" id="Correo" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
             <a id="marcador_02" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
                 <legend class="legend_1">Datos de tienda</legend>
                 <label>Nombre tienda</label>
-                <input class="input_9 borde_2" type="text" name="nombre_com" id="Nombre" value="<?php echo $Nombre_Tien;?>" autocomplete="off">
+                <input class="input_13 borde_2" type="text" name="nombre_com" id="Nombre" value="<?php echo $Nombre_Tien;?>" autocomplete="off">
                 <label>Telefono tienda</label>
-                <input class="input_9 borde_2" type="text" name="telefono_com" id="Telefono" value="<?php echo $Direccion_Tien;?>" autocomplete="off">
+                <input class="input_13 borde_2" type="text" name="telefono_com" id="Telefono" value="<?php echo $Direccion_Tien;?>" autocomplete="off">
                 <label>Dirección tienda</label>
-                <input class="input_9 borde_2" type="text" name="direccion_com" id="Direccion" value="<?php echo $Telefono_Tien;?>"  autocomplete="off">
+                <input class="input_13 borde_2" type="text" name="direccion_com" id="Direccion" value="<?php echo $Telefono_Tien;?>"  autocomplete="off">
                 <label>RIF tienda</label>
-                <input class="input_9 borde_2" type="text" name="rif_com" value="<?php echo $Rif_Tien;?>"  autocomplete="off">
-                <div class="contenedor_80 contenedor_81" id="Label_13">
+                <input class="input_13 borde_2" type="text" name="rif_com" value="<?php echo $Rif_Tien;?>"  autocomplete="off">
+                <div class="contenedor_80" id="Label_13">
                     <label class="label_16">Categoria</label>
                     <span class="icon-circle-down span_10"></span>
                 </div>
@@ -76,7 +77,7 @@
                 foreach($Datos['categoria'] as $row){
                     $Categoria =  $row['categoria'];
                     ?>
-                    <input class="input_9 borde_2 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off">
+                    <input class="input_13 borde_2 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off">
                     <?php
                 }  ?>
             </fieldset>
@@ -115,8 +116,8 @@
                     foreach($Datos['secciones'] as $row){
                         $Seccion_Tien = $row['seccion'];
                             ?>
-                        <div id="Contenedor_80" class="contenedor_80js">
-                            <input class="input_9 input_12 borde_2" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>"/>
+                        <div id="Contenedor_80" class="contenedor_80">
+                            <input class="input_13 input_12 borde_2" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>"/>
                             <span class="icon-cancel-circle span_10 span_12" id="Span_4"></span>
                         </div>
                         <?php
@@ -132,10 +133,10 @@
                     <span>Los pagos de los pedidos realizados se depositan directamente a tus cuentas bancarias, agrega todas las que tengas disponibles para que los usuarios tengan opciones, los pedidos pagados en cuentas de otros bancos causan una demora de 24 hrs en el despacho del pedido para que verifiques la transferencia.</span>
                     <div class="contenedor_67 borde_2" id="Contenedor_67">
                         <span class="icon-cancel-circle span_10 span_14 span_12" id="Span_3"></span>
-                        <input class="input_9 input_9JS borde_2" type="text" name="banco[]" id="Banco" placeholder="Banco" autocomplete="off">
-                        <input class="input_9 input_9JS borde_2" type="text" name="titular[]" id="Titular de la cuenta" placeholder="Titular"  autocomplete="off">
-                        <input class="input_9 input_9JS borde_2" type="text" name="numeroCuenta[]" id="NumeroCuenta" placeholder="Numero de cuenta" autocomplete="off">
-                        <input class="input_9 input_9JS borde_2" type="text" name="rif[]" id="Rif" placeholder="RIF"  autocomplete="off">
+                        <input class="input_13 input_9JS borde_2" type="text" name="banco[]" id="Banco" placeholder="Banco" autocomplete="off">
+                        <input class="input_13 input_9JS borde_2" type="text" name="titular[]" id="Titular de la cuenta" placeholder="Titular"  autocomplete="off">
+                        <input class="input_13 input_9JS borde_2" type="text" name="numeroCuenta[]" id="NumeroCuenta" placeholder="Numero de cuenta" autocomplete="off">
+                        <input class="input_13 input_9JS borde_2" type="text" name="rif[]" id="Rif" placeholder="RIF"  autocomplete="off">
                     </div> 
                 </div>
                     <?php
@@ -148,13 +149,13 @@
                         ?>
                         <div class="contenedor_67" id="Contenedor_67">
                             <label class="label_13">Banco</label>
-                            <input class="input_9 input_9JS borde_2" type="text" name="banco[]" id="Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
+                            <input class="input_13 input_9JS borde_2" type="text" name="banco[]" id="Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
                             <label class="label_13">Titular</label>
-                            <input class="input_9 input_9JS borde_2" type="text" name="titular[]" id="Titular de la cuenta" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
+                            <input class="input_13 input_9JS borde_2" type="text" name="titular[]" id="Titular de la cuenta" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
                             <label class="label_13">Número cuenta</label>
-                            <input class="input_9 input_9JS borde_2" type="text" name="numeroCuenta[]" id="NumeroCuenta" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
+                            <input class="input_13 input_9JS borde_2" type="text" name="numeroCuenta[]" id="NumeroCuenta" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
                             <label class="label_13">RIF</label>
-                            <input class="input_9 input_9JS borde_2" type="text" name="rif[]" id="Rif"  value="<?php echo $BancoRif;?>" autocomplete="off">
+                            <input class="input_13 input_9JS borde_2" type="text" name="rif[]" id="Rif"  value="<?php echo $BancoRif;?>" autocomplete="off">
                             <input class="input_3" type="text" name="id_banco[]" value="<?php echo $ID_Banco;?>">
                         </div>
                         <?php
@@ -183,11 +184,10 @@
     <div id="Mostrar_Categorias"></div>
 
     <!--div que se muestra mediante mostrarSecciones() en este mismo archivo-->
-<section class="section_3 section_7 section_9" id="Ejemplo_Secciones">
+<section class="section_3 section_13" id="Ejemplo_Secciones">
     <div class="contenedor_24 contenedor_84">
-        <p class="p_6 p_9">Sugerencia de secciones según el tipo de tienda</p>
-        <p class="p_9">Verifica si tu tienda encaja en una de las sugerencias, y toma las secciones que creas conveniente. Tambien puedes agregas secciones según tu conveniencia</p>
-        <div style="background-color: yellow;">
+        <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
+        <div>
             <label class="label_4">Supermercados y bodegas</label>
             <ul class="ul_2">
                 <li>Viveres</li>
@@ -199,7 +199,7 @@
                 <li>...</li>
             </ul>
         </div>
-        <div style="background-color: blue; ">
+        <div>
             <label class="label_4">Venta de Comida rapida</label>
             <ul class="ul_2">
                 <li>Hamburguesas</li>
@@ -243,4 +243,22 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
 
+<script> 
+        //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
+        function readImage(input){
+        console.log("______Desde readImage()______")
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function(){
+            // Código a ejecutar cuando se detecta un cambio de archivo
+            readImage(this);
+        });
+    </script>
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

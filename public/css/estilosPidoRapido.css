@@ -20,7 +20,7 @@ body, html{
 }
 
 /* ******************************************************************************** */
-	/* Declaración de variables */
+	/* DECLARACION DE VARIABLES */
 :root{
 	/*fondo cuando aparece un div llamado via ajax y no cubre todo el viewport*/
 	--FondoDivModal: rgba(0, 0, 0, 0.8);
@@ -37,7 +37,6 @@ button{/*tiendas*/
 	position: absolute;
 	top: 2%;
 	left: 4%;
-	/* z-index: 1; */
 	color: white;
 	font-size: 2em;
 }
@@ -96,21 +95,21 @@ button{/*tiendas*/
 	display: block;
 	content: "marcador ";
 	margin-top: -5%;
-	height: 50px; 
+	height: 50px;
 	visibility: hidden;
 }
 .Blink{/*header*/
 	animation-name: blinker;
 	animation-duration: 1s;
-	animation-timing-function: cubic-bezier(.5, 0, 1, 1);  
+	animation-timing-function: cubic-bezier(.5, 0, 1, 1);
 	animation-iteration-count: 4;
 }
-	@keyframes blinker {  
+	@keyframes blinker {
 	from{
-			opacity: 1; 
+			opacity: 1;
 		}
-	to{	
-		opacity: 0; 
+	to{
+		opacity: 0;
 		}
 	}
 .boton{/*carrito - recibePedido - login - afiliacion - registroCom - Categoria_Ajax*/
@@ -154,7 +153,7 @@ button{/*tiendas*/
 	border-width: 1px;
 	border-style: solid;
 }
-.borde_2{/*registroCom - cuenta_publicar - cuenta_editar - login*/
+.borde_2{/*registroCom - cuenta_publicar - cuenta_editar - login - cuenta_editar_prod*/
 	border-color: rgba(51, 51, 51, 0.3);
 	border-width: 1px;
 	border-style: solid;
@@ -172,10 +171,9 @@ button{/*tiendas*/
 .contador{/*cuenta_publicar.php - cuenta_publicars*/
 	width: 7% !important;
 	margin-left: 93% !important;
-	margin-bottom: 2% !important;
 	color: rgba(51, 51, 51, 0.6);
 	border: none;
-	line-height: 16px;
+	line-height: 10px;
 	font-size: 0.8em;
 	text-align: right;
 }
@@ -196,7 +194,7 @@ button{/*tiendas*/
 }
 .contenedor_4{/*inicio - RecibePedido*/
 	display: flex;
-	justify-content: center;	
+	justify-content: center;
 	flex-wrap: wrap;
 	width: 90%;
 	margin:3% auto;
@@ -204,7 +202,7 @@ button{/*tiendas*/
 .contenedor_5{/*inicio*/
 	margin: auto;
 	margin-top: 3%;
-	margin-bottom: 8%; 
+	margin-bottom: 8%;
 	display: none;
 	width: 80%;
 }
@@ -232,14 +230,19 @@ button{/*tiendas*/
 	bottom: 1pt;
 	padding: 0.5% 0%;
 }
-.contenedor_9{/*cuenta_editar - cuenta_publicar - opciones*/
+.contenedor_9{/*cuenta_editar_prod - cuenta_editar - cuenta_publicar -             tiendas - opciones */
 	border-radius: 15px;
-	text-align: center;
+	/* text-align: center; */
 	width: 80%;
-	height: 100%;
+	/* height: 100%; */
+	padding: 1%;
 	margin: auto;
 }
-.contenedor_10{/*tiendas - vitrina - afiliacion - planes*/
+.contenedor_9:hover{/*cuenta_editar_prod*/
+	cursor: pointer;
+}
+.contenedor_10{/*tiendas - afiliacion*/
+	/* background-color: yellow; */
 	display: grid;
 	grid-template-columns: 35fr 35fr 35fr;
 	grid-template-rows: min-content;
@@ -251,13 +254,14 @@ button{/*tiendas*/
 	height: 92%;
 }
 .contenedor_11{/*vitrina*/
-	width: 250px;
-	/* width: 100%; */
-	height: 80%;
-	margin: 0% auto;
+	/* background-color: yellow; */
+	width: 25%;
+	/* height: 80%; */
+	margin-bottom: 3%; 
+	text-align: center;
 }
 .contenedor_11a:hover{/*vitrina*/
-	background-color: rgba(51, 51, 51, 0.3) !important;
+	background-color: rgba(87, 85, 85, 0.3) !important;
 	cursor: pointer;
 	border-radius: 15px;
 }
@@ -281,9 +285,6 @@ button{/*tiendas*/
 .contenedor_13>h1{
 	flex: 0 1 100%;/*ocupa toda la primera fila en la distribucion flex*/
   }
-.contenedor_13a{/*vitrina*/
-	justify-content: space-around;
-}
 .contenedor_14{/*vitrina*/
 	background-color: rgba(51, 51, 51, 0);
 	display: none;
@@ -298,6 +299,7 @@ button{/*tiendas*/
 	width: 90%;
 	margin: auto;
 	border-radius: 15px;
+	text-align: center;
 }
 .contenedor_15:hover{
 	background-color: rgba(165, 42, 42, 0.3);
@@ -307,12 +309,12 @@ button{/*tiendas*/
 	text-align: right;
 	margin-top: 4%;
 }
-.contenedor_17{ 
+.contenedor_17{
 	/* height:35px */
 }
-.contenedor_18{/*vitrina*/ 
-	grid-column-start: 1;	
-	grid-column-end: 4; 
+.contenedor_18{/*vitrina*/
+	grid-column-start: 1;
+	grid-column-end: 4;
 	margin:2% auto;
 	width: 100%;
 }
@@ -342,7 +344,8 @@ button{/*tiendas*/
 	border-radius: 15px;
 }
 .contenedor_25{/*tiendas*/
-	min-height: 200px;
+	/* padding: 1%;
+	min-height: 200px; */
 }
 .contenedor_26{/*carrito*/
 	margin: auto;
@@ -374,7 +377,7 @@ button{/*tiendas*/
 	padding: 2%;
 	margin: auto;
 	display:flex ;
-	justify-content: center; 
+	justify-content: center;
 	width: 70%;
 	border-color: yellow;
 	border-width: 2px;
@@ -391,7 +394,7 @@ button{/*tiendas*/
 .contenedor_33{/*login*/
 	width: 30%;
 	margin: 2% auto;
-	text-align: center; 
+	text-align: center;
 }
 .contenedor_34{/*header_inicio*/
 	background-color:rgb(239, 245, 245);
@@ -431,9 +434,9 @@ button{/*tiendas*/
 	height: 100%;
 }
 .contenedor_40{/*registro - login_Vrecord*/
-	padding-top: 10%;
+	/* padding-top: 10%;
 	width: 80%;
-	margin: auto;
+	margin: auto; */
 }
 .contenedor_41{/*afiliacion*/
 	display: flex;
@@ -490,9 +493,9 @@ button{/*tiendas*/
 .contenedor_52{/*header_AfiCom*/
 	position: fixed;
 	top: 1%;
-	left: 88%;
-	padding-right: 2%;
+	left: 89%;
 	width: 10%;
+	z-index: 2;
 }
 .contenedor_53{/*inicio*/
 	background-color: rgb(239, 245, 245);
@@ -526,7 +529,7 @@ button{/*tiendas*/
 	margin-left: 5%;
 }
 .contenedor_57{/*inicio*/
-	width: 65%;	
+	width: 65%;
 	margin: auto;
 	padding: 1.5%;
 }
@@ -616,13 +619,13 @@ button{/*tiendas*/
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	z-index:1;
+	z-index: 1;
 }
 .contenedor_70{/*afiliacion*/
 	padding-top: 10%;
 }
 .contenedor_71{/*afiliacion*/
-	grid-column-start: 1;	
+	grid-column-start: 1;
 	grid-column-end: 4;
 	padding-bottom: 2%;
 	margin-top: 7%;
@@ -657,16 +660,9 @@ button{/*tiendas*/
 	margin: auto;
 }
 .contenedor_80{/*cuenta_editar*/
-	margin: 2% auto !important;
 	display: flex;
-	justify-items: center;
+	justify-content: space-between;
 	font-size: 1em;
-	line-height: 25px;
-	width: 90%;
-	padding-left: 5%;
-}
-.contenedor_81{/*cuenta_editar*/
-	margin: -2% auto !important;
 }
 .contenedor_83{/*cuenta_editar*/
 	background-color: rgb(239, 245, 245);
@@ -676,7 +672,7 @@ button{/*tiendas*/
 	position: fixed;
 	top: 20%;
 	left: 80%;
-	width: 20%;	
+	width: 20%;
 }
 .contenedor_84{/*cuenta_editar - planes*/
 	display: grid;
@@ -698,7 +694,7 @@ button{/*tiendas*/
 }
 .contenedor_87{/*cuenta_editar*/
 	grid-column-start: 1;
-	grid-column-end: 5; 
+	grid-column-end: 5;
 	text-align: center;
 }
 .contenedor_88{/*inicio*/
@@ -717,7 +713,7 @@ button{/*tiendas*/
 	column-gap: 4%;/*espacio entre columnas*/
 	justify-content: center;/*centra horizontalmente*/
 }
-.contenedor_90{/*opciones*/	
+.contenedor_90{/*opciones*/
 	background-color: rgb(233, 215, 215);
 	display: flex;
 	justify-content: center;
@@ -728,15 +724,16 @@ button{/*tiendas*/
 	width: 100%;
 }
 .contenedor_93{/*planes*/
-	padding-top: 10%;
+	padding-top: 0%;
 	width: 90%;
 	margin:auto;
-	height: 100%;
+	/* height: 100%; */
 }
 .contenedor_95{/*cuenta_productos - opciones*/
+	/* background-color: red; */
 	display: grid;
-	grid-template-columns: 50% 50%;
-	row-gap: 0px; /*espacio entre filas*/
+	grid-template-columns: 45% 45%;
+	column-gap: 10%; /*espacio entre filas*/
 	width: 25%;
 	margin-bottom: 2%;
 	padding: 2%;
@@ -747,7 +744,7 @@ button{/*tiendas*/
 	margin: 1% auto;
 	justify-content: space-around;
 }
-.contenedor_97{/*cuenta_productos - opciones*/
+.contenedor_97{/*cuenta_productos - opciones - cuenta*/
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -772,7 +769,7 @@ button{/*tiendas*/
 .contenedor_100{/*pwa*/
 	width: 17% !important;
 }
-.contenedor_102{/*Selecciones_Ajax*/	
+.contenedor_102{/*Selecciones_Ajax*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -782,16 +779,24 @@ button{/*tiendas*/
 	width: 100%;
 }
 .contenedor_103{/*cuenta*/
+	/* background-color: yellow; */
 	width: 80%;
 	margin: auto;
-	padding-top: 8% ;
+	padding-top: 8%;
 }
 .contenedor_104{/*cuenta*/
+	/* background-color: gray; */
 	width: 100%;
-	margin: auto;
+	margin: 5% auto;
 	display: grid;
-	grid-template-columns: 20% 80%;
-	column-gap: 5% !important;/*espacio entre columnas*/
+	grid-template-columns: 25% 75%;
+}
+.contenedor_105{/*cuenta*/
+	/* background-color: red; */
+	width: 100%;
+	position: absolute;
+	left: 0%;
+	bottom: 5px;
 }
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 40%;
@@ -816,7 +821,7 @@ button{/*tiendas*/
 	font-size: 4.5em;
 	text-align: right;
 }
-.h1_3{/*opciones - carrito - Secciones_Ajax*/	
+.h1_3{/*opciones - carrito - Secciones_Ajax*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
@@ -918,11 +923,18 @@ button{/*tiendas*/
 .image_1{/*tiendas - cuenta*/
 	width: 100%;
 	object-fit: contain ;
-	padding: 10%;	
+	padding: 10%;
 }
-.imagen_2{/*cuenta_editar*/
-	margin: auto;
-	display: block;
+.imagen_2{/*cuenta_editar_prod*/
+	/* background-color: red; */
+	border-radius: 15px;
+	object-fit: scale-down !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	width: 150px;
+	height: 180px;
+	/* padding: 5% 0%; */
+}
+.imagen_2:hover{/*cuenta_editar_prod*/
+	cursor: pointer;
 }
 .imagen_3{/*cuenta_editar*/
 	margin: auto;
@@ -942,6 +954,13 @@ button{/*tiendas*/
 .imagen_5{/*footer*/
 	width: 28%;
 	object-fit:contain ;
+}
+.imagen_6{/*cuenta_productos*/
+	/* background-color: red; */
+	/* border-radius: 15px; */
+	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	width: 150px;
+	height: 100px;
 }
 .input_1{/*vitrina*/
 	border: none;
@@ -995,31 +1014,19 @@ button{/*tiendas*/
 	border: none;
 	margin-bottom: 1%;
 }
-.input_9{/*registroCom - registroDes - carrito - login - cuenta_publicar - cuenta_editar*/
-	margin: 0% auto 2% auto !important;
-	display: block;
-	font-size: 0.8em;
-	line-height: 30px;
-	width: 90%;
-	padding-left: 5%;
-}
-.input_9:focus{
-	background-color: rgb(239, 245, 245);
-}
 .input_11{/*carrito - */
 	text-align: center;
 }
 .input_12{/*cuenta_editar*/
-	width: 85%;
-	margin-left: 5% !important;
+	width: 90% !important;
 	display: inline-block;
 }
-.input_13{/*cuenta_publicar*/
+.input_13{/*cuenta_publicar - cuenta_editar*/
 	font-size: 0.8em;
 	line-height: 30px;
-	width: 100%;
 	padding-left: 5%;
 	width: 100%;
+	margin: 1% auto 5% auto;
 }
 .input_14{/*cuenta_productos*/
 	text-align: center;
@@ -1039,7 +1046,7 @@ button{/*tiendas*/
 	font-weight: bold;
 	padding-right: 10%;
 }
-.label_4{/*opciones - cuenta_editar*/	
+.label_4{/*opciones - cuenta_editar*/
 	background-color: rgb(31, 161, 118);
 	color:white ;
 	margin: 3% auto;
@@ -1051,7 +1058,7 @@ button{/*tiendas*/
 	padding: 2%;
 	border-radius: 10px;
 }
-.label_4:hover{/*vitrina*/	
+.label_4:hover{/*vitrina*/
 	background-color: rgb(19, 102, 74);
 	cursor: pointer;
 }
@@ -1081,10 +1088,11 @@ button{/*tiendas*/
 	color: white;
 	text-align: right;
 	display: block;
+	font-size: 1.3em;
 }
 .label_9{/*buscador*/
 	display: block;
-	text-align: left;	
+	text-align: left;
 	cursor: pointer;
 }
 .label_10{/*buscador*/
@@ -1112,16 +1120,16 @@ button{/*tiendas*/
 	/* margin-top: 4%; */
 }
 .label_14{/*Categorias_Ajax - Secciones_Ajax*/
-	line-height: 30px; 
+	line-height: 30px;
 }
 .label_15{/*registroCom*/
 	color: rgba(0, 0, 0, 0.6);
 }
 .label_16{/*cuenta_editar*/
+	/* background-color: red !important; */
 	font-size: 1em;
 	display: inline-block;
-	margin: 2% auto;
-	margin-left: -6% !important;
+	/* margin: 0% auto 2% 0%; */
 }
 .label_17{/*header_Tienda*/
 	position: fixed;
@@ -1170,7 +1178,7 @@ button{/*tiendas*/
 	margin: 0px !important;
 	width: 30%;
 }
-.marcador{/*cuenta_editar*/ 
+.marcador{/*cuenta_editar*/
 	color: rgb(51, 51 ,51);
 	text-align: right;
 	line-height: 30px;
@@ -1195,14 +1203,6 @@ button{/*tiendas*/
 	margin: 0px !important;
 	width: 30%;
 }
-ul .menuContenedor_2{/*header_AfiCom*/
-	background-color: rgb(51, 51, 51) ;
-	display: none !important;
-	position: absolute;
-	left: 45%;
-	z-index: 5 ; 
-	padding-top: 1%;
-}
 .menuResponsive{/*da formato a barra de menu y contiene todos los enlaces de la misma, solo a la del header*/
 	background-color: rgb(51, 51, 51);
 	padding-top: 3%;
@@ -1213,7 +1213,7 @@ ul .menuContenedor_2{/*header_AfiCom*/
 }
 .menuResponsive ul{/*Todas  las páginas*/
 	width: 95%;
-	margin:auto;
+	margin: auto;
 	list-style: none;
 	display: flex;
 }
@@ -1236,21 +1236,6 @@ ul .menuContenedor_2{/*header_AfiCom*/
 .menuResponsive li a:hover{/*Todas las páginas*/
 	font-size: 19px;
 	width: 210px;
-}
-.menuLi_1:hover>ul{/*Se aplica un hover a un elemento seleccionando otro elemento distinto*/
-	display: block !important;
-	width: 180px !important;
-}
-.menuLi_2{/*header_AfiCom*/
-	padding: 3% 5% !important;
-	text-align: left !important;
-	display: block;
-	width: 100% !important;
-}
-.menuLi_2:hover{/*header.php   index.php*/
-	text-align: left !important;
-	display: block;
-	width: 250px !important;
 }
 .nav_1{/*header_inicio*/
 	padding-top: 1.5%;
@@ -1310,6 +1295,22 @@ ul .menuContenedor_2{/*header_AfiCom*/
 .p_12{/*cuenta_editar*/
 	margin: 0% auto 5% auto;
 }
+.placeholder{/*registroCom - registroDes - carrito - login - cuenta_publicar*/
+	margin: 0% auto 2% auto !important;
+	display: block;
+	font-size: 0.8em;
+	line-height: 30px;
+	width: 90%;
+	padding-left: 5%;
+}
+.placeholder:focus{
+	background-color: rgb(239, 245, 245);
+}
+.placeholder_2{/*cuenta_publicar - cuenta_editar - cuenta_editar_prod*/
+	margin: auto;
+	width: 100%;
+	margin-bottom: -0.5% !important;
+}
 .scrollNavigation[href="#top"]{
 	top: 0px
 }
@@ -1318,7 +1319,7 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	height: 100%;
 }
 .section_2{/*ciudad*/
-	padding-top: 3%; 
+	padding-top: 3%;
 }
 .section_3{/*opciones - cuenta_editar - Categorias_Ajax - Secciones_Ajax*/
 	background-color: var(--FondoDivModal);
@@ -1344,21 +1345,30 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	background-color: rgb(239, 245, 245);
 	height: 90%;
 }
-.section_7{/*carrito - opciones - cuenta_editar*/
-	display:  none;
+.section_7{/*carrito - opciones*/
+	display: none;
 }
 .section_8{/*Secciones_Ajax*/
 	padding-top: 5%;
 }
 .section_9{/*opciones*/
 	background-color: white;
-	/* padding-top: 0%; */
 }
 .section_10{/*Categorias_Ajax*/
 	position: fixed;
 }
 .section_12{/*vitrina*/
 	background-color: orange;
+}
+.section_13{/*cuenta_editar*/
+	display: none;
+	background-color:var(--FondoDivModal);
+	position: fixed;
+	z-index: 1;
+}
+.section_14{/*planes*/
+	/* background-color: red; */
+	padding-top: 10%;
 }
 .select_1{/*inicio*/
 	margin: 0% auto 2% auto;
@@ -1415,11 +1425,8 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	text-align: center;
 	padding-top: 15%;
 }
-.span_10{/*registroCom - cuenta_editar*/
-	display: inline-block;
-	margin-left: 80% !important;
+.span_10{/*cuenta_editar*/
 	font-size: 1.2em;
-	margin-top: 3%;
 	color: rgba(0, 0, 0, 0.6);
 }
 .span_11{/*registroCom*/
@@ -1427,14 +1434,17 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	margin-left: 75%;
 }
 .span_12{/*cuenta_editar*/
-	margin-left: 2% !important;
-	margin-top: 0%;
+	display: inline-block;
 }
 .span_12:hover{/*cuenta_editar*/
 	cursor: pointer;
 }
 .span_13{/*cuenta_editar*/
+	color: blueviolet;
 	display: inline-block;
+}
+.span_13:hover{/*cuenta_editar*/
+	cursor: pointer;
 }
 .span_14{/*cuenta_editar*/
 	display: block;
@@ -1455,7 +1465,7 @@ ul .menuContenedor_2{/*header_AfiCom*/
 .tabla{/*carrito*/
 	width: 100%;
 }
-.tabla_1{/*cuenta_productos*/	
+.tabla_1{/*cuenta_productos*/
 	width: 90%;
 	margin: auto;
 	border-collapse: collapse;
@@ -1526,4 +1536,27 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	padding-left: 15%;
 	padding-top: 10%;
 	line-height: 30px;
+}
+.menuLi_1:hover>ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
+	display: block;
+	width: 180px;
+}
+ul .menuContenedor_2{/*header_AfiCom*/
+	background-color: rgb(51, 51, 51);
+	display: none;
+	position: absolute;
+	left: 45%;
+	z-index: 2;
+	padding-top: 1%;
+	width: 200px !important;
+}
+.menuLi_2{/*header_AfiCom*/
+	padding: 3% 5% !important;
+	text-align: left !important;
+	display: block;
+	/* width: 100% !important; */
+}
+.menuLi_2:hover{/*header.php   index.php*/
+	text-align: left !important;
+	display: block;
 }

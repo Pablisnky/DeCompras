@@ -3,29 +3,30 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
 <section class="section_3 section_9" id="Section_3" > 
     <div class="contenedor_90 p_9">
-        <h1 class="h1_1 h1_3 h1_4">Sección de <?php echo $Datos['Opciones'][0]['seccion'];?></h1>
+        <h1 class="h1_1 h1_3 h1_4">Sección ???</h1>
         <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
     </div>
     <form>
         <div class="contenedor_13" id="Contenedor_13Js">   
             <?php   
             $ContadorLabel = 1;
+            //&Datos proviene de Opciones_C
             foreach($Datos['Opciones'] as $row){
                 $ID_Opcion =  $row['ID_Opcion'];
                 $Producto = $row['producto']; 
                 $Opcion = $row['opcion'];                    
                 $Precio = $row['precio'];                
-                $Seccion = $row['seccion'];
-                // echo "<pre>";
-                // print_r($Datos['Opciones'][0]['seccion']);
-                // echo "</pre>";
+                $Seccion = $row['seccion'];              
+                $Fotografia = $row['fotografia'];
 
                 //Se da formato al precio, sin decimales y con separación de miles
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
-                    <div class="contenedor_9 borde_2">
+                    <div class="contenedor_9 "><!--borde_2-->
                         <div class="contenedor_97">
-                            <span class="icon-image span_8"></span>
+                            <figure class="figure_1">
+                                <img class="imagen_6" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                            </figure>
                         </div>
                     </div>
                     <div>
