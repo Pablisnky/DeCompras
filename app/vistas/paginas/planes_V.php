@@ -16,7 +16,6 @@
             <p class="p_11">3 USD/mes</p>
             <ul>
                 <li class="li_3"><p>Tiendas o proyectos con catalogo de hasta 20 productos</p></li>
-                <li class="li_3"><p>Subdominio</p></li>
                 <li class="li_3"><p>Código QR</p></li>
             </ul>   
         </div>
@@ -25,7 +24,6 @@
             <p class="p_11">6 USD/mes</p>
             <ul>
                 <li class="li_3"><p>Tiendas con catalogo de hasta 100 productos</p></li>
-                <li class="li_3"><p>Subdominio</p></li>
                 <li class="li_3"><p>Código QR</p></li>
             </ul>
         </div>        

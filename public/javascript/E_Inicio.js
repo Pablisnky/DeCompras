@@ -1,25 +1,21 @@
 //Escucha en header_inicio.php
 document.getElementById("Contenedor_34").addEventListener('click', muestraBusqueda, false)
 
-//Escucha en inicio_V.php                        
+document.getElementById("Tiendas").addEventListener('click', transicionTiendas, false)
+                       
 document.getElementById("Span_5").addEventListener('click', function(){CerrarModal_X('Busqueda')})
 
 //Escucha en header_inicio.php
 document.getElementById("Contenedor_34").addEventListener('click', function(){autofocus('Input_9')}, false)
-
-//Escucha en inicio_V.php                               
+                              
 document.getElementById("Contenedor_6a").addEventListener('click', function(){VerTiendas('Comida_Rapida')})
-
-//Escucha en inicio_V.php                               
+                              
 document.getElementById("Contenedor_6b").addEventListener('click', function(){VerTiendas('Supermercado')})
-
-//Escucha en inicio_V.php                               
+                              
 document.getElementById("Contenedor_6c").addEventListener('click', function(){VerTiendas('Bar')})
-
-//Escucha en inicio_V.php                               
+                              
 document.getElementById("Contenedor_6e").addEventListener('click', function(){VerTiendas('Productos')})
-
-//Escucha en inicio_V.php                               
+                              
 document.getElementById("Contenedor_6f").addEventListener('click', function(){VerTiendas('Maquinas')})
 
 // *****************************************************************************************************
@@ -32,6 +28,7 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
     }
 
 // *****************************************************************************************************
+//Abre en la misma ventana las tiendas que pertenecen a una categoria
     function VerTiendas(Tiendas){
         console.log("_____Desde VerTiendas()_____")
         window.open(`Tiendas_C/index/${Tiendas}`,"_self")
@@ -39,8 +36,24 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
 
 // *****************************************************************************************************
     //coloca el cursor en el input automaticamente (Esta funcion es común, debe estar en funcionesVarias.js cunado ese archivo ya este manejando solo las funciones que le correspondan)
-	function autofocus(input){
-        console.log("______Desde autofocus()______")
-		document.getElementById(input).focus()
-		document.getElementById(input).value = ""
-	}
+	// function autofocus(input){
+    //     console.log("______Desde autofocus()______")
+	// 	document.getElementById(input).focus()
+	// 	document.getElementById(input).value = ""
+    // }
+
+//************************************************************************************************
+    //Coloca la lista de categorias de tiendas en el borde superior de la página 
+    function transicionTiendas(){  
+        // console.log("______Desde transicionTiendas()______")
+        let C = document.getElementById("Section_1")
+        let D = document.getElementById("Section_2js")
+        Coordenada = D.getBoundingClientRect()
+        
+        if(Coordenada.top > 100){
+            C.style.height = "7%"
+            document.getElementById("Contenedor_37").style.top = "-30%"
+            document.getElementById("Contenedor_51").style.top = "-30%"
+            document.getElementById("Contenedor_88").style.top = "-30%"
+        }
+    }

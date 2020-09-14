@@ -114,7 +114,7 @@
                     //     $this->vista("paginas/Entrada_C");
                     // }
                     
-                    header("location:" . RUTA_URL . "/Cuenta_C/");
+                    header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");
                 }
                 else{  ?>
                     <script>

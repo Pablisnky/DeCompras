@@ -12,7 +12,7 @@
     //Se llama la sesion  el Nombre creada en Login_C.php
     // $nombre= $_SESSION["Nombre"];  
 
-    // SDatos viene de Cuenta_C/Editar
+    //SDatos viene de Cuenta_C/Editar
     foreach($Datos['datosResposable'] as $row){
         $Nombre_AfiCom =  $row['nombre_AfiCom'];
         $Apellido_AfiCom = $row['apellido_AfiCom']; 
@@ -21,12 +21,14 @@
         $Correo_AfiCom = $row['correo_AfiCom'];
         $Foto_AfiCom = $row['fotografia_AfiCom'];
     }
-
+    
+    //SDatos viene de Cuenta_C/Editar
     foreach($Datos['datosTienda'] as $row){
         $Nombre_Tien =  $row['nombre_Tien'];
         $Direccion_Tien = $row['direccion_Tien']; 
         $Telefono_Tien = $row['telefono_Tien'];
         $Rif_Tien = $row['rif_Tien'];
+        $Foto_Tien = $row['fotografia_Tien'];
     }
     
 ?>
@@ -35,15 +37,18 @@
     <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
-    <div class="contenedor_42">    
-        <p class="p_6">Configurar cuenta</p>
+    <div class="contenedor_42" id="Contenedor_42">  
+        <div class="contenedor_80 contenedor_107" id="Contenedor_107">
+            <h1 class="h1_8">Configurar cuenta</h1>       
+            <span class="icon-circle-down span_10"></span>
+        </div>  
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off">
             <a id="marcador_01" class="ancla_2"></a>
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Persona responsable</legend>
-                <div class="contenedor_9">
-                    <label for="imgInp"><img class="imagen_2" id="blah" alt="Fotografia del usuario" src="../images/perfiles/<?php echo$Foto_AfiCom;?>"/>
-                    <input class="ocultar" id="imgInp" name="imagen_Perfil" type="file"/></label>
+                <div class="contenedor_9 contenedor_106">
+                    <label for="imgInp_1"><img class="imagen_2" id="blah_1" alt="Fotografia del usuario" src="../images/perfiles/<?php echo$Foto_AfiCom;?>"/>
+                    <input class="ocultar" id="imgInp_1" name="imagen_Perfil" type="file"/></label>
                 </div>
                 <label class="">Nombre responsable tienda</label>
                 <input class="input_13 borde_2" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
@@ -58,9 +63,14 @@
                 <input class="input_13 borde_2" type="text" name="correo_Afcom" id="Correo" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
+
             <a id="marcador_02" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
-                <legend class="legend_1">Datos de tienda</legend>
+                <legend class="legend_1">Datos de tienda</legend> 
+                <div class="contenedor_9 contenedor_106">
+                    <label for="imgInp_2"><img class="imagen_2" id="blah_2" alt="Fotografia de la tienda" src="../images/tiendas/<?php echo$Foto_Tien;?>"/>
+                    <input class="ocultar" id="imgInp_2" name="imagen_Tienda" type="file"/></label>
+                </div>
                 <label>Nombre tienda</label>
                 <input class="input_13 borde_2" type="text" name="nombre_com" id="Nombre" value="<?php echo $Nombre_Tien;?>" autocomplete="off">
                 <label>Telefono tienda</label>
@@ -81,32 +91,8 @@
                     <?php
                 }  ?>
             </fieldset>
-            <!-- <a id="marcador_03" class="ancla_2"></a>
-            <fieldset class="fieldset_1 fieldset_2">
-                <legend class="legend_1" for="Domingo">Horario</legend>
-                <div class="contenedor_85">
-                    <div class="contenedor_86">
-                        <input type="radio" name="horario" id="Domingo" value="Domingo" checked>
-                        <label for="Domingo">Domingo</label><br>
-                        <input type="radio" name="horario" id="Lunes" value="Lunes">
-                        <label for="Lunes">Lunes</label><br>
-                        <input type="radio" name="horario" id="Martes" value="Martes">
-                        <label for="Martes">Martes</label><br>
-                        <input type="radio" name="horario" id="Miercoles" value="Miercoles">
-                        <label for="Miercoles">Miercoles</label><br>
-                        <input type="radio" name="horario" id="Jueves" value="Jueves">
-                        <label for="Jueves">Jueves</label><br>
-                        <input type="radio" name="horario" id="Viernes" value="Viernes">
-                        <label for="Viernes">Viernes</label><br>
-                        <input type="radio" name="horario" id="Sabado" value="Sabado">
-                        <label for="Sabado">Sabado</label>
-                    </div>
-                    <!-- div alimentado via Ajax desde horarios_V.php 
-                    <div id="Mostrar_horarios"></div>
-                </div>
-            </fieldset> -->
 
-            <a id="marcador_04" class="ancla_2"></a>
+            <a id="marcador_03" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Secciones</legend>
                 <div id="Contenedor_79">
@@ -125,8 +111,24 @@
                 </div>
                 <label class="label_4" id="Label_5">Añadir sección</label>
             </fieldset>
+            
+            <a id="marcador_04" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2">
+                <legend class="legend_1">Ofertas</legend>
+                <p>Si tienes productos con algun tipo de oferta, destacalos en la página de inicio de tu tienda.</p>
+                <br><br>
+                <p>Por medio de un boton se muestran todos los productos al cliente, con ifltro por sección similar al menu "Productos" y una vez mostrados los productos cada uno tiene una etique <a> que lleva a otra pagina donde se edita la oferta. (similar a actualizar producto)</a></p>
+                
+                <label class="label_4" id="Label_5">Añadir oferta</label>
+            </fieldset>
+            
+            <!-- <a id="marcador_05" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2">
+                <legend class="legend_1">Lo más pedido</legend>
+                <p>Automaticamente se llena este bloque, con los productos mas comprados de la tienda</p>
+            </fieldset> -->
 
-            <a id="marcador_05" class="ancla_2"></a>
+            <a id="marcador_06" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Cuentas bancarias</legend>
                 <div id="Contenedor_69">
@@ -162,34 +164,60 @@
                      }  ?>
                 <label class="label_4 label_19" id="Label_4">Añadir cuenta bancaria</label>
             </fieldset>   
-            <div class="contenedor_49">
-                <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
-                <input class="boton " type="submit" value="Guardar"/>
-            </div>
+            
+
+            <a id="marcador_07" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2">
+                <legend class="legend_1" for="Domingo">Horario</legend>
+               <!--  <div class="contenedor_85">
+                    <div class="contenedor_86">
+                        <input type="radio" name="horario" id="Domingo" value="Domingo" checked>
+                        <label for="Domingo">Domingo</label><br>
+                        <input type="radio" name="horario" id="Lunes" value="Lunes">
+                        <label for="Lunes">Lunes</label><br>
+                        <input type="radio" name="horario" id="Martes" value="Martes">
+                        <label for="Martes">Martes</label><br>
+                        <input type="radio" name="horario" id="Miercoles" value="Miercoles">
+                        <label for="Miercoles">Miercoles</label><br>
+                        <input type="radio" name="horario" id="Jueves" value="Jueves">
+                        <label for="Jueves">Jueves</label><br>
+                        <input type="radio" name="horario" id="Viernes" value="Viernes">
+                        <label for="Viernes">Viernes</label><br>
+                        <input type="radio" name="horario" id="Sabado" value="Sabado">
+                        <label for="Sabado">Sabado</label>
+                    </div>
+                    <!-- div alimentado via Ajax desde horarios_V.php 
+                    <div id="Mostrar_horarios"></div>
+                </div>-->
+            </fieldset> 
         </form>
-        <!-- <div class="contenedor_83 borde_2">
-            <a class="marcador" href="#marcador_01">Persona responsable</a>
-            <a class="marcador" href="#marcador_02">Datos de tienda</a>
-            <a class="marcador" href="#marcador_03">Horario</a>
-            <a class="marcador" href="#marcador_04">Secciones</a>
-            <a class="marcador" href="#marcador_05">Cuentas bancarias</a>
-        </div> -->
-        <div class="contenedor_45">
-            <input type="checkbox"  id="Bienvenida">
-            <label for="Bienvenida">Desactivar página de bienvenida</label>
-        </div>
+        <section class="section_13" id="Contenedor_83">
+            <div class="contenedor_83 borde_2">
+                <a class="marcador" href="#marcador_01">Persona responsable</a>
+                <a class="marcador" href="#marcador_02">Datos de tienda</a>
+                <a class="marcador" href="#marcador_03">Secciones</a>
+                <a class="marcador" href="#marcador_04">Ofertas</a>
+                <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
+                <a class="marcador" href="#marcador_06">Cuentas bancarias</a>
+                <a class="marcador" href="#marcador_07">Horario</a>
+                <div class="contenedor_49">
+                    <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
+                    <input class="boton boton_6" type="submit" value="Guardar cambios"/>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!--div alimentado via Ajax por medio de la funcion () -->
-    <div id="Mostrar_Categorias"></div>
+<!--div alimentado via Ajax por medio de la funcion () -->
+<div id="Mostrar_Categorias"></div>
 
-    <!--div que se muestra mediante mostrarSecciones() en este mismo archivo-->
+<!--Se muestra via Ajax, la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
 <section class="section_3 section_13" id="Ejemplo_Secciones">
-    <div class="contenedor_24 contenedor_84">
+    <div class=" contenedor_84 contenedor_24">
         <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
-        <div>
-            <label class="label_4">Supermercados y bodegas</label>
-            <ul class="ul_2">
+       <div>
+            <label class="label_4 label_22">Supermercados y bodegas</label>
+             <ul class="ul_2">
                 <li>Viveres</li>
                 <li>Desinfectante</li>
                 <li>Verduras</li>
@@ -197,10 +225,10 @@
                 <li>Cereales</li>
                 <li>Enlatados</li>
                 <li>...</li>
-            </ul>
+            </ul> 
         </div>
         <div>
-            <label class="label_4">Venta de Comida rapida</label>
+            <label class="label_4 label_22">Venta de Comida rapida</label>
             <ul class="ul_2">
                 <li>Hamburguesas</li>
                 <li>Perros caliente</li>
@@ -213,7 +241,7 @@
             </ul>
         </div>
         <div>
-            <label class="label_4">Venta de repuesto automotriz</label>
+            <label class="label_4 label_22">Venta de repuesto automotriz</label>
             <ul class="ul_2">
                 <li>Tren delantero</li>
                 <li>Sistema de freno</li>
@@ -224,7 +252,7 @@
             </ul>
         </div>
         <div>
-            <label class="label_4">Venta de Material médico quirurgico</label>
+            <label class="label_4 label_22">Venta de Material médico quirurgico</label>
             <ul class="ul_2">
                 <li>Stent</li>
                 <li>Inyectadoras</li>
@@ -235,7 +263,7 @@
             </ul>
         </div>
         <div class="contenedor_87">
-            <label class="boton boton_4" id="Label_1">Cerrar</label>
+            <a class="boton boton_4" href="#marcador_03" id="Label_1">Cerrar</a>
         </div>
     </div>
 </section>
@@ -244,21 +272,30 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
 
 <script> 
-        //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
-        function readImage(input){
-        console.log("______Desde readImage()______")
-            if(input.files && input.files[0]){
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    $('#blah').attr('src', e.target.result); // Renderizamos la imagen
-                }
-                reader.readAsDataURL(input.files[0]);
+    //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
+    function readImage(input, id_Label){
+        console.log("Se ha entrado en la función")
+        console.log(input)
+        console.log(id_Label)
+        if(input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                id_Label.attr('src', e.target.result); // Renderizamos la imagen
             }
+            reader.readAsDataURL(input.files[0]);
         }
+    }
 
-        $("#imgInp").change(function(){
-            // Código a ejecutar cuando se detecta un cambio de archivo
-            readImage(this);
-        });
+    $("#imgInp_1").change(function(){
+        //Código a ejecutar cuando se detecta un cambio de archivo
+        var id_Label = $('#blah_1');
+        readImage(this, id_Label);
+    });
+    
+    $("#imgInp_2").change(function(){
+        //Código a ejecutar cuando se detecta un cambio de archivo
+        var id_Label = $('#blah_2');
+        readImage(this, id_Label);
+    });
     </script>
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

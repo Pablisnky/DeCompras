@@ -20,20 +20,6 @@
             }
         }
 
-        //SELECT de las secciones que tiene una tiendao
-        // public function consultarSecciones($ID_Tienda){
-        //     $stmt = $this->dbh->prepare("SELECT  seccion FROM secciones WHERE ID_Tienda = :ID_Tienda");
-
-        //     $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
-
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return "No se pudo";
-        //     }
-        // }
-
         //SELECT de secciones de la tienda
         public function consultarSeccionesTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion, seccion FROM secciones WHERE ID_Tienda = :ID_Tienda");
@@ -76,9 +62,23 @@
             }
         }
 
+        //SELECT del estatus de la notificacion de la tienda
+        public function consultarNotificacionTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT notificacion FROM tiendas WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
         //SELECT de los productos que tiene una tienda especifica
         public function consultarTodosProductosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precio, opciones.fotografia, secciones.seccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_Tienda ");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precio, opciones.fotografia, secciones.seccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_Tienda ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -114,7 +114,7 @@
 
         //SELECT de datos de la tienda
         public function consultarDatosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_Tien, direccion_Tien, telefono_Tien , rif_Tien   FROM tiendas WHERE ID_Tienda = :ID_Tienda");
+            $stmt = $this->dbh->prepare("SELECT nombre_Tien, direccion_Tien, telefono_Tien, rif_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -211,6 +211,50 @@
             return $stmt;
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
         //DELETE de las categorias de una tienda
         public function eliminarCategoriaTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("DELETE FROM tiendas_categorias WHERE ID_Tienda = :ID_Tienda");
@@ -270,6 +314,32 @@
             $stmt->bindValue(':ID_OPCION', $ID_Opcion, PDO::PARAM_INT);
             $stmt->execute();          
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //***************************************************************************************************
 //***************************************************************************************************
         //UPDATE de los datos del afiliado
@@ -441,20 +511,40 @@
                 return false;
             }
         }
+        
+        //UPDATE de la fotografia de la tienda
+        public function actualizarFotografiaTienda($ID_Tienda, $nombre_imgTienda){
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET fotografia_Tien = :FOTOGRAFIA WHERE ID_Tienda = :ID_TIENDA ");
 
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':FOTOGRAFIA', $nombre_imgTienda);
 
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //UPDATE de la fotografia de la tienda
+        public function actualizarStatusTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET notificacion = :NOTIFICACION WHERE ID_Tienda = :ID_TIENDA ");
 
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':NOTIFICACION', 1);
 
-
-
-
-
-
-
-
-
-
-
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
 
 

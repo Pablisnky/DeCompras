@@ -13,13 +13,14 @@
             $Nombre = $row['nombre_Tien'];
             $Direccion = $row['direccion_Tien'];
             $Telefono = $row['telefono_Tien'];
+            $Fotografia = $row['fotografia_Tien'];
             // $Horario = $row['horario_Tien']; 
             ?> 
             <section style=" margin-top: -5%">
                 <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="vitrina('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>')">
-                    <div class="contenedor_9">
+                    <div class="">
                         <figure>
-                            <img class="imagen_2" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tienda.png"/>
+                            <img class="imagen_7" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia;?>"/>
                         </figure>
                     </div>
                     <div>

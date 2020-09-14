@@ -16,12 +16,17 @@
         }
         
         public function index(){
-            //CONSULTA los productos de una sección  en especifico según la tienda
+            //CONSULTA los productos de una sección en especifico según la tienda
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+            //CONSULTA la imagen de la tienda 
+            $Consulta = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
+            $Fotografia = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             
             $Datos = [
                 'secciones' => $Secciones,
+                'fotografiaTienda' => $Fotografia,
             ];
 
             $this->vista("paginas/cuenta_V", $Datos);
@@ -37,11 +42,21 @@
                 //CONSULTA todos los productos de una tienda
                 $Consulta = $this->ConsultaCuenta_M->consultarTodosProductosTienda($this->ID_Tienda);
                 $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                
+                //CONSULTA el estatus de la notificacion de una tienda
+                $Consulta = $this->ConsultaCuenta_M->consultarNotificacionTienda($this->ID_Tienda);
+                $Notificacion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+                //ACTUALIZA el estatus de la notificacion de una tienda
+                $this->ConsultaCuenta_M->actualizarStatusTienda($this->ID_Tienda);
             }
             else{
-                //CONSULTA los productos de una sección  en especifico según la tienda
+                //CONSULTA los productos de una sección en especifico según la tienda
                 $Consulta = $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda, $Seccion);
                 $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+                //Se da el valor de notifiación directamente debido a que si la condicion entró en el ELSE ya el afiliado a visitado la página y no tiene notificaciones por leer
+                $Notificacion = 1;
             }
             
             //Se CONSULTAN las secciones de una tienda en particular
@@ -51,9 +66,9 @@
             $Datos = [
                 'secciones' => $Secciones, //necesario en header_AfiCom, arma el item productos del menu
                 'productos' => $Productos,
+                'notificacion' => $Notificacion
             ];
-               
-            // $this->vista("inc/header_AfiCom", $Datos);
+            
             $this->vista("paginas/cuenta_productos_V", $Datos);
         }
         
@@ -219,6 +234,62 @@
             else{
             //si existe imagen_Perfil pero se pasa del tamaño permitido
             if($nombre_img == !NULL){
+                    echo "La imagen es demasiado grande "; 
+                    // echo "<a href='perfil.php'>Regresar</a>";
+                    exit();
+                }
+            }
+
+            // ********************************************************
+            //Recibe la imagen de la tienda
+            $nombre_imgTienda = $_FILES['imagen_Tienda']['name'];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
+            $tipo_imgTienda = $_FILES['imagen_Tienda']['type'];
+            $tamaño_imgTienda = $_FILES['imagen_Tienda']['size'];
+            
+            // echo "Nombre de la imagen = " . $nombre_imgTienda . "<br>";
+            // echo "Tipo de archivo = " .$tipo_imgTienda .  "<br>";
+            // echo "Tamaño = " . $tamaño_imgTienda . "<br>";
+            // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
+            // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
+
+            //Si existe imagen_Tienda y tiene un tamaño correcto 
+            if(($nombre_imgTienda == !NULL) AND ($tamaño <= 7000000)){
+                //indicamos los formatos que permitimos subir a nuestro servidor
+                if (($_FILES["imagen_Tienda"]["type"] == "image/jpeg")
+                    || ($_FILES["imagen_Tienda"]["type"] == "image/jpg") || ($_FILES["imagen_Tienda"]["type"] == "image/png")){
+                    
+                    // Ruta donde se guardarán las imágenes que subamos la variable superglobal 
+                    //usar en remoto
+                    // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+
+                    //Usar en remoto
+                    // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/Reavivados/images/usuarios/'; 
+                    // echo $_SERVER['DOCUMENT_ROOT'] . 'Versus_20_2/images/usuarios/';
+
+                    //usar en local
+                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+
+                    //se muestra el directorio temporal donde se guarda el archivo
+                    //echo $_FILES['imagen']['tmp_name'];
+                    // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                    move_uploaded_file($_FILES['imagen_Tienda']['tmp_name'], $directorio.$nombre_imgTienda);
+
+                    //Para actualizar fotografia de perfil solo si se ha presionado el boton de buscar fotografia
+                    if(($_FILES['imagen_Tienda']['name']) != ""){
+                        //Se ACTUALIZA la fotografia de la tienda
+                        $this->ConsultaCuenta_M->actualizarFotografiaTienda($this->ID_Tienda, $nombre_imgTienda);
+                   }
+                } 
+                else{
+                    //si no cumple con el formato
+                    echo "Solo puede cargar imagenes con formato jpg, jpeg o png";
+                    // echo "<a href='../tarjeta/perfil_ingeniero.php'>Regresar</a>";
+                    exit();
+                }
+            } 
+            else{
+            //si existe imagen_Tienda pero se pasa del tamaño permitido
+            if($nombre_imgTienda == !NULL){
                     echo "La imagen es demasiado grande "; 
                     // echo "<a href='perfil.php'>Regresar</a>";
                     exit();

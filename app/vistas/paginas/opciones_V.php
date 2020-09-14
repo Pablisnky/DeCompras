@@ -30,9 +30,9 @@
                         </div>
                     </div>
                     <div>
-                        <input class="input_8" type="text" value="<?php echo $Producto;?>"/>
-                        <input class="input_8" type="text" value="<?php echo $Opcion;?>"/>
-                        <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs."/>
+                        <input class="input_8" type="text" value="<?php echo $Producto;?>" readonly="readonly"/>
+                        <input class="input_8" type="text" value="<?php echo $Opcion;?>" readonly="readonly"/>
+                        <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs." readonly="readonly"/>
                         <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                         
                         <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>

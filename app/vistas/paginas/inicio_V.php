@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="contenedor_88" id="Contenedor_88">
-            <label class="a_2" id="Tiendas" onclick="transicionTiendas()">Tiendas</label>
+            <label class="a_2" id="Tiendas">Tiendas</label>
         </div>
     </section>
     

@@ -8,6 +8,8 @@ document.getElementById('Span_1').addEventListener('click', mostrarSecciones, fa
 
 document.getElementById("Cedula").addEventListener('keyup', function(){formatoMiles(this)})
 
+document.getElementById("Contenedor_107").addEventListener('click', muestraMenuSecundario, false)
+
 // *****************************************************************************************************
 //FUNCIONES ANONIMAS
 // por medio de una función anonima debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
@@ -100,7 +102,7 @@ function formatoMiles(numero){
             button.onclick = EliminarSeccion // Asignar la función EliminarSeccion() en su evento click.
         }    
         function EliminarSeccion(e){   
-            // console.log("______Desde Eliminar Seccion______") 
+            // console.log("______Desde EliminarSeccion()______") 
 
             //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
             current = e.target.parentElement
@@ -115,5 +117,26 @@ function formatoMiles(numero){
 
 //************************************************************************************************
     function mostrarSecciones(){
+        console.log("______Desde mostrarSecciones()______")
+        //Coloca el cursor en el top de la pagina
         document.getElementById("Ejemplo_Secciones").style.display = "grid"
+
+        //Si la resolucion de la pantalla del dispositivo es menor a 880 px
+        if(window.screen.width<=800){
+            window.scroll(0, 0)
+            var tapaFondo = document.getElementById("Contenedor_42")
+            
+            //Se consulta el alto de la página cuenta_editar_V.php, este tamaño varia segun las secciones que tenga un tienda, cuentas bancarias y categorias
+            AltoVitrina = tapaFondo.scrollHeight
+            
+            //Este alto se estable al div padre en cuenta_editar_V.php para garantizar que cubra todo el contenido, ya que el div que Ejemplo_Secciones es cargado sobreeste
+            document.getElementById("Ejemplo_Secciones").style.height = AltoVitrina + "px"
+        }
     }   
+
+    //************************************************************************************************
+    //Muestra el menu secundario de enlaces anclas
+    function muestraMenuSecundario(){
+        document.getElementById("Contenedor_83").style.display = "block"
+
+    }

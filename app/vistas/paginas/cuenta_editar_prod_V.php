@@ -30,7 +30,9 @@
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off">
             <div class="contenedor_47">
                 <div class="contenedor_9 borde_2">
-                    <label for="imgInp"><img class="imagen_2" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/></label>
+                    <label for="imgInp">
+                        <img class="imagen_2" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                    </label>
                     <input class="ocultar" name="imagen_EditarProducto" id="imgInp" type="file"/>
                 </div>
                 <div>

@@ -32,7 +32,7 @@
 			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Mi Tienda</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li>
 					<li class="menuLi_1"><a>Productos</a>
 						<ul class="menuContenedor_2">
 							<?php

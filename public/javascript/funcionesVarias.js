@@ -23,7 +23,7 @@ document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
 
 //Escucha desde afiliacion_V.php - footer.php
-document.getElementById('Desarrollo_PWA').addEventListener('click', Documentacion_PWA,false)
+document.getElementById('Desarrollo_PWA').addEventListener('click', Documentacion_PWA, false)
 
 //Escucha desde cuenta_editar_prod.php 
 // document.getElementById('File_1').addEventListener('click', function(){readImage('File_1')}, false)
@@ -201,6 +201,22 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
         }    
         CerrarCategoria() 
     }
+
+//************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //************************************************************************************************
     // invocada desde Categorias_Ajax_V.php
@@ -935,22 +951,6 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     }
 
 //************************************************************************************************
-    //Coloca la lista de categorias de tiendas en el borde superior de la página 
-    function transicionTiendas(){  
-        // console.log("______Desde transicionTiendas()______")
-        let C = document.getElementById("Section_1")
-        let D = document.getElementById("Section_2js")
-        Coordenada = D.getBoundingClientRect()
-        
-        if(Coordenada.top > 100){
-            C.style.height = "7%"
-            document.getElementById("Contenedor_37").style.top = "-30%"
-            document.getElementById("Contenedor_51").style.top = "-30%"
-            document.getElementById("Contenedor_88").style.top = "-30%"
-        }
-    }
-
-//************************************************************************************************
     // invocada desde PedidoCarrito.php
     function verTransferenciaBancaria(){
         document.getElementById("Contenedor_60a").style.display = "block"
@@ -980,13 +980,19 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     }
 
 //************************************************************************************************
-   
+    //coloca el cursor en el input automaticamente 
+    function autofocus(input){
+        console.log("______Desde autofocus()______")
+        document.getElementById(input).focus()
+        document.getElementById(input).value = ""
+    }
 
 //************************************************************************************************
-    //invocada desde inicio_V.php - opciones_V.php
+    //invocada desde inicio_V.php - cuenta_productos_V.php
     function CerrarModal_X(id){
-    document.getElementById(id).style.display = "none"
-}
+        // console.log("______Desde CerrarModal_X()______")
+        document.getElementById(id).style.display = "none"
+    }
 
 //************************************************************************************************
     //Parapadeo display carrito, invocada desde Pre_incremento - Pre_decremento - transferirOpcion - AgregaOpcion

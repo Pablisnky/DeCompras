@@ -107,7 +107,7 @@
 	margin: 0% auto;
 }
 .contenedor_10{/*vitrina - tiendas - afiliacion*/
-	grid-template-columns: 100fr;
+	grid-template-columns: 100%;
 	margin: 20% auto;
 	width: 90%;
 	row-gap: 2%;/*espacio entre filas*/
@@ -149,11 +149,11 @@
 .contenedor_21{/*header.php*/
 	width: 60%;
 }
-.contenedor_24{/*carrito */
-	width: 95%;
-	margin:5% auto;
+.contenedor_24{/*carrito - cuenta_editar*/
+	margin: 5% auto;
 	padding: 1%;
 	border-radius: 15px;
+	width: 95% !important;
 }
 .contenedor_26{/*carrito*/
 	margin-top: 15%;
@@ -250,8 +250,9 @@
 	margin: 5% auto;
 }
 .contenedor_56{/*inicio*/
+	/* background-color: red; */
 	width: 100%;
-	align-items: left;
+	/* align-items: left; */
 	margin-left: 0% !important;
 }
 .contenedor_57{/*inicio*/
@@ -322,11 +323,23 @@
 .contenedor_80{/*registroCom - cuenta_editar*/
 	width: 100%;
 }
+.contenedor_83{/*cuenta_editar*/
+	position: initial;
+	width: 90%;
+}
 .contenedor_84{/*cuenta_editar - planes*/
-	/* background-color: blue; */
-	grid-template-columns: 100%;
-	column-gap: 0%; 
-	padding: 0% 10%;
+	display: flex;
+	flex-wrap: wrap;
+	/* flex-direction: column; */
+	padding: 10%;
+	margin-top: 15%;
+	align-content: flex-start !important; /*Rompe la distribución proporcional verticaly coloca los div hijos desde el top, debe tener la propiedad flex-wrap = wrap. la distribucion vertical proporcional ocurre cuando el contenedor general tiene altura de 100%*/
+}
+.contenedor_87{/*cuenta_editar*/
+	grid-column-start: initial;
+	grid-column-end: initial;
+	width: 100%;
+	margin-top: 20%;
 }
 .contenedor_89{/*Secciones_Ajax*/
 	grid-template-columns: 45% 45%;
@@ -352,13 +365,34 @@
 	width: 50% !important;
 	padding: 1% 2%;
 }
+.contenedor_101{/*cuenta_productos*/
+	/* background-color: red; */
+	display: flex;
+	justify-content: space-between;
+	width: 100% !important;
+	margin: auto;
+}
 .contenedor_103{/*cuenta*/
 	width: 90%;
+	margin: 20% auto;
+	padding-top: 5% !important;
 }
 .contenedor_104{/*cuenta*/
 	width: 100%;
 	margin: auto;
 	grid-template-columns: 100%;
+}
+.contenedor_106{/*cuenta_editar*/
+	/* background-color: yellow!important; */
+	margin: 3% auto 10% auto !important;
+}
+.contenedor_107{/*cuenta_editar*/
+	/* background-color: yellow!important; */
+	width: 60%;
+	margin: auto;
+}
+.contenedor_107:hover{/*cuenta_editar*/
+	cursor: pointer !important;
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
@@ -378,7 +412,7 @@
 	padding-top: 0%;
 	font-weight: normal;
 }
-.h1_1{/*carrito registroCom*/
+.h1_1{/*carrito registroCom - tiendas*/
 	font-size: 1.1em;
 }
 .h1_2{/*inicio*/
@@ -392,6 +426,16 @@
 }
 .h1_4{/*ciudad*/
 	/* padding: 2%; */
+}
+.h1_7{/*cuenta_productos*/
+	/* background-color: red; */
+	font-size: 1.7em !important;
+	margin: 2% auto;
+}
+.h1_8{/*cuenta_editar*/
+	font-size: 1.1em;
+	font-weight: normal;
+	display: inline;
 }
 .h2_1{/*inicio*/
 	font-size: 0.9em;
@@ -434,6 +478,12 @@
 .imagen_5{/*cuenta_editar*/
 	width: 23%;
 }
+.imagen_7{/*cuenta_productos*/
+	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	width: 100px;
+	height: 100px;
+	margin-bottom: 5%;
+}
 .input_3{/*vitrina*/
 	width: 100%;
 }
@@ -469,7 +519,7 @@
 	font-size: 1.2em;
 	width: 100% !important;
 }
-.label_4{/*opciones - cuenta_editar*/	
+.label_4{/*opciones*/	
 	width: 60% !important;
 }
 .label_6{/*inicio*/
@@ -507,6 +557,17 @@
 }
 .label_20{/*login*/
 	font-size: 0.9em;
+}
+.label_21{/*cuenta_productos*/
+	width: 40%;
+}
+.label_22{/*cuenta_editar*/
+	width: 100% !important;
+	margin-top: 15%;
+}
+.label_22:hover{/*cuenta_editar*/
+	cursor: default;
+	background-color:  rgb(31, 161, 118);
 }
 .legend_1{/*registroCom - registroDes*/
 	font-size: 1.1em;
@@ -590,6 +651,12 @@
 }
 .section_9{/*opciones*/
 	padding-top: 8%;
+}
+.section_13{/*cuenta_editar*/
+	position: absolute;
+	top:  0%;
+	left: 0%;
+	padding: 5%;
 }
 .section_14{/*planes*/
 	padding-top: 20%;

@@ -5,6 +5,9 @@ header, section, body, footer, aside, nav, article, figure, span{
 	padding: 0;
 	box-sizing: border-box;
 }
+h1, h2, h3, h4, h5, p, legend{
+	cursor: default;
+}
 *{
 	margin: 0px;
 	padding: 0px;
@@ -22,8 +25,9 @@ body, html{
 /* ******************************************************************************** */
 	/* DECLARACION DE VARIABLES */
 :root{
-	/*fondo cuando aparece un div llamado via ajax y no cubre todo el viewport*/
+	/*fondo cuando aparece un div llamado via ajax y no cubre todo el viewport*/  
 	--FondoDivModal: rgba(0, 0, 0, 0.8);
+	--FondoDiv: rgb(239, 245, 245);
 }
 
 /* ******************************************************************************** */
@@ -148,6 +152,9 @@ button{/*tiendas*/
 	margin-left: 5%;
 	width: 30% !important;
 }
+.boton_6{/*cuenta_editar*/
+	width: 80% !important;
+}
 .borde_1{/*tiendas*/
 	border-color: rgb(51, 51, 51);
 	border-width: 1px;
@@ -213,7 +220,7 @@ button{/*tiendas*/
 	border-radius: 15px;
 }
 .contenedor_6:hover{/*inicio*/
-	background-color: rgba(165, 42, 42, 0.3);
+	background-color: var(--FondoDiv);
 	cursor: pointer;
 }
 .contenedor_7{/*footer*/
@@ -231,8 +238,9 @@ button{/*tiendas*/
 	padding: 0.5% 0%;
 }
 .contenedor_9{/*cuenta_editar_prod - cuenta_editar - cuenta_publicar -             tiendas - opciones */
+	/* background-color: red; */
 	border-radius: 15px;
-	/* text-align: center; */
+	text-align: center;
 	width: 80%;
 	/* height: 100%; */
 	padding: 1%;
@@ -302,7 +310,7 @@ button{/*tiendas*/
 	text-align: center;
 }
 .contenedor_15:hover{
-	background-color: rgba(165, 42, 42, 0.3);
+	background-color: var(--FondoDiv);
 	cursor: pointer;
 }
 .contenedor_16{/*vitrina*/
@@ -471,7 +479,8 @@ button{/*tiendas*/
 	margin-top: 3%;
 }
 .contenedor_49{/*cuenta_publicar*/
-	width: 30%;
+	/* background-color: red; */
+	width: 100%;
 	margin: 5% auto;
 	text-align: center;
 }
@@ -665,14 +674,15 @@ button{/*tiendas*/
 	font-size: 1em;
 }
 .contenedor_83{/*cuenta_editar*/
-	background-color: rgb(239, 245, 245);
+	background-color: var(--FondoDiv);
 	padding: 1%;
+	padding-right: 2%;
 	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
 	position: fixed;
 	top: 20%;
-	left: 80%;
-	width: 20%;
+	left: 83%;
+	width: 18%;
 }
 .contenedor_84{/*cuenta_editar - planes*/
 	display: grid;
@@ -745,10 +755,12 @@ button{/*tiendas*/
 	justify-content: space-around;
 }
 .contenedor_97{/*cuenta_productos - opciones - cuenta*/
+	/* background-color: red; */
 	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin: auto;
 }
 .contenedor_98{/*footer*/
 	display: flex;
@@ -778,11 +790,12 @@ button{/*tiendas*/
 	left: 0%; */
 	width: 100%;
 }
-.contenedor_103{/*cuenta*/
-	/* background-color: yellow; */
+.contenedor_103{/*cuenta_productos*/
+	background-color: var(--FondoDiv);
 	width: 80%;
-	margin: auto;
-	padding-top: 8%;
+	margin: 7% auto;
+	padding: 2%;
+	border-radius: 15px;
 }
 .contenedor_104{/*cuenta*/
 	/* background-color: gray; */
@@ -825,7 +838,7 @@ button{/*tiendas*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
-	display: inline_block;
+	/* display: inline_block; */
 	width: 100%;
 }
 .h1_4{/*ciudad - opciones*/
@@ -848,6 +861,9 @@ button{/*tiendas*/
 	font-weight: normal;
 	text-align: center;
 	padding: 4%;
+}
+.h2_1:hover{/*inicio carrito*/
+	cursor: pointer;
 }
 .h2_2{/*carrito*/
 	font-weight: normal;
@@ -962,6 +978,15 @@ button{/*tiendas*/
 	width: 150px;
 	height: 100px;
 }
+.imagen_6:hover{/*cuenta_productos*/
+	cursor: default;
+}
+.imagen_7{/*cuenta*/
+	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	width: 300px;
+	height: 200px;
+	margin-bottom: 5%;
+}
 .input_1{/*vitrina*/
 	border: none;
 	text-align: right;
@@ -1013,6 +1038,7 @@ button{/*tiendas*/
 	width: 100%;
 	border: none;
 	margin-bottom: 1%;
+	cursor: default;
 }
 .input_11{/*carrito - */
 	text-align: center;
@@ -1027,6 +1053,9 @@ button{/*tiendas*/
 	padding-left: 5%;
 	width: 100%;
 	margin: 1% auto 5% auto;
+}
+.input_13:focus{/*cuenta_publicar - cuenta_editar*/
+	background-color: var(--FondoDiv);
 }
 .input_14{/*cuenta_productos*/
 	text-align: center;
@@ -1073,10 +1102,6 @@ button{/*tiendas*/
 	padding: 2%;
 	cursor: pointer;
 	border-radius: 10px;
-}
-.label_6{/*inicio*/
-	/* text-align: right;
-	padding-right: 2%; */
 }
 .label_7{/*login*/
 	color: blueviolet;
@@ -1145,6 +1170,11 @@ button{/*tiendas*/
 	display: block;
 	width: 90%;
 	margin: auto !important;
+}
+.label_21{/*cuenta_productos*/
+	width: 10%;
+	display: block;
+	margin:5%  auto;
 }
 .legend_1{/*registroCom - registroDes - login*/
 	font-size: 1.4em;
@@ -1275,12 +1305,12 @@ button{/*tiendas*/
 	text-align: center;
 	margin-bottom: 2%;
 }
-.p_8{/* afiliacion*/
+.p_8{/*afiliacion*/
 	padding-top: 1%;
 	text-align: center;
 	font-size: 1.9em;
 }
-.p_9{/*cuenta_editar - planes - opciones*/
+.p_9{/*cuenta_editar - planes - opciones - tiendas*/
 	grid-column-start: 1;
 	grid-column-end: 5;
 }
@@ -1304,7 +1334,7 @@ button{/*tiendas*/
 	padding-left: 5%;
 }
 .placeholder:focus{
-	background-color: rgb(239, 245, 245);
+	background-color: var(--FondoDiv);
 }
 .placeholder_2{/*cuenta_publicar - cuenta_editar - cuenta_editar_prod*/
 	margin: auto;
@@ -1315,7 +1345,7 @@ button{/*tiendas*/
 	top: 0px
 }
 .section_1{/*inicio*/
-	background-color:rgb(233, 215, 215) ;
+	background-color: var(--FondoDiv);
 	height: 100%;
 }
 .section_2{/*ciudad*/
@@ -1362,7 +1392,7 @@ button{/*tiendas*/
 }
 .section_13{/*cuenta_editar*/
 	display: none;
-	background-color:var(--FondoDivModal);
+	background-color: var(--FondoDivModal);
 	position: fixed;
 	z-index: 1;
 }

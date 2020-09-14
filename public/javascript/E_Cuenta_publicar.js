@@ -4,8 +4,8 @@
 //     console.log("ENTRO")
 // });
 
-document.addEventListener("keydown", contarDes, false);//contar() se encuentra en Funciones_varias.js 
-document.addEventListener("keyup", contarDes, false);//contar() se encuentra en Funciones_varias.js 
+document.addEventListener("keydown", contarDes, false); 
+document.addEventListener("keyup", contarDes, false);
 document.addEventListener("keydown", valida_LongitudDes, false);//valida_Longitud() se encuentra en Funciones_varias.js 
 document.addEventListener("keyup", valida_LongitudDes, false);//valida_Longitud() se encuentra en 
 document.addEventListener("keydown", contar, false);//contar() se encuentra en Funciones_varias.js 

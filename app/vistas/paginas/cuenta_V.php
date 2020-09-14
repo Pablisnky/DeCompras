@@ -3,29 +3,13 @@
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
 
     //Se verifica que la sesion del usuario halla sido creada y exista
-    if(isset($_SESSION["ID_Tienda"])){ 
+    if(isset($_SESSION["ID_Tienda"])){         
         ?>
-        <section class="section_5">
-            <div class="contenedor_103">
-                <h1 class="h1_7">Felicitaciones</h1>
-                <div class="contenedor_104">
-                    <div class="contenedor_97">
-                        <img class="" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tienda.png"/>
-                    </div>
-                    <div>
-                        <h1 class="h1_1">Tú tienda digital ha sido creada.</h1>
-                        <br>
-                        <p class="p_6">Te daremos dos semanas completamente libre de pagos</p> 
-                        <p class="p_6">Evalua la experiencia y descubre el plan que se ajusta a tus necesidades.</p>
-                    </div>
-                </div>
-                <div class="contenedor_105">
-                    <p class="p_6">Configurar tu tienda te llevará unos 20 minutos, y cargar un producto a penas unos segundos.</p>
-                </div>
-            </div>
-        </section>
         <section>
             <div>
+                <div class="">
+                    <p class="p_6">Configurar tu tienda te llevará 20 minutos, y cargar un producto a penas unos segundos.</p>
+                </div>
                 <p>Comenzamos</p>
                 <ol>
                     <li>Completa tu perfil.</li>
