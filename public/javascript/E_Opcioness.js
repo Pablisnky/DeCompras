@@ -1,2 +1,2 @@
-//Todos los manejadores de eventos que corresponden a la vista opciones_V.php se encuentran en vitrina_V.phh, debido a que el archivo opciones_V.php es una vista cargada mediante Ajax y no puede manajar eventos por si misma (al menos utilizando el metodo addEventListener)
+//Todos los manejadores de eventos que corresponden a la vista opciones_V.php se encuentran en  E_vitrina.js, debido a que el archivo opciones_V.php es una vista cargada mediante Ajax y no puede manajar eventos por si misma (al menos utilizando el metodo addEventListener)
 //************************************************************************************************

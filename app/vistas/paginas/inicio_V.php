@@ -9,20 +9,23 @@
         <div class="contenedor_51" id="Contenedor_51">
             <div>
                 <span class="icon-cart span_6"></span>
-                <!-- <img class="span_6" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tienda.png"/> -->
+                <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tiendas/tienda.png"/> -->
             </div>
             <div>
                 <span class="icon-truck span_6"></span>
+                <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tiendas/tienda.png"/> -->
             </div>
             <div>
                 <span class="icon-home2 span_6"></span>
+                <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/camion.png"/> -->
             </div>
         </div>
         <div class="contenedor_88" id="Contenedor_88">
             <label class="a_2" id="Tiendas">Tiendas</label>
+            <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/casa.png"/> -->
         </div>
     </section>
-    
+
     <section id="Section_2js">
         <div class='contenedor_4'>
             <div class='contenedor_6 borde_1' id="Contenedor_6a">

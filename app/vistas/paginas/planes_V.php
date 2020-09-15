@@ -1,7 +1,7 @@
 <?php require(RUTA_APP . "/vistas/inc/header.php"); ?>
 
     <section class="section_14">
-        <p class="p_6 p_9">Todos nuestros planes ofrecen dos semanas libres de pago al registrar tu tienda</p> 
+        <p class="p_6 p_9">Todos nuestros planes ofrecen 15 días libres de pago al registrar tu tienda</p> 
         <div class="contenedor_99 borde_1" id="Desarrollo_PWA">
             <div>
                 <h3 class="h3_1">DESARROLLO</h3>

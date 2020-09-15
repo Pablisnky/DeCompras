@@ -21,24 +21,62 @@ document.getElementById('Label_13').addEventListener('click',function(event){
 document.getElementById("Label_1").addEventListener('click', function(){
     CerrarModal_X("Ejemplo_Secciones")
 });
+//************************************************************************************************   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 
 // *****************************************************************************************************
-//Da el formato de separador de miles
-function formatoMiles(numero){
-    var num = numero.value.replace(/\./g,'')
-    if(!isNaN(num)){
-        num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.')
-        num = num.split('').reverse().join('').replace(/^[\.]/,'')
-        numero.value = num
+    //Da el formato de separador de miles
+    function formatoMiles(numero){
+        var num = numero.value.replace(/\./g,'')
+        if(!isNaN(num)){
+            num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.')
+            num = num.split('').reverse().join('').replace(/^[\.]/,'')
+            numero.value = num
+        }
+        else{ 
+            alert('Solo se permiten numeros')
+        numero.value = numero.value.replace(/[^\d\.]*/g,'')
+        }
     }
-    else{ 
-        alert('Solo se permiten numeros')
-    numero.value = numero.value.replace(/[^\d\.]*/g,'')
-    }
-}
+//************************************************************************************************   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 
 // *****************************************************************************************************
-//Clona todo el div que continen los inputs que capturan los datos de una cuenta bancaria
+    //Clona todo el div que continen los inputs que capturan los datos de una cuenta bancaria
     let iterar = 1
     function nuevaCuentaBancaria(){
         //Contenedor a clonar 
@@ -61,6 +99,25 @@ function formatoMiles(numero){
         //Contenedor_69 = Div padre y Contenedor_67 = Div hijo
         document.getElementById("Contenedor_69").appendChild(Div_clon)
     }
+//************************************************************************************************   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
 
 //************************************************************************************************
 //Añade un nuevo input para agregar una nueva sección
@@ -87,6 +144,25 @@ function formatoMiles(numero){
         document.getElementById("Contenedor_79").appendChild(Div_clon)
         incremento++
     }
+//************************************************************************************************   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
 
 //************************************************************************************************
 //Elimina los clones de seccion y banco
@@ -114,6 +190,25 @@ function formatoMiles(numero){
             elementoPadre.removeChild(current);  
         }           
     }
+//************************************************************************************************   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
 
 //************************************************************************************************
     function mostrarSecciones(){
@@ -133,10 +228,159 @@ function formatoMiles(numero){
             document.getElementById("Ejemplo_Secciones").style.height = AltoVitrina + "px"
         }
     }   
+//************************************************************************************************   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
 
-    //************************************************************************************************
+//************************************************************************************************
     //Muestra el menu secundario de enlaces anclas
     function muestraMenuSecundario(){
         document.getElementById("Contenedor_83").style.display = "block"
 
+    }
+//************************************************************************************************   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+//************************************************************************************************
+    //invocada desde cuenta_editar.php selecciona tres categorias en los tipos de tiendas
+    function transferirCategoria(form){
+        console.log("______Desde transferirCategoria()______")
+        //Se declara el array que contendra la cantidad de categorias seleccionadas
+        var TotalCategoria = []
+
+
+        //Se reciben los elementos del formulario mediante su atributo name
+        Categoria = form.categoria
+
+        //Se convierte el parametro recibido en un array
+        // var categoria = Categorias.split(',')
+        // Se declara el array que contiene las categorias
+        var Limite = []
+        //Se verifica la cantidad de categorias seleccionadas
+        // console.log(Categoria)
+
+            //Se eliminan las categorias que estaban y se colocan las que estan en el array TotalCategoria
+            //Se busca el nodo padre que contiene el input donde esta el producto a eliminar
+            let DivHijo = document.getElementsByClassName("imput_6js")
+
+            //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos
+            Elementos = DivHijo.length
+            for(var i = 0; i<Elementos; i++){ 
+                // console.log(Elementos) 
+                // console.log("Eliminado")
+
+                DivHijo_2 = document.getElementsByClassName("imput_6js")[0]
+                let DivPadre = document.getElementById("Fieldset")
+                DivPadre.removeChild(DivHijo_2);  
+            }
+
+        //Se recorren las categorias para verficar cuales estan seleccionadas
+        for(var i = 0; i<Categoria.length; i++){
+            if(Categoria[i].checked){
+                CantidadCategoria = Categoria[i].value 
+                TotalCategoria.push(CantidadCategoria)   
+            }
+        }
+           
+        // console.log(TotalCategoria.length)
+        //Se recoge la seleccion enviada desde CantidadCategorias_Ajax_V.php
+        // Categoria = document.getElementsByClassName("categoria_js")
+
+        //Se verifica que no hayan más de tres categorias selecionadas
+        if(TotalCategoria.length <= 3){
+        //     //Se recorren las categorias para verficar cuales estan seleccionadas
+        //     // for(var i = 0; i<Categoria.length; i++){
+        //     // if(Categoria[i].checked){
+        //     //     // Categoria= Categoria[i].value 
+        //     //     Categoria[i].value                  
+        //     //     // console.log(Categoria[i].value)        
+                                 
+            //Se carga la categoria al array, este solo permitie tres elementos
+            // Limite.push(Categoria[i].value )
+            // console.log("Las categorias seleccionadas son")
+            // console.log(TotalCategoria)  
+
+            let id_dinamico = 1
+            //Se da propiedades a los elementos creados
+            for(let i = 0; i<TotalCategoria.length; i++){
+                //Se crean los input que cargara la categorias contenidas en el array TotalCategoria
+                var NuevoElemento = document.createElement("input")
+                
+                NuevoElemento.value = TotalCategoria[i] 
+                NuevoElemento.classList.add("input_9", "borde_2", "imput_6js")
+                NuevoElemento.name = "categoria[]"
+                NuevoElemento.id = "Input_6js_" + id_dinamico
+                NuevoElemento.readOnly = true
+
+                //Se especifica el elemento donde se va a insertar el nuevo elemento
+                var ElementoPadre = document.getElementById("Fieldset")
+
+                //Se inserta en el DOM el input creado
+                inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+            }
+            id_dinamico++   
+        }
+        else{
+            console.log("Máximo categorias seleccionadas")  
+            alert("Solo pueden seleccionarse tres categorias")   
+        }    
+        CerrarCategoria() 
+    }
+//************************************************************************************************   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+
+//************************************************************************************************
+    // invocada desde Categorias_Ajax_V.php
+    function CerrarCategoria(){    
+        console.log("______Desde CerrarCategoria()______")    
+        document.getElementById("Mostrar_Categorias").style.display = "none"
     }

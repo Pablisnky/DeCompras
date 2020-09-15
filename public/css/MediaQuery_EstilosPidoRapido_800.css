@@ -366,11 +366,10 @@
 	padding: 1% 2%;
 }
 .contenedor_101{/*cuenta_productos*/
-	/* background-color: red; */
-	display: flex;
+	/* display: flex;
 	justify-content: space-between;
 	width: 100% !important;
-	margin: auto;
+	margin: auto; */
 }
 .contenedor_103{/*cuenta*/
 	width: 90%;

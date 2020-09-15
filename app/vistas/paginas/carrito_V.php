@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="contenedor_26" id="Contenedor_26">
-            <label class="boton boton_1" onclick="MuestraEnvioFactura()">Confirmar orden</label>
+            <label class="boton boton_1" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar orden</label>
             <label class="boton boton_1" onclick="ocultarPedido()">Regresar a mostrador</label>
         </div>
     </div>
@@ -55,7 +55,7 @@
                     <h1 class="h1_1">Datos de despacho</h1>
                     <div class="contenedor_28">
                         <div class="contenedor_29">
-                            <input class="placeholder borde_2" type="text" name="nombre" autocomplete="off" placeholder="Nombre"/>
+                            <input class="placeholder borde_2" type="text" name="nombre" id="NombreUsuario" autocomplete="off" placeholder="Nombre""/>
                         </div>
                         <div class="contenedor_29">
                             <input class="placeholder borde_2" type="text" name="apellido" autocomplete="off" placeholder="Apellido"/>

@@ -13,7 +13,7 @@
                 </div> 
             </fieldset>  
             <div class="contenedor_50">
-                <input class="boton" id="Submit" type="submit" value="Entrar">
+                <input class="boton" type="button" value="Entrar" id="Submit"/>
                 <p class="p_4">¿Olvidaste tu contraseña?</p>
                 <label class="label_7" onclick="NotificarContrasena()">Recuperala</label>
             </div>
@@ -24,6 +24,7 @@
             <a class="" href="<?php echo RUTA_URL . '/Afiliacion_C';?>">Afiliate</a>
         </div>
     </div>
+
     <div class="contenedor_43" id="Contenedor_43" onclick="OcultarDiv()">
         <form action="<?php echo RUTA_URL . '/Login_C/RecuperarClave';?>" method="POST" autocomplete="off">
             <fieldset class="Afiliacion_1" style="background-color: #F4FCFB; border-radius: 15px;">

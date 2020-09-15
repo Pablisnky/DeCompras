@@ -88,3 +88,28 @@ var contenido_descripcion = "";
         contenido_descripcion = document.forms[0].descripcion.value; 
     } 
 } 
+//************************************************************************************************
+    //invocada desde cuenta_publicar.php selecciona una sección donde estará un producto
+    function transferirSeccion(form){
+        console.log("______Desde transferirSeccion()______")
+        //Se declara el array que contendra la cantidad de categorias seleccionadas
+        // var TotalCategoria = []
+
+        //Se reciben los elementos del formulario mediante su atributo name
+        Seccion = form.seccion
+
+        //Se recorre todos los elementos para encontrar el que esta seleccionado
+        for(var i = 0; i<Seccion.length; i++){ 
+            if(Seccion[i].checked){
+                //Se toma el valor del seleccionado
+                Seleccionado = Seccion[i].value
+            }            
+        } 
+
+        //Se transfiere el valor del radio boton seleccionado al input del formulario
+        document.getElementById("Seccion").value = Seleccionado
+             
+        ocultar("MostrarSeccion") 
+    }
+
+//************************************************************************************************

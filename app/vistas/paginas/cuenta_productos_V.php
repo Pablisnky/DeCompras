@@ -42,15 +42,15 @@
                     $Precio = number_format($arr["precio"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
                     $ID_Producto = $arr["ID_Producto"];
                     $ID_Opcion = $arr["ID_Opcion"];
-                    $Fotografia = $arr['fotografia'];
-
-                    
+                    $Fotografia = $arr['fotografia'];            
                             ?>
                     <!-- <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/> -->
-                    <div class="contenedor_95 contenedor_101">
+                    <div class="contenedor_95 ">
                         <div class="contenedor_9 "><!--borde_2-->
                             <div class="contenedor_97">
-                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                                <figure class="figure_1">
+                                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                                </figure>
                             </div>
                         </div>
                         <div>

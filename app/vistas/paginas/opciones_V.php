@@ -1,7 +1,8 @@
 <!-- Archivo cargado por petición Ajax desde funcionesAjax.js en la función llamar_Opciones() he insertado en vitrina_V.php -->
 
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
-<section class="section_3 section_9" id="Section_3" > 
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/eliminar/style_eliminar.css"/>
+
+<section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 p_9">
         <h1 class="h1_1 h1_3 h1_4">Sección ???</h1>
         <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
@@ -39,30 +40,28 @@
                     </div> 
                     <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
                         <div class="contenedor_19">
-                            <div>
-                                <!-- cantidad alimentado desde FuncionesVarias.js agregarOpcion()-->
-                                <input type="text" class="input_1e ocultar" id="<?php echo 'Cantidad_' . $ContadorLabel;?>"/>
-                                <!-- seccion -->
-                                <input type="text" class="input_1g ocultar" name="seccion" id="<?php echo 'Seccion_' . $ContadorLabel;?>"/>
-                                <!-- producto - alimentado desde FuncionesVarias.js agregarOpcion() -->
-                                <input type="text" class="input_1a ocultar" name="Desc_Producto" id="<?php echo 'Producto_' . $ContadorLabel;?>"/>
-                                <!-- opcion alimentado desde FuncionesVarias.js agregarOpcion()-->
-                                <input type="text" class="input_1c ocultar" name="opcion" id="<?php echo 'Opcion_' . $ContadorLabel;?>"/>
-                                <!-- ID_Opcion --> 
-                                <!-- <input type="text" class="input_1b"/> -->
-                                <!-- Precio - alimentado desde FuncionesVarias.js agregarOpcion() -->
-                                <input type="text" class="input_1d ocultar" id="<?php echo 'Precio_' . $ContadorLabel;?>"/>
-                                <!-- Total - alimentado desde FuncionesVarias.js agregarOpcion()-->
-                                <input type="text" class="input_1f ocultar" id="<?php echo 'Total_' . $ContadorLabel;?>"/>
-                                <!-- Leyenda - alimentado desde FuncionesVarias.js agregarOpcion() -->
-                                <input class="input_2a" type="text" name="leyenda" id="<?php echo 'Leyenda_'. $ContadorLabel;?>"/>
-                            </div> 
-                            <div class="contenedor_16">
-                                <label class="menos">-</label>
-                                <input class="input_2" type="text" id="<?php echo 'Item_'. $ContadorLabel;?>"  value="1" />
-                                <label class="mas">+</label>
-                            </div> 
-                        </div>
+                            <!-- cantidad alimentado desde FuncionesVarias.js agregarOpcion()-->
+                            <input type="text" class="input_1e ocultar" id="<?php echo 'Cantidad_' . $ContadorLabel;?>"/>
+                            <!-- seccion -->
+                            <input type="text" class="input_1g ocultar" name="seccion" id="<?php echo 'Seccion_' . $ContadorLabel;?>"/>
+                            <!-- producto - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                            <input type="text" class="input_1a ocultar" name="Desc_Producto" id="<?php echo 'Producto_' . $ContadorLabel;?>"/>
+                            <!-- opcion alimentado desde FuncionesVarias.js agregarOpcion()-->
+                            <input type="text" class="input_1c ocultar" name="opcion" id="<?php echo 'Opcion_' . $ContadorLabel;?>"/>
+                            <!-- ID_Opcion --> 
+                            <!-- <input type="text" class="input_1b"/> -->
+                            <!-- Precio - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                            <input type="text" class="input_1d ocultar" id="<?php echo 'Precio_' . $ContadorLabel;?>"/>
+                            <!-- Total - alimentado desde FuncionesVarias.js agregarOpcion()-->
+                            <input type="text" class="input_1f ocultar" id="<?php echo 'Total_' . $ContadorLabel;?>"/>
+                            <!-- Leyenda - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                            <input class="input_2a" type="text" name="leyenda" id="<?php echo 'Leyenda_'. $ContadorLabel;?>"/>
+                        </div> 
+                        <div class="contenedor_16">
+                            <label class="menos">-</label>
+                            <input class="input_2" type="text" id="<?php echo 'Item_'. $ContadorLabel;?>"  value="1" />
+                            <label class="mas">+</label>
+                        </div> 
                     </div>
                 </div>
                 <?php   

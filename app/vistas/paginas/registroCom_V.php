@@ -28,7 +28,7 @@
                 </div>          
             </fieldset>        
             <div class="contenedor_66">            
-                <input class="boton boton_4" id="Submit" type="submit" name="Registrarse" value="Crear tienda">
+                <input class="boton boton_4" type="button" name="Registrarse" id="Submit" value="Crear tienda"/>
             </div>  
         </form>
     </div>
@@ -40,6 +40,7 @@
 <!--div utilizado para tapar las etiquetas tipo input -->
 <div class="tapa" id="Tapa"></div>
 
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Registros.js';?>"></script>
 
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>
  

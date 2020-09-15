@@ -55,5 +55,6 @@
         </div>
     </div>
 </section>   
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Afiliacion.js';?>"></script>
 		
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>
