@@ -55,19 +55,19 @@
                     <h1 class="h1_1">Datos de despacho</h1>
                     <div class="contenedor_28">
                         <div class="contenedor_29">
-                            <input class="placeholder borde_2" type="text" name="nombre" id="NombreUsuario" autocomplete="off" placeholder="Nombre""/>
+                            <input class="placeholder borde_1" type="text" name="nombre" id="NombreUsuario" autocomplete="off" placeholder="Nombre""/>
                         </div>
                         <div class="contenedor_29">
-                            <input class="placeholder borde_2" type="text" name="apellido" autocomplete="off" placeholder="Apellido"/>
+                            <input class="placeholder borde_1" type="text" name="apellido" autocomplete="off" placeholder="Apellido"/>
                         </div>
                         <div class="contenedor_29">
-                            <input class="placeholder borde_2" type="text" name="cedula" autocomplete="off" placeholder="Cedula / RIF"/>
+                            <input class="placeholder borde_1" type="text" name="cedula" autocomplete="off" placeholder="Cedula / RIF"/>
                         </div>
                         <div class="contenedor_29">
-                            <input class="placeholder borde_2" type="text" name="telefono" autocomplete="off" placeholder="Telefono"/>
+                            <input class="placeholder borde_1" type="text" name="telefono" autocomplete="off" placeholder="Telefono"/>
                         </div>
                         <div class="contenedor_72">
-                            <textarea class="textarea_1 borde_2" name="direccion" autocomplete="off" placeholder="Dirección"></textarea>
+                            <textarea class="textarea_1  placeholder borde_1" name="direccion" autocomplete="off" placeholder="Dirección"></textarea>
                         </div>
                     </div>
                 </div>

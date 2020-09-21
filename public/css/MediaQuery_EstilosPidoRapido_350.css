@@ -12,6 +12,9 @@
 .contenedor_10{/*tiendas - vitrina - afiliacion - planes*/
 	min-height: initial;
 }
+.contenedor_15{/*tiendas*/	
+	width: 90%;
+}
 .contenedor_21{/*vitrina*/
 	margin-bottom: 0%;
 	padding-bottom: 0%;
@@ -40,6 +43,10 @@
 .contenedor_94{/*planes*/
 	/* width: 80%;
 	margin: 8% auto; */
+}
+.h3_2{/*inicio*/
+	padding-top: 90%;
+	font-size: 1.3em;
 }
 .input_5{/*vitrina*/
 	font-size: 0.9em !important;
@@ -76,5 +83,9 @@
 .span_2{/*vitrina*/
 	font-size: 1.1em !important;
 }
-
+.textarea_1{/*opciones*/
+	/* background-color: red; */
+	/* border: none; */
+	min-height: 10px !important;
+}
 }

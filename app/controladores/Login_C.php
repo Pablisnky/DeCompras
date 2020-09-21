@@ -67,9 +67,9 @@
             }
 
             //Verifica si los campo que se van a recibir estan vacios
-            if(empty($_POST["correo_Arr"]) || empty($_POST["clave_Arr"])){
-        
-                echo"<script>alert('Debe Llenar todos los campos vacios');window.location.href='../vista/principal.php';</script>";
+            if(empty($_POST["correo_Arr"]) || empty($_POST["clave_Arr"])){        
+                echo "Debe Llenar todos los campos vacios". "<br>";
+                echo "<a href='javascript:history.back()'>Regresar</a>";
             }
             else{
                 //sino estan vacios se sanitizan y se reciben
@@ -116,12 +116,9 @@
                     
                     header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");
                 }
-                else{  ?>
-                    <script>
-                        alert("USUARIO y CONTRASEÑA no son correctas");
-                        history.back();
-                    </script>
-                    <?php 
+                else{ 
+                    echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';
+                    echo "<a href='javascript:history.back()'>Regresar</a>";
                 }    
             }   
         }

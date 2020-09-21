@@ -51,13 +51,13 @@ document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
 
 // *****************************************************************************************************
-//Se busca el alto del body de la pagina para garantizar que el alto del contenedor  a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
+//Se busca el alto del body de la página para garantizar que el alto del contenedor a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
 //Cuando carga la página se registran los listener de clic para toda la ventana
 document.addEventListener("click", function(event){
     if(event.target.id == 'Section_4'){
         AltoVitrina = document.body.scrollHeight
         console.log(AltoVitrina)
-        document.getElementById("contenedor_13").style.height =AltoVitrina +"px"
+        document.getElementById("contenedor_13").style.height = AltoVitrina +"px"
         // document.getElementById("contenedor_13").style.backgroundColor ="red"
     }
 }, false)
@@ -247,11 +247,31 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
 //************************************************************************************************
     //invocada desde opciones_V.php añade un producto al carrito   
     function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion, ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan){
-        // console.log("______Desde agregarOpcion()______")     
+        console.log("______Desde agregarOpcion()______")     
         
         //Se recibe el control del formulario con el nombre "opcion"
         Opcion = form.opcion
-// console.log(Opcion)
+
+        // En el caso que la seccion tenga un solo producto, se añade un input radio, sino se añade el Opcion.legth sera undefined y no entrará en el ciclo for
+        if(Opcion.length == undefined){
+        //Se añade una opcion al input tipo radio para que existan al menos dos opciones, cuando es uno el valor de Opcion.length es undefined lo que impide que se ejecute el ciclo for más adelante, esto sucede cuando solo existe un producto en una seccción
+            //Se crea un input tipo radio que pertenezca a los de name="opcion"
+            var NuevoElemento = document.createElement("input")
+
+            //Se dan valores a la propiedades del nuevo elemento 
+            NuevoElemento.name = "opcion"
+            NuevoElemento.setAttribute("type", "radio");
+
+            //Se especifica el elemento donde se va a insertar el nuevo elemento
+            var ElementoPadre = document.getElementById("Formulario")
+
+            //Se inserta en el DOM el input creado
+            inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+
+            //Se renombra la variable Opcion
+            Opcion = form.opcion
+        }
+
         //Se recibe el ID de la etiqueta donde se hizo click
         LabelClick = ID_Etiqueta
         localStorage.setItem('BotonAgregar', LabelClick) 
@@ -280,6 +300,7 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
         Input_OpcionClick = ID_InputOpcion
         localStorage.setItem('ID_InputOpcion', Input_OpcionClick)
         LS_ID_InputOpcion = localStorage.getItem('ID_InputOpcion')  
+// console.log(LS_ID_InputOpcion)
         
         //Se recibe el ID del input que va a mostrar el precio del producto donde se hizo click
         Input_PrecioClick = ID_InputPrecio
@@ -306,12 +327,18 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
         LS_ID_InputDisplayCant = localStorage.getItem('ID_InputDisplay')
 
         //Se recorren las opciones del producto 
-        for(let i = 0; i<Opcion.length; i++){
+        for(let i = 0; i < Opcion.length; i++){
             if(Opcion[i].checked){
-                Opcion = Opcion[i].value
+                Opcion = Opcion[i].value 
                             
-                //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el producto, la opcion y el precio separados por una coma, es necesario separar estos valores, por lo que se convierte en un array
-                let Separado = Opcion.split(",")  
+                //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el producto, la opcion y el precio separados por un _ (guion bajo) es necesario separar estos valores, para convertirlos en un array
+                let Separado = Opcion.split("_")  
+// console.log(Separado)
+                //Se eliminan las comas al final de cada elemento del array
+                Separado[0] = Separado[0].slice(0,-1)//Seccion
+                Separado[1] = Separado[1].slice(0,-1)//ID_Opcion
+                Separado[2] = Separado[2].slice(0,-1)//Producto
+                Separado[3] = Separado[3].slice(0,-1)//Opcion
 
                 //Se oculta el boton "Agregar" del elemento donde se hizo click
                 document.getElementById(LabelClick).style.display = "none"
@@ -342,7 +369,8 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
 
                 //Se muestra la leyenda del producto donde se hizo click
                 InputLeyenda = document.getElementById(Input_LeyendaClick)
-                InputLeyenda.value = 1 + ' ' + Separado[2] + ' ' + Separado[3] + ' = ' + Separado[4] + ' Bs.'   
+                InputLeyenda.value = 1 + ' ' + Separado[2] + ' ' + Separado[3] + ' = ' + Separado[4] + ' Bs.'
+
                 //Se cambia el formato del precio, solo numeros sin separador de miles
                 Precio = Precio.replace(".","")
                 Precio = Number(Precio)
@@ -358,7 +386,7 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
 
                 //Muestra el monto del pedido en el display carrito(se encuentra en vitrina_V.php)
                 MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
-                
+              
                 //Guarda en el objeto PedidoAtomico, detalles de cada articulo del pedido, cada detallees en si un array, por lo que se PedidoAtomico es un array de objetos
                 PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4])
                 AlCarro.push(PedidoAtomico) 
@@ -377,11 +405,13 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
         
                 //Guarda en el objeto "AlContenedor", la leyenda del producto segun su contenedor de seccion, cada detalle en si es un array, por lo que AlContenedor es un array de objetos
                 Contenedores = new ContenedorCar(LS_ID_Cont_Seccion, LS_ID_Cont_Leyenda, LS_ID_InputLeyenda, LS_ID_BotonAgregar, LS_ID_InputCantidad, LS_ID_InputProducto, LS_ID_InputOpcion, LS_ID_InputPrecio, LS_ID_InputTotal, LS_ID_InputDisplayCant, A, Separado[2], Separado[3], Separado[4], Separado[4])
+
             } 
             DisplayDestello()
         }
         AlContenedor.push(Contenedores)
-        // console.log(AlContenedor)
+// console.log(AlContenedor)
+// console.log(AlCarro)
     }
 //************************************************************************************************
 
@@ -478,39 +508,41 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
 
 
 //************************************************************************************************
-//invocada al cargarse llamar_Opciones() en Funciones_Ajax.js especifica los productos que ya estan cargados al carrito de compra y muestra su leyenda en la vista opciones_V.php
-function ProductosEnCarrito(){      
-    console.log("______Desde ProductosEnCarrito()______")        
-   
-    //Se filtran las leyendas que correspondan a la seccion seleccionada
-    var filtered = AlContenedor.filter(function(item){
-        return item.Cont_Seccion == LS_ID_Cont_Seccion 
-    })
-
-    for(let i = 0; i < filtered.length; i++){
-        //Del objeto filtrado filtered se toman las propiedades Cont_Leyenda para rellenar la leyenda
-
-        //Si el objeto "AlContenedor" tiene el array de un producto no se muestra el boton "Agregar" en este contenedor
-        document.getElementById(filtered[i].ID_Boton_Agregar).style.display = "none"
-        
-        //Detectar el contenedor de la leyenda del producto en opciones_V.php donde se hizo click  
-        document.getElementById(filtered[i].Cont_Leyenda).style.display = "block"
-        //Dar valor al input de la leyenda   
-        document.getElementById(filtered[i].ID_Input_Leyenda).style.display = "block"
-        document.getElementById(filtered[i].ID_InputCantidad).value = filtered[i].Cantidad 
-        document.getElementById(filtered[i].ID_InputProducto).value = filtered[i].Producto 
-        document.getElementById(filtered[i].ID_InputOpcion).value = filtered[i].Opcion 
-        document.getElementById(filtered[i].ID_InputPrecio).value = filtered[i].Precio 
-        document.getElementById(filtered[i].ID_InputTotal).value = filtered[i].Total 
-
-        document.getElementById(filtered[i].ID_InputDisplayCant).value = filtered[i].Cantidad      
-        document.getElementById(filtered[i].ID_Input_Leyenda).value = filtered[i].Cantidad + ' ' + filtered[i].Producto + ' ' + filtered[i].Opcion + ' = ' + filtered[i].Total + ' Bs.'
-    }        
-    Pre_decremento()
-    Pre_incremento()
+    //invocada al cargarse llamar_Opciones() en Funciones_Ajax.js especifica los productos que ya estan cargados al carrito de compra y muestra su leyenda en la vista opciones_V.php
+    function ProductosEnCarrito(){      
+        // console.log("______Desde ProductosEnCarrito()______")        
     
-console.log(AlContenedor)
-}    
+        //Se filtran las leyendas que correspondan a la seccion seleccionada
+        var filtered = AlContenedor.filter(function(item){
+            return item.Cont_Seccion == LS_ID_Cont_Seccion 
+        })
+
+        for(let i = 0; i < filtered.length; i++){
+            //Del objeto filtrado filtered se toman las propiedades Cont_Leyenda para rellenar la leyenda
+
+            //Si el objeto "AlContenedor" tiene el array de un producto no se muestra el boton "Agregar" en este contenedor
+            document.getElementById(filtered[i].ID_Boton_Agregar).style.display = "none"
+            
+            //Detectar el contenedor de la leyenda del producto en opciones_V.php donde se hizo click  
+            document.getElementById(filtered[i].Cont_Leyenda).style.display = "block"
+            
+            //Dar valor al input de la leyenda   
+            document.getElementById(filtered[i].ID_Input_Leyenda).style.display = "block"
+            document.getElementById(filtered[i].ID_InputCantidad).value = filtered[i].Cantidad 
+            document.getElementById(filtered[i].ID_InputProducto).value = filtered[i].Producto 
+            document.getElementById(filtered[i].ID_InputOpcion).value = filtered[i].Opcion 
+            document.getElementById(filtered[i].ID_InputPrecio).value = filtered[i].Precio 
+            document.getElementById(filtered[i].ID_InputTotal).value = filtered[i].Total 
+
+            document.getElementById(filtered[i].ID_InputDisplayCant).value = filtered[i].Cantidad      
+            document.getElementById(filtered[i].ID_Input_Leyenda).value = filtered[i].Cantidad + ' ' + filtered[i].Producto + ' ' + filtered[i].Opcion + ' = ' + filtered[i].Total + ' Bs.'
+        }        
+        Pre_decremento()
+        Pre_incremento()
+        
+    // console.log(AlContenedor)
+    // console.log(AlCarro)
+    }    
 //************************************************************************************************
 
 
@@ -751,7 +783,8 @@ console.log(AlContenedor)
                 ProductoEditado(PedidoGlobal.Opcion)          
             }  
             DisplayDestello()
-// console.log(AlContenedor)
+console.log(AlContenedor)
+console.log(AlCarro)
         }  
     }   
 
@@ -785,7 +818,7 @@ console.log(AlContenedor)
             boton.onclick = decrementar // Asignar la función decrementar() en su evento click.
         }    
         function decrementar(e){   
-            console.log("______Desde decremento______") 
+            console.log("______Desde decrementar()______") 
             
             //Se obtiene el div padre donde se encuentra el boton menos al que se hizo click
             current = e.target.parentElement
@@ -976,7 +1009,9 @@ console.log(HermanoMasMenos.getElementsByClassName("Label_3js")[0])
                 }
             }  
             DisplayDestello()
-        }     
+console.log(AlContenedor)
+console.log(AlCarro) 
+        }    
     }
 
 //************************************************************************************************ 
@@ -1002,5 +1037,30 @@ console.log(HermanoMasMenos.getElementsByClassName("Label_3js")[0])
         console.log("______Desde ocultarPedido()______")    
         document.getElementById("Mostrar_TodoPedido").style.display = "none";
     }    
+
+    //************************************************************************************************ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       
 //************************************************************************************************
+    //ajusta el texarea con respecto al contenido que trae de la BD es llamado desde opciones_V.php
+    function resize(){
+        var text = document.getElementById("OpcionPro");
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
      
+//************************************************************************************************

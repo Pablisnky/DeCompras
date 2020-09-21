@@ -34,6 +34,34 @@
             }
         }
 
+        //SELECT de la seccion donde esta un producto de una tienda
+        public function consultarSeccionActiva($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones_productos WHERE ID_Producto = :ID_PRODUCTO");
+
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
+        //SELECT de la seccion segun su ID_Seccion
+        public function consultarSeccion($ID_Seccion){
+            $stmt = $this->dbh->prepare("SELECT DISTINCT seccion FROM secciones WHERE ID_Seccion = :ID_SECCION");
+
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
         //SELECT de las categorias en las que una tienda se ha postulado
         public function consultarCategoriaTiendas($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT tiendas_categorias.ID_Categoria, categoria FROM categorias INNER JOIN tiendas_categorias ON categorias.ID_Categoria=tiendas_categorias.ID_Categoria WHERE tiendas_categorias.ID_Tienda = :ID_Tienda");
@@ -50,7 +78,7 @@
 
         //SELECT de los productos que tiene una tienda especifica
         public function consultarProductosTienda($ID_Tienda, $Seccion){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precio, secciones.seccion, opciones.fotografia FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = '$Seccion'");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precio, secciones.seccion, opciones.fotografia FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = '$Seccion' ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -199,7 +227,7 @@
 
         //SELECT de un producto especificao de una tienda determinada
         public function consultarDescripcionProducto($ID_Tienda, $ID_Producto){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, opciones.ID_Opcion, opciones.fotografia, producto, opcion, precio, seccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND productos.ID_Producto = :ID_PRODUCTO");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, opciones.ID_Opcion, opciones.fotografia, producto, opcion, precio, seccion, secciones.ID_Seccion, secciones_productos.ID_SP FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND productos.ID_Producto = :ID_PRODUCTO");
 
             $stmt->bindParam(':ID_TIENDA', $id_tienda, PDO::PARAM_STR);
             $stmt->bindParam(':ID_PRODUCTO', $id_producto, PDO::PARAM_INT);
@@ -210,6 +238,20 @@
             $stmt->execute();
             return $stmt;
         }
+
+        //SELECT del ID_SP de un producto dentro de su seccion        
+        // public function consultarSeccion_Producto($RecibeProducto){
+        //     $stmt = $this->dbh->prepare("SELECT ID_SP FROM secciones_productos WHERE ID_Seccion = :ID_SECCION AND ID_Producto = :ID_PRODUCTO");
+
+        //     $stmt->bindParam(':ID_SECCION', $id_seccion, PDO::PARAM_INT);
+        //     $stmt->bindParam(':ID_PRODUCTO', $id_producto, PDO::PARAM_INT);
+
+        //     $id_seccion = $RecibeProducto['ID_Seccion'];
+        //     $id_producto = $RecibeProducto['ID_Producto'];
+
+        //     $stmt->execute();
+        //     return $stmt;
+        // }
 
 
 
@@ -461,6 +503,25 @@
             }
         }
         
+        
+        //UPDATE de una seccion
+        public function actualizacionSeccion($RecibeProducto){ 
+            $stmt = $this->dbh->prepare("UPDATE secciones_productos SET ID_Seccion = :ID_SECCION WHERE ID_SP= :ID_SP");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_SP', $RecibeProducto['ID_SP']);
+            $stmt->bindValue(':ID_SECCION', $RecibeProducto['ID_Seccion']);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){    
+                //Se envia información de cuantos registros se vieron afectados por la consulta
+                return $stmt->rowCount();
+            }
+            else{
+                return false;
+            }
+        }
+
         //UPDATE de la fotografia
         public function actualizarFotografiaProducto($RecibeProducto, $nombre_imgProducto){
             $stmt = $this->dbh->prepare("UPDATE opciones SET fotografia = :FOT_PRODUCTO WHERE ID_Opcion = :ID_OPCION");
@@ -700,7 +761,7 @@
                 $stmt->bindParam(':SECCION', $Seccion);
 
                 //Se ejecuta la inserción de los datos en la tabla
-                $stmt->execute();
+                $stmt->execute(); 
             }
         }
 

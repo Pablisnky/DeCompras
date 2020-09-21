@@ -1,4 +1,13 @@
-    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
+   
+//  document.getElementById('Home').addEventListener('click', function(){ActivarLink("Home")}, true) 
+//  document.getElementById('Afiliacion').addEventListener('click', function(){ActivarLink("Afiliacion")}, true)
+//  document.getElementById('Planes').addEventListener('click', function(){ActivarLink("Planes")}, true)
+//  document.getElementById('Ciudades').addEventListener('click', function(){ActivarLink("Ciudades")}, true)
+//  document.getElementById('Tiendas').addEventListener('click', function(){ActivarLink("Tiendas")}, true)
+//  document.getElementById('Inicio').addEventListener('click', function(){ActivarLink("Inicio")}, true)
+ //************************************************************************************************
+
+   //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
     let div = document.getElementById("MenuResponsive")
     let span= document.getElementById("Span_6")
     let B = document.getElementById("Tapa")
@@ -43,9 +52,9 @@
     }
 
 //************************************************************************************************
-    //invocada desde inicio_V.php - cuenta_productos_V.php
+    //invocada desde inicio_V.php - cuenta_productos_V.php - cuenta_editar_V.php
     function CerrarModal_X(id){
-        console.log("______Desde CerrarModal_X()______")
+        // console.log("______Desde CerrarModal_X()______")
         document.getElementById(id).style.display = "none"
     }
 
@@ -63,12 +72,12 @@
 //************************************************************************************************
     //Oculta el div que contiene alert personalizado, invocada desde alert.php
     function ocultar(id){
-        console.log("______Desde ocultar()______")  
+        console.log("______Desde ocultar()______")
         document.getElementById(id).style.display = "none";
     }
 
 //************************************************************************************************ 
-//Invocada desde afiliacion_V.php
+    //Invocada desde afiliacion_V.php
     function Documentacion_PWA(){  
         console.log("______Desde Documentacion_PWA()______")    
         window.open("http://localhost/proyectos/PidoRapido/Afiliacion_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");
@@ -76,3 +85,23 @@
     //invocada desde header_inicio.php 
     // console.log("Se eliminan todos los objetos de un mismo producto menos el ultimo")
     // elementoEliminado = AlCarro.splice(-1);
+
+//************************************************************************************************
+    //Coloca la clase "activa" en el item seleccionado del menu 
+    function ActivarLink(id){
+        // console.log("______Desde ActivarLink()______") 
+
+        // //Se identifica elemento activo
+        // var elemento = document.getElementsByClassName("activo");
+        // NumElementos = elemento.length
+
+        // //Se recorrer todos los elementos, y el que tengan la clase "activo"  se le quita
+        // for(var i = 0; i < NumElementos; i++){
+        //     elemento[i].classList.remove('activo')
+        // }
+
+        // //Se añade la clase que resalta "activo" al elemento que se paso por parametro a la función
+        // document.getElementById(id).classList.add('activo')
+    }
+    
+//************************************************************************************************ 

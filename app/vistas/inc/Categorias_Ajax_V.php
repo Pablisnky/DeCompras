@@ -1,17 +1,20 @@
 <!-- Archivo cargado desde Ajax por medio de Llamar_categorias() y mostrado en cuenta_editar_V.php -->
 <section class="section_4 section_10">
-    <div class="contenedor_24">  
-        <h1 class="h1_1 h1_3 h1_5">Selecciona máximo tres categorias</h1>   
+    <div class="contenedor_24">   
+        <div class="contenedor_102">
+            <h1 class="h1_1 h1_3">Selecciona máximo tres categorias</h1>   
+            <span class="span_5" id="Span_5" onclick="CerrarModal_X('Mostrar_Categorias')">X</span>
+        </div>          
         <form>
             <div class="contenedor_76">
                 <?php                        
                 $ContadorCategoria = 1;
-                //$Datos['categorias'] trae información de la consulta categorias() llamada desde Cuenta_C.php trae todas las categorias que hay en la plataforma
+                //$Datos['categorias'] trae información de la consulta categorias() llamada desde Cuenta_C.php con todas las categorias que hay en la plataforma
                 foreach($Datos['categorias'] as $row){
                     $Categoria = $row['categoria'];     ?>
                         <div class="contenedor_78">
                             <?php
-                            //$Datos['categoriasTienda'] trae información de la consulta () llamadas desde Cuenta_C.php que son todas las categorias a las que pertece la tienda
+                            //$Datos['categoriasTienda'] trae información de la consulta () llamada desde Cuenta_C.php con todas las categorias a las que pertece la tienda
                             if(!empty($Datos['categoriasTienda'])){
                                 foreach($Datos['categoriasTienda'] as $row_2){
                                     $CategoriaT = $row_2['categoria']; 

@@ -11,7 +11,7 @@
 <section class="section_5" id="Section_5">
     <div class="contenedor_42">
         <h1 class="h1_1">Afiliación como comerciante</h1>
-        <form action="../Registro_C/recibeRegistro" method="POST" name="registroGratis" onsubmit="return validar_01()">
+        <form action="../Registro_C/recibeRegistro" method="POST" name="formRegistroCom" onsubmit="return validar_01()">
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Registro de tienda</legend> 
                 <input class="placeholder borde_2" type="text" name="nombre_Afcom" id="Nombre" placeholder="Nombre del encargado" autocomplete="off"> 

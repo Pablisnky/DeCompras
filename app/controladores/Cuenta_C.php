@@ -33,7 +33,7 @@
         }
 
         public function Productos($Seccion){
-            // $Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
+            //$Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
             // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas
             // - Recibirla la variable sin que se elimine el espacio entre palabras
             //Provicionalmente se comento la sentencia que sanitiza la URL en Core.php que es donde se quitan los espacios en blancos
@@ -46,7 +46,10 @@
                 //CONSULTA el estatus de la notificacion de una tienda
                 $Consulta = $this->ConsultaCuenta_M->consultarNotificacionTienda($this->ID_Tienda);
                 $Notificacion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
+                
+                //Se desglosa el valor para que sea solo igaula el valor "1"
+                $Notificacion = $Notificacion[0]['notificacion'];
+               
                 //ACTUALIZA el estatus de la notificacion de una tienda
                 $this->ConsultaCuenta_M->actualizarStatusTienda($this->ID_Tienda);
             }
@@ -69,6 +72,7 @@
                 'notificacion' => $Notificacion
             ];
             
+            $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
             $this->vista("paginas/cuenta_productos_V", $Datos);
         }
         
@@ -357,9 +361,6 @@
             //Se CONSULTA el ID_Seccion de las secciones que tiene la tienda
             $ID_Seccion = $this->ConsultaCuenta_M->consultarTodasID_Seccion($this->ID_Tienda);
             $ID_Seccion = $ID_Seccion->fetchAll(PDO::FETCH_ASSOC);
-            // echo "<pre>";
-            // print_r($ID_Seccion);
-            // echo "</pre>";
 
             //Se INSERTAN la dependencia  transitiva entre las secciones y la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
             $this->ConsultaCuenta_M->insertarDT_TieSec($this->ID_Tienda, $ID_Seccion);
@@ -403,16 +404,47 @@
         }
 
         //Metodo invocado desde Funciones_Ajax.js
-        public function Secciones(){
-            //Muestra las secciones que tiene una tienda llamada desde Funciones_Ajax.js
+        public function Secciones($ID_Producto){
+            //CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            // echo "<pre>";
+            // print_r($Seccion);
+            // echo "</pre>";
+
+            //CONSULTA el ID_Sección al que pertenece un producto de una tienda especifica
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccionActiva($ID_Producto);
+            $ID_Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            // echo "<pre>";
+            // print_r($ID_Seccion);
+            // echo "</pre>";
+
+            //La consulta devuelve el ID_Seccion en una array, se convierte en una variable
+            $ID_Seccion = $ID_Seccion[0]['ID_Seccion'];
+
+            //CONSULTA la seccion correspondiente al ID_Seccion
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccion($ID_Seccion);
+            $SeccionActiva = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+            $Datos = [
+                'seccion' => $Seccion,
+                'seccionActiva' => $SeccionActiva
+            ];
+                   
+            $this->vista("inc/Secciones_Ajax_V", $Datos);
+        }
+
+        //Metodo invocado desde Funciones_Ajax.js
+        public function SeccionesDisponibles(){
+            // CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
-                'seccion' => $Seccion
+                'seccion' => $Seccion,
             ];
                    
-            $this->vista("inc/Secciones_Ajax_V", $Datos);
+            $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
         //Metodo invocado desde cuenta_publicar_V.php
@@ -421,13 +453,17 @@
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
 
                 $RecibeProducto = [
-                    //Recibe datos de la persona responsable
-                    'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
+                    //Recibe datos del producto que se va a cargar al sistema
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
                     'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
                     'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
+                    'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                     'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
                 ];
+                // echo "<pre>";
+                // print_r($RecibeProducto );
+                // echo "</pre>";
+                // exit();
             }
             else{
                 echo "Llene todos los campos del formulario de producto";
@@ -534,12 +570,18 @@
                 $RecibeProducto = [
                     //Recibe datos del producto a actualizar
                     'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
+                    'ID_Seccion' => filter_input(INPUT_POST, "id_seccion", FILTER_SANITIZE_STRING),
+                    'ID_SP' => filter_input(INPUT_POST, "id_sp", FILTER_SANITIZE_STRING),
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
                     'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
                     'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
                     'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
                 ];
+                // echo "<pre>";
+                // print_r($RecibeProducto );
+                // echo "</pre>";
+                // exit();
             }
             else{
                 echo "Llene todos los campos del formulario de producto";
@@ -597,9 +639,22 @@
                 }
             }
 
-            //Estas dos sentencias de actualización deben realizarce por medio de transsacciones
+            //Estas cuatro sentencias de actualización deben realizarce por medio de transsacciones
             $this->ConsultaCuenta_M->actualizarOpcion($RecibeProducto);
             $this->ConsultaCuenta_M->actualizarProducto($RecibeProducto);
+
+            //Se consulta el ID_SP para apuntar directamente al producto dentro de la seccion
+            // $Consulta = $this->ConsultaCuenta_M->consultarSeccion_Producto($RecibeProducto);
+            // $ID_SP = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+      
+            //     echo "<pre>";
+            //     print_r($ID_SP );
+            //     echo "</pre>";
+            //     exit();
+            
+            $DB = $this->ConsultaCuenta_M->actualizacionSeccion($RecibeProducto);
+            // print("Se actualizaron $DB registros."); 
+
             //Para actualizar fotografia de perfil solo si se ha presionado el boton de buscar fotografia
             if(($_FILES['imagen_EditarProducto']['name']) != ""){
                 //Se ACTUALIZA la fotografia el responsable de tienda
@@ -615,10 +670,12 @@
 
         //metodo invocado desde cuenta_productos_V.php
         public function actualizarProducto($ID_Producto){
-            //Consulta las especiicaciones de un producto determinado y de una tienda especifica
+            //CONSULTA las especiicaciones de un producto determinado y de una tienda especifica
             $Consulta = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
             $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
             $this->vista("paginas/cuenta_editar_prod_V", $Datos);
         }
 

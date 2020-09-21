@@ -2,18 +2,18 @@
 
 <section class="section_5">
 	<div class="contenedor_42">
-        <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST">	
+        <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST" name="formLogin"  onsubmit = "return validarLogin()">	
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Datos de acceso</legend>
-                <input class="placeholder borde_2" type="email" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off">                
-                <input class="placeholder borde_2" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
+                <input class="placeholder borde_1" type="email" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off">                
+                <input class="placeholder borde_1" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
                 <div class="contenedor_45">
                     <input type="checkbox" id="Recordar" name="recordar" value="1">
                     <label class="label_20" for="Recordar">Recordar datos en este equipo.</label>
                 </div> 
             </fieldset>  
             <div class="contenedor_50">
-                <input class="boton" type="button" value="Entrar" id="Submit"/>
+                <input class="boton" type="submit" value="Entrar"/>
                 <p class="p_4">¿Olvidaste tu contraseña?</p>
                 <label class="label_7" onclick="NotificarContrasena()">Recuperala</label>
             </div>
@@ -37,8 +37,6 @@
     </div>
 </section>
 		
-
-<!-- <script type="text/javascript" src="../javascript/validarFormularios.js"></script> -->
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
 
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

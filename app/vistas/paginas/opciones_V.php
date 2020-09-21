@@ -4,22 +4,28 @@
 
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 p_9">
-        <h1 class="h1_1 h1_3 h1_4">Sección ???</h1>
+        <h1 class="h1_1 h1_3 h1_4">Sección <?php echo $Datos['Opciones'][0]['seccion']?></h1>
         <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
     </div>
-    <form>
+    <form id="Formulario">
         <div class="contenedor_13" id="Contenedor_13Js">   
             <?php   
             $ContadorLabel = 1;
-            //&Datos proviene de Opciones_C
+            //$Datos proviene de Opciones_C
+            
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
             foreach($Datos['Opciones'] as $row){
                 $ID_Opcion =  $row['ID_Opcion'];
                 $Producto = $row['producto']; 
-                $Opcion = $row['opcion'];                    
+                $Opcion = $row['opcion']; 
+                // $Opcion_2 = $row['opcion'];                    
                 $Precio = $row['precio'];                
                 $Seccion = $row['seccion'];              
                 $Fotografia = $row['fotografia'];
-
+ 
                 //Se da formato al precio, sin decimales y con separación de miles
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
@@ -30,13 +36,16 @@
                             </figure>
                         </div>
                     </div>
-                    <div>
+                    <div> 
                         <input class="input_8" type="text" value="<?php echo $Producto;?>" readonly="readonly"/>
                         <input class="input_8" type="text" value="<?php echo $Opcion;?>" readonly="readonly"/>
+                        <!-- <textarea class="textarea_2" id="OpcionPro"><?php echo $Opcion;?></textarea> -->
+
                         <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs." readonly="readonly"/>
                         <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                         
-                        <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.$ID_Opcion.','.$Producto.','.$Opcion .','.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
+                        <!-- Este input es el que se envia al archivo JS por medio de la función agregarOpcion(), en el valor se colocan el caracter _ para usarlo como separardor en  JS-->
+                        <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
                     </div> 
                     <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
                         <div class="contenedor_19">
@@ -47,7 +56,7 @@
                             <!-- producto - alimentado desde FuncionesVarias.js agregarOpcion() -->
                             <input type="text" class="input_1a ocultar" name="Desc_Producto" id="<?php echo 'Producto_' . $ContadorLabel;?>"/>
                             <!-- opcion alimentado desde FuncionesVarias.js agregarOpcion()-->
-                            <input type="text" class="input_1c ocultar" name="opcion" id="<?php echo 'Opcion_' . $ContadorLabel;?>"/>
+                            <input type="text" class="input_1c ocultar" name="" id="<?php echo 'Opcion_' . $ContadorLabel;?>"/>
                             <!-- ID_Opcion --> 
                             <!-- <input type="text" class="input_1b"/> -->
                             <!-- Precio - alimentado desde FuncionesVarias.js agregarOpcion() -->
@@ -71,12 +80,13 @@
         </div>
     </form>
 
-    <div class="contenedor_61" id="Contenedor_61">
+<!-- div con el contenido de carrito -->
+    <!-- <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito()">
             <div class="contenedor_31">
                 <span class="icon-cart span_2"></span>
                 <input type="text" class="input_5" id="Input_5" readonly="readondly"/>
             </div>
         </div>
-    </div>
+    </div> -->
 </section> 

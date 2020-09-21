@@ -1,13 +1,18 @@
 <?php 
-    include(RUTA_APP . '/vistas/inc/header_Tienda.php');  
+    // include(RUTA_APP . '/vistas/inc/header_Tienda.php');  
 
-    $ID_Tienda =  $Datos['id_tienda'] ;
+    //$Datos viene de Vitrina_C
+    $ID_Tienda = $Datos['id_tienda'] ;
+    $Fotografia = $Datos['fotografia']; 
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
 <section class="section_5">	
-    <div class="contenedor_13" id="Section_4">
+    <div class="contenedor_109">
+        <img class="imagen_8" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>"/>
+    </div>
+    <div class="contenedor_110" id="Section_4">
         <?php
         $Contador = 1;
         //Se cargan todas las secciones que tenga una tienda
@@ -16,7 +21,7 @@
             ?> 
             <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
                 <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>')"> 
-                    <div class="contenedor_9 borde_2">
+                    <div class="contenedor_9 borde_1">
                         <img class="imagen_2" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
                     </div> 
                     <h2 class="h2_6"><?php echo $Seccion;?></h2>

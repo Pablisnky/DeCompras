@@ -23,28 +23,31 @@
 
         <div class="contenedor_42">    
             <p class="p_6">Carga un producto</p>
-            <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProducto" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarPublicacion()">
                 <div class="contenedor_47">
-                    <div class="contenedor_9 borde_2">
+                    <div class="contenedor_9 borde_1 borde_2">
                         <label for="imgInp"><img class="imagen_2" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/></label>
                         <input class="ocultar"  name="foto_Producto" id="imgInp" type="file"/>
                     </div>
                     <div style="margin-top:5%">
-                        <input class="placeholder placeholder_2 borde_2" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"/>
-                        <input class="contador" type="text" id="ContadorPro" value="30"/>
+                        <input class="placeholder placeholder_2 borde_1" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"  tabindex="1"/>
+                        <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
 
-                        <input class="placeholder placeholder_2 borde_2" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion"/>
-                        <input class="contador" type="text" id="ContadorDes" value="50"/>
+                        <input class="placeholder placeholder_2 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2"/>
+                        <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
 
-                        <input class="placeholder placeholder_2 borde_2" type="text" name="precio" placeholder="Precio (Solo números)"/>
-                        <input class="contador" type="text" id="ContadorPre" value="13"/>
+                        <input class="placeholder placeholder_2 borde_1" type="text" name="especificacion" id="ContenidoEsp" placeholder="Especificaciones ( Opcional )"  tabindex="2"/>
+                        <input class="contador" type="text" id="ContadorEsp" value="50" readonly/>
 
-                        <input class="placeholder placeholder_2 borde_2" type="text" name="seccion" id="Seccion" placeholder="Sección" onclick="Llamar_seccion()">
+                        <input class="placeholder placeholder_2 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3"/>
+                        <input class="contador" type="text" id="ContadorPre" value="13" readonly/>
+
+                        <input class="placeholder placeholder_2 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4"/>
                     </div>
                 </div>
                 <div class="contenedor_49">
                     <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
-                    <input class="boton " type="submit" value="Guardar"/>
+                    <input class="boton " type="Submit" value="Guardar" tabindex="5"/>
                 </div>
             </form>
         </div>

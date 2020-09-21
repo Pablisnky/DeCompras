@@ -1,6 +1,6 @@
 <?php 
     // $ID_Tienda = $_SESSION["ID_Tienda"];
-    require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
+    // require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
 
     //Se verifica que la sesion del usuario halla sido creada y exista, esto se hizo en login_C
     if(isset($_SESSION["ID_Tienda"])){ 
@@ -46,10 +46,10 @@
                             ?>
                     <!-- <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/> -->
                     <div class="contenedor_95 ">
-                        <div class="contenedor_9 "><!--borde_2-->
-                            <div class="contenedor_97">
+                        <div class="contenedor_9">
+                            <div class="contenedor_97 ">
                                 <figure class="figure_1">
-                                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                                    <img class="imagen_6 imagen_9" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
                                 </figure>
                             </div>
                         </div>

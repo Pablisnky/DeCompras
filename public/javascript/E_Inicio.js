@@ -55,5 +55,15 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
             document.getElementById("Contenedor_37").style.top = "-30%"
             document.getElementById("Contenedor_51").style.top = "-30%"
             document.getElementById("Contenedor_88").style.top = "-30%"
+            document.getElementById("H3_3").style.display = "none"
         }
+    }
+
+//************************************************************************************************
+    //Apunta el curso al producto seleccionado en la busqueda, invocada desde buscador_V.php
+    function OpcionSeleccionada(ID_Tienda, NombreTienda){
+        console.log("______Desde OpcionSeleccionada()______")
+        console.log(ID_Tienda)
+        console.log(NombreTienda)
+        window.open(`http://localhost/proyectos/PidoRapido/Vitrina_C/index/${ID_Tienda},${NombreTienda}`,"_self") 
     }

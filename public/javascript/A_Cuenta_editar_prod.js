@@ -30,16 +30,16 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-document.getElementById("SeccionPublicar").addEventListener('click', Llamar_seccionesDisponible, false)
+// document.getElementById("Seccion").addEventListener('click', Llamar_seccion, false)
 
 //-------------------------------------------------------------------------------------------------
-function Llamar_seccionesDisponible(){
-    var url = "http://localhost/proyectos/PidoRapido/Cuenta_C/SeccionesDisponibles/"
+function Llamar_seccion(ID_Producto){
+    console.log("______Desde Llamar_seccion()______")
+    var url = "http://localhost/proyectos/PidoRapido/Cuenta_C/Secciones/" + ID_Producto
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_seccion
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null")
-    console.log("Entra a Llamar_seccionesDisponible()")
 }                                                           
 function respuesta_seccion(){
     if(peticion.readyState == 4){
@@ -56,3 +56,5 @@ function respuesta_seccion(){
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
     }
 }
+
+//-------------------------------------------------------------------------------------------------

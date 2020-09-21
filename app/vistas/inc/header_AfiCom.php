@@ -27,7 +27,9 @@
     </head>
     <body>	
 		<header class="contenedor_69">
-        	<a class="a_1 a_10"><?php echo $NombreTienda;?></a>
+			<div class="contenedor_111">
+				<a class="a_1 a_10"><?php echo $NombreTienda;?></a>
+			</div>
 			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">

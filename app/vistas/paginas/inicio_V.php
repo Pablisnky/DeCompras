@@ -4,8 +4,10 @@
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
             <!-- <h2 class="h2_4">solicitudes desde casa</h2> -->
-            <h2 class="h2_4">Tú tienda en toda la ciudad</h2>
+            <h2 class="h2_4">MarketPlace</h2>
         </div>
+        <h3 class="h3_2" id="H3_3">Tu tienda en toda la ciudad</h3>
+        <!-- <p class="p_8">Unete a nuestra red de comercialización de productos.</p> -->
         <div class="contenedor_51" id="Contenedor_51">
             <div>
                 <span class="icon-cart span_6"></span>
@@ -30,40 +32,89 @@
         <div class='contenedor_4'>
             <div class='contenedor_6 borde_1' id="Contenedor_6a">
                 <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
-                <span class="icon-spoon-knife span_8 span_1"></span>
+                <span class="icon-spoon-knife span_8"></span>
             </div> 
 
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
-                <span class="icon-barcode span_8 span_1"></span>
+                <span class="icon-barcode span_8"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>ROPA Y ZAPATO</h2>
-                <span class="icon-man-woman span_8 span_1"></span>
+                <span class="icon-man-woman span_8"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6c">
                 <h2 class='h2_1'>ARTESANOS Y EMPRENDEDORES</h2>
-                <span class="icon-pen span_8 span_1"></span>
+                <span class="icon-pen span_8"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6e">
                 <h2 class='h2_1'>FARMACIA Y SALUD</h2>
-                <span class="icon-aid-kit span_8 span_1"></span>
+                <span class="icon-aid-kit span_8"></span>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6f">
                 <h2 class='h2_1'>FERRETRÍA Y HOGAR</h2>
-                <span class="icon-hammer span_8 span_1"></span>
+                <span class="icon-hammer span_8"></span>
             </div>
+            <div class='contenedor_6 borde_1' id="Contenedor_6a">
+                <h2 class='h2_1'>PANADERÍA</h2>
+                <span class="icon-spoon-knife span_8"></span>
+            </div> 
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>JOYAS Y RELOJERÍA</h2>
+                <span class="icon-barcode span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>DEPORTES</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>FLORISTERÍA Y DECORACIÓN</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>MASCOTAS</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>CONSTRUCCIÓN</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>TELEFONOS Y COMPUTADORAS</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>PAPELERÍA Y OFICINA</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>JUGUETES Y ACCESORIOS PARA NIÑOS</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
+        <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
+            <span class="icon-man-woman span_8"></span>
+        </div>
         </div>
     </section>
     
     <section><!--Buscador-->
         <div class="contenedor_54" id="Busqueda">
             <div class="contenedor_53">
-                <span class="span_5 span_16" id="Span_5">X</span>
+                <span id="Span_5">X</span>
                 <p class="p_7">Seleccione una ciudad y especifica tú pedido</p>
                 <div class="contenedor_55">
                     <div class="contenedor_56">
@@ -80,7 +131,7 @@
                     </div>
                 </div>
                 <div class="contenedor_57">
-                    <input class="input_13" id="Input_9" type="text" placeholder="Ingrese un producto"/>
+                    <input class="placeholder borde_1" id="Input_9" type="text" placeholder="Ingrese un producto"/>
                 </div>
             </div>
             <!--Carga mediante Ajax las tiendas disponibles para la busqueda solicitada desde buscador_V.php -->

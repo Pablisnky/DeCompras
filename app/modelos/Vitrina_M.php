@@ -41,4 +41,15 @@
                 return false;
             }
         }
+
+        public function consultarFotografia($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT fotografia_Tien FROM tiendas WHERE ID_Tienda = :Tienda");  
+            $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);       
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return false;
+            }
+        }
     }

@@ -26,8 +26,7 @@
    
         public function recibeRegistro(){            
             //Se reciben todos los campos del formulario, desde registro_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST"
-            //  && !empty($_POST["nombre_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])
             ){
                
                 $RecibeDatos = [
@@ -63,9 +62,9 @@
                 // if($RecibeDatos["Cedula_Afcom"] == false){      
                 //     exit("La cedula debe ser solo números");
             }
-            else{
-                echo "Llene todos los campos del formulario de registro";
-                echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+            else{      
+                echo "Debe Llenar todos los campos vacios". "<br>";
+                echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
 

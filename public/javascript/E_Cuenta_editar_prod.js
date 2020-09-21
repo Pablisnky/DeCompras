@@ -3,7 +3,6 @@
 //     // CerrarModal_X("Ejemplo_Secciones")
 //     console.log("ENTRO")
 // }); 
-document.addEventListener('DOMContentLoaded', function(){autofocus('ContenidoPro')}, false)
 
 document.addEventListener("keydown", contarDes, false); 
 document.addEventListener("keyup", contarDes, false);
@@ -91,11 +90,35 @@ var contenido_descripcion = "";
 } 
 //************************************************************************************************
     //invocada desde cuenta_publicar.php selecciona una sección donde estará un producto
-    function transferirSeccion(form, id){
+    function transferirSeccionActualizar(form){
+        console.log("______Desde transferirSeccion()______")
+        
+        //Se reciben los elementos del formulario mediante su atributo name
+        Seccion = form.secciones
+        ID_Seccion = form.ID_Seccion
+        
+        //Se recorre todos los elementos para encontrar el que esta seleccionado
+        for(var i = 0; i<Seccion.length; i++){ 
+            if(Seccion[i].checked){
+                //Se toma el valor del seleccionado
+                SeccionActulizada = Seccion[i].value
+                ID_SeccionActulizada = ID_Seccion[i].value
+            }            
+        } 
+
+        //Se transfiere el valor del radio boton seleccionado al input del formulario en cuenta_editar_prod_V.php
+        document.getElementById("Seccion").value = SeccionActulizada
+        document.getElementById("ID_Seccion").value = ID_SeccionActulizada
+             
+        ocultar("MostrarSeccion") 
+    }
+
+//************************************************************************************************ 
+    //invocada desde cuenta_publicar.php selecciona una sección donde estará un producto
+    function transferirSeccion(form){
         console.log("______Desde transferirSeccion()______")
         //Se declara el array que contendra la cantidad de categorias seleccionadas
         // var TotalCategoria = []
-
         //Se reciben los elementos del formulario mediante su atributo name
         Seccion = form.seccion
 
@@ -103,12 +126,12 @@ var contenido_descripcion = "";
         for(var i = 0; i<Seccion.length; i++){ 
             if(Seccion[i].checked){
                 //Se toma el valor del seleccionado
-                Seleccionado = Seccion[i].value
+                Seccion = Seccion[i].value
             }            
         } 
 
         //Se transfiere el valor del radio boton seleccionado al input del formulario
-        document.getElementById(id).value = Seleccionado
+        document.getElementById("Seccion").value = Seccion
              
         ocultar("MostrarSeccion") 
     }
@@ -127,7 +150,7 @@ var contenido_descripcion = "";
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
 
-        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 70){
+        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 20){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
@@ -135,7 +158,7 @@ var contenido_descripcion = "";
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
-        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 70){
+        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 20){
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()

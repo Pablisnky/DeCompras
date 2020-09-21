@@ -63,7 +63,7 @@ function respuesta_PedidoEnCarrito(){
 //-------------------------------------------------------------------------------------------------
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, NombreProducto){
-    console.log("______Desde llamar_Opciones()______") 
+    // console.log("______Desde llamar_Opciones()______") 
     window.localStorage.setItem('ID_Tienda', ID_Tienda)
     window.localStorage.setItem('NombreProducto', NombreProducto)
     let A = localStorage.getItem("ID_Tienda")

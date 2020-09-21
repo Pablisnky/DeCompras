@@ -8,7 +8,9 @@ document.getElementById('Span_1').addEventListener('click', mostrarSecciones, fa
 
 document.getElementById("Cedula").addEventListener('keyup', function(){formatoMiles(this)})
 
-document.getElementById("Contenedor_107").addEventListener('click', muestraMenuSecundario, false)
+// document.getElementById("Contenedor_107").addEventListener('click', muestraMenuSecundario, false)
+
+document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
 
 // *****************************************************************************************************
 //FUNCIONES ANONIMAS
@@ -384,3 +386,34 @@ document.getElementById("Label_1").addEventListener('click', function(){
         console.log("______Desde CerrarCategoria()______")    
         document.getElementById("Mostrar_Categorias").style.display = "none"
     }
+
+//************************************************************************************************   
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+    
+//************************************************************************************************
+    // desabilidad el boton de enviar formulario
+    function DesabilitarBoton(){
+        console.log("______Desde DesabilitarBoton()______")     
+        document.getElementsByClassName("boton_6")[0].value = "Guardando cambios..."
+        document.getElementsByClassName("boton_6")[0].disabled = "disabled"
+        document.getElementsByClassName("boton_6")[0].form.submit()
+    }
+    
+//************************************************************************************************
