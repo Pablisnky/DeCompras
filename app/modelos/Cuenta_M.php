@@ -33,7 +33,7 @@
                 return "No se pudo";
             }
         }
-
+        
         //SELECT de la seccion donde esta un producto de una tienda
         public function consultarSeccionActiva($ID_Producto){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones_productos WHERE ID_Producto = :ID_PRODUCTO");
@@ -142,7 +142,7 @@
 
         //SELECT de datos de la tienda
         public function consultarDatosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_Tien, direccion_Tien, telefono_Tien, rif_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
+            $stmt = $this->dbh->prepare("SELECT nombre_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -407,13 +407,13 @@
 
         //UPDATE de los datos de LA TIENDA
         public function actualizarTienda($ID_AfiliadoCom, $RecibeDatos){
-            $stmt = $this->dbh->prepare("UPDATE tiendas SET nombre_Tien = :NOMBRE_TIEN, direccion_Tien = :DIRECCION_TIEN, telefono_Tien = :TELEFONO_TIEN, rif_Tien = :RIF_TIEN WHERE ID_AfiliadoCom = :AFILIADO");
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET nombre_Tien = :NOMBRE_TIEN, direccion_Tien = :DIRECCION_TIEN, telefono_Tien = :TELEFONO_TIEN, slogan_Tien = :SLOGAN_TIEN WHERE ID_AfiliadoCom = :AFILIADO");
 
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':NOMBRE_TIEN', $RecibeDatos['Nombre_com']);
             $stmt->bindValue(':DIRECCION_TIEN', $RecibeDatos['Direccion_com']);
             $stmt->bindValue(':TELEFONO_TIEN', $RecibeDatos['Telefono_com']);
-            $stmt->bindValue(':RIF_TIEN', $RecibeDatos['Rif_com']);
+            $stmt->bindValue(':SLOGAN_TIEN', $RecibeDatos['Slogan_com']);
             $stmt->bindValue(':AFILIADO', $ID_AfiliadoCom);
 
             //Se ejecuta la actualización de los datos en la tabla

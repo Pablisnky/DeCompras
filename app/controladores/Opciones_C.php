@@ -16,7 +16,7 @@
             $Datos=[
                 "Opciones" => $Consulta, //seccion, ID_Opcion, fotografia, producto, opcion, precio
             ];
-                    
+                
             $this->vista("paginas/opciones_V", $Datos);
         }  
 

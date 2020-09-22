@@ -23,6 +23,10 @@
             $Consulta_2 = $this->ConsultaVitrina_M->consultarFotografia($ID_Tienda);
             $Fotografia = $Consulta_2->fetchAll(PDO::FETCH_BOTH);
 
+            //Se CONSULTAN el slogan de una tienda en particular
+            $Consulta = $this->ConsultaVitrina_M->consultarSloganTienda($ID_Tienda);
+            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
             //Se CONSULTAN los productos de una tienda segun su seccion 
             // $Consulta_1 = $this->ConsultaVitrina_M->consultarProductos($ID_Tienda);
             // $Productos = $Consulta_1->fetchAll(PDO::FETCH_BOTH);  
@@ -35,6 +39,7 @@
                 "seccion" => $Secciones,
                 "NombreTienda" => $NombreTienda,
                 "fotografia" => $Fotografia,
+                'slogan' => $Slogan
             ];
 
             $this->vista("inc/header_Tienda",  $Datos);

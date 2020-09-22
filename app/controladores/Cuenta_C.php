@@ -32,6 +32,7 @@
             $this->vista("paginas/cuenta_V", $Datos);
         }
 
+        //Entrada del cliente a su cuenta de usuario, muestra todos los productos publicados o los de una sección en especifico
         public function Productos($Seccion){
             //$Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
             // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas
@@ -47,11 +48,13 @@
                 $Consulta = $this->ConsultaCuenta_M->consultarNotificacionTienda($this->ID_Tienda);
                 $Notificacion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
                 
-                //Se desglosa el valor para que sea solo igaula el valor "1"
+                //Se desglosa el valor para que sea solo igual el valor "1"
                 $Notificacion = $Notificacion[0]['notificacion'];
                
                 //ACTUALIZA el estatus de la notificacion de una tienda
                 $this->ConsultaCuenta_M->actualizarStatusTienda($this->ID_Tienda);
+                
+                $Seccion  = 'Todos';
             }
             else{
                 //CONSULTA los productos de una sección en especifico según la tienda
@@ -60,6 +63,8 @@
 
                 //Se da el valor de notifiación directamente debido a que si la condicion entró en el ELSE ya el afiliado a visitado la página y no tiene notificaciones por leer
                 $Notificacion = 1;
+                
+                $Seccion  = 'Seccion especifica';
             }
             
             //Se CONSULTAN las secciones de una tienda en particular
@@ -69,9 +74,14 @@
             $Datos = [
                 'secciones' => $Secciones, //necesario en header_AfiCom, arma el item productos del menu
                 'productos' => $Productos,
-                'notificacion' => $Notificacion
+                'notificacion' => $Notificacion,
+                'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja 
             ];
             
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
             $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
             $this->vista("paginas/cuenta_productos_V", $Datos);
         }
@@ -119,7 +129,7 @@
             
             $Datos = [
                 'categorias' => $Categorias,
-                'secciones' => $Secciones
+                'secciones' => $Secciones,
             ];
             
             //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya las tiene creadas cuando vaya a cargar un producto
@@ -132,6 +142,28 @@
             $this->vista("paginas/cuenta_publicar_V", $Datos);
         }
 
+        //metodo invocado desde cuenta_productos_V.php
+        public function actualizarProducto($ID_Producto){
+            //CONSULTA los productos de una sección en especifico según la tienda
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            //CONSULTA las especiicaciones de un producto determinado y de una tienda especifica
+            $Consulta = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
+            $Especificaciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            $Datos = [
+                'secciones' => $Secciones,
+                'especificaciones' => $Especificaciones,
+            ];
+
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
+            $this->vista("paginas/cuenta_editar_prod_V", $Datos);
+        }
+
         public function ConsultarOpciones($OpcionProd){
             //CONSULTA las opciones de productos que existen en la BD segun la categoria seleccionada
             $Consulta = $this->ConsultaCuenta_M->consultarOpcionesProductos($OpcionProd);
@@ -140,7 +172,7 @@
             $this->vista("inc/Select_Ajax_V", $Datos);
         }
 
-        //Metodo invocado en cuenta_editar_V.php
+        //Metodo que recibe el formulario de actualizacion de los datos de una tienda invocado en cuenta_editar_V.php
         public function recibeRegistroEditado(){             
             // Se reciben todos los campos del formulario desde cuenta_editar_V.php se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" 
@@ -159,7 +191,7 @@
                     'Nombre_com' => filter_input(INPUT_POST, "nombre_com", FILTER_SANITIZE_STRING),
                     'Telefono_com' => filter_input(INPUT_POST, "telefono_com", FILTER_SANITIZE_STRING),
                     'Direccion_com' => filter_input(INPUT_POST, "direccion_com", FILTER_SANITIZE_STRING),
-                    'Rif_com' => filter_input(INPUT_POST, "rif_com", FILTER_SANITIZE_STRING),
+                    'Slogan_com' => filter_input(INPUT_POST, "slogan_com", FILTER_SANITIZE_STRING),
                 ];
                 // echo "<pre>";
                 // print_r($RecibeDatos);
@@ -182,11 +214,11 @@
                 // if($RecibeDatos["Cedula_Afcom"] == false){      
                 //     exit("La cedula debe ser solo números");
             }
-            // else{
-            //     echo "Llene todos los campos del formulario de registro";
-            //     echo "<a href='javascript: history.go(-1)'>Regresar</a>";
-            //     exit();
-            // }
+            else{
+                echo "Llene todos los campos del formulario de registro";
+                echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+                exit();
+            }
             
             // ********************************************************
             //Recibe la imagen de perfil
@@ -666,17 +698,6 @@
             
             $this->Productos($Seccion);
             // $this->vista("paginas/cuenta_productos_V");
-        }
-
-        //metodo invocado desde cuenta_productos_V.php
-        public function actualizarProducto($ID_Producto){
-            //CONSULTA las especiicaciones de un producto determinado y de una tienda especifica
-            $Consulta = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
-            $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            $this->vista("paginas/cuenta_editar_prod_V", $Datos);
         }
 
         //metodo invocado desde cuenta_productos_V.php

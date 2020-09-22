@@ -12,6 +12,9 @@ document.getElementById("Cedula").addEventListener('keyup', function(){formatoMi
 
 document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
 
+document.addEventListener("keydown", contarDes, false); 
+document.addEventListener("keyup", contarDes, false);
+document.addEventListener("keydown", valida_LongitudDes, false);
 // *****************************************************************************************************
 //FUNCIONES ANONIMAS
 // por medio de una función anonima debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
@@ -416,4 +419,52 @@ document.getElementById("Label_1").addEventListener('click', function(){
         document.getElementsByClassName("boton_6")[0].form.submit()
     }
     
+//************************************************************************************************  
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
 //************************************************************************************************
+// indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
+function contarDes(){
+    var max = 40; 
+    var cadena = document.getElementById("ContenidoSlo").value; 
+    var longitud = cadena.length; 
+
+        if(longitud <= max) { 
+             document.getElementById("ContadorSlo").value = max-longitud; 
+        } else { 
+             document.getElementById("ContenidoSlo").value = cadena.subtring(0, max);
+        } 
+} 
+
+// -------------------------------------------------------------------------------------------
+//Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
+var contenido_slogan_com = "";    
+    function valida_LongitudDes(){  
+    var num_caracteres_permitidos = 40;
+
+    //se averigua la cantidad de caracteres escritos
+    num_caracteres = document.forms[0].slogan_com.value.length; 
+
+    if(num_caracteres > num_caracteres_permitidos){ 
+        document.forms[0].slogan_com.value = contenido_slogan_com; 
+    }
+    else{ 
+        contenido_slogan_com = document.forms[0].slogan_com.value; 
+    } 
+} 

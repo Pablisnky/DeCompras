@@ -4,6 +4,7 @@
 
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 p_9">
+        <!-- $Datos viene de Opciones_C -->
         <h1 class="h1_1 h1_3 h1_4">Sección <?php echo $Datos['Opciones'][0]['seccion']?></h1>
         <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
     </div>

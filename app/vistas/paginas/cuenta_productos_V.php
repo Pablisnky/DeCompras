@@ -1,5 +1,8 @@
 <?php 
-    // $ID_Tienda = $_SESSION["ID_Tienda"];
+//se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
+if(!empty($_SESSION["ID_Afiliado"])){
+    $ID_Tienda = $_SESSION["ID_Tienda"];
+
     // require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
 
     //Se verifica que la sesion del usuario halla sido creada y exista, esto se hizo en login_C
@@ -8,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
         <?php  
-        // $Datos['notificacion'] viene desde Cuenta_C/productos
+        //$Datos['notificacion'] viene desde Cuenta_C/productos
         if($Datos['notificacion'] == 0){  ?>
             <section class="section_3 section_10" id="Section_10">
                 <div class="contenedor_103">
@@ -29,12 +32,25 @@
             <?php
         }   ?>
 
-        <section class="section_5">
+        <section class="section_3 section_9">
+            <div class="contenedor_90 contenedor_91">
+                <h2 class="h2_9">Productos ofertados</h2>
+                <?php 
+                if($Datos['Seccion'] != 'Todos'){     ?>
+                    <h3 class="h3_9">( <?php echo $Datos['productos'][0]['seccion'];?> )</h3>   <?php
+                }
+                else{   ?>
+                    <h3 class="h3_9">( Todos )</h3>   <?php
+                }   ?>
+            </div>
             <div class="contenedor_13"> 
-                <h1 class="h1_1 h1_6">Productos ofertados</h1><!-- (<?php //echo $Datos['productos'][0]['seccion'];?>)-->
                 <?php
                 $Contador = 1;
                 //$Datos viene del metodo consultarProductosTienda() en Cuenta_C
+                // echo "<pre>";
+                // print_r($Datos);
+                // echo "</pre>";
+                // exit();
                 foreach($Datos['productos'] as $arr) :
                     $Seccion = $arr["seccion"];
                     $Producto = $arr["producto"];
@@ -44,11 +60,11 @@
                     $ID_Opcion = $arr["ID_Opcion"];
                     $Fotografia = $arr['fotografia'];            
                             ?>
-                    <!-- <input class="input_6 input_14" type="text" value="<?php echo $Contador;?>"/> -->
-                    <div class="contenedor_95 ">
+                    <div class="contenedor_95">
                         <div class="contenedor_9">
-                            <div class="contenedor_97 ">
-                                <figure class="figure_1">
+                            <div class="contenedor_97">
+                                <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
+                                <figure class="">
                                     <img class="imagen_6 imagen_9" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
                                 </figure>
                             </div>
@@ -76,6 +92,11 @@
         header("location:" . RUTA_URL);
     }   ?>
     
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_productos.js';?>"></script>   
+
+    <?php include(RUTA_APP . "/vistas/inc/footer.php");
+}
+else{
+    redireccionar("/Login_C/");
+}   ?>
   
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_productos.js';?>"></script>   

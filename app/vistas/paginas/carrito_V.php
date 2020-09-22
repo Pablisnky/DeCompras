@@ -1,11 +1,10 @@
-<!-- Archivo invocado desde Funciones_Ajax.js por medio de llamar_PedidoEnCarrito() -->
-<?php include(RUTA_APP . '/vistas/inc/header_Modal.php');  ?>
+<!-- Archivo invocado desde Carrito_C-->
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido_tablaMovil.css"/>
 
 <section class="section_4">
-    <div class="contenedor_24">
-        <h1 class="h1_1 h1_3 h1_5">Tu orden</h1>
+    <div class="contenedor_24 contenedor_25">
+        <h1 class="h1_1 h1_3 ">Tu orden</h1>
         <div class="contenedor_20">
             <table class="tabla" id="Tabla">
                 <thead>

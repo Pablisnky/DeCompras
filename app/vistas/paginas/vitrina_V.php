@@ -50,7 +50,7 @@
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información la toma de carrito_V.php invocada por la función llamar_PedidoEnCarrito() -->
 <section>
-    <div id="Mostrar_TodoPedido"></div>
+    <div id="Mostrar_Orden"></div>
 </section>
 
 <!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->

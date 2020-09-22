@@ -1,21 +1,14 @@
 <?php 
+//se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
+if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
+    
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
 
     //Sesion creada en Cuenta_C/Publicar
     $Seccion = $_SESSION['Seccion'];
 
-    if(!empty($Seccion)){
-        //se invoca la sesion que tiene el ID_Afiliado creada en validarSesion.php
-        // $ID_Afiliado= $_SESSION["ID_Afiliado"];
-        //     echo $ID_Afiliado . "<br>";
-
-        //Se llama la sesion  el Nombre creada en Login_C.php
-        // $nombre= $_SESSION["Nombre"];
-        ?>
-        <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-        
+    if(!empty($Seccion)){   ?>        
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
         
         <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
@@ -43,11 +36,12 @@
                         <input class="contador" type="text" id="ContadorPre" value="13" readonly/>
 
                         <input class="placeholder placeholder_2 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4"/>
+
+                        <div class="contenedor_49 contenedor_81">
+                            <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
+                            <input class="boton " type="Submit" value="Guardar" tabindex="5"/>
+                        </div>
                     </div>
-                </div>
-                <div class="contenedor_49">
-                    <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
-                    <input class="boton " type="Submit" value="Guardar" tabindex="5"/>
                 </div>
             </form>
         </div>
@@ -66,15 +60,15 @@
         </section>  <?php
     }   ?>
 
-<!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->    
-<section>  
-    <div id="Contenedor_80"></div>
-</section> 
+    <!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->    
+    <section>  
+        <div id="Contenedor_80"></div>
+    </section> 
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
 
-<script> 
+    <script> 
         //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
         function readImage(input){
         console.log("______Desde readImage()______")
@@ -93,4 +87,9 @@
         });
     </script>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+    <?php include(RUTA_APP . "/vistas/inc/footer.php");
+}
+else{
+    echo "Página no  autorizada";
+    redireccionar("/Login_C/");
+}   ?>

@@ -24,7 +24,6 @@
         </div>
         <div class="contenedor_88" id="Contenedor_88">
             <label class="a_2" id="Tiendas">Tiendas</label>
-            <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/casa.png"/> -->
         </div>
     </section>
 

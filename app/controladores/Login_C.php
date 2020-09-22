@@ -6,7 +6,7 @@
             $this->ConsultaLogin_M = $this->modelo("Login_M");
         }
 
-        //Es llamadao desde Registro_C.php - header_inicio.php
+        //Es llamadao desde Registro_C.php por medio de recibeRegistro() - Cuenta_C - header_inicio.php
         public function index($Datos){
             //Se verifica si el usuario esta memorizado en las cookie de su computadora y las compara con la BD, para recuperar sus datos y autorellenar el formulario de inicio de sesion, las cookies de registro de usuario se crearon en validarSesion.php
             if(isset($_COOKIE["id_usuario"]) AND isset($_COOKIE["clave"])){//Si la variable $_COOKIE esta establecida o creada

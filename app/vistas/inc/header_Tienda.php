@@ -35,7 +35,7 @@
 			<!-- $Membrete viene de Vitrina_C -->
 			<div class="contenedor_116">
 				<a class="a_1 a_11" href="<?php echo RUTA_URL . '/Inicio_C';?>"><?php echo $Membrete?></a>
-				<h2 class="h2_8">Eslogan o frase automatica</h2>
+				<h2 class="h2_8"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div> 
 			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">

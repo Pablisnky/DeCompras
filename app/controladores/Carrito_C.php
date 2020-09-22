@@ -20,6 +20,7 @@
             // $PedidoCarrito = explode(",", $PedidoCarrito);            
             // $Valores = array_count_values($PedidoCarrito);
             // print_r($Valores);
+            
 
             $this->vista("paginas/carrito_V");
         }        

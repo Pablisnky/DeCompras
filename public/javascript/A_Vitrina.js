@@ -36,7 +36,7 @@ function conexionAJAX(){
 //invocada desde vitrina_V.php 
 function llamar_PedidoEnCarrito(){
     console.log("______Desde llamar_PedidoEnCarrito()______")
-    var url="http://localhost/proyectos/PidoRapido/Carrito_C/index/";
+    var url="http://localhost/proyectos/PidoRapido/Carrito_C/index/"
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -45,10 +45,10 @@ function llamar_PedidoEnCarrito(){
 function respuesta_PedidoEnCarrito(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){            
-            document.getElementById("Mostrar_TodoPedido").style.display = "block"
+            document.getElementById("Mostrar_Orden").style.display = "block"
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
-            document.getElementById('Mostrar_TodoPedido').innerHTML = peticion.responseText
+            document.getElementById('Mostrar_Orden').innerHTML = peticion.responseText
         } 
         else{
             alert('Hubo problemas con la petición.')
@@ -63,7 +63,7 @@ function respuesta_PedidoEnCarrito(){
 //-------------------------------------------------------------------------------------------------
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, NombreProducto){
-    // console.log("______Desde llamar_Opciones()______") 
+    console.log("______Desde llamar_Opciones()______") 
     window.localStorage.setItem('ID_Tienda', ID_Tienda)
     window.localStorage.setItem('NombreProducto', NombreProducto)
     let A = localStorage.getItem("ID_Tienda")

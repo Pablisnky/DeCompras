@@ -1035,7 +1035,7 @@ console.log(AlCarro)
     //invocada desde carrito_V.php
     function ocultarPedido(){   
         console.log("______Desde ocultarPedido()______")    
-        document.getElementById("Mostrar_TodoPedido").style.display = "none";
+        document.getElementById("Mostrar_Orden").style.display = "none";
     }    
 
     //************************************************************************************************ 

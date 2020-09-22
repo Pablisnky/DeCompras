@@ -1,16 +1,12 @@
 <?php 
-    //se invoca la sesion que tiene el ID_Afiliado creada en validarSesion.php
-    // $ID_Afiliado= $_SESSION["ID_Afiliado"];
-    //     echo $ID_Afiliado . "<br>";
-
-    //Se llama la sesion  el Nombre creada en Login_C.php
-    // $nombre= $_SESSION["Nombre"];
-
+//se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
+if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
+
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
 
     //$Datos viene del metodo actualizarProducto() en Cuenta_C
-    foreach($Datos as $arr) :
+    foreach($Datos['especificaciones'] as $arr) :
         $ID_Producto = $arr['ID_Producto'];
         $ID_Opcion = $arr['ID_Opcion'];
         $ID_Seccion = $arr['ID_Seccion'];
@@ -31,7 +27,7 @@
         <p class="p_6">Actualizar datos de producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off">
             <div class="contenedor_47">
-                <div class="contenedor_97 borde_1 borde_1 borde_2">
+                <div class="contenedor_97 borde_2">
                     <label for="imgInp">
                         <img class="imagen_6 imagen_9" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
                     </label>
@@ -58,20 +54,21 @@
                     <input class="placeholder placeholder_2 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">
                     <!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->       
                     <div id="Contenedor_80"></div>
+                    
+                    <div class="contenedor_49 contenedor_81">
+                        <input class="ocultar" type="text" name="id_producto" value="<?php echo $ID_Producto;?>">
+                        <input class="ocultar" type="text" name="id_opcion" value="<?php echo $ID_Opcion;?>">
+                        <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
+                        <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
+                        <input class="boton" type="submit" id="Submit" value="Guardar"/>
+                    </div> 
                 </div>
             </div>
-            <div class="contenedor_49">
-                <input class="ocultar" type="text" name="id_producto" value="<?php echo $ID_Producto;?>">
-                <input class="ocultar" type="text" name="id_opcion" value="<?php echo $ID_Opcion;?>">
-                <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
-                <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
-                <input class="boton" type="submit" id="Submit" value="Guardar"/>
-            </div> 
         </form>
     </div>
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js';?>"></script> 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js';?>"></script> 
 
     <script> 
         //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
@@ -92,4 +89,9 @@
         });
     </script>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+    <?php include(RUTA_APP . "/vistas/inc/footer.php");
+}
+else{
+    echo "Página no  autorizada";
+    redireccionar("/Login_C/");
+}   ?>

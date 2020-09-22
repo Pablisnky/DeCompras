@@ -1,18 +1,11 @@
 <?php 
-    // session_start();
-
+//se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
+if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
+
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
 
-
-    //se invoca la sesion que tiene el ID_Afiliado creada en validarSesion.php
-    // $ID_Afiliado= $_SESSION["ID_Afiliado"];
-//     echo $ID_Afiliado . "<br>";
-
-    //Se llama la sesion  el Nombre creada en Login_C.php
-    // $nombre= $_SESSION["Nombre"];  
-
-    //SDatos viene de Cuenta_C/Editar
+    //$Datos viene de Cuenta_C/Editar
     foreach($Datos['datosResposable'] as $row){
         $Nombre_AfiCom =  $row['nombre_AfiCom'];
         $Apellido_AfiCom = $row['apellido_AfiCom']; 
@@ -22,18 +15,18 @@
         $Foto_AfiCom = $row['fotografia_AfiCom'];
     }
     
-    //SDatos viene de Cuenta_C/Editar
+    //$Datos viene de Cuenta_C/Editar
     foreach($Datos['datosTienda'] as $row){
         $Nombre_Tien =  $row['nombre_Tien'];
         $Direccion_Tien = $row['direccion_Tien']; 
         $Telefono_Tien = $row['telefono_Tien'];
-        $Rif_Tien = $row['rif_Tien'];
+        $Slogan_Tien = $row['slogan_Tien'];
         $Foto_Tien = $row['fotografia_Tien'];
     }
     
-?>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
+    ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
     <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
@@ -77,8 +70,9 @@
                 <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono" value="<?php echo $Direccion_Tien;?>" autocomplete="off">
                 <label>Dirección tienda</label>
                 <input class="input_13 borde_1" type="text" name="direccion_com" id="Direccion" value="<?php echo $Telefono_Tien;?>"  autocomplete="off">
-                <label>RIF tienda</label>
-                <input class="input_13 borde_1" type="text" name="rif_com" value="<?php echo $Rif_Tien;?>"  autocomplete="off">
+                <label>Slogan tienda</label>
+                <input class="input_13 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off">
+                <input class="contador" type="text" id="ContadorSlo" value="40"/>
                 <div class="contenedor_80" id="Label_13">
                     <label class="label_16">Categoria</label>
                     <span class="icon-circle-down span_10"></span>
@@ -208,95 +202,101 @@
         </form>
     </div>
 
-<!--div alimentado via Ajax por medio de la funcion () -->
-<div id="Mostrar_Categorias"></div>
+    <!--div alimentado via Ajax por medio de la funcion () -->
+    <div id="Mostrar_Categorias"></div>
 
-<!--Se muestra via Ajax, la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
-<section class="section_3 section_13" id="Ejemplo_Secciones">
-    <div class=" contenedor_84 contenedor_24">
-        <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
-       <div>
-            <label class="label_4 label_22">Supermercados y bodegas</label>
-             <ul class="ul_2">
-                <li>Viveres</li>
-                <li>Desinfectante</li>
-                <li>Verduras</li>
-                <li>Aseo personal</li>
-                <li>Cereales</li>
-                <li>Enlatados</li>
-                <li>...</li>
-            </ul> 
-        </div>
+    <!--Se muestra via Ajax, la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
+    <section class="section_3 section_13" id="Ejemplo_Secciones">
+        <div class=" contenedor_84 contenedor_24">
+            <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
         <div>
-            <label class="label_4 label_22">Venta de Comida rapida</label>
-            <ul class="ul_2">
-                <li>Hamburguesas</li>
-                <li>Perros caliente</li>
-                <li>Empanadas</li>
-                <li>Jugos</li>
-                <li>Refrescos</li>
-                <li>Pizzas</li>
-                <li>Helados</li>
-                <li>...</li>
-            </ul>
+                <label class="label_4 label_22">Supermercados y bodegas</label>
+                <ul class="ul_2">
+                    <li>Viveres</li>
+                    <li>Desinfectante</li>
+                    <li>Verduras</li>
+                    <li>Aseo personal</li>
+                    <li>Cereales</li>
+                    <li>Enlatados</li>
+                    <li>...</li>
+                </ul> 
+            </div>
+            <div>
+                <label class="label_4 label_22">Venta de Comida rapida</label>
+                <ul class="ul_2">
+                    <li>Hamburguesas</li>
+                    <li>Perros caliente</li>
+                    <li>Empanadas</li>
+                    <li>Jugos</li>
+                    <li>Refrescos</li>
+                    <li>Pizzas</li>
+                    <li>Helados</li>
+                    <li>...</li>
+                </ul>
+            </div>
+            <div>
+                <label class="label_4 label_22">Venta de repuesto automotriz</label>
+                <ul class="ul_2">
+                    <li>Tren delantero</li>
+                    <li>Sistema de freno</li>
+                    <li>Partes electricas</li>
+                    <li>Arranque</li>
+                    <li>Gomas y suspención</li>
+                    <li>...</li>
+                </ul>
+            </div>
+            <div>
+                <label class="label_4 label_22">Venta de Material médico quirurgico</label>
+                <ul class="ul_2">
+                    <li>Stent</li>
+                    <li>Inyectadoras</li>
+                    <li>Termometros</li>
+                    <li></li>
+                    <li></li>
+                    <li>...</li>
+                </ul>
+            </div>
+            <div class="contenedor_87">
+                <a class="boton boton_4" href="#marcador_03" id="Label_1">Cerrar</a>
+            </div>
         </div>
-        <div>
-            <label class="label_4 label_22">Venta de repuesto automotriz</label>
-            <ul class="ul_2">
-                <li>Tren delantero</li>
-                <li>Sistema de freno</li>
-                <li>Partes electricas</li>
-                <li>Arranque</li>
-                <li>Gomas y suspención</li>
-                <li>...</li>
-            </ul>
-        </div>
-        <div>
-            <label class="label_4 label_22">Venta de Material médico quirurgico</label>
-            <ul class="ul_2">
-                <li>Stent</li>
-                <li>Inyectadoras</li>
-                <li>Termometros</li>
-                <li></li>
-                <li></li>
-                <li>...</li>
-            </ul>
-        </div>
-        <div class="contenedor_87">
-            <a class="boton boton_4" href="#marcador_03" id="Label_1">Cerrar</a>
-        </div>
-    </div>
-</section>
+    </section>
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
 
-<script> 
-    //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
-    function readImage(input, id_Label){
-        console.log("Se ha entrado en la función")
-        console.log(input)
-        console.log(id_Label)
-        if(input.files && input.files[0]){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                id_Label.attr('src', e.target.result); // Renderizamos la imagen
+    <script> 
+        //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
+        function readImage(input, id_Label){
+            console.log("Se ha entrado en la función")
+            console.log(input)
+            console.log(id_Label)
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    id_Label.attr('src', e.target.result); // Renderizamos la imagen
+                }
+                reader.readAsDataURL(input.files[0]);
             }
-            reader.readAsDataURL(input.files[0]);
         }
-    }
 
-    $("#imgInp_1").change(function(){
-        //Código a ejecutar cuando se detecta un cambio de archivo
-        var id_Label = $('#blah_1');
-        readImage(this, id_Label);
-    });
-    
-    $("#imgInp_2").change(function(){
-        //Código a ejecutar cuando se detecta un cambio de archivo
-        var id_Label = $('#blah_2');
-        readImage(this, id_Label);
-    });
-    </script>
-    
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+        $("#imgInp_1").change(function(){
+            //Código a ejecutar cuando se detecta un cambio de archivo
+            var id_Label = $('#blah_1');
+            readImage(this, id_Label);
+        });
+        
+        $("#imgInp_2").change(function(){
+            //Código a ejecutar cuando se detecta un cambio de archivo
+            var id_Label = $('#blah_2');
+            readImage(this, id_Label);
+        });
+        </script>
+        
+    <?php include(RUTA_APP . "/vistas/inc/footer.php");
+}
+else{
+    echo "Página no  autorizada";
+    redireccionar("/Login_C/");
+}
+    ?>
