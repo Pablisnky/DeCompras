@@ -1,35 +1,3 @@
-// var http_request = false
-// var peticion= conexionAJAX()
-// function conexionAJAX(){
-//     http_request = false
-//     if(window.XMLHttpRequest){ // Mozilla, Safari,...
-//         http_request = new XMLHttpRequest()
-//         if (http_request.overrideMimeType){
-//             http_request.overrideMimeType('text/xml')
-//         }
-//     }
-//     else if(window.ActiveXObject){ // IE
-//         try{
-//             http_request = new ActiveXObject("Msxml2.XMLHTTP")
-//         }
-//             catch(e){
-//                 try{
-//                     http_request = new ActiveXObject("Microsoft.XMLHTTP")
-//                 } 
-//                 catch(e){}
-//             }
-//         }
-//         if(!http_request){
-//             alert('No es posible crear una instancia XMLHTTP')
-//             return false
-//         }
-//         //   else{
-//         //     alert("Instancia creada exitosamente ok")
-//         // }
-//         return http_request
-//     } 
-
-//-------------------------------------------------------------------------------------------------         
 document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
     
 //-------------------------------------------------------------------------------------------------
@@ -62,7 +30,7 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
                 }  
             }          
             document.getElementById("Buscar_Pedido").style.display = "grid"
-            xmlhttp.open("GET", "Buscador_C/buscarPedido/" + nombre, true)
+            xmlhttp.open("GET", "Buscador_C/index/" + nombre, true)
             //se envia la informacion cargada en el input por el usuario al servidor, true, significa que se va a hacer de manera asincrona se utiliza el metodo send para enviar.               
             xmlhttp.send()
         }

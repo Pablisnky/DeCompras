@@ -33,7 +33,7 @@ function conexionAJAX(){
 // document.getElementById("Label_13").addEventListener('click', Llamar_categorias, false)    
 
 //-------------------------------------------------------------------------------------------------
-//invocada desde vitrina_V.php 
+//invocada desde vitrina_V.php, muestra la orden de compra
 function llamar_PedidoEnCarrito(){
     console.log("______Desde llamar_PedidoEnCarrito()______")
     var url="http://localhost/proyectos/PidoRapido/Carrito_C/index/"
@@ -64,6 +64,8 @@ function respuesta_PedidoEnCarrito(){
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, NombreProducto){
     console.log("______Desde llamar_Opciones()______") 
+    console.log(ID_Tienda)
+    console.log(NombreProducto)
     window.localStorage.setItem('ID_Tienda', ID_Tienda)
     window.localStorage.setItem('NombreProducto', NombreProducto)
     let A = localStorage.getItem("ID_Tienda")
@@ -77,9 +79,11 @@ function llamar_Opciones(ID_Tienda, NombreProducto){
     peticion.send("null")    
 }                                                           
 function respuesta_Opciones(){
-    //console.log("______Desde llamar_Opciones() -> respuesta_Opciones______") 
+    console.log("______Desde llamar_Opciones() -> respuesta_Opciones______") 
     if(peticion.readyState == 4){
+        console.log(peticion.readyState)
         if(peticion.status == 200){
+            console.log(peticion.status)
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;

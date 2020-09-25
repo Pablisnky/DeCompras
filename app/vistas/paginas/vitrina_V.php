@@ -1,9 +1,8 @@
 <?php 
-    // include(RUTA_APP . '/vistas/inc/header_Tienda.php');  
-
     //$Datos viene de Vitrina_C
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia']; 
+
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
@@ -61,4 +60,26 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>   
+<?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>  
+
+<!-- Si viene de buscador se realiza el procedimiento para cargar al carrito el producto seleccionado y colocar la leyenda en la vista opcion_V.php y vitrina_V.php -->
+<?php
+if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C 
+    $SeccionSelecionada = $Datos['Seccion'];
+
+    $Contador = 1;
+    //Se cargan todas las secciones que tenga una tienda
+    foreach($Datos['seccion'] as $row){
+        $Seccion = $row['seccion'];    ?>
+        <script>
+            //Se busca el contenedor que corresponde con la sección del producto seleccionado
+            if('<?php echo $SeccionSelecionada == $Seccion?>'){
+                verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $SeccionSelecionada?>')
+                llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $SeccionSelecionada;?>')
+            }
+        </script>
+        <?php
+        $Contador++;
+    }   
+}
+?>

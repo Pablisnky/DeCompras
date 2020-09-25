@@ -1,13 +1,12 @@
-//Escucha en header_inicio.php
-document.getElementById("Contenedor_34").addEventListener('click', muestraBusqueda, false)
+document.getElementById("Contenedor_88").addEventListener('click', transicionTiendas, false)
 
-document.getElementById("Tiendas").addEventListener('click', transicionTiendas, false)
-                       
-document.getElementById("Span_5").addEventListener('click', function(){CerrarModal_X('Busqueda')})
+document.getElementById("Contenedor_34").addEventListener('click', muestraBusqueda, false)
 
 //Escucha en header_inicio.php
 document.getElementById("Contenedor_34").addEventListener('click', function(){autofocus('Input_9')}, false)
                               
+document.getElementById("Span_5").addEventListener('click', function(){CerrarModal_X('Busqueda')})
+
 document.getElementById("Contenedor_6a").addEventListener('click', function(){VerTiendas('Comida_Rapida')})
                               
 document.getElementById("Contenedor_6b").addEventListener('click', function(){VerTiendas('Supermercado')})
@@ -23,6 +22,8 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
     // var posicion = document.getElementById('Section_2js').getBoundingClientRect()
     // console.log(posicion.top, posicion.right, posicion.bottom, posicion.left);
 
+// *****************************************************************************************************
+    //Muestra el formulario de busqueda
     function muestraBusqueda(){
         document.getElementById("Busqueda").style.display = "block"
     }
@@ -61,9 +62,21 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
 
 //************************************************************************************************
     //Apunta el curso al producto seleccionado en la busqueda, invocada desde buscador_V.php
-    function OpcionSeleccionada(ID_Tienda, NombreTienda){
+    function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion){
         console.log("______Desde OpcionSeleccionada()______")
         console.log(ID_Tienda)
         console.log(NombreTienda)
-        window.open(`http://localhost/proyectos/PidoRapido/Vitrina_C/index/${ID_Tienda},${NombreTienda}`,"_self") 
+        console.log(Seccion)
+
+        //Se guarda el producto en el array AlCarro que contiene el carrito de compras 
+        // PedidoAtomico = new PedidoCar(seccion, producto, 1, opcion, precio, total)
+        // AlCarro.push(PedidoAtomico) 
+     
+
+
+        window.open(`http://localhost/proyectos/PidoRapido/Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion}`,"_self") 
+
+        // llamar_Opciones(ID_Tienda, Seccion)
     }
+
+//************************************************************************************************

@@ -24,7 +24,7 @@
             // $Horario = $row['horario_Tien']; 
             ?> 
             <section style=" margin-top: -5%;">
-                <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>')">
+                <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario')"><!--El argumento no necesario es debido a que se comparte el controlador index en Vitrina_C el cual recibe tres parametros --> 
                     <div class="">
                         <figure>
                             <img class="imagen_7" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia;?>"/>
@@ -42,7 +42,7 @@
         }
         ?>
     </div>
-    </section>
+</section> 
     
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Tiendas.js';?>"></script>
 

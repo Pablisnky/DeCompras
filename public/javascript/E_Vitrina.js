@@ -50,13 +50,14 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
 
+
 // *****************************************************************************************************
 //Se busca el alto del body de la página para garantizar que el alto del contenedor a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
 //Cuando carga la página se registran los listener de clic para toda la ventana
 document.addEventListener("click", function(event){
     if(event.target.id == 'Section_4'){
         AltoVitrina = document.body.scrollHeight
-        console.log(AltoVitrina)
+        // console.log(AltoVitrina)
         document.getElementById("contenedor_13").style.height = AltoVitrina +"px"
         // document.getElementById("contenedor_13").style.backgroundColor ="red"
     }
@@ -80,7 +81,7 @@ document.addEventListener('click', function(event){
 
 // *****************************************************************************************************
 //seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos
-document.getElementById('Mostrar_TodoPedido').addEventListener('click', function(event){ 
+document.getElementById('Mostrar_Orden').addEventListener('click', function(event){ 
     console.log("Iniciando delegando eventos")
     if((event.target.id == "Domicilio_No") || (event.target.id == "Domicilio_Si")){  
         console.log("¡Delegaste el evento!")
@@ -247,7 +248,20 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
 //************************************************************************************************
     //invocada desde opciones_V.php añade un producto al carrito   
     function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion, ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan){
-        console.log("______Desde agregarOpcion()______")     
+        console.log("______Desde agregarOpcion()______") 
+// console.log(form)    
+// console.log(ID_Etiqueta)   
+// console.log(ID_Cont_Leyenda)   
+// console.log(ID_InputCantidad)   
+// console.log(Seccion)   
+// console.log(ID_InputSeccion)   
+// console.log(ID_InputProducto)   
+// console.log(ID_InputOpcion)   
+// console.log(ID_InputPrecio)   
+// console.log(ID_InputTotal)   
+// console.log(ID_InputLeyenda)
+// console.log(ID_Cont_Producto)
+// console.log(ID_InputDisplayCan)
         
         //Se recibe el control del formulario con el nombre "opcion"
         Opcion = form.opcion
@@ -333,7 +347,7 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
                             
                 //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el producto, la opcion y el precio separados por un _ (guion bajo) es necesario separar estos valores, para convertirlos en un array
                 let Separado = Opcion.split("_")  
-// console.log(Separado)
+
                 //Se eliminan las comas al final de cada elemento del array
                 Separado[0] = Separado[0].slice(0,-1)//Seccion
                 Separado[1] = Separado[1].slice(0,-1)//ID_Opcion
@@ -364,7 +378,7 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
                 //Se muestra el precio del producto donde se hizo click
                 Precio = document.getElementById(Input_PrecioClick).value = Separado[4]
                                 
-                //Si un producto se elimino previamente es necesario activar nuevamente el input donde ira la leyenda y los botones de más y menos
+                //Si un producto se eliminó en una entrada anterior es necesario activar nuevamente el input donde ira la leyenda y los botones de más y menos
                 document.getElementById(Input_LeyendaClick).style.display = "block"          
 
                 //Se muestra la leyenda del producto donde se hizo click
@@ -387,7 +401,7 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
                 //Muestra el monto del pedido en el display carrito(se encuentra en vitrina_V.php)
                 MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
               
-                //Guarda en el objeto PedidoAtomico, detalles de cada articulo del pedido, cada detallees en si un array, por lo que se PedidoAtomico es un array de objetos
+                //Se añade el producto al array que contiene el carrito de compras
                 PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4])
                 AlCarro.push(PedidoAtomico) 
 
@@ -405,7 +419,6 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
         
                 //Guarda en el objeto "AlContenedor", la leyenda del producto segun su contenedor de seccion, cada detalle en si es un array, por lo que AlContenedor es un array de objetos
                 Contenedores = new ContenedorCar(LS_ID_Cont_Seccion, LS_ID_Cont_Leyenda, LS_ID_InputLeyenda, LS_ID_BotonAgregar, LS_ID_InputCantidad, LS_ID_InputProducto, LS_ID_InputOpcion, LS_ID_InputPrecio, LS_ID_InputTotal, LS_ID_InputDisplayCant, A, Separado[2], Separado[3], Separado[4], Separado[4])
-
             } 
             DisplayDestello()
         }
@@ -562,9 +575,9 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
 
 
 //************************************************************************************************
-    //invocada desde Funciones_Ajax.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
+    //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
     function PedidoEnCarrito(){
-        // console.log("______Desde PedidoEnCarrito()______")
+        console.log("______Desde PedidoEnCarrito()______")
 // console.log(AlCarro)
         //Se muestra el monto de la compra en tienda. (sin comisión de plataforma y sin despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
@@ -615,15 +628,15 @@ document.getElementById('Mostrar_TodoPedido').addEventListener('click', function
 //************************************************************************************************
     //1- invocada desde vitrina_V identifica los elementos de la sección donde se hizo click.
     function verOpciones(Cont_Seccion, Seccion){ 
-        // console.log("______Desde verOpciones()______")     
+        console.log("______Desde verOpciones()______")     
 
         //Captura el valor del id dinanmico de la seccion donde se hizo click
         localStorage.setItem('ContSeccion', Cont_Seccion)         
         LS_ID_Cont_Seccion = localStorage.getItem('ContSeccion')
-        // console.log(LS_ID_Cont_Seccion)
-
+console.log(Cont_Seccion)
+console.log(Seccion)
         //Captura la seccion donde se hizo click
-        localStorage.setItem('SeccionCLick',Seccion) 
+        localStorage.setItem('SeccionCLick',Seccion)         
     }
 
 //************************************************************************************************

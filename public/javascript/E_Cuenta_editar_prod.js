@@ -14,7 +14,7 @@ document.addEventListener("keydown", valida_Longitud, false);//valida_Longitud()
 document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() se encuentra en 
 //************************************************************************************************
 
-///Escucha en cuenta_publicar_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
+//Escucha en cuenta_publicar_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
 document.getElementById('Contenedor_80').addEventListener('click',function(event){    
     if(event.target.id == 'Span_5'){
         CerrarModal_X('MostrarSeccion')

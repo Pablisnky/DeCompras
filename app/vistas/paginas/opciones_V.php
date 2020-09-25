@@ -80,14 +80,4 @@
             ?>                    
         </div>
     </form>
-
-<!-- div con el contenido de carrito -->
-    <!-- <div class="contenedor_61" id="Contenedor_61">
-        <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito()">
-            <div class="contenedor_31">
-                <span class="icon-cart span_2"></span>
-                <input type="text" class="input_5" id="Input_5" readonly="readondly"/>
-            </div>
-        </div>
-    </div> -->
-</section> 
+</section>  
