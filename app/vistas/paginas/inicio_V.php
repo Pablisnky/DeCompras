@@ -64,6 +64,11 @@
             </div> 
 
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
+                <h2 class='h2_1'>LICORES</h2>
+                <span class="icon-barcode span_8"></span>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>JOYAS Y RELOJERÍA</h2>
                 <span class="icon-barcode span_8"></span>
             </div>

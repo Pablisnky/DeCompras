@@ -278,6 +278,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
             //Se especifica el elemento donde se va a insertar el nuevo elemento
             var ElementoPadre = document.getElementById("Formulario")
+            
+            //Se sombrea el contenedor que tiene el producto seleccionado en opciones_V
+            ElementoPadre.style.backgroundColor = "red"
 
             //Se inserta en el DOM el input creado
             inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
@@ -411,10 +414,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 //Se muestra el ID_Opcion(necesario en la funcion incrementar())
                 // document.getElementById(ID_Opcion).value = Separado[0] 
             
-                //Detectar el contenedor del producto en opciones_V.php donde se hace click
-                // Cont_Producto = localStorage.getItem('ID_ContenedorProductoDina')
+                //Detectar el contenedor de la seccion vitrina_V.php donde se hace click
                 Cont_Seccion = document.getElementById(LS_ID_Cont_Seccion)
-        
+
                 Inp_Leyenda = document.getElementById(LS_ID_InputLeyenda)
         
                 //Guarda en el objeto "AlContenedor", la leyenda del producto segun su contenedor de seccion, cada detalle en si es un array, por lo que AlContenedor es un array de objetos
@@ -628,13 +630,13 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //1- invocada desde vitrina_V identifica los elementos de la sección donde se hizo click.
     function verOpciones(Cont_Seccion, Seccion){ 
-        console.log("______Desde verOpciones()______")     
+        // console.log("______Desde verOpciones()______")     
 
         //Captura el valor del id dinanmico de la seccion donde se hizo click
         localStorage.setItem('ContSeccion', Cont_Seccion)         
         LS_ID_Cont_Seccion = localStorage.getItem('ContSeccion')
-console.log(Cont_Seccion)
-console.log(Seccion)
+// console.log(Cont_Seccion)
+// console.log(Seccion)
         //Captura la seccion donde se hizo click
         localStorage.setItem('SeccionCLick',Seccion)         
     }
@@ -1076,4 +1078,49 @@ console.log(AlCarro)
         text.style.height = text.scrollHeight+'px';
     }
      
+//************************************************************************************************ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       
 //************************************************************************************************
+    //Verifca que el archivo opciones ya se haya cargado
+    function verificarDiv(){
+        // console.log("______Desde verificarDiv()______")  
+        if(document.getElementById('Mostrar_Opciones').childElementCount < 1){
+            console.log("No hay elementos")
+        }
+        else{
+            // console.log(document.getElementsByClassName('contenedor_95'))
+
+            // Se puede comparar el producto que se trae con los productos cargados
+            
+        }
+
+    }
+     function stopInterval(){
+        console.log("______Desde stopInterval()______")
+        clearInterval(interval)
+        console.log(peticion.readyState)
+        console.log(peticion.status)
+     }
+     
+///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
+// document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    
+//     if(event.target.id == 'Span_523'){
+//         console.log("HOLA")
+//     }
+// }, false);
+     

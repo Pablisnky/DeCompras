@@ -62,19 +62,14 @@ document.getElementById("Contenedor_6f").addEventListener('click', function(){Ve
 
 //************************************************************************************************
     //Apunta el curso al producto seleccionado en la busqueda, invocada desde buscador_V.php
-    function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion){
+    function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion, Opcion){
         console.log("______Desde OpcionSeleccionada()______")
         console.log(ID_Tienda)
         console.log(NombreTienda)
         console.log(Seccion)
+        console.log(Opcion)
 
-        //Se guarda el producto en el array AlCarro que contiene el carrito de compras 
-        // PedidoAtomico = new PedidoCar(seccion, producto, 1, opcion, precio, total)
-        // AlCarro.push(PedidoAtomico) 
-     
-
-
-        window.open(`http://localhost/proyectos/PidoRapido/Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion}`,"_self") 
+        window.open(`http://localhost/proyectos/PidoRapido/Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion}`,"_self") 
 
         // llamar_Opciones(ID_Tienda, Seccion)
     }

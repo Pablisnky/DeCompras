@@ -62,16 +62,17 @@ function respuesta_PedidoEnCarrito(){
 
 //-------------------------------------------------------------------------------------------------
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
-function llamar_Opciones(ID_Tienda, NombreProducto){
-    console.log("______Desde llamar_Opciones()______") 
-    console.log(ID_Tienda)
-    console.log(NombreProducto)
+function llamar_Opciones(ID_Tienda, SeccionSelecionada, OpcionSeleccionada){
+    // console.log("______Desde llamar_Opciones()______") 
+    // console.log(ID_Tienda)
+    // console.log(SeccionSelecionada)
     window.localStorage.setItem('ID_Tienda', ID_Tienda)
-    window.localStorage.setItem('NombreProducto', NombreProducto)
+    window.localStorage.setItem('Seccion', SeccionSelecionada)
     let A = localStorage.getItem("ID_Tienda")
-    let B = localStorage.getItem("NombreProducto")
+    let B = localStorage.getItem("Seccion")
+    let C = OpcionSeleccionada
 
-    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B 
+    var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B  + "/" + C
     http_request.open('GET', url, true)
     //Se define que función va hacer invocada cada vez que cuando cambie onreadystatechange
     peticion.onreadystatechange = respuesta_Opciones
@@ -79,11 +80,11 @@ function llamar_Opciones(ID_Tienda, NombreProducto){
     peticion.send("null")    
 }                                                           
 function respuesta_Opciones(){
-    console.log("______Desde llamar_Opciones() -> respuesta_Opciones______") 
+    // console.log("______Desde llamar_Opciones() -> respuesta_Opciones______") 
     if(peticion.readyState == 4){
-        console.log(peticion.readyState)
+        // console.log(peticion.readyState)
         if(peticion.status == 200){
-            console.log(peticion.status)
+            // console.log(peticion.status)
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;

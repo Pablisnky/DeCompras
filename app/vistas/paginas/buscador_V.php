@@ -9,7 +9,7 @@
             $Opcion = $arr["opcion"];
             $Tienda = $arr["nombre_Tien"];          ?>
             
-            <div class="contenedor_59 borde_1" id="<?php echo $ID_Tienda;?>" onclick="OpcionSeleccionada('<?php echo $ID_Tienda;?>','<?php echo $Tienda;?>','<?php echo $Seccion?>')">
+            <div class="contenedor_59 borde_1" id="<?php echo $ID_Tienda;?>" onclick="OpcionSeleccionada('<?php echo $ID_Tienda;?>','<?php echo $Tienda;?>','<?php echo $Seccion?>','<?php echo $Opcion?>')">
                 <label class="label_9"><?php echo $Producto;?></label>
                 <label class="label_9"><?php echo $Opcion;?></label>
                 <hr class="hr_3"/>

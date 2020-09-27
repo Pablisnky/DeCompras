@@ -7,7 +7,7 @@
         }
         
         //Los parametros se resiven desde A_Vitrina.js
-        public function index($ID_Tienda, $Seccion){  
+        public function index($ID_Tienda, $Seccion, $OpcionSelec){  
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
             // echo $ID_Tienda;
             // echo $Seccion;
@@ -15,7 +15,8 @@
             $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos=[
-                "Opciones" => $Consulta, //seccion, ID_Opcion, fotografia, producto, opcion, precio
+                'Opciones' => $Consulta, //seccion, ID_Opcion, fotografia, producto, opcion, precio
+                'ProductoSelecion' => $OpcionSelec
             ];
                 
             // echo "<pre>";

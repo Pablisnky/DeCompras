@@ -38,16 +38,43 @@
                         </div>
                     </div>
                     <div> 
-                        <input class="input_8" type="text" value="<?php echo $Producto;?>" readonly="readonly"/>
-                        <input class="input_8" type="text" value="<?php echo $Opcion;?>" readonly="readonly"/>
+                        <input class="input_8" type="text" value="<?php echo $Producto;?>" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>" readonly="readonly"/>
+                        <input class="input_8" type="text" value="<?php echo $Opcion;?>" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" readonly="readonly"/>
                         <!-- <textarea class="textarea_2" id="OpcionPro"><?php echo $Opcion;?></textarea> -->
 
-                        <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs." readonly="readonly"/>
+                        <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs." id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" readonly="readonly"/>
                         <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
-                        
+                        <?php 
+                        // En caso de venir desde buscador se sombreo el producto solicitado en la busqueda
+                        if($Opcion == $Datos['ProductoSelecion']){  ?>
+                            <style>
+                                @media (max-width: 800px){
+                                    .section_9{/*opciones - cuenta_productos*/
+                                        padding-top: 52%;
+                                    }
+                                    #<?php echo 'Cont_Producto_' . $ContadorLabel;?>{
+                                        background-color: var(--OficialClaro);
+                                        position: absolute;
+                                        top: 5%;
+                                        z-index: 1 !important;
+                                    }
+                                    #<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>{
+                                        background-color: var(--OficialClaro);
+                                    }
+                                    #<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>{
+                                        background-color: var(--OficialClaro);
+                                    }
+                                    #<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>{
+                                        background-color: var(--OficialClaro);
+                                    }
+                                }
+                            </style> 
+                            <?php 
+                        }   ?>
                         <!-- Este input es el que se envia al archivo JS por medio de la función agregarOpcion(), en el valor se colocan el caracter _ para usarlo como separardor en  JS-->
                         <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
                     </div> 
+<!-- <label id="Span_523">Prueba</label> -->
                     <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
                         <div class="contenedor_19">
                             <!-- cantidad alimentado desde FuncionesVarias.js agregarOpcion()-->
@@ -77,7 +104,7 @@
                 <?php   
                 $ContadorLabel++;
             }        
-            ?>                    
+        ?>                    
         </div>
     </form>
 </section>  

@@ -8,12 +8,13 @@
         
         //Metodo cargado desde E_Tiendas.js - E_Inicio.js
         public function index($DatosAgrupados){
-            //$DatosAgrupados contiene una cadena con el ID_Tienda y el nombre de tienda separados por coma, se convierte en array para separar los elementos
+            //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);
             
             $ID_Tienda = $DatosAgrupados[0];
             $NombreTienda = $DatosAgrupados[1];
-            $Seccion = $DatosAgrupados[2];
+            $SeccionBuscada = $DatosAgrupados[2];
+            $OpcionBuscada = $DatosAgrupados[3];
 
             //Se CONSULTAN las secciones de una tienda en particular
             $Consulta_1 = $this->ConsultaVitrina_M->consultarSecciones($ID_Tienda);
@@ -40,7 +41,8 @@
                 "NombreTienda" => $NombreTienda,
                 "fotografia" => $Fotografia,
                 'slogan' => $Slogan,
-                'Seccion' => $Seccion
+                'Seccion' => $SeccionBuscada,
+                'Opcion' => $OpcionBuscada,
             ];
 
             // echo "<pre>";
