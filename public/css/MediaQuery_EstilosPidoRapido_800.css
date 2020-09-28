@@ -367,6 +367,10 @@
 	top: 8%;
 	height: 30px;
 }
+.contenedor_91{/*cuenta_productos*/
+	height: 35px !important;
+	 padding-top: 0%;
+}
 .contenedor_95{/*cuenta_productos - opciones*/
 	width: 100%;
 	/* margin: auto; */
@@ -591,8 +595,6 @@
 }
 .input_12{/*cuenta_editar*/
 	width: 90%;
-}
-.input_13{/**/
 }
 .input_14{/*cuenta_productos*/
 	text-align: center;

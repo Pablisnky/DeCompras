@@ -25,7 +25,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         
     <div class="contenedor_42">    
         <p class="p_6">Actualizar datos de producto</p>
-        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">
             <div class="contenedor_47">
                 <div class="contenedor_97 borde_2">
                     <label for="imgInp">
@@ -47,7 +47,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="contador" type="text" id="ContadorEsp" value="50"/>
 
                     <label>Precio</label>
-                    <input class="placeholder placeholder_2 borde_1" type="text" name="precio" value="<?php echo $Precio;?>"/>
+                    <input class="placeholder placeholder_2 borde_1" type="text" name="precio" id="Precio" value="<?php echo $Precio;?>"/>
                     <input class="contador" type="text" id="ContadorPre" value="13"/>
 
                     <label>Sección</label>
@@ -60,7 +60,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input class="ocultar" type="text" name="id_opcion" value="<?php echo $ID_Opcion;?>">
                         <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
                         <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
-                        <input class="boton" type="submit" id="Submit" value="Guardar"/>
+                        <input class="boton" type="submit" value="Guardar"/>
                     </div> 
                 </div>
             </div>

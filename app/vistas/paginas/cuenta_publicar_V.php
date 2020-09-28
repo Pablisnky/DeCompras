@@ -39,20 +39,20 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                         <div class="contenedor_49 contenedor_81">
                             <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
-                            <input class="boton " type="Submit" value="Guardar" tabindex="5"/>
+                            <input class="boton" type="Submit" value="Guardar" tabindex="5"/>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
 
-                <!-- <p>Pablo, no haz clasificado tu tienda en alguna categoria, ve a configurar y añade una o hasta tres categorias, tambien debes generar las secciones donde se organizaras los productos que cargues al mostrador.</p> -->
+        <!-- <p>No haz clasificado tu tienda en alguna categoria, ve a configurar y añade una o hasta tres categorias, tambien debes generar las secciones donde se organizaras los productos que cargues al mostrador.</p> -->
         <?php
     } 
     else{    ?>
         <section class="section_3"  id="Ejemplo_Secciones">
             <div class="contenedor_24">
-                    <p>Pablo, no tienes secciones donde colocar los producto, ve a configuración y añade secciones donde organizar tus productos</p>
+                    <p>No tienes secciones donde colocar los producto, ve a configuración y añade secciones donde organizar tus productos</p>
                 <div class="contenedor_87">
                     <label class="boton boton_4" id="Label_1" onclick="CerrarModal_X('Ejemplo_Secciones')">Cerrar</label>
                 </div>

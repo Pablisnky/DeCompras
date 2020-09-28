@@ -27,6 +27,11 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
             xmlhttp.onreadystatechange = function(){
                 if(xmlhttp.readyState === 4 && this.status === 200){
                     divContenedor.innerHTML = xmlhttp.responseText
+                } 
+                else{ //en caso contrario, mostramos un gif simulando una precarga
+                    document.getElementById('Buscar_Pedido').innerHTML = 'Cargando registros...'; 
+                    document.getElementById('Buscar_Pedido').style.textAlign = "center"
+                    return   
                 }  
             }          
             document.getElementById("Buscar_Pedido").style.display = "grid"

@@ -72,7 +72,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <input class="input_13 borde_1" type="text" name="direccion_com" id="Direccion" value="<?php echo $Telefono_Tien;?>"  autocomplete="off">
                 <label>Slogan tienda</label>
                 <input class="input_13 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off">
-                <input class="contador" type="text" id="ContadorSlo" value="40"/>
+                <input class="contador_2" type="text" id="ContadorSlo" value="40"/>
                 <div class="contenedor_80" id="Label_13">
                     <label class="label_16">Categoria</label>
                     <span class="icon-circle-down span_10"></span>
@@ -92,15 +92,24 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div id="Contenedor_79">
                     <p class="p_12">Organiza tú tienda en secciones, añade tantas como consideres necesario para que tus productos esten bien acomodados en el mostrador. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
-                    <?php                    
-                    foreach($Datos['secciones'] as $row){
-                        $Seccion_Tien = $row['seccion'];
-                            ?>
+                    <?php   
+                    if($Datos['secciones'] == Array ( )){  ?>
                         <div id="Contenedor_80" class="contenedor_80">
-                            <input class="input_13 input_12 borde_1" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>"/>
+                            <input class="input_13 input_12 borde_1" type="text" name="seccion[]" placeholder="Indica una sección"/>
                             <span class="icon-cancel-circle span_10 span_12" id="Span_4"></span>
                         </div>
                         <?php
+                    }   
+                    else{    
+                        foreach($Datos['secciones'] as $row){
+                            $Seccion_Tien = $row['seccion'];
+                                ?>
+                            <div id="Contenedor_80" class="contenedor_80">
+                                <input class="input_13 input_12 borde_1" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>"/>
+                                <span class="icon-cancel-circle span_10 span_12" id="Span_4"></span>
+                            </div>
+                            <?php
+                        }   
                     }   ?>
                 </div>
                 <label class="label_4" id="Label_5">Añadir sección</label>

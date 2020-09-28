@@ -138,8 +138,8 @@ var contenido_descripcion = "";
 
 //************************************************************************************************
     //Valida el formulario
-    function validarPublicacion(){
-        console.log("______Desde validarPublicacion()______")
+    function validarActualizacion(){
+        console.log("______Desde validarActualizacion()______")
 
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
@@ -149,6 +149,9 @@ var contenido_descripcion = "";
         
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
+        document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"
+        document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
+        document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
         if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 20){
             alert ("Necesita introducir un Producto")

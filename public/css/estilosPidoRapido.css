@@ -187,7 +187,7 @@ button{/*tiendas*/
 .comandoMenu_2{/*header_inicio - header_AfiCom - header - header_Tienda*/
 	visibility: hidden;/*con esta forma de ocultar se mantiene el area del elemento ocupada*/
 }
-.contador{/*cuenta_publicar.php - cuenta_publicars*/
+.contador{/*cuenta_publicar*/
 	width: 7% !important;
 	margin-left: 93% !important;
 	color: rgba(51, 51, 51, 0.6);
@@ -195,6 +195,16 @@ button{/*tiendas*/
 	line-height: 10px;
 	font-size: 0.8em;
 	text-align: right;
+}
+.contador_2{/*cuenta_editar*/
+	width: 7% !important;
+	margin-left: 93% !important;
+	color: rgba(51, 51, 51, 0.6);
+	border: none;
+	font-size: 0.8em;
+	text-align: right;
+	margin-top: -50px !important;
+	margin-bottom: 5%;
 }
 .contenedor_1{/*header*/
 	padding: 3%;
@@ -432,6 +442,7 @@ button{/*tiendas*/
 	border-radius: 10px;
 	padding: 1%;
 	width: 4%;
+	z-index: 4 !important;
 }
 .contenedor_34:hover{/*header_inicio*/
 	cursor: pointer;
@@ -647,7 +658,7 @@ button{/*tiendas*/
 	left: 0%;
 	width: 100%;
 	height: 60px;
-	z-index: 2;
+	z-index: 3 !important;
 }
 .contenedor_70{/*afiliacion*/
 	padding-top: 10%;
@@ -761,8 +772,9 @@ button{/*tiendas*/
 }
 .contenedor_91{/*cuenta_productos*/
 	display: block;
-	height: 35px !important;	
-	/* top: 12%; */
+	height: 50px !important;
+	padding-top: 1%;	
+	top: 11%;
 }
 .contenedor_93{/*planes*/
 	padding-top: 0%;
@@ -895,7 +907,7 @@ button{/*tiendas*/
 	font-size: 4.5em;
 	text-align: right;
 }
-.h1_3{/*opciones - carrito - Secciones_Ajax - tiendas*/
+.h1_3{/*opciones  - Secciones_Ajax - tiendas*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
@@ -916,6 +928,14 @@ button{/*tiendas*/
 	font-size: 2.5em;
 	margin: 2% auto;
 	text-align: center;
+}
+.h1_9{/*carrito*/
+	margin-bottom: 0%;
+	height: 1.5em;
+	line-height: 1.5em;
+	display: inline_block;
+	width: 100%;
+
 }
 .h2_1{/*inicio*/
 	/* background-color: yellow; */
@@ -1158,6 +1178,7 @@ button{/*tiendas*/
 	display: inline-block;
 }
 .input_13{/*cuenta_editar*/
+	/* background-color: yellow; */
 	font-size: 0.8em;
 	line-height: 30px;
 	padding-left: 5%;
@@ -1490,7 +1511,7 @@ button{/*tiendas*/
 	left: 0;
 	width: 100%;
 	height: 400%;
-	z-index: 1;
+	z-index: 2;
 }
 .section_5{/*afiliacion - vitrina - planes - login - login_Vrecord - cuenta*/
 	min-height: 100%;
@@ -1709,10 +1730,11 @@ button{/*tiendas*/
 }
 ul .menuContenedor_2{/*header_AfiCom*/
 	background-color: var(--OficialOscuro);
-	background-color: red;
 	display: none;
 	position: absolute;
-	margin-top: -5.5% !important;
+		/* margin-top: -5.5% !important; */
+		top: 400%;
+		padding-top: 0.7%;
 	left: 46%;
 	/* z-index: 1;  */
 	width: 200px; 

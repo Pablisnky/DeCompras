@@ -47,7 +47,7 @@
             $stmt->bindParam(':ID_Afiliado_Ti', $responsable_T);
 
             // insertar una fila
-            $nombre_T = $RecibeDatos['Nombre_com'];
+            $nombre_T = $RecibeDatos['Nombre_tienda'];
             $responsable_T = $ID_AfiliadoCom;
             
             //Se ejecuta la inserción de los datos en la tabla
@@ -117,6 +117,28 @@
             $stmt->execute();
             return $stmt;
         }  
+        
+        //CONSULTA los correos de usuarios que existe en la BD
+        public function consultarCorreo(){  
+            $stmt = $this->dbh->prepare("SELECT correo_AfiCom FROM afiliado_com");
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return false;
+            }
+        }  
+
+        //CONSULTA las claves de usuarios que existe en la BD
+        public function consultarClave(){ 
+            $stmt = $this->dbh->prepare("SELECT claveCifrada FROM afiliado_comingreso");
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return false;
+            }
+        }
         
         public function insertarCategoriaTienda($ID_Categoria, $ID_Tienda){
             for($i = 0; $i<count($ID_Categoria); $i++){

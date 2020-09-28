@@ -33,7 +33,7 @@
                 ?>
             </div> 
             <div class="contenedor_77">
-                <input type="text" class="boton" onclick="transferirCategoria(this.form)" value="Enviar"/>
+                <input type="text" class="boton" onclick="transferirCategoria(this.form)" value="Guardar"/>
             </div>
         </form>
     </div>

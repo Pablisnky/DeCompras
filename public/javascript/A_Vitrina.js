@@ -102,7 +102,7 @@ function respuesta_Opciones(){
             alert('Hubo problemas con la petición.')
         }
     }
-    else{ //en caso contrario, mostramos un gif simulando una precarga
-        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';    
-    }    
+    // else{ //en caso contrario, mostramos un gif simulando una precarga
+    //     document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';    
+    // }    
 }

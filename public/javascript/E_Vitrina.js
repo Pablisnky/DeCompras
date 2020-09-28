@@ -1098,24 +1098,20 @@ console.log(AlCarro)
 //************************************************************************************************
     //Verifca que el archivo opciones ya se haya cargado
     function verificarDiv(){
-        // console.log("______Desde verificarDiv()______")  
+        console.log("______Desde verificarDiv()______")  
         if(document.getElementById('Mostrar_Opciones').childElementCount < 1){
             console.log("No hay elementos")
         }
         else{
-            // console.log(document.getElementsByClassName('contenedor_95'))
-
-            // Se puede comparar el producto que se trae con los productos cargados
-            
+            console.log("Los productos de la seccion son:", document.getElementsByClassName('contenedor_95'))            
         }
 
     }
-     function stopInterval(){
-        console.log("______Desde stopInterval()______")
-        clearInterval(interval)
-        console.log(peticion.readyState)
-        console.log(peticion.status)
-     }
+
+    function stopInterval(){
+    console.log("______Desde stopInterval()______")
+    clearInterval(interval)
+    }
      
 ///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
 // document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    

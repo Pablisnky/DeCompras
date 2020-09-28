@@ -1,7 +1,5 @@
  document.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, false)
 
-//  var Validar = document.getElementById('Submit').addEventListener('click', validarLogin, false)  
-
 //************************************************************************************************
     //Valida el formulario
     function validarLogin(){
@@ -9,6 +7,9 @@
 
         document.getElementsByClassName("boton")[0].value = "Iniciando sesión ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
+        document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"
+        document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
+        document.getElementsByClassName("boton")[0].classList.add('borde_1')
         
         let usuario = document.getElementById('Correo').value
         let clave = document.getElementById('Clave').value  

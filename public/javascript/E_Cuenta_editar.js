@@ -125,14 +125,14 @@ document.getElementById("Label_1").addEventListener('click', function(){
     
 
 //************************************************************************************************
-//Añade un nuevo input para agregar una nueva sección
+//Añade un nuevo input con una nueva sección cargada desde Categoria_Ajax
    var incremento = 1
     function crearSeccion(){
-        console.log("______Desde crear sección______")
+        console.log("______Desde CrearSección()______")
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80")
-    
+console.log(clonar)
         //Se crea el clon
         let Div_clon = clonar.cloneNode(true)
     
@@ -285,7 +285,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //Se declara el array que contendra la cantidad de categorias seleccionadas
         var TotalCategoria = []
 
-
         //Se reciben los elementos del formulario mediante su atributo name
         Categoria = form.categoria
 
@@ -344,7 +343,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 var NuevoElemento = document.createElement("input")
                 
                 NuevoElemento.value = TotalCategoria[i] 
-                NuevoElemento.classList.add("input_9", "borde_2", "imput_6js")
+                NuevoElemento.classList.add("input_13", "borde_1", "imput_6js")
                 NuevoElemento.name = "categoria[]"
                 NuevoElemento.id = "Input_6js_" + id_dinamico
                 NuevoElemento.readOnly = true
@@ -416,6 +415,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
         console.log("______Desde DesabilitarBoton()______")     
         document.getElementsByClassName("boton_6")[0].value = "Guardando cambios..."
         document.getElementsByClassName("boton_6")[0].disabled = "disabled"
+        document.getElementsByClassName("boton_6")[0].style.backgroundColor = "var(--OficialClaro)"
+        document.getElementsByClassName("boton_6")[0].style.color = "var(--OficialOscuro)"
+        document.getElementsByClassName("boton_6")[0].classList.add('borde_1')
         document.getElementsByClassName("boton_6")[0].form.submit()
     }
     

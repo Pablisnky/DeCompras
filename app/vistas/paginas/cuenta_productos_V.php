@@ -6,7 +6,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     // require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
 
     //Se verifica que la sesion del usuario halla sido creada y exista, esto se hizo en login_C
-    if(isset($_SESSION["ID_Tienda"])){ 
+    // if(isset($_SESSION["ID_Tienda"])){ 
         ?>
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
@@ -35,9 +35,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <section class="section_3 section_9">
             <div class="contenedor_90 contenedor_91">
                 <h2 class="h2_9">Productos ofertados</h2>
-                <?php 
+                <?php
                 if($Datos['Seccion'] != 'Todos'){     ?>
-                    <h3 class="h3_9">( <?php echo $Datos['productos'][0]['seccion'];?> )</h3>   <?php
+                    <h3 class="h3_9">( <?php echo $Datos['Seccion'];?> )</h3>   <?php
                 }
                 else{   ?>
                     <h3 class="h3_9">( Todos )</h3>   <?php
@@ -47,10 +47,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <?php
                 $Contador = 1;
                 //$Datos viene del metodo consultarProductosTienda() en Cuenta_C
-                // echo "<pre>";
-                // print_r($Datos);
-                // echo "</pre>";
-                // exit();
                 foreach($Datos['productos'] as $arr) :
                     $Seccion = $arr["seccion"];
                     $Producto = $arr["producto"];
@@ -86,11 +82,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
             </div>
         </section>
         <?php
-    }
-    else{
-        //la sesion no existe y se redirige a la pagina de inicio
-        header("location:" . RUTA_URL);
-    }   ?>
+    // }
+    // else{
+    //     //la sesion no existe y se redirige a la pagina de inicio
+    //     header("location:" . RUTA_URL);
+    // }   ?>
     
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_productos.js';?>"></script>   
 

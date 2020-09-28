@@ -26,7 +26,7 @@
    
         public function recibeRegistro(){            
             //Se reciben todos los campos del formulario, desde registro_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_tienda"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])
             ){
                
                 $RecibeDatos = [
@@ -35,7 +35,7 @@
                     'Correo_Afcom' => filter_input(INPUT_POST, "correo_Afcom", FILTER_SANITIZE_STRING),
                     
                     //Recibe datos de la tienda
-                    'Nombre_com' => filter_input(INPUT_POST, "nombre_com", FILTER_SANITIZE_STRING),
+                    'Nombre_tienda' => filter_input(INPUT_POST, "nombre_tienda", FILTER_SANITIZE_STRING),
 
                     //Recibe datos de acceso
                     'Clave_Afcom' => filter_input(INPUT_POST, "clave_Afcom", FILTER_SANITIZE_STRING), 
@@ -92,6 +92,50 @@
 
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
             redireccionar("/Login_C/");
+        }
+
+        public function VerificarCorreo($Correo){
+            //CONSULTA los correos de afiliados existente en la BD
+            $Consulta = $this->ConsultaRegistro_M->consultarCorreo();
+            $CorreoBD = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+
+            foreach($CorreoBD as $key){
+                $CorreoBD =  $key['correo_AfiCom'];
+
+                if($CorreoBD == $Correo){
+                    echo "La dirección de correo ya existe";  ?>
+                    <style>
+                        .contenedor_43{
+                            background-color:yellow;  
+                            display: block;
+                            text-align: center; 
+                            font-size: 0.9em;    
+                        }
+                    </style>
+                    <?php
+                }
+            }
+        }
+
+        public function VerificarClave($Clave){
+            //CONSULTA las claves de afiliados existente en la BD
+            $Consulta = $this->ConsultaRegistro_M->consultarClave();
+            $ClaveBD = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($ClaveBD as $key){
+                $ClaveBD =  $key['claveCifrada'];
+                if($Clave == password_verify($Clave, $ClaveBD)){
+                    echo "La contraseña que introdujo ya existe en nuestros registros"; ?>
+                    <style>
+                        .contenedor_3{
+                            background-color: yellow;  
+                            display: block;
+                            text-align: center;     
+                        }
+                    </style>
+                    <?php
+                }
+            }
         }
     }
 ?>    

@@ -122,10 +122,13 @@ var contenido_descripcion = "";
         let Descripcion = document.getElementById('ContenidoDes').value 
         let Especificacion = document.getElementById('ContenidoEsp').value 
         let Precio = document.getElementById('Precio').value 
-        let Seccion = document.getElementById('Seccion').value   
+        let Seccion = document.getElementById('SeccionPublicar').value   
         
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
+        document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"
+        document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
+        document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
         if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 70){
             alert ("Necesita introducir un Producto")
@@ -133,6 +136,9 @@ var contenido_descripcion = "";
             document.getElementById("ContenidoPro").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
         else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 70){
@@ -141,6 +147,9 @@ var contenido_descripcion = "";
             document.getElementById("ContenidoDes").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
         // else if(Especificacion == "" || Especificacion.indexOf(" ") == 0 || Especificacion.length > 20){
@@ -157,14 +166,20 @@ var contenido_descripcion = "";
             document.getElementById("Precio").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
         else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20){
             alert ("Introduzca una Sección")
-            document.getElementById("Seccion").value = ""
-            document.getElementById("Seccion").focus()
+            document.getElementById("SeccionPublicar").value = ""
+            document.getElementById("SeccionPublicar").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
         //Si se superan todas las validaciones la función devuelve verdadero

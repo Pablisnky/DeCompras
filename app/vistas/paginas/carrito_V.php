@@ -4,7 +4,7 @@
 
 <section class="section_4">
     <div class="contenedor_24 contenedor_25">
-        <h1 class="h1_1 h1_3 ">Tu orden</h1>
+        <h1 class="h1_1 h1_9 ">Tu orden</h1>
         <div class="contenedor_20">
             <table class="tabla" id="Tabla">
                 <thead>

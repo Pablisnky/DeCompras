@@ -38,7 +38,8 @@
             // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas
             // - Recibirla la variable sin que se elimine el espacio entre palabras
             //Provicionalmente se comento la sentencia que sanitiza la URL en Core.php que es donde se quitan los espacios en blancos
-            echo urldecode($Seccion);
+            urldecode($Seccion);
+            
             if($Seccion  == 'Todos'){
                 //CONSULTA todos los productos de una tienda
                 $Consulta = $this->ConsultaCuenta_M->consultarTodosProductosTienda($this->ID_Tienda);
@@ -64,7 +65,7 @@
                 //Se da el valor de notifiación directamente debido a que si la condicion entró en el ELSE ya el afiliado a visitado la página y no tiene notificaciones por leer
                 $Notificacion = 1;
                 
-                $Seccion  = 'Seccion especifica';
+                // $Seccion  = 'Seccion especifica';
             }
             
             //Se CONSULTAN las secciones de una tienda en particular
@@ -78,10 +79,6 @@
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja 
             ];
             
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            // exit();
             $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
             $this->vista("paginas/cuenta_productos_V", $Datos);
         }
