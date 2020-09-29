@@ -51,10 +51,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
     } 
     else{    ?>
         <section class="section_3"  id="Ejemplo_Secciones">
-            <div class="contenedor_24">
+            <div class="contenedor_24 contenedor_118">
                     <p>No tienes secciones donde colocar los producto, ve a configuración y añade secciones donde organizar tus productos</p>
                 <div class="contenedor_87">
-                    <label class="boton boton_4" id="Label_1" onclick="CerrarModal_X('Ejemplo_Secciones')">Cerrar</label>
+                    
+                <a class="label_21 boton" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Cerrar</a>
                 </div>
             </div>
         </section>  <?php

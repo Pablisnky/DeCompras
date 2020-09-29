@@ -29,6 +29,7 @@ body, html{
 	--FondoDivModal: rgba(0, 0, 0, 0.8);
 	--OficialOscuro: rgb(51, 51, 51);
 	--OficialClaro: rgb(239, 245, 245);
+	--Fallos: rgba(255, 0, 0, 0.2);
 }
 
 /* ******************************************************************************** */
@@ -860,7 +861,7 @@ button{/*tiendas*/
 	width: 80%;
 	margin: 9% auto;
 }
-.contenedor_111{/*header*/
+.contenedor_111{/*header - header_AfiCom*/
 	width: 20%;
 	float: left;
 }
@@ -1100,7 +1101,7 @@ button{/*tiendas*/
 .imagen_6:hover{/*cuenta_productos*/
 	cursor: default;
 }
-.imagen_7{/*cuenta_productos - tiendas*/
+.imagen_7{/*tiendas*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 300px;
 	height: 200px;
@@ -1527,8 +1528,8 @@ button{/*tiendas*/
 	background-color: white;
 }
 .section_10{/*Categorias_Ajax - Secciones_Ajax*/
-	position: fixed;
-	padding-top: 3%;
+	/* position: fixed;
+	padding-top: 3%; */
 }
 .section_11{/*tiendas*/
 	/* background-color: blue; */

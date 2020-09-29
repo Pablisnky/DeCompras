@@ -15,10 +15,26 @@ document.getElementById('Submit').addEventListener('click', DesabilitarBoton, fa
 document.addEventListener("keydown", contarDes, false); 
 document.addEventListener("keyup", contarDes, false);
 document.addEventListener("keydown", valida_LongitudDes, false);
+
 // *****************************************************************************************************
 //FUNCIONES ANONIMAS
 // por medio de una función anonima debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
-document.getElementById('Label_13').addEventListener('click',function(event){ 
+document.getElementById('Label_13').addEventListener('click',function(){ 
+        console.log("______Desde funcion anonima que genera el alto de la ventana modal()______")
+        //Coloca el cursor en el top de la pagina
+        // document.getElementById("Ejemplo_Secciones").style.display = "grid"
+
+        //Si la resolucion de la pantalla del dispositivo es menor a 880 px
+        if(window.screen.width<=800){
+            window.scroll(0, 0)
+            var tapaFondo = document.getElementById("Contenedor_42")
+            
+            //Se consulta el alto de la página cuenta_editar_V.php, este tamaño varia segun las secciones que tenga un tienda, cuentas bancarias y categorias
+            AltoVitrina = tapaFondo.scrollHeight
+            
+            //Este alto se estable al div padre en cuenta_editar_V.php para garantizar que cubra todo el contenido, ya que el div que Ejemplo_Secciones es cargado sobreeste
+            document.getElementById("Mostrar_Categorias").style.height = AltoVitrina + "px"
+        }
     Llamar_categorias()
 }, false);
 
@@ -411,14 +427,13 @@ console.log(clonar)
     
 //************************************************************************************************
     // desabilidad el boton de enviar formulario
-    function DesabilitarBoton(){
+    function ValidarEditarCuenta(){
         console.log("______Desde DesabilitarBoton()______")     
-        document.getElementsByClassName("boton_6")[0].value = "Guardando cambios..."
+        document.getElementsByClassName("boton_6")[0].value = "Guardando ..."
         document.getElementsByClassName("boton_6")[0].disabled = "disabled"
         document.getElementsByClassName("boton_6")[0].style.backgroundColor = "var(--OficialClaro)"
         document.getElementsByClassName("boton_6")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton_6")[0].classList.add('borde_1')
-        document.getElementsByClassName("boton_6")[0].form.submit()
     }
     
 //************************************************************************************************  

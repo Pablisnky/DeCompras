@@ -4,9 +4,9 @@ class Controlador{
     
     //Carga el modelo
     public function modelo($modelo){
-        // echo "se trae el archivo que cntiene la clase recibida por parametro y se procede a instanciarla $modelo . "<br>";
+        //Se trae el archivo que contiene la clase recibida por parametro y se procede a instanciarla $modelo . "<br>";
         require_once("../app/modelos/" . $modelo . ".php");
-        // Se instancia la clase respectiva que pide la información necesaria a la BD
+        //Se instancia la clase respectiva que pide la información necesaria a la BD
         return new $modelo();
     }
     

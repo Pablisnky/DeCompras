@@ -16,7 +16,10 @@
             //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada
             $Tiendas = $this->ConsultaTienda_M->consultarTiendas($Categoria);
             $Datos = $Tiendas->fetchAll(PDO::FETCH_ASSOC);            
-            
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
             $this->vista("paginas/tiendas_V",$Datos);
         }
     }

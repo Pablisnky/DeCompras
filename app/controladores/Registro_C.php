@@ -2,7 +2,7 @@
     class Registro_C extends Controlador{
 
         public function __construct(){            
-            $this->ConsultaRegistro_M = $this->modelo("Registro_M");           
+            $this->ConsultaRegistro_M = $this->modelo("Registro_M");  
         }
         
         //Siempre cargara el metodo por defecto sino se pasa un metodo especifico
@@ -25,7 +25,7 @@
         }
    
         public function recibeRegistro(){            
-            //Se reciben todos los campos del formulario, desde registro_V.php se verifica que son enviados por POST y que no estan vacios
+            //Se reciben todos los campos del formulario, desde registroCom_V.php se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_tienda"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])
             ){
                
@@ -47,20 +47,10 @@
                 // exit;
                 // $RecibeDatos = [
                 //         'Nombre' => ucwords($_POST["nombre"]),                       
-                //         'Cedula' => is_numeric($_POST["cedula"]) ? $_POST["cedula"]: false,
-                //         'Telefono' => is_numeric($_POST["telefono"]) ? $_POST["telefono"]: false,
                 //         'Correo' => mb_strtolower($_POST["correo"]),  
                 //         'Clave' => $_POST["clave"],
                 //         'RepiteClave' => $_POST["confirmarClave"],
                 // ];
-
-                //Despues de evaluar con is_numeric se da un aviso en caso de fallo
-                // if($RecibeDatos["Telefono_Afcom"] == false){      
-                //     exit("El telefono debe ser solo números");
-                // }
-                // //Despues de evaluar con is_numeric se da un aviso en caso de fallo
-                // if($RecibeDatos["Cedula_Afcom"] == false){      
-                //     exit("La cedula debe ser solo números");
             }
             else{      
                 echo "Debe Llenar todos los campos vacios". "<br>";
@@ -68,27 +58,27 @@
                 exit();
             }
 
-            //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
-            $ID_AfiliadoCom = $this->ConsultaRegistro_M->insertarAfiliadoComercial($RecibeDatos);
-           
-            //Se INSERTAN los datos de la tienda en la BD
-            $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);        
+            //Las siguientes tres inserciones se realizan por medio de transacciones
+            try{
+                //se cifran la contraseña del afiliado con un algoritmo de encriptación
+                $ClaveCifrada= password_hash($RecibeDatos["Clave_Afcom"], PASSWORD_DEFAULT);
+                
+                $ID_AfiliadoCom = $this->ConsultaRegistro_M->startTransaction();
 
-            //Se consulta el ID_Categoria de las categorias seleccionadas
-            // $ID_Categoria = $this->ConsultaRegistro_M->consultarID_Categoria($Categoria);
-            // $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC); 
+                    //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
+                    $ID_AfiliadoCom = $this->ConsultaRegistro_M->insertarAfiliadoComercial($RecibeDatos);
+                
+                    //Se INSERTAN los datos de la tienda en la BD
+                    $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);        
+                            
+                    //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
+                    $this->ConsultaRegistro_M->insertarAccesoAfiliado($ID_AfiliadoCom, $ClaveCifrada);
 
-            //Se INSERTAN los ID_Categoria de las categorias en las que se encuentra la tienda
-            // $this->ConsultaRegistro_M->insertarCategoriaTienda($ID_Categ, $ID_Tienda);
-            
-            //Se INSERTAN los datos bancarios de la tienda en la BD
-            // $this->ConsultaRegistro_M->insertarBancos($Banco, $Titular, $NumeroCuenta, $Rif, $ID_AfiliadoCom);
-
-            //se cifran la contraseña del afiliado con un algoritmo de encriptación
-            $ClaveCifrada= password_hash($RecibeDatos["Clave_Afcom"], PASSWORD_DEFAULT);
-            
-            //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
-            $this->ConsultaRegistro_M->insertarAccesoAfiliado($ID_AfiliadoCom, $ClaveCifrada);
+                $this->ConsultaRegistro_M->commit();
+            }
+            catch(Exception $e){
+                $this->ConsultaRegistro_M->rollback();
+            }
 
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
             redireccionar("/Login_C/");

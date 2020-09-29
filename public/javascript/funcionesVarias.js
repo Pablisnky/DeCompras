@@ -1,12 +1,3 @@
-   
-//  document.getElementById('Home').addEventListener('click', function(){ActivarLink("Home")}, true) 
-//  document.getElementById('Afiliacion').addEventListener('click', function(){ActivarLink("Afiliacion")}, true)
-//  document.getElementById('Planes').addEventListener('click', function(){ActivarLink("Planes")}, true)
-//  document.getElementById('Ciudades').addEventListener('click', function(){ActivarLink("Ciudades")}, true)
-//  document.getElementById('Tiendas').addEventListener('click', function(){ActivarLink("Tiendas")}, true)
-//  document.getElementById('Inicio').addEventListener('click', function(){ActivarLink("Inicio")}, true)
- //************************************************************************************************
-
    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
     let div = document.getElementById("MenuResponsive")
     let span= document.getElementById("Span_6")

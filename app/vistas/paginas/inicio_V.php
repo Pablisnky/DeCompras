@@ -39,76 +39,76 @@
                 <span class="icon-barcode span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6c">
                 <h2 class='h2_1'>ROPA Y ZAPATO</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6c">
+            <div class='contenedor_6 borde_1' id="Contenedor_6d">
                 <h2 class='h2_1'>ARTESANOS Y EMPRENDEDORES</h2>
                 <span class="icon-pen span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6e">
+            <div class='contenedor_6 borde_1' id="Contenedor_6f">
                 <h2 class='h2_1'>FARMACIA Y SALUD</h2>
                 <span class="icon-aid-kit span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6f">
+            <div class='contenedor_6 borde_1' id="Contenedor_6g">
                 <h2 class='h2_1'>FERRETRÍA Y HOGAR</h2>
                 <span class="icon-hammer span_8"></span>
             </div>
-            <div class='contenedor_6 borde_1' id="Contenedor_6a">
+            <div class='contenedor_6 borde_1' id="Contenedor_6h">
                 <h2 class='h2_1'>PANADERÍA</h2>
                 <span class="icon-spoon-knife span_8"></span>
             </div> 
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6i">
                 <h2 class='h2_1'>LICORES</h2>
                 <span class="icon-barcode span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6j">
                 <h2 class='h2_1'>JOYAS Y RELOJERÍA</h2>
                 <span class="icon-barcode span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6k">
                 <h2 class='h2_1'>DEPORTES</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6l">
                 <h2 class='h2_1'>FLORISTERÍA Y DECORACIÓN</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6m">
                 <h2 class='h2_1'>MASCOTAS</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6n">
                 <h2 class='h2_1'>CONSTRUCCIÓN</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6o">
                 <h2 class='h2_1'>TELEFONOS Y COMPUTADORAS</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6p">
                 <h2 class='h2_1'>PAPELERÍA Y OFICINA</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_6q">
                 <h2 class='h2_1'>JUGUETES Y ACCESORIOS PARA NIÑOS</h2>
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-        <div class='contenedor_6 borde_1' id="Contenedor_6b">
+        <div class='contenedor_6 borde_1' id="Contenedor_6r">
             <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
             <span class="icon-man-woman span_8"></span>
         </div>

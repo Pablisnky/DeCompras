@@ -17,8 +17,9 @@
             }
         }
 
+        //INSERTA los datos del afiliado comercial
         public function insertarAfiliadoComercial($RecibeDatos){            
-            $stmt = $this->dbh->prepare("INSERT INTO afiliado_com(nombre_AfiCom, correo_AfiCom, fecha_AfiCom, hora_AfiCom) VALUES (:Nombre,:Correo, CURDATE(), time_format(NOW(), '%H:%i'))");
+            $stmt = $this->dbh->prepare("INSERT INTO afiliado_com(nombre_AfiCom, correo_AfiCom) VALUES (:Nombre,:Correo)");
 
             //Se vinculan los valores de las sentencias preparadas
             //ztmt es una abreviatura de statement 

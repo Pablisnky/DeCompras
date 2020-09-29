@@ -7,7 +7,7 @@
 
 <section class="section_11">
     <div class="contenedor_90">
-        <h1 class="h1_1 h1_3 h1_4">Tiendas de comida</h1>
+        <h1 class="h1_1 h1_3 h1_4">Tiendas de <?php echo $Datos[0]['categoria']?></h1>
         <div>
             <a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>"><span class="icon-cancel-circle span_5"></span></a>
         </div>

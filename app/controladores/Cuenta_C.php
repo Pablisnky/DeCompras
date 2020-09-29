@@ -33,7 +33,13 @@
         }
 
         //Entrada del cliente a su cuenta de usuario, muestra todos los productos publicados o los de una sección en especifico
-        public function Productos($Seccion){
+        public function Productos($DatosAgrupados){
+            //$DatosAgrupados contiene una cadena con el ID_Producto y el ID_ContProducto separados por coma, se convierte en array para separar los elementos
+            
+            $DatosAgrupados = explode(",", $DatosAgrupados);
+            
+            $Seccion = $DatosAgrupados[0];
+            $Puntero = empty($DatosAgrupados[1]) ? 'NoAplica' : $DatosAgrupados[1];
             //$Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
             // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas
             // - Recibirla la variable sin que se elimine el espacio entre palabras
@@ -53,7 +59,7 @@
                 $Notificacion = $Notificacion[0]['notificacion'];
                
                 //ACTUALIZA el estatus de la notificacion de una tienda
-                $this->ConsultaCuenta_M->actualizarStatusTienda($this->ID_Tienda);
+                // $this->ConsultaCuenta_M->actualizarStatusTienda($this->ID_Tienda);
                 
                 $Seccion  = 'Todos';
             }
@@ -77,7 +83,12 @@
                 'productos' => $Productos,
                 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja 
+                'Apunta' => $Puntero
             ];
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
             
             $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
             $this->vista("paginas/cuenta_productos_V", $Datos);
@@ -140,7 +151,14 @@
         }
 
         //metodo invocado desde cuenta_productos_V.php
-        public function actualizarProducto($ID_Producto){
+        public function actualizarProducto($DatosAgrupados){
+            //$DatosAgrupados contiene una cadena con el ID_Producto y la opcion separados por coma, se convierte en array para separar los elementos
+            
+            $DatosAgrupados = explode(",", $DatosAgrupados);
+            
+            $ID_Producto = $DatosAgrupados[0];
+            $Opcion = $DatosAgrupados[1];
+            
             //CONSULTA los productos de una sección en especifico según la tienda
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
@@ -150,8 +168,9 @@
             $Especificaciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             
             $Datos = [
-                'secciones' => $Secciones,
+                'secciones' => $Secciones, //Usado en header_AfiCom.php
                 'especificaciones' => $Especificaciones,
+                'puntero' => $Opcion
             ];
 
             // echo "<pre>";
@@ -178,17 +197,17 @@
                
                 $RecibeDatos = [
                     //Recibe datos de la persona responsable
-                    'Nombre_Afcom' => filter_input(INPUT_POST, "nombre_Afcom", FILTER_SANITIZE_STRING),
-                    'Apellido_Afcom'=> filter_input(INPUT_POST, "apellido_Afcom", FILTER_SANITIZE_STRING),
-                    'Cedula_Afcom' => filter_input(INPUT_POST, "cedula_Afcom", FILTER_SANITIZE_STRING),
-                    'Telefono_Afcom'=> filter_input(INPUT_POST, "telefono_Afcom", FILTER_SANITIZE_STRING),
-                    'Correo_Afcom' => filter_input(INPUT_POST, "correo_Afcom", FILTER_SANITIZE_STRING),
+                    'Nombre_Afcom' => filter_input(INPUT_POST, 'nombre_Afcom', FILTER_SANITIZE_STRING),
+                    'Apellido_Afcom'=> filter_input(INPUT_POST, 'apellido_Afcom', FILTER_SANITIZE_STRING),
+                    'Cedula_Afcom' => filter_input(INPUT_POST, 'cedula_Afcom', FILTER_SANITIZE_STRING),
+                    'Telefono_Afcom'=> filter_input(INPUT_POST, 'telefono_Afcom', FILTER_SANITIZE_STRING),
+                    'Correo_Afcom' => filter_input(INPUT_POST, 'correo_Afcom', FILTER_SANITIZE_STRING),
                     
-                    // Recibe datos de la tienda
-                    'Nombre_com' => filter_input(INPUT_POST, "nombre_com", FILTER_SANITIZE_STRING),
-                    'Telefono_com' => filter_input(INPUT_POST, "telefono_com", FILTER_SANITIZE_STRING),
-                    'Direccion_com' => filter_input(INPUT_POST, "direccion_com", FILTER_SANITIZE_STRING),
-                    'Slogan_com' => filter_input(INPUT_POST, "slogan_com", FILTER_SANITIZE_STRING),
+                    // Recibe datos de la tienda            
+                    'Nombre_com' => filter_input(INPUT_POST, 'nombre_com', FILTER_SANITIZE_STRING),
+                    'Telefono_com' => filter_input(INPUT_POST, 'telefono_com', FILTER_SANITIZE_STRING),
+                    'Direccion_com' => filter_input(INPUT_POST, 'direccion_com', FILTER_SANITIZE_STRING),
+                    'Slogan_com' => filter_input(INPUT_POST, 'slogan_com', FILTER_SANITIZE_STRING),
                 ];
                 // echo "<pre>";
                 // print_r($RecibeDatos);
@@ -606,6 +625,7 @@
                     'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
                     'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
+                    'Puntero' => filter_input(INPUT_POST, "puntero", FILTER_SANITIZE_STRING),
                 ];
                 // echo "<pre>";
                 // print_r($RecibeProducto );
@@ -693,7 +713,13 @@
             //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección
             $Seccion = $RecibeProducto['Seccion'];
             
-            $this->Productos($Seccion);
+            //Se envia el puntero hacia el producto que se actualizó
+            $Puntero = $RecibeProducto['Puntero'];
+
+            //$Seccion y $Puntero Se deben convertir en cadena porque el controlador Productos recibe una cadena de datos agrupados separados por coma
+            $Seccion_Puntero = $Seccion . ',' . $Puntero;
+            
+            $this->Productos($Seccion_Puntero);
             // $this->vista("paginas/cuenta_productos_V");
         }
 

@@ -9,7 +9,7 @@
 
 <section class="section_5">	
     <div class="contenedor_109">
-        <img class="imagen_8" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>"/>
+        <img class="imagen_7" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>"/>
     </div>
     <div class="contenedor_110" id="Section_4">
         <?php

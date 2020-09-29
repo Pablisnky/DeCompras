@@ -6,13 +6,8 @@
         
         public function index($Buscar){
             //CONSULTA las tiendas donde exista el producto solicitado por el usuario mediante el input buscador en inicio_V.php
-            $Consulta = $this->ConsultaBuscador_M->consultarBusquedaTienda($Buscar);
-            $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            //         exit();
+            $Datos = $this->ConsultaBuscador_M->consultarBusquedaTienda($Buscar);
+            
             $this->vista("paginas/buscador_V", $Datos);
         } 
     }

@@ -60,6 +60,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input class="ocultar" type="text" name="id_opcion" value="<?php echo $ID_Opcion;?>">
                         <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
                         <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
+                        <input class="" type="text" name="puntero" value="<?php echo $Datos['puntero'];?>"/>
                         <input class="boton" type="submit" value="Guardar"/>
                     </div> 
                 </div>

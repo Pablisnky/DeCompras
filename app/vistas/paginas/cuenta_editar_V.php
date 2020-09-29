@@ -35,7 +35,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <h1 class="h1_8">Configurar cuenta</h1>       
             <span class="icon-circle-down span_10"></span>
         </div>   -->
-        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return ValidarEditarCuenta()">
             <a id="marcador_01" class="ancla_2"></a>
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Persona responsable</legend>
@@ -204,7 +204,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <a class="marcador" href="#marcador_07">Horario</a>
                     <div class="contenedor_49">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
-                        <input class="boton boton_6" type="button" value="Guardar cambios" id="Submit"/>
+                        <input class="boton boton_6" type="submit" value="Guardar cambios"/>
                     </div>
                 </div>
             </section>

@@ -17,7 +17,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
-        if(Nombre == "" || Nombre.indexOf(" ") == 0 || Nombre.length > 70){
+        if(Nombre == "" || Nombre.indexOf(" ") == 0 || Nombre.length > 20){
             alert ("Necesita introducir su nombre")
             document.getElementById("Nombre").value = "";
             document.getElementById("Nombre").focus()
@@ -39,7 +39,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(NombreTienda == "" || NombreTienda.indexOf(" ") == 0 || NombreTienda.length > 70){
+        else if(NombreTienda == "" || NombreTienda.indexOf(" ") == 0 || NombreTienda.length > 30){
             alert ("Introduzca un nombre de tienda")
             document.getElementById("NombreTienda").value = ""
             document.getElementById("NombreTienda").focus()
@@ -93,7 +93,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
         campo = event.target;
         var emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
         
-        if(document.getElementById("CorreoAfiCom").style.backgroundColor == "red"){
+        if(document.getElementById("CorreoAfiCom").style.backgroundColor == "var(--Fallos)"){
         document.getElementById("CorreoAfiCom").value = "";        
         document.getElementById("CorreoAfiCom").style.backgroundColor = "white";
         document.getElementById("CorreoAfiCom").focus();
@@ -104,7 +104,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
         } 
         else{
             alert("Correo no aceptado");      
-            document.getElementById("CorreoAfiCom").style.backgroundColor="red"; 
+            document.getElementById("CorreoAfiCom").style.backgroundColor = "var(--Fallos)"; 
             document.getElementById("CorreoAfiCom").value = "";
         }
         }  

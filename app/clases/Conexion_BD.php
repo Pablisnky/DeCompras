@@ -21,8 +21,23 @@
             }
             catch(PDOException $e){
                 $this->error = $e->getMessage();
-                echo $this->error;
+                echo 'Error al conectarse con la base de datos: ' . $this->error;
             }
+        }
+
+        //Este método le indica a PDO que inicie una transacción y desactive la confirmación automática hasta que se emita un comando de confirmación.
+        public function startTransaction(){   
+            $this->dbh->beginTransaction();
+        }
+
+        //Este método confirma los cambios de forma permanente en la base de datos 
+        public function Commit(){   
+            $this->dbh->commit();
+        }
+        
+        //Si hay un error y las transacciones tienen un problema, el método invoca el método rollBack() para hacer que la base de datos regrese a su estado original en caso de que se produzca una excepción de PDO.
+        public function Rollback(){  
+            $this->dbh->rollback();
         }
     }    
 ?>

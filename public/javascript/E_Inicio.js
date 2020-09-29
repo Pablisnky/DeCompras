@@ -9,13 +9,7 @@ document.getElementById("Span_5").addEventListener('click', function(){CerrarMod
 
 document.getElementById("Contenedor_6a").addEventListener('click', function(){VerTiendas('Comida_Rapida')})
                               
-document.getElementById("Contenedor_6b").addEventListener('click', function(){VerTiendas('Supermercado')})
-                              
-document.getElementById("Contenedor_6c").addEventListener('click', function(){VerTiendas('Bar')})
-                              
-document.getElementById("Contenedor_6e").addEventListener('click', function(){VerTiendas('Productos')})
-                              
-document.getElementById("Contenedor_6f").addEventListener('click', function(){VerTiendas('Maquinas')})
+document.getElementById("Contenedor_6m").addEventListener('click', function(){VerTiendas('Mascotas')})
 
 // *****************************************************************************************************
     //Muestra la posicion en pantalla por medio de coordenadas

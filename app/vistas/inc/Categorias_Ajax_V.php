@@ -1,6 +1,6 @@
 <!-- Archivo cargado desde Ajax por medio de Llamar_categorias() y mostrado en cuenta_editar_V.php -->
 <section class="section_4 section_10">
-    <div class="contenedor_24">   
+    <div class="contenedor_24 contenedor_118">   
         <div class="contenedor_102">
             <h1 class="h1_1 h1_3">Selecciona máximo tres categorias</h1>   
             <span class="span_5" id="Span_5" onclick="CerrarModal_X('Mostrar_Categorias')">X</span>
