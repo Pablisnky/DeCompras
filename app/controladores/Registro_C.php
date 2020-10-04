@@ -14,17 +14,17 @@
 
         public function registroComerciante(){
             //CONSULTA las categorias de tiendas que existen en la BD
-            $Categorias = $this->ConsultaRegistro_M->consultarCategorias();
-            $Datos = $Categorias->fetchAll(PDO::FETCH_ASSOC); 
+            // $Categorias = $this->ConsultaRegistro_M->consultarCategorias();
+            // $Datos = $Categorias->fetchAll(PDO::FETCH_ASSOC); 
 
-            $this->vista("paginas/registroCom_V", $Datos);
+            $this->vista("paginas/registroCom_V");
         }
         
         public function registroDespachador(){
             $this->vista("paginas/registroDes_V");
         }
    
-        public function recibeRegistro(){            
+        public function recibeRegistroCom(){            
             //Se reciben todos los campos del formulario, desde registroCom_V.php se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_tienda"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])
             ){
@@ -72,13 +72,70 @@
                     $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);        
                             
                     //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
-                    $this->ConsultaRegistro_M->insertarAccesoAfiliado($ID_AfiliadoCom, $ClaveCifrada);
+                    $this->ConsultaRegistro_M->insertarAccesoComerciante($ID_AfiliadoCom, $ClaveCifrada);
 
                 $this->ConsultaRegistro_M->commit();
             }
             catch(Exception $e){
                 $this->ConsultaRegistro_M->rollback();
             }
+
+            //Redirecciona, La función redireccionar se encuantra en url_helper.php
+            redireccionar("/Login_C/");
+        }
+   
+        public function recibeRegistroDes(){            
+            //Se reciben todos los campos del formulario, desde registroDes_V.php se verifica que son enviados por POST y que no estan vacios
+            if($_SERVER['REQUEST_METHOD'] == 'POST' 
+            // && !empty($_POST['nombre_AfiDes']) && !empty($_POST['apellido_AfiDes']) && !empty($_POST['cedula_AfiDes']) && !empty($_POST['telefono_AfiDes']) && !empty($_POST['correo_AfiDes']) && !empty($_POST['clave_AfiDes']) && !empty($_POST['confirmarClave_AfiDes'])
+            ){
+                //Se guarda en un arrya los datos recibidos; este paso solo es para verificar lo recibido con lo saneado
+                $RecibeDatos = [
+                    'Nombre_AfiDes' => $_POST['nombre_AfiDes'],
+                    'Apellido_AfiDes' => $_POST['apellido_AfiDes'],
+                    'Cedula_AfiDes' => $_POST['cedula_AfiDes'],
+                    'Telefono_AfiDes' => $_POST['telefono_AfiDes'],
+                    'Correo_AfiDes' => $_POST['correo_AfiDes'],
+                    'Clave_AfiDes' => $_POST['clave_AfiDes'], 
+                    'RepiteClave_AfiDes' => $_POST['confirmarClave_AfiDes'],
+                ];
+                echo "<pre>";
+                print_r($RecibeDatos);
+                echo "</pre>";
+                
+
+                //Se realiza la primera etapa de saneamiento
+                $RecibeDatos = [
+                    'Nombre_AfiDes' => filter_input(INPUT_POST, "nombre_AfiDes", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES),
+                    'Apellido_AfiDes' => filter_input(INPUT_POST, "apellido_AfiDes", FILTER_SANITIZE_STRING),
+                    'Cedula_AfiDes' => filter_input(INPUT_POST, "cedula_AfiDes", FILTER_SANITIZE_NUMBER_INT),
+                    'Telefono_AfiDes' => filter_input(INPUT_POST, "telefono_AfiDes", FILTER_SANITIZE_NUMBER_INT),
+                    'Correo_AfiDes' => filter_input(INPUT_POST, "correo_AfiDes", FILTER_SANITIZE_EMAIL),
+
+                    //Recibe datos de acceso
+                    'Clave_AfiDes' => filter_input(INPUT_POST, "clave_AfiDes", FILTER_SANITIZE_STRING), 
+                    'RepiteClave_AfiDes' => filter_input(INPUT_POST, "confirmarClave_AfiDes", FILTER_SANITIZE_STRING),
+                ];
+                echo "<pre>";
+                print_r($RecibeDatos);
+                echo "</pre>";
+                exit;
+            }
+            else{      
+                echo "Debe Llenar todos los campos vacios". "<br>";
+                echo "<a href='javascript:history.back()'>Regresar</a>";
+                exit();
+            }
+
+            //Las siguientes dos inserciones se realizan por medio de transacciones
+            //se cifra la contraseña del afiliado con un algoritmo de encriptación
+            $ClaveCifrada= password_hash($RecibeDatos["Clave_AfiDes"], PASSWORD_DEFAULT);
+
+            //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
+            $ID_AfiliadoDes = $this->ConsultaRegistro_M->insertarAfiliadoDespachador($RecibeDatos);
+                          
+            //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
+            $this->ConsultaRegistro_M->insertarAccesoDespachador($ID_AfiliadoDes, $ClaveCifrada);
 
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
             redireccionar("/Login_C/");

@@ -11,6 +11,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
     if(!empty($Seccion)){   ?>        
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
         
+        <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
+        
         <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -18,10 +20,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <p class="p_6">Carga un producto</p>
             <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarPublicacion()">
                 <div class="contenedor_47">
-                    <div class="contenedor_9 borde_1 borde_2">
-                        <label for="imgInp"><img class="imagen_2" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/></label>
-                        <input class="ocultar"  name="foto_Producto" id="imgInp" type="file"/>
-                    </div>
+                    <label for="imgInp">
+                        <div class="contenedor_119 contenedor_121 borde_1 borde_2">
+                            <span class="icon-pencil span_18 borde_1"></span>
+                            <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                            <input class="ocultar"  name="foto_Producto" id="imgInp" type="file"/>
+                        </div>
+                    </label>
                     <div style="margin-top:5%">
                         <input class="placeholder placeholder_2 borde_1" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"  tabindex="1"/>
                         <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
@@ -52,7 +57,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     else{    ?>
         <section class="section_3"  id="Ejemplo_Secciones">
             <div class="contenedor_24 contenedor_118">
-                    <p>No tienes secciones donde colocar los producto, ve a configuración y añade secciones donde organizar tus productos</p>
+                    <p>No tienes secciones donde colocar tus producto, ve a configuración y añade secciones donde organizar tus productos y una categoria para tu tienda.</p>
                 <div class="contenedor_87">
                     
                 <a class="label_21 boton" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Cerrar</a>

@@ -10,15 +10,14 @@ document.getElementById("Cedula").addEventListener('keyup', function(){formatoMi
 
 // document.getElementById("Contenedor_107").addEventListener('click', muestraMenuSecundario, false)
 
-document.getElementById('Submit').addEventListener('click', DesabilitarBoton, false)
-
 document.addEventListener("keydown", contarDes, false); 
 document.addEventListener("keyup", contarDes, false);
 document.addEventListener("keydown", valida_LongitudDes, false);
+document.addEventListener("keyup", valida_LongitudDes, false);
 
 // *****************************************************************************************************
 //FUNCIONES ANONIMAS
-// por medio de una función anonima debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
+// por medio de una función anonima debido a que el elemento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
 document.getElementById('Label_13').addEventListener('click',function(){ 
         console.log("______Desde funcion anonima que genera el alto de la ventana modal()______")
         //Coloca el cursor en el top de la pagina
@@ -148,7 +147,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80")
-console.log(clonar)
+
         //Se crea el clon
         let Div_clon = clonar.cloneNode(true)
     
@@ -158,8 +157,11 @@ console.log(clonar)
         //Se da un ID al span que se encuentra en el nuevo elemento clonado
         Div_clon.getElementsByClassName("span_12")[0].id = 'SpanClon_' + incremento 
         
-        //El valor del nuevo input debe estar vacio, 
+        //El valor del nuevo input debe estar vacio
         Div_clon.getElementsByClassName("input_12")[0].value = "" 
+
+        //El placeholder del nuevo input 
+        Div_clon.getElementsByClassName("input_12")[0].placeholder="Indica una sección"
         
         //Se especifica el div padre, donde se insertará el nuevo nodo
         document.getElementById("Contenedor_79").appendChild(Div_clon)
@@ -232,6 +234,7 @@ console.log(clonar)
     
 
 //************************************************************************************************
+//Establece el alto del fondo de la ventana modal para que sea igual a todo el contenido de la ista cuenta_editar_V.php de la tienda en curso
     function mostrarSecciones(){
         console.log("______Desde mostrarSecciones()______")
         //Coloca el cursor en el top de la pagina
@@ -295,7 +298,7 @@ console.log(clonar)
     
 
 //************************************************************************************************
-    //invocada desde cuenta_editar.php selecciona tres categorias en los tipos de tiendas
+    //Recibe la categoria selecciona por el afiliado y la coloca dentro de un input en el formulario de configuracion de tienda
     function transferirCategoria(form){
         console.log("______Desde transferirCategoria()______")
         //Se declara el array que contendra la cantidad de categorias seleccionadas
@@ -376,7 +379,7 @@ console.log(clonar)
             console.log("Máximo categorias seleccionadas")  
             alert("Solo pueden seleccionarse tres categorias")   
         }    
-        CerrarCategoria() 
+        CerrarCategoria('Mostrar_Categorias') 
     }
 //************************************************************************************************   
         
@@ -400,9 +403,10 @@ console.log(clonar)
 
 //************************************************************************************************
     // invocada desde Categorias_Ajax_V.php
-    function CerrarCategoria(){    
-        console.log("______Desde CerrarCategoria()______")    
-        document.getElementById("Mostrar_Categorias").style.display = "none"
+    function CerrarCategoria(id){    
+        console.log("______Desde CerrarCategoria()______")   
+        document.getElementById(id).style.display = "none"
+        document.getElementById("Imput_6js").focus() 
     }
 
 //************************************************************************************************   
@@ -456,7 +460,7 @@ console.log(clonar)
             
         
 //************************************************************************************************
-// indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
+//Indica la cantidad de caracteres que quedan mientra se escribe el slagan de la tienda
 function contarDes(){
     var max = 40; 
     var cadena = document.getElementById("ContenidoSlo").value; 
@@ -470,7 +474,7 @@ function contarDes(){
 } 
 
 // -------------------------------------------------------------------------------------------
-//Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
+//Impide que se sigan introduciendo caracteres al alcanzar el limite maximo del el slagan de la tienda
 var contenido_slogan_com = "";    
     function valida_LongitudDes(){  
     var num_caracteres_permitidos = 40;

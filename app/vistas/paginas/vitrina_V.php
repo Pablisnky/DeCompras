@@ -2,14 +2,12 @@
     //$Datos viene de Vitrina_C
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia']; 
-
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
 <section class="section_5">	
-    <div class="contenedor_109">
-        <img class="imagen_7" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>"/>
+    <div class="contenedor_109" style="background-image: url('http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')">
     </div>
     <div class="contenedor_110" id="Section_4">
         <?php

@@ -34,12 +34,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_90 contenedor_91">
                     <h2 class="h2_9">Productos ofertados</h2>
                     <?php
-                    if($Datos['Seccion'] != 'Todos'){     ?>
-                        <h3 class="h3_9">( <?php echo $Datos['Seccion'];?> )</h3>   <?php
-                    }
-                    else{   ?>
-                        <h3 class="h3_9">( Todos )</h3>   <?php
-                    }   ?>
+                    //Mediante operador ternario
+                    $Datos['Seccion'] != 'Todos' ? $Datos['Seccion']  : 'Todos';    ?>
+                    <h3 class="h3_9">( <?php echo $Datos['Seccion'] ;?> )</h3>
                 </div>
                 <div class="contenedor_13"> 
                     <?php

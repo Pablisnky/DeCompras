@@ -1,10 +1,10 @@
 <?php 
 	//$Datos viene de Vitrina_C.php
 	if(empty($Datos['NombreTienda'])){
-		$Membrete = "PedidoRemoto";
+		$Nombre_Tienda = "PedidoRemoto";
 	}
 	else{
-		$Membrete = $Datos['NombreTienda'];
+		$Nombre_Tienda = $Datos['NombreTienda'];
 	}
 ?>
 <!DOCTYPE html>
@@ -32,12 +32,12 @@
     </head>
     <body>	
 		<header class="contenedor_69">
-			<!-- $Membrete viene de Vitrina_C -->
-			<div class="contenedor_116">
-				<a class="a_1 a_11" href="<?php echo RUTA_URL . '/Inicio_C';?>"><?php echo $Membrete?></a>
-				<h2 class="h2_8"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
+			<!-- $Nombre_Tienda viene de Vitrina_C-->
+			<div class="contenedor_111">
+				<h1 class="h1_10"><?php echo $Nombre_Tienda?></h1>
+				<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div> 
-			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
+			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu  span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="">Ofertas</a></li>

@@ -1,4 +1,4 @@
-<!-- Archivo cargado desde Ajax por medio de Llamar_seccion() y mostrado en cuenta_publicar.php y cuenta_publicar_V.php -->
+<!-- Archivo cargado desde Ajax por medio de Llamar_seccion() y mostrado en cuenta_publicar_V.php -->
 <section class="section_4 section_10" id="MostrarSeccion">
     <div class="contenedor_24"> 
       <div class="contenedor_102">

@@ -27,21 +27,20 @@ if(!empty($_SESSION["ID_Afiliado"])){
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
     <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
-        <!-- <div class="contenedor_80 contenedor_107" id="Contenedor_107">
-            <h1 class="h1_8">Configurar cuenta</h1>       
-            <span class="icon-circle-down span_10"></span>
-        </div>   -->
+        <h1 class="h1_8">Configurar cuenta</h1>   
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return ValidarEditarCuenta()">
             <a id="marcador_01" class="ancla_2"></a>
             <fieldset class="fieldset_1">
-                <legend class="legend_1">Persona responsable</legend>
-                <div class="contenedor_9 contenedor_106">
-                    <label for="imgInp_1"><img class="imagen_2" id="blah_1" alt="Fotografia del usuario" src="../images/perfiles/<?php echo$Foto_AfiCom;?>"/>
-                    <input class="ocultar" id="imgInp_1" name="imagen_Perfil" type="file"/></label>
+                <legend class="legend_1">Persona responsable</legend>                    
+                <div class="contenedor_119 borde_1 borde_2">
+                    <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/perfiles/<?php echo $Foto_AfiCom;?>"/>
+                    <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
                 </div>
                 <label class="">Nombre responsable tienda</label>
                 <input class="input_13 borde_1" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
@@ -60,10 +59,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <a id="marcador_02" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
                 <legend class="legend_1">Datos de tienda</legend> 
-                <div class="contenedor_9 contenedor_106">
-                    <label for="imgInp_2"><img class="imagen_2" id="blah_2" alt="Fotografia de la tienda" src="../images/tiendas/<?php echo$Foto_Tien;?>"/>
-                    <input class="ocultar" id="imgInp_2" name="imagen_Tienda" type="file"/></label>
+                <div class="contenedor_119 borde_1 borde_2">
+                    <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Foto_Tien;?>"/>
+                    <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
                 </div>
+                <br>
                 <label>Nombre tienda</label>
                 <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre" value="<?php echo $Nombre_Tien;?>" autocomplete="off">
                 <label>Telefono tienda</label>
@@ -202,9 +203,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas bancarias</a>
                     <a class="marcador" href="#marcador_07">Horario</a>
-                    <div class="contenedor_49">
+                    <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
-                        <input class="boton boton_6" type="submit" value="Guardar cambios"/>
+                        <input class="boton boton_6 boton_7" type="submit" value="Guardar cambios"/>
                     </div>
                 </div>
             </section>
@@ -214,7 +215,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!--div alimentado via Ajax por medio de la funcion () -->
     <div id="Mostrar_Categorias"></div>
 
-    <!--Se muestra via Ajax, la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
+    <!-- la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
     <section class="section_3 section_13" id="Ejemplo_Secciones">
         <div class=" contenedor_84 contenedor_24">
             <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>

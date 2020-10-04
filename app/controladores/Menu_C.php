@@ -22,9 +22,5 @@
         public function ciudad($Datos){
             $this->vista("paginas/ciudad_V", $Datos);
         }
-
-        public function Planes(){
-            $this->vista("paginas/planes_V");
-        }
     }
 ?>    

@@ -7,15 +7,15 @@
             parent::__construct();       
         }
 
-        public function consultarCategorias(){
-            $stmt = $this->dbh->prepare("SELECT * FROM categorias");
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return "No se pudo";
-            }
-        }
+        // public function consultarCategorias(){
+        //     $stmt = $this->dbh->prepare("SELECT * FROM categorias");
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return "No se pudo";
+        //     }
+        // }
 
         //INSERTA los datos del afiliado comercial
         public function insertarAfiliadoComercial($RecibeDatos){            
@@ -60,7 +60,7 @@
             }
         }
 
-        public function insertarAccesoAfiliado($ID_AfiliadoCom, $ClaveCifrada){         
+        public function insertarAccesoComerciante($ID_AfiliadoCom, $ClaveCifrada){         
             $stmt = $this->dbh->prepare("INSERT INTO afiliado_comingreso(ID_Afiliado, claveCifrada) VALUES (:ID_Usuario, :Clave)");
 
             //Se vinculan los valores de las sentencias preparadas

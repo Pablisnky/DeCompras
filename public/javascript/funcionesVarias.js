@@ -11,14 +11,13 @@
         if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
             div.style.marginLeft = "-48%"
             B.style.display = "none"
-            // document.getElementsByTagName("Tapa").style.backgroundColor = "red"
             //Se detiene la propagación de los eventos en caso de hacer click en un elemento que contenga algun evento
             event.stopPropagation();
         }
     }, true)
 
 //************************************************************************************************
-    //Muestra el menu principal responsive  
+    //Muestra el menu principal en formato movil y tablet  
     function mostrarMenu(){  
         console.log("______Desde mostrarMenu()______")
         let A = document.getElementById("MenuResponsive")
@@ -73,13 +72,10 @@
         console.log("______Desde Documentacion_PWA()______")    
         window.open("http://localhost/proyectos/PidoRapido/Afiliacion_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");
     }
-    //invocada desde header_inicio.php 
-    // console.log("Se eliminan todos los objetos de un mismo producto menos el ultimo")
-    // elementoEliminado = AlCarro.splice(-1);
 
 //************************************************************************************************
     //Coloca la clase "activa" en el item seleccionado del menu 
-    function ActivarLink(id){
+    // function ActivarLink(id){
         // console.log("______Desde ActivarLink()______") 
 
         // //Se identifica elemento activo
@@ -93,6 +89,6 @@
 
         // //Se añade la clase que resalta "activo" al elemento que se paso por parametro a la función
         // document.getElementById(id).classList.add('activo')
-    }
+    // }
     
 //************************************************************************************************ 

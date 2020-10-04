@@ -30,11 +30,10 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
                 } 
                 else{ //en caso contrario, mostramos un gif simulando una precarga
                     document.getElementById('Buscar_Pedido').innerHTML = 'Cargando registros...'; 
-                    document.getElementById('Buscar_Pedido').style.textAlign = "center"
                     return   
                 }  
             }          
-            document.getElementById("Buscar_Pedido").style.display = "grid"
+            document.getElementById("Buscar_Pedido").style.display = "flex"
             xmlhttp.open("GET", "Buscador_C/index/" + nombre, true)
             //se envia la informacion cargada en el input por el usuario al servidor, true, significa que se va a hacer de manera asincrona se utiliza el metodo send para enviar.               
             xmlhttp.send()

@@ -1,6 +1,6 @@
 <?php require(RUTA_APP . "/vistas/inc/header.php"); ?>
 
-<section class="section_5">
+<section class="section_5" id="Section_5">
 	<div class="contenedor_42">
         <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST" name="formLogin"  onsubmit = "return validarLogin()">	
             <fieldset class="fieldset_1">

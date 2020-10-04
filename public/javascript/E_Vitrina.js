@@ -59,7 +59,6 @@ document.addEventListener("click", function(event){
         AltoVitrina = document.body.scrollHeight
         // console.log(AltoVitrina)
         document.getElementById("contenedor_13").style.height = AltoVitrina +"px"
-        // document.getElementById("contenedor_13").style.backgroundColor ="red"
     }
 }, false)
  
@@ -278,9 +277,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
             //Se especifica el elemento donde se va a insertar el nuevo elemento
             var ElementoPadre = document.getElementById("Formulario")
-            
-            //Se sombrea el contenedor que tiene el producto seleccionado en opciones_V
-            ElementoPadre.style.backgroundColor = "red"
 
             //Se inserta en el DOM el input creado
             inputNuevo = ElementoPadre.appendChild(NuevoElemento) 

@@ -22,17 +22,18 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
         
     <div class="contenedor_42">    
         <p class="p_6">Actualizar datos de producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">
             <div class="contenedor_47">
-                <div class="contenedor_97 borde_2">
-                    <label for="imgInp">
-                        <img class="imagen_6 imagen_9" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
-                    </label>
-                    <input class="ocultar" name="imagen_EditarProducto" id="imgInp" type="file"/>
-                </div>
+                <label for="imgInp">
+                <div class="contenedor_119 contenedor_121 borde_1 borde_2">
+                    <span class="icon-pencil span_18 borde_1"></span>
+                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                    <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
+                </div></label>
                 <div class="contenedor_114">
                     <label>Producto</label>
                     <input class="placeholder placeholder_2 borde_1" type="text" name="producto" id="ContenidoPro" value="<?php echo $Producto;?>"/>
@@ -60,7 +61,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input class="ocultar" type="text" name="id_opcion" value="<?php echo $ID_Opcion;?>">
                         <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
                         <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
-                        <input class="" type="text" name="puntero" value="<?php echo $Datos['puntero'];?>"/>
+                        <input class="ocultar" type="text" name="puntero" value="<?php echo $Datos['puntero'];?>"/>
                         <input class="boton" type="submit" value="Guardar"/>
                     </div> 
                 </div>
@@ -68,8 +69,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         </form>
     </div>
 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js';?>"></script> 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js';?>"></script> 
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js';?>"></script> 
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js';?>"></script> 
 
     <script> 
         //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php

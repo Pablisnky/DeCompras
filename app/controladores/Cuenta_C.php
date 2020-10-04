@@ -24,9 +24,14 @@
             $Consulta = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
             $Fotografia = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             
+            //Se CONSULTAN el slogan de una tienda en particular
+            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
             $Datos = [
                 'secciones' => $Secciones,
                 'fotografiaTienda' => $Fotografia,
+                'slogan' => $Slogan
             ];
 
             $this->vista("paginas/cuenta_V", $Datos);
@@ -77,13 +82,18 @@
             //Se CONSULTAN las secciones de una tienda en particular
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            //Se CONSULTAN el slogan de una tienda en particular
+            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
                 'secciones' => $Secciones, //necesario en header_AfiCom, arma el item productos del menu
                 'productos' => $Productos,
                 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja 
-                'Apunta' => $Puntero
+                'Apunta' => $Puntero,
+                'slogan' => $Slogan
             ];
             // echo "<pre>";
             // print_r($Datos);
@@ -114,6 +124,11 @@
             //CONSULTA las secciones de la tienda
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            //Se CONSULTAN el slogan de una tienda en particular
+            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
 
             $Datos = [
                 'datosTienda' => $DatosTienda,
@@ -121,6 +136,7 @@
                 'datosBancos' => $DatosBancos,
                 'categoria' => $Categoria,
                 'secciones' => $Secciones,
+                'slogan' => $Slogan
             ];
 
             $this->vista("paginas/cuenta_editar_V", $Datos);
@@ -135,9 +151,14 @@
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             
+            //Se CONSULTAN el slogan de una tienda en particular
+            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
             $Datos = [
                 'categorias' => $Categorias,
                 'secciones' => $Secciones,
+                'slogan' => $Slogan
             ];
             
             //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya las tiene creadas cuando vaya a cargar un producto
@@ -167,10 +188,15 @@
             $Consulta = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
             $Especificaciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             
+            //Se CONSULTAN el slogan de una tienda en particular
+            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
             $Datos = [
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
                 'especificaciones' => $Especificaciones,
-                'puntero' => $Opcion
+                'puntero' => $Opcion,
+                'slogan' => $Slogan
             ];
 
             // echo "<pre>";

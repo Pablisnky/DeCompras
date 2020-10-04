@@ -6,25 +6,51 @@
 
 <section class="section_5">
     <div class="contenedor_70">
-        <p class="p_1">Tu tienda en toda la ciudad</p>
-        <p class="p_8">Unete a nuestra red de comercialización de productos.</p>
-        <div class="contenedor_51 contenedor_48">
-            <div>
-                <span class="icon-cart span_6"></span>
+        <p class="p_1">Unete a nuestra red de comercialización de productos.</p>
+        <div class='contenedor_84 contenedor_93 borde_1'>
+            <p class="p_6 p_9">15 días libres de pago al registrar tu tienda</p> 
+            <div class="contenedor_94">
+                <P class="p_3 p_5">Emprendedor</P>
+                <p class="p_11">1,5 USD/mes</p>
+                <ul>
+                    <li class="li_3"><p>Proyectos de manufactura o tiendas con catalogo de hasta 20 productos.</p></li>
+                    <li class="li_3"><p>Código QR</p></li>
+                </ul>   
             </div>
-            <div>
-                <span class="icon-truck span_6"></span>
+            <div class="contenedor_94">
+                <P class="p_3 p_5">Bodega</P>
+                <p class="p_11">3,5 USD/mes</p>
+                <ul>
+                    <li class="li_3"><p>Tiendas con catalogo de hasta 200 productos</p></li>
+                    <li class="li_3"><p>Código QR</p></li>
+                </ul>   
             </div>
-            <div>
-                <span class="icon-home2 span_6"></span>
+            <div class="contenedor_94">
+                <p class="p_3 p_5">Básico</p>
+                <p class="p_11">6 USD/mes</p>
+                <ul>
+                    <li class="li_3"><p>Tiendas con catalogo de hasta 500 productos</p></li>
+                    <li class="li_3"><p>Código QR</p></li>
+                </ul>
+            </div>        
+            <div class="contenedor_94">
+                <P class="p_3 p_5">Mini tienda</P>
+                <p class="p_11">15 USD/mes</p>
+                <ul>
+                    <li class="li_3"><p>Tiendas con catalogo de hasta 1.500 productos</p></li>
+                    <li class="li_3"><p>Subdominio</p></li>
+                    <li class="li_3"><p>Código QR</p></li>
+                </ul>
             </div>
-        </div>
-        <div class="contenedor_99 borde_1" id="Desarrollo_PWA">
-            <div>
-                <h3 class="h3_1">DESARROLLO</h3>
-                <h3 class="h3_1">MULTIPLATAFORMA</h3>
+            <div class="contenedor_94">
+                <p class="p_3 p_5">Tienda</p>
+                <p class="p_11">25 USD/mes</p>
+                <ul>
+                    <li class="li_3"><p>Tiendas con catalogo de más de 1.500 productos</p></li>
+                    <li class="li_3"><p>Subdominio</p></li>
+                    <li class="li_3"><p>Código QR</p></li>
+                </ul>
             </div>
-            <img class="imagen_5" alt="Logo PWA" src="<?php echo RUTA_URL;?>/public/images/PWA.png"/>
         </div>
         <div class="contenedor_41">
             <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>

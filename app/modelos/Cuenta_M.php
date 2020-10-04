@@ -252,6 +252,20 @@
         //     $stmt->execute();
         //     return $stmt;
         // }
+        
+        //SELECT de slogan de la tienda
+        public function consultarSloganTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT slogan_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
+
+            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
 
 
 

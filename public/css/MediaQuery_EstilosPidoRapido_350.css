@@ -20,7 +20,6 @@
 	padding-bottom: 0%;
 }
 .contenedor_31{/*vitrina*/
-	/* background-color: red; */
 	padding: 0%;
 }
 .contenedor_41{/*afiliacion*/
@@ -74,9 +73,6 @@
 	font-size: 1.4em;
 	margin-bottom: 5%;
 }
-.section_5{/*afiliacion - tiendas - vitrina - planes*/
-	/* min-height: initial; */
-}
 .section_6{/*afiliacion*/
 	height: 250%;
 }
@@ -84,8 +80,6 @@
 	font-size: 1.1em !important;
 }
 .textarea_1{/*opciones*/
-	/* background-color: red; */
-	/* border: none; */
 	min-height: 10px !important;
 }
 }

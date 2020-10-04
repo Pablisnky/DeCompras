@@ -28,11 +28,12 @@
     <body>	
 		<header class="contenedor_69">
 			<div class="contenedor_111">
-				<a class="a_1 a_10"><?php echo $NombreTienda;?></a>
-				<!-- <h2 class="h2_8 h2_10"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2> -->
+				<h1 class="h1_10"><?php echo $NombreTienda;?></h1>				
+				<!-- $Datos viene de Cuenta_C-->
+				<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div>
-			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
-			<nav id="MenuResponsive" class="menuResponsive nav_2">
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
+			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li>

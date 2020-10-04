@@ -34,6 +34,11 @@
                 <span class="icon-spoon-knife span_8"></span>
             </div> 
 
+            <div class='contenedor_6 borde_1' id="Contenedor_6m">
+                <h2 class='h2_1'>MASCOTAS</h2>
+                <span class="icon-man-woman span_8"></span>
+            </div>
+
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
                 <span class="icon-barcode span_8"></span>
@@ -83,11 +88,6 @@
                 <span class="icon-man-woman span_8"></span>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6m">
-                <h2 class='h2_1'>MASCOTAS</h2>
-                <span class="icon-man-woman span_8"></span>
-            </div>
-
             <div class='contenedor_6 borde_1' id="Contenedor_6n">
                 <h2 class='h2_1'>CONSTRUCCIÓN</h2>
                 <span class="icon-man-woman span_8"></span>
@@ -117,9 +117,11 @@
     
     <section><!--Buscador-->
         <div class="contenedor_54" id="Busqueda">
-            <div class="contenedor_53">
-                <span id="Span_5">X</span>
-                <p class="p_7">Seleccione una ciudad y especifica tú pedido</p>
+            <div class="contenedor_53">                
+                <div class="contenedor_102">
+                        <h1 class="h1_1 h1_3">Seleccione una ciudad y especifica tú pedido</h1>
+                        <span class="span_5" id="Span_5" onclick="CerrarModal_X('Mostrar_Categorias')">X</span>
+                </div>
                 <div class="contenedor_55">
                     <div class="contenedor_56">
                         <label class="label_6">Estado</label>

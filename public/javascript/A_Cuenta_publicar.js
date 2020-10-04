@@ -46,6 +46,8 @@ function respuesta_seccion(){
         console.log(peticion.readyState)
         if(peticion.status == 200){    
             console.log(peticion.status)
+            //Coloca el cursor en el top de la pagina
+            window.scroll(0, 0)
             document.getElementById("Contenedor_80").innerHTML = peticion.responseText
         } 
         else{

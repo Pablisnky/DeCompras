@@ -1,8 +1,5 @@
-- El input_dinamico_Producto corresponde al numero que el sistmea asigno al DIV que contiene determinado producto, es diferente para cada producto y tiene el prefijo "Producto_" 
--Tienda online
-- COLOMBIA -> 6% por pedido y 6% por despacho, afiliación gratis tanto de despachadores y comerciantes.
--VENEZUELA -> 
-
 veronica@gmail.com      1906
 pcabeza7@gmail.com      ppcc
 sebastian@gmail.com     ssss
+claudia@gmail.com       cccc
+vivas@gmail.com         vvvv

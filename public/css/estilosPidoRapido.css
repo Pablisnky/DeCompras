@@ -39,18 +39,14 @@ button{/*tiendas*/
 	width: 100%
 }
 .a_1{/*header*/
-	/* display: block; */
-	/* position: absolute;
-	top: 2%;
-	left: 4%; */
+	text-align: center;
 	display: block;
 	color: white;
 	font-size: 2em;
-	text-align: right;
 }
 .a_2{/*inicio*/
 	background-color: rgb(239, 245, 245);
-	color: rgb(51, 51, 51);
+	color: var(--OficialOscuro);
 	font-size: 1.5em;
 	border-radius: 10px;
 	text-align: left !important;
@@ -127,7 +123,7 @@ button{/*tiendas*/
 		}
 	}
 .boton{/*carrito - recibePedido - login - afiliacion - registroCom - Categoria_Ajax*/
-	background-color: rgb(51, 51, 51);
+	background-color: var(--OficialOscuro);
 	width: 45%;
 	height: 30px;
 	line-height: 30px;
@@ -141,7 +137,7 @@ button{/*tiendas*/
 	cursor: pointer;
 	background-color:rgb(239, 245, 245) ;
 	color: rgb(51, 51, 51);
-	border-color: rgb(51, 51, 51);
+	border-color: var(--OficialOscuro);
 	border-width: 1px;
 	border-style: solid;
 }
@@ -186,7 +182,7 @@ button{/*tiendas*/
 	display: none;
 }
 .comandoMenu_2{/*header_inicio - header_AfiCom - header - header_Tienda*/
-	visibility: hidden;/*con esta forma de ocultar se mantiene el area del elemento ocupada*/
+	display: none;
 }
 .contador{/*cuenta_publicar*/
 	width: 7% !important;
@@ -260,7 +256,7 @@ button{/*tiendas*/
 	bottom: 1pt;
 	padding: 0.5% 0%;
 }
-.contenedor_9{/*cuenta_editar_prod - cuenta_editar - cuenta_publicar - cuenta_productos - tiendas - opciones */
+.contenedor_9{/*cuenta_productos - tiendas - opciones */
 	border-radius: 15px;
 	text-align: center;
 	width: 100%;
@@ -277,7 +273,7 @@ button{/*tiendas*/
 	grid-template-rows: min-content;
 	column-gap: 3%;/*espacio entre columnas*/
 	row-gap: 5%;/*espacio entre filas*/
-	margin: -2% auto 4% auto;
+	margin: 12% auto 4% auto;
 	/* margin-top: 4%; */
 	width: 85%;
 	height: 92%;
@@ -300,7 +296,6 @@ button{/*tiendas*/
 	min-height: 100%;
 }
 .contenedor_13{/*opciones - cuenta_productos*/
-	/* background-color: rgb(239, 245, 245); */
 	display: flex;
 	flex-wrap: wrap;
 	align-content: flex-start; /*Rompe la distribución proporcional vertical y coloca los div hijos desde el top, la distribucion vertical proporcional ocurre cuando el contenedor general tiene altura de 100%*/
@@ -308,23 +303,18 @@ button{/*tiendas*/
 	margin: auto;
 	border-radius: 15px;
 	justify-content:space-between; 
-	margin-top: 3%;
+	margin-top: 12%;
 }
 .contenedor_13>h1{
 	flex: 0 1 100%;/*ocupa toda la primera fila en la distribucion flex*/
   }
 .contenedor_14{/*vitrina*/
-	/* background-color: rgba(51, 51, 51, 0); */
 	display: none;
 	padding-bottom: -10% !important;
 	padding-right: 2%;
-	/* border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px; */
-	
 	grid-template-rows: 0px;
 	grid-column-start: 1;
 	grid-column-end: 3;
-	/* width: 100%; */
 }
 .contenedor_15{/*tiendas*/
 	width: 90%;
@@ -337,16 +327,11 @@ button{/*tiendas*/
 	cursor: pointer;
 }
 .contenedor_16{/*vitrina*/
-	/* text-align: right; */
-	/* margin-top: 4%; */
 	width: 20%;
 	float: right;
 	position: relative;
 	top: -140%;
 	left: -23%;
-}
-.contenedor_17{
-	/* height:35px */
 }
 .contenedor_18{/*vitrina*/
 	grid-column-start: 1;
@@ -357,8 +342,6 @@ button{/*tiendas*/
 .contenedor_19{/*opciones*/
 	width: 100%; 
 	float: left;
-	/* grid-column-start: 1;
-	grid-column-end: 3; */
 }
 .contenedor_20{/*carrito*/
 	width: 100%;
@@ -409,8 +392,7 @@ button{/*tiendas*/
 	text-align: center;
 }
 .contenedor_31{/*vitrina - opciones*/
-	background-color: rgb(51, 51, 51);
-	/* background-color: blue; */
+	background-color: var(--OficialOscuro);
 	border-radius: 10px;
 	/* padding: -1%; */
 	margin: auto;
@@ -422,7 +404,7 @@ button{/*tiendas*/
 	border-style: solid;
 }
 .contenedor_32{/*header*/
-	background-color:rgba(51, 51, 51, 1);
+	background-color: var(--OficialOscuro);
 	border-radius: 10px;
 	padding: 2%;
 	margin-left: auto;
@@ -449,7 +431,7 @@ button{/*tiendas*/
 	cursor: pointer;
 }
 .contenedor_35{/*header_inicio - header_AfiCom*/
-	background-color:rgb(51, 51, 51);
+	background-color: var(--OficialOscuro);
 	width: 100%;
 	height: 5%;
 	display: flex;
@@ -471,11 +453,6 @@ button{/*tiendas*/
 }
 .contenedor_39{/*RecibePedido - registro*/
 	height: 100%;
-}
-.contenedor_40{/*registro - login_Vrecord*/
-	/* padding-top: 10%;
-	width: 80%;
-	margin: auto; */
 }
 .contenedor_41{/*afiliacion*/
 	display: flex;
@@ -546,7 +523,7 @@ button{/*tiendas*/
 	display: none;
 	background-color: var(--FondoDivModal);
 	position: absolute;
-	height: 200%;
+	height: 300%;
 	width: 100%;
 	top:  0%;
 	left: 0%;
@@ -573,21 +550,23 @@ button{/*tiendas*/
 	padding: 1.5%;
 }
 .contenedor_58{/*inicio*/
-	background-color: rgb(239, 245, 245);
+	background-color: var(--OficialClaro);
 	display: none;
-	grid-template-columns: 21.2% 21.2% 21.2% 21.2%;
-	column-gap: 5% !important;/*espacio entre columnas*/
-	row-gap: 5%;/*espacio entre filas*/
+	flex-wrap: wrap;
+	justify-content: space-around;
 	width: 80%;
 	margin: auto;
 	border-radius: 15px;
-	padding: 1.5%;
+	padding: 1%;
+	text-align: center;
+	align-content: flex-start; 
 }
 .contenedor_59{/*buscador*/
 	border-radius: 15px;
 	margin: auto;
-	padding: 5%;
-	width: 100%;
+	padding: 2%;
+	margin: 1%;
+	width: 20%;
 }
 .contenedor_59:hover{/*buscador*/
 	cursor: pointer !important;
@@ -597,13 +576,13 @@ button{/*tiendas*/
 	display: none;
 	margin:3% 5%;
 	width: 100%;
-	border-top-color: rgb(51, 51, 51);
+	border-top-color: var(--OficialOscuro);
 	border-top-width: 1px;
 	border-top-style: solid;
 }
 .contenedor_61{/*vitrina - opciones*/
-	background-color: rgb(51, 51, 51);
-	visibility: hidden;
+	background-color: var(--OficialOscuro);
+	visibility: hidden;/*con esta forma de ocultar se mantiene el area del elemento ocupada*/
 	display: flex;/*para centrar verticalmente el div hijo*/
 	justify-content: space-around;
 	align-items: center;/*para centrar verticalmente el div hijo*/
@@ -629,10 +608,10 @@ button{/*tiendas*/
 	width: 50%;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
-	border-bottom-color:rgb(51, 51, 51) ;
+	border-bottom-color: var(--OficialOscuro);
 	border-top-style: solid;
 	border-top-width: 1px;
-	border-top-color:rgb(51, 51, 51) ;
+	border-top-color: var(--OficialOscuro);
 }
 .contenedor_65{/*carrito*/
 	padding: 1%;
@@ -646,19 +625,19 @@ button{/*tiendas*/
 }
 .contenedor_67{/*cuenta_editar*/
 	padding: 5% 2%;
-	border-bottom-color: rgb(51, 51, 51);
+	border-bottom-color: var(--OficialOscuro);
 	border-bottom-width: 3px;
 	border-bottom-style: solid;
 	border-radius: 15px;
 	margin-top: 10%;
 }
 .contenedor_69{/*tiendas - header - header_AfiCom - header_inicio*/
-	background-color: rgb(51, 51, 51);
+	background-color: var(--OficialOscuro);
 	position: fixed;
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	height: 60px;
+	height: 13%;
 	z-index: 3 !important;
 }
 .contenedor_70{/*afiliacion*/
@@ -682,9 +661,6 @@ button{/*tiendas*/
 	margin: 0% auto;
 	margin-bottom: 7%;
 }
-/*.contenedor_74{cuenta_publicar
-	position: initial !important;
-}*/
 .contenedor_76{/*Categorias_Ajax*/
 	display: grid;
 	grid-template-columns: 32% 32% 32%;
@@ -719,11 +695,11 @@ button{/*tiendas*/
 	left: 83%;
 	width: 18%;
 }
-.contenedor_84{/*cuenta_editar - planes*/
+.contenedor_84{/*cuenta_editar - afiliacion*/
 	display: grid;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-columns: 17% 17% 17% 17% 17%;
 	grid-template-rows: min-content !important;
-	column-gap: 5%;/*espacio entre columnas*/
+	column-gap: 3%;/*espacio entre columnas*/
 	justify-content: center;/*centra horizontalmente*/
 }
 .contenedor_85{/*cuenta_editar*/
@@ -733,7 +709,7 @@ button{/*tiendas*/
 	column-gap: 5%;/*espacio entre columnas*/
 }
 .contenedor_86{/*cuenta_editar*/
-	border-right-color: rgb(51, 51 ,51);
+	border-right-color: var(--OficialOscuro);
 	border-right-width: 1px;
 	border-right-style: solid;
 }
@@ -747,13 +723,12 @@ button{/*tiendas*/
 	bottom: 0pt;
 	width: 100%;
 	height: 7%;
-	background-color:rgb(51, 51 ,51);
+	background-color:  var(--OficialOscuro);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .contenedor_89{/*Secciones_Ajax*/
-	/* background-color: blue; */
 	display: grid;
 	grid-template-columns: 22% 22% 22% 22%;
 	column-gap: 1%;/*espacio entre columnas*/
@@ -765,7 +740,7 @@ button{/*tiendas*/
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	top: 14%;
+	top: 13%;
 	left: 0%;
 	width: 100%;
 	height: 30px;
@@ -773,15 +748,14 @@ button{/*tiendas*/
 }
 .contenedor_91{/*cuenta_productos*/
 	display: block;
-	height: 50px !important;
-	padding-top: 1%;	
-	top: 11%;
+	height: 35px !important;
 }
-.contenedor_93{/*planes*/
-	padding-top: 0%;
-	width: 80%;
-	margin:auto;
-	/* height: 100%; */
+.contenedor_93{/*afiliacion*/
+	background-color: var(--OficialClaro);
+	padding-top: 3%;
+	width: 90%;
+	margin: 2% auto;
+	border-radius: 15px;
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	display: grid;
@@ -789,7 +763,6 @@ button{/*tiendas*/
 	column-gap: 5%; /*espacio entre filas*/
 	width: 30%;
 	margin-bottom: 2%;
-	/* padding: 1%; */
 }
 .contenedor_96{/*cuenta_productos*/
 	display: flex;
@@ -802,7 +775,6 @@ button{/*tiendas*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/* margin: auto; */
 }
 .contenedor_98{/*footer*/
 	display: flex;
@@ -823,13 +795,10 @@ button{/*tiendas*/
 .contenedor_100{/*pwa*/
 	width: 17% !important;
 }
-.contenedor_102{/*Selecciones_Ajax*/
+.contenedor_102{/*Selecciones_Ajax - Categorias_Ajax - inicio*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* position: fixed;
-	top: 11.5%;
-	left: 0%; */
 	width: 100%;
 }
 .contenedor_103{/*cuenta_productos*/
@@ -861,9 +830,8 @@ button{/*tiendas*/
 	width: 80%;
 	margin: 9% auto;
 }
-.contenedor_111{/*header - header_AfiCom*/
-	width: 20%;
-	float: left;
+.contenedor_111{/*header - header_Tienda*/
+	/* height: 70px; */
 }
 .contenedor_112{/*cuenta*/
 	width: 90%;
@@ -885,6 +853,29 @@ button{/*tiendas*/
 	align-items: center;
 	width: 100%;
 }
+.contenedor_116{/* header_inicio*/
+	height: 10%;
+}
+.contenedor_119{/*cuenta_publicar - cuenta_editar_prod - cuenta_editar*/
+	width: 50%;
+	align-items: center;
+	margin: auto;
+	margin-bottom: 5% !important;
+	height: 150px;
+	text-align: center;
+	vertical-align: center;
+}
+.contenedor_120{ /*tiendas*/ 
+	background-size: contain; /*cover*/
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 140px;
+	vertical-align: middle;
+}
+.contenedor_121{/*cuenta_publicar - cuenta_editar_prod*/
+	width: 100%;
+	margin-top: 15% !important;
+}
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 40%;
 	margin: auto;
@@ -896,9 +887,8 @@ button{/*tiendas*/
 }
 .footer{
 	height: 30%;
-	/* margin-top: 10%; */
 }
-.h1_1{/*carrito - cuenta_productos - opciones - tiendas - Secciones_Ajax*/
+.h1_1{/*carrito - cuenta_productos - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes*/
 	font-weight: normal;
 	text-align: center;
 	font-size: 1.4em;
@@ -930,16 +920,23 @@ button{/*tiendas*/
 	margin: 2% auto;
 	text-align: center;
 }
+.h1_8{/*cuenta_editar*/
+	display: none;
+}
 .h1_9{/*carrito*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
 	display: inline_block;
 	width: 100%;
-
+}
+.h1_10{/*header_Tienda*/
+	color: white;
+	font-size: 2vw;
+	font-weight: normal;
+	text-align: center;
 }
 .h2_1{/*inicio*/
-	/* background-color: yellow; */
 	font-weight: normal;
 	text-align: center;
 	padding: 4%;
@@ -963,12 +960,13 @@ button{/*tiendas*/
 	text-align: right;
 	margin-top: -3%;
 }
-.h2_5{/*header*/
+.h2_5{/*header - header_tienda - header_AfiCom*/
 	color: white;
 	font-size: 0.9em;
 	font-weight: lighter;
-	text-align: right;
-	margin-top: -3%;
+	text-align: center;
+	margin-top: -0.2%;
+	height:0.9em;
 }
 .h2_6{/*vitrina*/
 	font-size: 1.3em;
@@ -981,13 +979,14 @@ button{/*tiendas*/
 	font-weight: normal;
 	/* text-align: center; */
 }
-.h2_8{/*header_tienda -  header_AfiCom*/
-	color: white;
+.h2_8{/**/
+	/* color: white;
 	font-size: 0.9em;
 	font-weight: lighter;
 	text-align: center;
 	margin-bottom: -3%;
 	padding-bottom: 0.5%;
+	height: 20px; */
 }
 .h2_9{/*cuenta_productos*/
 	width: 100%;
@@ -1065,12 +1064,11 @@ button{/*tiendas*/
 	object-fit: contain ;
 	padding: 10%;
 }
-.imagen_2{/*cuenta_editar_prod*/
+.imagen_2{/*vitrina*/
 	border-radius: 15px;
-	object-fit: scale-down !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	object-fit: scale-down !important; 
 	width: 150px;
 	height: 180px;
-	/* padding: 5% 0%; */
 }
 .imagen_2:hover{/*cuenta_editar_prod*/
 	cursor: pointer;
@@ -1091,20 +1089,18 @@ button{/*tiendas*/
 }
 .imagen_5{/*footer*/
 	width: 28%;
-	object-fit:contain ;
+	object-fit: contain;/*esta propiedad necesita el ancho y alto de la imagen definidos*/
 }
 .imagen_6{/*cuenta_productos*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 160px;
 	height: 100px;
 }
-.imagen_6:hover{/*cuenta_productos*/
-	cursor: default;
-}
 .imagen_7{/*tiendas*/
-	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
-	width: 300px;
-	height: 200px;
+	padding: 10%;
+	object-fit: cover !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	/* width: 100%!important;
+	height: 200px!important; */
 	margin-bottom: 5%;
 	border-radius: 15px;
 }
@@ -1114,9 +1110,6 @@ button{/*tiendas*/
 	/* height: 150px; */
 	margin: auto;
 	/* margin-bottom: 3%; */
-}
-.imagen_9:hover{/*cuenta_editar_prod*/
-	cursor: pointer;
 }
 .input_1{/*vitrina*/
 	border: none;
@@ -1171,6 +1164,14 @@ button{/*tiendas*/
 	cursor: default;
 	font-size: 0.9em;
 }
+.input_10{/*opciones*/
+	background-color: yellow; 
+	padding-right:2%; 
+	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
+	overflow:hidden; 
+	white-space:nowrap; 
+	text-overflow: ellipsis;
+}
 .input_11{/*carrito - */
 	text-align: center;
 }
@@ -1179,7 +1180,6 @@ button{/*tiendas*/
 	display: inline-block;
 }
 .input_13{/*cuenta_editar*/
-	/* background-color: yellow; */
 	font-size: 0.8em;
 	line-height: 30px;
 	padding-left: 5%;
@@ -1371,13 +1371,12 @@ button{/*tiendas*/
 	width: 30%;
 }
 .menuResponsive{/*da formato a barra de menu y contiene todos los enlaces de la misma, solo a la del header*/
-	background-color: rgb(51, 51, 51);
-	padding-top: 1%;
-	/* margin-top: 5%; */
+	background-color: var(--OficialOscuro);
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	/* font-family:verdana; */
+	position: absolute;
+	bottom: 0px;
 }
 .menuResponsive ul{/*Todas  las páginas*/
 	width: 95%;
@@ -1436,16 +1435,16 @@ button{/*tiendas*/
 	text-align: center;
 	width: 100% !important;
 }
-.p_5{/*afiliacion - planes*/
+.p_5{/*afiliacion */
 	margin: 0% auto 5% auto;
 	text-align: center;
 }
-.p_6{/*cuenta_editar - planes*/
+.p_6{/*cuenta_editar - afiliacion*/
 	text-align: center;
 	font-size: 1.5em;
 	margin-bottom: 3%;
 }
-.p_7{/*inicio - cuenta*/
+.p_7{/*cuenta - */
 	font-size: 1.5em;
 	text-align: center;
 	margin-bottom: 2%;
@@ -1455,17 +1454,18 @@ button{/*tiendas*/
 	text-align: center;
 	font-size: 1.9em;
 }
-.p_9{/*cuenta_editar - planes - opciones - tiendas*/
+.p_9{/*cuenta_editar - afiliacion - opciones - tiendas*/
 	grid-column-start: 1;
-	grid-column-end: 5;
+	grid-column-end: 6;
 }
 .p_10{/*header_Tienda*/
 	color: white;
 }
-.p_11{/*tiendas*/
+.p_11{/*afiliacion*/
 	color: rgb(51, 51, 51);
 	font-size: 1.9em;
 	text-align: center;
+	padding-bottom: 5%;
 }
 .p_12{/*cuenta_editar*/
 	margin: 0% auto 5% auto;
@@ -1514,7 +1514,7 @@ button{/*tiendas*/
 	height: 400%;
 	z-index: 2;
 }
-.section_5{/*afiliacion - vitrina - planes - login - login_Vrecord - cuenta*/
+.section_5{/*afiliacion - vitrina - login - login_Vrecord - cuenta - registroCom - registroDes*/
 	min-height: 100%;
 }
 .section_6{/*afiliacion*/
@@ -1527,12 +1527,7 @@ button{/*tiendas*/
 .section_9{/*opciones - cuenta_productos*/
 	background-color: white;
 }
-.section_10{/*Categorias_Ajax - Secciones_Ajax*/
-	/* position: fixed;
-	padding-top: 3%; */
-}
 .section_11{/*tiendas*/
-	/* background-color: blue; */
 	min-height: 100%;
 	/* padding-top: 4% !important; */
 }
@@ -1546,9 +1541,6 @@ button{/*tiendas*/
 	z-index: 1;
 	padding: 5%;
 } 
-.section_14{/*planes*/
-	padding-top: 10%;
-}
 .select_1{/*inicio*/
 	margin: 0% auto 2% auto;
 	display: block;
@@ -1567,7 +1559,7 @@ button{/*tiendas*/
 	margin: auto;
 	text-align: center;
 	display: inline-block;
-	line-height: 12px !important;
+	line-height: 30px !important;
 }
 .span_3, .span_4{
 	cursor: pointer;
@@ -1646,6 +1638,18 @@ button{/*tiendas*/
 .span_17{/*tiendas*/
 	display: inline-block;
 	margin-right: 2%;
+}
+.span_18{/*cuenta_publicar - cuenta_editar_prod*/
+	background-color: var(--OficialClaro);
+	border-radius: 30px;
+	padding: 3%; 
+	width: 30px;
+	position: relative; 
+	top: 5%;
+	left: 80%;
+}
+.span_18:hover{/*cuenta_publicar - cuenta_editar_prod*/
+	cursor: pointer;	
 }
 .tabla{/*carrito*/
 	width: 100%;
@@ -1733,11 +1737,9 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	background-color: var(--OficialOscuro);
 	display: none;
 	position: absolute;
-		/* margin-top: -5.5% !important; */
-		top: 400%;
-		padding-top: 0.7%;
+	top: 100%;
+	padding-top: 0.7%;
 	left: 46%;
-	/* z-index: 1;  */
 	width: 200px; 
 }
 .menuLi_1:hover>ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
@@ -1748,7 +1750,6 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	padding: 3% 5% !important;
 	text-align: left !important;
 	display: block;
-	/* width: 100% !important; */
 }
 .menuLi_2:hover{/*header.php   index.php*/
 	text-align: left !important;
