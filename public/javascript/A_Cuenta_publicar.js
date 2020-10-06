@@ -34,18 +34,16 @@ document.getElementById("SeccionPublicar").addEventListener('click', Llamar_secc
 
 //-------------------------------------------------------------------------------------------------
 function Llamar_seccionesDisponible(){
+    console.log("Desde Llamar_seccionesDisponible()")
     var url = "http://localhost/proyectos/PidoRapido/Cuenta_C/SeccionesDisponibles/"
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_seccion
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null")
-    console.log("Entra a Llamar_seccionesDisponible()")
 }                                                           
 function respuesta_seccion(){
     if(peticion.readyState == 4){
-        console.log(peticion.readyState)
         if(peticion.status == 200){    
-            console.log(peticion.status)
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
             document.getElementById("Contenedor_80").innerHTML = peticion.responseText

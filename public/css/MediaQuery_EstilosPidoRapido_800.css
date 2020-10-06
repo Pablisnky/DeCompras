@@ -74,7 +74,7 @@
 	padding: 1%;
 	margin-top: 1%;
 	margin-left: 2%;
-	z-index: -1 !important;
+	z-index: 2 !important;
 }
 .comandoMenu_3{/*header_AfiCom - header*/
 	z-index: 1 !important;
@@ -392,8 +392,7 @@
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	width: 100%;
-	/* margin: auto; */
-	margin-bottom: 5%;	
+	margin-bottom: 10%;	
 	grid-template-columns: 45% 50%;
 	column-gap: 5%; /*espacio entre filas*/
 }
@@ -651,6 +650,7 @@
 .label_4{/*opciones*/	
 	width: 50% !important;
 	font-size: 0.9em;
+	top: 1%;
 }
 .label_6{/*inicio*/
 	width: 50px;
@@ -746,6 +746,9 @@
 	color: white;
 	font-size: 15px;
 	width: 100%;
+}
+.nav_1{/*header_inicio*/
+	margin-top: 12%;
 }
 .p_1{/*alert - afiliacion*/
 	padding-top: 10%;

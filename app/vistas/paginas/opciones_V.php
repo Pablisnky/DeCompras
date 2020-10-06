@@ -13,11 +13,13 @@
             <?php   
             $ContadorLabel = 1;
             //$Datos proviene de Opciones_C
+            $ID_Tienda = $Datos['ID_Tienda'];
+            $Nombre_Tienda = " ttttttt";
             foreach($Datos['Opciones'] as $row){
                 $ID_Opcion =  $row['ID_Opcion'];
                 $Producto = $row['producto']; 
                 $Opcion = $row['opcion']; 
-                // $Especificacion = $row['especificacion'];                      
+                $Especificacion = $row['especificacion'];                      
                 $Precio = $row['precio'];                
                 $Seccion = $row['seccion'];              
                 $Fotografia = $row['fotografia'];
@@ -33,11 +35,24 @@
                         </div>
                     </div>
                     <div> 
+                        <div style=" min-height:80px">
+                        <!-- Producto -->
                         <input class="input_8" type="text" value="<?php echo $Producto;?>" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>" readonly="readonly"/>
+
+                        <!-- Opcion -->
                         <input class="input_8" type="text" value="<?php echo $Opcion;?>" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" readonly="readonly"/>
-                        <!-- <input class="input_8 input_10" type="text" value="<?php// echo $Especificacion;?>" id="<?php// echo 'EtiquetaEspecificacion_' . $ContadorLabel;?>" readonly="readonly"/> -->
+                        
+                        <!-- Especificacion -->
+                        <?php  
+                            if($Especificacion != 'No_Aplica'){ ?>  
+                                <!-- <a class="input_8 input_10" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Especificacion . ',' . $Precio . ',' . $Fotografia ?>" target="_blank" rel="noopener noreferrer"><?php echo $Especificacion;?></a> -->
+                                <?php
+                            }
+                        ?> 
+                        
+                        <!-- Precio -->
                         <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs." id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" readonly="readonly"/>
-                        <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
+                      
                         <?php 
                         //En caso de venir desde buscador se sombreo el producto solicitado en la busqueda y se posiciona de primero entre todos los productos
                         if($Opcion == $Datos['ProductoSelecion']){  ?>
@@ -67,6 +82,10 @@
                         }   ?>
                         <!-- Este input es el que se envia al archivo JS por medio de la función agregarOpcion(), en el valor se colocan el caracter _ para usarlo como separardor en  JS-->
                         <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
+                        </div>
+                        
+                        <!-- Agregar -->
+                        <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 borde_1 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                     </div> 
 
                     <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">

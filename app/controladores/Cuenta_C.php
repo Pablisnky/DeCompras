@@ -508,7 +508,7 @@
             $this->vista("inc/Secciones_Ajax_V", $Datos);
         }
 
-        //Metodo invocado desde Funciones_Ajax.js
+        //Metodo invocado desde A_Cuenta_publicar.js
         public function SeccionesDisponibles(){
             // CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
@@ -636,7 +636,7 @@
             $this->Publicar();
         }
                 
-        //Metodo invocada desde cuenta_editar_pro_V.php
+        //Metodo invocada desde cuenta_editar_prod_V.php
         public function recibeAtualizarProducto(){
             // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
@@ -648,6 +648,7 @@
                     'ID_SP' => filter_input(INPUT_POST, "id_sp", FILTER_SANITIZE_STRING),
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
                     'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
+                    'Especificacion' => filter_input(INPUT_POST, "especificacion", FILTER_SANITIZE_STRING),
                     'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
                     'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
@@ -659,7 +660,7 @@
                 // exit();
             }
             else{
-                echo "Llene todos los campos del formulario de producto";
+                echo "Llene todos los campos obligatorios";
                 echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                 exit();
             }

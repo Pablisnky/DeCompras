@@ -501,11 +501,12 @@
         
         //UPDATE de una opcion
         public function actualizarOpcion($RecibeProducto){
-            $stmt = $this->dbh->prepare("UPDATE opciones SET opcion = :OPCION, precio = :PRECIO WHERE ID_Opcion = :ID_OPCION");
+            $stmt = $this->dbh->prepare("UPDATE opciones SET opcion = :OPCION, precio = :PRECIO, especificacion = :ESPECIFICACION WHERE ID_Opcion = :ID_OPCION");
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':OPCION', $RecibeProducto['Descripcion']);
             $stmt->bindValue(':PRECIO', $RecibeProducto['Precio']);
+            $stmt->bindValue(':ESPECIFICACION', $RecibeProducto['Especificacion']);
             $stmt->bindValue(':ID_OPCION', $RecibeProducto['ID_Opcion']);
 
             // Se ejecuta la actualización de los datos en la tabla

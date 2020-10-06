@@ -16,7 +16,8 @@
 
             $Datos=[
                 'Opciones' => $Consulta, //seccion, ID_Opcion, fotografia, producto, opcion, precio
-                'ProductoSelecion' => $OpcionSelec
+                'ProductoSelecion' => $OpcionSelec,
+                'ID_Tienda' => $ID_Tienda
             ];
                 
             // echo "<pre>";
@@ -26,7 +27,7 @@
             $this->vista("paginas/opciones_V", $Datos);
         }  
 
-        // Los parametros se reciven desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
+        // Los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
         public function PosicionarEnProducto($DatosAgrupados){ 
             //$DatosAgrupados contiene una cadena con el ID_Tienda y la seccion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);
@@ -48,5 +49,39 @@
             $this->vista("inc/header_Tienda");
             $this->vista("paginas/opciones_V", $Datos);
         }       
+        
+        public function productoAmpliado($DatosAgrupados){
+            //$DatosAgrupados contiene una cadena con el ID_Tienda y el producto separados por coma, se convierte en array para separar los elementos
+            $DatosAgrupados = explode(",", $DatosAgrupados);
+            
+            $NombreTienda = $DatosAgrupados[0];
+            $ID_Tienda = $DatosAgrupados[1];
+            $Producto = $DatosAgrupados[2];
+            $Opcion = $DatosAgrupados[3];
+            $Especificacion = $DatosAgrupados[4];
+            $Precio = $DatosAgrupados[5];
+            $Fotografia = $DatosAgrupados[6];
+
+            // echo $NombreTienda . "<br>";
+            // echo $ID_Tienda . "<br>";
+            // echo $Producto . "<br>";
+            // echo $Opcion . "<br>";
+            // echo $Especificacion . "<br>";
+            // echo $Precio . "<br>";
+            // echo $Fotografia . "<br>";
+            // exit();
+
+            $Datos=[
+                'NombreTienda' => $NombreTienda, 
+                'ID_Tienda' => $ID_Tienda,
+                'Producto' => $Producto,
+                'Opcion' => $Opcion,
+                'Especificacion' => $Especificacion,
+                'Precio' => $Precio,
+                'Fotografia_1' => $Fotografia,
+            ];      
+
+            $this->vista("paginas/descr_Producto_V", $Datos);
+        }  
     }
 ?>    

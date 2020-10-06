@@ -43,8 +43,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="placeholder placeholder_2 borde_1" type="text" name="descripcion" id="ContenidoDes" value="<?php echo $Opcion;?>"/>
                     <input class="contador" type="text" id="ContadorDes" value="20"/>
 
-                    <label>Especificacion</label>
-                    <input class="placeholder placeholder_2 borde_1" type="text" name="especificacion" id="ContenidoEsp" placeholder="Especificaciones ( Opcional )"/>
+                    <label>Especificacion ( Opcional )</label>
+                    <input class="placeholder placeholder_2 borde_1" type="text" name="especificacion" id="ContenidoEsp" placeholder="Especificaciones"/>
                     <input class="contador" type="text" id="ContadorEsp" value="50"/>
 
                     <label>Precio</label>

@@ -82,7 +82,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                     <div class="contenedor_97">
                                         <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
                                         <figure class="">
-                                            <img class="imagen_6 imagen_9" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                                            <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
                                         </figure>
                                     </div>
                                 </div>

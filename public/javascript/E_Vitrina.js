@@ -248,19 +248,19 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     //invocada desde opciones_V.php añade un producto al carrito   
     function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion, ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan){
         console.log("______Desde agregarOpcion()______") 
-// console.log(form)    
-// console.log(ID_Etiqueta)   
-// console.log(ID_Cont_Leyenda)   
-// console.log(ID_InputCantidad)   
-// console.log(Seccion)   
-// console.log(ID_InputSeccion)   
-// console.log(ID_InputProducto)   
-// console.log(ID_InputOpcion)   
-// console.log(ID_InputPrecio)   
-// console.log(ID_InputTotal)   
-// console.log(ID_InputLeyenda)
-// console.log(ID_Cont_Producto)
-// console.log(ID_InputDisplayCan)
+        // console.log(form)    
+        // console.log(ID_Etiqueta)   
+        // console.log(ID_Cont_Leyenda)   
+        // console.log(ID_InputCantidad)   
+        // console.log(Seccion)   
+        // console.log(ID_InputSeccion)   
+        // console.log(ID_InputProducto)   
+        // console.log(ID_InputOpcion)   
+        // console.log(ID_InputPrecio)   
+        // console.log(ID_InputTotal)   
+        // console.log(ID_InputLeyenda)
+        // console.log(ID_Cont_Producto)
+        // console.log(ID_InputDisplayCan)
         
         //Se recibe el control del formulario con el nombre "opcion"
         Opcion = form.opcion
@@ -624,15 +624,14 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
 
 //************************************************************************************************
-    //1- invocada desde vitrina_V identifica los elementos de la sección donde se hizo click.
+    //invocada desde vitrina_V identifica los elementos de la sección donde se hizo click.
     function verOpciones(Cont_Seccion, Seccion){ 
         // console.log("______Desde verOpciones()______")     
 
         //Captura el valor del id dinanmico de la seccion donde se hizo click
         localStorage.setItem('ContSeccion', Cont_Seccion)         
         LS_ID_Cont_Seccion = localStorage.getItem('ContSeccion')
-// console.log(Cont_Seccion)
-// console.log(Seccion)
+
         //Captura la seccion donde se hizo click
         localStorage.setItem('SeccionCLick',Seccion)         
     }
@@ -1104,11 +1103,37 @@ console.log(AlCarro)
 
     }
 
+//************************************************************************************************
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       
+//************************************************************************************************
     function stopInterval(){
     console.log("______Desde stopInterval()______")
     clearInterval(interval)
     }
-     
+
+//************************************************************************************************ 
+
+// ***************************************************************************************************
+//LLamada desde descr_Producto.php
+function cerrarVentana(){            
+    window.close();
+}
+//************************************************************************************************
 ///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
 // document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    
 //     if(event.target.id == 'Span_523'){
