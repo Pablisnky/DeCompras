@@ -343,7 +343,7 @@
 .contenedor_79{/*afiliacion*/
 	margin-top: 15%;
 } 
-.contenedor_80{/*registroCom - cuenta_editar*/
+.contenedor_80{/*cuenta_editar - cuenta_publicar*/
 	width: 100%;
 }
 .contenedor_83{/*cuenta_editar*/
@@ -698,6 +698,10 @@
 .label_22:hover{/*cuenta_editar*/
 	cursor: default;
 	background-color:  rgb(31, 161, 118);
+}
+.label_23{/*cuenta_publicar*/
+	width: 60% !important;
+	padding: 2%;
 }
 .legend_1{/*registroCom - registroDes*/
 	font-size: 1.1em;

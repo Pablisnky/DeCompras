@@ -10,7 +10,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     if(!empty($Seccion)){   ?>        
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
         
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
         
@@ -19,49 +19,63 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
         <div class="contenedor_42">    
             <p class="p_6">Carga un producto</p>
-            <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarPublicacion()">
+            <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProducto" method="POST" enctype="multipart/form-data" autocomplete="off" ><!--onsubmit = "return validarPublicacion()"-->
                 <div class="contenedor_47">
-                    <label for="imgInp">
-                        <div class="contenedor_119 contenedor_121 borde_1 borde_2">
-                            <span class="icon-pencil span_18 borde_1"></span>
-                            <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
-                            <input class="ocultar"  name="foto_Producto" id="imgInp" type="file"/>
-                        </div>
-                    </label>
-                    <div style="margin-top:5%">
+                    <div class="contenedor_129 borde_1 borde_2">
+                        <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                        <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                        <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
+                    </div>        
+                    <div>
                         <input class="placeholder placeholder_2 borde_1" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"  tabindex="1"/>
                         <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
 
                         <input class="placeholder placeholder_2 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2"/>
                         <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
 
-                        <!-- <input class="placeholder placeholder_2 borde_1" type="text" name="especificacion" id="ContenidoEsp" placeholder="Especificaciones ( Opcional )"  tabindex="2"/>
-                        <input class="contador" type="text" id="ContadorEsp" value="50" readonly/> -->
-
                         <input class="placeholder placeholder_2 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3"/>
-                        <input class="contador" type="text" id="ContadorPre" value="13" readonly/>
-
+                        <br>
                         <input class="placeholder placeholder_2 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4"/>
                         
-                        <div id="Contenedor_80" class="contenedor_80">
-                          <!--   <input class="input_13 input_12 borde_1" type="text" name="seccion[]" placeholder="Indica una sección"/>
-                            <span class="icon-cancel-circle span_10 span_12" id="Span_4"></span> -->
-                        </div>
+                        <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
+                        <div id="Contenedor_80"></div>
                         
                         <br>
 
-                        <!-- <label class="label_7" onclick="AmpliarDescripcion()">Ampliar información (Opcional)</label>
-                        <div class="">                            
-                            <div id="Contenedor_80" class="contenedor_80">
-                                <input class="placeholder placeholder_2 borde_1" type="text" name="seccion[]" placeholder="Indica una caracteristica"/>
-                                <span class="icon-cancel-circle span_10 span_12" id="Span_4"></span>
+                        <label class="label_7" onclick="AmpliarDescripcion()">Ampliar información (Opcional)<span class="icon-circle-down span_10 span_12"></span></label>
+                        <div class="contenedor_128" id="Contenedor_128">                            
+                            <div id="Contenedor_82" class="">
+                                <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica del producto (Opcional)"/>
+                                <br>
                             </div>
-                                <input class="contador" type="text" id="" value="30" readonly/>
-                            <label class="label_4" id="Label_5">Añadir caracteristica</label>
+                            <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
                             
-                            <input class="placeholder placeholder_2 borde_1" type="text" name="caracteristica_1" id="Caracteristica_1" placeholder="Comentario general del producto (opcional)"/>
-                            <input class="contador" type="text" id="ContadorPre" value="100" readonly/>
-                        </div> -->
+                            <!-- <textarea class="placeholder placeholder_2 borde_1" name="comentario" id="Comentario" placeholder="Comentario general del producto (opcional)"></textarea>
+                            <input class="contador" type="text" id="ContadorPre" value="100" readonly/> -->
+                            
+                                            
+                            <!-- <div class="contenedor_119 borde_1 borde_2">
+                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
+                            </div>                 
+                            <div class="contenedor_119 borde_1 borde_2">
+                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
+                            </div>                
+                            <div class="contenedor_119 borde_1 borde_2">
+                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
+                            </div>                
+                            <div class="contenedor_119 borde_1 borde_2">
+                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
+                            </div> -->
+
+                        </div>
 
 
                         

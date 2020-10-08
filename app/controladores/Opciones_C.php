@@ -11,18 +11,25 @@
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
             // echo $ID_Tienda;
             // echo $Seccion;
+
             $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Seccion);   
             $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
+
+            //CONSULTA las caracteristicas de los productos de una sección de una tienda
+            $Consulta_2 = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
+            $Caracteristicas = $Consulta_2->fetchAll(PDO::FETCH_ASSOC); 
 
             $Datos=[
                 'Opciones' => $Consulta, //seccion, ID_Opcion, fotografia, producto, opcion, precio
                 'ProductoSelecion' => $OpcionSelec,
-                'ID_Tienda' => $ID_Tienda
+                'ID_Tienda' => $ID_Tienda,
+                'variosCaracteristicas' => $Caracteristicas
             ];
                 
             // echo "<pre>";
             // print_r($Datos);
             // echo "</pre>";
+            // exit();
             
             $this->vista("paginas/opciones_V", $Datos);
         }  
@@ -62,14 +69,14 @@
             $Precio = $DatosAgrupados[5];
             $Fotografia = $DatosAgrupados[6];
 
-            // echo $NombreTienda . "<br>";
-            // echo $ID_Tienda . "<br>";
-            // echo $Producto . "<br>";
-            // echo $Opcion . "<br>";
-            // echo $Especificacion . "<br>";
-            // echo $Precio . "<br>";
-            // echo $Fotografia . "<br>";
-            // exit();
+            echo $NombreTienda . "<br>";
+            echo $ID_Tienda . "<br>";
+            echo $Producto . "<br>";
+            echo $Opcion . "<br>";
+            echo $Especificacion . "<br>";
+            echo $Precio . "<br>";
+            echo $Fotografia . "<br>";
+            exit();
 
             $Datos=[
                 'NombreTienda' => $NombreTienda, 

@@ -1,12 +1,11 @@
 <?php  include(RUTA_APP . "/vistas/inc/headerProductoModal.php"); 
     
     //$Datos proviene de Opciones_C/productoAmpliado
-    $TipoInmueble = $Datos;
-            // echo "<br><br><br><br><br>";
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            // exit();
+            echo "<br><br><br><br><br>";
+            echo "<pre>";
+            print_r($Datos);
+            echo "</pre>";
+            exit();
 
             $Producto = $Datos['Producto'];
             $Opcion = $Datos['Opcion'];
@@ -66,7 +65,7 @@
             <div class="contenedor_126">
                 <div class="contenedor_127">
                     <h1 class="h1_11"><?php echo $Producto, PHP_EOL, $Opcion?></h1>
-                    <textarea>Especificacion_1 | Especificacion_2 |  Especificacion_3 | Especificacion_4 | Especificacion_5 |</textarea>
+                    <textarea class="textarea_1"><?php echo ?></textarea>
                     <br>
                     <textarea>Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea>
                     <br>

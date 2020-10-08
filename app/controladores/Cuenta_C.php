@@ -73,6 +73,10 @@
                 $Consulta = $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda, $Seccion);
                 $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
+                //CONSULTA las caracteristicas de los productos de una sección de una tienda
+                $Consulta = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
+                $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC);          
+
                 //Se da el valor de notifiación directamente debido a que si la condicion entró en el ELSE ya el afiliado a visitado la página y no tiene notificaciones por leer
                 $Notificacion = 1;
                 
@@ -93,7 +97,8 @@
                 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja 
                 'Apunta' => $Puntero,
-                'slogan' => $Slogan
+                'slogan' => $Slogan,
+                'variosCaracteristicas' => $Caracteristicas
             ];
             // echo "<pre>";
             // print_r($Datos);
@@ -521,10 +526,11 @@
             $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
-        //Metodo invocado desde cuenta_publicar_V.php
+        //Metodo invocado desde cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
         public function recibeProducto(){
             // Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
+            // if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])
+            // ){
 
                 $RecibeProducto = [
                     //Recibe datos del producto que se va a cargar al sistema
@@ -535,21 +541,43 @@
                     'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
                 ];
                 // echo "<pre>";
-                // print_r($RecibeProducto );
+                // print_r($RecibeProducto);
+                // echo "</pre>";
+            // }
+            // else{
+            //     echo "Llene todos los campos del formulario ";
+            //     echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+            //     exit();
+            // }
+            
+            // ********************************************************
+            //Recibe las caracteristicas añadidas dinamicamente 
+            if(!empty($_POST['caracteristica'])){
+                foreach($_POST['caracteristica'] as $Caracteristica){
+                    $Caracteristica = $_POST['caracteristica'];
+                } 
+                // echo "<pre>";
+                // print_r($Caracteristica);
                 // echo "</pre>";
                 // exit();
-            }
+                //El array trae elemenos duplicados, se eliminan los duplicado
+                // $caracteristicaProducto = array_unique($caracteristica); 
+            } 
             else{
-                echo "Llene todos los campos del formulario de producto";
-                echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+                echo "Tiene campos de caracteristicas sin llenar";
                 exit();
             }
-            
+           
+            // ********************************************************
+            // Las siguientes consultas se deben realizar por medio de Transacciones BD
             //Se INSERTA el producto en la BD y se retorna el ID recien insertado
             $ID_Producto = $this->ConsultaCuenta_M->insertarProducto($RecibeProducto);
             
-            //Se INSERTA la descripcion del producto en la BD y se retorna el ID recien insertado
-            $ID_Opcion = $this->ConsultaCuenta_M->insertarDescripcionProducto($RecibeProducto);
+            //Se INSERTA la opcion y precio del producto en la BD y se retorna el ID recien insertado
+            $ID_Opcion = $this->ConsultaCuenta_M->insertarOpcionesProducto($RecibeProducto);
+            
+            //Se INSERTAN las caracteristicas del producto
+            $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $ID_Opcion, $Caracteristica);
 
             //Se CONSULTA el ID_Seccion de la seccion del producto
             $Consulta = $this->ConsultaCuenta_M->consultarID_Seccion($RecibeProducto);

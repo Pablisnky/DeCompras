@@ -76,11 +76,25 @@
             }
         }
 
-        //SELECT de los productos que tiene una tienda especifica
+        //SELECT de todos los productos de una sección en una tienda especifica
         public function consultarProductosTienda($ID_Tienda, $Seccion){
             $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precio, secciones.seccion, opciones.fotografia FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = '$Seccion' ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
+        //SELECT de las caracteristicas de los productos de una tienda
+        public function consultarCaracterisicasProducto($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT ID_Producto, caracteristica FROM caracteristicaproducto WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt;
@@ -643,27 +657,7 @@
 
 
         
-        //INSERT del producto en la BD
-        // public function insertarProducto($RecibeDatos){
-        //     $stmt = $this->dbh->prepare("INSERT INTO productos_opciones(ID_Producto, ID_Opcion, ID_Tienda, precio) VALUES (:ID_producto, :ID_opcion, :ID_tienda, :precio)");
-
-        //     //Se vinculan los valores de las sentencias preparadas
-        //     //ztmt es una abreviatura de statement
-        //     $stmt->bindParam(':ID_producto', $id_producto);
-        //     $stmt->bindParam(':ID_opcion', $id_opcion);
-        //     $stmt->bindParam(':ID_tienda', $id_tienda);
-        //     $stmt->bindParam(':precio', $precio);
-
-        //     // insertar una fila
-        //     $id_producto = $RecibeDatos['Categoria_pro'];
-        //     $id_opcion = $RecibeDatos['Descripcion_pro'];
-        //     $id_tienda = $RecibeDatos['ID_Tienda'];
-        //     $precio = $RecibeDatos['Precio_pro'];
-
-        //     //Se ejecuta la inserción de los datos en la tabla
-        //     $stmt->execute();
-        // }
-
+        //INSERT de un producto
         public function insertarProducto($RecibeProducto){
             $stmt = $this->dbh->prepare("INSERT INTO productos(producto) VALUES (:PRODUCTO)");
 
@@ -682,7 +676,8 @@
             }
         }
 
-        public function insertarDescripcionProducto($RecibeProducto){
+        //INSERT de la opcion y el precio de un producto
+        public function insertarOpcionesProducto($RecibeProducto){
             $stmt = $this->dbh->prepare("INSERT INTO opciones(opcion, precio) VALUES (:OPCION, :PRECIO)");
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
@@ -702,28 +697,22 @@
             }
         }
 
-        //         public function insertarDT_SecPro($RecibeProducto, $ID_Seccion){
-        //             echo "<pre>";
-        //             print_r($RecibeProducto);
-        //             echo "</pre>";
-        //             echo "<br>";
-                    
-        //             echo "<pre>";
-        //             print_r($ID_Seccion);
-        //             echo "</pre>";
-        // exit();
-        //             $stmt = $this->dbh->prepare("INSERT INTO secciones_productos(ID_Seccion, ID_Producto) VALUES(:ID_SECCION, :ID_PRODUCTO)");
+        //INSERT de las caracteristicas de un producto
+        public function insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $ID_Opcion, $Caracteristica){
+            //Debido a que $Caracteristica es un array con todas las caracteristicas, deben introducirse una a una mediante un ciclo
+            for($i = 0; $i<count($Caracteristica); $i++){
+                $stmt = $this->dbh->prepare("INSERT INTO caracteristicaProducto(ID_Tienda, ID_Producto, ID_Opcion, caracteristica) VALUES(:ID_TIENDA, :ID_PRODUCTO, :ID_OPCION, :CARACTERISTICA)");
 
-        //             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-        //             $stmt->bindParam(':ID_SECCION', $ID_Seccion);
-        //             $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
+                //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+                $stmt->bindParam(':ID_TIENDA', $RecibeProducto['ID_Tienda']);
+                $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
+                $stmt->bindParam(':ID_OPCION', $ID_Opcion);
+                $stmt->bindParam(':CARACTERISTICA', $Caracteristica[$i]);
 
-        //             $ID_Seccion = $RecibeProducto['ID_Seccion'];
-        //             $ID_Producto = $RecibeProducto['ID_Producto'];
-
-        //             //Se ejecuta la inserción de los datos en la tabla
-        //             $stmt->execute();
-        //         }
+                //Se ejecuta la inserción de los datos en la tabla
+                $stmt->execute();
+            }
+        }
 
         public function insertarDT_ProOpc( $ID_Producto, $ID_Opcion){
             $stmt = $this->dbh->prepare("INSERT INTO productos_opciones(ID_Producto, ID_Opcion) VALUES(:ID_PRODUCTO, :ID_OPCION)");
@@ -745,26 +734,7 @@
             }
         }
 
-        // public function insertarDT_ProTie($RecibeProducto, $ID_Producto){
-        //     $stmt = $this->dbh->prepare("INSERT INTO tiendas_productos(ID_Producto, ID_Tienda) VALUES(:ID_PRODUCTO, :ID_TIENDA)");
-
-        //     //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-        //     $stmt->bindParam(':ID_PRODUCTO', $id_producto);
-        //     $stmt->bindParam(':ID_TIENDA', $id_tienda);
-
-        //     // insertar una fila
-        //     $id_producto = $ID_Producto;
-        //     $id_tienda = $RecibeProducto['ID_Tienda'];
-
-        //     //Se ejecuta la inserción de los datos en la tabla
-        //     if($stmt->execute()){
-        //         return true;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }   
-
+        //INSERT de las secciones de una tienda
         public function insertarSeccionesTienda($ID_Tienda, $Seccion){
             foreach(array_keys($_POST['seccion']) as $key){
                 $Seccion = $_POST['seccion'][$key];
@@ -833,7 +803,7 @@
             $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
             $stmt->bindParam(':ID_OPCION', $ID_Opcion);
             
-            // //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla
             $stmt->execute();    
         }       
     
@@ -845,7 +815,7 @@
             $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
             $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
             
-            // //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla
             $stmt->execute();    
         }             
     

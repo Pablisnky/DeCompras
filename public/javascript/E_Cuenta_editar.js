@@ -148,8 +148,13 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80")
 
+        //Contenedor padre
+        let Padre = document.getElementById("Contenedor_79")
+        console.log("div padre", Padre)
+
         //Se crea el clon
         let Div_clon = clonar.cloneNode(true)
+        console.log("div padre", Div_clon)
     
         //Se da un ID al input que se encuentra en el nuevo elemento clonado
         Div_clon.getElementsByClassName("input_12")[0].id = 'InputClon_' + incremento 
@@ -163,8 +168,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //El placeholder del nuevo input 
         Div_clon.getElementsByClassName("input_12")[0].placeholder="Indica una sección"
         
-        //Se especifica el div padre, donde se insertará el nuevo nodo
-        document.getElementById("Contenedor_79").appendChild(Div_clon)
+        //Se especifica el div padre, donde se insertará el nuevo nodo (aparecerá de ultimo)
+        Padre.appendChild(Div_clon)
         incremento++
     }
 //************************************************************************************************   

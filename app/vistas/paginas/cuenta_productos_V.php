@@ -40,9 +40,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
                 <div class="contenedor_13"> 
                     <?php
-                    $Contador = 1;
-
-                    //$Datos viene del metodo consultarProductosTienda() en Cuenta_C
+                    $Contador = 1; 
+            
+                    //$Datos viene de Cuenta_C/Productos
                     foreach($Datos['productos'] as $arr) :
                         $Seccion = $arr["seccion"];
                         $Producto = $arr["producto"];
@@ -87,10 +87,23 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                     </div>
                                 </div>
                                 <div>
+                                    <!-- Producto -->
                                     <input class="input_8" type="text" value="<?php echo $Producto;?>" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>"/>
 
+                                    <!-- Opcion -->
                                     <input class="input_8" type="text" value="<?php echo $Opcion;?>" readonly="readonly" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>"/>
 
+                                    <!-- Especificacion -->
+                                    <?php                  
+                                        foreach($Datos['variosCaracteristicas'] as $AA) :
+                                            if($AA['ID_Producto'] == $ID_Producto){  ?>
+                                                <a class="" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Especificacion . ',' . $Precio . ',' . $Fotografia ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'] . " | " ;?></a>
+                                                <?php
+                                            }                                           
+                                        endforeach; 
+                                    ?>
+
+                                    <!-- Precio -->
                                     <input class="input_8" type="text" value="<?php echo $Precio;?> Bs." readonly="readonly" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>"/>
 
                                     <div class="contenedor_96">                

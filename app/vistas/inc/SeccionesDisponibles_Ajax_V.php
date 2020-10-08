@@ -1,4 +1,4 @@
-<!-- Archivo cargado desde Ajax por medio de Llamar_seccion() y mostrado en cuenta_publicar.php y cuenta_publicar_V.php -->
+<!-- Archivo cargado desde Ajax por medio de Llamar_seccionesDisponible() en A_Cuenta_publicar.js -->
 <section class="section_4 section_10" id="MostrarSeccion">
     <div class="contenedor_24 contenedor_118"> 
       <div class="contenedor_102">
@@ -9,7 +9,7 @@
           <div class="contenedor_89">
               <?php      
               $ContadorSeccion = 1;
-              //$Datos['seccion'] trae información de la consulta Secciones() desde Cuenta_C.php con todas las secciones que tiene la tienda
+              //$Datos['seccion'] trae información desde Cuenta_C/SeccionesDisponibles
               foreach($Datos['seccion'] as $row){
                 $SeccionTienda = $row['seccion']; ?>
                 <div class="contenedor_115">
