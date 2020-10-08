@@ -57,6 +57,7 @@
             $this->vista("paginas/opciones_V", $Datos);
         }       
         
+        //Metodo invocado desde opciones_V.php
         public function productoAmpliado($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Tienda y el producto separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);
@@ -65,29 +66,39 @@
             $ID_Tienda = $DatosAgrupados[1];
             $Producto = $DatosAgrupados[2];
             $Opcion = $DatosAgrupados[3];
-            $Especificacion = $DatosAgrupados[4];
-            $Precio = $DatosAgrupados[5];
-            $Fotografia = $DatosAgrupados[6];
+            $Precio = $DatosAgrupados[4];
+            $Fotografia = $DatosAgrupados[5];
+            $ID_Producto = $DatosAgrupados[6];
 
-            echo $NombreTienda . "<br>";
-            echo $ID_Tienda . "<br>";
-            echo $Producto . "<br>";
-            echo $Opcion . "<br>";
-            echo $Especificacion . "<br>";
-            echo $Precio . "<br>";
-            echo $Fotografia . "<br>";
-            exit();
+            // echo $NombreTienda . "<br>";
+            // echo $ID_Tienda . "<br>";
+            // echo $Producto . "<br>";
+            // echo $Opcion . "<br>";
+            // echo $Precio . "<br>";
+            // echo $Fotografia . "<br>";
+            // echo $ID_Producto . "<br>"; 
+            // exit();
+            
+            //CONSULTA las caracteristicas de los productos de una sección de una tienda
+            $Consulta = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
+            $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
 
             $Datos=[
                 'NombreTienda' => $NombreTienda, 
                 'ID_Tienda' => $ID_Tienda,
                 'Producto' => $Producto,
                 'Opcion' => $Opcion,
-                'Especificacion' => $Especificacion,
                 'Precio' => $Precio,
                 'Fotografia_1' => $Fotografia,
+                'ID_Producto' => $ID_Producto, 
+                'variosCaracteristicas' => $Caracteristicas
             ];      
 
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
+            
             $this->vista("paginas/descr_Producto_V", $Datos);
         }  
     }

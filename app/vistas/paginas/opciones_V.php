@@ -19,8 +19,7 @@
                 $ID_Producto = $row['ID_Producto'];
                 $ID_Opcion =  $row['ID_Opcion'];
                 $Producto = $row['producto']; 
-                $Opcion = $row['opcion']; 
-                $Especificacion = $row['especificacion'];                      
+                $Opcion = $row['opcion'];                      
                 $Precio = $row['precio'];                
                 $Seccion = $row['seccion'];              
                 $Fotografia = $row['fotografia'];
@@ -35,8 +34,8 @@
                             </figure>
                         </div>
                     </div>
-                    <div> 
-                        <div style=" min-height:80px">
+                    <div style=" width:100%"> 
+                        <div style="min-height:80px">
                             <!-- Producto -->
                             <input class="input_8" type="text" value="<?php echo $Producto;?>" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>" readonly="readonly"/>
 
@@ -47,7 +46,7 @@
                             <?php                  
                                 foreach($Datos['variosCaracteristicas'] as $AA) :
                                     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                        <a class="input_10" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $AA['caracteristica'] . ',' . $Precio . ',' . $Fotografia ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'] . " | " ;?></a>
+                                        <a class="input_10" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'] ;?></a>
                                         <?php
                                     }                                           
                                 endforeach; 

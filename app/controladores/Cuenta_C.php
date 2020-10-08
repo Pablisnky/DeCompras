@@ -60,6 +60,10 @@
                 $Consulta = $this->ConsultaCuenta_M->consultarNotificacionTienda($this->ID_Tienda);
                 $Notificacion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
                 
+                //CONSULTA las caracteristicas de los productos de una sección de una tienda
+                $Consulta = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
+                $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+                
                 //Se desglosa el valor para que sea solo igual el valor "1"
                 $Notificacion = $Notificacion[0]['notificacion'];
                

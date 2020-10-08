@@ -97,7 +97,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                     <?php                  
                                         foreach($Datos['variosCaracteristicas'] as $AA) :
                                             if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                                <a class="" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Especificacion . ',' . $Precio . ',' . $Fotografia ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'] . " | " ;?></a>
+                                                <a class="" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Especificacion . ',' . $Precio . ',' . $Fotografia ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'];?></a>
                                                 <?php
                                             }                                           
                                         endforeach; 

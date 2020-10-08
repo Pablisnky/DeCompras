@@ -54,7 +54,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <input class="contador" type="text" id="ContadorPre" value="100" readonly/> -->
                             
                                             
-                            <!-- <div class="contenedor_119 borde_1 borde_2">
+                            <div class="contenedor_119 borde_1 borde_2">
                                 <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
                                 <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
                                 <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
@@ -73,7 +73,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
                                 <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
                                 <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
-                            </div> -->
+                            </div>
 
                         </div>
 
