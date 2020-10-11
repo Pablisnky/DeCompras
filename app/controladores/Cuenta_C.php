@@ -37,7 +37,7 @@
             $this->vista("paginas/cuenta_V", $Datos);
         }
 
-        //Invocado desde login_C/ValidarSesions, muestra todos los productos publicados o los de una sección en especifico
+        //Invocado desde login_C/ValidarSesion, muestra todos los productos publicados o los de una sección en especifico
         public function Productos($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Producto y el ID_ContProducto separados por coma, se convierte en array para separar los elementos
             
@@ -651,23 +651,26 @@
             // }
             
             //SECCION GALERIA DE FOTOGRAFIAS
-            if(isset($_FILES['Imagenes'])){  
-                $Cantidad = count($_FILES["Imagenes"]["tmp_name"]); 
+            if(isset($_FILES['imagenes']["name"][0])){  
+                $Cantidad = count($_FILES["imagenes"]["name"]); 
                 echo $Cantidad;
-                for($i = 0; $i < $Cantidad; $i++){                 
-                    $archivonombre = $_FILES['Imagenes']['name'][$i];//nombre original del fichero en la máquina cliente. 
-                    $Ruta_Temporal = $_FILES['Imagenes']['tmp_name'][$i];
-                    $tipo = $_FILES['Imagenes']['type'][$i];
-                    $tamanio = $_FILES['Imagenes']['size'][$i];
+                for($i = 0; $i < $Cantidad; $i++){                
+                    //nombre original del fichero en la máquina cliente. 
+                    $archivonombre = $_FILES['imagenes']['name'][$i];
+                    $Ruta_Temporal = $_FILES['imagenes']['tmp_name'][$i];
+                    $tipo = $_FILES['imagenes']['type'][$i];
+                    $tamanio = $_FILES['imagenes']['size'][$i];
                     
                     $carpeta = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
                     
                     //Subimos el fichero al servidor
-                    move_uploaded_file($Ruta_Temporal,$carpeta.$_FILES["Imagenes"]["name"][$i]);
+                    move_uploaded_file($Ruta_Temporal,$carpeta.$_FILES["imagenes"]["name"][$i]);
                     
                     //Se INSERTAN las fotografias del producto
                     $this->ConsultaCuenta_M->insertarFotografiasAdicionales($ID_Producto, $archivonombre, $tipo, $tamanio);
+                    $validar=true;
                 }
+                $validar=false;
             }
             exit();
 

@@ -23,7 +23,7 @@ define("DB_NOMBRE","pido_rap");
 
 // PARA CONEXION EN REMOTO
 // define("RUTA_APP", dirname(dirname(__FILE__)));
-// define("RUTA_URL", "http://pedidoremoto.com");
+// define("RUTA_URL", "https://www.pedidoremoto.com");
 // define("NOMBRESITIO","PedidoRemoto");
 
 // // // credenciales para conexion a la BD en remoto

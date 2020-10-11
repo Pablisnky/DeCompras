@@ -12,8 +12,9 @@ class Core{
         // print_r($this->geturl());
         // echo "<br>";
         $url = $this->geturl();
+        // echo "<pre>";
         // print_r($url);
-        // echo "<br>";
+        // echo "</pre>";
         
         // echo "************************************************************************"  . "<br>";
 

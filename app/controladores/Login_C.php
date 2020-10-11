@@ -1,5 +1,5 @@
-<?php
-    session_start();
+<?php session_start();error_reporting(E_ALL);
+ini_set('display_errors', '1');
     class Login_C extends Controlador{
         
         public function __construct(){  
@@ -41,8 +41,6 @@
             // $Recordar = isset($_POST["recordar"]) == 1 ? $_POST["recordar"] : "No desea recordar";
             $Clave = $_POST["clave_Arr"];
             $Correo = $_POST["correo_Arr"];
-            // echo $Clave  . "<br>";
-            // echo $Correo . "<br>";
 
             //Se CONSULTA el usuario registrados en el sistema con el correo dado como argumento
             $usuarios = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
@@ -51,9 +49,6 @@
                 $CorreoBD = $arr['correo_AfiCom'];
                 $Nombre = $arr['nombre_AfiCom'];
             }
-            // echo $ID_Afiliado  . "<br>";
-            // echo $CorreoBD . "<br>";
-            // echo $Nombre . "<br>";
         
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
             if(isset($_POST["recordar"]) && $_POST["recordar"] == 1){//si pidió memorizar el usuario, se recibe desde principal.php   
@@ -87,11 +82,9 @@
                 while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
                     $ClaveBD = $arr['claveCifrada'];
                 }
-                // echo $ClaveBD . "<br>";
                                       
                 //se descifra la contraseña con un algoritmo de desencriptado.
                 if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
-
                     //SELECT para hallar el ID_Tienda y el nombre de la tienda correspondiente al afiliado
                     $Consulta= $this->ConsultaLogin_M->consultarID_Tienda($ID_Afiliado);
                     while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
@@ -99,9 +92,6 @@
                         $ID_Afiliado = $arr["ID_AfiliadoCom"];
                         $NombreTienda = $arr["nombre_Tien"];
                     }
-                    // echo $ID_Tienda . "<br>";
-                    // echo $ID_Afiliado . "<br>";
-                    // echo $NombreTienda . "<br>";
 
                     // Se crea la sesiones que se exige en todas las páginas de su cuenta            
                     $_SESSION["ID_Tienda"] = $ID_Tienda;
@@ -116,7 +106,7 @@
                     $_SESSION["Nombre"] = $Nombre;
 
                     // echo RUTA_URL . "/Cuenta_C/Productos/Todos";
-                    header('location:' . RUTA_URL . '/Cuenta_C/Productos/Todos');
+                    header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");
                 }
                 else{ 
                     echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';
@@ -151,7 +141,7 @@
             @mail($email_to, $email_subject, $email_message, $headers);
             
             //Se redirecciona, la función redireccionar se encuentra en url_helper.php
-            redireccionar("/RecuperarClave_C/index/$Correo"); 
+            // redireccionar("/RecuperarClave_C/index/$Correo"); 
         }
     }
 ?>    

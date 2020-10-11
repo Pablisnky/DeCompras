@@ -34,7 +34,7 @@
 					<li><a class="a_3"  id="Afiliacion"href="<?php echo RUTA_URL . '/menu_C/afiliacion/Afiliaciones';?>">Afiliaciones</a></li>
 					<li><a class="a_3" id="Ciudades" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
 					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Tiendas</a></li>
-					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/Inicio sesión';?>">Inicio sesión</a></li>
+					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/';?>">Inicio sesión</a></li>
 				</ul>
 			</nav>
 		</header>	
