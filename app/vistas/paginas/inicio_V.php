@@ -11,107 +11,325 @@
         <div class="contenedor_51" id="Contenedor_51">
             <div>
                 <span class="icon-cart span_6"></span>
-                <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tiendas/tienda.png"/> -->
             </div>
             <div>
                 <span class="icon-truck span_6"></span>
-                <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tiendas/tienda.png"/> -->
             </div>
             <div>
                 <span class="icon-home2 span_6"></span>
-                <!-- <img class="imagen_4" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/camion.png"/> -->
             </div>
         </div>
         <div class="contenedor_88" id="Contenedor_88">
             <label class="a_2" id="Tiendas">Tiendas</label>
         </div>
     </section>
-
     <section id="Section_2js">
         <div class='contenedor_4'>
             <div class='contenedor_6 borde_1' id="Contenedor_6a">
                 <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
-                <span class="icon-spoon-knife span_8"></span>
+                <span class="icon-spoon-knife span_8"></span>                  
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 1){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div> 
 
             <div class='contenedor_6 borde_1' id="Contenedor_6m">
                 <h2 class='h2_1'>MASCOTAS</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 10){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6r">
+                <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
+                <span class="icon-man-woman span_8"></span>                 
+                    <div class="contenedor_106">
+                        <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 11){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                    </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
-                <span class="icon-barcode span_8"></span>
+                <span class="icon-barcode span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 4){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Contenedor_6c">
+                <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 2){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6c">
                 <h2 class='h2_1'>ROPA Y ZAPATO</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6d">
                 <h2 class='h2_1'>ARTESANOS Y EMPRENDEDORES</h2>
-                <span class="icon-pen span_8"></span>
+                <span class="icon-pen span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6f">
                 <h2 class='h2_1'>FARMACIA Y SALUD</h2>
-                <span class="icon-aid-kit span_8"></span>
+                <span class="icon-aid-kit span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6g">
                 <h2 class='h2_1'>FERRETRÍA Y HOGAR</h2>
-                <span class="icon-hammer span_8"></span>
+                <span class="icon-hammer span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
+
             <div class='contenedor_6 borde_1' id="Contenedor_6h">
                 <h2 class='h2_1'>PANADERÍA</h2>
-                <span class="icon-spoon-knife span_8"></span>
+                <span class="icon-spoon-knife span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div> 
 
             <div class='contenedor_6 borde_1' id="Contenedor_6i">
                 <h2 class='h2_1'>LICORES</h2>
-                <span class="icon-barcode span_8"></span>
+                <span class="icon-barcode span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6j">
                 <h2 class='h2_1'>JOYAS Y RELOJERÍA</h2>
-                <span class="icon-barcode span_8"></span>
+                <span class="icon-barcode span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6k">
                 <h2 class='h2_1'>DEPORTES</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6l">
                 <h2 class='h2_1'>FLORISTERÍA Y DECORACIÓN</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6n">
                 <h2 class='h2_1'>CONSTRUCCIÓN</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6o">
                 <h2 class='h2_1'>TELEFONOS Y COMPUTADORAS</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6p">
                 <h2 class='h2_1'>PAPELERÍA Y OFICINA</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
 
             <div class='contenedor_6 borde_1' id="Contenedor_6q">
                 <h2 class='h2_1'>JUGUETES Y ACCESORIOS PARA NIÑOS</h2>
-                <span class="icon-man-woman span_8"></span>
+                <span class="icon-man-woman span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 0){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
             </div>
-
-        <div class='contenedor_6 borde_1' id="Contenedor_6r">
-            <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
-            <span class="icon-man-woman span_8"></span>
-        </div>
         </div>
     </section>
     

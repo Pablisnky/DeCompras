@@ -11,6 +11,8 @@ document.getElementById("Contenedor_6a").addEventListener('click', function(){Ve
                               
 document.getElementById("Contenedor_6m").addEventListener('click', function(){VerTiendas('Mascotas')})
 
+document.getElementById("Contenedor_6r").addEventListener('click', function(){VerTiendas('Repuesto_automotriz')})
+
 // *****************************************************************************************************
     //Muestra la posicion en pantalla por medio de coordenadas
     // var posicion = document.getElementById('Section_2js').getBoundingClientRect()

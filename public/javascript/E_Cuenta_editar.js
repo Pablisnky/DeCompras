@@ -140,8 +140,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
     
 
 //************************************************************************************************
-//Añade un nuevo input con una nueva sección cargada desde Categoria_Ajax
-   var incremento = 1
+    //Añade un nuevo input con una nueva sección cargada desde Categoria_Ajax
+    var incremento = 1
     function crearSeccion(){
         console.log("______Desde CrearSección()______")
         
@@ -160,7 +160,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Div_clon.getElementsByClassName("input_12")[0].id = 'InputClon_' + incremento 
         
         //Se da un ID al span que se encuentra en el nuevo elemento clonado
-        Div_clon.getElementsByClassName("span_12")[0].id = 'SpanClon_' + incremento 
+        Div_clon.getElementsByClassName("span_12_js")[0].id = 'SpanClon_' + incremento 
         
         //El valor del nuevo input debe estar vacio
         Div_clon.getElementsByClassName("input_12")[0].value = "" 
@@ -193,12 +193,12 @@ document.getElementById("Label_1").addEventListener('click', function(){
     
 
 //************************************************************************************************
-//Elimina los clones de seccion y banco
+    //Elimina los clones de seccion y banco
     function preEliminarSeccion(){
-        // console.log("______Desde pre Eliminar Sección______")
+        console.log("______Desde pre Eliminar Sección______")
 
         //Detectar el boton eliminar al cual se hizo click
-        var Eliminar = document.getElementsByClassName("span_12")//Se obtienen los botones Eliminar
+        var Eliminar = document.getElementsByClassName("span_12_js")//Se obtienen los botones Eliminar
         var len = Eliminar.length//Se cuentan cuantos botones Eliminar hay  
         var button
         for(var i = 0; i < len; i++){

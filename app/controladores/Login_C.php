@@ -36,10 +36,13 @@
             }
         }
 
+        //Invocado desde inicio_V
         public function ValidarSesion(){
-            $Recordar = isset($_POST["recordar"]) == 1 ? $_POST["recordar"] : "No desea recordar";
+            // $Recordar = isset($_POST["recordar"]) == 1 ? $_POST["recordar"] : "No desea recordar";
             $Clave = $_POST["clave_Arr"];
             $Correo = $_POST["correo_Arr"];
+            // echo $Clave  . "<br>";
+            // echo $Correo . "<br>";
 
             //Se CONSULTA el usuario registrados en el sistema con el correo dado como argumento
             $usuarios = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
@@ -48,6 +51,9 @@
                 $CorreoBD = $arr['correo_AfiCom'];
                 $Nombre = $arr['nombre_AfiCom'];
             }
+            // echo $ID_Afiliado  . "<br>";
+            // echo $CorreoBD . "<br>";
+            // echo $Nombre . "<br>";
         
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
             if(isset($_POST["recordar"]) && $_POST["recordar"] == 1){//si pidió memorizar el usuario, se recibe desde principal.php   
@@ -81,6 +87,7 @@
                 while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
                     $ClaveBD = $arr['claveCifrada'];
                 }
+                // echo $ClaveBD . "<br>";
                                       
                 //se descifra la contraseña con un algoritmo de desencriptado.
                 if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
@@ -92,6 +99,10 @@
                         $ID_Afiliado = $arr["ID_AfiliadoCom"];
                         $NombreTienda = $arr["nombre_Tien"];
                     }
+                    // echo $ID_Tienda . "<br>";
+                    // echo $ID_Afiliado . "<br>";
+                    // echo $NombreTienda . "<br>";
+
                     // Se crea la sesiones que se exige en todas las páginas de su cuenta            
                     $_SESSION["ID_Tienda"] = $ID_Tienda;
                     
@@ -104,17 +115,8 @@
                     //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
                     $_SESSION["Nombre"] = $Nombre;
 
-                    //Se da acceso y se redirije a la pagina de entrada en sesion de usuario
-                    // if(!empty($DatosVarios)){
-                    //     $Parametros = $DatosVarios;
-                    //     header("location:" . RUTA_URL . "/Entrada_C/index/" . $Parametros);
-                    // }
-                    // else{
-                    //     //Carga la vista 
-                    //     $this->vista("paginas/Entrada_C");
-                    // }
-                    
-                    header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");
+                    // echo RUTA_URL . "/Cuenta_C/Productos/Todos";
+                    header('location:' . RUTA_URL . '/Cuenta_C/Productos/Todos');
                 }
                 else{ 
                     echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';

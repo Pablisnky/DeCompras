@@ -23,7 +23,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_47">
                     <div class="contenedor_129 borde_1 borde_2">
                         <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                        <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                        <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
                         <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                     </div>        
                     <div>
@@ -43,79 +43,31 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <br>
 
                         <label class="label_7" onclick="AmpliarDescripcion()">Ampliar información (Opcional)<span class="icon-circle-down span_10 span_12"></span></label>
+                            <br>
+                            <br>
                         <div class="contenedor_128" id="Contenedor_128">                            
                             <div id="Contenedor_82" class="">
                                 <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica del producto (Opcional)"/>
                                 <br>
                             </div>
                             <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
-                            
-                            <!-- <textarea class="placeholder placeholder_2 borde_1" name="comentario" id="Comentario" placeholder="Comentario general del producto (opcional)"></textarea>
-                            <input class="contador" type="text" id="ContadorPre" value="100" readonly/> -->
-                            
-                                            
-                            <div class="contenedor_119 borde_1 borde_2">
-                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
-                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
-                            </div>                 
-                            <div class="contenedor_119 borde_1 borde_2">
-                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
-                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
-                            </div>                
-                            <div class="contenedor_119 borde_1 borde_2">
-                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
-                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
-                            </div>                
-                            <div class="contenedor_119 borde_1 borde_2">
-                                <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                                <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
-                                <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
-                            </div>
+                            <br>
 
-                        </div>
+                            <div class="contenedor_130" id="muestrasImg_2"></div>  
+                            <input class="placeholder placeholder_2 borde_1" type="text" placeholder="Añada hasta 5 fotografias no mayor a 2Mb" readonly/>
+                            <br>
 
-
-                        
+                            <label class="label_5 label_23" for="ImgInp_2" name="imgInp_2" id="ioo">Añadir imagen</label>
+                            <input class="ocultar" type="file" name="Imagenes[]" multiple id="ImgInp_2" onclick="muestraImg()"/>  
+                        </div>                        
                         <div class="contenedor_49 contenedor_81">
                             <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
                             <input class="boton" type="Submit" value="Guardar" tabindex="5"/>
                         </div> 
-                </div>
-                
-
-
-
-
-
-
-
-
-
-                       
-                    </div>
+                    </div>          
                 </div>
             </form>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- <p>No haz clasificado tu tienda en alguna categoria, ve a configurar y añade una o hasta tres categorias, tambien debes generar las secciones donde se organizaras los productos que cargues al mostrador.</p> -->
         <?php
     } 
@@ -141,21 +93,34 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <script> 
         //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
-        function readImage(input){
-        console.log("______Desde readImage()______")
-            if(input.files && input.files[0]){
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    $('#blah').attr('src', e.target.result); // Renderizamos la imagen
-                }
-                reader.readAsDataURL(input.files[0]);
+        // function readImage(input){
+        // console.log("______Desde readImage()______")
+        //     if(input.files && input.files[0]){
+        //         var reader = new FileReader();
+        //         reader.onload = function(e){
+        //             $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+        //         }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }
+
+        // $("#imgInp").change(function(){
+        //     // Código a ejecutar cuando se detecta un cambio de archivo
+        //     readImage(this);
+        // });
+
+        function muestraImg(){
+            var contenedorPadre = document.getElementById("muestrasImg_2");
+            var archivos = document.getElementById("ImgInp_2").files;
+            for(i = 0; i < archivos.length; i++){
+                imgTagCreada = document.createElement("img");
+                imgTagCreada.height = 200; //ESTAS LINEAS NO SON "NECESARIAS"
+                imgTagCreada.width = 290; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
+                imgTagCreada.id = i; // ORDENADAS CON UN TAMAÑO ESTÁNDAR
+                imgTagCreada.src = URL.createObjectURL(archivos[i]);
+                contenedorPadre.appendChild(imgTagCreada); 
             }
         }
-
-        $("#imgInp").change(function(){
-            // Código a ejecutar cuando se detecta un cambio de archivo
-            readImage(this);
-        });
     </script>
 
     <?php include(RUTA_APP . "/vistas/inc/footer.php");

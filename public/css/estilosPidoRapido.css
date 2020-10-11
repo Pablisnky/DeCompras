@@ -45,7 +45,7 @@ button{/*tiendas*/
 	font-size: 2em;
 }
 .a_2{/*inicio*/
-	background-color: rgb(239, 245, 245);
+	background-color: var(--OficialClaro);
 	color: var(--OficialOscuro);
 	font-size: 1.5em;
 	border-radius: 10px;
@@ -678,7 +678,6 @@ button{/*tiendas*/
 	margin: auto;
 }
 .contenedor_80{/*cuenta_editar - cuenta_publicar*/
-	background-color: blue;
 	display: flex;
 	justify-content: space-between;
 	font-size: 1em;
@@ -823,6 +822,10 @@ button{/*tiendas*/
 	left: 0%;
 	bottom: 5px;
 }
+.contenedor_106{/*inicio*/
+	position: relative;
+	bottom: 10px;
+}
 .contenedor_109{/*vitrina*/
 	display: none;
 }
@@ -861,7 +864,6 @@ button{/*tiendas*/
 }
 .contenedor_119{/*cuenta_editar_prod - cuenta_editar*/
 	width: 50%;
-	/* align-items: center; */
 	margin: auto;
 	margin-bottom: 5% !important;
 	/* height: 150px; */
@@ -914,7 +916,6 @@ button{/*tiendas*/
 }
 .contenedor_127{/*descr_Producto*/
 	background-color:rgba(196, 197, 228, 0.2);
-	/* height: 100%; */
 	padding: 2% 2% 2% 5%;
 }
 .contenedor_128{/*cuenta_publicar*/
@@ -923,6 +924,9 @@ button{/*tiendas*/
 .contenedor_129{/*cuenta_publicar*/
 	height:150px; 
 	text-align: center
+}
+.contenedor_130{/*cuenta_publicar*/
+	text-align: center;
 }
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 40%;
@@ -1135,7 +1139,6 @@ button{/*tiendas*/
 	width: 5% !important;
 }
 .imagen_4{/*inicio*/
-	/* display: block; */
 	width: 40% !important;
 }
 .imagen_4{/*cuenta_editar*/
@@ -1154,17 +1157,13 @@ button{/*tiendas*/
 .imagen_7{/*tiendas*/
 	padding: 10%;
 	object-fit: cover !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
-	/* width: 100%!important;
-	height: 200px!important; */
 	margin-bottom: 5%;
 	border-radius: 15px;
 }
 .imagen_8{/*vitrina*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 20%;
-	/* height: 150px; */
 	margin: auto;
-	/* margin-bottom: 3%; */
 }
 .imagen_9{/*descr_Producto*/
 	position: absolute;
@@ -1203,8 +1202,6 @@ button{/*tiendas*/
 	text-align: center;
 	font-weight: bold;
 	border: none;
-	/* line-height: 30px; */
-	/* height: 30px; */
 	display: inline-block;
 	width: 100%;
 }
@@ -1240,7 +1237,6 @@ button{/*tiendas*/
 	display: inline-block;
 	width: 30%;
 	font-size: 0.9em;
-	/* padding-right:2%;  */
 	display: inline-block;
 	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
 	overflow:hidden; 
@@ -1266,7 +1262,6 @@ button{/*tiendas*/
 	border-radius: 5px;
 }
 .input_13:focus{/*cuenta_publicar - cuenta_editar*/
-	/* background-color: var(--OficialClaro); */
 	border-color: rgb(51, 51 ,51);
 }
 .input_14{/*cuenta_productos*/
@@ -1292,7 +1287,7 @@ button{/*tiendas*/
 	font-weight: bold;
 	padding-right: 10%;
 }
-.label_4{/*opciones - cuenta_editar - cuenta_publicar*/
+.label_4{/*opciones - cuenta_editar */
 	background-color: var(--OficialOscuro);
 	color:white ;
 	position: relative;
@@ -1404,6 +1399,9 @@ button{/*tiendas*/
 	margin-bottom: 8%;
 	font-size: 0.9em;
 	padding: 1%;
+}
+.label_24{/*cuenta_editar*/
+	margin-left: 30%;
 }
 .legend_1{/*registroCom - registroDes - login*/
 	font-size: 1.4em;
@@ -1519,6 +1517,7 @@ button{/*tiendas*/
 	cursor: pointer;
 }
 .p_3{/*tiendas - afiliacion*/
+	margin: 4% auto;
 	text-align: center;
 	font-size: 1.6em;
 }
@@ -1579,9 +1578,6 @@ button{/*tiendas*/
 	width: 100%;
 	margin-bottom: -0.5% !important;
 }
-/* .scrollNavigation[href="#top"]{
-	top: 0px
-} */
 .section_1{/*inicio*/
 	background-color: var(--OficialClaro);
 	height: 100%;
@@ -1693,16 +1689,14 @@ button{/*tiendas*/
 .span_10{/*cuenta_editar*/
 	font-size: 1.2em;
 	color: rgba(0, 0, 0, 0.6);
+	display: inline-block;
+}
+.span_10:hover{/*cuenta_editar*/
+	cursor: pointer;
 }
 .span_11{/*registroCom*/
 	display: inline-block;
 	margin-left: 75%;
-}
-.span_12{/*cuenta_editar*/
-	display: inline-block;
-}
-.span_12:hover{/*cuenta_editar*/
-	cursor: pointer;
 }
 .span_13{/*cuenta_editar*/
 	color: blueviolet;
@@ -1742,6 +1736,16 @@ button{/*tiendas*/
 }
 .span_18:hover{/*cuenta_publicar - cuenta_editar_prod*/
 	cursor: pointer;	
+}
+.span_21{/*inicio*/
+	background-color: var(--OficialClaro);
+	border-radius: 30px;
+	/* padding: 2px;  */
+	width: 23px;
+	position: relative; 
+	text-align: center;
+	top: 5%;
+	left: 85%;
 }
 .tabla{/*carrito*/
 	width: 100%;

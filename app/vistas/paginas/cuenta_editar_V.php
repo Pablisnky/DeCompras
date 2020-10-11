@@ -34,14 +34,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
         <h1 class="h1_8">Configurar cuenta</h1>   
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return ValidarEditarCuenta()">
+
+            <!-- Persona responsable -->
             <a id="marcador_01" class="ancla_2"></a>
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Persona responsable</legend>                    
-                <div class="contenedor_119 borde_1 borde_2">
-                    <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/perfiles/<?php echo $Foto_AfiCom;?>"/>
-                    <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
-                </div>
+                <!-- <div class="contenedor_119 borde_1 borde_2">
+                    <label for="imgInp_1"><span class="icon-pencil span_18 borde_1"></span></label>
+                    <img class="imagen_6" id="blah_1" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/perfiles/<?php echo $Foto_AfiCom;?>"/>
+                    <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp_1"/>
+                </div> -->
                 <label class="">Nombre responsable tienda</label>
                 <input class="input_13 borde_1" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
 
@@ -56,23 +58,25 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
 
+            <!-- Datos tienda -->
             <a id="marcador_02" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
                 <legend class="legend_1">Datos de tienda</legend> 
                 <div class="contenedor_119 borde_1 borde_2">
-                    <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Foto_Tien;?>"/>
-                    <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp"/>
+                    <label for="imgInp_2"><span class="icon-pencil span_18 borde_1"></span></label>
+                    <img class="imagen_6" id="blah_2" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Foto_Tien;?>"/>
+                    <input class="ocultar" type="file" name="imagen_Tienda" id="imgInp_2"/>
                 </div>
                 <br>
                 <label>Nombre tienda</label>
                 <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre" value="<?php echo $Nombre_Tien;?>" autocomplete="off">
+
                 <label>Telefono tienda</label>
-                <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono" value="<?php echo $Direccion_Tien;?>" autocomplete="off">
-                <label>Dirección tienda</label>
-                <input class="input_13 borde_1" type="text" name="direccion_com" id="Direccion" value="<?php echo $Telefono_Tien;?>"  autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono" value="<?php echo $Telefono_Tien;?>" autocomplete="off" require/>
+
                 <label>Slogan tienda</label>
                 <input class="input_13 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off">
+
                 <input class="contador_2" type="text" id="ContadorSlo" value="40"/>
                 <div class="contenedor_80" id="Label_13">
                     <label class="label_16">Categoria</label>
@@ -85,8 +89,27 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off">
                     <?php
                 }  ?>
+
+                <hr class="hr_3">
+                <label>Datos de ubicación</label>
+                <br>
+                <br>
+
+                <label>Estado</label>
+                <br>
+                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado" value="<?php echo $Estado_Tien;?>" autocomplete="off">
+
+                <label>Municipio</label>
+                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio" value="<?php echo $Municipio_Tien;?>" autocomplete="off">                
+
+                <label>Parroquia</label>
+                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia" value="<?php echo $Parroquia_Tien;?>" autocomplete="off">                
+
+                <label>Dirección</label>
+                <input class="input_13 borde_1" type="text" name="direccion_com" id="Direccion" value="<?php echo $Direccion_Tien;?>" autocomplete="off"require>
             </fieldset>
 
+                <!-- Secciones -->
             <a id="marcador_03" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Secciones</legend>
@@ -94,10 +117,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <p class="p_12">Organiza tú tienda en secciones, añade tantas como consideres necesario para que tus productos esten bien acomodados en el mostrador. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
                     <?php   
+                    //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
                         <div id="Contenedor_80" class="contenedor_80">
                             <input class="input_13 input_12 borde_1" type="text" name="seccion[]" placeholder="Indica una sección"/>
-                            <span class="icon-cancel-circle span_10 span_12" id="Span_4"></span>
+                            <span class="icon-cancel-circle span_10 span_12"></span>
                         </div>
                         <?php
                     }   
@@ -107,15 +131,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 ?>
                             <div id="Contenedor_80" class="contenedor_80">
                                 <input class="input_13 input_12 borde_1" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>"/>
-                                <span class="icon-cancel-circle span_10 span_12" id="Span_4"></span>
+                                <span class="icon-cancel-circle span_10 span_12_js"></span>
                             </div>
                             <?php
                         }   
                     }   ?>
                 </div>
-                <label class="label_4" id="Label_5">Añadir sección</label>
+                <label class="label_4 label_24" id="Label_5">Añadir sección</label>
             </fieldset>
             
+            <!-- Ofertas -->
             <a id="marcador_04" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Ofertas</legend>
@@ -132,6 +157,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <p>Automaticamente se llena este bloque, con los productos mas comprados de la tienda</p>
             </fieldset> -->
 
+            <!-- Cuentas bancarias -->
             <a id="marcador_06" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Cuentas bancarias</legend>
@@ -306,7 +332,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <?php include(RUTA_APP . "/vistas/inc/footer.php");
 }
 else{
-    echo "Página no  autorizada";
     redireccionar("/Login_C/");
 }
     ?>

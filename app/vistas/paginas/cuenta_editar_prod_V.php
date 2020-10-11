@@ -5,7 +5,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
 
-    //$Datos viene del metodo actualizarProducto() en Cuenta_C
+    //$Datos viene del metodo Cuenta_C/actualizarProducto
     foreach($Datos['especificaciones'] as $arr) :
         $ID_Producto = $arr['ID_Producto'];
         $ID_Opcion = $arr['ID_Opcion'];
@@ -43,9 +43,15 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="placeholder placeholder_2 borde_1" type="text" name="descripcion" id="ContenidoDes" value="<?php echo $Opcion;?>"/>
                     <input class="contador" type="text" id="ContadorDes" value="20"/>
 
-                    <label>Especificacion ( Opcional )</label>
-                    <input class="placeholder placeholder_2 borde_1" type="text" name="especificacion" id="ContenidoEsp" placeholder="Especificaciones"/>
-                    <input class="contador" type="text" id="ContadorEsp" value="50"/>
+                    <label>Especificaciones ( Opcional )</label>
+                    <?php
+                        foreach($Datos['caracteristicas'] as $arr) :   ?>
+                            <input class="placeholder placeholder_2 borde_1" type="text" name="caracteristica[]" id="ContenidoCar" value="<?php echo $arr['caracteristica'];?>"/>
+                            
+                            <input class="ocultar" type="text" name="id_categoria[]" value="<?php echo $arr['ID_Caracteristica'];?>"/>
+                            <br>
+                            <?php
+                        endforeach  ?>
 
                     <label>Precio</label>
                     <input class="placeholder placeholder_2 borde_1" type="text" name="precio" id="Precio" value="<?php echo $Precio;?>"/>
@@ -57,6 +63,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div id="Contenedor_80"></div>
                     
                     <div class="contenedor_49 contenedor_81">
+                        <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda?>"/>
                         <input class="ocultar" type="text" name="id_producto" value="<?php echo $ID_Producto;?>">
                         <input class="ocultar" type="text" name="id_opcion" value="<?php echo $ID_Opcion;?>">
                         <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>

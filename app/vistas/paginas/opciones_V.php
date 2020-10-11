@@ -5,17 +5,18 @@
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 p_9">
         <!-- $Datos viene de Opciones_C -->
-        <h1 class="h1_1 h1_3 h1_4">Sección <?php echo $Datos['Opciones'][0]['seccion']?></h1>
+        <h1 class="h1_1 h1_3 h1_4"><?php echo $Datos['Opciones'][0]['seccion']?></h1>
         <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
     </div>
     <form id="Formulario">
         <div class="contenedor_13" id="Contenedor_13Js">   
             <?php   
             $ContadorLabel = 1;
-            //$Datos proviene de Opciones_C
+            //$Datos proviene de Opciones_C/index
             $ID_Tienda = $Datos['ID_Tienda'];
-            $Nombre_Tienda = "Nombre Tienda";
             foreach($Datos['Opciones'] as $row){
+                $Nombre_Tienda = $row['nombre_Tien'];
+                $Slogan_Tienda = $row['slogan_Tien'];
                 $ID_Producto = $row['ID_Producto'];
                 $ID_Opcion =  $row['ID_Opcion'];
                 $Producto = $row['producto']; 
@@ -23,14 +24,18 @@
                 $Precio = $row['precio'];                
                 $Seccion = $row['seccion'];              
                 $Fotografia = $row['fotografia'];
- 
+   
+                // echo "<pre>";
+                // print_r($Datos);
+                // echo "</pre>";
+                // exit();
                 //Se da formato al precio, sin decimales y con separación de miles
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
-                    <div class="contenedor_9 "><!--borde_2-->
+                    <div class="contenedor_9">
                         <div class="contenedor_97">
                             <figure class="figure_1">
-                                <img class="imagen_6" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/productos/<?php echo $Fotografia;?>"/>
+                                <img class="imagen_6" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
                             </figure>
                         </div>
                     </div>
@@ -46,7 +51,7 @@
                             <?php                  
                                 foreach($Datos['variosCaracteristicas'] as $AA) :
                                     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                        <a class="input_10" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'] ;?></a>
+                                        <a class="input_10" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $Slogan_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'] ;?></a>
                                         <?php
                                     }                                           
                                 endforeach; 

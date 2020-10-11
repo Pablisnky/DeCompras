@@ -1,5 +1,5 @@
 <?php
-//Archivo llamado desde Funciones_Ajax.js por medio de la función llamar_Opciones()
+    //Archivo llamado desde Funciones_Ajax.js por medio de la función llamar_Opciones()
     class Opciones_C extends Controlador{
 
         public function __construct(){
@@ -20,7 +20,7 @@
             $Caracteristicas = $Consulta_2->fetchAll(PDO::FETCH_ASSOC); 
 
             $Datos=[
-                'Opciones' => $Consulta, //seccion, ID_Opcion, fotografia, producto, opcion, precio
+                'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Opcion, fotografia, producto, opcion, precio
                 'ProductoSelecion' => $OpcionSelec,
                 'ID_Tienda' => $ID_Tienda,
                 'variosCaracteristicas' => $Caracteristicas
@@ -63,21 +63,13 @@
             $DatosAgrupados = explode(",", $DatosAgrupados);
             
             $NombreTienda = $DatosAgrupados[0];
-            $ID_Tienda = $DatosAgrupados[1];
-            $Producto = $DatosAgrupados[2];
-            $Opcion = $DatosAgrupados[3];
-            $Precio = $DatosAgrupados[4];
-            $Fotografia = $DatosAgrupados[5];
-            $ID_Producto = $DatosAgrupados[6];
-
-            // echo $NombreTienda . "<br>";
-            // echo $ID_Tienda . "<br>";
-            // echo $Producto . "<br>";
-            // echo $Opcion . "<br>";
-            // echo $Precio . "<br>";
-            // echo $Fotografia . "<br>";
-            // echo $ID_Producto . "<br>"; 
-            // exit();
+            $SloganTienda = $DatosAgrupados[1];
+            $ID_Tienda = $DatosAgrupados[2];
+            $Producto = $DatosAgrupados[3];
+            $Opcion = $DatosAgrupados[4];
+            $Precio = $DatosAgrupados[5];
+            $Fotografia = $DatosAgrupados[6];
+            $ID_Producto = $DatosAgrupados[7];
             
             //CONSULTA las caracteristicas de los productos de una sección de una tienda
             $Consulta = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
@@ -85,6 +77,7 @@
 
             $Datos=[
                 'NombreTienda' => $NombreTienda, 
+                'SloganTienda' => $SloganTienda,
                 'ID_Tienda' => $ID_Tienda,
                 'Producto' => $Producto,
                 'Opcion' => $Opcion,
@@ -93,11 +86,6 @@
                 'ID_Producto' => $ID_Producto, 
                 'variosCaracteristicas' => $Caracteristicas
             ];      
-
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            // exit();
             
             $this->vista("paginas/descr_Producto_V", $Datos);
         }  

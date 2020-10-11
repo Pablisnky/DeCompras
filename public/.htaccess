@@ -2,7 +2,14 @@
 <IfModule mod_rewrite.c>
 	Options -Multiviews
 	RewriteEngine On
+
+	#para conexion en local
 	RewriteBase /proyectos/PidoRapido/public
+
+	#para conexion en remoto
+	#RewriteBase http://www.pedidoremoto.com/public
+
+
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

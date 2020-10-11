@@ -11,6 +11,9 @@
                 case 'Comida_Rapida':
                     $Categoria = 'Comida Rapida';   
                 break;    
+                case 'Repuesto_automotriz':
+                    $Categoria = 'Repuesto automotriz';   
+                break;  
             }
             
             //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada
@@ -20,6 +23,7 @@
             // print_r($Datos);
             // echo "</pre>";
             // exit();
+
             $this->vista("paginas/tiendas_V",$Datos);
         }
     }

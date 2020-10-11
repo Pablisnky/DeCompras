@@ -215,6 +215,26 @@
             return $stmt;
         }
 
+        //SELECT de ID_Seccion de secciones de una tienda que no serán eliminadas
+        public function consultarID_SecionesNoEliminar($SinEliminarSeccion){
+            $Elementos = count($SinEliminarSeccion);
+            $Busqueda = "";
+            //Se convierte el array en una cadena con sus elementos entre comillas
+            for($i = 0; $i < $Elementos; $i++){
+                $Busqueda .= " '" . $SinEliminarSeccion[$i] . "', ";
+            }
+            // Esto quita el ultimo espacio y coma del string generado con lo cual
+            // el string queda 'id1','id2','id3'
+            $Busqueda = substr($Busqueda,0,-2);
+
+            $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones WHERE Seccion IN ($Busqueda)");
+
+            // $stmt->bindParam(':CATEGORIA', $Categoria, PDO::PARAM_STR);
+
+            $stmt->execute();
+            return $stmt;
+        }
+
         //SELECT del ID_Sección de una sección en una tienda especifica
         public function consultarID_Seccion($RecibeDatos){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones WHERE seccion = :SECCION AND ID_Tienda = :ID_TIENDA");
@@ -229,14 +249,18 @@
             return $stmt;
         }
         
-        //SELECT del ID_Sección de todas las sección de una tienda especifica
-        public function consultarTodasID_Seccion($ID_Tienda){
+        //SELECT de los ID_Sección de las secciónes de una tienda especifica
+        public function consultarTodosID_Seccion($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
-            $stmt->execute();
-            return $stmt;
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
         }
 
         //SELECT de un producto especificao de una tienda determinada
@@ -252,26 +276,27 @@
             $stmt->execute();
             return $stmt;
         }
-
-        //SELECT del ID_SP de un producto dentro de su seccion        
-        // public function consultarSeccion_Producto($RecibeProducto){
-        //     $stmt = $this->dbh->prepare("SELECT ID_SP FROM secciones_productos WHERE ID_Seccion = :ID_SECCION AND ID_Producto = :ID_PRODUCTO");
-
-        //     $stmt->bindParam(':ID_SECCION', $id_seccion, PDO::PARAM_INT);
-        //     $stmt->bindParam(':ID_PRODUCTO', $id_producto, PDO::PARAM_INT);
-
-        //     $id_seccion = $RecibeProducto['ID_Seccion'];
-        //     $id_producto = $RecibeProducto['ID_Producto'];
-
-        //     $stmt->execute();
-        //     return $stmt;
-        // }
         
         //SELECT de slogan de la tienda
         public function consultarSloganTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT slogan_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+        
+        //SELECT de las caracteristicas de un producto determinado
+        public function consultarCaracteristicasProducto($ID_Tienda, $ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT ID_Caracteristica, caracteristica FROM caracteristicaproducto WHERE ID_Tienda = :ID_TIENDA AND ID_Producto = :ID_PRODUCTO");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt;
@@ -333,20 +358,85 @@
         }
         
 //***************************************************************************************************
-//Las siguientes dos consultas de eliminación deben realizarse por transacciones
+//Las siguientes cuatro consultas de eliminación deben realizarse por transacciones
 //***************************************************************************************************
+        //DELETE de Dependencia Transitiva entre tiendas y secciones
+        public function eliminarDT_Tienda_Secciones($ID_Tienda, $SeccionNoEliminar){
+            echo "ID_Seccion que no se eliminaran";
+            // echo $ID_Tienda;
+            echo "<pre>";
+            print_r($SeccionNoEliminar);
+            echo "</pre>";
+
+            $Busqueda_3 = "";
+            foreach($SeccionNoEliminar as $key) :
+                //Se da formato a la cadena para convertir el array en un string separado por comas y entre comillas
+                $Busqueda_3 .=  $key['ID_Seccion'] . ",";
+            endforeach;
+
+            echo $Busqueda_3 ;
+            // Esto quita el ultimo espacio y coma del string generado con lo cual
+            // el string queda 'id1','id2','id3'
+            // $Busqueda_3 = substr($Busqueda_3, 0, -1);
+
+            $array = explode(",", $Busqueda_3);
+            print_r($array);
+
+            for($i = 0; $i<count($array); $i++){
+                $Cambio = settype($array[$i],"integer");
+                echo $Cambio  ."<br>";
+            }
+
+            settype($array[0],"integer");
+            echo gettype($Busqueda_3) ."<br>";
+            echo "Para concluir " .  $Busqueda_3 ."<br>";
+               exit();
+            $stmt = $this->dbh->prepare("DELETE FROM tiendas_secciones WHERE ID_Tienda = :ID_TIENDA AND ID_Seccion NOT IN ($Busqueda_3)");
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();  
+        }
+
         //DELETE de las secciones de una tienda
-        // public function eliminarSeccionesTienda($ID_Tienda){
-        //     $stmt = $this->dbh->prepare("DELETE FROM secciones WHERE ID_Tienda = :ID_Tienda");
-        //     $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
-        //     $stmt->execute();  
+        public function eliminarSeccionesTienda($ID_Tienda, $EliminarSeccion){
+            // echo "<pre>";
+            // print_r($EliminarSeccion);
+            // echo "</pre>";
+            $Busqueda_2 = "";
+            foreach($EliminarSeccion as $key) :
+                //Se da formato a la cadena para convertir el array en un string separado por comas y entre comillas                
+                $Busqueda_2 .= "'" . $key  . "',";
+            endforeach;
+            // Esto quita el ultimo espacio y coma del string generado con lo cual
+            // el string queda 'id1','id2','id3'
+            $Busqueda_2 = substr($Busqueda_2, 0, -2);
+            // echo "Para concluir " .  $Busqueda_2 ."<br>";
+                
+            $stmt = $this->dbh->prepare("DELETE FROM secciones WHERE ID_Tienda = :ID_Tienda AND seccion NOT IN($Busqueda_2)");
+            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute(); 
+        }
 
-        //     //Se envia información de cuantos registros se vieron afectados por la consulta
-        //     return $stmt->rowCount();
-        // }
+        //DELETE de Dependencia Transitiva entre secciones y opciones
+        public function eliminarDT_Seccion_Opcion($ID_Seccion){
+            //Debido a que $ID_Seccion es un array con todas los ID_Seccion, deben eliminarse uno a uno mediante un ciclo
+            foreach($ID_Seccion as $key){
+                $stmt = $this->dbh->prepare("DELETE FROM secciones_opciones WHERE ID_Seccion = :ID_SECCION");
+                $stmt->bindValue(':ID_SECCION', $key['ID_Seccion'], PDO::PARAM_INT);
+                $stmt->execute();  
+            }
+        }
 
-       
+        //DELETE de Dependencia Transitiva entre secciones y productos
+        public function eliminarDT_Seccion_Producto($ID_Seccion){
+            //Debido a que $ID_Seccion es un array con todas los ID_Seccion, deben eliminarse uno a uno mediante un ciclo
+            foreach($ID_Seccion as $key){                
+                $stmt = $this->dbh->prepare("DELETE FROM secciones_productos WHERE ID_Seccion = :ID_SECCION");
+                $stmt->bindParam(':ID_SECCION', $key['ID_Seccion'], PDO::PARAM_INT);
+                $stmt->execute();  
+            }
+        }
 
+        
 //***************************************************************************************************
 //Las siguientes cinco consultas de eliminación deben realizarse por transacciones
 //***************************************************************************************************
@@ -357,7 +447,7 @@
             $stmt->execute();          
         }
         
-        //DELETE de productos de una tienda
+        //DELETE de opciones de producto de una tienda
         public function eliminarProductoOpcion($ID_Producto){
             $stmt = $this->dbh->prepare("DELETE FROM productos_opciones WHERE ID_Producto = :ID_PRODUCTO");
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
@@ -371,7 +461,7 @@
             $stmt->execute();          
         }
         
-        //DELETE de productos de una tienda
+        //DELETE de Dependencia Transitiva entre productos y opciones
         public function eliminarOpcion($ID_Opcion){
             $stmt = $this->dbh->prepare("DELETE FROM secciones_opciones WHERE ID_Opcion = :ID_OPCION");
             $stmt->bindValue(':ID_OPCION', $ID_Opcion, PDO::PARAM_INT);
@@ -500,6 +590,39 @@
                 $stmt->execute();
             }
         }
+        
+        //UPDATE de las caracteristicas
+        public function actualizarCaracteristicas($RecibeProducto, $ID_Caracteristica , $Caracteristica){
+            //Debido a que $Caracteristica es un array con varios elemento se hace un recorrido de cada uno para actualizar en cada vuelta
+            echo "<pre>";
+            print_r($RecibeProducto);
+            echo "</pre>";
+            echo "<pre>";
+            print_r($ID_Caracteristica);
+            echo "</pre>";
+            echo "<pre>";
+            print_r($Caracteristica);
+            echo "</pre>";
+            exit();
+            // foreach(array_keys($_POST['caracteristica'])as $key){
+            //     $Caracteristica = $_POST['caracteristica'][$key];
+               
+            //     $stmt = $this->dbh->prepare("UPDATE caracteristicaproducto SET caracteristica = :CARACTERISTICA WHERE ID_Tienda = :ID_TIENDA AND ID_Producto = :ID_PRODUCTO");
+
+            //     // Se vinculan los valores de las sentencias preparadas
+            //     $stmt->bindValue(':CARACTERISTICA', $Caracteristica);
+            //     $stmt->bindValue(':ID_TIENDA', $RecibeProducto['ID_Tienda']);
+            //     $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
+
+            //     // Se ejecuta la actualización de los datos en la tabla
+            //     if($stmt->execute()){
+            //         return true;
+            //     }
+            //     else{
+            //         return false;
+            //     }
+            // } 
+        }
 
         //UPDATE de un producto
         public function actualizarProducto($RecibeProducto){
@@ -515,12 +638,11 @@
         
         //UPDATE de una opcion
         public function actualizarOpcion($RecibeProducto){
-            $stmt = $this->dbh->prepare("UPDATE opciones SET opcion = :OPCION, precio = :PRECIO, especificacion = :ESPECIFICACION WHERE ID_Opcion = :ID_OPCION");
+            $stmt = $this->dbh->prepare("UPDATE opciones SET opcion = :OPCION, precio = :PRECIO WHERE ID_Opcion = :ID_OPCION");
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':OPCION', $RecibeProducto['Descripcion']);
             $stmt->bindValue(':PRECIO', $RecibeProducto['Precio']);
-            $stmt->bindValue(':ESPECIFICACION', $RecibeProducto['Especificacion']);
             $stmt->bindValue(':ID_OPCION', $RecibeProducto['ID_Opcion']);
 
             // Se ejecuta la actualización de los datos en la tabla
@@ -531,7 +653,6 @@
                 return false;
             }
         }
-        
         
         //UPDATE de una seccion
         public function actualizacionSeccion($RecibeProducto){ 
@@ -735,18 +856,18 @@
         }
 
         //INSERT de las secciones de una tienda
-        public function insertarSeccionesTienda($ID_Tienda, $Seccion){
-            foreach(array_keys($_POST['seccion']) as $key){
-                $Seccion = $_POST['seccion'][$key];
-
+        public function insertarSeccionesTienda($ID_Tienda, $Seccion){ 
+            //Debido a que $Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo    
+            foreach($Seccion as $key){
+                // echo $key . "<br>";
                 $stmt = $this->dbh->prepare("INSERT INTO secciones(ID_Tienda, seccion) VALUES(:ID_TIENDA, :SECCION)");
 
                 //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
-                $stmt->bindParam(':SECCION', $Seccion);
+                $stmt->bindParam(':SECCION', $key);
 
-                //Se ejecuta la inserción de los datos en la tabla
-                $stmt->execute(); 
+                //Se ejecuta la actualización de los datos en la tabla
+                $stmt->execute();
             }
         }
 
@@ -833,7 +954,28 @@
             
             //Se ejecuta la inserción de los datos en la tabla
             $stmt->execute();    
-        }   
+        } 
+
+        //INSERT en la tabla imagenes as fotografias recibidos desde Publicacion_C/recibeRegistro
+        public function insertarFotografiasAdicionales($ID_Producto, $archivonombre, $tipo, $tamanio){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fecha)VALUES (:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, NOW())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindParam(':ID_PRODUCTO' , $ID_Producto);
+            $stmt->bindParam(':NOMBRE_IMG' , $archivonombre);
+            $stmt->bindParam(':TIPO_ARCHIVO' , $tipo);
+            $stmt->bindParam(':TAMANIO_ARCHIVO' , $tamanio);
+            
+            //Se ejecuta la inserción de los datos en la tabla
+            if($stmt->execute()){
+                // echo "Se realizó la inserción en la BD";
+                return true;
+            }
+            else{
+                // echo "No se realizó la inserción en la BD";
+                return true;
+            }
+        }
 
         // public function insertarFotografia($ID_Opcion, $nombre_imgProducto){  
         //     $stmt = $this->dbh->prepare("INSERT INTO opciones(ID_Opcion, fotografia) VALUES(:ID_OPCION,:FOTOGRAFIA)");

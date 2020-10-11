@@ -1,11 +1,14 @@
-@media (max-width: 800px){/*aplicaría en cualquier medio con dimensiones menores a lo indicado*/
-
+@media(max-width: 800px){/*aplicaría en cualquier medio con dimensiones menores a lo indicado*/
 	
 .a_1{/*header - header_AfiCom - afiliacion*/
-	font-size: 1.6em;
+	font-size: 1.7em;
 	width: 100%;
 	text-align: right;
 	padding-right: 2%;
+}
+.a_2{/*inicio*/
+	font-size: 1.4em;
+	padding: 0.1% 2.5% 0.1% 3.5%;
 }
 .a_3{/*header_inicio - header_AfiCom*/
 	width: 100% !important;
@@ -99,7 +102,7 @@
 .contenedor_6{/*inicio*/
 	margin: 10% auto;	
 	width: 60%;
-	height: 100px !important;
+	height: 120px !important;
 }
 .contenedor_7{/*footer*/
 	margin-top: 0%;
@@ -427,8 +430,8 @@
 	margin: auto;
 	grid-template-columns: 100%;
 }
-.contenedor_106{/**/
-	/* margin: 3% auto 10% auto !important; */
+.contenedor_106{/*inicio*/
+	bottom: 20px;
 }
 .contenedor_107{/*cuenta_editar*/
 	width: 60%;
@@ -446,7 +449,7 @@
 	background-size: contain; /*cover*/
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 160px;
+	height: 180px;
 }
 .contenedor_110{/*vitrina*/
 	display: grid;
@@ -473,6 +476,15 @@
 	margin: 5% auto !important;
 	text-align: center;
 }
+.contenedor_120{ /*tiendas*/ 
+	height: 160px;
+}
+.contenedor_129{/*cuenta_publicar*/
+	width: 60%;
+	height: 130px; 
+	margin: auto;
+	margin-bottom: 10%;
+}
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
 	width: 90%;
@@ -498,13 +510,17 @@
 	font-size: 1.1em;
 }
 .h1_2{/*inicio*/
-	font-size: 2em;
+	font-size: 2.5em;
 	text-align: left;
 }
 .h1_3{/*opciones - carrito*/
 	width: 85%;
-	height: 1em;
+	height: 1.3em;
 	/* line-height: 1em; */
+}
+.h1_4{/*ciudad - opciones - tiendas*/
+	font-size: 1.4em;
+	font-weight: bold;
 }
 .h1_7{/*cuenta_productos*/
 	font-size: 1.7em !important;
@@ -520,19 +536,19 @@
 	font-size: 6vw !important;
 }
 .h2_1{/*inicio*/
-	font-size: 0.8em;
-	min-height: 3em;
+	font-size: 1em;
+	min-height: 4em;
 }
 .h2_2{/*carrito*/
 	font-size: 0.9em;
 }
 .h2_4{/*inicio*/
 	width: 100%;
-	font-size: 0.9em;
+	font-size: 1em;
 }
 .h2_5{/*header - header_tienda - header_AfiCom*/
 	width: 100%;
-	font-size: 0.7em;
+	font-size: 0.9em;
 	margin-top: -2%;
 	text-align: right;
 	padding-right: 2%;
@@ -558,7 +574,7 @@
 	font-size: 0.6em;
 }
 .h3_2{/*inicio*/
-	padding-top: 130%;
+	padding-top: 110%;
 	font-size: 1.4em;
 }
 .h3_9{/*cuenta_productos*/
@@ -612,6 +628,9 @@
 	/* height: 150px; */
 	margin: auto;
 	/* margin-bottom: 3%; */
+}
+.imagen_12{/*cuenta_publicar*/
+	margin-top: -5%;
 }
 .input_3{/*vitrina*/
 	width: 100%;
@@ -794,7 +813,7 @@
 	padding-top: 15%;
 }
 .section_9{/*opciones - cuenta_productos*/
-	padding-top: 8%;
+	padding-top: 15%;
 }
 .section_10{/*Categorias_Ajax - Secciones_Ajax*/
 	/* position: ; */

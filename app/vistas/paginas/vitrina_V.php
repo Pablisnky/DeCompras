@@ -1,5 +1,11 @@
 <?php 
-    //$Datos viene de Vitrina_C
+    header('Access-Control-Allow-Origin:*');
+    if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+        // Indica los métodos permitidos.
+        header('Access-Control-Allow-Methods: GET, POST, DELETE');
+        // Indica los encabezados permitidos.
+        header('Access-Control-Allow-Headers: Authorization');
+    }
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia']; 
 ?>
@@ -7,7 +13,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
 <section class="section_5">	
-    <div class="contenedor_109" style="background-image: url('http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')">
+    <!-- <div class="contenedor_109" style="background-image: url('http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')">
+    </div> -->
+    <div class="contenedor_109" style="background-image: url('http://www.pedidoremoto.com/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')">
     </div>
     <div class="contenedor_110" id="Section_4">
         <?php
@@ -18,9 +26,12 @@
             ?> 
             <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
                 <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>')"> 
-                    <div class="contenedor_9 borde_1">
+                    <!-- <div class="contenedor_9 borde_1">
                         <img class="imagen_2" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
-                    </div> 
+                    </div>  -->
+                    <div class="contenedor_9 borde_1">
+                        <img class="imagen_2" alt="Fotografia del producto" src="http://www.pedidoremoto.com/public/images/imagen.png"/>
+                    </div>
                     <h2 class="h2_6"><?php echo $Seccion;?></h2>
                 </div>
 
@@ -58,7 +69,16 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>  
+
+ <!-- Se verifica que el div id="Mostrar_Opciones" haya cargado todos los productos de la sección y se procede a colocar la leyenda en el producto seleccionado en la busqueda -->
+ <script>
+        interval = setInterval('verificarDiv()',1000)
+
+        //Detiene la llamada ontinua de verificarDiv a los 4 segundo de ser invocada con el setInterval
+        setTimeout('stopInterval()',4000)   
+    </script> 
+
+
 
 <!-- Si viene de buscador se realiza el procedimiento para cargar al carrito el producto seleccionado y colocar la leyenda en la vista opcion_V.php y vitrina_V.php -->
 <?php
@@ -82,13 +102,10 @@ if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porq
         $Contador++;
     }   ?>
     
-    <!-- Se verifica que el div id="Mostrar_Opciones" haya cargado todos los productos de la sección y se procede a colocar la leyenda en el producto seleccionado en la busqueda -->
-    <script>
-        interval = setInterval('verificarDiv()',1000)
-
-        //Detiene la llamada ontinua de verificarDiv a los 4 segundo de ser invocada con el setInterval
-        setTimeout('stopInterval()',4000)   
-    </script> 
+   
     <?php
 }
 ?>
+
+   <!-- ******************************************************************************************* -->
+    <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>  

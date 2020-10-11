@@ -3,3 +3,6 @@ pcabeza7@gmail.com      ppcc
 sebastian@gmail.com     ssss
 claudia@gmail.com       cccc
 vivas@gmail.com         vvvv
+
+En local y en remoto
+Cambiar en Configurar.php; .htaccess de la carpeta public
