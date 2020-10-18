@@ -66,15 +66,6 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
-
- <!--Si se llama un producto desde buscador, se verifica que el div id="Mostrar_Opciones" haya cargado todos los productos de la sección, para luego proceder a colocar la leyenda en el producto seleccionado en la busqueda,  esto es necesario cuando se hizo una busqueda por producto en inicio_V.php -->
-<script>
-    interval = setInterval('verificarDiv()',1000)
-
-    //Detiene la llamada continua de verificarDiv a los 4 segundo de ser invocada con el setInterval
-    setTimeout('stopInterval()',4000)   
-</script> 
-
 <!-- Si viene de buscador se realiza el procedimiento para cargar al carrito el producto seleccionado y colocar la leyenda en la vista opcion_V.php y vitrina_V.php -->
 <?php
     //$Datos proviene de Vitrina_C
@@ -107,9 +98,13 @@
     }
 ?>
 
-   <!-- ******************************************************************************************* -->
+ <!--Si se llama un producto desde buscador, se verifica que el div id="Mostrar_Opciones" haya cargado todos los productos de la sección, para luego proceder a colocar la leyenda en el producto seleccionado en la busqueda,  esto es necesario cuando se hizo una busqueda por producto en inicio_V.php -->
+<script>
+    interval = setInterval('verificarDiv()',1000)
 
-    <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
+    //Detiene la llamada continua de verificarDiv a los 4 segundo de ser invocada con el setInterval
+    setTimeout('stopInterval()',4000)   
+</script> 
 
     
 <script>
@@ -119,3 +114,8 @@
         document.getElementById(ID_LabelAgregar).click();
     }
 </script>
+
+
+   <!-- ******************************************************************************************* -->
+
+   <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
