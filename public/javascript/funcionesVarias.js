@@ -34,6 +34,13 @@
     }
 
 //************************************************************************************************
+    //quita el color de fallo en un input y lo deja en su color original
+    function blanquearInput(id){
+        console.log("______Desde blanquearInput()______")
+        document.getElementById(id).style.backgroundColor = "initial"
+    }
+
+//************************************************************************************************
     //coloca el cursor en el input automaticamente 
     function autofocus(id){
         console.log("______Desde autofocus()______")
@@ -67,7 +74,7 @@
     }
 
 //************************************************************************************************ 
-    //Invocada desde afiliacion_V.php
+    //Muestra que es una PWA Invocada desde footer.php
     function Documentacion_PWA(){  
         console.log("______Desde Documentacion_PWA()______")    
         window.open("http://localhost/proyectos/PidoRapido/Afiliacion_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");

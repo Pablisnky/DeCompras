@@ -58,7 +58,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
 
-            <!-- Datos tienda -->
+            <!-- SECCION DATOS TIENDA -->
             <a id="marcador_02" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
                 <legend class="legend_1">Datos de tienda</legend> 
@@ -75,9 +75,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono" value="<?php echo $Telefono_Tien;?>" autocomplete="off" require/>
 
                 <label>Slogan tienda</label>
-                <input class="input_13 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off">
-
+                <input class="input_13 input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off">
                 <input class="contador_2" type="text" id="ContadorSlo" value="40"/>
+                
                 <div class="contenedor_80" id="Label_13">
                     <label class="label_16">Categoria</label>
                     <span class="icon-circle-down span_10"></span>
@@ -90,26 +90,26 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <?php
                 }  ?>
 
-                <hr class="hr_3">
-                <label>Datos de ubicación</label>
-                <br>
+
+                <!-- SECCION DATOS DE UBICACIÓN -->
+                <label id="Ref_Ubicacion">Datos de ubicación</label>
                 <br>
 
                 <label>Estado</label>
                 <br>
-                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado" value="<?php echo $Estado_Tien;?>" autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado" value="<?php echo 'Yaracuy';?>" autocomplete="off">
 
                 <label>Municipio</label>
-                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio" value="<?php echo $Municipio_Tien;?>" autocomplete="off">                
+                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio" value="<?php echo 'San Felipe';?>" autocomplete="off">                
 
                 <label>Parroquia</label>
-                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia" value="<?php echo $Parroquia_Tien;?>" autocomplete="off">                
+                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia" value="<?php echo 'San Felipe';?>" autocomplete="off">                
 
                 <label>Dirección</label>
-                <input class="input_13 borde_1" type="text" name="direccion_com" id="Direccion" value="<?php echo $Direccion_Tien;?>" autocomplete="off"require>
+                <textarea class="textarea_4 borde_1" name="direccion_com" id="Direccion"><?php echo $Direccion_Tien;?></textarea> 
             </fieldset>
 
-                <!-- Secciones -->
+            <!-- SECCION SECCIONES --> 
             <a id="marcador_03" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Secciones</legend>
@@ -148,7 +148,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <br><br>
                 <p>Por medio de un boton se muestran todos los productos al cliente, con ifltro por sección similar al menu "Productos" y una vez mostrados los productos cada uno tiene una etique <a> que lleva a otra pagina donde se edita la oferta. (similar a actualizar producto)</a></p>
                 
-                <label class="label_4" id="Label_5">Añadir oferta</label>
+                <label class="label_4" id="">Añadir oferta</label>
             </fieldset>
             
             <!-- <a id="marcador_05" class="ancla_2"></a>
@@ -304,9 +304,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script> 
         //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
         function readImage(input, id_Label){
-            console.log("Se ha entrado en la función")
-            console.log(input)
-            console.log(id_Label)
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = function(e){

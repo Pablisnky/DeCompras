@@ -19,11 +19,13 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>	
-		<header class="contenedor_69">
+		<header>
 			<!-- $Datos viene de Opciones_C/productoAmpliado-->
-			<div class="contenedor_111">
-				<h1 class="h1_10"><?php echo $Datos['NombreTienda']?></h1>
-				<h2 class="h2_5 h2_12"><?php echo $Datos['SloganTienda'];?></h2>
+			<div class="contenedor_133">
+				<div style="width: 100%;">
+					<h1 class="h1_10"><?php echo $Datos['NombreTienda']?></h1>
+					<h2 class="h2_5 h2_12"><?php echo $Datos['SloganTienda'];?></h2>
+				</div>
 			</div> 
 		</header>
 

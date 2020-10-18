@@ -40,8 +40,14 @@
                     }   ?>
                     <div>
                         <p class="p_3"><?php echo $Nombre?></p>
-                        <p class="p_2"><span class="icon-location2 span_17"></span><?php echo $Direccion?></p>
-                        <p class="p_2"><span class="icon-phone span_17""></span> <?php echo $Telefono?></p>
+                        <div class="contenedor_132">
+                            <span class="icon-phone span_17""></span> 
+                            <p class="p_2"><?php echo $Telefono?></p>
+                        </div>
+                        <div class="contenedor_131">
+                            <span class="icon-location2 span_17"></span>
+                            <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo 'San Felipe'?> - <?php echo 'Yaracuy'?></p>
+                        </div>
                     </div> 
                 </div>
             </section>

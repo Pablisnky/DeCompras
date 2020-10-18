@@ -20,7 +20,7 @@
             }
         }
 
-        //SELECT de secciones de la tienda
+        //SELECT de secciones de una tienda especifica
         public function consultarSeccionesTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion, seccion FROM secciones WHERE ID_Tienda = :ID_Tienda");
 
@@ -305,6 +305,20 @@
                 return "No se pudo";
             }
         }
+        
+        //SELECT de las caracteristicas de un producto determinado
+        public function consultarImagnesProducto($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT ID_Imagen, nombre_img FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
 
 
 
@@ -362,11 +376,11 @@
 //***************************************************************************************************
         //DELETE de Dependencia Transitiva entre tiendas y secciones
         public function eliminarDT_Tienda_Secciones($ID_Tienda, $SeccionNoEliminar){
-            echo "ID_Seccion que no se eliminaran";
-            // echo $ID_Tienda;
-            echo "<pre>";
-            print_r($SeccionNoEliminar);
-            echo "</pre>";
+            // echo "ID_Seccion que no se eliminaran";
+            // // echo $ID_Tienda;
+            // echo "<pre>";
+            // print_r($SeccionNoEliminar);
+            // echo "</pre>";
 
             $Busqueda_3 = "";
             foreach($SeccionNoEliminar as $key) :
@@ -374,22 +388,22 @@
                 $Busqueda_3 .=  $key['ID_Seccion'] . ",";
             endforeach;
 
-            echo $Busqueda_3 ;
+            // echo $Busqueda_3 ;
             // Esto quita el ultimo espacio y coma del string generado con lo cual
             // el string queda 'id1','id2','id3'
             // $Busqueda_3 = substr($Busqueda_3, 0, -1);
 
             $array = explode(",", $Busqueda_3);
-            print_r($array);
+            // print_r($array);
 
             for($i = 0; $i<count($array); $i++){
                 $Cambio = settype($array[$i],"integer");
-                echo $Cambio  ."<br>";
+                // echo $Cambio  ."<br>";
             }
 
             settype($array[0],"integer");
-            echo gettype($Busqueda_3) ."<br>";
-            echo "Para concluir " .  $Busqueda_3 ."<br>";
+            // echo gettype($Busqueda_3) ."<br>";
+            // echo "Para concluir " .  $Busqueda_3 ."<br>";
                exit();
             $stmt = $this->dbh->prepare("DELETE FROM tiendas_secciones WHERE ID_Tienda = :ID_TIENDA AND ID_Seccion NOT IN ($Busqueda_3)");
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
@@ -474,6 +488,20 @@
             $stmt->bindValue(':ID_OPCION', $ID_Opcion, PDO::PARAM_INT);
             $stmt->execute();          
         }
+        
+        //DELETE de caracteristicas de un producto especifico
+        public function eliminarCaracteristicas($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM caracteristicaproducto WHERE ID_Producto = :ID_PRODUCTO");
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+
+        //DELETE de fotografia principal de un producto
+        public function eliminarImagenProducto($ID_Imagen){
+            $stmt = $this->dbh->prepare("DELETE FROM imagenes WHERE ID_Imagen = :ID_IMAGEN");
+            $stmt->bindValue(':ID_IMAGEN', $ID_Imagen, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
 
 
 
@@ -500,7 +528,6 @@
 
 
 
-//***************************************************************************************************
 //***************************************************************************************************
         //UPDATE de los datos del afiliado
         public function actualizarAfiliadoComercial($ID_AfiliadoCom, $RecibeDatos){
@@ -591,39 +618,6 @@
             }
         }
         
-        //UPDATE de las caracteristicas
-        public function actualizarCaracteristicas($RecibeProducto, $ID_Caracteristica , $Caracteristica){
-            //Debido a que $Caracteristica es un array con varios elemento se hace un recorrido de cada uno para actualizar en cada vuelta
-            echo "<pre>";
-            print_r($RecibeProducto);
-            echo "</pre>";
-            echo "<pre>";
-            print_r($ID_Caracteristica);
-            echo "</pre>";
-            echo "<pre>";
-            print_r($Caracteristica);
-            echo "</pre>";
-            exit();
-            // foreach(array_keys($_POST['caracteristica'])as $key){
-            //     $Caracteristica = $_POST['caracteristica'][$key];
-               
-            //     $stmt = $this->dbh->prepare("UPDATE caracteristicaproducto SET caracteristica = :CARACTERISTICA WHERE ID_Tienda = :ID_TIENDA AND ID_Producto = :ID_PRODUCTO");
-
-            //     // Se vinculan los valores de las sentencias preparadas
-            //     $stmt->bindValue(':CARACTERISTICA', $Caracteristica);
-            //     $stmt->bindValue(':ID_TIENDA', $RecibeProducto['ID_Tienda']);
-            //     $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
-
-            //     // Se ejecuta la actualización de los datos en la tabla
-            //     if($stmt->execute()){
-            //         return true;
-            //     }
-            //     else{
-            //         return false;
-            //     }
-            // } 
-        }
-
         //UPDATE de un producto
         public function actualizarProducto($RecibeProducto){
             $stmt = $this->dbh->prepare("UPDATE productos SET producto = :PRODUCTO WHERE ID_Producto = :ID_PRODUCTO");
@@ -664,55 +658,20 @@
 
             // Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){    
-                //Se envia información de cuantos registros se vieron afectados por la consulta
-                return $stmt->rowCount();
-            }
-            else{
-                return false;
-            }
-        }
-
-        //UPDATE de la fotografia
-        public function actualizarFotografiaProducto($RecibeProducto, $nombre_imgProducto){
-            $stmt = $this->dbh->prepare("UPDATE opciones SET fotografia = :FOT_PRODUCTO WHERE ID_Opcion = :ID_OPCION");
-
-            // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':FOT_PRODUCTO', $nombre_imgProducto);
-            $stmt->bindValue(':ID_OPCION', $RecibeProducto['ID_Opcion']);
-
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
                 return true;
             }
             else{
                 return false;
             }
         }
-               
-        //UPDATE de la fotografia
-        public function actualizarFotoProducto($ID_Opcion, $nombre_imgProducto){
+
+        //UPDATE de la fotografia principal de un producto
+        public function actualizarImagenPrincipalProducto($ID_Opcion, $nombre_imgProducto){
             $stmt = $this->dbh->prepare("UPDATE opciones SET fotografia = :FOT_PRODUCTO WHERE ID_Opcion = :ID_OPCION");
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':FOT_PRODUCTO', $nombre_imgProducto);
             $stmt->bindValue(':ID_OPCION', $ID_Opcion);
-
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        //UPDATE de la fotografia del usuario comercial
-        public function actualizarFotografia($ID_Afiliado, $nombre_img){
-            $stmt = $this->dbh->prepare("UPDATE afiliado_com SET fotografia_AfiCom = :FOTOGRAFIA WHERE ID_AfiliadoCom = :ID_AFILIADO ");
-
-            // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado);
-            $stmt->bindValue(':FOTOGRAFIA', $nombre_img);
 
             // Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
@@ -819,15 +778,14 @@
         }
 
         //INSERT de las caracteristicas de un producto
-        public function insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $ID_Opcion, $Caracteristica){
+        public function insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $Caracteristica){
             //Debido a que $Caracteristica es un array con todas las caracteristicas, deben introducirse una a una mediante un ciclo
             for($i = 0; $i<count($Caracteristica); $i++){
-                $stmt = $this->dbh->prepare("INSERT INTO caracteristicaProducto(ID_Tienda, ID_Producto, ID_Opcion, caracteristica) VALUES(:ID_TIENDA, :ID_PRODUCTO, :ID_OPCION, :CARACTERISTICA)");
+                $stmt = $this->dbh->prepare("INSERT INTO caracteristicaproducto(ID_Tienda, ID_Producto, caracteristica) VALUES(:ID_TIENDA, :ID_PRODUCTO, :CARACTERISTICA)");
 
                 //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
                 $stmt->bindParam(':ID_TIENDA', $RecibeProducto['ID_Tienda']);
                 $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
-                $stmt->bindParam(':ID_OPCION', $ID_Opcion);
                 $stmt->bindParam(':CARACTERISTICA', $Caracteristica[$i]);
 
                 //Se ejecuta la inserción de los datos en la tabla
@@ -956,26 +914,36 @@
             $stmt->execute();    
         } 
 
-        //INSERT en la tabla imagenes as fotografias recibidos desde Publicacion_C/recibeRegistro
-        public function insertarFotografiasAdicionales($ID_Producto, $archivonombre, $tipo, $tamanio){
-            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fecha)VALUES (:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, NOW())");
+        //INSERT en la tabla imagenes las fotografias recibidos desde Publicacion_C/recibeRegistro
+        public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fecha, hora)VALUES (:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, CURDATE(), CURTIME())");
             
             //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindParam(':ID_PRODUCTO' , $ID_Producto);
-            $stmt->bindParam(':NOMBRE_IMG' , $archivonombre);
-            $stmt->bindParam(':TIPO_ARCHIVO' , $tipo);
-            $stmt->bindParam(':TAMANIO_ARCHIVO' , $tamanio);
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto,);
+            $stmt->bindParam(':NOMBRE_IMG', $archivonombre);
+            $stmt->bindParam(':TIPO_ARCHIVO', $tipo);
+            $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio);
             
             //Se ejecuta la inserción de los datos en la tabla
-            if($stmt->execute()){
-                // echo "Se realizó la inserción en la BD";
-                return true;
-            }
-            else{
-                // echo "No se realizó la inserción en la BD";
-                return true;
-            }
+            $stmt->execute();
         }
+        
+        // //INSERT de las caracteristicas de un producto especifico
+        // public function insertarCaracteristicas($ID_Tienda, $ID_Producto, $Caracteristica){
+        //     //Debido a que $Caracteristica es un array con varios elemento se hace un recorrido de cada uno para actualizar en cada vuelta
+        //     foreach(array_keys($_POST['caracteristica'])as $key){
+        //         $Caracteristica = $_POST['caracteristica'][$key];
+        //         $stmt = $this->dbh->prepare("INSERT INTO caracteristicaproducto(ID_Tienda, ID_Producto, caracteristica) VALUES(:ID_TIENDA, :ID_PRODUCTO, :CARACTERISTICA)");
+
+        //         // Se vinculan los valores de las sentencias preparadas
+        //         $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+        //         $stmt->bindValue(':ID_PRODUCTO', $ID_Producto);
+        //         $stmt->bindValue(':CARACTERISTICA', $Caracteristica);
+
+        //         // Se ejecuta la actualización de los datos en la tabla
+        //         $stmt->execute();  
+        //     } 
+        // }
 
         // public function insertarFotografia($ID_Opcion, $nombre_imgProducto){  
         //     $stmt = $this->dbh->prepare("INSERT INTO opciones(ID_Opcion, fotografia) VALUES(:ID_OPCION,:FOTOGRAFIA)");
@@ -992,5 +960,3 @@
         //     return $stmt->rowCount();
         // }
     }
-
-

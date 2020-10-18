@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
     class Cuenta_C extends Controlador{
         private $ID_Tienda;
         private $ID_Afiliado;
@@ -37,10 +40,12 @@
             $this->vista("paginas/cuenta_V", $Datos);
         }
 
-        //Invocado desde login_C/ValidarSesion, muestra todos los productos publicados o los de una sección en especifico
+        //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto, muestra todos los productos publicados o los de una sección en especifico
         public function Productos($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Producto y el ID_ContProducto separados por coma, se convierte en array para separar los elementos
-            
+            // echo $DatosAgrupados;
+            // exit();
+
             $DatosAgrupados = explode(",", $DatosAgrupados);
             
             $Seccion = $DatosAgrupados[0];
@@ -96,8 +101,8 @@
             $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
-                'secciones' => $Secciones, //necesario en header_AfiCom, arma el item productos del menu
-                'productos' => $Productos,
+                'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
+                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precio, seccion, fotografia 
                 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja 
                 'Apunta' => $Puntero,
@@ -198,19 +203,24 @@
             $Especificaciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             
             //Se CONSULTAN el slogan de una tienda en particular
-            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Consulta_1 = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+            $Slogan = $Consulta_1->fetchAll(PDO::FETCH_ASSOC);
             
             //Se CONSULTAN las caracteristicas añadidas del producto
-            $Consulta = $this->ConsultaCuenta_M->consultarCaracteristicasProducto($this->ID_Tienda, $ID_Producto);
-            $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Consulta_2 = $this->ConsultaCuenta_M->consultarCaracteristicasProducto($this->ID_Tienda, $ID_Producto);
+            $Caracteristicas = $Consulta_2->fetchAll(PDO::FETCH_ASSOC);
+
+            //Se CONSULTAN las imagenes añadidas del producto
+            $Consulta_3 = $this->ConsultaCuenta_M->consultarImagnesProducto($ID_Producto);
+            $Imagenes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC);
             
             $Datos = [
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
                 'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, fotografia, producto, opcion, precio, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
-                'caracteristicas' => $Caracteristicas //ID_Caracteristica, caracteristica 
+                'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica 
+                'imagenesVarias' => $Imagenes //ID_Imagen, nombre_img
             ];
 
             // echo "<pre>";
@@ -248,6 +258,7 @@
                     'Direccion_com' => filter_input(INPUT_POST, 'direccion_com', FILTER_SANITIZE_STRING),
                     'Slogan_com' => filter_input(INPUT_POST, 'slogan_com', FILTER_SANITIZE_STRING),
                 ];
+                
                 // echo "<pre>";
                 // print_r($RecibeDatos);
                 // echo "</pre>";
@@ -296,20 +307,18 @@
                         || ($_FILES["imagen_Tienda"]["type"] == "image/jpg") || ($_FILES["imagen_Tienda"]["type"] == "image/png")){
                         
                         // Ruta donde se guardarán las imágenes que subamos la variable superglobal 
-                        //usar en remoto
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/Reavivados/images/usuarios/'; 
-                        // echo $_SERVER['DOCUMENT_ROOT'] . 'Versus_20_2/images/usuarios/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/'; 
 
                         //usar en local
-                        $directorio = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
                         // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
-                        move_uploaded_file($_FILES['imagen_Tienda']['tmp_name'], $directorio.$nombre_imgTienda);
+                        move_uploaded_file($_FILES['imagen_Tienda']['tmp_name'], $directorio_1.$nombre_imgTienda);
 
                         //Para actualizar fotografia de perfil solo si se ha presionado el boton de buscar fotografia
                         if(($_FILES['imagen_Tienda']['name']) != ""){
@@ -325,8 +334,7 @@
                     echo "<a href='javascript:history.back()'>Regresar</a>";
                     exit();
                 }
-            } 
-            else{
+                
                 //si existe imagen_Tienda pero se pasa del tamaño permitido
                 if($nombre_imgTienda == !NULL){
                     echo "La imagen es demasiado grande "; 
@@ -334,139 +342,142 @@
                     echo "<a href='javascript:history.back()'>Regresar</a>";
                     exit();
                 }
+            } 
+                
 
-                // ********************************************************
-                //Recibe las categorias seleccionadas
-                if(!empty($_POST['categoria'])){
-                    foreach($_POST['categoria'] as $Categoria){
-                        $Categoria = $_POST['categoria']; 
-                    } 
+            // ********************************************************
+            //Recibe las categorias seleccionadas
+            if(!empty($_POST['categoria'])){
+                foreach($_POST['categoria'] as $Categoria){
+                    $Categoria = $_POST['categoria']; 
                 } 
-                else{
-                    echo "Ingrese al menos una categoría";
-                    exit();
-                }            
+            } 
+            else{
+                echo "Ingrese al menos una categoría";
+                exit();
+            }            
 
-                // ********************************************************
-                //Recibe las secciones 
-                if(!empty($_POST['seccion'])){
-                    foreach($_POST['seccion'] as $Seccion){
-                        $Seccion = $_POST['seccion']; 
-                    } 
-                    //El array trae elemenos duplicados, se eliminan los duplicado
-                    $SeccionTienda = array_unique($Seccion); 
+            // ********************************************************
+            //Recibe las secciones 
+            if(!empty($_POST['seccion'])){
+                foreach($_POST['seccion'] as $Seccion){
+                    $Seccion = $_POST['seccion']; 
                 } 
-                else{
-                    echo "Ingrese al menos una sección";
-                    exit();
-                }
-                echo "Secciones recibidas";
-                echo "<pre>";
-                print_r($Seccion);
-                echo "</pre>";
-                // ********************************************************
-                //Recibe datos bancarios
-                // foreach(array_keys($_POST['banco']) as $key){
-                //     // if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])){
-                //         $Banco = $_POST['banco'][$key];  
-                //         $Titular = $_POST['titular'][$key]; 
-                //         $NumeroCuenta = $_POST['numeroCuenta'][$key];
-                //         $Rif = $_POST['rif'][$key];
-                //         $ID_Banco = $_POST['id_banco'][$key];
-                    // }   
-                    // else{
-                    //     echo "Ingrese datos bancarios completos";
-                    //     exit();
-                    // }
+                //El array trae elemenos duplicados, se eliminan los duplicado
+                $SeccionTienda = array_unique($Seccion); 
+            } 
+            else{
+                echo "Ingrese al menos una sección";
+                exit();
+            }
+            // echo "Secciones recibidas";
+            // echo "<pre>";
+            // print_r($Seccion);
+            // echo "</pre>";
+
+            // ********************************************************
+            //Recibe datos bancarios
+            // foreach(array_keys($_POST['banco']) as $key){
+            //     // if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])){
+            //         $Banco = $_POST['banco'][$key];  
+            //         $Titular = $_POST['titular'][$key]; 
+            //         $NumeroCuenta = $_POST['numeroCuenta'][$key];
+            //         $Rif = $_POST['rif'][$key];
+            //         $ID_Banco = $_POST['id_banco'][$key];
+                // }   
+                // else{
+                //     echo "Ingrese datos bancarios completos";
+                //     exit();
                 // }
+            // }
 
-                // **********************************************************************************
-                //Todo este procedimiento debe ser por medio de TRANSACCIONES
-                // ***************************************print_r*******************************************
-                //Se ELIMINAN todas las categorias que tiene la tienda
-                $this->ConsultaCuenta_M->eliminarCategoriaTienda($this->ID_Tienda);
-                
-                //Se consulta el ID_Categoria de las categorias seleccionadas
-                $ID_Categoria = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
-                $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC); 
+            // **********************************************************************************
+            //Todo este procedimiento debe ser por medio de TRANSACCIONES
+            // ***************************************print_r*******************************************
+            //Se ELIMINAN todas las categorias que tiene la tienda
+            $this->ConsultaCuenta_M->eliminarCategoriaTienda($this->ID_Tienda);
+            
+            //Se consulta el ID_Categoria de las categorias seleccionadas
+            $ID_Categoria = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
+            $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC); 
 
-                //Se INSERTA la dependenciatransitiva entre la tienda y la categoria a la que pertenece
-                $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);
-                
-                //Se consultan las secciones de la tienda
-                $Consulta_3 = $this->ConsultaCuenta_M-> consultarSeccionesTienda($this->ID_Tienda);
-                $SeccionesExistentes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC); 
+            //Se INSERTA la dependenciatransitiva entre la tienda y la categoria a la que pertenece
+            $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);
+            
+            //Se consultan las secciones de la tienda
+            $Consulta_3 = $this->ConsultaCuenta_M-> consultarSeccionesTienda($this->ID_Tienda);
+            $SeccionesExistentes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC); 
+            // echo "<pre>";
+            // print_r($SeccionesExistentes);
+            // echo "</pre>";
+
+            //Se recorre el resultado de la consulta y solo se toma el valor sección del array $SeccionesExistentes y estos valores se guardan en un nuevo arrray
+            $Seccion_3 = array();
+            foreach($SeccionesExistentes as $arr) :
+                $Secciones_4 = $arr['seccion']   . "<br>";
+                array_push($Seccion_3, $Secciones_4);
+            endforeach;
+            // echo "Secciones existentes";
+            // echo "<pre>";
+            // print_r($Seccion_3);
+            // echo "</pre>";
+
+            //Se comparan las secciones recibidas con las existentes y se manda a insertar las que no existan
+            $result = array_diff_key($Seccion, $Seccion_3);
+            // echo "Secciones a insertar";
+            // echo "<pre>";
+            // print_r($result);
+            // echo "</pre>";
+            
+            //Se INSERTAN las secciones de la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
+            $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $result);
+
+            //Si no hay secciones para añadir se elimnan las seccions que no se recibieron desde el formulario, es decir, las que el usuario quito del formulario
+            if(empty($result)){            
+                $SinEliminarSeccion = array_intersect_key($Seccion, $Seccion_3);
+                // echo "secciones a no eliminar";
                 // echo "<pre>";
-                // print_r($SeccionesExistentes);
+                // print_r($SinEliminarSeccion);
                 // echo "</pre>";
 
-                //Se recorre el resultado de la consulta y solo se toma el valor sección del array $SeccionesExistentes y estos valores se guardan en un nuevo arrray
-                $Seccion_3 = array();
-                foreach($SeccionesExistentes as $arr) :
-                    $Secciones_4 = $arr['seccion']   . "<br>";
-                    array_push($Seccion_3, $Secciones_4);
-                endforeach;
-                echo "Secciones existentes";
-                echo "<pre>";
-                print_r($Seccion_3);
-                echo "</pre>";
+                //Se consulta el ID_Seccion de las secciones de la tienda que no se van a eliminar
+                $ID_SeccionNoEliminar = $this->ConsultaCuenta_M->consultarID_SecionesNoEliminar($SinEliminarSeccion);
+                $ID_SeccionNoEliminar = $ID_SeccionNoEliminar->fetchAll(PDO::FETCH_ASSOC); 
+                // echo "<pre>";
+                // print_r($ID_SeccionNoEliminar);
+                // echo "</pre>";
 
-                //Se comparan las secciones recibidas con las existentes y se manda a insertar las que no existan
-                $result = array_diff_key($Seccion, $Seccion_3);
-                echo "Secciones a insertar";
-                echo "<pre>";
-                print_r($result);
-                echo "</pre>";
-                //Se INSERTAN las secciones de la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
-                $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $result);
+                //Se elimina la Dependencia Transitiva entre tiendas y secciones
+                // $this->ConsultaCuenta_M->eliminarDT_Tienda_Secciones($this->ID_Tienda, $ID_SeccionNoEliminar); 
 
-                //Si no hay secciones para añadir se elimnan las seccions que no se recibieron del formulario, es decir, las que el usuario quito del formulario
-                if(empty($result)){            
-                    $SinEliminarSeccion = array_intersect_key($Seccion, $Seccion_3);
-                    echo "secciones a no eliminar";
-                    echo "<pre>";
-                    print_r($SinEliminarSeccion);
-                    echo "</pre>";
-
-                    //Se consulta el ID_Seccion de las secciones de la tienda que no se van a eliminar
-                    $ID_SeccionNoEliminar = $this->ConsultaCuenta_M->consultarID_SecionesNoEliminar($SinEliminarSeccion);
-                    $ID_SeccionNoEliminar = $ID_SeccionNoEliminar->fetchAll(PDO::FETCH_ASSOC); 
-                    // echo "<pre>";
-                    // print_r($ID_SeccionNoEliminar);
-                    // echo "</pre>";
-
-                    //Se elimina la Dependencia Transitiva entre tiendas y secciones
-                    // $this->ConsultaCuenta_M->eliminarDT_Tienda_Secciones($this->ID_Tienda, $ID_SeccionNoEliminar); 
-
-                    // //Se elimina las secciones
-                    // $this->ConsultaCuenta_M->eliminarSeccionesTienda($this->ID_Tienda, $SinEliminarSeccion);                
-                }
-
-                //Se CONSULTA el ID_Seccion de las secciones que tiene la tienda
-                $ID_Seccion = $this->ConsultaCuenta_M->consultarTodosID_Seccion($this->ID_Tienda);
-
-                //Se INSERTAN la dependencia transitiva entre las secciones y la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
-                $this->ConsultaCuenta_M->insertarDT_TieSec($this->ID_Tienda, $ID_Seccion);
-                
-                //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado
-                $this->ConsultaCuenta_M->actualizarAfiliadoComercial($this->ID_Afiliado, $RecibeDatos);
-            
-                //Se ACTUALIZAN los datos de la tienda en la BD
-                $this->ConsultaCuenta_M->actualizarTienda($this->ID_Afiliado, $RecibeDatos);
-                
-                //Se ACTUALIZAN los datos bancarios de la tienda en la BD
-                // $this->ConsultaCuenta_M->actualizarBancos($ID_Banco, $Banco, $Titular, $NumeroCuenta, $Rif);
-
-                //Se consulta el ID_Categoria de las categorias seleccionadas
-                // $ID_Categoria = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
-                // $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC); 
-
-                // //Se ACTUALIZAN las categorias en las que se encuentra una tienda
-                // $this->ConsultaCuenta_M->actualizarCategoriaTienda($this->ID_Tienda, $ID_Categ);
-
-                //Redirecciona, La función redireccionar se encuantra en url_helper.php
-                redireccionar("/Cuenta_C/");
+                // //Se elimina las secciones
+                // $this->ConsultaCuenta_M->eliminarSeccionesTienda($this->ID_Tienda, $SinEliminarSeccion);                
             }
+
+            //Se CONSULTA el ID_Seccion de las secciones que tiene la tienda
+            $ID_Seccion = $this->ConsultaCuenta_M->consultarTodosID_Seccion($this->ID_Tienda);
+
+            //Se INSERTAN la dependencia transitiva entre las secciones y la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
+            $this->ConsultaCuenta_M->insertarDT_TieSec($this->ID_Tienda, $ID_Seccion);
+            
+            //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado
+            $this->ConsultaCuenta_M->actualizarAfiliadoComercial($this->ID_Afiliado, $RecibeDatos);
+        
+            //Se ACTUALIZAN los datos de la tienda en la BD
+            $this->ConsultaCuenta_M->actualizarTienda($this->ID_Afiliado, $RecibeDatos);
+            
+            //Se ACTUALIZAN los datos bancarios de la tienda en la BD
+            // $this->ConsultaCuenta_M->actualizarBancos($ID_Banco, $Banco, $Titular, $NumeroCuenta, $Rif);
+
+            //Se consulta el ID_Categoria de las categorias seleccionadas
+            // $ID_Categoria = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
+            // $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC); 
+
+            // //Se ACTUALIZAN las categorias en las que se encuentra una tienda
+            // $this->ConsultaCuenta_M->actualizarCategoriaTienda($this->ID_Tienda, $ID_Categ);
+
+            //Redirecciona, La función redireccionar se encuantra en url_helper.php
+            redireccionar("/Cuenta_C/");
         }
         
         //Llamado desde Funciones_Ajax.js por medio de Llamar_categorias()
@@ -487,7 +498,7 @@
             $this->vista("inc/Categorias_Ajax_V", $Datos);
         }
 
-        //Metodo invocado desde Funciones_Ajax.js
+        //Invocado desde A_Cuenta_editar.js entrega las secciones activas de una tienda
         public function Secciones($ID_Producto){
             //CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
@@ -495,6 +506,7 @@
             // echo "<pre>";
             // print_r($Seccion);
             // echo "</pre>";
+            // exit();
 
             //CONSULTA el ID_Sección al que pertenece un producto de una tienda especifica
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionActiva($ID_Producto);
@@ -502,6 +514,7 @@
             // echo "<pre>";
             // print_r($ID_Seccion);
             // echo "</pre>";
+            // exit();
 
             //La consulta devuelve el ID_Seccion en una array, se convierte en una variable
             $ID_Seccion = $ID_Seccion[0]['ID_Seccion'];
@@ -531,9 +544,9 @@
             $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
-        //Invocado desde cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
-        public function recibeProducto(){
-            // Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
+        //Invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
+        public function recibeProductoPublicar(){
+            //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
             // if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])
             // ){
 
@@ -553,86 +566,89 @@
             // //     echo "Llene todos los campos del formulario ";
             // //     echo "<a href='javascript: history.go(-1)'>Regresar</a>";
             // //     exit();
-            // // }
-            
-            // // ********************************************************
-            // //Recibe las caracteristicas añadidas dinamicamente 
-            // if(!empty($_POST['caracteristica'])){
-            //     foreach($_POST['caracteristica'] as $Caracteristica){
-            //         $Caracteristica = $_POST['caracteristica'];
-            //     } 
-            //     // echo "<pre>";
-            //     // print_r($Caracteristica);
-            //     // echo "</pre>";
-            //     // exit();
-            //     //El array trae elemenos duplicados, se eliminan los duplicado
-            //     // $caracteristicaProducto = array_unique($caracteristica); 
-            // } 
-            // else{
-            //     echo "Tiene campos de caracteristicas sin llenar";
-            //     exit();
             // }
-           
-            // // ********************************************************
-            // // Las siguientes consultas se deben realizar por medio de Transacciones BD
+
+            // SECCION CARACTERISTICAS
+            // ********************************************************
+            // Si se selecionó alguna nueva caracteristica entra
+            if($_POST['caracteristica'][0] != ""){
+                foreach($_POST['caracteristica'] as $Caracteristica){
+                    $Caracteristica = $_POST['caracteristica'];
+                } 
+                // echo "<pre>";
+                // print_r($Caracteristica);
+                // echo "</pre>";
+                // exit();
+
+                // El array trae elemenos duplicados, se eliminan los duplicado
+                $caracteristicaProducto = array_unique($Caracteristica); 
+            } 
+                       
+            // ********************************************************
+            //Las siguientes consultas se deben realizar por medio de Transacciones BD
             //Se INSERTA el producto en la BD y se retorna el ID recien insertado
             $ID_Producto = $this->ConsultaCuenta_M->insertarProducto($RecibeProducto);
             
-            // //Se INSERTA la opcion y precio del producto en la BD y se retorna el ID recien insertado
-            // $ID_Opcion = $this->ConsultaCuenta_M->insertarOpcionesProducto($RecibeProducto);
+            //Se INSERTA la opcion y precio del producto en la BD y se retorna el ID recien insertado
+            $ID_Opcion = $this->ConsultaCuenta_M->insertarOpcionesProducto($RecibeProducto);
             
-            // //Se INSERTAN las caracteristicas del producto
-            // $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $ID_Opcion, $Caracteristica);
+            
+            if($_POST['caracteristica'][0] != ""){
+                //Se INSERTAN las caracteristicas del producto
+                $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $Caracteristica);
+            }
 
-            // //Se CONSULTA el ID_Seccion de la seccion del producto
-            // $Consulta = $this->ConsultaCuenta_M->consultarID_Seccion($RecibeProducto);
-            // $ID_Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            //Se CONSULTA el ID_Seccion de la seccion del producto
+            $Consulta = $this->ConsultaCuenta_M->consultarID_Seccion($RecibeProducto);
+            $ID_Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
         
-            // //Se INSERTA la dependenciatransitiva entre  producto, opciones
-            // $this->ConsultaCuenta_M->insertarDT_ProOpc($ID_Producto, $ID_Opcion);
+            //Se INSERTA la dependenciatransitiva entre  producto, opciones
+            $this->ConsultaCuenta_M->insertarDT_ProOpc($ID_Producto, $ID_Opcion);
             
-            // //Se INSERTA la dependenciatransitiva entre secciones y las opciones (en los casos que no hay especificidad de producto)            
-            // $this->ConsultaCuenta_M->insertarDT_SecOpc($ID_Seccion, $ID_Opcion);
+            //Se INSERTA la dependenciatransitiva entre secciones y las opciones (en los casos que no hay especificidad de producto)            
+            $this->ConsultaCuenta_M->insertarDT_SecOpc($ID_Seccion, $ID_Opcion);
 
-            // //Se INSERTA la dependenciatransitiva entre secciones y los productos
-            // $this->ConsultaCuenta_M->insertarDT_SecPro($ID_Seccion, $ID_Producto);
+            //Se INSERTA la dependenciatransitiva entre secciones y los productos
+            $this->ConsultaCuenta_M->insertarDT_SecPro($ID_Seccion, $ID_Producto);
 
-            //SECCION FOTOGRAFIA INDIVIDUAL
-            // $nombre_imgProducto = $_FILES['foto_Producto']['name'];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
-            // $tipo = $_FILES['foto_Producto']['type'];
-            // $tamaño = $_FILES['foto_Producto']['size'];
-            
-            // // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
-            // // echo "Tipo de archivo = " .$tipo .  "<br>";
-            // // echo "Tamaño = " . $tamaño . "<br>";
-            // // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
-            // // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
+            //SECCION IMAGEN PRINCIPAL
+            // ********************************************************
+            // Si se selecionó alguna nueva imagen entra
+            if($_FILES['foto_Producto']["name"] != ""){ 
+                $nombre_imgProducto = $_FILES['foto_Producto']['name'];
+                $tipo = $_FILES['foto_Producto']['type'];
+                $tamaño = $_FILES['foto_Producto']['size'];
+                
+                // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
+                // echo "Tipo de archivo = " .$tipo .  "<br>";
+                // echo "Tamaño = " . $tamaño . "<br>";
+                // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
+                // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
+                // exit();
+                //Si existe foto_Producto y tiene un tamaño correcto 
+                // if(($nombre_imgProducto == !NULL) AND ($tamaño <= 7000000)){
+                //     //indicamos los formatos que permitimos subir a nuestro servidor
+                //indicamos los formatos que permitimos subir a nuestro servidor
+                //     if (($_FILES["foto_Producto"]["type"] == "image/jpeg")
+                //         || ($_FILES["foto_Producto"]["type"] == "image/jpg") || ($_FILES["foto_Producto"]["type"] == "image/png") || ($_FILES["imagen"]["type"] == "image/jpeg")){
+                        
+                //         //Ruta donde se guardarán las imágenes que subamos la variable superglobal 
+                //         //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
-            // //Si existe foto_Producto y tiene un tamaño correcto 
-            // if(($nombre_imgProducto == !NULL) AND ($tamaño <= 7000000)){
-            //     //indicamos los formatos que permitimos subir a nuestro servidor
-            //     if (($_FILES["foto_Producto"]["type"] == "image/jpeg")
-            //         || ($_FILES["foto_Producto"]["type"] == "image/jpg") || ($_FILES["foto_Producto"]["type"] == "image/png")){
-                    
-            //         // Ruta donde se guardarán las imágenes que subamos la variable superglobal 
-            //         //usar en remoto
-            //         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+                    //Usar en remoto
+                    // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/'; 
 
-            //         //Usar en remoto
-            //         // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/Reavivados/images/usuarios/'; 
-            //         // echo $_SERVER['DOCUMENT_ROOT'] . 'Versus_20_2/images/usuarios/';
+                    // usar en local
+                    $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
-            //         //usar en local
-            //         $directorio = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                    //se muestra el directorio temporal donde se guarda el archivo
+                    //echo $_FILES['imagen']['tmp_name'];
 
-            //         //se muestra el directorio temporal donde se guarda el archivo
-            //         //echo $_FILES['imagen']['tmp_name'];
+                    //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                    move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
 
-            //         // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
-            //         move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio.$nombre_imgProducto);
-
-            //         //Se ACTUALIZA la imagen (No se inserta porque ya en la sentencia de este controlador insertarDescripcionProducto() se insertaron los detalles del producto)
-            //         $this->ConsultaCuenta_M->actualizarFotoProducto($ID_Opcion, $nombre_imgProducto); 
+                    //Se ACTUALIZA la imagen principal(No se inserta porque ya en la sentencia insertarDescripcionProducto() de este controlador se insertaron los detalles del producto)
+                    $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($ID_Opcion, $nombre_imgProducto); 
             //     } 
             //     else{
             //         //si no cumple con el formato
@@ -640,68 +656,48 @@
             //         // echo "<a href='../tarjeta/perfil_ingeniero.php'>Regresar</a>";
             //         exit();
             //     }
-            // } 
-            // else{
-            // //si existe foto_Producto pero se pasa del tamaño permitido
-            // if($nombre_imgProducto == !NULL){
-            //         echo "La imagen es demasiado grande "; 
-            //         // echo "<a href='perfil.php'>Regresar</a>";
-            //         exit();
-            //     }
+            // // } 
+            // // else{
+            // // //si existe foto_Producto pero se pasa del tamaño permitido
+            // // if($nombre_imgProducto == !NULL){
+            // //         echo "La imagen es demasiado grande "; 
+            // //         // echo "<a href='perfil.php'>Regresar</a>";
+            // //         exit();
+            //     // }
             // }
+            }
             
-            //SECCION GALERIA DE FOTOGRAFIAS
-            if(isset($_FILES['imagenes']["name"][0])){  
+            //SECCION IMAGENES SECUNDARIAS
+            // ********************************************************
+            //Si se selecionó alguna nueva imagen entra
+            if($_FILES['imagenes']["name"] != ""){ 
                 $Cantidad = count($_FILES["imagenes"]["name"]); 
-                echo $Cantidad;
                 for($i = 0; $i < $Cantidad; $i++){                
                     //nombre original del fichero en la máquina cliente. 
                     $archivonombre = $_FILES['imagenes']['name'][$i];
                     $Ruta_Temporal = $_FILES['imagenes']['tmp_name'][$i];
                     $tipo = $_FILES['imagenes']['type'][$i];
                     $tamanio = $_FILES['imagenes']['size'][$i];
-                    
-                    $carpeta = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                    // echo $archivonombre  ."<br>";
+                    // exit();
+
+                    //Usar en remoto
+                    // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/'; 
+
+                    //usar en local
+                    $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
                     
                     //Subimos el fichero al servidor
-                    move_uploaded_file($Ruta_Temporal,$carpeta.$_FILES["imagenes"]["name"][$i]);
+                    move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
                     
                     //Se INSERTAN las fotografias del producto
-                    $this->ConsultaCuenta_M->insertarFotografiasAdicionales($ID_Producto, $archivonombre, $tipo, $tamanio);
-                    $validar=true;
+                    $this->ConsultaCuenta_M->insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio); 
                 }
-                $validar=false;
             }
-            exit();
-
-                //Declaramos el nombre de la carpeta que guardara los archivos
-                // En local
-                $carpeta = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
-
-                // En remoto
-                // $carpeta = $_SERVER['DOCUMENT_ROOT'] . '/images/';
-                // if(!file_exists($carpeta)){
-                // mkdir($carpeta, 0777) or die("Hubo un error al crear el directorio de almacenamiento");
-                // }
-
-                // // $dir=opendir($carpeta);
-                // $target_path = $carpeta . $archivonombre; //indicamos la ruta de destino de los archivos
-                // // echo $target_path . "<br>"; 
-
-                // if(move_uploaded_file($tmp_name, $target_path)){
-                //     // echo "El archivo $archivonombre se ha cargado de forma    correcta" . "<br><br>";
-                // }
-                // closedir($dir); //Cerramos la conexion con la carpeta destino
-                
-                //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
-                // move_uploaded_file($_FILES['imgAdicional']['tmp_name'], $carpeta.$archivonombre);
-                
-                //Se INSERTAN las fotografias del producto
-                $this->ConsultaCuenta_M->insertarFotografiasAdicionales($ID_Producto, $archivonombre, $tipo, $tamanio);
             $this->Publicar();
         }
                 
-        //Metodo invocada desde cuenta_editar_prod_V.php
+        //Invocada desde cuenta_editar_prod_V.php
         public function recibeAtualizarProducto(){
             // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
@@ -720,120 +716,184 @@
                     'Puntero' => filter_input(INPUT_POST, "puntero", FILTER_SANITIZE_STRING),
                 ];
                 // echo "<pre>";
-                // print_r($RecibeProducto );
+                // print_r($RecibeProducto);
                 // echo "</pre>";
                 // exit();
-                
-                // ********************************************************
-                //Recibe las caracteristicas del producto
-                // if(!empty($_POST['caracteristica'])){
-                //     foreach($_POST['caracteristica'] as $Caracteristica){
-                //         $ID_Caracteristica = $_POST['id_caracteristica']; 
-                //         $Caracteristica = $_POST['caracteristica']; 
-                //     } 
-                // } 
-                // else{
-                //     echo "Ingrese al menos una categoría";
-                //     exit();
-                // }            
-                // echo "<pre>";
-                // print_r($Caracteristica);
-                // echo "</pre>";
-                // exit();
-
-                // ********************************************************
-
             }
             else{
                 echo "Llene todos los campos obligatorios";
                 echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                 exit();
             }
-
-            // ********************************************************
-            //Recibe la imagen del producto a actualizar
-            $nombre_imgProducto = $_FILES['imagen_EditarProducto']['name'];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
-            $tipo = $_FILES['imagen_EditarProducto']['type'];
-            $tamaño = $_FILES['imagen_EditarProducto']['size'];
             
-            // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
-            // echo "Tipo de archivo = " .$tipo .  "<br>";
-            // echo "Tamaño = " . $tamaño . "<br>";
-            // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
-            // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
+            //SECCION IMAGEN PRINCIPAL
+            // ********************************************************
+            // Si se selecionó alguna nueva imagen
+            if(isset($_FILES['imagenPrinci_Editar']["name"])){ 
+                $nombre_imgProducto = $_FILES['imagenPrinci_Editar']['name'];
+                $tipo = $_FILES['imagenPrinci_Editar']['type'];
+                $tamanio = $_FILES['imagenPrinci_Editar']['size'];
+                
+                // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
+                // echo "Tipo de archivo = " . $tipo .  "<br>";
+                // echo "Tamaño = " . $tamanio . "<br>";
+                // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
+                // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
 
-            //Si existe imagen_EditarProducto y tiene un tamaño correcto 
-            if(($nombre_imgProducto == !NULL) AND ($tamaño <= 7000000)){
-                //indicamos los formatos que permitimos subir a nuestro servidor
-                if (($_FILES["imagen_EditarProducto"]["type"] == "image/jpeg")
-                    || ($_FILES["imagen_EditarProducto"]["type"] == "image/jpg") || ($_FILES["imagen_EditarProducto"]["type"] == "image/png")){
-                    
-                    // Ruta donde se guardarán las imágenes que subamos la variable superglobal 
-                    //usar en remoto
-                    // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+                //Si existe imagenPrinci_Editar y tiene un tamaño correcto 
+                if(($nombre_imgProducto == !NULL) AND ($tamanio <= 7000000)){
+                    //indicamos los formatos que permitimos subir a nuestro servidor
+                    if (($_FILES["imagenPrinci_Editar"]["type"] == "image/jpeg")
+                        || ($_FILES["imagenPrinci_Editar"]["type"] == "image/jpg") || ($_FILES["imagenPrinci_Editar"]["type"] == "image/png")){
+                        
+                        // Ruta donde se guardarán las imágenes que subamos la variable superglobal 
+                        // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
-                    //Usar en remoto
-                    // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/Reavivados/images/usuarios/'; 
-                    // echo $_SERVER['DOCUMENT_ROOT'] . 'Versus_20_2/images/usuarios/';
+                        //Usar en remoto
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/'; 
 
-                    //usar en local
-                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        //usar en local
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
-                    //se muestra el directorio temporal donde se guarda el archivo
-                    //echo $_FILES['imagen']['tmp_name'];
-                    // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
-                    move_uploaded_file($_FILES['imagen_EditarProducto']['tmp_name'], $directorio.$nombre_imgProducto);
+                        //se muestra el directorio temporal donde se guarda el archivo
+                        //echo $_FILES['imagen']['tmp_name'];
+                        // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                        move_uploaded_file($_FILES['imagenPrinci_Editar']['tmp_name'], $directorio_4.$nombre_imgProducto);
+                    } 
+                    else{
+                        //si no cumple con el formato
+                        echo "Solo puede cargar imagenes con formato jpg, jpeg o png";
+                        // echo "<a href='../tarjeta/perfil_ingeniero.php'>Regresar</a>";
+                        exit();
+                    }
                 } 
                 else{
-                    //si no cumple con el formato
-                    echo "Solo puede cargar imagenes con formato jpg, jpeg o png";
-                    // echo "<a href='../tarjeta/perfil_ingeniero.php'>Regresar</a>";
-                    exit();
-                }
-            } 
-            else{
-            //si existe imagen_EditarProducto pero se pasa del tamaño permitido
-            if($nombre_imgProducto == !NULL){
-                    echo "La imagen es demasiado grande "; 
-                    // echo "<a href='perfil.php'>Regresar</a>";
-                    exit();
+                //si existe imagenPrinci_Editar pero se pasa del tamaño permitido
+                    if($nombre_imgProducto == !NULL){
+                        echo "La imagen es demasiado grande "; 
+                        // echo "<a href='perfil.php'>Regresar</a>";
+                        exit();
+                    }
                 }
             }
+
+            //SECCION CARACTERISTICAS
+            // ********************************************************
+            // Recibe las caracteristicas del producto
+            foreach($_POST['caracteristica'] as $Caracteristica){
+                $Caracteristica = $_POST['caracteristica']; 
+            }  
             
+            //Se eliminan los elementos repetido que se reciben en caracteristicas
+            $CaracteristicaSinDuplicado = array_unique($Caracteristica);
+            
+            // echo "<pre>";
+            // print_r($CaracteristicaSinDuplicado);
+            // echo "</pre>";
+            // exit();
+
+            //SECCION IMAGENES SECUNDARIAS
+            // ******************************************************** 
+            //Se verifican cuantas imagenes se estan recibiendo, incluyendo las que ya existen en la BD            
+            $Cantidad = count($_FILES["imagen_EditarVarias"]["name"]);  
+            // echo $Cantidad . "<br>";  
+            for($i = 0; $i < $Cantidad ; $i++){  
+                //Las imagenes que existian en la BD se reciben sin su nombre por lo que no van a entrar en bucle, solo las imagenes que vienen por medio del input de agregar imagen son las que entran en el bucle
+                if($_FILES['imagen_EditarVarias']["name"][$i] != ""){
+                    $nombre_imgVarias = $_FILES['imagen_EditarVarias']['name'][$i];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
+                    $tipo_imgVarias = $_FILES['imagen_EditarVarias']['type'][$i];
+                    $tamanio_imgVarias = $_FILES['imagen_EditarVarias']['size'][$i];
+                    
+                    // echo "Nombre de la imagen = " . $nombre_imgVarias . "<br>";
+                    // echo "Tipo de archivo = " .$tipo_imgVarias .  "<br>";
+                    // echo "Tamaño = " . $tamanio_imgVarias . "<br>";
+                    // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
+                    // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
+
+                    //Si existe imagen_EditarVarias y tiene un tamaño correcto 
+                    // if(($nombre_imgVarias == !NULL) AND ($tamanio_imgVarias <= 7000000)){
+                    //     //indicamos los formatos que permitimos subir a nuestro servidor
+                    //     if (($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpeg")
+                    //         || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpg") || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/png")){
+                            
+                    //         // Ruta donde se guardarán las imágenes que subamos la variable superglobal
+                    //         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+
+                            //Usar en remoto
+                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/'; 
+
+                            //usar en local
+                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+
+                            //se muestra el directorio temporal donde se guarda el archivo
+                            //echo $_FILES['imagen']['tmp_name'];
+                            // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                            move_uploaded_file($_FILES['imagen_EditarVarias']['tmp_name'][$i], $directorio_5.$nombre_imgVarias);
+
+                            //Para actualizar fotografias varias solo si se ha presionado el boton de buscar fotografia; en realidad no se actualizan, simplemente se insertan las que se reciben del formulario
+                        
+                            //Se INSERTAN las fotografias del producto
+                            $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias);
+                    //     } 
+                    //     else{
+                    //         //si no cumple con el formato
+                    //         echo "Solo puede cargar imagenes con formato jpg, jpeg o png";
+                    //         // echo "<a href='../tarjeta/perfil_ingeniero.php'>Regresar</a>";
+                    //         exit();
+                    //     }
+                    // } 
+                    // else{
+                    // //si existe imagen_EditarVarias pero se pasa del tamaño permitido
+                    //     if($nombre_imgVarias == !NULL){
+                    //         echo "Una imagen es demasiado grande "; 
+                    //         // echo "<a href='perfil.php'>Regresar</a>";
+                    //         exit();
+                    //     }
+                    // }
+                }
+                else{
+                    echo "Imagen sin nombre";
+                }
+            }
+                   
             //Estas cinco sentencias de actualización deben realizarce por medio de transsacciones
             $this->ConsultaCuenta_M->actualizarOpcion($RecibeProducto);
             $this->ConsultaCuenta_M->actualizarProducto($RecibeProducto);
-            // $this->ConsultaCuenta_M->actualizarCaracteristicas($RecibeProducto, $ID_Caracteristica,  $Caracteristica);
-            $DB = $this->ConsultaCuenta_M->actualizacionSeccion($RecibeProducto);
-            // print("Se actualizaron $DB registros."); 
+            $this->ConsultaCuenta_M->actualizacionSeccion($RecibeProducto);
+            // Se eliminan las caracteristicas existentes de un producto especifica           
+            $this->ConsultaCuenta_M->eliminarCaracteristicas($RecibeProducto['ID_Producto'],); 
+            $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $RecibeProducto ['ID_Producto'], $CaracteristicaSinDuplicado);
 
-            //Para actualizar fotografia de perfil solo si se ha presionado el boton de buscar fotografia
-            if(($_FILES['imagen_EditarProducto']['name']) != ""){
-                //Se ACTUALIZA la fotografia el responsable de tienda
-                $this->ConsultaCuenta_M->actualizarFotografiaProducto($RecibeProducto, $nombre_imgProducto);
-           }
+            //Para actualizar fotografia principal solo si se ha presionado el boton de buscar fotografia
+            if(($_FILES['imagenPrinci_Editar']['name']) != ""){
+                //Se ACTUALIZA la fotografia principal del producto
+                $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Opcion'], $nombre_imgProducto);
+            }        
 
             //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección
             $Seccion = $RecibeProducto['Seccion'];
             
             //Se envia el puntero hacia el producto que se actualizó
-            $Puntero = $RecibeProducto['Puntero'];
+            // $Puntero = $RecibeProducto['Puntero']; //$Puntero se refiere al producto a donde se va a colocar el foco
 
             //$Seccion y $Puntero Se deben convertir en cadena porque el controlador Productos recibe una cadena de datos agrupados separados por coma
-            $Seccion_Puntero = $Seccion . ',' . $Puntero;
-            
-            $this->Productos($Seccion_Puntero);
+            // $Seccion_Puntero = $Seccion . ',' . $Puntero;
+
+            $this->Productos($Seccion);
             // $this->vista("paginas/cuenta_productos_V");
         }
 
-        //metodo invocado desde cuenta_productos_V.php
+        //Invocado desde cuenta_productos_V.php
         public function eliminarProducto($DatosAgrupados){
-            //$DatosAgrupados contiene una cadena con el ID_Opcion y ID_Producto separados por coma, se convierte en array para separar los elementos
-            
+            //$DatosAgrupados contiene una cadena con el ID_Opcion, ID_Producto y la sección separados por coma, se convierte en array para separar los elementos            
+            // echo $DatosAgrupados;
+            // exit();
+
             $DatosAgrupados = explode(",", $DatosAgrupados);
             
             $ID_Producto = $DatosAgrupados[0];
             $ID_Opcion = $DatosAgrupados[1];
+            $Seccion = $DatosAgrupados[2];
 
             // *************************************************************************************
             //La siguientes cinco consultas entran en el procedimeinto para ELIMINAR un producto de una tienda, esto debe hacerse mediante transacciones            
@@ -846,8 +906,14 @@
             // *************************************************************************************
             // *************************************************************************************
 
-            $this->Productos('Todos');
+            //Se redirecciona a la vista donde se encontraba el producto eliminado
+            $this->Productos($Seccion);
             // $this->vista("paginas/cuenta_productos_V", $Datos);
         }
+
+        //Invocado desde A_Cuenta_editar_prod.js por medio de Llamar_EliminarImagenSecundaria()
+        public function eliminarImagen($ID_Imagen){          
+            $this->ConsultaCuenta_M->eliminarImagenProducto($ID_Imagen);
+        }
     }
-?>    
+?>

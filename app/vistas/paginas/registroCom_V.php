@@ -12,20 +12,27 @@
         <form action="../Registro_C/recibeRegistroCom" method="POST" name="formRegistroCom" onsubmit="return validarAfiliacionCom()">
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Registro de tienda</legend> 
-                <input class="placeholder borde_1" type="text" name="nombre_Afcom" id="Nombre" placeholder="Nombre del encargado" autocomplete="off"> 
-                <input class="placeholder borde_1" type="text" name="correo_Afcom" id="CorreoAfiCom" placeholder="Correo electronico" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()"  autocomplete="off">
+
+                <!-- Nombre afiliado -->
+                <input class="placeholder borde_1" type="text" name="nombre_Afcom" id="Nombre" placeholder="Nombre del encargado" autocomplete="off" onkeydown="blanquearInput('Nombre')"> 
+
+                <!-- Correo afiliado -->
+                <input class="placeholder borde_1" type="text" name="correo_Afcom" id="CorreoAfiCom" placeholder="Correo electronico" onblur="llamar_verificaCorreo()" autocomplete="off" onkeydown="blanquearInput('CorreoAfiCom')">
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
                 
-                <input class="placeholder borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la tienda" autocomplete="off">
+                <!-- Nombre de la tienda -->
+                <input class="placeholder borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la tienda" autocomplete="off" onkeydown="blanquearInput('NombreTienda')">
             </fieldset>      
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Datos de accceso</legend>  
                 <div>
-                    <input class="placeholder borde_1" type="password" name="clave_Afcom" id="Clave" placeholder="Contraseña" onchange="llamar_verificaClave()">
-
+                    <!-- Clave -->
+                    <input class="placeholder borde_1" type="password" name="clave_Afcom" id="Clave" placeholder="Contraseña" onblur="llamar_verificaClave()" onkeydown="blanquearInput('Clave')">
                     <!-- Se recibe respuesta de ajax llamar_verificaClave()-->
                     <div class="contenedor_3" id="Mostrar_verificaClave"></div>
-                    <input class="placeholder borde_1" type="password" name="confirmarClave_Afcom" id="ConfirmarClave" placeholder="Repetir contraseña" onchange="verificarClaves()">
+
+                    <!-- Confirmar clave -->
+                    <input class="placeholder borde_1" type="password" name="confirmarClave_Afcom" id="ConfirmarClave" placeholder="Repetir contraseña" onchange="verificarClaves()" onkeydown="blanquearInput('ConfirmarClave')">
                 </div>          
             </fieldset>        
             <div class="contenedor_66">            
@@ -36,5 +43,6 @@
 </section>
 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Registros.js';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Registros.js';?>"></script>
 
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

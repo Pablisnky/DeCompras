@@ -19,7 +19,7 @@
                     'Nombre' => filter_input(INPUT_POST, "nombre", FILTER_SANITIZE_STRING),
                     'Apellido' => filter_input(INPUT_POST, "apellido", FILTER_SANITIZE_STRING),
                     'Cedula' => filter_input(INPUT_POST, "cedula", FILTER_SANITIZE_STRING),
-                    'Telefono' => filter_input(INPUT_POST, "telefono", FILTER_SANITIZE_STRING),
+                    'Telefono' => filter_input(INPUT_POST, "telefono", FILTER_SANITIZE_NUMBER_INT),
                     'Direccion' => filter_input(INPUT_POST, "direccion", FILTER_SANITIZE_STRING), 
                     'Pedido' => filter_input(INPUT_POST, "pedido", FILTER_SANITIZE_STRING), 
                 ];
@@ -35,11 +35,13 @@
                 
                 //Despues de evaluar con is_numeric se da un aviso en caso de fallo
                 if($RecibeDatos["Telefono"] == false){      
-                    exit("El telefono debe ser solo números");
+                    echo "El telefono debe ser solo números" . "<br>";
+                    echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                 }
                 //Despues de evaluar con is_numeric se da un aviso en caso de fallo
                 if($RecibeDatos["Cedula"] == false){      
-                    exit("La cedula debe ser solo números");
+                    echo "La cedula debe ser solo números" . "<br>";
+                    echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                 }
                 
                 //Se genera un número aleatorio para asociarlo al pedido

@@ -35,7 +35,7 @@ document.getElementById("SeccionPublicar").addEventListener('click', Llamar_secc
 //-------------------------------------------------------------------------------------------------
 function Llamar_seccionesDisponible(){
     console.log("Desde Llamar_seccionesDisponible()")
-    var url = "http://localhost/proyectos/PidoRapido/Cuenta_C/SeccionesDisponibles/"
+    var url = "../../Cuenta_C/SeccionesDisponibles/"
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_seccion
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")

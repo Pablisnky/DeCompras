@@ -30,32 +30,26 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-// document.getElementById("Label_13").addEventListener('click', Llamar_categorias, false)    
-
-//-------------------------------------------------------------------------------------------------
-//invocada desde vitrina_V.php 
-function llamar_PedidoEnCarrito(){
-    console.log("______Desde llamar_PedidoEnCarrito()______")
-    var url="http://localhost/proyectos/PidoRapido/Carrito_C/index/";
-    http_request.open('GET', url, true);    
-    peticion.onreadystatechange = respuesta_PedidoEnCarrito;
-    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
-    peticion.send("null");
-}                                                           
-function respuesta_PedidoEnCarrito(){
-    if(peticion.readyState == 4){
-        if(peticion.status == 200){            
-            document.getElementById("Mostrar_TodoPedido").style.display = "block"
-            //Coloca el cursor en el top de la pagina
-            window.scroll(0, 0)
-            document.getElementById('Mostrar_TodoPedido').innerHTML = peticion.responseText
-        } 
-        else{
-            alert('Hubo problemas con la petición.')
+    function Llamar_categorias(){
+        var url = "../Cuenta_C/Categorias/"
+        http_request.open('GET', url, true)  
+        peticion.onreadystatechange = respuesta_categorias
+        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+        peticion.send("null")
+    }                                                           
+    function respuesta_categorias(){
+        if(peticion.readyState == 4){
+            if(peticion.status == 200){    
+                document.getElementById("Mostrar_Categorias").style.display = "block"
+                document.getElementById('Mostrar_Categorias').innerHTML = peticion.responseText
+            } 
+            else{
+                alert('Hubo problemas con la petición.')
+            }
+        }
+        else{ //en caso contrario, mostramos un gif simulando una precarga
+            // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
         }
     }
-    else{ //en caso contrario, mostramos un gif simulando una precarga
-        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-    }    
-    PedidoEnCarrito()
-}
+
+//-------------------------------------------------------------------------------------------------

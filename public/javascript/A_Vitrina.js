@@ -36,7 +36,6 @@ function conexionAJAX(){
 //invocada desde vitrina_V.php, muestra la orden de compra
 function llamar_PedidoEnCarrito(){
     console.log("______Desde llamar_PedidoEnCarrito()______")
-    // var url="http://localhost/proyectos/PidoRapido/Carrito_C/index/"
     var url="../../Carrito_C/index/"
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
@@ -73,7 +72,6 @@ function llamar_Opciones(ID_Tienda, SeccionSelecionada, OpcionSeleccionada){
     let B = localStorage.getItem("Seccion")
     let C = OpcionSeleccionada
 
-    // var url="http://localhost/proyectos/PidoRapido/Opciones_C/index/" + A + "/" + B  + "/" + C
     var url="../../Opciones_C/index/" + A + "/" + B  + "/" + C
     http_request.open('GET', url, true)
     //Se define que función va hacer invocada cada vez que cuando cambie onreadystatechange

@@ -19,21 +19,19 @@ document.addEventListener("keyup", valida_LongitudDes, false);
 //FUNCIONES ANONIMAS
 // por medio de una función anonima debido a que el elemento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
 document.getElementById('Label_13').addEventListener('click',function(){ 
-        console.log("______Desde funcion anonima que genera el alto de la ventana modal()______")
-        //Coloca el cursor en el top de la pagina
-        // document.getElementById("Ejemplo_Secciones").style.display = "grid"
+    console.log("______Desde funcion anonima que genera el alto de la ventana modal()______")
+    //Coloca el cursor en el top de la pagina
+    // document.getElementById("Ejemplo_Secciones").style.display = "grid"
 
-        //Si la resolucion de la pantalla del dispositivo es menor a 880 px
-        if(window.screen.width<=800){
-            window.scroll(0, 0)
-            var tapaFondo = document.getElementById("Contenedor_42")
-            
-            //Se consulta el alto de la página cuenta_editar_V.php, este tamaño varia segun las secciones que tenga un tienda, cuentas bancarias y categorias
-            AltoVitrina = tapaFondo.scrollHeight
-            
-            //Este alto se estable al div padre en cuenta_editar_V.php para garantizar que cubra todo el contenido, ya que el div que Ejemplo_Secciones es cargado sobreeste
-            document.getElementById("Mostrar_Categorias").style.height = AltoVitrina + "px"
-        }
+    window.scroll(0, 0)
+    var tapaFondo = document.getElementById("Contenedor_42")
+    
+    //Se consulta el alto de la página cuenta_editar_V.php, este tamaño varia segun las secciones que tenga un tienda, cuentas bancarias y categorias
+    AltoVitrina = tapaFondo.scrollHeight
+    
+    //Este alto se estable al div padre en cuenta_editar_V.php para garantizar que cubra todo el contenido, ya que el div que Ejemplo_Secciones es cargado sobreeste
+    document.getElementById("Mostrar_Categorias").style.height = AltoVitrina + "px"
+
     Llamar_categorias()
 }, false);
 
@@ -195,7 +193,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************
     //Elimina los clones de seccion y banco
     function preEliminarSeccion(){
-        console.log("______Desde pre Eliminar Sección______")
+        // console.log("______Desde preEliminarSección()______")
 
         //Detectar el boton eliminar al cual se hizo click
         var Eliminar = document.getElementsByClassName("span_12_js")//Se obtienen los botones Eliminar
@@ -323,7 +321,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             //Se busca el nodo padre que contiene el input donde esta el producto a eliminar
             let DivHijo = document.getElementsByClassName("imput_6js")
 
-            //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos
+            //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos, es decir, se borran las categorias que existian
             Elementos = DivHijo.length
             for(var i = 0; i<Elementos; i++){ 
                 // console.log(Elementos) 
@@ -342,18 +340,18 @@ document.getElementById("Label_1").addEventListener('click', function(){
             }
         }
            
-        // console.log(TotalCategoria.length)
+        console.log("Categorias seleccionadas", TotalCategoria.length)
         //Se recoge la seleccion enviada desde CantidadCategorias_Ajax_V.php
-        // Categoria = document.getElementsByClassName("categoria_js")
+        Categoria = document.getElementsByClassName("categoria_js")
 
         //Se verifica que no hayan más de tres categorias selecionadas
-        if(TotalCategoria.length <= 3){
-        //     //Se recorren las categorias para verficar cuales estan seleccionadas
-        //     // for(var i = 0; i<Categoria.length; i++){
-        //     // if(Categoria[i].checked){
-        //     //     // Categoria= Categoria[i].value 
-        //     //     Categoria[i].value                  
-        //     //     // console.log(Categoria[i].value)        
+        if(TotalCategoria.length <= 2){
+            //Se recorren las categorias para verficar cuales estan seleccionadas
+            // for(var i = 0; i<Categoria.length; i++){
+            // if(Categoria[i].checked){
+            //     // Categoria= Categoria[i].value 
+            //     Categoria[i].value                  
+            //     console.log(Categoria[i].value)        
                                  
             //Se carga la categoria al array, este solo permitie tres elementos
             // Limite.push(Categoria[i].value )
@@ -361,10 +359,11 @@ document.getElementById("Label_1").addEventListener('click', function(){
             // console.log(TotalCategoria)  
 
             let id_dinamico = 1
-            //Se da propiedades a los elementos creados
+            //Se crean y se dan propiedades a los elementos creados con las nuevas categorias
             for(let i = 0; i<TotalCategoria.length; i++){
                 //Se crean los input que cargara la categorias contenidas en el array TotalCategoria
                 var NuevoElemento = document.createElement("input")
+                // console.log("Nuevo elemento= ", NuevoElemento)
                 
                 NuevoElemento.value = TotalCategoria[i] 
                 NuevoElemento.classList.add("input_13", "borde_1", "imput_6js")
@@ -374,15 +373,27 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
                 //Se especifica el elemento donde se va a insertar el nuevo elemento
                 var ElementoPadre = document.getElementById("Fieldset")
+                // console.log("Elemento padre= ", ElementoPadre)
 
                 //Se inserta en el DOM el input creado
-                inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+                // inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+                // console.log("Elemento Añadido= ", inputNuevo)
+
+                //Se especificael elmento que sera la referencia para insertar el nuevo nodo
+                let Ref_Ubicacion= document.getElementById("Ref_Ubicacion")
+                
+                //Se especifica el div padre y la posición donde se insertará el nuevo nodo
+                ElementoPadre.insertBefore(NuevoElemento, Ref_Ubicacion)
             }
             id_dinamico++   
+
+            //Se coloca el foco al nuevo elemento
+            NuevoElemento.focus()
         }
         else{
-            console.log("Máximo categorias seleccionadas")  
-            alert("Solo pueden seleccionarse tres categorias")   
+            alert("Solo pueden seleccionarse dos categorias")   
+            //Se detiene el envio de las categorias y se deja al afiliado en el panel de selección e categorias para que corriga
+            return
         }    
         CerrarCategoria('Mostrar_Categorias') 
     }
@@ -407,11 +418,18 @@ document.getElementById("Label_1").addEventListener('click', function(){
     
 
 //************************************************************************************************
-    // invocada desde Categorias_Ajax_V.php
+    // invocada desde Categorias_Ajax_V.php - transferirCategoria() en este archivo
     function CerrarCategoria(id){    
         console.log("______Desde CerrarCategoria()______")   
         document.getElementById(id).style.display = "none"
-        document.getElementById("Imput_6js").focus() 
+        document.getElementsByClassName("imput_6js")[0].focus()  
+        
+        //Se consulta cuanto scroll vertical tiene el elemento con id = "Input_6js" el numero indica la posición vertical en fondo del viewport
+        // console.log("Vertical: ", window.scrollY);
+        // window.scrollY arrojo 399 de scroll vertical para el elemento id = "Input_6js"
+
+        //Se da un scroll para que el elemento con el foco no quede al fondo de la pantalla
+        window.scroll(0,800)
     }
 
 //************************************************************************************************   

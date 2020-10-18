@@ -10,4 +10,4 @@
         	header("location:" . RUTA_URL);
         }
 	}
-?> 
+?>

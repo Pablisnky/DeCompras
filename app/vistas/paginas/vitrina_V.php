@@ -56,29 +56,23 @@
 <!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
 <div id="Mostrar_Opciones"></div>
 
-<!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información la toma de carrito_V.php invocada por la función llamar_PedidoEnCarrito() -->
-<section>
-    <div id="Mostrar_Orden"></div>
-</section>
+<!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito()  en este mismoarchivo-->
+<div id="Mostrar_Orden"></div>
 
 <!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
-<section>
-    <div id="Mostrar_Alert"></div>
-</section>
+<div id="Mostrar_Alert"></div>
 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
 
  <!-- Se verifica que el div id="Mostrar_Opciones" haya cargado todos los productos de la sección y se procede a colocar la leyenda en el producto seleccionado en la busqueda -->
- <script>
-        interval = setInterval('verificarDiv()',1000)
+<script>
+    interval = setInterval('verificarDiv()',1000)
 
-        //Detiene la llamada ontinua de verificarDiv a los 4 segundo de ser invocada con el setInterval
-        setTimeout('stopInterval()',4000)   
-    </script> 
-
-
+    //Detiene la llamada ontinua de verificarDiv a los 4 segundo de ser invocada con el setInterval
+    setTimeout('stopInterval()',4000)   
+</script> 
 
 <!-- Si viene de buscador se realiza el procedimiento para cargar al carrito el producto seleccionado y colocar la leyenda en la vista opcion_V.php y vitrina_V.php -->
 <?php
@@ -100,12 +94,20 @@ if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porq
         </script>
         <?php
         $Contador++;
-    }   ?>
-    
-   
+    }   ?>   
     <?php
 }
 ?>
 
    <!-- ******************************************************************************************* -->
-    <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>  
+
+    <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
+
+    
+<script>
+    //Invocada desde descr_Producto_V.php
+    function activarBotonAgregar(ID_LabelAgregar){
+        // console.log(ID_LabelAgregar)
+        document.getElementById(ID_LabelAgregar).click();
+    }
+</script>

@@ -15,7 +15,7 @@
             $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Seccion);   
             $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
 
-            //CONSULTA las caracteristicas de los productos de una sección de una tienda
+            //CONSULTA las caracteristicas de los productos 
             $Consulta_2 = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
             $Caracteristicas = $Consulta_2->fetchAll(PDO::FETCH_ASSOC); 
 
@@ -23,7 +23,7 @@
                 'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Opcion, fotografia, producto, opcion, precio
                 'ProductoSelecion' => $OpcionSelec,
                 'ID_Tienda' => $ID_Tienda,
-                'variosCaracteristicas' => $Caracteristicas
+                'variosCaracteristicas' => $Caracteristicas //ID_Producto, caracteristica 
             ];
                 
             // echo "<pre>";
@@ -57,23 +57,32 @@
             $this->vista("paginas/opciones_V", $Datos);
         }       
         
-        //Metodo invocado desde opciones_V.php
+        //Invocado desde opciones_V.php
         public function productoAmpliado($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Tienda y el producto separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);
+            // echo "<pre>";
+            // print_r($DatosAgrupados);
+            // echo "</pre>";
+            // exit();
             
-            $NombreTienda = $DatosAgrupados[0];
-            $SloganTienda = $DatosAgrupados[1];
-            $ID_Tienda = $DatosAgrupados[2];
-            $Producto = $DatosAgrupados[3];
-            $Opcion = $DatosAgrupados[4];
-            $Precio = $DatosAgrupados[5];
-            $Fotografia = $DatosAgrupados[6];
-            $ID_Producto = $DatosAgrupados[7];
+            $ID_EtiquetaAgregar = $DatosAgrupados[0];
+            $NombreTienda = $DatosAgrupados[1];
+            $SloganTienda = $DatosAgrupados[2];
+            $ID_Tienda = $DatosAgrupados[3];
+            $Producto = $DatosAgrupados[4];
+            $Opcion = $DatosAgrupados[5];
+            $Precio = $DatosAgrupados[6];
+            $Fotografia = $DatosAgrupados[7];
+            $ID_Producto = $DatosAgrupados[8];
             
-            //CONSULTA las caracteristicas de los productos de una sección de una tienda
-            $Consulta = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
+            //CONSULTA las caracteristicas del producto seleccionado
+            $Consulta = $this->ConsultaOpciones_M->consultarCaracterisicaProductoEsp($ID_Producto);
             $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+
+            //CONSULTA las imagenes del producto seleccionado
+            $Consulta_3 = $this->ConsultaOpciones_M->consultarImagenesProducto($ID_Producto);
+            $Imagenes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC); 
 
             $Datos=[
                 'NombreTienda' => $NombreTienda, 
@@ -84,8 +93,15 @@
                 'Precio' => $Precio,
                 'Fotografia_1' => $Fotografia,
                 'ID_Producto' => $ID_Producto, 
-                'variosCaracteristicas' => $Caracteristicas
+                'ID_EtiquetaAgregar' => $ID_EtiquetaAgregar, 
+                'Caracteristicas' => $Caracteristicas,
+                'Imagenes' => $Imagenes
             ];      
+
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
             
             $this->vista("paginas/descr_Producto_V", $Datos);
         }  

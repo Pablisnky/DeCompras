@@ -56,28 +56,3 @@ var http_request = false
     }
     
 //-------------------------------------------------------------------------------------------------
-    // invocada desde cuenta_editar_V.php 
-    function Llamar_categorias(){
-        var url = "../Cuenta_C/Categorias/"
-        http_request.open('GET', url, true)  
-        peticion.onreadystatechange = respuesta_categorias
-        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
-        peticion.send("null")
-    }                                                           
-    function respuesta_categorias(){
-        if(peticion.readyState == 4){
-            if(peticion.status == 200){    
-                document.getElementById("Mostrar_Categorias").style.display = "block"
-                document.getElementById('Mostrar_Categorias').innerHTML = peticion.responseText
-            } 
-            else{
-                alert('Hubo problemas con la petición.')
-            }
-        }
-        else{ //en caso contrario, mostramos un gif simulando una precarga
-            // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-        }
-    }
-
-//-------------------------------------------------------------------------------------------------
-   

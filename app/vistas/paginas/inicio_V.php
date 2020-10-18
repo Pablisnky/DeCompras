@@ -363,7 +363,7 @@
         </div>
     </section>
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Inicio.js';?>"></script>
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Inicio.js';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js';?>"></script>
 
 <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>

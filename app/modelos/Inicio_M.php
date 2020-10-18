@@ -1,6 +1,4 @@
 <?php
-    // require(RUTA_APP . "/clases/Conexion_BD.php");
-
     class Inicio_M extends Conexion_BD{
 
         public function __construct(){    

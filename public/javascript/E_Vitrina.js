@@ -45,11 +45,11 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     this.Precio = Precio
     this.Total = Total
 }
+
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función Pre_incremento  y Pre_decremento 
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
-
 
 // *****************************************************************************************************
 //Se busca el alto del body de la página para garantizar que el alto del contenedor a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
@@ -81,7 +81,7 @@ document.addEventListener('click', function(event){
 // *****************************************************************************************************
 //seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos
 document.getElementById('Mostrar_Orden').addEventListener('click', function(event){ 
-    console.log("Iniciando delegando eventos")
+    // console.log("Iniciando delegando eventos")
     if((event.target.id == "Domicilio_No") || (event.target.id == "Domicilio_Si")){  
         console.log("¡Delegaste el evento!")
         console.log("______Desde forma_Entrega______")
@@ -116,24 +116,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         }
     }
 }, false);    
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
     // invocada desde PedidoCarrito.php
@@ -142,25 +124,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60a").style.display = "block"
         document.getElementById("Contenedor_60b").style.display = "none"
     }
-//************************************************************************************************
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 //************************************************************************************************
     // invocada desde PedidoCarrito.php
@@ -171,24 +134,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
 
 //************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//************************************************************************************************
     //invocada desde carrito.php 
     function MuestraEnvioFactura(){
         console.log("______Desde MuestraEnvioFactura()______") 
@@ -196,24 +141,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_26").style.display = "none"
     }
     
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //************************************************************************************************
     //Parapadeo display carrito, invocada desde Pre_incremento - Pre_decremento - transferirOpcion - AgregaOpcion
     function DisplayDestello(){    
@@ -224,25 +151,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementById("Mostrar_Carrito").classList.remove('Blink')
         }, 3000);
     }
-
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
     //invocada desde opciones_V.php añade un producto al carrito   
@@ -424,23 +332,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 // console.log(AlContenedor)
 // console.log(AlCarro)
     }
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
     //invocada desde opciones_V.php muestra en cada seccion los productos que tiene cargado en carrito
@@ -501,24 +392,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
 
 //************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//************************************************************************************************
     //invocada al cargarse llamar_Opciones() en Funciones_Ajax.js especifica los productos que ya estan cargados al carrito de compra y muestra su leyenda en la vista opciones_V.php
     function ProductosEnCarrito(){      
         // console.log("______Desde ProductosEnCarrito()______")        
@@ -554,23 +427,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     // console.log(AlContenedor)
     // console.log(AlCarro)
     }    
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
     //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
@@ -606,24 +462,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
     
 //************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//************************************************************************************************
     //invocada desde vitrina_V identifica los elementos de la sección donde se hizo click.
     function verOpciones(Cont_Seccion, Seccion){ 
         // console.log("______Desde verOpciones()______")     
@@ -635,23 +473,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Captura la seccion donde se hizo click
         localStorage.setItem('SeccionCLick',Seccion)         
     }
-
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
     //Cambia el formato de total en el carrito de compras para mostrar en display
@@ -672,24 +493,8 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             return Numero
         }
     }
+
 // **********************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//************************************************************************************************
     //invocada desde opciones_V  
     function Pre_incremento(){  
         // console.log("______Desde Pre_incremento()______")
@@ -797,22 +602,6 @@ console.log(AlContenedor)
 console.log(AlCarro)
         }  
     }   
-
-//************************************************************************************************
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //************************************************************************************************
     //invocada desde vitrina_V
@@ -1025,47 +814,13 @@ console.log(AlCarro)
     }
 
 //************************************************************************************************ 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-//************************************************************************************************
     //invocada desde carrito_V.php
     function ocultarPedido(){   
         console.log("______Desde ocultarPedido()______")    
         document.getElementById("Mostrar_Orden").style.display = "none";
     }    
 
-    //************************************************************************************************ 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-       
-//************************************************************************************************
+    //************************************************************************************************
     //ajusta el texarea con respecto al contenido que trae de la BD es llamado desde opciones_V.php
     function resize(){
         var text = document.getElementById("OpcionPro");
@@ -1074,23 +829,6 @@ console.log(AlCarro)
     }
      
 //************************************************************************************************ 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-       
-//************************************************************************************************
     //Verifca que el archivo opciones ya se haya cargado
     function verificarDiv(){
         console.log("______Desde verificarDiv()______")  
@@ -1104,36 +842,157 @@ console.log(AlCarro)
     }
 
 //************************************************************************************************
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-       
-//************************************************************************************************
     function stopInterval(){
     console.log("______Desde stopInterval()______")
     clearInterval(interval)
     }
 
 //************************************************************************************************ 
+    //LLamada desde descr_Producto.php
+    function cerrarVentana(){            
+        window.close();
+    }
 
-// ***************************************************************************************************
-//LLamada desde descr_Producto.php
-function cerrarVentana(){            
-    window.close();
-}
 //************************************************************************************************
+    //Valida el formulario de despacho de producto
+    function validarDespacho(){
+        // console.log("______Desde validarDespacho()______")
+
+        document.getElementsByClassName("botonJS")[0].value = "Enviando ..."
+        document.getElementsByClassName("botonJS")[0].disabled = "disabled"
+        document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialClaro)"
+        document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialOscuro)"
+        document.getElementsByClassName("botonJS")[0].classList.add('borde_1')
+        
+        let Nombre = document.getElementById('NombreUsuario').value
+        let Apellido = document.getElementById('ApellidoUsuario').value 
+        let Cedula = document.getElementById('CedulaUsuario').value 
+        let Telefono = document.getElementById('TelefonoUsuario').value 
+        let Direccion = document.getElementById('DireccionUsuario').value  
+        
+        //Patron de entrada solo acepta letras
+        let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
+
+        //Patron de entrada solo acepta numeros,guion y puntos          
+        let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+
+        // let P_LetrasNumero = /[A-Za-z0-9]/;
+                
+        if(Nombre == "" || Nombre.indexOf(" ") == 0 || Nombre.length > 40 || P_Letras.test(Nombre) == false){
+            alert ("Problemas con su Nombre");
+            document.getElementById("NombreUsuario").value = "";
+            document.getElementById("NombreUsuario").focus();
+            document.getElementById("NombreUsuario").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            return false;
+        }
+        else if(Apellido =="" || Apellido.indexOf(" ") == 0 || Apellido.length > 20 || P_Letras.test(Apellido) == false){
+            alert ("Problemas con su Apellido");
+            document.getElementById("ApellidoUsuario").value = "";
+            document.getElementById("ApellidoUsuario").focus();
+            document.getElementById("ApellidoUsuario").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            return false;
+        }
+        else if(Cedula =="" || Cedula.indexOf(" ") == 0 || Cedula.length > 9 || (isNaN(Cedula)) || Cedula<2000000 || Cedula>999999999){
+            alert ("Problemas con su número de cedula");
+            document.getElementById("CedulaUsuario").value = "";
+            document.getElementById("CedulaUsuario").focus();
+            document.getElementById("CedulaUsuario").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            return false;
+        }
+        else if(Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 14 || P_Telefono.test(Telefono) == false){
+            alert ("Problemas con su Telefono");
+            document.getElementById("TelefonoUsuario").value = "";
+            document.getElementById("TelefonoUsuario").focus();
+            document.getElementById("TelefonoUsuario").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            return false;
+        }
+        else if(Direccion =="" || Direccion.indexOf(" ") == 0 || Direccion.length > 20){
+            alert ("Problemas con su Direccion");
+            document.getElementById("DireccionUsuario").value = "";
+            document.getElementById("DireccionUsuario").focus();
+            document.getElementById("DireccionUsuario").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            return false;
+        }
+
+        //Si se superan todas las validaciones la función devuelve verdadero
+        return true
+    }
+
+//************************************************************************************************
+    //quita el color de fallo en un input y lo deja en su color original
+    function blanquearInput(id){
+        // console.log("______Desde blanquearInput()______")
+        document.getElementById(id).style.backgroundColor = "white"
+    }
+
+//************************************************************************************************
+    //Impide que se siga introduciendo caracteres al alcanzar el limite maximo en el telefono
+    var contenidoTelefono = ""; 
+    var num_caracteres_permitidos = 13; 
+
+    function valida_LongitudTelefono(){ 
+        console.log("______Desde valida_LongitudTelefono()______")
+
+        let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
+        // num_caracteres_permitidos = Telefono.length; 
+
+        if(num_caracteres_input > 13){ 
+            document.getElementById("TelefonoUsuario").value = contenidoTelefono; 
+        }
+        else{ 
+            contenidoTelefono = document.getElementById("TelefonoUsuario").value;   
+        } 
+    } 
+
+//************************************************************************************************
+    //Mascara de entrada para el telefono, agrega los puntos en tiempo real al llenar el campo    
+    function mascaraTelefono(Telefono){
+        // console.log("______Desde mascaraTelefono()______")
+        
+        if(Telefono.length == 4){
+            document.getElementById("TelefonoUsuario").value += "-"; 
+        }
+        else if(Telefono.length == 8){
+            document.getElementById("TelefonoUsuario").value += ".";  
+        }
+        else if(Telefono.length == 11){
+            document.getElementById("TelefonoUsuario").value += ".";  
+        }
+    }
+
+//************************************************************************************************
+    //Validar el formato de telefono
+    avisado=false;
+    function validarFormatoTelefono(campo){
+        // var RegExPattern = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+        // if((campo.match(RegExPattern)) && (campo!='')){
+        //     return true;
+        // }
+        // else{
+        //     alert("Telefono con formato incorrecto");
+        //     document.getElementById("TelefonoUsuario").value = "";
+        //     document.getElementById("TelefonoUsuario").style.backgroundColor = 'red'; 
+        //     return false;
+        // }
+    }
+
+//************************************************************************************************
+    //Abre la ventna de detalles de producto
+    function mostrarDetalles(ContadorLabel, Nombre_Tienda, Slogan_Tienda, ID_Tienda, Producto, Opcion, Precio, Fotografia, ID_Producto){
+        console.log("______Desde mostrarDetalles()______")
+        window.open(`../../Opciones_C/productoAmpliado/${'Etiqueta_' + ContadorLabel},${Nombre_Tienda},${Slogan_Tienda},${ID_Tienda},${Producto},${Opcion},${Precio},${Fotografia},${ID_Producto}`, "ventana1", "width=1300,height=650,scrollbars=YES")   
+    }
+           
 ///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
 // document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    
 //     if(event.target.id == 'Span_523'){

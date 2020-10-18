@@ -1,5 +1,8 @@
-<?php session_start();error_reporting(E_ALL);
-ini_set('display_errors', '1');
+<?php 
+    session_start();
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
     class Login_C extends Controlador{
         
         public function __construct(){  
@@ -38,7 +41,7 @@ ini_set('display_errors', '1');
 
         //Invocado desde inicio_V
         public function ValidarSesion(){
-            // $Recordar = isset($_POST["recordar"]) == 1 ? $_POST["recordar"] : "No desea recordar";
+            $Recordar = isset($_POST["recordar"]) == 1 ? $_POST["recordar"] : "No desea recordar";
             $Clave = $_POST["clave_Arr"];
             $Correo = $_POST["correo_Arr"];
 
@@ -105,7 +108,6 @@ ini_set('display_errors', '1');
                     //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
                     $_SESSION["Nombre"] = $Nombre;
 
-                    // echo RUTA_URL . "/Cuenta_C/Productos/Todos";
                     header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");
                 }
                 else{ 
@@ -144,4 +146,4 @@ ini_set('display_errors', '1');
             // redireccionar("/RecuperarClave_C/index/$Correo"); 
         }
     }
-?>    
+?>

@@ -43,6 +43,16 @@
 	/* width: 80%;
 	margin: 8% auto; */
 }
+.contenedor_106{/*inicio*/
+	bottom: 8px;
+}
+.h1_4{/*ciudad - opciones - tiendas*/
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.h2_1{/*inicio*/
+	font-size: 0.9em;
+}
 .h3_2{/*inicio*/
 	padding-top: 90%;
 	font-size: 1.3em;
@@ -64,6 +74,9 @@
 }
 .menuResponsive ul{/*Todas  las paginas*/
 	width: 100%;
+}
+.p_3{/*tiendas - afiliacion*/
+	font-size: 1.4em;
 }
 .p_9{/*cuenta_editar - planes*/
 	grid-column-start: initial;

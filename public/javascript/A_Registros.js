@@ -30,34 +30,33 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-//Es llamada desde registroCom_V.php
-function llamar_verificaCorreo(){
-    console.log("_____Desde llamar_verificaCorreo()_____")
-    A = document.getElementById("CorreoAfiCom").value;
-    var url="http://localhost/proyectos/PidoRapido/Registro_C/VerificarCorreo/" + A;
-    http_request.open('GET',url,true);     
-    peticion.onreadystatechange = respuesta_verificaCorreo;
-    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    peticion.send("null");
-}                                                           
-function respuesta_verificaCorreo(){
-    if (peticion.readyState == 4){
-        if (peticion.status == 200){
-            console.log(peticion.status)
-           document.getElementById('Mostrar_verificaCorreo').innerHTML = peticion.responseText;
-        } 
-        else{
-            alert('Hubo problemas con la petición.');
+    //Es llamada desde registroCom_V.php
+    function llamar_verificaCorreo(){
+        console.log("_____Desde llamar_verificaCorreo()_____")
+        A = document.getElementById("CorreoAfiCom").value;
+        var url="../Registro_C/VerificarCorreo/" + A;
+        http_request.open('GET',url,true);     
+        peticion.onreadystatechange = respuesta_verificaCorreo;
+        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        peticion.send("null");
+    }                                                           
+    function respuesta_verificaCorreo(){
+        if (peticion.readyState == 4){
+            if (peticion.status == 200){
+                document.getElementById('Mostrar_verificaCorreo').innerHTML = peticion.responseText;
+            } 
+            else{
+                alert('Hubo problemas con la petición.');
+            }
         }
     }
-}
 
 //-------------------------------------------------------------------------------------------------
 //Es llamada desde registroCom_V.php
 function llamar_verificaClave(){
     console.log("_____Desde llamar_verificaClave()_____")
     A = document.getElementById("Clave").value;
-    var url="http://localhost/proyectos/PidoRapido/Registro_C/VerificarClave/" + A;
+    var url="../Registro_C/VerificarClave/" + A;
     http_request.open('GET',url,true);     
     peticion.onreadystatechange = respuesta_verificaClave;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");

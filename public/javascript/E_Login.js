@@ -1,7 +1,7 @@
  document.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, false)
 
 //************************************************************************************************
-    //Valida el formulario
+    //Valida el formulario de login
     function validarLogin(){
         console.log("______Desde validarLogin()______")
 

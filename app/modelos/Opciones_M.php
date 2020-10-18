@@ -36,6 +36,34 @@
             }
         }
         
+        //SELECT de las caracteristicas de un producto especifico
+        public function consultarCaracterisicaProductoEsp($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT ID_Producto, caracteristica FROM caracteristicaproducto WHERE ID_Producto = :ID_PRODUCTO");
+
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
+        //SELECT de las caracteristicas de los productos de una tienda
+        public function consultarImagenesProducto($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT nombre_img FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
         //SELECT de slogan de la tienda
         public function consultarSloganTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT slogan_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");

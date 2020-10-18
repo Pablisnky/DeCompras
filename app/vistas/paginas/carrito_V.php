@@ -49,24 +49,32 @@
     </div>
     <article>
         <div class="contenedor_24 contenedor_27" id="MuestraEnvioFactura">
-            <form action="../../RecibePedido_C/recibePedido/" method="POST">
+            <form action="../../RecibePedido_C/recibePedido/" method="POST" onsubmit="return validarDespacho()">
                 <div>
                     <h1 class="h1_1">Datos de despacho</h1>
                     <div class="contenedor_28">
+
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="nombre" id="NombreUsuario" autocomplete="off" placeholder="Nombre""/>
+                            <input class="placeholder borde_1" type="text" name="nombre" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
                         </div>
+
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="apellido" autocomplete="off" placeholder="Apellido"/>
+                            <input class="placeholder borde_1" type="text" name="apellido" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
                         </div>
+
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="cedula" autocomplete="off" placeholder="Cedula / RIF"/>
+                            <input class="placeholder borde_1" type="text" name="cedula" id=
+                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)" onkeydown="blanquearInput('CedulaUsuario')"/>
                         </div>
+
+                        <!-- Telefono usuario -->
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="telefono" autocomplete="off" placeholder="Telefono"/>
+                            <input class="placeholder borde_1" type="text" name="telefono" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario'); valida_LongitudTelefono()"
+                            onkeyup="mascaraTelefono(this.value)"/>
                         </div>
+
                         <div class="contenedor_72">
-                            <textarea class="textarea_1  placeholder borde_1" name="direccion" autocomplete="off" placeholder="Dirección"></textarea>
+                            <textarea class="textarea_1  placeholder borde_1" name="direccion" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
                         </div>
                     </div>
                 </div>
@@ -118,7 +126,7 @@
                     </div>
                     <div class="contenedor_30">
                         <input class="ocultar" type="text" id="Pedido" name="pedido">
-                        <input class="boton" id="Submit" type="submit" value="Enviar"/>
+                        <input class="boton botonJS" type="submit" value="Enviar"/>
                     </div>
                 </div>
             </form>

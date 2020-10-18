@@ -9,9 +9,13 @@
         <span class="icon-cancel-circle span_5" id="Span_3" onclick="TransferirPedido()"></span>
     </div>
     <form id="Formulario">
-        <div class="contenedor_13" id="Contenedor_13Js">   
+        <div class="contenedor_13" id="Contenedor_13Js"> 
             <?php   
             $ContadorLabel = 1;
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
             //$Datos proviene de Opciones_C/index
             $ID_Tienda = $Datos['ID_Tienda'];
             foreach($Datos['Opciones'] as $row){
@@ -25,10 +29,6 @@
                 $Seccion = $row['seccion'];              
                 $Fotografia = $row['fotografia'];
    
-                // echo "<pre>";
-                // print_r($Datos);
-                // echo "</pre>";
-                // exit();
                 //Se da formato al precio, sin decimales y con separación de miles
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
@@ -41,23 +41,36 @@
                     </div>
                     <div style=" width:100%"> 
                         <div style="min-height:80px">
-                            <!-- Producto -->
+
+                            <!-- PRODUCTO -->
                             <input class="input_8" type="text" value="<?php echo $Producto;?>" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>" readonly="readonly"/>
 
-                            <!-- Opcion -->
+                            <!-- OPCION -->
                             <input class="input_8" type="text" value="<?php echo $Opcion;?>" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" readonly="readonly"/>
                             
-                            <!-- Especificacion -->
-                            <?php                  
+                            <!-- AMPLIAR DETALLES -->
+                            <!-- se abre la ventana de detalle de producto utilizando el metodo de enlace con la etiqueta HTML <a></a>-->
+                            <?php        
+                                // foreach($Datos['variosCaracteristicas'] as $AA) :
+                                //     if($AA['ID_Producto'] == $ID_Producto){  ?>
+                                         <!-- <a class="input_10" href="<?php// echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $Slogan_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto . ',' .'Etiqueta_' . $ContadorLabel;?>?>" target="_blank" rel="noopener noreferrer">Ampliar detalles</a> -->
+                                         <?php
+                                //         break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
+                                //     }                                        
+                                // endforeach; 
+                            ?>                            
+                            <!-- se abre la ventana de detalle de producto utilizando el metodo de window.open-->
+                            <?php        
                                 foreach($Datos['variosCaracteristicas'] as $AA) :
                                     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                        <a class="input_10" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $Slogan_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto ?>" target="_blank" rel="noopener noreferrer"><?php echo $AA['caracteristica'] ;?></a>
+                                        <label class="input_10"  onclick="mostrarDetalles('<?php echo $ContadorLabel?>','<?php echo $Nombre_Tienda?>','<?php echo $Slogan_Tienda?>','<?php echo $ID_Tienda?>','<?php echo $Producto?>','<?php echo $Opcion?>','<?php echo  $Precio?>','<?php echo $Fotografia?>','<?php echo $ID_Producto?>')">Ampliar detalles</label>
                                         <?php
-                                    }                                           
+                                        break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
+                                    }                                        
                                 endforeach; 
-                            ?>
+                            ?>          
                             
-                            <!-- Precio -->
+                            <!-- PRECIO -->
                             <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs." id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" readonly="readonly"/>
                       
                             <?php 
@@ -91,7 +104,7 @@
                             <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
                         </div>
                         
-                        <!-- Agregar -->
+                        <!-- AGREGAR -->
                         <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 borde_1 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                     </div> 
 
@@ -128,3 +141,4 @@
         </div>
     </form>
 </section>  
+

@@ -30,12 +30,14 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
+//No he podido llamar esta funcion con este metodo porque pasa un argumento que es dinamico
 // document.getElementById("Seccion").addEventListener('click', Llamar_seccion, false)
 
 //-------------------------------------------------------------------------------------------------
 function Llamar_seccion(ID_Producto){
-    console.log("______Desde Llamar_seccion()______")
-    var url = "http://localhost/proyectos/PidoRapido/Cuenta_C/Secciones/" + ID_Producto
+    // console.log("______Desde Llamar_seccion()______")
+    
+    var url = "../../Cuenta_C/Secciones/" + ID_Producto
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_seccion
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -43,9 +45,9 @@ function Llamar_seccion(ID_Producto){
 }                                                           
 function respuesta_seccion(){
     if(peticion.readyState == 4){
-        console.log(peticion.readyState)
         if(peticion.status == 200){    
-            console.log(peticion.status)
+            //Coloca el cursor en el top de la pagina
+            window.scroll(0, 0)
             document.getElementById("Contenedor_80").innerHTML = peticion.responseText
         } 
         else{
@@ -58,3 +60,26 @@ function respuesta_seccion(){
 }
 
 //-------------------------------------------------------------------------------------------------
+ //Elimina una imagen
+function Llamar_EliminarImagenSecundaria(ID_Imagen){
+    // console.log("______Desde EliminarImagenSecundaria()______")
+
+    var url = "../../Cuenta_C/eliminarImagen/" + ID_Imagen
+    http_request.open('GET', url, true)  
+    peticion.onreadystatechange = respuesta_EliminarImagenSecundaria
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+    peticion.send("null")
+}                                                                        
+function respuesta_EliminarImagenSecundaria(){
+    if(peticion.readyState == 4){
+        if(peticion.status == 200){  
+              
+        } 
+        else{
+            alert('Problemas con la petición.')
+        }
+    }
+    else{ //en caso contrario, mostramos un gif simulando una precarga
+        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    }
+}        

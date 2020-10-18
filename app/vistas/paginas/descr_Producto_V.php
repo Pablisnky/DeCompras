@@ -1,4 +1,5 @@
-<?php  include(RUTA_APP . "/vistas/inc/headerProductoModal.php"); 
+<?php
+    include(RUTA_APP . "/vistas/inc/headerProducto.php"); 
     
     //$Datos proviene de Opciones_C/productoAmpliado
             // echo "<br><br><br><br><br>";
@@ -12,83 +13,75 @@
             $Precio = $Datos['Precio'];
             $Fotografia_1 = $Datos['Fotografia_1'];
             $ID_Producto = $Datos['ID_Producto'];
+            $ID_LabelAgregar = $Datos['ID_EtiquetaAgregar'];
 ?>
-    <section style="min-height: 100%;">
+    <section >
         <div class="contenedor_122"> 
             <div class="contenedor_123">
-                <div class="contenedor_124"> 
-                    <nav>
-                        <ul class="ul_3">
-                            <li class="">
-                                <img class="imagen_9 imagen_10 " id="Img_1" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>">
-                            </li>
-                            <li class="">
-                                <img class="imagen_9 borde_1 borde_2" id="Img_2" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>">
-                            </li>
-                            <li class="">
-                                <img class="imagen_9 borde_1 borde_2" id="Img_3" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>">
-                            </li>
-                            <li class="">
-                                <img class="imagen_9 borde_1 borde_2" id="Img_4" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>">
-                            </li>
-                            <li class="">
-                                <img class="imagen_9 borde_1 borde_2" id="Img_5" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>">
-                            </li> 
-                        </ul> 
-                    </nav>
+                <div class="contenedor_124" id="Contenedor_124"> 
+                    <?php         
+                        // if($Datos['Imagenes'] == Array()){  ?>
+                            <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Fotografia_1'];?>">   <?php
+                        // }    
+                        // else{   ?>                            
+                            <ul class="ul_3" id="Ul_1">     <?php   
+                                $Contador = 1;               
+                                foreach($Datos['Imagenes'] as $key) :   ?>
+                                    <li class="li_4" >
+                                        <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>">
+                                    </li>
+                                    <?php
+                                    $Contador ++;
+                                endforeach; ?>
+                            </ul>   <?php
+                        // }
+                    ?>
                 </div>
-                <div class="contenedor_125">
-                    <ul class="ul_3">      
-                        <li> 
-                            <img class="imagen_11 borde_1 borde_2" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>" id="ImagenMiniatura_1" onclick="ImagenMiniatura_A()">
-                            </label>
-                        </li> 
-                        <li>
-                            <img class="imagen_11 borde_1 borde_2" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>" id="ImagenMiniatura_2"  onclick="ImagenMiniatura_B()">
-                            </label>
-                        </li> 
-                        <li>
-                            <img class="imagen_11 borde_1 borde_2" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>" id="ImagenMiniatura_3" onclick="ImagenMiniatura_C()">
-                            </label>
-                        </li> 
-                        <li>
-                            <img class="imagen_11 borde_1 borde_2" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>" id="ImagenMiniatura_4" onclick="ImagenMiniatura_D()">
-                            </label>
-                        </li> 
-                        <li>
-                            <img class="imagen_11 borde_1 borde_2" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Fotografia_1;?>"id="ImagenMiniatura_5" onclick="ImagenMiniatura_E()">
-                            </label>
-                        </li> 
-                    </ul>
+                <div class="contenedor_125">   
+                    <?php                      
+                        $Contador = 1;                     
+                        foreach($Datos['Imagenes'] as $key) :   ?>
+                            <img class="imagen_11 borde_1 borde_2" id="Imagen_<?php echo $Contador ?>" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>" onclick="verMiniatura('Imagen_<?php echo $Contador ?>')">
+                            <?php
+                            // echo  $Contador;
+                            $Contador ++;
+                        endforeach;
+                    ?>  
                 </div>
             </div>
             <div class="contenedor_126">
                 <div class="contenedor_127">
                     <h1 class="h1_11"><?php echo $Producto, PHP_EOL, $Opcion?></h1>
                     <br>
-                    <?php
-                        foreach($Datos['variosCaracteristicas'] as $key) : 
-                            if($key['ID_Producto'] == $ID_Producto){ ?>
-                                <textarea class=" textarea_3"><?php echo $key['caracteristica']?></textarea>  <?php
-                            }
-                        endforeach
+                    <ul>
+                        <?php
+                            foreach($Datos['Caracteristicas'] as $key) : 
+                                if($key['ID_Producto'] == $ID_Producto){ ?>
+                                     <li class="li_1"><?php echo $key['caracteristica']?></li>   <?php
+                                }
+                            endforeach
                         ?>
+                    </ul>
                     <br>
-                    <textarea class="textarea_1 textarea_3">Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea>
+                    <textarea class="textarea_3">Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea>
                     <br>
-                    <label class="label_22"><?php echo $Precio?> Bs</label>
                 </div>  
                 <div class=" contenedor_29a">
+                    <label class="label_22 borde_1 borde_2"><?php echo $Precio?> Bs</label>
                     <div class="contenedor_26" id="Contenedor_26">
-                        <label class="boton boton_1">Agregar</label>
-                        <label class="boton boton_1" onclick="cerrarVentana()">Regresar</label>
+                        <label class="boton boton_1 boton_8" onclick="cerrarAgregar()">Agregar</label>
+                        <label class="boton boton_1 boton_8" onclick="cerrarRegresar()">Regresar</label>
                     </div>
                 </div>           
             </div>
         </div>
     </section>
     
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_descr_Producto.js';?>"></script>
+
+<?php// include(RUTA_APP . "/vistas/inc/footer.php");   ?>
+
+
 
 <script>
     var textarea = document.querySelector('textarea');
@@ -101,5 +94,15 @@
             el.style.cssText = 'height:' + el.scrollHeight + 'px';
         },0);
     }
+
+    function cerrarAgregar(){   
+        // activarBotonAgregar()Se enecuentra en vitrina.js debido a que los manejadores de envto de opciones_V.php dependen de vitrina_V.php por ser una ventna abierta con ajax
+        window.opener.activarBotonAgregar('<?php echo $ID_LabelAgregar?>') 
+        // window.opener.location.reload();        
+        window.close()
+    }
+    function cerrarRegresar(){     
+        window.close()
+    }
 </script>
-<?php include(RUTA_APP . "/vistas/inc/footer.php");   ?>
+

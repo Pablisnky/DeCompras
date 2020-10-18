@@ -3,7 +3,7 @@
                   <div class="contenedor_7" id="Desarrollo_PWA"> 
                         <div class="contenedor_98">
                               <div>
-                                    <h3 class="h3_1">DESARROLLO</h3>
+                                    <h3 class="h3_1">APLICACIÓN</h3>
                                     <h3 class="h3_1">MULTIPLATAFORMA</h3>
                               </div>
                               <img class="imagen_5" alt="Logo PWA" src="<?php echo RUTA_URL;?>/public/images/PWA.png"/>
