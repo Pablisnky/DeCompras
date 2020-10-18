@@ -75,7 +75,7 @@
                       
                             <?php 
                             //En caso de venir desde buscador se sombreo el producto solicitado en la busqueda y se posiciona de primero entre todos los productos
-                            if($Opcion == $Datos['ProductoSelecion']){  ?>
+                            if($Opcion == $Datos['ProductoSelecion']){ ?>
                                 <style>
                                     @media (max-width: 800px){
                                         .section_9{/*opciones - cuenta_productos*/

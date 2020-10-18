@@ -10,7 +10,6 @@
         public function index($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);
-            
             $ID_Tienda = $DatosAgrupados[0];
             $NombreTienda = $DatosAgrupados[1];
             $SeccionBuscada = $DatosAgrupados[2];
@@ -28,13 +27,6 @@
             $Consulta = $this->ConsultaVitrina_M->consultarSloganTienda($ID_Tienda);
             $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            //Se CONSULTAN los productos de una tienda segun su seccion 
-            // $Consulta_1 = $this->ConsultaVitrina_M->consultarProductos($ID_Tienda);
-            // $Productos = $Consulta_1->fetchAll(PDO::FETCH_BOTH);  
-           
-            // $Consulta_2 = $this->ConsultaVitrina_M->consultarNombreTienda($ID_Tienda);
-            // $Nombre = $Consulta_2->fetch(PDO::FETCH_ASSOC);
-
             $Datos=[
                 'id_tienda' => $ID_Tienda,
                 "seccion" => $Secciones,
@@ -48,7 +40,7 @@
             // echo "<pre>";
             // print_r($Datos);
             // echo "</pre>";
-            //         exit();
+            // exit();
             $this->vista("inc/header_Tienda",  $Datos);
             $this->vista("paginas/vitrina_V",  $Datos);
         }

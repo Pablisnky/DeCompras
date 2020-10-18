@@ -1,11 +1,12 @@
 <?php 
-    header('Access-Control-Allow-Origin:*');
-    if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-        // Indica los métodos permitidos.
-        header('Access-Control-Allow-Methods: GET, POST, DELETE');
-        // Indica los encabezados permitidos.
-        header('Access-Control-Allow-Headers: Authorization');
-    }
+    // header('Access-Control-Allow-Origin:*');
+    // if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    //     // Indica los métodos permitidos.
+    //     header('Access-Control-Allow-Methods: GET, POST, DELETE');
+    //     // Indica los encabezados permitidos.
+    //     header('Access-Control-Allow-Headers: Authorization');
+    // }
+    //$Datos proviene de Vitrina_C
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia']; 
 ?>
@@ -25,7 +26,7 @@
             $Seccion = $row['seccion'];       
             ?> 
             <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
-                <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>')"> 
+                <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')"> 
                     <!-- <div class="contenedor_9 borde_1">
                         <img class="imagen_2" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
                     </div>  -->
@@ -66,37 +67,44 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
 
- <!-- Se verifica que el div id="Mostrar_Opciones" haya cargado todos los productos de la sección y se procede a colocar la leyenda en el producto seleccionado en la busqueda -->
+ <!--Si se llama un producto desde buscador, se verifica que el div id="Mostrar_Opciones" haya cargado todos los productos de la sección, para luego proceder a colocar la leyenda en el producto seleccionado en la busqueda,  esto es necesario cuando se hizo una busqueda por producto en inicio_V.php -->
 <script>
     interval = setInterval('verificarDiv()',1000)
 
-    //Detiene la llamada ontinua de verificarDiv a los 4 segundo de ser invocada con el setInterval
+    //Detiene la llamada continua de verificarDiv a los 4 segundo de ser invocada con el setInterval
     setTimeout('stopInterval()',4000)   
 </script> 
 
 <!-- Si viene de buscador se realiza el procedimiento para cargar al carrito el producto seleccionado y colocar la leyenda en la vista opcion_V.php y vitrina_V.php -->
 <?php
-if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C 
-    $SeccionSelecionada = $Datos['Seccion'];
-    $OpcionSeleccionada = $Datos['Opcion']; 
+    //$Datos proviene de Vitrina_C
+    if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C 
+        $SeccionSelecionada = $Datos['Seccion'];
+        $OpcionSeleccionada = $Datos['Opcion']; 
 
-    $Contador = 1;
-    
-    //Se cargan todas las secciones que tenga una tienda
-    foreach($Datos['seccion'] as $row){
-        $Seccion = $row['seccion'];    ?>
-        <script>
-            //Se busca el contenedor que corresponde con la sección del producto seleccionado
-            if('<?php echo $SeccionSelecionada == $Seccion?>'){
-                verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $SeccionSelecionada?>')
-                llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $SeccionSelecionada;?>','<?php echo $OpcionSeleccionada?>')
-            }
-        </script>
+        $Contador = 1;
+        
+        //Se cargan todas las secciones que tenga una tienda
+        //$Datos proviene de Vitrina_C
+        foreach($Datos['seccion'] as $row){
+            $Seccion = $row['seccion'];  ?>
+            <script>
+                //Se busca el contenedor que corresponde con la sección del producto seleccionado
+                if('<?php echo $SeccionSelecionada == $Seccion?>'){
+                    console.log("Entra al IF")
+                    verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $SeccionSelecionada?>')
+                    llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $SeccionSelecionada;?>','<?php echo $OpcionSeleccionada?>')
+                    
+                }
+                else{
+                    console.log("Entra al ELSE")
+                }
+            </script>
+            <?php
+            $Contador++;
+        }   ?>   
         <?php
-        $Contador++;
-    }   ?>   
-    <?php
-}
+    }
 ?>
 
    <!-- ******************************************************************************************* -->

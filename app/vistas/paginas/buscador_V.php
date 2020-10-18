@@ -1,6 +1,6 @@
 <!-- Se muestra en inicio_V.php via Ajax solicitado por A_Inicio.js en Llamar_buscador() -->
 <?php 
-// $Datos proviene de bscador_C
+// $Datos proviene de bscador_C/index
     if(!empty($Datos)){
         foreach($Datos as $arr):
             $ID_Tienda = $arr["ID_Tienda"];

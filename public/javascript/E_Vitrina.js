@@ -471,7 +471,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         LS_ID_Cont_Seccion = localStorage.getItem('ContSeccion')
 
         //Captura la seccion donde se hizo click
-        localStorage.setItem('SeccionCLick',Seccion)         
+        localStorage.setItem('SeccionCLick',Seccion)  
     }
 
 //************************************************************************************************
@@ -833,7 +833,8 @@ console.log(AlCarro)
     function verificarDiv(){
         console.log("______Desde verificarDiv()______")  
         if(document.getElementById('Mostrar_Opciones').childElementCount < 1){
-            console.log("No hay elementos")
+            console.log("No hay elementos en el div id=\"Mostrar_Opciones\"")
+            
         }
         else{
             console.log("Los productos de la seccion son:", document.getElementsByClassName('contenedor_95'))            

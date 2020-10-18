@@ -31,14 +31,6 @@ document.getElementById("Contenedor_6r").addEventListener('click', function(){Ve
         window.open(`Tiendas_C/index/${Tiendas}`,"_self")
     }
 
-// *****************************************************************************************************
-    //coloca el cursor en el input automaticamente (Esta funcion es común, debe estar en funcionesVarias.js cunado ese archivo ya este manejando solo las funciones que le correspondan)
-	// function autofocus(input){
-    //     console.log("______Desde autofocus()______")
-	// 	document.getElementById(input).focus()
-	// 	document.getElementById(input).value = ""
-    // }
-
 //************************************************************************************************
     //Coloca la lista de categorias de tiendas en el borde superior de la página 
     function transicionTiendas(){  
@@ -59,15 +51,9 @@ document.getElementById("Contenedor_6r").addEventListener('click', function(){Ve
 //************************************************************************************************
     //Apunta el curso al producto seleccionado en la busqueda, invocada desde buscador_V.php
     function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion, Opcion){
-        console.log("______Desde OpcionSeleccionada()______")
-        console.log(ID_Tienda)
-        console.log(NombreTienda)
-        console.log(Seccion)
-        console.log(Opcion)
+        // console.log("______Desde OpcionSeleccionada()______")
 
-        window.open(`http://localhost/proyectos/PidoRapido/Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion}`,"_self") 
-
-        // llamar_Opciones(ID_Tienda, Seccion)
+        window.open(`Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion}`,"_self") 
     }
 
 //************************************************************************************************
