@@ -1,3 +1,5 @@
+// document.getElementById('Desarrollo_PWA').addEventListener('click', Documentacion_PWA, false)
+
    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
     let div = document.getElementById("MenuResponsive")
     let span= document.getElementById("Span_6")
@@ -6,7 +8,7 @@
         // console.log("_____Desde función anonima para ocultar menu_____")
         //obtiendo informacion del DOM del elemento donde se hizo click 
         var click = e.target
-        // console.log(click)
+        // console.log("Click en: ", click)
         AltoVitrina = document.body.scrollHeight
         if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
             div.style.marginLeft = "-48%"
@@ -74,10 +76,11 @@
     }
 
 //************************************************************************************************ 
-    //Muestra que es una PWA Invocada desde footer.php
+    //Muestra que es una PWA
     function Documentacion_PWA(){  
         console.log("______Desde Documentacion_PWA()______")    
-        window.open("http://localhost/proyectos/PidoRapido/Afiliacion_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");
+        // window.open("http://localhost/proyectos/PidoRapido/Afiliacion_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");   
+        window.open("https://www.pedidoremoto.com/app/controladores/Afiliacion_C/PWA", "ventana1", "width=1000,height=650,scrollbars=YES");
     }
 
 //************************************************************************************************

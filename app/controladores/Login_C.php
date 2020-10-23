@@ -11,6 +11,9 @@
 
         //Es llamadao desde Registro_C.php por medio de recibeRegistro() - Cuenta_C - header_inicio.php
         public function index($Datos){
+            // echo "Datos = " . $Datos;
+            // exit();
+
             //Se verifica si el usuario esta memorizado en las cookie de su computadora y las compara con la BD, para recuperar sus datos y autorellenar el formulario de inicio de sesion, las cookies de registro de usuario se crearon en validarSesion.php
             if(isset($_COOKIE["id_usuario"]) AND isset($_COOKIE["clave"])){//Si la variable $_COOKIE esta establecida o creada
                 // echo "Cookie afiliado =" . $_COOKIE["id_usuario"] ."<br>";
@@ -47,10 +50,29 @@
 
             //Se CONSULTA el usuario registrados en el sistema con el correo dado como argumento
             $usuarios = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
-            while($arr = $usuarios->fetch(PDO::FETCH_ASSOC)){
-                $ID_Afiliado = $arr['ID_AfiliadoCom'];
-                $CorreoBD = $arr['correo_AfiCom'];
-                $Nombre = $arr['nombre_AfiCom'];
+                // echo '<pre>';
+                // print_r($usuarios); 
+                // echo '</pre>';
+                // exit();
+            if($usuarios != Array()){
+                $ID_Afiliado = $usuarios[0]['ID_AfiliadoCom'];
+                $CorreoBD = $usuarios[0]['correo_AfiCom'];
+                $Nombre = $usuarios[0]['nombre_AfiCom'];
+
+                $CuentaCom = true;
+            }
+            else{
+                $usuarios = $this->ConsultaLogin_M->consultarAfiliadosDes($Correo);
+                $ID_Afiliado = $usuarios[0]['ID_AfiliadoDes'];
+                $CorreoBD = $usuarios[0]['correo_AfiDes'];
+                $Nombre = $usuarios[0]['nombre_AfiDes'];
+                                
+                $CuentaCom = false;
+                // $CuentaCom = false;
+                // echo '<pre>';
+                // print_r($usuarios); 
+                // echo '</pre>';
+                // exit();
             }
         
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
@@ -81,39 +103,67 @@
                 $Clave = filter_input(INPUT_POST, 'clave_Arr', FILTER_SANITIZE_STRING);
         
                 //Se CONSULTA la contraseña enviada, que sea igual a la contraseña de la BD
-                $usuarios_2= $this->ConsultaLogin_M->consultarContrasena($ID_Afiliado);
-                while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
-                    $ClaveBD = $arr['claveCifrada'];
+
+                //Entra en cuenta de comerciante
+                if($CuentaCom == true){
+                    $usuarios_2= $this->ConsultaLogin_M->consultarContrasenaCom($ID_Afiliado);
+                    while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
+                        $ClaveBD = $arr['claveCifrada'];
+                    }          
+
+                    //se descifra la contraseña con un algoritmo de desencriptado.
+                    if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
+                        //SELECT para hallar el ID_Tienda y el nombre de la tienda correspondiente al afiliado
+                        $Consulta= $this->ConsultaLogin_M->consultarID_Tienda($ID_Afiliado);
+                        while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
+                            $ID_Tienda = $arr["ID_Tienda"];
+                            $ID_Afiliado = $arr["ID_AfiliadoCom"];
+                            $NombreTienda = $arr["nombre_Tien"];
+                        }
+    
+                        // Se crea la sesiones que se exige en todas las páginas de su cuenta            
+                        $_SESSION["ID_Tienda"] = $ID_Tienda;
+                        
+                        // Se crea la sesion que guarda el ID_Afiliado           
+                        $_SESSION["ID_Afiliado"] = $ID_Afiliado;
+    
+                        // Se crea una sesión que almacena el nombre de la tienda           
+                        $_SESSION["Nombre_Tienda"] = $NombreTienda;
+                        
+                        //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
+                        $_SESSION["Nombre"] = $Nombre;
+    
+                        header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");          
+                    }
+                    else{ 
+                        echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';
+                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                    } 
                 }
-                                      
-                //se descifra la contraseña con un algoritmo de desencriptado.
-                if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
-                    //SELECT para hallar el ID_Tienda y el nombre de la tienda correspondiente al afiliado
-                    $Consulta= $this->ConsultaLogin_M->consultarID_Tienda($ID_Afiliado);
-                    while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
-                        $ID_Tienda = $arr["ID_Tienda"];
-                        $ID_Afiliado = $arr["ID_AfiliadoCom"];
-                        $NombreTienda = $arr["nombre_Tien"];
+                //Entra en cuenta de despachador
+                else{
+                    $usuarios_2= $this->ConsultaLogin_M->consultarContrasenaDes($ID_Afiliado);
+                    while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
+                        $ClaveBD = $arr['claveCifradaDes'];
                     }
 
-                    // Se crea la sesiones que se exige en todas las páginas de su cuenta            
-                    $_SESSION["ID_Tienda"] = $ID_Tienda;
-                    
-                    // Se crea la sesion que guarda el ID_Afiliado           
-                    $_SESSION["ID_Afiliado"] = $ID_Afiliado;
+                    //se descifra la contraseña con un algoritmo de desencriptado.
+                    if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
 
-                    // Se crea una sesión que almacena el nombre de la tienda           
-                    $_SESSION["Nombre_Tienda"] = $NombreTienda;
-                    
-                    //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
-                    $_SESSION["Nombre"] = $Nombre;
-
-                    header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");
+                        // Se crea la sesion que guarda el ID_Afiliado           
+                        $_SESSION["ID_Afiliado"] = $ID_Afiliado;
+    
+                        // Se crea una sesión que almacena el nombre del despachador           
+                        $_SESSION["NombreDespachador"] = $Nombre;
+                            
+                        header("location:" . RUTA_URL . "/Cuenta_C/Despachador");          
+                    }
+                    else{ 
+                        echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';
+                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                    } 
                 }
-                else{ 
-                    echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';
-                    echo "<a href='javascript:history.back()'>Regresar</a>";
-                }    
+                     
             }   
         }
         

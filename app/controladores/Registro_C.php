@@ -1,4 +1,7 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
     class Registro_C extends Controlador{
 
         public function __construct(){            
@@ -81,7 +84,7 @@
             }
 
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
-            redireccionar("/Login_C/");
+            redireccionar("/Login_C/index/CNE");
         }
    
         public function recibeRegistroDes(){            
@@ -99,27 +102,27 @@
                     'Clave_AfiDes' => $_POST['clave_AfiDes'], 
                     'RepiteClave_AfiDes' => $_POST['confirmarClave_AfiDes'],
                 ];
-                echo "<pre>";
-                print_r($RecibeDatos);
-                echo "</pre>";
-                
+                // echo "<pre>";
+                // print_r($RecibeDatos);
+                // echo "</pre>";
+                // exit();
 
                 //Se realiza la primera etapa de saneamiento
-                $RecibeDatos = [
-                    'Nombre_AfiDes' => filter_input(INPUT_POST, "nombre_AfiDes", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES),
-                    'Apellido_AfiDes' => filter_input(INPUT_POST, "apellido_AfiDes", FILTER_SANITIZE_STRING),
-                    'Cedula_AfiDes' => filter_input(INPUT_POST, "cedula_AfiDes", FILTER_SANITIZE_NUMBER_INT),
-                    'Telefono_AfiDes' => filter_input(INPUT_POST, "telefono_AfiDes", FILTER_SANITIZE_NUMBER_INT),
-                    'Correo_AfiDes' => filter_input(INPUT_POST, "correo_AfiDes", FILTER_SANITIZE_EMAIL),
+                // $RecibeDatos = [
+                //     'Nombre_AfiDes' => filter_input(INPUT_POST, "nombre_AfiDes", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES),
+                //     'Apellido_AfiDes' => filter_input(INPUT_POST, "apellido_AfiDes", FILTER_SANITIZE_STRING),
+                //     'Cedula_AfiDes' => filter_input(INPUT_POST, "cedula_AfiDes", FILTER_SANITIZE_NUMBER_INT),
+                //     'Telefono_AfiDes' => filter_input(INPUT_POST, "telefono_AfiDes", FILTER_SANITIZE_NUMBER_INT),
+                //     'Correo_AfiDes' => filter_input(INPUT_POST, "correo_AfiDes", FILTER_SANITIZE_EMAIL),
 
-                    //Recibe datos de acceso
-                    'Clave_AfiDes' => filter_input(INPUT_POST, "clave_AfiDes", FILTER_SANITIZE_STRING), 
-                    'RepiteClave_AfiDes' => filter_input(INPUT_POST, "confirmarClave_AfiDes", FILTER_SANITIZE_STRING),
-                ];
-                echo "<pre>";
-                print_r($RecibeDatos);
-                echo "</pre>";
-                exit;
+                //     //Recibe datos de acceso
+                //     'Clave_AfiDes' => filter_input(INPUT_POST, "clave_AfiDes", FILTER_SANITIZE_STRING), 
+                //     'RepiteClave_AfiDes' => filter_input(INPUT_POST, "confirmarClave_AfiDes", FILTER_SANITIZE_STRING),
+                // ];
+                // echo "<pre>";
+                // print_r($RecibeDatos);
+                // echo "</pre>";
+                // exit;
             }
             else{      
                 echo "Debe Llenar todos los campos vacios". "<br>";
@@ -131,58 +134,103 @@
             //se cifra la contraseña del afiliado con un algoritmo de encriptación
             $ClaveCifrada= password_hash($RecibeDatos["Clave_AfiDes"], PASSWORD_DEFAULT);
 
-            //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
+            //Se INSERTAN los datos del despachador y se retorna el ID del registro recien insertado
             $ID_AfiliadoDes = $this->ConsultaRegistro_M->insertarAfiliadoDespachador($RecibeDatos);
                           
-            //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
+            //Se INSERTAN los datos de acceso del despachador
             $this->ConsultaRegistro_M->insertarAccesoDespachador($ID_AfiliadoDes, $ClaveCifrada);
 
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
-            redireccionar("/Login_C/");
+            header("location:" . RUTA_URL . "/Login_C");
         }
 
-        public function VerificarCorreo($Correo){
-            //CONSULTA los correos de afiliados existente en la BD
-            $Consulta = $this->ConsultaRegistro_M->consultarCorreo();
-            $CorreoBD = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+        public function VerificarCorreo($Correo, $Afiliado){
+            if(($Afiliado) == 'AfiDes'){
+                //CONSULTA los correos de despachadores existente en la BD
+                $Consulta = $this->ConsultaRegistro_M->consultarCorreoDes();
+                $CorreoBD = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+                
+                foreach($CorreoBD as $key){
+                    $CorreoBD =  $key['correo_AfiDes'];
 
-            foreach($CorreoBD as $key){
-                $CorreoBD =  $key['correo_AfiCom'];
-
-                if($CorreoBD == $Correo){
-                    echo "La dirección de correo ya existe";  ?>
-                    <style>
-                        .contenedor_43{
-                            background-color:yellow;  
-                            display: block;
-                            text-align: center; 
-                            font-size: 0.9em;    
-                        }
-                    </style>
-                    <?php
+                    if($CorreoBD == $Correo){
+                        echo "La dirección de correo ya existe";  ?>
+                        <style>
+                            .contenedor_43{
+                                background-color: yellow;  
+                                display: block;
+                                text-align: center; 
+                                font-size: 0.9em;    
+                            }
+                        </style>
+                        <?php
+                    }
+                }
+            }
+            else{
+                //CONSULTA los correos de comerciantes existente en la BD
+                $Consulta = $this->ConsultaRegistro_M->consultarCorreoCom();
+                $CorreoBD = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+            
+                foreach($CorreoBD as $key){
+                    $CorreoBD =  $key['correo_AfiCom'];
+    
+                    if($CorreoBD == $Correo){
+                        echo "La dirección de correo ya existe";  ?>
+                        <style>
+                            .contenedor_43{
+                                background-color: yellow;  
+                                display: block;
+                                text-align: center; 
+                                font-size: 0.9em;    
+                            }
+                        </style>
+                        <?php
+                    }
                 }
             }
         }
 
-        public function VerificarClave($Clave){
-            //CONSULTA las claves de afiliados existente en la BD
-            $Consulta = $this->ConsultaRegistro_M->consultarClave();
-            $ClaveBD = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+        public function VerificarClave($Clave, $Afiliado){
+            if(($Afiliado) == 'AfiDes'){
+                //CONSULTA las claves de afiliados existente en la BD
+                $Consulta = $this->ConsultaRegistro_M->consultarClaveDes();
+                $ClaveBD = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach($ClaveBD as $key){
-                $ClaveBD =  $key['claveCifrada'];
-                if($Clave == password_verify($Clave, $ClaveBD)){
-                    echo "La contraseña que introdujo ya existe en nuestros registros"; ?>
-                    <style>
-                        .contenedor_3{
-                            background-color: yellow;  
-                            display: block;
-                            text-align: center;     
-                        }
-                    </style>
-                    <?php
+                foreach($ClaveBD as $key){
+                    $ClaveBD =  $key['claveCifradaDes'];
+                    if($Clave == password_verify($Clave, $ClaveBD)){
+                        echo "La contraseña que introdujo ya existe en nuestros registros"; ?>
+                        <style>
+                            .contenedor_3{
+                                background-color: yellow;  
+                                display: block;
+                                text-align: center;     
+                            }
+                        </style>
+                        <?php
+                    }
                 }
             }
+            else{
+                //CONSULTA las claves de afiliados existente en la BD
+                $Consulta = $this->ConsultaRegistro_M->consultarClaveCom();
+                $ClaveBD = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach($ClaveBD as $key){
+                    $ClaveBD =  $key['claveCifrada'];
+                    if($Clave == password_verify($Clave, $ClaveBD)){
+                        echo "La contraseña que introdujo ya existe en nuestros registros"; ?>
+                        <style>
+                            .contenedor_3{
+                                background-color: yellow;  
+                                display: block;
+                                text-align: center;     
+                            }
+                        </style>
+                        <?php
+                    }
+                }
+            }    
         }
-    }
-?>    
+    }?>

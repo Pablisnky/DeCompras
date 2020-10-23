@@ -43,8 +43,8 @@
             </div>
         </div>
         <div class="contenedor_26" id="Contenedor_26">
-            <label class="boton boton_1" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar orden</label>
-            <label class="boton boton_1" onclick="ocultarPedido()">Regresar a mostrador</label>
+            <label class="boton boton_1 boton_9" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar <br> orden</label>
+            <label class="boton boton_1 boton_9" onclick="ocultarPedido()">Regresar a mostrador</label>
         </div>
     </div>
     <article>
@@ -54,25 +54,29 @@
                     <h1 class="h1_1">Datos de despacho</h1>
                     <div class="contenedor_28">
 
+                        <!-- NOMBRE -->
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="nombre" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
+                            <input class="input_13 borde_1" type="text" name="nombre" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
                         </div>
 
+                        <!-- APELLIDO -->
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="apellido" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
+                            <input class="input_13 borde_1" type="text" name="apellido" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
                         </div>
 
+                        <!-- CEDULA -->
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="cedula" id=
+                            <input class="input_13 borde_1" type="text" name="cedula" id=
                         "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)" onkeydown="blanquearInput('CedulaUsuario')"/>
                         </div>
 
-                        <!-- Telefono usuario -->
+                        <!-- TELEFONO -->
                         <div class="contenedor_29">
-                            <input class="placeholder borde_1" type="text" name="telefono" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario'); valida_LongitudTelefono()"
+                            <input class="input_13 borde_1" type="text" name="telefono" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario'); valida_LongitudTelefono()"
                             onkeyup="mascaraTelefono(this.value)"/>
                         </div>
 
+                        <!-- DIRECCION -->
                         <div class="contenedor_72">
                             <textarea class="textarea_1  placeholder borde_1" name="direccion" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
                         </div>
@@ -90,24 +94,20 @@
                                 <li class="li_1">Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</li>
                                 <li class="li_1">Transferencias de otros bancos dejan el despacho en espera 24 horas, una vez confirmado se le notificara al despachador para que realize la entrega.</li>
                             </ul>
-                            <table class="tabla table_rec">
-                                <thead class="thead_rec">
-                                    <!-- <th class="th_rec"></th>
-                                    <th class="th_rec">Banco</th>
-                                    <th class="th_rec">Titular</th>
-                                    <th class="th_rec">Número de cuenta</th>
-                                    <th class="th_rec">RIF</th> -->
-                                </thead>
-                                <tbody class="tbody_rec">
-                                    <tr class="tr_rec">
-                                        <td class="td_rec textoCelda">.</td>
-                                        <td class="td_rec textoCelda">Banco Mercantil</td>
-                                        <td class="td_rec textoCelda">Comercial La 13 C.A</td>
-                                        <td class="td_rec textoCelda">01234567891012112131415</td>
-                                        <td class="td_rec textoCelda">023433432323</td>
-                                    </tr>                        
-                                </tbody>
-                            </table>
+                            <div class= "contenedor_136">
+                                <div>
+                                    <p class="p_13">Titular</p>
+                                    <p class="p_13">Cedula/RIF</p>
+                                    <p class="p_13">Banco</p>
+                                    <p class="p_13">Nº cuenta</p>
+                                </div>
+                                <div>
+                                    <p class="p_14">Comercial La 13 C.A</p>
+                                    <p class="p_14">023433432323</p>
+                                    <p class="p_14">Banco Mercantil</p>
+                                    <p class="p_14">01234567891012112131415</p>
+                                </div>
+                            </div>
                             <input class="placeholder input_11" type="text" name="registro_Pago" placeholder="Código transferencia"/>
                         </div>
                     </div>
@@ -126,7 +126,8 @@
                     </div>
                     <div class="contenedor_30">
                         <input class="ocultar" type="text" id="Pedido" name="pedido">
-                        <input class="boton botonJS" type="submit" value="Enviar"/>
+                        <label class="boton boton_1 boton_9" onclick="ocultarPedido()">Regresar a mostrador</label>
+                        <input class="boton boton_1 boton_9 botonJS" type="submit" value="Comprar"/>
                     </div>
                 </div>
             </form>

@@ -14,6 +14,11 @@
     </div>
     <div class='contenedor_10'>
         <?php
+        // echo "<pre>";
+        // print_r($Datos);
+        // echo "</pre>";
+        // exit();
+
         $Contador = 1;
         foreach($Datos as $row){
             $ID_Tienda = $row['ID_Tienda'];
@@ -32,10 +37,10 @@
                         <?php
                     } 
                     else{  ?>
-                        <!-- <div class="contenedor_120" style="background-image: url('http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia;?>')"> 
-                        </div>-->
-                        <div class="contenedor_120" style="background-image: url('http://www.pedidoremoto.com/public/images/tiendas/<?php echo $Fotografia;?>')">
+                        <div class="contenedor_120" style="background-image: url('http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia;?>')"> 
                         </div>
+                        <!-- <div class="contenedor_120" style="background-image: url('http://www.pedidoremoto.com/public/images/tiendas/<?php echo $Fotografia;?>')"> 
+                        </div>-->
                     <?php
                     }   ?>
                     <div>

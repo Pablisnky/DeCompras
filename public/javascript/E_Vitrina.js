@@ -816,7 +816,9 @@ console.log(AlCarro)
 //************************************************************************************************ 
     //invocada desde carrito_V.php
     function ocultarPedido(){   
-        console.log("______Desde ocultarPedido()______")    
+        console.log("______Desde ocultarPedido()______") 
+        //Coloca el cursor en el top de la pagina
+        window.scroll(0, 0)
         document.getElementById("Mostrar_Orden").style.display = "none";
     }    
 
@@ -833,11 +835,11 @@ console.log(AlCarro)
     function verificarDiv(){
         console.log("______Desde verificarDiv()______")  
         if(document.getElementById('Mostrar_Opciones').childElementCount < 1){
-            console.log("No hay elementos en el div id=\"Mostrar_Opciones\"")
+            // console.log("No hay elementos en el div id=\"Mostrar_Opciones\"")
             
         }
         else{
-            console.log("Los productos de la seccion son:", document.getElementsByClassName('contenedor_95'))            
+            // console.log("Los productos de la seccion son:", document.getElementsByClassName('contenedor_95'))            
         }
 
     }
@@ -993,6 +995,16 @@ console.log(AlCarro)
         console.log("______Desde mostrarDetalles()______")
         window.open(`../../Opciones_C/productoAmpliado/${'Etiqueta_' + ContadorLabel},${Nombre_Tienda},${Slogan_Tienda},${ID_Tienda},${Producto},${Opcion},${Precio},${Fotografia},${ID_Producto}`, "ventana1", "width=1300,height=650,scrollbars=YES")   
     }
+
+//************************************************************************************************
+    //Abre una ventana que muestra la imagen en grande
+
+    function imagenAmpliado(Fotografia){
+        console.log("______Desde AmpliarImagen()______")
+        window.open(`../../Opciones_C/imagenAmpliado/${Fotografia}`, "ventana1", "width=1300,height=650,scrollbars=YES") 
+    }
+
+//************************************************************************************************
            
 ///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
 // document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    

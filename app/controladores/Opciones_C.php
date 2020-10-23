@@ -104,6 +104,12 @@
             // exit();
             
             $this->vista("paginas/descr_Producto_V", $Datos);
-        }  
+        } 
+        
+        public function imagenAmpliado($Fotografia){
+            $Datos = $Fotografia;
+
+            $this->vista("paginas/imagenApliada_V", $Datos);
+        }
     }
 ?>    

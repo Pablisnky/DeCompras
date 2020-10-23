@@ -1,4 +1,7 @@
-<?php 
+<?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+    
 //se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
@@ -23,26 +26,26 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_47">
                     <div class="contenedor_129 borde_1 borde_2">
                         <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                        <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                        <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="../../public/images/imagen.png"/>
                         <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                     </div>        
                     <div>
-                        <input class="placeholder placeholder_2 borde_1" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"  tabindex="1"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"  tabindex="1"/>
                         <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
 
-                        <input class="placeholder placeholder_2 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2"/>
                         <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
 
-                        <input class="placeholder placeholder_2 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3"/>
                         <br>
-                        <input class="placeholder placeholder_2 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4"/>
                         
                         <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
                         <div id="Contenedor_80"></div>
                         
                         <br>
 
-                        <label class="label_7" onclick="AmpliarDescripcion()">Ampliar información (Opcional)<span class="icon-circle-down span_10 span_12"></span></label>
+                        <label class="label_7" onclick="AmpliarDescripcion()">Ampliar información (Opcional)<span class="icon-circle-down span_10"></span></label>
                             <br>
                             <br>
                         <div class="contenedor_128" id="Contenedor_128">  
@@ -74,9 +77,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <?php
     } 
     else{    ?>
-        <section class="section_3"  id="Ejemplo_Secciones">
+        <section class="section_4 section_10"  id="Ejemplo_Secciones">
             <div class="contenedor_24 contenedor_118">
-                    <p>No tienes secciones donde colocar tus producto, ve a configuración y añade secciones donde organizar tus productos y una categoria para tu tienda.</p>
+                    <p class="p_6">Antes de cargar productos, debes configurar los datos de tu tienda, ve a "Configuración" y llena el formulario de registro, luego si podras comenzar a organizar tus productos y ofrecerlos al público en general.</p>
                 <div class="contenedor_87">
                     
                 <a class="label_21 boton" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Cerrar</a>

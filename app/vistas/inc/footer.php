@@ -1,6 +1,6 @@
             
             <footer class="footer">
-                  <div class="contenedor_7" id="Desarrollo_PWA"> 
+                  <div class="contenedor_7" id=""> <!--Desarrollo_PWA-->
                         <div class="contenedor_98">
                               <div>
                                     <h3 class="h3_1">APLICACIÓN</h3>

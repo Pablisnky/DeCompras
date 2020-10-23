@@ -8,12 +8,36 @@
         public function consultarAfiliadosCom($Correo){
             $stmt = $this->dbh->prepare("SELECT * FROM afiliado_com WHERE correo_AfiCom = :correo");
             $stmt->bindValue(':correo', $Correo, PDO::PARAM_STR);
-            $stmt->execute();
-            return $stmt;
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
         }
         
-        public function consultarContrasena($ID_Afiliado){
+        public function consultarAfiliadosDes($Correo){
+            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_des WHERE correo_AfiDes = :correo");
+            $stmt->bindValue(':correo', $Correo, PDO::PARAM_STR);
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        public function consultarContrasenaCom($ID_Afiliado){
             $stmt = $this->dbh->prepare("SELECT * FROM afiliado_comingreso WHERE ID_Afiliado = :id_afiliado");
+            $stmt->bindValue(':id_afiliado', $ID_Afiliado, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt;
+        } 
+
+        public function consultarContrasenaDes($ID_Afiliado){
+            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_desingreso WHERE ID_AfiliadoDes = :id_afiliado");
             $stmt->bindValue(':id_afiliado', $ID_Afiliado, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt;

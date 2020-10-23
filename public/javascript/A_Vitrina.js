@@ -64,9 +64,9 @@ function respuesta_PedidoEnCarrito(){
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, SeccionSelecionada, OpcionSeleccionada){
     console.log("______Desde llamar_Opciones()______") 
-    console.log(ID_Tienda)
-    console.log(SeccionSelecionada)
-    console.log(OpcionSeleccionada)
+    // console.log(ID_Tienda)
+    // console.log(SeccionSelecionada)
+    // console.log(OpcionSeleccionada)
     let A = ID_Tienda
     let B = SeccionSelecionada
     let C = OpcionSeleccionada

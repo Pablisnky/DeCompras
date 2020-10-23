@@ -19,7 +19,7 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>	
-        <div class="">
+        <div class="contenedor_137">
             <p class="p_1">PWA - Progresive web app</p>
             <p class="p_8">¿Que es una PWA?</p>
             <p>Se trata de una nueva tecnologia para desarrollar aplicaciones móviles accesibles desde un navegador web, sin necesidad de descargar todo el paquete de una aplicación movil. Son multiplaformas porque estan desarrolladas para funcionar en las plataforma Android, Apple, Huawey y Web.</p>

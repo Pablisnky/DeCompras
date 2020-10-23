@@ -40,7 +40,7 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Tiendas</a></li>
 					<!-- <li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/QueHacemos';?>">Nuestro ADN</a></li> -->
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Login_C/Inicio sesión';?>">Inicio sesión</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
 				</ul>
 			</nav>
 		</header>

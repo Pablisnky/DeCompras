@@ -215,26 +215,6 @@
             return $stmt;
         }
 
-        //SELECT de ID_Seccion de secciones de una tienda que no serán eliminadas
-        public function consultarID_SecionesNoEliminar($SinEliminarSeccion){
-            $Elementos = count($SinEliminarSeccion);
-            $Busqueda = "";
-            //Se convierte el array en una cadena con sus elementos entre comillas
-            for($i = 0; $i < $Elementos; $i++){
-                $Busqueda .= " '" . $SinEliminarSeccion[$i] . "', ";
-            }
-            // Esto quita el ultimo espacio y coma del string generado con lo cual
-            // el string queda 'id1','id2','id3'
-            $Busqueda = substr($Busqueda,0,-2);
-
-            $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones WHERE Seccion IN ($Busqueda)");
-
-            // $stmt->bindParam(':CATEGORIA', $Categoria, PDO::PARAM_STR);
-
-            $stmt->execute();
-            return $stmt;
-        }
-
         //SELECT del ID_Sección de una sección en una tienda especifica
         public function consultarID_Seccion($RecibeDatos){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones WHERE seccion = :SECCION AND ID_Tienda = :ID_TIENDA");
@@ -501,6 +481,47 @@
             $stmt = $this->dbh->prepare("DELETE FROM imagenes WHERE ID_Imagen = :ID_IMAGEN");
             $stmt->bindValue(':ID_IMAGEN', $ID_Imagen, PDO::PARAM_INT);
             $stmt->execute();          
+        }       
+               
+//***************************************************************************************************
+//Las siguientes cuatro consultas de eliminación deben realizarse por transacciones
+//***************************************************************************************************
+        //DELETE de Dependencia Transitiva entre tiendas y secciones
+        public function eliminarTiendasSecciones($ID_Seccion){
+            $stmt = $this->dbh->prepare("DELETE FROM tiendas_secciones WHERE ID_Seccion = :ID_SECCION");
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+            $stmt->execute();
+
+            //Se envia información de cuantos registros se vieron afectados por la consulta
+            // return $stmt->rowCount();          
+        }
+
+        //DELETE de Dependencia Transitiva entre secciones y opciones
+        public function eliminarSeccionesOpciones($ID_Seccion){
+            $stmt = $this->dbh->prepare("DELETE FROM secciones_opciones WHERE ID_Seccion = :ID_SECCION");
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+            $stmt->execute();          
+        } 
+        
+        //DELETE de Dependencia Transitiva entre Secciones y Productos
+        public function eliminarSeccionesProductos($ID_Seccion){
+            $stmt = $this->dbh->prepare("DELETE FROM secciones_productos WHERE ID_Seccion = :ID_SECCION");
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+                
+        //DELETE de seccion 
+        public function eliminarSecciones($ID_Seccion){
+            $stmt = $this->dbh->prepare("DELETE FROM secciones WHERE ID_Seccion = :ID_SECCION");
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+                
+        //DELETE de cuentas bancarias 
+        public function eliminarCuentaBancaria($ID_Usuario){
+            $stmt = $this->dbh->prepare("DELETE FROM bancos WHERE ID_Usuario = :ID_USUARIO");
+            $stmt->bindValue(':ID_USUARIO', $ID_Usuario, PDO::PARAM_INT);
+            $stmt->execute();          
         }
 
 
@@ -715,6 +736,23 @@
                 return false;
             }
         }
+        
+        //UPDATE de la fotografia de la tienda
+        public function ActualizarSeccion($Seccion, $ID_Seccion){
+            $stmt = $this->dbh->prepare("UPDATE secciones SET seccion = :SECCION WHERE ID_Seccion = :ID_SECCION ");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion);
+            $stmt->bindValue(':SECCION', $Seccion );
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
 
 
@@ -747,7 +785,7 @@
             // insertar una fila
             $Producto = $RecibeProducto['Producto'];
 
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
                 return $this->dbh->lastInsertId();
             }
@@ -768,7 +806,7 @@
             $Opcion = $RecibeProducto['Descripcion'];
             $Precio = $RecibeProducto['Precio'];
 
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
                 return $this->dbh->lastInsertId();
             }
@@ -788,7 +826,7 @@
                 $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
                 $stmt->bindParam(':CARACTERISTICA', $Caracteristica[$i]);
 
-                //Se ejecuta la inserción de los datos en la tabla
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
                 $stmt->execute();
             }
         }
@@ -804,7 +842,7 @@
             $id_producto = $ID_Producto;
             $opcion = $ID_Opcion;
 
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
                 return true;
             }
@@ -813,18 +851,21 @@
             }
         }
 
+//***************************************************************************************************
+//Las siguientes dos consultas de inserción deben realizarse por transacciones
+//***************************************************************************************************
         //INSERT de las secciones de una tienda
         public function insertarSeccionesTienda($ID_Tienda, $Seccion){ 
             //Debido a que $Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo    
             foreach($Seccion as $key){
-                // echo $key . "<br>";
+                echo $key . "<br>";
                 $stmt = $this->dbh->prepare("INSERT INTO secciones(ID_Tienda, seccion) VALUES(:ID_TIENDA, :SECCION)");
 
                 //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 $stmt->bindParam(':SECCION', $key);
 
-                //Se ejecuta la actualización de los datos en la tabla
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
                 $stmt->execute();
             }
         }
@@ -841,7 +882,7 @@
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 $stmt->bindParam(':ID_SECCION', $key);
 
-                //Se ejecuta la inserción de los datos en la tabla
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
                 $stmt->execute();
             }
         }
@@ -869,7 +910,7 @@
                 $stmt->bindParam(':ID_CATEGORIA', $key);
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 
-                // //Se ejecuta la inserción de los datos en la tabla
+                // //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
                 $stmt->execute();
             }
         }  
@@ -882,7 +923,7 @@
             $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
             $stmt->bindParam(':ID_OPCION', $ID_Opcion);
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();    
         }       
     
@@ -894,7 +935,7 @@
             $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
             $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();    
         }             
     
@@ -910,7 +951,7 @@
             $id_producto = $ID_Producto;
             $id_tienda = $RecibeProducto['ID_Tienda'];
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();    
         } 
 
@@ -924,7 +965,22 @@
             $stmt->bindParam(':TIPO_ARCHIVO', $tipo);
             $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio);
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        }
+
+        // INSERT de cuenta bancaria
+        public function insertarCuentaBancaria($ID_Usuario, $Banco, $Titular, $NumeroCuenta, $Rif){
+            $stmt = $this->dbh->prepare("INSERT INTO bancos(ID_Usuario, bancoNombre, bancoCuenta, bancoTitular, bancoRif, fecha, hora)VALUES (:ID_USUARIO, :BAN_NOMBRE, :BAN_CUENTA, :BAN_TITULAR, :BAN_RIF, CURDATE(), CURTIME())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_USUARIO', $ID_Usuario,);
+            $stmt->bindValue(':BAN_NOMBRE', $Banco,);
+            $stmt->bindParam(':BAN_CUENTA', $Titular);
+            $stmt->bindParam(':BAN_TITULAR', $NumeroCuenta);
+            $stmt->bindParam(':BAN_RIF', $Rif);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
         }
         
@@ -953,7 +1009,7 @@
         //     $stmt->bindParam(':FOTOGRAFIA', $nombre_imgProducto);
         //     $stmt->bindParam(':ID_OPCION', $ID_Opcion);
             
-        //     //Se ejecuta la inserción de los datos en la tabla
+        //     //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
         //     $stmt->execute(); 
 
         //     //Se envia información de cuantos registros se vieron afectados por la consulta

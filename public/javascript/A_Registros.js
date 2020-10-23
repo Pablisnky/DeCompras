@@ -31,10 +31,13 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
     //Es llamada desde registroCom_V.php
-    function llamar_verificaCorreo(){
+    function llamar_verificaCorreo(id, Afiliado){
         console.log("_____Desde llamar_verificaCorreo()_____")
-        A = document.getElementById("CorreoAfiCom").value;
-        var url="../Registro_C/VerificarCorreo/" + A;
+        A = document.getElementById(id).value;
+        console.log(id)        
+        console.log(A)
+        console.log(Afiliado)
+        var url="../Registro_C/VerificarCorreo/" + A + "/" + Afiliado;
         http_request.open('GET',url,true);     
         peticion.onreadystatechange = respuesta_verificaCorreo;
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -53,10 +56,10 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
 //Es llamada desde registroCom_V.php
-function llamar_verificaClave(){
+function llamar_verificaClave(Afiliado){
     console.log("_____Desde llamar_verificaClave()_____")
-    A = document.getElementById("Clave").value;
-    var url="../Registro_C/VerificarClave/" + A;
+    A = document.getElementById("Clave").value
+    var url="../Registro_C/VerificarClave/" + A + "/" + Afiliado;
     http_request.open('GET',url,true);     
     peticion.onreadystatechange = respuesta_verificaClave;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");

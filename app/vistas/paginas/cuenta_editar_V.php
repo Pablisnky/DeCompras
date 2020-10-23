@@ -4,6 +4,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
+    // echo "<br><br><br>";
+    // echo "<pre>";
+    // print_r($Datos);
+    // echo "</pre>";
+    // exit();
 
     //$Datos viene de Cuenta_C/Editar
     foreach($Datos['datosResposable'] as $row){
@@ -35,7 +40,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <h1 class="h1_8">Configurar cuenta</h1>   
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return ValidarEditarCuenta()">
 
-            <!-- Persona responsable -->
+            <!-- PERSONA RESPONSABLE -->
             <a id="marcador_01" class="ancla_2"></a>
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Persona responsable</legend>                    
@@ -64,7 +69,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <legend class="legend_1">Datos de tienda</legend> 
                 <div class="contenedor_119 borde_1 borde_2">
                     <label for="imgInp_2"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah_2" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Foto_Tien;?>"/>
+                    <img class="imagen_6" id="blah_2" alt="Fotografia de la tienda"      src="../public/images/tiendas/<?php echo $Foto_Tien;?>"/>
                     <input class="ocultar" type="file" name="imagen_Tienda" id="imgInp_2"/>
                 </div>
                 <br>
@@ -74,22 +79,28 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <label>Telefono tienda</label>
                 <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono" value="<?php echo $Telefono_Tien;?>" autocomplete="off" require/>
 
-                <label>Slogan tienda</label>
+                <label>Slogan tienda (opcional)</label>
                 <input class="input_13 input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off">
                 <input class="contador_2" type="text" id="ContadorSlo" value="40"/>
                 
-                <div class="contenedor_80" id="Label_13">
-                    <label class="label_16">Categoria</label>
-                    <span class="icon-circle-down span_10"></span>
-                </div>
-                <?php
-                foreach($Datos['categoria'] as $row){
-                    $Categoria =  $row['categoria'];
-                    ?>
-                    <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off">
+                <div id="Label_13">
+                    <div class="contenedor_80">
+                        <label class="label_16">Categoria</label>
+                        <!-- <span class="icon-circle-down span_10"></span> -->
+                    </div>
                     <?php
-                }  ?>
-
+                    if($Datos['categoria'] == Array ( )){   ?>                    
+                        <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" readonly="readonly" autocomplete="off">    <?php
+                    }
+                    else{
+                        foreach($Datos['categoria'] as $row){
+                            $Categoria =  $row['categoria'];
+                            ?>
+                            <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off">
+                            <?php
+                        } 
+                    } ?>
+                </div>
 
                 <!-- SECCION DATOS DE UBICACIÓN -->
                 <label id="Ref_Ubicacion">Datos de ubicación</label>
@@ -97,16 +108,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                 <label>Estado</label>
                 <br>
-                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado" value="<?php echo 'Yaracuy';?>" autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado" value="<?php echo 'Yaracuy';?>" autocomplete="off" readonly= "readoly">
 
                 <label>Municipio</label>
-                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio" value="<?php echo 'San Felipe';?>" autocomplete="off">                
+                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly">                
 
                 <label>Parroquia</label>
-                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia" value="<?php echo 'San Felipe';?>" autocomplete="off">                
+                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly">                
 
                 <label>Dirección</label>
-                <textarea class="textarea_4 borde_1" name="direccion_com" id="Direccion"><?php echo $Direccion_Tien;?></textarea> 
+                <textarea class="textarea_4 borde_1 " name="direccion_com" id="Direccion"><?php echo $Direccion_Tien;?></textarea> 
             </fieldset>
 
             <!-- SECCION SECCIONES --> 
@@ -114,24 +125,25 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Secciones</legend>
                 <div id="Contenedor_79">
-                    <p class="p_12">Organiza tú tienda en secciones, añade tantas como consideres necesario para que tus productos esten bien acomodados en el mostrador. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
+                    <p class="p_12">Organiza tú tienda en secciones, y dentro de estas coloca tus productos, añade tantas como consideres necesario para que tus productos esten bien organizados. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
-                        <div id="Contenedor_80" class="contenedor_80">
+                        <div class="contenedor_80" id="Contenedor_80">
                             <input class="input_13 input_12 borde_1" type="text" name="seccion[]" placeholder="Indica una sección"/>
-                            <span class="icon-cancel-circle span_10 span_12"></span>
+                            <span class="icon-cancel-circle span_10 span_12_js" onclick="preEliminarSeccion('span_12_js')"></span>
                         </div>
                         <?php
                     }   
                     else{    
                         foreach($Datos['secciones'] as $row){
                             $Seccion_Tien = $row['seccion'];
-                                ?>
-                            <div id="Contenedor_80" class="contenedor_80">
-                                <input class="input_13 input_12 borde_1" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>"/>
-                                <span class="icon-cancel-circle span_10 span_12_js"></span>
+                            $ID_Seccion = $row['ID_Seccion'];
+                            ?>
+                            <div class="contenedor_80" id="Contenedor_80">
+                                <input class="input_13 input_12 borde_1" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
+                                <span class="icon-cancel-circle span_10 span_12_js" onclick="preEliminarSeccion('span_12_js'); Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>')"></span>
                             </div>
                             <?php
                         }   
@@ -140,8 +152,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <label class="label_4 label_24" id="Label_5">Añadir sección</label>
             </fieldset>
             
-            <!-- Ofertas -->
-            <a id="marcador_04" class="ancla_2"></a>
+            <!-- OFERTAS -->
+            <!--<a id="marcador_04" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Ofertas</legend>
                 <p>Si tienes productos con algun tipo de oferta, destacalos en la página de inicio de tu tienda.</p>
@@ -149,57 +161,64 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <p>Por medio de un boton se muestran todos los productos al cliente, con ifltro por sección similar al menu "Productos" y una vez mostrados los productos cada uno tiene una etique <a> que lleva a otra pagina donde se edita la oferta. (similar a actualizar producto)</a></p>
                 
                 <label class="label_4" id="">Añadir oferta</label>
-            </fieldset>
+            </fieldset> -->
             
+            <!-- LO MÁS PEDIDO -->
             <!-- <a id="marcador_05" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Lo más pedido</legend>
                 <p>Automaticamente se llena este bloque, con los productos mas comprados de la tienda</p>
             </fieldset> -->
 
-            <!-- Cuentas bancarias -->
+            <!-- CUENTAS BANCARIAS -->
             <a id="marcador_06" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Cuentas bancarias</legend>
                 <div id="Contenedor_69">
                     <span>Los pagos de los pedidos realizados se depositan directamente a tus cuentas bancarias, agrega todas las que tengas disponibles para que los usuarios tengan opciones, los pedidos pagados en cuentas de otros bancos causan una demora de 24 hrs en el despacho del pedido para que verifiques la transferencia.</span>
-                    <div class="contenedor_67 borde_1" id="Contenedor_67">
-                        <span class="icon-cancel-circle span_10 span_14 span_12" id="Span_3"></span>
-                        <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Banco" placeholder="Banco" autocomplete="off">
-                        <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular de la cuenta" placeholder="Titular"  autocomplete="off">
-                        <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NumeroCuenta" placeholder="Numero de cuenta" autocomplete="off">
-                        <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="Rif" placeholder="RIF"  autocomplete="off">
-                    </div> 
-                </div>
+                    <!-- Entra en el IF cuando no hay secciones creadas -->
                     <?php
-                     foreach($Datos['datosBancos'] as $row){
-                        $BancoNombre =  $row['bancoNombre'];
-                        $BancoCuenta = $row['bancoCuenta']; 
-                        $BancoTitular = $row['bancoTitular'];
-                        $BancoRif = $row['bancoRif'];
-                        $ID_Banco = $row['ID_Banco'];
-                        ?>
-                        <div class="contenedor_67" id="Contenedor_67">
-                            <label class="label_13">Banco</label>
-                            <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
-                            <label class="label_13">Titular</label>
-                            <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular de la cuenta" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
-                            <label class="label_13">Número cuenta</label>
-                            <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NumeroCuenta" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
-                            <label class="label_13">RIF</label>
-                            <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="Rif"  value="<?php echo $BancoRif;?>" autocomplete="off">
-                            <input class="input_3" type="text" name="id_banco[]" value="<?php echo $ID_Banco;?>">
-                        </div>
+                    if($Datos['datosBancos'] == Array ( )){  ?>
+                        <div class="contenedor_67 borde_1" id="Contenedor_67">
+                            <!-- onclick="preEliminarSeccion('span_13_js')" -->
+                            <span class="icon-cancel-circle span_10 span_14 span_13_js" onclick="preEliminarSeccion('span_13_js')"></span>
+                            <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Banco" placeholder="Banco" autocomplete="off">
+                            <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular de la cuenta" placeholder="Titular"  autocomplete="off">
+                            <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NumeroCuenta" placeholder="Numero de cuenta" autocomplete="off">
+                            <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="Rif" placeholder="RIF"  autocomplete="off">
+                        </div> 
                         <?php
-                     }  ?>
-                <label class="label_4 label_19" id="Label_4">Añadir cuenta bancaria</label>
+                    }
+                    else{
+                        foreach($Datos['datosBancos'] as $row){
+                           $BancoNombre =  $row['bancoNombre'];
+                           $BancoCuenta = $row['bancoCuenta']; 
+                           $BancoTitular = $row['bancoTitular'];
+                           $BancoRif = $row['bancoRif'];
+                           $ID_Banco = $row['ID_Banco'];
+                           ?>
+                           <div class="contenedor_67 borde_1" id="Contenedor_67">
+                                <span class="icon-cancel-circle span_10 span_14 span_13_js" onclick="preEliminarSeccion('span_13_js')"></span>
+                               <label class="">Banco</label>
+                               <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
+                               <label class="">Titular</label>
+                               <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular de la cuenta" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
+                               <label class="">Número cuenta</label>
+                               <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NumeroCuenta" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
+                               <label class="">RIF</label>
+                               <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="Rif"  value="<?php echo $BancoRif;?>" autocomplete="off">
+                           </div>
+                            <?php
+                        }
+                    }  ?>
+                <label class="label_4 label_24" id="Label_4">Añadir cuenta bancaria</label>
             </fieldset>   
             
-
-            <a id="marcador_07" class="ancla_2"></a>
+            <!-- HORARIO -->
+            <!-- <a id="marcador_07" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1" for="Domingo">Horario</legend>
-               <!--  <div class="contenedor_85">
+                <div class="contenedor_85">
                     <div class="contenedor_86">
                         <input type="radio" name="horario" id="Domingo" value="Domingo" checked>
                         <label for="Domingo">Domingo</label><br>
@@ -216,25 +235,30 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input type="radio" name="horario" id="Sabado" value="Sabado">
                         <label for="Sabado">Sabado</label>
                     </div>
-                    <!-- div alimentado via Ajax desde horarios_V.php 
-                    <div id="Mostrar_horarios"></div>
-                </div>-->
-            </fieldset> 
+                    <!-- div alimentado via Ajax desde horarios_V.php -->
+                    <!-- <div id="Mostrar_horarios"></div>
+                </div>
+            </fieldset>  -->
+
             <section class="" id="Contenedor_83">
                 <div class="contenedor_83 borde_1">
                     <a class="marcador" href="#marcador_01">Persona responsable</a>
                     <a class="marcador" href="#marcador_02">Datos de tienda</a>
                     <a class="marcador" href="#marcador_03">Secciones</a>
-                    <a class="marcador" href="#marcador_04">Ofertas</a>
+                    <!-- <a class="marcador" href="#marcador_04">Ofertas</a> -->
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas bancarias</a>
-                    <a class="marcador" href="#marcador_07">Horario</a>
+                    <!-- <a class="marcador" href="#marcador_07">Horario</a> -->
                     <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>">
                         <input class="boton boton_6 boton_7" type="submit" value="Guardar cambios"/>
-                    </div>
+                    </div>          
+                    <div class="contenedor_45">
+                        <input type="checkbox" class="label_25" id="Recordar" name="recordar" value="1">
+                        <label class="label_19 label_25" for="Recordar">Mostrar tienda al publico.</label>
+                    </div> 
                 </div>
-            </section>
+            </section> 
         </form>
     </div>
 
@@ -243,54 +267,66 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <!-- la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
     <section class="section_3 section_13" id="Ejemplo_Secciones">
-        <div class=" contenedor_84 contenedor_24">
+        <div class="contenedor_84 contenedor_24">
             <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
-        <div>
-                <label class="label_4 label_22">Supermercados y bodegas</label>
+            <div>
+                <label class="label_1">Supermercados y bodegas</label>
                 <ul class="ul_2">
-                    <li>Viveres</li>
-                    <li>Desinfectante</li>
-                    <li>Verduras</li>
-                    <li>Aseo personal</li>
-                    <li>Cereales</li>
-                    <li>Enlatados</li>
-                    <li>...</li>
+                    <li class="li_5">Viveres</li>
+                    <li class="li_5">Desinfectante</li>
+                    <li class="li_5">Verduras</li>
+                    <li class="li_5">Aseo personal</li>
+                    <li class="li_5">Cereales</li>
+                    <li class="li_5">Enlatados</li>
+                    <li class="li_5">...</li>
                 </ul> 
             </div>
             <div>
-                <label class="label_4 label_22">Venta de Comida rapida</label>
+                <label class="label_1">Venta de Comida rapida</label>
                 <ul class="ul_2">
-                    <li>Hamburguesas</li>
-                    <li>Perros caliente</li>
-                    <li>Empanadas</li>
-                    <li>Jugos</li>
-                    <li>Refrescos</li>
-                    <li>Pizzas</li>
-                    <li>Helados</li>
-                    <li>...</li>
+                    <li class="li_5">Hamburguesas</li>
+                    <li class="li_5">Perros caliente</li>
+                    <li class="li_5">Empanadas</li>
+                    <li class="li_5">Jugos</li>
+                    <li class="li_5">Refrescos</li>
+                    <li class="li_5">Pizzas</li>
+                    <li class="li_5">Helados</li>
+                    <li class="li_5">...</li>
                 </ul>
             </div>
             <div>
-                <label class="label_4 label_22">Venta de repuesto automotriz</label>
+                <label class="label_1">Venta de repuesto automotriz</label>
                 <ul class="ul_2">
-                    <li>Tren delantero</li>
-                    <li>Sistema de freno</li>
-                    <li>Partes electricas</li>
-                    <li>Arranque</li>
-                    <li>Gomas y suspención</li>
-                    <li>...</li>
+                    <li class="li_5">Tren delantero</li>
+                    <li class="li_5">Sistema de freno</li>
+                    <li class="li_5">Partes electricas</li>
+                    <li class="li_5">Arranque</li>
+                    <li class="li_5">Gomas y suspención</li>
+                    <li class="li_5">...</li>
                 </ul>
             </div>
             <div>
-                <label class="label_4 label_22">Venta de Material médico quirurgico</label>
+                <label class="label_1">Venta de Material médico quirurgico</label>
                 <ul class="ul_2">
-                    <li>Stent</li>
-                    <li>Inyectadoras</li>
-                    <li>Termometros</li>
-                    <li></li>
-                    <li></li>
-                    <li>...</li>
+                    <li class="li_5" class="li_5">Stent</li>
+                    <li class="li_5">Inyectadoras</li>
+                    <li class="li_5">Termometros</li>
+                    <li class="li_5"></li>
+                    <li class="li_5"></li>
+                    <li class="li_5">...</li>
                 </ul>
+            </div>
+            <div>
+                <label class="label_1">Supermercados y bodegas</label>
+                <ul class="ul_2">
+                    <li class="li_5">Viveres</li>
+                    <li class="li_5">Desinfectante</li>
+                    <li class="li_5">Verduras</li>
+                    <li class="li_5">Aseo personal</li>
+                    <li class="li_5">Cereales</li>
+                    <li class="li_5">Enlatados</li>
+                    <li class="li_5">...</li>
+                </ul> 
             </div>
             <div class="contenedor_87">
                 <a class="boton boton_4" href="#marcador_03" id="Label_1">Cerrar</a>
@@ -298,6 +334,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         </div>
     </section>
 
+    <did id="ReadOnly"></did>
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
 

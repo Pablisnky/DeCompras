@@ -33,20 +33,22 @@
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                     <div class="contenedor_9">
-                        <div class="contenedor_97">
+                        
+                        <!-- IMAGEN -->
+                        <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel?>','<?php echo $Nombre_Tienda?>','<?php echo $Slogan_Tienda?>','<?php echo $ID_Tienda?>','<?php echo $Producto?>','<?php echo $Opcion?>','<?php echo  $Precio?>','<?php echo $Fotografia?>','<?php echo $ID_Producto?>')">
                             <figure class="figure_1">
-                                <img class="imagen_6" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
+                                <img class="imagen_6" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>" onclick="imagenAmpliado('<?php echo $Fotografia;?>')"/>
                             </figure>
                         </div>
                     </div>
-                    <div style=" width:100%"> 
+                    <div> 
                         <div style="min-height:80px">
 
                             <!-- PRODUCTO -->
-                            <input class="input_8" type="text" value="<?php echo $Producto;?>" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>" readonly="readonly"/>
+                            <label class="input_8" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
 
                             <!-- OPCION -->
-                            <input class="input_8" type="text" value="<?php echo $Opcion;?>" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" readonly="readonly"/>
+                            <label class="input_8" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" ><?php echo $Opcion;?></label>
                             
                             <!-- AMPLIAR DETALLES -->
                             <!-- se abre la ventana de detalle de producto utilizando el metodo de enlace con la etiqueta HTML <a></a>-->
@@ -63,7 +65,7 @@
                             <?php        
                                 foreach($Datos['variosCaracteristicas'] as $AA) :
                                     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                        <label class="input_10"  onclick="mostrarDetalles('<?php echo $ContadorLabel?>','<?php echo $Nombre_Tienda?>','<?php echo $Slogan_Tienda?>','<?php echo $ID_Tienda?>','<?php echo $Producto?>','<?php echo $Opcion?>','<?php echo  $Precio?>','<?php echo $Fotografia?>','<?php echo $ID_Producto?>')">Ampliar detalles</label>
+                                        <label class="input_8 input_10" onclick="mostrarDetalles('<?php echo $ContadorLabel?>','<?php echo $Nombre_Tienda?>','<?php echo $Slogan_Tienda?>','<?php echo $ID_Tienda?>','<?php echo $Producto?>','<?php echo $Opcion?>','<?php echo  $Precio?>','<?php echo $Fotografia?>','<?php echo $ID_Producto?>')">Ampliar detalles</label>
                                         <?php
                                         break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
                                     }                                        
@@ -71,7 +73,7 @@
                             ?>          
                             
                             <!-- PRECIO -->
-                            <input class="input_8" type="text" value="<?php echo $Precio;?>  Bs." id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" readonly="readonly"/>
+                            <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $Precio;?>  Bs.</label>
                       
                             <?php 
                             //En caso de venir desde buscador se sombreo el producto solicitado en la busqueda y se posiciona de primero entre todos los productos

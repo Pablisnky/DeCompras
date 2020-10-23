@@ -1,5 +1,3 @@
-document.addEventListener("click", preEliminarSeccion)
-
 document.getElementById("Label_4").addEventListener('click', nuevaCuentaBancaria, false)
 
 document.getElementById("Label_5").addEventListener('click', crearSeccion, false)
@@ -39,27 +37,7 @@ document.getElementById('Label_13').addEventListener('click',function(){
 document.getElementById("Label_1").addEventListener('click', function(){
     CerrarModal_X("Ejemplo_Secciones")
 });
-//************************************************************************************************   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-// *****************************************************************************************************
+//************************************************************************************************  
     //Da el formato de separador de miles
     function formatoMiles(numero){
         var num = numero.value.replace(/\./g,'')
@@ -73,28 +51,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
         numero.value = numero.value.replace(/[^\d\.]*/g,'')
         }
     }
-//************************************************************************************************   
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-// *****************************************************************************************************
-    //Clona todo el div que continen los inputs que capturan los datos de una cuenta bancaria
+//************************************************************************************************  
+    //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
     let iterar = 1
     function nuevaCuentaBancaria(){
         //Contenedor a clonar 
@@ -114,30 +73,17 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Div_clon.getElementsByClassName("input_9JS")[3].value = ""
 
         //Se especifica el div padre, donde se insertará el nuevo nodo
-        //Contenedor_69 = Div padre y Contenedor_67 = Div hijo
-        document.getElementById("Contenedor_69").appendChild(Div_clon)
+        //Contenedor_69 = Div padre y Contenedor_67 = Div hijo      
+        ElementoPadre = document.getElementById("Contenedor_69")
+        
+        //Se especificael elmento que sera la referencia para insertar el nuevo nodo
+        let Ref_Ubicacion= document.getElementById("Label_4")
+        
+        //Se especifica el div padre y la posición donde se insertará el nuevo nodo
+        ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
     }
-//************************************************************************************************   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
 
-//************************************************************************************************
+//************************************************************************************************  
     //Añade un nuevo input con una nueva sección cargada desde Categoria_Ajax
     var incremento = 1
     function crearSeccion(){
@@ -145,20 +91,20 @@ document.getElementById("Label_1").addEventListener('click', function(){
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80")
-
+        console.log("div a clonar", clonar)
         //Contenedor padre
         let Padre = document.getElementById("Contenedor_79")
         console.log("div padre", Padre)
 
         //Se crea el clon
         let Div_clon = clonar.cloneNode(true)
-        console.log("div padre", Div_clon)
+        console.log("div clon", Div_clon)
     
         //Se da un ID al input que se encuentra en el nuevo elemento clonado
         Div_clon.getElementsByClassName("input_12")[0].id = 'InputClon_' + incremento 
         
-        //Se da un ID al span que se encuentra en el nuevo elemento clonado
-        Div_clon.getElementsByClassName("span_12_js")[0].id = 'SpanClon_' + incremento 
+        // //Se da un ID al span que se encuentra en el nuevo elemento clonado
+        // Div_clon.getElementsByClassName("span_12_js")[0].id = 'SpanClon_' + incremento 
         
         //El valor del nuevo input debe estar vacio
         Div_clon.getElementsByClassName("input_12")[0].value = "" 
@@ -170,39 +116,22 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Padre.appendChild(Div_clon)
         incremento++
     }
-//************************************************************************************************   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
 
-//************************************************************************************************
+//************************************************************************************************ 
     //Elimina los clones de seccion y banco
-    function preEliminarSeccion(){
-        // console.log("______Desde preEliminarSección()______")
+    function preEliminarSeccion(clase){
+        console.log("______Desde preEliminarSección()______ Recibe:",clase )
 
         //Detectar el boton eliminar al cual se hizo click
-        var Eliminar = document.getElementsByClassName("span_12_js")//Se obtienen los botones Eliminar
-        var len = Eliminar.length//Se cuentan cuantos botones Eliminar hay  
+        var Eliminar = document.getElementsByClassName(clase)//Se obtienen los botones Eliminar
+        var len = Eliminar.length//Se cuentan cuantos botones Eliminar hay 
+        console.log("Cantidad de botones \"Eliminar\"", len) 
+
         var button
-        for(var i = 0; i < len; i++){
-            button = Eliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
-            button.onclick = EliminarSeccion // Asignar la función EliminarSeccion() en su evento click.
-        }    
+            for(var i = 1; i < len; i++){
+                button = Eliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
+                button.onclick = EliminarSeccion // Asignar la función EliminarSeccion() en su evento click.
+            } 
         function EliminarSeccion(e){   
             // console.log("______Desde EliminarSeccion()______") 
 
@@ -214,29 +143,10 @@ document.getElementById("Label_1").addEventListener('click', function(){
             
             //Se elimina la sección
             elementoPadre.removeChild(current);  
-        }           
+        }            
     }
-//************************************************************************************************   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
 
-//************************************************************************************************
+//************************************************************************************************  
 //Establece el alto del fondo de la ventana modal para que sea igual a todo el contenido de la ista cuenta_editar_V.php de la tienda en curso
     function mostrarSecciones(){
         console.log("______Desde mostrarSecciones()______")
@@ -255,51 +165,14 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementById("Ejemplo_Secciones").style.height = AltoVitrina + "px"
         }
     }   
-//************************************************************************************************   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
 
-//************************************************************************************************
+//************************************************************************************************ 
     //Muestra el menu secundario de enlaces anclas
     function muestraMenuSecundario(){
         document.getElementById("Contenedor_83").style.display = "block"
 
     }
-//************************************************************************************************   
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 //************************************************************************************************
     //Recibe la categoria selecciona por el afiliado y la coloca dentro de un input en el formulario de configuracion de tienda
     function transferirCategoria(form){
@@ -397,27 +270,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
         }    
         CerrarCategoria('Mostrar_Categorias') 
     }
-//************************************************************************************************   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
 
-//************************************************************************************************
+//************************************************************************************************ 
     // invocada desde Categorias_Ajax_V.php - transferirCategoria() en este archivo
     function CerrarCategoria(id){    
         console.log("______Desde CerrarCategoria()______")   
@@ -432,26 +286,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
         window.scroll(0,800)
     }
 
-//************************************************************************************************   
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        
-    
 //************************************************************************************************
     // desabilidad el boton de enviar formulario
     function ValidarEditarCuenta(){
@@ -464,51 +298,34 @@ document.getElementById("Label_1").addEventListener('click', function(){
     }
     
 //************************************************************************************************  
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        
-//************************************************************************************************
-//Indica la cantidad de caracteres que quedan mientra se escribe el slagan de la tienda
-function contarDes(){
-    var max = 40; 
-    var cadena = document.getElementById("ContenidoSlo").value; 
-    var longitud = cadena.length; 
+    //Indica la cantidad de caracteres que quedan mientra se escribe el slagan de la tienda
+    function contarDes(){
+        var max = 40; 
+        var cadena = document.getElementById("ContenidoSlo").value; 
+        var longitud = cadena.length; 
 
-        if(longitud <= max) { 
-             document.getElementById("ContadorSlo").value = max-longitud; 
-        } else { 
-             document.getElementById("ContenidoSlo").value = cadena.subtring(0, max);
-        } 
-} 
-
-// -------------------------------------------------------------------------------------------
-//Impide que se sigan introduciendo caracteres al alcanzar el limite maximo del el slagan de la tienda
-var contenido_slogan_com = "";    
-    function valida_LongitudDes(){  
-    var num_caracteres_permitidos = 40;
-
-    //se averigua la cantidad de caracteres escritos
-    num_caracteres = document.forms[0].slogan_com.value.length; 
-
-    if(num_caracteres > num_caracteres_permitidos){ 
-        document.forms[0].slogan_com.value = contenido_slogan_com; 
-    }
-    else{ 
-        contenido_slogan_com = document.forms[0].slogan_com.value; 
+            if(longitud <= max) { 
+                document.getElementById("ContadorSlo").value = max-longitud; 
+            } else { 
+                document.getElementById("ContenidoSlo").value = cadena.subtring(0, max);
+            } 
     } 
-} 
+
+//************************************************************************************************ 
+    //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo del el slagan de la tienda
+    var contenido_slogan_com = "";    
+    function valida_LongitudDes(){  
+        var num_caracteres_permitidos = 40;
+
+        //se averigua la cantidad de caracteres escritos
+        num_caracteres = document.forms[0].slogan_com.value.length; 
+
+        if(num_caracteres > num_caracteres_permitidos){ 
+            document.forms[0].slogan_com.value = contenido_slogan_com; 
+        }
+        else{ 
+            contenido_slogan_com = document.forms[0].slogan_com.value; 
+        } 
+    } 
+
+//************************************************************************************************

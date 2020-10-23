@@ -58,7 +58,7 @@
         </div>  
     </div>  
 </section>
-<section class=" section_6">
+<!-- <section class=" section_6">
     <div class='contenedor_10 contenedor_38'>
         <div class="contenedor_71">
             <p class="p_1">Roles de afiliados</p>
@@ -80,7 +80,7 @@
             <p>Su rol dentro de la aplicación es la de preparar el pedido y entregarlo al despacahador.</p>
         </div>
     </div>
-</section>   
+</section>    -->
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Afiliacion.js';?>"></script>
 		
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

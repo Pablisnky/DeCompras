@@ -50,23 +50,35 @@
                 </div>
             </div>
             <div class="contenedor_126">
-                <div class="contenedor_127">
-                    <h1 class="h1_11"><?php echo $Producto, PHP_EOL, $Opcion?></h1>
-                    <br>
-                    <ul>
-                        <?php
+                <h1 class="h1_11"><?php echo $Producto, PHP_EOL, $Opcion?></h1>
+                <?php
+                // echo "<pre>";
+                // print_r($Datos);
+                // echo "</pre>";
+                // exit();
+
+                if($Datos['Caracteristicas'] != Array ()){  ?>
+                    <div class="contenedor_127">
+                        <ul>
+                            <?php
                             foreach($Datos['Caracteristicas'] as $key) : 
                                 if($key['ID_Producto'] == $ID_Producto){ ?>
-                                     <li class="li_1"><?php echo $key['caracteristica']?></li>   <?php
+                                    <li class="li_1"><?php echo $key['caracteristica']?></li>   <?php
                                 }
                             endforeach
-                        ?>
-                    </ul>
-                    <br>
-                    <textarea class="textarea_3">Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea>
-                    <br>
-                </div>  
-                <div class=" contenedor_29a">
+                            ?>
+                        </ul>
+                        <br>
+                        <textarea class="textarea_3">Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea>
+                        <br>
+                    </div>  
+                    <?php
+                }
+                else{   ?>
+                    <!-- div Solo para generar espacio -->
+                    <div style="height: 100px;"></div> <?php
+                }   ?>
+                <div>
                     <label class="label_22 borde_1 borde_2"><?php echo $Precio?> Bs</label>
                     <div class="contenedor_26" id="Contenedor_26">
                         <label class="boton boton_1 boton_8" onclick="cerrarAgregar()">Agregar</label>
@@ -105,4 +117,3 @@
         window.close()
     }
 </script>
-
