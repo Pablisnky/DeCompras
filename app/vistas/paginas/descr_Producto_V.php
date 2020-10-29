@@ -1,7 +1,7 @@
 <?php
     include(RUTA_APP . "/vistas/inc/headerProducto.php"); 
     
-    //$Datos proviene de Opciones_C/productoAmpliado
+            //$Datos proviene de Opciones_C/productoAmpliado
             // echo "<br><br><br><br><br>";
             // echo "<pre>";
             // print_r($Datos);
@@ -25,7 +25,8 @@
                         // }    
                         // else{   ?>                            
                             <ul class="ul_3" id="Ul_1">     <?php   
-                                $Contador = 1;               
+                                $Contador = 1;  
+                                //$Datos proviene de Opciones_C/productoAmpliado             
                                 foreach($Datos['Imagenes'] as $key) :   ?>
                                     <li class="li_4" >
                                         <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>">
@@ -39,7 +40,8 @@
                 </div>
                 <div class="contenedor_125">   
                     <?php                      
-                        $Contador = 1;                     
+                        $Contador = 1;   
+                        //$Datos proviene de Opciones_C/productoAmpliado                  
                         foreach($Datos['Imagenes'] as $key) :   ?>
                             <img class="imagen_11 borde_1 borde_2" id="Imagen_<?php echo $Contador ?>" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>" onclick="verMiniatura('Imagen_<?php echo $Contador ?>')">
                             <?php
@@ -76,7 +78,7 @@
                 }
                 else{   ?>
                     <!-- div Solo para generar espacio -->
-                    <div style="height: 100px;"></div> <?php
+                    <div class="contenedor_139"></div> <?php
                 }   ?>
                 <div>
                     <label class="label_22 borde_1 borde_2"><?php echo $Precio?> Bs</label>
@@ -92,8 +94,6 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_descr_Producto.js';?>"></script>
 
 <?php// include(RUTA_APP . "/vistas/inc/footer.php");   ?>
-
-
 
 <script>
     var textarea = document.querySelector('textarea');

@@ -1,9 +1,6 @@
 <?php
     session_start();
 
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
-
     class Cuenta_C extends Controlador{
         private $ID_Tienda;
         private $ID_Afiliado;
@@ -18,6 +15,9 @@
 
             //Sesion creada en Login_C
             $this->ID_Afiliado = $_SESSION["ID_Afiliado"];
+
+            //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
+            ocultarErrores();
         }
 
         // invocado desde el metodo recibeRegistroEditado() en este mismo archivo
@@ -71,15 +71,15 @@
                 $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 //CONSULTA el estatus de la notificacion de una tienda
-                $Consulta = $this->ConsultaCuenta_M->consultarNotificacionTienda($this->ID_Tienda);
-                $Notificacion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                // $Consulta = $this->ConsultaCuenta_M->consultarNotificacionTienda($this->ID_Tienda);
+                // $Notificacion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
                 $Consulta = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
                 $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 //Se desglosa el valor para que sea solo igual el valor "1"
-                $Notificacion = $Notificacion[0]['notificacion'];
+                // $Notificacion = $Notificacion[0]['notificacion'];
 
                 //ACTUALIZA el estatus de la notificacion de una tienda con el valor = 1
                 $this->ConsultaCuenta_M->actualizarStatusTienda($this->ID_Tienda);
@@ -112,7 +112,7 @@
             $Datos = [
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
                 'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precio, seccion, fotografia
-                'notificacion' => $Notificacion,
+                // 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja
                 'Apunta' => $Puntero,
                 'slogan' => $Slogan,
@@ -123,9 +123,9 @@
             // echo "</pre>";
             // exit();
 
-            //En el caso que el afiliado sea nuevo, o que no haya configurado ninguna seccion o categoria
+            //En el caso que no se haya configurado ninguna seccion o categoria
             if($Datos['secciones'] == Array ()){
-                redireccionar("/Cuenta_C/Editar");
+                redireccionar("/Modal_C/tiendaSinProductos");
             }
             else{
                 $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
@@ -143,8 +143,7 @@
             $DatosResposable = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //CONSULTA los datos de cuentas bancarias de la tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarBancosTienda($this->ID_Afiliado);
-            $DatosBancos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $DatosBancos = $this->ConsultaCuenta_M->consultarBancosTienda($this->ID_Tienda);
 
             //CONSULTA las categorias en la que la tienda esta registrada
             $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTIenda($this->ID_Tienda);
@@ -180,26 +179,36 @@
         }
 
         public function Publicar(){
-            //CONSULTA las categorias en las que una tienda se ha postulado
-            $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
-            $Categorias = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            //CONSULTA si existe al menos una sección donde cargar productos
+            $Cant_Seccion = $this->ConsultaCuenta_M->consultarSecciones($this->ID_Tienda);
+            // echo "Registros encontrados: " . $Cant_Seccion;
+            
+            //En el caso que no se haya configurado ninguna seccion o categoria
+            if($Cant_Seccion == 0){ 
+                redireccionar("/Modal_C/tiendaSinSecciones");
+            }
+            else{
+                //CONSULTA las categorias en las que una tienda se ha postulado
+                $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
+                $Categorias = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            //CONSULTA las secciones que tiene una tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                //CONSULTA las secciones que tiene una tienda
+                $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+                $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            //Se CONSULTAN el slogan de una tienda en particular
-            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                //Se CONSULTAN el slogan de una tienda en particular
+                $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+                $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            $Datos = [
-                'categorias' => $Categorias,
-                'secciones' => $Secciones,
-                'slogan' => $Slogan
-            ];
+                $Datos = [
+                    'categorias' => $Categorias,
+                    'secciones' => $Secciones,
+                    'slogan' => $Slogan
+                ];
 
-            // $this->vista("inc/header_AfiCom", $Datos);
-            $this->vista("paginas/cuenta_publicar_V", $Datos);
+                $this->vista("inc/header_AfiCom", $Datos);
+                $this->vista("paginas/cuenta_publicar_V", $Datos);
+            }
         }
 
         //Invocado desde cuenta_productos_V.php
@@ -258,8 +267,7 @@
         //Recibe el formulario de actualizacion de los datos de una tienda invocado en cuenta_editar_V.php
         public function recibeRegistroEditado(){
             //Se reciben todos los campos del formulario desde cuenta_editar_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST"
-            // && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["telefono_com"]) && !empty($_POST["direccion_com"]) && !empty($_POST["rif_com"])
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["telefono_com"]) && !empty($_POST["direccion_com"])
             ){
                 $RecibeDatos = [
                     //Recibe datos de la persona responsable
@@ -371,8 +379,15 @@
             }
             else{
                 echo "Ingrese al menos una categoría";
+                echo "<br>";
+                echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
+            // echo "Categorias recibidas";
+            // echo "<pre>";
+            // print_r($Categoria);
+            // echo "</pre>";
+            // exit();
 
             // SECCIONES
             // ********************************************************
@@ -385,38 +400,42 @@
                 $Seccion = array_unique($Seccion);
             }
             else{
-                echo "Ingrese al menos una sección (nueva)";
-                // exit();
+                echo "Ingrese al menos una sección";
+                echo "<br>";
+                echo "<a href='javascript:history.back()'>Regresar</a>";
+                exit();
             }
             // echo "Secciones recibidas";
             // echo "<pre>";
             // print_r($Seccion);
             // echo "</pre>";
             // exit();
-
+            
             // DATOS BANCARIOS
             // ********************************************************            
             //Se ELIMINAN todas las cuentas bancarias
-            $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Afiliado);
+            $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
 
             foreach(array_keys($_POST['banco']) as $key){
-                // if(!empty($_POST['banco'][$key]) 
-                // && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
-                // ){
+                if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
+                ){
                     $Banco = $_POST['banco'][$key];
                     $Titular = $_POST['titular'][$key];
                     $NumeroCuenta = $_POST['numeroCuenta'][$key];
                     $Rif = $_POST['rif'][$key];
                     
                     //Se INSERTA la cuenta bancaria
-                    $this->ConsultaCuenta_M->insertarCuentaBancaria($this->ID_Afiliado, $Banco, $Titular, $NumeroCuenta, $Rif);
-                // }
-                // else{
-                //     echo "Ingrese datos bancarios completos";
-                //     exit();
-                // }
+                    $this->ConsultaCuenta_M->insertarCuentaBancaria($this->ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif);
+                }
+                else{
+                    echo "Ingrese datos bancarios completos";
+                    echo "<br>";
+                    echo "<a href='javascript:history.back()'>Regresar</a>";
+                    exit();
+                }
             }
-            
+            // echo "Todos los campos estan llenos";
+            // exit();
             // **********************************************************************************
             //Todo este procedimiento debe ser por medio de TRANSACCIONES
             // ***************************************print_r*******************************************
@@ -428,34 +447,7 @@
             $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC);
 
             //Se INSERTA la dependenciatransitiva entre la tienda y la categoria a la que pertenece
-            $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);
-
-            //Se consultan las secciones de la tienda
-            // $Consulta_3 = $this->ConsultaCuenta_M-> consultarSeccionesTienda($this->ID_Tienda);
-            // $SeccionesExistentes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC);
-            // echo "Secciones en BD";
-            // echo "<pre>";
-            // print_r($SeccionesExistentes);
-            // echo "</pre>";
-
-            //Se recorre el resultado de la consulta y solo se toma el valor sección del array $SeccionesExistentes y estos valores se guardan en un nuevo arrray
-            // $Seccion_3 = array();
-            // foreach($SeccionesExistentes as $arr) :
-            //     $Secciones_4 = $arr['seccion']   . "<br>";
-            //     array_push($Seccion_3, $Secciones_4);
-            // endforeach;
-            // echo "Secciones existentes en BD";
-            // echo "<pre>";
-            // print_r($Seccion_3);
-            // echo "</pre>";
-
-            //Se obtiene el array definitivo de secciones a actualizar y a insertar
-            // $result = array_diff($Seccion, $Seccion_3);
-            // echo "Secciones a insertar";
-            // echo "<pre>";
-            // print_r($result);
-            // echo "</pre>";  
-            // exit();                 
+            $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);         
 
             //Se INSERTAN las secciones de la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
             $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $Seccion);
@@ -469,12 +461,9 @@
             //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado
             $this->ConsultaCuenta_M->actualizarAfiliadoComercial($this->ID_Afiliado, $RecibeDatos);
 
-            //Se ACTUALIZAN los datos de la tienda en la BD
+            //Se ACTUALIZAN los datos de la tienda, el registro de la tienda fue creado cuando el afiliado creo la tienda
             $this->ConsultaCuenta_M->actualizarTienda($this->ID_Afiliado, $RecibeDatos);
-
-            //Se ACTUALIZAN los datos bancarios de la tienda en la BD
-            // $this->ConsultaCuenta_M->actualizarBancos($ID_Banco, $Banco, $Titular, $NumeroCuenta, $Rif);
-
+           
             //Se consulta el ID_Categoria de las categorias seleccionadas
             // $ID_Categoria = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
             // $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC);
@@ -553,9 +542,8 @@
         //Invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
         public function recibeProductoPublicar(){
             //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
-            // if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])
-            // ){
-
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])
+            ){
                 $RecibeProducto = [
                     //Recibe datos del producto que se va a cargar al sistema
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
@@ -564,19 +552,19 @@
                     'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                     'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
                 ];
-            //     // echo "<pre>";
-            //     // print_r($RecibeProducto);
-            //     // echo "</pre>";
-            // // }
-            // // else{
-            // //     echo "Llene todos los campos del formulario ";
-            // //     echo "<a href='javascript: history.go(-1)'>Regresar</a>";
-            // //     exit();
-            // }
+                // echo "<pre>";
+                // print_r($RecibeProducto);
+                // echo "</pre>";
+            }
+            else{
+                echo "Llene todos los campos del formulario ";
+                echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+                exit();
+            }
 
             // SECCION CARACTERISTICAS
             // ********************************************************
-            // Si se selecionó alguna nueva caracteristica entra
+            // Si se selecionó alguna nueva caracteristica entra, destaca que se esta recibiendo un array
             if($_POST['caracteristica'][0] != ""){
                 foreach($_POST['caracteristica'] as $Caracteristica){
                     $Caracteristica = $_POST['caracteristica'];
@@ -932,8 +920,6 @@
             $this->ConsultaCuenta_M->eliminarSeccionesProductos($ID_Seccion);
             $this->ConsultaCuenta_M->eliminarSeccionesOpciones($ID_Seccion);
             $this->ConsultaCuenta_M->eliminarSecciones($ID_Seccion);
-            // *************************************************************************************
-            // *************************************************************************************
 
             //Se redirecciona a la vista de configuración para dejar al usuario donde estaba
             $this->Editar();
@@ -946,6 +932,17 @@
 
             //Se redirecciona a la vista de configuración para dejar al usuario donde estaba
             $this->Editar();
+        }
+
+        //Invocado desde cuenta_editar_V.php
+        public function publicarTienda(){            
+            $Consulta = $this->ConsultaCuenta_M->consultaPermisoPublicar($this->ID_Tienda);
+            // echo "<pre>";
+            // print_r($Consulta);
+            // echo "</pre>";
+            if($Consulta[0]['publicar'] == 0){
+                echo "Es necesario configurar la totalidad de la tienda";  
+            }
         }
     }
 ?>

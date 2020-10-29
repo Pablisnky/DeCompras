@@ -121,7 +121,7 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
 
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
-        let Especificacion = document.getElementById('ContenidoEsp').value 
+        // let Especificacion = document.getElementById('ContenidoEsp').value 
         let Precio = document.getElementById('Precio').value 
         let Seccion = document.getElementById('SeccionPublicar').value   
         
@@ -131,10 +131,14 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
+        //Patron de entrada solo acepta letras
+        let P_Numeros = /^[0-9]*$/
+
         if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 70){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
+            document.getElementById("ContenidoPro").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -146,6 +150,7 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()
+            document.getElementById("DireccionContenidoDes_Tien").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -157,14 +162,16 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
         //     alert ("Introduzca una Especificacion")
         //     document.getElementById("ContenidoEsp").value = ""
         //     document.getElementById("ContenidoEsp").focus()
+            // document.getElementById("ContenidoEsp").style.backgroundColor = "var(--Fallos)"
         //     document.getElementsByClassName("boton")[0].value = "Guardar"
         //     document.getElementsByClassName("boton")[0].disabled = false
         //     return false;
         // }
-        else if(Precio == "" || Precio.indexOf(" ") == 0 || Precio.length > 20){
-            alert ("Introduzca un Precio")
+        else if(Precio == "" || Precio.indexOf(" ") == 0 || Precio.length > 20 || P_Numeros.test(Precio) == false){
+            alert ("Introduzca un Precio, (Solo números)")
             document.getElementById("Precio").value = ""
             document.getElementById("Precio").focus()
+            document.getElementById("Precio").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -176,6 +183,7 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
             alert ("Introduzca una Sección")
             document.getElementById("SeccionPublicar").value = ""
             document.getElementById("SeccionPublicar").focus()
+            document.getElementById("SeccionPublicar").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"

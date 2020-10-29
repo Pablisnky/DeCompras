@@ -62,6 +62,7 @@ document.addEventListener("click", function(event){
     }
 }, false)
  
+// *****************************************************************************************************
 //Escucha desde opciones_V.php, archivo que se carga en vitrina_V.php desde Ajax; por medio de delegación de eventos, donde dentro de la función identificas cual fue el objetivo del click, ya sea por id o por clase o por etiqueta según sea tu necesidadtoma la etiqueta span donde se hace click
 document.addEventListener('click', function(event){
     if(event.target.id == 'Span_3'){
@@ -433,7 +434,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     function PedidoEnCarrito(){
         console.log("______Desde PedidoEnCarrito()______")
 // console.log(AlCarro)
-        //Se muestra el monto de la compra en tienda. (sin comisión de plataforma y sin despacho)
+        //Se muestra el monto de la compra en "La Orden". (sin comisión de plataforma y sin despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
 
         //Se calcula la comisión de la aplicacion
@@ -872,6 +873,8 @@ console.log(AlCarro)
         let Cedula = document.getElementById('CedulaUsuario').value 
         let Telefono = document.getElementById('TelefonoUsuario').value 
         let Direccion = document.getElementById('DireccionUsuario').value  
+        let Pago = document.getElementsByClassName('pago') 
+        let RegistroPago = document.getElementById('RegistroPago').value
         
         //Patron de entrada solo acepta letras
         let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
@@ -886,8 +889,11 @@ console.log(AlCarro)
             document.getElementById("NombreUsuario").value = "";
             document.getElementById("NombreUsuario").focus();
             document.getElementById("NombreUsuario").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
             document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
         else if(Apellido =="" || Apellido.indexOf(" ") == 0 || Apellido.length > 20 || P_Letras.test(Apellido) == false){
@@ -895,8 +901,11 @@ console.log(AlCarro)
             document.getElementById("ApellidoUsuario").value = "";
             document.getElementById("ApellidoUsuario").focus();
             document.getElementById("ApellidoUsuario").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
             document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
         else if(Cedula =="" || Cedula.indexOf(" ") == 0 || Cedula.length > 9 || (isNaN(Cedula)) || Cedula<2000000 || Cedula>999999999){
@@ -904,17 +913,23 @@ console.log(AlCarro)
             document.getElementById("CedulaUsuario").value = "";
             document.getElementById("CedulaUsuario").focus();
             document.getElementById("CedulaUsuario").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
             document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 14 || P_Telefono.test(Telefono) == false){
+        else if(Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 14){
             alert ("Problemas con su Telefono");
             document.getElementById("TelefonoUsuario").value = "";
             document.getElementById("TelefonoUsuario").focus();
             document.getElementById("TelefonoUsuario").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
             document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
         else if(Direccion =="" || Direccion.indexOf(" ") == 0 || Direccion.length > 20){
@@ -922,8 +937,32 @@ console.log(AlCarro)
             document.getElementById("DireccionUsuario").value = "";
             document.getElementById("DireccionUsuario").focus();
             document.getElementById("DireccionUsuario").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("botonJS")[0].value = "Enviar"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
             document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Pago.checked == false){
+            alert ("Debe indicar un modo de pago");
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(RegistroPago =="" || RegistroPago.indexOf(" ") == 0 || RegistroPago.length > 20){
+            alert ("Problemas con el código de pago");
+            document.getElementById("RegistroPago").value = "";
+            document.getElementById("RegistroPago").focus();
+            document.getElementById("RegistroPago").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
 
@@ -941,13 +980,12 @@ console.log(AlCarro)
 //************************************************************************************************
     //Impide que se siga introduciendo caracteres al alcanzar el limite maximo en el telefono
     var contenidoTelefono = ""; 
-    var num_caracteres_permitidos = 13; 
+    var num_caracteres_permitidos = 14; 
 
     function valida_LongitudTelefono(){ 
         console.log("______Desde valida_LongitudTelefono()______")
 
         let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
-        // num_caracteres_permitidos = Telefono.length; 
 
         if(num_caracteres_input > 13){ 
             document.getElementById("TelefonoUsuario").value = contenidoTelefono; 
@@ -990,18 +1028,10 @@ console.log(AlCarro)
     }
 
 //************************************************************************************************
-    //Abre la ventna de detalles de producto
+    //Abre la ventna de detalles de producto, invocado en opciones_V.php
     function mostrarDetalles(ContadorLabel, Nombre_Tienda, Slogan_Tienda, ID_Tienda, Producto, Opcion, Precio, Fotografia, ID_Producto){
         console.log("______Desde mostrarDetalles()______")
         window.open(`../../Opciones_C/productoAmpliado/${'Etiqueta_' + ContadorLabel},${Nombre_Tienda},${Slogan_Tienda},${ID_Tienda},${Producto},${Opcion},${Precio},${Fotografia},${ID_Producto}`, "ventana1", "width=1300,height=650,scrollbars=YES")   
-    }
-
-//************************************************************************************************
-    //Abre una ventana que muestra la imagen en grande
-
-    function imagenAmpliado(Fotografia){
-        console.log("______Desde AmpliarImagen()______")
-        window.open(`../../Opciones_C/imagenAmpliado/${Fotografia}`, "ventana1", "width=1300,height=650,scrollbars=YES") 
     }
 
 //************************************************************************************************

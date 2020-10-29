@@ -293,6 +293,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
         }
     }
 
+//************************************************************************************************
     function evaluarElementosCcargados(){
         let DIV = document.getElementById('Mostrar_verificaClave')
         if(DIV.childElementCount < 1){
@@ -328,7 +329,6 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
     //Impide que se siga introduciendo caracteres al alcanzar el limite maximo en el telefono
     var contenidoTelefono = ""; 
     var num_caracteres_permitidos = 13; 
-
     function valida_LongitudTelefono(){ 
         console.log("______Desde valida_LongitudTelefono()______")
 
@@ -360,7 +360,6 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
     }
 
 //************************************************************************************************
-
     function SeparadorMiles(nStr){
         console.log(nStr)
         nStr += '';

@@ -13,6 +13,8 @@ document.getElementById("Contenedor_6m").addEventListener('click', function(){Ve
 
 document.getElementById("Contenedor_6r").addEventListener('click', function(){VerTiendas('Repuesto_automotriz')})
 
+document.getElementById("Contenedor_6b").addEventListener('click', function(){VerTiendas('Ropa_Zapato')})
+
 // *****************************************************************************************************
     //Muestra la posicion en pantalla por medio de coordenadas
     // var posicion = document.getElementById('Section_2js').getBoundingClientRect()

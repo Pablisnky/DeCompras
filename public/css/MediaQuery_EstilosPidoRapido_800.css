@@ -314,6 +314,9 @@
 	margin: 5% auto 35% auto;
 	width: 100%;
 }
+.contenedor_67{/*cuenta_editar*/
+	margin: 5% auto;
+}
 .contenedor_68{/*afiliacion*/
 	height: 100%;
 }
@@ -342,7 +345,7 @@
 	padding-left: 5%;
 	margin-top: 10%;
 }
-.contenedor_77{/*Categorias_Ajax_V.php*/
+.contenedor_77{/*Categorias_Ajax*/
 	margin: 10% auto 1% auto;
 	width: 50%;
 }
@@ -351,6 +354,7 @@
 } 
 .contenedor_80{/*cuenta_editar - cuenta_publicar*/
 	width: 100%;
+	height: min-content !important;
 }
 .contenedor_83{/*cuenta_editar*/
 	position: fixed;
@@ -478,11 +482,6 @@
 	margin-top: 20%;
 	padding: 3%;
 }
-.contenedor_119{/*cuenta_publicar - cuenta_editar_prod - cuenta_editar*/
-	/* width: 60%;
-	height: 150px;
-	margin: 5% auto !important; */
-}
 .contenedor_120{ /*tiendas*/ 
 	height: 160px;
 }
@@ -515,6 +514,12 @@
 .contenedor_135{/*cuenta_editar_prod*/
 	width: 90%;
 	margin: 2% auto 10% auto;
+}
+.contenedor_138{/*carrito*/
+	width: 30%;
+}
+.contenedor_139{/*desr_Producto*/
+	height: 75px;
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;

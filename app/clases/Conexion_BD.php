@@ -18,6 +18,8 @@
             try{
                 $this->dbh = new PDO($dsn, $this->Usuario, $this->Password, $Opciones);
                 $this->dbh->exec("set names utf8");
+
+                // print_r($this->dbh);
             }
             catch(PDOException $e){
                 $this->error = $e->getMessage();

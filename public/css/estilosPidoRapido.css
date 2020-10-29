@@ -245,7 +245,6 @@ button{/*tiendas*/
 	background-color:  rgb(233, 215, 215);
 	position: relative;
 	height: 100%;
-	/* z-index: -1; */
 }
 .contenedor_8{/*footer */
 	margin: auto;
@@ -367,8 +366,9 @@ button{/*tiendas*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	justify-content: space-around;
 }
-.contenedor_27{/*carrito*/
+.contenedor_27{/*carrito - cuenta_editar*/
 	display: none;
+	margin: 2% auto !important;
 }
 .contenedor_28{/*carrito*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
@@ -641,9 +641,8 @@ button{/*tiendas*/
 	padding-bottom: 2%;
 	margin-top: 7%;
 }
-.contenedor_72{/*header_inicio*/
-	margin: auto;
-	width: 90%;
+.contenedor_72{/*carrito*/
+	width: 100%;
 }
 .contenedor_73{/*ciudad*/
 	border-radius:15px;
@@ -869,7 +868,7 @@ button{/*tiendas*/
 	text-align: center;
 }
 .contenedor_120{ /*tiendas*/ 
-	background-size: cover; /*cover*/
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 140px;
@@ -962,6 +961,23 @@ button{/*tiendas*/
 .contenedor_137{/*footer*/
 	margin: auto;
 	width: 90%;
+}
+.contenedor_138{/*carrito*/
+	width: 13%;
+}
+.contenedor_139{/*desr_Producto*/
+	height: 100px;
+}
+.contenedor_140{ /*tiendas*/ 
+	background-size: contain; 
+	background-position-y: 5px; /*bajó la imagen 5px*/
+}
+.contenedor_141{/*modal_login*/
+	margin: 5% auto;
+	text-align: center;
+}
+.contenedor_142{/*footer*/
+	/* background-color: blue; */
 }
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 40%;
@@ -1429,7 +1445,7 @@ button{/*tiendas*/
 	cursor: pointer!important;
 }
 .label_21{/*cuenta_productos*/
-	width: 10%;
+	width: 20%;
 	display: block;
 	margin:5%  auto;
 }
@@ -1620,6 +1636,12 @@ button{/*tiendas*/
 }
 .p_12{/*cuenta_editar*/
 	margin: 0% auto 5% auto;
+}
+.p_13{/*carrito*/
+	font-weight: bold;
+}
+.p_13, .p_14{/*carrito*/
+	line-height: 25px;
 }
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	margin: 0% auto 2% auto !important;

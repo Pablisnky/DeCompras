@@ -1,8 +1,11 @@
-<?php
+<?php    
     class Tiendas_C extends Controlador{
 
         public function __construct(){
             $this->ConsultaTienda_M = $this->modelo("Tienda_M");
+
+            //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
+            ocultarErrores();
         }
 
         //Metodo llamado desde E_inicio.js por medio de VerTiendas() 
@@ -13,6 +16,9 @@
                 break;    
                 case 'Repuesto_automotriz':
                     $Categoria = 'Repuesto automotriz';   
+                break;    
+                case 'Ropa_Zapato':
+                    $Categoria = 'Zapatería';   
                 break;  
             }
             

@@ -55,7 +55,7 @@ function conexionAJAX(){
 //-------------------------------------------------------------------------------------------------
     //Elimina una seccion
     function Llamar_EliminarSeccion(ID_Seccion){
-        console.log("______Desde Llamar_EliminarSeccion()______", ID_Seccion)
+        // console.log("______Desde Llamar_EliminarSeccion()______", ID_Seccion)
 
         var url = "../Cuenta_C/eliminarSeccion/" + ID_Seccion
         http_request.open('GET', url, true)  
@@ -102,3 +102,31 @@ function conexionAJAX(){
                 // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
             }
         }
+
+//-------------------------------------------------------------------------------------------------
+    //Verifica si la tienda puede mostrarse al publico
+    function llamar_publicarTienda(){
+        console.log("______Desde llamar_publicarTienda()______")
+
+        var url = "../Cuenta_C/publicarTienda/"
+        http_request.open('GET', url, true)  
+        peticion.onreadystatechange = respuesta_publicarTienda
+        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+        peticion.send("null")
+    }                                                                        
+    function respuesta_publicarTienda(){
+        if(peticion.readyState == 4){
+            if(peticion.status == 200){  
+                document.getElementById('Mostrar_tienda').innerHTML = peticion.responseText 
+                // document.getElementById('Publicar').checked = false
+            } 
+            else{
+                alert('Problemas con la petición.')
+            }
+        }
+        else{ //en caso contrario, mostramos un gif simulando una precarga
+            // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+        }
+    }
+
+//-------------------------------------------------------------------------------------------------

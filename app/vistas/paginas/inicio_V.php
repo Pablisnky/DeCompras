@@ -31,6 +31,10 @@
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
+                            // echo "<pre>";
+                            // print_r($Datos);
+                            // echo "</pre>";
+                            // exit();
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 1){  
                                     $Cantidad = $arr['cantidad']; 
@@ -76,7 +80,7 @@
                     </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Contenedor_">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
                 <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
@@ -93,7 +97,7 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6c">
+            <div class='contenedor_6 borde_1' id="Contenedor_">
                 <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
@@ -110,14 +114,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6c">
+            <div class='contenedor_6 borde_1' id="Contenedor_6b">
                 <h2 class='h2_1'>ROPA Y ZAPATO</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 8){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }

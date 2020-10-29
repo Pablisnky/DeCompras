@@ -1,12 +1,13 @@
 <?php 
     session_start();
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
 
     class Login_C extends Controlador{
         
         public function __construct(){  
             $this->ConsultaLogin_M = $this->modelo("Login_M");
+
+            //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
+            ocultarErrores();
         }
 
         //Es llamadao desde Registro_C.php por medio de recibeRegistro() - Cuenta_C - header_inicio.php
@@ -113,31 +114,41 @@
 
                     //se descifra la contraseña con un algoritmo de desencriptado.
                     if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
-                        //SELECT para hallar el ID_Tienda y el nombre de la tienda correspondiente al afiliado
+                        //SELECT para hallar el ID_Tienda, el nombre de la tienda, ID_Afiliado y si la tienda se puede mostrar al publico
                         $Consulta= $this->ConsultaLogin_M->consultarID_Tienda($ID_Afiliado);
                         while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
                             $ID_Tienda = $arr["ID_Tienda"];
                             $ID_Afiliado = $arr["ID_AfiliadoCom"];
                             $NombreTienda = $arr["nombre_Tien"];
+                            $Publicar = $arr["publicar"];
                         }
-    
-                        // Se crea la sesiones que se exige en todas las páginas de su cuenta            
+                        
+                        //CONSULTA si existe al menos una sección donde cargar productos
+                        $Cant_Seccion = $this->ConsultaLogin_M->consultarSecciones($ID_Tienda);
+                        echo "Registros encontrados: " . $Cant_Seccion;
+                          
+                        //Se crea la sesiones que se exige en todas las páginas de su cuenta            
                         $_SESSION["ID_Tienda"] = $ID_Tienda;
                         
-                        // Se crea la sesion que guarda el ID_Afiliado           
+                        //Se crea la sesion que guarda el ID_Afiliado           
                         $_SESSION["ID_Afiliado"] = $ID_Afiliado;
     
-                        // Se crea una sesión que almacena el nombre de la tienda           
+                        //Se crea una sesión que almacena el nombre de la tienda           
                         $_SESSION["Nombre_Tienda"] = $NombreTienda;
                         
                         //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
                         $_SESSION["Nombre"] = $Nombre;
     
-                        header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos");          
+                        // Se verifica a donde se redirecciona segun la condición de la tienda
+                        if($Cant_Seccion == 0){
+                            header("location:" . RUTA_URL . "/Modal_C/tiendaSinSecciones"); 
+                        }
+                        else{
+                            header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos"); 
+                        }         
                     }
                     else{ 
-                        echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';
-                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                        header("location:" . RUTA_URL . "/Modal_C/loginIncorrecto");
                     } 
                 }
                 //Entra en cuenta de despachador
@@ -159,8 +170,7 @@
                         header("location:" . RUTA_URL . "/Cuenta_C/Despachador");          
                     }
                     else{ 
-                        echo 'USUARIO y CONTRASEÑA no son correctas'. '<br>';
-                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                        header("location:" . RUTA_URL . "/Modal_C/loginIncorrecto");
                     } 
                 }
                      

@@ -4,7 +4,7 @@ document.getElementById("Label_5").addEventListener('click', crearSeccion, false
 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
-document.getElementById("Cedula").addEventListener('keyup', function(){formatoMiles(this)})
+// document.getElementById("Cedula").addEventListener('keyup', function(){formatoMiles(this)})
 
 // document.getElementById("Contenedor_107").addEventListener('click', muestraMenuSecundario, false)
 
@@ -17,7 +17,7 @@ document.addEventListener("keyup", valida_LongitudDes, false);
 //FUNCIONES ANONIMAS
 // por medio de una función anonima debido a que el elemento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
 document.getElementById('Label_13').addEventListener('click',function(){ 
-    console.log("______Desde funcion anonima que genera el alto de la ventana modal()______")
+    // console.log("______Desde funcion anonima que genera el alto de la ventana modal()______")
     //Coloca el cursor en el top de la pagina
     // document.getElementById("Ejemplo_Secciones").style.display = "grid"
 
@@ -32,11 +32,13 @@ document.getElementById('Label_13').addEventListener('click',function(){
 
     Llamar_categorias()
 }, false);
+//************************************************************************************************ 
 
-// por medio de una función anonima debido a porque el manejador de eventos se encuentra en otro archivo                   
+// por medio de una función anonima debido a que el manejador de eventos se encuentra en otro archivo                   
 document.getElementById("Label_1").addEventListener('click', function(){
     CerrarModal_X("Ejemplo_Secciones")
 });
+
 //************************************************************************************************  
     //Da el formato de separador de miles
     function formatoMiles(numero){
@@ -54,13 +56,14 @@ document.getElementById("Label_1").addEventListener('click', function(){
     
 //************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
-    let iterar = 1
+    var iterar = 1
     function nuevaCuentaBancaria(){
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_67")
 
         //Se crea el clon
         let Div_clon = clonar.cloneNode(true)
+        console.log(Div_clon)
 
         //Se da un ID al nuevo elemento clonado
         Div_clon.style.id = iterar  
@@ -73,8 +76,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Div_clon.getElementsByClassName("input_9JS")[3].value = ""
 
         //Se especifica el div padre, donde se insertará el nuevo nodo
-        //Contenedor_69 = Div padre y Contenedor_67 = Div hijo      
-        ElementoPadre = document.getElementById("Contenedor_69")
+        //Mostrar_CuentaBancaria = Div padre y Contenedor_67 = Div hijo      
+        ElementoPadre = document.getElementById("Mostrar_CuentaBancaria")
         
         //Se especificael elmento que sera la referencia para insertar el nuevo nodo
         let Ref_Ubicacion= document.getElementById("Label_4")
@@ -87,7 +90,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
     //Añade un nuevo input con una nueva sección cargada desde Categoria_Ajax
     var incremento = 1
     function crearSeccion(){
-        console.log("______Desde CrearSección()______")
+        // console.log("______Desde CrearSección()______")
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80")
@@ -170,13 +173,13 @@ document.getElementById("Label_1").addEventListener('click', function(){
     //Muestra el menu secundario de enlaces anclas
     function muestraMenuSecundario(){
         document.getElementById("Contenedor_83").style.display = "block"
-
     }
     
 //************************************************************************************************
-    //Recibe la categoria selecciona por el afiliado y la coloca dentro de un input en el formulario de configuracion de tienda
+    //Recibe la categoria selecciona por el afiliado y la coloca dentro de un input nuevo en el formulario de configuracion de tienda
     function transferirCategoria(form){
         console.log("______Desde transferirCategoria()______")
+
         //Se declara el array que contendra la cantidad de categorias seleccionadas
         var TotalCategoria = []
 
@@ -190,20 +193,25 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //Se verifica la cantidad de categorias seleccionadas
         // console.log(Categoria)
 
-            //Se eliminan las categorias que estaban y se colocan las que estan en el array TotalCategoria
-            //Se busca el nodo padre que contiene el input donde esta el producto a eliminar
-            let DivHijo = document.getElementsByClassName("imput_6js")
+        //Se eliminan las categorias que estaban y se colocan las que estan en el array TotalCategoria
+        //Se busca el nodo padre que contiene el input donde esta el producto a eliminar
+        let DivHijo = document.getElementsByClassName("imput_6js")
 
-            //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos, es decir, se borran las categorias que existian
-            Elementos = DivHijo.length
-            for(var i = 0; i<Elementos; i++){ 
-                // console.log(Elementos) 
-                // console.log("Eliminado")
+        //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos, es decir, se borran las categorias que existian (solo si existian)
+        Elementos = DivHijo.length
+        console.log("Elementos con la clase imput_6js", Elementos) 
+        for(var i = 0; i<Elementos; i++){ 
+            // console.log(Elementos) 
+            // console.log("Eliminado")
 
-                DivHijo_2 = document.getElementsByClassName("imput_6js")[0]
-                let DivPadre = document.getElementById("Fieldset")
-                DivPadre.removeChild(DivHijo_2);  
-            }
+            DivHijo_2 = document.getElementsByClassName("imput_6js")[0]
+            console.log("div_hijo", DivHijo_2)
+
+            let DivPadre = document.getElementById("Contenedor_80js")
+            console.log("div_padre", DivPadre)
+
+            DivPadre.removeChild(DivHijo_2);  
+        }
 
         //Se recorren las categorias para verficar cuales estan seleccionadas
         for(var i = 0; i<Categoria.length; i++){
@@ -214,6 +222,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         }
            
         console.log("Categorias seleccionadas", TotalCategoria.length)
+
         //Se recoge la seleccion enviada desde CantidadCategorias_Ajax_V.php
         Categoria = document.getElementsByClassName("categoria_js")
 
@@ -241,19 +250,20 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 NuevoElemento.value = TotalCategoria[i] 
                 NuevoElemento.classList.add("input_13", "borde_1", "imput_6js")
                 NuevoElemento.name = "categoria[]"
-                NuevoElemento.id = "Input_6js_" + id_dinamico
+                NuevoElemento.id = "Input_6js"
                 NuevoElemento.readOnly = true
 
                 //Se especifica el elemento donde se va a insertar el nuevo elemento
-                var ElementoPadre = document.getElementById("Fieldset")
-                // console.log("Elemento padre= ", ElementoPadre)
+                var ElementoPadre = document.getElementById("Contenedor_80js")
+                console.log("Elemento padre= ", ElementoPadre)
 
                 //Se inserta en el DOM el input creado
                 // inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
                 // console.log("Elemento Añadido= ", inputNuevo)
 
-                //Se especificael elmento que sera la referencia para insertar el nuevo nodo
-                let Ref_Ubicacion= document.getElementById("Ref_Ubicacion")
+                //Se especifica el elemento que sera la referencia para insertar el nuevo nodo
+                let Ref_Ubicacion= document.getElementById("Referencia_2")
+                console.log("Elemento referencia= ", Ref_Ubicacion)
                 
                 //Se especifica el div padre y la posición donde se insertará el nuevo nodo
                 ElementoPadre.insertBefore(NuevoElemento, Ref_Ubicacion)
@@ -274,7 +284,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     // invocada desde Categorias_Ajax_V.php - transferirCategoria() en este archivo
     function CerrarCategoria(id){    
-        console.log("______Desde CerrarCategoria()______")   
+        // console.log("______Desde CerrarCategoria()______")   
         document.getElementById(id).style.display = "none"
         document.getElementsByClassName("imput_6js")[0].focus()  
         
@@ -286,19 +296,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
         window.scroll(0,800)
     }
 
-//************************************************************************************************
-    // desabilidad el boton de enviar formulario
-    function ValidarEditarCuenta(){
-        console.log("______Desde DesabilitarBoton()______")     
-        document.getElementsByClassName("boton_6")[0].value = "Guardando ..."
-        document.getElementsByClassName("boton_6")[0].disabled = "disabled"
-        document.getElementsByClassName("boton_6")[0].style.backgroundColor = "var(--OficialClaro)"
-        document.getElementsByClassName("boton_6")[0].style.color = "var(--OficialOscuro)"
-        document.getElementsByClassName("boton_6")[0].classList.add('borde_1')
-    }
-    
 //************************************************************************************************  
-    //Indica la cantidad de caracteres que quedan mientra se escribe el slagan de la tienda
+    //Indica la cantidad de caracteres que quedan mientras se escribe el slogan de la tienda
     function contarDes(){
         var max = 40; 
         var cadena = document.getElementById("ContenidoSlo").value; 
@@ -329,3 +328,281 @@ document.getElementById("Label_1").addEventListener('click', function(){
     } 
 
 //************************************************************************************************
+    //Valida el formulario de datos de una tienda        
+    function validarDatosTienda(){
+        console.log("_____Desde validarDatosTienda()_____")
+        // DATOS AFILIADO
+        let NombreAficom = document.getElementById('Nombre_Aficom').value
+        let Apellido = document.getElementById('Apellido_Aficom').value      
+        let Cedula = document.getElementById('Cedula_Aficom').value  
+        let TelefonoAficom = document.getElementById('Telefono_Aficom').value
+        let CorreoAficom = document.getElementById('Correo_Aficom').value         
+        // DATOS TIENDA
+        let NombreTien = document.getElementById('Nombre_Tien').value
+        let TelefonoTien = document.getElementById('Telefono_Tien').value
+        let Categoria = document.getElementById('Contenedor_80js')    
+        console.log(Categoria.childElementCount)
+        let Seccion = document.getElementById('Seccion').value    
+        let Estado = document.getElementById('Estado_Tien').value  
+        let Municipio = document.getElementById('Municipio_Tien').value 
+        let Parroquia = document.getElementById('Parroquia_Tien').value
+        let Direccion = document.getElementById('Direccion_Tien').value
+        // DATOS BANCO
+        let Nombre_Banco = document.getElementById('Nombre_Banco').value  
+        let Titular_Banco = document.getElementById('Titular_Banco').value 
+        let NroCuenta_Banco = document.getElementById('NroCuenta_Banco').value
+        let RIF_Banco = document.getElementById('RIF_Banco').value 
+        let PagoMovil = document.getElementById('PagoMovil').value
+
+        document.getElementsByClassName("boton")[0].value = "Guardando ..."
+        document.getElementsByClassName("boton")[0].disabled = "disabled"
+        document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"
+        document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
+        document.getElementsByClassName("boton")[0].classList.add('borde_1')
+
+        //Patron de entrada solo acepta letras
+        let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
+
+        //Patron de entrada para correos electronicos
+        let P_Correo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+        if(NombreAficom == "" || NombreAficom.indexOf(" ") == 0 || NombreAficom.length > 20 || P_Letras.test(NombreAficom) == false){
+            alert ("Necesita introducir su nombre")
+            document.getElementById("Nombre_Aficom").value = ""
+            document.getElementById("Nombre_Aficom").focus()
+            document.getElementById("Nombre_Aficom").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Apellido == "" || Apellido.indexOf(" ") == 0 || Apellido.length > 20 || P_Letras.test(Apellido) == false){
+            alert("Necesita introducir su Apellido")
+            document.getElementById("Apellido_Aficom").value = ""
+            document.getElementById("Apellido_Aficom").focus()
+            document.getElementById("Apellido_Aficom").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Cedula == "" || Cedula.indexOf(" ") == 0 || Cedula.length > 9 || (isNaN(Cedula)) || Cedula<2000000 || Cedula>999999999){
+            alert("Introduzca su Cedula")
+            document.getElementById("Cedula_Aficom").value = ""
+            document.getElementById("Cedula_Aficom").focus()
+            document.getElementById("Cedula_Aficom").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(TelefonoAficom == "" || TelefonoAficom.indexOf(" ") == 0 || TelefonoAficom.length > 14 || (isNaN(TelefonoAficom))){
+            alert ("Introduzca un Telefono")
+            document.getElementById("Telefono_Aficom").value = ""
+            document.getElementById("Telefono_Aficom").focus()
+            document.getElementById("Telefono_Aficom").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(CorreoAficom == "" || CorreoAficom.indexOf(" ") == 0 || CorreoAficom.length > 70 || P_Correo.test(CorreoAficom) == false){
+            alert ("Introduzca un Correo")
+            document.getElementById("Correo_Aficom").value = ""
+            document.getElementById("Correo_Aficom").focus()
+            document.getElementById("Correo_Aficom").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }        
+        // else if(Div_AlertaCorreo.childElementCount >= 1){
+        //     alert("El correo ya esta registrado")
+        //     document.getElementById("CorreoAfiDes").value = ""
+        //     document.getElementById("CorreoAfiDes").focus()
+        //     document.getElementById("CorreoAfiDes").style.backgroundColor = "var(--Fallos)"
+        //     //Se elimina el nodo hijo donde aparece el mensaje del alert
+        //     while(Div_AlertaCorreo.firstChild){
+        //         Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild);
+        //       };
+        //     document.getElementsByClassName("boton")[0].value = "Registrarse"
+        //     document.getElementsByClassName("boton")[0].disabled = false
+        //     document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+        //     document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+        //     document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+        //     return false;
+        // }        
+        else if(NombreTien == "" || NombreTien.indexOf(" ") == 0 || NombreTien.length > 50 || P_Letras.test(NombreTien) == false){
+            alert ("Necesita introducir el nombre de la tienda")
+            document.getElementById("Nombre_Tien").value = ""
+            document.getElementById("Nombre_Tien").focus()
+            document.getElementById("Nombre_Tien").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(TelefonoTien == "" || TelefonoTien.indexOf(" ") == 0 || TelefonoTien.length > 14 || (isNaN(TelefonoTien))){
+            alert ("Introduzca un Telefono para la tienda")
+            document.getElementById("Telefono_Tien").value = ""
+            document.getElementById("Telefono_Tien").focus()
+            document.getElementById("Telefono_Tien").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        //Si el div tiene solo dos elemento no se ha agregado ninguna categoria
+        else if(Categoria.childElementCount < 3){
+            alert("Necesita introducir al menos una categoría")
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')            
+            return false;
+        }
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20 || P_Letras.test(Seccion) == false){
+            alert ("Necesita introducir al menos una Seccion")
+            document.getElementById("Seccion").value = ""
+            document.getElementById("Seccion").focus()
+            document.getElementById("Seccion").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Estado == "" || Estado.indexOf(" ") == 0 || Estado.length > 20 || P_Letras.test(Estado) == false){
+            alert ("Necesita introducir el estado")
+            document.getElementById("Estado_Tien").value = ""
+            document.getElementById("Estado_Tien").focus()
+            document.getElementById("Estado_Tien").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Municipio == "" || Municipio.indexOf(" ") == 0 || Municipio.length > 20 || P_Letras.test(Municipio) == false){
+            alert ("Necesita introducir el Municipio")
+            document.getElementById("Municipio_Tien").value = ""
+            document.getElementById("Municipio_Tien").focus()
+            document.getElementById("Municipio_Tien").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Parroquia == "" || Parroquia.indexOf(" ") == 0 || Parroquia.length > 20 || P_Letras.test(Parroquia) == false){
+            alert ("Necesita introducir la Parroquia")
+            document.getElementById("Parroquia_Tien").value = ""
+            document.getElementById("Parroquia_Tien").focus()
+            document.getElementById("Parroquia_Tien").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Direccion == "" || Direccion.indexOf(" ") == 0 || Direccion.length > 50){
+            alert ("Necesita introducir la dirección de la tienda")
+            document.getElementById("Direccion_Tien").value = ""
+            document.getElementById("Direccion_Tien").focus()
+            document.getElementById("Direccion_Tien").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Nombre_Banco == "" && PagoMovil == ""){
+            alert ("Introduzca información de medios de pago")
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 20){
+            alert ("Necesita introducir el nombre del banco")
+            document.getElementById("Nombre_Banco").value = ""
+            document.getElementById("Nombre_Banco").focus()
+            document.getElementById("Nombre_Banco").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Titular_Banco == "" || Titular_Banco.indexOf(" ") == 0 || Titular_Banco.length > 20){
+            alert ("Necesita introducir el titular de la cuenta bancaria")
+            document.getElementById("Titular_Banco").value = ""
+            document.getElementById("Titular_Banco").focus()
+            document.getElementById("Titular_Banco").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(NroCuenta_Banco == "" || NroCuenta_Banco.indexOf(" ") == 0 || NroCuenta_Banco.length > 25 || (isNaN(NroCuenta_Banco))){
+            alert ("Introduzca el número de la cuenta bancaria")
+            document.getElementById("NroCuenta_Banco").value = ""
+            document.getElementById("NroCuenta_Banco").focus()
+            document.getElementById("NroCuenta_Banco").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(RIF_Banco == "" || RIF_Banco.indexOf(" ") == 0 || RIF_Banco.length > 30){
+            alert ("Necesita introducir el RIF/cedula del titular de la cuenta bancaria")
+            document.getElementById("RIF_Banco").value = ""
+            document.getElementById("RIF_Banco").focus()
+            document.getElementById("RIF_Banco").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(PagoMovil.indexOf(" ") == 0 || PagoMovil.length > 14 || (isNaN(PagoMovil))){
+            alert ("Introduzca un Telefono para pago movil")
+            document.getElementById("PagoMovil").value = ""
+            document.getElementById("PagoMovil").focus()
+            document.getElementById("PagoMovil").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+    }

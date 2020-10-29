@@ -31,6 +31,7 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
 document.getElementById("SeccionPublicar").addEventListener('click', Llamar_seccionesDisponible, false)
+document.getElementById("SeccionPublicar").addEventListener('keydown', Llamar_seccionesDisponible, false)
 
 //-------------------------------------------------------------------------------------------------
 function Llamar_seccionesDisponible(){

@@ -4,6 +4,9 @@
 
         public function __construct(){
             $this->ConsultaOpciones_M = $this->modelo("Opciones_M");
+
+            //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
+            ocultarErrores();
         }
         
         //Los parametros se resiven desde A_Vitrina.js
@@ -57,24 +60,25 @@
             $this->vista("paginas/opciones_V", $Datos);
         }       
         
-        //Invocado desde opciones_V.php
+        //Invocado desde opciones_V.php po rmedio de mostrarDetalles()
         public function productoAmpliado($DatosAgrupados){
+            // echo $DatosAgrupados;
             //$DatosAgrupados contiene una cadena con el ID_Tienda y el producto separados por coma, se convierte en array para separar los elementos
-            $DatosAgrupados = explode(",", $DatosAgrupados);
+            $DatosAgrupados = explode("|", $DatosAgrupados);
             // echo "<pre>";
             // print_r($DatosAgrupados);
             // echo "</pre>";
             // exit();
             
             $ID_EtiquetaAgregar = $DatosAgrupados[0];
-            $NombreTienda = $DatosAgrupados[1];
-            $SloganTienda = $DatosAgrupados[2];
-            $ID_Tienda = $DatosAgrupados[3];
-            $Producto = $DatosAgrupados[4];
-            $Opcion = $DatosAgrupados[5];
-            $Precio = $DatosAgrupados[6];
-            $Fotografia = $DatosAgrupados[7];
-            $ID_Producto = $DatosAgrupados[8];
+            $NombreTienda = substr($DatosAgrupados[1], 1);
+            $SloganTienda = substr($DatosAgrupados[2], 1);
+            $ID_Tienda = substr($DatosAgrupados[3], 1);
+            $Producto = substr($DatosAgrupados[4], 1);
+            $Opcion = substr($DatosAgrupados[5], 1);
+            $Precio = substr($DatosAgrupados[6], 1);
+            $Fotografia = substr($DatosAgrupados[7], 1);
+            $ID_Producto = substr($DatosAgrupados[8], 1);
             
             //CONSULTA las caracteristicas del producto seleccionado
             $Consulta = $this->ConsultaOpciones_M->consultarCaracterisicaProductoEsp($ID_Producto);

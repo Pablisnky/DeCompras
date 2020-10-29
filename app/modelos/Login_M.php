@@ -6,8 +6,8 @@
         }
 
         public function consultarAfiliadosCom($Correo){
-            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_com WHERE correo_AfiCom = :correo");
-            $stmt->bindValue(':correo', $Correo, PDO::PARAM_STR);
+            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_com WHERE correo_AfiCom = :CORREO");
+            $stmt->bindValue(':CORREO', $Correo, PDO::PARAM_STR);
             
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -44,7 +44,7 @@
         } 
 
         public function consultarID_Tienda($ID_Afiliado){
-            $stmt = $this->dbh->prepare("SELECT ID_Tienda, nombre_Tien, ID_AfiliadoCom FROM tiendas WHERE ID_AfiliadoCom = :id_afiliado");
+            $stmt = $this->dbh->prepare("SELECT ID_Tienda, nombre_Tien, ID_AfiliadoCom, publicar FROM tiendas WHERE ID_AfiliadoCom = :id_afiliado");
             $stmt->bindValue(':id_afiliado', $ID_Afiliado, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt;
@@ -55,5 +55,17 @@
             $stmt->bindValue(':ID_AFILIADO', $Cookie_usuario, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt;
+        }
+
+        public function consultarSecciones($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            if($stmt->execute()){
+                //Se envia información de cuantos registros se vieron afectados por la consulta
+                return $stmt->rowCount();
+            }
+            else{
+                return false;
+            }
         }
     }

@@ -1,5 +1,13 @@
 // document.getElementById('Desarrollo_PWA').addEventListener('click', Documentacion_PWA, false)
 
+//************************************************************************************************
+//obtiendo informacion del DOM para identificar el elemento donde se hizo click 
+// window.addEventListener("click", function(e){   
+//     var click = e.target
+//    console.log("Se hizo click en: ", click)
+// }, false)
+
+//************************************************************************************************
    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
     let div = document.getElementById("MenuResponsive")
     let span= document.getElementById("Span_6")

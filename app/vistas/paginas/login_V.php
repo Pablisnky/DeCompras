@@ -6,10 +6,10 @@
     if($Datos == 'CE'){  ?>
         <section class="section_5" id="Section_5">
             <div class="contenedor_42">
-                <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST" name="formLogin"  onsubmit = "return validarLogin()">	
+                <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST" name="formLogin" onsubmit = "return validarLogin()">	
                     <fieldset class="fieldset_1">
                         <legend class="legend_1">Datos de acceso</legend>
-                        <input class="placeholder borde_1" type="text" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off">                
+                        <input class="placeholder borde_1" type="text" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off" onkeydown="blanquearInput('Correo')">                
                         <input class="placeholder borde_1" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
                         <div class="contenedor_45">
                             <input type="checkbox" id="Recordar" name="recordar" value="1">

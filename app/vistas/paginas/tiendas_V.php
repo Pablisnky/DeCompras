@@ -28,20 +28,17 @@
             $Fotografia = $row['fotografia_Tien'];
             ?> 
             <section style=" margin-top: -5%;">
-                <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2')"><!--El argumento no necesario es debido a que se comparte el controlador index en Vitrina_C el cual recibe tres parametros --> 
+                <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2')"><!--El argumento no necesario es debido a que se comparte el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
                     <?php                    
                     if($Fotografia == 'tienda.png'){    ?> 
-                        <figure>
-                            <img class="imagen_7" alt="Fotografia de la tienda" src="http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia;?>"/>
-                        </figure>
+                        <div class="contenedor_120 contenedor_140" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia;?>')"> 
+                        </div>
                         <?php
                     } 
                     else{  ?>
-                        <div class="contenedor_120" style="background-image: url('http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia;?>')"> 
+                        <div class="contenedor_120" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia;?>')"> 
                         </div>
-                        <!-- <div class="contenedor_120" style="background-image: url('http://www.pedidoremoto.com/public/images/tiendas/<?php echo $Fotografia;?>')"> 
-                        </div>-->
-                    <?php
+                        <?php
                     }   ?>
                     <div>
                         <p class="p_3"><?php echo $Nombre?></p>

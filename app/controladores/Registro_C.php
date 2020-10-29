@@ -1,11 +1,11 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
-
     class Registro_C extends Controlador{
 
         public function __construct(){            
             $this->ConsultaRegistro_M = $this->modelo("Registro_M");  
+
+            //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
+            ocultarErrores();
         }
         
         //Siempre cargara el metodo por defecto sino se pasa un metodo especifico

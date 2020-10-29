@@ -1,17 +1,8 @@
-<?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
-    
+<?php    
 //se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
-    
-    require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
-
-    //Sesion creada en Cuenta_C/Publicar
-    $Seccion = $_SESSION['Seccion'];
-
-    if(!empty($Seccion)){   ?>        
+      ?>        
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
         
@@ -22,23 +13,23 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
         <div class="contenedor_42">    
             <p class="p_6">Carga un producto</p>
-            <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" ><!--onsubmit = "return validarPublicacion()"-->
+            <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
                 <div class="contenedor_47">
                     <div class="contenedor_129 borde_1 borde_2">
                         <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                        <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="../../public/images/imagen.png"/>
+                        <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                         <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                     </div>        
                     <div>
-                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto"  id="ContenidoPro" placeholder="Producto"  tabindex="1"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto" id="ContenidoPro" placeholder="Producto"  tabindex="1" onkeydown="blanquearInput('ContenidoPro')"/>
                         <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
 
-                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2" onkeydown="blanquearInput('ContenidoDes')"/>
                         <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
 
-                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3" onkeydown="blanquearInput('Precio')"/>
                         <br>
-                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4"/>
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
                         
                         <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
                         <div id="Contenedor_80"></div>
@@ -74,19 +65,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
             </form>
         </div>
         <!-- <p>No haz clasificado tu tienda en alguna categoria, ve a configurar y añade una o hasta tres categorias, tambien debes generar las secciones donde se organizaras los productos que cargues al mostrador.</p> -->
-        <?php
-    } 
-    else{    ?>
-        <section class="section_4 section_10"  id="Ejemplo_Secciones">
-            <div class="contenedor_24 contenedor_118">
-                    <p class="p_6">Antes de cargar productos, debes configurar los datos de tu tienda, ve a "Configuración" y llena el formulario de registro, luego si podras comenzar a organizar tus productos y ofrecerlos al público en general.</p>
-                <div class="contenedor_87">
-                    
-                <a class="label_21 boton" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Cerrar</a>
-                </div>
-            </div>
-        </section>  <?php
-    }   ?>
 
     <!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->    
     <div id="Contenedor_80"></div>

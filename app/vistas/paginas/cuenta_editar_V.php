@@ -34,104 +34,117 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
     <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
         <h1 class="h1_8">Configurar cuenta</h1>   
-        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return ValidarEditarCuenta()">
+        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarDatosTienda()">
 
             <!-- PERSONA RESPONSABLE -->
             <a id="marcador_01" class="ancla_2"></a>
             <fieldset class="fieldset_1">
-                <legend class="legend_1">Persona responsable</legend>                    
-                <!-- <div class="contenedor_119 borde_1 borde_2">
-                    <label for="imgInp_1"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah_1" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/perfiles/<?php echo $Foto_AfiCom;?>"/>
-                    <input class="ocultar" type="file" name="imagen_EditarProducto" id="imgInp_1"/>
-                </div> -->
-                <label class="">Nombre responsable tienda</label>
-                <input class="input_13 borde_1" type="text" name="nombre_Afcom" id="Nombre" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off">
+                <legend class="legend_1">Persona responsable</legend> 
 
+                <label>Nombre responsable tienda</label>
+                <input class="input_13 borde_1" type="text" name="nombre_Afcom" id="Nombre_Aficom" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Aficom')"/>
+                
                 <label>Apellido responsable tienda</label>
-                <input class="input_13 borde_1" type="text" name="apellido_Afcom" id="Apellido"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="apellido_Afcom" id="Apellido_Aficom"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off" onkeydown="blanquearInput('Apellido_Aficom')"/>
+               
                 <label>Cedula responsable tienda</label>
-                <input class="input_13 borde_1" type="text" name="cedula_Afcom" id="Cedula"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off" onkeydown="blanquearInput('Cedula_Aficom')"/>
+                
                 <label>Telefono responsable tienda</label>
-                <input class="input_13 borde_1" type="text" name="telefono_Afcom" id="Telefono"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" onkeydown="blanquearInput('Telefono_Aficom')"/>
+                
                 <label>Correo responsable tienda</label>
-                <input class="input_13 borde_1" type="text" name="correo_Afcom" id="Correo" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="correo_Afcom" id="Correo_Aficom" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off">
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
 
             <!-- SECCION DATOS TIENDA -->
             <a id="marcador_02" class="ancla_2"></a>
-            <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
+            <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Datos de tienda</legend> 
                 <div class="contenedor_119 borde_1 borde_2">
                     <label for="imgInp_2"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah_2" alt="Fotografia de la tienda"      src="../public/images/tiendas/<?php echo $Foto_Tien;?>"/>
+                    <img class="imagen_6" id="blah_2" alt="Fotografia de la tienda" src="../public/images/tiendas/<?php echo $Foto_Tien;?>"/>
                     <input class="ocultar" type="file" name="imagen_Tienda" id="imgInp_2"/>
                 </div>
                 <br>
                 <label>Nombre tienda</label>
-                <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre" value="<?php echo $Nombre_Tien;?>" autocomplete="off">
+                <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre_Tien" value="<?php echo $Nombre_Tien;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Tien')"/>
 
                 <label>Telefono tienda</label>
-                <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono" value="<?php echo $Telefono_Tien;?>" autocomplete="off" require/>
+                <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" onkeydown="blanquearInput('Telefono_Tien')"//>
 
                 <label>Slogan tienda (opcional)</label>
                 <input class="input_13 input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off">
                 <input class="contador_2" type="text" id="ContadorSlo" value="40"/>
                 
-                <div id="Label_13">
-                    <div class="contenedor_80">
-                        <label class="label_16">Categoria</label>
-                        <!-- <span class="icon-circle-down span_10"></span> -->
-                    </div>
+                <!-- SECCION DATOS DE UBICACIÓN -->
+                <label>Datos de ubicación</label>
+                <br>
+
+                <label>Estado</label>
+                <br>
+                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado_Tien" value="<?php echo 'Yaracuy';?>" autocomplete="off" readonly= "readoly" onkeydown="blanquearInput('Estado_Tien')"/>
+
+                <label>Municipio</label>
+                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio_Tien" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly" onkeydown="blanquearInput('Municipio_Tien')"/>                
+
+                <label>Parroquia</label>
+                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia_Tien" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly" onkeydown="blanquearInput('Parroquia_Tien')"/>                
+
+                <label>Dirección</label>
+                <textarea class="textarea_4 borde_1 " name="direccion_com" id="Direccion_Tien" onkeydown="blanquearInput('Direccion_Tien')"/><?php echo $Direccion_Tien;?></textarea> 
+                <input class="contador_2" type="text" id="ContadorSlo" value="50"/>
+            </fieldset>
+
+            <!-- SECCION CATEGORIAS Y SECCIONES --> 
+            <a id="marcador_03" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
+                <legend class="legend_1">Categoria - Secciones</legend>
+                <div>
+                    <p class="p_12">Una categoria clasificará tu tienda en un rubro especifico, puedes seleccionar una o dos</p>
                     <?php
-                    if($Datos['categoria'] == Array ( )){   ?>                    
-                        <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" readonly="readonly" autocomplete="off">    <?php
+                    if($Datos['categoria'] == Array ( )){   ?>                                            
+                        <div id="Label_13">
+                            <div class="contenedor_80">
+                                <label>Categoria</label>
+                                <span class="icon-circle-down span_10 span_12_js"></span> 
+                            </div>
+                            <br id="Referencia_2">
+                        </div>
+                        <br>
+                        <?php
                     }
                     else{
                         foreach($Datos['categoria'] as $row){
                             $Categoria =  $row['categoria'];
                             ?>
-                            <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off">
+                            <div id="Label_13">
+                                <div class="" id="Contenedor_80js">
+                                    <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off" onkeydown="blanquearInput('Imput_6js')"/>
+                                    <!-- <span class="icon-circle-down span_10 span_12_js"></span>  -->
+                                    <div id="Referencia_2"></div>                                
+                                    <span></span><!-- span de rellenar para pasar la validacion de categoria-->   
+                                </div>
+                                
+                            </div>
                             <?php
                         } 
                     } ?>
                 </div>
 
-                <!-- SECCION DATOS DE UBICACIÓN -->
-                <label id="Ref_Ubicacion">Datos de ubicación</label>
-                <br>
-
-                <label>Estado</label>
-                <br>
-                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado" value="<?php echo 'Yaracuy';?>" autocomplete="off" readonly= "readoly">
-
-                <label>Municipio</label>
-                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly">                
-
-                <label>Parroquia</label>
-                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly">                
-
-                <label>Dirección</label>
-                <textarea class="textarea_4 borde_1 " name="direccion_com" id="Direccion"><?php echo $Direccion_Tien;?></textarea> 
-            </fieldset>
-
-            <!-- SECCION SECCIONES --> 
-            <a id="marcador_03" class="ancla_2"></a>
-            <fieldset class="fieldset_1 fieldset_2">
-                <legend class="legend_1">Secciones</legend>
                 <div id="Contenedor_79">
                     <p class="p_12">Organiza tú tienda en secciones, y dentro de estas coloca tus productos, añade tantas como consideres necesario para que tus productos esten bien organizados. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
-                        <div class="contenedor_80" id="Contenedor_80">
-                            <input class="input_13 input_12 borde_1" type="text" name="seccion[]" placeholder="Indica una sección"/>
+                        <div class="contenedor_80" id=""><!--Contenedor_80-->
+                            <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección"/>
                             <span class="icon-cancel-circle span_10 span_12_js" onclick="preEliminarSeccion('span_12_js')"></span>
                         </div>
                         <?php
@@ -142,7 +155,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $ID_Seccion = $row['ID_Seccion'];
                             ?>
                             <div class="contenedor_80" id="Contenedor_80">
-                                <input class="input_13 input_12 borde_1" type="text" name="seccion[]" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
+                                <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
                                 <span class="icon-cancel-circle span_10 span_12_js" onclick="preEliminarSeccion('span_12_js'); Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>')"></span>
                             </div>
                             <?php
@@ -175,43 +188,60 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Cuentas bancarias</legend>
                 <div id="Contenedor_69">
-                    <span>Los pagos de los pedidos realizados se depositan directamente a tus cuentas bancarias, agrega todas las que tengas disponibles para que los usuarios tengan opciones, los pedidos pagados en cuentas de otros bancos causan una demora de 24 hrs en el despacho del pedido para que verifiques la transferencia.</span>
-                    <!-- Entra en el IF cuando no hay secciones creadas -->
-                    <?php
-                    if($Datos['datosBancos'] == Array ( )){  ?>
-                        <div class="contenedor_67 borde_1" id="Contenedor_67">
-                            <!-- onclick="preEliminarSeccion('span_13_js')" -->
-                            <span class="icon-cancel-circle span_10 span_14 span_13_js" onclick="preEliminarSeccion('span_13_js')"></span>
-                            <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Banco" placeholder="Banco" autocomplete="off">
-                            <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular de la cuenta" placeholder="Titular"  autocomplete="off">
-                            <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NumeroCuenta" placeholder="Numero de cuenta" autocomplete="off">
-                            <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="Rif" placeholder="RIF"  autocomplete="off">
-                        </div> 
+                    <span>Los pagos de los pedidos realizados a tu tienda se depositan directamente a tus cuentas bancarias por medio de transferencias o pago movil, los pedidos pagados por transferencia de cuentas de otros bancos causan una demora de 48 hrs en el despacho del pedido para que verifiques la transferencia.</span>
+                    <br>
+                    <label>Información para recibir pagos por transferencia</label>
+                    <br>
+                    <div id="Mostrar_CuentaBancaria">
+                        <!-- Entra en el IF cuando no hay secciones creadas -->
                         <?php
-                    }
-                    else{
-                        foreach($Datos['datosBancos'] as $row){
-                           $BancoNombre =  $row['bancoNombre'];
-                           $BancoCuenta = $row['bancoCuenta']; 
-                           $BancoTitular = $row['bancoTitular'];
-                           $BancoRif = $row['bancoRif'];
-                           $ID_Banco = $row['ID_Banco'];
-                           ?>
-                           <div class="contenedor_67 borde_1" id="Contenedor_67">
+                        if($Datos['datosBancos'] == Array ( )){  ?>
+                            <div class="contenedor_67 borde_1" id="Contenedor_67">
+                                <!-- onclick="preEliminarSeccion('span_13_js')" -->
                                 <span class="icon-cancel-circle span_10 span_14 span_13_js" onclick="preEliminarSeccion('span_13_js')"></span>
-                               <label class="">Banco</label>
-                               <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
-                               <label class="">Titular</label>
-                               <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular de la cuenta" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
-                               <label class="">Número cuenta</label>
-                               <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NumeroCuenta" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
-                               <label class="">RIF</label>
-                               <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="Rif"  value="<?php echo $BancoRif;?>" autocomplete="off">
-                           </div>
+
+                                <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" placeholder="Banco" autocomplete="off" onkeydown="blanquearInput('Nombre_Banco')">
+
+                                <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off" onkeydown="blanquearInput('Titular_Banco')">
+
+                                <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off" onkeydown="blanquearInput('NroCuenta_Banco')">
+
+                                <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off" onkeydown="blanquearInput('RIF_Banco')">
+                            </div> 
                             <?php
                         }
-                    }  ?>
-                <label class="label_4 label_24" id="Label_4">Añadir cuenta bancaria</label>
+                        else{
+                            foreach($Datos['datosBancos'] as $row){
+                            $BancoNombre =  $row['bancoNombre'];
+                            $BancoCuenta = $row['bancoCuenta']; 
+                            $BancoTitular = $row['bancoTitular'];
+                            $BancoRif = $row['bancoRif'];
+                            ?>
+                            <div class="contenedor_67 borde_1" id="Contenedor_67">
+                                    <span class="icon-cancel-circle span_10 span_14 span_13_js" onclick="preEliminarSeccion('span_13_js')"></span>
+                                <label>Banco</label>
+                                <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Banco')"/>
+                                <label>Titular</label>
+                                <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off" onkeydown="blanquearInput('Titular_Banco')"/>
+                                <label>Número cuenta</label>
+                                <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"  onkeydown="blanquearInput('NroCuenta_Banco')"/>
+                                <label>RIF</label>
+                                <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"  onkeydown="blanquearInput('RIF_Banco')"/>
+                            </div>
+                                <?php
+                            }
+                        }  ?>                        
+                        <label class="label_4 label_24" id="Label_4">Añadir cuenta bancaria</label>
+                    </div>
+                    <br><br>
+                    <label>Información para recibir pagos por pagomovil</label>
+                    <div id="Mostrar_PagoMovil">
+                        <div class="contenedor_67 borde_1">
+                            <label class="">Número pago movil</label>
+                            <input class="input_13 input_9JS borde_1" type="text" name="pagoMovil[]" id="PagoMovil"  value="" autocomplete="off">
+                            <label class="label_4 label_24" id="Label_7">Añadir número pago movil</label>
+                        </div>
+                    </div>
             </fieldset>   
             
             <!-- HORARIO -->
@@ -240,11 +270,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
             </fieldset>  -->
 
-            <section class="" id="Contenedor_83">
+            <section id="Contenedor_83">
                 <div class="contenedor_83 borde_1">
                     <a class="marcador" href="#marcador_01">Persona responsable</a>
                     <a class="marcador" href="#marcador_02">Datos de tienda</a>
-                    <a class="marcador" href="#marcador_03">Secciones</a>
+                    <a class="marcador" href="#marcador_03">Categoria - Secciones</a>
                     <!-- <a class="marcador" href="#marcador_04">Ofertas</a> -->
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas bancarias</a>
@@ -254,15 +284,17 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input class="boton boton_6 boton_7" type="submit" value="Guardar cambios"/>
                     </div>          
                     <div class="contenedor_45">
-                        <input type="checkbox" class="label_25" id="Recordar" name="recordar" value="1">
-                        <label class="label_19 label_25" for="Recordar">Mostrar tienda al publico.</label>
+                        <input type="checkbox" id="Publicar" name="publicar" value="1" onclick="llamar_publicarTienda()" <?php //if($CategoriaT == $Categoria){echo "checked = 'checked'";};?>
+                        />
+                        <label class="label_19" for="Publicar">Mostrar tienda al publico.</label>
+                        <div id="Mostrar_tienda"></div>
                     </div> 
                 </div>
             </section> 
         </form>
     </div>
 
-    <!--div alimentado via Ajax por medio de la funcion () -->
+    <!--div alimentado via Ajax por medio de la funcion Llamar_categorias() -->
     <div id="Mostrar_Categorias"></div>
 
     <!-- la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->

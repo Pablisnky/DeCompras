@@ -1,7 +1,5 @@
 <!-- Archivo invocado desde Carrito_C-->
 
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido_tablaMovil.css"/>
-
 <section class="section_4">
     <div class="contenedor_24 contenedor_25">
         <h1 class="h1_1 h1_9 ">Tu orden</h1>
@@ -43,7 +41,7 @@
             </div>
         </div>
         <div class="contenedor_26" id="Contenedor_26">
-            <label class="boton boton_1 boton_9" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar <br> orden</label>
+            <label class="boton boton_1 boton_9" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar <br class="br_2"> orden</label>
             <label class="boton boton_1 boton_9" onclick="ocultarPedido()">Regresar a mostrador</label>
         </div>
     </div>
@@ -72,8 +70,7 @@
 
                         <!-- TELEFONO -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="telefono" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario'); valida_LongitudTelefono()"
-                            onkeyup="mascaraTelefono(this.value)"/>
+                            <input class="input_13 borde_1" type="text" name="telefono" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')"/>
                         </div>
 
                         <!-- DIRECCION -->
@@ -88,27 +85,38 @@
                         <input type="radio" name="pago" id="Transferencia" onclick="verTransferenciaBancaria()">
                         <label class="label_12" for="Transferencia">Transferencia bancaria</label>
                         <br class="br_2"/>
+
                         <input type="radio" name="pago" id="PagoMovil" onclick="verPagoMovil()">
                         <label class="label_12" for="PagoMovil">Pago movil</label>                        <div class="contenedor_60" id="Contenedor_60a">
                             <ul class="ul_1">
                                 <li class="li_1">Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</li>
                                 <li class="li_1">Transferencias de otros bancos dejan el despacho en espera 24 horas, una vez confirmado se le notificara al despachador para que realize la entrega.</li>
                             </ul>
-                            <div class= "contenedor_136">
-                                <div>
-                                    <p class="p_13">Titular</p>
-                                    <p class="p_13">Cedula/RIF</p>
-                                    <p class="p_13">Banco</p>
-                                    <p class="p_13">Nº cuenta</p>
-                                </div>
-                                <div>
-                                    <p class="p_14">Comercial La 13 C.A</p>
-                                    <p class="p_14">023433432323</p>
-                                    <p class="p_14">Banco Mercantil</p>
-                                    <p class="p_14">01234567891012112131415</p>
-                                </div>
-                            </div>
-                            <input class="placeholder input_11" type="text" name="registro_Pago" placeholder="Código transferencia"/>
+                            <?php
+                                // $Datos viene de Carrito_C/index
+                                foreach($Datos as $row):                                     
+                                    $Banco = $row['bancoNombre'];
+                                    $Cuenta = $row['bancoCuenta'];
+                                    $Titular = $row['bancoTitular'];
+                                    $Rif = $row['bancoRif']; ?>
+                                    <div class= "contenedor_136">
+                                        <div class="contenedor_138">
+                                            <p class="p_13">Titular</p>
+                                            <p class="p_13">Cedula/RIF</p>
+                                            <p class="p_13">Banco</p>
+                                            <p class="p_13">Nº cuenta</p>
+                                        </div>
+                                        <div>
+                                            <p class="p_14"><?php echo $Banco;?></p>
+                                            <p class="p_14"><?php echo $Cuenta;?></p>
+                                            <p class="p_14"><?php echo $Titular;?></p>
+                                            <p class="p_14"><?php echo $Rif;?></p>
+                                        </div>
+                                    </div>
+                                    <?php
+                                endforeach;
+                            ?>
+                            <input class="placeholder input_11" type="text" name="registro_Pago" id="RegistroPago" placeholder="Código transferencia o pagomovil"/>
                         </div>
                     </div>
                     <div class="contenedor_65">

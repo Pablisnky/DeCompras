@@ -33,11 +33,12 @@
                 $Precio = number_format($Precio, 0, ",", ".");  ?>          
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                     <div class="contenedor_9">
-                        
                         <!-- IMAGEN -->
-                        <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel?>','<?php echo $Nombre_Tienda?>','<?php echo $Slogan_Tienda?>','<?php echo $ID_Tienda?>','<?php echo $Producto?>','<?php echo $Opcion?>','<?php echo  $Precio?>','<?php echo $Fotografia?>','<?php echo $ID_Producto?>')">
+                        <!-- se colocan el caracter | para usarlo como separardor en Opciones_C/productoAmpliado debido a que el usuario puede usar comas o punto y comas en el texto de opciones o del producto.  -->
+                        <?php $Separador = '|' ;?>
+                        <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo  $Precio.$Separador?>','<?php echo $Fotografia.$Separador?>','<?php echo $ID_Producto?>')">
                             <figure class="figure_1">
-                                <img class="imagen_6" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>" onclick="imagenAmpliado('<?php echo $Fotografia;?>')"/>
+                                <img class="imagen_6" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
                             </figure>
                         </div>
                     </div>
@@ -65,7 +66,7 @@
                             <?php        
                                 foreach($Datos['variosCaracteristicas'] as $AA) :
                                     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                        <label class="input_8 input_10" onclick="mostrarDetalles('<?php echo $ContadorLabel?>','<?php echo $Nombre_Tienda?>','<?php echo $Slogan_Tienda?>','<?php echo $ID_Tienda?>','<?php echo $Producto?>','<?php echo $Opcion?>','<?php echo  $Precio?>','<?php echo $Fotografia?>','<?php echo $ID_Producto?>')">Ampliar detalles</label>
+                                        <label class="input_8 input_10" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo  $Precio.$Separador?>','<?php echo $Fotografia.$Separador?>','<?php echo $ID_Producto?>')">Ampliar detalles</label>
                                         <?php
                                         break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
                                     }                                        

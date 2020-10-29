@@ -14,9 +14,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
 <section class="section_5">	
-    <div class="contenedor_109" style="background-image: url('http://localhost/proyectos/PidoRapido/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')">
-    </div>
-    <!-- <div class="contenedor_109" style="background-image: url('http://www.pedidoremoto.com/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')"> -->
+    <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')">
     </div>
     <div class="contenedor_110" id="Section_4">
         <?php
@@ -28,11 +26,8 @@
             <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
                 <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')"> 
                     <div class="contenedor_9 borde_1">
-                        <img class="imagen_2" alt="Fotografia del producto" src="http://localhost/proyectos/PidoRapido/public/images/imagen.png"/>
+                        <img class="imagen_2" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                     </div>  
-                   <!--  <div class="contenedor_9 borde_1">
-                        <img class="imagen_2" alt="Fotografia del producto" src="http://www.pedidoremoto.com/public/images/imagen.png"/> 
-                    </div>-->
                     <h2 class="h2_6"><?php echo $Seccion;?></h2>
                 </div>
 
@@ -43,9 +38,9 @@
         }
         ?>
     </div>
-    <!-- Se muestra el carrito de compras en el fondo del viewport-->
+    <!-- Se muestra el boton de carrito de compras en el fondo del viewport-->
     <div class="contenedor_61" id="Contenedor_61">
-        <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito()">
+        <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
             <div class="contenedor_31">
                 <span class="icon-cart span_2"></span>
                 <input type="text" class="input_5" id="Input_5" readonly="readondly"/>

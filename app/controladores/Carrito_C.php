@@ -1,28 +1,24 @@
 <?php
-//Archivo llamado desde Funciones_Ajax.js por medio de llamar_PedidoEnCarrito()
-
+    //Archivo llamado desde A_Vitrina.js por medio de llamar_PedidoEnCarrito()
     class Carrito_C extends Controlador{
 
         public function __construct(){
             $this->ConsultaCarrito_M = $this->modelo("Carrito_M");
+
+            //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
+            ocultarErrores();
         }
     
-        //Cargado desde Funciones_Ajax.js por medio de llamar_PedidoEnCarrito()
-        public function index(){   
-            //SELECT que contien el producto y el precio
-            // $Pedido = $this->ConsultaCarrito_M->consultarPedido($PedidoCarrito);   
-            // $Datos = $Pedido->fetchAll(PDO::FETCH_ASSOC);
-
-            //Se obtiene la cantidad de cada producto(pero por ID_Opcon se debe transformar ese Id en nombre de producto)
-
-            // echo "<br><br>";
-            // print_r($PedidoCarrito);
-            // $PedidoCarrito = explode(",", $PedidoCarrito);            
-            // $Valores = array_count_values($PedidoCarrito);
-            // print_r($Valores);
+        //Invocado desde A_Vitrina.js
+        public function index($ID_Tienda){  
+            //SELECT para buscar información de cuentas bancarias de la tienda
+            $Datos = $this->ConsultaCarrito_M->consultarCtaBanco($ID_Tienda); 
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";            
+            // exit();
             
-
-            $this->vista("paginas/carrito_V");
+            $this->vista("paginas/carrito_V", $Datos);
         }        
     }
 ?>    
