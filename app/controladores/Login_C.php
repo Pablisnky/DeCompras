@@ -125,7 +125,8 @@
                         
                         //CONSULTA si existe al menos una sección donde cargar productos
                         $Cant_Seccion = $this->ConsultaLogin_M->consultarSecciones($ID_Tienda);
-                        echo "Registros encontrados: " . $Cant_Seccion;
+                        // echo "Registros encontrados: " . $Cant_Seccion;
+
                           
                         //Se crea la sesiones que se exige en todas las páginas de su cuenta            
                         $_SESSION["ID_Tienda"] = $ID_Tienda;
@@ -140,12 +141,15 @@
                         $_SESSION["Nombre"] = $Nombre;
     
                         // Se verifica a donde se redirecciona segun la condición de la tienda
-                        if($Cant_Seccion == 0){
+                        if($Cant_Seccion == 0){//Sino hay seccion creada
                             header("location:" . RUTA_URL . "/Modal_C/tiendaSinSecciones"); 
                         }
-                        else{
+                        else if($Publicar == 0){//Si hay seccion creada sin producto
+                            header("location:" . RUTA_URL . "/Modal_C/tiendaSinProductos"); 
+                        }   
+                        else{//Si hay seccion creada con producto
                             header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos"); 
-                        }         
+                        }      
                     }
                     else{ 
                         header("location:" . RUTA_URL . "/Modal_C/loginIncorrecto");
@@ -172,8 +176,7 @@
                     else{ 
                         header("location:" . RUTA_URL . "/Modal_C/loginIncorrecto");
                     } 
-                }
-                     
+                }                     
             }   
         }
         

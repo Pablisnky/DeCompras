@@ -1,14 +1,15 @@
 <?php 
-    // header('Access-Control-Allow-Origin:*');
-    // if($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    //     // Indica los métodos permitidos.
-    //     header('Access-Control-Allow-Methods: GET, POST, DELETE');
-    //     // Indica los encabezados permitidos.
-    //     header('Access-Control-Allow-Headers: Authorization');
-    // }
     //$Datos proviene de Vitrina_C
     $ID_Tienda = $Datos['id_tienda'] ;
-    $Fotografia = $Datos['fotografia']; 
+    $Fotografia = $Datos['fotografia'];
+
+    //  Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
+    //$Datos proviene de Vitrina_C
+    if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C
+        ?> 
+        <div style="background-color: rgb(239, 245, 245); height: 100%; width: 100%; position: absolute;top: 0%; left: 0%" id='Tapa_1'></div>
+        <?php
+    }
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
@@ -66,10 +67,10 @@
 <?php// require(RUTA_APP . '/vistas/inc/footer.php');  ?>
 
 
-<!-- Si viene de buscador se realiza el procedimiento para cargar al carrito el producto seleccionado y colocar la leyenda en la vista opcion_V.php y vitrina_V.php -->
+<!-- Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
 <?php
     //$Datos proviene de Vitrina_C
-    if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C 
+    if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C         
         $SeccionSelecionada = $Datos['Seccion'];
         $OpcionSeleccionada = $Datos['Opcion']; 
 
@@ -80,7 +81,7 @@
         foreach($Datos['seccion'] as $row){
             $Seccion = $row['seccion'];  ?>
             <script>
-                //Se busca el contenedor que corresponde con la sección del producto seleccionado
+                //Se busca el contenedor que corresponde con la sección del producto seleccionado y se entra en los productos que contiene
                 if('<?php echo $SeccionSelecionada == $Seccion?>'){
                     verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $SeccionSelecionada?>')
                     llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $SeccionSelecionada;?>','<?php echo $OpcionSeleccionada?>')

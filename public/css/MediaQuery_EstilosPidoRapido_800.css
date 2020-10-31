@@ -257,8 +257,9 @@
 	text-align: center;
 }
 .contenedor_51{/*inicio - ciudad*/
-	width: 90%;
-	margin-left: 5%;
+	width: 100%;
+	margin-left: 0%;
+	top: 70%;
 }
 .contenedor_52{/*header_AfiCom*/
 	top: 0%;
@@ -478,7 +479,7 @@
 .contenedor_117{/*cuenta_productos*/
 	margin-top: 5%;
 }
-.contenedor_118{/*categorias_Ajax - cuenta_publicar*/
+.contenedor_118{/*categorias_Ajax - cuenta_publicar - modalXXXX - */
 	margin-top: 20%;
 	padding: 3%;
 }
@@ -602,8 +603,8 @@
 	font-size: 0.6em;
 }
 .h3_2{/*inicio*/
-	padding-top: 140%;
 	font-size: 1.4em;
+	padding-top: 5%;
 }
 .h3_9{/*cuenta_productos*/
 	font-size: 0.8em;
@@ -774,8 +775,8 @@
 }
 .menuResponsive{/*Todas las páginas*/
 	padding-top: 0%;
-	width:48%; 
-	margin-left: -48%;/*oculta el menu responsive*/
+	width: 60%; 
+	margin-left: -60%;/*oculta el menu responsive*/
 	transition: all 0.5s;
 	position: initial;
 }
@@ -789,14 +790,14 @@
 	margin-top: 0%;
 }
 .menuResponsive li{/*Todas las páginas*/
-	height: 40px;
+	height: 55px;
 	padding-top: 5%;
 	width: 100%;
 	flex-grow: 1;/*distribuye proporcionalmente los elementos internos en el eje horizontal, es necesario que el elemento padre tenga la propiedad display con el valor flex*/
 }
 .menuResponsive li a{/*header*/
 	color: var(--OficialOscuro);
-	font-size: 1.2em;
+	font-size: 1.5em;
 	width: 100%;
 	text-align: left;
 	padding-left: 5%;

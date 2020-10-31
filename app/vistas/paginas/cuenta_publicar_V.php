@@ -35,27 +35,30 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div id="Contenedor_80"></div>
                         
                         <br>
-
-                        <label class="label_7" onclick="AmpliarDescripcion()">Ampliar información (Opcional)<span class="icon-circle-down span_10"></span></label>
+                        <div class="contenedor_80" onclick="AmpliarDescripcion()">
+                            <label class="label_7">Ampliar información (Opcional)</label>
+                            <span class="icon-circle-down span_10"></span>
+                        </div>
                             <br>
                             <br>
                         <div class="contenedor_128" id="Contenedor_128">  
                             
-                            <!-- SECCION CARACTERISTICAS -->
-                            <div id="Contenedor_82" class="">
-                                <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica del producto (Opcional)"/>
-                                <br>
-                            </div>
-                            <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
+                        <!-- SECCION CARACTERISTICAS -->
+                        <div id="Contenedor_82" class="">
+                            <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica del producto (Opcional)"/>
                             <br>
+                        </div>
+                        <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
+                        <br>
 
-                            <!-- SECCION IMAGEN SECUNDARIA -->
-                            <div class="contenedor_130" id="muestrasImg_2"></div>  
+                        <!-- SECCION IMAGEN SECUNDARIA -->
+                        <div class="contenedor_130" id="muestrasImg_2"></div>  
                             <p class="p_5">Añada hasta 5 fotografias no mayor a 2Mb</p>
 
                             <label class="label_5 label_23" for="ImgInp_2" id="ioo">Añadir imagen</label>
                             <input class="ocultar" type="file" name="imagenes[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/>  
-                        </div>                        
+                        </div>     
+
                         <div class="contenedor_49 contenedor_81">
                             <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
                             <input class="boton" type="Submit" value="Guardar" tabindex="5"/>
@@ -64,9 +67,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
             </form>
         </div>
-        <!-- <p>No haz clasificado tu tienda en alguna categoria, ve a configurar y añade una o hasta tres categorias, tambien debes generar las secciones donde se organizaras los productos que cargues al mostrador.</p> -->
+        
 
-    <!-- div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó en su cuenta  -->    
+    <!--div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó previamente -->    
     <div id="Contenedor_80"></div>
 
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 

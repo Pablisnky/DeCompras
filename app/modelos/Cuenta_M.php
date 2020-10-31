@@ -325,6 +325,21 @@
                 return false;
             }
         }
+        
+        //SELECT de las cuentas de pagomovil de una tienda especifica
+        public function consultarCuentasPagomovil($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT banco_pagomovil, cuenta_pagomovil FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                //Se envia información de cuantos registros se vieron afectados por la consulta
+                return  $stmt->fetchAll(PDO::FETCH_ASSOC);;
+            }
+            else{
+                return false;
+            }
+        }
 
 
 
@@ -549,6 +564,13 @@
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
             $stmt->execute();          
         }
+                
+        //DELETE de cuentas bancarias 
+        public function eliminarPagoMovil($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
 
 
 
@@ -599,7 +621,7 @@
 
         //UPDATE de los datos de LA TIENDA
         public function actualizarTienda($ID_AfiliadoCom, $RecibeDatos){
-            $stmt = $this->dbh->prepare("UPDATE tiendas SET nombre_Tien = :NOMBRE_TIEN, direccion_Tien = :DIRECCION_TIEN, telefono_Tien = :TELEFONO_TIEN, slogan_Tien = :SLOGAN_TIEN, publicar = :PUBLICAR WHERE ID_AfiliadoCom = :AFILIADO");
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET nombre_Tien = :NOMBRE_TIEN, direccion_Tien = :DIRECCION_TIEN, telefono_Tien = :TELEFONO_TIEN, slogan_Tien = :SLOGAN_TIEN WHERE ID_AfiliadoCom = :AFILIADO");
 
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':NOMBRE_TIEN', $RecibeDatos['Nombre_com']);
@@ -607,7 +629,6 @@
             $stmt->bindValue(':TELEFONO_TIEN', $RecibeDatos['Telefono_com']);
             $stmt->bindValue(':SLOGAN_TIEN', $RecibeDatos['Slogan_com']);
             $stmt->bindValue(':AFILIADO', $ID_AfiliadoCom);
-            $stmt->bindValue(':PUBLICAR', 1);
 
             //Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
@@ -723,14 +744,14 @@
                 return false;
             }
         }
-        
+                
         //UPDATE de la fotografia de la tienda
-        public function actualizarStatusTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("UPDATE tiendas SET publicar = :PUBLICAR WHERE ID_Tienda = :ID_TIENDA ");
+        public function ActualizarSeccion($Seccion, $ID_Seccion){
+            $stmt = $this->dbh->prepare("UPDATE secciones SET seccion = :SECCION WHERE ID_Seccion = :ID_SECCION ");
 
             // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
-            $stmt->bindValue(':PUBLICAR', 1);
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion);
+            $stmt->bindValue(':SECCION', $Seccion );
 
             // Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
@@ -740,14 +761,14 @@
                 return false;
             }
         }
-        
-        //UPDATE de la fotografia de la tienda
-        public function ActualizarSeccion($Seccion, $ID_Seccion){
-            $stmt = $this->dbh->prepare("UPDATE secciones SET seccion = :SECCION WHERE ID_Seccion = :ID_SECCION ");
+                
+        //UPDATE del campo publicar (autoriza a publicar la tienda en el catalogo de tiendas)
+        public function actualizarTiendaPublicar($ID_Tienda){
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET publicar = :PUBLICAR WHERE ID_Tienda = :ID_TIENDA ");
 
             // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_SECCION', $ID_Seccion);
-            $stmt->bindValue(':SECCION', $Seccion );
+            $stmt->bindValue(':PUBLICAR', 1);
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
 
             // Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
@@ -862,7 +883,7 @@
         public function insertarSeccionesTienda($ID_Tienda, $Seccion){ 
             //Debido a que $Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo    
             foreach($Seccion as $key){
-                echo $key . "<br>";
+                // echo $key . "<br>";
                 $stmt = $this->dbh->prepare("INSERT INTO secciones(ID_Tienda, seccion) VALUES(:ID_TIENDA, :SECCION)");
 
                 //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
@@ -973,7 +994,7 @@
             $stmt->execute();
         }
 
-        // INSERT de cuenta bancaria
+        //INSERT de cuenta bancaria
         public function insertarCuentaBancaria($ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif){
             $stmt = $this->dbh->prepare("INSERT INTO bancos(ID_Tienda, bancoNombre, bancoCuenta, bancoTitular, bancoRif, fecha, hora)VALUES (:ID_TIENDA, :BAN_NOMBRE, :BAN_CUENTA, :BAN_TITULAR, :BAN_RIF, CURDATE(), CURTIME())");
             
@@ -987,7 +1008,20 @@
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
         }
-        
+
+        //INSERT de cuenta pagomovil
+        public function insertarPagoMovil($ID_Tienda, $BancopagoMovil, $CuentapagoMovil){
+            $stmt = $this->dbh->prepare("INSERT INTO pagomovil(ID_Tienda, banco_pagomovil, cuenta_pagomovil, fecha, hora)VALUES (:ID_TIENDA, :BANCO_PAGOMOVIL, :CUENTA_PAGOMOVIL, CURDATE(), CURTIME())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':BANCO_PAGOMOVIL', $BancopagoMovil);
+            $stmt->bindParam(':CUENTA_PAGOMOVIL', $CuentapagoMovil);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        }
+
         // //INSERT de las caracteristicas de un producto especifico
         // public function insertarCaracteristicas($ID_Tienda, $ID_Producto, $Caracteristica){
         //     //Debido a que $Caracteristica es un array con varios elemento se hace un recorrido de cada uno para actualizar en cada vuelta

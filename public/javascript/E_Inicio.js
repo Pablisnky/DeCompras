@@ -1,3 +1,56 @@
+///Escucha por medio de delegación de eventos, para no hacer un listener por cada click en cada contenedor, de esta manera se sabe automaticamente en que contenedor especifico se hizo click,(EL PROBLEMA ES QUE TARDA EN CARGAR) 
+// window.addEventListener('click', function(e){
+//     Elementos = document.getElementsByClassName("contenedor_6")
+//     Cant_Elementos = Elementos.length
+//     // console.log("Cantidad de categorias:", Cant_Elementos)
+//     // console.log("Click sobre:", e.target.classList)  
+//     //NOTA:No se puede obtener directamente el id del elemento "contenedor_6" porque tiene hijos y al hacer click sobre estos devuelve el id de los mismos, por lo tanto se busca el id del elemento padre para asi obtener el id del contenedor de la categoria
+//     // console.log("ID elemento click:", e.target.parentNode.id)
+//     //Se especifica sobre cuales elementos se puede hacer click para entrar en la categoria seleccionada
+//     if(e.target.classList[1] == "span_8" || e.target.classList == "h2_1"){
+//         for(i = 0; i < Cant_Elementos; i++){
+//             // console.log("CLick efectivo en",e.target.parentNode.id)
+//             //Encontrar el elemento donde se hizo click y colocar la función al evento onclick del elemento.
+//             Elementos[i].onclick = VerTiendas(e.target.parentNode.id)
+//         }
+//     }
+// }, false);
+
+//DE ESTA MANERA SE TENDRIA QUE LLAMAR A CADA CATEGORIA PERO LA APLICACIÓN RESPONDE MAS RAPIDO
+document.getElementById("Comida_Rapida").addEventListener('click', function(){VerTiendas('Comida_Rapida')}, false)
+
+document.getElementById("Mascotas").addEventListener('click', function(){VerTiendas('Mascotas')}, false)
+
+document.getElementById("Repuesto_automotriz").addEventListener('click', function(){VerTiendas('Repuesto_automotriz')}, false)
+
+document.getElementById("Bodega").addEventListener('click', function(){VerTiendas('Bodega')}, false)
+
+document.getElementById("Material_Medico_Quirurgico").addEventListener('click', function(){VerTiendas('Material_Medico_Quirurgico')}, false)
+
+document.getElementById("Ropa_Zapato").addEventListener('click', function(){VerTiendas('Ropa_Zapato')}, false)
+
+document.getElementById("Artesania").addEventListener('click', function(){VerTiendas('Artesania')}, false)
+
+document.getElementById("Farmacia").addEventListener('click', function(){VerTiendas('Farmacia')}, false)
+
+document.getElementById("Ferreteria").addEventListener('click', function(){VerTiendas('Ferreteria')}, false)
+
+document.getElementById("Panaderia").addEventListener('click', function(){VerTiendas('Panaderia')}, false)
+
+document.getElementById("Licores").addEventListener('click', function(){VerTiendas('Licores')}, false)
+
+document.getElementById("Relojes").addEventListener('click', function(){VerTiendas('Relojes')}, false)
+
+document.getElementById("Deportes").addEventListener('click', function(){VerTiendas('Deportes')}, false)
+
+document.getElementById("Floristeria").addEventListener('click', function(){VerTiendas('Floristeria')}, false)
+
+document.getElementById("Construccion").addEventListener('click', function(){VerTiendas('Construccion')}, false)
+
+document.getElementById("Telefonos").addEventListener('click', function(){VerTiendas('Telefonos')}, false)
+
+document.getElementById("Papeleria").addEventListener('click', function(){VerTiendas('Papeleria')}, false)
+
 document.getElementById("Contenedor_88").addEventListener('click', transicionTiendas, false)
 
 document.getElementById("Contenedor_34").addEventListener('click', muestraBusqueda, false)
@@ -6,14 +59,6 @@ document.getElementById("Contenedor_34").addEventListener('click', muestraBusque
 document.getElementById("Contenedor_34").addEventListener('click', function(){autofocus('Input_9')}, false)
                               
 document.getElementById("Span_5").addEventListener('click', function(){CerrarModal_X('Busqueda')})
-
-document.getElementById("Contenedor_6a").addEventListener('click', function(){VerTiendas('Comida_Rapida')})
-                              
-document.getElementById("Contenedor_6m").addEventListener('click', function(){VerTiendas('Mascotas')})
-
-document.getElementById("Contenedor_6r").addEventListener('click', function(){VerTiendas('Repuesto_automotriz')})
-
-document.getElementById("Contenedor_6b").addEventListener('click', function(){VerTiendas('Ropa_Zapato')})
 
 // *****************************************************************************************************
     //Muestra la posicion en pantalla por medio de coordenadas
@@ -27,9 +72,9 @@ document.getElementById("Contenedor_6b").addEventListener('click', function(){Ve
     }
 
 // *****************************************************************************************************
-//Abre en la misma ventana las tiendas que pertenecen a una categoria
+    //Abre en la misma ventana las tiendas que pertenecen a una categoria
     function VerTiendas(Tiendas){
-        console.log("_____Desde VerTiendas()_____")
+        console.log("_____Desde VerTiendas()_____", Tiendas)
         window.open(`Tiendas_C/index/${Tiendas}`,"_self")
     }
 

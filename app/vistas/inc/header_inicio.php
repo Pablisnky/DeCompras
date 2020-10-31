@@ -29,7 +29,7 @@
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
-		<link rel="manifest" href="<?php echo RUTA_URL;?>/manifest.json"/>
+		<!-- <link rel="manifest" href="<?php echo RUTA_URL;?>/manifest.json"/> -->
     </head>
     <body>				
 		<header class="contenedor_69 contenedor_116">

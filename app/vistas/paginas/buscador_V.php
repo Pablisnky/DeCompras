@@ -13,6 +13,7 @@
                 <label class="label_9"><?php echo $Producto;?></label>
                 <label class="label_9"><?php echo $Opcion;?></label>
                 <hr class="hr_3"/>
+                <h3 class="h3_9">Lo consigues en:</h3>
                 <label class="label_9 label_10"><?php echo $Tienda;?></label>
             </div>
             <?php        

@@ -466,28 +466,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        //Si el div tiene solo dos elemento no se ha agregado ninguna categoria
-        else if(Categoria.childElementCount < 3){
-            alert("Necesita introducir al menos una categoría")
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')            
-            return false;
-        }
-        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20 || P_Letras.test(Seccion) == false){
-            alert ("Necesita introducir al menos una Seccion")
-            document.getElementById("Seccion").value = ""
-            document.getElementById("Seccion").focus()
-            document.getElementById("Seccion").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
         else if(Estado == "" || Estado.indexOf(" ") == 0 || Estado.length > 20 || P_Letras.test(Estado) == false){
             alert ("Necesita introducir el estado")
             document.getElementById("Estado_Tien").value = ""
@@ -536,6 +514,28 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
+        //Si el div tiene solo dos elemento no se ha agregado ninguna categoria
+        else if(Categoria.childElementCount < 4){
+            alert("Necesita introducir al menos una categoría")
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')            
+            return false;
+        }
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20 || P_Letras.test(Seccion) == false){
+            alert ("Necesita introducir al menos una Seccion")
+            document.getElementById("Seccion").value = ""
+            document.getElementById("Seccion").focus()
+            document.getElementById("Seccion").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
         else if(Nombre_Banco == "" && PagoMovil == ""){
             alert ("Introduzca información de medios de pago")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
@@ -545,55 +545,60 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 20){
-            alert ("Necesita introducir el nombre del banco")
-            document.getElementById("Nombre_Banco").value = ""
-            document.getElementById("Nombre_Banco").focus()
-            document.getElementById("Nombre_Banco").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
+
+        if(Nombre_Banco != ""){
+            if(Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 20){
+                alert ("Necesita introducir el nombre del banco")
+                document.getElementById("Nombre_Banco").value = ""
+                document.getElementById("Nombre_Banco").focus()
+                document.getElementById("Nombre_Banco").style.backgroundColor = "var(--Fallos)"
+                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                document.getElementsByClassName("boton")[0].disabled = false
+                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                return false;
+            }
+            else if(Titular_Banco == "" || Titular_Banco.indexOf(" ") == 0 || Titular_Banco.length > 20){
+                alert ("Necesita introducir el titular de la cuenta bancaria")
+                document.getElementById("Titular_Banco").value = ""
+                document.getElementById("Titular_Banco").focus()
+                document.getElementById("Titular_Banco").style.backgroundColor = "var(--Fallos)"
+                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                document.getElementsByClassName("boton")[0].disabled = false
+                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                return false;
+            }
+            else if(NroCuenta_Banco == "" || NroCuenta_Banco.indexOf(" ") == 0 || NroCuenta_Banco.length > 25 || (isNaN(NroCuenta_Banco))){
+                alert ("Introduzca el número de la cuenta bancaria")
+                document.getElementById("NroCuenta_Banco").value = ""
+                document.getElementById("NroCuenta_Banco").focus()
+                document.getElementById("NroCuenta_Banco").style.backgroundColor = "var(--Fallos)"
+                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                document.getElementsByClassName("boton")[0].disabled = false
+                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                return false;
+            }
+            else if(RIF_Banco == "" || RIF_Banco.indexOf(" ") == 0 || RIF_Banco.length > 30){
+                alert ("Necesita introducir el RIF/cedula del titular de la cuenta bancaria")
+                document.getElementById("RIF_Banco").value = ""
+                document.getElementById("RIF_Banco").focus()
+                document.getElementById("RIF_Banco").style.backgroundColor = "var(--Fallos)"
+                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                document.getElementsByClassName("boton")[0].disabled = false
+                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                return false;
+            }
         }
-        else if(Titular_Banco == "" || Titular_Banco.indexOf(" ") == 0 || Titular_Banco.length > 20){
-            alert ("Necesita introducir el titular de la cuenta bancaria")
-            document.getElementById("Titular_Banco").value = ""
-            document.getElementById("Titular_Banco").focus()
-            document.getElementById("Titular_Banco").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
-        else if(NroCuenta_Banco == "" || NroCuenta_Banco.indexOf(" ") == 0 || NroCuenta_Banco.length > 25 || (isNaN(NroCuenta_Banco))){
-            alert ("Introduzca el número de la cuenta bancaria")
-            document.getElementById("NroCuenta_Banco").value = ""
-            document.getElementById("NroCuenta_Banco").focus()
-            document.getElementById("NroCuenta_Banco").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
-        else if(RIF_Banco == "" || RIF_Banco.indexOf(" ") == 0 || RIF_Banco.length > 30){
-            alert ("Necesita introducir el RIF/cedula del titular de la cuenta bancaria")
-            document.getElementById("RIF_Banco").value = ""
-            document.getElementById("RIF_Banco").focus()
-            document.getElementById("RIF_Banco").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
-        else if(PagoMovil.indexOf(" ") == 0 || PagoMovil.length > 14 || (isNaN(PagoMovil))){
+
+        if(PagoMovil != ""){
+            if(PagoMovil.indexOf(" ") == 0 || PagoMovil.length > 14 || (isNaN(PagoMovil))){
             alert ("Introduzca un Telefono para pago movil")
             document.getElementById("PagoMovil").value = ""
             document.getElementById("PagoMovil").focus()
@@ -604,5 +609,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
+            }
         }
     }

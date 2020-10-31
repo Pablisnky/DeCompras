@@ -115,15 +115,15 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
     }
 
 //************************************************************************************************
-    //Valida el formulario
+    //Valida el formulario de cargar producto
     function validarPublicacion(){
         console.log("______Desde validarPublicacion()______")
 
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
-        // let Especificacion = document.getElementById('ContenidoEsp').value 
+        let ImagenPrin = document.getElementById('imgInp').value 
         let Precio = document.getElementById('Precio').value 
-        let Seccion = document.getElementById('SeccionPublicar').value   
+        let Seccion = document.getElementById('SeccionPublicar').value 
         
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
@@ -134,7 +134,20 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
         //Patron de entrada solo acepta letras
         let P_Numeros = /^[0-9]*$/
 
-        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 70){
+        //Patron de entrada para archivos de carga permitidos
+        var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
+        
+        if(Ext_Permitidas.exec(ImagenPrin) == false || ImagenPrin.size > 20000){
+            alert("Introduzca una imagen con extención .jpeg .jpg .png menor a 20 Mb")
+            document.getElementById("imgInp").value = "";
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 70){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
@@ -158,15 +171,6 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        // else if(Especificacion == "" || Especificacion.indexOf(" ") == 0 || Especificacion.length > 20){
-        //     alert ("Introduzca una Especificacion")
-        //     document.getElementById("ContenidoEsp").value = ""
-        //     document.getElementById("ContenidoEsp").focus()
-            // document.getElementById("ContenidoEsp").style.backgroundColor = "var(--Fallos)"
-        //     document.getElementsByClassName("boton")[0].value = "Guardar"
-        //     document.getElementsByClassName("boton")[0].disabled = false
-        //     return false;
-        // }
         else if(Precio == "" || Precio.indexOf(" ") == 0 || Precio.length > 20 || P_Numeros.test(Precio) == false){
             alert ("Introduzca un Precio, (Solo números)")
             document.getElementById("Precio").value = ""

@@ -7,7 +7,9 @@
 		<meta name="description" content="Ventas por internet a pedido"/>
 		<meta name="keywords" content="pedido, despacho, compra"/>
 		<meta name="author" content="Pablo Cabeza"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<meta name="MobileOptimized" content="width"/>
 		<meta name="HandheldFriendly" content="true"/>
 		<meta http-equiv="expires" content="12 de julio de 2020"/>

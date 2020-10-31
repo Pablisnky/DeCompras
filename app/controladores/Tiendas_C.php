@@ -19,10 +19,34 @@
                 break;    
                 case 'Ropa_Zapato':
                     $Categoria = 'Zapatería';   
+                break;     
+                case 'Material_Medico_Quirurgico':
+                    $Categoria = 'Material Médico Quirúrgico';   
+                break;    
+                case 'Relojes':
+                    $Categoria = 'Joyas y relojería';   
+                break;
+                case 'Panaderia':
+                    $Categoria = 'Panadería';   
+                break;
+                case 'Artesania':
+                    $Categoria = 'Arte';   
+                break;
+                case 'Ferreteria':
+                    $Categoria = 'Ferretería';   
+                break;
+                case 'Floristeria':
+                    $Categoria = 'Floristería';   
+                break;
+                case 'Construccion':
+                    $Categoria = 'Construcción';   
+                break;
+                case 'Papeleria':
+                    $Categoria = 'Papelería';   
                 break;  
             }
             
-            //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada
+            //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas
             $Tiendas = $this->ConsultaTienda_M->consultarTiendas($Categoria);
             $Datos = $Tiendas->fetchAll(PDO::FETCH_ASSOC);            
             // echo "<pre>";
@@ -30,6 +54,7 @@
             // echo "</pre>";
             // exit();
 
+            $this->vista("inc/header", $Datos);
             $this->vista("paginas/tiendas_V",$Datos);
         }
     }

@@ -86,6 +86,8 @@ function respuesta_Opciones(){
             window.scroll(0, 0)
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
             
+            document.getElementById("Tapa_1").style.display = "none"
+            
             //Se consulta el alto de la página vitrina, este tamaño varia segun las secciones que tenga un tienda
             AltoVitrina = document.body.scrollHeight
 

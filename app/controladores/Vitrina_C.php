@@ -1,5 +1,4 @@
 <?php
-//Archivo llamado desde funcionesVarias.js por medio de vitrina()
     class Vitrina_C extends Controlador{
 
         public function __construct(){

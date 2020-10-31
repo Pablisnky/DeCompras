@@ -1,12 +1,9 @@
-<?php include(RUTA_APP . '/vistas/inc/header_inicio.php');  ?>
-
     <section class="section_1" id="Section_1">
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
             <!-- <h2 class="h2_4">solicitudes desde casa</h2> -->
             <h2 class="h2_4">MarketPlace</h2>
         </div>
-        <h3 class="h3_2" id="H3_3">Tu tienda en toda la ciudad</h3>
         <!-- <p class="p_8">Unete a nuestra red de comercialización de productos.</p> -->
         <div class="contenedor_51" id="Contenedor_51">
             <div>
@@ -18,14 +15,17 @@
             <div>
                 <span class="icon-home2 span_6"></span>
             </div>
+            <div>
+                <h3 class="h3_2" id="H3_3">Tu tienda en toda la ciudad</h3>
+            </div>
         </div>
         <div class="contenedor_88" id="Contenedor_88">
             <label class="a_2" id="Tiendas">Tiendas</label>
         </div>
     </section>
     <section id="Section_2js">
-        <div class='contenedor_4'>
-            <div class='contenedor_6 borde_1' id="Contenedor_6a">
+        <div class='contenedor_4' id="Contenedor_4">
+            <div class='contenedor_6 borde_1' id="Comida_Rapida">
                 <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
                 <span class="icon-spoon-knife span_8"></span>                  
                 <div class="contenedor_106">
@@ -46,7 +46,7 @@
                 </div>
             </div> 
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6m">
+            <div class='contenedor_6 borde_1' id="Mascotas">
                 <h2 class='h2_1'>MASCOTAS</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6r">
+            <div class='contenedor_6 borde_1' id="Repuesto_automotriz">
                 <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
                 <span class="icon-man-woman span_8"></span>                 
                     <div class="contenedor_106">
@@ -80,7 +80,7 @@
                     </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_">
+            <div class='contenedor_6 borde_1' id="Bodega">
                 <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
                 <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_">
+            <div class='contenedor_6 borde_1' id="Material_Medico_Quirurgico">
                 <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6b">
+            <div class='contenedor_6 borde_1' id="Ropa_Zapato">
                 <h2 class='h2_1'>ROPA Y ZAPATO</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
@@ -131,14 +131,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6d">
-                <h2 class='h2_1'>ARTESANOS Y EMPRENDEDORES</h2>
+            <div class='contenedor_6 borde_1' id="Artesania">
+                <h2 class='h2_1'>ARTE Y LITERATURA</h2>
                 <span class="icon-pen span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 7){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -148,14 +148,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6f">
+            <div class='contenedor_6 borde_1' id="Farmacia">
                 <h2 class='h2_1'>FARMACIA Y SALUD</h2>
                 <span class="icon-aid-kit span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 12){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -165,14 +165,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6g">
+            <div class='contenedor_6 borde_1' id="Ferreteria">
                 <h2 class='h2_1'>FERRETRÍA Y HOGAR</h2>
                 <span class="icon-hammer span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 6){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -182,14 +182,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6h">
+            <div class='contenedor_6 borde_1' id="Panaderia">
                 <h2 class='h2_1'>PANADERÍA</h2>
                 <span class="icon-spoon-knife span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 5){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -199,14 +199,14 @@
                 </div>
             </div> 
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6i">
+            <div class='contenedor_6 borde_1' id="Licores">
                 <h2 class='h2_1'>LICORES</h2>
                 <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 13){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -216,14 +216,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6j">
+            <div class='contenedor_6 borde_1' id="Relojes">
                 <h2 class='h2_1'>JOYAS Y RELOJERÍA</h2>
                 <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 9){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -233,14 +233,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6k">
+            <div class='contenedor_6 borde_1' id="Deportes">
                 <h2 class='h2_1'>DEPORTES</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 14){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -250,14 +250,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6l">
+            <div class='contenedor_6 borde_1' id="Floristeria">
                 <h2 class='h2_1'>FLORISTERÍA Y DECORACIÓN</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 15){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -267,14 +267,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6n">
+            <div class='contenedor_6 borde_1' id="Construccion">
                 <h2 class='h2_1'>CONSTRUCCIÓN</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 16){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -284,14 +284,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6o">
+            <div class='contenedor_6 borde_1' id="Telefonos">
                 <h2 class='h2_1'>TELEFONOS Y COMPUTADORAS</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 17){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -301,14 +301,14 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6p">
+            <div class='contenedor_6 borde_1' id="Papeleria">
                 <h2 class='h2_1'>PAPELERÍA Y OFICINA</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
-                                if($arr['ID_Categoria'] == 0){  
+                                if($arr['ID_Categoria'] == 18){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -318,7 +318,7 @@
                 </div>
             </div>
 
-            <div class='contenedor_6 borde_1' id="Contenedor_6q">
+            <div class='contenedor_6 borde_1' id="Juguetes">
                 <h2 class='h2_1'>JUGUETES Y ACCESORIOS PARA NIÑOS</h2>
                 <span class="icon-man-woman span_8"></span>                 
                 <div class="contenedor_106">

@@ -60,22 +60,20 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <?php
                     } ?>
                     <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $Contador;?>">
+                            <!-- IMAGEN PRINCIPAL -->
                         <div class="contenedor_9">
-                            <div class="contenedor_97">
+                            <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/productos/<?php echo $Fotografia;?>')">
                                 <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
-                                <figure>
-                                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
-                                </figure>
                             </div>
                         </div>
                         <div>
-                            <!-- Producto -->
+                            <!-- PRODUCTO -->
                             <input class="input_8" type="text" value="<?php echo $Producto;?>" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>"/>
 
-                            <!-- Opcion -->
+                            <!-- OPCION -->
                             <input class="input_8" type="text" value="<?php echo $Opcion;?>" readonly="readonly" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>"/>
 
-                            <!-- Especificacion -->
+                            <!-- ESPECIFICACION -->
                             <?php                  
                                 foreach($Datos['variosCaracteristicas'] as $AA) :
                                     if($AA['ID_Producto'] == $ID_Producto){  ?>

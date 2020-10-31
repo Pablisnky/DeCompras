@@ -81,9 +81,6 @@
                 //Se desglosa el valor para que sea solo igual el valor "1"
                 // $Notificacion = $Notificacion[0]['notificacion'];
 
-                //ACTUALIZA el estatus de la notificacion de una tienda con el valor = 1
-                $this->ConsultaCuenta_M->actualizarStatusTienda($this->ID_Tienda);
-
                 $Seccion  = 'Todos';
             }
             else{
@@ -145,6 +142,9 @@
             //CONSULTA los datos de cuentas bancarias de la tienda
             $DatosBancos = $this->ConsultaCuenta_M->consultarBancosTienda($this->ID_Tienda);
 
+            //CONSULTA los datos de cuentas pagmovil de la tienda
+            $DatosPagoMovil = $this->ConsultaCuenta_M->consultarCuentasPagomovil($this->ID_Tienda);
+
             //CONSULTA las categorias en la que la tienda esta registrada
             $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTIenda($this->ID_Tienda);
             $Categoria = $Consulta->fetchAll(PDO::FETCH_ASSOC);
@@ -157,11 +157,11 @@
             $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
             $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-
             $Datos = [
                 'datosTienda' => $DatosTienda,
                 'datosResposable' => $DatosResposable,
                 'datosBancos' => $DatosBancos,
+                'datosPagomovil' => $DatosPagoMovil,
                 'categoria' => $Categoria,
                 'secciones' => $Secciones,
                 'slogan' => $Slogan
@@ -411,31 +411,62 @@
             // echo "</pre>";
             // exit();
             
-            // DATOS BANCARIOS
+            //INFORMACION DE PAGOS
             // ********************************************************            
             //Se ELIMINAN todas las cuentas bancarias
             $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
+                     
+            // Se ELIMINAN todas las cuentas de pagomovil
+            $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
 
-            foreach(array_keys($_POST['banco']) as $key){
-                if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
-                ){
-                    $Banco = $_POST['banco'][$key];
-                    $Titular = $_POST['titular'][$key];
-                    $NumeroCuenta = $_POST['numeroCuenta'][$key];
-                    $Rif = $_POST['rif'][$key];
-                    
-                    //Se INSERTA la cuenta bancaria
-                    $this->ConsultaCuenta_M->insertarCuentaBancaria($this->ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif);
+            if($_POST['banco'] == "" && $_POST['cuentapagoMovil'] == ""){
+                echo "Ingrese datos de pagos";
+                echo "<br>";
+                echo "<a href='javascript:history.back()'>Regresar</a>";
+                exit();
+            }
+            else{
+                // DATOS BANCARIOS
+                foreach(array_keys($_POST['banco']) as $key){
+                    if(!empty($_POST['BANCO'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
+                    ){
+                        $Banco = $_POST['banco'][$key];
+                        $Titular = $_POST['titular'][$key];
+                        $NumeroCuenta = $_POST['numeroCuenta'][$key];
+                        $Rif = $_POST['rif'][$key];
+                        
+                        //Se INSERTA la cuenta bancaria
+                        $this->ConsultaCuenta_M->insertarCuentaBancaria($this->ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif);
+                    }
+                    // else{
+                    //     echo "Ingrese datos bancarios completos";
+                    //     echo "<br>";
+                    //     echo "<a href='javascript:history.back()'>Regresar</a>";
+                    //     exit();
+                    // }
                 }
-                else{
-                    echo "Ingrese datos bancarios completos";
-                    echo "<br>";
-                    echo "<a href='javascript:history.back()'>Regresar</a>";
-                    exit();
+                
+                // ******************************************************** 
+                // DATOS PAGOMOVIL  
+                foreach(array_keys($_POST['cuentapagoMovil']) as $key){
+                    if(!empty($_POST['cuentapagoMovil'][$key]) || !empty($_POST['bancopagoMovil'][$key])){
+                        $CuentapagoMovil = $_POST['cuentapagoMovil'][$key];
+                        $BancopagoMovil = $_POST['bancopagoMovil'][$key];
+                        
+                        //Se INSERTA la cuenta de CuentapagoMovil
+                        $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $BancopagoMovil, $CuentapagoMovil);
+                    }
+                    // else{
+                    //     echo "Ingrese datos pagoMovil";
+                    //     echo "<br>";
+                    //     echo "<a href='javascript:history.back()'>Regresar</a>";
+                    //     exit();
+                    // }
                 }
             }
             // echo "Todos los campos estan llenos";
             // exit();
+
             // **********************************************************************************
             //Todo este procedimiento debe ser por medio de TRANSACCIONES
             // ***************************************print_r*******************************************
@@ -458,7 +489,7 @@
             //Se INSERTAN la dependencia transitiva entre las secciones y la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
             $this->ConsultaCuenta_M->insertarDT_TieSec($this->ID_Tienda, $ID_Seccion);
 
-            //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado
+            //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado, el registro de la tienda fue creado cuando el afiliado creo la tienda
             $this->ConsultaCuenta_M->actualizarAfiliadoComercial($this->ID_Afiliado, $RecibeDatos);
 
             //Se ACTUALIZAN los datos de la tienda, el registro de la tienda fue creado cuando el afiliado creo la tienda
@@ -586,7 +617,6 @@
             //Se INSERTA la opcion y precio del producto en la BD y se retorna el ID recien insertado
             $ID_Opcion = $this->ConsultaCuenta_M->insertarOpcionesProducto($RecibeProducto);
 
-
             if($_POST['caracteristica'][0] != ""){
                 //Se INSERTAN las caracteristicas del producto
                 $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $Caracteristica);
@@ -605,9 +635,12 @@
             //Se INSERTA la dependenciatransitiva entre secciones y los productos
             $this->ConsultaCuenta_M->insertarDT_SecPro($ID_Seccion, $ID_Producto);
 
+            //Se ACTUALIZA el campo "publicar en la tabla "tiendas", para que la tienda comience a aparecer en el catalogo de tiendas
+            $this->ConsultaCuenta_M->actualizarTiendaPublicar($RecibeProducto['ID_Tienda']);
+
             //SECCION IMAGEN PRINCIPAL
             // ********************************************************
-            // Si se selecionó alguna nueva imagen entra
+            //Si se selecionó alguna imagen entra
             if($_FILES['foto_Producto']["name"] != ""){
                 $nombre_imgProducto = $_FILES['foto_Producto']['name'];
                 $tipo = $_FILES['foto_Producto']['type'];
@@ -623,8 +656,8 @@
                 // if(($nombre_imgProducto == !NULL) AND ($tamaño <= 7000000)){
                 //     //indicamos los formatos que permitimos subir a nuestro servidor
                 //indicamos los formatos que permitimos subir a nuestro servidor
-                //     if (($_FILES["foto_Producto"]["type"] == "image/jpeg")
-                //         || ($_FILES["foto_Producto"]["type"] == "image/jpg") || ($_FILES["foto_Producto"]["type"] == "image/png") || ($_FILES["imagen"]["type"] == "image/jpeg")){
+                //     if(($_FILES["foto_Producto"]["type"] == "image/jpeg")
+                //         || ($_FILES["foto_Producto"]["type"] == "image/jpg") || ($_FILES["foto_Producto"]["type"] == "image/png")){
 
                 //         //Ruta donde se guardarán las imágenes que subamos la variable superglobal
                 //         //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
@@ -934,7 +967,7 @@
             $this->Editar();
         }
 
-        //Invocado desde cuenta_editar_V.php
+        //Invocado en cuenta_editar_V.php autoriza si la tienda se suspende o se publica en el catalogo de tiendas
         public function publicarTienda(){            
             $Consulta = $this->ConsultaCuenta_M->consultaPermisoPublicar($this->ID_Tienda);
             // echo "<pre>";

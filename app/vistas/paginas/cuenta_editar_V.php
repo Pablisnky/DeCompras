@@ -4,7 +4,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
-    // echo "<br><br><br>";
+    // echo "<br><br><br><br><br>";
     // echo "<pre>";
     // print_r($Datos);
     // echo "</pre>";
@@ -108,13 +108,17 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div>
                     <p class="p_12">Una categoria clasificará tu tienda en un rubro especifico, puedes seleccionar una o dos</p>
                     <?php
+                    //Entra en el IF cuando no hay categorias creadas
                     if($Datos['categoria'] == Array ( )){   ?>                                            
                         <div id="Label_13">
-                            <div class="contenedor_80">
-                                <label>Categoria</label>
-                                <span class="icon-circle-down span_10 span_12_js"></span> 
+                            <div id="Contenedor_80js" style="margin-bottom: 5%;">
+                                <div class="contenedor_80">
+                                    <label>Categoria</label>
+                                    <span class="icon-circle-down span_10 span_12_js"></span>
+                                </div>                              
+                                <span></span><!-- span de rellenar para pasar la validacion de categoria-->   
+                                <div id="Referencia_2"></div>
                             </div>
-                            <br id="Referencia_2">
                         </div>
                         <br>
                         <?php
@@ -124,9 +128,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $Categoria =  $row['categoria'];
                             ?>
                             <div id="Label_13">
-                                <div class="" id="Contenedor_80js">
+                                <div class="contenedor_80" id="Contenedor_80js">
                                     <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off" onkeydown="blanquearInput('Imput_6js')"/>
-                                    <!-- <span class="icon-circle-down span_10 span_12_js"></span>  -->
+                                    <span class="icon-circle-down span_10 span_12_js"></span> 
                                     <div id="Referencia_2"></div>                                
                                     <span></span><!-- span de rellenar para pasar la validacion de categoria-->   
                                 </div>
@@ -193,7 +197,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <label>Información para recibir pagos por transferencia</label>
                     <br>
                     <div id="Mostrar_CuentaBancaria">
-                        <!-- Entra en el IF cuando no hay secciones creadas -->
+                        <!-- Entra en el IF cuando no hay cuentas bancarias creadas -->
                         <?php
                         if($Datos['datosBancos'] == Array ( )){  ?>
                             <div class="contenedor_67 borde_1" id="Contenedor_67">
@@ -212,35 +216,54 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         }
                         else{
                             foreach($Datos['datosBancos'] as $row){
-                            $BancoNombre =  $row['bancoNombre'];
-                            $BancoCuenta = $row['bancoCuenta']; 
-                            $BancoTitular = $row['bancoTitular'];
-                            $BancoRif = $row['bancoRif'];
-                            ?>
-                            <div class="contenedor_67 borde_1" id="Contenedor_67">
-                                    <span class="icon-cancel-circle span_10 span_14 span_13_js" onclick="preEliminarSeccion('span_13_js')"></span>
-                                <label>Banco</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Banco')"/>
-                                <label>Titular</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off" onkeydown="blanquearInput('Titular_Banco')"/>
-                                <label>Número cuenta</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"  onkeydown="blanquearInput('NroCuenta_Banco')"/>
-                                <label>RIF</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"  onkeydown="blanquearInput('RIF_Banco')"/>
-                            </div>
+                                $BancoNombre =  $row['bancoNombre'];
+                                $BancoCuenta = $row['bancoCuenta']; 
+                                $BancoTitular = $row['bancoTitular'];
+                                $BancoRif = $row['bancoRif'];
+                                ?>
+                                <div class="contenedor_67 borde_1" id="Contenedor_67">
+                                        <span class="icon-cancel-circle span_10 span_14 span_13_js" onclick="preEliminarSeccion('span_13_js')"></span>
+                                    <label>Banco</label>
+                                    <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Banco')"/>
+                                    <label>Titular</label>
+                                    <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off" onkeydown="blanquearInput('Titular_Banco')"/>
+                                    <label>Número cuenta</label>
+                                    <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"  onkeydown="blanquearInput('NroCuenta_Banco')"/>
+                                    <label>RIF</label>
+                                    <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"  onkeydown="blanquearInput('RIF_Banco')"/>
+                                </div>
                                 <?php
                             }
                         }  ?>                        
                         <label class="label_4 label_24" id="Label_4">Añadir cuenta bancaria</label>
                     </div>
                     <br><br>
-                    <label>Información para recibir pagos por pagomovil</label>
+                    <label>Información para recibir pagos por pagomovil</label>   
                     <div id="Mostrar_PagoMovil">
-                        <div class="contenedor_67 borde_1">
-                            <label class="">Número pago movil</label>
-                            <input class="input_13 input_9JS borde_1" type="text" name="pagoMovil[]" id="PagoMovil"  value="" autocomplete="off">
-                            <label class="label_4 label_24" id="Label_7">Añadir número pago movil</label>
-                        </div>
+                        <!-- Entra en el IF cuando no hay cuenta de pagomovil creadas -->
+                        <?php
+                        if($Datos['datosPagomovil'] == Array ( )){  ?>
+                            <div class="contenedor_67 borde_1">
+                                <label class="">Número pago movil</label>
+                                <input class="input_13 input_9JS borde_1" type="text" name="bancopagoMovil[]" id="BancoPagoMovil" value="" placeholder="Banco" autocomplete="off">
+                                <input class="input_13 input_9JS borde_1" type="text" name="cuentapagoMovil[]" id="PagoMovil"  value="" placeholder="Número telefonico" autocomplete="off">
+                            </div>
+                            <?php
+                        }
+                        else{
+                            foreach($Datos['datosPagomovil'] as $row)   :
+                                $BancoNombre =  $row['banco_pagomovil'];
+                                $BancoCuenta = $row['cuenta_pagomovil']; 
+                                ?>
+                                <div class="contenedor_67 borde_1">
+                                    <label class="">Número pago movil</label>
+                                    <input class="input_13 input_9JS borde_1" type="text" name="bancopagoMovil[]" id="BancoPagoMovil" value="<?php echo $BancoNombre?>" autocomplete="off">
+                                    <input class="input_13 input_9JS borde_1" type="text" name="cuentapagoMovil[]" id="PagoMovil" value="<?php echo $BancoCuenta?>" autocomplete="off">
+                                </div>
+                                <?php
+                            endforeach;
+                        }   ?>                        
+                        <label class="label_4 label_24" id="Label_7">Añadir número pago movil</label>
                     </div>
             </fieldset>   
             
