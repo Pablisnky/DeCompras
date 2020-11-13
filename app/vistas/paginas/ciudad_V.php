@@ -1,31 +1,24 @@
-<?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
+<?php include(RUTA_APP . '/vistas/inc/header.php'); ?>
+
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/casita/style_casita.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/camion/style_camion.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>		
 
-<section class="section_2">
-    <div class='contenedor_10 contenedor_74 '>
+<section class="section_5">
+    <div class='contenedor_146'>
+        <p class="p_6">Estamos iniciando operaciones, y lo hemos hecho en nuestro territorio</p>
+        <p class="p_6">( Venezuela estado Yaracuy )</p>
         <div class="contenedor_73 borde_1">
-            <h1 class="h1_3 h1_4">Miranda</h1>
-            <ul class="ul_2">
-                <li class="li_2">Los Teques</li>
+            <h1 class="h1_13">Yaracuy</h1>
+            <ul>
+                <li class="">Independencia</li>
+                <li class="">San Felipe</li>
+                <li class="">Yaritagua</li>
             </ul>
         </div>
-        <div class="contenedor_73 borde_1">
-            <h1 class="h1_3 h1_4">Carabobo</h1>
-            <ul class="ul_2">
-                <li class="li_2">Valencia</li>
-            </ul>
-        </div>
-        <div class="contenedor_73 borde_1">
-            <h1 class="h1_3 h1_4">Yaracuy</h1>
-            <ul class="ul_2">
-                <li class="li_2">San Felipe</li>
-                <li class="li_2">Yaritagua</li>
-            </ul>
-        </div>
+        <P class="p_6">proximamente nuestra oferta de ciudades será ampliada. </p>
     </div>
-    <div class="contenedor_51 contenedor_75">
+    <div class="contenedor_51 contenedor_145">
         <div>
             <span class="icon-cart span_6"></span>
         </div>
@@ -34,6 +27,9 @@
         </div>
         <div>
             <span class="icon-home2 span_6"></span>
+        </div>
+        <div>
+            <h3 class="h3_2" id="H3_3">Tu tienda en toda la ciudad</h3>
         </div>
     </div>
 </section>   

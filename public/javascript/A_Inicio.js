@@ -19,6 +19,8 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
                 alert("Instancia creada exitosamente")
             }     
         }
+
+//***********************************************************************************************
         
         if(nombre.length === ""){//sino hay nada escrito en el input de buscar, no se ejecuta ninguna accion
             divContenedor.innerHTML = ""
@@ -29,7 +31,7 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
                     divContenedor.innerHTML = xmlhttp.responseText
                 } 
                 else{ //en caso contrario, mostramos un gif simulando una precarga
-                    document.getElementById('Buscar_Pedido').innerHTML = 'Cargando registros...'; 
+                    document.getElementById('Buscar_Pedido').innerHTML ="<div class='preloder'></div>"                  
                     return   
                 }  
             }          

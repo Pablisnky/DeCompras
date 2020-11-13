@@ -81,13 +81,30 @@
             </div>
 
             <div class='contenedor_6 borde_1' id="Bodega">
-                <h2 class='h2_1'>BODEGAS Y SUPERMERCADOS</h2>
+                <h2 class='h2_1'>BODEGAS</h2>
                 <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 4){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
+            </div>
+
+            <div class='contenedor_6 borde_1' id="Minimarket">
+                <h2 class='h2_1'>MINIMARKET</h2>
+                <span class="icon-barcode span_8"></span>                 
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 3){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
                                 }
@@ -311,7 +328,7 @@
                                 if($arr['ID_Categoria'] == 18){  
                                     $Cantidad = $arr['cantidad']; 
                                     echo $Cantidad;
-                                }
+                                }                                
                             endforeach 
                         ?>
                     </span>
@@ -326,8 +343,7 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 0){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $Cantidad = $arr['cantidad'];
                                 }
                             endforeach 
                         ?>
@@ -362,12 +378,34 @@
                     <input class="placeholder borde_1" id="Input_9" type="text" placeholder="Ingrese un producto"/>
                 </div>
             </div>
+            
             <!--Carga mediante Ajax las tiendas disponibles para la busqueda solicitada desde buscador_V.php -->
             <div class="contenedor_58" id="Buscar_Pedido"></div>
         </div>
     </section>
 
+
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js';?>"></script>
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
+<!-- <script type="text/javascript" src ="<?php // echo RUTA_URL?>/public/javascript/push.min.js"></script>
+			
+<script>
+    window.onload = function(){
+        Push.Permission.request()
+    }
+
+    // Se crea la notifica pasando como parametro el titulo y objeto Json con varias propiedades
+    Push.create("NUEVO PEDIDO",{
+        body: "Un cliente va por un despacho. Ver orden de compra",
+        icon: '<?php // echo RUTA_URL?>/public/images/logo.png',
+        timeout: 7000,
+        vibrate: [100,100,100],
+        onClick: function(){
+            window.focus();//LLeva a la pagina que invoca la notificación en casode encontrarse en ella
+            this.close();//Cierra la notificación
+        }
+    });
+</script> -->
+
+<?php require(RUTA_APP . '/vistas/inc/footer.php'); ?>

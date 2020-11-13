@@ -15,6 +15,9 @@
             $ID_Producto = $Datos['ID_Producto'];
             $ID_LabelAgregar = $Datos['ID_EtiquetaAgregar'];
 ?>
+    <!-- Se carga el preloader -->
+    <div class='preloderTapa'><div class='preloder preloaderCentrar'></div></div>
+
     <section >
         <div class="contenedor_122"> 
             <div class="contenedor_123">
@@ -96,6 +99,11 @@
 <?php// include(RUTA_APP . "/vistas/inc/footer.php");   ?>
 
 <script>
+    //Aqui tambien se pudo usar una funcion IIEEF intentarlo de sa manera
+    window.onload = function (){
+        document.querySelector(".preloderTapa").style.display = "none"
+    }
+
     var textarea = document.querySelector('textarea');
     textarea.addEventListener('keydown', autosize);
     

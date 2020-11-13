@@ -28,8 +28,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_350.css"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
-		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
-		<!-- <link rel="manifest" href="<?php echo RUTA_URL;?>/manifest.json"/> -->
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>	
     </head>
     <body>				
 		<header class="contenedor_69 contenedor_116">
@@ -39,7 +38,13 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/afiliacion/Afiliaciones';?>">Afiliaciones</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Tiendas</a></li>
-					<!-- <li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/QueHacemos';?>">Nuestro ADN</a></li> -->
+					<li class="menuLi_1"><a href="#">Nuestro ADN</a>  
+						<ul class="menuContenedor_3">
+							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos';?>">Quíenes somos</a></li> 
+							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos#QueHacemos';?>">Qué hacemos</a></li>
+							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos#Contactenos';?>">Contactenos</a></li>
+						</ul>
+					</li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
 				</ul>
 			</nav>
@@ -57,6 +62,7 @@
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
 
-<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
-
+<!-- ******************************************************************************************* -->
+			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
+										<!-- HEADER -->
 <!-- ******************************************************************************************* -->

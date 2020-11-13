@@ -30,17 +30,18 @@
                     <li class="li_1">Indica el precio del producto</li>
                     <li class="li_1">El precio que muestre cada producto debe ser el precio con IVA, de modo que el usuario no encuentre sorpresas al final de la compra</li>
                     <li class="li_1">Carga una imagen principal del producto y luego imagenes adicionales si lo consideras necesario.</li>
-                    <li>Puedes añadir caracteristicas adicionales del producto ofrecido dnado click en "Ampliar especiicaciones"</li>
+                    <li class="li_1">Puedes añadir caracteristicas adicionales del producto ofrecido dnado click en "Ampliar especiicaciones"</li>
                 </ol>
             </div>
             <div class="contenedor_113">
                 <h2 class="h2_7">Recibir un pedido</h2>
                 <ol class="ol_1">    
-                    <li class="li_1">Cuando un usuario realice una compra en tu tienda, recibiras una notificación via whatsapp y una notificación en la aplicación, razón por la cual debes descargarla.</li>                                    
+                    <li class="li_1">Cuando un usuario realice una compra en tu tienda, recibiras una notificación en la aplicación.</li>                                    
                     <li class="li_1">Verificar una compra</li>
                     <li class="li_1">La notificación de compra contiene la información necesarias para identificar al comprador, el despachador, el pedido y el número de transferencia bancaria.</li>
                     <li class="li_1">Prepara el despacho</li>
                     <li class="li_1">Una vez verificado el pago de la compra, procede a armar el pedido para que el despachador o el cliente retiren el pedido.</li>
+                    <li>Una vez realices la entrega del producto al despachador y notifique la</li>
                 </ol>
             </div>
             <div class="contenedor_113">

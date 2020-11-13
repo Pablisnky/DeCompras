@@ -12,9 +12,5 @@
         public function index(){
             $this->vista("paginas/afiliacion_V");
         }
-
-        public function PWA(){
-            $this->vista("paginas/pwa_V");
-        }
     }
 ?>    

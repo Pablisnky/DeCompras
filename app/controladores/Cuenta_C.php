@@ -23,8 +23,8 @@
         // invocado desde el metodo recibeRegistroEditado() en este mismo archivo
         public function index(){
             //CONSULTA los productos de una sección en especifico según la tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //CONSULTA la imagen de la tienda
             $Consulta = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
@@ -99,8 +99,8 @@
             }
 
             //Se CONSULTAN las secciones de una tienda en particular
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //Se CONSULTAN el slogan de una tienda en particular
             $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
@@ -150,8 +150,8 @@
             $Categoria = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //CONSULTA las secciones de la tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //Se CONSULTAN el slogan de una tienda en particular
             $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
@@ -193,8 +193,8 @@
                 $Categorias = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 //CONSULTA las secciones que tiene una tienda
-                $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-                $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+                // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 //Se CONSULTAN el slogan de una tienda en particular
                 $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
@@ -211,6 +211,39 @@
             }
         }
 
+        public function ventas(){
+            //CONSULTA si existe al menos una sección donde cargar productos
+            $Cant_Seccion = $this->ConsultaCuenta_M->consultarSecciones($this->ID_Tienda);
+            // echo "Registros encontrados: " . $Cant_Seccion;
+            
+            //En el caso que no se haya configurado ninguna seccion o categoria
+            if($Cant_Seccion == 0){ 
+                redireccionar("/Modal_C/tiendaSinSecciones");
+            }
+            else{
+                //CONSULTA las categorias en las que una tienda se ha postulado
+                $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
+                $Categorias = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+                //CONSULTA las secciones que tiene una tienda
+                $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+                // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+                //Se CONSULTAN el slogan de una tienda en particular
+                $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+                $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+                $Datos = [
+                    'categorias' => $Categorias,
+                    'secciones' => $Secciones,
+                    'slogan' => $Slogan
+                ];
+
+                $this->vista("inc/header_AfiCom", $Datos);
+                $this->vista("paginas/cuenta_ventas_V", $Datos);
+            }
+        }        
+
         //Invocado desde cuenta_productos_V.php
         public function actualizarProducto($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Producto y la opcion separados por coma, se convierte en array para separar los elementos
@@ -221,8 +254,8 @@
             $Opcion = $DatosAgrupados[1];
 
             //CONSULTA los productos de una sección en especifico según la tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //CONSULTA las especiicaciones de un producto determinado y de una tienda especifica
             $Consulta = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
@@ -397,7 +430,7 @@
                     $Seccion = $_POST['seccion'];
                 }
                 //El array trae elemenos duplicados, se eliminan los duplicado
-                $Seccion = array_unique($Seccion);
+                $SeccionesRecibidas = array_unique($Seccion);
             }
             else{
                 echo "Ingrese al menos una sección";
@@ -407,7 +440,21 @@
             }
             // echo "Secciones recibidas";
             // echo "<pre>";
-            // print_r($Seccion);
+            // print_r($SeccionesRecibidas);
+            // echo "</pre>";
+
+            //Se CONSULTA las secciones existenete en BD
+            $SecccionesExistentes = $this->ConsultaCuenta_M->consultarSecciones_2($this->ID_Tienda);
+            // echo "Secciones existentes";
+            // echo "<pre>";
+            // print_r($SecccionesExistentes);
+            // echo "</pre>";
+
+            
+            $resultado = array_diff($SeccionesRecibidas, $SecccionesExistentes);
+            // echo "Secciones a insertar";
+            // echo "<pre>";
+            // print_r($resultado);
             // echo "</pre>";
             // exit();
             
@@ -527,8 +574,8 @@
         //Invocado desde A_Cuenta_editar.js entrega las secciones activas de una tienda
         public function Secciones($ID_Producto){
             //CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
             // echo "<pre>";
             // print_r($Seccion);
             // echo "</pre>";
@@ -560,8 +607,8 @@
         //Metodo invocado desde A_Cuenta_publicar.js
         public function SeccionesDisponibles(){
             // CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
                 'seccion' => $Seccion,
@@ -948,8 +995,7 @@
             // *************************************************************************************
             //La siguientes cuatro consultas entran en el procedimeinto para ELIMINAR una seccion de una tienda, esto debe hacerse mediante transacciones
             // *************************************************************************************
-            $Resultado_1 = $this->ConsultaCuenta_M->eliminarTiendasSecciones($ID_Seccion);
-            // echo "Registros eliminados: " . $Resultado_1;
+            $this->ConsultaCuenta_M->eliminarTiendasSecciones($ID_Seccion);
             $this->ConsultaCuenta_M->eliminarSeccionesProductos($ID_Seccion);
             $this->ConsultaCuenta_M->eliminarSeccionesOpciones($ID_Seccion);
             $this->ConsultaCuenta_M->eliminarSecciones($ID_Seccion);

@@ -37,6 +37,7 @@
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/ventas';?>">Ventas</a></li>
 					<li class="menuLi_1"><a>Productos</a>
 						<ul class="menuContenedor_2">
 							<?php
@@ -61,6 +62,7 @@
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
 
-<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
-
+<!-- ******************************************************************************************* -->
+			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
+										<!-- HEADER -->
 <!-- ******************************************************************************************* -->

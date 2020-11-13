@@ -18,7 +18,7 @@
         // exit();
 
         $Contador = 1;
-        foreach($Datos as $row){
+        foreach($Datos as $row) :
             $ID_Tienda = $row['ID_Tienda'];
             $Nombre = $row['nombre_Tien'];
             $Direccion = $row['direccion_Tien'];
@@ -53,7 +53,7 @@
             </section>
             <?php
             $Contador++;
-        }
+        endforeach;
         ?>
     </div>
 </section> 

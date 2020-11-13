@@ -28,7 +28,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <div class="contenedor_42">    
         <p class="p_6">Actualizar datos de producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">
-            <div class="contenedor_47">
+            <div class="contenedor_47" id="Contenedor_47">
                 <div class="contenedor_129 borde_1 borde_2">
                     <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
                     <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
@@ -52,6 +52,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- SECCION SECCION -->
                     <label>Sección</label>
                     <input class="placeholder placeholder_2 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">
+
                     <!-- div alimentado desde Secciones_Ajax_V.php con la seccion que el usuario cargó en su cuenta  -->       
                     <div id="Contenedor_80"></div> 
                     <br>
@@ -115,6 +116,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     }   ?>
                     <br><br>
                     <input class="ocultar" type="file" name="imagen_EditarVarias[]" id="ImgInp_2" multiple="multiple" onchange="muestraImg()"/> 
+
                     <!-- dDiv que muestra la previsualización de las imagenes -->
                     <div class="contenedor_134" id="muestrasImg"></div> 
                                       

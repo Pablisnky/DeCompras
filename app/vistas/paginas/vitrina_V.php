@@ -3,11 +3,13 @@
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia'];
 
-    //  Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
+    //Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
     //$Datos proviene de Vitrina_C
-    if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C
+    if($Datos['Seccion'] != 'NoNecesario_1'){//'NoNecesario_1' es creado en tiendas porque comparte el controlador index de Vitrina_C
         ?> 
-        <div style="background-color: rgb(239, 245, 245); height: 100%; width: 100%; position: absolute;top: 0%; left: 0%" id='Tapa_1'></div>
+        <div style="background-color:rgb(239, 245, 245); height: 100%; width: 100%; position: absolute;top: 0%; left: 0%" id='Tapa_1'>
+            <div class="preloder"></div>
+        </div>
         <?php
     }
 ?>

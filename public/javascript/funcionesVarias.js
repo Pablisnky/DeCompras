@@ -1,4 +1,4 @@
-// document.getElementById('Desarrollo_PWA').addEventListener('click', Documentacion_PWA, false)
+document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacion_PWA, false)
 
 //************************************************************************************************
 //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
@@ -44,22 +44,24 @@
     }
 
 //************************************************************************************************
-    //quita el color de fallo en un input y lo deja en su color original
+    //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){
         console.log("______Desde blanquearInput()______")
-        document.getElementById(id).style.backgroundColor = "initial"
+        document.getElementById(id).style.backgroundColor = "white"
     }
 
 //************************************************************************************************
-    //coloca el cursor en el input automaticamente 
+    //Coloca el cursor en el input automaticamente 
     function autofocus(id){
-        console.log("______Desde autofocus()______")
-        document.getElementById(id).focus()
-        document.getElementById(id).value = ""
+        // console.log("______Desde autofocus()______")
+        if(document.getElementById(id)){//Si el elemento existe
+            document.getElementById(id).focus()
+            document.getElementById(id).value = ""
+        }
     }
 
 //************************************************************************************************
-    //invocada desde inicio_V.php - cuenta_productos_V.php - cuenta_editar_V.php
+    //Invocada desde inicio_V.php - cuenta_productos_V.php - cuenta_editar_V.php
     function CerrarModal_X(id){
         // console.log("______Desde CerrarModal_X()______")
         document.getElementById(id).style.display = "none"
@@ -68,7 +70,7 @@
 //************************************************************************************************
     //invocada desde funcionesVarias.js 
     function CerrarModal(){
-        console.log("______Desde CerrarModal()______") 
+        // console.log("______Desde CerrarModal()______") 
         let Z = document.getElementsByClassName("contenedor_15").id = localStorage.getItem('ID_cont_sombreado'); 
         document.getElementById(Z).style.display = "block";
         document.getElementById(Z).style.backgroundColor = "rgb(252, 252, 252)";
@@ -79,19 +81,72 @@
 //************************************************************************************************
     //Oculta el div que contiene alert personalizado, invocada desde alert.php
     function ocultar(id){
-        console.log("______Desde ocultar()______")
+        // console.log("______Desde ocultar()______")
         document.getElementById(id).style.display = "none";
     }
 
 //************************************************************************************************ 
     //Muestra que es una PWA
     function Documentacion_PWA(){  
-        console.log("______Desde Documentacion_PWA()______")    
-        // window.open("http://localhost/proyectos/PidoRapido/Afiliacion_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");   
-        window.open("https://www.pedidoremoto.com/app/controladores/Afiliacion_C/PWA", "ventana1", "width=1000,height=650,scrollbars=YES");
+        // console.log("______Desde Documentacion_PWA()______")      
+        window.open("http://localhost/proyectos/PidoRapido/Menu_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");   
+        // window.open("https://www.pedidoremoto.com/Menu_C/PWA", "ventana1", "width=1000,height=650,scrollbars=YES");   
     }
 
 //************************************************************************************************
+    //invocada desde pwa_V.php 
+    function CerrarModal_2(){
+        // console.log("______Desde CerrarModal_2()______")
+        window.close() 
+    }
+
+//************************************************************************************************
+    //Indica la cantidad de caracteres que quedan mientras se escribe; invocado en quienesSomos_V.php - cuenta_publicar_V.php
+    function contarCaracteres(ID_Contador, ID_Contenido, Max){
+        // console.log("______Desde contarCaracteres()______", ID_Contador + " / "+ ID_Contenido) 
+        var max = Max; 
+        var cadena = document.getElementById(ID_Contenido).value; 
+        var longitud = cadena.length; 
+
+            if(longitud <= max) { 
+                document.getElementById(ID_Contador).value = max-longitud; 
+            } else { 
+                document.getElementById(ID_Contador).value = cadena.subtring(0, max);
+            } 
+    } 
+
+//************************************************************************************************ 
+    //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo en un elmento; invocado en quienesSomos_V.php - cuenta_publicar_V.php
+    var contenido_slogan_com = "";    
+    function valida_LongitudDes(Max, ID_Contenido){
+        // console.log("______Desde valida_LongitudDes()______", Max + " / "+ ID_Contenido) 
+                
+        var num_caracteres_permitidos = Max;
+
+        //se averigua la cantidad de caracteres escritos 
+        num_caracteresEscritos = document.getElementById(ID_Contenido).value.length
+
+        if(num_caracteresEscritos > num_caracteres_permitidos){ 
+            document.getElementById(ID_Contenido).value = contenido_slogan_com; 
+        }
+        else{ 
+            contenido_slogan_com = document.getElementById(ID_Contenido).value; 
+        } 
+    } 
+
+//************************************************************************************************
+    //Ajusta la altura del texarea según se vaya escribiendo en el mismo; invocado en quienesSomos_V.php                
+    function autosize(id){
+        console.log("______Desde autosize()______", id)
+        var el = document.getElementById(id);
+        
+        setTimeout(function(){
+            el.style.cssText = 'height:auto; padding:0';
+            el.style.cssText = 'height:' + el.scrollHeight + 'px';
+        },0);
+    }
+
+ //************************************************************************************************
     //Coloca la clase "activa" en el item seleccionado del menu 
     // function ActivarLink(id){
         // console.log("______Desde ActivarLink()______") 

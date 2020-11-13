@@ -47,13 +47,17 @@
             <div class="contenedor_103 borde_1">
                 <h1 class="h1_7">Felicitaciones</h1>
                 <div class="contenedor_104">
-                    <div class="contenedor_97">
-                        <img class="imagen_6" alt="Logo tienda" src="<?php echo RUTA_URL;?>/public/images/tiendas/tienda.png"/>
+                    <div class="contenedor_147" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/tienda.png')">
                     </div>
                     <div class="contenedor_117">
                         <h1 class="h1_1">Tú tienda digital ha sido creada.</h1>
-                        <p class="p_6">Tienes 15 días completamente libre de pagos</p> 
-                        <p class="p_6">Inicia sesión, organiza tu tienda y carga tus productos.</p>
+                        <p class="p_6">Tienes 15 días completamente libre de pagos</p>
+                        <ul class="ul_5">
+                            <li>Inicia sesión</li>
+                            <li>organiza tu tienda</li>
+                            <li>carga tus productos</li>
+                        </ul> 
+                        <p class="p_6">Y bienvenida es tu tienda en toda la ciudad.</p>
                     </div>
                 </div>
                 <a class="label_21 boton" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Cerrar</a>

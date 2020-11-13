@@ -27,13 +27,27 @@
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return "No se pudo";
             }
         }
         
+        //SELECT de secciones de una tienda especifica
+        public function consultarSecciones_2($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT seccion FROM secciones WHERE ID_Tienda = :ID_Tienda");
+
+            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_COLUMN);
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
         //SELECT de la seccion donde esta un producto de una tienda
         public function consultarSeccionActiva($ID_Producto){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones_productos WHERE ID_Producto = :ID_PRODUCTO");

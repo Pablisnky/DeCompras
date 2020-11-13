@@ -1,14 +1,12 @@
 {
-  "$schema": "http://json.schemastore.org/web-manifest",
   "start_url": "./?utm_source=web_app_manifest",
-  "name": "PedidoRemoto.com",
+  "name": "PedidoRemoto",
   "short_name": "PedidoRemoto",
   "background_color": "#F4FCFB",
   "display": "standalone",
   "description": "Bienvenido a PedidoRemoto",
   "orientation": "portrait",
-  "scope":"/",
-  
+  "scope":"./", 
   "icons": [{
     "src": "public/images/logo.png",
     "sizes": "48x48",

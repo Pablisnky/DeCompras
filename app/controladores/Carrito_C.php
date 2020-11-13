@@ -3,6 +3,7 @@
     class Carrito_C extends Controlador{
 
         public function __construct(){
+            session_start();  
             $this->ConsultaCarrito_M = $this->modelo("Carrito_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -12,11 +13,16 @@
         //Invocado desde A_Vitrina.js
         public function index($ID_Tienda){  
             //SELECT para buscar información de cuentas bancarias de la tienda
-            $Datos = $this->ConsultaCarrito_M->consultarCtaBanco($ID_Tienda); 
+            $Banco = $this->ConsultaCarrito_M->consultarCtaBanco($ID_Tienda); 
             // echo "<pre>";
-            // print_r($Datos);
+            // print_r($Banco);
             // echo "</pre>";            
             // exit();
+
+            $Datos = [
+                'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
+                'ID_Tienda' => $ID_Tienda                
+            ];
             
             $this->vista("paginas/carrito_V", $Datos);
         }        

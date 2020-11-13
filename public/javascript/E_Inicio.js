@@ -25,6 +25,8 @@ document.getElementById("Repuesto_automotriz").addEventListener('click', functio
 
 document.getElementById("Bodega").addEventListener('click', function(){VerTiendas('Bodega')}, false)
 
+document.getElementById("Minimarket").addEventListener('click', function(){VerTiendas('Minimarket')}, false)
+
 document.getElementById("Material_Medico_Quirurgico").addEventListener('click', function(){VerTiendas('Material_Medico_Quirurgico')}, false)
 
 document.getElementById("Ropa_Zapato").addEventListener('click', function(){VerTiendas('Ropa_Zapato')}, false)

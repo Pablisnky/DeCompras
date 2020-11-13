@@ -54,7 +54,6 @@
 	font-size: 0.9em;
 }
 .h3_2{/*inicio*/
-	padding-top: 120%;
 	font-size: 1.3em;
 }
 .input_5{/*vitrina*/
@@ -76,10 +75,10 @@
 	width: 100%;
 }
 .menuResponsive li a{/*header*/
-	font-size: 1.1em;
+	font-size: 1.3em;
 }
 .menuResponsive li a:hover{/*Todas las páginas*/
-	font-size: 1.1em;
+	font-size: 1.3em;
 }
 .p_3{/*tiendas - afiliacion*/
 	font-size: 1.4em;

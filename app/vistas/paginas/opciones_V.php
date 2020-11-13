@@ -30,7 +30,8 @@
                 $Fotografia = $row['fotografia'];
    
                 //Se da formato al precio, sin decimales y con separación de miles
-                $Precio = number_format($Precio, 0, ",", ".");  ?>          
+                $Precio = number_format($Precio, 0, ",", ".");  ?>  
+                        
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                     <div class="contenedor_9">
                         <!-- IMAGEN -->
@@ -87,7 +88,7 @@
                                         #<?php echo 'Cont_Producto_' . $ContadorLabel;?>{
                                             background-color: var(--OficialClaro);
                                             position: absolute;
-                                            top: 5%;
+                                            top: 100px;
                                             z-index: 1 !important;
                                         }
                                         #<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>{

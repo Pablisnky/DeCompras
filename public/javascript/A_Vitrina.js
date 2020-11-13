@@ -79,14 +79,17 @@ function llamar_Opciones(ID_Tienda, SeccionSelecionada, OpcionSeleccionada){
     peticion.send("null")    
 }                                                           
 function respuesta_Opciones(){
-    // console.log("______Desde llamar_Opciones() -> respuesta_Opciones______") 
     if(peticion.readyState == 4){
         if(peticion.status == 200){
+            //Se verifica si se coloca la tapa cuando se viene desde el buscador para no mostrar la vista vitrina
+            if(document.getElementById("Tapa_1")){
+                document.getElementById("Tapa_1").style.display = "none"
+            }
+
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
             
-            document.getElementById("Tapa_1").style.display = "none"
             
             //Se consulta el alto de la página vitrina, este tamaño varia segun las secciones que tenga un tienda
             AltoVitrina = document.body.scrollHeight

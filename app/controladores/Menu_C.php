@@ -25,5 +25,15 @@
         public function ciudad($Datos){
             $this->vista("paginas/ciudad_V", $Datos);
         }
+
+        public function PWA(){
+            $this->vista("inc/header_Modal");
+            $this->vista("paginas/pwa_V");
+        }
+        
+        public function nuestroADN(){
+            $this->vista("inc/header_Modal");
+            $this->vista("paginas/quienesSomos_V");
+        }
     }
 ?>    

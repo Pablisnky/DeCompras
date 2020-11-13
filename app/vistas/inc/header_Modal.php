@@ -20,12 +20,14 @@
     </head>
     <body>	
 		<header class="contenedor_69">
-            <a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">PedidoRemoto</a>
+			<!-- <a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">PedidoRemoto</a> -->
+			<h1 class="h1_10 h1_7">PedidoRemoto</h1>
 		</header>	
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
 
-<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
-
+<!-- ******************************************************************************************* -->
+			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
+										<!-- HEADER -->
 <!-- ******************************************************************************************* -->

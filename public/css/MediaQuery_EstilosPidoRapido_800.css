@@ -8,9 +8,9 @@
 }
 .a_2{/*inicio*/
 	font-size: 1.4em;
-	padding: 0.1% 2.5% 0.1% 3.5%;
+	padding: 0.3% 3% 0.3% 4.5%;
 }
-.a_3{/*header_inicio - header_AfiCom*/
+.a_3{/*header - header_inicio - header_AfiCom*/
 	width: 100% !important;
 }
 .a_4{/*header_AfiCom*/
@@ -91,8 +91,11 @@
 	margin-bottom: 10px;
 	width: 10% !important;
 }
-.contador_2{/*cuenta_editar*/
+.contador_2{/*cuenta_editar - quienesSomos*/
 	margin-bottom: 0%;
+}
+.contador_3{/*quienesSomos*/
+	margin-left: 91% !important;
 }
 .contenedor_1{/*header*/
 	margin-left: 1%;
@@ -153,8 +156,8 @@
 	width: 95%;
 	margin-bottom: 15%;
 }
-.contenedor_16{/*vitrina*/
-	left: -13%;
+.contenedor_16{/*opciones*/
+	left: 75%;
 }
 .contenedor_20{/*carrito*/
 	overflow-x: auto;
@@ -331,8 +334,11 @@
 	margin-top: 0%;
 }
 .contenedor_73{/*ciudad*/
+	border-radius:15px;
 	width: 90%;
-	grid-template-rows: 20%;
+	min-height: 100%;
+	margin: 15% auto 20% auto;
+	padding-left: 13%;
 }
 .contenedor_74{/*ciudad*/
 	row-gap: 10%;
@@ -378,6 +384,9 @@
 	grid-column-end: initial;
 	width: 100%;
 	margin-top: 20%;
+}
+.contenedor_88{/*inicio*/
+	height: 10%;
 }
 .contenedor_89{/*Secciones_Ajax*/
 	grid-template-columns: 45% 45%;
@@ -522,6 +531,41 @@
 .contenedor_139{/*desr_Producto*/
 	height: 75px;
 }
+.contenedor_146{/*ciudad - quienesSomos*/
+	padding-top: 20%;
+}
+.contenedor_147{/*login*/
+	width: 100%;
+	margin-left: initial;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	vertical-align: initial;
+}
+.contenedor_148{/*quienesSomos*/
+	width: 100%;
+	margin-left: 0%;
+}
+.contenedor_149{/*quienesSomos*/
+	padding-top: 10%;
+	width: 100%;
+	margin: auto;
+	display: block;
+}
+.contenedor_150{/*quienesSomos*/
+	position:relative; 
+	margin-top: 30%;
+}
+.contenedor_151{/*quienesSomos*/
+	width: 100%;
+}
+.contenedor_152{/*quienesSomos*/
+	width: 100%; 
+	padding: 3%
+}
+.contenedor_153{/*quienesSomos*/
+	display: none;
+}
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
 	width: 90%;
@@ -542,7 +586,7 @@
 	font-size: 2.5em;
 	text-align: left;
 }
-.h1_3{/*opciones - carrito*/
+.h1_3{/*opciones*/
 	width: 85%;
 	height: 1.3em;
 	/* line-height: 1em; */
@@ -608,6 +652,9 @@
 }
 .h3_9{/*cuenta_productos*/
 	font-size: 0.8em;
+}
+.h3_10{/*buscador*/
+	/* font-size: 1.1em; */
 }
 .h4_1{/*footer*/
 	font-size: 1em;
@@ -770,12 +817,15 @@
 .li_2{/*ciudad*/
 	font-size: 1.1em;
 }
+.li_3{/*afiliacion*/
+	width: 95%;
+}
 .marcador{/*cuenta_editar*/
 	text-align: center;
 }
 .menuResponsive{/*Todas las páginas*/
 	padding-top: 0%;
-	width: 60%; 
+	width: 55%; 
 	margin-left: -60%;/*oculta el menu responsive*/
 	transition: all 0.5s;
 	position: initial;
@@ -797,7 +847,7 @@
 }
 .menuResponsive li a{/*header*/
 	color: var(--OficialOscuro);
-	font-size: 1.5em;
+	font-size: 1.2em;
 	width: 100%;
 	text-align: left;
 	padding-left: 5%;
@@ -852,12 +902,21 @@
 	margin-bottom: 10px;
 	padding-left: 5%;
 }
+.p_16{/*quienesSomos*/
+	text-align: left;
+	font-size: 1.2em;
+	line-height: 35px;
+	margin: 5% auto;
+}
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	font-size: 1em;	
 	margin: 1% auto 8% auto !important;
 }
 .placeholder_4{/*cuenta_publicar*/
 	margin-bottom: 0% !important;
+}
+.preloder{/*vitrina*/
+	margin:50% auto; 
 }
 .section_2{/*inicio*/
 	margin-top: 30%; 
@@ -980,7 +1039,30 @@
 .ul_2{/*ciudad*/
 	padding-top: 5%;
 }
-ul .menuContenedor_2{/*header.php #040652 */
+.ul_5{/*login*/
+	width: 70%;
+	margin: 10% 0% 10% 25%;
+}
+ul .menuContenedor_2{/*header_AfiCom*/
+	background-color: var(--OficialOscuro);
+	display: none;
+	position: absolute;
 	top: 250%;
+	padding-top: 0.7%;
+	left: 46%;
+	width: 200px; 
+}
+ul .menuContenedor_3{/*header*/
+	background-color: var(--OficialClaro) !important; 
+	display: none;
+	position: initial;
+	margin-top: -20%;
+	margin-left: 100%;
+	z-index: 5;
+	padding-top: 1%;
+}
+.menuLi_1:hover > ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
+	display: block !important;
+	width: 180px;
 }
 }

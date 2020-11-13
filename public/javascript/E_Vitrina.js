@@ -425,15 +425,16 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         Pre_decremento()
         Pre_incremento()
         
-    // console.log(AlContenedor)
-    // console.log(AlCarro)
+        // console.log(AlContenedor)
+        // console.log(AlCarro)
     }    
 
 //************************************************************************************************
     //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
     function PedidoEnCarrito(){
         console.log("______Desde PedidoEnCarrito()______")
-// console.log(AlCarro)
+        // console.log(AlCarro)
+        
         //Se muestra el monto de la compra en "La Orden". (sin comisión de plataforma y sin despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
 
@@ -449,10 +450,11 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se muestra el monto de total de la compra incluyendo comision y envio
         document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
         
-        //Se envia todo el pedido que se encuentra en el array de objeto JSON 
+        // console.log(AlCarro)
+        //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlCarro[]
         //1.- Se convierte el JSON en un string
         var sendJSON = JSON.stringify(AlCarro)
-        //2.- Se envia al input que lo almacena en la vista
+        //2.- Se envia al input que lo almacena en la vista carrito_V.php
         document.getElementById('Pedido').value = sendJSON
 
         //Se muestra todo el pedido (cantidad - producto - opcion - precio unitario - precio por productos)
@@ -860,7 +862,7 @@ console.log(AlCarro)
 //************************************************************************************************
     //Valida el formulario de despacho de producto
     function validarDespacho(){
-        // console.log("______Desde validarDespacho()______")
+        console.log("______Desde validarDespacho()______")
 
         document.getElementsByClassName("botonJS")[0].value = "Enviando ..."
         document.getElementsByClassName("botonJS")[0].disabled = "disabled"
@@ -874,7 +876,8 @@ console.log(AlCarro)
         let Telefono = document.getElementById('TelefonoUsuario').value 
         let Direccion = document.getElementById('DireccionUsuario').value  
         let Pago = document.getElementsByClassName('pago') 
-        let RegistroPago = document.getElementById('RegistroPago').value
+        let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
+        let RegistroPago_Pagomovil = document.getElementById('RegistroPago_Pagomovil').value
         
         //Patron de entrada solo acepta letras
         let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
@@ -953,11 +956,23 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(RegistroPago =="" || RegistroPago.indexOf(" ") == 0 || RegistroPago.length > 20){
+        else if(RegistroPago_Transferencia =="" || RegistroPago_Transferencia.indexOf(" ") == 0 || RegistroPago_Transferencia.length > 20){
             alert ("Problemas con el código de pago");
-            document.getElementById("RegistroPago").value = "";
-            document.getElementById("RegistroPago").focus();
-            document.getElementById("RegistroPago").style.backgroundColor = "var(--Fallos)"
+            document.getElementById("RegistroPago_Transferencia").value = "";
+            document.getElementById("RegistroPago_Transferencia").focus();
+            document.getElementById("RegistroPago_Transferencia").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(RegistroPago_Pagomovil =="" || RegistroPago_Pagomovil.indexOf(" ") == 0 || RegistroPago_Pagomovil.length > 20){
+            alert ("Problemas con el código de pago");
+            document.getElementById("RegistroPago_Pagomovil").value = "";
+            document.getElementById("RegistroPago_Pagomovil").focus();
+            document.getElementById("RegistroPago_Pagomovil").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("botonJS")[0].value = "Comprar"
             document.getElementsByClassName("botonJS")[0].disabled = false
             document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -968,13 +983,6 @@ console.log(AlCarro)
 
         //Si se superan todas las validaciones la función devuelve verdadero
         return true
-    }
-
-//************************************************************************************************
-    //quita el color de fallo en un input y lo deja en su color original
-    function blanquearInput(id){
-        // console.log("______Desde blanquearInput()______")
-        document.getElementById(id).style.backgroundColor = "white"
     }
 
 //************************************************************************************************

@@ -30,6 +30,7 @@ body, html{
 	--OficialOscuro: rgb(51, 51, 51);
 	--OficialClaro: rgb(239, 245, 245);
 	--Fallos: rgba(255, 0, 0, 0.2);
+	--footer: rgb(233, 215, 215);
 }
 
 /* ******************************************************************************** */
@@ -56,7 +57,7 @@ button{/*tiendas*/
 .a_2:hover{/*inicio*/
 	cursor: pointer;
 }
-.a_3{/*header_inicio - header_AfiCom*/
+.a_3{/*header - header_inicio - header_AfiCom*/
 	color:white;
 	width: 30%;
 	text-align: center;
@@ -193,8 +194,8 @@ button{/*tiendas*/
 	font-size: 0.8em;
 	text-align: right;
 }
-.contador_2{/*cuenta_editar*/
-	width: 7% !important;
+.contador_2{/*cuenta_editar - quienesSomos*/
+	width: 9% !important;
 	margin-left: 93% !important;
 	color: rgba(51, 51, 51, 0.6);
 	border: none;
@@ -242,7 +243,7 @@ button{/*tiendas*/
 	cursor: pointer;
 }
 .contenedor_7{/*footer*/
-	background-color:  rgb(233, 215, 215);
+	background-color: var(--footer);
 	position: relative;
 	height: 100%;
 }
@@ -259,8 +260,6 @@ button{/*tiendas*/
 	width: 100%;
 	padding: 1%;
 	margin: auto;
-}
-.contenedor_9:hover{/*cuenta_editar_prod*/
 	cursor: pointer;
 }
 .contenedor_10{/*tiendas - afiliacion*/
@@ -301,9 +300,10 @@ button{/*tiendas*/
 .contenedor_13>h1{/**/
 	/*flex: 0 1 100%;ocupa toda la primera fila en la distribucion flex*/
 }
-.contenedor_14{/**/
+.contenedor_14{/*opciones*/
 	display: none;
-	grid-template-rows: 0px;
+	/* grid-template-rows: 0px; */
+	height: 20px;
 	grid-column-start: 1;
 	grid-column-end: 3;
 }
@@ -319,10 +319,9 @@ button{/*tiendas*/
 }
 .contenedor_16{/*opciones*/
 	width: 20%;
-	float: right;
 	position: relative;
-	top: -140%;
-	left: -5% !important;
+	top: -45px;
+	left: 75%;
 	text-align: right;
 }
 .contenedor_18{/*vitrina*/
@@ -359,7 +358,7 @@ button{/*tiendas*/
 .contenedor_25{/*carrito*/
 	margin-top: 8% !important;
 }
-.contenedor_26{/*carrito*/
+.contenedor_26{/*carrito - descr_Producto - pwa*/
 	margin: auto;
 	margin-top: 5%;
 	width: 50%;
@@ -491,7 +490,7 @@ button{/*tiendas*/
 	margin: 5% auto;
 	text-align: center;
 }
-.contenedor_51{/*inicio*/
+.contenedor_51{/*inicio - ciudad*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	justify-content: space-around;
 	align-items: center;
@@ -650,12 +649,12 @@ button{/*tiendas*/
 	width: 100%;
 }
 .contenedor_73{/*ciudad*/
-	border-radius:15px;
-	box-sizing: border-box;
-	width: 60%;
+	border-radius: 15px;
+	width: 30%;
 	min-height: 100%;
-	margin: 0% auto;
-	margin-bottom: 7%;
+	margin: 5% auto;
+	padding: 1%;
+	padding-left: 4%;
 }
 .contenedor_76{/*Categorias_Ajax*/
 	display: grid;
@@ -675,6 +674,15 @@ button{/*tiendas*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	justify-content: space-between;
 	font-size: 1em;
+}
+.contenedor_80A{/*cuenta_editar*/
+	display: flex; /*Organiza los elementos horizontalmente*/ 
+	justify-content: space-between;
+	font-size: 1em;
+	position:absolute; 
+	z-index:-1; 
+	top:0%; 
+	left:0%
 }
 .contenedor_81{/*cuenta_editar_prod - cuenta_publicar*/
 	text-align: center;
@@ -758,7 +766,8 @@ button{/*tiendas*/
 	grid-template-columns: 40% 55%;
 	column-gap: 5%; /*espacio entre columnas*/
 	width: 30%;
-	margin-bottom: 5%;
+	height: 15%;
+	margin-bottom: 7%;
 }
 .contenedor_96{/*cuenta_productos*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
@@ -766,7 +775,7 @@ button{/*tiendas*/
 	margin: 1% auto;
 	justify-content: space-around;
 }
-.contenedor_97{/*opciones - login*/
+.contenedor_97{/*opciones*/
 	height: 100%;
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	align-items: center;
@@ -782,6 +791,9 @@ button{/*tiendas*/
 	z-index: 6;
 }
 .contenedor_98:hover{/*footer*/
+	cursor: pointer;
+}
+.contenedor_98 > div > h3{/*footer ; este selector aplica la propiedad al hijo del contenedor*/
 	cursor: pointer;
 }
 .contenedor_99{/*afiliacion*/
@@ -808,7 +820,7 @@ button{/*tiendas*/
 	padding: 2%;
 	border-radius: 15px;
 }
-.contenedor_104{/*cuenta*/
+.contenedor_104{/*login*/
 	width: 100%;
 	margin: 5% auto;
 	display: grid;
@@ -911,7 +923,7 @@ button{/*tiendas*/
 	display: grid;
 	grid-template-columns:100%;
 	/* grid-template-rows: 50fr 20fr; */
-	row-gap: 3fr;
+	/* row-gap: 3fr; */
 	max-height: 80%; 
 }
 .contenedor_127{/*descr_Producto*/
@@ -963,8 +975,8 @@ button{/*tiendas*/
 	display: flex; 
 	width:100%; 
 }
-.contenedor_137{/*footer*/
-	margin: auto;
+.contenedor_137{/*pwa*/
+	margin:10% auto;
 	width: 90%;
 }
 .contenedor_138{/*carrito*/
@@ -989,13 +1001,72 @@ button{/*tiendas*/
 	height: 100px;
 	align-items: center;
 }
-.contenedor_143{/*vitrina*/
-	background-color:red; 
-	height: 100px;
-	width: 100%;
+.contenedor_143{/*cuenta_editar*/
+	margin-top: 15%;
+}
+.contenedor_144{/*quienesSomos*/
+	padding-top: 5%;
+	width: 90%;
+	margin: auto;
+}
+.contenedor_145{/*ciudad*/
+	position: initial;
+}
+.contenedor_146{/*ciudad - quienesSomos*/
+	padding-top: 10%;
+	width: 90%;
+	margin: auto;
+}
+.contenedor_147{/*login*/
+	width: 75%;
+	margin-left: 30%;  
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	vertical-align: middle;
+}
+.contenedor_148{/*quienesSomos*/
 	position: absolute;
-	top: 0%;
-	left: 0%;
+	height: 14%;
+	bottom: 30pt !important;	
+	display: flex; /*Organiza los elementos horizontalmente*/ 
+	justify-content: space-around;
+	align-items: center;
+	width: 60%;
+	margin-left: 20%;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.contenedor_148>div:last-child{/*inicio*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila en la distribucion flex*/
+}
+.contenedor_149{/*quienesSomos*/
+	padding-top: 10%;
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.contenedor_150{/*quienesSomos*/
+	position:relative; 
+	margin-top: 7%;
+}
+.contenedor_151{/*quienesSomos*/
+	width: 45%;
+	margin: auto;
+}
+.contenedor_152{/*quienesSomos*/
+	width: 80%; 
+	padding-right: 5%
+}
+.contenedor_153{/*quienesSomos*/
+	width: 20%;
+	margin-top:5%
+}
+.figure_2{/*quienesSomos*/
+	margin: auto;
+	width: 100%;
 }
 .fieldset_1{/*registroCom - registroDes - login*/
 	width: 40%;
@@ -1023,7 +1094,7 @@ button{/*tiendas*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
-	display: inline_block;
+	/* display: inline_block; */
 	width: 100%;
 }
 .h1_4{/*ciudad - opciones - tiendas*/
@@ -1048,7 +1119,7 @@ button{/*tiendas*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
-	display: inline_block;
+	/* display: inline_block; */
 	width: 100%;
 }
 .h1_10{/*header_Tienda*/
@@ -1067,13 +1138,18 @@ button{/*tiendas*/
 .h1_12{/*RecibePedido*/
 	font-size: 1.5em !important;
 }
+.h1_13{/*ciudad*/
+	color: var(--OficialOscuro);
+	text-align: center;
+	font-weight: lighter;
+	font-size: 1.5em;
+	margin-left: -12% !important;
+}
 .h2_1{/*inicio*/
 	font-weight: normal;
 	text-align: center;
 	padding: 4%;
 	min-height: 4em; /*para garantizar que cubra dos lineas y los iconos se alineen a partir de alli */
-}
-.h2_1:hover{/*inicio carrito*/
 	cursor: pointer;
 }
 .h2_2{/*carrito*/
@@ -1131,6 +1207,9 @@ button{/*tiendas*/
 	font-size: 0.9em;
 	text-align: center;
 	font-weight: normal ;
+}
+.h3_10{/*buscador*/
+	font-size: 1em;
 }
 .h5_1{/*footer*/
 	color: rgba(51, 51, 51, 1);
@@ -1503,7 +1582,9 @@ button{/*tiendas*/
 	border-radius: 15px;
 	padding-left: 3%;
 }
-.li_3{/*planes*/
+.li_3{/*afiliacion*/
+	width: 90%;
+	margin: auto;
 	line-height: 1.5em;
 	padding-bottom: 5%;
 }
@@ -1592,24 +1673,24 @@ button{/*tiendas*/
 .ol_1{/*cuenta*/
 	margin-left: 3%;
 }
-.p_1{/*alert - afiliacion*/
+.p_1{/*afiliacion*/
 	color: rgb(51, 51, 51);
 	font-size: 1.9em;
-	text-align: center;
-}
+	text-align: center; 
+} 
 .p_2{/*tiendas*/
 	text-align: left;
 	padding-left: 2%;
 	padding-right: 1%;
 	font-size: 0.7em;
-}
-.p_2:hover{/*tiendas*/
 	cursor: pointer;
+	width: 100%;
 }
 .p_3{/*tiendas - afiliacion*/
 	margin: 2% auto;
 	text-align: center;
 	font-size: 1.6em;
+	cursor: pointer;
 }
 .p_4{/*recibePedido login*/
 	margin-top: 3%;
@@ -1620,7 +1701,7 @@ button{/*tiendas*/
 	margin: 0% auto 5% auto;
 	text-align: center;
 }
-.p_6{/*cuenta_editar - afiliacion - cuenta - */
+.p_6{/*cuenta_editar - afiliacion - cuenta -ciudad*/
 	text-align: center;
 	font-size: 1.5em;
 	margin-bottom: 3%;
@@ -1657,6 +1738,14 @@ button{/*tiendas*/
 .p_13, .p_14{/*carrito*/
 	line-height: 25px;
 }
+.p_15{/*pwa*/
+	text-align: justify;
+}
+.p_16{/*quienesSomos*/
+	font-size: 1.4em;
+	line-height: 45px;
+	margin: 5% auto;
+}
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	margin: 0% auto 2% auto !important;
 	display: block;
@@ -1680,12 +1769,49 @@ button{/*tiendas*/
 	margin-bottom: 5% !important;
 	display: inline-block;
 }
+.preloder{/*vitrina*/
+	/* margin: 20% auto;  */
+	width: 70px; 
+	height: 70px; 
+	border: 10px solid #eee; 
+	border-radius: 50%; 
+	border-top: 10px solid #666;
+
+	animation-name: girar;
+	animation-duration: 2s;	
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+  	@keyframes girar{
+	from{
+	  transform: rotate(0deg);
+	}
+	to{
+	  transform: rotate(360deg);
+	}
+}
+.preloderTapa{
+	background-color: white;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+}
+.preloaderCentrar{/*descr_Producto*/
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	right: 0%;
+	bottom: 0%;
+	margin: auto;
+}
 .section_1{/*inicio*/
 	background-color: var(--OficialClaro);
 	height: 100%;
 }
-.section_2{/*ciudad*/
-	padding-top: 3%;
+.section_2{/*ciudad - RecibePedido*/
+	padding-top: 10%;
 }
 .section_3{/*opciones - cuenta_editar - Categorias_Ajax - Secciones_Ajax*/
 	background-color: var(--FondoDivModal);
@@ -1704,7 +1830,7 @@ button{/*tiendas*/
 	height: 400%;
 	z-index: 3;
 }
-.section_5{/*afiliacion - vitrina - login - login_Vrecord - cuenta_productos - registroCom - registroDes*/
+.section_5{/*afiliacion - ciudad - vitrina - login - login_Vrecord - cuenta_productos - registroCom - registroDes*/
 	min-height: 100%;
 }
 .section_6{/*afiliacion*/
@@ -1736,16 +1862,14 @@ button{/*tiendas*/
 	display: block;
 	font-size: 1em;
 	height: 33px;
-	width: 100%;
+	width: 100%!important;
 	padding-left: 5%;
 	line-height:40px;
 }
 .span_2{/*vitrina*/
 	font-size: 1.4em !important;
 	background-color: rgba(51, 51, 51, 0.3);
-	/* background-color: green; */
 	color: white;
-	/* padding: -2% !important; */
 	margin: auto;
 	text-align: center;
 	display: inline-block;
@@ -1852,7 +1976,6 @@ button{/*tiendas*/
 .span_21{/*inicio*/
 	background-color: var(--OficialClaro);
 	border-radius: 30px;
-	/* padding: 2px;  */
 	width: 23px;
 	position: relative; 
 	text-align: center;
@@ -1882,6 +2005,7 @@ button{/*tiendas*/
 .textarea_1{/*carrito - cuenta_publicar - descr_Producto*/
 	width: 100%;
 	margin-bottom: 2%;
+	resize: none;
 }
 .textarea_2{/*opciones*/
 	width: 100%;
@@ -1895,10 +2019,11 @@ button{/*tiendas*/
 	overflow: hidden;
 	display: block;
 }
-.textarea_4{/*cuenta_editar*/
+.textarea_4{/*cuenta_editar quienesSomos*/
 	width: 100%;
 	resize: none;	
 	border-radius: 5px;
+	overflow: hidden;
 }
 .th_1{/*carrito*/
 	width: 10%;
@@ -1973,25 +2098,45 @@ button{/*tiendas*/
 .ul_4{/*cuenta*/
 	padding-left: 2%;
 }
+.ul_5{/*login*/
+	width: 40%;
+	margin: 4% 0% 4% 30%;
+	line-height: 25px;
+}
+.ul_5 > li{/*login*/
+	font-size: 1.1em;
+}
 ul .menuContenedor_2{/*header_AfiCom*/
 	background-color: var(--OficialOscuro);
 	display: none;
 	position: absolute;
 	top: 100%;
 	padding-top: 0.7%;
-	left: 46%;
-	width: 200px; 
+	left: 52%;
+	/* width: 200px;  */
 }
-.menuLi_1:hover>ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
-	display: block;
-	width: 180px;
+ul .menuContenedor_3{/*header*/
+	background-color: var(--OficialOscuro) !important;
+	display: none;
+	position: absolute;
+	margin-left: 3%;
+	z-index: 5;
+	padding-top: 1%;
+	left: 65% !important;
+}
+.menuLi_1:hover > ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
+	display: block !important;
+	width: 170px !important;
 }
 .menuLi_2{/*header_AfiCom*/
-	padding: 3% 5% !important;
+	padding: 5% !important;
 	text-align: left !important;
-	display: block;
+	/* display: block; */
 }
 .menuLi_2:hover{/*header.php   index.php*/
 	text-align: left !important;
 	display: block;
-}
+}			
+/* .nav > li {
+	float:left;
+} */

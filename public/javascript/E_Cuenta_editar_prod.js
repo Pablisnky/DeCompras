@@ -16,8 +16,9 @@ document.addEventListener("keydown", valida_Longitud, false);//valida_Longitud()
 document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() se encuentra en 
 //************************************************************************************************
 
-//Escucha en cuenta_publicar_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
-document.getElementById('Contenedor_80').addEventListener('click',function(event){    
+//Escucha por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
+document.querySelector('body').addEventListener('click',function(event){  
+    // console.log("______Desde función anonima()______")  
     if(event.target.id == 'Span_5'){
         CerrarModal_X('MostrarSeccion')
     }
@@ -144,7 +145,7 @@ var contenido_descripcion = "";
 //************************************************************************************************
     //Valida el formulario
     function validarActualizacion(){
-        console.log("______Desde validarActualizacion()______")
+        // console.log("______Desde validarActualizacion()______")
 
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 

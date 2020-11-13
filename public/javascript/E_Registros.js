@@ -100,13 +100,14 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Div_AlertaClave.childElementCount >= 1){
+        else if(Div_AlertaClave.childElementCount > 1){
+            console.log(Div_AlertaClave.childElementCount)
             alert("La clave no es permitida")
             document.getElementById("Clave").value = ""
             document.getElementById("Clave").focus()
             document.getElementById("Clave").style.backgroundColor = "var(--Fallos)"
             document.getElementById("ConfirmarClave").value = ""
-            //Se elimina el nodo hijo donde aparece el mensaje del alert
+            //Se elimina el nodo hijo donde aparece el mensaje del 
             while(Div_AlertaClave.firstChild){
                 Div_AlertaClave.removeChild(Div_AlertaClave.firstChild);
               };
@@ -117,7 +118,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Div_AlertaCorreo.childElementCount >= 1){
+        else if(Div_AlertaCorreo.childElementCount > 1){
             alert("El correo ya esta registrado")
             document.getElementById("CorreoAfiCom").value = ""
             document.getElementById("CorreoAfiCom").focus()

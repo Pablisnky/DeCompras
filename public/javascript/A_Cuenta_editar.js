@@ -54,10 +54,15 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
     //Elimina una seccion
-    function Llamar_EliminarSeccion(ID_Seccion){
-        // console.log("______Desde Llamar_EliminarSeccion()______", ID_Seccion)
+    function Llamar_EliminarSeccion(ID_Seccion, CantSeccion){
+        // console.log("______Desde Llamar_EliminarSeccion()______", ID_Seccion + " / " + CantSeccion)
 
-        var url = "../Cuenta_C/eliminarSeccion/" + ID_Seccion
+        //Si hay una sola sección se detiene elproceso de eliminación
+        if(CantSeccion == 1){
+            return
+        }
+
+        var url = "../Cuenta_C/eliminarSeccion/" + ID_Seccion + "/" + CantSeccion
         http_request.open('GET', url, true)  
         peticion.onreadystatechange = respuesta_EliminarSeccion
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -106,7 +111,7 @@ function conexionAJAX(){
 //-------------------------------------------------------------------------------------------------
     //Verifica si la tienda puede mostrarse al publico
     function llamar_publicarTienda(){
-        console.log("______Desde llamar_publicarTienda()______")
+        // console.log("______Desde llamar_publicarTienda()______")
 
         var url = "../Cuenta_C/publicarTienda/"
         http_request.open('GET', url, true)  

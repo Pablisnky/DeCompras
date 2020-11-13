@@ -29,6 +29,7 @@
 			</div> 
 		</header>
 
-<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
-
+<!-- ******************************************************************************************* -->
+			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
+										<!-- HEADER -->
 <!-- ******************************************************************************************* -->

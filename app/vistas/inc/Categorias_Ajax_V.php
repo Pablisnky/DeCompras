@@ -34,7 +34,7 @@
                 ?>
             </div> 
             <div class="contenedor_77">
-                <input type="text" class="boton" onclick="return transferirCategoria(this.form);" value="Guardar"/>
+                <input type="text" class="boton" onclick="return transferirCategoria(this.form);" value="Seleccionar"/>
             </div>
         </form>
     </div>

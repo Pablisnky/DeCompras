@@ -6,4 +6,8 @@ vivas@gmail.com         vvvv
 lisbella@gmail.com      llll
 
 En local y en remoto
-Cambiar en Configurar.php; .htaccess de la carpeta public
+    Cambiar en Configurar.php; 
+    .htaccess de la carpeta public
+
+Resoluciones
+    360 x 570 (Huawey Y7 - mi mama)

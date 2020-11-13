@@ -1,6 +1,6 @@
 document.getElementById("Label_4").addEventListener('click', nuevaCuentaBancaria, false)
 
-document.getElementById("Label_5").addEventListener('click', crearSeccion, false)
+document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
@@ -11,7 +11,7 @@ document.getElementById('Span_1').addEventListener('click', mostrarSecciones, fa
 document.addEventListener("keydown", contarDes, false); 
 document.addEventListener("keyup", contarDes, false);
 document.addEventListener("keydown", valida_LongitudDes, false);
-document.addEventListener("keyup", valida_LongitudDes, false);
+document.addEventListener("keyup", valida_LongitudDes, false); 
 
 // *****************************************************************************************************
 //FUNCIONES ANONIMAS
@@ -63,7 +63,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
         //Se crea el clon
         let Div_clon = clonar.cloneNode(true)
-        console.log(Div_clon)
+        // console.log(Div_clon)
 
         //Se da un ID al nuevo elemento clonado
         Div_clon.style.id = iterar  
@@ -87,33 +87,40 @@ document.getElementById("Label_1").addEventListener('click', function(){
     }
 
 //************************************************************************************************  
-    //Añade un nuevo input con una nueva sección cargada desde Categoria_Ajax
+    //Añade un nuevo input clonado del div secciones
     var incremento = 1
-    function crearSeccion(){
+    function clonarSeccion(){
         // console.log("______Desde CrearSección()______")
         
         //Contenedor a clonar 
-        let clonar = document.getElementById("Contenedor_80")
-        console.log("div a clonar", clonar)
+        let clonar = document.getElementById("Contenedor_80A")
+        // console.log("div a clonar", clonar)
+        
         //Contenedor padre
         let Padre = document.getElementById("Contenedor_79")
-        console.log("div padre", Padre)
+        // console.log("div padre", Padre)
 
         //Se crea el clon
         let Div_clon = clonar.cloneNode(true)
-        console.log("div clon", Div_clon)
-    
+        // console.log("div clon", Div_clon)
+
+        //Se da una clase 
+        Div_clon.classList = "contenedorUnico"
+
         //Se da un ID al input que se encuentra en el nuevo elemento clonado
         Div_clon.getElementsByClassName("input_12")[0].id = 'InputClon_' + incremento 
         
-        // //Se da un ID al span que se encuentra en el nuevo elemento clonado
+        //Se da un name al input que se encuentra en el nuevo elemento clonado
+        Div_clon.getElementsByClassName("input_12")[0].name = "seccion[]" 
+        
+        //Se da un ID al span que se encuentra en el nuevo elemento clonado
         // Div_clon.getElementsByClassName("span_12_js")[0].id = 'SpanClon_' + incremento 
         
         //El valor del nuevo input debe estar vacio
         Div_clon.getElementsByClassName("input_12")[0].value = "" 
 
         //El placeholder del nuevo input 
-        Div_clon.getElementsByClassName("input_12")[0].placeholder="Indica una sección"
+        Div_clon.getElementsByClassName("input_12")[0].placeholder="Indica una seccióne"
         
         //Se especifica el div padre, donde se insertará el nuevo nodo (aparecerá de ultimo)
         Padre.appendChild(Div_clon)
@@ -123,36 +130,43 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     //Elimina los clones de seccion y banco
     function preEliminarSeccion(clase){
-        console.log("______Desde preEliminarSección()______ Recibe:",clase )
+        // console.log("______Desde preEliminarSección()______ Recibe:",clase )
 
-        //Detectar el boton eliminar al cual se hizo click
-        var Eliminar = document.getElementsByClassName(clase)//Se obtienen los botones Eliminar
-        var len = Eliminar.length//Se cuentan cuantos botones Eliminar hay 
-        console.log("Cantidad de botones \"Eliminar\"", len) 
+        let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
-        var button
+        if(ConfirmaEleminar == true){
+            console.log("Entra al if")
+            //Detectar el boton eliminar al cual se hizo click
+            var Eliminar = document.getElementsByClassName(clase)//Se obtienen los botones Eliminar
+            var len = Eliminar.length//Se cuentan cuantos botones Eliminar hay 
+            console.log("Cantidad de botones \"Eliminar\"", len) 
+
+            var button
+            //Si hay solo una sección no entra en el ciclo
             for(var i = 1; i < len; i++){
                 button = Eliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
                 button.onclick = EliminarSeccion // Asignar la función EliminarSeccion() en su evento click.
             } 
-        function EliminarSeccion(e){   
-            // console.log("______Desde EliminarSeccion()______") 
 
-            //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-            current = e.target.parentElement
-            
-            //Se busca el nodo padre que contiene el elemento current
-            let elementoPadre = current.parentElement
-            
-            //Se elimina la sección
-            elementoPadre.removeChild(current);  
-        }            
+            function EliminarSeccion(e){   
+                // console.log("______Desde EliminarSeccion()______") 
+
+                //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
+                current = e.target.parentElement
+                
+                //Se busca el nodo padre que contiene el elemento current
+                let elementoPadre = current.parentElement
+                
+                //Se elimina la sección
+                elementoPadre.removeChild(current);  
+            }  
+        }          
     }
 
 //************************************************************************************************  
 //Establece el alto del fondo de la ventana modal para que sea igual a todo el contenido de la ista cuenta_editar_V.php de la tienda en curso
     function mostrarSecciones(){
-        console.log("______Desde mostrarSecciones()______")
+        // console.log("______Desde mostrarSecciones()______")
         //Coloca el cursor en el top de la pagina
         document.getElementById("Ejemplo_Secciones").style.display = "grid"
 
@@ -178,7 +192,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************
     //Recibe la categoria selecciona por el afiliado y la coloca dentro de un input nuevo en el formulario de configuracion de tienda
     function transferirCategoria(form){
-        console.log("______Desde transferirCategoria()______")
+        // console.log("______Desde transferirCategoria()______")
 
         //Se declara el array que contendra la cantidad de categorias seleccionadas
         var TotalCategoria = []
@@ -193,23 +207,24 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //Se verifica la cantidad de categorias seleccionadas
         // console.log(Categoria)
 
-        //Se eliminan las categorias que estaban y se colocan las que estan en el array TotalCategoria
-        //Se busca el nodo padre que contiene el input donde esta el producto a eliminar
+        //Se eliminan las categorias que estaban (En el cliente) y se colocan las que estan en el array TotalCategoria
+        //Se buscan los nodos que contienen los input donde estan las categorias a eliminar
         let DivHijo = document.getElementsByClassName("imput_6js")
 
         //Se recorre todos los elementos que contengan la clase input_6js para eliminarlos, es decir, se borran las categorias que existian (solo si existian)
         Elementos = DivHijo.length
-        console.log("Elementos con la clase imput_6js", Elementos) 
+        // console.log("Elementos con la clase imput_6js", Elementos) 
         for(var i = 0; i<Elementos; i++){ 
             // console.log(Elementos) 
             // console.log("Eliminado")
 
             DivHijo_2 = document.getElementsByClassName("imput_6js")[0]
-            console.log("div_hijo", DivHijo_2)
+            // console.log("div_hijo", DivHijo_2)
 
             let DivPadre = document.getElementById("Contenedor_80js")
-            console.log("div_padre", DivPadre)
+            // console.log("div_padre", DivPadre)
 
+            //Finalmente se eliminan las categorias
             DivPadre.removeChild(DivHijo_2);  
         }
 
@@ -221,7 +236,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             }
         }
            
-        console.log("Categorias seleccionadas", TotalCategoria.length)
+        // console.log("Categorias seleccionadas", TotalCategoria.length)
 
         //Se recoge la seleccion enviada desde CantidadCategorias_Ajax_V.php
         Categoria = document.getElementsByClassName("categoria_js")
@@ -255,7 +270,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
                 //Se especifica el elemento donde se va a insertar el nuevo elemento
                 var ElementoPadre = document.getElementById("Contenedor_80js")
-                console.log("Elemento padre= ", ElementoPadre)
+                // console.log("Elemento padre= ", ElementoPadre)
 
                 //Se inserta en el DOM el input creado
                 // inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
@@ -263,7 +278,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
                 //Se especifica el elemento que sera la referencia para insertar el nuevo nodo
                 let Ref_Ubicacion= document.getElementById("Referencia_2")
-                console.log("Elemento referencia= ", Ref_Ubicacion)
+                // console.log("Elemento referencia= ", Ref_Ubicacion)
                 
                 //Se especifica el div padre y la posición donde se insertará el nuevo nodo
                 ElementoPadre.insertBefore(NuevoElemento, Ref_Ubicacion)
@@ -330,7 +345,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************
     //Valida el formulario de datos de una tienda        
     function validarDatosTienda(){
-        console.log("_____Desde validarDatosTienda()_____")
+        // console.log("_____Desde validarDatosTienda()_____")
         // DATOS AFILIADO
         let NombreAficom = document.getElementById('Nombre_Aficom').value
         let Apellido = document.getElementById('Apellido_Aficom').value      
@@ -341,7 +356,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let NombreTien = document.getElementById('Nombre_Tien').value
         let TelefonoTien = document.getElementById('Telefono_Tien').value
         let Categoria = document.getElementById('Contenedor_80js')    
-        console.log(Categoria.childElementCount)
+        // console.log("Cantidad de elementos dentro de \"Contenedor_80js\"", Categoria.childElementCount)
         let Seccion = document.getElementById('Seccion').value    
         let Estado = document.getElementById('Estado_Tien').value  
         let Municipio = document.getElementById('Municipio_Tien').value 

@@ -52,7 +52,8 @@
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
-
-<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
-
+	
+<!-- ******************************************************************************************* -->
+			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->
+										<!-- HEADER -->
 <!-- ******************************************************************************************* -->
