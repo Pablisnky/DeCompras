@@ -58,61 +58,63 @@
 
                         <!-- NOMBRE -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
+                            <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')" value="asdsas"/>
                         </div>
 
                         <!-- APELLIDO -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
+                            <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')" value="zxcxzcx"/>
                         </div>
 
                         <!-- CEDULA -->
                         <div class="contenedor_29">
                             <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
-                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')"/>
+                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" value="12123232"/>
                         </div>
 
                         <!-- TELEFONO -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')"/>
+                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" value="2343"/>
                         </div>
 
                         <!-- DIRECCION -->
-                        <div class="contenedor_55">
-                            <div class="">
-                                <select class="input_13">
+                        <div class="contenedor_55 contenedor_154">
+                            <div class="contenedor_155">
+                                <select class="select_2 borde_1" id="Estado" onchange="blanquearInput('Estado')">
                                     <option disabled selected>Seleccione un estado</option>
-                                    <option>Yaracuy</option>
+                                    <option selected="true">Yaracuy</option>
                                 </select>
                             </div>
-                            <div class="">
-                                <select class="input_13">
+                            <div class="contenedor_155">
+                                <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
                                     <option id="Option_1" disabled selected>Seleccione una ciudad</option>
-                                    <option>Independencia</option>
+                                    <option selected="true">Independencia</option>
                                     <option>San Felipe</option>
                                     <option>Yaritagua</option>
                                 </select>
                             </div>
                         </div>
                         <div class="contenedor_72">
-                            <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
+                            <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')">asasas</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="contenedor_62">
                     <h1 class="h1_1">Formas de pago</h1>
                     <div class="contenedor_65">
-                        <input type="radio" name="pago" id="Transferencia" onclick="verTransferenciaBancaria()">
+                        <input type="radio" name="pago" id="Transferencia" value="Transferencia" onclick="verTransferenciaBancaria()">
                         <label class="label_12" for="Transferencia">Transferencia bancaria</label>
                         <br class="br_2"/>
-
-                        <input type="radio" name="pago" id="PagoMovil" onclick="verPagoMovil()">
-                        <label class="label_12" for="PagoMovil">Pago movil</label>                        <div class="contenedor_60" id="Contenedor_60a">
+                        <input type="radio" name="pago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()">
+                        <label class="label_12" for="PagoMovil">Pago movil</label> 
+                        
+                        
+                        <div class="contenedor_60" id="Contenedor_60a">
                             <ul class="ul_1">
                                 <li class="li_1">Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</li>
                                 <li class="li_1">Transferencias de otros bancos dejan el despacho en espera 24 horas, una vez confirmado se le notificara al despachador para que realize la entrega.</li>
                             </ul>
-                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia o pagomovil"/>
+                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
                             <?php
                                 // $Datos viene de Carrito_C/index
                                 // echo "<pre>";
@@ -143,6 +145,9 @@
                             ?>
                         </div>
                     </div>
+
+
+
                     <div class="contenedor_65">
                         <div class="contenedor_60" id="Contenedor_60b">
                             <p>(Despachos en zona metropolitana de su ciudad)</p>
@@ -156,7 +161,7 @@
                                 <li class="li_1">.</li>
                             </ul>  
 
-                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil"/>
+                            <input class="placeholder input_11 ocultar" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil"onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
                             <div class= "contenedor_136">
                                 <div class="contenedor_138">
                                     <p class="p_13">Banco</p>

@@ -3,7 +3,7 @@
 //     // CerrarModal_X("Ejemplo_Secciones")
 //     console.log("ENTRO")
 // }); 
-document.addEventListener('DOMContentLoaded', function(){autofocus('ContenidoPro')}, false)
+// document.addEventListener('DOMContentLoaded', function(){autofocus('ContenidoPro')}, false)
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 20)}, false)
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(20,'ContenidoPro')}, false)

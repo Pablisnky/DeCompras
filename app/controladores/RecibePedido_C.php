@@ -3,6 +3,7 @@
 
         public function __construct(){
             session_start();  
+            
             $this->ConsultaRecibePedido_M = $this->modelo("RecibePedido_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -116,7 +117,7 @@
             //Se INSERTAN los datos del usuario en la BD
             $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Aleatorio);
 
-            // $this->vista("inc/header");
+            $this->vista("inc/header");
             $this->vista("paginas/RecibePedido_V");
         }
     }

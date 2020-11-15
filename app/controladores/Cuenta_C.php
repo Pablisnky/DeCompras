@@ -1,11 +1,11 @@
 <?php
-    session_start();
-
     class Cuenta_C extends Controlador{
         private $ID_Tienda;
         private $ID_Afiliado;
 
         public function __construct(){
+            session_start();
+
             $this->ConsultaCuenta_M = $this->modelo("Cuenta_M");
 
             //Sesion creada en Login_C

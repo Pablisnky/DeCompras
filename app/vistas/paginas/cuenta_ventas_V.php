@@ -4,11 +4,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
       ?>        
       <section class="section_5">
-        <div class="contenedor_70">    
-            <p class="p_6">Dashboard de Ventas</p>
-            <p class="">Estamos construyendo un excelente panel de control para que administres tu tienda en donde quiera que te encuentres y desde cualquier dispositivo.</p>
-            <p class="">Primera entrega 01/12/2020 (Versión Beta)</p>
-            <p class="">Segunda entrega 05/01/2021 (Versión V_1.0)</p>
+        <div class="contenedor_70 contenedor_103 borde_1">    
+            <h1 class="h1_1">Dashboard de Ventas</h1>
+            <p class="p_7">Estamos construyendo un excelente panel de control para que administres tu tienda en tiempo real, en donde quiera que te encuentres y desde cualquier dispositivo.</p>
+            <p class="p_7">Primera entrega 01/12/2020 (Versión Beta)</p>
+            <p class="p_7">Segunda entrega 05/01/2021 (Versión Estable V_1.0)</p>
         </div>
       </section>        
 

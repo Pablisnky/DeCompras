@@ -1,6 +1,4 @@
 <?php
-//Archivo llamado desde 
-
     class Menu_C extends Controlador{
 
         public function __construct(){

@@ -1,9 +1,9 @@
 <?php 
-    session_start();
-
     class Login_C extends Controlador{
         
         public function __construct(){  
+            session_start();
+
             $this->ConsultaLogin_M = $this->modelo("Login_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -139,7 +139,7 @@
                         
                         //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
                         $_SESSION["Nombre"] = $Nombre;
-    
+                        
                         // Se verifica a donde se redirecciona segun la condición de la tienda
                         if($Cant_Seccion == 0){//Sino hay seccion creada
                             header("location:" . RUTA_URL . "/Modal_C/tiendaSinSecciones"); 

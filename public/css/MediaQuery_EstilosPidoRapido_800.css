@@ -280,7 +280,7 @@
 .contenedor_55{/*inicio*/
 	width: 95%;
 	flex-direction: column;
-	margin: 5% auto;
+	margin: 5% auto 0% auto;
 	margin-top: 15%;
 }
 .contenedor_56{/*inicio*/
@@ -565,6 +565,9 @@
 }
 .contenedor_153{/*quienesSomos*/
 	display: none;
+}
+.contenedor_155{/*carrito*/
+	width: 100%;
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
@@ -1006,10 +1009,9 @@
 	background-color: rgba(0, 0, 0, 0.8);
 	z-index: 1;
 }
-.textarea_1{/*carrito*/
+.textarea_1{/*carrito - cuenta_publicar - descr_Producto*/
 	width: 100%;
-	padding-left: 5%;
-	margin-top: 2%;
+	/* margin-top: 2%; */
 }
 .textarea_2{/*Secciones_Ajax*/
 	width: 80%;

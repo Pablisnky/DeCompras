@@ -119,17 +119,17 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 }, false);    
 
 //************************************************************************************************
-    // invocada desde PedidoCarrito.php
+    // invocada desde carrito_V.php
     function verTransferenciaBancaria(){
-        console.log("______Desde verTransferenciaBancaria()______") 
+        // console.log("______Desde verTransferenciaBancaria()______") 
         document.getElementById("Contenedor_60a").style.display = "block"
         document.getElementById("Contenedor_60b").style.display = "none"
     }
 
 //************************************************************************************************
-    // invocada desde PedidoCarrito.php
+    // invocada desde carrito_V.php
     function verPagoMovil(){
-        console.log("______Desde verPagoMovil()______") 
+        // console.log("______Desde verPagoMovil()______") 
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "block"
     }
@@ -203,7 +203,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         Cont_Leyenda_Click = ID_Cont_Leyenda
         localStorage.setItem('ID_cont_LeyendaDinamico',Cont_Leyenda_Click) 
         LS_ID_Cont_Leyenda = localStorage.getItem('ID_cont_LeyendaDinamico')
-// console.log(LS_ID_Cont_Leyenda)
+        
         //Se recibe el ID del input que va a mostrar la cantidad del producto donde se hizo click
         Input_CantidadClick = ID_InputCantidad
         localStorage.setItem('ID_InputCantidad', Input_CantidadClick)
@@ -222,7 +222,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         Input_OpcionClick = ID_InputOpcion
         localStorage.setItem('ID_InputOpcion', Input_OpcionClick)
         LS_ID_InputOpcion = localStorage.getItem('ID_InputOpcion')  
-// console.log(LS_ID_InputOpcion)
         
         //Se recibe el ID del input que va a mostrar el precio del producto donde se hizo click
         Input_PrecioClick = ID_InputPrecio
@@ -875,7 +874,16 @@ console.log(AlCarro)
         let Cedula = document.getElementById('CedulaUsuario').value 
         let Telefono = document.getElementById('TelefonoUsuario').value 
         let Direccion = document.getElementById('DireccionUsuario').value  
-        let Pago = document.getElementsByClassName('pago') 
+        let Estado = document.getElementById('Estado').value 
+        let Ciudad = document.getElementById('Ciudad').value
+        let Pago = document.getElementsByName('pago') 
+        //Recorremos todos los valores del radio button para encontrar el seleccionado
+        for(let i = 0; i < Pago.length; i++){
+            if(Pago[i].checked)
+            var PagoSeleccionado = Pago[i].value
+            console.log(PagoSeleccionado)
+        }
+       
         let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
         let RegistroPago_Pagomovil = document.getElementById('RegistroPago_Pagomovil').value
         
@@ -935,6 +943,30 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
+        else if(Estado == "Seleccione un estado"){
+            alert ("Selecione una Estado");
+            document.getElementById("Estado").value = "";
+            document.getElementById("Estado").focus();
+            document.getElementById("Estado").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Ciudad == "Seleccione una ciudad"){
+            alert ("Selecione una Ciudad");
+            document.getElementById("Ciudad").value = "";
+            document.getElementById("Ciudad").focus();
+            document.getElementById("Ciudad").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+            return false;
+        }
         else if(Direccion =="" || Direccion.indexOf(" ") == 0 || Direccion.length > 20){
             alert ("Problemas con su Direccion");
             document.getElementById("DireccionUsuario").value = "";
@@ -947,7 +979,7 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Pago.checked == false){
+        else if(PagoSeleccionado == undefined){
             alert ("Debe indicar un modo de pago");
             document.getElementsByClassName("botonJS")[0].value = "Comprar"
             document.getElementsByClassName("botonJS")[0].disabled = false
@@ -956,20 +988,23 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(RegistroPago_Transferencia =="" || RegistroPago_Transferencia.indexOf(" ") == 0 || RegistroPago_Transferencia.length > 20){
-            alert ("Problemas con el código de pago");
-            document.getElementById("RegistroPago_Transferencia").value = "";
-            document.getElementById("RegistroPago_Transferencia").focus();
-            document.getElementById("RegistroPago_Transferencia").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("botonJS")[0].value = "Comprar"
-            document.getElementsByClassName("botonJS")[0].disabled = false
-            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
-            return false;
+        else if(PagoSeleccionado == "Transferencia"){
+            if(RegistroPago_Transferencia == "" ||  RegistroPago_Transferencia.indexOf(" ") == 0 || RegistroPago_Transferencia.length > 20){
+                alert ("Problemas con el código de transferencia");
+                document.getElementById("RegistroPago_Transferencia").value = "";
+                document.getElementById("RegistroPago_Transferencia").focus();
+                document.getElementById("RegistroPago_Transferencia").style.backgroundColor = "var(--Fallos)"
+                document.getElementsByClassName("botonJS")[0].value = "Comprar"
+                document.getElementsByClassName("botonJS")[0].disabled = false
+                document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+                return false;
+            }
         }
-        else if(RegistroPago_Pagomovil =="" || RegistroPago_Pagomovil.indexOf(" ") == 0 || RegistroPago_Pagomovil.length > 20){
-            alert ("Problemas con el código de pago");
+        else if(PagoSeleccionado == "PagoMovil"){
+            if(RegistroPago_Pagomovil == "" ||  RegistroPago_Pagomovil.indexOf(" ") == 0 || RegistroPago_Pagomovil.length > 20){
+            alert ("Problemas con el código de PagoMovil");
             document.getElementById("RegistroPago_Pagomovil").value = "";
             document.getElementById("RegistroPago_Pagomovil").focus();
             document.getElementById("RegistroPago_Pagomovil").style.backgroundColor = "var(--Fallos)"
@@ -979,8 +1014,8 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
+            }
         }
-
         //Si se superan todas las validaciones la función devuelve verdadero
         return true
     }
