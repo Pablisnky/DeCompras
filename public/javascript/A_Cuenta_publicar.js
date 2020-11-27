@@ -35,7 +35,7 @@ document.getElementById("SeccionPublicar").addEventListener('keydown', Llamar_se
 
 //-------------------------------------------------------------------------------------------------
 function Llamar_seccionesDisponible(){
-    console.log("Desde Llamar_seccionesDisponible()")
+    // console.log("Desde Llamar_seccionesDisponible()")
     var url = "../../Cuenta_C/SeccionesDisponibles/"
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_seccion

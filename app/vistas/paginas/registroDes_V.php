@@ -8,7 +8,7 @@
 
 <section class="section_5">
     <div class="contenedor_42">
-        <h1 class="h1_1">Afiliación como despachador</h1>
+        <h1 class="h1_1">Unete a nuestro equipo de despachadores de mercancia</h1>
         <form action="../Registro_C/recibeRegistroDes" method="POST" name="formRegistroDes" onsubmit="return validarAfiliacionDes()">
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Datos personales</legend> 

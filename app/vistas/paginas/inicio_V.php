@@ -63,6 +63,23 @@
                 </div>
             </div>
 
+            <div class='contenedor_6 borde_1' id="Merceria">
+                <h2 class='h2_1'>MERCERÍA</h2>
+                <span class="icon-clubs span_8"></span>                
+                <div class="contenedor_106">
+                    <span class="span_21 borde_1">
+                        <?php
+                            foreach($Datos as $arr) :
+                                if($arr['ID_Categoria'] == 19){  
+                                    $Cantidad = $arr['cantidad']; 
+                                    echo $Cantidad;
+                                }
+                            endforeach 
+                        ?>
+                    </span>
+                </div>
+            </div>
+
             <div class='contenedor_6 borde_1' id="Repuesto_automotriz">
                 <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
                 <span class="icon-man-woman span_8"></span>                 

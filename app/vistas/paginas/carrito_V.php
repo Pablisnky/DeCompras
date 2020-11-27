@@ -6,7 +6,7 @@
 ?>
 <section class="section_4">
     <div class="contenedor_24 contenedor_25">
-        <h1 class="h1_1 h1_9 ">Tu orden</h1>
+        <h1 class="h1_1 h1_9 ">Orden de compra</h1>
         <div class="contenedor_20">
             <table class="tabla" id="Tabla">
                 <thead>
@@ -58,23 +58,23 @@
 
                         <!-- NOMBRE -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')" value="asdsas"/>
+                            <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
                         </div>
 
                         <!-- APELLIDO -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')" value="zxcxzcx"/>
+                            <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
                         </div>
 
                         <!-- CEDULA -->
                         <div class="contenedor_29">
                             <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
-                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" value="12123232"/>
+                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')"/>
                         </div>
 
                         <!-- TELEFONO -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" value="2343"/>
+                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')"/>
                         </div>
 
                         <!-- DIRECCION -->
@@ -88,14 +88,14 @@
                             <div class="contenedor_155">
                                 <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
                                     <option id="Option_1" disabled selected>Seleccione una ciudad</option>
-                                    <option selected="true">Independencia</option>
+                                    <option>Independencia</option>
                                     <option>San Felipe</option>
                                     <option>Yaritagua</option>
                                 </select>
                             </div>
                         </div>
                         <div class="contenedor_72">
-                            <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')">asasas</textarea>
+                            <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
                         </div>
                     </div>
                 </div>
@@ -107,8 +107,11 @@
                         <br class="br_2"/>
                         <input type="radio" name="pago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()">
                         <label class="label_12" for="PagoMovil">Pago movil</label> 
-                        
-                        
+                        <br class="br_2"/>
+                        <input type="radio" name="pago" id="PagoDestino" value="" onclick="verPagoDestino()">
+                        <label class="label_12" for="PagoDestino">Pago en destino</label> 
+                                                
+                        <!-- PAGO TRANSFERENCIA -->
                         <div class="contenedor_60" id="Contenedor_60a">
                             <ul class="ul_1">
                                 <li class="li_1">Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</li>
@@ -144,11 +147,8 @@
                                 endforeach;
                             ?>
                         </div>
-                    </div>
 
-
-
-                    <div class="contenedor_65">
+                        <!-- PAGOMOVIL -->
                         <div class="contenedor_60" id="Contenedor_60b">
                             <p>(Despachos en zona metropolitana de su ciudad)</p>
                             <ul class="ul_1">
@@ -165,7 +165,7 @@
                             <div class= "contenedor_136">
                                 <div class="contenedor_138">
                                     <p class="p_13">Banco</p>
-                                    <p class="p_13">Titular</p>
+                                    <p class="p_13">Nº cedula</p>
                                     <p class="p_13">Nº telefono</p>
                                 </div>
                                 <div>
@@ -175,7 +175,13 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- PAGO EN DESTINO -->
+                        <div class="contenedor_60" id="Contenedor_60c">
+                            <p>Pago con tarjeta de debito al recibir el producto</p>
+                        </div>
                     </div>
+
                     <div class="contenedor_30">
                         <input class="ocultar" type="text" name="id_tienda" value="<?php echo $Datos['ID_Tienda']?>"/>
 

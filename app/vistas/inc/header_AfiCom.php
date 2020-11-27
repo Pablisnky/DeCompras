@@ -39,13 +39,13 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/ventas';?>">Ventas</a></li>
 					<li class="menuLi_1"><a>Productos</a>
-						<ul class="menuContenedor_2">
+						<ul class="menuContenedor_3 menuContenedor_2">
 							<?php
 							//$Datos proviene de Cuenta_C/index -  Cuenta_C/productos -  Cuenta_C/editar -  Cuenta_C/publicar
 							foreach($Datos['secciones'] as $arr) :	
 								$Seccion = $arr['seccion'];?>
-							<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/Cuenta_C/Productos/' . urlencode($Seccion) . ',NoAplica'?>"><?php echo $Seccion;?></a></li>	<?php
-							endforeach;?>
+								<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/Cuenta_C/Productos/' . urlencode($Seccion) . ',NoAplica'?>"><?php echo $Seccion;?></a></li>	<?php
+							endforeach;	?>
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/Todos';?>">Todos</a></li>
 						</ul> 	
 					</li>

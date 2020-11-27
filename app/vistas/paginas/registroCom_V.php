@@ -8,7 +8,7 @@
 
 <section class="section_5">
     <div class="contenedor_42">
-        <h1 class="h1_1">Afiliación como comerciante</h1>
+        <h1 class="h1_1">Crea tu tienda y muestrala a toda la ciudad</h1>
         <form action="../Registro_C/recibeRegistroCom" method="POST" name="formRegistroCom" onsubmit="return validarAfiliacionCom()">
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Registro de tienda</legend> 

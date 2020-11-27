@@ -107,6 +107,7 @@
             // echo "</pre>";
             // exit();
             
+            // $this->vista("inc/headerProducto", $Datos);
             $this->vista("paginas/descr_Producto_V", $Datos);
         } 
         

@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, p, legend{
 	box-sizing: border-box;
 }
 a{
+	color: var(--Enlaces);
 	text-decoration: none;
 }
 body, html{
@@ -31,6 +32,7 @@ body, html{
 	--Fallos: rgba(255, 0, 0, 0.2);
 	--footer: rgb(233, 215, 215);
 	--Enlaces: rgb(24, 24, 238);
+	--BandaAlerta: orange;
 }
 
 /* ******************************************************************************** */
@@ -108,6 +110,9 @@ button{/*tiendas*/
 	margin-top: -5%;
 	height: 50px;
 	visibility: hidden;
+}
+.aside_1{/*vitrina*/
+	position: fixed;
 }
 .Blink{/*header*/
 	animation-name: blinker;
@@ -455,7 +460,7 @@ button{/*tiendas*/
 	bottom: 4%;
 	margin-left: 25%;
 }
-.contenedor_42{/*registroCom - registroDes - login - cuenta_editar - cuenta_publicar*/
+.contenedor_42{/*registroCom - registroDes - login - cuenta_editar - cuenta_publicar - afiliacion*/
 	width: 80%;
 	margin: auto;
 	margin-top: 10%;
@@ -638,7 +643,7 @@ button{/*tiendas*/
 	z-index: 3 !important;
 }
 .contenedor_70{/*afiliacion - cuenta_ventas*/
-	padding-top: 10%;
+	width: 95%;
 }
 .contenedor_71{/*afiliacion*/
 	grid-column-start: 1;
@@ -741,7 +746,7 @@ button{/*tiendas*/
 	justify-content: center;/*centra horizontalmente*/
 }
 .contenedor_90{/*tiendas - opciones - cuenta_productos*/
-	background-color: orange;
+	background-color: var(--OficialClaro) ;
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	justify-content: center;
 	align-items: center;
@@ -749,7 +754,7 @@ button{/*tiendas*/
 	top: 13%;
 	left: 0%;
 	width: 100%;
-	height: 30px;
+	height: 30px!important;
 	z-index: 2 !important;
 }
 .contenedor_91{/*cuenta_productos*/
@@ -1039,7 +1044,7 @@ button{/*tiendas*/
 	flex-direction: row;
 	flex-wrap: wrap;
 }
-.contenedor_148>div:last-child{/*inicio*/
+.contenedor_148 > div:last-child{/*inicio*/
 	flex: 0 1 100% !important;/*ocupa toda la primera fila en la distribucion flex*/
 }
 .contenedor_149{/*quienesSomos*/
@@ -1073,6 +1078,28 @@ button{/*tiendas*/
 .contenedor_155{/*carrito*/
 	width: 50%;
 }
+.contenedor_156{/*vitrina - opciones*/
+	display: flex; 
+	width: 100%;
+}
+.contenedor_157{/*vitrina*/
+	/* position: fixed; */
+}
+.contenedor_158{/*opciones*/
+	/* margin-left: 8%; */
+	justify-content: space-between;
+	width: 100%;
+}
+.contenedor_159{/*opciones*/
+	background-color: var(--BandaAlerta);
+	cursor: pointer; 
+	margin-right:2%; 
+	border-radius:5px; 
+	padding: 0% 2%;
+}
+.contenedor_160 > div:last-child{/*inicio*/
+	flex: 0 1 0% !important;/*rompe la ocupacion de toda la primera fila en la distribucion flex*/
+}
 .figure_2{/*quienesSomos*/
 	margin: auto;
 	width: 100%;
@@ -1103,11 +1130,12 @@ button{/*tiendas*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
-	/* display: inline_block; */
 	width: 100%;
 }
-.h1_4{/*ciudad - opciones - tiendas*/
+.h1_4{/*opciones - tiendas*/
 	font-size: 1.4em;
+	width: initial;
+	font-weight: lighter !important;
 }
 .h1_5{/*Categorias_Ajax - carrito*/
 	margin: 2% auto;
@@ -1577,7 +1605,7 @@ button{/*tiendas*/
 	margin-left: 5%;
 	padding: 0% 2%;
 }
-.li_1{/*carrito*/
+.li_1{/*carrito - ciudad*/
 	line-height: 2em;
 }
 .li_2{/*ciudad*/
@@ -1723,7 +1751,7 @@ button{/*tiendas*/
 	text-align: center;
 	font-size: 1.9em;
 }
-.p_9{/*cuenta_editar - afiliacion - opciones - tiendas*/
+.p_9{/*cuenta_editar - afiliacion - tiendas*/
 	grid-column-start: 1;
 	grid-column-end: 6;
 }
@@ -1740,7 +1768,7 @@ button{/*tiendas*/
 	margin: 0% auto 5% auto;
 }
 .p_13{/*carrito*/
-	font-weight: bold;
+	font-weight: bold; 
 }
 .p_13, .p_14{/*carrito*/
 	line-height: 25px;
@@ -1752,6 +1780,19 @@ button{/*tiendas*/
 	font-size: 1.4em;
 	line-height: 45px;
 	margin: 5% auto;
+}
+.p_17{/*vitrina - opciones*/
+	background-color: var(--OficialClaro); 
+	text-align: center; 
+	height: 100%; 
+	width: 40px; 
+	writing-mode: vertical-rl; 
+	transform: rotate(180deg); 
+	font-size: 1.5em; 
+	line-height: 40px;
+	margin-top: 100%;
+}
+.p_18{/*opciones*/
 }
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	margin: 0% auto 2% auto !important;
@@ -1900,6 +1941,7 @@ button{/*tiendas*/
 	font-size: 1.5em;
 	/* padding: 0.2%; */
 	width: 2.5%;
+	/* display: inline; */
 }
 .span_5:hover{/*inicio - opciones*/
 	cursor: pointer !important;
@@ -1997,6 +2039,9 @@ button{/*tiendas*/
 	text-align: center;
 	top: 5%;
 	left: 85%;
+}
+.span_22{/*opciones*/
+	font-size: 1.2em;
 }
 .tabla{/*carrito*/
 	width: 100%;
@@ -2124,16 +2169,7 @@ button{/*tiendas*/
 .ul_5 > li{/*login*/
 	font-size: 1.1em;
 }
-ul .menuContenedor_2{/*header_AfiCom*/
-	background-color: var(--OficialOscuro);
-	display: none;
-	position: absolute;
-	top: 100%;
-	padding-top: 0.7%;
-	left: 52%;
-	/* width: 200px;  */
-}
-ul .menuContenedor_3{/*header*/
+ul .menuContenedor_3{/*header - header_AfiCom*/
 	background-color: var(--OficialOscuro) !important;
 	display: none;
 	position: absolute;
@@ -2142,6 +2178,14 @@ ul .menuContenedor_3{/*header*/
 	padding-top: 1%;
 	left: 65% !important;
 }
+ul .menuContenedor_2{/*header_AfiCom*/
+	background-color: var(--OficialOscuro);
+	display: none;
+	position: absolute;
+	top: 100%;
+	padding-top: 0.7%;
+	left: 50%!important;
+}
 .menuLi_1:hover > ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
 	display: block !important;
 	width: 170px !important;
@@ -2149,12 +2193,8 @@ ul .menuContenedor_3{/*header*/
 .menuLi_2{/*header_AfiCom*/
 	padding: 5% !important;
 	text-align: left !important;
-	/* display: block; */
 }
 .menuLi_2:hover{/*header.php   index.php*/
 	text-align: left !important;
 	display: block;
-}			
-/* .nav > li {
-	float:left;
-} */
+}		

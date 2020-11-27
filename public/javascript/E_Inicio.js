@@ -21,6 +21,8 @@ document.getElementById("Comida_Rapida").addEventListener('click', function(){Ve
 
 document.getElementById("Mascotas").addEventListener('click', function(){VerTiendas('Mascotas')}, false)
 
+document.getElementById("Merceria").addEventListener('click', function(){VerTiendas('Merceria')}, false)
+
 document.getElementById("Repuesto_automotriz").addEventListener('click', function(){VerTiendas('Repuesto_automotriz')}, false)
 
 document.getElementById("Bodega").addEventListener('click', function(){VerTiendas('Bodega')}, false)
@@ -76,7 +78,7 @@ document.getElementById("Span_5").addEventListener('click', function(){CerrarMod
 // *****************************************************************************************************
     //Abre en la misma ventana las tiendas que pertenecen a una categoria
     function VerTiendas(Tiendas){
-        console.log("_____Desde VerTiendas()_____", Tiendas)
+        // console.log("_____Desde VerTiendas()_____", Tiendas)
         window.open(`Tiendas_C/index/${Tiendas}`,"_self")
     }
 

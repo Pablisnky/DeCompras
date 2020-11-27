@@ -259,7 +259,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Div_AlertaClave.childElementCount >= 1){
+        else if(Div_AlertaClave.childElementCount > 1){
             alert("La clave no es permitida")
             document.getElementById("Clave").value = ""
             document.getElementById("Clave").focus()
@@ -276,7 +276,7 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Div_AlertaCorreo.childElementCount >= 1){
+        else if(Div_AlertaCorreo.childElementCount > 1){
             alert("El correo ya esta registrado")
             document.getElementById("CorreoAfiDes").value = ""
             document.getElementById("CorreoAfiDes").focus()
@@ -306,26 +306,12 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
     }
 
 //************************************************************************************************
-    //Valida que la contraseña sea de solo letras y numeros
-    // function literal_3(){ 
-    //     var m = document.getElementById("Clave").value;
-    //     var re = /^[\w ]+$/; /*Solo acepta caracrteres alfanumericos la coma se salta el filtro*/
-        
-    //     if(!re.test(m)){
-    //       alert("Solo introduzca letras y numeros en su contraseña");
-      
-    //           document.getElementById("Clave").value = "";
-    //           document.getElementById("Clave").focus();
-    //           return false;
-    //         }
-    //   } 
-    
-//************************************************************************************************
-    //quita el color de fallo en un input y lo deja en su color original
+    //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){
         // console.log("______Desde blanquearInput()______")
         document.getElementById(id).style.backgroundColor = "white"
     }
+
 //************************************************************************************************
     //Impide que se siga introduciendo caracteres al alcanzar el limite maximo en el telefono
     var contenidoTelefono = ""; 
@@ -385,3 +371,20 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
     //     const value = element.value;
     // element.value = formatNumber(value);
     // });
+
+
+//*********************************************************************************************
+    //Valida que la contraseña sea de solo letras y numeros
+    // function literal_3(){ 
+    //     var m = document.getElementById("Clave").value;
+    //     var re = /^[\w ]+$/; /*Solo acepta caracrteres alfanumericos la coma se salta el filtro*/
+        
+    //     if(!re.test(m)){
+    //       alert("Solo introduzca letras y numeros en su contraseña");
+      
+    //           document.getElementById("Clave").value = "";
+    //           document.getElementById("Clave").focus();
+    //           return false;
+    //         }
+    //   } 
+    

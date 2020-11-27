@@ -5,8 +5,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>		
 
 <section class="section_5">
-    <div class="contenedor_70">
-        <h1 class="p_1">Unete a nuestra red de comercialización de productos.</h1>
+    <div class="contenedor_42 contenedor_70">
+        <h1 class="h1_1">Unete a nuestra red de comercialización de productos.</h1>
         <div class='contenedor_84 contenedor_93 borde_1'>
             <p class="p_6 p_9">15 días libres de pago al registrar tu tienda</p> 
             <div class="contenedor_94">

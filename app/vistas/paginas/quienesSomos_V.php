@@ -8,7 +8,7 @@
     <div class='contenedor_149'>
         <div class="contenedor_152">
             <h1 class="p_1">Quienes somos</h1>
-            <p class="p_16">PedidoRemoto es un producto de la casa de software hórebi C.A. con sede en San Felipe estado Yaracuy (Venezuela), iniciamos operaciones en junio de 2020 con el objetivo de dar soluciones informaticas a nuestros problemas citadinos e impactar positivamente a la sociedad.</p> 
+            <p class="p_16">PedidoRemoto es un producto de la casa de software hórebi C.A. con sede en San Felipe estado Yaracuy (Venezuela), iniciamos operaciones en junio de 2020 con el objetivo de dar soluciones informaticas a problemas citadinos e impactar positivamente a la sociedad.</p> 
         </div>
         <div class="contenedor_153">                      
             <img class="figure_2" alt="Logo PedidoRemoto" src="<?php echo RUTA_URL?>/public/images/logo.png"/>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="contenedor_150">
-        <div class="contenedor_148">
+        <div class="contenedor_148 contenedor_160">
             <div>
                 <span class="icon-cart span_6"></span>
             </div>
@@ -53,9 +53,6 @@
             </div>
             <div>
                 <span class="icon-home2 span_6"></span>
-            </div>
-            <div>
-                <h3 class="h3_2" id="H3_3">Unete a nuestra red de comercialización de productos.</h3>
             </div>
         </div>
     </div>

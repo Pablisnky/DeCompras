@@ -34,6 +34,10 @@
 	margin-top: -5%;
 	height: 5px; 
 }
+.aside_1{/*vitrina*/
+	position: sticky;
+	top: 8%;
+}
 .boton{/*carrito - recibePedido*/
 	font-size: 1em;
 	width: 70% ;
@@ -136,7 +140,7 @@
 .contenedor_11{/*vitrina*/
 	margin: 12% auto 0% auto;
 	align-items: center;
-	width: 250px;
+	width: 200px;
 }
 .contenedor_12{/*vitrina*/
 	width: 70%;
@@ -394,7 +398,7 @@
 }
 .contenedor_90{/*tiendas - opciones - cuenta_productos*/
 	top: 8%;
-	height: 30px;
+	height: 40px!important;
 }
 .contenedor_91{/*cuenta_productos*/
 	height: 35px !important;
@@ -594,8 +598,8 @@
 	height: 1.3em;
 	/* line-height: 1em; */
 }
-.h1_4{/*ciudad - opciones - tiendas*/
-	font-size: 1.4em;
+.h1_4{/*opciones - tiendas*/
+	font-size: 1.3em;
 	font-weight: bold;
 }
 .h1_7{/*cuenta_productos*/
@@ -911,6 +915,9 @@
 	line-height: 35px;
 	margin: 5% auto;
 }
+.p_17{/*vitrina - opciones*/
+	margin-top: inherit;
+}
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	font-size: 1em;	
 	margin: 1% auto 8% auto !important;
@@ -1046,13 +1053,13 @@
 	margin: 10% 0% 10% 25%;
 }
 ul .menuContenedor_2{/*header_AfiCom*/
-	background-color: var(--OficialOscuro);
+	/* background-color: var(--OficialOscuro);
 	display: none;
 	position: absolute;
 	top: 250%;
 	padding-top: 0.7%;
 	left: 46%;
-	width: 200px; 
+	width: 200px;  */
 }
 ul .menuContenedor_3{/*header*/
 	background-color: var(--OficialClaro) !important; 

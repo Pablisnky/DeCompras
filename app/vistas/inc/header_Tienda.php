@@ -30,7 +30,7 @@
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
-    <body>	
+    <body onload="nobackbutton();">	
 		<header class="contenedor_69">
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111">

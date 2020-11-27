@@ -29,6 +29,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <p class="p_6">Actualizar datos de producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">
             <div class="contenedor_47" id="Contenedor_47">
+                
+                    <!-- SECCION IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
                     <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
@@ -36,10 +38,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <label>Imagen principal</label>
                 </div>
                 <div>
+                    <!-- SECCION PRODUCTO -->
                     <label>Producto</label>
                     <input class="placeholder placeholder_2 borde_1" type="text" name="producto" id="ContenidoPro" value="<?php echo $Producto;?>"/>
                     <input class="contador" type="text" id="ContadorPro" value="20"/>
 
+                    <!-- SECCION DESCRIPCION -->
                     <label>Descripcion</label>
                     <input class="placeholder placeholder_2 borde_1" type="text" name="descripcion" id="ContenidoDes" value="<?php echo $Opcion;?>"/>
                     <input class="contador" type="text" id="ContadorDes" value="20"/>
@@ -82,7 +86,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
                     </div>                        
 
-                    <!-- SECCION FOTOGRAFIAS SECUNDARIAS -->
+                    <!-- SECCION IMAGENES SECUNDARIAS -->
                     <div class="contenedor_114" id="Contenedor_114">
                         <?php
                         $Cont = 1;

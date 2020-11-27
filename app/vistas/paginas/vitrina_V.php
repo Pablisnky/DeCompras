@@ -17,30 +17,38 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
 <section class="section_5">	
-    <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>')">
-    </div>
-    <div class="contenedor_110" id="Section_4">
-        <?php
-        $Contador = 1;
-        //Se cargan todas las secciones que tenga una tienda
-        foreach($Datos['seccion'] as $row){
-            $Seccion = $row['seccion'];       
-            ?> 
-            <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
-                <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')"> 
-                    <div class="contenedor_9 borde_1">
-                        <img class="imagen_2" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
-                    </div>  
-                    <h2 class="h2_6"><?php echo $Seccion;?></h2>
-                </div>
+    <!-- div mostrado solo en responsive -->
+    <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
 
-                <!-- Se agregan las leyendas desde TransferirPedido() -->
-            </div>
+    <div class="contenedor_156"> 
+        <div>
+            <aside class="aside_1">
+                <p class="p_17 borde_1">SECCIONES</p>
+            </aside>
+        </div>
+        <div class="contenedor_110" id="Section_4">
             <?php
-            $Contador++;
-        }
-        ?>
-    </div>
+            $Contador = 1;
+            //Se cargan todas las secciones que tenga una tienda
+            foreach($Datos['seccion'] as $row){
+                $Seccion = $row['seccion'];       
+                ?> 
+                <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
+                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')"> 
+                        <div class="contenedor_9 borde_1">
+                            <img class="imagen_2" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
+                        </div>  
+                        <h2 class="h2_6"><?php echo $Seccion;?></h2>
+                    </div>
+
+                    <!-- Se agregan las leyendas desde TransferirPedido() -->
+                </div>
+                <?php
+                $Contador++;
+            }
+            ?>
+        </div>  
+    </div>  
     <!-- Se muestra el boton de carrito de compras en el fondo del viewport-->
     <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
@@ -63,15 +71,16 @@
 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script>
-<!-- ******************************************************************************************* -->
+<!-- <script type="text/javascript" src="<?php // echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script> -->
+
 
 <?php// require(RUTA_APP . '/vistas/inc/footer.php');  ?>
 
+<!-- ******************************************************************************************* -->
 
-<!-- Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
 <?php
     //$Datos proviene de Vitrina_C
+    //Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado
     if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C         
         $SeccionSelecionada = $Datos['Seccion'];
         $OpcionSeleccionada = $Datos['Opcion']; 

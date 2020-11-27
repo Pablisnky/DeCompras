@@ -56,6 +56,7 @@ document.addEventListener("click", Pre_incremento)
 //Cuando carga la página se registran los listener de clic para toda la ventana
 document.addEventListener("click", function(event){
     if(event.target.id == 'Section_4'){
+        // console.log("______Desde funcion anonima que establece alto de body()______")
         AltoVitrina = document.body.scrollHeight
         // console.log(AltoVitrina)
         document.getElementById("contenedor_13").style.height = AltoVitrina +"px"
@@ -65,7 +66,8 @@ document.addEventListener("click", function(event){
 // *****************************************************************************************************
 //Escucha desde opciones_V.php, archivo que se carga en vitrina_V.php desde Ajax; por medio de delegación de eventos, donde dentro de la función identificas cual fue el objetivo del click, ya sea por id o por clase o por etiqueta según sea tu necesidadtoma la etiqueta span donde se hace click
 document.addEventListener('click', function(event){
-    if(event.target.id == 'Span_3'){
+    if(event.target.id == 'Span_3' || event.target.id == 'Label_9'){
+        TransferirPedido()
         CerrarModal_X('Section_3')
     }
 })
@@ -124,6 +126,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         // console.log("______Desde verTransferenciaBancaria()______") 
         document.getElementById("Contenedor_60a").style.display = "block"
         document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
     }
 
 //************************************************************************************************
@@ -132,9 +135,17 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         // console.log("______Desde verPagoMovil()______") 
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "block"
+        document.getElementById("Contenedor_60c").style.display = "none"
     }
 
 //************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoDestino(){
+        // console.log("______Desde verPagoDestino()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "block"
+    }
     //invocada desde carrito.php 
     function MuestraEnvioFactura(){
         console.log("______Desde MuestraEnvioFactura()______") 
@@ -1078,7 +1089,57 @@ console.log(AlCarro)
     }
 
 //************************************************************************************************
-           
+    function CerrarModal_X(id){
+        // console.log("______Desde CerrarModal_X()______")
+        document.getElementById(id).style.display = "none"
+    }
+    
+//************************************************************************************************
+    //Desactiva el boton de volver atras del navegador
+    function nobackbutton(){
+        console.log("______Desde nobackbutton()______")
+        window.location.hash="no-back-button";
+        window.location.hash="Again-No-back-button" //chrome
+        window.onhashchange=function(){window.location.hash="no-back-button";}
+    }
+
+//************************************************************************************************
+
+//************************************************************************************************
+   //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
+   let div = document.getElementById("MenuResponsive")
+   let span= document.getElementById("Span_6")
+   let B = document.getElementById("Tapa")
+   window.addEventListener("click", function(e){
+       // console.log("_____Desde función anonima para ocultar menu_____")
+       //obtiendo informacion del DOM del elemento donde se hizo click 
+       var click = e.target
+       // console.log("Click en: ", click)
+       AltoVitrina = document.body.scrollHeight
+       if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
+           div.style.marginLeft = "-60%"
+           B.style.display = "none"
+           //Se detiene la propagación de los eventos en caso de hacer click en un elemento que contenga algun evento
+           event.stopPropagation();
+       }
+   }, true)
+
+//************************************************************************************************
+   //Muestra el menu principal en formato movil y tablet  
+   function mostrarMenu(){  
+       console.log("______Desde mostrarMenu()______")
+       let A = document.getElementById("MenuResponsive")
+       let B = document.getElementById("Tapa")
+
+       if(A.style.marginLeft < "0%"){//Se muestra el menu
+           A.style.marginLeft = "0%"
+           B.style.display = "block"
+       }
+       else if(A.style.marginLeft = "0%"){//Se oculta el menu
+           A.style.marginLeft = "-60%"
+           B.style.backgroundColor = "none"
+       }
+   }
 ///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
 // document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    
 //     if(event.target.id == 'Span_523'){

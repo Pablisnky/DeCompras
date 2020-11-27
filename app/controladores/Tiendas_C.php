@@ -14,6 +14,9 @@
                 case 'Comida_Rapida':
                     $Categoria = 'Comida Rapida';   
                 break;    
+                case 'Merceria':
+                    $Categoria = 'Mercería';   
+                break; 
                 case 'Repuesto_automotriz':
                     $Categoria = 'Repuesto automotriz';   
                 break;    

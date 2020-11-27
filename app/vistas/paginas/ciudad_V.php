@@ -6,14 +6,14 @@
 
 <section class="section_5">
     <div class='contenedor_146'>
-        <p class="p_6">Estamos iniciando operaciones, y lo hemos hecho en nuestro territorio</p>
+        <p class="p_6">Iniciamos operaciones, y lo hemos hecho en nuestro territorio</p>
         <p class="p_6">( Venezuela estado Yaracuy )</p>
         <div class="contenedor_73 borde_1">
-            <h1 class="h1_13">Yaracuy</h1>
+            <!-- <h1 class="h1_13">Yaracuy</h1> -->
             <ul>
-                <li class="">Independencia</li>
-                <li class="">San Felipe</li>
-                <li class="">Yaritagua</li>
+                <li class="li_1"><a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Independencia</a></li>
+                <li class="li_1"><a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">San Felipe</a></li>
+                <li class="li_1"><a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Yaritagua</a></li>
             </ul>
         </div>
         <P class="p_6">proximamente nuestra oferta de ciudades será ampliada. </p>

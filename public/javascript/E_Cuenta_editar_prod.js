@@ -25,72 +25,72 @@ document.querySelector('body').addEventListener('click',function(event){
 }, false);
 
 //************************************************************************************************
-    //Llamada desde cuenta_publicar_V.php
+//Llamada desde cuenta_publicar_V.php
     function mostrarSecciones(){
         document.getElementById("Ejemplo_Secciones").style.display = "grid"
     }   
 
 //************************************************************************************************
 //indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
-function contar(){
-    var max = 20; 
-    var cadena = document.getElementById("ContenidoPro").value; 
-    var longitud = cadena.length; 
+    function contar(){
+        var max = 20; 
+        var cadena = document.getElementById("ContenidoPro").value; 
+        var longitud = cadena.length; 
 
-        if(longitud <= max) { 
-             document.getElementById("ContadorPro").value = max-longitud; 
-        } else { 
-             document.getElementById("ContenidoPro").value = cadena.subtring(0, max);
-        } 
-} 
+            if(longitud <= max) { 
+                document.getElementById("ContadorPro").value = max-longitud; 
+            } else { 
+                document.getElementById("ContenidoPro").value = cadena.subtring(0, max);
+            } 
+    } 
 
 // -------------------------------------------------------------------------------------------
 //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
-var contenido_producto = "";    
-function valida_Longitud(){  
-    var num_caracteres_permitidos = 20;
+    var contenido_producto = "";    
+    function valida_Longitud(){  
+        var num_caracteres_permitidos = 20;
 
-    //se averigua la cantidad de caracteres escritos
-    num_caracteres = document.forms[0].producto.value.length; 
+        //se averigua la cantidad de caracteres escritos
+        num_caracteres = document.forms[0].producto.value.length; 
 
-    if(num_caracteres > num_caracteres_permitidos){ 
-        document.forms[0].producto.value = contenido_producto; 
-    }
-    else{ 
-        contenido_producto = document.forms[0].producto.value; 
+        if(num_caracteres > num_caracteres_permitidos){ 
+            document.forms[0].producto.value = contenido_producto; 
+        }
+        else{ 
+            contenido_producto = document.forms[0].producto.value; 
+        } 
     } 
-} 
 
 //************************************************************************************************
 // indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
-function contarDes(){
-    var max = 20; 
-    var cadena = document.getElementById("ContenidoDes").value; 
-    var longitud = cadena.length; 
+    function contarDes(){
+        var max = 20; 
+        var cadena = document.getElementById("ContenidoDes").value; 
+        var longitud = cadena.length; 
 
-        if(longitud <= max) { 
-             document.getElementById("ContadorDes").value = max-longitud; 
-        } else { 
-             document.getElementById("ContenidoDes").value = cadena.subtring(0, max);
-        } 
-} 
+            if(longitud <= max) { 
+                document.getElementById("ContadorDes").value = max-longitud; 
+            } else { 
+                document.getElementById("ContenidoDes").value = cadena.subtring(0, max);
+            } 
+    } 
 
 // -------------------------------------------------------------------------------------------
 //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
-var contenido_descripcion = "";    
+    var contenido_descripcion = "";    
     function valida_LongitudDes(){  
-    var num_caracteres_permitidos = 20;
+        var num_caracteres_permitidos = 20;
 
-    //se averigua la cantidad de caracteres escritos
-    num_caracteres = document.forms[0].descripcion.value.length; 
+        //se averigua la cantidad de caracteres escritos
+        num_caracteres = document.forms[0].descripcion.value.length; 
 
-    if(num_caracteres > num_caracteres_permitidos){ 
-        document.forms[0].descripcion.value = contenido_descripcion; 
-    }
-    else{ 
-        contenido_descripcion = document.forms[0].descripcion.value; 
+        if(num_caracteres > num_caracteres_permitidos){ 
+            document.forms[0].descripcion.value = contenido_descripcion; 
+        }
+        else{ 
+            contenido_descripcion = document.forms[0].descripcion.value; 
+        } 
     } 
-} 
 //************************************************************************************************
     //invocada desde Secciones_Ajax_V.php selecciona una sección donde estará un producto
     function transferirSeccionActualizar(form){

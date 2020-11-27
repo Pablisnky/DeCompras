@@ -48,7 +48,7 @@
 
         }
 
-        //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
+        //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - Cuenta_C/recibeProductoPublicar - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
         public function Productos($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Producto y el ID_ContProducto separados por coma, se convierte en array para separar los elementos
             // echo $DatosAgrupados;
@@ -640,9 +640,9 @@
                 exit();
             }
 
-            // SECCION CARACTERISTICAS
-            // ********************************************************
-            // Si se selecionó alguna nueva caracteristica entra, destaca que se esta recibiendo un array
+            //SECCION CARACTERISTICAS
+            //********************************************************
+            //Si se selecionó alguna nueva caracteristica entra, destaca que se esta recibiendo un array
             if($_POST['caracteristica'][0] != ""){
                 foreach($_POST['caracteristica'] as $Caracteristica){
                     $Caracteristica = $_POST['caracteristica'];
@@ -652,11 +652,11 @@
                 // echo "</pre>";
                 // exit();
 
-                // El array trae elemenos duplicados, se eliminan los duplicado
+                //El array trae elemenos duplicados, se eliminan los duplicado
                 $caracteristicaProducto = array_unique($Caracteristica);
             }
 
-            // ********************************************************
+            //********************************************************
             //Las siguientes consultas se deben realizar por medio de Transacciones BD
             //Se INSERTA el producto en la BD y se retorna el ID recien insertado
             $ID_Producto = $this->ConsultaCuenta_M->insertarProducto($RecibeProducto);
@@ -686,7 +686,7 @@
             $this->ConsultaCuenta_M->actualizarTiendaPublicar($RecibeProducto['ID_Tienda']);
 
             //SECCION IMAGEN PRINCIPAL
-            // ********************************************************
+            //********************************************************
             //Si se selecionó alguna imagen entra
             if($_FILES['foto_Producto']["name"] != ""){
                 $nombre_imgProducto = $_FILES['foto_Producto']['name'];
@@ -742,7 +742,7 @@
             }
 
             //SECCION IMAGENES SECUNDARIAS
-            // ********************************************************
+            //********************************************************
             //Si se selecionó alguna nueva imagen entra
             if($_FILES['imagenes']["name"] != ""){
                 $Cantidad = count($_FILES["imagenes"]["name"]);
@@ -768,7 +768,7 @@
                     $this->ConsultaCuenta_M->insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio);
                 }
             }
-            $this->Publicar();
+            $this->Productos("Todos");
         }
 
         //Invocada desde cuenta_editar_prod_V.php

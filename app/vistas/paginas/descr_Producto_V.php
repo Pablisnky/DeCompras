@@ -1,30 +1,33 @@
 <?php
     include(RUTA_APP . "/vistas/inc/headerProducto.php"); 
     
-            //$Datos proviene de Opciones_C/productoAmpliado
-            // echo "<br><br><br><br><br>";
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            // exit();
+    //$Datos proviene de Opciones_C/productoAmpliado
+    // echo "<br><br><br><br><br><br><br>";
+    // echo "<pre>";
+    // print_r($Datos);
+    // echo "</pre>";
+    // exit();
 
-            $Producto = $Datos['Producto'];
-            $Opcion = $Datos['Opcion'];
-            $Precio = $Datos['Precio'];
-            $Fotografia_1 = $Datos['Fotografia_1'];
-            $ID_Producto = $Datos['ID_Producto'];
-            $ID_LabelAgregar = $Datos['ID_EtiquetaAgregar'];
+    $Producto = $Datos['Producto'];
+    $Opcion = $Datos['Opcion'];
+    $Precio = $Datos['Precio'];
+    $Fotografia_1 = $Datos['Fotografia_1'];
+    $ID_Producto = $Datos['ID_Producto'];
+    $ID_LabelAgregar = $Datos['ID_EtiquetaAgregar'];
 ?>
     <!-- Se carga el preloader -->
-    <div class='preloderTapa'><div class='preloder preloaderCentrar'></div></div>
+    <div class='preloderTapa'>
+        <div class='preloder preloaderCentrar'></div>
+    </div>
 
     <section >
         <div class="contenedor_122"> 
             <div class="contenedor_123">
+                <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_124" id="Contenedor_124"> 
                     <?php         
                         // if($Datos['Imagenes'] == Array()){  ?>
-                            <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Fotografia_1'];?>">   <?php
+                            <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Fotografia_1'];?>">   <?php
                         // }    
                         // else{   ?>                            
                             <ul class="ul_3" id="Ul_1">     <?php   
@@ -32,7 +35,7 @@
                                 //$Datos proviene de Opciones_C/productoAmpliado             
                                 foreach($Datos['Imagenes'] as $key) :   ?>
                                     <li class="li_4" >
-                                        <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>">
+                                        <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Foto no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>">
                                     </li>
                                     <?php
                                     $Contador ++;
@@ -41,8 +44,10 @@
                         // }
                     ?>
                 </div>
+                <!-- IMAGENES SECUNDARIAS (MINIATURAS) -->
                 <div class="contenedor_125">   
-                    <?php                      
+                    <?php                
+                    if($Datos['Imagenes'] != Array()){      
                         $Contador = 1;   
                         //$Datos proviene de Opciones_C/productoAmpliado                  
                         foreach($Datos['Imagenes'] as $key) :   ?>
@@ -51,6 +56,10 @@
                             // echo  $Contador;
                             $Contador ++;
                         endforeach;
+                    }
+                    else{
+                        echo "Vacio";
+                    }
                     ?>  
                 </div>
             </div>

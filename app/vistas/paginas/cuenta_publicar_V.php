@@ -17,20 +17,26 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
             <div class="contenedor_47">
                 <div class="contenedor_129 borde_1 borde_2">
+                    <!-- IMAGEN PRINCIPAL -->
                     <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
                     <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/camion.png"/>
                     <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                 </div>        
                 <div>
+                    <!-- PRODUCTO -->
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto" id="ContenidoPro" placeholder="Producto"  tabindex="1" onkeydown="blanquearInput('ContenidoPro')" value="wwwww"/>
                     <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
 
+                    <!-- DESCRIPCION -->
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2" onkeydown="blanquearInput('ContenidoDes')" value="wwwww"/>
                     <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
 
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3" onkeydown="blanquearInput('Precio')" value="wwwww"/>
+                    <!-- PRECIO -->
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3" onkeydown="blanquearInput('Precio')" value="1243"/>
+
                     <br>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')" value="wwwww"/>
+                    <!-- SECCION -->
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
                     
                     <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
                     <div id="Contenedor_80"></div>
@@ -46,7 +52,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         
                     <!-- SECCION CARACTERISTICAS -->
                     <div id="Contenedor_82" class="">
-                        <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica del producto (Opcional)"/>
+                        <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica (Opcional)"/>
                         <br>
                     </div>
                     <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
@@ -67,8 +73,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>          
             </div>
         </form>
-    </div>
-        
+    </div>        
 
     <!--div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó previamente -->    
     <div id="Contenedor_80"></div>
@@ -77,9 +82,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
 
     <script> 
-        //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
+        //Da una vista previa de la imagen principal antes de guardarla en la BD usada en cuenta_editar_prod_V.php
         function readImage(input){
-        // console.log("______Desde readImage()______")
+        console.log("______Desde readImage()______")
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = function(e){
@@ -95,7 +100,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         });
 
         //Array que contiene la cantidad de imagenes insertadas, sus elementos sumados no pueden exeder de 5
-        SeleccionImagenes = []
+        SeleccionImagenes = [];
         function muestraImg(){
             // Muestra grupo de imagenes
             console.log("______Desde muestraImg()______")
@@ -109,26 +114,41 @@ if(!empty($_SESSION["ID_Afiliado"])){
             if(CantidadImagenes < 6){
                 SeleccionImagenes.push(CantidadImagenes) 
                 console.log("Imagenes recibidas= ",SeleccionImagenes)
-
-                // Suma todos los precios del pedido, este es el monto que se muestra en el display del carrito e informa al usuario de como va la cuenta  
+                // Suma la cantidad de imagenes que se han insertado  
                 TotalSeleccionImagenes = SeleccionImagenes.reduce((a, b) => a + b)
                 console.log("Suma de Imagenes = ",TotalSeleccionImagenes)
                 
                 if(TotalSeleccionImagenes < 6){
                     for(i = 0; i < CantidadImagenes; i++){
-                        imgTagCreada = document.createElement("img");
-                        imgTagCreada.height = 200; //ESTAS LINEAS NO SON "NECESARIAS"
-                        imgTagCreada.width = 290; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
-                        imgTagCreada.id = i; // ORDENADAS CON UN TAMAÑO ESTÁNDAR
+                        console.log(i)
+                        var imgTagCreada = document.createElement("img");
+                        var spanTagCreada = document.createElement("span")
+
+                        imgTagCreada.height = 200;
+                        imgTagCreada.width = 290;
+                        ImagenD = imgTagCreada.id = "Imagen_" + i;
+                        imgTagCreada.marginBottom = 250
                         imgTagCreada.src = URL.createObjectURL(archivos[i]);
+
+                        spanTagCreada.innerHTML = "Eliminar"
+                        spanTagCreada.id = "Etiqueta_" + i
+                        spanTagCreada.style.color = "rgb(24, 24, 238)"
+                        spanTagCreada.style.cursor = "pointer"
+                        //Se detecta la etiqueta dondes se hizo click
+                        spanTagCreada.addEventListener("click", function(e){   
+                            var click = e.target
+                            EliminarImagenSecundaria(click, SeleccionImagenes)
+                        }, false)
+
                         contenedorPadre.appendChild(imgTagCreada); 
+                        contenedorPadre.appendChild(spanTagCreada); 
                     }
                 }
                 else{
                     alert("Máximo imagenes alcanzado (5)")
                     //Se elimina la ultima cantidad de imagenes que se quiso insertar
                     SeleccionImagenes.pop() 
-                    console.log(SeleccionImagenes)
+                    console.log("Array imagenes seleccionadas= ", SeleccionImagenes)
                 }
             }
             else{
