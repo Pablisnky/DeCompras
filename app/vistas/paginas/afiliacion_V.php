@@ -6,12 +6,12 @@
 
 <section class="section_5">
     <div class="contenedor_42 contenedor_70">
-        <h1 class="h1_1">Unete a nuestra red de comercialización de productos.</h1>
+        <h1 class="h1_1">Planes de afiliación para comerciantes.</h1>
         <div class='contenedor_84 contenedor_93 borde_1'>
             <p class="p_6 p_9">15 días libres de pago al registrar tu tienda</p> 
             <div class="contenedor_94">
                 <P class="p_3 p_5">Emprendedor</P>
-                <p class="p_11">1,5 USD/mes</p>
+                <p class="p_11">2 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Proyectos de manufactura o tiendas con catalogo de hasta 20 productos.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
@@ -19,7 +19,7 @@
             </div>
             <div class="contenedor_94">
                 <P class="p_3 p_5">Bodega</P>
-                <p class="p_11">3,5 USD/mes</p>
+                <p class="p_11">4 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Tiendas con catalogo de hasta 200 productos</p></li>
                     <li class="li_3"><p>Código QR</p></li>
@@ -27,7 +27,7 @@
             </div>
             <div class="contenedor_94">
                 <p class="p_3 p_5">Básico</p>
-                <p class="p_11">6 USD/mes</p>
+                <p class="p_11">7 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Tiendas con catalogo de hasta 500 productos</p></li>
                     <li class="li_3"><p>Código QR</p></li>

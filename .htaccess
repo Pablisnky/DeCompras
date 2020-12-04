@@ -1,9 +1,9 @@
 #permite entrar directamente en el index.php sin entrar a la carpeta public; redirige a la carpeta public que contiene el index.php
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule ^$ public/ [L]
-	RewriteRule (.*)$ public/$1 [L]
-</IfModule>
+	<IfModule mod_rewrite.c>
+		RewriteEngine On
+		RewriteRule ^$ public/ [L]
+		RewriteRule (.*)$ public/$1 [L]
+	</IfModule>
 
 #Redirige el sitio web aún sino se escribe el www
 	RewriteEngine On

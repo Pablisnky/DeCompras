@@ -49,7 +49,7 @@
             ?>
         </div>  
     </div>  
-    <!-- Se muestra el boton de carrito de compras en el fondo del viewport-->
+    <!-- Se muestra el boton (div) de carrito de compras en el fondo del viewport, aparece por medio de agregarOpcion() en E_Vitrina.js-->
     <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
             <div class="contenedor_31">
@@ -63,18 +63,23 @@
 <!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
 <div id="Mostrar_Opciones"></div>
 
-<!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito()  en este mismoarchivo-->
+<!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito() en este mismoarchivo-->
 <div id="Mostrar_Orden"></div>
+
+<!-- Trae por medio de Ajax la dirección de la tienda, la información es suministrada por direccion_V.php invocada por la función () en este mismoarchivo-->
+<div id="Mostrar_Direccion"></div>
+
+<!-- Trae por medio de Ajax las ofertas de la tienda, la información es suministrada por ofertas_V.php invocada por la función () en este mismoarchivo-->
+<div id="Mostrar_Ofertas"></div>
+
+<!-- Trae por medio de Ajax lo más pedido de la tienda, la información es suministrada por LoMasPedido_V.php invocada por la función () en este mismoarchivo-->
+<div id="Mostrar_LoMasPedido"></div>
 
 <!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
 <div id="Mostrar_Alert"></div>
 
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
-<!-- <script type="text/javascript" src="<?php // echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script> -->
-
-
-<?php// require(RUTA_APP . '/vistas/inc/footer.php');  ?>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
 <!-- ******************************************************************************************* -->
 

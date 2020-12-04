@@ -28,13 +28,17 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Slogan_Tien = $row['slogan_Tien'];
         $Foto_Tien = $row['fotografia_Tien'];
     }
+
+    foreach($Datos['link_Tien'] as $row){
+        $Link_Acceso = $row['link_acceso'];
+    }   
     
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
     <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
         <h1 class="h1_8">Configurar cuenta</h1>   
@@ -74,6 +78,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                 <label>Nombre tienda</label>
                 <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre_Tien" value="<?php echo $Nombre_Tien;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Tien')"/>
+
+                <label>Acceso directo a tu tienda</label>
+                <input class="input_13 borde_1" type="text" name="link_acceso" id="Link_Acceso" value="<?php echo $Link_Acceso;?>" autocomplete="off" readonly/>
 
                 <label>Telefono tienda</label>
                 <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" onkeydown="blanquearInput('Telefono_Tien')"/>
@@ -186,10 +193,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <legend class="legend_1">Cuentas bancarias</legend>
                 <div id="Contenedor_69">
                     <span>Los pagos de los pedidos realizados a tu tienda se depositan directamente a tus cuentas bancarias por medio de transferencias o pago movil, los pedidos pagados por transferencia de cuentas de otros bancos causan una demora de 48 hrs en el despacho del pedido para que verifiques la transferencia.</span>
-                   
-                    <label>Información para recibir pagos por transferencia</label>
-                   
-                    <div id="Mostrar_CuentaBancaria">
+                    <br>
+                    <label>Información para recibir pagos por transferencia</label>                   
+                    <div class="contenedor_161" id="Mostrar_CuentaBancaria">
                         <!-- Entra en el IF cuando no hay cuentas bancarias creadas -->
                         <?php
                         if($Datos['datosBancos'] == Array ( )){  ?>
@@ -237,9 +243,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <?php
                         if($Datos['datosPagomovil'] == Array ( )){  ?>
                             <div class="contenedor_67 borde_1">
-                                <label>Número pago movil</label>
+                                <input class="input_13 input_9JS borde_1" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" value="" placeholder="Número cedula" autocomplete="off"/>
                                 <input class="input_13 input_9JS borde_1" type="text" name="bancopagoMovil[]" id="BancoPagoMovil" value="" placeholder="Banco" autocomplete="off"/>
-                                <input class="input_13 input_9JS borde_1" type="text" name="cuentapagoMovil[]" id="PagoMovil"  value="" placeholder="Número telefonico" autocomplete="off"/>
+                                <input class="input_13 input_9JS borde_1" type="text"   name="cuentapagoMovil[]" id="PagoMovil"  value="" placeholder="Número telefonico" autocomplete="off"/>
                             </div>
                             <?php
                         }
@@ -359,34 +365,30 @@ if(!empty($_SESSION["ID_Afiliado"])){
         </div>
     </section>
 
+    <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
     <did id="ReadOnly"></did>
+
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
 
     <script> 
-        //Da una vista previa de la fotografia antes de guardarla en la BD usada en cuenta_editar_prod_V.php
+        //Da una vista previa de la imagen de la tienda, usada en cuenta_editar_prod_V.php
         function readImage(input, id_Label){
-            if(input.files){
+            // console.log("______Desde readImage()______", input + ' | ' + id_Label)
+            if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = function(e){
-                    id_Label.attr('src', e.target.result); // Renderizamos la imagen
+                    id_Label.attr('src', e.target.result); //Renderizamos la imagen
                 }
-                reader.readAsDataURL(input.files);
+                reader.readAsDataURL(input.files[0]);
             }
-        }
-
-        $("#imgInp_1").change(function(){
-            //Código a ejecutar cuando se detecta un cambio de archivo
-            var id_Label = $('#blah_1');
-            readImage(this, id_Label);
-        });
-        
+        }        
         $("#imgInp_2").change(function(){
-            //Código a ejecutar cuando se detecta un cambio de archivo
+            // Código a ejecutar cuando se detecta un cambio de imagen de tienda
             var id_Label = $('#blah_2');
             readImage(this, id_Label);
         });
-        </script>
+    </script>
         
     <?php include(RUTA_APP . "/vistas/inc/footer.php");
 }

@@ -157,14 +157,48 @@
             $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
             $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
+            //Se CONSULTAN el link de acceso directo de una tienda en particular
+            $Consulta = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
+            $Link_Tien = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            // echo "<pre>";
+            // print_r($Link_Tien);
+            // echo "</pre>";
+            // exit();
+            
+            //Se verifica si existe el link de acceso directo y se crea en caso de no existir
+            if(empty($Link_Tien)){
+                //Se crea el link de aceso";  
+                $LinkAcceso = RUTA_URL .'/' . $DatosTienda[0]['nombre_Tien'];
+
+                //Se rellenan los espacios en blnco en el nombre de la tienda en caso de existir
+                $NombreTienda = $DatosTienda[0]['nombre_Tien'];
+                $NombreTienda = str_replace(' ', '%20', $NombreTienda);
+
+                //Se construye la url real de la tienda
+                $URL = RUTA_URL . '/' . 'Vitrina_C/index/' . $this->ID_Tienda . ',' . $NombreTienda . ',NoNecesario_1,NoNecesario_2#no-back-button';
+
+                //Se guarda el link de acceso y la url real en la configuración de la tienda
+                //INSERT del link de acceso directo de una tienda en particular
+                $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso, $URL);
+
+                //Se CONSULTA el link de acceso directo creado para insertar en el array $Datos
+                $Consulta = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
+                $Link_Tien = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                // echo "<pre>";
+                // print_r($Link_Tien);
+                // echo "</pre>";
+                // exit;
+            }
+
             $Datos = [
-                'datosTienda' => $DatosTienda,
+                'datosTienda' => $DatosTienda, //nombre_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
                 'datosResposable' => $DatosResposable,
                 'datosBancos' => $DatosBancos,
                 'datosPagomovil' => $DatosPagoMovil,
                 'categoria' => $Categoria,
                 'secciones' => $Secciones,
-                'slogan' => $Slogan
+                'slogan' => $Slogan,
+                'link_Tien' => $Link_Tien //link_acceso, url 
             ];
             
             //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya las tiene creadas cuando vaya a cargar un producto
@@ -474,41 +508,48 @@
             }
             else{
                 // DATOS BANCARIOS
-                foreach(array_keys($_POST['banco']) as $key){
-                    if(!empty($_POST['BANCO'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
-                    ){
-                        $Banco = $_POST['banco'][$key];
-                        $Titular = $_POST['titular'][$key];
-                        $NumeroCuenta = $_POST['numeroCuenta'][$key];
-                        $Rif = $_POST['rif'][$key];
-                        
-                        //Se INSERTA la cuenta bancaria
-                        $this->ConsultaCuenta_M->insertarCuentaBancaria($this->ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif);
+                if($_POST['banco'][0] != ""){
+                    foreach(array_keys($_POST['banco']) as $key){
+                        if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
+                        ){
+                            $Banco = $_POST['banco'][$key];
+                            $Titular = $_POST['titular'][$key];
+                            $NumeroCuenta = $_POST['numeroCuenta'][$key];
+                            $Rif = $_POST['rif'][$key];
+                            
+                            //Se INSERTA la cuenta bancaria
+                            $this->ConsultaCuenta_M->insertarCuentaBancaria($this->ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif);
+                        }
+                        else{
+                            echo "Ingrese datos bancarios completos";
+                            echo "<br>";
+                            echo "<a href='javascript:history.back()'>Regresar</a>";
+                            exit();
+                        }
                     }
-                    // else{
-                    //     echo "Ingrese datos bancarios completos";
-                    //     echo "<br>";
-                    //     echo "<a href='javascript:history.back()'>Regresar</a>";
-                    //     exit();
-                    // }
                 }
                 
                 // ******************************************************** 
-                // DATOS PAGOMOVIL  
-                foreach(array_keys($_POST['cuentapagoMovil']) as $key){
-                    if(!empty($_POST['cuentapagoMovil'][$key]) || !empty($_POST['bancopagoMovil'][$key])){
-                        $CuentapagoMovil = $_POST['cuentapagoMovil'][$key];
-                        $BancopagoMovil = $_POST['bancopagoMovil'][$key];
-                        
-                        //Se INSERTA la cuenta de CuentapagoMovil
-                        $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $BancopagoMovil, $CuentapagoMovil);
+                // DATOS PAGOMOVIL                 
+                if($_POST['cuentapagoMovil'][0] != ""){ 
+                    print_r($_POST['cuentapagoMovil']);
+                    echo '<br>';
+                    echo "Entra al IF";
+                    foreach(array_keys($_POST['cuentapagoMovil']) as $key){
+                        if(!empty($_POST['cuentapagoMovil'][$key]) || !empty($_POST['bancopagoMovil'][$key])){
+                            $CuentapagoMovil = $_POST['cuentapagoMovil'][$key];
+                            $BancopagoMovil = $_POST['bancopagoMovil'][$key];
+                            
+                            //Se INSERTA la cuenta de CuentapagoMovil
+                            $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $BancopagoMovil, $CuentapagoMovil);
+                        }
+                        else{
+                            echo "Ingrese datos pagoMovil";
+                            echo "<br>";
+                            echo "<a href='javascript:history.back()'>Regresar</a>";
+                            exit();
+                        }
                     }
-                    // else{
-                    //     echo "Ingrese datos pagoMovil";
-                    //     echo "<br>";
-                    //     echo "<a href='javascript:history.back()'>Regresar</a>";
-                    //     exit();
-                    // }
                 }
             }
             // echo "Todos los campos estan llenos";
@@ -617,9 +658,10 @@
             $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
-        //Invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
+        //Metodo invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
         public function recibeProductoPublicar(){
             //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
+            //SECCION DATOS DEL PRODUCTO
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])
             ){
                 $RecibeProducto = [
@@ -743,8 +785,7 @@
 
             //SECCION IMAGENES SECUNDARIAS
             //********************************************************
-            //Si se selecionó alguna nueva imagen entra
-            if($_FILES['imagenes']["name"] != ""){
+            if(!empty($_FILES['imagenes']["name"][0])){
                 $Cantidad = count($_FILES["imagenes"]["name"]);
                 for($i = 0; $i < $Cantidad; $i++){
                     //nombre original del fichero en la máquina cliente.
@@ -752,8 +793,6 @@
                     $Ruta_Temporal = $_FILES['imagenes']['tmp_name'][$i];
                     $tipo = $_FILES['imagenes']['type'][$i];
                     $tamanio = $_FILES['imagenes']['size'][$i];
-                    // echo $archivonombre  ."<br>";
-                    // exit();
 
                     //Usar en remoto
                     // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
@@ -771,7 +810,7 @@
             $this->Productos("Todos");
         }
 
-        //Invocada desde cuenta_editar_prod_V.php
+        //Metodo invocado desde cuenta_editar_prod_V.php
         public function recibeAtualizarProducto(){
             // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
@@ -870,7 +909,7 @@
             // ********************************************************
             //Se verifican cuantas imagenes se estan recibiendo, incluyendo las que ya existen en la BD
             $Cantidad = count($_FILES["imagen_EditarVarias"]["name"]);
-            // echo $Cantidad . "<br>";
+            // echo $Cantidad . '<br>';
             for($i = 0; $i < $Cantidad ; $i++){
                 //Las imagenes que existian en la BD se reciben sin su nombre por lo que no van a entrar en bucle, solo las imagenes que vienen por medio del input de agregar imagen son las que entran en el bucle
                 if($_FILES['imagen_EditarVarias']["name"][$i] != ""){
@@ -980,14 +1019,28 @@
             // *************************************************************************************
             // *************************************************************************************
 
+            //Se CONSULTA si existen productos en la tienda, de no haber se cambia el valor de publicar en la tabla tiendas
+            $cantidadProductos = $this->ConsultaCuenta_M->consultarCantidadProductos($this->ID_Tienda);
+            // echo $cantidadProductos[0]['cantidadProductos'];
+            if($cantidadProductos[0]['cantidadProductos'] == 0){
+                $this->ConsultaCuenta_M->actualizarPublicarTienda($this->ID_Tienda);
+            }
+
             //Se redirecciona a la vista donde se encontraba el producto eliminado
             $this->Productos($Seccion);
             // $this->vista("paginas/cuenta_productos_V", $Datos);
         }
 
         //Invocado desde A_Cuenta_editar_prod.js por medio de Llamar_EliminarImagenSecundaria()
-        public function eliminarImagen($ID_Imagen){
+        public function eliminarImagen($ID_Imagen, $ID_Producto){
+            //Elimina la imagen selecciona
             $this->ConsultaCuenta_M->eliminarImagenProducto($ID_Imagen);
+
+            //Consulta de cuantas imagenes secundarias tiene un producto
+            $TotalImagenes = $this->ConsultaCuenta_M->consultarCantidadImagenProducto($ID_Producto);
+            $Datos = ($TotalImagenes[0]['cantidad']);
+            
+            $this->vista("inc/BotonImagen_Ajax_V", $Datos);
         }
         
         //Invocado desde cuenta_editar_V.php

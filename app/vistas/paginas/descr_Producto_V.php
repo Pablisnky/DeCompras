@@ -1,7 +1,6 @@
-<?php
-    include(RUTA_APP . "/vistas/inc/headerProducto.php"); 
-    
-    //$Datos proviene de Opciones_C/productoAmpliado
+<!-- Archivo cargado mediante Opciones_C/productoAmpliado -->
+<?php    
+    // $Datos proviene de Opciones_C/productoAmpliado
     // echo "<br><br><br><br><br><br><br>";
     // echo "<pre>";
     // print_r($Datos);
@@ -25,24 +24,18 @@
             <div class="contenedor_123">
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_124" id="Contenedor_124"> 
-                    <?php         
-                        // if($Datos['Imagenes'] == Array()){  ?>
-                            <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Fotografia_1'];?>">   <?php
-                        // }    
-                        // else{   ?>                            
-                            <ul class="ul_3" id="Ul_1">     <?php   
-                                $Contador = 1;  
-                                //$Datos proviene de Opciones_C/productoAmpliado             
-                                foreach($Datos['Imagenes'] as $key) :   ?>
-                                    <li class="li_4" >
-                                        <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Foto no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>">
-                                    </li>
-                                    <?php
-                                    $Contador ++;
-                                endforeach; ?>
-                            </ul>   <?php
-                        // }
-                    ?>
+                    <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Fotografia_1'];?>">                              
+                    <ul class="ul_3" id="Ul_1">     <?php   
+                        $Contador = 1;  
+                        //$Datos proviene de Opciones_C/productoAmpliado             
+                        foreach($Datos['Imagenes'] as $key) :   ?>
+                            <li class="li_4" >
+                                <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Foto no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>">
+                            </li>
+                            <?php
+                            $Contador ++;
+                        endforeach; ?>
+                    </ul>  
                 </div>
                 <!-- IMAGENES SECUNDARIAS (MINIATURAS) -->
                 <div class="contenedor_125">   
@@ -57,12 +50,10 @@
                             $Contador ++;
                         endforeach;
                     }
-                    else{
-                        echo "Vacio";
-                    }
                     ?>  
                 </div>
             </div>
+
             <div class="contenedor_126">
                 <h1 class="h1_11"><?php echo $Producto, PHP_EOL, $Opcion?></h1>
                 <?php
@@ -94,8 +85,10 @@
                 }   ?>
                 <div>
                     <label class="label_22 borde_1 borde_2"><?php echo $Precio?> Bs</label>
-                    <div class="contenedor_26" id="Contenedor_26">
-                        <label class="boton boton_1 boton_8" onclick="cerrarAgregar()">Agregar</label>
+                    <div class="contenedor_26" id="Contenedor_26"> 
+                                <label class="boton boton_1 boton_8" onclick="cerrarAgregar()">Agregar</label>
+                            
+                           
                         <label class="boton boton_1 boton_8" onclick="cerrarRegresar()">Regresar</label>
                     </div>
                 </div>           
@@ -125,7 +118,7 @@
     }
 
     function cerrarAgregar(){   
-        // activarBotonAgregar()Se enecuentra en vitrina.js debido a que los manejadores de envto de opciones_V.php dependen de vitrina_V.php por ser una ventna abierta con ajax
+        // activarBotonAgregar()Se encuentra en vitrina_V.php debido a que los manejadores de envto de opciones_V.php dependen de vitrina_V.php por ser una ventna abierta con ajax
         window.opener.activarBotonAgregar('<?php echo $ID_LabelAgregar?>') 
         // window.opener.location.reload();        
         window.close()

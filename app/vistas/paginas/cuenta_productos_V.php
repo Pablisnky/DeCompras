@@ -58,7 +58,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         }
                     </style> 
                     <?php
-                } ?>
+                }   ?>
+
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $Contador;?>">
                         <!-- IMAGEN PRINCIPAL -->
                     <div class="contenedor_9">
@@ -84,9 +85,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             endforeach; 
                         ?>
 
-                        <!-- Precio -->
+                        <!-- PRECIO -->
                         <input class="input_8" type="text" value="<?php echo $Precio;?> Bs." readonly="readonly" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>"/>
 
+                        <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                
                             <a class="a_9" href="<?php echo RUTA_URL?>/Cuenta_C/actualizarProducto/<?php echo $ID_Producto;?>,<?php echo $Opcion;?>">Actualizar</a>
                             <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/eliminarProducto/' . $ID_Producto . ',' . $ID_Opcion . ',' . $Seccion?>">Eliminar</a>
@@ -95,13 +97,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
                 <?php 
                 $Contador ++;   
-            endforeach;  
-            ?>  
+            endforeach;     ?>  
         </div>
     </section>
     
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_productos.js';?>"></script>   
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script>
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_productos.js';?>"></script>   
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script>
 
     <?php
    // include(RUTA_APP . "/vistas/inc/footer.php");

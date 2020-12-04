@@ -10,7 +10,7 @@
             ocultarErrores();
         }
 
-        //Es llamadao desde Registro_C.php por medio de recibeRegistro() - Cuenta_C - header_inicio.php
+        //Es llamadao desde Registro_C.php por medio de recibeRegistro() - Cuenta_C - header_inicio.php - cuenta_publicar_V.php
         public function index($Datos){
             // echo "Datos = " . $Datos;
             // exit();
@@ -36,6 +36,11 @@
 
                 //Se entra al formulario de sesion que esta rellenado con los datos del usuario
                 $this->vista("paginas/login_Vrecord", $Datos);
+            }
+            else if($Datos == 1){
+                $Datos = 'CE';
+                //Se carga la vista login_V
+                $this->vista("paginas/login_V", $Datos);
             }
             else{
                 //Se carga la vista login_V

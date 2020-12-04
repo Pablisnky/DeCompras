@@ -405,7 +405,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Cedula == "" || Cedula.indexOf(" ") == 0 || Cedula.length > 9 || (isNaN(Cedula)) || Cedula<2000000 || Cedula>999999999){
+        else if(Cedula == "" || Cedula.indexOf(" ") == 0 || Cedula.length > 10 || (isNaN(Cedula)) || Cedula<2000000 || Cedula>999999999){
             alert("Introduzca su Cedula")
             document.getElementById("Cedula_Aficom").value = ""
             document.getElementById("Cedula_Aficom").focus()
@@ -417,7 +417,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(TelefonoAficom == "" || TelefonoAficom.indexOf(" ") == 0 || TelefonoAficom.length > 14 || (isNaN(TelefonoAficom))){
+        else if(TelefonoAficom == "" || TelefonoAficom.indexOf(" ") == 0 || TelefonoAficom.length > 11 || (isNaN(TelefonoAficom))){
             alert ("Introduzca un Telefono")
             document.getElementById("Telefono_Aficom").value = ""
             document.getElementById("Telefono_Aficom").focus()
@@ -469,7 +469,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(TelefonoTien == "" || TelefonoTien.indexOf(" ") == 0 || TelefonoTien.length > 14 || (isNaN(TelefonoTien))){
+        else if(TelefonoTien == "" || TelefonoTien.indexOf(" ") == 0 || TelefonoTien.length > 11 || (isNaN(TelefonoTien))){
             alert ("Introduzca un Telefono para la tienda")
             document.getElementById("Telefono_Tien").value = ""
             document.getElementById("Telefono_Tien").focus()

@@ -14,10 +14,10 @@ document.addEventListener("keydown", contar, false);//contar() se encuentra en F
 document.addEventListener("keyup", contar, false);//contar() se encuentra en Funciones_varias.js 
 document.addEventListener("keydown", valida_Longitud, false);//valida_Longitud() se encuentra en Funciones_varias.js 
 document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() se encuentra en 
-//************************************************************************************************
 
-//Escucha por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
-document.querySelector('body').addEventListener('click',function(event){  
+//************************************************************************************************
+    //Escucha por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
+    document.querySelector('body').addEventListener('click',function(event){  
     // console.log("______Desde función anonima()______")  
     if(event.target.id == 'Span_5'){
         CerrarModal_X('MostrarSeccion')
@@ -25,13 +25,13 @@ document.querySelector('body').addEventListener('click',function(event){
 }, false);
 
 //************************************************************************************************
-//Llamada desde cuenta_publicar_V.php
+    //Llamada desde cuenta_publicar_V.php
     function mostrarSecciones(){
         document.getElementById("Ejemplo_Secciones").style.display = "grid"
     }   
 
 //************************************************************************************************
-//indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
+    //indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
     function contar(){
         var max = 20; 
         var cadena = document.getElementById("ContenidoPro").value; 
@@ -45,7 +45,7 @@ document.querySelector('body').addEventListener('click',function(event){
     } 
 
 // -------------------------------------------------------------------------------------------
-//Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
+    //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
     var contenido_producto = "";    
     function valida_Longitud(){  
         var num_caracteres_permitidos = 20;
@@ -62,7 +62,7 @@ document.querySelector('body').addEventListener('click',function(event){
     } 
 
 //************************************************************************************************
-// indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
+    // indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
     function contarDes(){
         var max = 20; 
         var cadena = document.getElementById("ContenidoDes").value; 
@@ -76,7 +76,7 @@ document.querySelector('body').addEventListener('click',function(event){
     } 
 
 // -------------------------------------------------------------------------------------------
-//Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
+    //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
     var contenido_descripcion = "";    
     function valida_LongitudDes(){  
         var num_caracteres_permitidos = 20;
@@ -91,6 +91,7 @@ document.querySelector('body').addEventListener('click',function(event){
             contenido_descripcion = document.forms[0].descripcion.value; 
         } 
     } 
+
 //************************************************************************************************
     //invocada desde Secciones_Ajax_V.php selecciona una sección donde estará un producto
     function transferirSeccionActualizar(form){
@@ -268,22 +269,22 @@ document.querySelector('body').addEventListener('click',function(event){
     }
 
 //************************************************************************************************ 
-  //Elimina los clones de caracteristicas (Este metodo de eliminar elementos es menos complicado que el que se uso para eliminar secciones de tiendas o caracteristicas de productos)
-  function EliminarImagenSecundaria(id){
-    // console.log("______Desde EliminarImagenSecundaria______")
-    
-    //Detectar la imagen a eliminar (INVESTIGAR - el id ya vontenia todo el elemento, no hubo necesidad de usar getElementById)
-    let ImagenEliminar = id
-            
-    //Se busca el nodo padre que contiene la imagen a eliminar
-    let elementoPadre = ImagenEliminar.parentElement
+    //Elimina los clones de caracteristicas (Este metodo de eliminar elementos es menos complicado que el que se uso para eliminar secciones de tiendas o caracteristicas de productos)
+    function EliminarImagenSecundaria(id){
+        // console.log("______Desde EliminarImagenSecundaria______")
         
-    //Se elimina la imagen
-    elementoPadre.removeChild(ImagenEliminar);            
-}
+        //Detectar la imagen a eliminar (INVESTIGAR - el id ya vontenia todo el elemento, no hubo necesidad de usar getElementById)
+        let ImagenEliminar = id
+                
+        //Se busca el nodo padre que contiene la imagen a eliminar
+        let elementoPadre = ImagenEliminar.parentElement
+            
+        //Se elimina la imagen
+        elementoPadre.removeChild(ImagenEliminar);  
+    }
 
 //************************************************************************************************
-//Confirma que se desa eliminar una fotografia (NOESTA FUNCIONANDO) 
+    //Confirma que se desa eliminar una fotografia (NOESTA FUNCIONANDO) 
     function Confirmacion(){
         if(confirm('¿Esta seguro de eliminar la imagen?')==true){
         return true;

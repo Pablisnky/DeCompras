@@ -323,12 +323,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4])
                 AlCarro.push(PedidoAtomico) 
 
-                //Se muestra la barra que contiene el icono del carrito
+                //Se muestra el div que contiene el icono del carrito en vitrina_V.php
                 document.getElementById("Contenedor_61").style.visibility = "visible"
-            
-                //Se muestra el ID_Opcion(necesario en la funcion incrementar())
-                // document.getElementById(ID_Opcion).value = Separado[0] 
-            
+                        
                 //Detectar el contenedor de la seccion vitrina_V.php donde se hace click
                 Cont_Seccion = document.getElementById(LS_ID_Cont_Seccion)
 
@@ -340,8 +337,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             DisplayDestello()
         }
         AlContenedor.push(Contenedores)
-// console.log(AlContenedor)
-// console.log(AlCarro)
+        console.log("Contenido de carrito", AlContenedor)
+
+        // console.log(AlCarro)
     }
 
 //************************************************************************************************

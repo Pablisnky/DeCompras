@@ -7,8 +7,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <div class="contenedor_70 contenedor_103 borde_1">    
             <h1 class="h1_1">Dashboard de Ventas</h1>
             <p class="p_7">Estamos construyendo un excelente panel de control para que administres tu tienda en tiempo real, en donde quiera que te encuentres y desde cualquier dispositivo.</p>
-            <p class="p_7">Primera entrega 01/12/2020 (Versión Beta)</p>
-            <p class="p_7">Segunda entrega 05/01/2021 (Versión Estable V_1.0)</p>
+            <p class="p_7">Primera entrega 01/01/2021 (Versión Beta)</p>
+            <p class="p_7">Segunda entrega 05/02/2021 (Versión Estable V_1.0)</p>
         </div>
       </section>        
 

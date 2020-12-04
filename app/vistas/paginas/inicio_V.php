@@ -387,7 +387,9 @@
                     <div class="contenedor_56 contenedor_56a">
                         <label class="label_6">Ciudad</label>
                         <select class="select_1">
+                            <option>Independencia</option>
                             <option>San Felipe</option>
+                            <option>Yaritagua</option>
                         </select>
                     </div>
                 </div>

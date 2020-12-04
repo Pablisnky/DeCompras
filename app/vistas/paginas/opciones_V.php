@@ -12,8 +12,6 @@
         <h1 class="h1_1 h1_3 h1_4"><?php echo $Datos['Opciones'][0]['seccion']?></h1>
     </div>
     <div class="contenedor_156">
-        <!-- <div class="contenedor_157">  
-        </div> -->
         <div class="contenedor_158">
             <form id="Formulario">
                 <div class="contenedor_13" id="Contenedor_13Js"> 

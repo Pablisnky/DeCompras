@@ -46,7 +46,7 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
 //************************************************************************************************
     //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){
-        console.log("______Desde blanquearInput()______")
+        // console.log("______Desde blanquearInput()______")
         document.getElementById(id).style.backgroundColor = "white"
     }
 
@@ -101,19 +101,19 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
     }
 
 //************************************************************************************************
-    //Indica la cantidad de caracteres que quedan mientras se escribe; invocado en quienesSomos_V.php - cuenta_publicar_V.php
-    function contarCaracteres(ID_Contador, ID_Contenido, Max){
-        // console.log("______Desde contarCaracteres()______", ID_Contador + " / "+ ID_Contenido) 
-        var max = Max; 
-        var cadena = document.getElementById(ID_Contenido).value; 
-        var longitud = cadena.length; 
+    // //Indica la cantidad de caracteres que quedan mientras se escribe; invocado en quienesSomos_V.php - cuenta_publicar_V.php
+    // function contarCaracteres(ID_Contador, ID_Contenido, Max){
+    //     console.log("______Desde contarCaracteres()______", ID_Contador + " / "+ ID_Contenido) 
+    //     var max = Max; 
+    //     var cadena = document.getElementById(ID_Contenido).value; 
+    //     var longitud = cadena.length; 
 
-            if(longitud <= max) { 
-                document.getElementById(ID_Contador).value = max-longitud; 
-            } else { 
-                document.getElementById(ID_Contador).value = cadena.subtring(0, max);
-            } 
-    } 
+    //     if(longitud <= max) { 
+    //         document.getElementById(ID_Contador).value = max-longitud; 
+    //     } else { 
+    //         document.getElementById(ID_Contador).value = cadena.subtring(0, max);
+    //     } 
+    // } 
 
 //************************************************************************************************ 
     //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo en un elmento; invocado en quienesSomos_V.php - cuenta_publicar_V.php
@@ -137,7 +137,7 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
 //************************************************************************************************
     //Ajusta la altura del texarea según se vaya escribiendo en el mismo; invocado en quienesSomos_V.php                
     function autosize(id){
-        console.log("______Desde autosize()______", id)
+        // console.log("______Desde autosize()______", id)
         var el = document.getElementById(id);
         
         setTimeout(function(){

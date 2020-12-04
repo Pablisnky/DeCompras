@@ -72,11 +72,11 @@ function respuesta_seccion(){
 }
 
 //-------------------------------------------------------------------------------------------------
- //Elimina una imagen
-function Llamar_EliminarImagenSecundaria(ID_Imagen){
-    // console.log("______Desde EliminarImagenSecundaria()______")
+//Elimina una imagen de la BD y muestra el boton de añadir imagen en caso de que existan menos de cinco
+function Llamar_EliminarImagenSecundaria(ID_Imagen, ID_Producto){
+    // console.log("______Desde EliminarImagenSecundaria()______ ", ID_Imagen + " / " + ID_Producto)
 
-    var url = "../../Cuenta_C/eliminarImagen/" + ID_Imagen
+    var url = "../../Cuenta_C/eliminarImagen/" + ID_Imagen + " / " + ID_Producto
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_EliminarImagenSecundaria
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -85,7 +85,8 @@ function Llamar_EliminarImagenSecundaria(ID_Imagen){
 function respuesta_EliminarImagenSecundaria(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){  
-              
+            //Se reemplaza el valor del contenedor_80 con lo que se obtenga en el archivo de la url
+            document.getElementById("Contenedor_114").innerHTML = peticion.responseText
         } 
         else{
             alert('Problemas con la petición.')
@@ -95,3 +96,4 @@ function respuesta_EliminarImagenSecundaria(){
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
     }
 }        
+//-------------------------------------------------------------------------------------------------

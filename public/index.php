@@ -4,11 +4,10 @@
     $Iniciar = new Core;
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
-	<head>
+	<head> -->
         <link rel="manifest" href="manifest.json"/>
         <!-- <script type="text/javascript" src="convoca_SW.js" ></script> -->
-    </head>
-</html>
-    
+    <!-- </head>
+</html> -->

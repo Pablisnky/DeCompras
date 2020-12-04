@@ -30,8 +30,7 @@
         public function recibeRegistroCom(){            
             //Se reciben todos los campos del formulario, desde registroCom_V.php se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_tienda"]) && !empty($_POST["clave_Afcom"]) && !empty($_POST["confirmarClave_Afcom"])
-            ){
-               
+            ){               
                 $RecibeDatos = [
                     //Recibe datos de la persona responsable
                     'Nombre_Afcom' => filter_input(INPUT_POST, "nombre_Afcom", FILTER_SANITIZE_STRING),
@@ -82,6 +81,18 @@
             catch(Exception $e){
                 $this->ConsultaRegistro_M->rollback();
             }
+
+            //Se envia al correo pcabeza7@gmail.com el mensaje que el usaurio a dejado
+            $email_to = 'pcabeza7@gmail.com';
+            $email_subject = 'Nueva tienda en PedidoRemoto';  
+            $email_message = 'Tienda afiliada';
+            $headers = 'From: ' . 'master@pedidoremoto.com' . '\r\n'.
+
+            'Reply-To: ' . 'master@pedidoremoto.com' . '\r\n' .
+
+            'X-Mailer: PHP/' . phpversion();
+
+            mail($email_to, $email_subject, $email_message, $headers); 
 
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
             redireccionar("/Login_C/index/CNE");
@@ -140,6 +151,17 @@
             //Se INSERTAN los datos de acceso del despachador
             $this->ConsultaRegistro_M->insertarAccesoDespachador($ID_AfiliadoDes, $ClaveCifrada);
 
+            //Se envia al correo pcabeza7@gmail.com el mensaje que el usaurio a dejado
+            $email_to = 'pcabeza7@gmail.com';
+            $email_subject = 'Nuevo despachador en PedidoRemoto';  
+            $email_message = 'Despachador afiliada';
+            $headers = 'From: ' . 'master@pedidoremoto.com' . '\r\n'.
+
+            'Reply-To: ' . 'master@pedidoremoto.com' . '\r\n' .
+
+            'X-Mailer: PHP/' . phpversion();
+
+            mail($email_to, $email_subject, $email_message, $headers);
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
             header("location:" . RUTA_URL . "/Login_C");
         }

@@ -46,8 +46,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <label class="label_7">Ampliar información (Opcional)</label>
                         <span class="icon-circle-down span_10"></span>
                     </div>
-                        <br>
-                        <br>
+                    <br>
+                    <br>
                     <div class="contenedor_128" id="Contenedor_128">  
                         
                     <!-- SECCION CARACTERISTICAS -->
@@ -78,13 +78,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!--div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó previamente -->    
     <div id="Contenedor_80"></div>
 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen principal antes de guardarla en la BD usada en cuenta_editar_prod_V.php
         function readImage(input){
-        console.log("______Desde readImage()______")
+        // console.log("______Desde readImage()______")
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = function(e){
@@ -99,7 +99,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             readImage(this);
         });
 
-        //Array que contiene la cantidad de imagenes insertadas, sus elementos sumados no pueden exeder de 5
+        //Array contiene cantidad de imagenes insertadas, sus elementos sumados no pueden exceder de 5
         SeleccionImagenes = [];
         function muestraImg(){
             // Muestra grupo de imagenes

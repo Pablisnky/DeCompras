@@ -284,6 +284,20 @@
                 return "No se pudo";
             }
         }
+
+        //SELECT del link de acceso directo        
+        public function consultarLinkTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT url, link_acceso FROM destinos WHERE ID_Tienda = :ID_Tienda");
+
+            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt;
+            }
+            else{
+                return "No se pudo";
+            }
+        }
         
         //SELECT de las caracteristicas de un producto determinado
         public function consultarCaracteristicasProducto($ID_Tienda, $ID_Producto){
@@ -311,6 +325,20 @@
             }
             else{
                 return "No se pudo";
+            }
+        }
+
+        //SELECT de la cantidad de imagenes secundarias de un producto determinado
+        public function consultarCantidadImagenProducto($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT COUNT(*) AS cantidad FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
             }
         }
         
@@ -348,6 +376,20 @@
 
             if($stmt->execute()){
                 //Se envia información de cuantos registros se vieron afectados por la consulta
+                return  $stmt->fetchAll(PDO::FETCH_ASSOC);;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //SELECT que cuenta la cantidad de productos de una tienda
+        public function consultarCantidadProductos($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT COUNT(secciones_productos.ID_Producto) AS cantidadProductos FROM tiendas_secciones INNER JOIN secciones_productos ON tiendas_secciones.ID_Seccion=secciones_productos.ID_Seccion WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
                 return  $stmt->fetchAll(PDO::FETCH_ASSOC);;
             }
             else{
@@ -792,11 +834,36 @@
                 return false;
             }
         }
+             
+        //UPDATE del campo publicar (no autoriza a publicar la tienda en el catalogo de tiendas)
+        public function actualizarPublicarTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET publicar = :PUBLICAR WHERE ID_Tienda = :ID_TIENDA ");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':PUBLICAR', 0);
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
 
 
 
 
+
+
+
+
+
+
+
+        
 
 
 
@@ -1015,8 +1082,8 @@
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
             $stmt->bindValue(':BAN_NOMBRE', $Banco);
-            $stmt->bindParam(':BAN_CUENTA', $Titular);
-            $stmt->bindParam(':BAN_TITULAR', $NumeroCuenta);
+            $stmt->bindParam(':BAN_CUENTA', $NumeroCuenta);
+            $stmt->bindParam(':BAN_TITULAR', $Titular);
             $stmt->bindParam(':BAN_RIF', $Rif);
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
@@ -1034,8 +1101,20 @@
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
+        }        
+        
+        //INSERT de link acceso a tienda
+        public function insertarLinkTienda($ID_Tienda, $LinkAcceso, $URL){
+            $stmt = $this->dbh->prepare("INSERT INTO destinos(ID_Tienda, link_acceso, url, fecha, hora)VALUES (:ID_TIENDA, :LINK_ACCESO, :URL, CURDATE(), CURTIME())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':LINK_ACCESO', $LinkAcceso);
+            $stmt->bindValue(':URL', $URL);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
         }
-
         // //INSERT de las caracteristicas de un producto especifico
         // public function insertarCaracteristicas($ID_Tienda, $ID_Producto, $Caracteristica){
         //     //Debido a que $Caracteristica es un array con varios elemento se hace un recorrido de cada uno para actualizar en cada vuelta

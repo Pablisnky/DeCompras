@@ -40,10 +40,10 @@
 			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu  span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="">Ofertas</a></li>
-					<li><a class="a_3" href="">Lo más pedido</a></li>
-					<li><a class="a_3" href="">Horario</a></li>
-					<li><a class="a_3" href="">Dirección</a></li>
+					<li><a class="a_3" href="#">Ofertas</a></li>
+					<li><a class="a_3" href="#">Lo más pedido</a></li>
+					<li><a class="a_3" href="#">Horario</a></li>
+					<li><a class="a_3" href="#">Dirección</a></li>
 					<hr class="hr_3 hr_4"/>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Salir de la tienda</a></li>
 				</ul>

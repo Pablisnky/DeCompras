@@ -43,7 +43,7 @@
         <?php
     } 
     else{  ?>
-        <section class="" id="Section_10">
+        <section id="Section_10">
             <div class="contenedor_103 borde_1">
                 <h1 class="h1_7">Felicitaciones</h1>
                 <div class="contenedor_104">
