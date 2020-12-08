@@ -2,10 +2,10 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
 
 //************************************************************************************************
 //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
-// window.addEventListener("click", function(e){   
-//     var click = e.target
-//    console.log("Se hizo click en: ", click)
-// }, false)
+window.addEventListener("click", function(e){   
+    var click = e.target
+   console.log("Se hizo click en: ", click)
+}, false)
 
 //************************************************************************************************
    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
@@ -46,14 +46,14 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
 //************************************************************************************************
     //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){
-        // console.log("______Desde blanquearInput()______")
+        // console.log("______Desde blanquearInput()______", id)
         document.getElementById(id).style.backgroundColor = "white"
     }
 
 //************************************************************************************************
     //Coloca el cursor en el input automaticamente 
     function autofocus(id){
-        // console.log("______Desde autofocus()______")
+        // console.log("______Desde autofocus()______", id)
         if(document.getElementById(id)){//Si el elemento existe
             document.getElementById(id).focus()
             document.getElementById(id).value = ""
@@ -101,23 +101,23 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
     }
 
 //************************************************************************************************
-    // //Indica la cantidad de caracteres que quedan mientras se escribe; invocado en quienesSomos_V.php - cuenta_publicar_V.php
-    // function contarCaracteres(ID_Contador, ID_Contenido, Max){
-    //     console.log("______Desde contarCaracteres()______", ID_Contador + " / "+ ID_Contenido) 
-    //     var max = Max; 
-    //     var cadena = document.getElementById(ID_Contenido).value; 
-    //     var longitud = cadena.length; 
+    //Indica la cantidad de caracteres que quedan mientras se escribe; invocado en quienesSomos_V.php - cuenta_publicar_V.php - registroCom_V.php - cuenta_editar_V.php
+    function contarCaracteres(ID_Contador, ID_Contenido, Max){
+        // console.log("______Desde contarCaracteres()______", ID_Contador + " / " + ID_Contenido + " / " + Max) 
+        var max = Max; 
+        var cadena = document.getElementById(ID_Contenido).value; 
+        var longitud = cadena.length; 
 
-    //     if(longitud <= max) { 
-    //         document.getElementById(ID_Contador).value = max-longitud; 
-    //     } else { 
-    //         document.getElementById(ID_Contador).value = cadena.subtring(0, max);
-    //     } 
-    // } 
+        if(longitud <= max) { 
+            document.getElementById(ID_Contador).value = max-longitud; 
+        } else { 
+            document.getElementById(ID_Contador).value = cadena.subtring(0, max);
+        } 
+    } 
 
 //************************************************************************************************ 
-    //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo en un elmento; invocado en quienesSomos_V.php - cuenta_publicar_V.php
-    var contenido_slogan_com = "";    
+    //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo en un elmento; invocado en quienesSomos_V.php - cuenta_publicar_V.php - registroCom_V.php - cuenta_editar_V.php
+    var contenidoControlado = "";    
     function valida_LongitudDes(Max, ID_Contenido){
         // console.log("______Desde valida_LongitudDes()______", Max + " / "+ ID_Contenido) 
                 
@@ -127,10 +127,10 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
         num_caracteresEscritos = document.getElementById(ID_Contenido).value.length
 
         if(num_caracteresEscritos > num_caracteres_permitidos){ 
-            document.getElementById(ID_Contenido).value = contenido_slogan_com; 
+            document.getElementById(ID_Contenido).value = contenidoControlado; 
         }
         else{ 
-            contenido_slogan_com = document.getElementById(ID_Contenido).value; 
+            contenidoControlado = document.getElementById(ID_Contenido).value; 
         } 
     } 
 
@@ -146,6 +146,39 @@ document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacio
         },0);
     }
 
+//************************************************************************************************
+    //Coloca los puntos de miles en tiempo real al llenar el campo a cedula en registroDes_V.php - cuenta_editar_V.php
+    function formatoMiles(numero, id){
+        // console.log("______Desde SeparadorMiles()______", numero + " / " + id)
+        var num = numero.replace(/\./g,'')
+        if(!isNaN(num)){
+            num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.')
+            num = num.split('').reverse().join('').replace(/^[\.]/,'')
+            numero.value = num
+            document.getElementById(id).value = num
+        }
+        else{ 
+            alert('Solo se permiten numeros')
+            document.getElementById(id).value = ""
+        }
+    }
+    
+ //************************************************************************************************
+    //Mascara de entrada para el telefono, agrega los puntos en tiempo real al llenar el campo    
+    function mascaraTelefono(TelefonoRecibido, id){
+        // console.log("______Desde mascaraTelefono()______")
+        
+        if(TelefonoRecibido.length == 4){
+            document.getElementById(id).value += "-"; 
+        }
+        else if(TelefonoRecibido.length == 8){
+            document.getElementById(id).value += ".";  
+        }
+        else if(TelefonoRecibido.length == 11){
+            document.getElementById(id).value += ".";  
+        }
+    }
+    
  //************************************************************************************************
     //Coloca la clase "activa" en el item seleccionado del menu 
     // function ActivarLink(id){

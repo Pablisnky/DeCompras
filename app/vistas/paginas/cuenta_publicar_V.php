@@ -19,20 +19,20 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_129 borde_1 borde_2">
                     <!-- IMAGEN PRINCIPAL -->
                     <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/camion.png"/>
+                    <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                     <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                 </div>        
                 <div>
                     <!-- PRODUCTO -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto" id="ContenidoPro" placeholder="Producto"  tabindex="1" onkeydown="blanquearInput('ContenidoPro')" value="wwwww"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto" id="ContenidoPro" placeholder="Producto"  tabindex="1" onkeydown="blanquearInput('ContenidoPro')"/>
                     <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
 
                     <!-- DESCRIPCION -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2" onkeydown="blanquearInput('ContenidoDes')" value="wwwww"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2" onkeydown="blanquearInput('ContenidoDes')"/>
                     <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
 
                     <!-- PRECIO -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3" onkeydown="blanquearInput('Precio')" value="1243"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3" onkeydown="blanquearInput('Precio')"/>
 
                     <br>
                     <!-- SECCION -->

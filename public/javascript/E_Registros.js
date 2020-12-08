@@ -1,5 +1,9 @@
 window.addEventListener('load', function(){autofocus('Nombre')}, false)
 
+document.getElementById("NombreTienda").addEventListener('keydown', function(){contarCaracteres('ContadorNombre','NombreTienda', 50)}, false)
+
+document.getElementById("NombreTienda").addEventListener('keydown', function(){valida_LongitudDes(50,'NombreTienda')}, false)
+
 //************************************************************************************************
     //Validar el formulario de afiliación de comerciante
     function validarAfiliacionCom(){
@@ -137,9 +141,17 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
     }
     
 //************************************************************************************************
+    function removerContenidoDiv(){
+        // console.log("_____Desde removerDiv()_____")
+
+        let Div_AlertaCorreo = document.getElementById('Mostrar_verificaCorreo')
+        Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild)        
+    }
+
+//************************************************************************************************
     //Valida el formulario de afiliació de despachador
     function validarAfiliacionDes(){
-        console.log("_____Desde validarAfiliacionDes()_____")
+        // console.log("_____Desde validarAfiliacionDes()_____")
 
         let Nombre = document.getElementById('Nombre').value
         let Apellido = document.getElementById('Apellido').value      
@@ -295,22 +307,15 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
     }
 
 //************************************************************************************************
-    function evaluarElementosCcargados(){
-        let DIV = document.getElementById('Mostrar_verificaClave')
-        if(DIV.childElementCount < 1){
-            console.log("No hay elementos en el div ")
-        }
-        else{
-            console.log("Los elementos del DIV son:", DIV)
-        }
-    }
-
-//************************************************************************************************
-    //Quita el color de fallo en un input y lo deja en su color original
-    function blanquearInput(id){
-        // console.log("______Desde blanquearInput()______")
-        document.getElementById(id).style.backgroundColor = "white"
-    }
+    // function evaluarElementosCcargados(){
+    //     let DIV = document.getElementById('Mostrar_verificaClave')
+    //     if(DIV.childElementCount < 1){
+    //         console.log("No hay elementos en el div ")
+    //     }
+    //     else{
+    //         console.log("Los elementos del DIV son:", DIV)
+    //     }
+    // }
 
 //************************************************************************************************
     //Impide que se siga introduciendo caracteres al alcanzar el limite maximo en el telefono
@@ -329,52 +334,9 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
             contenidoTelefono = document.getElementById("Telefono").value;   
         } 
     } 
-
-//************************************************************************************************
-    //Mascara de entrada para el telefono, agrega los puntos en tiempo real al llenar el campo    
-    function mascaraTelefono(TelefonoRecibido){
-        console.log("______Desde mascaraTelefono()______")
-        
-        if(TelefonoRecibido.length == 4){
-            document.getElementById("Telefono").value += "-"; 
-        }
-        else if(TelefonoRecibido.length == 8){
-            document.getElementById("Telefono").value += ".";  
-        }
-        else if(TelefonoRecibido.length == 11){
-            document.getElementById("Telefono").value += ".";  
-        }
-    }
-
-//************************************************************************************************
-    function SeparadorMiles(nStr){
-        console.log(nStr)
-        nStr += '';
-        x = nStr.split('.');
-        x1 = x[0];
-        x2 = x.length > 1 ? '.' + x[1] : '';
-        var rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + '.' + '$2');
-        }
-        console.log(x1 + x2)
-        return x1 + x2;
-    }
-    // const number = document.querySelector('.number');
-
-    // function formatNumber (n) {
-    //     n = String(n).replace(/\D/g, "");
-    // return n === '' ? n : Number(n).toLocaleString();
-    // }
-    // number.addEventListener('keyup', (e) => {
-    //     const element = e.target;
-    //     const value = element.value;
-    // element.value = formatNumber(value);
-    // });
-
-
+ 
 //*********************************************************************************************
-    //Valida que la contraseña sea de solo letras y numeros
+    //Valida que la contraseña introducida sea de solo letras y numeros
     // function literal_3(){ 
     //     var m = document.getElementById("Clave").value;
     //     var re = /^[\w ]+$/; /*Solo acepta caracrteres alfanumericos la coma se salta el filtro*/
@@ -387,4 +349,5 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
     //           return false;
     //         }
     //   } 
-    
+
+//*********************************************************************************************    

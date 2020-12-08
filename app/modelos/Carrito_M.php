@@ -20,6 +20,20 @@
                 return false;
             }
         }
+        
+        public function consultarPagoMovil($ID_Tienda){
+            //SELECT con los datos para realizar PagoMovil
+            $stmt = $this->dbh->prepare("SELECT cedula_pagomovil, banco_pagomovil, telefono_pagomovil FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
 
         public function consultarMontoTotal($PedidoCarrito){
             //SELECT con el monto total del pedido

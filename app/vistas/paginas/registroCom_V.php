@@ -13,25 +13,28 @@
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Registro de tienda</legend> 
 
-                <!-- Nombre afiliado -->
+                <!-- NOMBRE AFILIADO -->
                 <input class="placeholder borde_1" type="text" name="nombre_Afcom" id="Nombre" placeholder="Nombre del encargado" autocomplete="off" onkeydown="blanquearInput('Nombre')"> 
 
-                <!-- Correo afiliado -->
-                <input class="placeholder borde_1" type="text" name="correo_Afcom" id="CorreoAfiCom" placeholder="Correo electronico" onblur="llamar_verificaCorreo(id, 'AfiCom')" autocomplete="off" onkeydown="blanquearInput('CorreoAfiCom')">
+                <!-- CORREO AFILIADO -->
+                <input class="placeholder borde_1" type="text" name="correo_Afcom" id="CorreoAfiCom" placeholder="Correo electronico" autocomplete="off" onblur="llamar_verificaCorreo(id, 'AfiCom')" onkeydown="blanquearInput('CorreoAfiCom')" onfocus= removerContenidoDiv()>
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
                 
-                <!-- Nombre de la tienda -->
-                <input class="placeholder borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la tienda" autocomplete="off" onkeydown="blanquearInput('NombreTienda')">
+                <!-- NOMBRE DE LA TIENDA -->
+                <div style="width:100%; margin:auto">
+                    <input class="placeholder placeholder_4 borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la tienda" autocomplete="off" onkeydown="blanquearInput('NombreTienda')">
+                    <input class="contador_2 contador_4" type="text" id="ContadorNombre" value="50"/>
+                </div>
             </fieldset>      
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Datos de accceso</legend>  
                 <div>
-                    <!-- Clave -->
+                    <!-- CLAVE -->
                     <input class="placeholder borde_1" type="password" name="clave_Afcom" id="Clave" placeholder="Contraseña" onblur="llamar_verificaClave('AfiCom')" onkeydown="blanquearInput('Clave')">
                     <!-- Se recibe respuesta de ajax llamar_verificaClave()-->
                     <div class="contenedor_3" id="Mostrar_verificaClave"></div>
 
-                    <!-- Confirmar clave -->
+                    <!-- CONFIRMAR CLAVE -->
                     <input class="placeholder borde_1" type="password" name="confirmarClave_Afcom" id="ConfirmarClave" placeholder="Repetir contraseña" onchange="verificarClaves()" onkeydown="blanquearInput('ConfirmarClave')">
                 </div>          
             </fieldset>        

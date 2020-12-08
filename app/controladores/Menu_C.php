@@ -12,8 +12,9 @@
             $this->vista("paginas/afiliacion_V");
         }
 
-        public function afiliacion($Datos){
-            $this->vista("paginas/afiliacion_V", $Datos);
+        public function afiliacion(){
+            $this->vista("inc/header");
+            $this->vista("paginas/afiliacion_V");
         }
 
         public function instruccion(){

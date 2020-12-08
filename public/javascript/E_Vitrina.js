@@ -1082,7 +1082,7 @@ console.log(AlCarro)
 //************************************************************************************************
     //Abre la ventna de detalles de producto, invocado en opciones_V.php
     function mostrarDetalles(ContadorLabel, Nombre_Tienda, Slogan_Tienda, ID_Tienda, Producto, Opcion, Precio, Fotografia, ID_Producto){
-        console.log("______Desde mostrarDetalles()______")
+        // console.log("______Desde mostrarDetalles()______")
         window.open(`../../Opciones_C/productoAmpliado/${'Etiqueta_' + ContadorLabel},${Nombre_Tienda},${Slogan_Tienda},${ID_Tienda},${Producto},${Opcion},${Precio},${Fotografia},${ID_Producto}`, "ventana1", "width=1300,height=650,scrollbars=YES")   
     }
 

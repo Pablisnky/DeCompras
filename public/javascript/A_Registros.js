@@ -34,9 +34,6 @@ function conexionAJAX(){
     function llamar_verificaCorreo(id, Afiliado){
         console.log("_____Desde llamar_verificaCorreo()_____")
         A = document.getElementById(id).value;
-        console.log(id)        
-        console.log(A)
-        console.log(Afiliado)
         var url="../Registro_C/VerificarCorreo/" + A + "/" + Afiliado;
         http_request.open('GET',url,true);     
         peticion.onreadystatechange = respuesta_verificaCorreo;
@@ -45,7 +42,7 @@ function conexionAJAX(){
     }                                                           
     function respuesta_verificaCorreo(){
         if (peticion.readyState == 4){
-            if (peticion.status == 200){
+            if(peticion.status == 200){
                 document.getElementById('Mostrar_verificaCorreo').innerHTML = peticion.responseText;
             } 
             else{

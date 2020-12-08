@@ -30,6 +30,7 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
+    //Muestra todas las categorias que existen; invocada desde E_Cuenta_editar.js por medo de función anonima
     function Llamar_categorias(){
         var url = "../Cuenta_C/Categorias/"
         http_request.open('GET', url, true)  
@@ -61,12 +62,13 @@ function conexionAJAX(){
         if(CantSeccion == 1){
             return
         }
-
-        var url = "../Cuenta_C/eliminarSeccion/" + ID_Seccion + "/" + CantSeccion
-        http_request.open('GET', url, true)  
-        peticion.onreadystatechange = respuesta_EliminarSeccion
-        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
-        peticion.send("null")
+        else{
+            var url = "../Cuenta_C/eliminarSeccion/" + ID_Seccion + "/" + CantSeccion
+            http_request.open('GET', url, true)  
+            peticion.onreadystatechange = respuesta_EliminarSeccion
+            peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+            peticion.send("null")
+        }
     }                                                                        
     function respuesta_EliminarSeccion(){
         if(peticion.readyState == 4){

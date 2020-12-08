@@ -2,7 +2,7 @@
 <section class="section_4 section_10" id="MostrarSeccion">
     <div class="contenedor_24 contenedor_118"> 
       <div class="contenedor_102">
-        <h1 class="h1_1 h1_3">Seleccione una sección </h1>   
+        <h1 class="h1_1 h1_3">Seleccione una sección</h1>   
         <span class="span_5" id="Span_5">X</span>
       </div>
       <form>

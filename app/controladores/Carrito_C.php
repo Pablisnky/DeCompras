@@ -15,13 +15,13 @@
         public function index($ID_Tienda){  
             //SELECT para buscar información de cuentas bancarias de la tienda
             $Banco = $this->ConsultaCarrito_M->consultarCtaBanco($ID_Tienda); 
-            // echo "<pre>";
-            // print_r($Banco);
-            // echo "</pre>";            
-            // exit();
-
+            
+            //SELECT para buscar información de cuentas bancarias de la tienda
+            $PagoMovil = $this->ConsultaCarrito_M->consultarPagoMovil($ID_Tienda); 
+            
             $Datos = [
                 'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
+                'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil
                 'ID_Tienda' => $ID_Tienda                
             ];
             

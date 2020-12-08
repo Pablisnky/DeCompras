@@ -49,7 +49,7 @@
                 <div class="contenedor_104">
                     <div class="contenedor_147" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/tienda.png')">
                     </div>
-                    <div class="contenedor_117">
+                    <div>
                         <h1 class="h1_1">Tú tienda digital ha sido creada.</h1>
                         <p class="p_6">Tienes 15 días completamente libre de pagos</p>
                         <ul class="ul_5">
@@ -66,6 +66,6 @@
         <?php
     }   ?> 
 		
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
 
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

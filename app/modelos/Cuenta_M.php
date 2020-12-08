@@ -7,19 +7,12 @@
             parent::__construct();
         }
 
-
-        //SELECT de las categorias de tiendas que existen en la aplicación
+        //SELECT de las categorias de tiendas que existen en la aplicación 
         public function consultarCatgorias(){
-            $stmt = $this->dbh->prepare("SELECT ID_Categoria, categoria FROM categorias");
-
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return "No se pudo";
-            }
+            $stmt = $this->dbh->query("SELECT ID_Categoria, categoria FROM categorias ORDER BY categoria");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-
+                         
         //SELECT de secciones de una tienda especifica
         public function consultarSeccionesTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion, seccion FROM secciones WHERE ID_Tienda = :ID_Tienda");
@@ -370,7 +363,7 @@
         
         //SELECT de las cuentas de pagomovil de una tienda especifica
         public function consultarCuentasPagomovil($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT banco_pagomovil, cuenta_pagomovil FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
+            $stmt = $this->dbh->prepare("SELECT cedula_pagomovil, banco_pagomovil, telefono_pagomovil FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
@@ -1091,13 +1084,14 @@
         }
 
         //INSERT de cuenta pagomovil
-        public function insertarPagoMovil($ID_Tienda, $BancopagoMovil, $CuentapagoMovil){
-            $stmt = $this->dbh->prepare("INSERT INTO pagomovil(ID_Tienda, banco_pagomovil, cuenta_pagomovil, fecha, hora)VALUES (:ID_TIENDA, :BANCO_PAGOMOVIL, :CUENTA_PAGOMOVIL, CURDATE(), CURTIME())");
+        public function insertarPagoMovil($ID_Tienda, $CedulapagoMovil, $BancopagoMovil, $TelefonopagoMovil){
+            $stmt = $this->dbh->prepare("INSERT INTO pagomovil(ID_Tienda, cedula_pagomovil, banco_pagomovil, telefono_pagomovil, fecha, hora)VALUES (:ID_TIENDA, :CEDULA_PAGOMOVIL, :BANCO_PAGOMOVIL, :TELEFONO_PAGOMOVIL, CURDATE(), CURTIME())");
             
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':CEDULA_PAGOMOVIL', $CedulapagoMovil);
             $stmt->bindValue(':BANCO_PAGOMOVIL', $BancopagoMovil);
-            $stmt->bindParam(':CUENTA_PAGOMOVIL', $CuentapagoMovil);
+            $stmt->bindParam(':TELEFONO_PAGOMOVIL', $TelefonopagoMovil);
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();

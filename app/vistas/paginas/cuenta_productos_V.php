@@ -1,7 +1,6 @@
 <?php     
 //se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
 if(!empty($_SESSION["ID_Afiliado"])){
-
     $ID_Tienda = $_SESSION["ID_Tienda"];    
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
@@ -105,7 +104,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script>
 
     <?php
-   // include(RUTA_APP . "/vistas/inc/footer.php");
 }
 else{
     redireccionar("/Login_C/");

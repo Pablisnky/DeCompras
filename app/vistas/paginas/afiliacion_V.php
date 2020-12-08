@@ -1,5 +1,3 @@
-<?php require(RUTA_APP . '/vistas/inc/header.php');  ?>
-
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/casita/style_casita.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/camion/style_camion.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>		
@@ -14,6 +12,7 @@
                 <p class="p_11">2 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Proyectos de manufactura o tiendas con catalogo de hasta 20 productos.</p></li>
+                    <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>   
             </div>
@@ -22,6 +21,7 @@
                 <p class="p_11">4 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Tiendas con catalogo de hasta 200 productos</p></li>
+                    <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>   
             </div>
@@ -30,6 +30,7 @@
                 <p class="p_11">7 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Tiendas con catalogo de hasta 500 productos</p></li>
+                    <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
             </div>        
@@ -38,6 +39,7 @@
                 <p class="p_11">15 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Tiendas con catalogo de hasta 1.500 productos</p></li>
+                    <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Subdominio</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
@@ -47,6 +49,7 @@
                 <p class="p_11">25 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Tiendas con catalogo de más de 1.500 productos</p></li>
+                    <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Subdominio</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
@@ -56,8 +59,7 @@
             <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>
             <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Unirme como comerciante</a>
         </div>  
-    </div>  
+    </div>
 </section>
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Afiliacion.js';?>"></script>
 		
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

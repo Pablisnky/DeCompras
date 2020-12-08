@@ -200,7 +200,7 @@ button{/*tiendas*/
 	font-size: 0.8em;
 	text-align: right;
 }
-.contador_2{/*cuenta_editar - quienesSomos*/
+.contador_2{/*cuenta_editar - quienesSomos - registroCom*/
 	width: 9% !important;
 	margin-left: 93% !important;
 	color: rgba(51, 51, 51, 0.6);
@@ -208,6 +208,9 @@ button{/*tiendas*/
 	font-size: 0.8em;
 	text-align: right;
 	margin-bottom: 1%;
+}
+.contador_4{/*quienesSomos - registroCom*/
+	margin-left: 85% !important;
 }
 .contenedor_1{/*header*/
 	padding: 3%;
@@ -456,8 +459,8 @@ button{/*tiendas*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	justify-content: space-around;
 	width: 50%;
-	position: absolute;
-	bottom: 4%;
+	/* position: absolute; */
+	/* bottom: 4%; */
 	margin-left: 25%;
 }
 .contenedor_42{/*registroCom - registroDes - login - cuenta_editar - cuenta_publicar - afiliacion*/
@@ -465,7 +468,7 @@ button{/*tiendas*/
 	margin: auto;
 	margin-top: 10%;
 }
-.contenedor_43{/*registro*/
+.contenedor_43{/*registroCom*/
 	display: none;
 }
 .contenedor_45{/*login - cuenta_editar*/
@@ -629,9 +632,11 @@ button{/*tiendas*/
 	margin: 5% auto 15% auto;
 }
 .contenedor_67{/*cuenta_editar*/
+	/* background-color: yellow; */
+	/* width: 100%; */
 	padding: 5% 2%;
 	border-radius: 15px;
-	margin: 1% auto 2% auto;
+	margin: 1% auto 5% auto !important;
 }
 .contenedor_69{/*tiendas - header - header_AfiCom - header_inicio*/
 	background-color: var(--OficialOscuro);
@@ -1100,9 +1105,6 @@ button{/*tiendas*/
 .contenedor_160 > div:last-child{/*inicio*/
 	flex: 0 1 0% !important;/*rompe la ocupacion de toda la primera fila en la distribucion flex*/
 }
-.contenedor_161{/*cuenta_editar*/
-	margin-bottom: 20%;
-}
 .figure_2{/*quienesSomos*/
 	margin: auto;
 	width: 100%;
@@ -1481,7 +1483,7 @@ button{/*tiendas*/
 	font-weight: bold;
 	padding-right: 10%;
 }
-.label_4{/*opciones */
+.label_4{/*opciones - cuenta_editar*/
 	background-color: var(--OficialOscuro);
 	color:white ;
 	position: relative;
@@ -1598,7 +1600,10 @@ button{/*tiendas*/
 	padding: 1%;
 }
 .label_24{/*cuenta_editar*/
-	margin-left: 30%;
+	margin: auto;
+	border-color: var(--OficialOscuro);
+	border-width: 1px;
+	border-style: solid;
 }
 .label_25{/*cuenta_editar*/
 	pointer-events:none;
@@ -1795,8 +1800,6 @@ button{/*tiendas*/
 	line-height: 40px;
 	margin-top: 100%;
 }
-.p_18{/*opciones*/
-}
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	margin: 0% auto 2% auto !important;
 	display: block;
@@ -1819,6 +1822,9 @@ button{/*tiendas*/
 	margin: initial !important;
 	margin-bottom: 5% !important;
 	display: inline-block;
+}
+.placeholder_4{/*registroCom*/
+	margin-bottom: -0.5% !important;
 }
 .preloder{/*vitrina*/
 	/* margin: 20% auto;  */
@@ -2003,8 +2009,11 @@ button{/*tiendas*/
 	cursor: pointer;
 }
 .span_14{/*cuenta_editar*/
-	display: block;
-	padding-left: 90% !important;
+	/* background-color: red; */
+	/* display: block !important; */
+	width: 20px;
+	float: right;
+	/* margin-left: 90% !important; */
 	margin-top: -2%;
 }
 .span_14:hover{/*cuenta_editar*/

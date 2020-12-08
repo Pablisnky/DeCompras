@@ -162,18 +162,31 @@
                             </ul>  
 
                             <input class="placeholder input_11 ocultar" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil"onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
-                            <div class= "contenedor_136">
-                                <div class="contenedor_138">
-                                    <p class="p_13">Banco</p>
-                                    <p class="p_13">Nº cedula</p>
-                                    <p class="p_13">Nº telefono</p>
-                                </div>
-                                <div>
-                                    <p class="p_14">Banco Mercantil</p>
-                                    <p class="p_14">Comercial la 13 C.A</p>
-                                    <p class="p_14">0234 3423 234543432323</p>
-                                </div>
-                            </div>
+                            <?php
+                                // // $Datos viene de Carrito_C/index
+                                // echo "<pre>";
+                                // print_r($Datos);
+                                // echo "</pre>";            
+                                // exit();
+                                foreach($Datos['Pagomovil'] as $row): 
+                                    $Banco = $row['banco_pagomovil'];                                    
+                                    $Cedula = $row['cedula_pagomovil'];
+                                    $Telefono = $row['telefono_pagomovil'];?>
+                                    <div class= "contenedor_136">
+                                        <div class="contenedor_138">
+                                            <p class="p_13">Banco </p>
+                                            <p class="p_13">Cedula</p>
+                                            <p class="p_13">Nº telefono</p>
+                                        </div>
+                                        <div>
+                                            <p class="p_14"><?php echo $Banco;?></p>
+                                            <p class="p_14"><?php echo $Cedula;?></p>
+                                            <p class="p_14"><?php echo $Telefono;?></p>
+                                        </div>
+                                    </div>
+                                    <?php
+                                endforeach;
+                            ?>
                         </div>
 
                         <!-- PAGO EN DESTINO -->

@@ -378,6 +378,7 @@
                 exit();
             }
 
+            // IMAGEN TIENDA
             // ********************************************************
             //Recibe la imagen de la tienda solo si se ha presionado el boton de buscar fotografia
             if(($_FILES['imagen_Tienda']['name']) != ""){
@@ -494,12 +495,7 @@
             
             //INFORMACION DE PAGOS
             // ********************************************************            
-            //Se ELIMINAN todas las cuentas bancarias
-            $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
-                     
-            // Se ELIMINAN todas las cuentas de pagomovil
-            $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
-
+            
             if($_POST['banco'] == "" && $_POST['cuentapagoMovil'] == ""){
                 echo "Ingrese datos de pagos";
                 echo "<br>";
@@ -507,7 +503,9 @@
                 exit();
             }
             else{
-                // DATOS BANCARIOS
+                // DATOS BANCARIOS//Se ELIMINAN todas las cuentas bancarias
+                $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
+
                 if($_POST['banco'][0] != ""){
                     foreach(array_keys($_POST['banco']) as $key){
                         if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
@@ -530,18 +528,25 @@
                 }
                 
                 // ******************************************************** 
-                // DATOS PAGOMOVIL                 
-                if($_POST['cuentapagoMovil'][0] != ""){ 
-                    print_r($_POST['cuentapagoMovil']);
-                    echo '<br>';
-                    echo "Entra al IF";
-                    foreach(array_keys($_POST['cuentapagoMovil']) as $key){
-                        if(!empty($_POST['cuentapagoMovil'][$key]) || !empty($_POST['bancopagoMovil'][$key])){
-                            $CuentapagoMovil = $_POST['cuentapagoMovil'][$key];
-                            $BancopagoMovil = $_POST['bancopagoMovil'][$key];
-                            
+                //DATOS PAGOMOVIL                 
+                if($_POST['telefonoPagoMovil'][0] != ""){ 
+                    // Se ELIMINAN todas las cuentas de pagomovil
+                    $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
+                                        
+                    foreach(array_keys($_POST['telefonoPagoMovil']) as $key){
+                        if(!empty($_POST['cedulaPagoMovil'][$key]) || !empty($_POST['telefonoPagoMovil'][$key]) || !empty($_POST['bancoPagoMovil'][$key])){
+                            $CedulapagoMovil = $_POST['cedulaPagoMovil'][$key];
+                            $TelefonopagoMovil = $_POST['telefonoPagoMovil'][$key];
+                            $BancopagoMovil = $_POST['bancoPagoMovil'][$key];
+
+                            // echo $CedulapagoMovil . '<br>';
+                            // echo $CuentapagoMovil . '<br>';
+                            // echo $BancopagoMovil;
+                            // echo '<br>';
+                            // exit;
+
                             //Se INSERTA la cuenta de CuentapagoMovil
-                            $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $BancopagoMovil, $CuentapagoMovil);
+                            $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $CedulapagoMovil, $BancopagoMovil, $TelefonopagoMovil);
                         }
                         else{
                             echo "Ingrese datos pagoMovil";
@@ -594,11 +599,10 @@
             redireccionar("/Cuenta_C/Editar");
         }
 
-        //Llamado desde Funciones_Ajax.js por medio de Llamar_categorias()
+        //Llamado desde A_Cuenta_editar.js
         public function Categorias(){
             //CONSULTA las categorias que exiten en la BD
-            $Consulta = $this->ConsultaCuenta_M->consultarCatgorias();
-            $Categorias = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Categorias = $this->ConsultaCuenta_M->consultarCatgorias();
 
             //CONSULTA las categorias en las que una tienda se ha postulado
             $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
