@@ -16,10 +16,7 @@
         }
 
         public function registroComerciante(){
-            //CONSULTA las categorias de tiendas que existen en la BD
-            // $Categorias = $this->ConsultaRegistro_M->consultarCategorias();
-            // $Datos = $Categorias->fetchAll(PDO::FETCH_ASSOC); 
-
+            $this->vista("inc/header");
             $this->vista("paginas/registroCom_V");
         }
         
@@ -85,7 +82,7 @@
             //Se envia al correo pcabeza7@gmail.com el mensaje que el usaurio a dejado
             $email_to = 'pcabeza7@gmail.com';
             $email_subject = 'Nueva tienda en PedidoRemoto';  
-            $email_message = 'Tienda afiliada';
+            $email_message = 'Tienda afiliada' . ' ' . $RecibeDatos['Nombre_tienda'];
             $headers = 'From: ' . 'master@pedidoremoto.com' . '\r\n'.
 
             'Reply-To: ' . 'master@pedidoremoto.com' . '\r\n' .

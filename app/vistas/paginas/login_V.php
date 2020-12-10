@@ -25,7 +25,7 @@
                 <div class="contenedor_33">	
                     <hr class="hr_3">
                     <p class="p_4">¿Quieres afiliarte?<p>
-                    <a class="" href="<?php echo RUTA_URL . '/Afiliacion_C';?>">Afiliate</a>
+                    <a class="" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>">Afiliate</a>
                 </div>
             </div>
 

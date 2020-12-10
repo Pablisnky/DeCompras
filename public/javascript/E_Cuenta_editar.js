@@ -16,18 +16,23 @@ document.getElementById("Direccion_Tien").addEventListener('keydown', function()
 
 document.getElementById("Cedula_Aficom").addEventListener('keyup', function(){formatoMiles(this.value, 'Cedula_Aficom')}, false)
 
-document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
+//No se sabe enviar argumentos dinamicos usando addEventListener, la función se llama directamente del HTML
+// document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
 
 document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Aficom')}, false)
 
 document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
 
-document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
+//No se sabe enviar argumentos dinamicos usando addEventListener, la función se llama directamente del HTML
+// document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función PreEliminarPagoMovil, PreEliminarSeccion y PreEliminarCuentaBanco
 document.addEventListener("click", PreEliminarSeccion)
 document.addEventListener("click", PreEliminarCuentaBanco)
 document.addEventListener("click", PreEliminarPagoMovil) 
+document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('ContenidoSlo','ContadorSlo')}, false)    
+document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('Direccion_Tien','ContadorDireccion')}, false) 
+ 
 
 // *****************************************************************************************************
 //FUNCIONES ANONIMAS
@@ -410,8 +415,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let RIF_Banco = document.getElementById('RIF_Banco').value 
         // DATOS PAGOMOVIL
         let Cedula_PagoMovil = document.getElementById('CedulaPagoMovil').value
-        let Banco_PagoMovil = document.getElementById('BancoPagoMovil').value
-        let Telefono_PagoMovil = document.getElementById('TelefonoPagoMovil').value
+        // let Banco_PagoMovil = document.getElementById('BancoPagoMovil').value
+        // let Telefono_PagoMovil = document.getElementById('TelefonoPagoMovil').value
 
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
@@ -449,8 +454,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Cedula == "" || Cedula.indexOf(" ") == 0 || Cedula.length > 10 || Cedula < 2000000){
-            alert("Introduzca su Cedula")
+        else if(Cedula == "" || Cedula.indexOf(" ") == 0 || Cedula.length > 10 || Cedula.length < 9){
+            alert("Número de cedula invalido")
             document.getElementById("Cedula_Aficom").value = ""
             document.getElementById("Cedula_Aficom").focus()
             document.getElementById("Cedula_Aficom").style.backgroundColor = "var(--Fallos)"
@@ -462,7 +467,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             return false;
         }
         else if(TelefonoAficom == "" || TelefonoAficom.indexOf(" ") == 0 || TelefonoAficom.length > 14){
-            alert ("Introduzca un Telefono")
+            alert ("Número de telefono invalido")
             document.getElementById("Telefono_Aficom").value = ""
             document.getElementById("Telefono_Aficom").focus()
             document.getElementById("Telefono_Aficom").style.backgroundColor = "var(--Fallos)"
@@ -702,7 +707,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         }
         
         let Telefono_ClonPagoMovil = document.getElementsByClassName('Telefono_ClonPagoMovil')
-        //Se validan loscampos cedulas de los clones creados
+        //Se validan los campos cedulas de los clones creados en el momento de ser creado
         for(i=0; i<Telefono_ClonPagoMovil.length; i++){
             if(Telefono_ClonPagoMovil[i].value == ''){
                 alert("Introduzca Nº telefonico para pago movil")
@@ -717,6 +722,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             }
         }
     }
+
 //************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
     var iterador = 1
@@ -768,4 +774,31 @@ document.getElementById("Label_1").addEventListener('click', function(){
         
         //Se especifica el div padre y la posición donde se insertará el nuevo nodo
         ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
+    }
+
+//************************************************************************************************ 
+    //Valida los numero de cedula agregados dinamicamente
+    //La variable Verifica es debido a que la funcion validarCedula() es llaada mediante el evente Avandono
+    AnunciaAvandono = true
+    function validarCedula(id){  
+        console.log("______Desde validarCedula()______", id + " | " + AnunciaAvandono)
+        if(AnunciaAvandono){         
+            let CedulaPagoMovilDinamica = document.getElementById(id).value 
+            console.log(CedulaPagoMovilDinamica.length)
+            if(CedulaPagoMovilDinamica == ("") || CedulaPagoMovilDinamica.indexOf(" ") == 0 || CedulaPagoMovilDinamica.length > 10 || CedulaPagoMovilDinamica.length < 9){
+                alert ("Introduzca la cedula para pago movil")
+                document.getElementById(id).value = ""
+                setTimeout(function(){document.getElementById(id).focus();}, 1);
+                document.getElementById(id).style.backgroundColor = "var(--Fallos)"
+                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                document.getElementsByClassName("boton")[0].disabled = false
+                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                
+                AnunciaAvandono = false
+                console.log(AnunciaAvandono)
+                return false;
+            }
+        }
     }

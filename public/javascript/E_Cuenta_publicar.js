@@ -8,7 +8,7 @@ document.getElementById("Label_5").addEventListener('click', AgregarCaracteristi
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 20)}, false)
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(20,'ContenidoPro')}, false)
 document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 20)}, false)
-document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(20,'ContenidoDes')}, false)
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(20,'ContenidoDes')}, false)  
 
 // document.addEventListener("keydown", contarDes, false); 
 // document.addEventListener("keyup", contarDes, false);

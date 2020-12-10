@@ -1,6 +1,4 @@
 <?php
-    // require_once(RUTA_APP . "/clases/Conexion_BD.php");
-
     class RecibePedido_M extends Conexion_BD{
 
         public function __construct(){ 

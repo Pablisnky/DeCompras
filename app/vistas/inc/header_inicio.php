@@ -40,7 +40,7 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Tiendas</a></li>
 					<li class="menuLi_1"><a href="#">Nuestro ADN</a>  
-						<ul class="menuContenedor_3">
+						<ul class="menuContenedor_3 menuContenedor_1">
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos';?>">Quíenes somos</a></li> 
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos#QueHacemos';?>">Qué hacemos</a></li>
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos#Contactenos';?>">Contactenos</a></li>

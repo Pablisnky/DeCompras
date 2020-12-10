@@ -45,8 +45,8 @@ window.addEventListener("click", function(e){
 
 //************************************************************************************************
     //Quita el color de fallo en un input y lo deja en su color original
-    function blanquearInput(id){
-        // console.log("______Desde blanquearInput()______", id)
+    function blanquearInput(id){        
+        console.log("______Desde blanquearInput()______", id)
         document.getElementById(id).style.backgroundColor = "white"
     }
 
@@ -115,6 +115,22 @@ window.addEventListener("click", function(e){
         } 
     } 
 
+//************************************************************************************************
+    //Indica la cantidad de caracteres que se han escrito; invocado en cuenta_editar_V.php
+    function CaracteresAlcanzados(Contenido, ID_Contador){
+        // console.log("______Desde CaracteresAlcanzados()______",Contenido + " / " + ID_Contador) 
+
+        var Contenido = document.getElementById(Contenido).value
+        var ContadorContenido = document.getElementById(ID_Contador).value
+        // console.log(Contenido.length)
+        // console.log(ContadorContenido)
+
+        var CaracteresDisponibles = ContadorContenido - Contenido.length
+        // console.log(CaracteresDisponibles)
+
+        document.getElementById(ID_Contador).value = CaracteresDisponibles
+    } 
+
 //************************************************************************************************ 
     //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo en un elmento; invocado en quienesSomos_V.php - cuenta_publicar_V.php - registroCom_V.php - cuenta_editar_V.php
     var contenidoControlado = "";    
@@ -149,24 +165,25 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     //Coloca los puntos de miles en tiempo real al llenar el campo a cedula en registroDes_V.php - cuenta_editar_V.php
     function formatoMiles(numero, id){
-        // console.log("______Desde SeparadorMiles()______", numero + " / " + id)
+        console.log("______Desde SeparadorMiles()______", numero + " / " + id)
+
         var num = numero.replace(/\./g,'')
-        if(!isNaN(num)){
+        if(!isNaN(num) && numero.length < 11){
             num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.')
             num = num.split('').reverse().join('').replace(/^[\.]/,'')
             numero.value = num
             document.getElementById(id).value = num
         }
         else{ 
-            alert('Solo se permiten numeros')
+            alert('Problemas con número de cedula')
             document.getElementById(id).value = ""
         }
     }
     
  //************************************************************************************************
-    //Mascara de entrada para el telefono, agrega los puntos en tiempo real al llenar el campo    
+    //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
     function mascaraTelefono(TelefonoRecibido, id){
-        // console.log("______Desde mascaraTelefono()______")
+        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
         
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 

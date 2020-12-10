@@ -53,10 +53,13 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
 //Es llamada desde registroCom_V.php
-function llamar_verificaClave(Afiliado){
-    console.log("_____Desde llamar_verificaClave()_____")
-    A = document.getElementById("Clave").value
-    var url="../Registro_C/VerificarClave/" + A + "/" + Afiliado;
+function llamar_verificaClave(Clave, Afiliado){
+    // console.log("_____Desde llamar_verificaClave()_____",Clave + " | " + Afiliado)
+    if(Clave == ""){
+        return
+    }
+    // A = document.getElementById("Clave").value
+    var url="../Registro_C/VerificarClave/" + Clave + "/" + Afiliado;
     http_request.open('GET',url,true);     
     peticion.onreadystatechange = respuesta_verificaClave;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");

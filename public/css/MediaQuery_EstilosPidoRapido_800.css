@@ -97,9 +97,13 @@
 }
 .contador_2{/*cuenta_editar - quienesSomos*/
 	margin-bottom: 0%;
+	margin-left: 90% !important;
 }
 .contador_3{/*quienesSomos*/
 	margin-left: 91% !important;
+}
+.contador_4{/*quienesSomos - registroCom*/
+	margin-left: 85% !important;
 }
 .contenedor_1{/*header*/
 	margin-left: 1%;
@@ -203,8 +207,8 @@
 	width: 45%;
 	padding: 6%;
 }
-.contenedor_33{/*login*/
-	width: 50%;
+.contenedor_33{/*login - RecibePedido*/
+	width: 90%;
 }
 .contenedor_34{/*header_inicio*/
 	top: 0.5%;
@@ -865,9 +869,8 @@
 .nav_1{/*header_inicio*/
 	margin-top: 12%;
 }
-.p_1{/*alert - afiliacion*/
-	padding-top: 20%;
-	font-size: 1.3em;
+.p_1{/*RecibePedido*/
+	padding: 5%;
 }
 .p_2{/*tiendas*/
 	font-size: 0.8em;

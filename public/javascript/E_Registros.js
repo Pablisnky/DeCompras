@@ -24,8 +24,8 @@ document.getElementById("NombreTienda").addEventListener('keydown', function(){v
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
         
         //Patron de entrada solo acepta letras
-        let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
-
+        let P_Letras = /^[A-Za-zÁÉÍÓÚáéíóúñÑ _]*[A-Za-zÁÉÍÓÚáéíóúñÑ][A-Za-zÁÉÍÓÚáéíóúñÑ _]*$/
+        
         //Patron de entrada para correos electronicos
         let P_Correo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
@@ -56,7 +56,7 @@ document.getElementById("NombreTienda").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(NombreTienda == "" || NombreTienda.indexOf(" ") == 0  || NombreTienda.length > 50 || P_Letras.test(NombreTienda) == false){
+        else if(NombreTienda == "" || NombreTienda.indexOf(" ") == 0  ||  NombreTienda.length > 50 || P_Letras.test(NombreTienda) == false){
             alert ("Introduzca un nombre de tienda")
             document.getElementById("NombreTienda").value = ""
             document.getElementById("NombreTienda").focus()
@@ -145,7 +145,10 @@ document.getElementById("NombreTienda").addEventListener('keydown', function(){v
         // console.log("_____Desde removerDiv()_____")
 
         let Div_AlertaCorreo = document.getElementById('Mostrar_verificaCorreo')
-        Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild)        
+
+        if(Div_AlertaCorreo.firstChild){
+            Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild)  
+        }      
     }
 
 //************************************************************************************************

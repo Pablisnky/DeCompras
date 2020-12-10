@@ -441,7 +441,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
     function PedidoEnCarrito(){
         console.log("______Desde PedidoEnCarrito()______")
-        // console.log(AlCarro)
+        
+        console.log("monto de la compra", TotalDisplayCarrito)
+        console.log(document.getElementById("MontoTienda"))
         
         //Se muestra el monto de la compra en "La Orden". (sin comisión de plataforma y sin despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
@@ -489,7 +491,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     //Cambia el formato de total en el carrito de compras para mostrar en display
     function SeparadorMiles(Numero){
         if(Numero != 0){
-            // console.log("______Desde SeparadorMiles()______") 
+            console.log("______Desde SeparadorMiles()______") 
             Numero += ''
             var x = Numero.split('.')
             var x1 = x[0]
@@ -498,6 +500,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             while (rgx.test(x1)) {
                 x1 = x1.replace(rgx, '$1' + '.' + '$2')
             }
+            // console.log(x1 + x2)
             return x1 + x2
         }
         else{
@@ -890,7 +893,7 @@ console.log(AlCarro)
         for(let i = 0; i < Pago.length; i++){
             if(Pago[i].checked)
             var PagoSeleccionado = Pago[i].value
-            console.log(PagoSeleccionado)
+            // console.log(PagoSeleccionado)
         }
        
         let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
@@ -928,7 +931,7 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Cedula =="" || Cedula.indexOf(" ") == 0 || Cedula.length > 9 || (isNaN(Cedula)) || Cedula<2000000 || Cedula>999999999){
+        else if(Cedula =="" || Cedula.indexOf(" ") == 0 || Cedula.length < 9  || Cedula.length > 10){
             alert ("Problemas con su número de cedula");
             document.getElementById("CedulaUsuario").value = "";
             document.getElementById("CedulaUsuario").focus();
@@ -1048,36 +1051,20 @@ console.log(AlCarro)
     } 
 
 //************************************************************************************************
-    //Mascara de entrada para el telefono, agrega los puntos en tiempo real al llenar el campo    
-    function mascaraTelefono(Telefono){
-        // console.log("______Desde mascaraTelefono()______")
-        
-        if(Telefono.length == 4){
-            document.getElementById("TelefonoUsuario").value += "-"; 
-        }
-        else if(Telefono.length == 8){
-            document.getElementById("TelefonoUsuario").value += ".";  
-        }
-        else if(Telefono.length == 11){
-            document.getElementById("TelefonoUsuario").value += ".";  
-        }
-    }
-
-//************************************************************************************************
     //Validar el formato de telefono
-    avisado=false;
-    function validarFormatoTelefono(campo){
-        // var RegExPattern = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
-        // if((campo.match(RegExPattern)) && (campo!='')){
-        //     return true;
-        // }
-        // else{
-        //     alert("Telefono con formato incorrecto");
-        //     document.getElementById("TelefonoUsuario").value = "";
-        //     document.getElementById("TelefonoUsuario").style.backgroundColor = 'red'; 
-        //     return false;
-        // }
-    }
+    // avisado=false;
+    // function validarFormatoTelefono(campo){
+    //     // var RegExPattern = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+    //     // if((campo.match(RegExPattern)) && (campo!='')){
+    //     //     return true;
+    //     // }
+    //     // else{
+    //     //     alert("Telefono con formato incorrecto");
+    //     //     document.getElementById("TelefonoUsuario").value = "";
+    //     //     document.getElementById("TelefonoUsuario").style.backgroundColor = 'red'; 
+    //     //     return false;
+    //     // }
+    // }
 
 //************************************************************************************************
     //Abre la ventna de detalles de producto, invocado en opciones_V.php
@@ -1100,8 +1087,6 @@ console.log(AlCarro)
         window.location.hash="Again-No-back-button" //chrome
         window.onhashchange=function(){window.location.hash="no-back-button";}
     }
-
-//************************************************************************************************
 
 //************************************************************************************************
    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
@@ -1138,6 +1123,49 @@ console.log(AlCarro)
            B.style.backgroundColor = "none"
        }
    }
+
+//************************************************************************************************
+    //Coloca los puntos de miles en tiempo real al llenar el campo a cedula
+    function formatoMiles(numero, id){
+        // console.log("______Desde formatoMiles()______", numero + " / " + id)
+
+        var num = numero.replace(/\./g,'')
+        if(!isNaN(num) && numero.length < 11){
+            num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.')
+            num = num.split('').reverse().join('').replace(/^[\.]/,'')
+            numero.value = num
+            document.getElementById(id).value = num
+        }
+        else{ 
+            alert('Número de cedula invalido')
+            document.getElementById(id).value = ""
+        }
+    }
+    
+ //************************************************************************************************
+    //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
+    function mascaraTelefono(TelefonoRecibido, id){
+        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
+        
+        if(TelefonoRecibido.length == 4){
+            document.getElementById(id).value += "-"; 
+        }
+        else if(TelefonoRecibido.length == 8){
+            document.getElementById(id).value += ".";  
+        }
+        else if(TelefonoRecibido.length == 11){
+            document.getElementById(id).value += ".";  
+        }
+    }
+
+//************************************************************************************************
+    //Quita el color de fallo en un input y lo deja en su color original
+    function blanquearInput(id){        
+        // console.log("______Desde blanquearInput()______", id)
+        document.getElementById(id).style.backgroundColor = "white"
+    }
+
+//************************************************************************************************
 ///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
 // document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    
 //     if(event.target.id == 'Span_523'){

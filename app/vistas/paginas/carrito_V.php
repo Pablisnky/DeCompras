@@ -1,9 +1,3 @@
-<!-- Archivo invocado desde Carrito_C-->
-<?php
-    $verifica_2 = 1906;  
-    $_SESSION["verifica_2"] = $verifica_2; 
-    //Se crea esta sesion para impedir que se acceda a la pagina que procesa el formulario (RecibePedido_V.php) o se recargue mandadolo varias veces a la base de datos
-?>
 <section class="section_4">
     <div class="contenedor_24 contenedor_25">
         <h1 class="h1_1 h1_9 ">Orden de compra</h1>
@@ -19,7 +13,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <!--tabla es rellenada desde funcionesVarias.js por medio de PedidoEnCarrito()-->
+                        <!--tabla es rellenada desde E_Vitrina.js por medio de PedidoEnCarrito()-->
                         <td><input type="text" class="ocultar" id="Input_cantidadCar"/></td>
                         <td><input type="text" class="ocultar" id="Input_productoCar"/></td>
                         <td><input type="text" class="ocultar" id="Input_precioCar"/></td>
@@ -32,7 +26,7 @@
             <div class="contenedor_64">     
                 <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
                 <label class="label_12" for="Domicilio_No">Recoger pedido en tienda, 0 Bs.</label>
-                <br class="br_1">
+                <br class="br_1"/>
                 <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
                 <label class="label_12" for="Domicilio_Si">Entrega a domicilio, 3.000 Bs.</label>
             </div>     
@@ -69,12 +63,12 @@
                         <!-- CEDULA -->
                         <div class="contenedor_29">
                             <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
-                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')"/>
+                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')"/>
                         </div>
 
                         <!-- TELEFONO -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')"/>
+                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')"/>
                         </div>
 
                         <!-- DIRECCION -->
@@ -88,6 +82,7 @@
                             <div class="contenedor_155">
                                 <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
                                     <option id="Option_1" disabled selected>Seleccione una ciudad</option>
+                                    <option>Cocorote</option>
                                     <option>Independencia</option>
                                     <option>San Felipe</option>
                                     <option>Yaritagua</option>
@@ -108,7 +103,7 @@
                         <input type="radio" name="pago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()">
                         <label class="label_12" for="PagoMovil">Pago movil</label> 
                         <br class="br_2"/>
-                        <input type="radio" name="pago" id="PagoDestino" value="" onclick="verPagoDestino()">
+                        <input type="radio" name="pago" id="PagoDestino" value="PagoDestino" onclick="verPagoDestino()">
                         <label class="label_12" for="PagoDestino">Pago en destino</label> 
                                                 
                         <!-- PAGO TRANSFERENCIA -->
@@ -161,7 +156,7 @@
                                 <li class="li_1">.</li>
                             </ul>  
 
-                            <input class="placeholder input_11 ocultar" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil"onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
+                            <input class="placeholder input_11 ocultar" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil" onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
                             <?php
                                 // // $Datos viene de Carrito_C/index
                                 // echo "<pre>";
