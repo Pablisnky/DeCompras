@@ -63,7 +63,7 @@
 <!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
 <div id="Mostrar_Opciones"></div>
 
-<!-- Trae por medio de Ajax todo el pedido del usuario "La orden", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito() en este mismoarchivo-->
+<!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->
 <div id="Mostrar_Orden"></div>
 
 <!-- Trae por medio de Ajax la dirección de la tienda, la información es suministrada por direccion_V.php invocada por la función () en este mismoarchivo-->

@@ -1,5 +1,5 @@
 <?php
-    //Archivo llamado desde Funciones_Ajax.js por medio de la función llamar_Opciones()
+    //Archivo llamado desde .js por medio de la función llamar_Opciones()
     class Opciones_C extends Controlador{
 
         public function __construct(){

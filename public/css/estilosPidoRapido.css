@@ -290,11 +290,11 @@ button{/*tiendas*/
 	cursor: pointer;
 	border-radius: 15px;
 }
-.contenedor_12{/*vitrina*/
+.contenedor_12{/*descargaApp*/
+	background-color: var(--OficialClaro);
 	border-radius: 15px;
-	margin: 2% auto;
-	width: 95%;
-	min-height: 100%;
+	margin: 3% auto 5% auto;	
+	width: 70%;
 }
 .contenedor_13{/*opciones - cuenta_productos*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
@@ -869,7 +869,7 @@ button{/*tiendas*/
 	border-radius: 15px;
 	margin: 12% auto 7% auto;
 }
-.contenedor_113{/*cuenta*/
+.contenedor_113{/*descargaApp*/
 	width: 80%;
 	margin: auto;
 	margin-bottom: 2%;
@@ -1087,9 +1087,6 @@ button{/*tiendas*/
 	display: flex; 
 	width: 100%;
 }
-.contenedor_157{/*vitrina*/
-	/* position: fixed; */
-}
 .contenedor_158{/*opciones*/
 	/* margin-left: 8%; */
 	justify-content: space-between;
@@ -1124,7 +1121,7 @@ button{/*tiendas*/
 .h1_1{/*carrito - cuenta_productos - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes*/
 	font-weight: normal;
 	text-align: center;
-	font-size: 1.4em;
+	font-size: 1.7em;
 	margin-bottom: 3%;
 }
 .h1_2{/*inicio*/
@@ -1705,7 +1702,7 @@ button{/*tiendas*/
 }
 .menuResponsive li a:hover{/*Todas las páginas*/
 	font-size: 19px;
-	width: 210px;
+	/* width: 170px; */
 }
 .nav_1{/*header_inicio*/
 	padding-top: 2.5%;
@@ -1716,8 +1713,14 @@ button{/*tiendas*/
 .ol_1{/*cuenta*/
 	margin-left: 3%;
 }
-.p_1{/*RecibePedido*/
-	color: rgb(51, 51, 51);
+.ol_2{/*descargaApp*/
+	margin-left: 5%;
+	line-height: 30px;
+	text-align: justify;
+	padding: 2% 4% 2% 2%;
+}
+.p_1{/*RecibePedido - descargaApp*/
+	/* color: rgb(224, 202, 202); */
 	font-size: 1.2em;
 	text-align: center; 
 } 
@@ -1735,7 +1738,7 @@ button{/*tiendas*/
 	font-size: 1.6em;
 	cursor: pointer;
 }
-.p_4{/*recibePedido login*/
+.p_4{/*recibePedido - login - descargaApp*/
 	margin-top: 3%;
 	text-align: center;
 	width: 100% !important;
@@ -1781,13 +1784,14 @@ button{/*tiendas*/
 .p_13, .p_14{/*carrito*/
 	line-height: 25px;
 }
-.p_15{/*pwa*/
+.p_15{/*pwa - descargaApp*/
+	/* padding: 0% 2%; */
 	text-align: justify;
 }
-.p_16{/*quienesSomos*/
-	font-size: 1.4em;
-	line-height: 45px;
-	margin: 5% auto;
+.p_16{/*quienesSomos - descargaApp*/
+	text-align: justify !important;
+	font-size: 1.3em;
+	line-height: 35px;
 }
 .p_17{/*vitrina - opciones*/
 	background-color: var(--OficialClaro); 
@@ -1867,7 +1871,7 @@ button{/*tiendas*/
 	background-color: var(--OficialClaro);
 	height: 100%;
 }
-.section_2{/*ciudad - RecibePedido*/
+.section_2{/*RecibePedido*/
 	padding-top: 10%;
 }
 .section_3{/*opciones - cuenta_editar - Categorias_Ajax - Secciones_Ajax*/

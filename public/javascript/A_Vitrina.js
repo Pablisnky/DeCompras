@@ -30,12 +30,9 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-// document.getElementById("Label_13").addEventListener('click', Llamar_categorias, false)    
-
-//-------------------------------------------------------------------------------------------------
 //invocada desde vitrina_V.php, muestra la orden de compra
 function llamar_PedidoEnCarrito(ID_Tienda){
-    console.log("______Desde llamar_PedidoEnCarrito()______")
+    // console.log("______Desde llamar_PedidoEnCarrito()______",ID_Tienda)
     var url="../../Carrito_C/index/" + ID_Tienda
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
@@ -48,22 +45,23 @@ function respuesta_PedidoEnCarrito(){
             document.getElementById("Mostrar_Orden").style.display = "block"
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
-            document.getElementById('Mostrar_Orden').innerHTML = peticion.responseText
+            document.getElementById('Mostrar_Orden').innerHTML = peticion.responseText 
+    
+            PedidoEnCarrito()           
         } 
         else{
-            alert('Hubo problemas con la petición.')
+            alert('Hubo problemas con la petición en llamar_PedidoEnCarrito()')
         }
     }
     else{ //en caso contrario, mostramos un gif simulando una precarga
         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
     }    
-    PedidoEnCarrito()
 }
 
 //-------------------------------------------------------------------------------------------------
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, SeccionSelecionada, OpcionSeleccionada){
-    console.log("______Desde llamar_Opciones()______") 
+    // console.log("______Desde llamar_Opciones()______") 
     // console.log(ID_Tienda)
     // console.log(SeccionSelecionada)
     // console.log(OpcionSeleccionada)
@@ -101,7 +99,7 @@ function respuesta_Opciones(){
             ProductosEnCarrito()
         } 
         else{
-            alert('Hubo problemas con la petición.')
+            alert('Hubo problemas con la petición en llamar_Opciones()')
         }
     }
     // else{ //en caso contrario, mostramos un gif simulando una precarga

@@ -147,9 +147,8 @@
 	width: 200px;
 }
 .contenedor_12{/*vitrina*/
-	width: 70%;
-	max-height: 100%;
-	margin-bottom: 0%;
+	width: 100%;
+	margin: 10% auto;	
 }
 .contenedor_13{/*opciones - cuenta_productos*/
 	display: grid;
@@ -411,7 +410,7 @@
 }
 .contenedor_93{/*afiliacion*/
 	padding-top: 1% !important;
-	margin-top: 25%;
+	margin-top: 15%;
 	border-radius: initial;
 }
 .contenedor_94{/*afiliacion*/
@@ -489,6 +488,9 @@
 	margin: auto;
 	border-radius: 15px;
 	margin: 12% auto 7% auto;
+}
+.contenedor_113{/*descargaApp*/
+	width: 95%;
 }
 .contenedor_114{/*cuenta_editar_prod*/
 	width: 90%;
@@ -587,8 +589,8 @@
 	padding-top: 0%;
 	font-weight: normal;
 }
-.h1_1{/*carrito registroCom - tiendas*/
-	font-size: 1.1em;
+.h1_1{/*carrito - cuenta_productos - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes*/
+	font-size: 1.4em;
 }
 .h1_2{/*inicio*/
 	font-size: 2.5em;
@@ -869,7 +871,10 @@
 .nav_1{/*header_inicio*/
 	margin-top: 12%;
 }
-.p_1{/*RecibePedido*/
+.ol_2{/*descargaApp*/
+	padding: 4%;
+}
+.p_1{/*RecibePedido - descargaApp*/
 	padding: 5%;
 }
 .p_2{/*tiendas*/
@@ -910,9 +915,10 @@
 	padding-left: 5%;
 }
 .p_16{/*quienesSomos*/
-	text-align: left;
-	font-size: 1.2em;
-	line-height: 35px;
+	/* text-align: left; */
+	width: 95%;
+	font-size: 1.1em;
+	line-height: 30px;
 	margin: 5% auto;
 }
 .p_17{/*vitrina - opciones*/
@@ -927,9 +933,6 @@
 }
 .preloder{/*vitrina*/
 	margin:50% auto; 
-}
-.section_2{/*inicio*/
-	margin-top: 30%; 
 }
 .section_5{/*afiliacion - tiendas - vitrina*/
 	margin-top: 0%;

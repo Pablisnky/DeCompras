@@ -32,4 +32,3 @@
             $this->vista("paginas/carrito_V", $Datos);
         }        
     }
-?>    

@@ -1,7 +1,9 @@
 <?php
     class Registro_C extends Controlador{
 
-        public function __construct(){            
+        public function __construct(){  
+            session_start(); 
+
             $this->ConsultaRegistro_M = $this->modelo("Registro_M");  
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -10,12 +12,13 @@
         
         //Siempre cargara el metodo por defecto sino se pasa un metodo especifico
         public function index(){
-            session_start(); //se crea una sesion llamada verifica, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de registro, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
-            $verifica = 1906;  
-            $_SESSION["verifica"] = $verifica; 
         }
 
-        public function registroComerciante(){
+        public function registroComerciante(){  
+            //se crea una sesion llamada verifica, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de registro, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
+            $Verifica_AfiliacionComerciante = 1906;  
+            $_SESSION["Verifica_AfiliacionComerciante"] = $Verifica_AfiliacionComerciante; 
+
             $this->vista("inc/header");
             $this->vista("paginas/registroCom_V");
         }

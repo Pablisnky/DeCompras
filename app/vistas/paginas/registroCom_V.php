@@ -1,9 +1,3 @@
-<?php
-	session_start(); //se crea una sesion llamada verifica, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de registro, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
-	$Verifica_AfiliacionComerciante = 1906;  
-    $_SESSION["Verifica_AfiliacionComerciante"] = $Verifica_AfiliacionComerciante; 
-?>
-
 <section class="section_5">
     <div class="contenedor_42">
         <h1 class="h1_1">Crea tu tienda y muestrala a toda la ciudad</h1>

@@ -167,7 +167,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //invocada desde opciones_V.php añade un producto al carrito   
     function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion, ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan){
-        console.log("______Desde agregarOpcion()______") 
+        // console.log("______Desde agregarOpcion()______") 
         // console.log(form)    
         // console.log(ID_Etiqueta)   
         // console.log(ID_Cont_Leyenda)   
@@ -337,7 +337,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             DisplayDestello()
         }
         AlContenedor.push(Contenedores)
-        console.log("Contenido de carrito", AlContenedor)
+        // console.log("Contenido de carrito", AlContenedor)
 
         // console.log(AlCarro)
     }
@@ -440,16 +440,15 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
     function PedidoEnCarrito(){
-        console.log("______Desde PedidoEnCarrito()______")
+        // console.log("______Desde PedidoEnCarrito()______")
         
-        console.log("monto de la compra", TotalDisplayCarrito)
-        console.log(document.getElementById("MontoTienda"))
+        // console.log("monto de la compra", TotalDisplayCarrito)
         
         //Se muestra el monto de la compra en "La Orden". (sin comisión de plataforma y sin despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
 
         //Se calcula la comisión de la aplicacion
-        ComisionAplicacion = TotalDisplayCarrito * 0.02
+        ComisionAplicacion = TotalDisplayCarrito * 0
 
         //Se muestra el monto de la comisión
         document.getElementById("Comision").value = SeparadorMiles(ComisionAplicacion)
@@ -491,7 +490,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     //Cambia el formato de total en el carrito de compras para mostrar en display
     function SeparadorMiles(Numero){
         if(Numero != 0){
-            console.log("______Desde SeparadorMiles()______") 
+            // console.log("______Desde SeparadorMiles()______") 
             Numero += ''
             var x = Numero.split('.')
             var x1 = x[0]
@@ -501,7 +500,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 x1 = x1.replace(rgx, '$1' + '.' + '$2')
             }
             // console.log(x1 + x2)
-            return x1 + x2
+            return x1 + x2;
         }
         else{
             return Numero
@@ -830,7 +829,7 @@ console.log(AlCarro)
 //************************************************************************************************ 
     //invocada desde carrito_V.php
     function ocultarPedido(){   
-        console.log("______Desde ocultarPedido()______") 
+        // console.log("______Desde ocultarPedido()______") 
         //Coloca el cursor en el top de la pagina
         window.scroll(0, 0)
         document.getElementById("Mostrar_Orden").style.display = "none";
@@ -847,7 +846,7 @@ console.log(AlCarro)
 //************************************************************************************************ 
     //Verifca que el archivo opciones ya se haya cargado
     function verificarDiv(){
-        console.log("______Desde verificarDiv()______")  
+        // console.log("______Desde verificarDiv()______")  
         if(document.getElementById('Mostrar_Opciones').childElementCount < 1){
             // console.log("No hay elementos en el div id=\"Mostrar_Opciones\"")
             
@@ -860,7 +859,7 @@ console.log(AlCarro)
 
 //************************************************************************************************
     function stopInterval(){
-    console.log("______Desde stopInterval()______")
+    // console.log("______Desde stopInterval()______")
     clearInterval(interval)
     }
 
@@ -873,7 +872,7 @@ console.log(AlCarro)
 //************************************************************************************************
     //Valida el formulario de despacho de producto
     function validarDespacho(){
-        console.log("______Desde validarDespacho()______")
+        // console.log("______Desde validarDespacho()______")
 
         document.getElementsByClassName("botonJS")[0].value = "Enviando ..."
         document.getElementsByClassName("botonJS")[0].disabled = "disabled"
@@ -908,7 +907,7 @@ console.log(AlCarro)
         // let P_LetrasNumero = /[A-Za-z0-9]/;
                 
         if(Nombre == "" || Nombre.indexOf(" ") == 0 || Nombre.length > 40 || P_Letras.test(Nombre) == false){
-            alert ("Problemas con su Nombre");
+            alert ("Nombre invalido");
             document.getElementById("NombreUsuario").value = "";
             document.getElementById("NombreUsuario").focus();
             document.getElementById("NombreUsuario").style.backgroundColor = "var(--Fallos)"
@@ -920,7 +919,7 @@ console.log(AlCarro)
             return false;
         }
         else if(Apellido =="" || Apellido.indexOf(" ") == 0 || Apellido.length > 20 || P_Letras.test(Apellido) == false){
-            alert ("Problemas con su Apellido");
+            alert ("Apellido invalido");
             document.getElementById("ApellidoUsuario").value = "";
             document.getElementById("ApellidoUsuario").focus();
             document.getElementById("ApellidoUsuario").style.backgroundColor = "var(--Fallos)"
@@ -932,7 +931,7 @@ console.log(AlCarro)
             return false;
         }
         else if(Cedula =="" || Cedula.indexOf(" ") == 0 || Cedula.length < 9  || Cedula.length > 10){
-            alert ("Problemas con su número de cedula");
+            alert ("número de cedula invalido");
             document.getElementById("CedulaUsuario").value = "";
             document.getElementById("CedulaUsuario").focus();
             document.getElementById("CedulaUsuario").style.backgroundColor = "var(--Fallos)"
@@ -944,7 +943,7 @@ console.log(AlCarro)
             return false;
         }
         else if(Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 14){
-            alert ("Problemas con su Telefono");
+            alert ("Telefono invalido");
             document.getElementById("TelefonoUsuario").value = "";
             document.getElementById("TelefonoUsuario").focus();
             document.getElementById("TelefonoUsuario").style.backgroundColor = "var(--Fallos)"
@@ -956,7 +955,7 @@ console.log(AlCarro)
             return false;
         }
         else if(Estado == "Seleccione un estado"){
-            alert ("Selecione una Estado");
+            alert ("Selecione un Estado");
             document.getElementById("Estado").value = "";
             document.getElementById("Estado").focus();
             document.getElementById("Estado").style.backgroundColor = "var(--Fallos)"
@@ -980,7 +979,7 @@ console.log(AlCarro)
             return false;
         }
         else if(Direccion =="" || Direccion.indexOf(" ") == 0 || Direccion.length > 20){
-            alert ("Problemas con su Direccion");
+            alert ("Direccion invalida");
             document.getElementById("DireccionUsuario").value = "";
             document.getElementById("DireccionUsuario").focus();
             document.getElementById("DireccionUsuario").style.backgroundColor = "var(--Fallos)"
@@ -1002,7 +1001,7 @@ console.log(AlCarro)
         }
         else if(PagoSeleccionado == "Transferencia"){
             if(RegistroPago_Transferencia == "" ||  RegistroPago_Transferencia.indexOf(" ") == 0 || RegistroPago_Transferencia.length > 20){
-                alert ("Problemas con el código de transferencia");
+                alert ("Código de transferencia invalido");
                 document.getElementById("RegistroPago_Transferencia").value = "";
                 document.getElementById("RegistroPago_Transferencia").focus();
                 document.getElementById("RegistroPago_Transferencia").style.backgroundColor = "var(--Fallos)"
@@ -1016,7 +1015,7 @@ console.log(AlCarro)
         }
         else if(PagoSeleccionado == "PagoMovil"){
             if(RegistroPago_Pagomovil == "" ||  RegistroPago_Pagomovil.indexOf(" ") == 0 || RegistroPago_Pagomovil.length > 20){
-            alert ("Problemas con el código de PagoMovil");
+            alert ("Código de PagoMovil invalido");
             document.getElementById("RegistroPago_Pagomovil").value = "";
             document.getElementById("RegistroPago_Pagomovil").focus();
             document.getElementById("RegistroPago_Pagomovil").style.backgroundColor = "var(--Fallos)"
@@ -1038,7 +1037,7 @@ console.log(AlCarro)
     var num_caracteres_permitidos = 14; 
 
     function valida_LongitudTelefono(){ 
-        console.log("______Desde valida_LongitudTelefono()______")
+        // console.log("______Desde valida_LongitudTelefono()______")
 
         let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
 
@@ -1082,7 +1081,7 @@ console.log(AlCarro)
 //************************************************************************************************
     //Desactiva el boton de volver atras del navegador
     function nobackbutton(){
-        console.log("______Desde nobackbutton()______")
+        // console.log("______Desde nobackbutton()______")
         window.location.hash="no-back-button";
         window.location.hash="Again-No-back-button" //chrome
         window.onhashchange=function(){window.location.hash="no-back-button";}

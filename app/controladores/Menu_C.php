@@ -68,6 +68,10 @@
             $this->vista("inc/header");
             $this->vista("paginas/quienesSomos_V");
         }
-
+        
+        public function descargaApp(){
+            $this->vista("inc/header");
+            $this->vista("paginas/descargaApp_V");
+        }
     }
-?>    
+?>

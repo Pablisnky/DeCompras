@@ -3,7 +3,6 @@
 		RewriteEngine On
 		RewriteRule ^$ public/ [L]
 		RewriteRule (.*)$ public/$1 [L]
-	</IfModule>
 
 #Redirige el sitio web aún sino se escribe el www
 	RewriteEngine On
@@ -14,3 +13,5 @@
 	RewriteEngine on
 	RewriteCond %{HTTPS} !=on
 	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+	
+	</IfModule>

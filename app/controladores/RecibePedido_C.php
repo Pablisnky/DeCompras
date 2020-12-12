@@ -7,7 +7,6 @@
             $this->ConsultaRecibePedido_M = $this->modelo("RecibePedido_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
-            echo '<br><br>';
             ocultarErrores();
         }
         

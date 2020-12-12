@@ -46,7 +46,7 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){        
-        console.log("______Desde blanquearInput()______", id)
+        // console.log("______Desde blanquearInput()______", id)
         document.getElementById(id).style.backgroundColor = "white"
     }
 
@@ -165,7 +165,7 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     //Coloca los puntos de miles en tiempo real al llenar el campo a cedula en registroDes_V.php - cuenta_editar_V.php
     function formatoMiles(numero, id){
-        console.log("______Desde SeparadorMiles()______", numero + " / " + id)
+        // console.log("______Desde formatoMiles()______", numero + " / " + id)
 
         var num = numero.replace(/\./g,'')
         if(!isNaN(num) && numero.length < 11){
@@ -175,7 +175,7 @@ window.addEventListener("click", function(e){
             document.getElementById(id).value = num
         }
         else{ 
-            alert('Problemas con número de cedula')
+            alert('Número de cedula invalido')
             document.getElementById(id).value = ""
         }
     }
