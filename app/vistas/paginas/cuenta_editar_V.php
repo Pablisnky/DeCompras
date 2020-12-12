@@ -275,7 +275,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         foreach($Datos['datosPagomovil'] as $row) :
                             $CedulaPagoMovil =  $row['cedula_pagomovil'];
                             $BancoNombre =  $row['banco_pagomovil'];
-                            $BancoCuenta = $row['telefono_pagomovil']; 
+                            $TelefonoPagoMovil = $row['telefono_pagomovil']; 
                             ?>
                             <div class="contenedor_67 borde_1" id="Contenedor_68">
                                 <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
@@ -290,7 +290,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
                                 <label>Nº telefono (Solo números)</label>
-                                <input class="input_13 input_10JS borde_1" type="text" name="telefonoPagoMovil[]" id="<?php echo  'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $BancoCuenta?>" autocomplete="off" onkeyup="mascaraTelefono(this.value, '<?php echo 'TelefonoPagoMovil_' . $Iterador?>')"/>
+                                <input class="input_13 input_10JS borde_1" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off" onkeyup="mascaraTelefono(this.value, '<?php echo 'TelefonoPagoMovil_' . $Iterador?>')"/>
                             </div>
                             <?php
                             $Iterador++;

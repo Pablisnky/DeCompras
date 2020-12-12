@@ -783,7 +783,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         // Div_clon.getElementsByClassName("input_10JS")[2].classList.add("Telefono_ClonPagoMovil") 
         
         // Se añaden funciones a los elementos que estan dentro del nuevo elemento clonado 
-        Div_clon.getElementsByClassName("input_10JS")[0].addEventListener('keydown', function(){Joder("CedulaPagoMovil_" + iterador)}, false)
+        // Div_clon.getElementsByClassName("input_10JS")[0].addEventListener('keydown', function(){blanquearInput("CedulaPagoMovil_2")}, false)
         // Div_clon.getElementsByClassName("input_10JS")[1].addEventListener('keydown', function(){blanquearInput(ID_BancoClon)}, false)
         // Div_clon.getElementsByClassName("input_10JS")[2].addEventListener('keydown', function(){blanquearInput(ID_TelefonoClon)}, false)
 

@@ -2192,7 +2192,7 @@ ul .menuContenedor_3{/*header - header_AfiCom*/
 	margin-left: 3%;
 	z-index: 5;
 	padding-top: 1%;
-	left: 65% !important;
+	left: 55% !important;
 }
 ul .menuContenedor_2{/*header_AfiCom*/
 	background-color: var(--OficialOscuro);
@@ -2203,14 +2203,15 @@ ul .menuContenedor_2{/*header_AfiCom*/
 	left: 50%!important;
 }
 ul .menuContenedor_1{/*header_inicio*/
-	left: 60% !important;
+	left: 50% !important;
 }
 .menuLi_1:hover > ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
 	display: block !important;
 	width: 170px !important;
 }
-.menuLi_2{/*header_AfiCom*/
-	padding: 5% !important;
+.menuLi_2{/*header_AfiCom - header_inicio*/
+	padding: 5%;
+	padding-left: 10% !important;
 	text-align: left !important;
 }
 .menuLi_2:hover{/*header.php   index.php*/

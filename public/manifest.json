@@ -6,7 +6,6 @@
   "display": "standalone",
   "description": "Bienvenido a PedidoRemoto",
   "orientation": "portrait",
-  "scope":"./", 
   "icons": [{
     "src": "public/images/logo.png",
     "sizes": "48x48",

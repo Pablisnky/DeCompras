@@ -11,43 +11,43 @@
                 <P class="p_3 p_5">Emprendedor</P>
                 <p class="p_11">2 USD/mes</p>
                 <ul>
-                    <li class="li_3"><p>Proyectos de emprendimiento con catalogo de hasta 5 productos.</p></li>
+                    <li class="li_3"><p>Catalogo hasta 5 productos.</p></li>
+                    <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
+                    <li class="li_3"><p>Código QR</p></li>
+                </ul>   
+            </div>
+            <div class="contenedor_94">
+                <P class="p_3 p_5">Inicio</P>
+                <p class="p_11">4 USD/mes</p>
+                <ul>
+                    <li class="li_3"><p>Catalogo hasta 20 productos.</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>   
             </div>
             <div class="contenedor_94">
                 <P class="p_3 p_5">Básico</P>
-                <p class="p_11">4 USD/mes</p>
-                <ul>
-                    <li class="li_3"><p>Proyectos de emprendimiento con catalogo de hasta 20 productos.</p></li>
-                    <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
-                    <li class="li_3"><p>Código QR</p></li>
-                </ul>   
-            </div>
-            <div class="contenedor_94">
-                <P class="p_3 p_5">Medio</P>
                 <p class="p_11">8 USD/mes</p>
                 <ul>
-                    <li class="li_3"><p>Tiendas con catalogo de hasta 200 productos</p></li>
+                    <li class="li_3"><p>Catalogo hasta 200 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>   
             </div>
             <div class="contenedor_94">
-                <p class="p_3 p_5">Tienda</p>
+                <p class="p_3 p_5">Medio</p>
                 <p class="p_11">15 USD/mes</p>
                 <ul>
-                    <li class="li_3"><p>Tiendas con catalogo de hasta 500 productos</p></li>
+                    <li class="li_3"><p>Catalogo hasta 500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
             </div>        
             <div class="contenedor_94">
-                <P class="p_3 p_5">Total</P>
+                <P class="p_3 p_5">Máximo</P>
                 <p class="p_11">25 USD/mes</p>
                 <ul>
-                    <li class="li_3"><p>Tiendas con catalogo de hasta 1.500 productos</p></li>
+                    <li class="li_3"><p>Catalogo hasta 1.500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Subdominio</p></li>
                     <li class="li_3"><p>Código QR</p></li>
@@ -57,7 +57,7 @@
                 <p class="p_3 p_5">Tienda</p>
                 <p class="p_11">25 USD/mes</p>
                 <ul>
-                    <li class="li_3"><p>Tiendas con catalogo de más de 1.500 productos</p></li>
+                    <li class="li_3"><p>Catalogo de más de 1.500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Subdominio</p></li>
                     <li class="li_3"><p>Código QR</p></li>
