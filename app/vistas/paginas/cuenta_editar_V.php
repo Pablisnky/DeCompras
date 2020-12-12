@@ -296,7 +296,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $Iterador++;
                         endforeach;
                     }   ?>        
-                    <label class="label_4 label_24" id="Label_7">Añadir telefono <br> PagoMovil</label>
+                    <!-- <label class="label_4 label_24" id="Label_7">Añadir telefono <br> PagoMovil</label> -->
                 </div>
             </fieldset>   
             
