@@ -165,7 +165,7 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     //Coloca los puntos de miles en tiempo real al llenar el campo a cedula en registroDes_V.php - cuenta_editar_V.php
     function formatoMiles(numero, id){
-        // console.log("______Desde formatoMiles()______", numero + " / " + id)
+        console.log("______Desde formatoMiles()______", numero + " / " + id)
 
         var num = numero.replace(/\./g,'')
         if(!isNaN(num) && numero.length < 11){
@@ -183,7 +183,7 @@ window.addEventListener("click", function(e){
  //************************************************************************************************
     //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
     function mascaraTelefono(TelefonoRecibido, id){
-        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
+        console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
         
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 
@@ -193,6 +193,11 @@ window.addEventListener("click", function(e){
         }
         else if(TelefonoRecibido.length == 11){
             document.getElementById(id).value += ".";  
+        }
+        else if(TelefonoRecibido.length >= 15){
+            alert("Número telefonico PagoMovil invalido"); 
+            document.getElementById(id).value = ""
+            return 
         }
     }
     

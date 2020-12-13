@@ -16,20 +16,37 @@ document.getElementById("Direccion_Tien").addEventListener('keydown', function()
 
 document.getElementById("Cedula_Aficom").addEventListener('keyup', function(){formatoMiles(this.value, 'Cedula_Aficom')}, false)
 
-//No se sabe enviar argumentos dinamicos usando addEventListener, la función se llama directamente del HTML
-// document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
-
 document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Aficom')}, false)
 
 document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
 
-//No se sabe enviar argumentos dinamicos usando addEventListener, la función se llama directamente del HTML
-// document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
+if(document.getElementById("CedulaPagoMovil")){
+    document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
+
+    document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
+}
+//Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
+ElementoPadre = document.getElementById("Mostrar_PagoMovil")
+ElementoPadre.addEventListener('click', function(e){  
+    var click = e.target
+    // console.log("Click en", click)
+    
+    let Cedulas_ClonPagoMovil = ElementoPadre.getElementsByClassName('qq')
+    console.log("Cantidad de input cedulas", Cedulas_ClonPagoMovil.length)
+    for(i=0; i<Cedulas_ClonPagoMovil.length; i++){
+        document.getElementsByClassName('qq')[i].addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
+    }
+    
+    // document.getElementsByClassName('Telefono_ClonPagoMovil')[0].addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
+    
+    // document.getElementsByClassName('')[0].addEventListener('keydown', function(){blanquearInput(click.id)}, false)
+}, false)
+
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función PreEliminarPagoMovil, PreEliminarSeccion y PreEliminarCuentaBanco
-document.addEventListener("click", PreEliminarSeccion)
-document.addEventListener("click", PreEliminarCuentaBanco)
-document.addEventListener("click", PreEliminarPagoMovil) 
+document.addEventListener("DOMContentLoaded", PreEliminarSeccion, false)
+document.addEventListener("DOMContentLoaded", PreEliminarCuentaBanco)
+document.addEventListener("DOMContentLoaded", PreEliminarPagoMovil) 
 document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('ContenidoSlo','ContadorSlo')}, false)    
 document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('Direccion_Tien','ContadorDireccion')}, false) 
  
@@ -135,7 +152,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     //Elimina los clones de Secciones
     function PreEliminarSeccion(){
-        // console.log("______Desde PreEliminarSeccion()______")
+        console.log("______Desde PreEliminarSeccion()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -173,7 +190,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     //Elimina los clones de PagoMovil
     function PreEliminarPagoMovil(){
-        // console.log("______Desde PreEliminarPagoMovil()______")
+        console.log("______Desde PreEliminarPagoMovil()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -211,7 +228,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     //Elimina los clones de Cuentas banco
     function PreEliminarCuentaBanco(){
-        // console.log("______Desde PreEliminarCuentaBanco()______")
+        console.log("______Desde PreEliminarCuentaBanco()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -609,7 +626,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        if(Nombre_Banco != ""){
+        // Valida datos BANCO TRANSFERENCIA
+        if(Nombre_Banco != "" || Titular_Banco != "" || NroCuenta_Banco != "" || RIF_Banco != ""){
             if(Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 20){
                 alert ("Necesita introducir el nombre del banco")
                 document.getElementById("Nombre_Banco").value = ""
@@ -659,7 +677,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 return false;
             }
         }
-        if(Cedula_PagoMovil != ""){
+        // Valida Datos PAGOMOVIL
+        if(Cedula_PagoMovil != "" || Banco_PagoMovil != "" || Telefono_PagoMovil != ""){
             if(Cedula_PagoMovil.indexOf(" ") == 0 || Cedula_PagoMovil.length < 9 || Cedula_PagoMovil.length > 10){
                 alert ("Introduzca la cedula para pago movil")
                 document.getElementById("CedulaPagoMovil").value = ""
@@ -697,53 +716,53 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 return false
             }
         }
-
-        let Cedula_ClonPagoMovil = document.getElementsByClassName('telefonoPagoMovil')
-        console.log(Cedula_ClonPagoMovil.length)
-        //Se validan loscampos cedulas de los clones creados
-        for(i=0; i<Cedula_ClonPagoMovil.length; i++){
-            if(Cedula_ClonPagoMovil[i].value == '' || Cedula_ClonPagoMovil.indexOf(" ") == 0 || Cedula_ClonPagoMovil.length < 9 || Cedula_ClonPagoMovil.length > 10){
-                alert("Numero de cedula para pago movil invalido")
-                Cedula_ClonPagoMovil[i].focus()
-                Cedula_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
-                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                return false;
+        // Valida datos CLON PAGOMOVIL
+        let Cedula_ClonPagoMovil = document.getElementsByClassName('Cedula_ClonPagoMovil')
+        let Banco_ClonPagoMovil = document.getElementsByClassName('Banco_ClonPagoMovil')
+        let Telefono_ClonPagoMovil = document.getElementsByClassName('Telefono_ClonPagoMovil')
+        if(Cedula_ClonPagoMovil.length != 0 || Banco_ClonPagoMovil.length != 0 || Telefono_ClonPagoMovil.length != 0){            
+            //Se validan los campos cedulas de los clones creados
+            for(i=0; i<Cedula_ClonPagoMovil.length; i++){
+                if(Cedula_ClonPagoMovil[i].value == '' || Cedula_ClonPagoMovil[i].length < 9 || Cedula_ClonPagoMovil[i].length > 10){
+                    alert("Número de cedula para pago movil invalido")
+                    Cedula_ClonPagoMovil[i].focus()
+                    Cedula_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
+                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                    document.getElementsByClassName("boton")[0].disabled = false
+                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                    return false;
+                }
             }
-        }
-
-        let Banco_ClonPagoMovil = document.getElementsByClassName('bancoPagoMovil')
-        //Se validan loscampos cedulas de los clones creados
-        for(i=0; i<Banco_ClonPagoMovil.length; i++){
-            if(Banco_ClonPagoMovil[i].value == ''){
-                alert("Banco para pago movil invalido")
-                Banco_ClonPagoMovil[i].focus()
-                Banco_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
-                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                return false;
+            //Se validan los campos bancos de los clones creados
+            for(i=0; i<Banco_ClonPagoMovil.length; i++){
+                if(Banco_ClonPagoMovil[i].value == ''){
+                    alert("Banco para pago movil invalido")
+                    Banco_ClonPagoMovil[i].focus()
+                    Banco_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
+                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                    document.getElementsByClassName("boton")[0].disabled = false
+                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                    return false;
+                }
             }
-        }
         
-        let Telefono_ClonPagoMovil = document.getElementsByClassName('telefonoPagoMovil')
-        //Se validan los campos cedulas de los clones creados en el momento de ser creado
-        for(i=0; i<Telefono_ClonPagoMovil.length; i++){
-            if(Telefono_ClonPagoMovil[i].value == ''){
-                alert("Introduzca Nº telefonico para pago movil")
-                Telefono_ClonPagoMovil[i].focus()
-                Telefono_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
-                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                return false;
+            //Se validan los campos telefono de los clones creados
+            for(i=0; i<Telefono_ClonPagoMovil.length; i++){
+                if(Telefono_ClonPagoMovil[i].value == ''){
+                    alert("Introduzca Nº telefonico para pago movil")
+                    Telefono_ClonPagoMovil[i].focus()
+                    Telefono_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
+                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                    document.getElementsByClassName("boton")[0].disabled = false
+                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                    return false;
+                }
             }
         }
     }
@@ -773,14 +792,14 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Div_clon.getElementsByClassName("input_10JS")[2].value = ""
         
         //Se da un id a los elementos que estan dentro del nuevo elemento clonado
-        ID_CedulaClon = Div_clon.getElementsByClassName("input_10JS")[0].id = "CedulaPagoMovil_" + iterador 
-        ID_BancoClon = Div_clon.getElementsByClassName("input_10JS")[1].id = "BancoPagoMovil_" + iterador  
-        ID_TelefonoClon = Div_clon.getElementsByClassName("input_10JS")[2].id = "TelefonoPagoMovil_" + iterador 
+        Div_clon.getElementsByClassName("input_10JS")[0].id = "CedulaPagoMovil_" + iterador 
+        Div_clon.getElementsByClassName("input_10JS")[1].id = "BancoPagoMovil_" + iterador  
+        Div_clon.getElementsByClassName("input_10JS")[2].id = "TelefonoPagoMovil_" + iterador 
 
         // //Se añade una clase a los elementos que estan dentro del nuevo elemento clonado
-        // Div_clon.getElementsByClassName("input_10JS")[0].classList.add("Cedula_ClonPagoMovil") 
-        // Div_clon.getElementsByClassName("input_10JS")[1].classList.add("Banco_ClonPagoMovil") 
-        // Div_clon.getElementsByClassName("input_10JS")[2].classList.add("Telefono_ClonPagoMovil") 
+        Div_clon.getElementsByClassName("input_10JS")[0].classList.add("Cedula_ClonPagoMovil") 
+        Div_clon.getElementsByClassName("input_10JS")[1].classList.add("Banco_ClonPagoMovil") 
+        Div_clon.getElementsByClassName("input_10JS")[2].classList.add("Telefono_ClonPagoMovil") 
         
         // Se añaden funciones a los elementos que estan dentro del nuevo elemento clonado 
         // Div_clon.getElementsByClassName("input_10JS")[0].addEventListener('keydown', function(){blanquearInput("CedulaPagoMovil_2")}, false)

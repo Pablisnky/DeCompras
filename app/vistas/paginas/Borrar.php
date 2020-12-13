@@ -260,13 +260,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
                             <!-- CEDULA PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
+                            <input class="input_13 input_10JS borde_1" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off" onkeyup="formatoMiles(this.value, 'CedulaPagoMovil')" onblur="validarCedula('CedulaPagoMovil')" onkeydown="blanquearInput('CedulaPagoMovil')"/>
 
                             <!-- BANCO PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
+                            <input class="input_13 input_10JS borde_1" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off" onkeydown="blanquearInput('BancoPagoMovil')"/>
 
                             <!-- TELEFONO PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
+                            <input class="input_13 input_10JS borde_1" type="text"   name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off" onkeyup="mascaraTelefono(this.value, 'TelefonoPagoMovil')" onkeydown="blanquearInput('TelefonoPagoMovil')"/>
                         </div>
                         <?php
                     }
@@ -274,22 +274,23 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         $Iterador = 1;
                         foreach($Datos['datosPagomovil'] as $row) :
                             $CedulaPagoMovil =  $row['cedula_pagomovil'];
-                            $BancoPagoMovil =  $row['banco_pagomovil'];
+                            $BancoNombre =  $row['banco_pagomovil'];
                             $TelefonoPagoMovil = $row['telefono_pagomovil']; 
                             ?>
                             <div class="contenedor_67 borde_1" id="Contenedor_68">
-                                <span class="icon-cancel-circle span_10 span_14 span_15_js" onclick="PreEliminarPagoMovil()"></span>
+                                <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+                                <!-- Las funciones de validaciones y formatos/mascaras de estos input dinamicos se invocan desde el HTML porque no se sabe como llamarlas con addEventListener -->
                                 <!-- CEDULA PAGOMOVIL -->
                                 <label>Cedula (Solo números)</label>
-                                <input class="input_13 input_10JS borde_1 qq" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_10JS borde_1" type="text" name="cedulasPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off" onkeyup="formatoMiles(this.value, '<?php echo 'CedulaPagoMovil_' . $Iterador?>')" onblur="validarCedula('<?php echo 'CedulaPagoMovil_' . $Iterador?>')" onkeydown="blanquearInput('<?php echo 'CedulaPagoMovil_' . $Iterador?>')"/>
 
                                 <!-- BANCO PAGOMOVIL -->
                                 <label>Banco</label>
-                                <input class="input_13 input_10JS borde_1" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_10JS borde_1" type="text" name="bancoPagoMovil[]" id="BancoPagoMovil" value="<?php echo $BancoNombre?>" autocomplete="off"/>
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
                                 <label>Nº telefono (Solo números)</label>
-                                <input class="input_13 input_10JS borde_1" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_10JS borde_1" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off" onkeyup="mascaraTelefono(this.value, '<?php echo 'TelefonoPagoMovil_' . $Iterador?>')"/>
                             </div>
                             <?php
                             $Iterador++;
