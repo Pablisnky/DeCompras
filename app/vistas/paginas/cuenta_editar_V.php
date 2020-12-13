@@ -279,9 +279,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             ?>
                             <div class="contenedor_67 borde_1" id="Contenedor_68">
                                 <span class="icon-cancel-circle span_10 span_14 span_15_js" onclick="PreEliminarPagoMovil()"></span>
+
                                 <!-- CEDULA PAGOMOVIL -->
                                 <label>Cedula (Solo números)</label>
-                                <input class="input_13 input_10JS borde_1 qq" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
 
                                 <!-- BANCO PAGOMOVIL -->
                                 <label>Banco</label>
@@ -289,7 +290,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
                                 <label>Nº telefono (Solo números)</label>
-                                <input class="input_13 input_10JS borde_1" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
                             </div>
                             <?php
                             $Iterador++;

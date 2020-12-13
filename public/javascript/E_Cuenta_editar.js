@@ -31,13 +31,17 @@ ElementoPadre.addEventListener('click', function(e){
     var click = e.target
     // console.log("Click en", click)
     
-    let Cedulas_ClonPagoMovil = ElementoPadre.getElementsByClassName('qq')
+    let Cedulas_ClonPagoMovil = ElementoPadre.getElementsByClassName("cedulaJS")
     console.log("Cantidad de input cedulas", Cedulas_ClonPagoMovil.length)
     for(i=0; i<Cedulas_ClonPagoMovil.length; i++){
-        document.getElementsByClassName('qq')[i].addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
+        document.getElementsByClassName('cedulaJS')[i].addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
     }
     
-    // document.getElementsByClassName('Telefono_ClonPagoMovil')[0].addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
+    let Telefonos_ClonPagoMovil = ElementoPadre.getElementsByClassName("TelefonoJS")
+    console.log("Cantidad de input telefonos", Telefonos_ClonPagoMovil.length)
+    for(i=0; i<Telefonos_ClonPagoMovil.length; i++){
+        document.getElementsByClassName('TelefonoJS')[i].addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
+    }
     
     // document.getElementsByClassName('')[0].addEventListener('keydown', function(){blanquearInput(click.id)}, false)
 }, false)
@@ -769,9 +773,15 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
 //************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
-    var iterador = 1
+
+    // Calcula cuantas cuentas de PagoMovil     
+    let CuentasPagoMovil = ElementoPadre.getElementsByClassName("cedulaJS")
+    console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
+
+    var iterador = CuentasPagoMovil != 0 ? CuentasPagoMovil.length : 1
+    console.log("Iterador =", iterador)
     function clonarCuentaPagoMovil(){
-        // console.log("______Desde nuevaCuentaPagoMovil()______")
+        console.log("______Desde nuevaCuentaPagoMovil()______")
 
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_68")
