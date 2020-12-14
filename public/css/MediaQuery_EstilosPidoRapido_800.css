@@ -947,9 +947,6 @@
 .section_9{/*opciones - cuenta_productos*/
 	padding-top: 15%;
 }
-.section_10{/*Categorias_Ajax - Secciones_Ajax*/
-	/* position: ; */
-}
 .section_11{/*tiendas*/
 	padding-top: 15% !important;
 }
@@ -962,6 +959,9 @@
 .select_1{/*inicio*/
 	height: 30px;
 	width: 75% !important;
+}
+.select_2{/*carrito - cuenta_editar*/
+	font-size: 1em;
 }
 .span_2{/*header*/
 	font-size: 1.3em !important;

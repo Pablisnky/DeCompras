@@ -1927,14 +1927,13 @@ button{/*tiendas*/
 	padding-left: 5%;
 	line-height:40px;
 }
-.select_2{/*carrito*/
+.select_2{/*carrito - cuenta_editar*/
 	font-size: 1.1em;
 	height: 30px !important;
 	padding-left: 3%;
 	width: 100%;
 	margin: 1% auto 5% auto;
 	border-radius: 5px;
-
 }
 .span_2{/*vitrina*/
 	font-size: 1.4em !important;

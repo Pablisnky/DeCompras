@@ -19,36 +19,46 @@ document.getElementById("Cedula_Aficom").addEventListener('keyup', function(){fo
 document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Aficom')}, false)
 
 document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
+    
+//Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
+// document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){ 
+//     var input = e.target
+    
+//     ElementoPadreInputs = document.getElementsByTagName("body")[0]
+//     CantidadElementosInput = ElementoPadreInputs.getElementsByTagName("input").length
+
+//     for(i = 0; i < CantidadElementosInput; i++){
+//         ElementoPadreInputs.getElementsByTagName("input")[i].addEventListener('keydown', function(){blanquearInput(input.id)}, false) 
+//     }
+// }, false)
 
 if(document.getElementById("CedulaPagoMovil")){
     document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
 
     document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
 }
+
 //Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
-ElementoPadre = document.getElementById("Mostrar_PagoMovil")
-ElementoPadre.addEventListener('click', function(e){  
+ElementoPadrePagoMovil = document.getElementById("Mostrar_PagoMovil")
+document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(e){ 
     var click = e.target
-    // console.log("Click en", click)
     
-    let Cedulas_ClonPagoMovil = ElementoPadre.getElementsByClassName("cedulaJS")
+    let Cedulas_ClonPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
     console.log("Cantidad de input cedulas", Cedulas_ClonPagoMovil.length)
-    for(i=0; i<Cedulas_ClonPagoMovil.length; i++){
+    for(i = 0; i < Cedulas_ClonPagoMovil.length; i++){
         document.getElementsByClassName('cedulaJS')[i].addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
     }
     
-    let Telefonos_ClonPagoMovil = ElementoPadre.getElementsByClassName("TelefonoJS")
+    let Telefonos_ClonPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("TelefonoJS")
     console.log("Cantidad de input telefonos", Telefonos_ClonPagoMovil.length)
-    for(i=0; i<Telefonos_ClonPagoMovil.length; i++){
+    for(i = 0; i < Telefonos_ClonPagoMovil.length; i++){
         document.getElementsByClassName('TelefonoJS')[i].addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
     }
-    
-    // document.getElementsByClassName('')[0].addEventListener('keydown', function(){blanquearInput(click.id)}, false)
 }, false)
 
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función PreEliminarPagoMovil, PreEliminarSeccion y PreEliminarCuentaBanco
-document.addEventListener("DOMContentLoaded", PreEliminarSeccion, false)
+document.addEventListener("DOMContentLoaded", PreEliminarSeccion)
 document.addEventListener("DOMContentLoaded", PreEliminarCuentaBanco)
 document.addEventListener("DOMContentLoaded", PreEliminarPagoMovil) 
 document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('ContenidoSlo','ContadorSlo')}, false)    
@@ -192,9 +202,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
     }
 
 //************************************************************************************************ 
-    //Elimina los clones de PagoMovil
+    //Elimina las cuentas de PagoMovil
     function PreEliminarPagoMovil(){
-        console.log("______Desde PreEliminarPagoMovil()______")
+        // console.log("______Desde PreEliminarPagoMovil()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -210,29 +220,43 @@ document.getElementById("Label_1").addEventListener('click', function(){
             for(var i = 0; i < len; i++){
                 button = SpanEliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
                 button.onclick = EliminarPagoMovil // Asignar la función EliminarPagoMovil() en su evento click.
-                // console.log("______Boton seleccionado______", SpanEliminar[i]) 
+                // console.log("Boton seleccionado", SpanEliminar[i])
+
+                 
             } 
 
             function EliminarPagoMovil(e){   
                 // console.log("______Desde EliminarPagoMovil()______") 
+                
+                let Eliminar_CuentaPagoMovil = document.getElementsByClassName('span_15_js')
+                // console.log("Cantidad de iconos eliminar", Eliminar_CuentaPagoMovil.length) 
+                
+                if(Eliminar_CuentaPagoMovil.length == 1){     
+                    console.log("ENTRA EN EL IF")                   
+                    document.getElementsByClassName("cedulaJS")[0].value = ""
+                    document.getElementsByClassName("BancoJS")[0].value = ""
+                    document.getElementsByClassName("TelefonoJS")[0].value = ""
+                }
+                else{
 
-                //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-                current = e.target.parentElement
-                // console.log("div a eliminar", current)
-                
-                //Se busca el nodo padre que contiene el elemento current
-                let elementoPadre = current.parentElement
-                
-                //Se elimina la sección
-                elementoPadre.removeChild(current);  
-            }  
+                    //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
+                    current = e.target.parentElement
+                    // console.log("div a eliminar", current)
+                    
+                    //Se busca el nodo padre que contiene el elemento current
+                    let elementoPadre = current.parentElement
+                    
+                    //Se elimina la sección
+                    elementoPadre.removeChild(current);  
+                }
+            } 
         // }          
     }
 
 //************************************************************************************************ 
     //Elimina los clones de Cuentas banco
     function PreEliminarCuentaBanco(){
-        console.log("______Desde PreEliminarCuentaBanco()______")
+        // console.log("______Desde PreEliminarCuentaBanco()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -434,10 +458,16 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let Titular_Banco = document.getElementById('Titular_Banco').value 
         let NroCuenta_Banco = document.getElementById('NroCuenta_Banco').value
         let RIF_Banco = document.getElementById('RIF_Banco').value 
-        // DATOS PAGOMOVIL
-        var Cedula_PagoMovil = document.getElementById('CedulaPagoMovil').value
-        var Banco_PagoMovil = document.getElementById('BancoPagoMovil').value
-        var Telefono_PagoMovil = document.getElementById('TelefonoPagoMovil').value
+        // DATOS PAGOMOVIL (Valida cuando no existen cuentas cargadas en BD)
+        if(document.getElementById('CedulaPagoMovil')){
+            var Cedula_PagoMovil = document.getElementById('CedulaPagoMovil').value
+            var Banco_PagoMovil = document.getElementById('BancoPagoMovil').value
+            var Telefono_PagoMovil = document.getElementById('TelefonoPagoMovil').value
+        }
+        // DATOS PAGOMOVIL (Valida cuando existen cuentas cargadas en BD)
+        let Cedula_ClonPagoMovil = document.getElementsByClassName('Cedula_ClonPagoMovil')
+        let Banco_ClonPagoMovil = document.getElementsByClassName('Banco_ClonPagoMovil')
+        let Telefono_ClonPagoMovil = document.getElementsByClassName('Telefono_ClonPagoMovil')
 
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
@@ -681,7 +711,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 return false;
             }
         }
-        // Valida Datos PAGOMOVIL
         if(Cedula_PagoMovil != "" || Banco_PagoMovil != "" || Telefono_PagoMovil != ""){
             if(Cedula_PagoMovil.indexOf(" ") == 0 || Cedula_PagoMovil.length < 9 || Cedula_PagoMovil.length > 10){
                 alert ("Introduzca la cedula para pago movil")
@@ -720,10 +749,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 return false
             }
         }
-        // Valida datos CLON PAGOMOVIL
-        let Cedula_ClonPagoMovil = document.getElementsByClassName('Cedula_ClonPagoMovil')
-        let Banco_ClonPagoMovil = document.getElementsByClassName('Banco_ClonPagoMovil')
-        let Telefono_ClonPagoMovil = document.getElementsByClassName('Telefono_ClonPagoMovil')
+
         if(Cedula_ClonPagoMovil.length != 0 || Banco_ClonPagoMovil.length != 0 || Telefono_ClonPagoMovil.length != 0){            
             //Se validan los campos cedulas de los clones creados
             for(i=0; i<Cedula_ClonPagoMovil.length; i++){
@@ -775,13 +801,13 @@ document.getElementById("Label_1").addEventListener('click', function(){
     //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
 
     // Calcula cuantas cuentas de PagoMovil     
-    let CuentasPagoMovil = ElementoPadre.getElementsByClassName("cedulaJS")
-    console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
+    let CuentasPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
+    // console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
 
     var iterador = CuentasPagoMovil != 0 ? CuentasPagoMovil.length : 1
-    console.log("Iterador =", iterador)
+    // console.log("Iterador =", iterador)
     function clonarCuentaPagoMovil(){
-        console.log("______Desde nuevaCuentaPagoMovil()______")
+        // console.log("______Desde nuevaCuentaPagoMovil()______")
 
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_68")
@@ -810,15 +836,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Div_clon.getElementsByClassName("input_10JS")[0].classList.add("Cedula_ClonPagoMovil") 
         Div_clon.getElementsByClassName("input_10JS")[1].classList.add("Banco_ClonPagoMovil") 
         Div_clon.getElementsByClassName("input_10JS")[2].classList.add("Telefono_ClonPagoMovil") 
-        
-        // Se añaden funciones a los elementos que estan dentro del nuevo elemento clonado 
-        // Div_clon.getElementsByClassName("input_10JS")[0].addEventListener('keydown', function(){blanquearInput("CedulaPagoMovil_2")}, false)
-        // Div_clon.getElementsByClassName("input_10JS")[1].addEventListener('keydown', function(){blanquearInput(ID_BancoClon)}, false)
-        // Div_clon.getElementsByClassName("input_10JS")[2].addEventListener('keydown', function(){blanquearInput(ID_TelefonoClon)}, false)
-
-        // Div_clon.getElementsByClassName("input_10JS")[0].addEventListener('keyup', function(){formatoMiles(this.value, ID_CedulaClon)}, false)
-        
-        // Div_clon.getElementsByClassName("input_10JS")[2].addEventListener('keyup', function(){mascaraTelefono(this.value, ID_TelefonoClon)}, false)
 
         // //Se especifica el div padre, donde se insertará el nuevo nodo     
         ElementoPadre = document.getElementById("Mostrar_PagoMovil")

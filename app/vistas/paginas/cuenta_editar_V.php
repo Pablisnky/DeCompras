@@ -50,16 +50,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <legend class="legend_1">Persona responsable</legend> 
 
                 <label>Nombre</label>
-                <input class="input_13 borde_1" type="text" name="nombre_Afcom" id="Nombre_Aficom" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Aficom')"/>
+                <input class="input_13 borde_1" type="text" name="nombre_Afcom" id="Nombre_Aficom" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off"/>
                 
                 <label>Apellido</label>
-                <input class="input_13 borde_1" type="text" name="apellido_Afcom" id="Apellido_Aficom"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off" onkeydown="blanquearInput('Apellido_Aficom')"/>
+                <input class="input_13 borde_1" type="text" name="apellido_Afcom" id="Apellido_Aficom"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off"/>
                
                 <label>Cedula (Solo números)</label>
-                <input class="input_13 borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off" onkeydown="blanquearInput('Cedula_Aficom')"/>
+                <input class="input_13 borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off"/>
                 
                 <label>Telefono (Solo números)</label>
-                <input class="input_13 borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" placeholder="0000-000.00.00" onkeydown="blanquearInput('Telefono_Aficom')"/>
+                <input class="input_13 borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" placeholder="0000-000.00.00"/>
                 
                 <label>Correo</label>
                 <input class="input_13 borde_1" type="text" name="correo_Afcom" id="Correo_Aficom" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off"/>
@@ -77,13 +77,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
 
                 <label>Nombre tienda</label>
-                <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre_Tien" value="<?php echo $Nombre_Tien;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Tien')"/>
+                <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre_Tien" value="<?php echo $Nombre_Tien;?>" autocomplete="off"/>
 
                 <label>Acceso directo a tu tienda</label>
                 <input class="input_13 borde_1" type="text" name="link_acceso" id="Link_Acceso" value="<?php echo $Link_Acceso;?>" autocomplete="off" readonly/>
 
                 <label>Telefono tienda</label>
-                <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" placeholder="0000-000.00.00" onkeydown="blanquearInput('Telefono_Tien')"/>
+                <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" placeholder="0000-000.00.00"/>
 
                 <label>Slogan tienda (opcional)</label>
                 <input class="input_13 input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off"/>
@@ -91,22 +91,26 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 
                 <!-- SECCION DATOS DE UBICACIÓN -->
                 <label>Datos de ubicación</label>
+                <br>
+                <select class="select_2 borde_1" id="Estado_Tien" name="estado_com" onclick="SeleccionarMunicipio(this.form)">
+                    <option id="Option_1" selected>Seleccione estado</option>
+                    <option id="Option_1">Yaracuy</option>
+                </select>
 
-                <label>Estado</label>
-                <input class="input_13 borde_1" type="text" name="estado_com" id="Estado_Tien" value="<?php echo 'Yaracuy';?>" autocomplete="off" readonly= "readoly" onkeydown="blanquearInput('Estado_Tien')"/>
+                <select class="select_2 borde_1" id="Municipio_Tien" name="municipio_com" onclick="SeleccionarParroquia(this.form)">
+                    <option id="Option_1" selected>Seleccione municipio</option>
+                </select>
 
-                <label>Municipio</label>
-                <input class="input_13 borde_1" type="text" name="municipio_com" id="Municipio_Tien" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly" onkeydown="blanquearInput('Municipio_Tien')"/>                
-
-                <label>Parroquia</label>
-                <input class="input_13 borde_1" type="text" name="parroquia_com" id="Parroquia_Tien" value="<?php echo 'San Felipe';?>" autocomplete="off" readonly= "readoly" onkeydown="blanquearInput('Parroquia_Tien')"/>                
+                <select class="select_2 borde_1" id="Parroquia_Tien" name="parroquia_com">
+                    <option id="Option_1" selected>Seleccione parroquia</option>
+                </select>                
 
                 <label>Dirección</label>
-                <textarea class="textarea_4 borde_1 " name="direccion_com" id="Direccion_Tien" onkeydown="blanquearInput('Direccion_Tien')"><?php echo $Direccion_Tien;?></textarea> 
+                <textarea class="textarea_4 borde_1 " name="direccion_com" id="Direccion_Tien"><?php echo $Direccion_Tien;?></textarea> 
                 <input class="contador_2" type="text" id="ContadorDireccion" value="50"/>
             </fieldset>
 
-            <!-- SECCION CATEGORIAS Y SECCIONES --> 
+            <!-- SECCION CATEGORIAS --> 
             <a id="marcador_03" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
                 <legend class="legend_1">Categoria - Secciones</legend>
@@ -145,6 +149,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     } ?>
                 </div>
 
+                <!-- SECCIONES -->
                 <div id="Contenedor_79" class="contenedor_143">
                     <p class="p_12">Organiza tú tienda en secciones, y dentro de estas coloca tus productos, añade tantas como consideres necesario para que tus productos esten bien organizados. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
@@ -167,13 +172,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         foreach($Datos['secciones'] as $row){
                             $Seccion_Tien = $row['seccion'];
                             $ID_Seccion = $row['ID_Seccion'];
-                            //Se cuentan la cantidad de seccion para informe al archivo Ajax que elimina secciones si se ejecuta
                             $CantidadSeccion = count($Datos['secciones']);
                             ?>
                            
                             <div class="contenedor_80" id="Contenedor_80">
                                 <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
-                                <span class="icon-cancel-circle span_10 span_14_js" onclick=" Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>')"></span>                           
+
+                                <span class="icon-cancel-circle span_10 span_14_js" onclick="Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>')"></span>                           
                             </div>
                             <?php
                         }   
@@ -186,7 +191,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             
             <!-- LO MÁS PEDIDO -->
 
-            <!-- CUENTAS BANCARIAS -->
+            <!-- CUENTAS TRANSFERENCIAS -->
             <a id="marcador_06" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Cuentas bancarias</legend>
@@ -201,16 +206,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <span class="icon-cancel-circle span_10 span_14 span_16_js"></span>
 
                             <!-- NOMBRE BANCO -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" placeholder="Banco" autocomplete="off" onkeydown="blanquearInput('Nombre_Banco')"/>
+                            <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" placeholder="Banco" autocomplete="off"/>
 
                             <!-- TITULAR BANCO -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off" onkeydown="blanquearInput('Titular_Banco')"/>
+                            <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off"/>
 
                             <!-- NUMERO CUENTA -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off" onkeydown="blanquearInput('NroCuenta_Banco')"/>
+                            <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off"/>
 
                             <!-- RIF BANCO -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off" onkeydown="blanquearInput('RIF_Banco')"/>
+                            <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off"/>
                         </div> 
                         <?php
                     }
@@ -226,19 +231,19 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <label>Banco</label>
                                 
                                 <!-- NOMBRE BANCO -->
-                                <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off" onkeydown="blanquearInput('Nombre_Banco')"/>
+                                <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
                                 
                                 <!-- TITULAR BANCO -->
                                 <label>Titular</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off" onkeydown="blanquearInput('Titular_Banco')"/>
+                                <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
 
                                 <!-- NUMERO CUENTA -->
                                 <label>Número cuenta</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"  onkeydown="blanquearInput('NroCuenta_Banco')"/>
+                                <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
 
                                 <!-- RIF BANCO -->
                                 <label>RIF</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"  onkeydown="blanquearInput('RIF_Banco')"/>
+                                <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"/>
                             </div>
                             <?php
                         }
@@ -247,15 +252,15 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
             </fieldset>            
             
-            <!-- TELEFONOS PAGOMOVIL -->
+            <!-- CUENTAS PAGOMOVIL -->
             <a id="marcador_07" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">                    
                 <legend class="legend_1">Cuentas PagoMovil</legend>
                 <label>Información para recibir pagos por pagomovil</label>   
                 <div id="Mostrar_PagoMovil">
-                    <!-- Entra en el IF cuando no hay cuenta de pagomovil creadas -->
+                    <!-- Entra en el IF cuando no hay cuentas de pagomovil creadas -->
                     <?php
-                    if($Datos['datosPagomovil'] == Array ( )){  ?>
+                    if($Datos['datosPagomovil'][0]['cedula_pagomovil'] == ''){ ?>
                         <div class="contenedor_67 borde_1" id="Contenedor_68">
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
@@ -278,7 +283,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $TelefonoPagoMovil = $row['telefono_pagomovil']; 
                             ?>
                             <div class="contenedor_67 borde_1" id="Contenedor_68">
-                                <span class="icon-cancel-circle span_10 span_14 span_15_js" onclick="PreEliminarPagoMovil()"></span>
+                                <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
                                 <!-- CEDULA PAGOMOVIL -->
                                 <label>Cedula (Solo números)</label>
@@ -286,7 +291,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                                 <!-- BANCO PAGOMOVIL -->
                                 <label>Banco</label>
-                                <input class="input_13 input_10JS borde_1" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_10JS borde_1 BancoJS" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
                                 <label>Nº telefono (Solo números)</label>
@@ -404,6 +409,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/Municipios.js';?>"></script> 
+    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/parroquias.js';?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen de la tienda, usada en cuenta_editar_prod_V.php

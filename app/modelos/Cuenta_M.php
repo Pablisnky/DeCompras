@@ -219,7 +219,7 @@
             // $stmt->bindParam(':CATEGORIA', $Categoria, PDO::PARAM_STR);
 
             $stmt->execute();
-            return $stmt;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         //SELECT del ID_Sección de una sección en una tienda especifica
@@ -670,10 +670,18 @@
 
         //UPDATE de los datos de LA TIENDA
         public function actualizarTienda($ID_AfiliadoCom, $RecibeDatos){
-            $stmt = $this->dbh->prepare("UPDATE tiendas SET nombre_Tien = :NOMBRE_TIEN, direccion_Tien = :DIRECCION_TIEN, telefono_Tien = :TELEFONO_TIEN, slogan_Tien = :SLOGAN_TIEN WHERE ID_AfiliadoCom = :AFILIADO");
+            // echo "<pre>";
+            // print_r($RecibeDatos);
+            // echo "</pre>";
+            // echo $ID_AfiliadoCom;
+            // exit;
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET nombre_Tien = :NOMBRE_TIEN, estado_Tien = :ESTADO_TIEN, municipio_Tien = :MUNICIPIO_TIEN, parroquia_Tien = :PARROQUIA_TIEN, direccion_Tien = :DIRECCION_TIEN, telefono_Tien = :TELEFONO_TIEN, slogan_Tien = :SLOGAN_TIEN WHERE ID_AfiliadoCom = :AFILIADO");
 
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':NOMBRE_TIEN', $RecibeDatos['Nombre_com']);
+            $stmt->bindValue(':ESTADO_TIEN', $RecibeDatos['Estado_com']);
+            $stmt->bindValue(':MUNICIPIO_TIEN', $RecibeDatos['Municipio_com']);
+            $stmt->bindValue(':PARROQUIA_TIEN', $RecibeDatos['Parroquia_com']);
             $stmt->bindValue(':DIRECCION_TIEN', $RecibeDatos['Direccion_com']);
             $stmt->bindValue(':TELEFONO_TIEN', $RecibeDatos['Telefono_com']);
             $stmt->bindValue(':SLOGAN_TIEN', $RecibeDatos['Slogan_com']);
@@ -964,8 +972,13 @@
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 $stmt->bindParam(':SECCION', $key);
 
-                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-                $stmt->execute();
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada)
+                if($stmt->execute()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
         }
 
@@ -982,7 +995,12 @@
                 $stmt->bindParam(':ID_SECCION', $key);
 
                 //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-                $stmt->execute();
+                if($stmt->execute()){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
         }
 

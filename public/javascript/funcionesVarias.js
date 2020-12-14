@@ -46,7 +46,7 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){        
-        // console.log("______Desde blanquearInput()______", id)
+        console.log("______Desde blanquearInput()______", id)
         document.getElementById(id).style.backgroundColor = "white"
     }
 

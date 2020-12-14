@@ -341,16 +341,19 @@
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["telefono_com"]) && !empty($_POST["direccion_com"])
             ){
                 $RecibeDatos = [
-                    //Recibe datos de la persona responsable
+                    //RECIBE DATOS PERSONA RESPONSABLE
                     'Nombre_Afcom' => filter_input(INPUT_POST, 'nombre_Afcom', FILTER_SANITIZE_STRING),
                     'Apellido_Afcom'=> filter_input(INPUT_POST, 'apellido_Afcom', FILTER_SANITIZE_STRING),
                     'Cedula_Afcom' => filter_input(INPUT_POST, 'cedula_Afcom', FILTER_SANITIZE_STRING),
                     'Telefono_Afcom'=> filter_input(INPUT_POST, 'telefono_Afcom', FILTER_SANITIZE_STRING),
                     'Correo_Afcom' => filter_input(INPUT_POST, 'correo_Afcom', FILTER_SANITIZE_STRING),
 
-                    //Recibe datos de la tienda
+                    //RECIBE DATOS TIENDA
                     'Nombre_com' => filter_input(INPUT_POST, 'nombre_com', FILTER_SANITIZE_STRING),
                     'Telefono_com' => filter_input(INPUT_POST, 'telefono_com', FILTER_SANITIZE_STRING),
+                    'Estado_com' => filter_input(INPUT_POST, 'estado_com', FILTER_SANITIZE_STRING),
+                    'Municipio_com' => filter_input(INPUT_POST, 'municipio_com', FILTER_SANITIZE_STRING),
+                    'Parroquia_com' => filter_input(INPUT_POST, 'parroquia_com', FILTER_SANITIZE_STRING),
                     'Direccion_com' => filter_input(INPUT_POST, 'direccion_com', FILTER_SANITIZE_STRING),
                     'Slogan_com' => filter_input(INPUT_POST, 'slogan_com', FILTER_SANITIZE_STRING),
                 ];
@@ -490,10 +493,10 @@
             // echo "</pre>";
 
             
-            $resultado = array_diff($SeccionesRecibidas, $SecccionesExistentes);
+            $Secciones = array_diff($SeccionesRecibidas, $SecccionesExistentes);
             // echo "Secciones a insertar";
             // echo "<pre>";
-            // print_r($resultado);
+            // print_r($Secciones);
             // echo "</pre>";
             // exit();
             
@@ -533,12 +536,12 @@
                 
                 // ******************************************************** 
                 //DATOS PAGOMOVIL 
-                if($_POST['telefonoPagoMovil'][0] != ""){ 
+                // if($_POST['telefonoPagoMovil'][0] != ""){ 
                     // Se ELIMINAN todas las cuentas de pagomovil
                     $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
                                         
                     foreach(array_keys($_POST['telefonoPagoMovil']) as $key){
-                        if(!empty($_POST['cedulaPagoMovil'][$key]) || !empty($_POST['telefonoPagoMovil'][$key]) || !empty($_POST['bancoPagoMovil'][$key])){
+                        // if(!empty($_POST['cedulaPagoMovil'][$key]) || !empty($_POST['telefonoPagoMovil'][$key]) || !empty($_POST['bancoPagoMovil'][$key])){
                             $CedulapagoMovil = $_POST['cedulaPagoMovil'][$key];
                             $TelefonopagoMovil = $_POST['telefonoPagoMovil'][$key];
                             $BancopagoMovil = $_POST['bancoPagoMovil'][$key];
@@ -551,34 +554,33 @@
 
                             //Se INSERTA la cuenta de CuentapagoMovil
                             $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $CedulapagoMovil, $BancopagoMovil, $TelefonopagoMovil);
-                        }
-                        else{
-                            echo "Ingrese datos pagoMovil";
-                            echo "<br>";
-                            echo "<a href='javascript:history.back()'>Regresar</a>";
-                            exit();
-                        }
+                        // }
+                        // else{
+                        //     echo "Ingrese datos pagoMovil";
+                        //     echo "<br>";
+                        //     echo "<a href='javascript:history.back()'>Regresar</a>";
+                        //     exit();
+                        // }
                     }
-                }
+                // }
             }
             // echo "Todos los campos estan llenos";
             // exit();
 
             // **********************************************************************************
             //Todo este procedimiento debe ser por medio de TRANSACCIONES
-            // ***************************************print_r*******************************************
+            // **********************************************************************************
             //Se ELIMINAN todas las categorias que tiene la tienda
             $this->ConsultaCuenta_M->eliminarCategoriaTienda($this->ID_Tienda);
 
             //Se consulta el ID_Categoria de las categorias seleccionadas
-            $ID_Categoria = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
-            $ID_Categ = $ID_Categoria->fetchAll(PDO::FETCH_ASSOC);
+            $ID_Categ = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
 
             //Se INSERTA la dependenciatransitiva entre la tienda y la categoria a la que pertenece
             $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);         
 
             //Se INSERTAN las secciones de la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
-            $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $Seccion);
+            $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $Secciones);
 
             //Se CONSULTA el ID_Seccion de las secciones que tiene la tienda
             $ID_Seccion = $this->ConsultaCuenta_M->consultarTodosID_Seccion($this->ID_Tienda);
