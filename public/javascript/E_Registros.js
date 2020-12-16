@@ -4,6 +4,16 @@ document.getElementById("NombreTienda").addEventListener('keydown', function(){c
 
 document.getElementById("NombreTienda").addEventListener('keydown', function(){valida_LongitudDes(50,'NombreTienda')}, false)
 
+document.getElementById("Nombre").addEventListener('keydown', function(){blanquearInput("Nombre")}, false)
+
+document.getElementById("CorreoAfiCom").addEventListener('keydown', function(){blanquearInput("CorreoAfiCom")}, false)
+
+document.getElementById("NombreTienda").addEventListener('keydown', function(){blanquearInput("NombreTienda")}, false)
+
+document.getElementById("Clave").addEventListener('keydown', function(){blanquearInput("Clave")}, false)
+
+document.getElementById("ConfirmarClave").addEventListener('keydown', function(){blanquearInput("ConfirmarClave")}, false)
+
 //************************************************************************************************
     //Validar el formulario de afiliación de comerciante
     function validarAfiliacionCom(){
@@ -319,24 +329,6 @@ document.getElementById("NombreTienda").addEventListener('keydown', function(){v
     //         console.log("Los elementos del DIV son:", DIV)
     //     }
     // }
-
-//************************************************************************************************
-    //Impide que se siga introduciendo caracteres al alcanzar el limite maximo en el telefono
-    var contenidoTelefono = ""; 
-    var num_caracteres_permitidos = 13; 
-    function valida_LongitudTelefono(){ 
-        console.log("______Desde valida_LongitudTelefono()______")
-
-        let num_caracteres_input = document.getElementById("Telefono").value.length
-        // num_caracteres_permitidos = Telefono.length; 
-
-        if(num_caracteres_input > 13){ 
-            document.getElementById("Telefono").value = contenidoTelefono; 
-        }
-        else{ 
-            contenidoTelefono = document.getElementById("Telefono").value;   
-        } 
-    } 
  
 //*********************************************************************************************
     //Valida que la contraseña introducida sea de solo letras y numeros

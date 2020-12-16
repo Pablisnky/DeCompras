@@ -163,12 +163,12 @@
 
         //SELECT de datos de la tienda
         public function consultarDatosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
+            $stmt = $this->dbh->prepare("SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return "No se pudo";
@@ -439,6 +439,9 @@
             $stmt = $this->dbh->prepare("DELETE FROM tiendas_categorias WHERE ID_Tienda = :ID_Tienda");
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
             $stmt->execute();          
+
+            //Se envia información de cuantos registros se vieron afectados por la consulta
+            return $stmt->rowCount();
         }
         
 //***************************************************************************************************
@@ -661,14 +664,18 @@
 
             //Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
+                // echo 'Bien';
+                // // exit;
                 return true;
             }
             else{
+                // echo 'Fallo';
+                // exit;
                 return false;
             }
         }
 
-        //UPDATE de los datos de LA TIENDA
+        //UPDATE de los datos de la tienda
         public function actualizarTienda($ID_AfiliadoCom, $RecibeDatos){
             // echo "<pre>";
             // print_r($RecibeDatos);
@@ -689,9 +696,13 @@
 
             //Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
+                // echo 'Bien';
+                // exit;
                 return true;
             }
             else{
+                // echo 'Mal';
+                // exit;
                 return false;
             }
         }
@@ -973,8 +984,7 @@
                 $stmt->bindParam(':SECCION', $key);
 
                 //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada)
-                if($stmt->execute()){
-                    return true;
+                if($stmt->execute()){           
                 }
                 else{
                     return false;
@@ -988,33 +998,18 @@
                 foreach($ID_Seccion[$i] as $key){
                     $key;  
                 }
-                $stmt = $this->dbh->prepare("INSERT INTO tiendas_secciones(ID_Tienda, ID_Seccion) VALUES (:ID_TIENDA, :ID_SECCION)");
+                $stmt = $this->dbh->prepare("INSERT INTO tiendas_secciones(ID_Tienda, ID_Seccion) VALUES (:ID_TIENDA, :ID_SECCION) ON DUPLICATE KEY UPDATE ID_Tienda = :ID_TIENDA, ID_Seccion = :ID_SECCION ");
 
                 //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 $stmt->bindParam(':ID_SECCION', $key);
 
                 //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-                if($stmt->execute()){
-                    return true;
-                }
-                else{
-                    return false;
-                }
+                $stmt->execute();
             }
         }
 
-        public function insertarDT_CatTie($ID_Categoria, $ID_Tienda){            
-            // $Elementos = count($Categoria);
-            // $Busqueda = "";
-            // //Se convierte el array en una cadena con sus elementos entre comillas
-            // for($i = 0; $i < $Elementos; $i++){
-            //     $Busqueda .= " '" . $Categoria[$i] . "', ";
-            // }
-            // // Esto quita el ultimo espacio y coma del string generado con lo cual
-            // // el string queda 'id1','id2','id3'
-            // $Busqueda = substr($Busqueda,0,-2);
-            // exit();
+        public function insertarDT_CatTie($ID_Categoria, $ID_Tienda){  
             for($i = 0; $i<count($ID_Categoria); $i++){
                 foreach($ID_Categoria[$i] as $key){
                     $key;  
@@ -1027,8 +1022,11 @@
                 $stmt->bindParam(':ID_CATEGORIA', $key);
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 
-                // //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
                 $stmt->execute();
+
+                //Se envia información de cuantos registros se vieron afectados por la consulta
+                // return $stmt->rowCount();
             }
         }  
 

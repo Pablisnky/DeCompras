@@ -1050,22 +1050,6 @@ console.log(AlCarro)
     } 
 
 //************************************************************************************************
-    //Validar el formato de telefono
-    // avisado=false;
-    // function validarFormatoTelefono(campo){
-    //     // var RegExPattern = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
-    //     // if((campo.match(RegExPattern)) && (campo!='')){
-    //     //     return true;
-    //     // }
-    //     // else{
-    //     //     alert("Telefono con formato incorrecto");
-    //     //     document.getElementById("TelefonoUsuario").value = "";
-    //     //     document.getElementById("TelefonoUsuario").style.backgroundColor = 'red'; 
-    //     //     return false;
-    //     // }
-    // }
-
-//************************************************************************************************
     //Abre la ventna de detalles de producto, invocado en opciones_V.php
     function mostrarDetalles(ContadorLabel, Nombre_Tienda, Slogan_Tienda, ID_Tienda, Producto, Opcion, Precio, Fotografia, ID_Producto){
         // console.log("______Desde mostrarDetalles()______")
@@ -1162,6 +1146,26 @@ console.log(AlCarro)
     function blanquearInput(id){        
         // console.log("______Desde blanquearInput()______", id)
         document.getElementById(id).style.backgroundColor = "white"
+    }
+   
+//************************************************************************************************
+    // Validar el formato de telefono
+    function validarFormatoTelefono(NroTelefono,id){
+        // console.log("______Desde validarFormatoTelefono()______",NroTelefono)
+
+        var P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+            
+        if(P_Telefono.test(NroTelefono) == true){            
+            console.log("Telefono con formato correcto");
+            return true;
+        }
+        else{
+            alert("Telefono con formato incorrecto");
+            document.getElementById(id).value = "";
+            document.getElementById(id).focus()
+            document.getElementById(id).style.backgroundColor = 'var(--Fallos)'; 
+            return false;
+        }
     }
 
 //************************************************************************************************

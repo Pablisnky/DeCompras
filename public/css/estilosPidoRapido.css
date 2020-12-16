@@ -306,9 +306,6 @@ button{/*tiendas*/
 	justify-content:space-between; 
 	margin-top: 12%;
 }
-.contenedor_13>h1{/**/
-	/*flex: 0 1 100%;ocupa toda la primera fila en la distribucion flex*/
-}
 .contenedor_14{/*opciones*/
 	display: none;
 	/* grid-template-rows: 0px; */
@@ -332,6 +329,10 @@ button{/*tiendas*/
 	top: -45px;
 	left: 75%;
 	text-align: right;
+}
+.contenedor_17{/*tiendas*/
+	display: flex;
+	margin: 4% auto;
 }
 .contenedor_18{/*vitrina*/
 	grid-column-start: 1;
@@ -869,7 +870,7 @@ button{/*tiendas*/
 	border-radius: 15px;
 	margin: 12% auto 7% auto;
 }
-.contenedor_113{/*descargaApp*/
+.contenedor_113{/*cuenta - descargaApp*/
 	width: 80%;
 	margin: auto;
 	margin-bottom: 2%;
@@ -1223,7 +1224,6 @@ button{/*tiendas*/
 .h2_7{/*cuenta*/
 	font-size: 1.4em;
 	font-weight: normal;
-	/* text-align: center; */
 }
 .h2_9{/*cuenta_productos*/
 	width: 100%;
@@ -1720,7 +1720,6 @@ button{/*tiendas*/
 	padding: 2% 4% 2% 2%;
 }
 .p_1{/*RecibePedido - descargaApp*/
-	/* color: rgb(224, 202, 202); */
 	font-size: 1.2em;
 	text-align: center; 
 } 
@@ -1803,6 +1802,10 @@ button{/*tiendas*/
 	font-size: 1.5em; 
 	line-height: 40px;
 	margin-top: 100%;
+}
+.p_18{/*tiendas*/
+	text-align: center;
+	font-size: 0.9em !important;
 }
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	margin: 0% auto 2% auto !important;

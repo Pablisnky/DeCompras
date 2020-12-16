@@ -73,7 +73,7 @@ function conexionAJAX(){
     function respuesta_EliminarSeccion(){
         if(peticion.readyState == 4){
             if(peticion.status == 200){  
-                document.getElementById('ReadOnly').innerHTML = peticion.responseText                
+                document.getElementById('ReadOnly').innerHTML = peticion.responseText             
             } 
             else{
                 alert('Problemas con la petición.')
@@ -81,7 +81,7 @@ function conexionAJAX(){
         }
         else{ //en caso contrario, mostramos un gif simulando una precarga
             // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
-        }
+        }   
     } 
 
 // *************************************************************************************************

@@ -46,7 +46,7 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){        
-        console.log("______Desde blanquearInput()______", id)
+        // console.log("______Desde blanquearInput()______", id)
         document.getElementById(id).style.backgroundColor = "white"
     }
 
@@ -54,7 +54,9 @@ window.addEventListener("click", function(e){
     //Coloca el cursor en el input automaticamente 
     function autofocus(id){
         // console.log("______Desde autofocus()______", id)
-        if(document.getElementById(id)){//Si el elemento existe
+
+        //Si el elemento existe
+        if(document.getElementById(id)){
             document.getElementById(id).focus()
             document.getElementById(id).value = ""
         }
@@ -165,7 +167,7 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     //Coloca los puntos de miles en tiempo real al llenar el campo a cedula en registroDes_V.php - cuenta_editar_V.php
     function formatoMiles(numero, id){
-        console.log("______Desde formatoMiles()______", numero + " / " + id)
+        // console.log("______Desde formatoMiles()______", numero + " / " + id)
 
         var num = numero.replace(/\./g,'')
         if(!isNaN(num) && numero.length < 11){
@@ -184,7 +186,7 @@ window.addEventListener("click", function(e){
     //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
     function mascaraTelefono(TelefonoRecibido, id){
         console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
-        
+
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 
         }
@@ -200,7 +202,27 @@ window.addEventListener("click", function(e){
             return 
         }
     }
-    
+     
+//************************************************************************************************
+    // Validar el formato de telefono
+    function validarFormatoTelefono(NroTelefono,id){
+        // console.log("______Desde validarFormatoTelefono()______",NroTelefono)
+
+        var P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+            
+        if(P_Telefono.test(NroTelefono) == true){            
+            console.log("Telefono con formato correcto");
+            return true;
+        }
+        else{
+            alert("Telefono con formato incorrecto");
+            document.getElementById(id).value = "";
+            document.getElementById(id).focus()
+            document.getElementById(id).style.backgroundColor = 'var(--Fallos)'; 
+            return false;
+        }
+    }
+
  //************************************************************************************************
     //Coloca la clase "activa" en el item seleccionado del menu 
     // function ActivarLink(id){

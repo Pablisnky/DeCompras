@@ -18,16 +18,16 @@
             </div>
             <div class="contenedor_94">
                 <P class="p_3 p_5">Inicio</P>
-                <p class="p_11">4 USD/mes</p>
+                <p class="p_11">5 USD/mes</p>
                 <ul>
-                    <li class="li_3"><p>Catalogo hasta 20 productos.</p></li>
+                    <li class="li_3"><p>Catalogo hasta 30 productos.</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>   
             </div>
             <div class="contenedor_94">
                 <P class="p_3 p_5">Básico</P>
-                <p class="p_11">8 USD/mes</p>
+                <p class="p_11">10 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Catalogo hasta 200 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
@@ -53,16 +53,16 @@
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
             </div>
-            <!-- <div class="contenedor_94">
-                <p class="p_3 p_5">Tienda</p>
-                <p class="p_11">25 USD/mes</p>
+            <div class="contenedor_94">
+                <p class="p_3 p_5">Especial</p>
+                <p class="p_11">10% de la venta</p>
                 <ul>
-                    <li class="li_3"><p>Catalogo de más de 1.500 productos</p></li>
+                    <li class="li_3"><p>Aplica a obras de arte</p></li>
+                    <li class="li_3"><p>Sin tarifa mensual de soporte</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
-                    <li class="li_3"><p>Subdominio</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
-            </div> -->
+            </div>
         </div>
         <div class="contenedor_41">
             <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>

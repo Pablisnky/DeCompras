@@ -68,7 +68,7 @@
 
                         <!-- TELEFONO -->
                         <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')"/>
+                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')"/>
                         </div>
 
                         <!-- DIRECCION -->

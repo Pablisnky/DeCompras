@@ -16,7 +16,6 @@
         // print_r($Datos);
         // echo "</pre>";
         // exit();
-
         $Contador = 1;
         foreach($Datos as $row) :
             $ID_Tienda = $row['ID_Tienda'];
@@ -38,8 +37,22 @@
                         </div>
                         <?php
                     }   ?>
-                    <div>
                         <p class="p_3"><?php echo $Nombre?></p>
+                    <div class="contenedor_17">
+                        <div>
+                            <p class="p_2 p_18">Pedidos despachados</p>
+                            <label>560</label>
+                        </div>
+                        <div>
+                            <p class="p_2 p_18">Clientes satisfechos</p>
+                            <label>98%</label>
+                        </div>
+                        <div>
+                            <p class="p_2 p_18">Disputas en curso</p>
+                            <label>3</label>
+                        </div>
+                    </div>
+                    <div>
                         <div class="contenedor_132">
                             <span class="icon-phone span_17""></span> 
                             <p class="p_2"><?php echo $Telefono?></p>

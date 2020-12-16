@@ -1,20 +1,20 @@
 <section class="section_5">
     <div class="contenedor_42">
         <h1 class="h1_1">Crea tu tienda y muestrala a toda la ciudad</h1>
-        <form action="../Registro_C/recibeRegistroCom" method="POST" name="formRegistroCom" onsubmit="return validarAfiliacionCom()">
+        <form action="../Registro_C/recibeRegistroCom" method="POST" id="FormularioCom" name="formRegistroCom" onsubmit="return validarAfiliacionCom()">
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Registro de tienda</legend> 
 
                 <!-- NOMBRE AFILIADO -->
-                <input class="placeholder borde_1" type="text" name="nombre_Afcom" id="Nombre" placeholder="Nombre del encargado" autocomplete="off" tabindex="1" onkeydown="blanquearInput('Nombre')" > 
+                <input class="placeholder borde_1" type="text" name="nombre_Afcom" id="Nombre" placeholder="Nombre del encargado" autocomplete="off" tabindex="1"/> 
 
                 <!-- CORREO AFILIADO -->
-                <input class="placeholder borde_1" type="text" name="correo_Afcom" id="CorreoAfiCom" placeholder="Correo electronico" autocomplete="off" tabindex="2" onblur="llamar_verificaCorreo(id, 'AfiCom')" onkeydown="blanquearInput('CorreoAfiCom')" onfocus="removerContenidoDiv()"/>
+                <input class="placeholder borde_1" type="text" name="correo_Afcom" id="CorreoAfiCom" placeholder="Correo electronico" autocomplete="off" tabindex="2" onblur="llamar_verificaCorreo(id, 'AfiCom')" onfocus="removerContenidoDiv()"/>
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
                 
                 <!-- NOMBRE DE LA TIENDA -->
                 <div style="width:100%; margin:auto">
-                    <input class="placeholder placeholder_4 borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la tienda" autocomplete="off" tabindex="3" onkeydown="blanquearInput('NombreTienda')">
+                    <input class="placeholder placeholder_4 borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la tienda" autocomplete="off" tabindex="3"/>
                     <input class="contador_2 contador_4" type="text" id="ContadorNombre" value="50" readonly/>
                 </div>
             </fieldset>      
@@ -22,12 +22,12 @@
                 <legend class="legend_1">Datos de accceso</legend>  
                 <div>
                     <!-- CLAVE -->
-                    <input class="placeholder borde_1" type="password" name="clave_Afcom" id="Clave" placeholder="Contraseña"  tabindex="4" onblur="llamar_verificaClave(this.value, 'AfiCom')" onkeydown="blanquearInput('Clave')">
+                    <input class="placeholder borde_1" type="password" name="clave_Afcom" id="Clave" placeholder="Contraseña"  tabindex="4" onblur="llamar_verificaClave(this.value, 'AfiCom')"/>
                     <!-- Se recibe respuesta de ajax llamar_verificaClave()-->
                     <div class="contenedor_3" id="Mostrar_verificaClave"></div>
 
                     <!-- CONFIRMAR CLAVE -->
-                    <input class="placeholder borde_1" type="password" name="confirmarClave_Afcom" id="ConfirmarClave" placeholder="Repetir contraseña" tabindex="5" onkeydown="blanquearInput('ConfirmarClave')">
+                    <input class="placeholder borde_1" type="password" name="confirmarClave_Afcom" id="ConfirmarClave" placeholder="Repetir contraseña" tabindex="5"/>
                 </div>          
             </fieldset>        
             <div class="contenedor_66">            

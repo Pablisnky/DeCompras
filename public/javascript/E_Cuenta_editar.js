@@ -18,7 +18,11 @@ document.getElementById("Cedula_Aficom").addEventListener('keyup', function(){fo
 
 document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Aficom')}, false)
 
+document.getElementById("Telefono_Aficom").addEventListener('blur', function(){validarFormatoTelefono(this.value,'Telefono_Aficom')}, false)
+
 document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
+
+document.getElementById("Telefono_Tien").addEventListener('blur', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
     
 //Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
 // document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){ 
@@ -33,9 +37,9 @@ document.getElementById("Telefono_Tien").addEventListener('keyup', function(){ma
 // }, false)
 
 if(document.getElementById("CedulaPagoMovil")){
-    document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
+    // document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
 
-    document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
+    // document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
 }
 
 //Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
@@ -43,15 +47,15 @@ ElementoPadrePagoMovil = document.getElementById("Mostrar_PagoMovil")
 document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(e){ 
     var click = e.target
     
-    let Cedulas_ClonPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
-    console.log("Cantidad de input cedulas", Cedulas_ClonPagoMovil.length)
-    for(i = 0; i < Cedulas_ClonPagoMovil.length; i++){
+    let Cedulas_PagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
+    // console.log("Cantidad de input cedulas", Cedulas_PagoMovil.length)
+    for(i = 0; i < Cedulas_PagoMovil.length; i++){
         document.getElementsByClassName('cedulaJS')[i].addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
     }
     
-    let Telefonos_ClonPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("TelefonoJS")
-    console.log("Cantidad de input telefonos", Telefonos_ClonPagoMovil.length)
-    for(i = 0; i < Telefonos_ClonPagoMovil.length; i++){
+    let Telefonos_PagoMovil = ElementoPadrePagoMovil.getElementsByClassName("TelefonoJS")
+    // console.log("Cantidad de input telefonos", Telefonos_PagoMovil.length)
+    for(i = 0; i < Telefonos_PagoMovil.length; i++){
         document.getElementsByClassName('TelefonoJS')[i].addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
     }
 }, false)
@@ -95,7 +99,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
     //Añade un nuevo input clonado del div secciones
     var incremento = 1
     function clonarSeccion(){
-        // console.log("______Desde CrearSección()______")
+        console.log("______Desde CrearSección()______")
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80A")
@@ -166,7 +170,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     //Elimina los clones de Secciones
     function PreEliminarSeccion(){
-        console.log("______Desde PreEliminarSeccion()______")
+        // console.log("______Desde PreEliminarSeccion()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -204,7 +208,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     //Elimina las cuentas de PagoMovil
     function PreEliminarPagoMovil(){
-        // console.log("______Desde PreEliminarPagoMovil()______")
+        console.log("______Desde PreEliminarPagoMovil()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -220,9 +224,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             for(var i = 0; i < len; i++){
                 button = SpanEliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
                 button.onclick = EliminarPagoMovil // Asignar la función EliminarPagoMovil() en su evento click.
-                // console.log("Boton seleccionado", SpanEliminar[i])
-
-                 
+                // console.log("Boton seleccionado", SpanEliminar[i])                 
             } 
 
             function EliminarPagoMovil(e){   
@@ -292,7 +294,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
     }
 
 //************************************************************************************************  
-//Establece el alto del fondo de la ventana modal para que sea igual a todo el contenido de la ista cuenta_editar_V.php de la tienda en curso
+    //Establece el alto del fondo de la ventana modal para que sea igual a todo el contenido de la ista cuenta_editar_V.php de la tienda en curso
     function mostrarSecciones(){
         // console.log("______Desde mostrarSecciones()______")
         //Coloca el cursor en el top de la pagina
@@ -431,6 +433,90 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
         //Se da un scroll para que el elemento con el foco no quede al fondo de la pantalla
         window.scroll(0,800)
+    }
+
+//************************************************************************************************  
+    //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
+
+    // Calcula cuantas cuentas de PagoMovil existen
+    let CuentasPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
+    // console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
+
+    var iterador = CuentasPagoMovil != 0 ? CuentasPagoMovil.length : 1
+    // console.log("Iterador =", iterador)
+    function clonarCuentaPagoMovil(){
+        console.log("______Desde clonarCuentaPagoMovil()______")
+
+        //Se verifica que no existan cuentas PagoMovil concampos sin llenar
+        for(var i = 0; i < CuentasPagoMovil.length; i++){
+            if(document.getElementsByClassName("cedulaJS")[i].value == "" || document.getElementsByClassName("BancoJS")[i].value == "" || document.getElementsByClassName("TelefonoJS")[i].value == ""){
+                alert("Aún no completa la cuenta PagoMovil")
+                return
+            }
+        }
+
+        //Contenedor a clonar 
+        let clonar = document.getElementById("Contenedor_68")
+
+        // Se crea el clon
+        let Div_clon = clonar.cloneNode(true)
+        // console.log(Div_clon)
+
+        //Se da un ID al nuevo elemento clonado
+        Div_clon.id = "ID_ClonPagoMovil_" + iterador  
+
+        iterador++
+
+        //El value de los elementos que estan dentro del nuevo clon debe estar vacio
+        Div_clon.getElementsByClassName("input_10JS")[0].value = ""
+        Div_clon.getElementsByClassName("input_10JS")[1].value = ""
+        Div_clon.getElementsByClassName("input_10JS")[2].value = ""
+        
+        //Se da un id a los elementos que estan dentro del nuevo elemento clonado
+        Div_clon.getElementsByClassName("input_10JS")[0].id = "CedulaPagoMovil_" + iterador 
+        Div_clon.getElementsByClassName("input_10JS")[1].id = "BancoPagoMovil_" + iterador  
+        Div_clon.getElementsByClassName("input_10JS")[2].id = "TelefonoPagoMovil_" + iterador 
+
+        //Se añade una clase a los elementos que estan dentro del nuevo elemento clonado
+        Div_clon.getElementsByClassName("input_10JS")[0].classList.add("Cedula_ClonPagoMovil","cedulaJS")
+        Div_clon.getElementsByClassName("input_10JS")[1].classList.add("Banco_ClonPagoMovil","BancoJS") 
+        Div_clon.getElementsByClassName("input_10JS")[2].classList.add("Telefono_ClonPagoMovil","TelefonoJS") 
+
+        //Se especifica el div padre, donde se insertará el nuevo nodo     
+        ElementoPadre = document.getElementById("Mostrar_PagoMovil")
+        
+        //Se especificael el elemento que sera la referencia para insertar el nuevo nodo
+        let Ref_Ubicacion= document.getElementById("Label_7")
+        
+        //Se especifica el div padre y la posición donde se insertará el nuevo nodo
+        ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
+    }
+
+//************************************************************************************************ 
+    //Valida los numero de cedula agregados dinamicamente
+    //La variable Verifica es debido a que la funcion validarCedula() es llaada mediante el evente Avandono
+    AnunciaAvandono = true
+    function validarCedula(id){  
+        // console.log("______Desde validarCedula()______", id + " | " + AnunciaAvandono)
+        // if(AnunciaAvandono){         
+        //     let CedulaPagoMovilDinamica = document.getElementById(id).value 
+        //     console.log(CedulaPagoMovilDinamica.length)
+        //     if(CedulaPagoMovilDinamica == ("") || CedulaPagoMovilDinamica.indexOf(" ") == 0 || CedulaPagoMovilDinamica.length > 10 || CedulaPagoMovilDinamica.length < 9){
+        //         alert ("Introduzca la cedula para pago movil")
+        //         document.getElementById(id).value = ""
+        //         setTimeout(function(){document.getElementById(id).focus();}, 1);
+        //         document.getElementById(id).style.backgroundColor = "var(--Fallos)"
+        //         document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+        //         document.getElementsByClassName("boton")[0].disabled = false
+        //         document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+        //         document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+        //         document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                
+        //         AnunciaAvandono = false
+        //         console.log(AnunciaAvandono)
+        //         return false;
+        //     }
+        // }
     }
 
 //************************************************************************************************
@@ -795,81 +881,4 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 }
             }
         }
-    }
-
-//************************************************************************************************  
-    //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
-
-    // Calcula cuantas cuentas de PagoMovil     
-    let CuentasPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
-    // console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
-
-    var iterador = CuentasPagoMovil != 0 ? CuentasPagoMovil.length : 1
-    // console.log("Iterador =", iterador)
-    function clonarCuentaPagoMovil(){
-        // console.log("______Desde nuevaCuentaPagoMovil()______")
-
-        //Contenedor a clonar 
-        let clonar = document.getElementById("Contenedor_68")
-        // console.log("Contenedor a clonar ", clonar)
-
-        //Se crea el clon
-        let Div_clon = clonar.cloneNode(true)
-        // console.log(Div_clon)
-
-        //Se da un ID al nuevo elemento clonado
-        Div_clon.id = "ID_ClonPagoMovil_" + iterador  
-
-        iterador++
-
-        //El value de los elementos que estan dentro del nuevo clon debe estar vacio
-        Div_clon.getElementsByClassName("input_10JS")[0].value = ""
-        Div_clon.getElementsByClassName("input_10JS")[1].value = ""
-        Div_clon.getElementsByClassName("input_10JS")[2].value = ""
-        
-        //Se da un id a los elementos que estan dentro del nuevo elemento clonado
-        Div_clon.getElementsByClassName("input_10JS")[0].id = "CedulaPagoMovil_" + iterador 
-        Div_clon.getElementsByClassName("input_10JS")[1].id = "BancoPagoMovil_" + iterador  
-        Div_clon.getElementsByClassName("input_10JS")[2].id = "TelefonoPagoMovil_" + iterador 
-
-        // //Se añade una clase a los elementos que estan dentro del nuevo elemento clonado
-        Div_clon.getElementsByClassName("input_10JS")[0].classList.add("Cedula_ClonPagoMovil") 
-        Div_clon.getElementsByClassName("input_10JS")[1].classList.add("Banco_ClonPagoMovil") 
-        Div_clon.getElementsByClassName("input_10JS")[2].classList.add("Telefono_ClonPagoMovil") 
-
-        // //Se especifica el div padre, donde se insertará el nuevo nodo     
-        ElementoPadre = document.getElementById("Mostrar_PagoMovil")
-        
-        //Se especificael el elemento que sera la referencia para insertar el nuevo nodo
-        let Ref_Ubicacion= document.getElementById("Label_7")
-        
-        //Se especifica el div padre y la posición donde se insertará el nuevo nodo
-        ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
-    }
-
-//************************************************************************************************ 
-    //Valida los numero de cedula agregados dinamicamente
-    //La variable Verifica es debido a que la funcion validarCedula() es llaada mediante el evente Avandono
-    AnunciaAvandono = true
-    function validarCedula(id){  
-        // console.log("______Desde validarCedula()______", id + " | " + AnunciaAvandono)
-        // if(AnunciaAvandono){         
-        //     let CedulaPagoMovilDinamica = document.getElementById(id).value 
-        //     console.log(CedulaPagoMovilDinamica.length)
-        //     if(CedulaPagoMovilDinamica == ("") || CedulaPagoMovilDinamica.indexOf(" ") == 0 || CedulaPagoMovilDinamica.length > 10 || CedulaPagoMovilDinamica.length < 9){
-        //         alert ("Introduzca la cedula para pago movil")
-        //         document.getElementById(id).value = ""
-        //         setTimeout(function(){document.getElementById(id).focus();}, 1);
-        //         document.getElementById(id).style.backgroundColor = "var(--Fallos)"
-        //         document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-        //         document.getElementsByClassName("boton")[0].disabled = false
-        //         document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-        //         document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-        //         document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                
-        //         AnunciaAvandono = false
-        //         console.log(AnunciaAvandono)
-        //         return false;
-        //     }
-        // }
     }

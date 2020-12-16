@@ -23,6 +23,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
     //$Datos viene de Cuenta_C/Editar
     foreach($Datos['datosTienda'] as $row){
         $Nombre_Tien =  $row['nombre_Tien'];
+        $Estado_Tien = $row['estado_Tien'];
+        $Municipio_Tien = $row['municipio_Tien'];
+        $Parroquia_Tien = $row['parroquia_Tien'];
         $Direccion_Tien = $row['direccion_Tien']; 
         $Telefono_Tien = $row['telefono_Tien'];
         $Slogan_Tien = $row['slogan_Tien'];
@@ -93,16 +96,40 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <label>Datos de ubicación</label>
                 <br>
                 <select class="select_2 borde_1" id="Estado_Tien" name="estado_com" onclick="SeleccionarMunicipio(this.form)">
+                    <?php
+                    if(!empty($Estado_Tien)){ ?>
+                        <option id="Option_1" selected><?php echo $Estado_Tien;?></option>
+                        <?php
+                    } 
+                    else{   ?>
                     <option id="Option_1" selected>Seleccione estado</option>
+                        <?php
+                    }  ?>
                     <option id="Option_1">Yaracuy</option>
                 </select>
 
                 <select class="select_2 borde_1" id="Municipio_Tien" name="municipio_com" onclick="SeleccionarParroquia(this.form)">
+                    <?php
+                    if(!empty($Municipio_Tien)){ ?>
+                        <option id="Option_1" selected><?php echo $Municipio_Tien;?></option>
+                        <?php
+                    } 
+                    else{   ?>
                     <option id="Option_1" selected>Seleccione municipio</option>
+                        <?php
+                    }  ?>
                 </select>
 
                 <select class="select_2 borde_1" id="Parroquia_Tien" name="parroquia_com">
+                    <?php
+                    if(!empty($Parroquia_Tien)){ ?>
+                        <option id="Option_1" selected><?php echo $Parroquia_Tien;?></option>
+                        <?php
+                    } 
+                    else{   ?>
                     <option id="Option_1" selected>Seleccione parroquia</option>
+                        <?php
+                    }  ?>
                 </select>                
 
                 <label>Dirección</label>
@@ -156,7 +183,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- div a clonar sin eventos y oculto -->
                     <div class="contenedor_80A" id="Contenedor_80A">
                         <input class="input_13 input_12 borde_1" type="text"/>
-                        <span class="icon-cancel-circle span_10 span_14_js" onclick="preEliminarSeccion('span_14_js')"></span>                           
+                        <span class="icon-cancel-circle span_10 "><span> <!--span_14_js-->
+                       
                     </div>
                     
                     <?php   
@@ -164,7 +192,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     if($Datos['secciones'] == Array ( )){  ?>
                         <div class="contenedor_80" id="Contenedor_80"><!--Contenedor_80-->
                             <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección" />
-                            <span class="icon-cancel-circle span_10 span_14_js"></span>
+                            <span class="icon-cancel-circle span_10 "></span> <!--span_14_js-->
                         </div>
                         <?php
                     }   
@@ -178,7 +206,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <div class="contenedor_80" id="Contenedor_80">
                                 <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
 
-                                <span class="icon-cancel-circle span_10 span_14_js" onclick="Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>')"></span>                           
+                                <span class="icon-cancel-circle span_10 span_14_js" onclick="Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>'); PreEliminarSeccion()"></span>
                             </div>
                             <?php
                         }   
@@ -260,18 +288,19 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div id="Mostrar_PagoMovil">
                     <!-- Entra en el IF cuando no hay cuentas de pagomovil creadas -->
                     <?php
-                    if($Datos['datosPagomovil'][0]['cedula_pagomovil'] == ''){ ?>
+                    // $Datos['datosPagomovil'][0]['cedula_pagomovil'] == ""
+                    if($Datos['datosPagomovil'] == Array ()){ ?>
                         <div class="contenedor_67 borde_1" id="Contenedor_68">
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
                             <!-- CEDULA PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
+                            <input class="input_13 input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
 
                             <!-- BANCO PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
+                            <input class="input_13 input_10JS borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
 
                             <!-- TELEFONO PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
+                            <input class="input_13 input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
                         </div>
                         <?php
                     }

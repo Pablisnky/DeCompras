@@ -27,8 +27,7 @@
             // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //CONSULTA la imagen de la tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
-            $Fotografia = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Fotografia = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
 
             //Se CONSULTAN el slogan de una tienda en particular
             $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
@@ -132,8 +131,7 @@
 
         public function Editar(){
             //CONSULTA los datos de la tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
-            $DatosTienda = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
 
             //CONSULTA los datos del responsable de la tienda
             $Consulta = $this->ConsultaCuenta_M->consultarResponsableTienda($this->ID_Afiliado);
@@ -191,7 +189,7 @@
             }
 
             $Datos = [
-                'datosTienda' => $DatosTienda, //nombre_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
                 'datosResposable' => $DatosResposable,
                 'datosBancos' => $DatosBancos,
                 'datosPagomovil' => $DatosPagoMovil,
@@ -572,21 +570,21 @@
             // **********************************************************************************
             //Se ELIMINAN todas las categorias que tiene la tienda
             $this->ConsultaCuenta_M->eliminarCategoriaTienda($this->ID_Tienda);
-
+            
             //Se consulta el ID_Categoria de las categorias seleccionadas
             $ID_Categ = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
 
             //Se INSERTA la dependenciatransitiva entre la tienda y la categoria a la que pertenece
-            $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);         
-
+            $this->ConsultaCuenta_M->insertarDT_CatTie($ID_Categ, $this->ID_Tienda);
+            
             //Se INSERTAN las secciones de la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
-            $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $Secciones);
+            $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $Secciones); 
 
             //Se CONSULTA el ID_Seccion de las secciones que tiene la tienda
             $ID_Seccion = $this->ConsultaCuenta_M->consultarTodosID_Seccion($this->ID_Tienda);
 
             //Se INSERTAN la dependencia transitiva entre las secciones y la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
-            $this->ConsultaCuenta_M->insertarDT_TieSec($this->ID_Tienda, $ID_Seccion);
+            $this->ConsultaCuenta_M->insertarDT_TieSec($this->ID_Tienda, $ID_Seccion); 
 
             //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado, el registro de la tienda fue creado cuando el afiliado creo la tienda
             $this->ConsultaCuenta_M->actualizarAfiliadoComercial($this->ID_Afiliado, $RecibeDatos);
