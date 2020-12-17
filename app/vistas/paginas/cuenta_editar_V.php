@@ -137,10 +137,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <input class="contador_2" type="text" id="ContadorDireccion" value="50"/>
             </fieldset>
 
-            <!-- SECCION CATEGORIAS --> 
-            <a id="marcador_03" class="ancla_2"></a>
+            <!-- CATEGORIAS --> 
+            <a id="Categoria" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
-                <legend class="legend_1">Categoria - Secciones</legend>
+                <legend class="legend_1">Categoria</legend>
                 <div>
                     <p class="p_12">Una categoria clasificará tu tienda en un rubro especifico, puedes seleccionar una o dos</p>
                     <?php
@@ -175,8 +175,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         } 
                     } ?>
                 </div>
+            </fieldset>
 
-                <!-- SECCIONES -->
+            <!-- SECCIONES -->
+            <a id="Secciones" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2" id="">
+                <legend class="legend_1">Secciones</legend>
                 <div id="Contenedor_79" class="contenedor_143">
                     <p class="p_12">Organiza tú tienda en secciones, y dentro de estas coloca tus productos, añade tantas como consideres necesario para que tus productos esten bien organizados. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
@@ -206,7 +210,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <div class="contenedor_80" id="Contenedor_80">
                                 <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
 
-                                <span class="icon-cancel-circle span_10 span_14_js" onclick="Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>'); PreEliminarSeccion()"></span>
+                                <span class="icon-cancel-circle span_10 span_14_js" id="<?php echo $ID_Seccion;?>" onclick="Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>')"></span>
                             </div>
                             <?php
                         }   
@@ -340,7 +344,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_83 borde_1">
                     <a class="marcador" href="#marcador_01">Persona responsable</a>
                     <a class="marcador" href="#marcador_02">Datos de tienda</a>
-                    <a class="marcador" href="#marcador_03">Categoria - Secciones</a>
+                    <a class="marcador" href="#Categoria">Categoria</a>
+                    <a class="marcador" href="#Secciones">Secciones</a>
                     <!-- <a class="marcador" href="#marcador_04">Ofertas</a> -->
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas bancarias</a>

@@ -81,8 +81,10 @@
             catch(Exception $e){
                 $this->ConsultaRegistro_M->rollback();
             }
+            
+            // ****************************************
 
-            //Se envia al correo pcabeza7@gmail.com el mensaje que el usaurio a dejado
+            //Se envia al correo pcabeza7@gmail.com la notificación de nuevo cliente registrado
             $email_to = 'pcabeza7@gmail.com';
             $email_subject = 'Nueva tienda en PedidoRemoto';  
             $email_message = 'Tienda afiliada' . ' ' . $RecibeDatos['Nombre_tienda'];
@@ -93,6 +95,8 @@
             'X-Mailer: PHP/' . phpversion();
 
             mail($email_to, $email_subject, $email_message, $headers); 
+
+            // ****************************************
 
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
             redireccionar("/Login_C/index/CNE");

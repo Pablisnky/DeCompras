@@ -18,11 +18,11 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
 //************************************************************************************************
     //Escucha por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
     document.querySelector('body').addEventListener('click',function(event){  
-    // console.log("______Desde función anonima()______")  
-    if(event.target.id == 'Span_5'){
-        CerrarModal_X('MostrarSeccion')
-    }
-}, false);
+        // console.log("______Desde función anonima()______")  
+        if(event.target.id == 'Span_5'){
+            CerrarModal_X('MostrarSeccion')
+        }
+    }, false);
 
 //************************************************************************************************
     //Llamada desde cuenta_publicar_V.php

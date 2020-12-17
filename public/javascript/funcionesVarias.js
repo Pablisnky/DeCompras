@@ -1,11 +1,14 @@
-document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacion_PWA, false)
+    //Si en la página existe el footer 
+    if(document.getElementById('Aplicacion_PWA')){
+        document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacion_PWA, false)
+    }
 
 //************************************************************************************************
-//obtiendo informacion del DOM para identificar el elemento donde se hizo click 
-window.addEventListener("click", function(e){   
-    var click = e.target
-   console.log("Se hizo click en: ", click)
-}, false)
+    //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
+    window.addEventListener("click", function(e){   
+        var click = e.target
+    console.log("Se hizo click en: ", click)
+    }, false)
 
 //************************************************************************************************
    //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
@@ -22,7 +25,7 @@ window.addEventListener("click", function(e){
             div.style.marginLeft = "-60%"
             B.style.display = "none"
             //Se detiene la propagación de los eventos en caso de hacer click en un elemento que contenga algun evento
-            event.stopPropagation();
+            e.stopPropagation();
         }
     }, true)
 
@@ -206,7 +209,7 @@ window.addEventListener("click", function(e){
 //************************************************************************************************
     // Validar el formato de telefono
     function validarFormatoTelefono(NroTelefono,id){
-        // console.log("______Desde validarFormatoTelefono()______",NroTelefono)
+        console.log("______Desde validarFormatoTelefono()______",NroTelefono)
 
         var P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
             

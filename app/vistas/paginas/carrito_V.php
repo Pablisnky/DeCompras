@@ -108,11 +108,15 @@
                                                 
                         <!-- PAGO TRANSFERENCIA -->
                         <div class="contenedor_60" id="Contenedor_60a">
+                            <p>(Pedidos realizados desde zona metropolitana de su ciudad)</p>
                             <ul class="ul_1">
                                 <li class="li_1">Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</li>
-                                <li class="li_1">Transferencias de otros bancos dejan el despacho en espera 24 horas, una vez confirmado se le notificara al despachador para que realize la entrega.</li>
-                            </ul>
-                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
+                                <li class="li_1">Transferencias realizadas de otros bancos habilitan el despacho pasada 48 horas.</li>
+                            </ul>                            
+                            <p>(Pedidos realizados desde otra ciudad)</p>
+                            <ul class="ul_1">
+                                <li class="li_1">Despachos enviados via Zoom</li>
+                            </ul>            
                             <?php
                                 // $Datos viene de Carrito_C/index
                                 // echo "<pre>";
@@ -141,22 +145,21 @@
                                     <?php
                                 endforeach;
                             ?>
+
+                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
                         </div>
 
                         <!-- PAGOMOVIL -->
                         <div class="contenedor_60" id="Contenedor_60b">
-                            <p>(Despachos en zona metropolitana de su ciudad)</p>
+                            <p>(Pedidos realizados desde zona metropolitana de su ciudad)</p>
                             <ul class="ul_1">
-                                <li class="li_1">Transferencias realizadas del mismo banco habilitan el despacho inmediatamente</li>
-                                <li class="li_1">Transferencias de otros bancos dejan el despacho en espera 24 horas</li>
+                                <li class="li_1">Despachos inmediatos</li>
                             </ul>                            
-                            <p>(Despachos a nivel nacional)</p>
+                            <p>(Pedidos realizados desde otra ciudad)</p>
                             <ul class="ul_1">
-                                <li class="li_1">.</li>
-                                <li class="li_1">.</li>
-                            </ul>  
-
-                            <input class="placeholder input_11 ocultar" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil" onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
+                                <li class="li_1">Despachos enviados via Zoom</li>
+                            </ul>   
+                            
                             <?php
                                 // // $Datos viene de Carrito_C/index
                                 // echo "<pre>";
@@ -182,6 +185,8 @@
                                     <?php
                                 endforeach;
                             ?>
+
+                            <input class="placeholder input_11 ocultar" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil" onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
                         </div>
 
                         <!-- PAGO EN DESTINO -->

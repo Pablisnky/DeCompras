@@ -3,16 +3,27 @@ window.addEventListener('load', function(){autofocus('Nombre')}, false)
 document.getElementById("NombreTienda").addEventListener('keydown', function(){contarCaracteres('ContadorNombre','NombreTienda', 50)}, false)
 
 document.getElementById("NombreTienda").addEventListener('keydown', function(){valida_LongitudDes(50,'NombreTienda')}, false)
+    
+//Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
+document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
+    console.log("______Desde función anonima()______")   
+    if(e.target.tagName == "INPUT"){
+        var ID_Input = e.target.id
+        console.log(ID_Input)
+        
+        document.getElementById(ID_Input).addEventListener('keyup', function(){blanquearInput(ID_Input)}, false)
+    } 
+}, false)
 
-document.getElementById("Nombre").addEventListener('keydown', function(){blanquearInput("Nombre")}, false)
+// document.getElementById("Nombre").addEventListener('keydown', function(){blanquearInput("Nombre")}, false)
 
-document.getElementById("CorreoAfiCom").addEventListener('keydown', function(){blanquearInput("CorreoAfiCom")}, false)
+// document.getElementById("CorreoAfiCom").addEventListener('keydown', function(){blanquearInput("CorreoAfiCom")}, false)
 
-document.getElementById("NombreTienda").addEventListener('keydown', function(){blanquearInput("NombreTienda")}, false)
+// document.getElementById("NombreTienda").addEventListener('keydown', function(){blanquearInput("NombreTienda")}, false)
 
-document.getElementById("Clave").addEventListener('keydown', function(){blanquearInput("Clave")}, false)
+// document.getElementById("Clave").addEventListener('keydown', function(){blanquearInput("Clave")}, false)
 
-document.getElementById("ConfirmarClave").addEventListener('keydown', function(){blanquearInput("ConfirmarClave")}, false)
+// document.getElementById("ConfirmarClave").addEventListener('keydown', function(){blanquearInput("ConfirmarClave")}, false)
 
 //************************************************************************************************
     //Validar el formulario de afiliación de comerciante

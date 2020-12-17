@@ -99,8 +99,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             endforeach;     ?>  
         </div>
     </section>
-    
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_productos.js';?>"></script>   
+       
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script>
 
     <?php

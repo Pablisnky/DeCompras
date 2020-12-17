@@ -120,6 +120,22 @@
 
                 //Se INSERTAN los datos del usuario en la BD
                 $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Aleatorio);
+                
+                // ****************************************
+
+                //Se envia al correo pcabeza7@gmail.com y al correo del cliente la notificación de nuevo pedido
+                $email_to = 'pcabeza7@gmail.com';
+                $email_subject = 'Pedido para' . 'NOMBRE TIENDA';  
+                $email_message = 'Descripción del pedido';
+                $headers = 'From: ' . 'master@pedidoremoto.com' . '\r\n'.
+
+                'Reply-To: ' . 'master@pedidoremoto.com' . '\r\n' .
+
+                'X-Mailer: PHP/' . phpversion();
+
+                mail($email_to, $email_subject, $email_message, $headers); 
+
+                // ****************************************
 
                 $this->vista("inc/header");
                 $this->vista("paginas/RecibePedido_V");

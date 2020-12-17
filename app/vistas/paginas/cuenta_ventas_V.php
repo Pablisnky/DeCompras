@@ -12,6 +12,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
         </div>
       </section>        
 
+      <section>
+          <p>Clientes satisfechos</p>
+          <p>Pedidos despachados</p>
+          <p>Disputas en curso</p>
+      </section>
+
     <!--div alimentado desde Ventas_Ajax_V.php con el grafico de ventas -->    
     <div id="Contenedor_80"></div>
 

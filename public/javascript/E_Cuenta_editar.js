@@ -18,23 +18,55 @@ document.getElementById("Cedula_Aficom").addEventListener('keyup', function(){fo
 
 document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Aficom')}, false)
 
-document.getElementById("Telefono_Aficom").addEventListener('blur', function(){validarFormatoTelefono(this.value,'Telefono_Aficom')}, false)
+document.getElementById("Telefono_Aficom").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Aficom')}, false)
 
 document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
 
-document.getElementById("Telefono_Tien").addEventListener('blur', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
+document.getElementById("Telefono_Tien").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
     
 //Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
-// document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){ 
-//     var input = e.target
+document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
+    // console.log("______Desde funcion anonima que aplica listerner a elementos tipo input de PagoMovil______")
+    if(e.target.tagName == "INPUT"){
+        var ID_Input = e.target.id
+        
+        document.getElementById(ID_Input).addEventListener('keyup', function(){blanquearInput(ID_Input)}, false)
+    } 
+}, false)
     
-//     ElementoPadreInputs = document.getElementsByTagName("body")[0]
-//     CantidadElementosInput = ElementoPadreInputs.getElementsByTagName("input").length
+//Por medio de delegación de eventos se detecta la sección a eliminar
+window.addEventListener('click', function(e){
+    // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
 
-//     for(i = 0; i < CantidadElementosInput; i++){
-//         ElementoPadreInputs.getElementsByTagName("input")[i].addEventListener('keydown', function(){blanquearInput(input.id)}, false) 
-//     }
-// }, false)
+    var ElementoSeleccionado = e.target.id
+    console.log(ElementoSeleccionado)
+
+    if(e.target.classList[2] == "span_14_js"){
+        let ConfirmaEliminar = confirm("Se eliminaran todos los productos de esta sección")
+        if(ConfirmaEliminar == true){
+            
+            //Contenedor padre de secciones
+            let PadreSecciones = document.getElementById("Contenedor_79")
+
+            //Si hay más de una sección la elimina, si solo hay una borrar el contenido del input
+            if(PadreSecciones.childElementCount > 4){
+            
+                // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
+                current = e.target.parentElement
+                // console.log("div a eliminar", current)
+                
+                //Se busca el nodo padre que contiene el elemento current
+                let elementoPadre = current.parentElement
+                
+                //Se elimina la sección
+                elementoPadre.removeChild(current);
+            }
+            else{
+                document.getElementById("Seccion").value = ""
+            }
+        }  
+    }  
+}, false)
 
 if(document.getElementById("CedulaPagoMovil")){
     // document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
@@ -44,7 +76,8 @@ if(document.getElementById("CedulaPagoMovil")){
 
 //Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
 ElementoPadrePagoMovil = document.getElementById("Mostrar_PagoMovil")
-document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(e){ 
+document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', function(e){ 
+    // console.log("______Desde funcion anonima que aplica listerner a input de PagoMovil______")
     var click = e.target
     
     let Cedulas_PagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
@@ -62,7 +95,7 @@ document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(
 
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función PreEliminarPagoMovil, PreEliminarSeccion y PreEliminarCuentaBanco
-document.addEventListener("DOMContentLoaded", PreEliminarSeccion)
+// document.addEventListener("DOMContentLoaded", PreEliminarSeccion)
 document.addEventListener("DOMContentLoaded", PreEliminarCuentaBanco)
 document.addEventListener("DOMContentLoaded", PreEliminarPagoMovil) 
 document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('ContenidoSlo','ContadorSlo')}, false)    
@@ -169,46 +202,48 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
 //************************************************************************************************ 
     //Elimina los clones de Secciones
-    function PreEliminarSeccion(){
-        // console.log("______Desde PreEliminarSeccion()______")
+    function PreEliminarSeccion(e){
+        // console.log("______Desde PreEliminarSeccion()______", e)
 
-        // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
+        // // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
-        // if(ConfirmaEleminar == true){
-            //Detectar el boton eliminar al cual se hizo click
-            var SpanEliminar = document.getElementsByClassName('span_14_js')//Se obtienen los botones Eliminar
-            // console.log(SpanEliminar) 
+        // // if(ConfirmaEleminar == true){
+        //     //Detectar el boton eliminar al cual se hizo click
+        //     var SpanEliminar = document.getElementsByClassName('span_14_js')//Se obtienen los botones Eliminar 
+        //     var ID_Input = e.target.id
+        //     console.log(ID_Input)
+        
 
-            var len = SpanEliminar.length//Se cuentan cuantos botones Eliminar hay 
-            // console.log("Cantidad de botones \"Eliminar\"", len) 
+        //     var len = SpanEliminar.length//Se cuentan cuantos botones Eliminar hay 
+        //     // console.log("Cantidad de botones \"Eliminar\"", len) 
 
-            var button
-            for(var i = 0; i < len; i++){
-                button = SpanEliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
-                button.onclick = EliminarSeccion // Asignar la función EliminarSeccion() en su evento click.
-                // console.log("______Boton seleccionado______", SpanEliminar[i]) 
-            } 
+        //     var button
+        //     for(var i = 0; i < len; i++){
+        //         button = SpanEliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
+        //         button.onclick = EliminarSeccion // Asignar la función EliminarSeccion() en su evento click.
+        //         // console.log("______Boton seleccionado______", SpanEliminar[i]) 
+        //     } 
 
-            function EliminarSeccion(e){   
-                // console.log("______Desde EliminarSeccion()______") 
+            // function EliminarSeccion(e){   
+            //     // console.log("______Desde EliminarSeccion()______") 
 
-                //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-                current = e.target.parentElement
-                // console.log("div a eliminar", current)
+            //     //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
+            //     current = e.target.parentElement
+            //     // console.log("div a eliminar", current)
                 
-                //Se busca el nodo padre que contiene el elemento current
-                let elementoPadre = current.parentElement
+            //     //Se busca el nodo padre que contiene el elemento current
+            //     let elementoPadre = current.parentElement
                 
-                //Se elimina la sección
-                elementoPadre.removeChild(current);  
-            }  
+            //     //Se elimina la sección
+            //     elementoPadre.removeChild(current);  
+            // }  
         // }          
     }
 
 //************************************************************************************************ 
     //Elimina las cuentas de PagoMovil
     function PreEliminarPagoMovil(){
-        console.log("______Desde PreEliminarPagoMovil()______")
+        // console.log("______Desde PreEliminarPagoMovil()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -233,8 +268,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 let Eliminar_CuentaPagoMovil = document.getElementsByClassName('span_15_js')
                 // console.log("Cantidad de iconos eliminar", Eliminar_CuentaPagoMovil.length) 
                 
-                if(Eliminar_CuentaPagoMovil.length == 1){     
-                    console.log("ENTRA EN EL IF")                   
+                if(Eliminar_CuentaPagoMovil.length == 1){            
                     document.getElementsByClassName("cedulaJS")[0].value = ""
                     document.getElementsByClassName("BancoJS")[0].value = ""
                     document.getElementsByClassName("TelefonoJS")[0].value = ""
@@ -427,12 +461,17 @@ document.getElementById("Label_1").addEventListener('click', function(){
         document.getElementById(id).style.display = "none"
         document.getElementsByClassName("imput_6js")[0].focus()  
         
-        //Se consulta cuanto scroll vertical tiene el elemento con id = "Input_6js" el numero indica la posición vertical en fondo del viewport
+        //Se consulta cuanto scroll vertical tiene el elemento con id = "Input_6js" el numero indica la posición vertical desde el top del viewport
         // console.log("Vertical: ", window.scrollY);
         // window.scrollY arrojo 399 de scroll vertical para el elemento id = "Input_6js"
+        // window.onscroll = function(){
+        //     console.log("Vertical: " + window.scrollY);
+        //     console.log("Horizontal: " + window.scrollX);
+          
+        //   };
 
         //Se da un scroll para que el elemento con el foco no quede al fondo de la pantalla
-        window.scroll(0,800)
+        window.scroll(0,1100)
     }
 
 //************************************************************************************************  
@@ -445,7 +484,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
     var iterador = CuentasPagoMovil != 0 ? CuentasPagoMovil.length : 1
     // console.log("Iterador =", iterador)
     function clonarCuentaPagoMovil(){
-        console.log("______Desde clonarCuentaPagoMovil()______")
+        // console.log("______Desde clonarCuentaPagoMovil()______")
 
         //Se verifica que no existan cuentas PagoMovil concampos sin llenar
         for(var i = 0; i < CuentasPagoMovil.length; i++){
@@ -748,7 +787,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         }
         // Valida datos BANCO TRANSFERENCIA
         if(Nombre_Banco != "" || Titular_Banco != "" || NroCuenta_Banco != "" || RIF_Banco != ""){
-            if(Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 20){
+            if(Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 40){
                 alert ("Necesita introducir el nombre del banco")
                 document.getElementById("Nombre_Banco").value = ""
                 document.getElementById("Nombre_Banco").focus()
@@ -760,7 +799,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 document.getElementsByClassName("boton")[0].classList.remove('borde_1')
                 return false;
             }
-            else if(Titular_Banco == "" || Titular_Banco.indexOf(" ") == 0 || Titular_Banco.length > 20){
+            else if(Titular_Banco == "" || Titular_Banco.indexOf(" ") == 0 || Titular_Banco.length > 40){
                 alert ("Necesita introducir el titular de la cuenta bancaria")
                 document.getElementById("Titular_Banco").value = ""
                 document.getElementById("Titular_Banco").focus()

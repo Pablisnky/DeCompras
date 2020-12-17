@@ -40,12 +40,12 @@
                         <p class="p_3"><?php echo $Nombre?></p>
                     <div class="contenedor_17">
                         <div>
-                            <p class="p_2 p_18">Pedidos despachados</p>
-                            <label>560</label>
-                        </div>
-                        <div>
                             <p class="p_2 p_18">Clientes satisfechos</p>
                             <label>98%</label>
+                        </div>
+                        <div>
+                            <p class="p_2 p_18">Pedidos despachados</p>
+                            <label>560</label>
                         </div>
                         <div>
                             <p class="p_2 p_18">Disputas en curso</p>

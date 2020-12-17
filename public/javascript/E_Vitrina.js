@@ -978,7 +978,7 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Direccion =="" || Direccion.indexOf(" ") == 0 || Direccion.length > 20){
+        else if(Direccion =="" || Direccion.indexOf(" ") == 0 || Direccion.length > 200){
             alert ("Direccion invalida");
             document.getElementById("DireccionUsuario").value = "";
             document.getElementById("DireccionUsuario").focus();
@@ -1039,14 +1039,14 @@ console.log(AlCarro)
     function valida_LongitudTelefono(){ 
         // console.log("______Desde valida_LongitudTelefono()______")
 
-        let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
+        // let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
 
-        if(num_caracteres_input > 13){ 
-            document.getElementById("TelefonoUsuario").value = contenidoTelefono; 
-        }
-        else{ 
-            contenidoTelefono = document.getElementById("TelefonoUsuario").value;   
-        } 
+        // if(num_caracteres_input > 13){ 
+        //     document.getElementById("TelefonoUsuario").value = contenidoTelefono; 
+        // }
+        // else{ 
+        //     contenidoTelefono = document.getElementById("TelefonoUsuario").value;   
+        // } 
     } 
 
 //************************************************************************************************
@@ -1124,6 +1124,13 @@ console.log(AlCarro)
             document.getElementById(id).value = ""
         }
     }
+   
+//************************************************************************************************
+    //Quita el color de fallo en un input y lo deja en su color original
+    function blanquearInput(id){        
+        // console.log("______Desde blanquearInput()______", id)
+        document.getElementById(id).style.backgroundColor = "white"
+    }
     
  //************************************************************************************************
     //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
@@ -1141,13 +1148,6 @@ console.log(AlCarro)
         }
     }
 
-//************************************************************************************************
-    //Quita el color de fallo en un input y lo deja en su color original
-    function blanquearInput(id){        
-        // console.log("______Desde blanquearInput()______", id)
-        document.getElementById(id).style.backgroundColor = "white"
-    }
-   
 //************************************************************************************************
     // Validar el formato de telefono
     function validarFormatoTelefono(NroTelefono,id){

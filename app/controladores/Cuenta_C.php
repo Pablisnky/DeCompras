@@ -44,7 +44,6 @@
 
         public function Despachador(){
             $this->vista("paginas/cuenta_despachador_V");
-
         }
 
         //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - Cuenta_C/recibeProductoPublicar - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
@@ -258,8 +257,7 @@
             }
             else{
                 //CONSULTA las categorias en las que una tienda se ha postulado
-                $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
-                $Categorias = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Categorias = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
 
                 //CONSULTA las secciones que tiene una tienda
                 $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
@@ -609,8 +607,7 @@
             $Categorias = $this->ConsultaCuenta_M->consultarCatgorias();
 
             //CONSULTA las categorias en las que una tienda se ha postulado
-            $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
-            $CategoriasTienda = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $CategoriasTienda = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
 
             $Datos = [
                 'categorias' => $Categorias,

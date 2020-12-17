@@ -3,7 +3,7 @@
     <div class="contenedor_24 contenedor_118">   
         <div class="contenedor_102">
             <h1 class="h1_1 h1_3">Selecciona una o dos categorias.</h1>   
-            <span class="span_5" onclick="CerrarCategoria('Mostrar_Categorias')">X</span><!--id="Span_5"-->
+            <span class="span_5" onclick="CerrarCategoria('Mostrar_Categorias')">X</span>
         </div>          
         <form >
             <div class="contenedor_76">
