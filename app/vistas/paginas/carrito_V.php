@@ -97,7 +97,7 @@
                 <div class="contenedor_62">
                     <h1 class="h1_1">Formas de pago</h1>
                     <div class="contenedor_65">
-                        <input type="radio" name="pago" id="Transferencia" value="Transferencia" onclick="verTransferenciaBancaria()">
+                        <input type="radio" name="pago" id="Transferencia" value="Transferencia" onclick="verTransferenciaBancaria()" checked>
                         <label class="label_12" for="Transferencia">Transferencia bancaria</label>
                         <br class="br_2"/>
                         <input type="radio" name="pago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()">
@@ -146,7 +146,7 @@
                                 endforeach;
                             ?>
 
-                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
+                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')" value="erfdrfd"/>
                         </div>
 
                         <!-- PAGOMOVIL -->

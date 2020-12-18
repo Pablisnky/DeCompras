@@ -61,7 +61,7 @@
     <div class='contenedor_146' id="Contactenos"><!--El id esta siendo utilizado coo ancla del menu principal-->   
         <h1 class="h1_1">Contactenos.</h1>
         <br>
-        <form action="../../Menu_C/recibeContactenos/" method="POST" onsubmit="return validarContactenos()" id="">
+        <form action="../../Menu_C/recibeContactenos/" method="POST" onsubmit="return validarContactenos()">
             <div class="contenedor_151">
                 <!-- NOMBRE -->
                 <input class="placeholder borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>

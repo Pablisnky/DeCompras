@@ -6,6 +6,10 @@ document.querySelector('#Asunto').addEventListener('keydown', function(){autosiz
 
 document.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, false)
 
+document.getElementById("TelefonoUsuario").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoUsuario')}, false)
+
+document.getElementById("TelefonoUsuario").addEventListener('change', function(){validarFormatoTelefono(this.value,'TelefonoUsuario')}, false)
+
 document.getElementById("Asunto").addEventListener('keydown', function(){blanquearInput('Asunto')}, false)
  
 //************************************************************************************************
@@ -42,8 +46,8 @@ document.getElementById("Asunto").addEventListener('keydown', function(){blanque
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Telefono == "" || Telefono.indexOf(" ") == 0 || Telefono.length > 14 || (isNaN(Telefono))){
-            alert ("Necesita introducir su Telefono")
+        else if(Telefono == "" || Telefono.indexOf(" ") == 0 || Telefono.length > 14){
+            alert ("Número de Telefono invalido")
             document.getElementById("TelefonoUsuario").value = ""
             document.getElementById("TelefonoUsuario").focus()
             document.getElementById("TelefonoUsuario").style.backgroundColor = "var(--Fallos)"

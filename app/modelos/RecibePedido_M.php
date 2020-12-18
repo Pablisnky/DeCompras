@@ -50,6 +50,39 @@
             $stmt->bindParam(':CODIGO_PAGO', $RecibeDatosPedido['CodigoPago']);
             
             //Se ejecuta la inserción de los datos en la tabla
-            $stmt->execute();
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        // SELECT del pedido realizado
+        function consultarPedido($Aleatorio){                    
+            $stmt = $this->dbh->prepare("SELECT seccion, producto, cantidad, opcion, precio, total, codigoPago, fecha, hora FROM pedidos WHERE Aleatorio = :ALEATORIO");
+            
+            $stmt->bindValue(':ALEATORIO', $Aleatorio, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        // SELECT del pedido realizado
+        function consultarUsuario($Aleatorio){                    
+            $stmt = $this->dbh->prepare("SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, direccion_usu FROM usuarios WHERE ID_Pedido = :ALEATORIO");
+            
+            $stmt->bindValue(':ALEATORIO', $Aleatorio, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }        
         }
     }

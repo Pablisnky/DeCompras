@@ -79,14 +79,14 @@
                             $Precio = $Value['Precio'];
                             $Total = $Value['Total'];
                             
-                            //Se INSERTAN los datos del pedido en la BD
+                            //Se INSERTAN los datos del pedido en la BD y retorna el ID_Pedido generado
                             $this->ConsultaRecibePedido_M->insertarPedido($Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total, $Aleatorio, $RecibeDatosPedido);
                         }
                     else{
                         echo "Hubo un error en la entrega de los datos del pedido";
                         echo "<br>";
                     }
-
+                    
                     //Este switch solo se utiliza para comprobar el json
                     // switch(json_last_error()) {
                     //     case JSON_ERROR_NONE:
@@ -122,18 +122,150 @@
                 $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Aleatorio);
                 
                 // ****************************************
+                //Se CONSULTA el pedido recien ingresado a la BD
+                $Pedido = $this->ConsultaRecibePedido_M->consultarPedido($Aleatorio);
+                
+                //Se CONSULTA el usuario que realizó el pedido
+                $Usuario = $this->ConsultaRecibePedido_M->consultarUsuario($Aleatorio);
 
-                //Se envia al correo pcabeza7@gmail.com y al correo del cliente la notificación de nuevo pedido
-                $email_to = 'pcabeza7@gmail.com';
-                $email_subject = 'Pedido para' . 'NOMBRE TIENDA';  
-                $email_message = 'Descripción del pedido';
-                $headers = 'From: ' . 'master@pedidoremoto.com' . '\r\n'.
+                // echo '<pre>';
+                // print_r($Pedido);
+                // echo '</pre>';
+                // exit;
+                           
+                function limpiarAsunto($email_subject){
+                    $cadena = "Subject";
+                    $longitud = strlen($cadena) + 2;
+                    return substr(
+                        iconv_mime_encode(
+                            $cadena,
+                            $email_subject,
+                            [
+                                "input-charset" => "UTF-8",
+                                "output-charset" => "UTF-8",
+                            ]
+                        ),
+                        $longitud
+                    );
+                }
 
-                'Reply-To: ' . 'master@pedidoremoto.com' . '\r\n' .
+                $email_subject = limpiarAsunto("Nuevo pedido para Las Empanadas de Pablo");
+                $email_to = "pcabeza7@gmail.com";
 
-                'X-Mailer: PHP/' . phpversion();
+                $headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html; charset=UTF-8" . "\r\n";
+                $headers .= 'From: Usuario_PedidoRemoto<contacto@pedidoremoto.com>' . "\r\n";
+                
+               
+                $email_message = 
+                '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                    <html xmlns="http://www.w3.org/1999/xhtml">
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <title>Este es un mensaje</title>
+                    <style type="text/css">
+                        caption{
+                            background-color: blue;
+                            font-size: 0.7em;
+                        }
+                        h1{
+                            color: #8bc34a;
+                        }
+                        p{
+                            font-size: 1rem;
+                        }
+                        img{
+                            width: 10rem;
+                            height: 10rem;
+                        }
+                        th{
+                            background-color: orange;
+                            width: 100px;
+                        }
+                        td{
+                            width: 70px;
+                        }
+                    </style>
+                </head>
+                <body>
+                <h1>Orden de compra</h1>
+                <p>Verifica en tu cuenta bancaria el numero de referencia de pago suministrado en la orden de compra</p>
+                
+                <!-- <p>Tambi&eacute;n se pueden poner links: <a href="https://parzibyte.me/blog">parzibyte.me</a>,cosas como <strong>negritas</strong> o <code>c&oacute;digo</code>. Es decir, cualquier cosa que tenga que ver con HTML puede enviarse en los correos.</p>-->
+                ' .
+                
+                $email_message = "<h2>Datos de la compra</h2>";
+                $email_message .= "<table>";
+                $email_message .= "<caption>Productos comprados</caption>";
+                $email_message .= "<thead>";
+                $email_message .= "<th>FECHA</th>";
+                $email_message .= "<th>HORA</th>"; 
+                $email_message .= "<th>FORMA DE PAGO</th>"; 
+                $email_message .= "<th>Nº TRANSACCIÓN</th>"; 
+                $email_message .= "<th>TOTAL PAGADO</th>"; 
+                $email_message .= "</thead>";
+                    foreach($Pedido as $arr){
+                        $email_message .= "<tr>";
+                        $email_message .= "<td>" . $arr["cantidad"] . "</td>";
+                        $email_message .= "<td>" . $arr["producto"] . "</td>";
+                        $email_message .= "<td>" . $arr["opcion"] . "</td>";
+                        $email_message .= "<td>" . $arr["precio"] . "</td>";
+                        $email_message .= "<td>" . $arr["total"] . "</td>";
+                        $email_message .= "</tr>";
+                    }
+                $email_message .= "</table>";
+                $email_message .= "<hr>";
+                
+                $email_message .= "<h2>Datos del pedido</h2>";
+                $email_message .= "<table>";
+                $email_message .= "<caption>Productos comprados</caption>";
+                $email_message .= "<thead>";
+                $email_message .= "<th>CANTIDAD</th>";
+                $email_message .= "<th>PRODUCTO</th>"; 
+                $email_message .= "<th>ESPECIFICACIONES</th>"; 
+                $email_message .= "<th>PRECIO UNITARIO</th>"; 
+                $email_message .= "<th>TOTAL</th>"; 
+                $email_message .= "</thead>";
+                    foreach($Pedido as $arr){
+                        $email_message .= "<tr>";
+                        $email_message .= "<td>" . $arr["cantidad"] . "</td>";
+                        $email_message .= "<td>" . $arr["producto"] . "</td>";
+                        $email_message .= "<td>" . $arr["opcion"] . "</td>";
+                        $email_message .= "<td>" . $arr["precio"] . "</td>";
+                        $email_message .= "<td>" . $arr["total"] . "</td>";
+                        $email_message .= "</tr>";
+                    }
+                $email_message .= "</table>";                
+                $email_message .= "<hr>";
 
-                mail($email_to, $email_subject, $email_message, $headers); 
+                $email_message .= "<h2>Datos de despacho</h2>";
+                $email_message .= "<table>";
+                $email_message .= "<caption>Usuario destinatario</caption>";
+                $email_message .= "<thead>";
+                $email_message .= "<th>NOMBRE</th>";
+                $email_message .= "<th>APELLIDO</th>"; 
+                $email_message .= "<th>CEDULA</th>"; 
+                $email_message .= "<th>TELEFONO</th>"; 
+                $email_message .= "<th>DIRECCIÓN</th>"; 
+                $email_message .= "</thead>";
+                    foreach($Usuario as $Arr){
+                        $email_message .= "<tr>";
+                        $email_message .= "<td>" . $Arr["nombre_usu"] . "</td>";
+                        $email_message .= "<td>" . $Arr["apellido_usu"] . "</td>";
+                        $email_message .= "<td>" . $Arr["cedula_usu"] . "</td>";
+                        $email_message .= "<td>" . $Arr["telefono_usu"] . "</td>";
+                        $email_message .= "<td>" . $Arr["direccion_usu"] . "</td>";
+                        $email_message .= "</tr>";
+                    }
+                $email_message .= "</table>";
+
+                $email_message .= "<img style='width: 10rem; height: 10rem;' src='https://pedidoremoto.com/public/images/logo.png'>";
+                // </body>' .
+
+                $email_message = wordwrap($email_message, 70, "\r\n");
+                mail($email_to, $email_subject, $email_message, $headers);
 
                 // ****************************************
 

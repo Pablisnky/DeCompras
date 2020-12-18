@@ -52,18 +52,18 @@
             // print_r($RecibeDatos);
             // echo "</pre>";
             // exit();
+            
+            // // ****************************************
 
             //Se envia al correo pcabeza7@gmail.com el mensaje que el usaurio a dejado
-            $email_to = "pcabeza7@gmail.com";
-            $email_subject = "Mensaje de usuario de PedidoRemoto";  
+            $email_to = 'pcabeza7@gmail.com';
+            $email_subject = 'Mensaje desde contactenos';  
             $email_message = $RecibeDatos['Asunto'];
-            $headers = 'From: ' . $RecibeDatos['Correo'] . "\r\n".
-
-            'Reply-To: ' . $RecibeDatos['Correo'] . "\r\n" .
-
-            'X-Mailer: PHP/' . phpversion();
+            $headers = 'From: ' . $RecibeDatos['Correo'];
 
             mail($email_to, $email_subject, $email_message, $headers); 
+
+            // ****************************************
 
             $this->vista("inc/header");
             $this->vista("paginas/quienesSomos_V");
