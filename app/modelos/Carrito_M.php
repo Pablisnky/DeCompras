@@ -1,14 +1,12 @@
 <?php
-    // require_once(RUTA_APP . "/clases/Conexion_BD.php");
-
     class Carrito_M extends Conexion_BD{
 
         public function __construct(){ 
             parent::__construct();  
         }
         
+        //SELECT con los datos de cuentas bancarias
         public function consultarCtaBanco($ID_Tienda){
-            //SELECT con las opciones y el precio del pedido
             $stmt = $this->dbh->prepare("SELECT bancoNombre, bancoCuenta, bancoTitular, bancoRif FROM bancos WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
@@ -20,9 +18,9 @@
                 return false;
             }
         }
-        
+    
+        //SELECT con los datos para realizar PagoMovil
         public function consultarPagoMovil($ID_Tienda){
-            //SELECT con los datos para realizar PagoMovil
             $stmt = $this->dbh->prepare("SELECT cedula_pagomovil, banco_pagomovil, telefono_pagomovil FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
@@ -35,8 +33,8 @@
             }
         }
 
+        //SELECT con el monto total del pedido
         public function consultarMontoTotal($PedidoCarrito){
-            //SELECT con el monto total del pedido
             $stmt = $this->dbh->prepare("SELECT SUM(precio) As total FROM opciones WHERE ID_Opcion IN ($PedidoCarrito)");    
             // $stmt->bindParam(':ID_Opcion', $PedidoCarrito, PDO::PARAM_STR);
             if($stmt->execute()){

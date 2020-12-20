@@ -39,7 +39,7 @@ window.addEventListener('click', function(e){
     // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
 
     var ElementoSeleccionado = e.target.id
-    console.log(ElementoSeleccionado)
+    // console.log(ElementoSeleccionado)
 
     if(e.target.classList[2] == "span_14_js"){
         let ConfirmaEliminar = confirm("Se eliminaran todos los productos de esta sección")
@@ -68,31 +68,25 @@ window.addEventListener('click', function(e){
     }  
 }, false)
 
-if(document.getElementById("CedulaPagoMovil")){
-    // document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
-
-    // document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
-}
-
 //Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
 ElementoPadrePagoMovil = document.getElementById("Mostrar_PagoMovil")
 document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', function(e){ 
     // console.log("______Desde funcion anonima que aplica listerner a input de PagoMovil______")
     var click = e.target
-    
-    let Cedulas_PagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
-    // console.log("Cantidad de input cedulas", Cedulas_PagoMovil.length)
-    for(i = 0; i < Cedulas_PagoMovil.length; i++){
-        document.getElementsByClassName('cedulaJS')[i].addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
+
+    if(e.target.classList[3] == "cedulaJS"){
+        document.getElementById(click.id).addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
     }
-    
-    let Telefonos_PagoMovil = ElementoPadrePagoMovil.getElementsByClassName("TelefonoJS")
-    // console.log("Cantidad de input telefonos", Telefonos_PagoMovil.length)
-    for(i = 0; i < Telefonos_PagoMovil.length; i++){
-        document.getElementsByClassName('TelefonoJS')[i].addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
+    if(e.target.classList[3] == "TelefonoJS"){
+        document.getElementById(click.id).addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
     }
 }, false)
 
+if(document.getElementById("CedulaPagoMovil")){
+    // document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
+
+    // document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
+}
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función PreEliminarPagoMovil, PreEliminarSeccion y PreEliminarCuentaBanco
 // document.addEventListener("DOMContentLoaded", PreEliminarSeccion)
@@ -132,7 +126,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
     //Añade un nuevo input clonado del div secciones
     var incremento = 1
     function clonarSeccion(){
-        console.log("______Desde CrearSección()______")
+        // console.log("______Desde CrearSección()______")
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80A")
@@ -245,7 +239,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
     function PreEliminarPagoMovil(){
         // console.log("______Desde PreEliminarPagoMovil()______")
 
-        // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
+        // let ConfirmaEleminar = confirm("Se va a eliminar una cuenta de PagoMovil")
 
         // if(ConfirmaEleminar == true){
             //Detectar el boton eliminar al cual se hizo click
@@ -561,7 +555,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************
     //Valida el formulario de datos de una tienda        
     function validarDatosTienda(){
-        console.log("_____Desde validarDatosTienda()_____")
+        // console.log("_____Desde validarDatosTienda()_____")
         // DATOS AFILIADO
         let NombreAficom = document.getElementById('Nombre_Aficom').value
         let Apellido = document.getElementById('Apellido_Aficom').value      

@@ -303,7 +303,7 @@ button{/*tiendas*/
 	width: 90%;
 	margin: auto;
 	border-radius: 15px;
-	justify-content:space-between; 
+	justify-content: space-between; 
 	margin-top: 12%;
 }
 .contenedor_14{/*opciones*/
@@ -331,8 +331,12 @@ button{/*tiendas*/
 	text-align: right;
 }
 .contenedor_17{/*tiendas*/
-	display: flex;
+	display: flex;	
+	flex-wrap: wrap;
 	margin: 4% auto;
+}
+.contenedor_17>div:first-child{/*tiendas*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila, el padre debe tener flex-wrap*/
 }
 .contenedor_18{/*vitrina*/
 	grid-column-start: 1;
@@ -901,7 +905,7 @@ button{/*tiendas*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 140px;
+	height: 170px;
 	vertical-align: middle;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
@@ -1101,7 +1105,29 @@ button{/*tiendas*/
 	padding: 0% 2%;
 }
 .contenedor_160 > div:last-child{/*inicio*/
-	flex: 0 1 0% !important;/*rompe la ocupacion de toda la primera fila en la distribucion flex*/
+	/*flex: 0 1 0% !important;rompe la ocupacion de toda la primera fila en la distribucion flex*/
+}
+.contenedor_161{/*tiendas*/
+	display: flex; 
+	width: 65%;
+	margin: 2% auto;
+}
+.contenedor_162{/*tiendas*/
+	border-top: 1px solid rgba(51, 51, 51, 0.3);
+	padding-top: 2%;
+}
+.contenedor_163{/*tiendas*/
+	margin: 5% auto;
+	min-height: 90px;
+}
+.contenedor_164{/*carrito*/
+	display: flex; 
+	margin: auto; 
+	width: 100%; 
+	justify-content: space-between;
+}
+.contenedor_165{/*carrito*/	
+	width: 33%; 
 }
 .figure_2{/*quienesSomos*/
 	margin: auto;
@@ -1240,6 +1266,11 @@ button{/*tiendas*/
 	font-size: 1.5em;
 	text-align: center;
 	padding-top: 3%;
+}
+.h3_4{/*tiendas*/
+	font-weight: bold;
+	font-size: 1em;
+	margin: 2% auto;
 }
 .h3_9{/*cuenta_productos - buscador*/
 	width: 100%;
@@ -1535,14 +1566,14 @@ button{/*tiendas*/
 	margin-left: 5%;
 }
 .label_12{/*carrito - Secciones_Ajax*/
-	padding: 1% 5%;
+	padding: 1% 2%;
 	margin-right: 5%;
 }
 .label_12:hover{/*carrito - Secciones_Ajax*/
 	cursor: pointer;
 	background-color: rgba(51, 51, 51, 0.2);
 	border-radius: 15px;
-	padding: 1% 5%;
+	/* padding: 1% 5%; */
 }
 .label_14{/*Categorias_Ajax - Secciones_Ajax*/
 	line-height: 30px;
@@ -1806,6 +1837,12 @@ button{/*tiendas*/
 .p_18{/*tiendas*/
 	text-align: center;
 	font-size: 0.9em !important;
+}
+.p_19{/*tiendas*/
+	text-align: left;
+	display: inline-block !important;
+	font-size: 0.9em !important;
+	width: 90%;
 }
 .placeholder{/*registroCom - registroDes - login - cuenta_publicar*/
 	margin: 0% auto 2% auto !important;

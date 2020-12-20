@@ -43,7 +43,7 @@
                     // DATOS DEL USUARIO
                     'Nombre' => filter_input(INPUT_POST, "nombreUsuario", FILTER_SANITIZE_STRING),
                     'Telefono' => filter_input(INPUT_POST, "telefonoUsuario", FILTER_SANITIZE_NUMBER_INT),
-                    'Correo' => filter_input(INPUT_POST, "correoUsuario", FILTER_SANITIZE_STRING),
+                    'Correo' => $_POST['correoUsuario'],
                     'Asunto' => filter_input(INPUT_POST, "asunto", FILTER_SANITIZE_STRING)
                 ];
             }
@@ -56,10 +56,10 @@
             // // ****************************************
 
             //Se envia al correo pcabeza7@gmail.com el mensaje que el usaurio a dejado
-            $email_to = 'pcabeza7@gmail.com';
-            $email_subject = 'Mensaje desde contactenos';  
+            $email_subject = 'Mensaje desde contactenos'; 
+            $email_to = 'pcabeza7@gmail.com';  
+            $headers = 'From: PedidoRemoto'.'<'.$RecibeDatos['Correo'].'>';
             $email_message = $RecibeDatos['Asunto'];
-            $headers = 'From: ' . $RecibeDatos['Correo'];
 
             mail($email_to, $email_subject, $email_message, $headers); 
 

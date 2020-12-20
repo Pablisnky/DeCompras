@@ -53,7 +53,7 @@
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
             </div>
-            <div class="contenedor_94">
+            <!-- <div class="contenedor_94">
                 <p class="p_3 p_5">Especial</p>
                 <p class="p_11">10% de la venta</p>
                 <ul>
@@ -62,7 +62,7 @@
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <div class="contenedor_41">
             <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>

@@ -582,6 +582,13 @@
 .contenedor_155{/*carrito*/
 	width: 100%;
 }
+.contenedor_164{/*carrito*/
+	display: block; 
+	margin: 5% auto;
+}
+.contenedor_165{/*carrito*/	
+	width: 100%; 
+}
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
 	width: 90%;

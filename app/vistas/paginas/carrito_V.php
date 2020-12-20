@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/telefono/style_telefono.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ubicacion/style_ubicacion.css"/>
+
 <section class="section_4">
     <div class="contenedor_24 contenedor_25">
         <h1 class="h1_1 h1_9 ">Orden de compra</h1>
@@ -35,7 +38,7 @@
                 <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
                 <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
                 <hr class="hr_1"/>
-                <h2 class="h2_2 h2_3">Monto total: <input type="text" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
+                <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
             </div>
         </div>
         <div class="contenedor_26" id="Contenedor_26">
@@ -97,15 +100,41 @@
                 <div class="contenedor_62">
                     <h1 class="h1_1">Formas de pago</h1>
                     <div class="contenedor_65">
-                        <input type="radio" name="pago" id="Transferencia" value="Transferencia" onclick="verTransferenciaBancaria()" checked>
-                        <label class="label_12" for="Transferencia">Transferencia bancaria</label>
-                        <br class="br_2"/>
-                        <input type="radio" name="pago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()">
-                        <label class="label_12" for="PagoMovil">Pago movil</label> 
-                        <br class="br_2"/>
-                        <input type="radio" name="pago" id="PagoDestino" value="PagoDestino" onclick="verPagoDestino()">
-                        <label class="label_12" for="PagoDestino">Pago en destino</label> 
-                                                
+                        <div class="contenedor_164">
+                                <?php
+                                // $Datos viene de Carrito_C/index
+                                // echo "<pre>";
+                                // print_r($Datos);
+                                // echo "</pre>";            
+                                // exit();
+                                ?>
+                            <?php
+                            if($Datos['Banco'] != Array()){ ?>
+                            <div class="contenedor_165">
+                                <input type="radio" name="pago" id="Transferencia" value="Transferencia" onclick="verTransferenciaBancaria()">
+                                <label class="label_12" for="Transferencia">Transferencia bancaria</label>
+                            </div>
+                            <br class="br_2"/>
+                                <?php
+                            }   
+
+                            if($Datos['Pagomovil'] != Array()){ ?>
+                                <div class="contenedor_165">
+                                    <input type="radio" name="pago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()">
+                                    <label class="label_12" for="PagoMovil">Pago movil</label> 
+                                </div>
+                                <br class="br_2"/>
+                                <?php
+                            }   ?>
+                            <div class="contenedor_165">
+                                <input type="radio" name="pago" id="PagoAcordado" value="PagoAcordado" onclick="verPagoDestino()">
+                                <label class="label_12" for="PagoAcordado">Acordar pago con tienda</label>
+                            </div>
+                            <!-- <input type="radio" name="pago" id="PagoDestino" value="PagoDestino" onclick="verPagoDestino()">
+                            <label class="label_12" for="PagoDestino">Pago en destino</label> 
+                            <br class="br_2"/> -->
+                        </div>   
+
                         <!-- PAGO TRANSFERENCIA -->
                         <div class="contenedor_60" id="Contenedor_60a">
                             <p>(Pedidos realizados desde zona metropolitana de su ciudad)</p>
@@ -146,7 +175,7 @@
                                 endforeach;
                             ?>
 
-                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')" value="erfdrfd"/>
+                            <input class="placeholder input_11" type="text" name="codigoPago" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
                         </div>
 
                         <!-- PAGOMOVIL -->
@@ -189,9 +218,17 @@
                             <input class="placeholder input_11 ocultar" type="text" name="codigoPago" id="RegistroPago_Pagomovil" placeholder="Código pagomovil" onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
                         </div>
 
-                        <!-- PAGO EN DESTINO -->
+                        <!-- PAGO ACORDADO -->
                         <div class="contenedor_60" id="Contenedor_60c">
-                            <p>Pago con tarjeta de debito al recibir el producto</p>
+                            <p>Contacta al encargado de la tienda:</p>
+                            <div class="contenedor_132">
+                                <span class="icon-phone span_17""></span> 
+                                <p class="p_2">0989-098.98.98</p>
+                            </div>
+                            <div class="contenedor_131">
+                                <span class="icon-location2 span_17"></span>
+                                <p class="p_2">Calle 15 con Av. Veroes San Felipe - Yaracuy</p>
+                            </div>
                         </div>
                     </div>
 

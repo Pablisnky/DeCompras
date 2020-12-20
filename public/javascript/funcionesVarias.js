@@ -7,7 +7,7 @@
     //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
     window.addEventListener("click", function(e){   
         var click = e.target
-    console.log("Se hizo click en: ", click)
+    // console.log("Se hizo click en: ", click)
     }, false)
 
 //************************************************************************************************
@@ -32,7 +32,7 @@
 //************************************************************************************************
     //Muestra el menu principal en formato movil y tablet  
     function mostrarMenu(){  
-        console.log("______Desde mostrarMenu()______")
+        // console.log("______Desde mostrarMenu()______")
         let A = document.getElementById("MenuResponsive")
         let B = document.getElementById("Tapa")
 
@@ -188,7 +188,7 @@
  //************************************************************************************************
     //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
     function mascaraTelefono(TelefonoRecibido, id){
-        console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
+        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
 
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 
@@ -209,12 +209,12 @@
 //************************************************************************************************
     // Validar el formato de telefono
     function validarFormatoTelefono(NroTelefono,id){
-        console.log("______Desde validarFormatoTelefono()______",NroTelefono)
+        // console.log("______Desde validarFormatoTelefono()______",NroTelefono)
 
         var P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
             
         if(P_Telefono.test(NroTelefono) == true){            
-            console.log("Telefono con formato correcto");
+            // console.log("Telefono con formato correcto");
             return true;
         }
         else{

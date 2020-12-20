@@ -77,8 +77,8 @@ document.getElementsByTagName("body")[0].addEventListener('keydown', function(e)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(NombreTienda == "" || NombreTienda.indexOf(" ") == 0  ||  NombreTienda.length > 50 || P_Letras.test(NombreTienda) == false){
-            alert ("Introduzca un nombre de tienda")
+        else if(NombreTienda == "" || NombreTienda.indexOf(" ") == 0  ||  NombreTienda.length > 50){
+            alert ("Nombre de tienda invalido")
             document.getElementById("NombreTienda").value = ""
             document.getElementById("NombreTienda").focus()
             document.getElementById("NombreTienda").style.backgroundColor = "var(--Fallos)"

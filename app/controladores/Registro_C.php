@@ -85,14 +85,10 @@
             // ****************************************
 
             //Se envia al correo pcabeza7@gmail.com la notificación de nuevo cliente registrado
-            $email_to = 'pcabeza7@gmail.com';
-            $email_subject = 'Nueva tienda en PedidoRemoto';  
+            $email_subject = 'Nueva tienda registrada en PedidoRemoto'; 
+            $email_to = 'pcabeza7@gmail.com'; 
+            $headers = 'From: PedidoRemoto<master@pedidoremoto.com>';
             $email_message = 'Tienda afiliada' . ' ' . $RecibeDatos['Nombre_tienda'];
-            $headers = 'From: ' . 'master@pedidoremoto.com' . '\r\n'.
-
-            'Reply-To: ' . 'master@pedidoremoto.com' . '\r\n' .
-
-            'X-Mailer: PHP/' . phpversion();
 
             mail($email_to, $email_subject, $email_message, $headers); 
 

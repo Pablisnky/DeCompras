@@ -16,7 +16,7 @@
             //SELECT para buscar información de cuentas bancarias de la tienda
             $Banco = $this->ConsultaCarrito_M->consultarCtaBanco($ID_Tienda); 
             
-            //SELECT para buscar información de cuentas bancarias de la tienda
+            //SELECT para buscar información de cuentas PagoMovil de la tienda
             $PagoMovil = $this->ConsultaCarrito_M->consultarPagoMovil($ID_Tienda); 
             
             $Datos = [

@@ -377,6 +377,7 @@
             }
             else{
                 echo "Llene todos los campos del formulario de registro";
+                echo '<br>';
                 echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                 exit();
             }
@@ -487,7 +488,6 @@
             // echo "<pre>";
             // print_r($SecccionesExistentes);
             // echo "</pre>";
-
             
             $Secciones = array_diff($SeccionesRecibidas, $SecccionesExistentes);
             // echo "Secciones a insertar";
@@ -498,15 +498,24 @@
             
             //INFORMACION DE PAGOS
             // ********************************************************            
-            
-            if($_POST['banco'] == "" && $_POST['cuentapagoMovil'] == ""){
+            // echo 'Banco transferencia: ' . $_POST['banco'][0] . '<br>';
+            // echo 'Banco PagoMovil: ' . $_POST['bancoPagoMovil'][0] . '<br>';
+            // echo '<pre>';
+            // print_r($_POST['banco']);
+            // echo '</pre>';
+            // echo '<pre>';
+            // print_r($_POST['bancoPagoMovil']);
+            // echo '</pre>';
+
+            if(($_POST['banco'][0] == '') && ($_POST['bancoPagoMovil'][0] == '')){
                 echo "Ingrese datos de pagos";
                 echo "<br>";
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
             else{
-                // DATOS BANCARIOS//Se ELIMINAN todas las cuentas bancarias
+                // DATOS TRANSFERENCIAS
+                //Se ELIMINAN todas las cuentas bancarias
                 $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
 
                 if($_POST['banco'][0] != ""){
@@ -532,33 +541,32 @@
                 
                 // ******************************************************** 
                 //DATOS PAGOMOVIL 
-                // if($_POST['telefonoPagoMovil'][0] != ""){ 
-                    // Se ELIMINAN todas las cuentas de pagomovil
-                    $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
-                                        
+                // Se ELIMINAN todas las cuentas de pagomovil
+                $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
+
+                // echo $_POST['cedulaPagoMovil'][0] . '<br>';
+                // echo $_POST['bancoPagoMovil'][0] . '<br>';
+                // echo $_POST['telefonoPagoMovil'][0] . '<br>';
+                // exit;
+
+                if($_POST['cedulaPagoMovil'][0] != '' || $_POST['bancoPagoMovil'][0] != '' || $_POST['telefonoPagoMovil'][0] != ""){                                         
                     foreach(array_keys($_POST['telefonoPagoMovil']) as $key){
-                        // if(!empty($_POST['cedulaPagoMovil'][$key]) || !empty($_POST['telefonoPagoMovil'][$key]) || !empty($_POST['bancoPagoMovil'][$key])){
+                        if(!empty($_POST['cedulaPagoMovil'][$key]) && !empty($_POST['telefonoPagoMovil'][$key]) && !empty($_POST['bancoPagoMovil'][$key])){
                             $CedulapagoMovil = $_POST['cedulaPagoMovil'][$key];
                             $TelefonopagoMovil = $_POST['telefonoPagoMovil'][$key];
                             $BancopagoMovil = $_POST['bancoPagoMovil'][$key];
 
-                            // echo $CedulapagoMovil . '<br>';
-                            // echo $TelefonopagoMovil . '<br>';
-                            // echo $BancopagoMovil;
-                            // echo '<br>';
-                            // exit;
-
                             //Se INSERTA la cuenta de CuentapagoMovil
                             $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $CedulapagoMovil, $BancopagoMovil, $TelefonopagoMovil);
-                        // }
-                        // else{
-                        //     echo "Ingrese datos pagoMovil";
-                        //     echo "<br>";
-                        //     echo "<a href='javascript:history.back()'>Regresar</a>";
-                        //     exit();
-                        // }
+                        }
+                        else{
+                            echo "Ingrese datos pagoMovil";
+                            echo "<br>";
+                            echo "<a href='javascript:history.back()'>Regresar</a>";
+                            exit();
+                        }
                     }
-                // }
+                }
             }
             // echo "Todos los campos estan llenos";
             // exit();

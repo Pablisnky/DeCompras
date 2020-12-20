@@ -15,7 +15,7 @@
             $stmt->bindValue(':PUBLICAR', 1, PDO::PARAM_INT);
                         
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;

@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ubicacion/style_ubicacion.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/eliminar/style_eliminar.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/checked/style_checked.css"/>
 
 <section class="section_11">
     <div class="contenedor_90">
@@ -40,19 +41,45 @@
                         <p class="p_3"><?php echo $Nombre?></p>
                     <div class="contenedor_17">
                         <div>
+                        <h3 class="h3_4">Reputación</h3></div>
+                        <div style="width: 33%">
                             <p class="p_2 p_18">Clientes satisfechos</p>
                             <label>98%</label>
                         </div>
-                        <div>
+                        <div style="width:33%">
                             <p class="p_2 p_18">Pedidos despachados</p>
-                            <label>560</label>
+                            <label>24</label>
                         </div>
-                        <div>
+                        <div style="width:33%">
                             <p class="p_2 p_18">Disputas en curso</p>
-                            <label>3</label>
+                            <label>0</label>
                         </div>
                     </div>
-                    <div>
+                    <div class="contenedor_163">
+                        <h3 class="h3_4">Metodos de pago aceptados</h3>
+                        <?php
+                        // if($Transferencia != ''){ ?>
+                            <div class="contenedor_161">
+                                <p class="p_19">Tranferencia bancaria</p><span class="icon-checkmark"></span>
+                            </div>
+                            <?php
+                        // }   
+
+                        // if($PagoMovil == ''){ ?>
+                        <div class="contenedor_161">
+                            <p class="p_19">Pago movil</p><span class="icon-checkmark"></span>
+                        </div>
+                            <?php
+                        // }   ?>
+
+                        <!-- <div class="contenedor_161">
+                            <p class="p_19">Pago en destino</p><span class="icon-checkmark"></span>
+                        </div> -->
+                        <div class="contenedor_161">
+                            <p class="p_19">Acuerdo con tienda</p><span class="icon-checkmark"></span>
+                        </div>
+                    </div>
+                    <div class="contenedor_162">
                         <div class="contenedor_132">
                             <span class="icon-phone span_17""></span> 
                             <p class="p_2"><?php echo $Telefono?></p>

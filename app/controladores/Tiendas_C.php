@@ -50,12 +50,33 @@
             }
             
             //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas
-            $Tiendas = $this->ConsultaTienda_M->consultarTiendas($Categoria);
-            $Datos = $Tiendas->fetchAll(PDO::FETCH_ASSOC);            
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            // exit();
+            $IDs_Tiendas = [];
+            $TiendasEnCategoria = $this->ConsultaTienda_M->consultarTiendas($Categoria);  
+
+            //Se obtienen los IDs de las tiendas que se encuentran en la categoria
+
+            foreach($TiendasEnCategoria AS $row) :
+                $IDs_Tiendas = $row['ID_Tienda'];
+
+
+            endforeach;
+            
+            echo $IDs_Tiendas . '<br>';
+            exit;
+            //SELECT para verificar tiendas con transferencias como metodo de pago
+            $TiendasTransferencias = $this->ConsultaTienda_M->consultarTransferencias($IDs_Tiendas);
+            
+            //SELECT para buscar información de cuentas bancarias de la tienda
+
+            $Datos = [
+                'tiendas_categoria' => $TiendasEnCategoria,
+                // 'tiendas_transferencias' => $Secciones,
+                // 'tiendas_pagomovil' => $Slogan
+            ];
+            echo "<pre>";
+            print_r($Datos['tiendas_categoria']);
+            echo "</pre>";
+            exit(); 
 
             $this->vista("inc/header", $Datos);
             $this->vista("paginas/tiendas_V",$Datos);
