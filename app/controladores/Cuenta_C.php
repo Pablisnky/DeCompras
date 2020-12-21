@@ -142,6 +142,9 @@
             //CONSULTA los datos de cuentas pagmovil de la tienda
             $DatosPagoMovil = $this->ConsultaCuenta_M->consultarCuentasPagomovil($this->ID_Tienda);
 
+            //CONSULTA otros medios de pago
+            $OtrosPagos = $this->ConsultaCuenta_M->consultarOtrosMediosPago($this->ID_Tienda);
+
             //CONSULTA las categorias en la que la tienda esta registrada
             $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTIenda($this->ID_Tienda);
             $Categoria = $Consulta->fetchAll(PDO::FETCH_ASSOC);
@@ -195,7 +198,8 @@
                 'categoria' => $Categoria,
                 'secciones' => $Secciones,
                 'slogan' => $Slogan,
-                'link_Tien' => $Link_Tien //link_acceso, url 
+                'link_Tien' => $Link_Tien, //link_acceso, url 
+                'otrosPagos' => $OtrosPagos
             ];
             
             //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya las tiene creadas cuando vaya a cargar un producto
@@ -568,6 +572,22 @@
                     }
                 }
             }
+            
+            //OTROS MEDIOS DE PAGO
+            // ********************************************************
+            $PagoBolivar = empty($_POST['bolivar']) ? '' : 1;
+            $PagoDolar = empty($_POST['dolar']) ? '' : 1; 
+            $PagoAcordado = empty($_POST['acordado']) ? '' : 1;
+            // echo $PagoBolivar . '<br>';
+            // echo $PagoDolar . '<br>';
+            // echo $PagoAcordado . '<br>';
+
+            //Se ELIMINAN todas los medios de pago alternativos que existan
+            $this->ConsultaCuenta_M->eliminarOtrosPagos($this->ID_Tienda);
+            
+            //Se INSERTA los medios de pago alternativos
+            $this->ConsultaCuenta_M->insertarOtrosPagos($this->ID_Tienda, $PagoBolivar, $PagoDolar, $PagoAcordado);
+
             // echo "Todos los campos estan llenos";
             // exit();
 

@@ -338,6 +338,54 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
             </fieldset>   
             
+            <!-- OTROS MEDIOS DE PAGO -->
+            <a id="OtrosPago" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2">                                 
+                <legend class="legend_1">Otros medios de pago</legend>
+                <!-- Entra en el IF cuando no hay otras formas de pago seleccionadas -->
+                <?php
+                // $Datos['datosPagomovil'][0]['cedula_pagomovil'] == ""
+                if($Datos['otrosPagos'] == Array ()){ ?>
+                    <div class="contenedor_166">   
+                        <input type="checkbox" name="bolivar" id="Bolivar"/>
+                        <label class="label_11" for="Bolivar">Aceptar pago en destino con efectivo en moneda nacional (Bs.)</label>           
+                    </div>  
+                    <div class="contenedor_166">        
+                        <input type="checkbox" name="dolar" id="Dolar"/>
+                        <label class="label_11" for="Dolar">Aceptar pago en destino con efectivo en moneda extranjera ($)</label>      
+                    </div>  
+                    <div class="contenedor_166">   
+                        <input type="checkbox" name="acordado" id="Acordado"/>
+                        <label class="label_11" for="Acordado">Aceptar pago acordados con el cliente via telefonica</label>
+                    </div>
+                <?php
+                }
+                else{
+                    // echo '<pre>';
+                    // print_r($Datos['otrosPagos']);
+                    // echo '</pre>';
+                    // exit;
+                    foreach($Datos['otrosPagos'] as $row)    :
+                        $PagoBolivar = $row['efectivoBolivar'];
+                        $PagoDolar = $row['efectivoDolar'];
+                        $PagoAcordado = $row['acordado'];
+                        ?>
+                        <div class="contenedor_166">   
+                            <input type="checkbox" name="bolivar" id="Bolivar" <?php if($PagoBolivar == 1){echo "checked = 'checked'";} ?>/>
+                            <label class="label_11" for="Bolivar">Aceptar pago en destino con efectivo en moneda nacional (Bs.)</label>           
+                        </div>  
+                        <div class="contenedor_166">        
+                            <input type="checkbox" name="dolar" id="Dolar" <?php if($PagoDolar == 1){echo "checked = 'checked'";} ?>/>
+                            <label class="label_11" for="Dolar">Aceptar pago en destino con efectivo en moneda extranjera ($)</label>      
+                        </div>  
+                        <div class="contenedor_166">   
+                            <input type="checkbox" name="acordado" id="Acordado" <?php if($PagoAcordado == 1){echo "checked = 'checked'";} ?>/>
+                            <label class="label_11" for="Acordado">Aceptar pago acordados con el cliente via telefonica</label>
+                        </div> <?php
+                    endforeach; 
+                } ?>
+            </fieldset>   
+
             <!-- HORARIO -->
 
             <section id="Contenedor_83">
@@ -350,6 +398,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas bancarias</a>
                     <a class="marcador" href="#marcador_07">Cuentas PagoMovil</a>
+                    <a class="marcador" href="#OtrosPago">Otros medios de pago</a>
                     <!-- <a class="marcador" href="#marcador_07">Horario</a> -->
                     <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>"/>

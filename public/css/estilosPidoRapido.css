@@ -333,7 +333,7 @@ button{/*tiendas*/
 .contenedor_17{/*tiendas*/
 	display: flex;	
 	flex-wrap: wrap;
-	margin: 4% auto;
+	margin: 2% auto;
 }
 .contenedor_17>div:first-child{/*tiendas*/
 	flex: 0 1 100% !important;/*ocupa toda la primera fila, el padre debe tener flex-wrap*/
@@ -1109,7 +1109,7 @@ button{/*tiendas*/
 }
 .contenedor_161{/*tiendas*/
 	display: flex; 
-	width: 65%;
+	width: 75%;
 	margin: 2% auto;
 }
 .contenedor_162{/*tiendas*/
@@ -1117,8 +1117,8 @@ button{/*tiendas*/
 	padding-top: 2%;
 }
 .contenedor_163{/*tiendas*/
-	margin: 5% auto;
-	min-height: 90px;
+	margin: 2% auto;
+	min-height: 130px;
 }
 .contenedor_164{/*carrito*/
 	display: flex; 
@@ -1128,6 +1128,10 @@ button{/*tiendas*/
 }
 .contenedor_165{/*carrito*/	
 	width: 33%; 
+}
+.contenedor_166{/*cuenta_editar*/
+	display: flex;
+	margin-bottom: 5%;
 }
 .figure_2{/*quienesSomos*/
 	margin: auto;
@@ -1562,7 +1566,7 @@ button{/*tiendas*/
 	font-weight: bold;
 	text-align: center;
 }
-.label_11{/*RegistroCom_V*/
+.label_11{/*RegistroCom_V - cuenta_editar*/
 	margin-left: 5%;
 }
 .label_12{/*carrito - Secciones_Ajax*/
@@ -1948,8 +1952,8 @@ button{/*tiendas*/
 	min-height: 100%;
 	/* padding-top: 4% !important; */
 }
-.section_12{/*vitrina*/
-	/* background-color: orange; */
+.section_12{/*tiendas*/
+	margin-top: -10%
 }
 .section_13{/*cuenta_editar*/
 	background-color: var(--FondoDivModal);

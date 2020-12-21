@@ -21,4 +21,37 @@
                 return false;
             }
         }
+        
+        // SELECT con las tiendas que aceptan pagos por transferencia
+        public function consultarTransferencias($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT DISTINCT ID_Tienda FROM bancos WHERE ID_Tienda IN ($IDs_Tiendas)");    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        // SELECT con las tiendas que aceptan pagos por PagoMovil
+        public function consultarPagoMovil($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT DISTINCT ID_Tienda FROM pagomovil WHERE ID_Tienda IN ($IDs_Tiendas)");    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
+        
+        // SELECT con las tiendas que aceptan otros medios de pago
+        public function consultarPagoBolivar($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT DISTINCT ID_Tienda, efectivoBolivar, efectivoDolar, acordado FROM otrospagos WHERE ID_Tienda IN ($IDs_Tiendas)");    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
     }

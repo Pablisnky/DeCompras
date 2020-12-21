@@ -54,29 +54,44 @@
             $TiendasEnCategoria = $this->ConsultaTienda_M->consultarTiendas($Categoria);  
 
             //Se obtienen los IDs de las tiendas que se encuentran en la categoria
-
             foreach($TiendasEnCategoria AS $row) :
-                $IDs_Tiendas = $row['ID_Tienda'];
+                $Nuevo_ID_Tienda = $row['ID_Tienda'];
 
-
+                //Se añade el ID de cada tienda al array $IDs_Tiendas
+                array_push($IDs_Tiendas, $Nuevo_ID_Tienda);
             endforeach;
             
-            echo $IDs_Tiendas . '<br>';
-            exit;
-            //SELECT para verificar tiendas con transferencias como metodo de pago
-            $TiendasTransferencias = $this->ConsultaTienda_M->consultarTransferencias($IDs_Tiendas);
+            //Se cambia el array $IDs_Tiendas por una cadena para introducirla en la consulta a BD
+            $IDs_Tiendas = implode(",", $IDs_Tiendas);
             
-            //SELECT para buscar información de cuentas bancarias de la tienda
+            //SELECT para verificar tiendas que acepten transferencias como metodo de pago
+            $TiendasTransferencias = $this->ConsultaTienda_M->consultarTransferencias($IDs_Tiendas);
+            // echo '<pre>';
+            // print_r($TiendasTransferencias);
+            // echo '</pre>';
+            // exit(); 
+
+            //SELECT para verificar tiendas que acepten PagoMovil como metodo de pago
+            $TiendasPagoMovil = $this->ConsultaTienda_M->consultarPagoMovil($IDs_Tiendas);
+            // echo '<pre>';
+            // print_r($TiendasTransferencias);
+            // echo '</pre>';
+            // exit();
+
+            //SELECT para verificar tiendas que acepten otros medios de pago
+            $TiendasOtrosPagos = $this->ConsultaTienda_M->consultarPagoBolivar($IDs_Tiendas);
+            // echo '<pre>';
+            // print_r($TiendasOtrosPagos);
+            // echo '</pre>';
+            // exit();
 
             $Datos = [
                 'tiendas_categoria' => $TiendasEnCategoria,
-                // 'tiendas_transferencias' => $Secciones,
-                // 'tiendas_pagomovil' => $Slogan
+                'tiendas_transferencias' => $TiendasTransferencias,
+                'tiendas_pagomovil' => $TiendasPagoMovil,
+                'tiendasOtrosPagos' => $TiendasOtrosPagos, //ID_Tienda, efectivoBolivar, efectivoDolar, acordado
             ];
-            echo "<pre>";
-            print_r($Datos['tiendas_categoria']);
-            echo "</pre>";
-            exit(); 
+            
 
             $this->vista("inc/header", $Datos);
             $this->vista("paginas/tiendas_V",$Datos);

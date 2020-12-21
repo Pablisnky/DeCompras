@@ -34,14 +34,14 @@
         }
 
         //SELECT con el monto total del pedido
-        public function consultarMontoTotal($PedidoCarrito){
-            $stmt = $this->dbh->prepare("SELECT SUM(precio) As total FROM opciones WHERE ID_Opcion IN ($PedidoCarrito)");    
-            // $stmt->bindParam(':ID_Opcion', $PedidoCarrito, PDO::PARAM_STR);
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return false;
-            }
-        }
+        // public function consultarMontoTotal($PedidoCarrito){
+        //     $stmt = $this->dbh->prepare("SELECT SUM(precio) As total FROM opciones WHERE ID_Opcion IN ($PedidoCarrito)");    
+        //     // $stmt->bindParam(':ID_Opcion', $PedidoCarrito, PDO::PARAM_STR);
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
     }

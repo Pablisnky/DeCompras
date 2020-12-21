@@ -369,13 +369,28 @@
 
             if($stmt->execute()){
                 //Se envia información de cuantos registros se vieron afectados por la consulta
-                return  $stmt->fetchAll(PDO::FETCH_ASSOC);;
+                return  $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;
             }
         }
-        
+                
+        //SELECT de las cuentas de pagomovil de una tienda especifica
+        public function consultarOtrosMediosPago($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT efectivoBolivar, efectivoDolar, acordado FROM otrospagos WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                //Se envia información de cuantos registros se vieron afectados por la consulta
+                return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
         //SELECT que cuenta la cantidad de productos de una tienda
         public function consultarCantidadProductos($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT COUNT(secciones_productos.ID_Producto) AS cantidadProductos FROM tiendas_secciones INNER JOIN secciones_productos ON tiendas_secciones.ID_Seccion=secciones_productos.ID_Seccion WHERE ID_Tienda = :ID_TIENDA");
@@ -620,6 +635,13 @@
         //DELETE de cuentas bancarias 
         public function eliminarPagoMovil($ID_Tienda){
             $stmt = $this->dbh->prepare("DELETE FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+
+        //DELETE de otros pagos
+        public function eliminarOtrosPagos($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM otrospagos WHERE ID_Tienda = :ID_TIENDA");
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
             $stmt->execute();          
         }
@@ -1121,6 +1143,20 @@
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
             $stmt->bindValue(':LINK_ACCESO', $LinkAcceso);
             $stmt->bindValue(':URL', $URL);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        }
+
+        //INSERT de otros medios de pago
+        function insertarOtrosPagos($ID_Tienda, $PagoBolivar, $PagoDolar, $PagoAcordado){
+            $stmt = $this->dbh->prepare("INSERT INTO otrospagos(ID_Tienda, efectivoBolivar , efectivoDolar, acordado) VALUES (:ID_TIENDA, :PAGOBOLIVAR, :PAGODOLAR, :ACORDADO)");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':PAGOBOLIVAR', $PagoBolivar);
+            $stmt->bindValue(':PAGODOLAR', $PagoDolar);
+            $stmt->bindValue(':ACORDADO', $PagoAcordado);
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();

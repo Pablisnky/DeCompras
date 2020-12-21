@@ -141,6 +141,8 @@
                 // echo '</pre>';
                 // exit;
 
+                // CORREO
+                // ********************************************************
                 //Se consulta el correo nombre de la tienda
                 $Tienda = $this->ConsultaRecibePedido_M->consultarCorreo($RecibeDatosPedido['ID_Tienda']);
                 // echo '<pre>';
