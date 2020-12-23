@@ -6,7 +6,7 @@
     <div class="contenedor_42 contenedor_70">
         <h1 class="h1_1">Planes de afiliación para comerciantes.</h1>
         <div class='contenedor_84 contenedor_93 borde_1'>
-            <p class="p_6 p_9">15 días libres de pago al registrar tu tienda</p> 
+            <h2 class="h1_1">15 días libres de pago al registrar tu tienda</h2> 
             <div class="contenedor_94">
                 <P class="p_3 p_5">Emprendedor</P>
                 <p class="p_11">2 USD/mes</p>

@@ -31,13 +31,20 @@
                         'Direccion' => filter_input(INPUT_POST, "direccionUsuario", FILTER_SANITIZE_STRING), 
                         'MontoTotal' => filter_input(INPUT_POST, "montoTotal", FILTER_SANITIZE_STRING),                        
                     ];
+                    // echo "<pre>";
+                    // print_r($RecibeDatosUsuario);
+                    // echo "</pre>";
+                    // exit();
+
                     $RecibeDatosPedido = [
                         // DATOS DEL PEDIDO
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_NUMBER_INT),
-                        'FormaPago' => filter_input(INPUT_POST, "pago", FILTER_SANITIZE_STRING),
-                        'Despacho'=> filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING), 
-                    ];
-
+                        'FormaPago' => filter_input(INPUT_POST, "formaPago", FILTER_SANITIZE_STRING),
+                        'Despacho' => filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING), 
+                        'CodigoTransferencia' => filter_input(INPUT_POST, "codigoTransferencia", FILTER_SANITIZE_STRING),
+                        'CodigoPagoMovil' => filter_input(INPUT_POST, "codigoPagoMovil", FILTER_SANITIZE_STRING),
+                    ];              
+                    
                     // echo "<pre>";
                     // print_r($RecibeDatosPedido);
                     // echo "</pre>";
@@ -123,8 +130,20 @@
                     exit();
                 }
 
+                //Cualquiera que sea el modo de pago, el código del banco se pasa a la variable CodigoPago
+                switch($RecibeDatosPedido['FormaPago']){
+                    case 'Transferencia':
+                        $CodigoPago = $RecibeDatosPedido['CodigoTransferencia'];   
+                    break;    
+                    case 'PagoMovil':
+                        $CodigoPago =  $RecibeDatosPedido['CodigoPagoMovil'];   
+                    break;    
+                    default:
+                        $CodigoPago = 'N/A';
+                }  
+
                 //Se INSERTAN los datos del usuario en la BD
-                $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $RecibeDatosPedido,  $Aleatorio);
+                $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $RecibeDatosPedido,$CodigoPago, $Aleatorio);
                 
                 // ****************************************
                 //Se CONSULTA el pedido recien ingresado a la BD
@@ -244,7 +263,7 @@
                         $email_message .= "<td>" . $DatosCompra["hora"] . "</td>";
                         $email_message .= "<td>" . $DatosCompra["despacho"] . "</td>";
                         $email_message .= "<td>" . $DatosCompra["formaPago"] . "</td>";
-                        $email_message .= "<td class='td_2'>" . $DatosCompra["aleatorio"] . "</td>";
+                        $email_message .= "<td class='td_2'>" . $DatosCompra["codigoPago"] . "</td>";
                         $email_message .= "<td>" . $DatosCompra["montoTotal"] . ' Bs.' . "</td>";
                         $email_message .= "</tr>";
                         break;

@@ -49,6 +49,11 @@
 				</ul>
 			</nav>
 		</header>
+		<!-- <div class="contenedor_167">
+			<label>Entregas no disponibles a esta hora</label>
+			<label>ver horario de despacho</label>
+		</div> -->
+		
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>

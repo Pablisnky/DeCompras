@@ -1,8 +1,4 @@
 <!-- Vista cargada por medio de Menu_C/nuestroADN -->
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/casita/style_casita.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/camion/style_camion.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>		
-
 <section class="section_5">
     <div class='contenedor_149'>
         <div class="contenedor_152">
@@ -11,23 +7,6 @@
         </div>
         <div class="contenedor_153">                      
             <img class="figure_2" alt="Logo PedidoRemoto" src="<?php echo RUTA_URL?>/public/images/logo.png"/>
-        </div>
-    </div>
-    <!-- El div padre se posiciona relativamente para luego posicionar el div hijo en position absolute con respecto al padre -->
-    <div class="contenedor_150">
-        <div class="contenedor_148">
-            <div>
-                <span class="icon-cart span_6"></span>
-            </div>
-            <div>
-                <span class="icon-truck span_6"></span>
-            </div>
-            <div>
-                <span class="icon-home2 span_6"></span>
-            </div>
-            <div>
-                <h3 class="h3_2" id="H3_3">Tu tienda en toda la ciudad</h3>
-            </div>
         </div>
     </div>
 </section>   
@@ -40,19 +19,6 @@
         </div>
         <div  class="contenedor_153" style="width: 20%;">                      
             <img class="figure_2" alt="Logo PedidoRemoto" src="<?php echo RUTA_URL?>/public/images/tiendas/tienda.png"/>
-        </div>
-    </div>
-    <div class="contenedor_150">
-        <div class="contenedor_148 contenedor_160">
-            <div>
-                <span class="icon-cart span_6"></span>
-            </div>
-            <div>
-                <span class="icon-truck span_6"></span>
-            </div>
-            <div>
-                <span class="icon-home2 span_6"></span>
-            </div>
         </div>
     </div>
 </section>  
@@ -82,22 +48,6 @@
                 <input class="boton boton_4" type="submit" value="Enviar">
             </div>
         </form>       
-    </div>
-    <div class="contenedor_150">
-        <div class="contenedor_148">
-            <div>
-                <span class="icon-cart span_6"></span>
-            </div>
-            <div>
-                <span class="icon-truck span_6"></span>
-            </div>
-            <div>
-                <span class="icon-home2 span_6"></span>
-            </div>
-            <div>
-                <h3 class="h3_2" id="H3_3">Tu tienda en toda la ciudad</h3>
-            </div>
-        </div>
     </div>
 </section>  
 

@@ -13,16 +13,20 @@
     
         //Invocado desde A_Vitrina.js
         public function index($ID_Tienda){  
-            //SELECT para buscar información de cuentas bancarias de la tienda
+            //SELECT para buscar información de pago por transferencia de la tienda
             $Banco = $this->ConsultaCarrito_M->consultarCtaBanco($ID_Tienda); 
             
-            //SELECT para buscar información de cuentas PagoMovil de la tienda
+            //SELECT para buscar información de pago por PagoMovil de la tienda
             $PagoMovil = $this->ConsultaCarrito_M->consultarPagoMovil($ID_Tienda); 
             
+            //SELECT para buscar información de otros metodos de pago de la tienda
+            $OtrosPagos = $this->ConsultaCarrito_M->consultarOtrosPagos($ID_Tienda); 
+
             $Datos = [
                 'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
                 'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil
-                'ID_Tienda' => $ID_Tienda                
+                'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
+                'ID_Tienda' => $ID_Tienda               
             ];
             
             $verifica_2 = 1906;  

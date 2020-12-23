@@ -318,6 +318,7 @@ button{/*tiendas*/
 	margin: auto;
 	border-radius: 15px; 
 	text-align: center;
+	z-index: 2; /*verificar - se colocó para ver si todo el div se pone por arriba de los elementos hijos y no se ve el efecto click sobre estos en responsive; esto en realidad se soluciona con teoria de niveles de apilamiento, como se hizo con los div que contienen las categorias en inicio_V.php que al hacer click sobre los que no tienen tiendas no llevan a la categoria en cuestión*/
 }
 .contenedor_15:hover{
 	background-color: var(--OficialClaro);
@@ -336,7 +337,7 @@ button{/*tiendas*/
 	margin: 2% auto;
 }
 .contenedor_17>div:first-child{/*tiendas*/
-	flex: 0 1 100% !important;/*ocupa toda la primera fila, el padre debe tener flex-wrap*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
 .contenedor_18{/*vitrina*/
 	grid-column-start: 1;
@@ -396,7 +397,7 @@ button{/*tiendas*/
 	display: flex;
 	justify-content: space-between;
 	width: 55%;
-	margin: 1% auto;
+	margin: 5% auto;
 }
 .contenedor_31{/*vitrina - opciones*/
 	background-color: var(--OficialOscuro);
@@ -587,8 +588,9 @@ button{/*tiendas*/
 }
 .contenedor_60{/*carrito*/
 	display: none;
-	margin:3% 5%;
-	width: 100%;
+	margin: auto !important;
+	width: 80%;
+	padding: 2%;
 	border-top-color: var(--OficialOscuro);
 	border-top-width: 1px;
 	border-top-style: solid;
@@ -609,7 +611,7 @@ button{/*tiendas*/
 	z-index: 1;
 }
 .contenedor_62{/*carrito*/
-	margin-top: 5%;
+	width: 100%;
 }
 .contenedor_63{/*carrito*/
 	width:100%;
@@ -627,9 +629,10 @@ button{/*tiendas*/
 	border-top-color: var(--OficialOscuro);
 }
 .contenedor_65{/*carrito*/
+	/* background-color: blue;
 	padding: 1%;
 	margin-left: 2%;
-	width: 90%;
+	width: 90%; */
 }
 .contenedor_66{/*registroCom - registroDes*/
 	text-align: center;
@@ -988,6 +991,7 @@ button{/*tiendas*/
 	justify-content: space-between;
 }
 .contenedor_136{/*carrito*/
+	background-color: green;
 	margin-bottom: 2% !important;
 	display: flex; 
 	width:100%; 
@@ -997,7 +1001,7 @@ button{/*tiendas*/
 	width: 90%;
 }
 .contenedor_138{/*carrito*/
-	width: 13%;
+	width: 18%;
 }
 .contenedor_139{/*desr_Producto*/
 	height: 100px;
@@ -1042,20 +1046,8 @@ button{/*tiendas*/
 	background-position: center;
 	vertical-align: middle;
 }
-.contenedor_148{/*quienesSomos*/
-	position: absolute;
-	height: 14%;
-	bottom: 30pt !important;	
-	display: flex; /*Organiza los elementos horizontalmente*/ 
-	justify-content: space-around;
-	align-items: center;
-	width: 60%;
-	margin-left: 20%;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
-.contenedor_148 > div:last-child{/*inicio*/
-	flex: 0 1 100% !important;/*ocupa toda la primera fila en la distribucion flex*/
+.contenedor_148{/*vitrina*/
+	background-color: red;
 }
 .contenedor_149{/*quienesSomos*/
 	padding-top: 10%;
@@ -1064,10 +1056,6 @@ button{/*tiendas*/
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-}
-.contenedor_150{/*quienesSomos*/
-	position:relative; 
-	margin-top: 7%;
 }
 .contenedor_151{/*quienesSomos*/
 	width: 45%;
@@ -1091,9 +1079,12 @@ button{/*tiendas*/
 .contenedor_156{/*vitrina - opciones*/
 	display: flex; 
 	width: 100%;
+	/* flex-wrap: wrap; */
 }
+/* .contenedor_156>div:first-child{/*tiendas*/
+	/* flex: 0 1 100% !important;ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap */
+/* }  */
 .contenedor_158{/*opciones*/
-	/* margin-left: 8%; */
 	justify-content: space-between;
 	width: 100%;
 }
@@ -1121,17 +1112,27 @@ button{/*tiendas*/
 	min-height: 130px;
 }
 .contenedor_164{/*carrito*/
-	display: flex; 
-	margin: auto; 
-	width: 100%; 
-	justify-content: space-between;
+	margin-top: 0% !important;
+	margin-left: 10%;
 }
 .contenedor_165{/*carrito*/	
 	width: 33%; 
+	margin: 3%;
 }
 .contenedor_166{/*cuenta_editar*/
 	display: flex;
 	margin-bottom: 5%;
+}
+.contenedor_167{/*vitrina*/
+	background-color:  var(--BandaAlerta);
+	display: none;
+	position: fixed;
+	top: 13%;
+	left: 0%;
+	text-align: center;
+	width: 100%;
+	z-index: 3 !important;
+	/* padding-top: 5%; */
 }
 .figure_2{/*quienesSomos*/
 	margin: auto;
@@ -1265,11 +1266,14 @@ button{/*tiendas*/
 	font-weight: normal;
 	font-size: 0.7em;
 }
-.h3_2{/*inicio*/
+.h3_2{/*inicio - carrito*/
 	font-weight: normal;
 	font-size: 1.5em;
 	text-align: center;
 	padding-top: 3%;
+}
+.h3_3{/*carrito*/
+	margin-bottom: 5%;
 }
 .h3_4{/*tiendas*/
 	font-weight: bold;
@@ -1455,9 +1459,6 @@ button{/*tiendas*/
 	white-space:nowrap; 
 	text-overflow: ellipsis; */	
 }
-.input_11{/*carrito - */
-	text-align: center;
-}
 .input_12{/*cuenta_editar*/
 	width: 90% !important;
 	display: inline-block;
@@ -1499,6 +1500,9 @@ button{/*tiendas*/
 }
 .input_16{/*cuenta_editar*/
 	margin-bottom: 0%;
+}
+.input_17{/*cuenta_editar*/
+	text-align: center;
 }
 .label_1{/*cuenta_editar*/
 	background-color: var(--OficialOscuro);
@@ -2110,6 +2114,9 @@ button{/*tiendas*/
 	margin: auto;
 	border-collapse: collapse;
 }
+.tabla_2{/*carrito*/
+	margin-bottom: 3%;
+}
 .td_1{/*carrito*/
 	text-align: center;
 }
@@ -2121,6 +2128,13 @@ button{/*tiendas*/
 }
 .td_4{/*cuenta_productos*/
 	padding-left: 1%;
+}
+.td_5{/*carrito*/
+	font-weight: bold;
+	width: 50%;
+}
+.td_6{/*carrito*/
+	height: 20px;
 }
 .textarea_1{/*carrito - cuenta_publicar - descr_Producto*/
 	width: 100%;

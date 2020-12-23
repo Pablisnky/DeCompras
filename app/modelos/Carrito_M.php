@@ -31,17 +31,20 @@
             else{
                 return false;
             }
-        }
+        } 
 
-        //SELECT con el monto total del pedido
-        // public function consultarMontoTotal($PedidoCarrito){
-        //     $stmt = $this->dbh->prepare("SELECT SUM(precio) As total FROM opciones WHERE ID_Opcion IN ($PedidoCarrito)");    
-        //     // $stmt->bindParam(':ID_Opcion', $PedidoCarrito, PDO::PARAM_STR);
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
+        //SELECT con los datos para realizar pagos con otros metodos
+        public function consultarOtrosPagos($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT efectivoBolivar, efectivoDolar, acordado FROM otrospagos WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
+       
     }

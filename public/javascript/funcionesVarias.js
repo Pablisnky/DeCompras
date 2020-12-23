@@ -200,7 +200,7 @@
             document.getElementById(id).value += ".";  
         }
         else if(TelefonoRecibido.length >= 15){
-            alert("Número telefonico PagoMovil invalido"); 
+            alert("Número telefonico invalido"); 
             document.getElementById(id).value = ""
             return 
         }

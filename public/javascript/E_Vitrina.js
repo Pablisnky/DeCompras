@@ -122,11 +122,13 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
 //************************************************************************************************
     // invocada desde carrito_V.php
-    function verTransferenciaBancaria(){
+    function verPagoTransferencia(){
         // console.log("______Desde verTransferenciaBancaria()______") 
         document.getElementById("Contenedor_60a").style.display = "block"
         document.getElementById("Contenedor_60b").style.display = "none"
         document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
     }
 
 //************************************************************************************************
@@ -136,17 +138,45 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "block"
         document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
     }
 
 //************************************************************************************************
     // invocada desde carrito_V.php
-    function verPagoDestino(){
-        // console.log("______Desde verPagoDestino()______") 
+    function verPagoEfectivoBolivar(){
+        // console.log("______Desde verPagoEfectivoBolivar()______") 
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "none"
         document.getElementById("Contenedor_60c").style.display = "block"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
     }
-    //invocada desde carrito.php 
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoEfectivoDolar(){
+        // console.log("______Desde verPagoEfectivoDolar()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "block"
+        document.getElementById("Contenedor_60e").style.display = "none"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoAcordado(){
+        // console.log("______Desde verPagoAcordado()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "block"
+    }
+    
+//************************************************************************************************
+    //invocada desde carrito_V.php 
     function MuestraEnvioFactura(){
         console.log("______Desde MuestraEnvioFactura()______") 
         document.getElementById("MuestraEnvioFactura").style.display = "block"
@@ -887,7 +917,7 @@ console.log(AlCarro)
         let Direccion = document.getElementById('DireccionUsuario').value  
         let Estado = document.getElementById('Estado').value 
         let Ciudad = document.getElementById('Ciudad').value
-        let Pago = document.getElementsByName('pago') 
+        let Pago = document.getElementsByName('formaPago') 
         //Recorremos todos los valores del radio button para encontrar el seleccionado
         for(let i = 0; i < Pago.length; i++){
             if(Pago[i].checked)

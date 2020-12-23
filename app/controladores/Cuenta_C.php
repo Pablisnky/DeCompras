@@ -224,12 +224,10 @@
             }
             else{
                 //CONSULTA las categorias en las que una tienda se ha postulado
-                $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
-                $Categorias = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Categorias = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda);
 
                 //CONSULTA las secciones que tiene una tienda
                 $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-                // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 //Se CONSULTAN el slogan de una tienda en particular
                 $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
@@ -575,9 +573,9 @@
             
             //OTROS MEDIOS DE PAGO
             // ********************************************************
-            $PagoBolivar = empty($_POST['bolivar']) ? '' : 1;
-            $PagoDolar = empty($_POST['dolar']) ? '' : 1; 
-            $PagoAcordado = empty($_POST['acordado']) ? '' : 1;
+            $PagoBolivar = empty($_POST['bolivar']) ? 0 : 1;
+            $PagoDolar = empty($_POST['dolar']) ? 0 : 1; 
+            $PagoAcordado = empty($_POST['acordado']) ? 0 : 1;
             // echo $PagoBolivar . '<br>';
             // echo $PagoDolar . '<br>';
             // echo $PagoAcordado . '<br>';

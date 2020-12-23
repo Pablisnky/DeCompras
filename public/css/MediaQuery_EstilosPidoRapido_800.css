@@ -196,6 +196,7 @@
 .contenedor_30{/*carrito*/
 	width: 100%;
 	justify-content: space-around;
+	margin: 2% auto;
 }
 .contenedor_31{/*header*/
 	width: 60%;
@@ -306,11 +307,16 @@
 	width: 100%;
 }
 .contenedor_60{/*carrito*/
-	margin: 0%;
+	width: 100%;
+	margin-bottom: 10% !important;
+	padding: 2%;
 }
 .contenedor_61{/*vitrina*/
 	width: 100%;
 	margin-left:0%;
+}
+.contenedor_62{/*carrito*/
+	margin-top: 10%;
 }
 .contenedor_64{/*carrito*/
 	float: none;
@@ -412,7 +418,8 @@
 .contenedor_93{/*afiliacion*/
 	padding-top: 1% !important;
 	margin-top: 15%;
-	border-radius: initial;
+	width: 95%;
+	/* border-radius: initial; */
 }
 .contenedor_94{/*afiliacion*/
 	margin-top: 10%;
@@ -555,19 +562,11 @@
 	background-size: contain;
 	vertical-align: initial;
 }
-.contenedor_148{/*quienesSomos*/
-	width: 100%;
-	margin-left: 0%;
-}
 .contenedor_149{/*quienesSomos*/
 	padding-top: 20%;
 	width: 100%;
 	margin: auto;
 	display: block;
-}
-.contenedor_150{/*quienesSomos*/
-	position:relative; 
-	margin-top: 30%;
 }
 .contenedor_151{/*quienesSomos*/
 	width: 100%;
@@ -584,10 +583,12 @@
 }
 .contenedor_164{/*carrito*/
 	display: block; 
-	margin: 5% auto;
+	margin: 5% auto 10% !important;
+	padding-left: 5%;
 }
 .contenedor_165{/*carrito*/	
 	width: 100%; 
+	margin: 2%;
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
@@ -763,10 +764,6 @@
 	width: 100%;
 	padding-left: 5%;
 }
-.input_11{/*carrito*/
-	padding-left: 0%;
-	width: 90%;
-}
 .input_12{/*cuenta_editar*/
 	width: 90%;
 }
@@ -791,7 +788,7 @@
 	font-size: 1em;
 }
 .label_12{/*carrito*/
-	font-size: 0.9em;
+	font-size: 1.1em;
 	padding: 1%;
 	display: inline-block;
 	margin-right: 5%;
@@ -922,12 +919,12 @@
 }
 .p_13{/*carrito*/
 	font-size: 1em;
-	font-weight: bold;
-	margin-bottom: 10px;
+	/* margin-bottom: 5px; */
 }
 .p_14{/*carrito*/
+	background-color: yellow;
 	font-size: 1em;
-	margin-bottom: 10px;
+	width: 100%;
 	padding-left: 5%;
 }
 .p_16{/*quienesSomos - descargaApp*/

@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ubicacion/style_ubicacion.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/eliminar/style_eliminar.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/checked/style_checked.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/menos/style_menos.css"/>
 
 <section class="section_11">
     <div class="contenedor_90">
@@ -13,10 +14,6 @@
     </div>
     <div class='contenedor_10'>
         <?php
-        // echo "<pre>";
-        // print_r($Datos);
-        // echo "</pre>";
-        // exit();
         $Contador = 1;
         foreach($Datos['tiendas_categoria'] as $row) :
             $ID_Tienda = $row['ID_Tienda'];
@@ -44,11 +41,35 @@
                         <h3 class="h3_4">Reputación</h3></div>
                         <div style="width: 33%">
                             <p class="p_2 p_18">Clientes satisfechos</p>
-                            <label>98%</label>
+                            <?php 
+                                foreach($Datos['tiendas_satisfaccion'] as $Row) :
+                                    $ID_TiendaSatisfaccion = $Row['ID_Tienda'];
+                                    $PorcentajeSatisfaccion = $Row['Satisfaccion'];
+                                    if($ID_TiendaSatisfaccion == $ID_Tienda){ ?>              
+                                        <label><?php echo $PorcentajeSatisfaccion?></label>
+                                        <?php
+                                    }
+                                endforeach; 
+                                if(empty($PorcentajeSatisfaccion)){  ?>                          
+                                    <label>N/A</label>
+                                    <?php
+                                }   ?>
                         </div>
                         <div style="width:33%">
                             <p class="p_2 p_18">Pedidos despachados</p>
-                            <label>24</label>
+                            <?php 
+                                foreach($Datos['tiendas_despachos'] as $row) :
+                                    $ID_TiendaConDespachos = $row['ID_Tienda'];
+                                    $CantidadDespachos = $row['Despachos'];
+                                    if($ID_TiendaConDespachos == $ID_Tienda){   ?>                           
+                                        <label><?php echo $CantidadDespachos?></label>
+                                        <?php
+                                    }
+                                endforeach;
+                                if(empty($CantidadDespachos)){  ?>                          
+                                    <label>0</label>
+                                    <?php
+                                }   ?>
                         </div>
                         <div style="width:33%">
                             <p class="p_2 p_18">Disputas en curso</p>
@@ -58,55 +79,91 @@
                     <div class="contenedor_163">
                         <h3 class="h3_4">Metodos de pago aceptados</h3>    
                                 <?php
+                                
+                                $VerificarTransferencia = 1; //Se declara para que este definida.
                                 foreach($Datos['tiendas_transferencias'] as $row) :
                                     $ID_TiendaConTransferencia = $row['ID_Tienda'];
-                                    if($ID_TiendaConTransferencia == $ID_Tienda){   ?>     
+                                    if($ID_TiendaConTransferencia == $ID_Tienda){   
+                                        $VerificarTransferencia = 'Transferencia_' . $ID_Tienda;   ?>     
                                         <div class="contenedor_161">
                                             <p class="p_19">Tranferencia bancaria</p><span class="icon-checkmark"></span>
-                                        </div>  
+                                        </div> 
                                         <?php
                                     }
-                                endforeach;     
+                                endforeach;
+                                if($VerificarTransferencia != 'Transferencia_' . $ID_Tienda){?>     
+                                    <div class="contenedor_161">
+                                        <p class="p_19">Tranferencia bancaria</p><span class="icon-minus"></span>
+                                    </div> 
+                                    <?php
+                                }
 
+                                $VerificarPagoMovil = 1;//Se declara para que este definida.
                                 foreach($Datos['tiendas_pagomovil'] as $row) :
                                     $ID_TiendaConPagoMovil = $row['ID_Tienda'];
-                                    if($ID_TiendaConPagoMovil == $ID_Tienda){   ?>
+                                    if($ID_TiendaConPagoMovil == $ID_Tienda){ 
+                                        $VerificarPagoMovil = 'PagoMovil_' . $ID_Tienda;  ?>
                                         <div class="contenedor_161">
                                             <p class="p_19">Pago movil</p><span class="icon-checkmark"></span> 
                                         </div>
                                         <?php
                                     }
-                                endforeach;     
+                                endforeach;
+                                if($VerificarPagoMovil != 'PagoMovil_' . $ID_Tienda){?>     
+                                    <div class="contenedor_161">
+                                        <p class="p_19">Pago movil</p><span class="icon-minus"></span>
+                                    </div> 
+                                    <?php
+                                } 
                                 
                                 foreach($Datos['tiendasOtrosPagos'] as $row) :
-                                    $ID_TiendaConPagoMovil = $row['efectivoBolivar'];
-                                    if($ID_TiendaConPagoMovil == 1){   ?>
+                                    $ID_TiendaConPagoBolivar = $row['ID_Tienda'];
+                                    $PagoBolivar = $row['efectivoBolivar'];
+                                    if($ID_TiendaConPagoBolivar ==  $ID_Tienda && $PagoBolivar == 1){  
+                                        $VerificaPagoBolivar = true ?>
                                         <div class="contenedor_161">
                                             <p class="p_19">Pago en destino (efectivo Bs.)</p><span class="icon-checkmark"></span>
                                         </div>
                                         <?php
                                     }
+                                    else if($ID_TiendaConPagoBolivar == $ID_Tienda && $PagoBolivar == 0){  ?>
+                                        <div class="contenedor_161">
+                                            <p class="p_19">Pago en destino (efectivo Bs.)</p><span class="icon-minus"></span>
+                                        </div>  <?php
+                                    }
                                 endforeach;     
                                 
                                 foreach($Datos['tiendasOtrosPagos'] as $row) :
-                                    $ID_TiendaConPagoMovil = $row['efectivoDolar'];
-                                    if($ID_TiendaConPagoMovil == 1){   ?>
+                                    $ID_TiendaConPagoDolar = $row['ID_Tienda'];
+                                    $PagoDolar = $row['efectivoDolar'];
+                                    if($ID_TiendaConPagoDolar == $ID_Tienda && $PagoDolar == 1){  ?>
                                         <div class="contenedor_161">
-                                            <p class="p_19">Pago en destino (efectivo &)</p><span class="icon-checkmark"></span>
+                                            <p class="p_19">Pago en destino (efectivo $)</p><span class="icon-checkmark"></span>
                                         </div>
                                         <?php
                                     }
-                                endforeach;   
-                                
-                                foreach($Datos['tiendasOtrosPagos'] as $row) :
-                                    $ID_TiendaConPagoMovil = $row['acordado'];
-                                    if($ID_TiendaConPagoMovil == 1){   ?>
+                                    else if($ID_TiendaConPagoDolar == $ID_Tienda && $PagoDolar == 0){  ?>
+                                        <div class="contenedor_161">
+                                            <p class="p_19">Pago en destino (efectivo $)</p><span class="icon-minus"></span>
+                                        </div>  <?php
+                                    }
+                                endforeach;
+                                 
+                                foreach($Datos['tiendasOtrosPagos'] as $row_2) :
+                                    $ID_TiendaConPagoAcordado = $row_2['ID_Tienda'];
+                                    $PagoAcordado = $row_2['acordado'];
+                                    if($ID_TiendaConPagoAcordado == $ID_Tienda && $PagoAcordado == 1){   ?>
                                         <div class="contenedor_161">
                                             <p class="p_19">Acordado con tienda</p><span class="icon-checkmark"></span>
                                         </div>
                                         <?php
                                     }
-                                endforeach;     ?>
+                                    else if($ID_TiendaConPagoAcordado == $ID_Tienda && $PagoAcordado == 0){  ?>
+                                        <div class="contenedor_161">
+                                            <p class="p_19">Acordado con tienda</p><span class="icon-minus"></span>
+                                        </div>  <?php
+                                    }
+                                endforeach; ?>
                     </div>
                     <div class="contenedor_162">
                         <div class="contenedor_132">

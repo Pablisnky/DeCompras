@@ -5,8 +5,8 @@
             parent::__construct();  
         }
         
-        public function insertarUsuario($RecibeDatosUsuario, $RecibeDatosPedido, $Aleatorio){
-            $stmt = $this->dbh->prepare("INSERT INTO usuarios(nombre_usu, apellido_usu, cedula_usu, telefono_usu, direccion_usu, montoTotal, despacho, formaPago, ID_Pedido)VALUES (:Nombre, :Apellido, :Cedula, :Telefono, :Direccion, :MontoTotal, :Despacho, :FormaPago, :ID_Pedido)"); 
+        public function insertarUsuario($RecibeDatosUsuario, $RecibeDatosPedido, $CodigoPago, $Aleatorio){
+            $stmt = $this->dbh->prepare("INSERT INTO usuarios(nombre_usu, apellido_usu, cedula_usu, telefono_usu, direccion_usu, montoTotal, despacho, formaPago, codigoPago, ID_Pedido)VALUES (:Nombre, :Apellido, :Cedula, :Telefono, :Direccion, :MontoTotal, :Despacho, :FormaPago, :CodigoPago, :ID_Pedido)"); 
 
             //Se vinculan los valores de las sentencias preparadas
             //ztmt es una abreviatura de statement 
@@ -18,6 +18,7 @@
             $stmt->bindParam(':MontoTotal', $montoTotal);
             $stmt->bindParam(':Despacho', $despacho);
             $stmt->bindParam(':FormaPago', $formaPago);
+            $stmt->bindParam(':CodigoPago', $codigoPago);
             $stmt->bindParam(':ID_Pedido', $ID_Pedido);
 
             // insertar una fila
@@ -29,6 +30,7 @@
             $montoTotal = $RecibeDatosUsuario['MontoTotal']; 
             $despacho = $RecibeDatosPedido['Despacho']; 
             $formaPago = $RecibeDatosPedido['FormaPago']; 
+            $codigoPago = $CodigoPago;
             $ID_Pedido = $Aleatorio;
             
             //Se ejecuta la inserción de los datos en la tabla
@@ -63,7 +65,7 @@
 
         // SELECT del pedido realizado
         function consultarPedido($Aleatorio){                    
-            $stmt = $this->dbh->prepare("SELECT seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%H:%i:%p') AS hora, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido WHERE aleatorio = :ALEATORIO");
+            $stmt = $this->dbh->prepare("SELECT seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i:%p') AS hora, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago, usuarios.codigoPago FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido WHERE aleatorio = :ALEATORIO");
             
             $stmt->bindValue(':ALEATORIO', $Aleatorio, PDO::PARAM_INT);
 

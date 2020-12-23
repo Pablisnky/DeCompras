@@ -1,7 +1,7 @@
     <section class="section_1" id="Section_1">
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
-            <!-- <h2 class="h2_4">solicitudes desde casa</h2> -->
+            <!-- <h2 class="h2_4">Tu tienda en toda la ciudad</h2> -->
             <h2 class="h2_4">MarketPlace</h2>
         </div>
         <!-- <p class="p_8">Unete a nuestra red de comercialización de productos.</p> -->
@@ -16,7 +16,7 @@
                 <span class="icon-home2 span_6"></span>
             </div>
             <div>
-                <h3 class="h3_2" id="H3_3">Tu tienda en toda la ciudad</h3>
+                <h3 class="h3_2" id="H3_3">Compras desde casa</h3>
             </div>
         </div>
         <div class="contenedor_88" id="Contenedor_88">
@@ -37,10 +37,19 @@
                             // exit();
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 1){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadComida_Rapida = $arr['cantidad']; 
+                                    echo $CantidadComida_Rapida;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadComida_Rapida)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Comida_Rapida{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/           
+                                    }
+                                </style>
+                                <?php
+                            } 
                         ?>
                     </span>
                 </div>
@@ -48,16 +57,25 @@
 
             <div class='contenedor_6 borde_1' id="Mascotas">
                 <h2 class='h2_1'>MASCOTAS</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 10){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadMascotas = $arr['cantidad']; 
+                                    echo $CantidadMascotas;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadMascotas)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Mascotas{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            } 
                         ?>
                     </span>
                 </div>
@@ -71,10 +89,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 19){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadMerceria = $arr['cantidad']; 
+                                    echo $CantidadMerceria;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadMerceria)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Merceria{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }
                         ?>
                     </span>
                 </div>
@@ -82,16 +109,25 @@
 
             <div class='contenedor_6 borde_1' id="Repuesto_automotriz">
                 <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                     <div class="contenedor_106">
                         <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 11){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadRepuesto_automotriz = $arr['cantidad']; 
+                                    echo $CantidadRepuesto_automotriz;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadRepuesto_automotriz)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Repuesto_automotriz{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }
                         ?>
                     </span>
                     </div>
@@ -105,10 +141,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 4){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadBodega = $arr['cantidad']; 
+                                    echo $CantidadBodega;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadBodega)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Bodega{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -122,10 +167,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 3){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadMinimarket = $arr['cantidad']; 
+                                    echo $CantidadMinimarket;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadMinimarket)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Minimarket{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -133,16 +187,25 @@
 
             <div class='contenedor_6 borde_1' id="Material_Medico_Quirurgico">
                 <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 2){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadMaterial_Medico_Quirurgico = $arr['cantidad']; 
+                                    echo $CantidadMaterial_Medico_Quirurgico;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadMaterial_Medico_Quirurgico)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Material_Medico_Quirurgico{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -150,16 +213,25 @@
 
             <div class='contenedor_6 borde_1' id="Ropa_Zapato">
                 <h2 class='h2_1'>ROPA Y ZAPATO</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 8){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadRopa_Zapato = $arr['cantidad']; 
+                                    echo $CantidadRopa_Zapato;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadRopa_Zapato)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Ropa_Zapato{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -173,10 +245,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 7){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadArtesania = $arr['cantidad']; 
+                                    echo $CantidadArtesania;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadArtesania)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Artesania{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -190,10 +271,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 12){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadFarmacia = $arr['cantidad']; 
+                                    echo $CantidadFarmacia;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadFarmacia)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Farmacia{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -207,10 +297,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 6){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadFerreteria = $arr['cantidad']; 
+                                    echo $CantidadFerreteria;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadFerreteria)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Ferreteria{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -224,10 +323,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 5){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadPanaderia = $arr['cantidad']; 
+                                    echo $CantidadPanaderia;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadPanaderia)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Panaderia{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -241,10 +349,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 13){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadLicores = $arr['cantidad']; 
+                                    echo $CantidadLicores;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadLicores)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Licores{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -258,10 +375,19 @@
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 9){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadRelojes = $arr['cantidad']; 
+                                    echo $CantidadRelojes;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadRelojes)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Relojes{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -269,16 +395,25 @@
 
             <div class='contenedor_6 borde_1' id="Deportes">
                 <h2 class='h2_1'>DEPORTES</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 14){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadDeportes = $arr['cantidad']; 
+                                    echo $CantidadDeportes;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadDeportes)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Deportes{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -286,16 +421,25 @@
 
             <div class='contenedor_6 borde_1' id="Floristeria">
                 <h2 class='h2_1'>FLORISTERÍA Y DECORACIÓN</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 15){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadFloristeria = $arr['cantidad']; 
+                                    echo $CantidadFloristeria;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadFloristeria)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Floristeria{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -303,16 +447,25 @@
 
             <div class='contenedor_6 borde_1' id="Construccion">
                 <h2 class='h2_1'>CONSTRUCCIÓN</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 16){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadConstruccion = $arr['cantidad']; 
+                                    echo $CantidadConstruccion;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadConstruccion)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Construccion{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -320,16 +473,25 @@
 
             <div class='contenedor_6 borde_1' id="Telefonos">
                 <h2 class='h2_1'>TELEFONOS Y COMPUTADORAS</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 17){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadTelefonos = $arr['cantidad']; 
+                                    echo $CantidadTelefonos;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadTelefonos)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Telefonos{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -337,16 +499,25 @@
 
             <div class='contenedor_6 borde_1' id="Papeleria">
                 <h2 class='h2_1'>PAPELERÍA Y OFICINA</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 18){  
-                                    $Cantidad = $arr['cantidad']; 
-                                    echo $Cantidad;
+                                    $CantidadPapeleria = $arr['cantidad']; 
+                                    echo $CantidadPapeleria;
                                 }                                
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadPapeleria)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Papeleria{
+                                        z-index: -1; /* Caso particular porque el elemen o no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre */
+                                    }
+                                            </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>
@@ -354,15 +525,25 @@
 
             <div class='contenedor_6 borde_1' id="Juguetes">
                 <h2 class='h2_1'>JUGUETES Y ACCESORIOS PARA NIÑOS</h2>
-                <span class="icon-man-woman span_8"></span>                 
+                <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
                         <?php
                             foreach($Datos as $arr) :
                                 if($arr['ID_Categoria'] == 0){  
-                                    $Cantidad = $arr['cantidad'];
+                                    $CantidadJuguetes = $arr['cantidad'];
+                                    echo $CantidadJuguetes;
                                 }
-                            endforeach 
+                            endforeach; 
+                            if(empty($CantidadJuguetes)){                                     
+                                echo 0;?>
+                                <style>
+                                    #Juguetes{
+                                        z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    }
+                                </style>
+                                <?php
+                            }  
                         ?>
                     </span>
                 </div>

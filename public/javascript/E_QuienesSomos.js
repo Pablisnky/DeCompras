@@ -4,18 +4,19 @@ document.getElementById("Asunto").addEventListener('keydown', function(){valida_
 
 document.querySelector('#Asunto').addEventListener('keydown', function(){autosize('Asunto')}, false); 
 
+document.getElementById("Asunto").addEventListener('keydown', function(){blanquearInput('Asunto')}, false)
+
 document.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, false)
 
 document.getElementById("TelefonoUsuario").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoUsuario')}, false)
 
 document.getElementById("TelefonoUsuario").addEventListener('change', function(){validarFormatoTelefono(this.value,'TelefonoUsuario')}, false)
 
-document.getElementById("Asunto").addEventListener('keydown', function(){blanquearInput('Asunto')}, false)
  
 //************************************************************************************************
     //Valida el formulario de contactenos
     function validarContactenos(){
-        console.log("_____Desde validarContactenos()_____")
+        // console.log("_____Desde validarContactenos()_____")
 
         let Nombre = document.getElementById('NombreUsuario').value
         let Telefono = document.getElementById('TelefonoUsuario').value      
