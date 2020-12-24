@@ -20,4 +20,11 @@ class Controlador{
             die("La vista no existe");
         }
     }
+
+    //Carga una plantilla de correo
+    public function correo($correo, $DatosCorreo=[]){
+        require_once("../app/vistas/correo/" . $correo . ".php");
+        //Se instancia la clase respectiva que pide la información necesaria a la BD
+        // return new $correo();
+    }
 }

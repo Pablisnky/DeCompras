@@ -914,6 +914,7 @@ console.log(AlCarro)
         let Apellido = document.getElementById('ApellidoUsuario').value 
         let Cedula = document.getElementById('CedulaUsuario').value 
         let Telefono = document.getElementById('TelefonoUsuario').value 
+        let Correo = document.getElementById('CorreoUsuario').value 
         let Direccion = document.getElementById('DireccionUsuario').value  
         let Estado = document.getElementById('Estado').value 
         let Ciudad = document.getElementById('Ciudad').value
@@ -923,18 +924,20 @@ console.log(AlCarro)
             if(Pago[i].checked)
             var PagoSeleccionado = Pago[i].value
             // console.log(PagoSeleccionado)
-        }
-       
+        }       
         let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
         let RegistroPago_Pagomovil = document.getElementById('RegistroPago_Pagomovil').value
         
-        //Patron de entrada solo acepta letras
+        //Patron de entrada solo acepta letras (Nombre - Apellido)
         let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
 
         //Patron de entrada solo acepta numeros,guion y puntos          
-        let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+        // let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
 
         // let P_LetrasNumero = /[A-Za-z0-9]/;
+        
+        //Patron de entrada para correos electronicos
+        let P_Correo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
                 
         if(Nombre == "" || Nombre.indexOf(" ") == 0 || Nombre.length > 40 || P_Letras.test(Nombre) == false){
             alert ("Nombre invalido");
@@ -984,6 +987,18 @@ console.log(AlCarro)
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
+        else if(Correo  == "" || Correo .indexOf(" ") == 0 || Correo .length > 70 || P_Correo.test(Correo ) == false){
+            alert ("Correo invalido")
+            document.getElementById("CorreoUsuario").value = ""
+            document.getElementById("CorreoUsuario").focus()
+            document.getElementById("CorreoUsuario").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("botonJS")[0].value = "Comprar"
+            document.getElementsByClassName("botonJS")[0].disabled = false
+            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+            return false;
+        }  
         else if(Estado == "Seleccione un estado"){
             alert ("Selecione un Estado");
             document.getElementById("Estado").value = "";

@@ -137,7 +137,7 @@
 }
 .contenedor_10{/*vitrina - tiendas - afiliacion*/
 	grid-template-columns: 100%;
-	margin: 20% auto;
+	margin: 14% auto 20% auto;
 	width: 100%;
 	row-gap: 2%;/*espacio entre filas*/
 }
@@ -964,9 +964,6 @@
 }
 .section_11{/*tiendas*/
 	padding-top: 15% !important;
-}
-.section_12{/*tiendas*/
-	margin-top: -5%
 }
 .section_13{/*cuenta_editar*/
 	position: absolute;

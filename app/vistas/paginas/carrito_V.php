@@ -74,6 +74,11 @@
                             <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')"/>
                         </div>
 
+                        <!-- CORREO -->
+                        <div class="contenedor_29">
+                            <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')"/>
+                        </div>
+
                         <!-- DIRECCION -->
                         <div class="contenedor_55 contenedor_154">
                             <div class="contenedor_155">
@@ -112,7 +117,7 @@
                         <?php
                         if($Datos['Banco'] != Array()){ ?>
                         <div class="contenedor_165">
-                            <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()">
+                            <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()"/>
                             <label class="label_12" for="Transferencia">Transferencia bancaria</label>
                         </div>
                         <br class="br_2"/>
@@ -121,7 +126,7 @@
 
                         if($Datos['Pagomovil'] != Array()){ ?>
                             <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()">
+                                <input type="radio" name="formaPago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()"/>
                                 <label class="label_12" for="PagoMovil">Pago movil</label> 
                             </div>
                             <br class="br_2"/>
@@ -130,7 +135,7 @@
 
                         if($Datos['OtrosPagos'][0]['efectivoBolivar']  != 0){ ?>
                             <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="EfectivoBolivar" value="Efectivo_Bolivar" onclick="verPagoEfectivoBolivar()">
+                                <input type="radio" name="formaPago" id="EfectivoBolivar" value="Efectivo_Bolivar" onclick="verPagoEfectivoBolivar()"/>
                                 <label class="label_12" for="EfectivoBolivar">Pago destino (Bs.)</label> 
                             </div>
                             <br class="br_2"/>
@@ -139,7 +144,7 @@
 
                         if($Datos['OtrosPagos'][0]['efectivoDolar'] != 0){ ?>
                             <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="EfectivoDolar" value="Efectivo_Dolar" onclick="verPagoEfectivoDolar()">
+                                <input type="radio" name="formaPago" id="EfectivoDolar" value="Efectivo_Dolar" onclick="verPagoEfectivoDolar()"/>
                                 <label class="label_12" for="EfectivoDolar">Pago destino ($)</label> 
                             </div>
                             <br class="br_2"/>
@@ -148,7 +153,7 @@
 
                         if($Datos['OtrosPagos'][0]['acordado'] != 0){ ?>
                             <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="Acordado" value="acordado" onclick="verPagoAcordado()">
+                                <input type="radio" name="formaPago" id="Acordado" value="acordado" onclick="verPagoAcordado()"/>
                                 <label class="label_12" for="Acordado">Acordado con tienda</label> 
                             </div>
                             <br class="br_2"/>

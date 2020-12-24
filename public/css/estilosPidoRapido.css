@@ -277,7 +277,7 @@ button{/*tiendas*/
 	grid-template-rows: min-content;
 	column-gap: 3%;/*espacio entre columnas*/
 	row-gap: 5%;/*espacio entre filas*/
-	margin: 12% auto 4% auto;
+	margin: 9.5% auto 4% auto;
 	width: 85%;
 	height: 92%;
 }
@@ -1955,9 +1955,6 @@ button{/*tiendas*/
 .section_11{/*tiendas*/
 	min-height: 100%;
 	/* padding-top: 4% !important; */
-}
-.section_12{/*tiendas*/
-	margin-top: -10%
 }
 .section_13{/*cuenta_editar*/
 	background-color: var(--FondoDivModal);

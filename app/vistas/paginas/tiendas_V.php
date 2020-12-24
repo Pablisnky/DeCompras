@@ -22,7 +22,7 @@
             $Telefono = $row['telefono_Tien'];
             $Fotografia = $row['fotografia_Tien'];
             ?> 
-            <section class="section_12">
+            <section>
                 <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2')"><!--El argumento no necesario es debido a que se comparte el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
                     <?php                    
                     if($Fotografia == 'tienda.png'){    ?> 
