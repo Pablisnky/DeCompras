@@ -67,8 +67,19 @@
         }
         
         // SELECT con la cantidad de inconformidades de tiendas 
-        public function consultarInconformidades($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT COUNT(inconformidad) AS 'Inconformidad', ID_Tienda FROM pedidos WHERE ID_Tienda IN ($IDs_Tiendas) AND inconformidad = 1 GROUP BY ID_Tienda");    
+        public function consultarInconformidades($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT COUNT(ID_Noconformidad) AS 'Inconformidad', ID_Tienda FROM noconformidades WHERE ID_Tienda = $ID_Tienda GROUP BY ID_Tienda");    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        // SELECT con la cantidad de inconformidades de tiendas 
+        public function consultarDisputas($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT ID_Tienda, COUNT(estadodisputa) AS 'Disputas'FROM noconformidades WHERE ID_Tienda IN ($IDs_Tiendas) AND estadodisputa = 1 GROUP BY ID_Tienda");    
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }

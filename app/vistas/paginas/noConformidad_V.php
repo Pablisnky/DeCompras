@@ -1,62 +1,82 @@
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/casita/style_casita.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/camion/style_camion.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>		
-
 <?php
-    //SDatos se recibe de Menu_C/noConformidad
+    //SDatos se recibe de NoConformidad_C/noConformidad
     // echo '<pre>';
     // print_r($Datos);
     // echo '</pre>';
     // exit;
 ?> 
 
-<section class="section_5">
-    <div class="contenedor_42 contenedor_70">
-        <h1 class="h1_1">Reporte de no conformidades</h1>
-        <section>
-            <div>
-                <table class="tabla_1">
-                    <thead>
-                        <th>Código Despacho</th>
-                        <th>Tienda</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><?php echo $Datos['id_pedido']?></td>
-                            <td><?php echo $Datos['tienda']?></td>
-                            <td><?php echo $Datos['fecha']?></td>
-                            <td><?php echo $Datos['hora']?></td>
-                        </tr>
-                    </tbody>
-                </table>
+    <?php
+    //$Datos viene desde NoConformidad_C/recibeNoConformidades
+    if($Datos != 'AcuseRecibo'){  ?>
+        <section class="section_5">
+            <div class="contenedor_42">
+                <h1 class="h1_1">Reporte de no conformidades</h1>
+                <section>
+                    <table class="tabla_1">
+                        <thead>
+                            <th class="th_1">Código Despacho</th>
+                            <th class="th_3">Tienda</th>
+                            <th class="th_1">Fecha</th>
+                            <th class="th_1">Hora</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="td_1"><?php echo $Datos['id_pedido']?></td>
+                                <td class="td_1"><?php echo $Datos['tienda']?></td>
+                                <td class="td_1"><?php echo $Datos['fecha']?></td>
+                                <td class="td_1"><?php echo $Datos['hora']?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <section>
+                        <form action="<?php echo RUTA_URL . '/noConformidad_C/recibeNoConformidad';?>" method="POST" onsubmit = "return validarNoConformidad()">
+                            <div class="contenedor_169">
+                                <fieldset class="fieldset_4">
+                                    <legend class="legend_1">Posibles fallos</legend>
+                                    <input type="checkbox" name="noConformidad_1" id="NoConformidad_1"/>
+                                    <label for="NoConformidad_1">El despacho llego despues del tiempo especificado.</label>
+                                    <br class="br_1">
+                                    <input type="checkbox" name="noConformidad_2" id="NoConformidad_2"/>
+                                    <label for="NoConformidad_2">El producto no era lo que se pidio.</label>
+                                    <br class="br_1">
+                                    <input type="checkbox" name="noConformidad_3" id="NoConformidad_3"/>
+                                    <label for="NoConformidad_3">El producto llego en mal estado.</label>
+                                    <br class="br_1">
+                                    <input type="checkbox" name="noConformidad_4" id="NoConformidad_4"/>
+                                    <label for="NoConformidad_4">El despacho aún no llega.</label>
+                                    <br class="br_1">
+                                    <p>Otra condicion (Opcional)</p>
+                                    <div style="margin:auto">
+                                        <textarea class="textarea_4 borde_1" name="otraNoConformidad"></textarea>
+                                        <!-- <input class="contador_2 contador_3" type="text" id="ContadorNoConformidad" value="200"/> -->
+                                    </div>
+                                </fieldset>
+                            </div>   
+                            <div class="contenedor_41">
+                                <input class="ocultar" type="text" name="id_pedido" value="<?php echo $Datos['id_pedido']?>"/>
+                                <a class="boton" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Cerrar</a>
+                                <input class="boton" type="submit" value="Enviar"/>
+                            </div>    
+                        </form> 
+                </section>
+            </div>  
+        </section>  <?php
+    }
+    else{   ?>
+        <section class="section_5">
+            <div class="contenedor_42">
+                <h1 class="h1_1">Hemos registrado su no conformidad</h1>
+                <div class='contenedor_39'>
+                    <P class="p_6">Le mantendremos informado.</P>
+                    <div class="contenedor_33">
+                        <a class="boton" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio</a>
+                    </div>
+                </div>
             </div>
-        </section>
-        <section>
-            <div class=' borde_1'>
-                <p>Especifique los fallos que encontró en el servicio</p> 
-                <input type="checkbox" name=""/>
-                <label>El despacho llego despues del tiempo especificado.</label>
-                <br>
-                <input type="checkbox" name=""/>
-                <label>El producto no era lo que se pidio.</label>
-                <br>
-                <input type="checkbox" name=""/>
-                <label>El producto llego en mal estado.</label>
-                <br>
-                <input type="checkbox" name=""/>
-                <label>No despacho aún no llega.</label>
-                <p>Otra condicion</p>
-                <textarea></textarea>
-                <input class="" type="text"/>                
-            </div>
-        </section>
-        <div class="contenedor_41">
-            <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Cerrar</a>
-            <a class="boton boton_3 boton_4" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Enviar</a>
-        </div>  
-    </div>
-</section>
+        </section>  <?php
+    }   ?>
 		
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

@@ -93,32 +93,48 @@
             // echo '</pre>';
             // exit;
             
-
-            //SELECT para verificar la cantidad de despachos que ha realizado una tienda
-            $TiendasInconformidades = $this->ConsultaTienda_M->consultarInconformidades($IDs_Tiendas);            
+            //SELECT para verificar la cantidad de no conformidades de una tienda
+            // $TiendasNoConformidades = $this->ConsultaTienda_M->consultarInconformidades($IDs_Tiendas);            
             // echo '<pre>';
-            // print_r($TiendasInconformidades);
+            // print_r($TiendasNoConformidades);
+            // echo '</pre>';
+            // exit;
+            
+            //SELECT para verificar la cantidad de disputas de una tienda
+            $TiendasDisputas = $this->ConsultaTienda_M->consultarDisputas($IDs_Tiendas);           
+            // echo '<pre>';
+            // print_r($TiendasDisputas);
             // echo '</pre>';
             // exit;
 
+            // *******************************************
             //CALCULO DE CLIENTES SATISFECHOS
             //Total despachos solicitados
-            $PorcentajeSatisfaccion = Array();
-            $Nuevo = Array();
+            $PorcentajeSatisfaccion = [];
+            $Nuevo = [];
             foreach($TiendasDespachos as $row)  :
-                $TotalDespachos = $row['Despachos'];
                 $ID_Tienda = $row['ID_Tienda'];
-                // echo 'Despachos = ' . $TotalDespachos . ' <br>';
-                // echo 'ID_Tienda = ' . $ID_Tienda . ' <br>';
+                $TotalDespachos = $row['Despachos'];
+
+                $TiendasNoConformidades = $this->ConsultaTienda_M->consultarInconformidades($ID_Tienda);
+                // echo 'ID_Tienda = ' . $ID_Tienda . '<br>';
+                // echo 'Despachos = ' . $TotalDespachos . '<br>';
+                // echo '<pre>';
+                // print_r($TiendasNoConformidades);
+                // echo '</pre>';
 
                 // Total inconformidades
-                if($TiendasInconformidades == Array()){
+                if($TiendasNoConformidades == Array()){
                     $TotalIconformidades = 0;
+                    // echo 'Inconformidades = ' . $TotalIconformidades . ' <br>';
                 }
                 else{
-                    foreach($TiendasInconformidades as $Row)  :
-                        $TotalIconformidades = $Row['Inconformidad'];
-                        // echo 'inconformidades = ' . $TotalIconformidades . ' <br>';
+                    //Por cada tienda se busca la cantidad de no confomidades
+                    foreach($TiendasNoConformidades as $Row)  :
+                        if($ID_Tienda == $Row['ID_Tienda']){
+                            $TotalIconformidades = $Row['Inconformidad'];
+                            // echo 'Inconformidades = ' . $TotalIconformidades . ' <br>';
+                        }
                     endforeach;
                 }
 
@@ -131,22 +147,24 @@
                 // echo 'Clientes satisfechos = ' . $Satisfaccion . ' <br>';
 
                 $Nuevo = ['ID_Tienda' => $ID_Tienda, 'Satisfaccion' => $Satisfaccion];
-
                 array_push($PorcentajeSatisfaccion, $Nuevo);
                 
                 // echo '<pre>';
                 // print_r($PorcentajeSatisfaccion);
                 // echo '</pre>';
+                // echo '<br>';    
             endforeach;
             
+            // *******************************************            
             $Datos = [
                 'tiendas_categoria' => $TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria 
                 'tiendas_transferencias' => $TiendasTransferencias,
                 'tiendas_pagomovil' => $TiendasPagoMovil,
                 'tiendasOtrosPagos' => $TiendasOtrosPagos, //ID_Tienda, efectivoBolivar, efectivoDolar, acordado
                 'tiendas_despachos' => $TiendasDespachos, //ID_Tienda, count(ID_tienda)
-                'tiendas_inconformidades' => $TiendasInconformidades,//ID_Tienda, count(inconformidad)
+                'tiendas_inconformidades' => $TiendasNoConformidades,//ID_Tienda, count(Inconformidad)
                 'tiendas_satisfaccion' => $PorcentajeSatisfaccion,
+                'tiendas_disputas' => $TiendasDisputas, //ID_Tienda, conunt(Disputas)
             ];
 
             // echo '<pre>';

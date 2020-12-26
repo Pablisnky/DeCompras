@@ -40,7 +40,7 @@
 
                 <!-- ASUNTO -->
                 <div style="width:90%; margin:auto">
-                    <textarea class=" textarea_4 borde_1 input_13 input_16" style="resize: none;" name="asunto" id="Asunto" autocomplete="off" placeholder="Asunto"></textarea>
+                    <textarea class=" textarea_4 borde_1 input_13 input_16" name="asunto" id="Asunto" autocomplete="off" placeholder="Asunto"></textarea>
                     <input class="contador_2 contador_3" type="text" id="ContadorAsunto" value="200"/>
                 </div>
             </div> 

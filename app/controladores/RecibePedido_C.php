@@ -27,7 +27,7 @@
                         'Nombre' => filter_input(INPUT_POST, "nombreUsuario", FILTER_SANITIZE_STRING),
                         'Apellido' => filter_input(INPUT_POST, "apellidoUsuario", FILTER_SANITIZE_STRING),
                         'Cedula' => filter_input(INPUT_POST, "cedulaUsuario", FILTER_SANITIZE_STRING),
-                        'Telefono' => filter_input(INPUT_POST,"telefonoUsuario",FILTER_SANITIZE_NUMBER_INT),  
+                        'Telefono' => filter_input(INPUT_POST,"telefonoUsuario",FILTER_SANITIZE_STRING),  
                         'Correo' => $_POST['correoUsuario'],
                         'Direccion' => filter_input(INPUT_POST, "direccionUsuario", FILTER_SANITIZE_STRING), 
                         'MontoTotal' => filter_input(INPUT_POST, "montoTotal", FILTER_SANITIZE_STRING),                        
@@ -161,6 +161,7 @@
                 // echo '</pre>';
                 // exit;
                 
+                //Se CONSULTA el correo y el nombre de la tienda
                 $Tienda = $this->ConsultaRecibePedido_M->consultarCorreo($RecibeDatosPedido['ID_Tienda']);
                 // echo '<pre>';
                 // print_r($Tienda);
@@ -169,17 +170,17 @@
 
                 $DatosCorreo = [
                     'informacion_pedido' => $Pedido, // ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, fecha, hora, montoTotal, despacho, formaPago, codigoPago
-                    'informacion_usuario' => $Usuario, //
-                    'informacion_tienda' => $Tienda,
+                    'informacion_usuario' => $Usuario, //nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal
+                    'informacion_tienda' => $Tienda, //ID_Tienda, correo_AfiCom, nombre_Tien
                 ];
 
                 // CORREOS
                 // **************************************** 
                 //Carga la plantilla de correo orden de compra dirigida al cliente y al marketplace
-                $this->correo("ordenCompra", $DatosCorreo); 
+                $this->correo("ordenCompra_mail", $DatosCorreo); 
                 
                 //Carga la plantilla de correo recibo de compra dirigida al usuario
-                $this->correo("reciboCompra", $DatosCorreo); 
+                $this->correo("reciboCompra_mail", $DatosCorreo); 
 
                 // ****************************************
                 $this->vista("inc/header");

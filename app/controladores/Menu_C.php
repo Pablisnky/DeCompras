@@ -34,29 +34,7 @@
             $this->vista("inc/header");
             $this->vista("paginas/quienesSomos_V");
         }
-        
-        //Invocado desde reciboCompra.php
-        public function noConformidad($DatosAgrupados){
-            //$DatosAgrupados contiene una cadena con el ID_Pedido, Fecha de la compra, hora de la compra y la tienda separados por coma, se convierte en array para separar los elementos
-
-            $DatosAgrupados = explode(",", $DatosAgrupados);
-
-            $ID_Pedido = $DatosAgrupados[0];
-            $Fecha = $DatosAgrupados[1];
-            $Hora = $DatosAgrupados[2];
-            $Tienda = $DatosAgrupados[3];
-
-            $Datos = [
-                'id_pedido' => $ID_Pedido,
-                'fecha' => $Fecha,
-                'hora' => $Hora,
-                'tienda' => $Tienda,
-            ];
-            
-            $this->vista("inc/header");
-            $this->vista("paginas/noConformidad_V", $Datos);
-        }
-        
+                
         public function recibeContactenos(){         
             // Se reciben todos los campos del formulario, desde quienesSomos_V.php 
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombreUsuario"]) && !empty($_POST["telefonoUsuario"]) && !empty($_POST["correoUsuario"]) && !empty($_POST["asunto"])){

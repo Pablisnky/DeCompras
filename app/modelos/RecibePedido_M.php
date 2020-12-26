@@ -95,7 +95,7 @@
 
         // SELECT del pedido realizado
         function consultarCorreo($ID_Tienda){                    
-            $stmt = $this->dbh->prepare("SELECT correo_AfiCom, tiendas.nombre_Tien FROM afiliado_com INNER JOIN tiendas ON afiliado_com.ID_AfiliadoCom=tiendas.ID_AfiliadoCom WHERE ID_Tienda = :ID_TIENDA");
+            $stmt = $this->dbh->prepare("SELECT ID_Tienda, correo_AfiCom, tiendas.nombre_Tien FROM afiliado_com INNER JOIN tiendas ON afiliado_com.ID_AfiliadoCom=tiendas.ID_AfiliadoCom WHERE ID_Tienda = :ID_TIENDA");
             
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 

@@ -14,7 +14,11 @@
     </div>
     <div class='contenedor_10'>
         <?php
-        $Contador = 1;
+        $Contador = 1; 
+        // echo '<pre>';
+        // print_r($Datos);
+        // echo '</pre>';
+        // exit;
         foreach($Datos['tiendas_categoria'] as $row) :
             $ID_Tienda = $row['ID_Tienda'];
             $Nombre = $row['nombre_Tien'];
@@ -35,11 +39,12 @@
                         </div>
                         <?php
                     }   ?>
-                        <p class="p_3"><?php echo $Nombre?></p>
+                    <p class="p_3"><?php echo $Nombre?></p>
                     <div class="contenedor_17">
                         <div>
-                        <h3 class="h3_4">Reputación</h3></div>
-                        <div style="width: 33%">
+                            <h3 class="h3_4">Reputación <span class="span_1">(Ultimos 3 meses)</span> </h3>
+                        </div>
+                        <div style="width: 50%; margin: 2% auto;">
                             <p class="p_2 p_18">Clientes satisfechos</p>
                             <?php 
                                 foreach($Datos['tiendas_satisfaccion'] as $Row) :
@@ -55,7 +60,7 @@
                                     <?php
                                 }   ?>
                         </div>
-                        <div style="width:33%">
+                        <div style="width:50%; margin: 2% auto;">
                             <p class="p_2 p_18">Pedidos despachados</p>
                             <?php 
                                 foreach($Datos['tiendas_despachos'] as $row) :
@@ -71,13 +76,28 @@
                                     <?php
                                 }   ?>
                         </div>
-                        <div style="width:33%">
-                            <p class="p_2 p_18">Disputas en curso</p>
-                            <label>0</label>
-                        </div>
+                        <!-- <div style="width:33%">
+                            <p class="p_2 p_18">Disputas en curso</p>  -->
+                            <?php
+                                // $VerificarDisputas = 1; //Se declara para que este definida.
+                                // foreach($Datos['tiendas_disputas'] as $row) :
+                                //     $ID_TiendaConDisputas = $row['ID_Tienda'];
+                                //     //Se busca si la tienda del div esta en el array de tiendas con disputas
+                                //     if($ID_Tienda == $ID_TiendaConDisputas){ 
+                                //         $VerificarDisputas = 'Disputas_' . $ID_Tienda; 
+                                //         $CantidadDisputas = $row['Disputas']    ?>
+                                <!-- <label><?php // echo $CantidadDisputas?></label> -->
+                                                <?php
+                                //     }
+                                // endforeach;   
+                                // if($VerificarDisputas != 'Disputas_' . $ID_Tienda){?>              
+                                        <!-- <label>0</label> -->
+                                    <?php
+                                // }  ?>
+                        <!-- </div> -->
                     </div>
                     <div class="contenedor_163">
-                        <h3 class="h3_4">Metodos de pago aceptados</h3>    
+                        <h3 class="h3_4">Metodos de pago</h3>    
                                 <?php
                                 
                                 $VerificarTransferencia = 1; //Se declara para que este definida.
@@ -122,13 +142,13 @@
                                     if($ID_TiendaConPagoBolivar ==  $ID_Tienda && $PagoBolivar == 1){  
                                         $VerificaPagoBolivar = true ?>
                                         <div class="contenedor_161">
-                                            <p class="p_19">Pago en destino (efectivo Bs.)</p><span class="icon-checkmark"></span>
+                                            <p class="p_19">En destino (efectivo Bs.)</p><span class="icon-checkmark"></span>
                                         </div>
                                         <?php
                                     }
                                     else if($ID_TiendaConPagoBolivar == $ID_Tienda && $PagoBolivar == 0){  ?>
                                         <div class="contenedor_161">
-                                            <p class="p_19">Pago en destino (efectivo Bs.)</p><span class="icon-minus"></span>
+                                            <p class="p_19">En destino (efectivo Bs.)</p><span class="icon-minus"></span>
                                         </div>  <?php
                                     }
                                 endforeach;     
@@ -138,13 +158,13 @@
                                     $PagoDolar = $row['efectivoDolar'];
                                     if($ID_TiendaConPagoDolar == $ID_Tienda && $PagoDolar == 1){  ?>
                                         <div class="contenedor_161">
-                                            <p class="p_19">Pago en destino (efectivo $)</p><span class="icon-checkmark"></span>
+                                            <p class="p_19">En destino (efectivo $)</p><span class="icon-checkmark"></span>
                                         </div>
                                         <?php
                                     }
                                     else if($ID_TiendaConPagoDolar == $ID_Tienda && $PagoDolar == 0){  ?>
                                         <div class="contenedor_161">
-                                            <p class="p_19">Pago en destino (efectivo $)</p><span class="icon-minus"></span>
+                                            <p class="p_19">En destino (efectivo $)</p><span class="icon-minus"></span>
                                         </div>  <?php
                                     }
                                 endforeach;

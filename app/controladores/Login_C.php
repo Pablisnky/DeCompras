@@ -39,11 +39,11 @@
             }
             else if($Datos == 1){
                 $Datos = 'CE';
-                //Se carga la vista login_V
+                //carga la vista login_V en formulario login
                 $this->vista("paginas/login_V", $Datos);
             }
             else{
-                //Se carga la vista login_V
+                //carga la vista login_V en acuse de recibo de registro de tienda
                 $this->vista("paginas/login_V", $Datos);
             }
         }
