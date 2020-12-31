@@ -928,15 +928,17 @@ console.log(AlCarro)
         let FormaPago = document.getElementsByName('referenciaPago') 
         //Recorremos todos los valores del radio button para encontrar el metodo de pago seleccionado
         for(let i = 0; i < Pago.length; i++){
-            if(Pago[i].checked)
-            var PagoSeleccionado = Pago[i].value
-            console.log("Pago", PagoSeleccionado)
+            if(Pago[i].checked){
+                var PagoSeleccionado = Pago[i].value
+                console.log("Pago", PagoSeleccionado)
+            }
         }       
         //Recorremos todos los valores del radio button para encontrar el medio de pago seleccionado
         for(let i = 0; i < FormaPago.length; i++){
-            if(FormaPago[i].checked)
-            var FormaPagoSeleccionada = FormaPago[i].value
-            console.log("FormaPago", FormaPagoSeleccionada)
+            if(FormaPago[i].checked){
+                var FormaPagoSeleccionada = FormaPago[i].value
+                console.log("FormaPago", FormaPagoSeleccionada)
+            }
         }       
         let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
         let CaptureTransferencia = document.getElementById('ImagenTransferencia').value  

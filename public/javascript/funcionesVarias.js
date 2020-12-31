@@ -5,10 +5,10 @@
 
 //************************************************************************************************
     //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
-    // window.addEventListener("click", function(e){   
-    //     var click = e.target
-    //     console.log("Se hizo click en: ", click)
-    // }, false)
+    window.addEventListener("click", function(e){   
+        var click = e.target
+        console.log("Se hizo click en: ", click)
+    }, false)
 
 //************************************************************************************************
    //Oculta el menu principal en responsive haciendo click por fuera del boton menu
@@ -170,7 +170,7 @@
 //************************************************************************************************
     //Coloca los puntos de miles en tiempo real al llenar el campo a cedula en registroDes_V.php - cuenta_editar_V.php
     function formatoMiles(numero, id){
-        // console.log("______Desde formatoMiles()______", numero + " / " + id)
+        console.log("______Desde formatoMiles()______", numero + " / " + id)
 
         var num = numero.replace(/\./g,'')
         if(!isNaN(num) && numero.length < 11){
@@ -188,7 +188,7 @@
  //************************************************************************************************
     //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
     function mascaraTelefono(TelefonoRecibido, id){
-        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
+        console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
 
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 

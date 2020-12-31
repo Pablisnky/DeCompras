@@ -46,19 +46,19 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <legend class="legend_1">Persona responsable</legend> 
 
                 <label>Nombre</label>
-                <input class="input_13 borde_1" type="text" name="nombre_Afcom" id="Nombre_Aficom" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off"/>
+                <input class="input_13 input_13A borde_1" type="text" name="nombre_Afcom" id="Nombre_Aficom" value="<?php echo $Nombre_AfiCom;?>" autocomplete="off"/>
                 
                 <label>Apellido</label>
-                <input class="input_13 borde_1" type="text" name="apellido_Afcom" id="Apellido_Aficom"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off"/>
+                <input class="input_13 input_13A borde_1" type="text" name="apellido_Afcom" id="Apellido_Aficom"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off"/>
                
                 <label>Cedula (Solo números)</label>
-                <input class="input_13 borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off"/>
+                <input class="input_13 input_13A borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off"/>
                 
                 <label>Telefono (Solo números)</label>
-                <input class="input_13 borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" placeholder="0000-000.00.00"/>
+                <input class="input_13 input_13A borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" placeholder="0000-000.00.00"/>
                 
                 <label>Correo</label>
-                <input class="input_13 borde_1" type="text" name="correo_Afcom" id="Correo_Aficom" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off"/>
+                <input class="input_13 input_13A borde_1" type="text" name="correo_Afcom" id="Correo_Aficom" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off"/>
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
 
@@ -73,16 +73,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 </div>
 
                 <label>Nombre tienda</label>
-                <input class="input_13 borde_1" type="text" name="nombre_com" id="Nombre_Tien" value="<?php echo $Nombre_Tien;?>" autocomplete="off"/>
+                <input class="input_13 input_13A borde_1" type="text" name="nombre_com" id="Nombre_Tien" value="<?php echo $Nombre_Tien;?>" autocomplete="off"/>
 
                 <label>Acceso directo a tu tienda</label>
-                <input class="input_13 borde_1" type="text" name="link_acceso" id="Link_Acceso" value="<?php echo $Link_Acceso;?>" autocomplete="off" readonly/>
+                <input class="input_13 input_13A borde_1" type="text" name="link_acceso" id="Link_Acceso" value="<?php echo $Link_Acceso;?>" autocomplete="off" readonly/>
 
                 <label>Telefono tienda</label>
-                <input class="input_13 borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" placeholder="0000-000.00.00"/>
+                <input class="input_13 input_13A borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" placeholder="0000-000.00.00"/>
 
                 <label>Slogan tienda (opcional)</label>
-                <input class="input_13 input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off"/>
+                <input class="input_13 input_13A input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off"/>
                 <input class="contador_2" type="text" id="ContadorSlo" value="50"/>
                 
                 <!-- SECCION DATOS DE UBICACIÓN -->
@@ -157,7 +157,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             ?>
                             <div id="Label_13">
                                 <div class="contenedor_80" id="Contenedor_80js">
-                                    <input class="input_13 borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off"/>
+                                    <input class="input_13 input_13A borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off"/>
                                     <span class="icon-circle-down span_10 span_12_js"></span> 
                                     <div id="Referencia_2"></div>                                
                                     <span></span><!-- span de rellenar para pasar la validacion de categoria-->   
@@ -179,7 +179,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <label>Sección</label>
                     <!-- div a clonar sin eventos y oculto -->
                     <div class="contenedor_80A" id="Contenedor_80A">
-                        <input class="input_13 input_12 borde_1" type="text"/>
+                        <input class="input_13 input_13A input_12 borde_1" type="text"/>
                         <span class="icon-cancel-circle span_10 "><span> <!--span_14_js-->
                        
                     </div>
@@ -188,7 +188,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
                         <div class="contenedor_80" id="Contenedor_80"><!--Contenedor_80-->
-                            <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección" />
+                            <input class="input_13 input_13A input_12 borde_1" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección" />
                             <span class="icon-cancel-circle span_10 "></span> <!--span_14_js-->
                         </div>
                         <?php
@@ -201,7 +201,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             ?>
                            
                             <div class="contenedor_80" id="Contenedor_80">
-                                <input class="input_13 input_12 borde_1" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
+                                <input class="input_13 input_13A input_12 borde_1" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
 
                                 <span class="icon-cancel-circle span_10 span_14_js" id="<?php echo $ID_Seccion;?>" onclick="Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>')"></span>
                             </div>
@@ -231,16 +231,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <span class="icon-cancel-circle span_10 span_14 span_16_js"></span>
 
                             <!-- NOMBRE BANCO -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" placeholder="Banco" autocomplete="off"/>
+                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" placeholder="Banco" autocomplete="off"/>
 
                             <!-- TITULAR BANCO -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off"/>
+                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off"/>
 
                             <!-- NUMERO CUENTA -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off"/>
+                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off"/>
 
                             <!-- RIF BANCO -->
-                            <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off"/>
+                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off"/>
                         </div> 
                         <?php
                     }
@@ -256,19 +256,19 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <label>Banco</label>
                                 
                                 <!-- NOMBRE BANCO -->
-                                <input class="input_13 input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
+                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
                                 
                                 <!-- TITULAR BANCO -->
                                 <label>Titular</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
+                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
 
                                 <!-- NUMERO CUENTA -->
                                 <label>Número cuenta</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
+                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
 
                                 <!-- RIF BANCO -->
                                 <label>RIF</label>
-                                <input class="input_13 input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"/>
+                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"/>
                             </div>
                             <?php
                         }
@@ -291,13 +291,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
                             <!-- CEDULA PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
+                            <input class="input_13 input_13A input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
 
                             <!-- BANCO PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
+                            <input class="input_13 input_13A input_10JS borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
 
                             <!-- TELEFONO PAGOMOVIL -->
-                            <input class="input_13 input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
+                            <input class="input_13 input_13A input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
                         </div>
                         <?php
                     }
@@ -313,15 +313,15 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                                 <!-- CEDULA PAGOMOVIL -->
                                 <label>Cedula (Solo números)</label>
-                                <input class="input_13 input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_13A input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
 
                                 <!-- BANCO PAGOMOVIL -->
                                 <label>Banco</label>
-                                <input class="input_13 input_10JS borde_1 BancoJS" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_13A input_10JS borde_1 BancoJS" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
                                 <label>Nº telefono (Solo números)</label>
-                                <input class="input_13 input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_13A input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
                             </div>
                             <?php
                             $Iterador++;
@@ -380,7 +380,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
             </fieldset>   
 
             <!-- HORARIO -->
-
+            
+            <!-- MENU INDICE -->
             <section id="Contenedor_83">
                 <div class="contenedor_83 borde_1">
                     <a class="marcador" href="#marcador_01">Persona responsable</a>

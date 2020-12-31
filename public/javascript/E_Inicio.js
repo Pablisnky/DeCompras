@@ -16,33 +16,6 @@
 //     }
 // }, false);
 
-
-
-
-
-
-
-
-//Escucha desde opciones_V.php, archivo que se carga en vitrina_V.php desde Ajax; por medio de delegación de eventos, donde dentro de la función identificas cual fue el objetivo del click, ya sea por id o por clase o por etiqueta según sea tu necesidadtoma la etiqueta span donde se hace click
-// document.addEventListener('click', function(event){
-//     if(event.target.id == 'Span_3' || event.target.id == 'Label_9'){
-//         TransferirPedido()
-//         CerrarModal_X('Section_3')
-//     }
-// })
-document.addEventListener('click', function(event){
-    console.log("click en elemento ID = ",event.target.id)
-})
-
-
-
-
-
-
-
-
-
-
 //DE ESTA MANERA SE TENDRIA QUE LLAMAR A CADA CATEGORIA PARA QUE LA APLICACIÓN RESPONDA MAS RAPIDO
 document.getElementById("Comida_Rapida").addEventListener('click', function(){VerTiendas('Comida_Rapida')}, false)
 

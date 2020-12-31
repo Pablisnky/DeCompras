@@ -52,7 +52,8 @@
                             echo 0;?>
                             <style>
                                 #Comida_Rapida{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/           
+                                    position: relative;
+                                    z-index: -1;            
                                 }
                                 #Comida_Rapida .span_21{
                                     background-color: var(--Fallos);
@@ -87,7 +88,8 @@
                             echo 0;?>
                             <style>
                                 #Mascotas{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Mascotas .span_21{
                                     background-color: var(--Fallos);
@@ -122,7 +124,8 @@
                             echo 0;?>
                             <style>
                                 #Merceria{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Merceria .span_21{
                                     background-color: var(--Fallos);
@@ -140,7 +143,7 @@
             <span class="icon-barcode span_8"></span>                 
                 <div class="contenedor_106">
                     <span class="span_21 borde_1">
-                    <?php
+                        <?php
                         foreach($Datos as $arr) :
                             if($arr['ID_Categoria'] == 11){  
                                 $CantidadRepuesto_automotriz = $arr['cantidad']; 
@@ -154,19 +157,19 @@
                             }
                         endforeach; 
                         if(empty($CantidadRepuesto_automotriz)){                                     
-                            echo 0;?>
+                            echo 0; ?>
                             <style>
                                 #Repuesto_automotriz{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1 !important;      
                                 }
                                 #Repuesto_automotriz .span_21{
                                     background-color: var(--Fallos);
                                 }
                             </style>
                             <?php
-                        }
-                    ?>
-                </span>
+                        }   ?>
+                    </span>
                 </div>
         </div>
 
@@ -192,7 +195,8 @@
                             echo 0;?>
                             <style>
                                 #Bodega{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Bodega .span_21{
                                     background-color: var(--Fallos);
@@ -227,7 +231,8 @@
                             echo 0;?>
                             <style>
                                 #Minimarket{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Minimarket .span_21{
                                     background-color: var(--Fallos);
@@ -262,7 +267,8 @@
                             echo 0;?>
                             <style>
                                 #Material_Medico_Quirurgico{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Material_Medico_Quirurgico .span_21{
                                     background-color: var(--Fallos);
@@ -297,7 +303,8 @@
                             echo 0;?>
                             <style>
                                 #Ropa_Zapato{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Ropa_Zapato .span_21{
                                     background-color: var(--Fallos);
@@ -332,7 +339,8 @@
                             echo 0;?>
                             <style>
                                 #Artesania{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Artesania .span_21{
                                     background-color: var(--Fallos);
@@ -367,7 +375,8 @@
                             echo 0;?>
                             <style>
                                 #Farmacia{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Farmacia .span_21{
                                     background-color: var(--Fallos);
@@ -402,7 +411,8 @@
                             echo 0;?>
                             <style>
                                 #Ferreteria{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Ferreteria .span_21{
                                     background-color: var(--Fallos);
@@ -437,7 +447,8 @@
                             echo 0;?>
                             <style>
                                 #Panaderia{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Panaderia .span_21{
                                     background-color: var(--Fallos);
@@ -472,7 +483,8 @@
                             echo 0;?>
                             <style>
                                 #Licores{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Licores .span_21{
                                     background-color: var(--Fallos);
@@ -507,7 +519,8 @@
                             echo 0;?>
                             <style>
                                 #Relojes{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Relojes .span_21{
                                     background-color: var(--Fallos);
@@ -542,7 +555,8 @@
                             echo 0;?>
                             <style>
                                 #Deportes{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Deportes .span_21{
                                     background-color: var(--Fallos);
@@ -577,7 +591,8 @@
                             echo 0;?>
                             <style>
                                 #Floristeria{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Floristeria .span_21{
                                     background-color: var(--Fallos);
@@ -612,7 +627,8 @@
                             echo 0;?>
                             <style>
                                 #Construccion{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Construccion .span_21{
                                     background-color: var(--Fallos);
@@ -647,7 +663,8 @@
                             echo 0;?>
                             <style>
                                 #Telefonos{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Telefonos .span_21{
                                     background-color: var(--Fallos);
@@ -682,7 +699,8 @@
                             echo 0;?>
                             <style>
                                 #Papeleria{
-                                    z-index: -1; /* Caso particular porque el elemen o no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre */
+                                    position: relative;
+                                    z-index: -1;
                                 }
                                 #Papeleria .span_21{
                                     background-color: var(--Fallos);
@@ -717,7 +735,8 @@
                             echo 0;?>
                             <style>
                                 #Juguetes{
-                                    z-index: -1; /* Caso particular porque el elemento no esta posicionado pero aún asi se pudo aplicar la propiedad z-index con valor -1 para ponerlo por detras de su padre, esto funciona debido a los niveles de apilamiento de los elementos HTML*/          
+                                    position: relative;
+                                    z-index: -1;           
                                 }
                                 #Juguetes .span_21{
                                     background-color: var(--Fallos);

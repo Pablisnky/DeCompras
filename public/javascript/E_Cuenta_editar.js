@@ -69,7 +69,6 @@ window.addEventListener('click', function(e){
 }, false)
 
 //Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
-ElementoPadrePagoMovil = document.getElementById("Mostrar_PagoMovil")
 document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', function(e){ 
     // console.log("______Desde funcion anonima que aplica listerner a input de PagoMovil______")
     var click = e.target
@@ -83,9 +82,9 @@ document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', functio
 }, false)
 
 if(document.getElementById("CedulaPagoMovil")){
-    // document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
+    document.getElementById("CedulaPagoMovil").addEventListener('keyup', function(){formatoMiles(this.value, 'CedulaPagoMovil')}, false)
 
-    // document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
+    document.getElementById("TelefonoPagoMovil").addEventListener('keyup', function(){mascaraTelefono(this.value, 'TelefonoPagoMovil')}, false)
 }
 // ************************************************************************************************** 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función PreEliminarPagoMovil, PreEliminarSeccion y PreEliminarCuentaBanco
@@ -124,7 +123,7 @@ document.getElementById('Label_13').addEventListener('click',function(){
  
 //************************************************************************************************  
     //Añade un nuevo input clonado del div secciones
-    var incremento = 1
+    var incrementoSeccion = 1
     function clonarSeccion(){
         // console.log("______Desde CrearSección()______")
         
@@ -144,13 +143,13 @@ document.getElementById('Label_13').addEventListener('click',function(){
         Div_clon.classList = "contenedorUnico"
 
         //Se da un ID al input que se encuentra en el nuevo elemento clonado
-        Div_clon.getElementsByClassName("input_12")[0].id = 'InputClon_' + incremento 
+        Div_clon.getElementsByClassName("input_12")[0].id = 'InputClon_' + incrementoSeccion 
         
         //Se da un name al input que se encuentra en el nuevo elemento clonado
         Div_clon.getElementsByClassName("input_12")[0].name = "seccion[]" 
         
         //Se da un ID al span que se encuentra en el nuevo elemento clonado
-        // Div_clon.getElementsByClassName("span_12_js")[0].id = 'SpanClon_' + incremento 
+        // Div_clon.getElementsByClassName("span_12_js")[0].id = 'SpanClon_' + incrementoSeccion 
         
         //El valor del nuevo input debe estar vacio
         Div_clon.getElementsByClassName("input_12")[0].value = "" 
@@ -160,39 +159,8 @@ document.getElementById('Label_13').addEventListener('click',function(){
         
         //Se especifica el div padre, donde se insertará el nuevo nodo (aparecerá de ultimo)
         Padre.appendChild(Div_clon)
-        incremento++
-    }   
-
-//************************************************************************************************  
-    //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
-    var iterar = 1
-    function clonarCuentaBancaria(){
-        //Contenedor a clonar 
-        let clonar = document.getElementById("Contenedor_67")
-
-        //Se crea el clon
-        let Div_clon = clonar.cloneNode(true)
-
-        //Se da un ID al nuevo elemento clonado
-        Div_clon.style.id = iterar  
-        iterar++
-
-        //El value de los elementos que estan dentro del nuevo clon debe estar vacio
-        Div_clon.getElementsByClassName("input_9JS")[0].value = ""
-        Div_clon.getElementsByClassName("input_9JS")[1].value = ""
-        Div_clon.getElementsByClassName("input_9JS")[2].value = ""
-        Div_clon.getElementsByClassName("input_9JS")[3].value = ""
-
-        //Se especifica el div padre, donde se insertará el nuevo nodo
-        //Mostrar_CuentaBancaria = Div padre y Contenedor_67 = Div hijo      
-        ElementoPadre = document.getElementById("Mostrar_CuentaBancaria")
-        
-        //Se especificael el elemento que sera la referencia para insertar el nuevo nodo
-        let Ref_Ubicacion= document.getElementById("Label_4")
-        
-        //Se especifica el div padre y la posición donde se insertará el nuevo nodo
-        ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
-    }
+        incrementoSeccion++
+    } 
 
 //************************************************************************************************ 
     //Elimina los clones de Secciones
@@ -478,21 +446,50 @@ document.getElementById('Label_13').addEventListener('click',function(){
 
         //Se da un scroll para que el elemento con el foco no quede al fondo de la pantalla
         window.scroll(0,1100)
-    }
+    }  
+
+    //************************************************************************************************  
+        //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
+        var iterarBanco = 1
+        function clonarCuentaBancaria(){
+            //Contenedor a clonar 
+            let clonar = document.getElementById("Contenedor_67")
+    
+            //Se crea el clon
+            let Div_clon = clonar.cloneNode(true)
+    
+            //Se da un ID al nuevo elemento clonado
+            Div_clon.style.id = iterarBanco  
+            iterarBanco++
+    
+            //El value de los elementos que estan dentro del nuevo clon debe estar vacio
+            Div_clon.getElementsByClassName("input_9JS")[0].value = ""
+            Div_clon.getElementsByClassName("input_9JS")[1].value = ""
+            Div_clon.getElementsByClassName("input_9JS")[2].value = ""
+            Div_clon.getElementsByClassName("input_9JS")[3].value = ""
+    
+            //Se especifica el div padre, donde se insertará el nuevo nodo
+            //Mostrar_CuentaBancaria = Div padre y Contenedor_67 = Div hijo      
+            ElementoPadre = document.getElementById("Mostrar_CuentaBancaria")
+            
+            //Se especificael el elemento que sera la referencia para insertar el nuevo nodo
+            let Ref_Ubicacion= document.getElementById("Label_4")
+            
+            //Se especifica el div padre y la posición donde se insertará el nuevo nodo
+            ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
+        }
 
 //************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
-    // Calcula cuantas cuentas de PagoMovil existen tomando uno de sus requisitos (Cedula)
-    let CuentasPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
-    // console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
-
-    var iterador = CuentasPagoMovil != 0 ? CuentasPagoMovil.length : 1
-    // console.log("Iterador =", iterador)
-
+    var iteradorPagoMovil =  1
     function clonarCuentaPagoMovil(){
-        // console.log("______Desde clonarCuentaPagoMovil()______")
+        console.log("______Desde clonarCuentaPagoMovil()______")
+        
+        // Calcula cuantas cuentas de PagoMovil existen tomando uno de sus requisitos (Cedula)
+        let CuentasPagoMovil = document.getElementsByClassName("cedulaJS")
+        console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
 
-        //Se verifica que no existan cuentas PagoMovil concampos sin llenar
+        //Se verifica que no existan cuentas PagoMovil con campos sin llenar
         for(var i = 0; i < CuentasPagoMovil.length; i++){
             if(document.getElementsByClassName("cedulaJS")[i].value == "" || document.getElementsByClassName("BancoJS")[i].value == "" || document.getElementsByClassName("TelefonoJS")[i].value == ""){
                 alert("Aún no completa la cuenta PagoMovil")
@@ -508,9 +505,8 @@ document.getElementById('Label_13').addEventListener('click',function(){
         // console.log(Div_clon)
 
         //Se da un ID al nuevo elemento clonado
-        Div_clon.id = "ID_ClonPagoMovil_" + iterador  
-
-        iterador++
+        Div_clon.id = "ID_ClonPagoMovil_" + iteradorPagoMovil  
+        iteradorPagoMovil++
 
         //El value de los elementos que estan dentro del nuevo clon debe estar vacio
         Div_clon.getElementsByClassName("input_10JS")[0].value = ""
@@ -518,9 +514,9 @@ document.getElementById('Label_13').addEventListener('click',function(){
         Div_clon.getElementsByClassName("input_10JS")[2].value = ""
         
         //Se da un id a los elementos que estan dentro del nuevo elemento clonado
-        Div_clon.getElementsByClassName("input_10JS")[0].id = "CedulaPagoMovil_" + iterador 
-        Div_clon.getElementsByClassName("input_10JS")[1].id = "BancoPagoMovil_" + iterador  
-        Div_clon.getElementsByClassName("input_10JS")[2].id = "TelefonoPagoMovil_" + iterador 
+        Div_clon.getElementsByClassName("input_10JS")[0].id = "CedulaPagoMovil_" + iteradorPagoMovil 
+        Div_clon.getElementsByClassName("input_10JS")[1].id = "BancoPagoMovil_" + iteradorPagoMovil  
+        Div_clon.getElementsByClassName("input_10JS")[2].id = "TelefonoPagoMovil_" + iteradorPagoMovil 
 
         //Se añade una clase a los elementos que estan dentro del nuevo elemento clonado
         Div_clon.getElementsByClassName("input_10JS")[0].classList.add("Cedula_ClonPagoMovil","cedulaJS")

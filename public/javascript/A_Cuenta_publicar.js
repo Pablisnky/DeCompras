@@ -29,11 +29,11 @@ function conexionAJAX(){
         return http_request
     } 
 
-//-------------------------------------------------------------------------------------------------
+//************************************************************************************************
 document.getElementById("SeccionPublicar").addEventListener('click', Llamar_seccionesDisponible, false)
 document.getElementById("SeccionPublicar").addEventListener('keydown', Llamar_seccionesDisponible, false)
 
-//-------------------------------------------------------------------------------------------------
+//************************************************************************************************
 function Llamar_seccionesDisponible(){
     // console.log("Desde Llamar_seccionesDisponible()")
     var url = "../../Cuenta_C/SeccionesDisponibles/"

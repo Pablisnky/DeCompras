@@ -74,7 +74,7 @@
                             ?>
                         </ul>
                         <br>
-                        <textarea class="textarea_3">Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea>
+                        <!-- <textarea class="textarea_3">Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea> -->
                         <br>
                     </div>  
                     <?php

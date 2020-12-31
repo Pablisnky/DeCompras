@@ -74,28 +74,28 @@
                         <div class="contFlex">
                             <!-- NOMBRE -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')" value="Pablo"/>
+                                <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
                             </div>
 
                             <!-- APELLIDO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')" value="Cabeza"/>
+                                <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
                             </div>
 
                             <!-- CEDULA -->
                             <div class="contenedor_29">
                                 <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
-                            "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')" value="12.212.121"/>
+                            "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')"/>
                             </div>
 
                             <!-- TELEFONO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')" value="9999-999.99.99"/>
+                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')"/>
                             </div>
 
                             <!-- CORREO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')" value="albertcabeza76@gmail.com"/>
+                                <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')"/>
                             </div>
 
                             <!-- DIRECCION -->
@@ -109,7 +109,7 @@
                                 <div class="contenedor_155">
                                     <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
                                         <option id="Option_1" disabled selected>Seleccione una ciudad</option>
-                                        <option selected="true">Cocorote</option>
+                                        <option>Cocorote</option>
                                         <option>Independencia</option>
                                         <option>San Felipe</option>
                                         <option>Yaritagua</option>
@@ -117,7 +117,7 @@
                                 </div>
                             </div>
                             <div class="contenedor_72">
-                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')">cccc</textarea>
+                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
                             </div>
                         </div>        
                     </div>
@@ -132,7 +132,7 @@
                             <div class="contInputRadio">
                                 <?php
                                 if($Datos['Banco'] != Array()){ ?>
-                                    <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()" checked/>
+                                    <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()"/>
                                     <label class="contInputRadio__label" for="Transferencia">Transferencia bancaria</label>
                                     <br class="br_1"/>
                                     <?php

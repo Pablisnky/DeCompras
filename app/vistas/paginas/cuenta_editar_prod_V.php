@@ -45,22 +45,22 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div>
                     <!-- SECCION PRODUCTO -->
                     <label>Producto</label>
-                    <input class="placeholder placeholder_2 borde_1" type="text" name="producto" id="ContenidoPro" value="<?php echo $Producto;?>"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto" id="ContenidoPro" value="<?php echo $Producto;?>"/>
                     <input class="contador" type="text" id="ContadorPro" value="20"/>
 
                     <!-- SECCION DESCRIPCION -->
                     <label>Descripcion</label>
-                    <input class="placeholder placeholder_2 borde_1" type="text" name="descripcion" id="ContenidoDes" value="<?php echo $Opcion;?>"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" value="<?php echo $Opcion;?>"/>
                     <input class="contador" type="text" id="ContadorDes" value="20"/>
 
                     <!-- SECCION PRECIO -->
                     <label>Precio</label>
-                    <input class="placeholder placeholder_2 borde_1" type="text" name="precio" id="Precio" value="<?php echo $Precio;?>"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" value="<?php echo $Precio;?>"/>
                     <input class="contador" type="text" id="ContadorPre" value="13"/>
 
                     <!-- SECCION SECCION -->
                     <label>Sección</label>
-                    <input class="placeholder placeholder_2 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">
 
                     <!-- div alimentado desde Secciones_Ajax_V.php con la seccion que el usuario cargó en su cuenta  -->       
                     <div id="Contenedor_80"></div> 
@@ -73,7 +73,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         //Entra en el IF cuando no hay caracteristicas creadas
                         if($Datos['caracteristicas'] == Array ()){    ?>
                             <div class="Contenedor_80" id="Contenedor_82">
-                                <input class="placeholder placeholder_2 placeholder_3 borde_1 caract_js" type="text" name="caracteristica[]" id="Caracteristica" placeholder="Nueva caracteristica del producto"/>
+                                <input class="placeholder placeholder_2 placeholder_3 borde_1 caract_js" type="text" name="caracteristica[]" id="Caracteristica" placeholder="Nueva caracteristica"/>
                                 <span class="icon-cancel-circle span_10 span_12_js"></span> 
                             </div> 
                             <?php

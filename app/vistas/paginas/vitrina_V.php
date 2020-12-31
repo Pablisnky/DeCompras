@@ -23,11 +23,11 @@
     <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
 
     <div class="contenedor_156"> 
-        <aside class="aside_1">
-            <div>
+        <div>
+            <aside class="aside_1">
                 <p class="p_17 borde_1">SECCIONES</p>
-            </div>
-        </aside>
+            </aside>
+        </div>
 
         <div class="contenedor_110" id="Section_4">
             <?php

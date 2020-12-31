@@ -134,7 +134,7 @@
                 // Sino se recibe el codigo de transferencia se da un valor por defecto
                 if(empty($RecibeDatosPedido['CodigoTransferencia'])){
                     $CodigoTransferencia = $RecibeDatosPedido['formaPago'];
-                    $CodigoTransferencia = 'Ver capture';
+                    $CodigoTransferencia = 'No aplica';
                 } 
 
                 //Se INSERTAN los datos del usuario en la BD

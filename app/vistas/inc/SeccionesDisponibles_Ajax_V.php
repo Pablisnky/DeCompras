@@ -12,9 +12,9 @@
               //$Datos['seccion'] trae información desde Cuenta_C/SeccionesDisponibles
               foreach($Datos['seccion'] as $row){
                 $SeccionTienda = $row['seccion']; ?>
-                <div class="contenedor_115">
+                <div class="contInputRadio">
                     <input class="" type="radio" name="seccion" id="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>" value="<?php echo $SeccionTienda?>" onclick="transferirSeccion(this.form, 'SeccionPublicar')"/> 
-                    <label class="label_14 label_12" for="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>"> <?php echo $SeccionTienda ?></label>
+                    <label class="contInputRadio__label" for="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>"> <?php echo $SeccionTienda ?></label>
               </div>
                 <?php
               $ContadorSeccion++;

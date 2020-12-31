@@ -61,7 +61,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $Contador;?>">
                         <!-- IMAGEN PRINCIPAL -->
-                    <div class="contenedor_9">
+                    <div class="contenedor_9 contenedor_9--pointer">
                         <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/productos/<?php echo $Fotografia;?>')">
                             <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
                         </div>

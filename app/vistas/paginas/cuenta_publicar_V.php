@@ -5,8 +5,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
       ?>     
 
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
-    
+    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>    
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
         
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
@@ -32,10 +31,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
 
                     <!-- PRECIO -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )"  tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
 
                     <br>
-                    <!-- SECCION -->
+                    <!-- SECCION --> 
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
                     
                     <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
