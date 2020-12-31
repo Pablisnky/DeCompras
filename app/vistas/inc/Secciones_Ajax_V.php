@@ -30,7 +30,7 @@
 
                     <input class="ocultar" type="text" name="ID_Seccion" value="<?php echo $ID_SeccionTienda?>"/>
                     
-                    <label class="label_14 label_12" for="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>"> <?php echo $SeccionTienda ?></label>
+                    <label class="label_14 contInputRadio__label" for="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>"> <?php echo $SeccionTienda ?></label>
               </div>
                 <?php
               $ContadorSeccion++;

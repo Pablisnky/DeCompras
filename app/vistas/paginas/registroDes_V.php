@@ -43,7 +43,7 @@
                 </div>          
             </fieldset> 
             <div class="contenedor_66">                    
-                <input class="boton boton_4" type="submit" value="Registrarse">
+                <input class="boton" type="submit" value="Registrarse">
             </div>
         </form>
     </div>

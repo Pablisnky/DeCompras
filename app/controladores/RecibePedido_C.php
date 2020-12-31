@@ -43,7 +43,7 @@
                         'FormaPago' => filter_input(INPUT_POST, "formaPago", FILTER_SANITIZE_STRING),
                         'Despacho' => filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING), 
                         'CodigoTransferencia' => filter_input(INPUT_POST, "codigoTransferencia", FILTER_SANITIZE_STRING),
-                        'CodigoPagoMovil' => filter_input(INPUT_POST, "codigoPagoMovil", FILTER_SANITIZE_STRING),
+                        // 'CodigoPagoMovil' => filter_input(INPUT_POST, "codigoPagoMovil", FILTER_SANITIZE_STRING),
                     ];              
                     
                     // echo "<pre>";
@@ -131,21 +131,76 @@
                     exit();
                 }
 
-                //Cualquiera que sea el modo de pago, el código del banco se pasa a la variable CodigoPago
-                switch($RecibeDatosPedido['FormaPago']){
-                    case 'Transferencia':
-                        $CodigoPago = $RecibeDatosPedido['CodigoTransferencia'];   
-                    break;    
-                    case 'PagoMovil':
-                        $CodigoPago =  $RecibeDatosPedido['CodigoPagoMovil'];   
-                    break;    
-                    default:
-                        $CodigoPago = 'N/A';
-                }  
+                // Sino se recibe el codigo de transferencia se da un valor por defecto
+                if(empty($RecibeDatosPedido['CodigoTransferencia'])){
+                    $CodigoTransferencia = $RecibeDatosPedido['formaPago'];
+                    $CodigoTransferencia = 'Ver capture';
+                } 
 
                 //Se INSERTAN los datos del usuario en la BD
-                $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $RecibeDatosPedido,$CodigoPago, $Aleatorio);
+                $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $CodigoTransferencia,  $RecibeDatosPedido, $Aleatorio);
                 
+                //Se recibe y se inserta el capture de transferencia
+                if($_FILES['imagenTransferencia']['name'] != ''){
+                    $archivonombre = $_FILES['imagenTransferencia']['name'];
+                    $Ruta_Temporal = $_FILES['imagenTransferencia']['tmp_name'];
+                    $tipo = $_FILES['imagenTransferencia']['type'];
+                    $tamanio = $_FILES['imagenTransferencia']['size'];
+
+                    // echo $archivonombre .'<br>';
+                    // echo $Ruta_Temporal .'<br>';
+                    // echo $tipo .'<br>';
+                    // echo $tamanio .'<br>';
+                    // exit;
+
+                    //Usar en remoto
+                    // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
+
+                    //usar en local
+                    $directorio = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/capture/';
+
+                    //Subimos el fichero al servidor
+                    move_uploaded_file($Ruta_Temporal, $directorio.$archivonombre);
+
+                    //Se INSERTA el capture del pago por medio de un UPDATE debido a que ya existe un registro con el pedido en curso
+                    $this->ConsultaRecibePedido_M->UpdateCapturePago($Aleatorio, $archivonombre);
+                }
+                // else{
+                //     echo 'No se recibio capture de Transferencia';
+                //     exit;
+                // }
+                
+                //Se recibe y se inserta el capture de PagoMovil
+                if($_FILES['imagenPagoMovil']['name'] != ''){
+                    $archivonombre = $_FILES['imagenPagoMovil']['name'];
+                    $Ruta_Temporal = $_FILES['imagenPagoMovil']['tmp_name'];
+                    $tipo = $_FILES['imagenPagoMovil']['type'];
+                    $tamanio = $_FILES['imagenPagoMovil']['size'];
+
+                    // echo $archivonombre .'<br>';
+                    // echo $Ruta_Temporal .'<br>';
+                    // echo $tipo .'<br>';
+                    // echo $tamanio .'<br>';
+                    // exit;
+
+                    //Usar en remoto
+                    // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
+
+                    //usar en local
+                    $directorio = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/capture/';
+
+                    //Subimos el fichero al servidor
+                    move_uploaded_file($Ruta_Temporal, $directorio.$archivonombre);
+
+                    //Se INSERTA el capture del pago por medio de un UPDATE debido a que ya existe un registro con el pedido en curso
+                    $this->ConsultaRecibePedido_M->UpdateCapturePago($Aleatorio, $archivonombre);
+                }
+                // else{
+                //     echo 'No se recibio capture de PagoMovil';
+                //     exit;
+                // }
+
+                //DATOS ENVIADOS POR CORREOS
                 // ****************************************
                 //Se CONSULTA el pedido recien ingresado a la BD
                 $Pedido = $this->ConsultaRecibePedido_M->consultarPedido($Aleatorio);
@@ -169,7 +224,7 @@
                 // exit;
 
                 $DatosCorreo = [
-                    'informacion_pedido' => $Pedido, // ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, fecha, hora, montoTotal, despacho, formaPago, codigoPago
+                    'informacion_pedido' => $Pedido, // ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, fecha, hora, montoTotal, despacho, formaPago, codigoPago, capture
                     'informacion_usuario' => $Usuario, //nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal
                     'informacion_tienda' => $Tienda, //ID_Tienda, correo_AfiCom, nombre_Tien
                 ];

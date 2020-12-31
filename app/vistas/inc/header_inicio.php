@@ -30,7 +30,7 @@
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>	
-		<link rel="manifest" href="manifest.json"/>
+		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
     </head>
     <body>				
 		<header class="contenedor_69 contenedor_116">
@@ -52,8 +52,8 @@
 				</ul>
 			</nav>
 		</header>
-        <div class="contenedor_34 borde_1" id="Contenedor_34">
-            <span class="icon-search span_7"></span>
+        <div class="contIconoBuscador borde_1" id="Contenedor_34">
+            <span class="icon-search contIconoBuscador__span"></span>
         </div>
 		<article>
 			<noscript>
@@ -64,6 +64,7 @@
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
+
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

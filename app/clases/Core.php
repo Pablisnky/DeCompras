@@ -56,11 +56,17 @@ class Core{
         // echo "************************************************************************"  . "<br>";
         //Se obtienen los parametros enviados por la url
         $this->parametros = $url ? array_values($url) : [1];
-
+        // base64_encode($this->parametros);
+        // echo "<br><br><br><br><br><br><br><br>";
+        // //Se cifran los parametros enviados por url
+        // $Parametros = base64_encode($this->parametros[0]);
         // echo "Los parametros enviados son: ";
-        //  print_r($this->parametros);
-        // echo "<br>";
+        // echo $Parametros;
+        // echo '<pre>';
+        // print_r($this->parametros);
+        // echo '</pre>';
         // echo "************************************************************************"  . "<br>";
+        // exit;
         //llamar callback con parametros array
         call_user_func_array([$this->controladorActual, $this->metodoActual], $this->parametros);
     }

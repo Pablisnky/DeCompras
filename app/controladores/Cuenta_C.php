@@ -22,6 +22,9 @@
 
         // invocado desde el metodo recibeRegistroEditado() en este mismo archivo
         public function index(){
+            //CONSULTA los datos de la tienda
+            $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
+
             //CONSULTA los productos de una sección en especifico según la tienda
             $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
@@ -34,6 +37,7 @@
             $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                 'secciones' => $Secciones,
                 'fotografiaTienda' => $Fotografia,
                 'slogan' => $Slogan,
@@ -95,6 +99,8 @@
 
                 // $Seccion  = 'Seccion especifica';
             }
+            //CONSULTA los datos de la tienda
+            $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
 
             //Se CONSULTAN las secciones de una tienda en particular
             $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
@@ -105,6 +111,7 @@
             $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
                 'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precio, seccion, fotografia
                 // 'notificacion' => $Notificacion,
@@ -202,7 +209,7 @@
                 'otrosPagos' => $OtrosPagos
             ];
             
-            //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya las tiene creadas cuando vaya a cargar un producto
+            //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya tiene creada al menos una cuando vaya a cargar un producto
             if(!empty($Datos['secciones'])){
                 foreach($Datos['secciones'] as $Key){
                     $Seccion = $Key['seccion'];
@@ -210,10 +217,19 @@
                 $_SESSION['Seccion'] = $Seccion;
             }
 
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
+
+            $this->vista("inc/header_AfiCom", $Datos); 
             $this->vista("paginas/cuenta_editar_V", $Datos);
         }
 
         public function Publicar(){
+            //CONSULTA los datos de la tienda
+            $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
+
             //CONSULTA si existe al menos una sección donde cargar productos
             $Cant_Seccion = $this->ConsultaCuenta_M->consultarSecciones($this->ID_Tienda);
             // echo "Registros encontrados: " . $Cant_Seccion;
@@ -234,6 +250,7 @@
                 $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 $Datos = [
+                    'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                     'categorias' => $Categorias,
                     'secciones' => $Secciones,
                     'slogan' => $Slogan
@@ -249,6 +266,9 @@
         }
 
         public function ventas(){
+            //CONSULTA los datos de la tienda
+            $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
+
             //CONSULTA si existe al menos una sección donde cargar productos
             $Cant_Seccion = $this->ConsultaCuenta_M->consultarSecciones($this->ID_Tienda);
             // echo "Registros encontrados: " . $Cant_Seccion;
@@ -270,6 +290,7 @@
                 $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 $Datos = [
+                    'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                     'categorias' => $Categorias,
                     'secciones' => $Secciones,
                     'slogan' => $Slogan
@@ -288,6 +309,9 @@
 
             $ID_Producto = $DatosAgrupados[0];
             $Opcion = $DatosAgrupados[1];
+
+            //CONSULTA los datos de la tienda
+            $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
 
             //CONSULTA los productos de una sección en especifico según la tienda
             $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
@@ -310,6 +334,7 @@
             $Imagenes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
                 'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, fotografia, producto, opcion, precio, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
@@ -324,6 +349,8 @@
             // exit();
             $this->vista("paginas/cuenta_editar_prod_V", $Datos);
         }
+        
+        // HASTA AQUI SON LOS METODOS QUE RESPONDEN AL MENU
 
         public function ConsultarOpciones($OpcionProd){
             //CONSULTA las opciones de productos que existen en la BD segun la categoria seleccionada

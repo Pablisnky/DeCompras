@@ -28,6 +28,11 @@
                 'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
                 'ID_Tienda' => $ID_Tienda               
             ];
+
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";            
+            // exit();
             
             $verifica_2 = 1906;  
             $_SESSION['verifica_2'] = $verifica_2; 

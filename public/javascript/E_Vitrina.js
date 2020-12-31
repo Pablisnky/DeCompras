@@ -51,6 +51,13 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
 
+// ************************************************************************************************** 
+//obtiendo informacion del DOM para identificar el elemento donde se hizo click 
+window.addEventListener("click", function(e){   
+    var click = e.target
+    console.log("Se hizo click en: ", click)
+}, false)
+
 // *****************************************************************************************************
 //Se busca el alto del body de la página para garantizar que el alto del contenedor a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
 //Cuando carga la página se registran los listener de clic para toda la ventana
@@ -73,10 +80,9 @@ document.addEventListener('click', function(event){
 })
 
 // *****************************************************************************************************
- //Funcion anonima para ocultar el menu en responsive
+  //obtiene informacion del DOM del elemento donde se hizo click 
  window.addEventListener("click", function(e){
      // console.log("_____Desde función anonima para ocultar menu_____")
-     //obtiendo informacion del DOM del elemento donde se hizo click 
      var click = e.target
     //  console.log(click)
  }, false)
@@ -178,7 +184,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //invocada desde carrito_V.php 
     function MuestraEnvioFactura(){
-        console.log("______Desde MuestraEnvioFactura()______") 
+        // console.log("______Desde MuestraEnvioFactura()______") 
         document.getElementById("MuestraEnvioFactura").style.display = "block"
         document.getElementById("Contenedor_26").style.display = "none"
     }
@@ -902,7 +908,7 @@ console.log(AlCarro)
 //************************************************************************************************
     //Valida el formulario de despacho de producto
     function validarDespacho(){
-        // console.log("______Desde validarDespacho()______")
+        console.log("______Desde validarDespacho()______")
 
         document.getElementsByClassName("botonJS")[0].value = "Enviando ..."
         document.getElementsByClassName("botonJS")[0].disabled = "disabled"
@@ -919,17 +925,28 @@ console.log(AlCarro)
         let Estado = document.getElementById('Estado').value 
         let Ciudad = document.getElementById('Ciudad').value
         let Pago = document.getElementsByName('formaPago') 
-        //Recorremos todos los valores del radio button para encontrar el seleccionado
+        let FormaPago = document.getElementsByName('referenciaPago') 
+        //Recorremos todos los valores del radio button para encontrar el metodo de pago seleccionado
         for(let i = 0; i < Pago.length; i++){
             if(Pago[i].checked)
             var PagoSeleccionado = Pago[i].value
-            // console.log(PagoSeleccionado)
+            console.log("Pago", PagoSeleccionado)
+        }       
+        //Recorremos todos los valores del radio button para encontrar el medio de pago seleccionado
+        for(let i = 0; i < FormaPago.length; i++){
+            if(FormaPago[i].checked)
+            var FormaPagoSeleccionada = FormaPago[i].value
+            console.log("FormaPago", FormaPagoSeleccionada)
         }       
         let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
-        let RegistroPago_Pagomovil = document.getElementById('RegistroPago_Pagomovil').value
+        let CaptureTransferencia = document.getElementById('ImagenTransferencia').value  
+        let CapturePagoMovil = document.getElementById('ImagenPagoMovil').value
         
         //Patron de entrada solo acepta letras (Nombre - Apellido)
         let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
+
+        //Patron de entrada para archivos de carga permitidos
+        var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
 
         //Patron de entrada solo acepta numeros,guion y puntos          
         // let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
@@ -1045,6 +1062,17 @@ console.log(AlCarro)
             return false;
         }
         else if(PagoSeleccionado == "Transferencia"){
+            if(FormaPagoSeleccionada == undefined){
+                alert ("Debe infomar el código o el capture del pago");
+                document.getElementsByClassName("botonJS")[0].value = "Comprar"
+                document.getElementsByClassName("botonJS")[0].disabled = false
+                document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+                return false;
+            }
+        }
+        else if(PagoSeleccionado == "Transferencia" && FormaPagoSeleccionada == "codigoTransferencia"){
             if(RegistroPago_Transferencia == "" ||  RegistroPago_Transferencia.indexOf(" ") == 0 || RegistroPago_Transferencia.length > 20){
                 alert ("Código de transferencia invalido");
                 document.getElementById("RegistroPago_Transferencia").value = "";
@@ -1058,18 +1086,26 @@ console.log(AlCarro)
                 return false;
             }
         }
-        else if(PagoSeleccionado == "PagoMovil"){
-            if(RegistroPago_Pagomovil == "" ||  RegistroPago_Pagomovil.indexOf(" ") == 0 || RegistroPago_Pagomovil.length > 20){
-            alert ("Código de PagoMovil invalido");
-            document.getElementById("RegistroPago_Pagomovil").value = "";
-            document.getElementById("RegistroPago_Pagomovil").focus();
-            document.getElementById("RegistroPago_Pagomovil").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("botonJS")[0].value = "Comprar"
-            document.getElementsByClassName("botonJS")[0].disabled = false
-            document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
-            return false;
+        else if(PagoSeleccionado == "Transferencia" && FormaPagoSeleccionada == "CaptureTransferencia"){            
+            if(Ext_Permitidas.exec(CaptureTransferencia ) == false || CaptureTransferencia .size > 20000){
+                alert("Introduzca el capture de la transferencia")
+                document.getElementsByClassName("botonJS")[0].value = "Comprar"
+                document.getElementsByClassName("botonJS")[0].disabled = false
+                document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+                return false;
+            }
+        }
+        else if(PagoSeleccionado == "PagoMovil"){            
+            if(Ext_Permitidas.exec(CapturePagoMovil ) == false || CapturePagoMovil .size > 20000){
+                alert("Introduzca el capture del PagoMovil")
+                document.getElementsByClassName("botonJS")[0].value = "Comprar"
+                document.getElementsByClassName("botonJS")[0].disabled = false
+                document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+                return false;
             }
         }
         //Si se superan todas las validaciones la función devuelve verdadero
@@ -1113,7 +1149,7 @@ console.log(AlCarro)
         // console.log("______Desde nobackbutton()______")
         window.location.hash="no-back-button";
         window.location.hash="Again-No-back-button" //chrome
-        window.onhashchange=function(){window.location.hash="no-back-button";}
+        window.onhashchange = function(){window.location.hash="no-back-button";}
     }
 
 //************************************************************************************************
@@ -1178,7 +1214,7 @@ console.log(AlCarro)
     }
     
  //************************************************************************************************
-    //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
+    //Agrega los puntos en tiempo real en tiempo real    
     function mascaraTelefono(TelefonoRecibido, id){
         // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
         
@@ -1194,7 +1230,7 @@ console.log(AlCarro)
     }
 
 //************************************************************************************************
-    // Validar el formato de telefono
+    //Valida el formato de telefono
     function validarFormatoTelefono(NroTelefono,id){
         // console.log("______Desde validarFormatoTelefono()______",NroTelefono)
 
@@ -1207,17 +1243,88 @@ console.log(AlCarro)
         else{
             alert("Telefono con formato incorrecto");
             document.getElementById(id).value = "";
-            document.getElementById(id).focus()
+            // document.getElementById(id).focus()
             document.getElementById(id).style.backgroundColor = 'var(--Fallos)'; 
             return false;
         }
     }
 
 //************************************************************************************************
-///Escucha en opciones_V.php por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
-// document.getElementById('Mostrar_Opciones').addEventListener('click', function(event){    
-//     if(event.target.id == 'Span_523'){
-//         console.log("HOLA")
-//     }
-// }, false);
+//Muestra el contenedor del input transferencia
+    function verInputTransferencia(){
+        // console.log("______Desde verInputTransferencia()______)
+        
+        document.getElementById("InputTransferencia").style.display = "block"
+        document.getElementById("CaptureTransferencia").style.display = "none"
+    }
+
+//************************************************************************************************
+    //Muestra el contenedor del capture transferencia
+    function verCaptureTransferencia(){
+        // console.log("______Desde verInputTransferencia()______)
+        
+        document.getElementById("InputTransferencia").style.display = "none"
+        document.getElementById("CaptureTransferencia").style.display = "block"
+    }
+
+//************************************************************************************************
+    //Da una vista previa del capture de transferencia bancaria
+    function CaptureTransferencia(){
+        // console.log("______Desde CaptureTransferencia()______")
+        var contenedor = document.getElementById("DivCaptureTransferencia");
+        var archivos = document.getElementById("ImagenTransferencia").files;
+
+        if(contenedor.childElementCount < 1){
+            for(i = 0; i < archivos.length; i++){
+                imgTag = document.createElement("img");
+                imgTag.height = 400;
+                imgTag.width = 280;   
+                imgTag.objectFit = "cover" 
+                imgTag.src = URL.createObjectURL(archivos[i]);
+                contenedor.appendChild(imgTag);
+            }
+        }
+        else{
+            //Se elimina la imagen existente
+            contenedor.removeChild(imgTag);
+
+            CaptureTransferencia()
+        }
+    }
      
+//************************************************************************************************
+    //Da una vista previa del capture del pagoMovil
+    function CapturePagoMovil(){
+        console.log("______Desde CapturePagoMovil()______")
+        var contenedor = document.getElementById("DivCapturePagoMovil");
+        var archivos = document.getElementById("ImagenPagoMovil").files;
+
+        if(contenedor.childElementCount < 1){
+            for(i = 0; i < archivos.length; i++){
+                imgTag = document.createElement("img");
+                imgTag.height = 400;
+                imgTag.width = 280;   
+                imgTag.objectFit = "cover" 
+                imgTag.src = URL.createObjectURL(archivos[i]);
+                contenedor.appendChild(imgTag);
+            }
+        }
+        else{
+            //Se elimina la imagen existente
+            contenedor.removeChild(imgTag);
+
+            CapturePagoMovil()
+        }
+    }
+
+//************************************************************************************************
+    //Coloca el cursor en el input automaticamente 
+    function autofocus(id){
+        // console.log("______Desde autofocus()______", id)
+
+        //Si el elemento existe
+        if(document.getElementById(id)){
+            document.getElementById(id).focus()
+            document.getElementById(id).value = ""
+        }
+    }

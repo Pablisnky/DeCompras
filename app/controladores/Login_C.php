@@ -40,10 +40,12 @@
             else if($Datos == 1){
                 $Datos = 'CE';
                 //carga la vista login_V en formulario login
+                $this->vista("inc/header");
                 $this->vista("paginas/login_V", $Datos);
             }
             else{
                 //carga la vista login_V en acuse de recibo de registro de tienda
+                $this->vista("inc/header");
                 $this->vista("paginas/login_V", $Datos);
             }
         }
@@ -131,20 +133,13 @@
                         //CONSULTA si existe al menos una sección donde cargar productos
                         $Cant_Seccion = $this->ConsultaLogin_M->consultarSecciones($ID_Tienda);
                         // echo "Registros encontrados: " . $Cant_Seccion;
-
                           
                         //Se crea la sesiones que se exige en todas las páginas de su cuenta            
                         $_SESSION["ID_Tienda"] = $ID_Tienda;
                         
                         //Se crea la sesion que guarda el ID_Afiliado           
                         $_SESSION["ID_Afiliado"] = $ID_Afiliado;
-    
-                        //Se crea una sesión que almacena el nombre de la tienda           
-                        $_SESSION["Nombre_Tienda"] = $NombreTienda;
-                        
-                        //se crea una $_SESSION llamada Nombre que almacena el Nombre del responsable de la tienda
-                        $_SESSION["Nombre"] = $Nombre;
-                        
+                            
                         // Se verifica a donde se redirecciona segun la condición de la tienda
                         if($Cant_Seccion == 0){//Sino hay seccion creada
                             header("location:" . RUTA_URL . "/Modal_C/tiendaSinSecciones"); 

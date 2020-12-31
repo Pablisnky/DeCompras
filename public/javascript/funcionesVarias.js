@@ -5,13 +5,13 @@
 
 //************************************************************************************************
     //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
-    window.addEventListener("click", function(e){   
-        var click = e.target
-    // console.log("Se hizo click en: ", click)
-    }, false)
+    // window.addEventListener("click", function(e){   
+    //     var click = e.target
+    //     console.log("Se hizo click en: ", click)
+    // }, false)
 
 //************************************************************************************************
-   //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
+   //Oculta el menu principal en responsive haciendo click por fuera del boton menu
     let div = document.getElementById("MenuResponsive")
     let span= document.getElementById("Span_6")
     let B = document.getElementById("Tapa")
@@ -56,7 +56,7 @@
 //************************************************************************************************
     //Coloca el cursor en el input automaticamente 
     function autofocus(id){
-        // console.log("______Desde autofocus()______", id)
+        console.log("______Desde autofocus()______", id)
 
         //Si el elemento existe
         if(document.getElementById(id)){

@@ -10,3 +10,5 @@
         </div>
     </div>
 </section>
+
+<?php include(RUTA_APP . "/vistas/inc/footer.php");?>

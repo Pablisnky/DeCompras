@@ -21,7 +21,7 @@
 
     <section >
         <div class="contenedor_122"> 
-            <div class="contenedor_123">
+            <div class="contGridUna">
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_124" id="Contenedor_124"> 
                     <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Fotografia_1'];?>">                              
@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="contenedor_126">
+            <div class="contGridUna">
                 <h1 class="h1_11"><?php echo $Producto, PHP_EOL, $Opcion?></h1>
                 <?php
                 // echo "<pre>";
@@ -85,11 +85,8 @@
                 }   ?>
                 <div>
                     <label class="label_22 borde_1 borde_2"><?php echo $Precio?> Bs</label>
-                    <div class="contenedor_26" id="Contenedor_26"> 
-                                <label class="boton boton_1 boton_8" onclick="cerrarAgregar()">Agregar</label>
-                            
-                           
-                        <label class="boton boton_1 boton_8" onclick="cerrarRegresar()">Regresar</label>
+                    <div class="contGridUna__div" id="Contenedor_26"> 
+                        <label class="boton" onclick="cerrarAgregar()">Agregar</label>                    <label class="boton" onclick="cerrarRegresar()">Regresar</label>
                     </div>
                 </div>           
             </div>

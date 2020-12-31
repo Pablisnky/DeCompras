@@ -31,7 +31,7 @@
                 </div>          
             </fieldset>        
             <div class="contenedor_66">            
-                <input class="boton boton_4" type="submit" value="Crear tienda"/>
+                <input class="boton" type="submit" value="Crear tienda"/>
             </div>  
         </form>
     </div>

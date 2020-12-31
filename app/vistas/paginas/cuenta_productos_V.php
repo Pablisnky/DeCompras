@@ -67,6 +67,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         </div>
                     </div>
                     <div>
+                        <!-- ID_PRODUCTO -->
+                        <!-- <input class="input_8" type="text" value="123456" readonly="readonly" id=""/> -->
+
                         <!-- PRODUCTO -->
                         <input class="input_8" type="text" value="<?php echo $Producto;?>" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>"/>
 

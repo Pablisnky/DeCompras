@@ -11,8 +11,21 @@ En local y en remoto
     .htaccess de la carpeta public
 
 Resoluciones
-    360 x 570 (Huawey Y7 - mi mama)
-    320 x 534 (Samsumg mini S3 - Maria Esther)
-    320 x 570 (ZTE - Maria Esther)
+    360 x 720 (Lisbella)
+    360 x 570 (Silvia Huawey Y7)
+    320 x 534 (Maria Esther Samsumg mini S3)
+    320 x 570 Maria Esther ZTE)
     320 x 640 (Antonieta)
     393 x 851 (Orlando)
+    1280 x 800 (tablet Canaima horizontal)
+    1366 x 768 (Pablo Labtop)
+
+MAC en wifi
+Karina 60:ab:67:9b:07:24
+Xiomara 34:29:12:bf:e8:fc
+Lusvio c0:3f:d5:c6:d0:99
+Esther 14:a3:64:83:e3:dc
+Esther 8c:79:67:1f:4f:b3
+Labtop 7c:a1:77:17:4c:f0
+Telefono 44:6d:57:eb:10:57
+Tablet

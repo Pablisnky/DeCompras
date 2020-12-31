@@ -12,7 +12,7 @@
             $stmt = $this->dbh->prepare("SELECT seccion FROM secciones WHERE ID_Tienda = :Tienda");  
             $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;
@@ -20,33 +20,33 @@
         }
         
         //SELECT de los productos de la tienda seleccionada
-        public function consultarProductos($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT * FROM productos INNER JOIN tiendas_productos ON productos.ID_Producto=tiendas_productos.ID_Producto WHERE tiendas_productos.ID_Tienda = :Tienda");  
-            $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return false;
-            }
-        }
+        // public function consultarProductos($ID_Tienda){
+        //     $stmt = $this->dbh->prepare("SELECT * FROM productos INNER JOIN tiendas_productos ON productos.ID_Producto=tiendas_productos.ID_Producto WHERE tiendas_productos.ID_Tienda = :Tienda");  
+        //     $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
-        public function consultarNombreTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_Tien FROM tiendas WHERE ID_Tienda = :Tienda");  
-            $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);       
-            if($stmt->execute()){
-                return $stmt;
-            }
-            else{
-                return false;
-            }
-        }
+        // public function consultarNombreTienda($ID_Tienda){
+        //     $stmt = $this->dbh->prepare("SELECT nombre_Tien FROM tiendas WHERE ID_Tienda = :Tienda");  
+        //     $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);       
+        //     if($stmt->execute()){
+        //         return $stmt;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
         public function consultarFotografia($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT fotografia_Tien FROM tiendas WHERE ID_Tienda = :Tienda");  
             $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);       
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;
@@ -60,7 +60,7 @@
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return "No se pudo";

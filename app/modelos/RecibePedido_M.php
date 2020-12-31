@@ -5,11 +5,18 @@
             parent::__construct();  
         }
         
-        public function insertarUsuario($RecibeDatosUsuario, $RecibeDatosPedido, $CodigoPago, $Aleatorio){
-            $stmt = $this->dbh->prepare("INSERT INTO usuarios(nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal, despacho, formaPago, codigoPago, ID_Pedido)VALUES (:Nombre, :Apellido, :Cedula, :Telefono, :Correo, :Direccion, :MontoTotal, :Despacho, :FormaPago, :CodigoPago, :ID_Pedido)"); 
+        public function insertarUsuario($RecibeDatosUsuario,$CodigoTransferencia, $RecibeDatosPedido, $Aleatorio){
+            // echo "<pre>";
+            // print_r($RecibeDatosPedido);
+            // echo "</pre>";
+            
+            // echo "<pre>";
+            // print_r($RecibeDatosUsuario);
+            // echo "</pre>";
+            // exit();
+            $stmt = $this->dbh->prepare("INSERT INTO usuarios(ID_Pedido, nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal, despacho, formaPago, codigoPago)VALUES (:ID_Pedido, :Nombre, :Apellido, :Cedula, :Telefono, :Correo, :Direccion, :MontoTotal, :Despacho, :FormaPago, :CodigoPago)"); 
 
             //Se vinculan los valores de las sentencias preparadas
-            //ztmt es una abreviatura de statement 
             $stmt->bindParam(':Nombre', $nombre);
             $stmt->bindParam(':Apellido', $apellido);
             $stmt->bindParam(':Cedula', $cedula);
@@ -21,7 +28,7 @@
             $stmt->bindParam(':FormaPago', $formaPago);
             $stmt->bindParam(':CodigoPago', $codigoPago);
             $stmt->bindParam(':ID_Pedido', $ID_Pedido);
-
+            
             // insertar una fila
             $nombre = $RecibeDatosUsuario['Nombre'];
             $apellido = $RecibeDatosUsuario['Apellido'];
@@ -32,7 +39,7 @@
             $montoTotal = $RecibeDatosUsuario['MontoTotal']; 
             $despacho = $RecibeDatosPedido['Despacho']; 
             $formaPago = $RecibeDatosPedido['FormaPago']; 
-            $codigoPago = $CodigoPago;
+            $codigoPago = $CodigoTransferencia ;
             $ID_Pedido = $Aleatorio;
             
             //Se ejecuta la inserción de los datos en la tabla
@@ -59,7 +66,8 @@
             $stmt->bindParam(':ID_TIENDA', $RecibeDatosPedido['ID_Tienda']);
             
             //Se ejecuta la inserción de los datos en la tabla
-            $stmt->execute();
+            $stmt->execute();            
+            return $this->dbh->lastInsertId();
 
             //Se envia información de cuantos registros se vieron afectados por la consulta
             // return $stmt->rowCount();
@@ -67,7 +75,7 @@
 
         // SELECT del pedido realizado
         function consultarPedido($Aleatorio){                    
-            $stmt = $this->dbh->prepare("SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i:%p') AS hora, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago, usuarios.codigoPago FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido WHERE aleatorio = :ALEATORIO");
+            $stmt = $this->dbh->prepare("SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i:%p') AS hora, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago, usuarios.codigoPago, usuarios.capture FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido WHERE aleatorio = :ALEATORIO");
             
             $stmt->bindValue(':ALEATORIO', $Aleatorio, PDO::PARAM_INT);
 
@@ -79,7 +87,7 @@
             }
         }
 
-        // SELECT del pedido realizado
+        // SELECT del usuario que realizó un pedido
         function consultarUsuario($Aleatorio){                    
             $stmt = $this->dbh->prepare("SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal FROM usuarios WHERE ID_Pedido = :ALEATORIO");
             
@@ -105,5 +113,27 @@
             else{
                 return false;
             }        
+        }
+
+        //UPDATE para agregar la imagen del capture de pago
+        function UpdateCapturePago($Aleatorio, $archivonombre){
+            $stmt = $this->dbh->prepare("UPDATE usuarios SET capture = :CAPTURE WHERE ID_PEDIDO = :ALEATORIO");
+
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':CAPTURE', $archivonombre);
+            $stmt->bindValue(':ALEATORIO', $Aleatorio);
+
+            //Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                // echo 'Bien';
+                // exit;
+                return true;
+            }
+            else{
+                // echo 'Mal';
+                // exit;
+                return false;
+            }
+            
         }
     }

@@ -3,13 +3,6 @@
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
-    require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
-    // echo "<br><br><br><br><br>";
-    // echo "<pre>";
-    // print_r($Datos);
-    // echo "</pre>";
-    // exit();
-
     //$Datos viene de Cuenta_C/Editar
     foreach($Datos['datosResposable'] as $row){
         $Nombre_AfiCom =  $row['nombre_AfiCom'];
@@ -402,7 +395,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- <a class="marcador" href="#marcador_07">Horario</a> -->
                     <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>"/>
-                        <input class="boton boton_6 boton_7" type="submit" value="Guardar cambios"/>
+                        <input class="boton boton--largo" type="submit" value="Guardar cambios"/>
                     </div>          
                     <div class="contenedor_45">
                         <!-- <input type="checkbox" id="Publicar" name="publicar" value="1" onclick="llamar_publicarTienda()" <?php //if($CategoriaT == $Categoria){echo "checked = 'checked'";};?>
@@ -419,7 +412,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <div id="Mostrar_Categorias"></div>
 
     <!-- la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
-    <section class="section_3 section_13" id="Ejemplo_Secciones">
+    <!-- <section class=" section_13" id="Ejemplo_Secciones">
         <div class="contenedor_84 contenedor_24">
             <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
             <div>
@@ -485,7 +478,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <a class="boton boton_4" href="#marcador_03" id="Label_1">Cerrar</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
     <did id="ReadOnly"></did>

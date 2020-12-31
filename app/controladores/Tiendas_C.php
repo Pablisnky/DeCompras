@@ -122,6 +122,7 @@
                 // echo '<pre>';
                 // print_r($TiendasNoConformidades);
                 // echo '</pre>';
+                // exit;
 
                 // Total inconformidades
                 if($TiendasNoConformidades == Array()){
@@ -143,7 +144,7 @@
                 $Satisfaccion = ($TotalDespachos - $TotalIconformidades) * 100 / $TotalDespachos;
 
                 //Se redondea el valor obtenido sin decimales y se añade el simbolo porcentaje
-                $Satisfaccion = number_format($Satisfaccion) . ' %'; 
+                $Satisfaccion = number_format($Satisfaccion); 
                 // echo 'Clientes satisfechos = ' . $Satisfaccion . ' <br>';
 
                 $Nuevo = ['ID_Tienda' => $ID_Tienda, 'Satisfaccion' => $Satisfaccion];
@@ -154,7 +155,10 @@
                 // echo '</pre>';
                 // echo '<br>';    
             endforeach;
-            
+
+            if($TiendasDespachos == Array()){
+                $TiendasNoConformidades = 0;
+            }
             // *******************************************            
             $Datos = [
                 'tiendas_categoria' => $TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria 

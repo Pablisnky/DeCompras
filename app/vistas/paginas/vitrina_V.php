@@ -15,17 +15,20 @@
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
 
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <section class="section_5">	
     <!-- div mostrado solo en responsive -->
     <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
 
     <div class="contenedor_156"> 
-            <div>
         <aside class="aside_1">
+            <div>
                 <p class="p_17 borde_1">SECCIONES</p>
-        </aside>
             </div>
+        </aside>
+
         <div class="contenedor_110" id="Section_4">
             <?php
             $Contador = 1;
@@ -49,7 +52,7 @@
             ?>
         </div>  
     </div>  
-    <!-- Se muestra el boton (div) de carrito de compras en el fondo del viewport, aparece por medio de agregarOpcion() en E_Vitrina.js-->
+    <!-- Se muestra el boton (div) de carrito de compras en el bottom del viewport, aparece por medio de agregarOpcion() en E_Vitrina.js-->
     <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
             <div class="contenedor_31">
@@ -67,25 +70,26 @@
 <div id="Mostrar_Orden"></div>
 
 <!-- Trae por medio de Ajax la dirección de la tienda, la información es suministrada por direccion_V.php invocada por la función () en este mismoarchivo-->
-<div id="Mostrar_Direccion"></div>
+<!-- <div id="Mostrar_Direccion"></div> -->
 
 <!-- Trae por medio de Ajax las ofertas de la tienda, la información es suministrada por ofertas_V.php invocada por la función () en este mismoarchivo-->
-<div id="Mostrar_Ofertas"></div>
+<!-- <div id="Mostrar_Ofertas"></div> -->
 
 <!-- Trae por medio de Ajax lo más pedido de la tienda, la información es suministrada por LoMasPedido_V.php invocada por la función () en este mismoarchivo-->
-<div id="Mostrar_LoMasPedido"></div>
+<!-- <div id="Mostrar_LoMasPedido"></div> -->
 
 <!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
-<div id="Mostrar_Alert"></div>
+<!-- <div id="Mostrar_Alert"></div> -->
 
 <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
 <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
+<?php //include(RUTA_APP . "/vistas/inc/footer.php");?>
 <!-- ******************************************************************************************* -->
 
 <?php
-    //$Datos proviene de Vitrina_C
     //Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado
+    //$Datos proviene de Vitrina_C
     if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C         
         $SeccionSelecionada = $Datos['Seccion'];
         $OpcionSeleccionada = $Datos['Opcion']; 

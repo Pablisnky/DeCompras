@@ -1,7 +1,4 @@
-<?php require(RUTA_APP . "/vistas/inc/header.php");
-// echo "<br><br><br><br>";
-// echo "Datos = " . $Datos;
-// exit();
+<?php
     //$Datos viene desde Login_C/index
     if($Datos == 'CE'){  ?>
         <section class="section_5" id="Section_5">

@@ -1,4 +1,4 @@
-@media screen and (max-width: 350px){
+@media screen and (max-width: 350px){/*aplicará en cualquier medio con dimensiones menores a lo indicado*/
 
 .a_2{/*inicio*/
 	font-size: 1.3em;

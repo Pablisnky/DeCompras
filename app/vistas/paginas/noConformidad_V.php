@@ -1,11 +1,3 @@
-<?php
-    //SDatos se recibe de NoConformidad_C/noConformidad
-    // echo '<pre>';
-    // print_r($Datos);
-    // echo '</pre>';
-    // exit;
-?> 
-
     <?php
     //$Datos viene desde NoConformidad_C/recibeNoConformidades
     if($Datos != 'AcuseRecibo'){  ?>
@@ -22,6 +14,7 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <!-- SDatos se recibe de NoConformidad_C/noConformidad -->
                                 <td class="td_1"><?php echo $Datos['id_pedido']?></td>
                                 <td class="td_1"><?php echo $Datos['tienda']?></td>
                                 <td class="td_1"><?php echo $Datos['fecha']?></td>
@@ -56,8 +49,9 @@
                                 </fieldset>
                             </div>   
                             <div class="contenedor_41">
+                                <input class="ocultar" type="text" name="id_tienda" value="<?php echo $Datos['id_tienda']?>"/>
                                 <input class="ocultar" type="text" name="id_pedido" value="<?php echo $Datos['id_pedido']?>"/>
-                                <a class="boton" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Cerrar</a>
+                                <a class="boton" href="<?php echo RUTA_URL . '/Inicio_C/';?>">Cerrar</a>
                                 <input class="boton" type="submit" value="Enviar"/>
                             </div>    
                         </form> 
@@ -79,4 +73,6 @@
         </section>  <?php
     }   ?>
 		
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_NoConformidad.js';?>"></script>
+
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

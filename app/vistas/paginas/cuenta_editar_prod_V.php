@@ -138,15 +138,15 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
                         <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
                         <input class="ocultar" type="text" name="puntero" value="<?php echo $Datos['puntero'];?>"/>
-                        <input class="boton boton_6" type="submit" value="Guardar"/>
+                        <input class="boton" type="submit" value="Guardar"/>
                     </div> 
                 </div>
             </div>
         </form>
     </div>
 
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js';?>"></script> 
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js';?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen principal

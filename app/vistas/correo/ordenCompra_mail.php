@@ -36,44 +36,18 @@
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <title>Este es un mensaje</title>
-            <style type="text/css">
-                caption{
-                    background-color: rgb(51, 51, 51);
-                    color: white;
-                    font-size: 1.2em;
-                }
-                h1{
-                    color: #8bc34a;
-                }
-                p{
-                    font-size: 1rem;
-                }
-                img{
-                    width: 10rem;
-                    height: 10rem;
-                }
-                .hr_1{
-                    margin-bottom: 5%;
-                }
-                th{
-                    background-color: rgb(239, 245, 245);
-                    width: 170px;
-                }
-                td{
-                    width: 70px;
-                    text-align: center;
-                }
-                .td_1{
-                    text-align: left;
-                }
-                .td_2{
-                    background-color: orange;
-                }
-                .th_1{
-                    width: 100px;
-                }
-                .th_2{
-                    width: 220px;
+            <style type="text/css">  
+                body{margin: 0; padding: 0; min-width: 100%!important;} 
+                h1{color: #8bc34a;}
+                p{font-size: 1rem;}
+                img{width: 10rem; height: 10rem; margin-top: 5%}            
+                tr{height: 15px} 
+                .hr_1{margin-bottom: 1%;}
+                .td_1{text-align: left; width: 180px;}
+
+                @media(max-width: 800px){/*medio con dimensiones menores a lo indicado*/
+                    img{width: 6rem; height: 6rem; margin-top: 10%} 
+                    h1{font-size: 1.6em}
                 }
             </style>
         </head>
@@ -83,75 +57,98 @@
             // DATOS DE LA COMPRA
             $email_message = "<h2>Datos de la compra</h2>";
             $email_message .= "<table>";
-            // $email_message .= "<caption>Información de transacción</caption>";
-            $email_message .= "<thead>";
-            $email_message .= "<th class='th_1'>FECHA</th>";
-            $email_message .= "<th class='th_1'>HORA</th>"; 
-            $email_message .= "<th class='th_1'>DESPACHO</th>"; 
-            $email_message .= "<th>FORMA DE PAGO</th>"; 
-            $email_message .= "<th>REFERENCIA BANCARIA</th>"; 
-            $email_message .= "<th>TOTAL PAGADO</th>"; 
-            $email_message .= "</thead>";
-                foreach($DatosCorreo['informacion_pedido'] as $DatosCompra){
+                foreach($DatosCorreo['informacion_pedido'] as $DatosCompra) :
+                    $Capture =  $DatosCompra['capture'];
                     $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>FECHA</td>";
                     $email_message .= "<td>" . $DatosCompra["fecha"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>HORA</td>";
                     $email_message .= "<td>" . $DatosCompra["hora"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>DESPACHO</td>";
                     $email_message .= "<td>" . $DatosCompra["despacho"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>FORMA DE PAGO</td>";
                     $email_message .= "<td>" . $DatosCompra["formaPago"] . "</td>";
-                    $email_message .= "<td class='td_2'>" . $DatosCompra["codigoPago"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>REFERENCIA BANCARIA</td>";
+                    $email_message .= "<td>" . $DatosCompra["codigoPago"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>TOTAL PAGADO</td>";
                     $email_message .= "<td>" . $DatosCompra["montoTotal"] . ' Bs.' . "</td>";
                     $email_message .= "</tr>";
+                    $email_message .= "<td class='td_1'>CAPTURE</td>";
+                    $email_message .= "<td><img src='https://pedidoremoto.com/public/images/capture/" . $Capture . "'></td>"; 
+                    $email_message .= "</tr>";
                     break;
-            }
+                endforeach;
             $email_message .= "</table>";
             $email_message .= "<hr class='hr_1'>";
                 
             // DATOS DEL PEDIDO
             $email_message .= "<h2>Datos del pedido</h2>";
             $email_message .= "<table>";
-            // $email_message .= "<caption>Productos comprados</caption>";
-            $email_message .= "<thead>";
-            $email_message .= "<th class='th_1'>CANTIDAD</th>";
-            $email_message .= "<th>PRODUCTO</th>"; 
-            $email_message .= "<th class='th_2'>ESPECIFICACIONES</th>"; 
-            $email_message .= "<th>PRECIO UNITARIO</th>"; 
-            $email_message .= "<th>TOTAL</th>"; 
-            $email_message .= "</thead>";
-                foreach($DatosCorreo['informacion_pedido'] as $DatosPedido){
+                foreach($DatosCorreo['informacion_pedido'] as $DatosPedido) :
                     $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>CANTIDAD</td>";
                     $email_message .= "<td>" . $DatosPedido["cantidad"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td>PRODUCTO</td>"; 
                     $email_message .= "<td class='td_1'>" . $DatosPedido["producto"] . "</td>";
-                    $email_message .= "<td class='td_1'>" . $DatosPedido["opcion"] . "</td>";
-                    $email_message .= "<td>" . $DatosPedido["precio"] . ' Bs.' . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>ESPECIFICACIONES</td>";
+                    $email_message .= "<td>" . $DatosPedido["opcion"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td>PRECIO UNITARIO</td>"; 
+                    $email_message .= "<td>" . $DatosPedido["precio"] . ' Bs.' . "</td>"; 
+                    $email_message .= "</tr>";
+                    $email_message .="<tr>";
+                    $email_message .= "<td>SUB-TOTAL</td>"; 
                     $email_message .= "<td>" . $DatosPedido["total"] . ' Bs.' . "</td>";
                     $email_message .= "</tr>";
-                }
+                    $email_message .="<tr>";
+                    $email_message .= "</tr>";
+                endforeach;
             $email_message .= "</table>";                
             $email_message .= "<hr class='hr_1'>";
 
             // DATOS DEL COMPRADOR
             $email_message .= "<h2>Datos del comprador</h2>";
             $email_message .= "<table>";
-            // $email_message .= "<caption>Destinatario</caption>";
-            $email_message .= "<thead>";
-            $email_message .= "<th>NOMBRE</th>";
-            $email_message .= "<th>APELLIDO</th>"; 
-            $email_message .= "<th>CEDULA</th>"; 
-            $email_message .= "<th>TELEFONO</th>"; 
-            $email_message .= "<th>DIRECCIÓN</th>"; 
-            $email_message .= "</thead>";
-                foreach($DatosCorreo['informacion_usuario'] as $DatosUsuarios){
+                foreach($DatosCorreo['informacion_usuario'] as $DatosUsuarios)  :
                     $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>NOMBRE</td>";
                     $email_message .= "<td>" . $DatosUsuarios["nombre_usu"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td>APELLIDO</td>";
                     $email_message .= "<td>" . $DatosUsuarios["apellido_usu"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td>CEDULA</td>"; 
                     $email_message .= "<td>" . $DatosUsuarios["cedula_usu"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td>TELEFONO</td>"; 
                     $email_message .= "<td>" . $DatosUsuarios["telefono_usu"] . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td>DIRECCIÓN</td>"; 
                     $email_message .= "<td>" . $DatosUsuarios["direccion_usu"] . "</td>";
                     $email_message .= "</tr>";
-                }
+                endforeach;
             $email_message .= "</table>";
 
-            $email_message .= "<img style='width: 10rem; height: 10rem; margin-top: 5%' src='https://pedidoremoto.com/public/images/logo.png'>";
+            $email_message .= "<img src='https://pedidoremoto.com/public/images/logo.png'>";
             $email_message .= '<a href="https://www.pedidoremoto.com">www.pedidoremoto.com</a>';
 
             // $email_message = wordwrap($email_message, 70, "\r\n");

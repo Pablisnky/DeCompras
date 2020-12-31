@@ -117,10 +117,10 @@ document.getElementById('Label_13').addEventListener('click',function(){
 }, false);
 
 //************************************************************************************************ 
-// por medio de una función anonima debido a que el manejador de eventos se encuentra en otro archivo                   
-document.getElementById("Label_1").addEventListener('click', function(){
-    CerrarModal_X("Ejemplo_Secciones")
-});
+    //Cierra la ventana modal que muestra el ejemplo de secciones                 
+    document.getElementById("Label_1").addEventListener('click', function(){
+        CerrarModal_X("Ejemplo_Secciones")
+    });
  
 //************************************************************************************************  
     //Añade un nuevo input clonado del div secciones
@@ -259,6 +259,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             function EliminarPagoMovil(e){   
                 // console.log("______Desde EliminarPagoMovil()______") 
                 
+                //Se obtienen la cantidad de cuentas PagoMovil que existen
                 let Eliminar_CuentaPagoMovil = document.getElementsByClassName('span_15_js')
                 // console.log("Cantidad de iconos eliminar", Eliminar_CuentaPagoMovil.length) 
                 
@@ -268,7 +269,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
                     document.getElementsByClassName("TelefonoJS")[0].value = ""
                 }
                 else{
-
                     //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
                     current = e.target.parentElement
                     // console.log("div a eliminar", current)
@@ -308,15 +308,27 @@ document.getElementById("Label_1").addEventListener('click', function(){
             function EliminarCuentaBanco(e){   
                 // console.log("______Desde EliminarCuentaBanco()______") 
 
-                //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-                current = e.target.parentElement
-                // console.log("div a eliminar", current)
+                //Se obtienen la cantidad de cuentas bancarias existen
+                let Eliminar_CuentaTransferencia = document.getElementsByClassName('span_16_js')
+                // console.log("Cantidad de iconos eliminar", Eliminar_CuentaTransferencia.length) 
                 
-                //Se busca el nodo padre que contiene el elemento current
-                let elementoPadre = current.parentElement
-                
-                //Se elimina la sección
-                elementoPadre.removeChild(current);  
+                if(Eliminar_CuentaTransferencia.length == 1){ 
+                    let InputsTransferencias = 4
+                    for(var i=0; i < InputsTransferencias; i++){           
+                        document.getElementsByClassName("input_9JS")[i].value = ""
+                    }
+                }
+                else{
+                    //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
+                    current = e.target.parentElement
+                    // console.log("div a eliminar", current)
+                    
+                    //Se busca el nodo padre que contiene el elemento current
+                    let elementoPadre = current.parentElement
+                    
+                    //Se elimina la sección
+                    elementoPadre.removeChild(current); 
+                } 
             }  
         // }          
     }
@@ -470,13 +482,13 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
 //************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
-
-    // Calcula cuantas cuentas de PagoMovil existen
+    // Calcula cuantas cuentas de PagoMovil existen tomando uno de sus requisitos (Cedula)
     let CuentasPagoMovil = ElementoPadrePagoMovil.getElementsByClassName("cedulaJS")
     // console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
 
     var iterador = CuentasPagoMovil != 0 ? CuentasPagoMovil.length : 1
     // console.log("Iterador =", iterador)
+
     function clonarCuentaPagoMovil(){
         // console.log("______Desde clonarCuentaPagoMovil()______")
 
@@ -676,7 +688,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //     document.getElementsByClassName("boton")[0].classList.remove('borde_1')
         //     return false;
         // }        
-        else if(NombreTien == "" || NombreTien.indexOf(" ") == 0 || NombreTien.length > 50 || P_Letras.test(NombreTien) == false){
+        else if(NombreTien == "" || NombreTien.indexOf(" ") == 0 || NombreTien.length > 50){
             alert ("Necesita introducir el nombre de la tienda")
             document.getElementById("Nombre_Tien").value = ""
             document.getElementById("Nombre_Tien").focus()
@@ -770,7 +782,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Nombre_Banco == "" && Cedula_PagoMovil == ""){
+        else if((Nombre_Banco == "" && Cedula_PagoMovil == "") || (Nombre_Banco == "" && Cedula_ClonPagoMovil.length == 0)){
             alert ("Introduzca información de medios de pago")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -868,50 +880,49 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 return false
             }
         }
-
-        if(Cedula_ClonPagoMovil.length != 0 || Banco_ClonPagoMovil.length != 0 || Telefono_ClonPagoMovil.length != 0){            
-            //Se validan los campos cedulas de los clones creados
-            for(i=0; i<Cedula_ClonPagoMovil.length; i++){
-                if(Cedula_ClonPagoMovil[i].value == '' || Cedula_ClonPagoMovil[i].length < 9 || Cedula_ClonPagoMovil[i].length > 10){
-                    alert("Número de cedula para pago movil invalido")
-                    Cedula_ClonPagoMovil[i].focus()
-                    Cedula_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
-                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                    document.getElementsByClassName("boton")[0].disabled = false
-                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                    return false;
+            if(Cedula_ClonPagoMovil.length != 0 || Banco_ClonPagoMovil.length != 0 || Telefono_ClonPagoMovil.length != 0){            
+                //Se validan los campos cedulas de los clones creados
+                for(i=0; i<Cedula_ClonPagoMovil.length; i++){
+                    if(Cedula_ClonPagoMovil[i].value == '' || Cedula_ClonPagoMovil[i].length < 9 || Cedula_ClonPagoMovil[i].length > 10){
+                        alert("Número de cedula para pago movil invalido")
+                        Cedula_ClonPagoMovil[i].focus()
+                        Cedula_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
+                        document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                        document.getElementsByClassName("boton")[0].disabled = false
+                        document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                        document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                        document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                        return false;
+                    }
+                }
+                //Se validan los campos bancos de los clones creados
+                for(i=0; i<Banco_ClonPagoMovil.length; i++){
+                    if(Banco_ClonPagoMovil[i].value == ''){
+                        alert("Banco para pago movil invalido")
+                        Banco_ClonPagoMovil[i].focus()
+                        Banco_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
+                        document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                        document.getElementsByClassName("boton")[0].disabled = false
+                        document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                        document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                        document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                        return false;
+                    }
+                }
+            
+                //Se validan los campos telefono de los clones creados
+                for(i=0; i<Telefono_ClonPagoMovil.length; i++){
+                    if(Telefono_ClonPagoMovil[i].value == ''){
+                        alert("Introduzca Nº telefonico para pago movil")
+                        Telefono_ClonPagoMovil[i].focus()
+                        Telefono_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
+                        document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                        document.getElementsByClassName("boton")[0].disabled = false
+                        document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                        document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                        document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                        return false;
+                    }
                 }
             }
-            //Se validan los campos bancos de los clones creados
-            for(i=0; i<Banco_ClonPagoMovil.length; i++){
-                if(Banco_ClonPagoMovil[i].value == ''){
-                    alert("Banco para pago movil invalido")
-                    Banco_ClonPagoMovil[i].focus()
-                    Banco_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
-                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                    document.getElementsByClassName("boton")[0].disabled = false
-                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                    return false;
-                }
-            }
-        
-            //Se validan los campos telefono de los clones creados
-            for(i=0; i<Telefono_ClonPagoMovil.length; i++){
-                if(Telefono_ClonPagoMovil[i].value == ''){
-                    alert("Introduzca Nº telefonico para pago movil")
-                    Telefono_ClonPagoMovil[i].focus()
-                    Telefono_ClonPagoMovil[i].style.backgroundColor = "var(--Fallos)"
-                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                    document.getElementsByClassName("boton")[0].disabled = false
-                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                    return false;
-                }
-            }
-        }
     }

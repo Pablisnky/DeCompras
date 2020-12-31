@@ -15,10 +15,6 @@
     <div class='contenedor_10'>
         <?php
         $Contador = 1; 
-        // echo '<pre>';
-        // print_r($Datos);
-        // echo '</pre>';
-        // exit;
         foreach($Datos['tiendas_categoria'] as $row) :
             $ID_Tienda = $row['ID_Tienda'];
             $Nombre = $row['nombre_Tien'];
@@ -45,7 +41,7 @@
                             <h3 class="h3_4">Reputación <span class="span_1">(Ultimos 3 meses)</span> </h3>
                         </div>
                         <div style="width: 50%; margin: 2% auto;">
-                            <p class="p_2 p_18">Clientes satisfechos</p>
+                            <p class="p_2 p_18">% de Satisfacción</p>
                             <?php 
                                 foreach($Datos['tiendas_satisfaccion'] as $Row) :
                                     $ID_TiendaSatisfaccion = $Row['ID_Tienda'];
@@ -61,7 +57,7 @@
                                 }   ?>
                         </div>
                         <div style="width:50%; margin: 2% auto;">
-                            <p class="p_2 p_18">Pedidos despachados</p>
+                            <p class="p_2 p_18">Pedidos entregados</p>
                             <?php 
                                 foreach($Datos['tiendas_despachos'] as $row) :
                                     $ID_TiendaConDespachos = $row['ID_Tienda'];

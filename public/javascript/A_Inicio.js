@@ -1,6 +1,7 @@
 document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
     
-//-------------------------------------------------------------------------------------------------
+
+//*********************************************************************************************** 
     //Busca un producto segun lo que escriba el usuario en el input
     function Llamar_buscador(nombre){
         // console.log("______Desde Llamar_buscador()______")
@@ -20,8 +21,6 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
             }     
         }
 
-//***********************************************************************************************
-        
         if(nombre.length === ""){//sino hay nada escrito en el input de buscar, no se ejecuta ninguna accion
             divContenedor.innerHTML = ""
         }
@@ -42,4 +41,4 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
         }
     }
 
-//-------------------------------------------------------------------------------------------------
+//*********************************************************************************************** 

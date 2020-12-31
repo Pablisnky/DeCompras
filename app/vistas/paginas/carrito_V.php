@@ -1,291 +1,363 @@
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/telefono/style_telefono.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ubicacion/style_ubicacion.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="<?php //echo RUTA_URL?>/public/css/iconos/telefono/style_telefono.css"/>
+<link rel="stylesheet" type="text/css" href="<?php // echo RUTA_URL?>/public/css/iconos/ubicacion/style_ubicacion.css"/> -->
+<!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización del capture--> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<section class="section_4">
-    <div class="contenedor_24 contenedor_25">
-        <h1 class="h1_1 h1_9 ">Orden de compra</h1>
-        <div class="contenedor_20">
-            <table class="tabla" id="Tabla">
-                <thead>
-                    <tr>
-                        <th class="th_1 th_4">CANTIDAD</th>
-                        <th class="th_2 th_4">PRODUCTO</th>
-                        <th class="th_3 th_4">PRECIO UNITARIO</th>
-                        <th class="th_5 th_4">TOTAL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <!--tabla es rellenada desde E_Vitrina.js por medio de PedidoEnCarrito()-->
-                        <td><input type="text" class="ocultar" id="Input_cantidadCar"/></td>
-                        <td><input type="text" class="ocultar" id="Input_productoCar"/></td>
-                        <td><input type="text" class="ocultar" id="Input_precioCar"/></td>
-                        <td><input type="text" class="ocultar" id="Input_totalCar"/></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="contenedor_63">  
-            <div class="contenedor_64">     
-                <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
-                <label class="label_12" for="Domicilio_No">Recoger pedido en tienda, 0 Bs.</label>
-                <br class="br_1"/>
-                <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
-                <label class="label_12" for="Domicilio_Si">Entrega a domicilio, 3.000 Bs.</label>
-            </div>     
-            <div>
-                <h2 class="h2_2">Monto en tienda: <input type="text" class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
-                <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
-                <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
-                <hr class="hr_1"/>
-                <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
-            </div>
-        </div>
-        <div class="contenedor_26" id="Contenedor_26">
-            <label class="boton boton_1 boton_9" onclick="ocultarPedido()">Regresar a mostrador</label>
-            <label class="boton boton_1 boton_9" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar <br class="br_2"> orden</label>
-        </div>
-    </div>
-    <article>
-        <div class="contenedor_24 contenedor_27" id="MuestraEnvioFactura">
-            <form action="../../RecibePedido_C/recibePedido/" method="POST" onsubmit="return validarDespacho()" id="DatosUsuario">
-                <div>
-                    <h1 class="h1_1">Datos de despacho</h1>
-                    <div class="contenedor_28">
+<section class="sectionModal">
+    <section> <!-- ORDEN DE COMPRA -->
+        <div class="contenedor_24">
+            <header>
+                <h1 class="h1_1">Orden de compra</h1>
+            </header>
 
-                        <!-- NOMBRE -->
-                        <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
-                        </div>
+            <article>
+                <div class="contPedido borde_bottom">
+                    <table class="tabla" id="Tabla">
+                        <thead>
+                            <tr>
+                                <th class="th_1 th_4">CANTIDAD</th>
+                                <th class="th_2 th_4">PRODUCTO</th>
+                                <th class="th_3 th_4">PRECIO UNITARIO</th>
+                                <th class="th_5 th_4">TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <!--tabla es rellenada desde E_Vitrina.js por medio de PedidoEnCarrito()-->
+                                <td><input type="text" class="ocultar" id="Input_cantidadCar"/></td>
+                                <td><input type="text" class="ocultar" id="Input_productoCar"/></td>
+                                <td><input type="text" class="ocultar" id="Input_precioCar"/></td>
+                                <td><input type="text" class="ocultar" id="Input_totalCar"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
 
-                        <!-- APELLIDO -->
-                        <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
-                        </div>
-
-                        <!-- CEDULA -->
-                        <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
-                        "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')"/>
-                        </div>
-
-                        <!-- TELEFONO -->
-                        <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')"/>
-                        </div>
-
-                        <!-- CORREO -->
-                        <div class="contenedor_29">
-                            <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')"/>
-                        </div>
-
-                        <!-- DIRECCION -->
-                        <div class="contenedor_55 contenedor_154">
-                            <div class="contenedor_155">
-                                <select class="select_2 borde_1" id="Estado" onchange="blanquearInput('Estado')">
-                                    <option disabled selected>Seleccione un estado</option>
-                                    <option selected="true">Yaracuy</option>
-                                </select>
-                            </div>
-                            <div class="contenedor_155">
-                                <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
-                                    <option id="Option_1" disabled selected>Seleccione una ciudad</option>
-                                    <option>Cocorote</option>
-                                    <option>Independencia</option>
-                                    <option>San Felipe</option>
-                                    <option>Yaritagua</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="contenedor_72">
-                            <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
-                        </div>
+            <article>
+                <div class="contGeneral">  
+                    <div class="contInputRadio">     
+                        <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
+                        <label class="contInputRadio__label" for="Domicilio_No">Recoger pedido en tienda, 0 Bs.</label>
+                        <br class="br_1"/>
+                        <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
+                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, 3.000 Bs.</label>
+                    </div>     
+                    <div>
+                        <h2 class="h2_2">Monto en tienda: <input type="text" class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
+                        <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
+                        <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
+                        <hr class="hr_1"/>
+                        <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
                     </div>
                 </div>
+            </article>
 
-                <!-- FORMAS DE PAGO -->
-                <div class="contenedor_62">
-                    <h1 class="h1_1">Formas de pago</h1>
-                    <div class="contenedor_164">
-                            <?php
-                            // $Datos viene de Carrito_C/index
-                            // echo "<pre>";
-                            // print_r($Datos);
-                            // echo "</pre>";            
-                            // exit();
-                            ?>
-                        <?php
-                        if($Datos['Banco'] != Array()){ ?>
-                        <div class="contenedor_165">
-                            <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()"/>
-                            <label class="label_12" for="Transferencia">Transferencia bancaria</label>
-                        </div>
-                        <br class="br_2"/>
-                            <?php
-                        }   
+            <article>
+                <div class="contBoton" id="Contenedor_26">
+                    <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a mostrador</label>
+                    <label class="boton boton--alto" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar <br class="br_2"> orden</label>
+                </div>
+            </article>
+        </div>
+    </section>
 
-                        if($Datos['Pagomovil'] != Array()){ ?>
-                            <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()"/>
-                                <label class="label_12" for="PagoMovil">Pago movil</label> 
+    <section> 
+        <div class="contOculto" id="MuestraEnvioFactura">
+            <form action="../../RecibePedido_C/recibePedido/" method="POST" enctype="multipart/form-data" onsubmit="return validarDespacho()" id="DatosUsuario">
+                <article><!-- DATOS DE DESPACHO -->
+                    <div class="contenedor_24">
+                        <header>
+                            <h1 class="h1_1">Datos de despacho</h1>
+                        </header>
+
+                        <div class="contFlex">
+                            <!-- NOMBRE -->
+                            <div class="contenedor_29">
+                                <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')" value="Pablo"/>
                             </div>
-                            <br class="br_2"/>
-                            <?php
-                        }     
 
-                        if($Datos['OtrosPagos'][0]['efectivoBolivar']  != 0){ ?>
-                            <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="EfectivoBolivar" value="Efectivo_Bolivar" onclick="verPagoEfectivoBolivar()"/>
-                                <label class="label_12" for="EfectivoBolivar">Pago destino (Bs.)</label> 
+                            <!-- APELLIDO -->
+                            <div class="contenedor_29">
+                                <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')" value="Cabeza"/>
                             </div>
-                            <br class="br_2"/>
-                            <?php
-                        }    
 
-                        if($Datos['OtrosPagos'][0]['efectivoDolar'] != 0){ ?>
-                            <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="EfectivoDolar" value="Efectivo_Dolar" onclick="verPagoEfectivoDolar()"/>
-                                <label class="label_12" for="EfectivoDolar">Pago destino ($)</label> 
+                            <!-- CEDULA -->
+                            <div class="contenedor_29">
+                                <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
+                            "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')" value="12.212.121"/>
                             </div>
-                            <br class="br_2"/>
-                            <?php
-                        }     
 
-                        if($Datos['OtrosPagos'][0]['acordado'] != 0){ ?>
-                            <div class="contenedor_165">
-                                <input type="radio" name="formaPago" id="Acordado" value="acordado" onclick="verPagoAcordado()"/>
-                                <label class="label_12" for="Acordado">Acordado con tienda</label> 
+                            <!-- TELEFONO -->
+                            <div class="contenedor_29">
+                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')" value="9999-999.99.99"/>
                             </div>
-                            <br class="br_2"/>
-                            <?php
-                        }   ?>  
-                    </div>   
 
-                    <!-- PAGO TRANSFERENCIA -->
-                    <div class="contenedor_60" id="Contenedor_60a">
-                        <h3 class="h3_2 h3_3">Cuentas para transferencias</h3>
-                        <!-- <ul class="ul_1">
-                            <li class="li_1">Pedidos realizados desde zona metropolitana de su ciudad</li> 
-                        </ul> 
-                        <p>Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</p>
-                        <p>Transferencias realizadas de otros bancos habilitan el despacho pasada 48 horas.</p>
-                        <ul class="ul_1">
-                            <li class="li_1">Pedidos realizados desde otra ciudad</li>
-                        </ul>            
-                        <p>Despachos enviados via Zoom</p> -->
-                        <table class="tabla_2">
-                            <tbody>
-                                <?php
-                                // $Datos viene de Carrito_C/index
-                                // echo "<pre>";
-                                // print_r($Datos);
-                                // echo "</pre>";            
-                                // exit();
-                                
-                                foreach($Datos['Banco'] as $row) :                                     
-                                    $Banco = $row['bancoNombre'];
-                                    $Cuenta = $row['bancoCuenta'];
-                                    $Titular = $row['bancoTitular'];
-                                    $Rif = $row['bancoRif']; ?>
-                                    <tr>
-                                        <td class="td_5">Banco</td>
-                                        <td><?php echo $Banco?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td_5">Titular</td>
-                                        <td><?php echo $Titular?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td_5">Nº cuenta</td>
-                                        <td><?php echo $Cuenta?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td_5">Cedula/RIF</td>
-                                        <td><?php echo $Rif?></td>
-                                    </tr>
-                                    <?php 
-                                endforeach;   ?>
-                            </tbody>
-                        </table>
-                       
-                        <input class="input_13 input_17 borde_1" type="text" name="codigoTransferencia" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
+                            <!-- CORREO -->
+                            <div class="contenedor_29">
+                                <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')" value="albertcabeza76@gmail.com"/>
+                            </div>
+
+                            <!-- DIRECCION -->
+                            <div class="contenedor_55 contenedor_154">
+                                <div class="contenedor_155">
+                                    <select class="select_2 borde_1" id="Estado" onchange="blanquearInput('Estado')">
+                                        <option disabled selected>Seleccione un estado</option>
+                                        <option selected="true">Yaracuy</option>
+                                    </select>
+                                </div>
+                                <div class="contenedor_155">
+                                    <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
+                                        <option id="Option_1" disabled selected>Seleccione una ciudad</option>
+                                        <option selected="true">Cocorote</option>
+                                        <option>Independencia</option>
+                                        <option>San Felipe</option>
+                                        <option>Yaritagua</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="contenedor_72">
+                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')">cccc</textarea>
+                            </div>
+                        </div>        
                     </div>
+                </article>    
 
-                    <!-- PAGOMOVIL -->
-                    <div class="contenedor_60" id="Contenedor_60b">
-                        <h3 class="h3_2 h3_3">Cuentas para PagoMovil</h3>
-                        <!-- <p>(Pedidos realizados desde zona metropolitana de su ciudad)</p>
-                        <ul class="ul_1">
-                            <li class="li_1">Despachos inmediatos</li>
-                        </ul>                            
-                        <p>(Pedidos realizados desde otra ciudad)</p>
-                        <ul class="ul_1">
-                            <li class="li_1">Despachos enviados via Zoom</li>
-                        </ul>    -->
+                <article> <!-- FORMAS DE PAGO -->
+                    <div class="contenedor_24">
+                        <div class="contGeneral contGeneral--left">
+                            <h1 class="h1_1">Formas de pago</h1>
+
+                            <!-- SELECCIONAR FORMA DE PAGO -->
+                            <div class="contInputRadio">
+                                <?php
+                                if($Datos['Banco'] != Array()){ ?>
+                                    <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()" checked/>
+                                    <label class="contInputRadio__label" for="Transferencia">Transferencia bancaria</label>
+                                    <br class="br_1"/>
+                                    <?php
+                                }   
+
+                                if($Datos['Pagomovil'] != Array()){ ?>
+                                    <input type="radio" name="formaPago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()"/>
+                                    <label class="contInputRadio__label" for="PagoMovil">Pago movil</label> 
+                                    <br class="br_1"/>
+                                    <?php
+                                }     
+
+                                if($Datos['OtrosPagos'][0]['efectivoBolivar']  != 0){ ?>
+                                    <input type="radio" name="formaPago" id="EfectivoBolivar" value="Efectivo_Bolivar" onclick="verPagoEfectivoBolivar()"/>
+                                    <label class="contInputRadio__label" for="EfectivoBolivar">Pago destino (Bs.)</label> 
+                                    <br class="br_1"/>
+                                    <?php
+                                }    
+
+                                if($Datos['OtrosPagos'][0]['efectivoDolar'] != 0){ ?>
+                                    <input type="radio" name="formaPago" id="EfectivoDolar" value="Efectivo_Dolar" onclick="verPagoEfectivoDolar()"/>
+                                    <label class="contInputRadio__label" for="EfectivoDolar">Pago destino ($)</label> 
+                                    <br class="br_1"/>
+                                    <?php
+                                }     
+
+                                if($Datos['OtrosPagos'][0]['acordado'] != 0){ ?>
+                                    <input type="radio" name="formaPago" id="Acordado" value="acordado" onclick="verPagoAcordado()"/>
+                                    <label class="contInputRadio__label" for="Acordado">Acordado con tienda</label> 
+                                    <?php
+                                }   ?>  
+                            </div>   
+
+                            <!-- PAGO TRANSFERENCIA -->
+                            <div class="contInforPago" id="Contenedor_60a">
+                                <h3 class="h3_2">Cuentas para transferencias</h3>
+                                <!-- <ul class="ul_1">
+                                    <li class="li_1">Pedidos realizados desde zona metropolitana de su ciudad</li> 
+                                </ul> 
+                                <p>Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</p>
+                                <p>Transferencias realizadas de otros bancos habilitan el despacho pasada 48 horas.</p>
+                                <ul class="ul_1">
+                                    <li class="li_1">Pedidos realizados desde otra ciudad</li>
+                                </ul>            
+                                <p>Despachos enviados via Zoom</p> -->
+                                <table class="tabla_2">
+                                    <tbody>
+                                        <?php
+                                        // $Datos viene de Carrito_C/index
+                                        // echo "<pre>";
+                                        // print_r($Datos);
+                                        // echo "</pre>";            
+                                        // exit();
+                                        
+                                        foreach($Datos['Banco'] as $row) :                                     
+                                            $Banco = $row['bancoNombre'];
+                                            $Cuenta = $row['bancoCuenta'];
+                                            $Titular = $row['bancoTitular'];
+                                            $Rif = $row['bancoRif']; ?>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Banco</td>
+                                                <td><?php echo $Banco?></td>
+                                            </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Titular</td>
+                                                <td><?php echo $Titular?></td>
+                                            </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Nº cuenta</td>
+                                                <td><?php echo $Cuenta?></td>
+                                            </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Cedula/RIF</td>
+                                                <td><?php echo $Rif?></td>
+                                            </tr class="tabla2__tr1">
+                                            <tr class="tabla2__tr2"></tr>
+                                            <?php 
+                                        endforeach;   ?>
+                                    </tbody>
+                                </table>
+
+                                <p class="contenedor_60__p1">Informe su pago mediante el código de la transferencia o el capture de la transferencia <span class="span_13">mostrar cuenta</span></p>
+                                <div class="contInputRadio">
+                                    <input type="radio" name="referenciaPago" id="ReferenciaPago" value="codigoTransferencia" onclick="verInputTransferencia()"/>
+                                    <label class="contInputRadio__label" for="ReferenciaPago">Codigo transferencia</label> 
+                                    <br class="br_1"/>
+                                    <input type="radio" name="referenciaPago" id="CapturePago" value="CaptureTransferencia" onclick="verCaptureTransferencia()"/>
+                                    <label class="contInputRadio__label" for="CapturePago">Capture transferencia</label> 
+                                </div>
+                                
+                                <!-- INPUT TRANSFERENCIA -->
+                                <div class="contOculto contGeneral" id="InputTransferencia">
+                                    <input class="input_13 input--textCenter borde_1" type="text" name="codigoTransferencia" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
+                                </div>
+                                                    
+                                    <!-- CAPTURE TRANSFERENCIA -->
+                                <div class="contOculto contGeneral" id="CaptureTransferencia">
+                                    <label class="boton boton--largo boton--centro" for="ImagenTransferencia">Insertar capture</label>
+                                    <input class="ocultar" type="file" name="imagenTransferencia" id="ImagenTransferencia" onchange="CaptureTransferencia()"/>
+                                    <br>
+
+                                    <!-- <div class="contenedor_129 borde_1 borde_2">
+                                        <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                        <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/imagen.png"/>
+                                    </div> -->
+
+                                    <!-- div que muestra la previsualización de las imagenes secundarias-->
+                                    <div class="contGeneralCentro" id="DivCaptureTransferencia"></div>
+                                </div> 
+                            </div>
+
+                            <!-- PAGOMOVIL -->
+                            <div class="contInforPago" id="Contenedor_60b">
+                                <h3 class="h3_2">Cuentas para PagoMovil</h3>
+                                <!-- <p>(Pedidos realizados desde zona metropolitana de su ciudad)</p>
+                                <ul class="ul_1">
+                                    <li class="li_1">Despachos inmediatos</li>
+                                </ul>                            
+                                <p>(Pedidos realizados desde otra ciudad)</p>
+                                <ul class="ul_1">
+                                    <li class="li_1">Despachos enviados via Zoom</li>
+                                </ul>    -->
+                                
+                                <table class="tabla_2">
+                                    <tbody>
+                                        <?php
+                                        // $Datos viene de Carrito_C/index
+                                        // echo "<pre>";
+                                        // print_r($Datos);
+                                        // echo "</pre>";            
+                                        // exit();
+                                        
+                                        foreach($Datos['Pagomovil'] as $row): 
+                                            $Banco = $row['banco_pagomovil'];                                    
+                                            $Cedula = $row['cedula_pagomovil'];
+                                            $Telefono = $row['telefono_pagomovil']; ?>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Banco</td>
+                                                <td><?php echo $Banco?></td>
+                                            </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Cedula</td>
+                                                <td><?php echo $Cedula?></td>
+                                            </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Nº telefono</td>
+                                                <td><?php echo $Telefono?></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="td_6"></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="tabla2__tr2"></tr>
+                                            <?php 
+                                        endforeach;   ?>
+                                    </tbody>
+                                </table>
+                                
+                                <p class="contenedor_60__p1">Informe su pago mediante el capture del PagoMovil <span class="span_13">mostrar cuenta</span></p>
+                                                    
+                                <br class="br_1"/>
+                                <!-- IMAGEN CAPTURE -->
+                                <div class="contGeneral" id="CapturePagoMovil">
+                                    <label class="boton boton--largo boton--centro" for="ImagenPagoMovil">Insertar capture</label>
+                                    <input class="ocultar" type="file" name="imagenPagoMovil" id="ImagenPagoMovil" onchange="CapturePagoMovil()"/>
+                                    <br class="br_1">
+
+                                    <!-- <div class="contenedor_129 borde_1 borde_2">
+                                        <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                        <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/imagen.png"/>
+                                    </div> -->
+
+                                    <!-- div que muestra la previsualización de las imagenes secundarias-->
+                                    <div class="contGeneralCentro" id="DivCapturePagoMovil"></div>
+                                </div> 
+                            </div>
+
+                            <!-- PAGO EFECTIVO BOLIVAR -->
+                            <div class="contInforPago" id="Contenedor_60c">
+                                <h3 class="h3_2">Pago en destino (Bs.)</h3>
+                                <p>Pague en bolivares al despachador al momento de hacer la entrega de su compra.</p>
+                            </div>
+
+                            <!-- PAGO EFECTIVO DOLAR -->
+                            <div class="contInforPago" id="Contenedor_60d">
+                                <h3 class="h3_2">Pago en destino ($)</h3>
+                                <p>Pague en dolares al despachador al momento de hacer la entrega de su compra.</p>
+                            </div>
+
+                            <!-- PAGO ACORDADO -->
+                            <div class="contInforPago" id="Contenedor_60e">
+                                <h3 class="h3_2">Acuerdo con tienda</h3>
+                                <p>Contacta al encargado de la tienda.</p>
+                                <p>0434-234.23.23</p>
+                            </div>
                         
-                        <table class="tabla_2">
-                            <tbody>
-                                <?php
-                                // $Datos viene de Carrito_C/index
-                                // echo "<pre>";
-                                // print_r($Datos);
-                                // echo "</pre>";            
-                                // exit();
-                                
-                                foreach($Datos['Pagomovil'] as $row): 
-                                    $Banco = $row['banco_pagomovil'];                                    
-                                    $Cedula = $row['cedula_pagomovil'];
-                                    $Telefono = $row['telefono_pagomovil']; ?>
-                                    <tr>
-                                        <td class="td_5">Banco</td>
-                                        <td><?php echo $Banco?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td_5">Cedula</td>
-                                        <td><?php echo $Cedula?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td_5">Nº telefono</td>
-                                        <td><?php echo $Telefono?></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td_6"></td>
-                                        <td></td>
-                                    </tr>
-                                    <?php 
-                                endforeach;   ?>
-                            </tbody>
-                        </table>
+                            <div class="contFlex50">
+                                <input class="ocultar" type="text" name="id_tienda" value="<?php echo $Datos['ID_Tienda']?>"/>
 
-                        <input class="input_13 input_17 borde_1" type="text" name="codigoPagoMovil" id="RegistroPago_Pagomovil" placeholder="Código pagomovil" onkeydown="blanquearInput('RegistroPago_Pagomovil')"/>
+                                <input class="ocultar" type="text" id="Pedido" name="pedido"/>
+
+                                <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a mostrador</label>
+                                <input class="boton boton--alto botonJS" type="submit" value="Comprar"/>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- PAGO EFECTIVO BOLIVAR -->
-                    <div class="contenedor_60" id="Contenedor_60c">
-                        <p>Pague en bolivares al despachador al momento de hacer la entrega de su compra.</p>
-                    </div>
-
-                    <!-- PAGO EFECTIVO DOLAR -->
-                    <div class="contenedor_60" id="Contenedor_60d">
-                        <p>Pague en dolares al despachador al momento de hacer la entrega de su compra.</p>
-                    </div>
-
-                    <!-- PAGO ACORDADO -->
-                    <div class="contenedor_60" id="Contenedor_60e">
-                        <p>Contacta al encargado de la tienda.</p>
-                        <p>0434-234.23.23</p>
-                    </div>
-                
-                    <div class="contenedor_30">
-                        <input class="ocultar" type="text" name="id_tienda" value="<?php echo $Datos['ID_Tienda']?>"/>
-
-                        <input class="ocultar" type="text" id="Pedido" name="pedido"/>
-
-                        <label class="boton boton_1 boton_9" onclick="ocultarPedido()">Regresar a mostrador</label>
-                        <input class="boton boton_1 boton_9 botonJS" type="submit" value="Comprar"/>
-                    </div>
-                </div>
+                </article> 
             </form>
         </div>
-    </article>
+    </section>
 </section>
+
+<script>
+    //Da una vista previa del cpature de transferencia o pagomovil
+    // function muestraImg(){
+    //     console.log("______Desde muestraImg()______")
+    //     var contenedor = document.getElementById("muestrasCapture");
+    //     var archivos = document.getElementById("Capture").files;
+    //     for(i = 0; i < archivos.length; i++){
+    //         imgTag = document.createElement("img");
+    //         imgTag.height = 100;//ESTAS LINEAS NO SON "NECESARIAS"
+    //         imgTag.width = 200; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
+    //         imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
+    //         imgTag.src = URL.createObjectURL(archivos[i]);
+    //         contenedor.appendChild(imgTag);
+    //     }
+    // }
+</script>

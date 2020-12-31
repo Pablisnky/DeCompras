@@ -1,7 +1,4 @@
 <!-- Archivo cargado por petición Ajax desde vitrina.php por medio de llamar_Opciones() -->
-
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
-
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
@@ -83,16 +80,17 @@
                                     <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $Precio;?>  Bs.</label>
                             
                                     <?php 
-                                    //En caso de venir desde buscador se sombreo el producto solicitado en la busqueda y se posiciona de primero entre todos los productos
+                                    //En caso de venir desde buscador se sombrea el producto solicitado en la busqueda y se posiciona de primero entre todos los productos
                                     if($Opcion == $Datos['ProductoSelecion']){ ?>
                                         <style>
                                             @media (max-width: 800px){
                                                 .section_9{/*opciones - cuenta_productos*/
-                                                    padding-top: 52%;
+                                                    padding-top: 60%;
                                                 }
                                                 #<?php echo 'Cont_Producto_' . $ContadorLabel;?>{
                                                     background-color: var(--OficialClaro);
                                                     position: absolute;
+                                                    height: 8%;
                                                     top: 100px;
                                                     z-index: 1 !important;
                                                 }

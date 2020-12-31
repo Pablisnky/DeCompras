@@ -6,7 +6,7 @@
     <div class="contenedor_42 contenedor_70">
         <h1 class="h1_1">Como descargar nuestra aplicación.</h1>
         <div class="contenedor_113">        
-            <p class="p_16">Nuestra aplicación esta construida en una nueva tecnologia para desarrollar aplicaciones móviles sin necesidad de ir a la tienda de aplicaciónes para descargar todo el paquete de la aplicación.</p>
+            <p class="p_16">PedidoReomoto esta construida bajo estandares PWA, de modo que no es necesario ir a la tienda de aplicaciónes para descargar todo el paquete de la aplicación.</p>
             <div class="contenedor_12 borde_1">
                 <ol class="ol_2">
                     <li class="">Ubiquese en la página de inicio y espera al menos 30 seg hasta que aparezca la notificación automatica de agregar a pantalla de inicio.</li>

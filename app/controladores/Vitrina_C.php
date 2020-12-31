@@ -18,16 +18,13 @@
             $OpcionBuscada = $DatosAgrupados[3];
 
             //Se CONSULTAN las secciones de una tienda en particular
-            $Consulta_1 = $this->ConsultaVitrina_M->consultarSecciones($ID_Tienda);
-            $Secciones = $Consulta_1->fetchAll(PDO::FETCH_BOTH);  
+            $Secciones = $this->ConsultaVitrina_M->consultarSecciones($ID_Tienda);
             
             //Se CONSULTAN la fotografia de una tienda en particular
-            $Consulta_2 = $this->ConsultaVitrina_M->consultarFotografia($ID_Tienda);
-            $Fotografia = $Consulta_2->fetchAll(PDO::FETCH_BOTH);
+            $Fotografia = $this->ConsultaVitrina_M->consultarFotografia($ID_Tienda);
 
             //Se CONSULTAN el slogan de una tienda en particular
-            $Consulta = $this->ConsultaVitrina_M->consultarSloganTienda($ID_Tienda);
-            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Slogan = $this->ConsultaVitrina_M->consultarSloganTienda($ID_Tienda);
 
             $Datos=[
                 'id_tienda' => $ID_Tienda,

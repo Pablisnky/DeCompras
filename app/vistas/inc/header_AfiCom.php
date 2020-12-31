@@ -1,8 +1,3 @@
-<?php 
-    //Sesiones creadas en Login_C.php
-    $Nombre = $_SESSION["Nombre"];
-	$NombreTienda = $_SESSION["Nombre_Tienda"];
-?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -28,8 +23,8 @@
     <body>	
 		<header class="contenedor_69">
 			<div class="contenedor_111">
-				<h1 class="h1_10"><?php echo $NombreTienda;?></h1>				
 				<!-- $Datos viene de Cuenta_C-->
+				<h1 class="h1_10"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></h1>			
 				<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div>
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
@@ -54,13 +49,9 @@
 				</ul>
 			</nav>
 		</header>	
-        <div class="contenedor_52">
-            <label class="label_8"><?php echo $Nombre;?></label>
-            <a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a>
-		</div>
 		
-	<!--div utilizado para tapar el body mientras esta el menu responsive -->
-	<div class="tapa" id="Tapa"></div>
+		<!--div utilizado para tapar el body mientras esta el menu responsive -->
+		<div class="tapa" id="Tapa"></div>
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

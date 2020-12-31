@@ -73,5 +73,10 @@
             $this->vista("inc/header");
             $this->vista("paginas/descargaApp_V");
         }
+        
+        public function borrar(){
+            // $this->vista("inc/header");
+            // $this->vista("paginas/BorrarTablaPedido");
+        }
     }
 ?>

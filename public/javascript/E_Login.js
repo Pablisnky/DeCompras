@@ -3,7 +3,7 @@
 //************************************************************************************************
     //Valida el formulario de login
     function validarLogin(){
-        console.log("______Desde validarLogin()______")
+        // console.log("______Desde validarLogin()______")
 
         document.getElementsByClassName("boton")[0].value = "Iniciando sesión ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"

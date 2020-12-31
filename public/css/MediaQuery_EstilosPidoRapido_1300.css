@@ -1,0 +1,7 @@
+@media (max-width: 1300px){/*aplicará en cualquier medio con dimensiones menores a lo indicado*/
+
+    .br_1{/*carrito*/
+        display: block;
+        margin-top: 4%;
+    }
+}
