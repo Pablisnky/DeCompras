@@ -212,6 +212,143 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <label class="label_4 label_24" id="Label_5">Añadir sección</label>
             </fieldset>
             
+            <!-- HORARIO -->
+            <!-- <section id="">
+                <a id="Horario" class="ancla_2"></a>
+                <fieldset class="fieldset_1 fieldset_2">                                 
+                    <legend class="legend_1">Horario</legend>
+                    <span>Indique el horario en el cual estará disponibles las entregas en tiempo real desde su tienda, cualquier pedido realizado fuera de este horario queda aplazado para la proxima apertura de su tienda</span>
+                    <div class="contFlex">
+                        <p >Mañana</p>	
+                        <div class="contInputRadio">
+                            <input type="checkbox" name="horario" id="Lunes">
+                            <label class="contInputRadio__label" for="Lunes">Lunes</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Martes">
+                            <label class="contInputRadio__label" for="Martes">Martes</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Miercoles">
+                            <label class="contInputRadio__label" for="Miercoles">Miercoles</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Jueves">
+                            <label class="contInputRadio__label" for="Jueves">Jueves</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Viernes">
+                            <label class="contInputRadio__label" for="Viernes">Viernes</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Sabado">
+                            <label class="contInputRadio__label" for="Sabado">Sabado</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Domingo">
+                            <label class="contInputRadio__label" for="Domingo">Domingo</label>
+                        </div>
+                        <div class="">
+                            <label>Apertura</label>
+                            <select>
+                                <option>5:00 am</option>
+                                <option>5:30 am</option>
+                                <option>6:00 am</option>
+                                <option>6:30 am</option>
+                                <option>7:00 am</option>
+                                <option>7:30 am</option>
+                                <option>8:00 am</option>
+                                <option>8:30 am</option>
+                                <option>9:00 am</option>
+                                <option>9:30 am</option>
+                                <option>10:00 am</option>
+                            </select>
+                            <br>
+                            <label>Cierre</label>
+                            <select>
+                                <option>10:00 am</option>
+                                <option>10:30 am</option>
+                                <option>11:00 am</option>
+                                <option>11:30 am</option>
+                                <option>12:00 m</option>
+                                <option>12:30 am</option>
+                                <option>1:00 am</option>
+                                <option>1:30 am</option>
+                                <option>2:00 am</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="contFlex">
+                        <p >Tarde</p>	
+                        <div class="contInputRadio">
+                            <input type="checkbox" name="horario" id="Lunes">
+                            <label class="contInputRadio__label" for="Lunes">Lunes</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Martes">
+                            <label class="contInputRadio__label" for="Martes">Martes</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Miercoles">
+                            <label class="contInputRadio__label" for="Miercoles">Miercoles</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Jueves">
+                            <label class="contInputRadio__label" for="Jueves">Jueves</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Viernes">
+                            <label class="contInputRadio__label" for="Viernes">Viernes</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Sabado">
+                            <label class="contInputRadio__label" for="Sabado">Sabado</label>
+                            <br class="br_1"/>
+                            <input type="checkbox" name="horario" id="Domingo">
+                            <label class="contInputRadio__label" for="Domingo">Domingo</label>
+                        </div>
+                        <div class="">
+                            <label>Apertura</label>
+                            <select>
+                                <option>12:00 m</option>
+                                <option>12:30 pm</option>
+                                <option>1:00 pm</option>
+                                <option>1:30 pm</option>
+                                <option>2:00 pm</option>
+                                <option>2:30 pm</option>
+                                <option>3:00 pm</option>
+                                <option>3:30 pm</option>
+                                <option>4:00 pm</option>
+                                <option>4:30 pm</option>
+                                <option>5:00 pm</option>
+                            </select>
+                            <br>
+                            <label>Cierre</label>
+                            <select>
+                                <option>4:00 pm</option>
+                                <option>4:30 pm</option>
+                                <option>5:00 pm</option>
+                                <option>5:30 pm</option>
+                                <option>6:00 pm</option>
+                                <option>6:30 pm</option>
+                                <option>7:00 pm</option>
+                                <option>7:30 pm</option>
+                                <option>8:00 pm</option>
+                                <option>8:30 pm</option>
+                                <option>9:00 pm</option>
+                                <option>9:30 pm</option>
+                                <option>10:00 pm</option>
+                                <option>10:30 pm</option>
+                                <option>11:00 pm</option>
+                                <option>11:30 pm</option>
+                                <option>12:00 am</option>
+                                <option>12:30 am</option>
+                                <option>1:00 am</option>
+                                <option>1:30 am</option>
+                                <option>2:00 am</option>
+                                <option>2:30 am</option>
+                                <option>3:00 am</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p>Horarios de fin de semana o especiales</p>
+                        <label>Añadir horario</label>
+                    </div>
+                </fieldset>
+            </section> -->
+
             <!-- OFERTAS -->
             
             <!-- LO MÁS PEDIDO -->
@@ -291,13 +428,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
                             <!-- CEDULA PAGOMOVIL -->
-                            <input class="input_13 input_13A input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
+                            <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
 
                             <!-- BANCO PAGOMOVIL -->
-                            <input class="input_13 input_13A input_10JS borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
+                            <input class="input_13 input_13A borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
 
                             <!-- TELEFONO PAGOMOVIL -->
-                            <input class="input_13 input_13A input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
+                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
                         </div>
                         <?php
                     }
@@ -313,15 +450,15 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                                 <!-- CEDULA PAGOMOVIL -->
                                 <label>Cedula (Solo números)</label>
-                                <input class="input_13 input_13A input_10JS borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
 
                                 <!-- BANCO PAGOMOVIL -->
                                 <label>Banco</label>
-                                <input class="input_13 input_13A input_10JS borde_1 BancoJS" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_13A borde_1 BancoJS" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
                                 <label>Nº telefono (Solo números)</label>
-                                <input class="input_13 input_13A input_10JS borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
+                                <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
                             </div>
                             <?php
                             $Iterador++;
@@ -378,22 +515,20 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     endforeach; 
                 } ?>
             </fieldset>   
-
-            <!-- HORARIO -->
             
             <!-- MENU INDICE -->
-            <section id="Contenedor_83">
+            <section>   <!--id="Contenedor_83"--> 
                 <div class="contenedor_83 borde_1">
                     <a class="marcador" href="#marcador_01">Persona responsable</a>
                     <a class="marcador" href="#marcador_02">Datos de tienda</a>
                     <a class="marcador" href="#Categoria">Categoria</a>
                     <a class="marcador" href="#Secciones">Secciones</a>
+                    <!-- <a class="marcador" href="#Horario">Horario</a> -->
                     <!-- <a class="marcador" href="#marcador_04">Ofertas</a> -->
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas bancarias</a>
                     <a class="marcador" href="#marcador_07">Cuentas PagoMovil</a>
                     <a class="marcador" href="#OtrosPago">Otros medios de pago</a>
-                    <!-- <a class="marcador" href="#marcador_07">Horario</a> -->
                     <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>"/>
                         <input class="boton boton--largo" type="submit" value="Guardar cambios"/>

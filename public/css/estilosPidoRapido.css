@@ -9,6 +9,9 @@ h1, h2, h3, h4, h5, p, legend{
 	cursor: default;
 	margin: 0;
 }
+select{
+	background-color: white;
+}
 *{
 	margin: 0px;
 	padding: 0px;
@@ -508,7 +511,7 @@ button{/*tiendas*/
 	justify-content: space-around;
 }
 .contenedor_58{/*inicio*/
-	background-color: var(--OficialClaro);
+	background-color: white;
 	display: none;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -518,17 +521,6 @@ button{/*tiendas*/
 	padding: 1%;
 	text-align: center;
 	align-content: flex-start; 
-}
-.contenedor_59{/*buscador*/
-	border-radius: 15px;
-	margin: auto;
-	padding: 2%;
-	margin: 1%;
-	width: 20%;
-}
-.contenedor_59:hover{/*buscador*/
-	cursor: pointer !important;
-	background-color: rgba(165, 42, 42, 0.3);
 }
 .contenedor_61{/*vitrina*/
 	background-color: var(--OficialOscuro);
@@ -593,9 +585,9 @@ button{/*tiendas*/
 	border-radius: 15px;
 	width: 30%;
 	min-height: 100%;
-	margin: 5% auto;
+	margin: 1% auto;
 	padding: 1%;
-	padding-left: 4%;
+	/* padding-left: 4%; */
 }
 .contenedor_77{/*Categorias_Ajax_V.php*/
 	margin:5% auto 1% auto;
@@ -936,7 +928,10 @@ button{/*tiendas*/
 	margin: auto;
 }
 .contenedor_145{/*ciudad*/
-	position: initial;
+	top: inherit;
+	bottom: 0pt !important;
+	height: 80px;
+	/* margin-bottom: 10%; */
 }
 .contenedor_146{/*ciudad - quienesSomos*/
 	padding-top: 10%;
@@ -1064,11 +1059,42 @@ button{/*tiendas*/
 	margin: 2% 4% 0% 0%;
 	cursor: pointer;
 }
+.contMuestraBuscador{/*buscador*/
+	/* background-color: var(--OficialClaro); */
+	border-radius: 15px;
+	margin: auto;
+	padding: 2%;
+	margin: 1%;
+	width: 20%;
+}
+.contMuestraBuscador:hover{/*buscador*/
+	cursor: pointer !important;
+	background-color: var(--OficialClaro);
+}
+.contMuestraBuscador__label{/*buscador*/
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+}
+.contMuestraBuscador__textarea{/*buscador*/
+	/* background-color: var(--OficialClaro); */
+	width: 100%;
+	resize: none;
+	border: none;
+	padding-left: 3%;
+}
+.contMuestraBuscador:hover > .contMuestraBuscador__textarea{/*buscador*/
+	background-color: var(--OficialClaro);
+}
 .contFlex{/*carrito - inicio*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	flex-wrap: wrap; /*permite pasar a la segunda fila*/
 	justify-content: space-between;
 	margin-bottom: 2%;
+}
+.contFlex>p:first-child{/*tiendas*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
 .contFlex50{/*carrito*/
 	display: flex;
@@ -1272,7 +1298,7 @@ button{/*tiendas*/
 	text-align: center;
 	font-weight: normal ;
 }
-.h2_11{/*afiliacion*/
+.h2_11{/*afiliacion - ciudad*/
 	background-color: var(--BandaAlerta);
 	font-size: 1.3em;
 	font-weight: normal;
@@ -1282,6 +1308,10 @@ button{/*tiendas*/
 	border-radius: 10px;
 	padding: 0.5%;
 	margin-top: -2% !important;
+}
+.h2_13{/*ciudad*/
+	margin: 8% auto;
+	width: 70%;
 }
 .h3_1{/*footer - afiliacion - planes*/
 	font-weight: normal;
@@ -1351,12 +1381,20 @@ button{/*tiendas*/
 	width: 100%;
     border: none;
 	height: 1px;
-	margin:5%  auto;
+	margin: 5%  auto;
     color: #333; /* old IE */
     background-color: #333; /* Modern Browsers */
 }
 .hr_4{/*header_Tienda*/
 	display: none;
+}
+.hr_5{/*busquedor*/
+	width: 100%;
+    border: none;
+	height: 1px;
+	margin: 1%  auto;
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
 }
 .image_1{/*tiendas - cuenta*/
 	width: 100%;
@@ -1389,7 +1427,7 @@ button{/*tiendas*/
 	width: 28%;
 	object-fit: contain;/*esta propiedad necesita el ancho y alto de la imagen definidos*/
 }
-.imagen_6{/*cuenta_productos - opciones*/
+.imagen_6{/*opciones - buscador - cuenta_editar_prod - cuenta_publicar*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 160px;
 	height: 100px;
@@ -1446,7 +1484,7 @@ button{/*tiendas*/
 	background-color: var(--OficialOscuro);
 	color: white;
 	border: none;
-	font-size: 1em !important;
+	/* font-size: 1em !important; */
 	font-weight: bold;
 	width: 55%;
 	display: inline-block;
@@ -1576,15 +1614,6 @@ button{/*tiendas*/
 }
 .label_7:hover{/*login*/
 	cursor: pointer;
-}
-.label_9{/*buscador*/
-	display: block;
-	text-align: left;
-	cursor: pointer;
-}
-.label_10{/*buscador*/
-	font-weight: bold;
-	text-align: center;
 }
 .label_11{/*RegistroCom_V - cuenta_editar*/
 	margin-left: 5%;
@@ -1979,7 +2008,7 @@ button{/*tiendas*/
 	font-size: 0.8em;
 }
 .span_2{/*vitrina*/
-	font-size: 1.4em !important;
+	/* font-size: 1.4em !important; */
 	background-color: var(--OficialOscuro);
 	color: white;
 	margin: auto;

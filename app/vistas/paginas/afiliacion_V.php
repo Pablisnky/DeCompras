@@ -27,7 +27,7 @@
             </div>
             <div class="contenedor_94">
                 <P class="p_3 p_5">Medio</P>
-                <p class="p_11">10 USD/mes</p>
+                <p class="p_11">8 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Catalogo hasta 200 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
@@ -36,7 +36,7 @@
             </div>
             <div class="contenedor_94">
                 <p class="p_3 p_5">Máximo</p>
-                <p class="p_11">15 USD/mes</p>
+                <p class="p_11">13 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Catalogo hasta 500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
@@ -45,7 +45,7 @@
             </div>        
             <div class="contenedor_94">
                 <P class="p_3 p_5">Full</P>
-                <p class="p_11">25 USD/mes</p>
+                <p class="p_11">20 USD/mes</p>
                 <ul>
                     <li class="li_3"><p>Catalogo hasta 1.500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>

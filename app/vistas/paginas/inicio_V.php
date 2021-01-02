@@ -759,16 +759,16 @@
                 <div class="contFlex__div">
                     <select class="contFlex__select">
                         <option>Estado</option>
-                        <option>Yaracuy</option>
+                        <option selected="true">Yaracuy</option>
                     </select>
                 </div>
                 <div class="contFlex__div">
                     <select class="contFlex__select">
-                        <option>Ciudad</option>
+                        <!-- <option>Ciudad</option>
                         <option>Cocorote</option>
-                        <option>Independencia</option>
-                        <option>San Felipe</option>
-                        <option>Yaritagua</option>
+                        <option>Independencia</option> -->
+                        <option selected="true">San Felipe</option>
+                        <!-- <option>Yaritagua</option> -->
                     </select>
                 </div>
             </div>

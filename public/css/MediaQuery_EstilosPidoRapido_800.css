@@ -49,7 +49,7 @@
 	width: 200px;
 }
 .br_1{/*carrito*/
-	margin-top: 4%;
+	margin-top: 5% !important;
 }
 .br_2{/*carrito*/
 	display: block;
@@ -173,8 +173,8 @@
 	margin: 2% auto;
 }
 .contenedor_31{/*header*/
-	width: 60%;
-	padding: 0%;
+	width: 75%;
+	padding: 0.5%;
 }
 .contenedor_32{/*header*/
 	margin-right: 20%;
@@ -257,8 +257,6 @@
 .contenedor_55{/*inicio*/
 	width: 95%;
 	flex-direction: column;
-	/* margin: 5% auto 0% auto; */
-	/* margin-top: 15%; */
 }
 .contenedor_56{/*inicio*/
 	width: 100%;
@@ -268,10 +266,12 @@
 	width: 95%;	
 }
 .contenedor_58{/*inicio*/
+	width: 95%;
 	padding-bottom: 2.5%;
 }
-.contenedor_59{/*buscador*/
-	margin-bottom: 5%;
+.contMuestraBuscador{/*buscador*/
+	margin-bottom: 10%;
+	padding: 0% !important;
 	width: 100%;
 }
 .contInforPago{/*carrito*/
@@ -347,9 +347,9 @@
 }
 .contenedor_83{/*cuenta_editar*/
 	position: fixed;
-	top: -60%;
+	top: -90%;
 	left: 0%;
-	padding-top: 15%;
+	padding-top: 0%;
 	width: 100%;	
 	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
@@ -385,7 +385,7 @@
 .contenedor_93{/*afiliacion*/
 	padding-top: 1% !important;
 	margin-top: 15%;
-	width: 95%;
+	/* width: 95% !important; */
 }
 .contenedor_94{/*afiliacion*/
 	margin-top: 10%;
@@ -410,11 +410,15 @@
 }
 .contenedor_101{/*cuenta_editar*/
 	background-color: var(--OficialClaro);
+	border-top-color: var(--BordeClaro);
+	border-top-width: 1px ;
+	border-top-style: solid;
 	width: 100%;
+	height: 45px;
+	line-height: 45px;
 	position: fixed !important;
 	margin: 0%;
 	bottom: 0px !important;
-	padding: 1%;
 }
 .contenedor_103{/*cuenta*/
 	width: 90%;
@@ -566,7 +570,7 @@
 	width: 90%;
 	padding: 2% ;
 }
-.figure_1{/*opciones*/
+.figure_1{/*opciones - buscador*/
 	width: 100%;
 }
 .footer{
@@ -649,7 +653,7 @@
 	text-align: center;
 	margin-top: 0.1%;
 }
-.h2_13{/*afiliacion*/
+.h2_13{/*ciudad*/
 	margin: 8% auto;
 }
 .h3_1{/*footer - afiliacion - planes*/
@@ -693,20 +697,20 @@
 .imagen_5{/*footer*/
 	width: 27%;
 }
-.imagen_6{/*cuenta_productos - cuenta_editar_prod - cuenta_publicar*/
+.imagen_6{/*opciones - buscador - cuenta_editar_prod - cuenta_publicar*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
-	width: 140px;
-	height: 95px;
+	width: 100%;
+	/* height: 95px; */
 	display: block;
 	margin: auto;
 	margin: 4% auto;
 }
-.imagen_7{/*tiendas*/
+.imagen_7{/*buscador*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 100%;
 	height: 180px;
-	margin: auto;
-	margin-bottom: 3%;
+	margin: auto;	
+	padding: 2%;
 }
 .imagen_8{/*vitrina*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
@@ -735,6 +739,7 @@
 }
 .input_5{/*header*/
 	padding-top: 2%;
+	/* font-size: 1em !important; */
 }
 .input_6{/*carrito cuenta_producto*/
 	font-size: 0.9em;
@@ -956,7 +961,7 @@
 	font-size: 1em;
 }
 .span_2{/*header*/
-	font-size: 1.3em !important;
+	/* font-size: 1.3em !important; */
 	padding: 5%;
 	line-height: 15px !important;
 }

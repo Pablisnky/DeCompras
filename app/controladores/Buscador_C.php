@@ -12,6 +12,11 @@
             //CONSULTA las tiendas donde exista el producto solicitado por el usuario mediante el input buscador en inicio_V.php
             $Datos = $this->ConsultaBuscador_M->consultarBusquedaTienda($Buscar);
             
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
+
             $this->vista("paginas/buscador_V", $Datos);
         } 
     }

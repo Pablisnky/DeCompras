@@ -1,6 +1,5 @@
 document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
     
-
 //*********************************************************************************************** 
     //Busca un producto segun lo que escriba el usuario en el input
     function Llamar_buscador(nombre){
