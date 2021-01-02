@@ -275,7 +275,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************ 
     //Elimina los clones de Cuentas banco
     function PreEliminarCuentaBanco(){
-        // console.log("______Desde PreEliminarCuentaBanco()______")
+        console.log("______Desde PreEliminarCuentaBanco()______")
 
         // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
 
@@ -301,11 +301,11 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 let Eliminar_CuentaTransferencia = document.getElementsByClassName('span_16_js')
                 // console.log("Cantidad de iconos eliminar", Eliminar_CuentaTransferencia.length) 
                 
-                if(Eliminar_CuentaTransferencia.length == 1){ 
-                    let InputsTransferencias = 4
-                    for(var i=0; i < InputsTransferencias; i++){           
-                        document.getElementsByClassName("input_9JS")[i].value = ""
-                    }
+                if(Eliminar_CuentaTransferencia.length == 1){            
+                    Div_clon.getElementsByClassName("bancoTransJS")[0].value = ""
+                    Div_clon.getElementsByClassName("titularTransJS")[0].value = ""
+                    Div_clon.getElementsByClassName("cuentaTransJS")[0].value = ""
+                    Div_clon.getElementsByClassName("rifTransJS")[0].value = ""
                 }
                 else{
                     //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
@@ -484,10 +484,10 @@ document.getElementById("Label_1").addEventListener('click', function(){
         iterarBanco++
 
         //El value de los elementos que estan dentro del nuevo clon debe estar vacio
-        Div_clon.getElementsByClassName("input_9JS")[0].value = ""
-        Div_clon.getElementsByClassName("input_9JS")[1].value = ""
-        Div_clon.getElementsByClassName("input_9JS")[2].value = ""
-        Div_clon.getElementsByClassName("input_9JS")[3].value = ""
+        Div_clon.getElementsByClassName("bancoTransJS")[0].value = ""
+        Div_clon.getElementsByClassName("titularTransJS")[0].value = ""
+        Div_clon.getElementsByClassName("cuentaTransJS")[0].value = ""
+        Div_clon.getElementsByClassName("rifTransJS")[0].value = ""
 
         //Se especifica el div padre, donde se insertará el nuevo nodo
         //Mostrar_CuentaBancaria = Div padre y Contenedor_67 = Div hijo      
