@@ -368,16 +368,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <span class="icon-cancel-circle span_10 span_14 span_16_js"></span>
 
                             <!-- NOMBRE BANCO -->
-                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" placeholder="Banco" autocomplete="off"/>
+                            <input class="input_13 input_13A bancoTransJS borde_1" type="text" name="banco[]" id="Nombre_Banco" placeholder="Banco" autocomplete="off"/>
 
                             <!-- TITULAR BANCO -->
-                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off"/>
+                            <input class="input_13 input_13A titularTransJS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off"/>
 
                             <!-- NUMERO CUENTA -->
-                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off"/>
+                            <input class="input_13 input_13A cuentaTransJS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off"/>
 
                             <!-- RIF BANCO -->
-                            <input class="input_13 input_13A input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off"/>
+                            <input class="input_13 input_13A rifTransJS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off"/>
                         </div> 
                         <?php
                     }
@@ -393,19 +393,19 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <label>Banco</label>
                                 
                                 <!-- NOMBRE BANCO -->
-                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
+                                <input class="input_13 input_13A bancoTransJS borde_1" type="text" name="banco[]" id="Nombre_Banco" value="<?php echo $BancoNombre;?>" autocomplete="off"/>
                                 
                                 <!-- TITULAR BANCO -->
                                 <label>Titular</label>
-                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
+                                <input class="input_13 input_13A titularTransJS borde_1" type="text" name="titular[]" id="Titular_Banco" value="<?php echo $BancoTitular;?>"  autocomplete="off"/>
 
                                 <!-- NUMERO CUENTA -->
                                 <label>Número cuenta</label>
-                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
+                                <input class="input_13 input_13A cuentaTransJS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" value="<?php echo $BancoCuenta;?>" autocomplete="off"/>
 
                                 <!-- RIF BANCO -->
                                 <label>RIF</label>
-                                <input class="input_13 input_13A input_9JS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"/>
+                                <input class="input_13 input_13A rifTransJS borde_1" type="text" name="rif[]" id="RIF_Banco" value="<?php echo $BancoRif;?>" autocomplete="off"/>
                             </div>
                             <?php
                         }
