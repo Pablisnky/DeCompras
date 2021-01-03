@@ -47,4 +47,17 @@
             }
         } 
        
+        //SELECT con los datos para contactar con la tienda
+        public function consultarResponsableTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT telefono_Tien FROM tiendas WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
     }

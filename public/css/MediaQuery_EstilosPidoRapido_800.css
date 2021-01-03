@@ -554,9 +554,6 @@
 .contGridTres{/*Categorias_Ajax*/
 	grid-template-columns: 100%;
 }
-.contInputRadio{/*carrito - SeccionesDisponibles_Ajax - Categorias_Ajax*/
-	padding: 2% !important;	
-}
 .contInputRadio__label{/*carrito - Secciones_Ajax - Categorias_Ajax*/
 	font-size: 0.9em !important;
 }

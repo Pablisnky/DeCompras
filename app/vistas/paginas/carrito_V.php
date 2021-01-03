@@ -223,7 +223,8 @@
                                 <div class="contInputRadio">
                                     <input type="radio" name="referenciaPago" id="ReferenciaPago" value="codigoTransferencia" onclick="verInputTransferencia()"/>
                                     <label class="contInputRadio__label" for="ReferenciaPago">Codigo transferencia</label> 
-                                    <br class="br_1"/>
+                                </div>
+                                <div class="contInputRadio">
                                     <input type="radio" name="referenciaPago" id="CapturePago" value="CaptureTransferencia" onclick="verCaptureTransferencia()"/>
                                     <label class="contInputRadio__label" for="CapturePago">Capture transferencia</label> 
                                 </div>
@@ -328,10 +329,14 @@
                             </div>
 
                             <!-- PAGO ACORDADO -->
+                            <?php
+                                foreach($Datos['TelefonoTienda'] as $row) : 
+                                            $TelefonoTienda = $row['telefono_Tien'];
+                                endforeach;     ?>
                             <div class="contInforPago" id="Contenedor_60e">
                                 <h3 class="h3_2">Acuerdo con tienda</h3>
                                 <p>Contacta al encargado de la tienda.</p>
-                                <p>0434-234.23.23</p>
+                                <p><?php echo $TelefonoTienda?></p>
                             </div>
                         </div>
                             <div class="contFlex50">

@@ -13,6 +13,9 @@
     
         //Invocado desde A_Vitrina.js
         public function index($ID_Tienda){  
+            //SELECT para buscar información del responsable de la tienda
+            $ContactoTienda = $this->ConsultaCarrito_M->consultarResponsableTienda($ID_Tienda);
+
             //SELECT para buscar información de pago por transferencia de la tienda
             $Banco = $this->ConsultaCarrito_M->consultarCtaBanco($ID_Tienda); 
             
@@ -26,7 +29,8 @@
                 'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
                 'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil
                 'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
-                'ID_Tienda' => $ID_Tienda               
+                'ID_Tienda' => $ID_Tienda,
+                'TelefonoTienda' => $ContactoTienda           
             ];
 
             // echo "<pre>";
