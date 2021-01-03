@@ -109,11 +109,38 @@ document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(
         }
     }
 }, false)
+
 // ************************************************************************************************** 
-//Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función PreEliminarPagoMovil, PreEliminarSeccion y PreEliminarCuentaBanco
-// document.addEventListener("DOMContentLoaded", PreEliminarSeccion)
-document.addEventListener("DOMContentLoaded", PreEliminarCuentaBanco)
-// document.addEventListener("DOMContentLoaded", PreEliminarPagoMovil) 
+//ELIMINAR TRANSFERENCIA
+document.getElementById("Mostrar_CuentaBancaria").addEventListener('click', function(e){ 
+    console.log("______Desde funcion anonima que aplica listerner para eliminar PagoMovil______")
+    var click = e.target
+
+    if(e.target.classList[3] == "span_16_js"){ 
+        //Se obtienen la cantidad de cuentas PagoMovil que existen
+        let Eliminar_CuentaPagoMovil = document.getElementsByClassName('span_16_js')
+
+        if(Eliminar_CuentaPagoMovil.length == 1){            
+            document.getElementsByClassName("bancoTransJS")[0].value = ""
+            document.getElementsByClassName("titularTransJS")[0].value = ""
+            document.getElementsByClassName("cuentaTransJS")[0].value = ""
+            document.getElementsByClassName("rifTransJS")[0].value = ""
+        }
+        else{
+        //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
+        current = e.target.parentElement
+        // console.log("div a eliminar", current)
+        
+        //Se busca el nodo padre que contiene el elemento current
+        let elementoPadre = current.parentElement
+        
+        //Se elimina la sección
+        elementoPadre.removeChild(current);
+        }
+    }
+}, false)
+
+// ************************************************************************************************** 
 document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('ContenidoSlo','ContadorSlo')}, false)    
 document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('Direccion_Tien','ContadorDireccion')}, false) 
  
@@ -222,103 +249,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
             //     //Se elimina la sección
             //     elementoPadre.removeChild(current);  
             // }  
-        // }          
-    }
-
-//************************************************************************************************ 
-    //Elimina las cuentas de PagoMovil
-    // function PreEliminarPagoMovil(){
-    //     console.log("______Desde PreEliminarPagoMovil()______")
-
-        // // let ConfirmaEleminar = confirm("Se va a eliminar una cuenta de PagoMovil")
-
-        // // if(ConfirmaEleminar == true){
-        //     //Detectar el boton eliminar al cual se hizo click
-        //     var SpanEliminar = document.getElementsByClassName('span_15_js')//Se obtienen los botones Eliminar PagoMovil
-        //     console.log(SpanEliminar) 
-
-        //     var len = SpanEliminar.length//Se cuentan cuantos botones Eliminar hay 
-        //     console.log("Cantidad de botones \"Eliminar\" PagoMovil", len) 
-
-        //     var button
-        //     for(var i = 0; i < len; i++){
-        //         button = SpanEliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
-        //         button.onclick = EliminarPagoMovil // Asignar la función EliminarPagoMovil() en su evento click.
-        //         // console.log("Boton seleccionado", SpanEliminar[i])                 
-        //     } 
-
-        //     function EliminarPagoMovil(e){                   
-        //         //Se obtienen la cantidad de cuentas PagoMovil que existen
-        //         let Eliminar_CuentaPagoMovil = document.getElementsByClassName('span_15_js')
-        //         console.log("Cantidad de iconos eliminar", Eliminar_CuentaPagoMovil.length) 
-                
-        //         if(Eliminar_CuentaPagoMovil.length == 1){            
-        //             document.getElementsByClassName("cedulaJS")[0].value = ""
-        //             document.getElementsByClassName("BancoJS")[0].value = ""
-        //             document.getElementsByClassName("TelefonoJS")[0].value = ""
-        //         }
-        //         else{
-        //             //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-        //             current = e.target.parentElement
-        //             // console.log("div a eliminar", current)
-                    
-        //             //Se busca el nodo padre que contiene el elemento current
-        //             let elementoPadre = current.parentElement
-                    
-        //             //Se elimina la sección
-        //             elementoPadre.removeChild(current);  
-        //         }
-        //     } 
-        // }          
-    // }
-
-//************************************************************************************************ 
-    //Elimina los clones de Cuentas banco
-    function PreEliminarCuentaBanco(){
-        console.log("______Desde PreEliminarCuentaBanco()______")
-
-        // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
-
-        // if(ConfirmaEleminar == true){
-            //Detectar el boton eliminar al cual se hizo click
-            var SpanEliminar = document.getElementsByClassName('span_16_js')//Se obtienen los botones Eliminar
-            // console.log(SpanEliminar) 
-
-            var len = SpanEliminar.length//Se cuentan cuantos botones Eliminar hay 
-            // console.log("Cantidad de botones \"Eliminar\"", len) 
-
-            var button
-            for(var i = 0; i < len; i++){
-                button = SpanEliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
-                button.onclick = EliminarCuentaBanco // Asignar la función EliminarCuentaBanco() en su evento click.
-                // console.log("______Boton seleccionado______", SpanEliminar[i]) 
-            } 
-
-            function EliminarCuentaBanco(e){   
-                // console.log("______Desde EliminarCuentaBanco()______") 
-
-                //Se obtienen la cantidad de cuentas bancarias existen
-                let Eliminar_CuentaTransferencia = document.getElementsByClassName('span_16_js')
-                // console.log("Cantidad de iconos eliminar", Eliminar_CuentaTransferencia.length) 
-                
-                if(Eliminar_CuentaTransferencia.length == 1){            
-                    Div_clon.getElementsByClassName("bancoTransJS")[0].value = ""
-                    Div_clon.getElementsByClassName("titularTransJS")[0].value = ""
-                    Div_clon.getElementsByClassName("cuentaTransJS")[0].value = ""
-                    Div_clon.getElementsByClassName("rifTransJS")[0].value = ""
-                }
-                else{
-                    //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-                    current = e.target.parentElement
-                    // console.log("div a eliminar", current)
-                    
-                    //Se busca el nodo padre que contiene el elemento current
-                    let elementoPadre = current.parentElement
-                    
-                    //Se elimina la sección
-                    elementoPadre.removeChild(current); 
-                } 
-            }  
         // }          
     }
 
@@ -473,7 +403,19 @@ document.getElementById("Label_1").addEventListener('click', function(){
     //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
     var iterarBanco = 1
     function clonarCuentaBancaria(){
-        //Contenedor a clonar 
+        
+        // Calcula cuantas cuentas de Transferencia existen tomando uno de sus requisitos (banco)
+        let CantidadCuentasTransferencia = document.getElementsByClassName("bancoTransJS")
+        console.log("Cuentas Transferencia existentes", CantidadCuentasTransferencia.length)
+
+        //Se verifica que no existan cuentas Transferencia con campos sin llenar
+        for(var i = 0; i < CantidadCuentasTransferencia.length; i++){
+            if(document.getElementsByClassName("bancoTransJS")[i].value == "" || document.getElementsByClassName("titularTransJS")[i].value == "" || document.getElementsByClassName("cuentaTransJS")[i].value == "" || document.getElementsByClassName("rifTransJS")[i].value == ""){
+                alert("Aún no completa cuenta Transferencia")
+                return
+            }
+        }
+
         let clonar = document.getElementById("Contenedor_67")
 
         //Se crea el clon
@@ -503,16 +445,16 @@ document.getElementById("Label_1").addEventListener('click', function(){
 //************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de pagoMovil
     function clonarCuentaPagoMovil(){
-        console.log("______Desde clonarCuentaPagoMovil()______")
+        // console.log("______Desde clonarCuentaPagoMovil()______")
         
         // Calcula cuantas cuentas de PagoMovil existen tomando uno de sus requisitos (Cedula)
         let CuentasPagoMovil = document.getElementsByClassName("cedulaJS")
-        console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
+        // console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
 
         //Se verifica que no existan cuentas PagoMovil con campos sin llenar
         for(var i = 0; i < CuentasPagoMovil.length; i++){
             if(document.getElementsByClassName("cedulaJS")[i].value == "" || document.getElementsByClassName("BancoJS")[i].value == "" || document.getElementsByClassName("TelefonoJS")[i].value == ""){
-                alert("Aún no completa la cuenta PagoMovil")
+                alert("Aún no completa cuenta PagoMovil")
                 return
             }
         }
@@ -596,10 +538,10 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let Parroquia = document.getElementById('Parroquia_Tien').value
         let Direccion = document.getElementById('Direccion_Tien').value
         // DATOS CUENTA BANCO
-        let Nombre_Banco = document.getElementById('Nombre_Banco').value  
-        let Titular_Banco = document.getElementById('Titular_Banco').value 
-        let NroCuenta_Banco = document.getElementById('NroCuenta_Banco').value
-        let RIF_Banco = document.getElementById('RIF_Banco').value 
+        let Nombre_Banco = document.getElementsByClassName('bancoTransJS')  
+        let Titular_Banco = document.getElementsByClassName('titularTransJS') 
+        let NroCuenta_Banco = document.getElementsByClassName('cuentaTransJS')
+        let RIF_Banco = document.getElementsByClassName('rifTransJS') 
         // DATOS PAGOMOVIL
         let Cedula_ClonPagoMovil = document.getElementsByClassName('cedulaJS')
         let Banco_ClonPagoMovil = document.getElementsByClassName('BancoJS')
@@ -789,69 +731,80 @@ document.getElementById("Label_1").addEventListener('click', function(){
         }
 
         //INFORMACION DE MEDIOS DE PAGO
-        for(var i = 0; i < Cedula_ClonPagoMovil.length; i++){
-            if(Nombre_Banco == "" && document.getElementsByClassName("cedulaJS")[i].value == ""){
-                alert ("Introduzca información de medios de pago")
-                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                return false;
-            }
+        if(document.getElementsByClassName('bancoTransJS')[0].value  == "" && document.getElementsByClassName("cedulaJS")[0].value == ""){
+            alert ("Introduzca información de medios de pago")
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
         }
-
+        
         //VALIDA TRANSFERENCIA
-        if(Nombre_Banco != "" || Titular_Banco != "" || NroCuenta_Banco != "" || RIF_Banco != ""){
-            if(Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 40){
-                alert ("Necesita introducir el nombre del banco")
-                document.getElementById("Nombre_Banco").value = ""
-                document.getElementById("Nombre_Banco").focus()
-                document.getElementById("Nombre_Banco").style.backgroundColor = "var(--Fallos)"
+        //Valida que no exista un campo de una cuenta PagoMovil vacio
+        for(i=0; i<Nombre_Banco.length; i++){
+            if(Nombre_Banco[i].value != '' || Titular_Banco[i].value != '' || NroCuenta_Banco[i].value != '' || RIF_Banco[i].value != '' ){
+            
+                if(Nombre_Banco[i].value == '' ||  Nombre_Banco.indexOf(" ") == 0 || Nombre_Banco.length > 40){
+                    alert("Banco para transferencia invalido")
+                    Nombre_Banco[i].focus()
+                    Nombre_Banco[i].style.backgroundColor = "var(--Fallos)"
+                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                    document.getElementsByClassName("boton")[0].disabled = false
+                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                    return false;
+                }                
+                if(Titular_Banco[i].value == '' || Titular_Banco.indexOf(" ") == 0 || Titular_Banco.length > 40){
+                    alert("Titular para pago transferencia invalido")
+                    Titular_Banco[i].focus()
+                    Titular_Banco[i].style.backgroundColor = "var(--Fallos)"
+                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                    document.getElementsByClassName("boton")[0].disabled = false
+                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                    return false;
+                }    
+                if(NroCuenta_Banco[i].value == '' || NroCuenta_Banco.indexOf(" ") == 0 || NroCuenta_Banco.length > 25 || (isNaN(NroCuenta_Banco))){
+                    alert("Número cuenta invalido")
+                    NroCuenta_Banco[i].focus()
+                    NroCuenta_Banco[i].style.backgroundColor = "var(--Fallos)"
+                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                    document.getElementsByClassName("boton")[0].disabled = false
+                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                    return false;
+                }               
+                if(RIF_Banco[i].value == '' || RIF_Banco.indexOf(" ") == 0 || RIF_Banco.length > 30){
+                    alert("RIF o cedula invalido")
+                    RIF_Banco[i].focus()
+                    RIF_Banco[i].style.backgroundColor = "var(--Fallos)"
+                    document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                    document.getElementsByClassName("boton")[0].disabled = false
+                    document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                    document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                    document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                    return false;
+                } 
+            }
+        }  
+        //Valida que no quede una cuenta de transferencia añadida vacia
+        let CuentasTransferencia = document.getElementsByClassName("bancoTransJS")
+        for(var i = 0; i < CuentasTransferencia.length; i++){
+            if((document.getElementsByClassName("bancoTransJS")[i].value == "" || document.getElementsByClassName("titularTransJS")[i].value == "" || document.getElementsByClassName("cuentaTransJS")[i].value == "" || document.getElementsByClassName("rifTransJS")[i].value == "") && Cedula_ClonPagoMovil.length > 1){
+                alert("Aún no completa la cuenta para transferencia")
                 document.getElementsByClassName("boton")[0].value = "Guardar cambios"
                 document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("boton")[0].style.backgroundColor= "var(--OficialOscuro)"
                 document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
                 document.getElementsByClassName("boton")[0].classList.remove('borde_1')
                 return false;
             }
-            else if(Titular_Banco == "" || Titular_Banco.indexOf(" ") == 0 || Titular_Banco.length > 40){
-                alert ("Necesita introducir el titular de la cuenta bancaria")
-                document.getElementById("Titular_Banco").value = ""
-                document.getElementById("Titular_Banco").focus()
-                document.getElementById("Titular_Banco").style.backgroundColor = "var(--Fallos)"
-                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                return false;
-            }
-            else if(NroCuenta_Banco == "" || NroCuenta_Banco.indexOf(" ") == 0 || NroCuenta_Banco.length > 25 || (isNaN(NroCuenta_Banco))){
-                alert ("Introduzca el número de la cuenta bancaria")
-                document.getElementById("NroCuenta_Banco").value = ""
-                document.getElementById("NroCuenta_Banco").focus()
-                document.getElementById("NroCuenta_Banco").style.backgroundColor = "var(--Fallos)"
-                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                return false;
-            }
-            else if(RIF_Banco == "" || RIF_Banco.indexOf(" ") == 0 || RIF_Banco.length > 30){
-                alert ("Necesita introducir el RIF/cedula del titular de la cuenta bancaria")
-                document.getElementById("RIF_Banco").value = ""
-                document.getElementById("RIF_Banco").focus()
-                document.getElementById("RIF_Banco").style.backgroundColor = "var(--Fallos)"
-                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-                document.getElementsByClassName("boton")[0].disabled = false
-                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-                return false;
-            }
-        }
+        } 
        
         //VALIDA CAMPOS PAGOMOVIL    
         //Valida que puede quedar la cuenta PagoMovil vacia si existe una cuenta de Transferencia
