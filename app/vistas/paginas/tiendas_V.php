@@ -21,6 +21,8 @@
             $Direccion = $row['direccion_Tien'];
             $Telefono = $row['telefono_Tien'];
             $Fotografia = $row['fotografia_Tien'];
+            $Ciudad = $row['parroquia_Tien'];
+            $Estado = $row['estado_Tien'];
             ?> 
             <section>
                 <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2')"><!--El argumento no necesario es debido a que se comparte el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
@@ -41,7 +43,7 @@
                             <h3 class="h3_4">Reputación <span class="span_1">(Ultimos 3 meses)</span> </h3>
                         </div>
                         <div style="width: 50%; margin: 2% auto;">
-                            <p class="p_2 p_18">% de Satisfacción</p>
+                            <p class="p_2 p_18">% de Efectividad</p>
                             <?php 
                                 foreach($Datos['tiendas_satisfaccion'] as $Row) :
                                     $ID_TiendaSatisfaccion = $Row['ID_Tienda'];
@@ -188,7 +190,7 @@
                         </div>
                         <div class="contenedor_131">
                             <span class="icon-location2 span_17"></span>
-                            <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo 'San Felipe'?> - <?php echo 'Yaracuy'?></p>
+                            <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo $Ciudad?> - <?php echo $Estado?></p>
                         </div>
                     </div> 
                 </div>

@@ -26,12 +26,22 @@ document.getElementById("Telefono_Tien").addEventListener('change', function(){v
     
 //Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
-    // console.log("______Desde funcion anonima que aplica listerner a elementos tipo input de PagoMovil______")
+    // console.log("______Desde funcion anonima que aplica listerner a elementos tipo input")
     if(e.target.tagName == "INPUT"){
         var ID_Input = e.target.id
         
         document.getElementById(ID_Input).addEventListener('keyup', function(){blanquearInput(ID_Input)}, false)
     } 
+}, false)
+
+//Por medio de delegación de eventos se detecta cada select debido a que son muchos elementos tipo select
+document.getElementsByTagName("body")[0].addEventListener('change', function(e){
+    // console.log("______Desde funcion anonima que aplica listerner a elementos tipo select")
+    if(e.target.tagName == "SELECT"){
+        var ID_Select = e.target.id
+        console.log("ID_Select = ",ID_Select)
+        document.getElementById(ID_Select).addEventListener('click', function(){blanquearInput(ID_Select)}, false)
+    }
 }, false)
     
 //Por medio de delegación de eventos se detecta la sección a eliminar
@@ -659,7 +669,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Estado == "" || Estado.indexOf(" ") == 0 || Estado.length > 20 || P_Letras.test(Estado) == false){
+        else if(Estado == "" || Estado == 'Seleccione estado'){
             alert ("Necesita introducir el estado")
             document.getElementById("Estado_Tien").value = ""
             document.getElementById("Estado_Tien").focus()
@@ -671,7 +681,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Municipio == "" || Municipio.indexOf(" ") == 0 || Municipio.length > 20 || P_Letras.test(Municipio) == false){
+        else if(Municipio == "" || Municipio == "Seleccione municipio"){
             alert ("Necesita introducir el Municipio")
             document.getElementById("Municipio_Tien").value = ""
             document.getElementById("Municipio_Tien").focus()
@@ -683,7 +693,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Parroquia == "" || Parroquia.indexOf(" ") == 0 || Parroquia.length > 20 || P_Letras.test(Parroquia) == false){
+        else if(Parroquia == "" || Parroquia == "Seleccione parroquia"){
             alert ("Necesita introducir la Parroquia")
             document.getElementById("Parroquia_Tien").value = ""
             document.getElementById("Parroquia_Tien").focus()

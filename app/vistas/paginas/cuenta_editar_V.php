@@ -95,7 +95,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <?php
                     } 
                     else{   ?>
-                    <option id="Option_1" selected>Seleccione estado</option>
+                    <option id="Option_1">Seleccione estado</option>
                         <?php
                     }  ?>
                     <option id="Option_1">Yaracuy</option>
@@ -104,11 +104,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <select class="select_2 borde_1" id="Municipio_Tien" name="municipio_com" onclick="SeleccionarParroquia(this.form)">
                     <?php
                     if(!empty($Municipio_Tien)){ ?>
-                        <option id="Option_1" selected><?php echo $Municipio_Tien;?></option>
+                        <option id="Option_1"><?php echo $Municipio_Tien;?></option>
                         <?php
                     } 
                     else{   ?>
-                    <option id="Option_1" selected>Seleccione municipio</option>
+                    <option id="Option_1">Seleccione municipio</option>
                         <?php
                     }  ?>
                 </select>
@@ -116,15 +116,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <select class="select_2 borde_1" id="Parroquia_Tien" name="parroquia_com">
                     <?php
                     if(!empty($Parroquia_Tien)){ ?>
-                        <option id="Option_1" selected><?php echo $Parroquia_Tien;?></option>
+                        <option id="Option_1"><?php echo $Parroquia_Tien;?></option>
                         <?php
                     } 
                     else{   ?>
-                    <option id="Option_1" selected>Seleccione parroquia</option>
+                    <option id="Option_1">Seleccione parroquia</option>
                         <?php
                     }  ?>
                 </select>                
-
+                
+                <br>
                 <label>Dirección</label>
                 <textarea class="textarea_4 borde_1 " name="direccion_com" id="Direccion_Tien"><?php echo $Direccion_Tien;?></textarea> 
                 <input class="contador_2" type="text" id="ContadorDireccion" value="50"/>

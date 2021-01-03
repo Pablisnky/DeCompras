@@ -161,7 +161,7 @@
             }
             // *******************************************            
             $Datos = [
-                'tiendas_categoria' => $TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria 
+                'tiendas_categoria' => $TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria, estado_Tien, parroquia_Tien 
                 'tiendas_transferencias' => $TiendasTransferencias,
                 'tiendas_pagomovil' => $TiendasPagoMovil,
                 'tiendasOtrosPagos' => $TiendasOtrosPagos, //ID_Tienda, efectivoBolivar, efectivoDolar, acordado
