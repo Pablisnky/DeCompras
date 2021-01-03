@@ -1,5 +1,3 @@
-<!-- <link rel="stylesheet" type="text/css" href="<?php //echo RUTA_URL?>/public/css/iconos/telefono/style_telefono.css"/>
-<link rel="stylesheet" type="text/css" href="<?php // echo RUTA_URL?>/public/css/iconos/ubicacion/style_ubicacion.css"/> -->
 <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización del capture--> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -34,12 +32,13 @@
                 </div>
             </article>
 
-            <article>
+            <!-- <article> -->
                 <div class="contGeneral">  
                     <div class="contInputRadio">     
                         <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
                         <label class="contInputRadio__label" for="Domicilio_No">Recoger pedido en tienda, 0 Bs.</label>
-                        <br class="br_1"/>
+                    </div>                    
+                    <div class="contInputRadio">
                         <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
                         <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, 3.000 Bs.</label>
                     </div>     
@@ -51,7 +50,7 @@
                         <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
                     </div>
                 </div>
-            </article>
+            <!-- </article> -->
 
             <article>
                 <div class="contBoton" id="Contenedor_26">
@@ -74,28 +73,28 @@
                         <div class="contFlex">
                             <!-- NOMBRE -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
+                                <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')" value="Pablo"/>
                             </div>
 
                             <!-- APELLIDO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
+                                <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')" value="Cabeza"/>
                             </div>
 
                             <!-- CEDULA -->
                             <div class="contenedor_29">
                                 <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
-                            "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')"/>
+                            "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')" value="23.232.232"/>
                             </div>
 
                             <!-- TELEFONO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')"/>
+                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')" value="0434-342.23.23"/>
                             </div>
 
                             <!-- CORREO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')"/>
+                                <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')" value="albertcabeza76@gmail.com"/>
                             </div>
 
                             <!-- DIRECCION -->
@@ -110,14 +109,14 @@
                                     <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
                                         <option id="Option_1" disabled selected>Seleccione una ciudad</option>
                                         <option>Cocorote</option>
-                                        <option>Independencia</option>
+                                        <option selected="true">Independencia</option>
                                         <option>San Felipe</option>
                                         <option>Yaritagua</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="contenedor_72">
-                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
+                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')">Calle 32</textarea>
                             </div>
                         </div>        
                     </div>
@@ -131,37 +130,43 @@
                             <!-- SELECCIONAR FORMA DE PAGO -->
                             <div class="contInputRadio">
                                 <?php
-                                if($Datos['Banco'] != Array()){ ?>
+                                if($Datos['Banco'] != Array()){ ?>                                
+                                <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()"/>
                                     <label class="contInputRadio__label" for="Transferencia">Transferencia bancaria</label>
-                                    <br class="br_1"/>
+                                </div>
                                     <?php
                                 }   
 
-                                if($Datos['Pagomovil'] != Array()){ ?>
+                                if($Datos['Pagomovil'] != Array()){ ?>                                
+                                <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()"/>
                                     <label class="contInputRadio__label" for="PagoMovil">Pago movil</label> 
-                                    <br class="br_1"/>
+                                </div>
                                     <?php
                                 }     
 
                                 if($Datos['OtrosPagos'][0]['efectivoBolivar']  != 0){ ?>
+                                <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="EfectivoBolivar" value="Efectivo_Bolivar" onclick="verPagoEfectivoBolivar()"/>
                                     <label class="contInputRadio__label" for="EfectivoBolivar">Pago destino (Bs.)</label> 
-                                    <br class="br_1"/>
+                                </div>
                                     <?php
                                 }    
 
                                 if($Datos['OtrosPagos'][0]['efectivoDolar'] != 0){ ?>
+                                <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="EfectivoDolar" value="Efectivo_Dolar" onclick="verPagoEfectivoDolar()"/>
                                     <label class="contInputRadio__label" for="EfectivoDolar">Pago destino ($)</label> 
-                                    <br class="br_1"/>
+                                </div>
                                     <?php
                                 }     
 
                                 if($Datos['OtrosPagos'][0]['acordado'] != 0){ ?>
+                                <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="Acordado" value="acordado" onclick="verPagoAcordado()"/>
                                     <label class="contInputRadio__label" for="Acordado">Acordado con tienda</label> 
+                                </div>
                                     <?php
                                 }   ?>  
                             </div>   
@@ -328,7 +333,7 @@
                                 <p>Contacta al encargado de la tienda.</p>
                                 <p>0434-234.23.23</p>
                             </div>
-                        
+                        </div>
                             <div class="contFlex50">
                                 <input class="ocultar" type="text" name="id_tienda" value="<?php echo $Datos['ID_Tienda']?>"/>
 
@@ -337,7 +342,6 @@
                                 <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a mostrador</label>
                                 <input class="boton boton--alto botonJS" type="submit" value="Comprar"/>
                             </div>
-                        </div>
                     </div>
                 </article> 
             </form>

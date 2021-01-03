@@ -15,22 +15,25 @@
                 // echo '</pre>';
                 // exit;
                 
-                foreach($Datos['categorias'] as $row){
-                    $Categoria = $row['categoria'];     
-                            //$Datos['categoriasTienda'] trae información de la consulta llamada desde Cuenta_C.php con todas las categorias a las que pertece la tienda
-                            if(!empty($Datos['categoriasTienda'])){
-                                foreach($Datos['categoriasTienda'] as $row_2){
-                                    $CategoriaT = $row_2['categoria']; 
-                                ?>
-                                    <input class="categoria_js" type="checkbox" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php   echo $Categoria;?>" 
-                                    <?php // if($CategoriaT == $Categoria){echo "checked = 'checked'";} 
-                                }?>/> <?php 
-                            }
-                            else{   ?>
-                                <input type="checkbox" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php echo $Categoria?>"/> <?php
-                            }     ?>           
-                            <label class="contInputRadio__label" for="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>"><?php echo $Categoria;?></label>
+                foreach($Datos['categorias'] as $row){  ?>                    
+                    <div class="contInputRadio">    <?php
+                        $Categoria = $row['categoria'];     
+                        //$Datos['categoriasTienda'] trae información de la consulta llamada desde Cuenta_C.php con todas las categorias a las que pertece la tienda
+                        if(!empty($Datos['categoriasTienda'])){
+                            foreach($Datos['categoriasTienda'] as $row_2){
+                                $CategoriaT = $row_2['categoria']; 
+                            ?>
+                                <input class="categoria_js" type="checkbox" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php   echo $Categoria;?>" 
+                                <?php // if($CategoriaT == $Categoria){echo "checked = 'checked'";} 
+                            }?>/> <?php 
+                        }
+                        else{   ?>
+                            <input type="checkbox" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php echo $Categoria?>"/> <?php
+                        }     ?>           
+                        <label class="contInputRadio__label" for="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>"><?php echo $Categoria;?></label>
+                    </div>
                     <?php
+
                     $ContadorCategoria++;
                 }
                 ?>

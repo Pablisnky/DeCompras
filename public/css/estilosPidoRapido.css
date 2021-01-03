@@ -179,10 +179,6 @@ button{/*tiendas*/
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 }
-.br_1{/*carrito*/
-	display: block;
-	margin-top: 2%;
-}
 .br_2{/*carrito*/
 	display: none;
 }
@@ -1123,6 +1119,7 @@ button{/*tiendas*/
 .contGeneral{/*carrito*/
 	width: 100%;
 	margin: auto;
+	margin-bottom: 2%;
 }
 .contGeneralCentro{/*carrito*/
 	text-align: center;
@@ -1152,14 +1149,11 @@ button{/*tiendas*/
 	border-top-width: 1px;
 	border-top-style: solid;
 }
-.contInputRadio{/*carrito - SeccionesDisponibles_Ajax*/
-	padding: 2% !important;
-}
-.contInputRadio_div{/*Categorias_Ajax*/
-	padding-left: 15%!important;
+.contInputRadio{/*carrito - SeccionesDisponibles_Ajax - Categorias_Ajax*/
+	padding: 1% !important;
 }
 .contInputRadio__label{/*carrito - Secciones_Ajax*/
-	padding: 0% 10px;
+	padding: 2px 10px;
 }
 .contInputRadio__label:hover{/*carrito - Secciones_Ajax - Categorias_Ajax*/
 	cursor: pointer;
