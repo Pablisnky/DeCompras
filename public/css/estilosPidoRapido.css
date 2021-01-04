@@ -859,7 +859,7 @@ button{/*tiendas*/
 .contenedor_131{/*tiendas*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	align-items: center;/*para centrar verticalmente el div hijo junto con display:flex*/
-	height: 30px;
+	/* height: 30px; */
 }
 .contenedor_132{/*tiendas*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
@@ -1000,6 +1000,7 @@ button{/*tiendas*/
 }
 .contenedor_162{/*tiendas*/
 	border-top: 1px solid var(--BordeClaro);
+	height: 55px;
 	padding-top: 2%;
 }
 .contenedor_163{/*tiendas*/
@@ -1306,6 +1307,19 @@ button{/*tiendas*/
 .h2_13{/*ciudad*/
 	margin: 8% auto;
 	width: 70%;
+}
+.contenedor_162 .h2_14{/*tiendas*/
+	font-size: 0.9em !important;
+	font-weight: normal;
+	width: 95% !important;
+	margin-top: 10px !important;
+	border-radius: 10px;
+	padding: 1%;
+	margin: auto;
+	text-align: center;
+	border-width: 2px;
+	border-style: solid;
+	border-color: orange;
 }
 .h3_1{/*footer - afiliacion - planes*/
 	font-weight: normal;

@@ -183,7 +183,7 @@
                                     }
                                 endforeach; ?>
                     </div>
-                    <div class="contenedor_162">
+                    <!-- <div class="contenedor_162">
                         <div class="contenedor_132">
                             <span class="icon-phone span_17""></span> 
                             <p class="p_2"><?php echo $Telefono?></p>
@@ -192,6 +192,10 @@
                             <span class="icon-location2 span_17"></span>
                             <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo $Ciudad?> - <?php echo $Estado?></p>
                         </div>
+                    </div>  -->
+                    <div class="contenedor_162">
+                        <h2 class="h2_14">Entregas no disponibles a esta hora</h2>
+                        <!-- <h2>compra realizadas en este horario se despacharán en la proxima apertura</h2> -->
                     </div> 
                 </div>
             </section>

@@ -405,6 +405,21 @@
             }
         }
 
+        //SELECT del horario de una tienda
+        public function consultarHorarioTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(culmina_m, '%H:%i') AS culmina_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t FROM horarios WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);;
+            }
+            else{
+                return false;
+            }
+        }
+
+
 
 
 
@@ -875,6 +890,36 @@
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':PUBLICAR', 0);
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        //UPDATE de horarios de tienda
+        public function actualizarHorarioTienda($ID_Tienda, $RecibeHorario){
+            $stmt = $this->dbh->prepare("UPDATE horarios SET inicio_m = :INICIA_M, culmina_m = :CULMINA_M, lunes_m = :LUNES_M, martes_m = :MARTES_M, miercoles_m = :MIERCOLES_M, jueves_m = :JUEVES_M, viernes_m = :VIERNES_M, inicia_t = :INICIA_T, culmina_t = :CULMINA_T, lunes_t = :LUNES_T, martes_t = :MARTES_T, miercoles_t = :MIERCOLES_T, jueves_t = :JUEVES_T, viernes_t = :VIERNES_T WHERE ID_Tienda = :ID_TIENDA");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':INICIA_M', $RecibeHorario['Inicio_M']);
+            $stmt->bindValue(':CULMINA_M', $RecibeHorario['Culmina_M']);
+            $stmt->bindValue(':LUNES_M', $RecibeHorario['Lunes_M']);
+            $stmt->bindValue(':MARTES_M', $RecibeHorario['Martes_M']);
+            $stmt->bindValue(':MIERCOLES_M', $RecibeHorario['Miercoles_M']);
+            $stmt->bindValue(':JUEVES_M', $RecibeHorario['Jueves_M']);
+            $stmt->bindValue(':VIERNES_M', $RecibeHorario['Viernes_M']);
+            $stmt->bindValue(':INICIA_T', $RecibeHorario['Inicia_T']);
+            $stmt->bindValue(':CULMINA_T', $RecibeHorario['Culmina_T']);
+            $stmt->bindValue(':LUNES_T', $RecibeHorario['Lunes_T']);
+            $stmt->bindValue(':MARTES_T', $RecibeHorario['Martes_T']);
+            $stmt->bindValue(':MIERCOLES_T', $RecibeHorario['Miercoles_T']);
+            $stmt->bindValue(':JUEVES_T', $RecibeHorario['Jueves_T']);
+            $stmt->bindValue(':VIERNES_T', $RecibeHorario['Viernes_T']);
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
 
             // Se ejecuta la actualización de los datos en la tabla

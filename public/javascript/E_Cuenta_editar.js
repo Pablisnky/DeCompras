@@ -4,6 +4,8 @@ document.getElementById("Label_7").addEventListener('click', clonarCuentaPagoMov
 
 document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
+document.getElementById("Label_3").addEventListener('click', clonarHorario, false)
+
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){contarCaracteres('ContadorSlo','ContenidoSlo', 50)}, false)
@@ -410,6 +412,44 @@ document.getElementById("Label_1").addEventListener('click', function(){
     }  
 
 //************************************************************************************************  
+    //Clona todo el div que contiene la sección de horarios
+    function clonarHorario(){
+        console.log("______Desde clonarHorario()______") 
+        
+        // Calcula cuantas cuentas de Transferencia existen tomando uno de sus requisitos (banco)
+        // let CantidadCuentasTransferencia = document.getElementsByClassName("bancoTransJS")
+        // console.log("Cuentas Transferencia existentes", CantidadCuentasTransferencia.length)
+
+        // //Se verifica que no existan cuentas Transferencia con campos sin llenar
+        // for(var i = 0; i < CantidadCuentasTransferencia.length; i++){
+        //     if(document.getElementsByClassName("bancoTransJS")[i].value == "" || document.getElementsByClassName("titularTransJS")[i].value == "" || document.getElementsByClassName("cuentaTransJS")[i].value == "" || document.getElementsByClassName("rifTransJS")[i].value == ""){
+        //         alert("Aún no completa cuenta Transferencia")
+        //         return
+        //     }
+        // }
+
+        let clonar = document.getElementById("Contenedor_90")
+
+        // //Se crea el clon
+        let Div_clon = clonar.cloneNode(true)
+
+        // //El value de los elementos que estan dentro del nuevo clon debe estar vacio
+        // Div_clon.getElementsByClassName("bancoTransJS")[0].value = ""
+        // Div_clon.getElementsByClassName("titularTransJS")[0].value = ""
+        // Div_clon.getElementsByClassName("cuentaTransJS")[0].value = ""
+        // Div_clon.getElementsByClassName("rifTransJS")[0].value = ""
+
+        //Se especifica el div padre, donde se insertará el nuevo nodo     
+        ElementoPadre = document.getElementById("Fieldset_3")
+        
+        //Se especificael el elemento que sera la referencia para insertar el nuevo nodo
+        let Ref_Ubicacion= document.getElementById("Contenedor_91")
+        
+        //Se especifica el div padre y la posición donde se insertará el nuevo nodo
+        ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
+    }
+
+//************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
     var iterarBanco = 1
     function clonarCuentaBancaria(){
@@ -543,10 +583,13 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let Categoria = document.getElementById('Contenedor_80js')    
         // console.log("Cantidad de elementos dentro de \"Contenedor_80js\"", Categoria.childElementCount)
         let Seccion = document.getElementById('Seccion').value    
+        //DIRECCION TIENDA
         let Estado = document.getElementById('Estado_Tien').value  
         let Municipio = document.getElementById('Municipio_Tien').value 
         let Parroquia = document.getElementById('Parroquia_Tien').value
         let Direccion = document.getElementById('Direccion_Tien').value
+        //HORRIO TIENDA
+
         // DATOS CUENTA BANCO
         let Nombre_Banco = document.getElementsByClassName('bancoTransJS')  
         let Titular_Banco = document.getElementsByClassName('titularTransJS') 
@@ -751,6 +794,15 @@ document.getElementById("Label_1").addEventListener('click', function(){
             return false;
         }
         
+        //VALIDA HORARIO
+        // let Horario = document.getElementsByName('horario').checked
+        // console.log(Horario.length)
+        // for(j=0; j<Horario.length; j++){
+        //     if(Horario.checked == true)
+        //     console.log("Dis seleccionado= ", Horario[j]).id
+        // }
+
+
         //VALIDA TRANSFERENCIA
         //Valida que no exista un campo de una cuenta PagoMovil vacio
         for(i=0; i<Nombre_Banco.length; i++){

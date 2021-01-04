@@ -142,6 +142,9 @@
             //CONSULTA los datos del responsable de la tienda
             $Consulta = $this->ConsultaCuenta_M->consultarResponsableTienda($this->ID_Afiliado);
             $DatosResposable = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            //Se CONSULTAN el horario de la tienda
+            $Horario = $this->ConsultaCuenta_M->consultarHorarioTienda($this->ID_Tienda);
 
             //CONSULTA los datos de cuentas bancarias de la tienda
             $DatosBancos = $this->ConsultaCuenta_M->consultarBancosTienda($this->ID_Tienda);
@@ -200,6 +203,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
                 'datosResposable' => $DatosResposable,
+                'horario' => $Horario,
                 'datosBancos' => $DatosBancos,
                 'datosPagomovil' => $DatosPagoMovil,
                 'categoria' => $Categoria,
@@ -411,7 +415,7 @@
                 exit();
             }
 
-            // IMAGEN TIENDA
+            //RECIBE IMAGEN TIENDA
             // ********************************************************
             //Recibe la imagen de la tienda solo si se ha presionado el boton de buscar fotografia
             if(($_FILES['imagen_Tienda']['name']) != ""){
@@ -470,7 +474,7 @@
                 }
             }
 
-            // CATEGORIAS
+            //RECIBE CATEGORIAS
             // ********************************************************
             //Recibe las categorias seleccionadas
             if(!empty($_POST['categoria'])){
@@ -490,7 +494,7 @@
             // echo "</pre>";
             // exit();
 
-            // SECCIONES
+            //RECIBE SECCIONES
             // ********************************************************
             //Recibe las secciones por nombre (son las nuevas creadas)
             if(!empty($_POST['seccion'])){
@@ -525,7 +529,43 @@
             // echo "</pre>";
             // exit();
             
-            //INFORMACION DE PAGOS
+            //RECIBE HORARIO
+            //Seccion datos horarios de atencion al cliente, se almacenará en la tabla horarios
+            if(!empty($_POST['inicioManana']) && !empty($_POST['culminaManana']) && !empty($_POST['iniciaTarde']) && !empty($_POST['culminaTarde'])){
+                $RecibeHorario = [
+                    'Inicio_M' => $_POST['inicioManana'],
+                    'Culmina_M' => $_POST['culminaManana'],
+                    'Lunes_M' => isset($_POST['lunes_M']) == 'Lunes' ? $_POST['lunes_M'] : 0,
+                    'Martes_M' => isset($_POST['martes_M']) == 'Martes' ? $_POST['martes_M'] : 0,
+                    'Miercoles_M' => isset($_POST['miercoles_M']) == 'Miercoles' ? $_POST['miercoles_M'] : 0,
+                    'Jueves_M' => isset($_POST['jueves_M']) == 'Jueves' ? $_POST['jueves_M'] : 0,
+                    'Viernes_M' => isset($_POST['viernes_M']) == 'Viernes' ? $_POST['viernes_M'] : 0,
+
+                    'Inicia_T' => $_POST['iniciaTarde'],
+                    'Culmina_T' => $_POST['culminaTarde'],
+                    'Lunes_T' => isset($_POST['lunes_T']) == 'Lunes' ? $_POST['lunes_T'] : 0,
+                    'Martes_T' => isset($_POST['martes_T']) == 'Martes' ? $_POST['martes_T'] : 0,
+                    'Miercoles_T' => isset($_POST['miercoles_T']) == 'Miercoles' ? $_POST['miercoles_T'] : 0,
+                    'Jueves_T' => isset($_POST['jueves_T']) == 'Jueves' ? $_POST['jueves_T'] : 0,
+                    'Viernes_T' => isset($_POST['viernes_T']) == 'Viernes' ? $_POST['viernes_T'] : 0
+                ];
+            }
+            else{
+                echo "Ingrese el horario de despacho";
+                echo "<br>";
+                echo "<a href='javascript:history.back()'>Regresar</a>";
+                exit();
+
+            }
+            // echo '<pre>';
+            // print_r($RecibeHorario);
+            // echo '</pre>';
+            // exit;
+            
+            //Se ACTUALIZA el horario de la tienda
+            $this->ConsultaCuenta_M->actualizarHorarioTienda($this->ID_Tienda, $RecibeHorario);
+
+            //RECIBE INFORMACION DE PAGOS
             // ********************************************************            
             // echo 'Banco transferencia: ' . $_POST['banco'][0] . '<br>';
             // echo 'Banco PagoMovil: ' . $_POST['bancoPagoMovil'][0] . '<br>';
@@ -543,7 +583,7 @@
                 exit();
             }
             else{
-                // DATOS TRANSFERENCIAS
+                //RECIBE TRANSFERENCIAS
                 //Se ELIMINAN todas las cuentas bancarias
                 $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
 
@@ -569,7 +609,7 @@
                 }
                 
                 // ******************************************************** 
-                //DATOS PAGOMOVIL 
+                //RECIBE PAGOMOVIL 
                 // Se ELIMINAN todas las cuentas de pagomovil
                 $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
 
@@ -598,7 +638,7 @@
                 }
             }
             
-            //OTROS MEDIOS DE PAGO
+            //RECIBE OTROS MEDIOS DE PAGO
             // ********************************************************
             $PagoBolivar = empty($_POST['bolivar']) ? 0 : 1;
             $PagoDolar = empty($_POST['dolar']) ? 0 : 1; 

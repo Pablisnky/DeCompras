@@ -38,7 +38,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
         <h1 class="h1_8">Configurar cuenta</h1>   
-        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarDatosTienda()">
+        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" name="form_Configurar" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarDatosTienda()">
 
             <!-- PERSONA RESPONSABLE -->
             <a id="marcador_01" class="ancla_2"></a>
@@ -214,141 +214,145 @@ if(!empty($_SESSION["ID_Afiliado"])){
             </fieldset>
             
             <!-- HORARIO -->
-            <!-- <section id="">
+            <section id="">
                 <a id="Horario" class="ancla_2"></a>
-                <fieldset class="fieldset_1 fieldset_2">                                 
+                <fieldset class="fieldset_1 fieldset_2" id="Fieldset_3">                                 
                     <legend class="legend_1">Horario</legend>
-                    <span>Indique el horario en el cual estará disponibles las entregas en tiempo real desde su tienda, cualquier pedido realizado fuera de este horario queda aplazado para la proxima apertura de su tienda</span>
-                    <div class="contFlex">
-                        <p >Mañana</p>	
-                        <div class="contInputRadio">
-                            <input type="checkbox" name="horario" id="Lunes">
-                            <label class="contInputRadio__label" for="Lunes">Lunes</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Martes">
-                            <label class="contInputRadio__label" for="Martes">Martes</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Miercoles">
-                            <label class="contInputRadio__label" for="Miercoles">Miercoles</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Jueves">
-                            <label class="contInputRadio__label" for="Jueves">Jueves</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Viernes">
-                            <label class="contInputRadio__label" for="Viernes">Viernes</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Sabado">
-                            <label class="contInputRadio__label" for="Sabado">Sabado</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Domingo">
-                            <label class="contInputRadio__label" for="Domingo">Domingo</label>
-                        </div>
-                        <div class="">
-                            <label>Apertura</label>
-                            <select>
-                                <option>5:00 am</option>
-                                <option>5:30 am</option>
-                                <option>6:00 am</option>
-                                <option>6:30 am</option>
-                                <option>7:00 am</option>
-                                <option>7:30 am</option>
-                                <option>8:00 am</option>
-                                <option>8:30 am</option>
-                                <option>9:00 am</option>
-                                <option>9:30 am</option>
-                                <option>10:00 am</option>
-                            </select>
-                            <br>
-                            <label>Cierre</label>
-                            <select>
-                                <option>10:00 am</option>
-                                <option>10:30 am</option>
-                                <option>11:00 am</option>
-                                <option>11:30 am</option>
-                                <option>12:00 m</option>
-                                <option>12:30 am</option>
-                                <option>1:00 am</option>
-                                <option>1:30 am</option>
-                                <option>2:00 am</option>
-                            </select>
+                    <span>Indique el horario en el cual estarán disponibles los despachos desde su tienda, cualquier pedido realizado fuera de este horario queda aplazado para la proxima apertura de su tienda</span>
+                    <div id="Contenedor_90">
+                        <div class="contFlex">
+                            <p >Mañana</p>    <?php 	                              
+                            foreach($Datos['horario'] as $row) :    ?>
+                                <div class="contInputRadio"> 
+                                    <input type="checkbox" name="lunes_M" id="Lunes_M" value="Lunes" <?php if($row['lunes_m'] == 'Lunes'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Lunes_M">Lunes</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="martes_M" id="Martes_M" value="Martes" <?php if($row['martes_m'] == 'Martes'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Martes_M">Martes</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="miercoles_M" id="Miercoles_M" value="Miercoles" <?php if($row['miercoles_m'] == 'Miercoles'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Miercoles_M">Miercoles</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="jueves_M" id="Jueves_M" value="Jueves" <?php if($row['jueves_m'] == 'Jueves'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Jueves_M">Jueves</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="viernes_M" id="Viernes_M" value="Viernes" <?php if($row['viernes_m'] == 'Viernes'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Viernes_M">Viernes</label>    
+                                </div>
+                                <div class="">
+                                    <label>Apertura</label>
+                                    <br> <!---->
+                                    <select name="inicioManana">
+                                        <option><?php echo $row['inicio_m'];?> am</option> 
+                                        <option></option>
+                                        <option>5:00 am</option>
+                                        <option>5:30 am</option>
+                                        <option>6:00 am</option>
+                                        <option>6:30 am</option>
+                                        <option>7:00 am</option>
+                                        <option>7:30 am</option>
+                                        <option>8:00 am</option>
+                                        <option>8:30 am</option>
+                                        <option>9:00 am</option>
+                                        <option>9:30 am</option>
+                                        <option>10:00 am</option>
+                                    </select>
+                                    <br>
+                                    <label>Cierre</label>
+                                    <br>
+                                    <select name="culminaManana">
+                                        <option><?php echo $row['culmina_m'];?> am</option> 
+                                        <option></option>
+                                        <option>10:00 am</option>
+                                        <option>10:30 am</option>
+                                        <option>11:00 am</option>
+                                        <option>11:30 am</option>
+                                        <option>12:00 m</option>
+                                        <option>12:30 pm</option>
+                                        <option>1:00 pm</option>
+                                        <option>1:30 pm</option>
+                                        <option>2:00 pm</option>
+                                    </select>
+                                </div>  <?php
+                            endforeach; ?>
+                        </div>                    
+                        <div class="contFlex">
+                            <p >Tarde</p>	    <?php 	                              
+                            foreach($Datos['horario'] as $row) :    ?>
+                                <div class="contInputRadio">
+                                    <input type="checkbox" name="lunes_T" id="Lunes_T" value="Lunes" <?php if($row['lunes_t'] == 'Lunes'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Lunes_T">Lunes</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="martes_T" id="Martes_T" value="Martes" <?php if($row['martes_t'] == 'Martes'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Martes_T">Martes</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="miercoles_T" id="Miercoles_T" value="Miercoles" <?php if($row['miercoles_t'] == 'Miercoles'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Miercoles_T">Miercoles</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="jueves_T" id="Jueves_T" value="Jueves" <?php if($row['jueves_t'] == 'Jueves'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Jueves_T">Jueves</label>
+                                    <br class="br_1"/>
+                                    <input type="checkbox" name="viernes_T" id="Viernes_T" value="Viernes" <?php if($row['viernes_t'] == 'Viernes'){echo 'checked';}?>/>
+                                    <label class="contInputRadio__label" for="Viernes_T">Viernes</label>
+                                </div>
+                                <div class="">
+                                    <label>Apertura</label>
+                                    <br>
+                                    <select name="iniciaTarde">
+                                        <option><?php echo $row['inicia_t'];?> pm</option>
+                                        <option></option>
+                                        <option>12:00 m</option>
+                                        <option>12:30 pm</option>
+                                        <option>1:00 pm</option>
+                                        <option>1:30 pm</option>
+                                        <option>2:00 pm</option>
+                                        <option>2:30 pm</option>
+                                        <option>3:00 pm</option>
+                                        <option>3:30 pm</option>
+                                        <option>4:00 pm</option>
+                                        <option>4:30 pm</option>
+                                        <option>5:00 pm</option>
+                                    </select>
+                                    <br>
+                                    <label>Cierre</label>
+                                    <br>
+                                    <select name="culminaTarde">
+                                        <option><?php echo $row['culmina_t'];?> pm</option>
+                                        <option></option>
+                                        <option>4:00 pm</option>
+                                        <option>4:30 pm</option>
+                                        <option>5:00 pm</option>
+                                        <option>5:30 pm</option>
+                                        <option>6:00 pm</option>
+                                        <option>6:30 pm</option>
+                                        <option>7:00 pm</option>
+                                        <option>7:30 pm</option>
+                                        <option>8:00 pm</option>
+                                        <option>8:30 pm</option>
+                                        <option>9:00 pm</option>
+                                        <option>9:30 pm</option>
+                                        <option>10:00 pm</option>
+                                        <option>10:30 pm</option>
+                                        <option>11:00 pm</option>
+                                        <option>11:30 pm</option>
+                                        <option>12:00 am</option>
+                                        <option>12:30 am</option>
+                                        <option>1:00 am</option>
+                                        <option>1:30 am</option>
+                                        <option>2:00 am</option>
+                                        <option>2:30 am</option>
+                                        <option>3:00 am</option>
+                                    </select>
+                                </div>  <?php
+                            endforeach; ?>
                         </div>
                     </div>
-                    
-                    <div class="contFlex">
-                        <p >Tarde</p>	
-                        <div class="contInputRadio">
-                            <input type="checkbox" name="horario" id="Lunes">
-                            <label class="contInputRadio__label" for="Lunes">Lunes</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Martes">
-                            <label class="contInputRadio__label" for="Martes">Martes</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Miercoles">
-                            <label class="contInputRadio__label" for="Miercoles">Miercoles</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Jueves">
-                            <label class="contInputRadio__label" for="Jueves">Jueves</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Viernes">
-                            <label class="contInputRadio__label" for="Viernes">Viernes</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Sabado">
-                            <label class="contInputRadio__label" for="Sabado">Sabado</label>
-                            <br class="br_1"/>
-                            <input type="checkbox" name="horario" id="Domingo">
-                            <label class="contInputRadio__label" for="Domingo">Domingo</label>
-                        </div>
-                        <div class="">
-                            <label>Apertura</label>
-                            <select>
-                                <option>12:00 m</option>
-                                <option>12:30 pm</option>
-                                <option>1:00 pm</option>
-                                <option>1:30 pm</option>
-                                <option>2:00 pm</option>
-                                <option>2:30 pm</option>
-                                <option>3:00 pm</option>
-                                <option>3:30 pm</option>
-                                <option>4:00 pm</option>
-                                <option>4:30 pm</option>
-                                <option>5:00 pm</option>
-                            </select>
-                            <br>
-                            <label>Cierre</label>
-                            <select>
-                                <option>4:00 pm</option>
-                                <option>4:30 pm</option>
-                                <option>5:00 pm</option>
-                                <option>5:30 pm</option>
-                                <option>6:00 pm</option>
-                                <option>6:30 pm</option>
-                                <option>7:00 pm</option>
-                                <option>7:30 pm</option>
-                                <option>8:00 pm</option>
-                                <option>8:30 pm</option>
-                                <option>9:00 pm</option>
-                                <option>9:30 pm</option>
-                                <option>10:00 pm</option>
-                                <option>10:30 pm</option>
-                                <option>11:00 pm</option>
-                                <option>11:30 pm</option>
-                                <option>12:00 am</option>
-                                <option>12:30 am</option>
-                                <option>1:00 am</option>
-                                <option>1:30 am</option>
-                                <option>2:00 am</option>
-                                <option>2:30 am</option>
-                                <option>3:00 am</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p>Horarios de fin de semana o especiales</p>
-                        <label>Añadir horario</label>
+                    <div id="Contenedor_91">
+                        <span>Horarios de fin de semana o especiales</span>
+                        <label class="label_4 label_24" id="Label_3">Añadir horario</label>
                     </div>
                 </fieldset>
-            </section> -->
+            </section>
 
             <!-- OFERTAS -->
             
@@ -502,15 +506,15 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         $PagoAcordado = $row['acordado'];
                         ?>
                         <div class="contenedor_166">   
-                            <input type="checkbox" name="bolivar" id="Bolivar" <?php if($PagoBolivar == 1){echo "checked = 'checked'";} ?>/>
+                            <input type="checkbox" name="bolivar" id="Bolivar" <?php if($PagoBolivar == 1){echo 'checked';} ?>/>
                             <label class="label_11" for="Bolivar">Aceptar pago en destino con efectivo en moneda nacional (Bs.)</label>           
                         </div>  
-                        <div class="contenedor_166">        
-                            <input type="checkbox" name="dolar" id="Dolar" <?php if($PagoDolar == 1){echo "checked = 'checked'";} ?>/>
+                        <div class="contenedor_166"> 
+                            <input type="checkbox" name="dolar" id="Dolar" <?php if($PagoDolar == 1){echo 'checked';} ?>/>
                             <label class="label_11" for="Dolar">Aceptar pago en destino con efectivo en moneda extranjera ($)</label>      
                         </div>  
                         <div class="contenedor_166">   
-                            <input type="checkbox" name="acordado" id="Acordado" <?php if($PagoAcordado == 1){echo "checked = 'checked'";} ?>/>
+                            <input type="checkbox" name="acordado" id="Acordado" <?php if($PagoAcordado == 1){echo 'checked';} ?>/>
                             <label class="label_11" for="Acordado">Aceptar pago acordados con el cliente via telefonica</label>
                         </div> <?php
                     endforeach; 
