@@ -107,13 +107,31 @@
             
             //Se ejecuta la inserción de los datos en la tabla
             if($stmt->execute()){
-                return true;
+                return $this->dbh->lastInsertId();
             }
             else{
                 return false;
             }
         }
         
+        //INSERTA para habilitar un registro completo que almacenará el horario de la tienda
+        public function insertarHabilitarHorario($ID_Tienda){  
+            $stmt = $this->dbh->prepare("INSERT INTO horarios(ID_Tienda) VALUES (:ID_TIENDA)");
+
+            //Se vinculan los valores de las sentencias preparadas
+            //ztmt es una abreviatura de statement 
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
+            
+            //Se ejecuta la inserción de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
+
         //CONSULTA los correos de comerciantes existentes en la BD
         public function consultarCorreoCom(){  
             $stmt = $this->dbh->prepare("SELECT correo_AfiCom FROM afiliado_com");

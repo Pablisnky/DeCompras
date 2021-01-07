@@ -153,20 +153,17 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <?php
                     }
                     else{
-                        foreach($Datos['categoria'] as $row){
-                            $Categoria =  $row['categoria'];
-                            ?>
+                        foreach($Datos['categoria'] as $Row) :
+                            $Categoria = $Row['categoria']; ?>
                             <div id="Label_13">
                                 <div class="contenedor_80" id="Contenedor_80js">
                                     <input class="input_13 input_13A borde_1 imput_6js" id="Imput_6js" type="text" name="categoria[]" value="<?php echo $Categoria;?>" readonly="readonly" autocomplete="off"/>
                                     <span class="icon-circle-down span_10 span_12_js"></span> 
                                     <div id="Referencia_2"></div>                                
                                     <span></span><!-- span de rellenar para pasar la validacion de categoria-->   
-                                </div>
-                                
-                            </div>
-                            <?php
-                        } 
+                                </div>                                
+                            </div> <?php
+                        endforeach;
                     } ?>
                 </div>
             </fieldset>
@@ -214,145 +211,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             </fieldset>
             
             <!-- HORARIO -->
-            <section id="">
-                <a id="Horario" class="ancla_2"></a>
-                <fieldset class="fieldset_1 fieldset_2" id="Fieldset_3">                                 
-                    <legend class="legend_1">Horario</legend>
-                    <span>Indique el horario en el cual estarán disponibles los despachos desde su tienda, cualquier pedido realizado fuera de este horario queda aplazado para la proxima apertura de su tienda</span>
-                    <div id="Contenedor_90">
-                        <div class="contFlex">
-                            <p >Mañana</p>    <?php 	                              
-                            foreach($Datos['horario'] as $row) :    ?>
-                                <div class="contInputRadio"> 
-                                    <input type="checkbox" name="lunes_M" id="Lunes_M" value="Lunes" <?php if($row['lunes_m'] == 'Lunes'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Lunes_M">Lunes</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="martes_M" id="Martes_M" value="Martes" <?php if($row['martes_m'] == 'Martes'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Martes_M">Martes</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="miercoles_M" id="Miercoles_M" value="Miercoles" <?php if($row['miercoles_m'] == 'Miercoles'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Miercoles_M">Miercoles</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="jueves_M" id="Jueves_M" value="Jueves" <?php if($row['jueves_m'] == 'Jueves'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Jueves_M">Jueves</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="viernes_M" id="Viernes_M" value="Viernes" <?php if($row['viernes_m'] == 'Viernes'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Viernes_M">Viernes</label>    
-                                </div>
-                                <div class="">
-                                    <label>Apertura</label>
-                                    <br> <!---->
-                                    <select name="inicioManana">
-                                        <option><?php echo $row['inicio_m'];?> am</option> 
-                                        <option></option>
-                                        <option>5:00 am</option>
-                                        <option>5:30 am</option>
-                                        <option>6:00 am</option>
-                                        <option>6:30 am</option>
-                                        <option>7:00 am</option>
-                                        <option>7:30 am</option>
-                                        <option>8:00 am</option>
-                                        <option>8:30 am</option>
-                                        <option>9:00 am</option>
-                                        <option>9:30 am</option>
-                                        <option>10:00 am</option>
-                                    </select>
-                                    <br>
-                                    <label>Cierre</label>
-                                    <br>
-                                    <select name="culminaManana">
-                                        <option><?php echo $row['culmina_m'];?> am</option> 
-                                        <option></option>
-                                        <option>10:00 am</option>
-                                        <option>10:30 am</option>
-                                        <option>11:00 am</option>
-                                        <option>11:30 am</option>
-                                        <option>12:00 m</option>
-                                        <option>12:30 pm</option>
-                                        <option>1:00 pm</option>
-                                        <option>1:30 pm</option>
-                                        <option>2:00 pm</option>
-                                    </select>
-                                </div>  <?php
-                            endforeach; ?>
-                        </div>                    
-                        <div class="contFlex">
-                            <p >Tarde</p>	    <?php 	                              
-                            foreach($Datos['horario'] as $row) :    ?>
-                                <div class="contInputRadio">
-                                    <input type="checkbox" name="lunes_T" id="Lunes_T" value="Lunes" <?php if($row['lunes_t'] == 'Lunes'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Lunes_T">Lunes</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="martes_T" id="Martes_T" value="Martes" <?php if($row['martes_t'] == 'Martes'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Martes_T">Martes</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="miercoles_T" id="Miercoles_T" value="Miercoles" <?php if($row['miercoles_t'] == 'Miercoles'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Miercoles_T">Miercoles</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="jueves_T" id="Jueves_T" value="Jueves" <?php if($row['jueves_t'] == 'Jueves'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Jueves_T">Jueves</label>
-                                    <br class="br_1"/>
-                                    <input type="checkbox" name="viernes_T" id="Viernes_T" value="Viernes" <?php if($row['viernes_t'] == 'Viernes'){echo 'checked';}?>/>
-                                    <label class="contInputRadio__label" for="Viernes_T">Viernes</label>
-                                </div>
-                                <div class="">
-                                    <label>Apertura</label>
-                                    <br>
-                                    <select name="iniciaTarde">
-                                        <option><?php echo $row['inicia_t'];?> pm</option>
-                                        <option></option>
-                                        <option>12:00 m</option>
-                                        <option>12:30 pm</option>
-                                        <option>1:00 pm</option>
-                                        <option>1:30 pm</option>
-                                        <option>2:00 pm</option>
-                                        <option>2:30 pm</option>
-                                        <option>3:00 pm</option>
-                                        <option>3:30 pm</option>
-                                        <option>4:00 pm</option>
-                                        <option>4:30 pm</option>
-                                        <option>5:00 pm</option>
-                                    </select>
-                                    <br>
-                                    <label>Cierre</label>
-                                    <br>
-                                    <select name="culminaTarde">
-                                        <option><?php echo $row['culmina_t'];?> pm</option>
-                                        <option></option>
-                                        <option>4:00 pm</option>
-                                        <option>4:30 pm</option>
-                                        <option>5:00 pm</option>
-                                        <option>5:30 pm</option>
-                                        <option>6:00 pm</option>
-                                        <option>6:30 pm</option>
-                                        <option>7:00 pm</option>
-                                        <option>7:30 pm</option>
-                                        <option>8:00 pm</option>
-                                        <option>8:30 pm</option>
-                                        <option>9:00 pm</option>
-                                        <option>9:30 pm</option>
-                                        <option>10:00 pm</option>
-                                        <option>10:30 pm</option>
-                                        <option>11:00 pm</option>
-                                        <option>11:30 pm</option>
-                                        <option>12:00 am</option>
-                                        <option>12:30 am</option>
-                                        <option>1:00 am</option>
-                                        <option>1:30 am</option>
-                                        <option>2:00 am</option>
-                                        <option>2:30 am</option>
-                                        <option>3:00 am</option>
-                                    </select>
-                                </div>  <?php
-                            endforeach; ?>
-                        </div>
-                    </div>
-                    <div id="Contenedor_91">
-                        <span>Horarios de fin de semana o especiales</span>
-                        <label class="label_4 label_24" id="Label_3">Añadir horario</label>
-                    </div>
-                </fieldset>
-            </section>
+            <?php require(RUTA_APP . "/vistas/paginas/tienda/horario_V.php"); ?>
 
             <!-- OFERTAS -->
             
@@ -528,10 +387,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <a class="marcador" href="#marcador_02">Datos de tienda</a>
                     <a class="marcador" href="#Categoria">Categoria</a>
                     <a class="marcador" href="#Secciones">Secciones</a>
-                    <!-- <a class="marcador" href="#Horario">Horario</a> -->
+                    <a class="marcador" href="#Horario">Horario</a>
                     <!-- <a class="marcador" href="#marcador_04">Ofertas</a> -->
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
-                    <a class="marcador" href="#marcador_06">Cuentas bancarias</a>
+                    <a class="marcador" href="#marcador_06">Cuentas transferencia</a>
                     <a class="marcador" href="#marcador_07">Cuentas PagoMovil</a>
                     <a class="marcador" href="#OtrosPago">Otros medios de pago</a>
                     <div class="contenedor_49 contenedor_101">

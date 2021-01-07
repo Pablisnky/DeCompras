@@ -10,7 +10,8 @@
             <div class="contenedor_94">
                 <P class="p_3 p_5">Emprendedor</P>
                 <p class="p_11">2 USD/mes</p>
-                <ul>
+                <p class="p_1"><?php echo $Datos['emprendedor'];?> Bs./mes</p>
+                <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 5 productos.</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
@@ -19,7 +20,8 @@
             <div class="contenedor_94">
                 <P class="p_3 p_5">Básico</P>
                 <p class="p_11">5 USD/mes</p>
-                <ul>
+                <p class="p_1"><?php echo $Datos['basico'];?> Bs./mes</p>
+                <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 30 productos.</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
@@ -28,7 +30,8 @@
             <div class="contenedor_94">
                 <P class="p_3 p_5">Medio</P>
                 <p class="p_11">8 USD/mes</p>
-                <ul>
+                <p class="p_1"><?php echo $Datos['medio'];?> Bs./mes</p>
+                <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 200 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
@@ -37,7 +40,8 @@
             <div class="contenedor_94">
                 <p class="p_3 p_5">Máximo</p>
                 <p class="p_11">13 USD/mes</p>
-                <ul>
+                <p class="p_1"><?php echo $Datos['full'];?> Bs./mes</p>
+                <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Código QR</p></li>
@@ -46,7 +50,8 @@
             <div class="contenedor_94">
                 <P class="p_3 p_5">Full</P>
                 <p class="p_11">20 USD/mes</p>
-                <ul>
+                <p class="p_1"><?php echo $Datos['maximo'];?> Bs./mes</p>
+                <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 1.500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
                     <li class="li_3"><p>Subdominio</p></li>

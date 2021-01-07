@@ -1,5 +1,8 @@
 <?php    
     class Tiendas_C extends Controlador{
+        private $Categoria;
+        private $IDs_Tiendas = [];
+        private $TiendasEnCategoria;
 
         public function __construct(){
             $this->ConsultaTienda_M = $this->modelo("Tienda_M");
@@ -12,96 +15,114 @@
         public function index($Categoria){
             switch($Categoria){
                 case 'Comida_Rapida':
-                    $Categoria = 'Comida Rapida';   
+                    $this->Categoria = 'Comida Rapida';   
                 break;    
                 case 'Merceria':
-                    $Categoria = 'Mercería';   
+                    $this->Categoria = 'Mercería';   
                 break; 
                 case 'Repuesto_automotriz':
-                    $Categoria = 'Repuesto automotriz';   
+                    $this->Categoria = 'Repuesto automotriz';   
                 break;    
                 case 'Ropa_Zapato':
-                    $Categoria = 'Zapatería';   
+                    $this->Categoria = 'Zapatería';   
                 break;     
                 case 'Material_Medico_Quirurgico':
-                    $Categoria = 'Material Médico Quirúrgico';   
+                    $this->Categoria = 'Material Médico Quirúrgico';   
                 break;    
                 case 'Relojes':
-                    $Categoria = 'Joyas y relojería';   
+                    $this->Categoria = 'Joyas y relojería';   
                 break;
                 case 'Panaderia':
-                    $Categoria = 'Panadería';   
+                    $this->Categoria = 'Panadería';   
                 break;
                 case 'Artesania':
-                    $Categoria = 'Arte';   
+                    $this->Categoria = 'Arte';   
                 break;
                 case 'Ferreteria':
-                    $Categoria = 'Ferretería';   
+                    $this->Categoria = 'Ferretería';   
                 break;
                 case 'Floristeria':
-                    $Categoria = 'Floristería';   
+                    $this->Categoria = 'Floristería';   
                 break;
                 case 'Construccion':
-                    $Categoria = 'Construcción';   
+                    $this->Categoria = 'Construcción';   
                 break;
                 case 'Papeleria':
-                    $Categoria = 'Papelería';   
-                break;  
+                    $this->Categoria = 'Papelería';   
+                break;      
+                default:
+                $this->Categoria = $Categoria;
             }
+
+            return $this->Categoria;
+        }
+
+        public function tiendasEnCatalogo($Categoria){ 
+            $this->index($Categoria);
             
-            //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas
-            $IDs_Tiendas = [];
-            $TiendasEnCategoria = $this->ConsultaTienda_M->consultarTiendas($Categoria);  
+            //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas            
+            $this->TiendasEnCategoria = $this->ConsultaTienda_M->consultarTiendas($this->Categoria); 
+            // echo '<pre>';
+            // print_r($this->TiendasEnCategoria);
+            // echo '</pre>';
+            // exit;
 
             //Se obtienen los IDs de las tiendas que se encuentran en la categoria
-            foreach($TiendasEnCategoria AS $row) :
+            foreach($this->TiendasEnCategoria AS $row) :
                 $Nuevo_ID_Tienda = $row['ID_Tienda'];
 
                 //Se añade el ID de cada tienda al array $IDs_Tiendas
-                array_push($IDs_Tiendas, $Nuevo_ID_Tienda);
+                array_push($this->IDs_Tiendas, $Nuevo_ID_Tienda);
             endforeach;
             
             //Se cambia el array $IDs_Tiendas por una cadena para introducirla en la consulta tipo a BD
-            $IDs_Tiendas = implode(",", $IDs_Tiendas);
-            // echo $IDs_Tiendas;
+            $this->IDs_Tiendas = implode(",", $this->IDs_Tiendas); 
+            // echo '<pre>';
+            // print_r($this->IDs_Tiendas);
+            // echo '</pre>';
+            // exit;
             
+            $this->Reputacion_ModosDePago();
+        }
+
+        public function Reputacion_ModosDePago(){    
             //SELECT para verificar tiendas que acepten transferencias como metodo de pago
-            $TiendasTransferencias = $this->ConsultaTienda_M->consultarTransferencias($IDs_Tiendas);
+            $TiendasTransferencias = $this->ConsultaTienda_M->consultarTransferencias($this->IDs_Tiendas);
             // echo '<pre>';
             // print_r($TiendasTransferencias);
             // echo '</pre>';
             // exit(); 
 
             //SELECT para verificar tiendas que acepten PagoMovil como metodo de pago
-            $TiendasPagoMovil = $this->ConsultaTienda_M->consultarPagoMovil($IDs_Tiendas);
+            $TiendasPagoMovil = $this->ConsultaTienda_M->consultarPagoMovil($this->IDs_Tiendas);
             // echo '<pre>';
             // print_r($TiendasTransferencias);
             // echo '</pre>';
             // exit();
 
             //SELECT para verificar tiendas que acepten otros medios de pago
-            $TiendasOtrosPagos = $this->ConsultaTienda_M->consultarPagoBolivar($IDs_Tiendas);
+            $TiendasOtrosPagos = $this->ConsultaTienda_M->consultarPagoBolivar($this->IDs_Tiendas);
             // echo '<pre>';
             // print_r($TiendasOtrosPagos);
             // echo '</pre>';
             // exit();
 
             //SELECT para verificar la cantidad de despachos que ha realizado una tienda
-            $TiendasDespachos = $this->ConsultaTienda_M->consultarDespachos($IDs_Tiendas);            
+            $TiendasDespachos = $this->ConsultaTienda_M->consultarDespachos($this->IDs_Tiendas);            
             // echo '<pre>';
             // print_r($TiendasDespachos);
             // echo '</pre>';
             // exit;
             
             //SELECT para verificar la cantidad de no conformidades de una tienda
-            // $TiendasNoConformidades = $this->ConsultaTienda_M->consultarInconformidades($IDs_Tiendas);            
+            // $TiendasNoConformidades = $this->ConsultaTienda_M->consultarInconformidades($this->IDs_Tiendas);            
             // echo '<pre>';
             // print_r($TiendasNoConformidades);
             // echo '</pre>';
             // exit;
             
             //SELECT para verificar la cantidad de disputas de una tienda
-            $TiendasDisputas = $this->ConsultaTienda_M->consultarDisputas($IDs_Tiendas);           
+            $TiendasDisputas = $this->ConsultaTienda_M->consultarDisputas($this->IDs_Tiendas);           
             // echo '<pre>';
             // print_r($TiendasDisputas);
             // echo '</pre>';
@@ -156,12 +177,16 @@
                 // echo '<br>';    
             endforeach;
 
-            if($TiendasDespachos == Array()){
+            if($TiendasDespachos == Array()) :
                 $TiendasNoConformidades = 0;
-            }
-            // *******************************************            
+            endif;
+
+            // ******************************************* 
+            //CALCULO DE DISPONIBILIDAD HORARIA
+            $DisponibilidaHoraria = $this->disponibilidadHoraria();
+
             $Datos = [
-                'tiendas_categoria' => $TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria, estado_Tien, parroquia_Tien 
+                'tiendas_categoria' => $this->TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria, estado_Tien, parroquia_Tien 
                 'tiendas_transferencias' => $TiendasTransferencias,
                 'tiendas_pagomovil' => $TiendasPagoMovil,
                 'tiendasOtrosPagos' => $TiendasOtrosPagos, //ID_Tienda, efectivoBolivar, efectivoDolar, acordado
@@ -169,8 +194,9 @@
                 'tiendas_inconformidades' => $TiendasNoConformidades,//ID_Tienda, count(Inconformidad)
                 'tiendas_satisfaccion' => $PorcentajeSatisfaccion,
                 'tiendas_disputas' => $TiendasDisputas, //ID_Tienda, conunt(Disputas)
+                'tiendas_disponibilidad' => $DisponibilidaHoraria 
             ];
-
+            
             // echo '<pre>';
             // print_r($Datos);
             // echo '</pre>';
@@ -178,6 +204,61 @@
 
             $this->vista("inc/header", $Datos);
             $this->vista("paginas/tiendas_V",$Datos);
+        }
+
+        public function disponibilidadHoraria(){
+            //SELECT para encontrar las tiendas a las que se les calculara su disponibilidad horaria
+            $TiendasHorarios = $this->ConsultaTienda_M->consultarHorarios($this->IDs_Tiendas);   
+            date_default_timezone_set('America/Caracas');
+            // echo '<pre>';
+            // print_r($TiendasHorarios);
+            // echo '</pre>';
+            // echo date('H:i');
+            // exit;
+
+            $Nuevo_2 = [];
+            $Disponibilidad = [];
+            foreach($TiendasHorarios AS $row) :
+                if(date('D') == 'Mon' || date('D') == 'Tue' || date('D') == 'Wed' || date('D') == 'Thu' ||date('D') == 'Fri') :
+                    if(($row['inicio_m'] < date('H:i') && $row['culmina_m'] > date('H:i')) || ($row['inicia_t'] < date('H:i') && $row['culmina_t'] > date('H:i'))) :
+                        $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Abierto'];
+                        array_push($Disponibilidad, $Nuevo_2);
+                    else :
+                        $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Cerrado'];
+                        array_push($Disponibilidad, $Nuevo_2);
+                    endif;
+                endif;
+            endforeach;
+
+            return $Disponibilidad;
+        }
+
+        public function horarioTienda($DatosAgrupados){
+            //$DatosAgrupados contiene una cadena con el ID_Tienda y el nombre de la tienda separados por coma, se convierte en array para separar los elementos
+            $DatosAgrupados = explode(",", $DatosAgrupados);
+            
+            $ID_Tienda = $DatosAgrupados[0];
+            $NombreTienda = $DatosAgrupados[1];  
+
+            //Consulta el horario de la tienda
+            $TiendasHorarios = $this->ConsultaTienda_M->consultarHorario_12($ID_Tienda);  
+            $Datos = [
+                'horarioTienda' => $TiendasHorarios,
+                'nombreTienda' => $NombreTienda
+            ];
+
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
+
+            $this->vista("inc/header_Tienda");
+            $this->vista("paginas/tienda/horarioDespacho_V", $Datos);
+        }
+
+        public function salirTienda(){
+            //La función redireccionar se encuantra en url_helper.php
+            redireccionar("/Inicio_C");
         }
     }
 ?>    

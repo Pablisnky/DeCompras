@@ -13,8 +13,37 @@
         }
 
         public function afiliacion(){
+            //Se calcula el cambio de moneda
+            $PlanEmprendedorBs = 2;
+            $PlanBasicoBs = 5;
+            $PlanMedioBs = 8;
+            $PlanMaximoBs = 13;
+            $PlanFullBs = 20;
+            $Dolar = 1174992;
+            $Dolar = 
+
+            $PlanEmprendedor = $Dolar * $PlanEmprendedorBs;
+            $PlanBasico = $Dolar * $PlanBasicoBs;
+            $PlanMedio = $Dolar * $PlanMedioBs;
+            $PlanMaximo = $Dolar * $PlanMaximoBs;
+            $PlanFull = $Dolar * $PlanFullBs;
+
+            $PlanEmprendedor = number_format($PlanEmprendedor, 0, '', '.');
+            $PlanBasico = number_format($PlanBasico, 0, '', '.');
+            $PlanMedio = number_format($PlanMedio, 0, '', '.');
+            $PlanMaximo = number_format($PlanMaximo, 0, '', '.');
+            $PlanFull = number_format($PlanFull, 0, '', '.');
+
+            $Datos = [
+                'emprendedor' => $PlanEmprendedor,
+                'basico' => $PlanBasico,
+                'medio' => $PlanMedio,
+                'maximo' => $PlanMaximo,
+                'full' => $PlanFull
+            ];
+
             $this->vista("inc/header");
-            $this->vista("paginas/afiliacion_V");
+            $this->vista("paginas/afiliacion_V", $Datos);
         }
 
         public function instruccion(){

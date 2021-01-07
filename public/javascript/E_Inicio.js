@@ -76,9 +76,9 @@ document.getElementById("Span_5").addEventListener('click', function(){CerrarMod
 
 // *****************************************************************************************************
     //Abre en la misma ventana las tiendas que pertenecen a una categoria
-    function VerTiendas(Tiendas){
-        // console.log("_____Desde VerTiendas()_____", Tiendas)
-        window.open(`Tiendas_C/index/${Tiendas}`,"_self")
+    function VerTiendas(Categoria){
+        // console.log("_____Desde VerTiendas()_____", Categoria)
+        window.open(`Tiendas_C/tiendasEnCatalogo/${Categoria}`,"_self")
     }
 
 //************************************************************************************************

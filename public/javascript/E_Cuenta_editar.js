@@ -4,7 +4,7 @@ document.getElementById("Label_7").addEventListener('click', clonarCuentaPagoMov
 
 document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
-document.getElementById("Label_3").addEventListener('click', clonarHorario, false)
+document.getElementById("Label_3").addEventListener('click', agregarHorario, false)
 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
@@ -25,6 +25,9 @@ document.getElementById("Telefono_Aficom").addEventListener('change', function()
 document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
 
 document.getElementById("Telefono_Tien").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
+
+//Desde horario_V.php
+document.getElementsByClassName('span_17_js')[0].addEventListener('click', ocultarHorario, false)
     
 //Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
@@ -412,42 +415,20 @@ document.getElementById("Label_1").addEventListener('click', function(){
     }  
 
 //************************************************************************************************  
-    //Clona todo el div que contiene la sección de horarios
-    function clonarHorario(){
-        console.log("______Desde clonarHorario()______") 
+    //Muestra todo el div que contiene la sección de horarios
+    function agregarHorario(){
+        console.log("______Desde agregarHorario()______") 
         
-        // Calcula cuantas cuentas de Transferencia existen tomando uno de sus requisitos (banco)
-        // let CantidadCuentasTransferencia = document.getElementsByClassName("bancoTransJS")
-        // console.log("Cuentas Transferencia existentes", CantidadCuentasTransferencia.length)
-
-        // //Se verifica que no existan cuentas Transferencia con campos sin llenar
-        // for(var i = 0; i < CantidadCuentasTransferencia.length; i++){
-        //     if(document.getElementsByClassName("bancoTransJS")[i].value == "" || document.getElementsByClassName("titularTransJS")[i].value == "" || document.getElementsByClassName("cuentaTransJS")[i].value == "" || document.getElementsByClassName("rifTransJS")[i].value == ""){
-        //         alert("Aún no completa cuenta Transferencia")
-        //         return
-        //     }
-        // }
-
-        let clonar = document.getElementById("Contenedor_90")
-
-        // //Se crea el clon
-        let Div_clon = clonar.cloneNode(true)
-
-        // //El value de los elementos que estan dentro del nuevo clon debe estar vacio
-        // Div_clon.getElementsByClassName("bancoTransJS")[0].value = ""
-        // Div_clon.getElementsByClassName("titularTransJS")[0].value = ""
-        // Div_clon.getElementsByClassName("cuentaTransJS")[0].value = ""
-        // Div_clon.getElementsByClassName("rifTransJS")[0].value = ""
-
-        //Se especifica el div padre, donde se insertará el nuevo nodo     
-        ElementoPadre = document.getElementById("Fieldset_3")
-        
-        //Se especificael el elemento que sera la referencia para insertar el nuevo nodo
-        let Ref_Ubicacion= document.getElementById("Contenedor_91")
-        
-        //Se especifica el div padre y la posición donde se insertará el nuevo nodo
-        ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
+        document.getElementById("Contenedor_89").style.display = "block"
     }
+
+//************************************************************************************************  
+    //Oculta todo el div que contiene la sección de horarios
+    function ocultarHorario(){
+        console.log("______Desde ocultarHorario()______") 
+        
+        document.getElementById("Contenedor_89").style.display = "none"
+    }    
 
 //************************************************************************************************  
     //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
@@ -804,6 +785,20 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
 
         //VALIDA TRANSFERENCIA
+        //Valida que puede quedar la cuenta Transferencia vacia si existe una cuenta de PagoMovil
+        for(i=0; i<Nombre_Banco.length; i++){
+            if(Nombre_Banco[i].value == '' && Cedula_ClonPagoMovil == ""){
+                alert("Nombre de banco para transferencia invalido")
+                Nombre_Banco[i].focus()
+                Nombre_Banco[i].style.backgroundColor = "var(--Fallos)"
+                document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+                document.getElementsByClassName("boton")[0].disabled = false
+                document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+                return false
+            }
+        }
         //Valida que no exista un campo de una cuenta PagoMovil vacio
         for(i=0; i<Nombre_Banco.length; i++){
             if(Nombre_Banco[i].value != '' || Titular_Banco[i].value != '' || NroCuenta_Banco[i].value != '' || RIF_Banco[i].value != '' ){
@@ -857,7 +852,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //Valida que no quede una cuenta de transferencia añadida vacia
         let CuentasTransferencia = document.getElementsByClassName("bancoTransJS")
         for(var i = 0; i < CuentasTransferencia.length; i++){
-            if((document.getElementsByClassName("bancoTransJS")[i].value == "" || document.getElementsByClassName("titularTransJS")[i].value == "" || document.getElementsByClassName("cuentaTransJS")[i].value == "" || document.getElementsByClassName("rifTransJS")[i].value == "") && Cedula_ClonPagoMovil.length > 1){
+            if((document.getElementsByClassName("bancoTransJS")[i].value == "" || document.getElementsByClassName("titularTransJS")[i].value == "" || document.getElementsByClassName("cuentaTransJS")[i].value == "" || document.getElementsByClassName("rifTransJS")[i].value == "") && CuentasTransferencia.length > 1){
                 alert("Aún no completa la cuenta para transferencia")
                 document.getElementsByClassName("boton")[0].value = "Guardar cambios"
                 document.getElementsByClassName("boton")[0].disabled = false

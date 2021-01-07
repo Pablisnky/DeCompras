@@ -104,11 +104,9 @@
 
             //Se CONSULTAN las secciones de una tienda en particular
             $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //Se CONSULTAN el slogan de una tienda en particular
-            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
@@ -140,11 +138,13 @@
             $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
 
             //CONSULTA los datos del responsable de la tienda
-            $Consulta = $this->ConsultaCuenta_M->consultarResponsableTienda($this->ID_Afiliado);
-            $DatosResposable = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $DatosResposable = $this->ConsultaCuenta_M->consultarResponsableTienda($this->ID_Afiliado);
             
-            //Se CONSULTAN el horario de la tienda
-            $Horario = $this->ConsultaCuenta_M->consultarHorarioTienda($this->ID_Tienda);
+            //Se CONSULTAN el horario de lunes a viernes de la tienda
+            $Horario_LV = $this->ConsultaCuenta_M->consultarHorarioTienda_LV($this->ID_Tienda);
+
+            //Se CONSULTAN el horario de fin de semana de la tienda
+            $Horario_FS = $this->ConsultaCuenta_M->consultarHorarioTienda_FS($this->ID_Tienda);
 
             //CONSULTA los datos de cuentas bancarias de la tienda
             $DatosBancos = $this->ConsultaCuenta_M->consultarBancosTienda($this->ID_Tienda);
@@ -156,24 +156,16 @@
             $OtrosPagos = $this->ConsultaCuenta_M->consultarOtrosMediosPago($this->ID_Tienda);
 
             //CONSULTA las categorias en la que la tienda esta registrada
-            $Consulta = $this->ConsultaCuenta_M->consultarCategoriaTIenda($this->ID_Tienda);
-            $Categoria = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Categoria = $this->ConsultaCuenta_M->consultarCategoriaTienda($this->ID_Tienda);
 
             //CONSULTA las secciones de la tienda
             $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //Se CONSULTAN el slogan de una tienda en particular
-            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
             //Se CONSULTAN el link de acceso directo de una tienda en particular
-            $Consulta = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
-            $Link_Tien = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-            // echo "<pre>";
-            // print_r($Link_Tien);
-            // echo "</pre>";
-            // exit();
+            $Link_Tien = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
             
             //Se verifica si existe el link de acceso directo y se crea en caso de no existir
             if(empty($Link_Tien)){
@@ -192,21 +184,17 @@
                 $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso, $URL);
 
                 //Se CONSULTA el link de acceso directo creado para insertar en el array $Datos
-                $Consulta = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
-                $Link_Tien = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-                // echo "<pre>";
-                // print_r($Link_Tien);
-                // echo "</pre>";
-                // exit;
+                $Link_Tien = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
             }
 
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
                 'datosResposable' => $DatosResposable,
-                'horario' => $Horario,
+                'horario_LV' => $Horario_LV,
+                'horario_FS' => $Horario_FS,
                 'datosBancos' => $DatosBancos,
                 'datosPagomovil' => $DatosPagoMovil,
-                'categoria' => $Categoria,
+                'categoria' => $Categoria, // categoria
                 'secciones' => $Secciones,
                 'slogan' => $Slogan,
                 'link_Tien' => $Link_Tien, //link_acceso, url 
@@ -532,7 +520,7 @@
             //RECIBE HORARIO
             //Seccion datos horarios de atencion al cliente, se almacenará en la tabla horarios
             if(!empty($_POST['inicioManana']) && !empty($_POST['culminaManana']) && !empty($_POST['iniciaTarde']) && !empty($_POST['culminaTarde'])){
-                $RecibeHorario = [
+                $RecibeHorario_LV = [
                     'Inicio_M' => $_POST['inicioManana'],
                     'Culmina_M' => $_POST['culminaManana'],
                     'Lunes_M' => isset($_POST['lunes_M']) == 'Lunes' ? $_POST['lunes_M'] : 0,
@@ -549,21 +537,36 @@
                     'Jueves_T' => isset($_POST['jueves_T']) == 'Jueves' ? $_POST['jueves_T'] : 0,
                     'Viernes_T' => isset($_POST['viernes_T']) == 'Viernes' ? $_POST['viernes_T'] : 0
                 ];
+                $RecibeHorario_FS = [
+                    'Inicio_M_FS' => $_POST['inicioManana_FS'],
+                    'Culmina_M_FS' => $_POST['culminaManana_FS'],
+                    'Sabado_M_FS' => isset($_POST['sabado_M']) == 'Sabado' ? $_POST['sabado_M'] : 0,
+                    'Domingo_M_FS' => isset($_POST['domingo_M']) == 'Domingo' ? $_POST['domingo_M'] : 0,
+
+                    'Inicia_T_FS' => $_POST['inicioTarde_FS'],
+                    'Culmina_T_FS' => $_POST['culminaTarde_FS'],
+                    'Sabado_T_FS' => isset($_POST['sabado_T']) == 'Sabado' ? $_POST['sabado_T'] : 0,
+                    'Domingo_T_FS' => isset($_POST['domingo_T']) == 'Domingo' ? $_POST['domingo_T'] : 0,
+                ];
             }
             else{
                 echo "Ingrese el horario de despacho";
                 echo "<br>";
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
-
             }
             // echo '<pre>';
-            // print_r($RecibeHorario);
+            // print_r($RecibeHorario_LV);
+            // echo '</pre>';
+            // echo '<pre>';
+            // print_r($RecibeHorario_FS);
             // echo '</pre>';
             // exit;
             
             //Se ACTUALIZA el horario de la tienda
-            $this->ConsultaCuenta_M->actualizarHorarioTienda($this->ID_Tienda, $RecibeHorario);
+            // "TO_DO" no se han insertado los datos
+            $this->ConsultaCuenta_M->actualizarHorarioTienda_LV($this->ID_Tienda, $RecibeHorario_LV);
+            $this->ConsultaCuenta_M->actualizarHorarioTienda_FS($this->ID_Tienda, $RecibeHorario_FS);
 
             //RECIBE INFORMACION DE PAGOS
             // ********************************************************            

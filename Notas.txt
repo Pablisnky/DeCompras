@@ -19,6 +19,7 @@ Resoluciones
     393 x 851 (Orlando)
     1280 x 800 (tablet Canaima horizontal)
     1366 x 768 (Pablo Labtop)
+    1280 x 1024 (Lisbella PC)
 
 MAC en wifi
 Karina 60:ab:67:9b:07:24

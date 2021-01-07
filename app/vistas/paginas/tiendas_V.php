@@ -23,6 +23,12 @@
             $Fotografia = $row['fotografia_Tien'];
             $Ciudad = $row['parroquia_Tien'];
             $Estado = $row['estado_Tien'];
+
+            foreach($Datos['tiendas_disponibilidad'] as $Row) :
+                if($Row['ID_Tienda'] == $ID_Tienda) : 
+                    $Disponibilidad = $Row['disponibilidad'];
+                endif;
+            endforeach;
             ?> 
             <section>
                 <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2')"><!--El argumento no necesario es debido a que se comparte el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
@@ -183,20 +189,31 @@
                                     }
                                 endforeach; ?>
                     </div>
-                    <!-- <div class="contenedor_162">
-                        <div class="contenedor_132">
-                            <span class="icon-phone span_17""></span> 
-                            <p class="p_2"><?php echo $Telefono?></p>
-                        </div>
-                        <div class="contenedor_131">
-                            <span class="icon-location2 span_17"></span>
-                            <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo $Ciudad?> - <?php echo $Estado?></p>
-                        </div>
-                    </div>  -->
-                    <div class="contenedor_162">
-                        <h2 class="h2_14">Entregas no disponibles a esta hora</h2>
-                        <!-- <h2>compra realizadas en este horario se despacharán en la proxima apertura</h2> -->
-                    </div> 
+                    <?php 
+                    foreach($Datos['tiendas_disponibilidad'] as $Row)   :
+                        if($Row['ID_Tienda'] == $ID_Tienda){  
+                            if($Row['disponibilidad'] == 'Abierto'){   ?>
+                                <div class="contenedor_162">
+                                    <div class="contenedor_132">
+                                        <span class="icon-phone span_17""></span> 
+                                        <p class="p_2"><?php echo $Telefono?></p>
+                                    </div>
+                                    <div class="contenedor_131">
+                                        <span class="icon-location2 span_17"></span>
+                                        <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo $Ciudad?> - <?php echo $Estado?></p>
+                                    </div>
+                                </div> 
+                                <?php
+                            }
+                            else{   ?>
+                                <div class="contenedor_162">
+                                    <!-- <h2 class="h2_14">Cerrado</h2> -->
+                                    <h2 class="h2_14">Despachos no disponibles a esta hora</h2>
+                                    <!-- <h2>compra realizadas en este horario se despacharán en la proxima apertura</h2> -->
+                                </div>  <?php
+                            }  
+                        } 
+                    endforeach;  ?>
                 </div>
             </section>
             <?php

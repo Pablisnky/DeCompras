@@ -17,7 +17,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <section class="section_5">	
     <!-- div mostrado solo en responsive -->
     <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
@@ -68,6 +67,9 @@
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->
 <div id="Mostrar_Orden"></div>
+
+<!-- Trae por medio de Ajax el horario de la tienda, la información es suministrada por horarioTienda_V.php invocada por la función () en este mismoarchivo-->
+<!-- <div id="Mostrar_Horario"></div> -->
 
 <!-- Trae por medio de Ajax la dirección de la tienda, la información es suministrada por direccion_V.php invocada por la función () en este mismoarchivo-->
 <!-- <div id="Mostrar_Direccion"></div> -->

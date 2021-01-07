@@ -5,6 +5,7 @@
 	}
 	else{
 		$Nombre_Tienda = $Datos['NombreTienda'];
+		$ID_Tienda = $Datos['id_tienda'];
 	}
 ?>
 <!DOCTYPE html>
@@ -43,17 +44,17 @@
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="#">Ofertas</a></li>
 					<li><a class="a_3" href="#">Lo más pedido</a></li>
-					<li><a class="a_3" href="#">Horario</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' .$ID_Tienda . ',' . $Nombre_Tienda;?>">Horario</a></li>
 					<li><a class="a_3" href="#">Dirección</a></li>
 					<hr class="hr_3 hr_4"/>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Salir de la tienda</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/salirTienda';?>">Salir de la tienda</a></li>
 				</ul>
 			</nav>
 		</header>
-		<!-- <div class="contenedor_167">
+		<div class="contenedor_167">
 			<label>Entregas no disponibles a esta hora</label>
-			<label>ver horario de despacho</label>
-		</div> -->
+			<label>nuevamente a las 02:00 pm</label>
+		</div>
 		
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->

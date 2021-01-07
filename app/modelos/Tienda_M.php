@@ -22,7 +22,7 @@
             }
         }
         
-        // SELECT con las tiendas que aceptan pagos por transferencia
+        //SELECT con las tiendas que aceptan pagos por transferencia
         public function consultarTransferencias($IDs_Tiendas){
             $stmt = $this->dbh->prepare("SELECT DISTINCT ID_Tienda FROM bancos WHERE ID_Tienda IN ($IDs_Tiendas)");    
             if($stmt->execute()){
@@ -79,7 +79,31 @@
         
         // SELECT con la cantidad de inconformidades de tiendas 
         public function consultarDisputas($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT ID_Tienda, COUNT(estadodisputa) AS 'Disputas'FROM noconformidades WHERE ID_Tienda IN ($IDs_Tiendas) AND estadodisputa = 1 GROUP BY ID_Tienda");    
+            $stmt = $this->dbh->prepare("SELECT ID_Tienda, COUNT(estadodisputa) AS 'Disputas' FROM noconformidades WHERE ID_Tienda IN ($IDs_Tiendas) AND estadodisputa = 1 GROUP BY ID_Tienda");    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+      
+        // SELECT con los horarios de tiendas en formato 24 horas
+        public function consultarHorarios($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(culmina_m, '%H:%i') AS culmina_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t FROM horarios WHERE ID_Tienda IN ($IDs_Tiendas)");
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        // SELECT con los horarios de tiendas en formato 12 horas
+        public function consultarHorario_12($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicio_m, '%h:%i %p') AS inicio_m, DATE_FORMAT(culmina_m, '%h:%i %p') AS culmina_m, DATE_FORMAT(inicia_t, '%h:%i %p') AS inicia_t, DATE_FORMAT(culmina_t, '%h:%i %p') AS culmina_t FROM horarios WHERE ID_Tienda IN ($IDs_Tiendas)");
+
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }

@@ -70,11 +70,14 @@
                     //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
                     $ID_AfiliadoCom = $this->ConsultaRegistro_M->insertarAfiliadoComercial($RecibeDatos);
                 
-                    //Se INSERTAN los datos de la tienda en la BD
-                    $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);        
+                    //Se INSERTAN los datos de la tienda en la BD y se retorna el ID del registro recien insertado
+                    $ID_Tienda = $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);        
                             
                     //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
                     $this->ConsultaRegistro_M->insertarAccesoComerciante($ID_AfiliadoCom, $ClaveCifrada);
+                    
+                    //Se INSERTAN el campo de horario en la BD
+                    $this->ConsultaRegistro_M->insertarHabilitarHorario($ID_Tienda);
 
                 $this->ConsultaRegistro_M->commit();
             }

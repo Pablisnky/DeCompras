@@ -48,11 +48,12 @@
                     </div>
                     <div>
                         <h1 class="h1_1">Tú tienda digital ha sido creada.</h1>
-                        <p class="p_6">Tienes 15 días completamente libre de pagos</p>
+                        <p class="p_6">Tienes 30 días de prueba, totalmente gratis.</p>
                         <ul class="ul_5">
                             <li>Inicia sesión</li>
                             <li>organiza tu tienda</li>
                             <li>carga tus productos</li>
+                            <li>presenta tu tienda digital a la ciudad</li>
                         </ul> 
                         <p class="p_6">Y bienvenida es tu tienda en toda la ciudad.</p>
                     </div>
