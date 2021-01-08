@@ -1,4 +1,14 @@
- document.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, false)
+window.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, false)
+
+document.getElementById("Label_7").addEventListener('click', ReestablecerContrasena, false)
+
+//************************************************************************************************
+    //Recupera contraseña olvidada
+    function ReestablecerContrasena(){
+        // console.log("______Desde ReestablecerContrasena()______")
+        
+        document.getElementById("Contenedor_43").style.display = "block"
+    }
 
 //************************************************************************************************
     //Valida el formulario de login

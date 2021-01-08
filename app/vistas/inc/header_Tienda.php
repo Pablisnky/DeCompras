@@ -51,10 +51,10 @@
 				</ul>
 			</nav>
 		</header>
-		<div class="contenedor_167">
+		<!-- <div class="contenedor_167">
 			<label>Entregas no disponibles a esta hora</label>
 			<label>nuevamente a las 02:00 pm</label>
-		</div>
+		</div> -->
 		
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->

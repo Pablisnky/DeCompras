@@ -16,7 +16,7 @@
                     <div class="contenedor_50">
                         <input class="boton" type="submit" value="Entrar"/>
                         <p class="p_4">¿Olvidaste tu contraseña?</p>
-                        <label class="label_7" onclick="NotificarContrasena()">Recuperala</label>
+                        <label class="label_7" id="Label_7">Recuperala</label>
                     </div>
                 </form>
                 <div class="contenedor_33">	
@@ -26,15 +26,11 @@
                 </div>
             </div>
 
-            <div class="contenedor_43" id="Contenedor_43" onclick="OcultarDiv()">
-                <form action="<?php echo RUTA_URL . '/Login_C/RecuperarClave';?>" method="POST" autocomplete="off">
-                    <fieldset class="Afiliacion_1" style="background-color: #F4FCFB; border-radius: 15px;">
-                        <p class="span_2">Indiquenos un correo al cual podamos enviarle un código de recuperación</p>
-                        <br>
-                        <input class="" type="text" name="correo"><!--llamar_VerificarCedula() esta en ajaxBuscador.js-->
-                        <input style="margin: auto; display: block;" type="submit" id="BotonGuardar" value="Enviar" onclick="">
-                    </fieldset>
-                </form>
+            <!-- RECUPERAR CONTRASEÑA -->
+            <div class="contenedor_43" id="Contenedor_43"">
+                <?php 
+                $Datos = '';
+                require(RUTA_APP . "/vistas/modal/modal_recuperarCorreo_V.php"); ?>
             </div>
         </section>
         <?php

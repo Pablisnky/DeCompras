@@ -1,5 +1,8 @@
 <?php 
     //$Datos proviene de Vitrina_C
+    if($Datos['disponibilidad'] == 'Cerrado'){        
+        require(RUTA_APP . "/vistas/modal/modal_fueraHorario_V.php");
+    }
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia'];
 
@@ -67,9 +70,6 @@
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->
 <div id="Mostrar_Orden"></div>
-
-<!-- Trae por medio de Ajax el horario de la tienda, la información es suministrada por horarioTienda_V.php invocada por la función () en este mismoarchivo-->
-<!-- <div id="Mostrar_Horario"></div> -->
 
 <!-- Trae por medio de Ajax la dirección de la tienda, la información es suministrada por direccion_V.php invocada por la función () en este mismoarchivo-->
 <!-- <div id="Mostrar_Direccion"></div> -->

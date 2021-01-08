@@ -51,6 +51,11 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
 
+//Escucha desde modal_fueraHorario_V.php
+if(document.getElementById("Label_1")){
+    document.getElementById("Label_1").addEventListener('click', function(){CerrarModal_X('Section_1')}, false)
+}
+
 // ************************************************************************************************** 
 //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
 window.addEventListener("click", function(e){   

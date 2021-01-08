@@ -24,14 +24,16 @@
             $Ciudad = $row['parroquia_Tien'];
             $Estado = $row['estado_Tien'];
 
+            //Se busca si la tienda esta abierta o cerrada según su horario
             foreach($Datos['tiendas_disponibilidad'] as $Row) :
                 if($Row['ID_Tienda'] == $ID_Tienda) : 
                     $Disponibilidad = $Row['disponibilidad'];
+                    // echo $Disponibilidad; 
                 endif;
             endforeach;
             ?> 
             <section>
-                <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2')"><!--El argumento no necesario es debido a que se comparte el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
+                <div class="contenedor_15 borde_1" id="<?php echo $ID_Tienda;?>" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2','<?php echo $Disponibilidad;?>')"><!--El argumento no necesario es debido a que la función Tiendas() recibe cuatro argumentos, el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
                     <?php                    
                     if($Fotografia == 'tienda.png'){    ?> 
                         <div class="contenedor_120 contenedor_140" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia;?>')"> 
@@ -59,10 +61,7 @@
                                         <?php
                                     }
                                 endforeach; 
-                                if(empty($PorcentajeSatisfaccion)){  ?>                          
-                                    <label>N/A</label>
-                                    <?php
-                                }   ?>
+                                   ?>
                         </div>
                         <div style="width:50%; margin: 2% auto;">
                             <p class="p_2 p_18">Pedidos entregados</p>

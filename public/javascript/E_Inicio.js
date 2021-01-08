@@ -100,10 +100,10 @@ document.getElementById("Span_5").addEventListener('click', function(){CerrarMod
 
 //************************************************************************************************
     //Apunta el curso al producto seleccionado en la busqueda, invocada desde buscador_V.php
-    function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion, Opcion){
+    function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion, Opcion, NoNecesario_1){
         // console.log("______Desde OpcionSeleccionada()______")
 
-        window.open(`Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion}`,"_self") 
+        window.open(`Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion},${NoNecesario_1}`,"_self") 
     }
 
 //************************************************************************************************

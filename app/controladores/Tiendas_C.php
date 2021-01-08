@@ -164,7 +164,7 @@
                  
                 $Satisfaccion = ($TotalDespachos - $TotalIconformidades) * 100 / $TotalDespachos;
 
-                //Se redondea el valor obtenido sin decimales y se añade el simbolo porcentaje
+                //Se redondea el valor obtenido sin decimales
                 $Satisfaccion = number_format($Satisfaccion); 
                 // echo 'Clientes satisfechos = ' . $Satisfaccion . ' <br>';
 
@@ -174,7 +174,8 @@
                 // echo '<pre>';
                 // print_r($PorcentajeSatisfaccion);
                 // echo '</pre>';
-                // echo '<br>';    
+                // echo '<br>';  
+                // exit;  
             endforeach;
 
             if($TiendasDespachos == Array()) :
@@ -206,6 +207,7 @@
             $this->vista("paginas/tiendas_V",$Datos);
         }
 
+        //Retorna si una tienda esta abierta o cerrda segun la hora actual
         public function disponibilidadHoraria(){
             //SELECT para encontrar las tiendas a las que se les calculara su disponibilidad horaria
             $TiendasHorarios = $this->ConsultaTienda_M->consultarHorarios($this->IDs_Tiendas);   

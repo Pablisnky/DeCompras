@@ -50,7 +50,7 @@
             }
         }
 
-        //Invocado desde inicio_V
+        //Invocado desde login_V
         public function ValidarSesion(){
             $Recordar = isset($_POST["recordar"]) == 1 ? $_POST["recordar"] : "No desea recordar";
             $Clave = $_POST["clave_Arr"];
@@ -181,15 +181,14 @@
         }
         
         public function RecuperarClave(){
-            $Correo= $_POST["correo"];
+            $Correo = $_POST["correo"];
             //echo "Correo= " . $Correo . "<br>";
         
             //Generamos un numero aleatorio que será el código de recuperación de contraseña
             //alimentamos el generador de aleatorios
             mt_srand (time());
             // //generamos un número aleatorio
-            $Aleatorio = mt_rand(100000,999999);
-            // echo "Nº aleatorio= " . $Aleatorio . "<br>"; 
+            $Aleatorio = mt_rand(100000,999999); 
                     
             //Se INSERTA el código aleatorio en la tabla "codigo-recuperacion y se asocia al correo del usuario
             $this->ConsultaLogin_M->insertarCodigoAleatorio($Correo, $Aleatorio);
@@ -205,8 +204,100 @@
         
             @mail($email_to, $email_subject, $email_message, $headers);
             
-            //Se redirecciona, la función redireccionar se encuentra en url_helper.php
-            // redireccionar("/RecuperarClave_C/index/$Correo"); 
+            $Datos = [
+                'correo' => $Correo,
+                'bandera' => 'aleatorioinsertado'
+            ];
+
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
+
+            $this->vista("inc/header_Modal", $Datos); 
+            $this->vista("modal/modal_recuperarCorreo_V", $Datos); 
+        }
+
+        //LLamado desde modal_recuperarCorreo_V.php
+        public function recibeCodigoRecuperacion(){
+            $CodigoUsuario = $_POST["ingresarCodigo"];
+            $Correo= $_POST["correo"];
+
+            // EL numero aleatorio es de tipo string se debe cambiar a entero
+            gettype($CodigoUsuario) . "<br>";
+            settype($CodigoUsuario,"integer");
+            gettype($CodigoUsuario) . "<br>";
+            
+            //Se comprueba el código enviado por el usuario con el código que hay en la BD
+            $VerificaCodigo = $this->ConsultaLogin_M->consultarCodigoAleatorio($Correo, $CodigoUsuario);
+
+            if($VerificaCodigo == 0){//Si el codigo que envia el usuario es diferente al del sistema            
+                echo "<p class='Inicio_16'>Código invalido</p>";
+                echo "<a class='Inicio_16' href='javascript:history.go(-1)'>Regresar</a>";
+                exit();            
+            }
+            else{//Si los códigos coinciden se permite hacer el cambio de contraseña
+                // echo "cambie la contraseña";
+
+                //Se confirma en la BD que el codigo ha sido usado y verificado
+                $this->ConsultaLogin_M->actualizarcodigoVerificado($CodigoUsuario);
+                
+                $Datos = [
+                    'correo' => $Correo,
+                    'bandera' => 'verificado'
+                ];
+
+                $this->vista("inc/header_Modal", $Datos); 
+                $this->vista("modal/modal_recuperarCorreo_V", $Datos); 
+            }
+        }
+
+        public function recibeCambioClave(){
+            $ClaveNueva = $_POST["clave"];
+            $RepiteClaveNueva = $_POST["repiteClave"];
+            $Correo = $_POST["correo"];
+
+            // echo "Clave nueva= " . $ClaveNueva . "<br>";
+            // echo "Repite clave nueva= " . $RepiteClaveNueva . "<br>";
+            // echo "Correo= " . $Correo . "<br>";
+
+            //Se verifica que las claves recibidas sean iguales
+            if($ClaveNueva == $RepiteClaveNueva){
+                //se cifra la contraseña con un algoritmo de encriptación
+                $ClaveCifrada = password_hash($ClaveNueva, PASSWORD_DEFAULT);
+                // echo "Clave cifrada= " . $ClaveCifrada . "<br>";
+                
+                //Se consulta el ID_Participante correspondiente al correo
+                $ID_Afiliado = $this->ConsultaLogin_M->consultaID_Afiliado($Correo);
+
+                if($ID_Afiliado == Array()){
+                    echo 'No exist el correo';
+                    echo "<a class='Inicio_16' href='javascript:history.go(-3)'>Regresar</a>";
+                    exit;
+                }
+                else{
+                    // echo '<pre>';
+                    // print_r($ID_Afiliado);
+                    // echo '</pre>';
+                    // exit;
+
+                    //Se actualiza en la base de datos la clave del usuario
+                    $this->ConsultaLogin_M->actualizarClave($ID_Afiliado, $ClaveCifrada);
+
+                    //Se destruyen las cookies que recuerdan la contraseña antigua, creadas en validarSesion.php
+                    // echo "Cookie_usuario= " . $_COOKIE["id_usuario"] . "<br>";
+                    // echo "Cookie_clave= " . $_COOKIE["clave"] . "<br>";
+
+                    // setcookie("id_usuario",'',time()-100);
+                    // setcookie("clave",'',time()-100);
+                    
+                    $this->vista("inc/header_Modal"); 
+                    $this->vista("modal/modal_recuperarCorreo_V"); 
+                }
+            }
+            else{
+                echo "Las contraseñas no coinciden";
+            }
         }
     }
 ?>

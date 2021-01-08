@@ -8,6 +8,18 @@
         }
 
         //SELECT de las secciones de la tienda seleccionada
+        public function consultarCategoria($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT categoria FROM categorias INNER JOIN tiendas_categorias ON categorias.ID_Categoria=tiendas_categorias.ID_Categoria INNER JOIN tiendas ON tiendas_categorias.ID_Tienda=tiendas.ID_Tienda WHERE tiendas.ID_Tienda = :Tienda");  
+            $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        //SELECT de las secciones de la tienda seleccionada
         public function consultarSecciones($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT seccion FROM secciones WHERE ID_Tienda = :Tienda");  
             $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
@@ -58,6 +70,20 @@
             $stmt = $this->dbh->prepare("SELECT slogan_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+        
+        //SELECT con horas de apertura de la tienda formto 24 horas
+        public function consultarAperturaTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t  FROM horarios WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

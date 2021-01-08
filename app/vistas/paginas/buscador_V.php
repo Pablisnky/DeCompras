@@ -9,7 +9,7 @@
             $Tienda = $arr["nombre_Tien"];
             $Imagen = $arr["fotografia"];   ?>
             
-            <div class="contMuestraBuscador borde_1" id="<?php echo $ID_Tienda;?>" onclick="OpcionSeleccionada('<?php echo $ID_Tienda;?>','<?php echo $Tienda;?>','<?php echo $Seccion?>','<?php echo $Opcion?>')">
+            <div class="contMuestraBuscador borde_1" id="<?php echo $ID_Tienda;?>" onclick="OpcionSeleccionada('<?php echo $ID_Tienda;?>','<?php echo $Tienda;?>','<?php echo $Seccion?>','<?php echo $Opcion?>','NoNecesario_1')">
                 <figure class="">
                     <img class="imagen_7" alt="Fotografia del producto" src="<?php echo RUTA_URL . '/public/images/productos/' . $Imagen?>"/>
                 </figure>

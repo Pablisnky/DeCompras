@@ -238,8 +238,7 @@
                 $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
 
                 //Se CONSULTAN el slogan de una tienda en particular
-                $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-                $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
                 $Datos = [
                     'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,

@@ -368,7 +368,6 @@
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
-                //Se envia información de cuantos registros se vieron afectados por la consulta
                 return  $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{

@@ -10,7 +10,6 @@
 
         public function loginIncorrecto(){
             $this->vista("modal/modal_login_V");
-
         }
 
         //Invocado en Login_C/ValidarSesion
