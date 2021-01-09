@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
+
 <section class="section_1" id="Section_1">
     <div class="contenedor_37"  id="Contenedor_37">
         <h1 class="h1_2">PedidoRemoto</h1>
@@ -752,8 +755,8 @@
 </section>
 
 <section><!--BUSCADOR-->
-    <div class="contBuscador" id="Busqueda">   
-        <span class="contBuscador__span" id="Span_5" style="color: white;" onclick="CerrarModal_X('Mostrar_Categorias')">X</span>
+    <div class="contBuscador contBuscador__borrar" id="Busqueda">   
+        <span class="icon-cancel-circle spanCerrar" id="Span_5" onclick="CerrarModal_X('Mostrar_Categorias')"></span>
         <div class="contBuscador__div">     
             <div class="contFlex50 contFlex--around">
                 <div class="contFlex__div">

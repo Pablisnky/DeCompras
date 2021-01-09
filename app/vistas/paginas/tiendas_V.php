@@ -51,33 +51,45 @@
                             <h3 class="h3_4">Reputación <span class="span_1">(Ultimos 3 meses)</span> </h3>
                         </div>
                         <div style="width: 50%; margin: 2% auto;">
-                            <p class="p_2 p_18">% de Efectividad</p>
-                            <?php 
-                                foreach($Datos['tiendas_satisfaccion'] as $Row) :
-                                    $ID_TiendaSatisfaccion = $Row['ID_Tienda'];
-                                    $PorcentajeSatisfaccion = $Row['Satisfaccion'];
-                                    if($ID_TiendaSatisfaccion == $ID_Tienda){ ?>              
-                                        <label><?php echo $PorcentajeSatisfaccion?></label>
-                                        <?php
-                                    }
-                                endforeach; 
-                                   ?>
+                            <p class="p_2 p_18">Clientes satisfechos</p>
+                            <?php
+                                if($Datos['tiendas_despachos'] == Array()){?>
+                                    <label>Aún no califica</label>    <?php
+                                }
+                                else if(($Datos['tiendas_satisfaccion'][0]['ID_Tienda'] != $ID_Tienda)){
+                                    ?>
+                                    <label>Aún no califica</label>    <?php
+                                }
+                                else{
+                                    foreach($Datos['tiendas_satisfaccion'] as $Row) :
+                                        $ID_TiendaSatisfaccion = $Row['ID_Tienda'];
+                                        $PorcentajeSatisfaccion = $Row['Satisfaccion'];
+                                        if($ID_TiendaSatisfaccion == $ID_Tienda){ ?>              
+                                            <label><?php echo $PorcentajeSatisfaccion?> %</label>
+                                            <?php
+                                        }
+                                    endforeach; 
+                                }   ?>
                         </div>
                         <div style="width:50%; margin: 2% auto;">
                             <p class="p_2 p_18">Pedidos entregados</p>
                             <?php 
-                                foreach($Datos['tiendas_despachos'] as $row) :
-                                    $ID_TiendaConDespachos = $row['ID_Tienda'];
-                                    $CantidadDespachos = $row['Despachos'];
-                                    if($ID_TiendaConDespachos == $ID_Tienda){   ?>                           
-                                        <label><?php echo $CantidadDespachos?></label>
-                                        <?php
-                                    }
-                                endforeach;
-                                if(empty($CantidadDespachos)){  ?>                          
-                                    <label>0</label>
-                                    <?php
-                                }   ?>
+                                if($Datos['tiendas_despachos'] == Array()){?>
+                                    <label>0</label>    <?php
+                                }
+                                else if($Datos['tiendas_satisfaccion'][0]['ID_Tienda'] != $ID_Tienda){?>
+                                    <label>0</label>    <?php
+                                }
+                                else{
+                                    foreach($Datos['tiendas_despachos'] as $row) :
+                                        $ID_TiendaConDespachos = $row['ID_Tienda'];
+                                        $CantidadDespachos = $row['Despachos'];
+                                        if($ID_TiendaConDespachos == $ID_Tienda){   ?>                           
+                                            <label><?php echo $CantidadDespachos?></label>
+                                            <?php
+                                        }
+                                    endforeach;
+                                }  ?>
                         </div>
                         <!-- <div style="width:33%">
                             <p class="p_2 p_18">Disputas en curso</p>  -->

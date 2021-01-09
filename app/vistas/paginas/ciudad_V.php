@@ -6,7 +6,7 @@
 
 <section class="section_5">
     <div class='contenedor_146'>
-        <p class="p_6">Venezuela estado Yaracuy:</p>
+        <p class="p_6">Venezuela estado Yaracuy</p>
         <div class="contenedor_73">
             <h2 class="h2_11 h2_13">Cocorote</h2>
             <h2 class="h2_11 h2_13">Independencia</h2>

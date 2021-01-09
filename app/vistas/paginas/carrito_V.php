@@ -219,7 +219,7 @@
                                     </tbody>
                                 </table>
 
-                                <p class="contenedor_60__p1">Informe su pago mediante el código de la transferencia o el capture de la transferencia <span class="span_13">mostrar cuenta</span></p>
+                                <p class="contenedor_60__p1">Informe su pago mediante el código de la transferencia o el capture de la transferencia</p>
                                 <div class="contInputRadio">
                                     <input type="radio" name="referenciaPago" id="ReferenciaPago" value="codigoTransferencia" onclick="verInputTransferencia()"/>
                                     <label class="contInputRadio__label" for="ReferenciaPago">Codigo transferencia</label> 
@@ -297,7 +297,7 @@
                                     </tbody>
                                 </table>
                                 
-                                <p class="contenedor_60__p1">Informe su pago mediante el capture del PagoMovil <span class="span_13">mostrar cuenta</span></p>
+                                <p class="contenedor_60__p1">Informe su pago mediante el capture del PagoMovil</p>
                                                     
                                 <br class="br_1"/>
                                 <!-- IMAGEN CAPTURE -->

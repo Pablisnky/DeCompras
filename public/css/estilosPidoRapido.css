@@ -50,6 +50,7 @@ button{/*tiendas*/
 .bandaAlerta{/*modal_fueraHorario*/
 	background-color: var(--BandaAlerta);
 	padding: 1%;
+	border-radius: 15px;
 }
 .a_1{/*header*/
 	text-align: center;
@@ -367,7 +368,7 @@ button{/*tiendas*/
 .contenedor_23{/*header.php*/
 	width: 33%;
 }
-.contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax*/
+.contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax - modal_fueraHorario*/
 	background-color: var(--OficialClaro);
 	width: 70%;
 	margin: 2% auto;
@@ -1046,23 +1047,24 @@ button{/*tiendas*/
 	left: 0%;
 	z-index: 4; /*Para que se sobreponga al header*/
 }
+.contBuscador__borrar{/*inicio*/
+	padding-top: 2%;
+}
 .contBuscador__div{/*inicio*/
 	background-color: var(--OficialClaro);
 	width: 60%;
 	padding: 1% 0% 1% 0%;
-	margin: 5% auto 1% auto;
+	margin: 0% auto 1% auto;
 	border-radius: 15px;
 }
 .contBuscador__div__div{/*inicio*/
 	width: 65%;
 	margin: auto;
 }
-.contBuscador__span{/*inicio*/
+.spanCerrar{/*inicio - modal_fueraHorario*/
 	color: white;
 	font-size: 2em;
-	font-weight: bolder;
-	float: right;
-	margin: 2% 4% 0% 0%;
+	margin: -1% 4% 0% 95%;
 	cursor: pointer;
 }
 .contMuestraBuscador{/*buscador*/
@@ -1975,7 +1977,7 @@ button{/*tiendas*/
 	bottom: 0%;
 	margin: auto;
 }
-.sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - Categorias_Ajax*/
+.sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - Categorias_Ajax - modal_fueraHorario*/
 	background-color: var(--FondoDivModal);
 	position: absolute;
 	top: 0;
@@ -1983,7 +1985,7 @@ button{/*tiendas*/
 	width: 100%;
 	min-height: 400%;
 	z-index: 3;
-	padding-top: 2%;
+	padding-top: 1%;
 }
 .sectionModal--Fixed{/**/
 	position: fixed ;
@@ -2082,7 +2084,7 @@ button{/*tiendas*/
 	display: inline-block;
 	margin-left: 75%;
 }
-.span_13{/*cuenta_editar - carrito*/
+.span_13{/*cuenta_editar*/
 	color: blueviolet;
 	display: inline-block;
 }
@@ -2133,9 +2135,9 @@ button{/*tiendas*/
 }
 .span_22{/*modal_fueraHorario*/
 	/* width: 40px; */
-	display: block !important;
+	/* display: block !important;
 	font-size: 1.8em;
-	float: right;
+	float: right; */
 }
 .tabla{/*carrito*/
 	width: 100%;

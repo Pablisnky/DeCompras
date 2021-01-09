@@ -147,7 +147,7 @@
 .contenedor_21{/*header.php*/
 	width: 60%;
 }
-.contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax*/
+.contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax* - modal_fueraHorario*/
 	width: 95%;
 }
 .sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar*/
@@ -258,6 +258,12 @@
 .contenedor_56{/*inicio*/
 	width: 100%;
 	margin-left: 0% !important;
+}
+.contBuscador__borrar{/*inicio*/
+	padding-top: 5%;
+}
+.contBuscador__div{/*inicio*/
+	margin: 3% auto 1% auto;
 }
 .contBuscador__div__div{/*inicio*/
 	width: 95%;	
@@ -993,6 +999,10 @@
 .span_20{/*cuenta_editar*/
 	top: 147%;
 	left: 66%;
+}
+.spanCerrar{/*inicio - modal_fueraHorario*/
+	font-size: 1.5em;
+	margin: -5% 4% 0% 88%;
 }
 .tabla2__td1{/*carrito*/
 	width: 40%;

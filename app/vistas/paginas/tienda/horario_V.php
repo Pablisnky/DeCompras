@@ -43,6 +43,7 @@
                                         <option>09:00 am</option>
                                         <option>09:30 am</option>
                                         <option>10:00 am</option>
+                                        <option>10:30 am</option>
                                         </select>
                                         <br>
                                         <label>Cierre</label>

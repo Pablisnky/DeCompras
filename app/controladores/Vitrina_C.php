@@ -42,14 +42,16 @@
                 //Hora de apertura en la mañana en formato 12 horas               
                 $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicio_m']));
                 $ProximoDia = false;
-            elseif($HoraApertura[0]['inicia_t'] < date('H:i') && $HoraApertura[0]['culmina_t'] > date('H:i')) :
+            elseif($HoraApertura[0]['inicia_t'] > date('H:i') && $HoraApertura[0]['culmina_t'] > date('H:i')) :
                 //Hora de apertura en la tarde
-                $HoraApertura = $HoraApertura[0]['inicia_t'];
+                $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicia_t']));
                 $ProximoDia = false;
             elseif($HoraApertura[0]['culmina_t'] < date('H:i')) :
                 //Hora de apertura del siguiente día en formato 12 horas
                 $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicio_m']));
                 $ProximoDia = true;
+            else :
+                $ProximoDia = '';
             endif;
 
             $Datos=[
