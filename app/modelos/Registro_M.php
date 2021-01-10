@@ -115,8 +115,26 @@
         }
         
         //INSERTA para habilitar un registro completo que almacenará el horario de la tienda
-        public function insertarHabilitarHorario($ID_Tienda){  
+        public function insertarHabilitarHorario_LV($ID_Tienda){  
             $stmt = $this->dbh->prepare("INSERT INTO horarios(ID_Tienda) VALUES (:ID_TIENDA)");
+
+            //Se vinculan los valores de las sentencias preparadas
+            //ztmt es una abreviatura de statement 
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
+            
+            //Se ejecuta la inserción de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
+        
+        //INSERTA para habilitar un registro completo que almacenará el horario de la tienda
+        public function insertarHabilitarHorario_FS($ID_Tienda){  
+            $stmt = $this->dbh->prepare("INSERT INTO horariosfinsemana(ID_Tienda) VALUES (:ID_TIENDA)");
 
             //Se vinculan los valores de las sentencias preparadas
             //ztmt es una abreviatura de statement 

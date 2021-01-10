@@ -806,9 +806,9 @@
 .label_24{/*cuenta_editar*/
 	margin:auto;
 }
-.legend_1{/*registroCom - registroDes*/
-	font-size: 1.1em;
-	margin-left: 1%;
+.legend_1{/*registroCom - registroDes - login - cuenta_editar - horario*/
+	font-size: 1.2em;
+	margin-left: 3%;
 }
 .li_1{/*carrito*/
 	line-height: 2em;

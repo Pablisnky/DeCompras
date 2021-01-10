@@ -418,9 +418,23 @@
             }
         }
         
-        //SELECT del horario de una tienda para el fin de semana
-        public function consultarHorarioTienda_FS($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_FS, '%H:%i') AS inicia_m_FS, DATE_FORMAT(culmina_m_FS, '%H:%i') AS culmina_m_FS, DATE_FORMAT(inicia_t_FS, '%H:%i') AS inicia_t_FS, DATE_FORMAT(culmina_t_FS, '%H:%i') AS culmina_t_FS FROM horariosfinsemana WHERE ID_Tienda = :ID_TIENDA");
+        //SELECT del horario de una tienda para el dia sábado
+        public function consultarHorarioTienda_Sab($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_Sab, '%h:%i %p') AS inicia_m_Sab, DATE_FORMAT(culmina_m_Sab, '%h:%i %p') AS culmina_m_Sab, DATE_FORMAT(inicia_t_Sab, '%h:%i %p') AS inicia_t_Sab, DATE_FORMAT(culmina_t_Sab, '%h:%i %p') AS culmina_t_Sab FROM horariosabado WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //SELECT del horario de una tienda para el dia domingo
+        public function consultarHorarioTienda_Dom($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_Dom, '%h:%i %p') AS inicia_m_Dom, DATE_FORMAT(culmina_m_Dom, '%h:%i %p') AS culmina_m_Dom, DATE_FORMAT(inicia_t_Dom, '%h:%i %p') AS inicia_t_Dom, DATE_FORMAT(culmina_t_Dom, '%h:%i %p') AS culmina_t_Dom FROM horariodomingo WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
@@ -946,19 +960,17 @@
             }
         }
 
-        //UPDATE de horarios de tienda de fin de semana
-        public function actualizarHorarioTienda_FS($ID_Tienda, $RecibeHorario_FS){
-            $stmt = $this->dbh->prepare("UPDATE horariosfinsemana SET inicia_m_FS = :INICIA_M_FS, culmina_m_FS = :CULMINA_M_FS, sabado_m_FS = :SABADO_M_FS, domingo_m_FS = :DOMINGO_M_FS, inicia_t_FS = :INICIA_T_FS, culmina_t_FS = :CULMINA_T_FS, sabado_t_FS = :SABADO_T_FS, domingo_t_FS = :DOMINGO_T_FS WHERE ID_Tienda = :ID_TIENDA");
+        //UPDATE de horarios de tienda del día sábado
+        public function actualizarHorarioTienda_Sab($ID_Tienda, $RecibeHorario_Sab){
+            $stmt = $this->dbh->prepare("UPDATE horariosabado SET inicia_m_Sab = :INICIA_M_SAB, culmina_m_Sab = :CULMINA_M_SAB, sabado_m = :SABADO_M, inicia_t_Sab = :INICIA_T_SAB, culmina_t_Sab = :CULMINA_T_SAB, sabado_t = :SABADO_T WHERE ID_Tienda = :ID_TIENDA");
 
             // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':INICIA_M_FS', $RecibeHorario_FS['Inicio_M_FS']);
-            $stmt->bindValue(':CULMINA_M_FS', $RecibeHorario_FS['Culmina_M_FS']);
-            $stmt->bindValue(':SABADO_M_FS', $RecibeHorario_FS['Sabado_M_FS']);
-            $stmt->bindValue(':DOMINGO_M_FS', $RecibeHorario_FS['Domingo_M_FS']);
-            $stmt->bindValue(':INICIA_T_FS', $RecibeHorario_FS['Inicia_T_FS']);
-            $stmt->bindValue(':CULMINA_T_FS', $RecibeHorario_FS['Culmina_T_FS']);
-            $stmt->bindValue(':SABADO_T_FS', $RecibeHorario_FS['Sabado_T_FS']);
-            $stmt->bindValue(':DOMINGO_T_FS', $RecibeHorario_FS['Domingo_T_FS']);
+            $stmt->bindValue(':INICIA_M_SAB', date('H:i', strtotime($RecibeHorario_Sab['Inicio_M_Sab'])));
+            $stmt->bindValue(':CULMINA_M_SAB', date('H:i', strtotime($RecibeHorario_Sab['Culmina_M_Sab'])));
+            $stmt->bindValue(':SABADO_M', $RecibeHorario_Sab['Sabado_M']);
+            $stmt->bindValue(':INICIA_T_SAB', date('H:i', strtotime($RecibeHorario_Sab['Inicia_T_Sab'])));
+            $stmt->bindValue(':CULMINA_T_SAB', date('H:i', strtotime($RecibeHorario_Sab['Culmina_T_Sab'])));
+            $stmt->bindValue(':SABADO_T', $RecibeHorario_Sab['Sabado_T']);
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
 
             // Se ejecuta la actualización de los datos en la tabla
@@ -970,6 +982,27 @@
             }
         }
 
+        //UPDATE de horarios de tienda del día domingo
+        public function actualizarHorarioTienda_Dom($ID_Tienda, $RecibeHorario_Dom){
+            $stmt = $this->dbh->prepare("UPDATE horariodomingo SET inicia_m_Dom = :INICIA_M_DOM, culmina_m_Dom = :CULMINA_M_DOM, domingo_m = :DOMINGO_M, inicia_t_Dom = :INICIA_T_DOM, culmina_t_Dom = :CULMINA_T_DOM, domingo_t = :DOMINGO_T WHERE ID_Tienda = :ID_TIENDA");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':INICIA_M_DOM', date('H:i', strtotime($RecibeHorario_Dom['Inicio_M_Dom'])));
+            $stmt->bindValue(':CULMINA_M_DOM', date('H:i', strtotime($RecibeHorario_Dom['Culmina_M_Dom'])));
+            $stmt->bindValue(':DOMINGO_M', $RecibeHorario_Dom['Domingo_M']);
+            $stmt->bindValue(':INICIA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Inicia_T_Dom'])));
+            $stmt->bindValue(':CULMINA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Culmina_T_Dom'])));
+            $stmt->bindValue(':DOMINGO_T', $RecibeHorario_Dom['Domingo_T']);
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
 
 

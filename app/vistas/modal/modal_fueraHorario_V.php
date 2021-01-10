@@ -14,6 +14,14 @@
             <h2 class="h2_6">Igualmente puedes realizar tu compra en este momento,<br> despacharemos tu pedido al abrir la tienda.</h2>
             <?php
         }
+        else if($Datos['proximoDia'] == 'NoAplica'){   ?>
+            <h1 class="h1_1 h1_4 ">Despachos no disponibles a esta hora</h1>
+            <br>
+            <h1 class="h1_1 h1_4 bandaAlerta">Abrimos el lunes a las <?php echo $Datos['horaApertura']?></h1>
+            <br>
+            <h2 class="h2_6">Igualmente puedes realizar tu compra,<br> despacharemos tu pedido al abrir la tienda.</h2>
+            <?php
+        }  
         else{   ?>
             <h1 class="h1_1 h1_4 ">Despachos no disponibles a esta hora</h1>
             <br>
@@ -21,7 +29,7 @@
             <br>
             <h2 class="h2_6">Igualmente puedes realizar tu compra,<br> despacharemos tu pedido al abrir la tienda.</h2>
             <?php
-        }   ?>
+        }   ?> 
             <!-- <br class="br_1"> -->
             <div class="contBoton" id="Contenedor_26">
                 <label class="boton boton--centro" id="Label_1" onclick="cerrarModal('sectionModal')">Entrar</label>

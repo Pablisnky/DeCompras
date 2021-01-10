@@ -79,9 +79,23 @@
             }
         }
         
-        //SELECT con horas de apertura de la tienda formto 24 horas
-        public function consultarAperturaTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t  FROM horarios WHERE ID_Tienda = :ID_TIENDA");
+        //SELECT con horas de apertura de la tienda formto 24 horas   
+        public function consultarAperturaTienda_LV($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(culmina_m, '%H:%i') AS culmina_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t FROM horarios WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
+        //SELECT con horas de apertura de la tienda formto 24 horas   
+        public function consultarAperturaTienda_FS($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT DATE_FORMAT(inicia_m_FS, '%H:%i') AS inicia_m_FS, DATE_FORMAT(culmina_m_FS, '%H:%i') AS culmina_m_FS, DATE_FORMAT(inicia_t_FS, '%H:%i') AS inicia_t_FS, DATE_FORMAT(culmina_t_FS, '%H:%i') AS culmina_t_FS FROM horariosfinsemana WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 

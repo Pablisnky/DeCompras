@@ -30,28 +30,57 @@
             //Se CONSULTAN el slogan de una tienda en particular
             $Slogan = $this->ConsultaVitrina_M->consultarSloganTienda($ID_Tienda);
 
-            //Se CONSULTAN las horas de apertura
-            $HoraApertura = $this->ConsultaVitrina_M->consultarAperturaTienda($ID_Tienda);
-            date_default_timezone_set('America/Caracas');
-            // echo '<pre>';
-            // print_r($HoraApertura);
-            // echo '</pre>';
-            // echo date('H:i') . '<br>'; 
+            //Se consulta el horario de apertura segun el dia de la semana
+            if(date('D') == 'Mon' || date('D') == 'Tue' || date('D') == 'Wed' || date('D') == 'Thu' ||date('D') == 'Fri') :
+                //Se CONSULTAN las horas de apertura de lunes a viernes
+                $HoraApertura = $this->ConsultaVitrina_M->consultarAperturaTienda_LV($ID_Tienda);
+                date_default_timezone_set('America/Caracas');
+                // echo '<pre>';
+                // print_r($HoraApertura);
+                // echo '</pre>';
+                // echo date('H:i') . '<br>'; 
 
-            if($HoraApertura[0]['inicio_m'] > date('H:i')) :
-                //Hora de apertura en la mañana en formato 12 horas               
-                $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicio_m']));
-                $ProximoDia = false;
-            elseif($HoraApertura[0]['inicia_t'] > date('H:i') && $HoraApertura[0]['culmina_t'] > date('H:i')) :
-                //Hora de apertura en la tarde
-                $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicia_t']));
-                $ProximoDia = false;
-            elseif($HoraApertura[0]['culmina_t'] < date('H:i')) :
-                //Hora de apertura del siguiente día en formato 12 horas
-                $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicio_m']));
-                $ProximoDia = true;
+                if($HoraApertura[0]['inicio_m'] > date('H:i')) :
+                    //Hora de apertura en la mañana en formato 12 horas               
+                    $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicio_m']));
+                    $ProximoDia = false;
+                elseif($HoraApertura[0]['culmina_m'] < date('H:i') && $HoraApertura[0]['iniciaa_t'] > date('H:i')) :
+                    //Hora de apertura en la tarde
+                    $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicia_t']));
+                    $ProximoDia = false;
+                elseif($HoraApertura[0]['culmina_t'] < date('H:i')) :
+                    //Hora de apertura del siguiente día en formato 12 horas
+                    $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicio_m']));
+                    $ProximoDia = true;
+                else :
+                    $HoraApertura = '';
+                    $ProximoDia = 'NoAplica';
+                endif;
             else :
-                $ProximoDia = '';
+                //Se CONSULTAN las horas de apertura de sabado y domingo
+                $HoraApertura = $this->ConsultaVitrina_M->consultarAperturaTienda_FS($ID_Tienda);
+                date_default_timezone_set('America/Caracas');
+                // echo '<pre>';
+                // print_r($HoraApertura);
+                // echo '</pre>';
+                // echo date('H:i') . '<br>'; 
+                if($HoraApertura[0]['inicia_m_FS'] > date('H:i')) :
+                    //Hora de apertura en la mañana en formato 12 horas               
+                    $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicia_m_FS']));
+                    $ProximoDia = false;
+                elseif($HoraApertura[0]['culmina_m_FS'] < date('H:i') && $HoraApertura[0]['inicia_t_FS'] > date('H:i')) :
+                    //Hora de apertura en la tarde
+                    $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicia_t_FS']));
+                    $ProximoDia = false;
+                elseif($HoraApertura[0]['culmina_t_FS'] < date('H:i') && $HoraApertura[0]['inicia_m_FS'] != '00:00') :
+                    //Hora de apertura del siguiente día en formato 12 horas
+                    $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicia_m_FS']));
+                    $ProximoDia = true;
+                elseif($HoraApertura[0]['inicia_m_FS'] == '00:00') :
+                    $HoraApertura = $this->ConsultaVitrina_M->consultarAperturaTienda_LV($ID_Tienda);
+                    $HoraApertura = $HoraApertura[0]['inicio_m'];
+                    $ProximoDia = 'NoAplica';
+                endif;
             endif;
 
             $Datos=[

@@ -1,7 +1,8 @@
-<?php require(RUTA_APP . "/vistas/inc/header.php");  ?>
-<section class="section_4 section_10"  id="Ejemplo_Secciones">
-    <div class="contenedor_24 contenedor_118">
-            <h1 class="h1_1">Antes de cargar productos en tu tienda, debes configurarla completamente. <br><br>Carga la información necesaria para que el publico pueda acceder a tu tienda.</h1>
+<?php require(RUTA_APP . "/vistas/inc/header_Modal.php");  ?>
+<section class="sectionModal"  id="Ejemplo_Secciones">
+    <div class="sectionModal__div">
+            <p class="sectionModal__div__p">Antes de cargar productos en tu tienda, debes configurarla completamente.</p>
+            <p class="sectionModal__div__p">Carga la información necesaria para que el publico pueda acceder a tu tienda.</p>
         <div class="contenedor_87">      
             <a class="label_21 boton" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Cerrar</a>
         </div>

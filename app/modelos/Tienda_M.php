@@ -88,8 +88,8 @@
             }
         }
       
-        // SELECT con los horarios de tiendas en formato 24 horas
-        public function consultarHorarios($IDs_Tiendas){
+        // SELECT con los horarios de lunes a viernes de tiendas en formato 24 horas
+        public function consultarHorarios_LV($IDs_Tiendas){
             $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(culmina_m, '%H:%i') AS culmina_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t FROM horarios WHERE ID_Tienda IN ($IDs_Tiendas)");
 
             if($stmt->execute()){
@@ -100,9 +100,33 @@
             }
         }
         
+        // SELECT con los horarios de lunes a viernes de tiendas en formato 24 horas
+        public function consultarHorarios_FS($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_FS, '%H:%i') AS inicia_m_FS, DATE_FORMAT(culmina_m_FS, '%H:%i') AS culmina_m_FS, DATE_FORMAT(inicia_t_FS, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t_FS, '%H:%i') AS culmina_t_FS FROM horariosfinsemana WHERE ID_Tienda IN ($IDs_Tiendas)");
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
         // SELECT con los horarios de tiendas en formato 12 horas
-        public function consultarHorario_12($IDs_Tiendas){
+        public function consultarHorario_LV($IDs_Tiendas){
             $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicio_m, '%h:%i %p') AS inicio_m, DATE_FORMAT(culmina_m, '%h:%i %p') AS culmina_m, DATE_FORMAT(inicia_t, '%h:%i %p') AS inicia_t, DATE_FORMAT(culmina_t, '%h:%i %p') AS culmina_t FROM horarios WHERE ID_Tienda IN ($IDs_Tiendas)");
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        // SELECT con los horarios de tiendas en formato 12 horas
+        public function consultarHorario_FS($IDs_Tiendas){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_FS, '%h:%i %p') AS inicio_m_FS, DATE_FORMAT(culmina_m_FS, '%h:%i %p') AS culmina_m_FS, DATE_FORMAT(inicia_t_FS, '%h:%i %p') AS inicia_t_FS, DATE_FORMAT(culmina_t_FS, '%h:%i %p') AS culmina_t_FS FROM horariosfinsemana WHERE ID_Tienda IN ($IDs_Tiendas)");
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -52,9 +52,9 @@
                             <li>presenta tu tienda digital a la ciudad</li>
                         </ul> 
                         <p class="p_6">Y bienvenida es tu tienda en toda la ciudad.</p>
+                        <a class="label_21 boton" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Cerrar</a>
                     </div>
                 </div>
-                <a class="label_21 boton" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Cerrar</a>
             </div>
         </section> 
         <?php

@@ -77,7 +77,10 @@
                     $this->ConsultaRegistro_M->insertarAccesoComerciante($ID_AfiliadoCom, $ClaveCifrada);
                     
                     //Se INSERTAN el campo de horario en la BD
-                    $this->ConsultaRegistro_M->insertarHabilitarHorario($ID_Tienda);
+                    $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);
+                    
+                    //Se INSERTAN el campo de horario de sabado y domingo en la BD
+                    $this->ConsultaRegistro_M->insertarHabilitarHorario_FS($ID_Tienda);
 
                 $this->ConsultaRegistro_M->commit();
             }

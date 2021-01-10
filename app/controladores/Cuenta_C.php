@@ -33,8 +33,7 @@
             $Fotografia = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
 
             //Se CONSULTAN el slogan de una tienda en particular
-            $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-            $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
@@ -143,8 +142,11 @@
             //Se CONSULTAN el horario de lunes a viernes de la tienda
             $Horario_LV = $this->ConsultaCuenta_M->consultarHorarioTienda_LV($this->ID_Tienda);
 
-            //Se CONSULTAN el horario de fin de semana de la tienda
-            $Horario_FS = $this->ConsultaCuenta_M->consultarHorarioTienda_FS($this->ID_Tienda);
+            //Se CONSULTAN el horario del dia sábado de la tienda
+            $Horario_Sab = $this->ConsultaCuenta_M->consultarHorarioTienda_Sab($this->ID_Tienda);
+
+            //Se CONSULTAN el horario del dia domingo de la tienda
+            $Horario_Dom = $this->ConsultaCuenta_M->consultarHorarioTienda_Dom($this->ID_Tienda);
 
             //CONSULTA los datos de cuentas bancarias de la tienda
             $DatosBancos = $this->ConsultaCuenta_M->consultarBancosTienda($this->ID_Tienda);
@@ -191,7 +193,8 @@
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
                 'datosResposable' => $DatosResposable,
                 'horario_LV' => $Horario_LV,
-                'horario_FS' => $Horario_FS,
+                'horario_Sab' => $Horario_Sab,
+                'horario_Dom' => $Horario_Dom,
                 'datosBancos' => $DatosBancos,
                 'datosPagomovil' => $DatosPagoMovil,
                 'categoria' => $Categoria, // categoria
@@ -277,8 +280,7 @@
                 // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
                 //Se CONSULTAN el slogan de una tienda en particular
-                $Consulta = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-                $Slogan = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
                 $Datos = [
                     'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
@@ -536,16 +538,23 @@
                     'Jueves_T' => isset($_POST['jueves_T']) == 'Jueves' ? $_POST['jueves_T'] : 0,
                     'Viernes_T' => isset($_POST['viernes_T']) == 'Viernes' ? $_POST['viernes_T'] : 0
                 ];
-                $RecibeHorario_FS = [
-                    'Inicio_M_FS' => $_POST['inicioManana_FS'],
-                    'Culmina_M_FS' => $_POST['culminaManana_FS'],
-                    'Sabado_M_FS' => isset($_POST['sabado_M']) == 'Sabado' ? $_POST['sabado_M'] : 0,
-                    'Domingo_M_FS' => isset($_POST['domingo_M']) == 'Domingo' ? $_POST['domingo_M'] : 0,
+                $RecibeHorario_Sab = [
+                    'Inicio_M_Sab' => $_POST['inicioManana_Sab'],
+                    'Culmina_M_Sab' => $_POST['culminaManana_Sab'],
+                    'Sabado_M' => isset($_POST['sabado_M']) == 'Sabado' ? $_POST['sabado_M'] : 0,
 
-                    'Inicia_T_FS' => $_POST['inicioTarde_FS'],
-                    'Culmina_T_FS' => $_POST['culminaTarde_FS'],
-                    'Sabado_T_FS' => isset($_POST['sabado_T']) == 'Sabado' ? $_POST['sabado_T'] : 0,
-                    'Domingo_T_FS' => isset($_POST['domingo_T']) == 'Domingo' ? $_POST['domingo_T'] : 0,
+                    'Inicia_T_Sab' => $_POST['inicioTarde_Sab'],
+                    'Culmina_T_Sab' => $_POST['culminaTarde_Sab'],
+                    'Sabado_T' => isset($_POST['sabado_T']) == 'Sabado' ? $_POST['sabado_T'] : 0,
+                ];
+                $RecibeHorario_Dom = [
+                    'Inicio_M_Dom' => $_POST['inicioManana_Dom'],
+                    'Culmina_M_Dom' => $_POST['culminaManana_Dom'],
+                    'Domingo_M' => isset($_POST['domingo_M']) == 'Domingo' ? $_POST['domingo_M'] : 0,
+
+                    'Inicia_T_Dom' => $_POST['inicioTarde_Dom'],
+                    'Culmina_T_Dom' => $_POST['culminaTarde_Dom'],
+                    'Domingo_T' => isset($_POST['domingo_T']) == 'Domingo' ? $_POST['domingo_T'] : 0,
                 ];
             }
             else{
@@ -558,14 +567,18 @@
             // print_r($RecibeHorario_LV);
             // echo '</pre>';
             // echo '<pre>';
-            // print_r($RecibeHorario_FS);
+            // print_r($RecibeHorario_Sab);
+            // echo '</pre>';
+            // echo '<pre>';
+            // print_r($RecibeHorario_Dom);
             // echo '</pre>';
             // exit;
             
             //Se ACTUALIZA el horario de la tienda
             // "TO_DO" no se han insertado los datos
             $this->ConsultaCuenta_M->actualizarHorarioTienda_LV($this->ID_Tienda, $RecibeHorario_LV);
-            $this->ConsultaCuenta_M->actualizarHorarioTienda_FS($this->ID_Tienda, $RecibeHorario_FS);
+            $this->ConsultaCuenta_M->actualizarHorarioTienda_Sab($this->ID_Tienda, $RecibeHorario_Sab);
+            $this->ConsultaCuenta_M->actualizarHorarioTienda_Dom($this->ID_Tienda, $RecibeHorario_Dom);
 
             //RECIBE INFORMACION DE PAGOS
             // ********************************************************            

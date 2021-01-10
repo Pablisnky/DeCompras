@@ -76,7 +76,6 @@
                 $Nombre = $usuarios[0]['nombre_AfiDes'];
                                 
                 $CuentaCom = false;
-                // $CuentaCom = false;
                 // echo '<pre>';
                 // print_r($usuarios); 
                 // echo '</pre>';
@@ -133,8 +132,8 @@
                         //CONSULTA si existe al menos una sección donde cargar productos
                         $Cant_Seccion = $this->ConsultaLogin_M->consultarSecciones($ID_Tienda);
                         // echo "Registros encontrados: " . $Cant_Seccion;
-                          
-                        //Se crea la sesiones que se exige en todas las páginas de su cuenta            
+                        
+                        //Se crean sesiones exigidas en las páginas de una cuenta de comerciante           
                         $_SESSION["ID_Tienda"] = $ID_Tienda;
                         
                         //Se crea la sesion que guarda el ID_Afiliado           
