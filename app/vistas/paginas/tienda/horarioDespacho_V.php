@@ -15,22 +15,25 @@
                 $IniciaTarde_LV = $Datos['horarioTienda_LV'][0]['inicia_t'];
                 $CulminaTarde_LV = $Datos['horarioTienda_LV'][0]['culmina_t'];  
 
-                $InicioManana_FS = $Datos['horarioTienda_FS'][0]['inicia_m_FS'];
-                $CulminaManana_FS = $Datos['horarioTienda_FS'][0]['culmina_m_FS'];
-                $IniciaTarde_FS = $Datos['horarioTienda_FS'][0]['inicia_t_FS'];
-                $CulminaTarde_FS = $Datos['horarioTienda_FS'][0]['culmina_t_FS'];  
+                $InicioManana_Sab = $Datos['horarioTienda_Sab'][0]['inicia_m_Sab'];
+                $CulminaManana_Sab = $Datos['horarioTienda_Sab'][0]['culmina_m_Sab'];
+                $IniciaTarde_Sab = $Datos['horarioTienda_Sab'][0]['inicia_t_Sab'];
+                $CulminaTarde_Sab = $Datos['horarioTienda_Sab'][0]['culmina_t_Sab'];  
               
-                if($Datos['horarioTienda_FS'][0]['sabado_m_FS'] == 'Sabado') :
-                    $InicioManana_FS = $InicioManana_FS != '00:00:00' ? $InicioManana_FS : '--';
-                    $CulminaManana_FS = $CulminaManana_FS != '12:00 AM' ? $CulminaManana_FS : '--';
-                    $IniciaTarde_FS = $IniciaTarde_FS != '12:00 AM' ? $IniciaTarde_FS : '--';
-                    $CulminaTarde_FS = $CulminaTarde_FS != '12:00 AM' ? $CulminaTarde_FS : '--'; 
-                elseif($Datos['horarioTienda_FS'][0]['domingo_m_FS'] == 'Domingo') :                    
-                    $InicioManana_FS = $InicioManana_FS != '00:00:00' ? $InicioManana_FS : '--';
-                    $CulminaManana_FS = $CulminaManana_FS != '12:00 AM' ? $CulminaManana_FS : '--';
-                    $IniciaTarde_FS = $IniciaTarde_FS != '12:00 AM' ? $IniciaTarde_FS : '--';
-                    $CulminaTarde_FS = $CulminaTarde_FS != '12:00 AM' ? $CulminaTarde_FS : '--'; 
-                endif;
+                $InicioManana_Dom = $Datos['horarioTienda_Dom'][0]['inicia_m_Dom'];
+                $CulminaManana_Dom = $Datos['horarioTienda_Dom'][0]['culmina_m_Dom'];
+                $IniciaTarde_Dom = $Datos['horarioTienda_Dom'][0]['inicia_t_Dom'];
+                $CulminaTarde_Dom = $Datos['horarioTienda_Dom'][0]['culmina_t_Dom']; 
+
+                $InicioManana_Sab = $InicioManana_Sab != '12:00 AM' ? $InicioManana_Sab : '--';
+                $CulminaManana_Sab = $CulminaManana_Sab != '12:00 AM' ? $CulminaManana_Sab : '--';
+                $IniciaTarde_Sab = $IniciaTarde_Sab != '12:00 AM' ? $IniciaTarde_Sab : '--';
+                $CulminaTarde_Sab = $CulminaTarde_Sab != '12:00 AM' ? $CulminaTarde_Sab : '--';              
+                
+                $InicioManana_Dom = $InicioManana_Dom != '12:00 AM' ? $InicioManana_Dom : '--';
+                $CulminaManana_Dom = $CulminaManana_Dom != '12:00 AM' ? $CulminaManana_Dom : '--';
+                $IniciaTarde_Dom = $IniciaTarde_Dom != '12:00 AM' ? $IniciaTarde_Dom : '--';
+                $CulminaTarde_Dom = $CulminaTarde_Dom != '12:00 AM' ? $CulminaTarde_Dom : '--'; 
             ?>
                 <table class="tabla_1">
                     <thead>
@@ -51,8 +54,8 @@
                             <td class="td_1"><?php echo $InicioManana_LV;?></td>
                             <td class="td_1"><?php echo $InicioManana_LV;?></td>
                             <td class="td_1"><?php echo $InicioManana_LV;?></td>
-                            <td class="td_1"><?php echo $InicioManana_FS;?></td>
-                            <td class="td_1"><?php echo $InicioManana_FS;?></td>
+                            <td class="td_1"><?php echo $InicioManana_Sab;?></td>
+                            <td class="td_1"><?php echo $InicioManana_Dom;?></td>
                         </tr>
                         <tr>
                             <td class="td_1 td_7"><?php echo $CulminaManana_LV;?></td>
@@ -60,8 +63,8 @@
                             <td class="td_1"><?php echo $CulminaManana_LV;?></td>
                             <td class="td_1"><?php echo $CulminaManana_LV;?></td>
                             <td class="td_1"><?php echo $CulminaManana_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_FS;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_FS;?></td>
+                            <td class="td_1"><?php echo $CulminaManana_Sab;?></td>
+                            <td class="td_1"><?php echo $CulminaManana_Dom;?></td>
                         </tr>
                         <tr style="height: 20px;"></tr>
                         <tr>
@@ -70,8 +73,8 @@
                             <td class="td_1"><?php echo $IniciaTarde_LV;?></td>
                             <td class="td_1"><?php echo $IniciaTarde_LV;?></td>
                             <td class="td_1"><?php echo $IniciaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_FS;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_FS;?></td>
+                            <td class="td_1"><?php echo $IniciaTarde_Sab;?></td>
+                            <td class="td_1"><?php echo $IniciaTarde_Dom;?></td>
                         </tr>
                         <tr>
                             <td class="td_1 td_7"><?php echo $CulminaTarde_LV;?></td>
@@ -79,8 +82,8 @@
                             <td class="td_1"><?php echo $CulminaTarde_LV;?></td>
                             <td class="td_1"><?php echo $CulminaTarde_LV;?></td>
                             <td class="td_1"><?php echo $CulminaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_FS;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_FS;?></td>
+                            <td class="td_1"><?php echo $CulminaTarde_Sab;?></td>
+                            <td class="td_1"><?php echo $CulminaTarde_Dom;?></td>
                         </tr>
                     </tbody>
                 </table>

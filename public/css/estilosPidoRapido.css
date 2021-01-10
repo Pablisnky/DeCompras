@@ -1191,10 +1191,11 @@ button{/*tiendas*/
 	margin: 2% auto;
 	padding: 1%;
 	border-radius: 15px;
-	text-align: center;
+	/* text-align: center; */
 }
-.sectionModal__div__p{/*modal_sinSecciones*/
+.sectionModal__div__p{/*modal_sinSecciones* - modal_fueraHorario*/
 	font-size: 1.3em;
+	text-align: center;
 	margin-bottom: 2%;
 }
 .contenedor_60__p1{/*carrito*/

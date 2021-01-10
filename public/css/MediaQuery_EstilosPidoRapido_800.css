@@ -150,8 +150,15 @@
 .contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax* - modal_fueraHorario*/
 	width: 95%;
 }
-.sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar*/
+.sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - modal_fueraHorario*/
 	padding-top: 5%;
+}
+.sectionModal__div__p{/*modal_sinSecciones* - modal_fueraHorario*/
+	font-size: 1.1em;
+	margin: auto;
+	line-height: 25px;
+	margin-bottom: 2%;
+	width: 90%;
 }
 .contBoton{/*carrito*/
 	margin-top: 15%;

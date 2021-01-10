@@ -213,15 +213,23 @@
             $TiendasHorarios_LV = $this->ConsultaTienda_M->consultarHorarios_LV($this->IDs_Tiendas);   
             date_default_timezone_set('America/Caracas');
             // echo '<pre>';
-            // print_r($TiendasHorarios);
+            // print_r($TiendasHorarios_LV);
             // echo '</pre>';
             // exit;
 
-            //SELECT para encontrar los horarios de lunes a viernes de las tiendas de una categoria
-            $TiendasHorarios_FS = $this->ConsultaTienda_M->consultarHorarios_FS($this->IDs_Tiendas);   
+            //SELECT para encontrar los horarios del día sábado de las tiendas de una categoria
+            $TiendasHorarios_Sab = $this->ConsultaTienda_M->consultarHorarios_Sab($this->IDs_Tiendas);   
             date_default_timezone_set('America/Caracas');
             // echo '<pre>';
-            // print_r($TiendasHorarios_FS);
+            // print_r($TiendasHorarios_Sab);
+            // echo '</pre>';
+            // exit;
+            
+            //SELECT para encontrar los horarios del día domingo de las tiendas de una categoria
+            $TiendasHorarios_Dom = $this->ConsultaTienda_M->consultarHorarios_Dom($this->IDs_Tiendas);   
+            date_default_timezone_set('America/Caracas');
+            // echo '<pre>';
+            // print_r($TiendasHorarios_Dom);
             // echo '</pre>';
             // exit;
 
@@ -237,18 +245,31 @@
                         array_push($Disponibilidad, $Nuevo_2);
                     endif;
                 endforeach;
-            elseif(date('D') == 'Sat' || date('D') == 'Sun') :
-                foreach($TiendasHorarios_FS AS $row) :
-                    if(($row['inicia_m_FS'] < date('H:i') && $row['culmina_m_FS'] > date('H:i')) || ($row['inicia_t_FS'] < date('H:i') && $row['culmina_t_FS'] > date('H:i'))) :
+            elseif(date('D') == 'Sat') :
+                foreach($TiendasHorarios_Sab AS $row) :
+                    if(($row['inicia_m_Sab'] < date('H:i') && $row['culmina_m_Sab'] > date('H:i')) || ($row['inicia_t_Sab'] < date('H:i') && $row['culmina_t_Sab'] > date('H:i'))) :
                         $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Abierto'];
                         array_push($Disponibilidad, $Nuevo_2);
-                    elseif($TiendasHorarios_FS == Array ()) :
+                    elseif($TiendasHorarios_Sab == Array ()) :
                         $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Cerrado'];
                         array_push($Disponibilidad, $Nuevo_2);
                     else :
                         $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Cerrado'];
                         array_push($Disponibilidad, $Nuevo_2);
                     endif;
+                endforeach;
+                elseif(date('D') == 'Sun') :
+                    foreach($TiendasHorarios_Dom AS $row) :
+                        if(($row['inicia_m_Dom'] < date('H:i') && $row['culmina_m_Dom'] > date('H:i')) || ($row['inicia_t_Dom'] < date('H:i') && $row['culmina_t_Dom'] > date('H:i'))) :
+                            $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Abierto'];
+                            array_push($Disponibilidad, $Nuevo_2);
+                        elseif($TiendasHorarios_Dom == Array ()) :
+                            $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Cerrado'];
+                            array_push($Disponibilidad, $Nuevo_2);
+                        else :
+                            $Nuevo_2 = ['ID_Tienda' => $row['ID_Tienda'], 'disponibilidad' => 'Cerrado'];
+                            array_push($Disponibilidad, $Nuevo_2);
+                        endif;
                 endforeach;
             endif;
 
@@ -269,12 +290,16 @@
             //Consulta el horario de la tienda de lunes a viernes formato 12 horas
             $TiendasHorarios_LV = $this->ConsultaTienda_M->consultarHorario_LV($ID_Tienda);  
             
-            //Consulta el horario de la tienda de lunes a viernes formato 12 horas
-            $TiendasHorarios_FS = $this->ConsultaTienda_M->consultarHorario_FS($ID_Tienda); 
+            //Consulta el horario de la tienda del sábado formato 12 horas
+            $TiendasHorarios_Sab = $this->ConsultaTienda_M->consultarHorario_Sab($ID_Tienda); 
+
+            //Consulta el horario de la tienda del domingo formato 12 horas
+            $TiendasHorarios_Dom = $this->ConsultaTienda_M->consultarHorario_Dom($ID_Tienda);
 
             $Datos = [
                 'horarioTienda_LV' => $TiendasHorarios_LV,
-                'horarioTienda_FS' => $TiendasHorarios_FS,
+                'horarioTienda_Sab' => $TiendasHorarios_Sab,
+                'horarioTienda_Dom' => $TiendasHorarios_Dom,
                 'nombreTienda' => $NombreTienda
             ];
 

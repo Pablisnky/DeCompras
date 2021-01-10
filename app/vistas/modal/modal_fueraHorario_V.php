@@ -7,27 +7,27 @@
     <div class="contenedor_24">
         <?php 
         if($Datos['proximoDia'] == 1){  ?>
-            <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles a esta hora</h1>
+            <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>
-            <h1 class="h1_1 h1_4 ">Abrimos mañana a las <?php echo $Datos['horaApertura']?></h1>
+            <p class="sectionModal__div__p">Abrimos mañana a las  <br class="br_2"><?php echo $Datos['horaApertura']?></p>
             <br>
-            <h2 class="h2_6">Igualmente puedes realizar tu compra en este momento,<br> despacharemos tu pedido al abrir la tienda.</h2>
+            <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }
         else if($Datos['proximoDia'] == 'NoAplica'){   ?>
-            <h1 class="h1_1 h1_4 ">Despachos no disponibles a esta hora</h1>
+            <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>
-            <h1 class="h1_1 h1_4 bandaAlerta">Abrimos el lunes a las <?php echo $Datos['horaApertura']?></h1>
+            <p class="sectionModal__div__p">Abrimos el lunes a las <br class="br_2"><?php echo $Datos['horaApertura']?></p>
             <br>
-            <h2 class="h2_6">Igualmente puedes realizar tu compra,<br> despacharemos tu pedido al abrir la tienda.</h2>
+            <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }  
         else{   ?>
-            <h1 class="h1_1 h1_4 ">Despachos no disponibles a esta hora</h1>
+            <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>
-            <h1 class="h1_1 h1_4 bandaAlerta">Abrimos a las <?php echo $Datos['horaApertura']?></h1>
+            <p class="sectionModal__div__p">Abrimos a las  <br class="br_2"><?php echo $Datos['horaApertura']?></p>
             <br>
-            <h2 class="h2_6">Igualmente puedes realizar tu compra,<br> despacharemos tu pedido al abrir la tienda.</h2>
+            <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }   ?> 
             <!-- <br class="br_1"> -->
