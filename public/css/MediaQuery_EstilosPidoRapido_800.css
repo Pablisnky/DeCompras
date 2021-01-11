@@ -45,7 +45,7 @@
 .boton--alto{/*afiliacion - carrito*/ 
 	line-height: 20px;
 }
-.boton--largo{/*cuenta_editar */ 
+.boton--largo{/*cuenta_editar - horarioDespacho*/ 
 	width: 200px;
 }
 .br_2{/*carrito*/
@@ -316,7 +316,7 @@
 	width: 100%;
 }
 .contenedor_67{/*cuenta_editar*/
-	padding: 5% 1%;
+	padding: 5% 0%;
 	margin: 0% auto 10% auto !important;
 }
 .contenedor_68{/*afiliacion*/
@@ -473,7 +473,7 @@
 	padding-left:10%;
 }
 .contenedor_112{/*cuenta*/
-	background-color:  var(--OficialClaro);
+	background-color: var(--OficialClaro);
 	padding: 4%;
 	width: 90%;
 	margin: auto;
@@ -564,6 +564,35 @@
 .contenedor_155{/*carrito*/
 	width: 100%;
 }
+.contTabla{/*horarioDespacho*/
+	overflow: auto; /*permite el scroll horizontal dentro del div*/
+	margin-bottom: 10%;
+}
+.contHorario{/*horario*/
+	justify-content: space-between;
+	/* display: flex;
+	flex-wrap: wrap;
+	margin-top: 5%; */
+}
+.contHorario>h2{/*contHorario*/
+	/*flex: 0 1 100% !important;ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap: wrap*/
+}
+.contHorario__div{/*horario*/
+	/* width: 45%; */
+}
+.contHorario__h2{/*horario*/
+	/* background-color: var(--OficialClaro);
+	line-height: 30px;
+	padding-left: 10%;
+	font-weight: lighter;
+	font-size: 1.2em; */
+}
+.contHorario__p{/**/
+	/* text-align: center; */
+}
+.contGeneral__p{/*horarioDespacho*/
+	width: 95%;
+}
 .contGridTres{/*Categorias_Ajax*/
 	grid-template-columns: 100%;
 }
@@ -572,7 +601,7 @@
 }
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
-	width: 90%;
+	width: 95%;
 	padding: 2% ;
 }
 .figure_1{/*opciones - buscador*/
@@ -1010,6 +1039,19 @@
 .spanCerrar{/*inicio - modal_fueraHorario*/
 	font-size: 1.5em;
 	margin: -5% 4% 0% 88%;
+}
+.tabla1{/*horarioDespacho*/
+	width: 220%;
+}
+.tabla1__th{/*horarioDespacho*/
+	font-size: 0.8em;
+	width: 100%;
+	width: 100px !important;
+}
+.tabla1__td{/*horarioDespacho*/
+	/* font-size: 0.9em;
+	text-align: center;
+	height: 30px; */
 }
 .tabla2__td1{/*carrito*/
 	width: 40%;

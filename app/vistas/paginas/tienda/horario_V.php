@@ -3,10 +3,15 @@
 	<fieldset class="fieldset_1 fieldset_2" id="Fieldset_3">                                 
 		<legend class="legend_1">Horario</legend>
 		<span>Tú tienda digital esta disponible al publico las 24 horas de todos los días, pero los despachos no, indica el horario en el cual estarán disponibles los despachos desde tu tienda, cualquier pedido realizado fuera de este horario quedará aplazado para la proxima apertura de tu tienda, generalmente el horario de despacho es el mismo horario en el que tu tienda física esta abierta.</span>
-		<div id="Contenedor_90">
-			<div class="contenedor_67 borde_1">
-				<div class="contFlex">
-					<p class="">Mañana</p>    <?php 
+		
+
+		<!-- LUNES - VIERNES -->
+		<div class="contHorario">
+			<h2 class="contHorario__h2 borde_1">Lunes - Viernes</h2>
+			<!-- LUNES - VIERNES MAÑANA -->  
+			<div class="contHorario__div borde_1">
+				<div class="">
+					<p class="contHorario__p">Mañana</p>    <?php 
 					//$Datos proviene de 	                              
 					foreach($Datos['horario_LV'] as $row) :   
 					endforeach; ?>
@@ -27,28 +32,26 @@
 						<label class="contInputRadio__label" for="Viernes_M">Viernes</label>    
 					</div>
 					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="inicioManana" id="InicioManana">
-						<option><?php echo !empty($row['inicio_m']) ? $row['inicio_m'] : '00:00';?></option> 
-						<option></option>
-						<option>05:00 am</option>
-						<option>05:30 am</option>
-						<option>06:00 am</option>
-						<option>06:30 am</option>
-						<option>07:00 am</option>
-						<option>07:30 am</option>
-						<option>08:00 am</option>
-						<option>08:30 am</option>
-						<option>09:00 am</option>
-						<option>09:30 am</option>
-						<option>10:00 am</option>
-						<option>10:30 am</option>
+						<p class="contHorario__p">Apertura</p>
+						<select class="contSelectVert__select borde_1" name="inicioManana" id="InicioManana">
+							<option><?php echo !empty($row['inicio_m']) ? $row['inicio_m'] : '00:00';?></option> 
+							<option></option>
+							<option>05:00 am</option>
+							<option>05:30 am</option>
+							<option>06:00 am</option>
+							<option>06:30 am</option>
+							<option>07:00 am</option>
+							<option>07:30 am</option>
+							<option>08:00 am</option>
+							<option>08:30 am</option>
+							<option>09:00 am</option>
+							<option>09:30 am</option>
+							<option>10:00 am</option>
+							<option>10:30 am</option>
 						</select>
 						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaManana" id="CulminaManana">
+						<p class="contHorario__p">Cierre</p>
+						<select class="contSelectVert__select borde_1" name="culminaManana" id="CulminaManana">
 							<option><?php echo !empty($row['culmina_m']) ? $row['culmina_m'] : '00:00';?></option> 
 							<option></option>
 							<option>10:00 am</option>
@@ -65,9 +68,9 @@
 				</div>  
 			</div>
                         
-			<div class="contenedor_67 borde_1">                  
-				<div class="contFlex">
-					<p >Tarde</p>	    <?php 	                              
+			<div class="contHorario__div borde_1">                  
+				<div class="">
+					<p  class="contHorario__p">Tarde</p>	    <?php 	                              
 					foreach($Datos['horario_LV'] as $row) :  
 					endforeach;  ?>
 					<div class="contInputRadio">
@@ -87,9 +90,8 @@
 						<label class="contInputRadio__label" for="Viernes_T">Viernes</label>
 					</div>
 					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="iniciaTarde" id="IniciaTarde">
+						<p class="contHorario__p">Apertura</P>
+						<select class="contSelectVert__select borde_1" name="iniciaTarde" id="IniciaTarde">
 							<option><?php echo !empty($row['inicia_t']) ? $row['inicia_t'] : '00:00';?></option>
 							<option></option>
 							<option>12:00 m</option>
@@ -105,9 +107,8 @@
 							<option>05:00 pm</option>
 						</select>
 						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaTarde" id="CulminaTarde">
+						<p class="contHorario__p">Cierre</P>
+						<select class="contSelectVert__select borde_1" name="culminaTarde" id="CulminaTarde">
 							<option><?php echo !empty($row['culmina_t']) ? $row['culmina_t'] : '00:00';?></option>
 							<option></option>
 							<option>04:00 pm</option>
@@ -139,74 +140,67 @@
 			</div>
 		</div>
 
-		<!-- ****************************************************************** -->
-		<!-- FIN DE SEMANA -->
-		<!-- ****************************************************************** -->
-
-		<div id="Contenedor_91"> 
+		<!-- SABADO -->
+		<div class="contHorario"> 
+			<h2 class="contHorario__h2 borde_1">Sábado</h2>  
 			<!-- SABADO MAÑANA -->  
-			<div class="contenedor_67 borde_1"> 
-				<div class="contFlex">
-					<p >Mañana</p>    <?php 	                              
-					foreach($Datos['horario_Sab'] as $row) :  
-					endforeach;  ?>
-					<div class="contInputRadio"> 
-						<input type="checkbox" name="sabado_M" id="Sabado_M" value="Sabado" <?php if(!empty($row['sabado_m']) == 'Sabado'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="Sabado_M">Sábado</label>
-					</div>
-					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="inicioManana_Sab" id="InicioManana_Sab">
-							<option><?php echo !empty($row['inicia_m_Sab']) ? $row['inicia_m_Sab'] : '00:00';?></option> 
-							<option></option>
-							<option>05:00 am</option>
-							<option>05:30 am</option>
-							<option>06:00 am</option>
-							<option>06:30 am</option>
-							<option>07:00 am</option>
-							<option>07:30 am</option>
-							<option>08:00 am</option>
-							<option>08:30 am</option>
-							<option>09:00 am</option>
-							<option>09:30 am</option>
-							<option>10:00 am</option>
-						</select>
-						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaManana_Sab" id="CulminaManana_Sab">
-							<option><?php echo !empty($row['culmina_m_Sab']) ? $row['culmina_m_Sab'] : '00:00';?></option> 
-							<option></option>
-							<option>10:00 am</option>
-							<option>10:30 am</option>
-							<option>11:00 am</option>
-							<option>11:30 am</option>
-							<option>12:00 m</option>
-							<option>12:30 pm</option>
-							<option>1:00 pm</option>
-							<option>1:30 pm</option>
-							<option>2:00 pm</option>
-						</select>
-					</div> 
+			<div class="contHorario__div borde_1"> 
+				<p class="contHorario__p">Mañana</p>    <?php 	                              
+				foreach($Datos['horario_Sab'] as $row) :  
+				endforeach;  ?>
+				<div class="contInputRadio"> 
+					<input class="contInputRadio__input" type="checkbox" name="sabado_M" id="Sabado_M" value="Sabado" <?php if(!empty($row['sabado_m']) == 'Sabado'){echo 'checked';}?>/>
+					<!-- <label class="contInputRadio__label" for="Sabado_M">Sábado</label> -->
+				</div>
+				<div class="contSelectVert">
+					<p class="contHorario__p">Apertura</p>
+					<select class="contSelectVert__select borde_1" name="inicioManana_Sab" id="InicioManana_Sab">
+						<option><?php echo $row['sabado_m'] == 'Sabado' ? $row['inicia_m_Sab'] : '00:00';?></option> 
+						<option></option>
+						<option>05:00 am</option>
+						<option>05:30 am</option>
+						<option>06:00 am</option>
+						<option>06:30 am</option>
+						<option>07:00 am</option>
+						<option>07:30 am</option>
+						<option>08:00 am</option>
+						<option>08:30 am</option>
+						<option>09:00 am</option>
+						<option>09:30 am</option>
+						<option>10:00 am</option>
+					</select>
+					<br>
+					<p class="contHorario__p">Cierre</p>
+					<select class="contSelectVert__select borde_1" name="culminaManana_Sab" id="CulminaManana_Sab">
+						<option><?php echo $row['sabado_m'] == 'Sabado' ? $row['culmina_m_Sab'] : '00:00';?></option> 
+						<option></option>
+						<option>10:00 am</option>
+						<option>10:30 am</option>
+						<option>11:00 am</option>
+						<option>11:30 am</option>
+						<option>12:00 m</option>
+						<option>12:30 pm</option>
+						<option>1:00 pm</option>
+						<option>1:30 pm</option>
+						<option>2:00 pm</option>
+					</select>
 				</div> 
 			</div>
 						
-			<!-- SABADO TARDE -->                        
-			<div class="contenedor_67 borde_1">
-				<div class="contFlex">
-					<p >Tarde</p>    <?php 	                              
+			<!-- SABADO TARDE -->                  
+			<div class="contHorario__div borde_1">
+				<div class="">
+					<p class="contHorario__p">Tarde</p>    <?php 	                              
 					foreach($Datos['horario_Sab'] as $row) :  
 					endforeach;	  ?>
 					<div class="contInputRadio"> 
-						<input type="checkbox" name="sabado_T" id="Sabado_T" value="Sabado" <?php if(!empty($row['sabado_t']) == 'Sabado'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="Sabado_T">Sábado</label>
+						<input class="contInputRadio__input" type="checkbox" name="sabado_T" id="Sabado_T" value="Sabado" <?php if(!empty($row['sabado_t']) == 'Sabado'){echo 'checked';}?>/>
+						<!-- <label class="contInputRadio__label" for="Sabado_T">Sábado</label> -->
 					</div>
 					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="inicioTarde_Sab" id="InicioTarde_Sab">
-							<option><?php echo !empty($row['inicia_t_Sab']) ? $row['inicia_t_Sab'] : '00:00';?></option> 
+						<p class="contHorario__p">Apertura</p>
+						<select class="contSelectVert__select borde_1" name="inicioTarde_Sab" id="InicioTarde_Sab">
+							<option><?php echo $row['sabado_t'] == 'Sabado' ? $row['inicia_t_Sab'] : '00:00';?></option> 
 							<option></option>
 							<option>12:00 m</option>
 							<option>12:30 pm</option>
@@ -219,12 +213,15 @@
 							<option>4:00 pm</option>
 							<option>4:30 pm</option>
 							<option>5:00 pm</option>
+							<option>5:30 pm</option>
+							<option>6:00 pm</option>
+							<option>6:30 pm</option>
+							<option>7:00 pm</option>
 						</select>
 						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaTarde_Sab" id="CulminaTarde_Sab">
-							<option><?php echo !empty($row['culmina_t_Sab']) ? $row['culmina_t_Sab'] : '00:00';?></option> 
+						<p class="contHorario__p">Cierre</p>
+						<select class="contSelectVert__select borde_1" name="culminaTarde_Sab" id="CulminaTarde_Sab">
+							<option><?php echo $row['sabado_t'] == 'Sabado' ? $row['culmina_t_Sab'] : '00:00';?></option> 
 							<option></option>
 							<option>4:00 pm</option>
 							<option>4:30 pm</option>
@@ -253,22 +250,25 @@
 					</div> 
 				</div>
 			</div>
-			
+		</div>
+
+		<!-- DOMINGO -->
+		<div class="contHorario">
+			<h2 class="contHorario__h2 borde_1">Domingo</h2> 
 			<!-- DOMINGO MAÑANA -->  
-			<div class="contenedor_67 borde_1"> 
-				<div class="contFlex">
-					<p >Mañana</p>    <?php 	                              
+			<div class="contHorario__div borde_1"> 
+				<div class="">
+					<p class="contHorario__p">Mañana</p>    <?php 	                              
 					foreach($Datos['horario_Dom'] as $row) :  
 					endforeach;  ?>
 					<div class="contInputRadio"> 
-						<input type="checkbox" name="domingo_M" id="Domingo_M" value="Domingo" <?php if(!empty($row['domingo_m']) == 'Domingo'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="Domingo_M">Domingo</label>
+						<input class="contInputRadio__input" type="checkbox" name="domingo_M" id="Domingo_M" value="Domingo" <?php if(!empty($row['domingo_m']) == 'Domingo'){echo 'checked';}?>/>
+						<!-- <label class="contInputRadio__label" for="Domingo_M">Domingo</label> -->
 					</div>
 					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="inicioManana_Dom" id="InicioManana_Dom">
-							<option><?php echo !empty($row['inicia_m_Dom']) ? $row['inicia_m_Dom'] : '00:00';?></option> 
+						<p class="contHorario__p">Apertura</p>
+						<select class="contSelectVert__select borde_1" name="inicioManana_Dom" id="InicioManana_Dom">
+							<option><?php echo $row['domingo_m'] == 'Domingo' ? $row['inicia_m_Dom'] : '00:00';?></option> 
 							<option></option>
 							<option>05:00 am</option>
 							<option>05:30 am</option>
@@ -283,10 +283,9 @@
 							<option>10:00 am</option>
 						</select>
 						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaManana_Dom" id="CulminaManana_Dom">
-							<option><?php echo !empty($row['culmina_m_Dom']) ? $row['culmina_m_Dom'] : '00:00';?></option> 
+						<p class="contHorario__p">Cierre</p>
+						<select class="contSelectVert__select borde_1" name="culminaManana_Dom" id="CulminaManana_Dom">
+							<option><?php echo $row['domingo_m'] == 'Domingo' ? $row['culmina_m_Dom'] : '00:00';?></option> 
 							<option></option>
 							<option>10:00 am</option>
 							<option>10:30 am</option>
@@ -303,20 +302,19 @@
 			</div>
 						
 			<!-- DOMINGO TARDE -->                        
-			<div class="contenedor_67 borde_1">
-				<div class="contFlex">
-					<p >Tarde</p>    <?php 	                              
+			<div class="contHorario__div borde_1">
+				<div class="">
+					<p class="contHorario__p">Tarde</p>    <?php 	                              
 					foreach($Datos['horario_Dom'] as $row) :  
 					endforeach;	  ?>
 					<div class="contInputRadio"> 
-						<input type="checkbox" name="domingo_T" id="Domingo_T" value="Domingo" <?php if(!empty($row['domingo_t']) == 'Domingo'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="Domingo_T">Domingo</label>
+						<input class="contInputRadio__input" type="checkbox" name="domingo_T" id="Domingo_T" value="Domingo" <?php if(!empty($row['domingo_t']) == 'Domingo'){echo 'checked';}?>/>
+						<!-- <label class="contInputRadio__label" for="Domingo_T">Domingo</label> -->
 					</div>
 					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="inicioTarde_Dom" id="InicioTarde_Dom">
-							<option><?php echo !empty($row['inicia_t_Dom']) ? $row['inicia_t_Dom'] : '00:00';?></option> 
+						<p class="contHorario__p">Apertura</p>
+						<select class="contSelectVert__select borde_1" name="inicioTarde_Dom" id="InicioTarde_Dom">
+							<option><?php echo $row['domingo_t'] == 'Domingo' ? $row['inicia_t_Dom'] : '00:00';?></option> 
 							<option></option>
 							<option>12:00 m</option>
 							<option>12:30 pm</option>
@@ -331,10 +329,9 @@
 							<option>5:00 pm</option>
 						</select>
 						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaTarde_Dom" id="CulminaTarde_Dom">
-							<option><?php echo !empty($row['culmina_t_Dom']) ? $row['culmina_t_Dom'] : '00:00';?></option> 
+						<p class="contHorario__p">Cierre</p>
+						<select class="contSelectVert__select borde_1" name="culminaTarde_Dom" id="CulminaTarde_Dom">
+							<option><?php echo $row['domingo_t'] == 'Domingo' ? $row['culmina_t_Dom'] : '00:00';?></option> 
 							<option></option>
 							<option>4:00 pm</option>
 							<option>4:30 pm</option>
@@ -363,7 +360,9 @@
 					</div> 
 				</div>
 			</div>
+		</div>
 
+		<div>
 			<span>Añada una exepcion si algún día de la semana tiene un horario en particular</span>
 			<br><br>
 			<label class="label_4 label_24" id="Label_3">Añadir exepcion</label>

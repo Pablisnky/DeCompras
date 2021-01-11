@@ -35,70 +35,72 @@
                 $IniciaTarde_Dom = $IniciaTarde_Dom != '12:00 AM' ? $IniciaTarde_Dom : '--';
                 $CulminaTarde_Dom = $CulminaTarde_Dom != '12:00 AM' ? $CulminaTarde_Dom : '--'; 
             ?>
-                <table class="tabla_1">
-                    <thead>
-                        <tr>
-                            <th class="">LUNES</th>
-                            <th class="">MARTES</th>
-                            <th class="">MIERCOLES</th>
-                            <th class="">JUEVES</th>
-                            <th class="">VIERNES</th>
-                            <th class="">SABADO</th>
-                            <th class="">DOMINGO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="td_1 td_7" class="td_1"><?php echo $InicioManana_LV;?></td>
-                            <td class="td_1"><?php echo $InicioManana_LV;?></td>
-                            <td class="td_1"><?php echo $InicioManana_LV;?></td>
-                            <td class="td_1"><?php echo $InicioManana_LV;?></td>
-                            <td class="td_1"><?php echo $InicioManana_LV;?></td>
-                            <td class="td_1"><?php echo $InicioManana_Sab;?></td>
-                            <td class="td_1"><?php echo $InicioManana_Dom;?></td>
-                        </tr>
-                        <tr>
-                            <td class="td_1 td_7"><?php echo $CulminaManana_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_Sab;?></td>
-                            <td class="td_1"><?php echo $CulminaManana_Dom;?></td>
-                        </tr>
-                        <tr style="height: 20px;"></tr>
-                        <tr>
-                            <td class="td_1 td_7"><?php echo $IniciaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_Sab;?></td>
-                            <td class="td_1"><?php echo $IniciaTarde_Dom;?></td>
-                        </tr>
-                        <tr>
-                            <td class="td_1 td_7"><?php echo $CulminaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_LV;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_Sab;?></td>
-                            <td class="td_1"><?php echo $CulminaTarde_Dom;?></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="contTabla">
+                    <table class="tabla1">
+                        <thead>
+                            <tr>
+                                <th class="tabla1__th">LUNES</th>
+                                <th class="tabla1__th">MARTES</th>
+                                <th class="tabla1__th">MIERCOLES</th>
+                                <th class="tabla1__th">JUEVES</th>
+                                <th class="tabla1__th">VIERNES</th>
+                                <th class="tabla1__th">SABADO</th>
+                                <th class="tabla1__th">DOMINGO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tabla1__td"><?php echo $InicioManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $InicioManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $InicioManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $InicioManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $InicioManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $InicioManana_Sab;?></td>
+                                <td class="tabla1__td"><?php echo $InicioManana_Dom;?></td>
+                            </tr>
+                            <tr>
+                                <td class="tabla1__td"><?php echo $CulminaManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaManana_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaManana_Sab;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaManana_Dom;?></td>
+                            </tr>
+                            <tr style="height: 20px;"></tr>
+                            <tr>
+                                <td class="tabla1__td"><?php echo $IniciaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $IniciaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $IniciaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $IniciaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $IniciaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $IniciaTarde_Sab;?></td>
+                                <td class="tabla1__td"><?php echo $IniciaTarde_Dom;?></td>
+                            </tr>
+                            <tr>
+                                <td class="tabla1__td"><?php echo $CulminaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaTarde_LV;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaTarde_Sab;?></td>
+                                <td class="tabla1__td"><?php echo $CulminaTarde_Dom;?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </article>
 
             <article>
                 <div class="contGeneralCentro">   
-                    <p class="contGeneral__p">Las compras realizadas fuera del horario de despacho serán entregadas en el bloque siguiente de apertura.</p>   
+                    <p class="contGeneral__p">Las compras realizadas fuera del horario de despacho serán entregadas en el siguiente bloque de apertura.</p>   
                     
                 </div>
             </article>
 
             <article>
                 <div class="contBoton" id="Contenedor_26">
-                    <a class="boton boton--alto" href="javascript:history.back()">Cerrar horario</a>
+                    <a class="boton boton--largo" href="javascript:history.back()">Cerrar horario</a>
                 </div>
             </article>
         </div>

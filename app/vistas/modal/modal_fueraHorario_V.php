@@ -6,6 +6,10 @@
     <a href="<?php echo RUTA_URL . '/Tiendas_C/tiendasEnCatalogo/'. $Categoria;?>"><span class="icon-cancel-circle spanCerrar"></span></a>
     <div class="contenedor_24">
         <?php 
+        // Datos['proximoDia'] == 1 -> indica que se abre al dia siguiente
+        // Datos['proximoDia'] == NoAplica -> indica que se abre el dia lunes
+        // Datos['proximoDia'] == '' -> indica que se abre ese mismo dia 
+
         if($Datos['proximoDia'] == 1){  ?>
             <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>

@@ -432,7 +432,7 @@
             }
         }
         
-        //SELECT del horario de una tienda para el dia domingo
+        //SELECT del horario de una tienda para el dia domingo (formato 12 horas)
         public function consultarHorarioTienda_Dom($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_Dom, '%h:%i %p') AS inicia_m_Dom, DATE_FORMAT(culmina_m_Dom, '%h:%i %p') AS culmina_m_Dom, DATE_FORMAT(inicia_t_Dom, '%h:%i %p') AS inicia_t_Dom, DATE_FORMAT(culmina_t_Dom, '%h:%i %p') AS culmina_t_Dom FROM horariodomingo WHERE ID_Tienda = :ID_TIENDA");
 

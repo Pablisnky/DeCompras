@@ -204,6 +204,11 @@
                 'otrosPagos' => $OtrosPagos
             ];
             
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
+
             //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya tiene creada al menos una cuando vaya a cargar un producto
             if(!empty($Datos['secciones'])){
                 foreach($Datos['secciones'] as $Key){
@@ -211,11 +216,6 @@
                 }
                 $_SESSION['Seccion'] = $Seccion;
             }
-
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            // exit();
 
             $this->vista("inc/header_AfiCom", $Datos); 
             $this->vista("paginas/cuenta_editar_V", $Datos);

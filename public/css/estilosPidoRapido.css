@@ -1061,11 +1061,29 @@ button{/*tiendas*/
 	width: 65%;
 	margin: auto;
 }
-.spanCerrar{/*inicio - modal_fueraHorario*/
-	color: white;
-	font-size: 2em;
-	margin: -1% 4% 0% 95%;
-	cursor: pointer;
+.contHorario{/*horario*/
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 5%;
+}
+.contHorario>h2{/*contHorario*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap: wrap*/
+}
+.contHorario__div{/*horario*/
+	padding: 5% 2%;
+	border-radius: 15px;
+	margin: 1% auto 5% auto !important;
+	width: 45%;
+}
+.contHorario__p{/*horario*/
+	text-align: center;
+}
+.contHorario__h2{/*horario*/
+	background-color: var(--OficialClaro);
+	line-height: 30px;
+	padding-left: 10%;
+	font-weight: lighter;
+	font-size: 1.2em;
 }
 .contMuestraBuscador{/*buscador*/
 	/* background-color: var(--OficialClaro); */
@@ -1096,6 +1114,7 @@ button{/*tiendas*/
 	background-color: var(--OficialClaro);
 }
 .contFlex{/*carrito - inicio - horario*/
+	background-color: red;
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	flex-wrap: wrap; /*permite pasar a la segunda fila*/
 	justify-content: space-between;
@@ -1177,13 +1196,23 @@ button{/*tiendas*/
 	background-color: rgba(51, 51, 51, 0.2);
 	border-radius: 15px;
 }
+.contInputRadio__input{/*horario*/
+	display: block;
+	margin: auto;
+}
 .contSelectVert{/*horario*/
-	width: 50%;
+	width: 100%;
+	margin-top: 15%;
 }
 .contSelectVert__select{/*horario*/
-	width: 80%;
+	width: 100%;
+	padding: 2%;
 	padding-left: 3%;
-	margin-bottom: 8% !important;
+	margin:3% 0% 15% 0% !important;
+	font-size: 0.9em;
+}
+.contTabla{/*horarioDespacho*/
+	margin-bottom: 7%;
 }
 .sectionModal__div{/*modal_sinSecciones*/
 	background-color: var(--OficialClaro);
@@ -1198,6 +1227,12 @@ button{/*tiendas*/
 	text-align: center;
 	margin-bottom: 2%;
 }
+.spanCerrar{/*inicio - modal_fueraHorario*/
+	color: white;
+	font-size: 2em;
+	margin: -1% 4% 0% 95%;
+	cursor: pointer;
+}
 .contenedor_60__p1{/*carrito*/
 	text-align: justify;
 }
@@ -1209,6 +1244,7 @@ button{/*tiendas*/
 	width: 100%;
 }
 .fieldset_1{/*registroCom - registroDes - login*/
+	/* background-color: yellow; */
 	width: 40%;
 	margin: auto;
 	border-radius: 15px;
@@ -2160,11 +2196,16 @@ button{/*tiendas*/
 .tabla{/*carrito*/
 	width: 100%;
 }
-.tabla_1{/*horarioDespacho*/
+.tabla1{/*horarioDespacho*/	
 	width: 90%;
 	margin: auto;
 	margin-bottom: 2%;
 	border-collapse: collapse;
+}
+.tabla1__td{/*horarioDespacho*/
+	font-size: 0.9em;
+	text-align: center;
+	height: 30px;
 }
 .tabla_2{/*carrito*/
 	margin-bottom: 3%;
