@@ -261,7 +261,7 @@
             $id_producto = $ID_Producto;
 
             $stmt->execute();
-            return $stmt;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
         //SELECT de slogan de la tienda
@@ -300,7 +300,7 @@
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
 
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return "No se pudo";
@@ -314,7 +314,7 @@
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
 
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return "No se pudo";

@@ -35,17 +35,17 @@
                 //Se CONSULTAN las horas de apertura de lunes a viernes
                 $HoraApertura = $this->ConsultaVitrina_M->consultarAperturaTienda_LV($ID_Tienda);
                 date_default_timezone_set('America/Caracas');
-                // echo '<pre>';
-                // print_r($HoraApertura);
-                // echo '</pre>';
-                // echo date('H:i') . '<br>'; 
-
+//                 echo '<pre>';
+//                 print_r($HoraApertura);
+//                 echo '</pre>';
+//                 echo date('H:i') . '<br>'; 
+// exit;
                 if($HoraApertura[0]['inicio_m'] > date('H:i')) :
                     //Hora de apertura en la mañana en formato 12 horas               
                     $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicio_m']));
                     $ProximoDia = false;
-                elseif($HoraApertura[0]['culmina_m'] < date('H:i') && $HoraApertura[0]['iniciaa_t'] > date('H:i')) :
                     //Hora de apertura en la tarde
+                elseif($HoraApertura[0]['culmina_m'] < date('H:i') && $HoraApertura[0]['inicia_t'] > date('H:i')) :
                     $HoraApertura = date("g:i a", strtotime($HoraApertura[0]['inicia_t']));
                     $ProximoDia = false;
                 elseif($HoraApertura[0]['culmina_t'] < date('H:i')) :

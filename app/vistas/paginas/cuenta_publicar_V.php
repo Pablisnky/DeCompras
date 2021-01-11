@@ -15,20 +15,21 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <p class="p_6">Carga un producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
             <div class="contenedor_47">
+            
+                <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
-                    <!-- IMAGEN PRINCIPAL -->
                     <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
                     <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                     <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                 </div>        
                 <div>
                     <!-- PRODUCTO -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto" id="ContenidoPro" placeholder="Producto"  tabindex="1" onkeydown="blanquearInput('ContenidoPro')"/>
-                    <input class="contador" type="text" id="ContadorPro" value="20" readonly/>
+                    <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro" placeholder="Producto" tabindex="1" onkeydown="blanquearInput('ContenidoPro')"></textarea>
+                    <input class="contador" type="text" id="ContadorPro" value="50" readonly/>
 
                     <!-- DESCRIPCION -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" placeholder="Descripcion breve"  tabindex="2" onkeydown="blanquearInput('ContenidoDes')"/>
-                    <input class="contador" type="text" id="ContadorDes" value="20" readonly/>
+                    <textarea class="textarea_1 borde_1" name="descripcion" id="ContenidoDes"  placeholder="Descripción" tabindex="2" onkeydown="blanquearInput('ContenidoDes')"></textarea>
+                    <input class="contador" type="text" id="ContadorDes" value="50" readonly/>
 
                     <!-- PRECIO -->
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )" tabindex="3" onkeydown="blanquearInput('Precio')"/>

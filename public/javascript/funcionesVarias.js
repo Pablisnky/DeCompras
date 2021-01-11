@@ -108,7 +108,7 @@
 //************************************************************************************************
     //Indica la cantidad de caracteres que quedan mientras se escribe; invocado en quienesSomos_V.php - cuenta_publicar_V.php - registroCom_V.php - cuenta_editar_V.php
     function contarCaracteres(ID_Contador, ID_Contenido, Max){
-        // console.log("______Desde contarCaracteres()______", ID_Contador + " / " + ID_Contenido + " / " + Max) 
+        console.log("______Desde contarCaracteres()______", ID_Contador + " / " + ID_Contenido + " / " + Max) 
         var max = Max; 
         var cadena = document.getElementById(ID_Contenido).value; 
         var longitud = cadena.length; 
@@ -121,17 +121,14 @@
     } 
 
 //************************************************************************************************
-    //Indica la cantidad de caracteres que se han escrito; invocado en cuenta_editar_V.php
+    //Indica la cantidad de caracteres que ya tiene el campo; invocado en cuenta_editar_V.php
     function CaracteresAlcanzados(Contenido, ID_Contador){
-        // console.log("______Desde CaracteresAlcanzados()______",Contenido + " / " + ID_Contador) 
+        console.log("______Desde CaracteresAlcanzados()______",Contenido + " / " + ID_Contador) 
 
         var Contenido = document.getElementById(Contenido).value
         var ContadorContenido = document.getElementById(ID_Contador).value
-        // console.log(Contenido.length)
-        // console.log(ContadorContenido)
 
         var CaracteresDisponibles = ContadorContenido - Contenido.length
-        // console.log(CaracteresDisponibles)
 
         document.getElementById(ID_Contador).value = CaracteresDisponibles
     } 
@@ -140,7 +137,7 @@
     //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo en un elmento; invocado en quienesSomos_V.php - cuenta_publicar_V.php - registroCom_V.php - cuenta_editar_V.php
     var contenidoControlado = "";    
     function valida_LongitudDes(Max, ID_Contenido){
-        // console.log("______Desde valida_LongitudDes()______", Max + " / "+ ID_Contenido) 
+        console.log("______Desde valida_LongitudDes()______", Max + " / "+ ID_Contenido) 
                 
         var num_caracteres_permitidos = Max;
 

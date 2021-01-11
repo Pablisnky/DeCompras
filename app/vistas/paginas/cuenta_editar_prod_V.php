@@ -45,18 +45,18 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div>
                     <!-- SECCION PRODUCTO -->
                     <label>Producto</label>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="producto" id="ContenidoPro" value="<?php echo $Producto;?>"/>
-                    <input class="contador" type="text" id="ContadorPro" value="20"/>
+                    <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro"><?php echo $Producto;?></textarea>
+                    <input class="contador" type="text" id="ContadorPro" value="50"/>
 
                     <!-- SECCION DESCRIPCION -->
                     <label>Descripcion</label>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="descripcion" id="ContenidoDes" value="<?php echo $Opcion;?>"/>
-                    <input class="contador" type="text" id="ContadorDes" value="20"/>
+                    <textarea class="textarea_1 borde_1" name="descripcion" id="ContenidoDes"><?php echo $Opcion;?></textarea>
+                    <input class="contador" type="text" id="ContadorDes" value="50"/>
 
                     <!-- SECCION PRECIO -->
                     <label>Precio</label>
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" value="<?php echo $Precio;?>"/>
-                    <input class="contador" type="text" id="ContadorPre" value="13"/>
+                    <input class="contador" type="text" id="ContadorPre" value="15"/>
 
                     <!-- SECCION SECCION -->
                     <label>Sección</label>

@@ -265,7 +265,7 @@ button{/*tiendas*/
 	bottom: 1pt;
 	padding: 0.5% 0%;
 }
-.contenedor_9{/*cuenta_productos - opciones*/
+.contenedor_9{/*cuenta_productos - vitrina*/
 	border-radius: 15px;
 	text-align: center;
 	width: 100%;
@@ -273,7 +273,7 @@ button{/*tiendas*/
 	margin: auto;
 	cursor: pointer;
 }
-.contenedor_9--pointer{/*cuenta_productos*/
+.contenedor_9--pointer{/*cuenta_productos - vitrina*/
 	cursor: default;
 }
 .contenedor_10{/*tiendas - afiliacion*/
@@ -692,9 +692,9 @@ button{/*tiendas*/
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	display: grid;
-	grid-template-columns: 40% 55%;
+	grid-template-columns: 50% 50%;
 	column-gap: 5%; /*espacio entre columnas*/
-	width: 30%;
+	width: 32%;
 	height: 15%;
 	margin-bottom: 7%;
 }
@@ -705,10 +705,10 @@ button{/*tiendas*/
 	justify-content: space-around;
 }
 .contenedor_97{/*opciones*/
-	height: 100%;
-	display: flex; /*Organiza los elementos horizontalmente*/ 
-	align-items: center;
-	justify-content: center; 
+	/* height: 100%; */
+	/*display: flex; Organiza los elementos horizontalmente*/ 
+	/* align-items: center;
+	justify-content: center;  */
 }
 .contenedor_98{/*footer*/
 	display: flex; /*Organiza los elementos horizontalmente*/ 
@@ -1114,7 +1114,6 @@ button{/*tiendas*/
 	background-color: var(--OficialClaro);
 }
 .contFlex{/*carrito - inicio - horario*/
-	background-color: red;
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	flex-wrap: wrap; /*permite pasar a la segunda fila*/
 	justify-content: space-between;
@@ -1199,6 +1198,24 @@ button{/*tiendas*/
 .contInputRadio__input{/*horario*/
 	display: block;
 	margin: auto;
+}
+.contOpciones{/*opciones*/
+	border-radius: 15px;
+	text-align: center;
+	width: 100%;
+	padding: 1%;
+	margin: auto;
+	cursor: pointer;
+}
+.contOpciones--pointer{/*cuenta_productos*/
+	cursor: default;
+}
+.contOpciones__img{/*opciones*/
+	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	width: 190px;
+	max-height: 170px; 
+	/* display: block;
+	margin-top: 0px; */
 }
 .contSelectVert{/*horario*/
 	width: 100%;
@@ -1583,7 +1600,7 @@ button{/*tiendas*/
 .input_7{/*carrito*/
 	font-weight: bold;
 }
-.input_8{/*cuenta_productos - opciones*/
+.input_8{/*opciones*/
 	width: 100%;
 	border: none;
 	margin-bottom: 1%;
@@ -2239,21 +2256,22 @@ button{/*tiendas*/
 .td_7{/*horarioDespacho*/
 	height: 30px;
 }
-.textarea_1{/*carrito*/
+.textarea_1{/*carrito - cuenta_editar_prod*/
 	width: 100%;
 	resize: none;
-	font-size: 1.2em;
+	font-size: 1em;
 	padding-left: 2%;
 }
-.textarea_2{/*opciones*/
+.textarea_2{/*cuenta_productos*/
 	width: 100%;
 	margin-bottom: 2%;
 	border: none;
+	overflow: hidden;
 	resize: none;
 }
 .textarea_3{/*descr_Producto*/
-	border: none;
 	width: 100%;
+	border: none;
 	overflow: hidden;
 	display: block;
 }

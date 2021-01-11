@@ -405,7 +405,6 @@
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	width: 100%;
-	margin-bottom: 10%;	
 	grid-template-columns: 45% 55%;
 	column-gap: 0%;/*espacio entre filas*/
 	margin-bottom: 15%;
@@ -599,6 +598,25 @@
 .contInputRadio__label{/*carrito - Secciones_Ajax - Categorias_Ajax*/
 	font-size: 0.9em !important;
 }
+.contOpciones{/*opciones*/
+	border-radius: 15px;
+	text-align: center;
+	width: 100%;
+	padding: 1%;
+	margin: auto;
+	cursor: pointer;
+}
+.contOpciones__img{/*opciones*/
+	/*object-fit: contain !important; esta propiedad necesita el ancho y alto de la imagen definidos*/
+	width: 100%;
+	/* height: 95px; */
+	/* display: block;
+	margin: auto; */
+	/* margin: 4% auto; */
+}
+.contOpciones--pointer{/*cuenta_productos*/
+	cursor: default;
+}
 .fieldset_1{/*registroCom - registroDes*/
 	margin: 10% auto;
 	width: 95%;
@@ -731,7 +749,7 @@
 .imagen_5{/*footer*/
 	width: 27%;
 }
-.imagen_6{/*opciones - buscador - cuenta_editar_prod - cuenta_publicar*/
+.imagen_6{/*buscador - cuenta_editar_prod - cuenta_publicar*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 100%;
 	/* height: 95px; */
@@ -780,7 +798,11 @@
 	width: 50px !important;
 }
 .input_8{/*cuenta_productos - opciones*/
-	font-size: 1em;
+	font-size: 0.9em;
+	padding: 2%;
+}
+.input_8A{/*cuenta_productos - opciones*/
+	font-size: 1.1em;
 }
 .input_9{/*registroCom - registroDes - carrito - login - cuenta_editar*/
 	margin: 0% auto 4% auto !important;

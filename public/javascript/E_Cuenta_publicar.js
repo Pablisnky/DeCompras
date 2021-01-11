@@ -1,14 +1,14 @@
-//Escucha en cuenta_publicar_V.php                          
-// document.getElementById("Label_1").addEventListener('click', function(){
-//     // CerrarModal_X("Ejemplo_Secciones")
-//     console.log("ENTRO")
-// }); 
 // document.addEventListener('DOMContentLoaded', function(){autofocus('ContenidoPro')}, false)
+
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
-document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 20)}, false)
-document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(20,'ContenidoPro')}, false)
-document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 20)}, false)
-document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(20,'ContenidoDes')}, false)  
+
+document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 50)}, false)
+
+document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoPro')}, false)
+
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 50)}, false)
+
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoDes')}, false)  
 
 // document.addEventListener("keydown", contarDes, false); 
 // document.addEventListener("keyup", contarDes, false);
@@ -153,7 +153,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 70){
+        else if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 50){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
@@ -165,7 +165,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 70){
+        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 50){
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()

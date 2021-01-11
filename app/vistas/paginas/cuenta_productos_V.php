@@ -71,11 +71,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <!-- <input class="input_8" type="text" value="123456" readonly="readonly" id=""/> -->
 
                         <!-- PRODUCTO -->
-                        <input class="input_8" type="text" value="<?php echo $Producto;?>" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>"/>
+                        <textarea class="textarea_2" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>"><?php echo $Producto;?></textarea>
 
                         <!-- OPCION -->
-                        <input class="input_8" type="text" value="<?php echo $Opcion;?>" readonly="readonly" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>"/>
-
+                        <textarea class="textarea_2" readonly="readonly" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>"><?php echo $Opcion;?></textarea>
+                        <br>
                         <!-- ESPECIFICACION -->
                         <?php                  
                             foreach($Datos['variosCaracteristicas'] as $AA) :

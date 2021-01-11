@@ -1,19 +1,37 @@
-//Escucha en cuenta_publicar_V.php                          
-// document.getElementById("Label_1").addEventListener('click', function(){
-//     // CerrarModal_X("Ejemplo_Secciones")
-//     console.log("ENTRO")
-// }); 
+window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('ContenidoPro','ContadorPro')}, false)
+
+window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('ContenidoDes','ContadorDes')}, false)
+
+window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('Precio','ContadorPre')}, false)
+
+document.addEventListener("click", preEliminarSeccion)
+
+document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 50)}, false)
+
+document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoPro')}, false)
+
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 50)}, false)
+
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoDes')}, false)
+
+document.getElementById("Precio").addEventListener('keydown', function(){contarCaracteres('ContadorPre','Precio', 50)}, false)
+
+document.getElementById("Precio").addEventListener('keydown', function(){valida_LongitudDes(50,'Precio')}, false)
 
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
-document.addEventListener("click", preEliminarSeccion)
-document.addEventListener("keydown", contarDes, false); 
-document.addEventListener("keyup", contarDes, false);
-document.addEventListener("keydown", valida_LongitudDes, false);//valida_Longitud() se encuentra en Funciones_varias.js 
-document.addEventListener("keyup", valida_LongitudDes, false);//valida_Longitud() se encuentra en 
-document.addEventListener("keydown", contar, false);//contar() se encuentra en Funciones_varias.js 
-document.addEventListener("keyup", contar, false);//contar() se encuentra en Funciones_varias.js 
-document.addEventListener("keydown", valida_Longitud, false);//valida_Longitud() se encuentra en Funciones_varias.js 
-document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() se encuentra en 
+
+document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 50)}, false)
+
+document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoPro')}, false)
+
+// document.addEventListener("keydown", contarDes, false); 
+// document.addEventListener("keyup", contarDes, false);
+// document.addEventListener("keydown", valida_LongitudDes, false);//valida_Longitud() se encuentra en Funciones_varias.js 
+// document.addEventListener("keyup", valida_LongitudDes, false);//valida_Longitud() se encuentra en 
+// document.addEventListener("keydown", contar, false);//contar() se encuentra en Funciones_varias.js 
+// document.addEventListener("keyup", contar, false);//contar() se encuentra en Funciones_varias.js 
+// document.addEventListener("keydown", valida_Longitud, false);//valida_Longitud() se encuentra en Funciones_varias.js 
+// document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() se encuentra en 
 
 //************************************************************************************************
     //Escucha por medio de delegación de eventos debido a que el evento no esta cargado en el DOM por ser una solicitud Ajax   
@@ -31,66 +49,66 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
     }   
 
 //************************************************************************************************
-    //indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
-    function contar(){
-        var max = 20; 
-        var cadena = document.getElementById("ContenidoPro").value; 
-        var longitud = cadena.length; 
+    //indica la cantidad de caracteres que quedan mientra se escribe, llamada desde .php
+    // function contar(){
+    //     var max = 20; 
+    //     var cadena = document.getElementById("ContenidoPro").value; 
+    //     var longitud = cadena.length; 
 
-            if(longitud <= max) { 
-                document.getElementById("ContadorPro").value = max-longitud; 
-            } else { 
-                document.getElementById("ContenidoPro").value = cadena.subtring(0, max);
-            } 
-    } 
+    //         if(longitud <= max) { 
+    //             document.getElementById("ContadorPro").value = max-longitud; 
+    //         } else { 
+    //             document.getElementById("ContenidoPro").value = cadena.subtring(0, max);
+    //         } 
+    // } 
 
 // -------------------------------------------------------------------------------------------
     //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
-    var contenido_producto = "";    
-    function valida_Longitud(){  
-        var num_caracteres_permitidos = 20;
+    // var contenido_producto = "";    
+    // function valida_Longitud(){  
+    //     var num_caracteres_permitidos = 20;
 
-        //se averigua la cantidad de caracteres escritos
-        num_caracteres = document.forms[0].producto.value.length; 
+    //     //se averigua la cantidad de caracteres escritos
+    //     num_caracteres = document.forms[0].producto.value.length; 
 
-        if(num_caracteres > num_caracteres_permitidos){ 
-            document.forms[0].producto.value = contenido_producto; 
-        }
-        else{ 
-            contenido_producto = document.forms[0].producto.value; 
-        } 
-    } 
+    //     if(num_caracteres > num_caracteres_permitidos){ 
+    //         document.forms[0].producto.value = contenido_producto; 
+    //     }
+    //     else{ 
+    //         contenido_producto = document.forms[0].producto.value; 
+    //     } 
+    // } 
 
 //************************************************************************************************
     // indica la cantidad de caracteres que quedan mientra se escribe, llamada desde cuenta_publicar.php
-    function contarDes(){
-        var max = 20; 
-        var cadena = document.getElementById("ContenidoDes").value; 
-        var longitud = cadena.length; 
+    // function contarDes(){
+    //     var max = 20; 
+    //     var cadena = document.getElementById("ContenidoDes").value; 
+    //     var longitud = cadena.length; 
 
-            if(longitud <= max) { 
-                document.getElementById("ContadorDes").value = max-longitud; 
-            } else { 
-                document.getElementById("ContenidoDes").value = cadena.subtring(0, max);
-            } 
-    } 
+    //         if(longitud <= max) { 
+    //             document.getElementById("ContadorDes").value = max-longitud; 
+    //         } else { 
+    //             document.getElementById("ContenidoDes").value = cadena.subtring(0, max);
+    //         } 
+    // } 
 
 // -------------------------------------------------------------------------------------------
     //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo, llamada desde index.php 
-    var contenido_descripcion = "";    
-    function valida_LongitudDes(){  
-        var num_caracteres_permitidos = 20;
+    // var contenido_descripcion = "";    
+    // function valida_LongitudDes(){  
+    //     var num_caracteres_permitidos = 20;
 
-        //se averigua la cantidad de caracteres escritos
-        num_caracteres = document.forms[0].descripcion.value.length; 
+    //     //se averigua la cantidad de caracteres escritos
+    //     num_caracteres = document.forms[0].descripcion.value.length; 
 
-        if(num_caracteres > num_caracteres_permitidos){ 
-            document.forms[0].descripcion.value = contenido_descripcion; 
-        }
-        else{ 
-            contenido_descripcion = document.forms[0].descripcion.value; 
-        } 
-    } 
+    //     if(num_caracteres > num_caracteres_permitidos){ 
+    //         document.forms[0].descripcion.value = contenido_descripcion; 
+    //     }
+    //     else{ 
+    //         contenido_descripcion = document.forms[0].descripcion.value; 
+    //     } 
+    // } 
 
 //************************************************************************************************
     //invocada desde Secciones_Ajax_V.php selecciona una sección donde estará un producto
@@ -160,7 +178,7 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
-        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 20){
+        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 51){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
@@ -168,7 +186,7 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
-        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 20){
+        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 51){
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()
@@ -184,7 +202,7 @@ document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() s
         //     document.getElementsByClassName("boton")[0].disabled = false
         //     return false;
         // }
-        else if(Precio == "" || Precio.indexOf(" ") == 0 || Precio.length > 20){
+        else if(Precio == "" || Precio.indexOf(" ") == 0 || Precio.length > 16){
             alert ("Introduzca un Precio")
             document.getElementById("Precio").value = ""
             document.getElementById("Precio").focus()

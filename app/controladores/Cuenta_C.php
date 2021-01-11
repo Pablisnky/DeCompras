@@ -308,23 +308,18 @@
 
             //CONSULTA los productos de una sección en especifico según la tienda
             $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            // $Secciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             //CONSULTA las especiicaciones de un producto determinado y de una tienda especifica
-            $Consulta = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
-            $Especificaciones = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            $Especificaciones = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
 
             //Se CONSULTAN el slogan de una tienda en particular
-            $Consulta_1 = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
-            $Slogan = $Consulta_1->fetchAll(PDO::FETCH_ASSOC);
+            $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
             //Se CONSULTAN las caracteristicas añadidas del producto
-            $Consulta_2 = $this->ConsultaCuenta_M->consultarCaracteristicasProducto($this->ID_Tienda, $ID_Producto);
-            $Caracteristicas = $Consulta_2->fetchAll(PDO::FETCH_ASSOC);
+            $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracteristicasProducto($this->ID_Tienda, $ID_Producto);
 
             //Se CONSULTAN las imagenes añadidas del producto
-            $Consulta_3 = $this->ConsultaCuenta_M->consultarImagnesProducto($ID_Producto);
-            $Imagenes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC);
+            $Imagenes = $this->ConsultaCuenta_M->consultarImagnesProducto($ID_Producto);
 
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
