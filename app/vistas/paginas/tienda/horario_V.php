@@ -10,7 +10,7 @@
 			<h2 class="contHorario__h2 borde_1">Lunes - Viernes</h2>
 			<!-- LUNES - VIERNES MAÑANA -->  
 			<div class="contHorario__div borde_1">
-				<div class="">
+				<div>
 					<p class="contHorario__p">Mañana</p>    <?php 
 					//$Datos proviene de 	                              
 					foreach($Datos['horario_LV'] as $row) :   
@@ -68,8 +68,9 @@
 				</div>  
 			</div>
                         
+			<!-- LUNES - VIERNES TARDE -->  
 			<div class="contHorario__div borde_1">                  
-				<div class="">
+				<div>
 					<p  class="contHorario__p">Tarde</p>	    <?php 	                              
 					foreach($Datos['horario_LV'] as $row) :  
 					endforeach;  ?>
@@ -366,39 +367,39 @@
 			<span>Añada una exepcion si algún día de la semana tiene un horario en particular</span>
 			<br><br>
 			<label class="label_4 label_24" id="Label_3">Añadir exepcion</label>
-						
-			<div class="contenedor_67 ocultar borde_1" id="Contenedor_89">
-				<span class="icon-cancel-circle span_10 span_14 span_17_js"></span>
-				<div class="contFlex">
-					<p >Mañana</p>    <?php 	                              
+			
+		<div class="contHorario ocultar" id="Contenedor_89">
+			<h2 class="contHorario__h2 borde_1">Día de ecexpción
+			<span class="icon-cancel-circle span_10 span_14 span_17_js"></span></h2>
+			<!-- EXEPCIÓN MAÑANA -->  
+			<div class="contHorario__div borde_1" >
+				<div>
+					<p class="contHorario__p">Mañana</p>  <?php 	                              
 					foreach($Datos['horario_LV'] as $row) :   
 					endforeach; ?>
 					<div class="contInputRadio"> 
-						<input type="radio" name="horario_Espec_M" value="Lunes" id="LunesEsp_M" <?php if(!empty($row['lunes_m']) == 'Lunes'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_M" value="Lunes" id="LunesEsp_M" <?php if(!empty($row['lunes_m']) == 'Lunes'){echo 'checked';}?> onclick="gestionarClickRadio_M(this)"/>
 						<label class="contInputRadio__label" for="LunesEsp_M">Lunes</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_M" value="Martes" id="MartesEsp_M" <?php if(!empty($row['martes_m']) == 'Martes'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_M" value="Martes" id="MartesEsp_M"
+						<?php if(!empty($row['martes_m']) == 'Martes'){echo 'checked';}?> onclick="gestionarClickRadio_M(this)"/>
 						<label class="contInputRadio__label" for="MartesEsp_M">Martes</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_M" value="Miercoles" id="MiercolesEsp_M" <?php if(!empty($row['miercoles_m']) == 'Miercoles'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_M" value="Miercoles" id="MiercolesEsp_M"
+						<?php if(!empty($row['miercoles_m']) == 'Miercoles'){echo 'checked';}?> onclick="gestionarClickRadio_M(this)"/>
 						<label class="contInputRadio__label" for="MiercolesEsp_M">Miercoles</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_M" value="Jueves" id="JuevesEsp_M" <?php if(!empty($row['jueves_m']) == 'Jueves'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_M" value="Jueves" id="JuevesEsp_M"
+						<?php if(!empty($row['jueves_m']) == 'Jueves'){echo 'checked';}?> onclick="gestionarClickRadio_M(this)"/>
 						<label class="contInputRadio__label" for="JuevesEsp_M">Jueves</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_M" value="Viernes" id="ViernesEsp_M" <?php if(!empty($row['viernes_m']) == 'Viernes'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="ViernesEsp_M">Viernes</label>    
-						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_M" value="Sabado" id="SabadoEsp_M" <?php if(!empty($row['sabado_m']) == 'Sabado'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="SabadoEsp_M">Sábado</label>
-						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_M" value="Domingo" id="DomingoEsp_m" <?php if(!empty($row['domingo_m']) == 'Domingo'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="DomingoEsp_m">Domingo</label>
+						<input type="radio" name="horario_Espec_M" value="Viernes" id="ViernesEsp_M"
+						<?php if(!empty($row['viernes_m']) == 'Viernes'){echo 'checked';}?> onclick="gestionarClickRadio_M(this)"/>
+						<label class="contInputRadio__label" for="ViernesEsp_M">Viernes</label>   
 					</div>
 					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="inicioManana_Espec" id="InicioManana">
+						<p class="contHorario__p">Apertura</p>
+						<select class="contSelectVert__select borde_1" name="inicioManana_Espec" id="InicioManana_Espec">
 							<option><?php echo !empty($row['inicio_m']) ? $row['inicio_m'] : '00:00';?> am</option> 
 							<option></option>
 							<option>5:00 am</option>
@@ -414,9 +415,8 @@
 							<option>10:00 am</option>
 						</select>
 						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaManana_Espec" id="CulminaManana">
+						<p class="contHorario__p">Cierre</p>
+						<select class="contSelectVert__select borde_1" name="culminaManana_Espec" id="CulminaManana_Espec">
 							<option><?php echo !empty($row['culmina_m']) ? $row['culmina_m'] : '00:00';?> am</option> 
 							<option></option>
 							<option>10:00 am</option>
@@ -430,37 +430,34 @@
 							<option>2:00 pm</option>
 						</select>
 					</div> 
-				</div>                    
-				<div class="contFlex">
-					<p >Tarde</p>	    <?php 	                              
+				</div>       
+			</div>
+			
+			<!-- EXEPCIÓN TARDE -->  
+			<div class="contHorario__div borde_1">             
+				<div>
+					<p class="contHorario__p">Tarde</p>	    <?php 	                              
 					foreach($Datos['horario_LV'] as $row) :  
 					endforeach;  ?>
 					<div class="contInputRadio">
-						<input type="radio" name="horario_Espec_T" value="Lunes"  id="LunesEsp_T" <?php if(!empty($row['lunes_t']) == 'Lunes'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_T" value="Lunes"  id="LunesEsp_T" <?php if(!empty($row['lunes_t']) == 'Lunes'){echo 'checked';}?> onclick="gestionarClickRadio_T(this)"/>
 						<label class="contInputRadio__label" for="LunesEsp_T">Lunes</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_T" value="Martes" id="MartesEsp_T" <?php if(!empty($row['martes_t']) == 'Martes'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_T" value="Martes" id="MartesEsp_T" <?php if(!empty($row['martes_t']) == 'Martes'){echo 'checked';}?> onclick="gestionarClickRadio_T(this)"/>
 						<label class="contInputRadio__label" for="MartesEsp_T">Martes</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_T" value="Miercoles" id="MiercolesEsp_T" <?php if(!empty($row['miercoles_t']) == 'Miercoles'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_T" value="Miercoles" id="MiercolesEsp_T" <?php if(!empty($row['miercoles_t']) == 'Miercoles'){echo 'checked';}?> onclick="gestionarClickRadio_T(this)"/>
 						<label class="contInputRadio__label" for="MiercolesEsp_T">Miercoles</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_T" value="Jueves" id="JuevesEsp_T" <?php if(!empty($row['jueves_t']) == 'Jueves'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_T" value="Jueves" id="JuevesEsp_T" <?php if(!empty($row['jueves_t']) == 'Jueves'){echo 'checked';}?> onclick="gestionarClickRadio_T(this)"/>
 						<label class="contInputRadio__label" for="JuevesEsp_T">Jueves</label>
 						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_T" value="Viernes" id="ViernesEsp_T" <?php if(!empty($row['viernes_t']) == 'Viernes'){echo 'checked';}?>/>
+						<input type="radio" name="horario_Espec_T" value="Viernes" id="ViernesEsp_T" <?php if(!empty($row['viernes_t']) == 'Viernes'){echo 'checked';}?> onclick="gestionarClickRadio_T(this)"/>
 						<label class="contInputRadio__label" for="ViernesEsp_T">Viernes</label>
-						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_T" value="Sabado" id="SabadoEsp_T" <?php if(!empty($row['sabado_t']) == 'Sabado'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="SabadoEsp_T">Sábado</label>
-						<br class="br_1"/>
-						<input type="radio" name="horario_Espec_T" value="Domingo" id="DomingoEsp_T" <?php if(!empty($row['domingo_t']) == 'Domingo'){echo 'checked';}?>/>
-						<label class="contInputRadio__label" for="DomingoEsp_T">Domingo</label>
 					</div>
 					<div class="contSelectVert">
-						<label>Apertura</label>
-						<br>
-						<select class="contSelectVert__select" name="iniciaTarde_Espec" id="IniciaTarde">
+						<p class="contHorario__p">Apertura</p>
+						<select class="contSelectVert__select borde_1" name="iniciaTarde_Espec" id="IniciaTarde_Espec">
 							<option><?php echo !empty($row['inicia_t']) ? $row['inicia_t'] : '00:00';?></option>
 							<option></option>
 							<option>12:00</option>
@@ -475,10 +472,8 @@
 							<option>4:30</option>
 							<option>5:00</option>
 						</select>
-						<br>
-						<label>Cierre</label>
-						<br>
-						<select class="contSelectVert__select" name="culminaTarde_Espec" id="CulminaTarde">
+						<p class="contHorario__p">Cierre</p>
+						<select class="contSelectVert__select borde_1" name="culminaTarde_Espec" id="CulminaTarde_Espec">
 							<option><?php echo !empty($row['culmina_t']) ? $row['culmina_t'] : '00:00';?> pm</option>
 							<option></option>
 							<option>4:00 pm</option>

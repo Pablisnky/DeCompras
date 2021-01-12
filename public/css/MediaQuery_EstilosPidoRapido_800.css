@@ -405,7 +405,7 @@
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	width: 100%;
-	grid-template-columns: 45% 55%;
+	grid-template-columns: 55% 45%;
 	column-gap: 0%;/*espacio entre filas*/
 	margin-bottom: 15%;
 }

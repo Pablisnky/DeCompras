@@ -4,7 +4,8 @@ document.getElementById("Label_7").addEventListener('click', clonarCuentaPagoMov
 
 document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
-document.getElementById("Label_3").addEventListener('click', agregarHorario, false)
+// Desde horario_V.php
+document.getElementById("Label_3").addEventListener('click', MostrarExepcionHorario, false)
 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
@@ -27,7 +28,7 @@ document.getElementById("Telefono_Tien").addEventListener('keyup', function(){ma
 document.getElementById("Telefono_Tien").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
 
 //Desde horario_V.php
-document.getElementsByClassName('span_17_js')[0].addEventListener('click', ocultarHorario, false)
+document.getElementsByClassName('span_17_js')[0].addEventListener('click', OcultarExepcionHorario, false)
     
 //Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
@@ -416,15 +417,15 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
 //************************************************************************************************  
     //Muestra todo el div que contiene la sección de horarios
-    function agregarHorario(){
-        console.log("______Desde agregarHorario()______") 
+    function MostrarExepcionHorario(){
+        console.log("______Desde MostrarExepcionHorario()______") 
         
-        document.getElementById("Contenedor_89").style.display = "block"
+        document.getElementById("Contenedor_89").style.display = "flex"
     }
 
 //************************************************************************************************  
     //Oculta todo el div que contiene la sección de horarios
-    function ocultarHorario(){
+    function OcultarExepcionHorario(){
         console.log("______Desde ocultarHorario()______") 
         
         document.getElementById("Contenedor_89").style.display = "none"
