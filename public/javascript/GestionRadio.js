@@ -1,12 +1,7 @@
-//     <body>
-//         <form>
-//             <input type="radio" id="01" name="grupo" value="Opción 1" onclick="gestionarClickRadio(this);"> 
-//             <label for="01">Opción 1</label>
-//             <br>
-//             <input type="radio" id="02" name="grupo" value="Opción 2" onclick="gestionarClickRadio(this);">
-//             <label for="02">Opción 2</label>
-//         </form>
-//     </body>
+//Todo este código deselecciona un radio buttom al hacer click sobre uno ya seleccionado
+// La solución consiste en llevar un registro del elemento que está actualmente seleccionado
+// Éste codigo, debe estar colocado después de todos los formularios de la página para que funcione. El motivo es que se realiza una inicialización dentro del código para la cual deben estar ya creados los contoles que se van a gestionar
+// Éste código usa algunas cuestiones interesantes, como la generación dinámica de variables en memoria así como la comprobación de la existencia de éstas. 
 
     //Para distinguir la opción actualmente pulsada en cada grupo
     var pref_opcActual = "opcActual_";
@@ -51,8 +46,9 @@
         }
     }
 
-    function gestionarClickRadio_M(opcPulsada){
+    function gestionarClickRadio(opcPulsada){
         console.log("____Desde gestionarClickRadio()____",opcPulsada)
+
         //El nombre de la variable que contiene el nombre del grupo actual
         var svarOpcAct = pref_opcActual + opcPulsada.name;
         var opcActual = null;

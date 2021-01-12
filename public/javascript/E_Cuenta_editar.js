@@ -4,9 +4,6 @@ document.getElementById("Label_7").addEventListener('click', clonarCuentaPagoMov
 
 document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
-// Desde horario_V.php
-document.getElementById("Label_3").addEventListener('click', MostrarExepcionHorario, false)
-
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){contarCaracteres('ContadorSlo','ContenidoSlo', 50)}, false)
@@ -26,9 +23,6 @@ document.getElementById("Telefono_Aficom").addEventListener('change', function()
 document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
 
 document.getElementById("Telefono_Tien").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
-
-//Desde horario_V.php
-document.getElementsByClassName('span_17_js')[0].addEventListener('click', OcultarExepcionHorario, false)
     
 //Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
@@ -183,9 +177,9 @@ document.getElementById('Label_13').addEventListener('click',function(){
 
 //************************************************************************************************ 
 //Cierra la ventana modal que muestra el ejemplo de secciones                 
-document.getElementById("Label_1").addEventListener('click', function(){
-    CerrarModal_X("Ejemplo_Secciones")
-});
+// document.getElementById("Label_1").addEventListener('click', function(){
+//     CerrarModal_X("Ejemplo_Secciones")
+// });
  
 //************************************************************************************************  
     //Añade un nuevo input clonado del div secciones
@@ -415,23 +409,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         window.scroll(0,1100)
     }  
 
-//************************************************************************************************  
-    //Muestra todo el div que contiene la sección de horarios
-    function MostrarExepcionHorario(){
-        console.log("______Desde MostrarExepcionHorario()______") 
-        
-        document.getElementById("Contenedor_89").style.display = "flex"
-    }
-
-//************************************************************************************************  
-    //Oculta todo el div que contiene la sección de horarios
-    function OcultarExepcionHorario(){
-        console.log("______Desde ocultarHorario()______") 
-        
-        document.getElementById("Contenedor_89").style.display = "none"
-    }    
-
-//************************************************************************************************  
+//************************************************************************************************ 
     //Clona todo el div que contiene los inputs que capturan los datos de una cuenta bancaria
     var iterarBanco = 1
     function clonarCuentaBancaria(){

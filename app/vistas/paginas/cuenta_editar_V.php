@@ -483,11 +483,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
     <did id="ReadOnly"></did>
 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/Municipios.js';?>"></script> 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/parroquias.js';?>"></script> 
-    <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/GestionRadio.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/Municipios.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/parroquias.js';?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen de la tienda, usada en cuenta_editar_prod_V.php

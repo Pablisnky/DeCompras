@@ -445,6 +445,20 @@
                 return false;
             }
         }
+        
+        //SELECT del horario de una tienda para el dia de excepción (formato 12 horas)
+        public function consultarHorarioTienda_Esp($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_Esp, '%h:%i %p') AS inicia_m_Esp, DATE_FORMAT(culmina_m_Esp, '%h:%i %p') AS culmina_m_Esp, DATE_FORMAT(inicia_t_Esp, '%h:%i %p') AS inicia_t_Esp, DATE_FORMAT(culmina_t_Esp, '%h:%i %p') AS culmina_t_Esp FROM horarioespecial WHERE ID_Tienda = :ID_TIENDA");
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
 
 
 
@@ -993,6 +1007,30 @@
             $stmt->bindValue(':INICIA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Inicia_T_Dom'])));
             $stmt->bindValue(':CULMINA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Culmina_T_Dom'])));
             $stmt->bindValue(':DOMINGO_T', $RecibeHorario_Dom['Domingo_T']);
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        //UPDATE de horarios de tienda de un día especifico que entra como exepción
+        public function actualizarHorarioTienda_Esp($ID_Tienda, $RecibeHorario_Esp){
+            $stmt = $this->dbh->prepare("UPDATE horarioespecial SET inicia_m_Esp = :INICIA_M_ESP, culmina_m_Esp = :CULMINA_M_ESP, especial_m = :ESPECIAL_M, inicia_t_Esp = :INICIA_T_ESP, culmina_t_Esp = :CULMINA_T_ESP, especial_t = :ESPECIAL_T  WHERE ID_Tienda = :ID_TIENDA");
+
+            // Se vinculan los valores de las sentencias preparadas
+            //Se introduce en la BD en formato 24 horas
+            $stmt->bindValue(':INICIA_M_ESP', date('H:i', strtotime($RecibeHorario_Esp['Inicio_M_Esp'])));
+            $stmt->bindValue(':CULMINA_M_ESP', date('H:i', strtotime($RecibeHorario_Esp['Culmina_M_Esp'])));
+            $stmt->bindValue(':ESPECIAL_M', $RecibeHorario_Esp['DiaEspecial_M']);
+            //Se introduce en la BD en formato 24 horas
+            $stmt->bindValue(':INICIA_T_ESP', date('H:i', strtotime($RecibeHorario_Esp['Inicia_T_Esp'])));
+            $stmt->bindValue(':CULMINA_T_ESP', date('H:i', strtotime($RecibeHorario_Esp['Culmina_T_Esp'])));
+            $stmt->bindValue(':ESPECIAL_T', $RecibeHorario_Esp['DiaEspecial_T']);
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
 
             // Se ejecuta la actualización de los datos en la tabla

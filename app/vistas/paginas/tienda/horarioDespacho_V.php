@@ -10,6 +10,7 @@
             <article>
             <?php 
                 //$Datos proviene de Tiendas_C/horarioTienda
+                // Con los ciclos foreach se reciben los dias de la semana
                 foreach($Datos['horarioTienda_LV'] as $Dias_LV) :
                     $Lunes_m = $Dias_LV['lunes_m']; 
                     $Martes_m = $Dias_LV['martes_m']; 
@@ -32,7 +33,13 @@
                     $Domingo_m = $Domingo['domingo_m']; 
                     $Domingo_t = $Domingo['domingo_t']; 
                 endforeach;
+                
+                foreach($Datos['horarioTienda_Esp'] as $Especial) :
+                    $Especial_m = $Especial['especial_m']; 
+                    $Especial_t = $Especial['especial_t']; 
+                endforeach;
 
+                //Con la metodologia del corchete se reciben los horarios
                 $InicioManana_LV = $Datos['horarioTienda_LV'][0]['inicio_m'];
                 $CulminaManana_LV = $Datos['horarioTienda_LV'][0]['culmina_m'];
                 $IniciaTarde_LV = $Datos['horarioTienda_LV'][0]['inicia_t'];
@@ -47,6 +54,11 @@
                 $CulminaManana_Dom = $Datos['horarioTienda_Dom'][0]['culmina_m_Dom'];
                 $IniciaTarde_Dom = $Datos['horarioTienda_Dom'][0]['inicia_t_Dom'];
                 $CulminaTarde_Dom = $Datos['horarioTienda_Dom'][0]['culmina_t_Dom'];
+                
+                $IniciaManana_Esp = $Datos['horarioTienda_Esp'][0]['inicia_m_Esp'];
+                $CulminaManana_Esp = $Datos['horarioTienda_Esp'][0]['culmina_m_Esp'];
+                $IniciaTarde_Esp = $Datos['horarioTienda_Esp'][0]['inicia_t_Esp'];
+                $CulminaTarde_Esp = $Datos['horarioTienda_Esp'][0]['culmina_t_Esp'];
                 
                 
                 $Lun_m_inicia = $Lunes_m != '0' ? $InicioManana_LV : '--';
@@ -72,6 +84,75 @@
                 $Mie_t_culmina = $Miercoles_t != '0' ? $CulminaTarde_LV : '--';
                 $Jue_t_culmina = $Jueves_t != '0' ? $CulminaTarde_LV : '--';
                 $Vie_t_culmina = $Viernes_t != '0' ? $CulminaTarde_LV : '--';
+
+                //Se evalua el horario especial para sobreescribir el valor de los horarios de ese dia
+                if($Especial_m != '0' || $Especial_t !='0'){
+                    //Evalua si el horario especial es para el día lunes
+                    if($Especial_m == 'Lunes'){
+                        $Lun_m_inicia = $IniciaManana_Esp;
+                    }
+                    if($Especial_m == 'Lunes'){
+                        $Lun_m_culmina = $CulminaManana_Esp;
+                    }
+                    if($Especial_t == 'Lunes'){
+                        $Lun_t_inicia = $IniciaTarde_Esp;
+                    }
+                    if($Especial_t == 'Lunes'){
+                        $Lun_t_culmina = $CulminaTarde_Esp;
+                    }
+                    //Evalua si el horario especial es para el día martes
+                    if($Especial_m == 'Martes'){
+                        $Mar_m_inicia = $IniciaManana_Esp;
+                    }
+                    if($Especial_m == 'Martes'){
+                        $Mar_m_culmina = $CulminaManana_Esp;
+                    }
+                    if($Especial_t == 'Martes'){
+                        $Mar_t_inicia = $IniciaTarde_Esp;
+                    }
+                    if($Especial_t == 'Martes'){
+                        $Mar_t_culmina = $CulminaTarde_Esp;
+                    }
+                    //Evalua si el horario especial es para el día miercoles
+                    if($Especial_m == 'Miercoles'){
+                        $Mie_m_inicia = $IniciaManana_Esp;
+                    }
+                    if($Especial_m == 'Miercoles'){
+                        $Mie_m_culmina = $CulminaManana_Esp;
+                    }
+                    if($Especial_t == 'Miercoles'){
+                        $Mie_t_inicia = $IniciaTarde_Esp;
+                    }
+                    if($Especial_t == 'Miercoles'){
+                        $Mie_t_culmina = $CulminaTarde_Esp;
+                    }
+                    //Evalua si el horario especial es para el día jueves
+                    if($Especial_m == 'Jueves'){
+                        $Jue_m_inicia = $IniciaManana_Esp;
+                    }
+                    if($Especial_m == 'Jueves'){
+                        $Jue_m_culmina = $CulminaManana_Esp;
+                    }
+                    if($Especial_t == 'Jueves'){
+                        $Jue_t_inicia = $IniciaTarde_Esp;
+                    }
+                    if($Especial_t == 'Jueves'){
+                        $Jue_t_culmina = $CulminaTarde_Esp;
+                    }
+                    //Evalua si el horario especial es para el día viernes
+                    if($Especial_m == 'Viernes'){
+                        $Vie_m_inicia = $IniciaManana_Esp;
+                    }
+                    if($Especial_m == 'Viernes'){
+                        $Vie_m_culmina = $CulminaManana_Esp;
+                    }
+                    if($Especial_t == 'Viernes'){
+                        $Vie_t_inicia = $IniciaTarde_Esp;
+                    }
+                    if($Especial_t == 'Viernes'){
+                        $Vie_t_culmina = $CulminaTarde_Esp;
+                    }
+                }
 
                 if($InicioManana_Sab != '12:00 AM' && $Sabado_m != '0'){
                     $Sab_m_inicia = $InicioManana_Sab;

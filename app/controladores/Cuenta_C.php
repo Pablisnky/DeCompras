@@ -147,6 +147,9 @@
 
             //Se CONSULTAN el horario del dia domingo de la tienda
             $Horario_Dom = $this->ConsultaCuenta_M->consultarHorarioTienda_Dom($this->ID_Tienda);
+            
+            //Se CONSULTAN el horario del dia de excepcion de la tienda
+            $Horario_Esp = $this->ConsultaCuenta_M->consultarHorarioTienda_Esp($this->ID_Tienda);
 
             //CONSULTA los datos de cuentas bancarias de la tienda
             $DatosBancos = $this->ConsultaCuenta_M->consultarBancosTienda($this->ID_Tienda);
@@ -195,6 +198,7 @@
                 'horario_LV' => $Horario_LV,
                 'horario_Sab' => $Horario_Sab,
                 'horario_Dom' => $Horario_Dom,
+                'horario_Esp' => $Horario_Esp,
                 'datosBancos' => $DatosBancos,
                 'datosPagomovil' => $DatosPagoMovil,
                 'categoria' => $Categoria, // categoria
@@ -551,6 +555,18 @@
                     'Culmina_T_Dom' => $_POST['culminaTarde_Dom'],
                     'Domingo_T' => isset($_POST['domingo_T']) == 'Domingo' ? $_POST['domingo_T'] : 0,
                 ];
+
+                //Recibe dia especial
+                $RecibeHorario_Esp = [
+                    'Inicio_M_Esp' => $_POST['inicioManana_Esp'],
+                    'Culmina_M_Esp' => $_POST['culminaManana_Esp'],
+                    'DiaEspecial_M' => isset($_POST['horario_Espec_M']) != '' ? $_POST['horario_Espec_M'] : 0,
+
+                    'Inicia_T_Esp' => $_POST['inicioTarde_Esp'],
+                    'Culmina_T_Esp' => $_POST['culminaTarde_Esp'],
+                    'DiaEspecial_T' => isset($_POST['horario_Espec_T']) != '' ? $_POST['horario_Espec_T'] : 0,
+                ];
+
             }
             else{
                 echo "Ingrese el horario de despacho";
@@ -567,13 +583,18 @@
             // echo '<pre>';
             // print_r($RecibeHorario_Dom);
             // echo '</pre>';
+            // echo '<pre>';
+            // print_r($RecibeHorario_Esp);
+            // echo '</pre>';
             // exit;
-            
             //Se ACTUALIZA el horario de la tienda
-            // "TO_DO" no se han insertado los datos
             $this->ConsultaCuenta_M->actualizarHorarioTienda_LV($this->ID_Tienda, $RecibeHorario_LV);
             $this->ConsultaCuenta_M->actualizarHorarioTienda_Sab($this->ID_Tienda, $RecibeHorario_Sab);
             $this->ConsultaCuenta_M->actualizarHorarioTienda_Dom($this->ID_Tienda, $RecibeHorario_Dom);
+
+            if($RecibeHorario_Esp['DiaEspecial_M'] != '0' || $RecibeHorario_Esp['DiaEspecial_T'] != '0'){
+                $this->ConsultaCuenta_M->actualizarHorarioTienda_Esp($this->ID_Tienda, $RecibeHorario_Esp);
+            }
 
             //RECIBE INFORMACION DE PAGOS
             // ********************************************************            

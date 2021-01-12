@@ -295,11 +295,15 @@
 
             //Consulta el horario de la tienda del domingo formato 12 horas
             $TiendasHorarios_Dom = $this->ConsultaTienda_M->consultarHorario_Dom($ID_Tienda);
+            
+            //Consulta el horario de la tienda de un día de exepcion formato 12 horas
+            $TiendasHorarios_Esp = $this->ConsultaTienda_M->consultarHorario_Esp($ID_Tienda);
 
             $Datos = [
                 'horarioTienda_LV' => $TiendasHorarios_LV,
                 'horarioTienda_Sab' => $TiendasHorarios_Sab,
                 'horarioTienda_Dom' => $TiendasHorarios_Dom,
+                'horarioTienda_Esp' => $TiendasHorarios_Esp,
                 'nombreTienda' => $NombreTienda
             ];
 
