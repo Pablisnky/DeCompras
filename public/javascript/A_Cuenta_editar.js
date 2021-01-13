@@ -57,7 +57,7 @@ function conexionAJAX(){
     //Elimina una seccion
     function Llamar_EliminarSeccion(ID_Seccion, CantSeccion){
         console.log("______Desde Llamar_EliminarSeccion()______", ID_Seccion + " / " + CantSeccion)
-
+        return
         //Si hay una sola sección se detiene el proceso de eliminación
         if(CantSeccion == 1){
             return

@@ -83,10 +83,11 @@
                     <!-- div Solo para generar espacio -->
                     <div class="contenedor_139"></div> <?php
                 }   ?>
-                <div>
+                <div class="contGeneral">
                     <label class="label_22 borde_1 borde_2"><?php echo $Precio?> Bs</label>
-                    <div class="contGridUna__div" id="Contenedor_26"> 
-                        <label class="boton" onclick="cerrarAgregar()">Agregar</label>                    <label class="boton" onclick="cerrarRegresar()">Regresar</label>
+                    <div class="contBoton contBoton--100" id="Contenedor_26">                  
+                        <label class="boton" onclick="cerrarRegresar()">Regresar</label>
+                        <label class="boton" onclick="cerrarAgregar()">Agregar</label>   
                     </div>
                 </div>           
             </div>

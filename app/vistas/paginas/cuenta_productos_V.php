@@ -68,27 +68,25 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     </div>
                     <div>
                         <!-- ID_PRODUCTO -->
-                        <!-- <input class="input_8" type="text" value="123456" readonly="readonly" id=""/> -->
+                        <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>" value="<?php echo $Producto;?>"/>
 
-                        <!-- PRODUCTO -->
-                        <textarea class="textarea_2" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>"><?php echo $Producto;?></textarea>
-
-                        <!-- OPCION -->
-                        <textarea class="textarea_2" readonly="readonly" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>"><?php echo $Opcion;?></textarea>
+                        <!-- OPCION -->                        
+                        <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" ><?php echo $Opcion;?></label>
                         <br>
+
                         <!-- ESPECIFICACION -->
                         <?php                  
-                            foreach($Datos['variosCaracteristicas'] as $AA) :
-                                if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                    <a class="input_10" href="<?php echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $Slogan_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto ?>" target="_blank" rel="noopener noreferrer">Ver detalles</a>
-                                    <?php
-                                    break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
-                                }                                           
-                            endforeach; 
+                            // foreach($Datos['variosCaracteristicas'] as $AA) :
+                            //     if($AA['ID_Producto'] == $ID_Producto){  ?>
+                                     <!-- <a class="input_10" href="<?php // echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $Slogan_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto ?>" target="_blank" rel="noopener noreferrer">Ver detalles</a> -->
+                                     <?php
+                            //         break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
+                            //     }                                           
+                            // endforeach; 
                         ?>
 
                         <!-- PRECIO -->
-                        <input class="input_8" type="text" value="<?php echo $Precio;?> Bs." readonly="readonly" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>"/>
+                        <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>" ><?php echo $Precio;?> Bs.</label>
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                

@@ -24,4 +24,10 @@
             $stmt = $this->dbh->query("SELECT link_acceso, url FROM destinos");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        //SELECT con la información de la hora y fecha del servidor MySQL
+        public function consultarFechaHora(){                          
+            $stmt = $this->dbh->query("SELECT CURDATE() AS Fecha_MySQL, time_format(NOW(),'%H:%i') AS hora_MySQL ");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }

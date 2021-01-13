@@ -6,6 +6,17 @@
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
+
+            //Consulta fecha y hora de servidores php y MySQL  
+            // date_default_timezone_set('America/Caracas');
+            // $Fecha_Hora = $this->ConsultaInicio_M->consultarFechaHora();
+            // echo date('D') . '<br>';
+            // echo 'Hora PHP ' . date('H:i a') . '<br>';
+            // echo 'Hora PHP ' . date('h:i') . '<br>';
+            // echo '<pre>';
+            // print_r($Fecha_Hora);
+            // echo '</pre>';
+            // exit;
         }
         
         public function index(){

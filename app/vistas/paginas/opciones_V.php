@@ -50,11 +50,10 @@
                                 <div style="min-height:80px">
 
                                     <!-- PRODUCTO -->
-                                    <label class="input_8" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
+                                    <label class="input_8 input_8D" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
 
                                     <!-- OPCION -->
-                                    <label class="input_8" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" ><?php echo $Opcion;?></label>
-                                    
+                                    <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" ><?php echo $Opcion;?></label>
                                     <!-- AMPLIAR DETALLES -->
                                     <!-- se abre la ventana de detalle de producto utilizando el metodo de enlace con la etiqueta HTML <a></a>-->
                                     <?php        

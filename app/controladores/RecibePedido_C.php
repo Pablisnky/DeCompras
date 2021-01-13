@@ -82,6 +82,9 @@
                     // print_r($Resultado);
                     // echo '</pre>';
                     // exit;
+                    //La horano se toma del servidor MySQL porque no corresponde a nuestro uso horario
+                    date_default_timezone_set('America/Caracas');
+                    $Hora = date('h:i a');
 
                     if(is_array($Resultado) || is_object($Resultado))
                         foreach($Resultado as $Key => $Value){
@@ -93,7 +96,7 @@
                             $Total = $Value['Total'];
                             
                             //Se INSERTAN los datos del pedido en la BD y retorna el ID_Pedido generado
-                            $this->ConsultaRecibePedido_M->insertarPedido($Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total, $Aleatorio, $RecibeDatosPedido);
+                            $this->ConsultaRecibePedido_M->insertarPedido($Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total, $Aleatorio, $RecibeDatosPedido, $Hora);
                         }
                     else{
                         echo "Hubo un error en la entrega de los datos del pedido";

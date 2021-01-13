@@ -51,8 +51,8 @@
             }
         }
         
-        function insertarPedido($Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total, $Aleatorio, $RecibeDatosPedido){
-            $stmt = $this->dbh->prepare("INSERT INTO pedidos(seccion, producto, cantidad, opcion, precio, total, aleatorio, ID_Tienda, fecha, hora)VALUES (:SECCION, :PRODUCTO, :CANTIDAD, :OPCION, :PRECIO, :TOTAL, :ALEATORIO, :ID_TIENDA, CURDATE(), time_format(NOW(),'%H:%i'))"); 
+        function insertarPedido($Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total, $Aleatorio, $RecibeDatosPedido, $Hora){
+            $stmt = $this->dbh->prepare("INSERT INTO pedidos(seccion, producto, cantidad, opcion, precio, total, aleatorio, ID_Tienda, fecha, hora)VALUES (:SECCION, :PRODUCTO, :CANTIDAD, :OPCION, :PRECIO, :TOTAL, :ALEATORIO, :ID_TIENDA, CURDATE(), :HORA)"); 
 
             //Se vinculan los valores de las sentencias preparadas
             //ztmt es una abreviatura de statement 
@@ -64,6 +64,8 @@
             $stmt->bindParam(':TOTAL', $Total);
             $stmt->bindParam(':ALEATORIO', $Aleatorio);
             $stmt->bindParam(':ID_TIENDA', $RecibeDatosPedido['ID_Tienda']);
+            $stmt->bindParam(':HORA', $Hora);
+
             
             //Se ejecuta la inserción de los datos en la tabla
             $stmt->execute();            
@@ -125,13 +127,9 @@
 
             //Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
-                // echo 'Bien';
-                // exit;
                 return true;
             }
             else{
-                // echo 'Mal';
-                // exit;
                 return false;
             }
             

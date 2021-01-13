@@ -295,7 +295,7 @@
 	margin-left: 0%;
 	top: 92%;
 }
-.contGeneral{/*carrito*/
+.contGeneral{/*carrito - descr_Producto*/
 	margin-bottom: 8%;
 }
 .contGeneralCenter{/*carrito*/
@@ -405,9 +405,9 @@
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	width: 100%;
-	grid-template-columns: 55% 45%;
+	grid-template-columns: 53% 47%;
 	column-gap: 0%;/*espacio entre filas*/
-	margin-bottom: 15%;
+	margin-bottom: 18%;
 }
 .contenedor_98{/*footer*/
 	align-items: center;
@@ -506,6 +506,9 @@
 .contenedor_126{/*descr_Producto*/
 	margin-top: 5%;
 	padding: 2%;
+}
+.contenedor_127{/*descr_Producto*/
+	padding: 2% 2% 2% 10%;
 }
 .contenedor_129{/*cuenta_publicar*/
 	width: 60%;
@@ -659,6 +662,10 @@
 .h1_10{/*header_Tienda*/
 	font-size: 6vw !important;
 }
+.h1_11{/*descr_Producto*/
+	padding: 2% 5%;
+	padding-top: 8%;
+}
 .h2_1{/*inicio*/
 	font-size: 1em;
 	min-height: 4em;
@@ -786,6 +793,11 @@
 .imagen_12{/*cuenta_publicar*/
 	margin-top: -5%;
 }
+.input_2a{/*opciones*/
+	font-size: 1em;
+	margin: auto;
+	width: 85%;
+}
 .input_3{/*vitrina*/
 	width: 100%;
 }
@@ -798,11 +810,20 @@
 	width: 50px !important;
 }
 .input_8{/*cuenta_productos - opciones*/
-	font-size: 0.9em;
-	padding: 2%;
+	/* font-size: 0.9em; */
+	padding: 1%;
 }
 .input_8A{/*cuenta_productos - opciones*/
 	font-size: 1.1em;
+	margin-top: 5%;
+}
+.input_8D{/*opciones*/
+	/* background-color: blue; */
+	/* height: 45px; */
+	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
+	overflow: hidden; 
+	white-space: nowrap; 
+	text-overflow: ellipsis;  
 }
 .input_9{/*registroCom - registroDes - carrito - login - cuenta_editar*/
 	margin: 0% auto 4% auto !important;
@@ -825,7 +846,7 @@
 .label_4{/*opciones*/	
 	width: 50% !important;
 	font-size: 0.9em;
-	top: 8%;
+	top: 3%;
 }
 .label_6{/*inicio*/
 	width: 50px;
@@ -869,7 +890,7 @@
 	margin-left: 3%;
 }
 .li_1{/*carrito*/
-	line-height: 2em;
+	line-height: 2em;	
 }
 .li_2{/*ciudad*/
 	font-size: 1.1em;

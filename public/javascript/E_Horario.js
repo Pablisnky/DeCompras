@@ -64,12 +64,14 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
         if(Checkbox.checked == true){
             document.getElementById(HoraApertura).disabled = false
             document.getElementById(HoraCierre).disabled = false
+            document.getElementById(HoraApertura).value = '00:00'
+            document.getElementById(HoraCierre).value = '00:00'
         }
         else{
             document.getElementById(HoraApertura).disabled = true
             document.getElementById(HoraCierre).disabled = true
-            document.getElementById(HoraApertura).value = ''
-            document.getElementById(HoraCierre).value = ''
+            document.getElementById(HoraApertura).value = '00:00'
+            document.getElementById(HoraCierre).value = '00:00'
         }
     }
 

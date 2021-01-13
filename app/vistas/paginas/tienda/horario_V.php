@@ -11,7 +11,7 @@
 			<div class="contHorario__div borde_1">
 				<div>
 					<p class="contHorario__p">Mañana</p>    <?php 
-					//$Datos proviene de Cuenta_C	                              
+					//$Datos proviene de Cuenta_C/Editar                              
 					foreach($Datos['horario_LV'] as $row) :   
 					endforeach; ?>
 					<div class="contInputRadio"> 
@@ -96,7 +96,7 @@
 						<select class="contSelectVert__select borde_1" name="iniciaTarde" id="IniciaTarde">
 							<option><?php echo !empty($row['inicia_t']) ? $row['inicia_t'] : '00:00';?></option>
 							<option></option>
-							<option>12:00 m</option>
+							<option>12:00 pm</option>
 							<option>12:30 pm</option>
 							<option>01:00 pm</option>
 							<option>01:30 pm</option>
@@ -180,7 +180,7 @@
 						<option>10:30 am</option>
 						<option>11:00 am</option>
 						<option>11:30 am</option>
-						<option>12:00 m</option>
+						<option>12:00 pm</option>
 						<option>12:30 pm</option>
 						<option>1:00 pm</option>
 						<option>1:30 pm</option>
@@ -204,7 +204,7 @@
 						<select class="contSelectVert__select borde_1" name="inicioTarde_Sab" id="InicioTarde_Sab" disabled>
 							<option><?php echo $row['sabado_t'] == 'Sabado' ? $row['inicia_t_Sab'] : '00:00';?></option> 
 							<option></option>
-							<option>12:00 m</option>
+							<option>12:00 pm</option>
 							<option>12:30 pm</option>
 							<option>1:00 pm</option>
 							<option>1:30 pm</option>
@@ -241,7 +241,7 @@
 							<option>10:30 pm</option>
 							<option>11:00 pm</option>
 							<option>11:30 pm</option>
-							<option>12:00 am</option>
+							<option>12:00 pm</option>
 							<option>12:30 am</option>
 							<option>1:00 am</option>
 							<option>1:30 am</option>
@@ -294,7 +294,7 @@
 							<option>10:30 am</option>
 							<option>11:00 am</option>
 							<option>11:30 am</option>
-							<option>12:00 m</option>
+							<option>12:00 pm</option>
 							<option>12:30 pm</option>
 							<option>1:00 pm</option>
 							<option>1:30 pm</option>
@@ -319,7 +319,7 @@
 						<select class="contSelectVert__select borde_1" name="inicioTarde_Dom" id="InicioTarde_Dom" disabled>
 							<option><?php echo $row['domingo_t'] == 'Domingo' ? $row['inicia_t_Dom'] : '00:00';?></option> 
 							<option></option>
-							<option>12:00 m</option>
+							<option>12:00 pm</option>
 							<option>12:30 pm</option>
 							<option>1:00 pm</option>
 							<option>1:30 pm</option>
@@ -352,7 +352,7 @@
 							<option>10:30 pm</option>
 							<option>11:00 pm</option>
 							<option>11:30 pm</option>
-							<option>12:00 am</option>
+							<option>12:00 pm</option>
 							<option>12:30 am</option>
 							<option>1:00 am</option>
 							<option>1:30 am</option>
@@ -371,14 +371,14 @@
 			<label class="label_4 label_24" id="Label_3">Añadir excepción</label>
 			
 		<!-- EXCEPCIÓN -->	
-		<div class="contHorario " id="Contenedor_89">
+		<div class="contHorario ocultar" id="Contenedor_89">
 			<h2 class="contHorario__h2 borde_1">Día de excepción
 			<span class="icon-cancel-circle span_10 span_14 span_17_js"></span></h2>
 			<!-- EXEPCIÓN MAÑANA -->  
 			<div class="contHorario__div borde_1" >
 				<div>
 					<p class="contHorario__p">Mañana</p>  <?php 					
-					//$Datos proviene de Cuenta_C	 	                              
+					//$Datos proviene de Cuenta_C/Editar	 	                              
 					foreach($Datos['horario_Esp'] as $row) :   
 					endforeach; ?>
 					<div class="contInputRadio"> 
@@ -405,7 +405,7 @@
 					<div class="contSelectVert">
 						<p class="contHorario__p">Apertura</p>
 						<select class="contSelectVert__select borde_1" name="inicioManana_Esp" id="InicioManana_Esp" disabled>
-							<option><?php echo !empty($row['inicia_m_Esp']) ? $row['inicia_m_Esp'] : '00:00';?></option> 
+							<option><?php echo $row['especial_m'] != '0'  ? $row['inicia_m_Esp'] : '00:00';?></option> 
 							<option></option>
 							<option>5:00 am</option>
 							<option>5:30 am</option>
@@ -422,13 +422,13 @@
 						<br>
 						<p class="contHorario__p">Cierre</p>
 						<select class="contSelectVert__select borde_1" name="culminaManana_Esp" id="CulminaManana_Esp" disabled>
-							<option><?php echo !empty($row['culmina_m_Esp']) ? $row['culmina_m_Esp'] : '00:00';?></option> 
+							<option><?php echo $row['especial_m'] != '0'  ? $row['culmina_m_Esp'] : '00:00';?></option> 
 							<option></option>
 							<option>10:00 am</option>
 							<option>10:30 am</option>
 							<option>11:00 am</option>
 							<option>11:30 am</option>
-							<option>12:00 m</option>
+							<option>12:00 pm</option>
 							<option>12:30 pm</option>
 							<option>1:00 pm</option>
 							<option>1:30 pm</option>
@@ -441,7 +441,8 @@
 			<!-- EXEPCIÓN TARDE -->  
 			<div class="contHorario__div borde_1">             
 				<div>
-					<p class="contHorario__p">Tarde</p>	    <?php 	                              
+					<p class="contHorario__p">Tarde</p>	    <?php 					
+					//$Datos proviene de Cuenta_C/Editar	             	                              
 					foreach($Datos['horario_Esp'] as $row) :  
 					endforeach;  ?>
 					<div class="contInputRadio">
@@ -464,9 +465,9 @@
 					<div class="contSelectVert">
 						<p class="contHorario__p">Apertura</p>
 						<select class="contSelectVert__select borde_1" name="inicioTarde_Esp" id="InicioTarde_Esp" disabled>
-							<option><?php echo !empty($row['inicia_t_Esp']) ? $row['inicia_t_Esp'] : '00:00';?></option>
+							<option><?php echo $row['especial_t'] != '0' ? $row['inicia_t_Esp'] : '00:00';?></option>
 							<option></option>
-							<option>12:00 m</option>
+							<option>12:00 pm</option>
 							<option>12:30 pm</option>
 							<option>1:00 pm</option>
 							<option>1:30 pm</option>
@@ -484,7 +485,7 @@
 						</select>
 						<p class="contHorario__p">Cierre</p>
 						<select class="contSelectVert__select borde_1" name="culminaTarde_Esp" id="CulminaTarde_Esp" disabled>
-							<option><?php echo !empty($row['culmina_t_Esp']) ? $row['culmina_t_Esp'] : '00:00';?></option>
+							<option><?php echo $row['especial_t'] != '0' ? $row['culmina_t_Esp'] : '00:00';?></option>
 							<option></option>
 							<option>4:00 pm</option>
 							<option>4:30 pm</option>
@@ -502,7 +503,7 @@
 							<option>10:30 pm</option>
 							<option>11:00 pm</option>
 							<option>11:30 pm</option>
-							<option>12:00 am</option>
+							<option>12:00 pm</option>
 							<option>12:30 am</option>
 							<option>1:00 am</option>
 							<option>1:30 am</option>

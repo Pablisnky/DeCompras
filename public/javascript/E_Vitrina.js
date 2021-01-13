@@ -384,7 +384,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
 
 //************************************************************************************************
-    //invocada desde opciones_V.php muestra en cada seccion los productos que tiene cargado en carrito
+    //invocada desde opciones_V.php muestra en cada seccion los productos que estas tienen cargado en carrito
     function TransferirPedido(){
         // console.log("______Desde TransferirPedido()______")
 

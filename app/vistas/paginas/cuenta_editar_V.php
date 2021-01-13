@@ -76,7 +76,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <input class="input_13 input_13A borde_1" type="text" name="nombre_com" id="Nombre_Tien" value="<?php echo $Nombre_Tien;?>" autocomplete="off"/>
 
                 <label>Acceso directo a tu tienda</label>
-                <input class="input_13 input_13A borde_1" type="text" name="link_acceso" id="Link_Acceso" value="<?php echo $Link_Acceso;?>" autocomplete="off" readonly/>
+                <input class="input_13 input_13A borde_1" type="text" name="link_acceso" id="Link_Acceso" value="<?php echo $Link_Acceso;?>" autocomplete="off" readonly="readonly"/>
 
                 <label>Telefono tienda</label>
                 <input class="input_13 input_13A borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" placeholder="0000-000.00.00"/>
@@ -91,24 +91,24 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <select class="select_2 borde_1" id="Estado_Tien" name="estado_com" onclick="SeleccionarMunicipio(this.form)">
                     <?php
                     if(!empty($Estado_Tien)){ ?>
-                        <option id="Option_1" selected><?php echo $Estado_Tien;?></option>
+                        <option selected><?php echo $Estado_Tien;?></option>
                         <?php
                     } 
                     else{   ?>
-                    <option id="Option_1">Seleccione estado</option>
+                    <option>Seleccione estado</option>
                         <?php
                     }  ?>
-                    <option id="Option_1">Yaracuy</option>
+                    <option>Yaracuy</option>
                 </select>
 
                 <select class="select_2 borde_1" id="Municipio_Tien" name="municipio_com" onclick="SeleccionarParroquia(this.form)">
                     <?php
                     if(!empty($Municipio_Tien)){ ?>
-                        <option id="Option_1"><?php echo $Municipio_Tien;?></option>
+                        <option><?php echo $Municipio_Tien;?></option>
                         <?php
                     } 
                     else{   ?>
-                    <option id="Option_1">Seleccione municipio</option>
+                    <option>Seleccione municipio</option>
                         <?php
                     }  ?>
                 </select>
@@ -116,11 +116,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <select class="select_2 borde_1" id="Parroquia_Tien" name="parroquia_com">
                     <?php
                     if(!empty($Parroquia_Tien)){ ?>
-                        <option id="Option_1"><?php echo $Parroquia_Tien;?></option>
+                        <option><?php echo $Parroquia_Tien;?></option>
                         <?php
                     } 
                     else{   ?>
-                    <option id="Option_1">Seleccione parroquia</option>
+                    <option>Seleccione parroquia</option>
                         <?php
                     }  ?>
                 </select>                
@@ -170,7 +170,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
             <!-- SECCIONES -->
             <a id="Secciones" class="ancla_2"></a>
-            <fieldset class="fieldset_1 fieldset_2" id="">
+            <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Secciones</legend>
                 <div id="Contenedor_79" class="contenedor_143">
                     <p class="p_12">Organiza tú tienda en secciones, y dentro de estas coloca tus productos, añade tantas como consideres necesario para que tus productos esten bien organizados. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
@@ -178,8 +178,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- div a clonar sin eventos y oculto -->
                     <div class="contenedor_80A" id="Contenedor_80A">
                         <input class="input_13 input_13A input_12 borde_1" type="text"/>
-                        <span class="icon-cancel-circle span_10 "><span> <!--span_14_js-->
-                       
+                        <span class="icon-cancel-circle span_10 "><span>
                     </div>
                     
                     <?php   

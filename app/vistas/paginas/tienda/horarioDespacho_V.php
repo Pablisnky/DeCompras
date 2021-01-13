@@ -154,6 +154,8 @@
                     }
                 }
 
+                
+                //Se evalua el horario de sabado y domingo
                 if($InicioManana_Sab != '12:00 AM' && $Sabado_m != '0'){
                     $Sab_m_inicia = $InicioManana_Sab;
                 }

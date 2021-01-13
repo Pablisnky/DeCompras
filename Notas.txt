@@ -23,8 +23,8 @@ Resoluciones
 
 MAC en wifi
 Karina 60:ab:67:9b:07:24
-Xiomara 34:29:12:bf:e8:fc
-Lusvio c0:3f:d5:c6:d0:99
+Lusvio 34:29:12:bf:e8:fc
+ c0:3f:d5:c6:d0:99
 Esther 14:a3:64:83:e3:dc
 Esther 8c:79:67:1f:4f:b3
 Labtop 7c:a1:77:17:4c:f0

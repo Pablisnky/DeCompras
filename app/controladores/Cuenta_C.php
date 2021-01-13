@@ -543,7 +543,7 @@
                     'Sabado_M' => isset($_POST['sabado_M']) == 'Sabado' ? $_POST['sabado_M'] : 0,
 
                     'Inicia_T_Sab' => isset($_POST['inicioTarde_Sab']) == 'Sabado' ? $_POST['inicioTarde_Sab'] : 0,
-                    'Culmina_T_Sab' => isset($_POST['culminaTarde_Sab']) == 'Sabado' ? $_POST['domingo_T'] : 0,
+                    'Culmina_T_Sab' => isset($_POST['culminaTarde_Sab']) == 'Sabado' ? $_POST['culminaTarde_Sab'] : 0,
                     'Sabado_T' => isset($_POST['sabado_T']) == 'Sabado' ? $_POST['sabado_T'] : 0,
                 ];
                 $RecibeHorario_Dom = [
@@ -572,6 +572,7 @@
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
+
             // echo '<pre>';
             // print_r($RecibeHorario_LV);
             // echo '</pre>';
@@ -590,10 +591,7 @@
             $this->ConsultaCuenta_M->actualizarHorarioTienda_LV($this->ID_Tienda, $RecibeHorario_LV);
             $this->ConsultaCuenta_M->actualizarHorarioTienda_Sab($this->ID_Tienda, $RecibeHorario_Sab);
             $this->ConsultaCuenta_M->actualizarHorarioTienda_Dom($this->ID_Tienda, $RecibeHorario_Dom);
-
-            if($RecibeHorario_Esp['DiaEspecial_M'] != '0' || $RecibeHorario_Esp['DiaEspecial_T'] != '0'){
-                $this->ConsultaCuenta_M->actualizarHorarioTienda_Esp($this->ID_Tienda, $RecibeHorario_Esp);
-            }
+            $this->ConsultaCuenta_M->actualizarHorarioTienda_Esp($this->ID_Tienda, $RecibeHorario_Esp);
 
             //RECIBE INFORMACION DE PAGOS
             // ********************************************************            
