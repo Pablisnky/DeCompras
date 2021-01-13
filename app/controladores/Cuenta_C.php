@@ -538,32 +538,30 @@
                     'Viernes_T' => isset($_POST['viernes_T']) == 'Viernes' ? $_POST['viernes_T'] : 0
                 ];
                 $RecibeHorario_Sab = [
-                    'Inicio_M_Sab' => $_POST['inicioManana_Sab'],
-                    'Culmina_M_Sab' => $_POST['culminaManana_Sab'],
+                    'Inicio_M_Sab' => isset($_POST['inicioManana_Sab']) != '' ? $_POST['inicioManana_Sab'] : 0,
+                    'Culmina_M_Sab' => isset($_POST['culminaManana_Sab']) != '' ? $_POST['culminaManana_Sab'] : 0,
                     'Sabado_M' => isset($_POST['sabado_M']) == 'Sabado' ? $_POST['sabado_M'] : 0,
 
-                    'Inicia_T_Sab' => $_POST['inicioTarde_Sab'],
-                    'Culmina_T_Sab' => $_POST['culminaTarde_Sab'],
+                    'Inicia_T_Sab' => isset($_POST['inicioTarde_Sab']) == 'Sabado' ? $_POST['inicioTarde_Sab'] : 0,
+                    'Culmina_T_Sab' => isset($_POST['culminaTarde_Sab']) == 'Sabado' ? $_POST['domingo_T'] : 0,
                     'Sabado_T' => isset($_POST['sabado_T']) == 'Sabado' ? $_POST['sabado_T'] : 0,
                 ];
                 $RecibeHorario_Dom = [
-                    'Inicio_M_Dom' => $_POST['inicioManana_Dom'],
-                    'Culmina_M_Dom' => $_POST['culminaManana_Dom'],
+                    'Inicio_M_Dom' => isset($_POST['inicioManana_Dom']) == 'Domingo' ? $_POST['inicioManana_Dom'] : 0,
+                    'Culmina_M_Dom' => isset($_POST['culminaManana_Dom']) == 'Domingo' ? $_POST['culminaManana_Dom'] : 0,
                     'Domingo_M' => isset($_POST['domingo_M']) == 'Domingo' ? $_POST['domingo_M'] : 0,
-
-                    'Inicia_T_Dom' => $_POST['inicioTarde_Dom'],
-                    'Culmina_T_Dom' => $_POST['culminaTarde_Dom'],
+                    'Inicia_T_Dom' => isset($_POST['inicioTarde_Dom']) == 'Domingo' ? $_POST['inicioTarde_Dom'] : 0,
+                    'Culmina_T_Dom' => isset($_POST['culminaTarde_Dom']) == 'Domingo' ? $_POST['culminaTarde_Dom'] : 0,
                     'Domingo_T' => isset($_POST['domingo_T']) == 'Domingo' ? $_POST['domingo_T'] : 0,
                 ];
 
                 //Recibe dia especial
                 $RecibeHorario_Esp = [
-                    'Inicio_M_Esp' => $_POST['inicioManana_Esp'],
-                    'Culmina_M_Esp' => $_POST['culminaManana_Esp'],
+                    'Inicio_M_Esp' => isset($_POST['inicioManana_Esp']) != '' ? $_POST['inicioManana_Esp'] : 0,
+                    'Culmina_M_Esp' => isset($_POST['culminaManana_Esp']) != '' ? $_POST['culminaManana_Esp'] : 0,
                     'DiaEspecial_M' => isset($_POST['horario_Espec_M']) != '' ? $_POST['horario_Espec_M'] : 0,
-
-                    'Inicia_T_Esp' => $_POST['inicioTarde_Esp'],
-                    'Culmina_T_Esp' => $_POST['culminaTarde_Esp'],
+                    'Inicia_T_Esp' => isset($_POST['inicioTarde_Esp']) != '' ? $_POST['inicioTarde_Esp'] : 0,
+                    'Culmina_T_Esp' => isset($_POST['culminaTarde_Esp']) != '' ? $_POST['culminaTarde_Esp'] : 0,
                     'DiaEspecial_T' => isset($_POST['horario_Espec_T']) != '' ? $_POST['horario_Espec_T'] : 0,
                 ];
 
@@ -587,6 +585,7 @@
             // print_r($RecibeHorario_Esp);
             // echo '</pre>';
             // exit;
+            
             //Se ACTUALIZA el horario de la tienda
             $this->ConsultaCuenta_M->actualizarHorarioTienda_LV($this->ID_Tienda, $RecibeHorario_LV);
             $this->ConsultaCuenta_M->actualizarHorarioTienda_Sab($this->ID_Tienda, $RecibeHorario_Sab);

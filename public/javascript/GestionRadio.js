@@ -16,12 +16,10 @@
         eval(sNombre + " = " + valor + ";");
     }
 
-    //generamos dinámicamente variables globales para contener la opción pulsada en cada uno de los grupos
-    console.log("Cantidad elementos en el formulario = ",document.forms.length)
-    for(f= 0; f<document.forms.length; f++){
+    //generamos dinámicamente variables globales para contener la opción pulsada en cada uno de los grupos de radio buttom
+    for(f = 0; f < document.forms.length; f++){
         for(i = 0; i< document.forms[f].elements.length; i++){
             var elementoExistente = document.forms[f].elements[i];
-            console.log("elementos form existente", elementoExistente)
             var exprCrearVariable = "";
 
             if(elementoExistente.type == "radio"){
@@ -34,37 +32,41 @@
                 }
                 
                 //El valor será nulo o una referencia al radio actual en función de si está seleccionado o no
-                if(elementoExistente.checked)
-                    exprCrearVariable += "document.getElementById(‘" + elementoExistente.id + "‘)";
-                else
-                    exprCrearVariable += "null";
+                if(elementoExistente.checked){
+                    exprCrearVariable += "document.getElementById('" + elementoExistente.id + "')"
+                }
+                else{
+                    exprCrearVariable += "null"
+                }
 
                 //Definimos la variable y asignamos el valor sólo si no existe o si el radio actual está marcado 
-                if(!varExiste(pref_opcActual + elementoExistente.name) || elementoExistente.checked)
-                    eval(exprCrearVariable);
+                if(!varExiste(pref_opcActual + elementoExistente.name) || elementoExistente.checked){
+                    eval(exprCrearVariable)
+                }
             }
         }
     }
 
     function gestionarClickRadio(opcPulsada){
-        console.log("____Desde gestionarClickRadio()____",opcPulsada)
+        // console.log("____Desde gestionarClickRadio()____",opcPulsada)
 
         //El nombre de la variable que contiene el nombre del grupo actual
-        var svarOpcAct = pref_opcActual + opcPulsada.name;
-        var opcActual = null;
+        var svarOpcAct = pref_opcActual + opcPulsada.name
+
+        var opcActual = null
         
         //recupero dinámicamente una referencia al último radio pulsado de este grupo
-        opcActual = eval(svarOpcAct);  
+        opcActual = eval(svarOpcAct);
 
         if(opcActual == opcPulsada){
             //deselecciono
-            opcPulsada.checked = false; 
+            opcPulsada.checked = false 
             
             //y quito referencia (es como si nunca se hubiera pulsado)
-            asignaVar(svarOpcAct, "null");  
+            asignaVar(svarOpcAct, "null")  
         }
         else{
             //Anoto la última opción pulsada de este grupo
-            asignaVar(svarOpcAct, "document.getElementById('" + opcPulsada.id + "')");  
+            asignaVar(svarOpcAct, "document.getElementById('" + opcPulsada.id + "')")  
         }
     }

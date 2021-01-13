@@ -371,7 +371,7 @@
 			<label class="label_4 label_24" id="Label_3">Añadir excepción</label>
 			
 		<!-- EXCEPCIÓN -->	
-		<div class="contHorario ocultar" id="Contenedor_89">
+		<div class="contHorario " id="Contenedor_89">
 			<h2 class="contHorario__h2 borde_1">Día de excepción
 			<span class="icon-cancel-circle span_10 span_14 span_17_js"></span></h2>
 			<!-- EXEPCIÓN MAÑANA -->  
@@ -404,7 +404,7 @@
 					</div>
 					<div class="contSelectVert">
 						<p class="contHorario__p">Apertura</p>
-						<select class="contSelectVert__select borde_1" name="inicioManana_Esp">
+						<select class="contSelectVert__select borde_1" name="inicioManana_Esp" id="InicioManana_Esp" disabled>
 							<option><?php echo !empty($row['inicia_m_Esp']) ? $row['inicia_m_Esp'] : '00:00';?></option> 
 							<option></option>
 							<option>5:00 am</option>
@@ -421,7 +421,7 @@
 						</select>
 						<br>
 						<p class="contHorario__p">Cierre</p>
-						<select class="contSelectVert__select borde_1" name="culminaManana_Esp">
+						<select class="contSelectVert__select borde_1" name="culminaManana_Esp" id="CulminaManana_Esp" disabled>
 							<option><?php echo !empty($row['culmina_m_Esp']) ? $row['culmina_m_Esp'] : '00:00';?></option> 
 							<option></option>
 							<option>10:00 am</option>
@@ -442,7 +442,7 @@
 			<div class="contHorario__div borde_1">             
 				<div>
 					<p class="contHorario__p">Tarde</p>	    <?php 	                              
-					foreach($Datos['horario_LV'] as $row) :  
+					foreach($Datos['horario_Esp'] as $row) :  
 					endforeach;  ?>
 					<div class="contInputRadio">
 						<input type="radio" name="horario_Espec_T" value="Lunes" id="LunesEsp_T" <?php if(!empty($row['especial_t']) == 'Lunes'){echo 'checked';}?> onclick="gestionarClickRadio(this)"/>
@@ -463,7 +463,7 @@
 					</div>
 					<div class="contSelectVert">
 						<p class="contHorario__p">Apertura</p>
-						<select class="contSelectVert__select borde_1" name="inicioTarde_Esp" >
+						<select class="contSelectVert__select borde_1" name="inicioTarde_Esp" id="InicioTarde_Esp" disabled>
 							<option><?php echo !empty($row['inicia_t_Esp']) ? $row['inicia_t_Esp'] : '00:00';?></option>
 							<option></option>
 							<option>12:00 m</option>
@@ -483,7 +483,7 @@
 							<option>7:00 pm</option>
 						</select>
 						<p class="contHorario__p">Cierre</p>
-						<select class="contSelectVert__select borde_1" name="culminaTarde_Esp">
+						<select class="contSelectVert__select borde_1" name="culminaTarde_Esp" id="CulminaTarde_Esp" disabled>
 							<option><?php echo !empty($row['culmina_t_Esp']) ? $row['culmina_t_Esp'] : '00:00';?></option>
 							<option></option>
 							<option>4:00 pm</option>
@@ -517,5 +517,5 @@
 	</fieldset>
 </section>
 
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/GestionRadio.js';?>"></script> 
 <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Horario.js';?>"></script> 
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/GestionRadio.js';?>"></script> 
