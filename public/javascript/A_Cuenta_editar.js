@@ -56,8 +56,8 @@ function conexionAJAX(){
 // *************************************************************************************************
     //Elimina una seccion
     function Llamar_EliminarSeccion(ID_Seccion, CantSeccion){
-        console.log("______Desde Llamar_EliminarSeccion()______", ID_Seccion + " / " + CantSeccion)
-        return
+        // console.log("______Desde Llamar_EliminarSeccion()______", ID_Seccion + " / " + CantSeccion)
+        
         //Si hay una sola sección se detiene el proceso de eliminación
         if(CantSeccion == 1){
             return
@@ -73,7 +73,8 @@ function conexionAJAX(){
     function respuesta_EliminarSeccion(){
         if(peticion.readyState == 4){
             if(peticion.status == 200){  
-                document.getElementById('ReadOnly').innerHTML = peticion.responseText             
+                //No hace falta traer una respuesta del servidor, la operacion se hace y ya
+                // document.getElementById('ReadOnly').innerHTML = peticion.responseText             
             } 
             else{
                 alert('Problemas con la petición.')
@@ -87,7 +88,7 @@ function conexionAJAX(){
 // *************************************************************************************************
     //Cambia el nombre de una sección cuando se avandona el foco
     function Llamar_ActualizarSeccion(Seccion, ID_Seccion){
-        console.log("______Desde Llamar_ActualizarSeccion()______",Seccion + " / "  + ID_Seccion)
+        // console.log("______Desde Llamar_ActualizarSeccion()______",Seccion + " / "  + ID_Seccion)
 
         var url = "../Cuenta_C/ActualizarSeccion/" + Seccion + "/" + ID_Seccion
         http_request.open('GET', url, true)  

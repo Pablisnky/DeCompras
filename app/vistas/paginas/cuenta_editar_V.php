@@ -175,35 +175,35 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div id="Contenedor_79" class="contenedor_143">
                     <p class="p_12">Organiza tú tienda en secciones, y dentro de estas coloca tus productos, añade tantas como consideres necesario para que tus productos esten bien organizados. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
-                    <!-- div a clonar sin eventos y oculto -->
+                    <!-- div a clonar sin eventos y oculto mediante z-index = -1 -->
                     <div class="contenedor_80A" id="Contenedor_80A">
                         <input class="input_13 input_13A input_12 borde_1" type="text"/>
-                        <span class="icon-cancel-circle span_10 "><span>
+                        <span class="icon-cancel-circle span_10 span_14_js"><span>
                     </div>
                     
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
                         <div class="contenedor_80" id="Contenedor_80"><!--Contenedor_80-->
-                            <input class="input_13 input_13A input_12 borde_1" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección" />
-                            <span class="icon-cancel-circle span_10 "></span> <!--span_14_js-->
+                            <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección" />
+                            <span class="icon-cancel-circle span_10 span_14_js"></span>
                         </div>
                         <?php
                     }   
                     else{    
-                        foreach($Datos['secciones'] as $row){
+                        foreach($Datos['secciones'] as $row) :
                             $Seccion_Tien = $row['seccion'];
                             $ID_Seccion = $row['ID_Seccion'];
                             $CantidadSeccion = count($Datos['secciones']);
                             ?>
                            
                             <div class="contenedor_80" id="Contenedor_80">
-                                <input class="input_13 input_13A input_12 borde_1" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
+                                <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
 
-                                <span class="icon-cancel-circle span_10 span_14_js" id="<?php echo $ID_Seccion;?>" onclick="Llamar_EliminarSeccion('<?php echo $ID_Seccion;?>','<?php echo $CantidadSeccion?>')"></span>
+                                <span class="icon-cancel-circle span_10 span_14_js" id="<?php echo $ID_Seccion;?>"></span>
                             </div>
                             <?php
-                        }   
+                        endforeach;   
                     }   ?>
                 </div>
                 <label class="label_4 label_24" id="Label_5">Añadir sección</label>
@@ -480,7 +480,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     </section> -->
 
     <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
-    <did id="ReadOnly"></did>
+    <!-- <did id="ReadOnly"></did> -->
 
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js';?>"></script> 
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js';?>"></script> 

@@ -43,24 +43,29 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
         document.getElementById(ID_Select).addEventListener('click', function(){blanquearInput(ID_Select)}, false)
     }
 }, false)
-    
+
+// **************************************************************************************************
+//ELIMINAR SECCIONES
 //Por medio de delegación de eventos se detecta la sección a eliminar
 window.addEventListener('click', function(e){
     // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
 
-    var ElementoSeleccionado = e.target.id
+    var ElementoSeleccionado = e.target.classList[2]
     // console.log(ElementoSeleccionado)
 
-    if(e.target.classList[2] == "span_14_js"){
-        let ConfirmaEliminar = confirm("Se eliminaran todos los productos de esta sección")
-        if(ConfirmaEliminar == true){
-            
+    //Se ubica el id del elemento seleccionado
+    let ID_ElementoSeleccionado = e.target.id
+    console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
+
+    if(ElementoSeleccionado == "span_14_js"){
+        let ConfirmaEliminar = confirm("Se eliminará la sección y todos sus productos")
+
+        if(ConfirmaEliminar == true){            
             //Contenedor padre de secciones
             let PadreSecciones = document.getElementById("Contenedor_79")
 
             //Si hay más de una sección la elimina, si solo hay una borrar el contenido del input
             if(PadreSecciones.childElementCount > 4){
-            
                 // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
                 current = e.target.parentElement
                 // console.log("div a eliminar", current)
@@ -74,24 +79,14 @@ window.addEventListener('click', function(e){
             else{
                 document.getElementById("Seccion").value = ""
             }
+
+            //Se procede a eliminar del servidor
+            Llamar_EliminarSeccion(ID_ElementoSeleccionado, Secciones)
         }  
     }  
 }, false)
 
-// VALIDA FORMATO CEDULA Y TELEFONO PAGOMOVIL EXISTENTE
-//Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
-document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', function(e){ 
-    console.log("______Desde funcion anonima que aplica listerner a input de PagoMovil______")
-    var click = e.target
-
-    if(e.target.classList[3] == "cedulaJS"){
-        document.getElementById(click.id).addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
-    }
-    if(e.target.classList[3] == "TelefonoJS"){
-        document.getElementById(click.id).addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
-    }
-}, false)
-
+// **************************************************************************************************
 //ELIMINAR PAGOMOVIL
 document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(e){ 
     console.log("______Desde funcion anonima que aplica listerner para eliminar PagoMovil______")
@@ -147,6 +142,21 @@ document.getElementById("Mostrar_CuentaBancaria").addEventListener('click', func
         //Se elimina la sección
         elementoPadre.removeChild(current);
         }
+    }
+}, false)
+
+// **************************************************************************************************
+// VALIDA FORMATO CEDULA Y TELEFONO PAGOMOVIL EXISTENTE
+//Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
+document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', function(e){ 
+    console.log("______Desde funcion anonima que aplica listerner a input de PagoMovil______")
+    var click = e.target
+
+    if(e.target.classList[3] == "cedulaJS"){
+        document.getElementById(click.id).addEventListener('keyup', function(){formatoMiles(click.value, click.id)}, false)
+    }
+    if(e.target.classList[3] == "TelefonoJS"){
+        document.getElementById(click.id).addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
     }
 }, false)
 
@@ -207,10 +217,7 @@ document.getElementById('Label_13').addEventListener('click',function(){
         
         //Se da un name al input que se encuentra en el nuevo elemento clonado
         Div_clon.getElementsByClassName("input_12")[0].name = "seccion[]" 
-        
-        //Se da un ID al span que se encuentra en el nuevo elemento clonado
-        // Div_clon.getElementsByClassName("span_12_js")[0].id = 'SpanClon_' + incrementoSeccion 
-        
+                
         //El valor del nuevo input debe estar vacio
         Div_clon.getElementsByClassName("input_12")[0].value = "" 
 
@@ -221,46 +228,6 @@ document.getElementById('Label_13').addEventListener('click',function(){
         Padre.appendChild(Div_clon)
         incrementoSeccion++
     } 
-
-//************************************************************************************************ 
-    //Elimina los clones de Secciones
-    function PreEliminarSeccion(e){
-        // console.log("______Desde PreEliminarSeccion()______", e)
-
-        // // let ConfirmaEleminar = confirm("Se eliminaran todos los productos de esta sección")
-
-        // // if(ConfirmaEleminar == true){
-        //     //Detectar el boton eliminar al cual se hizo click
-        //     var SpanEliminar = document.getElementsByClassName('span_14_js')//Se obtienen los botones Eliminar 
-        //     var ID_Input = e.target.id
-        //     console.log(ID_Input)
-        
-
-        //     var len = SpanEliminar.length//Se cuentan cuantos botones Eliminar hay 
-        //     // console.log("Cantidad de botones \"Eliminar\"", len) 
-
-        //     var button
-        //     for(var i = 0; i < len; i++){
-        //         button = SpanEliminar[i]; //Se Encuentra el boton eliminar seleccionado al hacer click
-        //         button.onclick = EliminarSeccion // Asignar la función EliminarSeccion() en su evento click.
-        //         // console.log("______Boton seleccionado______", SpanEliminar[i]) 
-        //     } 
-
-            // function EliminarSeccion(e){   
-            //     // console.log("______Desde EliminarSeccion()______") 
-
-            //     //Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-            //     current = e.target.parentElement
-            //     // console.log("div a eliminar", current)
-                
-            //     //Se busca el nodo padre que contiene el elemento current
-            //     let elementoPadre = current.parentElement
-                
-            //     //Se elimina la sección
-            //     elementoPadre.removeChild(current);  
-            // }  
-        // }          
-    }
 
 //************************************************************************************************  
     //Establece el alto del fondo de la ventana modal para que sea igual a todo el contenido de la ista cuenta_editar_V.php de la tienda en curso
@@ -416,7 +383,7 @@ document.getElementById('Label_13').addEventListener('click',function(){
         
         // Calcula cuantas cuentas de Transferencia existen tomando uno de sus requisitos (banco)
         let CantidadCuentasTransferencia = document.getElementsByClassName("bancoTransJS")
-        console.log("Cuentas Transferencia existentes", CantidadCuentasTransferencia.length)
+        // console.log("Cuentas Transferencia existentes", CantidadCuentasTransferencia.length)
 
         //Se verifica que no existan cuentas Transferencia con campos sin llenar
         for(var i = 0; i < CantidadCuentasTransferencia.length; i++){
@@ -548,9 +515,9 @@ document.getElementById('Label_13').addEventListener('click',function(){
         let Municipio = document.getElementById('Municipio_Tien').value 
         let Parroquia = document.getElementById('Parroquia_Tien').value
         let Direccion = document.getElementById('Direccion_Tien').value
-        //HORRIO TIENDA
+        //HORARIO TIENDA
 
-        // DATOS CUENTA BANCO
+        // DATOS CUENTA BANCO        
         let Nombre_Banco = document.getElementsByClassName('bancoTransJS')  
         let Titular_Banco = document.getElementsByClassName('titularTransJS') 
         let NroCuenta_Banco = document.getElementsByClassName('cuentaTransJS')
@@ -872,7 +839,7 @@ document.getElementById('Label_13').addEventListener('click',function(){
                 return false
             }
         }
-        //Valida que no exista un campo de una cuenta PagoMovil vacio
+        //Valida que no exista un campo de una cuenta Transferencia vacio, que tenga algun campo lleno
         for(i=0; i<Nombre_Banco.length; i++){
             if(Nombre_Banco[i].value != '' || Titular_Banco[i].value != '' || NroCuenta_Banco[i].value != '' || RIF_Banco[i].value != '' ){
             

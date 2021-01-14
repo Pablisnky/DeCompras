@@ -1178,7 +1178,7 @@
             $this->vista("inc/BotonImagen_Ajax_V", $Datos);
         }
         
-        //Invocado desde cuenta_editar_V.php
+        //Invocado desde A_Cuenta_editar.js.php por medio de la funcion Llamar_EliminarSeccion()
         public function eliminarSeccion($ID_Seccion){
             // *************************************************************************************
             //La siguientes cuatro consultas entran en el procedimeinto para ELIMINAR una seccion de una tienda, esto debe hacerse mediante transacciones
