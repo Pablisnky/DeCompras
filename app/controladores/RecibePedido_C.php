@@ -14,6 +14,7 @@
             //$this->vista("paginas/RecibePedido_V/recibeRegistro");
         }
 
+        //Invocado en carrito_V.php
         public function recibePedido(){      
             $verifica_2 = $_SESSION['verifica_2'];  
             if($verifica_2 == 1906){// Anteriormente en carrito_V.php se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga esta página.
@@ -31,6 +32,8 @@
                         'Correo' => $_POST['correoUsuario'],
                         'Direccion' => filter_input(INPUT_POST, "direccionUsuario", FILTER_SANITIZE_STRING), 
                         'MontoTotal' => filter_input(INPUT_POST, "montoTotal", FILTER_SANITIZE_STRING),                        
+                        'MontoTienda' => filter_input(INPUT_POST, "montoTienda", FILTER_SANITIZE_STRING),       
+                        // 'MontoEntrega' => filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING),       
                     ];
                     // echo "<pre>";
                     // print_r($RecibeDatosUsuario);
@@ -43,7 +46,6 @@
                         'FormaPago' => filter_input(INPUT_POST, "formaPago", FILTER_SANITIZE_STRING),
                         'Despacho' => filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING), 
                         'CodigoTransferencia' => filter_input(INPUT_POST, "codigoTransferencia", FILTER_SANITIZE_STRING),
-                        // 'CodigoPagoMovil' => filter_input(INPUT_POST, "codigoPagoMovil", FILTER_SANITIZE_STRING),
                     ];              
                     
                     // echo "<pre>";
@@ -95,56 +97,50 @@
                             $Precio = $Value['Precio'];
                             $Total = $Value['Total'];
                             
-                            //Se INSERTAN los datos del pedido en la BD y retorna el ID_Pedido generado
+                            //Se INSERTAN los datos del pedido en la BD
                             $this->ConsultaRecibePedido_M->insertarPedido($Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total, $Aleatorio, $RecibeDatosPedido, $Hora);
                         }
                     else{
                         echo "Hubo un error en la entrega de los datos del pedido";
                         echo "<br>";
                     }
-                    
-                    //Este switch solo se utiliza para comprobar el json
-                    // switch(json_last_error()) {
-                    //     case JSON_ERROR_NONE:
-                    //         echo 'No ocurrió ningún error';
-                    //     break;
-                    //     case JSON_ERROR_DEPTH:
-                    //         echo 'Se ha excedido la profundidad máxima de la pila';
-                    //     break;
-                    //     case JSON_ERROR_STATE_MISMATCH:
-                    //         echo 'JSON con formato incorrecto o inválido';
-                    //     break;
-                    //     case JSON_ERROR_CTRL_CHAR:
-                    //         echo 'Error del carácter de control, posiblemente se ha codificado de forma incorrecta';
-                    //     break;
-                    //     case JSON_ERROR_SYNTAX:
-                    //         echo 'Error de sintaxis';
-                    //     break;
-                    //     case JSON_ERROR_UTF8:
-                    //         echo 'Caracteres UTF-8 mal formados, posiblemente codificados de forma incorrecta';
-                    //     break;
-                    //     default:
-                    //         echo ' - Unknown error';
-                    //     break;
-                    // }
                 }
                 else{
                     echo "Llene todos los campos del formulario de registro" . "<br>";
                     echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                     exit();
                 }
+                
+                // Se evalua el monto del delivery
+                // *****************************************
+                //Si hay despacho se calcula el monto del envio (Por ahora es fijo en 3000 Bs)
+                if($RecibeDatosPedido['Despacho'] == 'Domicilio_Si'){
+                    $Delivery = '3.000';
+                }
+                else{
+                    $Delivery = '0';
+                }
 
                 // Sino se recibe el codigo de transferencia se da un valor por defecto
+                // *****************************************
                 if(empty($RecibeDatosPedido['CodigoTransferencia'])){
-                    $CodigoTransferencia = $RecibeDatosPedido['formaPago'];
+                    // $CodigoTransferencia = $RecibeDatosPedido['formaPago'];
                     $CodigoTransferencia = 'No aplica';
                 } 
-
+                else{
+                    $CodigoTransferencia = $RecibeDatosPedido['CodigoTransferencia'];
+                }
+                    
                 //Se INSERTAN los datos del usuario en la BD
-                $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $CodigoTransferencia,  $RecibeDatosPedido, $Aleatorio);
+                $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $CodigoTransferencia,  $RecibeDatosPedido, $Aleatorio, $Delivery);
                 
-                //Se recibe y se inserta el capture de transferencia
-                if($_FILES['imagenTransferencia']['name'] != ''){
+                //Se recibe y se inserta el capture de transferencia 
+                if($_FILES['imagenTransferencia']['name'] == ''){
+                    // $CodigoTransferencia = $RecibeDatosPedido['formaPago'];
+                    $archivonombre = 'imagen_2.png';
+                    $this->ConsultaRecibePedido_M->UpdateCapturePago($Aleatorio, $archivonombre);
+                }
+                else{
                     $archivonombre = $_FILES['imagenTransferencia']['name'];
                     $Ruta_Temporal = $_FILES['imagenTransferencia']['tmp_name'];
                     $tipo = $_FILES['imagenTransferencia']['type'];
@@ -227,10 +223,15 @@
                 // exit;
 
                 $DatosCorreo = [
-                    'informacion_pedido' => $Pedido, // ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, fecha, hora, montoTotal, despacho, formaPago, codigoPago, capture
-                    'informacion_usuario' => $Usuario, //nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal
+                    'informacion_pedido' => $Pedido, // ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, fecha, hora, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, capture
+                    'informacion_usuario' => $Usuario, //nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTienda, montoTotal
                     'informacion_tienda' => $Tienda, //ID_Tienda, correo_AfiCom, nombre_Tien
                 ];
+
+                // echo '<pre>';
+                // print_r($DatosCorreo);
+                // echo '</pre>';
+                // exit;
 
                 // CORREOS
                 // **************************************** 

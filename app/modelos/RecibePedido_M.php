@@ -5,7 +5,7 @@
             parent::__construct();  
         }
         
-        public function insertarUsuario($RecibeDatosUsuario,$CodigoTransferencia, $RecibeDatosPedido, $Aleatorio){
+        public function insertarUsuario($RecibeDatosUsuario, $CodigoTransferencia, $RecibeDatosPedido, $Aleatorio, $Delivery){
             // echo "<pre>";
             // print_r($RecibeDatosPedido);
             // echo "</pre>";
@@ -13,8 +13,20 @@
             // echo "<pre>";
             // print_r($RecibeDatosUsuario);
             // echo "</pre>";
+            
+            // echo "<pre>";
+            // print_r($CodigoTransferencia);
+            // echo "</pre>";
+            
+            // echo "<pre>";
+            // print_r($Delivery);
+            // echo "</pre>";
+                        
+            // echo "<pre>";
+            // print_r($Aleatorio);
+            // echo "</pre>";
             // exit();
-            $stmt = $this->dbh->prepare("INSERT INTO usuarios(ID_Pedido, nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal, despacho, formaPago, codigoPago)VALUES (:ID_Pedido, :Nombre, :Apellido, :Cedula, :Telefono, :Correo, :Direccion, :MontoTotal, :Despacho, :FormaPago, :CodigoPago)"); 
+            $stmt = $this->dbh->prepare("INSERT INTO usuarios(ID_Pedido, nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago)VALUES (:ID_Pedido, :Nombre, :Apellido, :Cedula, :Telefono, :Correo, :Direccion, :MontoDelivery, :MontoTienda, :MontoTotal, :Despacho, :FormaPago, :CodigoPago)"); 
 
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindParam(':Nombre', $nombre);
@@ -23,6 +35,8 @@
             $stmt->bindParam(':Telefono', $telefono);
             $stmt->bindParam(':Correo', $correo);
             $stmt->bindParam(':Direccion', $direccion);
+            $stmt->bindParam(':MontoDelivery', $Delivery);
+            $stmt->bindParam(':MontoTienda', $montoTienda);
             $stmt->bindParam(':MontoTotal', $montoTotal);
             $stmt->bindParam(':Despacho', $despacho);
             $stmt->bindParam(':FormaPago', $formaPago);
@@ -36,6 +50,7 @@
             $telefono = $RecibeDatosUsuario['Telefono'];
             $correo = $RecibeDatosUsuario['Correo'];
             $direccion = $RecibeDatosUsuario['Direccion'];
+            $montoTienda = $RecibeDatosUsuario['MontoTienda']; 
             $montoTotal = $RecibeDatosUsuario['MontoTotal']; 
             $despacho = $RecibeDatosPedido['Despacho']; 
             $formaPago = $RecibeDatosPedido['FormaPago']; 
@@ -50,6 +65,9 @@
                 return false;
             }
         }
+        // Warning: PDOStatement::execute(): SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'codigoPago' cannot be null in C:\xampp\htdocs\proyectos\PidoRapido\app\modelos\RecibePedido_M.php on line 46
+
+
         
         function insertarPedido($Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total, $Aleatorio, $RecibeDatosPedido, $Hora){
             $stmt = $this->dbh->prepare("INSERT INTO pedidos(seccion, producto, cantidad, opcion, precio, total, aleatorio, ID_Tienda, fecha, hora)VALUES (:SECCION, :PRODUCTO, :CANTIDAD, :OPCION, :PRECIO, :TOTAL, :ALEATORIO, :ID_TIENDA, CURDATE(), :HORA)"); 
@@ -65,19 +83,15 @@
             $stmt->bindParam(':ALEATORIO', $Aleatorio);
             $stmt->bindParam(':ID_TIENDA', $RecibeDatosPedido['ID_Tienda']);
             $stmt->bindParam(':HORA', $Hora);
-
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla por medio de sentencia preparada
             $stmt->execute();            
-            return $this->dbh->lastInsertId();
-
-            //Se envia información de cuantos registros se vieron afectados por la consulta
-            // return $stmt->rowCount();
+            return true;
         }
 
         // SELECT del pedido realizado
         function consultarPedido($Aleatorio){                    
-            $stmt = $this->dbh->prepare("SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i:%p') AS hora, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago, usuarios.codigoPago, usuarios.capture FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido WHERE aleatorio = :ALEATORIO");
+            $stmt = $this->dbh->prepare("SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i:%p') AS hora, usuarios.montoDelivery, usuarios.montoTienda, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago, usuarios.codigoPago, usuarios.capture FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido WHERE aleatorio = :ALEATORIO");
             
             $stmt->bindValue(':ALEATORIO', $Aleatorio, PDO::PARAM_INT);
 
@@ -91,7 +105,7 @@
 
         // SELECT del usuario que realizó un pedido
         function consultarUsuario($Aleatorio){                    
-            $stmt = $this->dbh->prepare("SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoTotal FROM usuarios WHERE ID_Pedido = :ALEATORIO");
+            $stmt = $this->dbh->prepare("SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, direccion_usu, montoDelivery, montoTienda, montoTotal FROM usuarios WHERE ID_Pedido = :ALEATORIO");
             
             $stmt->bindValue(':ALEATORIO', $Aleatorio, PDO::PARAM_INT);
 

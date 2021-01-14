@@ -34,6 +34,7 @@
                 @media(max-width: 800px){/*medio con dimensiones menores a lo indicado*/
                     img{width: 6rem; height: 6rem; margin-top: 10%} 
                     h1{font-size: 1.6em}
+                    .img__capture{width: 8rem; height: 8rem}
                 }
             </style>
         </head>
@@ -43,11 +44,11 @@
             // DATOS DE LA COMPRA
             $email_message = "<h2>Datos de la compra</h2>";
             $email_message .= "<table>";
-                foreach($DatosCorreo['informacion_pedido'] as $DatosCompra) :
+                foreach($DatosCorreo['informacion_pedido'] as $DatosCompra) :                   
                     $Capture =  $DatosCompra['capture'];
                     $email_message .= "<tr>";
                     $email_message .= "<td class='td_1'>FECHA</td>";
-                    $email_message .= "<td>" . $DatosCompra["fecha"] . "</td>";
+                    $email_message .= "<td>" . $DatosCompra["fecha"] ."</td>";
                     $email_message .= "</tr>";
                     $email_message .= "<tr>";
                     $email_message .= "<td class='td_1'>HORA</td>";
@@ -66,11 +67,19 @@
                     $email_message .= "<td>" . $DatosCompra["codigoPago"] . "</td>";
                     $email_message .= "</tr>";
                     $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>MONTO EN TIENDA</td>";
+                    $email_message .= "<td>" . $DatosCompra["montoTienda"] . ' Bs.' . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>MONTO ENVIO</td>";
+                    $email_message .= "<td>" . $DatosCompra["montoDelivery"]  . ' Bs.' . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
                     $email_message .= "<td class='td_1'>TOTAL PAGADO</td>";
                     $email_message .= "<td>" . $DatosCompra["montoTotal"] . ' Bs.' . "</td>";
                     $email_message .= "<tr>";
                     $email_message .= "<td class='td_1'>CAPTURE</td>";
-                    $email_message .= "<td><img src='https://pedidoremoto.com/public/images/capture/" . $Capture . "'></td>"; 
+                    $email_message .= "<td><img class='img__capture' src='https://pedidoremoto.com/public/images/capture/" . $Capture . "'></td>"; 
                     $email_message .= "</tr>";
                     break;
                 endforeach;

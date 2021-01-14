@@ -18,7 +18,7 @@
             $nombre = $RecibeDatos['Nombre_Afcom'];
             $correo = $RecibeDatos['Correo_Afcom'];
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
             if($stmt->execute()){
                 return $this->dbh->lastInsertId();
             }
@@ -46,7 +46,7 @@
             $Telefono = $RecibeDatos['Telefono_AfiDes'];
             $Correo = $RecibeDatos['Correo_AfiDes'];
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
             if($stmt->execute()){
                 return $this->dbh->lastInsertId();
             }
@@ -105,7 +105,7 @@
             $nombre_T = $RecibeDatos['Nombre_tienda'];
             $responsable_T = $ID_AfiliadoCom;
             
-            //Se ejecuta la inserción de los datos en la tabla
+            //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
             if($stmt->execute()){
                 return $this->dbh->lastInsertId();
             }

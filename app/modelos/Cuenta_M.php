@@ -1082,6 +1082,7 @@
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
+                //se recupera el ID del registro insertado
                 return $this->dbh->lastInsertId();
             }
             else{
@@ -1103,6 +1104,7 @@
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
+                // se recupera el ID del registro insertado
                 return $this->dbh->lastInsertId();
             }
             else{

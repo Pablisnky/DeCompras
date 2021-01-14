@@ -173,7 +173,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Secciones</legend>
                 <div id="Contenedor_79" class="contenedor_143">
-                    <p class="p_12">Organiza tú tienda en secciones, y dentro de estas coloca tus productos, añade tantas como consideres necesario para que tus productos esten bien organizados. <span class="span_13" id="Span_1">Ver sugerencias:</span></p>
+                    <p class="p_12">Organiza tú tienda en secciones, dentro de estas colocaras tus productos según la clasificación que tu desees, añade tantas como consideres necesario para que tus productos esten bien organizados.</p>
+                    <!-- <span class="span_13" id="Span_1">Ver sugerencias:</span> -->
                     <label>Sección</label>
                     <!-- div a clonar sin eventos y oculto mediante z-index = -1 -->
                     <div class="contenedor_80A" id="Contenedor_80A">
@@ -411,7 +412,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <div id="Mostrar_Categorias"></div>
 
     <!-- la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
-    <!-- <section class=" section_13" id="Ejemplo_Secciones">
+    <section class="section_13" id="Ejemplo_Secciones">
         <div class="contenedor_84 contenedor_24">
             <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
             <div>
@@ -477,7 +478,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <a class="boton boton_4" href="#marcador_03" id="Label_1">Cerrar</a>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
     <!-- <did id="ReadOnly"></did> -->

@@ -43,9 +43,9 @@
                         <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, 3.000 Bs.</label>
                     </div>     
                     <div>
-                        <h2 class="h2_2">Monto en tienda: <input type="text" class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
+                        <h2 class="h2_2">Monto en tienda: <input type="text"  form="DatosUsuario" name="montoTienda"  class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
                         <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
-                        <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
+                        <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text'   form="DatosUsuario" name="despacho" class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
                         <hr class="hr_1"/>
                         <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
                     </div>
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="contenedor_72">
-                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
+                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')">Calle 15</textarea>
                             </div>
                         </div>        
                     </div>

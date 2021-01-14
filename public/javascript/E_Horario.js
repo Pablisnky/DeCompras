@@ -78,7 +78,7 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
 //************************************************************************************************
     //Muestra todo el div que contiene la sección de horarios
     function MostrarExepcionHorario(){
-        console.log("______Desde MostrarExepcionHorario()______") 
+        // console.log("______Desde MostrarExepcionHorario()______") 
         
         document.getElementById("Contenedor_89").style.display = "flex"
     }
@@ -86,7 +86,7 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
 //************************************************************************************************   
     //Oculta todo el div que contiene la sección de horarios
     function OcultarExepcionHorario(){
-        console.log("______Desde ocultarHorario()______") 
+        // console.log("______Desde ocultarHorario()______") 
         
         document.getElementById("Contenedor_89").style.display = "none"
     }    
@@ -94,7 +94,7 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
 //************************************************************************************************ 
     //Verifica que si un horario ya existe, no desabilite los selects de las horas correspondientes
     function VerificarCheckbox(Dia, HoraApertura_M, HoraCierre_M){
-        console.log("______Desde VerificarCHeckbox()______", Dia + ' ' +  HoraApertura_M + ' ' + HoraCierre_M) 
+        // console.log("______Desde VerificarCHeckbox()______", Dia + ' ' +  HoraApertura_M + ' ' + HoraCierre_M) 
 
         let Checkbox = document.getElementById(Dia)
 

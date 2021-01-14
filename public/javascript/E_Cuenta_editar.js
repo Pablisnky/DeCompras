@@ -4,7 +4,7 @@ document.getElementById("Label_7").addEventListener('click', clonarCuentaPagoMov
 
 document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
-document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
+// document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){contarCaracteres('ContadorSlo','ContenidoSlo', 50)}, false)
 
@@ -55,7 +55,7 @@ window.addEventListener('click', function(e){
 
     //Se ubica el id del elemento seleccionado
     let ID_ElementoSeleccionado = e.target.id
-    console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
+    // console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
 
     if(ElementoSeleccionado == "span_14_js"){
         let ConfirmaEliminar = confirm("Se eliminará la sección y todos sus productos")
@@ -149,7 +149,7 @@ document.getElementById("Mostrar_CuentaBancaria").addEventListener('click', func
 // VALIDA FORMATO CEDULA Y TELEFONO PAGOMOVIL EXISTENTE
 //Por medio de delegación de eventos debido a que no se sabe cuantas cuentas de PagoMovil se añadieron
 document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', function(e){ 
-    console.log("______Desde funcion anonima que aplica listerner a input de PagoMovil______")
+    // console.log("______Desde funcion anonima que aplica listerner a input de PagoMovil______")
     var click = e.target
 
     if(e.target.classList[3] == "cedulaJS"){
@@ -187,9 +187,9 @@ document.getElementById('Label_13').addEventListener('click',function(){
 
 //************************************************************************************************ 
 //Cierra la ventana modal que muestra el ejemplo de secciones                 
-// document.getElementById("Label_1").addEventListener('click', function(){
-//     CerrarModal_X("Ejemplo_Secciones")
-// });
+document.getElementById("Label_1").addEventListener('click', function(){
+    CerrarModal_X("Ejemplo_Secciones")
+});
  
 //************************************************************************************************  
     //Añade un nuevo input clonado del div secciones
@@ -232,10 +232,11 @@ document.getElementById('Label_13').addEventListener('click',function(){
 //************************************************************************************************  
     //Establece el alto del fondo de la ventana modal para que sea igual a todo el contenido de la ista cuenta_editar_V.php de la tienda en curso
     function mostrarSecciones(){
-        // console.log("______Desde mostrarSecciones()______")
-        //Coloca el cursor en el top de la pagina
+        console.log("______Desde mostrarSecciones()______")
+
         document.getElementById("Ejemplo_Secciones").style.display = "grid"
 
+        //Coloca el cursor en el top de la pagina
         //Si la resolucion de la pantalla del dispositivo es menor a 880 px
         if(window.screen.width<=800){
             window.scroll(0, 0)
