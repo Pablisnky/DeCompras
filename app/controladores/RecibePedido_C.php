@@ -86,7 +86,7 @@
                     // exit;
                     //La horano se toma del servidor MySQL porque no corresponde a nuestro uso horario
                     date_default_timezone_set('America/Caracas');
-                    $Hora = date('h:i a');
+                    $Hora = date('H:i');
 
                     if(is_array($Resultado) || is_object($Resultado))
                         foreach($Resultado as $Key => $Value){

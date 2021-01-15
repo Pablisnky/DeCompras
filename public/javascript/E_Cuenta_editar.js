@@ -4,15 +4,15 @@ document.getElementById("Label_7").addEventListener('click', clonarCuentaPagoMov
 
 document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
-// document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
+document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){contarCaracteres('ContadorSlo','ContenidoSlo', 50)}, false)
 
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoSlo')}, false)
 
-document.getElementById("Direccion_Tien").addEventListener('keydown', function(){contarCaracteres('ContadorDireccion','Direccion_Tien', 50)}, false)
+document.getElementById("Direccion_Tien").addEventListener('keydown', function(){contarCaracteres('ContadorDireccion','Direccion_Tien', 51)}, false)
 
-document.getElementById("Direccion_Tien").addEventListener('keydown', function(){valida_LongitudDes(50,'Direccion_Tien')}, false)
+document.getElementById("Direccion_Tien").addEventListener('keydown', function(){valida_LongitudDes(51,'Direccion_Tien')}, false)
 
 document.getElementById("Cedula_Aficom").addEventListener('keyup', function(){formatoMiles(this.value, 'Cedula_Aficom')}, false)
 
@@ -24,10 +24,10 @@ document.getElementById("Telefono_Tien").addEventListener('keyup', function(){ma
 
 document.getElementById("Telefono_Tien").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
     
-//Por medio de delegación de eventos se detecta cada input debido a que son muchos elementos tipo input
+//Por medio de delegación de eventos se detecta cada input y textarea debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
     // console.log("______Desde funcion anonima que aplica listerner a elementos tipo input")
-    if(e.target.tagName == "INPUT"){
+    if(e.target.tagName == "INPUT" || e.target.tagName == "TEXTAREA"){
         var ID_Input = e.target.id
         
         document.getElementById(ID_Input).addEventListener('keyup', function(){blanquearInput(ID_Input)}, false)
@@ -237,9 +237,10 @@ document.getElementById("Label_1").addEventListener('click', function(){
         document.getElementById("Ejemplo_Secciones").style.display = "grid"
 
         //Coloca el cursor en el top de la pagina
+        window.scroll(0, 0)
+        
         //Si la resolucion de la pantalla del dispositivo es menor a 880 px
         if(window.screen.width<=800){
-            window.scroll(0, 0)
             var tapaFondo = document.getElementById("Contenedor_42")
             
             //Se consulta el alto de la página cuenta_editar_V.php, este tamaño varia segun las secciones que tenga un tienda, cuentas bancarias y categorias
@@ -676,7 +677,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Direccion == "" || Direccion.indexOf(" ") == 0 || Direccion.length > 50){
+        else if(Direccion == "" || Direccion.indexOf(" ") == 0 || Direccion.length > 51){
             alert ("Necesita introducir la dirección de la tienda")
             document.getElementById("Direccion_Tien").value = ""
             document.getElementById("Direccion_Tien").focus()
@@ -711,9 +712,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
             return false;
         }
 
-        //INFORMACION DE MEDIOS DE PAGO
-        if(document.getElementsByClassName('bancoTransJS')[0].value  == "" && document.getElementsByClassName("cedulaJS")[0].value == ""){
-            alert ("Introduzca información de medios de pago")
+        //VALIDA MEDIOS DE PAGO
+        if(document.getElementsByClassName('bancoTransJS')[0].value  == "" && document.getElementsByClassName("cedulaJS")[0].value == "" && document.getElementById("Bolivar").value == "" && document.getElementById("Dolar").value == "" && document.getElementById("Acordado").value == ""){
+            alert ("Introduzca al menos un medio de pago (Transferencia, Pagomovil, Efectivo, Acordado")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -756,9 +757,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let InicioManana_Sab = document.getElementById('InicioManana_Sab').value
         let CulminaManana_Sab = document.getElementById('CulminaManana_Sab').value
         let InicioTarde_Sab = document.getElementById('InicioTarde_Sab').value
-        let CulminaTarde_Sab = document.getElementById('CulminaTarde_Sab').value
-
-        
+        let CulminaTarde_Sab = document.getElementById('CulminaTarde_Sab').value      
         let InicioManana_Dom = document.getElementById('InicioManana_Dom').value
         let CulminaManana_Dom = document.getElementById('CulminaManana_Dom').value
         let InicioTarde_Dom = document.getElementById('InicioTarde_Dom').value
@@ -766,7 +765,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
         //Valida que se seleccione un horario si el bloque de la mañana tiene un dia activo
         if((lunes_M == true || martes_M == true || miercoles_M == true || jueves_M == true || viernes_M == true) && (InicioManana == '' || InicioManana == '00:00' || CulminaManana == '' || CulminaManana == '00:00')){
-            alert ("Introduzca horario para el bloque de la mañana")
+            alert ("Introduzca hora de apertura y cierre para el bloque de la mañana")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -776,7 +775,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         }
         //Valida que se seleccione un horario si el bloque de la tarde tiene un dia activo
         if((lunes_T == true || martes_T == true || miercoles_T == true || jueves_T == true || viernes_T == true) && (IniciaTarde == '' || IniciaTarde == '00:00' || CulminaTarde == '' || CulminaTarde == '00:00')){
-            alert ("Introduzca horario para el bloque de la mañana")
+            alert ("Introduzca hora de apertura y cierre para el bloque de la tarde")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"

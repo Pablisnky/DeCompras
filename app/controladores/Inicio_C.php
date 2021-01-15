@@ -12,7 +12,7 @@
             // $Fecha_Hora = $this->ConsultaInicio_M->consultarFechaHora();
             // echo date('D') . '<br>';
             // echo 'Hora PHP ' . date('H:i a') . '<br>';
-            // echo 'Hora PHP ' . date('h:i') . '<br>';
+            // echo 'Hora PHP ' . date('h:i a') . '<br>';
             // echo '<pre>';
             // print_r($Fecha_Hora);
             // echo '</pre>';

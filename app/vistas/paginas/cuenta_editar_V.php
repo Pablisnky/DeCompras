@@ -1,4 +1,6 @@
-<?php 
+<?php     
+    require(RUTA_APP . "/vistas/modal/modal_Secciones_V.php");
+
 //se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
@@ -87,7 +89,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 
                 <!-- SECCION DATOS DE UBICACIÓN -->
                 <label>Datos de ubicación</label>
-                <br>
+                </br>
                 <select class="select_2 borde_1" id="Estado_Tien" name="estado_com" onclick="SeleccionarMunicipio(this.form)">
                     <?php
                     if(!empty($Estado_Tien)){ ?>
@@ -125,7 +127,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     }  ?>
                 </select>                
                 
-                <br>
+                </br>
                 <label>Dirección</label>
                 <textarea class="textarea_4 borde_1 " name="direccion_com" id="Direccion_Tien"><?php echo $Direccion_Tien;?></textarea> 
                 <input class="contador_2" type="text" id="ContadorDireccion" value="50"/>
@@ -172,9 +174,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <a id="Secciones" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Secciones</legend>
-                <div id="Contenedor_79" class="contenedor_143">
-                    <p class="p_12">Organiza tú tienda en secciones, dentro de estas colocaras tus productos según la clasificación que tu desees, añade tantas como consideres necesario para que tus productos esten bien organizados.</p>
-                    <!-- <span class="span_13" id="Span_1">Ver sugerencias:</span> -->
+                <div class="contGeneral" id="Contenedor_79">
+                    <p class="p_12">Organiza tú tienda en secciones, dentro de estas colocaras tus productos según la clasificación que tu desees, añade tantas como consideres necesario para que tus productos esten bien organizados.<span class="span_13" id="Span_1">Ver sugerencias:</span></p>
                     <label>Sección</label>
                     <!-- div a clonar sin eventos y oculto mediante z-index = -1 -->
                     <div class="contenedor_80A" id="Contenedor_80A">
@@ -222,7 +223,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Cuentas bancarias</legend>
                 <span>Los pagos de los pedidos realizados a tu tienda se depositan directamente a tus cuentas bancarias por medio de transferencias o pago movil, los pedidos pagados por transferencia de cuentas de otros bancos causan una demora de 48 hrs en el despacho del pedido para que verifiques la transferencia.</span>
-                <br>
+                </br>
                 <label>Información para recibir pagos por transferencia</label>                   
                 <div id="Mostrar_CuentaBancaria">
                     <!-- Entra en el IF cuando no hay cuentas bancarias creadas -->
@@ -328,7 +329,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $Iterador++;
                         endforeach;
                     }   ?>        
-                    <label class="label_4 label_24" id="Label_7">Añadir telefono <br> PagoMovil</label>
+                    <label class="label_4 label_24" id="Label_7">Añadir telefono </br> PagoMovil</label>
                 </div>
             </fieldset>   
             
@@ -410,75 +411,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <!--div alimentado via Ajax por medio de la funcion Llamar_categorias() -->
     <div id="Mostrar_Categorias"></div>
-
-    <!-- la solicitud se hace por medio de "Span_1" en secciones de este mismo archivo-->
-    <section class="section_13" id="Ejemplo_Secciones">
-        <div class="contenedor_84 contenedor_24">
-            <p class="p_6 p_9">Ejemplo de secciones según el tipo de tienda</p>
-            <div>
-                <label class="label_1">Supermercados y bodegas</label>
-                <ul class="ul_2">
-                    <li class="li_5">Viveres</li>
-                    <li class="li_5">Desinfectante</li>
-                    <li class="li_5">Verduras</li>
-                    <li class="li_5">Aseo personal</li>
-                    <li class="li_5">Cereales</li>
-                    <li class="li_5">Enlatados</li>
-                    <li class="li_5">...</li>
-                </ul> 
-            </div>
-            <div>
-                <label class="label_1">Venta de Comida rapida</label>
-                <ul class="ul_2">
-                    <li class="li_5">Hamburguesas</li>
-                    <li class="li_5">Perros caliente</li>
-                    <li class="li_5">Empanadas</li>
-                    <li class="li_5">Jugos</li>
-                    <li class="li_5">Refrescos</li>
-                    <li class="li_5">Pizzas</li>
-                    <li class="li_5">Helados</li>
-                    <li class="li_5">...</li>
-                </ul>
-            </div>
-            <div>
-                <label class="label_1">Venta de repuesto automotriz</label>
-                <ul class="ul_2">
-                    <li class="li_5">Tren delantero</li>
-                    <li class="li_5">Sistema de freno</li>
-                    <li class="li_5">Partes electricas</li>
-                    <li class="li_5">Arranque</li>
-                    <li class="li_5">Gomas y suspención</li>
-                    <li class="li_5">...</li>
-                </ul>
-            </div>
-            <div>
-                <label class="label_1">Venta de Material médico quirurgico</label>
-                <ul class="ul_2">
-                    <li class="li_5">Stent</li>
-                    <li class="li_5">Inyectadoras</li>
-                    <li class="li_5">Termometros</li>
-                    <li class="li_5">Soluciones</li>
-                    <li class="li_5">Protesis</li>
-                    <li class="li_5">...</li>
-                </ul>
-            </div>
-            <div>
-                <label class="label_1">Supermercados y bodegas</label>
-                <ul class="ul_2">
-                    <li class="li_5">Viveres</li>
-                    <li class="li_5">Desinfectante</li>
-                    <li class="li_5">Verduras</li>
-                    <li class="li_5">Aseo personal</li>
-                    <li class="li_5">Cereales</li>
-                    <li class="li_5">Enlatados</li>
-                    <li class="li_5">...</li>
-                </ul> 
-            </div>
-            <div class="contenedor_87">
-                <a class="boton boton_4" href="#marcador_03" id="Label_1">Cerrar</a>
-            </div>
-        </div>
-    </section>
 
     <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
     <!-- <did id="ReadOnly"></did> -->

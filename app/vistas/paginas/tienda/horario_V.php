@@ -33,7 +33,7 @@
 					</div>
 					<div class="contSelectVert">
 						<p class="contHorario__p">Apertura</p>
-						<select class="contSelectVert__select borde_1" name="inicioManana" id="InicioManana">
+						<select class="contSelectVert__select borde_1" name="inicioManana" id="InicioManana" disabled>
 							<option><?php echo !empty($row['inicio_m']) ? $row['inicio_m'] : '00:00';?></option> 
 							<option></option>
 							<option>05:00 am</option>
@@ -51,7 +51,7 @@
 						</select>
 						<br>
 						<p class="contHorario__p">Cierre</p>
-						<select class="contSelectVert__select borde_1" name="culminaManana" id="CulminaManana">
+						<select class="contSelectVert__select borde_1" name="culminaManana" id="CulminaManana" disabled>
 							<option><?php echo !empty($row['culmina_m']) ? $row['culmina_m'] : '00:00';?></option> 
 							<option></option>
 							<option>10:00 am</option>
@@ -93,7 +93,7 @@
 					</div>
 					<div class="contSelectVert">
 						<p class="contHorario__p">Apertura</P>
-						<select class="contSelectVert__select borde_1" name="iniciaTarde" id="IniciaTarde">
+						<select class="contSelectVert__select borde_1" name="iniciaTarde" id="IniciaTarde" disabled>
 							<option><?php echo !empty($row['inicia_t']) ? $row['inicia_t'] : '00:00';?></option>
 							<option></option>
 							<option>12:00 pm</option>
@@ -110,7 +110,7 @@
 						</select>
 						<br>
 						<p class="contHorario__p">Cierre</P>
-						<select class="contSelectVert__select borde_1" name="culminaTarde" id="CulminaTarde">
+						<select class="contSelectVert__select borde_1" name="culminaTarde" id="CulminaTarde" disabled>
 							<option><?php echo !empty($row['culmina_t']) ? $row['culmina_t'] : '00:00';?></option>
 							<option></option>
 							<option>04:00 pm</option>

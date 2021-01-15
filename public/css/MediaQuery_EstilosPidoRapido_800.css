@@ -38,7 +38,7 @@
 	position: sticky;
 	top: 8%;
 }
-.boton{/*carrito - recibePedido*/
+.boton{/*carrito - recibePedido - cuenta_editar*/
 	font-size: 1em;
 	width: 130px;
 }
@@ -368,11 +368,17 @@
 	border-bottom-left-radius: 0px;
 }
 .contenedor_84{/*cuenta_editar - afiliacion*/
-	display: flex;
-	flex-wrap: wrap;
+	display: block;
+	/* flex-wrap: wrap; */
 	padding: 10%;
 	margin-top: 15%;
-	align-content: flex-start !important; /*Rompe la distribución proporcional verticaly coloca los div hijos desde el top, debe tener la propiedad flex-wrap = wrap. la distribucion vertical proporcional ocurre cuando el contenedor general tiene altura de 100%*/
+	/*align-content: flex-start !important; Rompe la distribución proporcional verticaly coloca los div hijos desde el top, debe tener la propiedad flex-wrap = wrap. la distribucion vertical proporcional ocurre cuando el contenedor general tiene altura de 100%*/
+}
+.contenedor_84--100{/*modal_Secciones*/
+	margin-bottom: 15%;
+}
+.contenedor_84__h2{/*modal_Secciones*/
+	height: initial;
 }
 .contenedor_87{/*cuenta_editar*/
 	grid-column-start: initial;
@@ -1005,6 +1011,9 @@
 .preloder{/*vitrina*/
 	margin:50% auto; 
 }
+.rompeFixed{/*modal_Secciones*/
+	position: absolute;
+}
 .section_2{/*RecibePedido*/
 	padding-top: 25%;
 }
@@ -1138,7 +1147,8 @@
 	margin-left: 5%;
 	padding: 0% 1%;
 }
-.ul_2{/*ciudad*/
+.ul_2{/*modal_Secciones*/
+	padding-left: 30%;
 	padding-top: 5%;
 }
 .ul_5{/*login*/

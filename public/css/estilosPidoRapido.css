@@ -631,6 +631,12 @@ button{/*tiendas*/
 	column-gap: 3%;/*espacio entre columnas*/
 	justify-content: center;/*centra horizontalmente*/
 }
+.contenedor_84--100{/*modal_Secciones*/
+	width: 100%;
+}
+.contenedor_84__h2{/*modal_Secciones*/
+	height: 30px;
+}
 .contenedor_85{/*cuenta_editar*/
 	display: grid;
 	grid-template-columns: 25% 70%;
@@ -942,9 +948,6 @@ button{/*tiendas*/
 	background-repeat: no-repeat;
 	background-position: center;
 	vertical-align: middle;
-}
-.contenedor_148{/*vitrina*/
-	background-color: red;
 }
 .contenedor_149{/*quienesSomos*/
 	padding-top: 10%;
@@ -1355,8 +1358,8 @@ button{/*tiendas*/
 	margin-right: 5%;
 	line-height: 25px;
 }
-.h2_3{/*carrito*/
-	font-weight: bold;
+.h2_3{/*carrito modal_Secciones*/
+	font-weight: bold !important;
 }
 .h2_4{/*inicio*/
 	font-size: 1.3em;
@@ -1381,7 +1384,7 @@ button{/*tiendas*/
 	font-size: 1.4em;
 	font-weight: normal;
 }
-.h2_9{/*cuenta_productos*/
+.h2_9{/*cuenta_productos - modal_Secciones*/
 	width: 100%;
 	font-size: 1em;
 	text-align: center;
@@ -1697,17 +1700,6 @@ button{/*tiendas*/
 }
 .input--textCenter{/*carrito*/
 	text-align: center;
-}
-.label_1{/*cuenta_editar*/
-	background-color: var(--OficialOscuro);
-	color:white ;
-	font-size: 0.9em;
-	text-align: center;
-	display: block;
-	width: 100% !important;
-	margin-left: 0%!important;
-	border-radius: 10px;
-	padding: 1%;
 }
 .label_2{/*vitrina*/
 	font-weight: bold;
@@ -2093,9 +2085,14 @@ button{/*tiendas*/
 	z-index: 3;
 	padding-top: 1%;
 }
-.sectionModal--Fixed{/**/
+.sectionModal--Fixed{/*modal_Secciones*/
+	background-color: var(--FondoDivModal);
 	position: fixed ;
+	top: 0;
+	z-index: 8 !important;
 	min-height: 100% ;
+	display: none;
+	width: 100%;
 } 
 .section_1{/*inicio*/
 	background-color: var(--OficialClaro);
