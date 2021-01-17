@@ -519,7 +519,7 @@
             
             //RECIBE HORARIO
             //Seccion datos horarios de atencion al cliente, se almacenará en la tabla horarios
-            if(!empty($_POST['inicioManana']) && !empty($_POST['culminaManana']) && !empty($_POST['iniciaTarde']) && !empty($_POST['culminaTarde'])){
+            if((!empty($_POST['inicioManana']) && !empty($_POST['culminaManana'])) || (!empty($_POST['iniciaTarde']) && !empty($_POST['culminaTarde']))){
                 $RecibeHorario_LV = [
                     'Inicio_M' => $_POST['inicioManana'],
                     'Culmina_M' => $_POST['culminaManana'],

@@ -1,6 +1,4 @@
 <?php
-    // require_once(RUTA_APP . "/clases/Conexion_BD.php");
-
     class Tienda_M extends Conexion_BD{
 
         public function __construct(){ 
@@ -80,42 +78,6 @@
         // SELECT con la cantidad de inconformidades de tiendas 
         public function consultarDisputas($IDs_Tiendas){
             $stmt = $this->dbh->prepare("SELECT ID_Tienda, COUNT(estadodisputa) AS 'Disputas' FROM noconformidades WHERE ID_Tienda IN ($IDs_Tiendas) AND estadodisputa = 1 GROUP BY ID_Tienda");    
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }
-        }
-      
-        // SELECT con los horarios de lunes a viernes de tiendas en formato 24 horas
-        public function consultarHorarios_LV($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(culmina_m, '%H:%i') AS culmina_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t FROM horarios WHERE ID_Tienda IN ($IDs_Tiendas)");
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }
-        }
-        
-        // SELECT con los horarios del día sábado de tiendas en formato 24 horas
-        public function consultarHorarios_Sab($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_Sab, '%H:%i') AS inicia_m_Sab, DATE_FORMAT(culmina_m_Sab, '%H:%i') AS culmina_m_Sab, DATE_FORMAT(inicia_t_Sab, '%H:%i') AS inicia_t_Sab, DATE_FORMAT(culmina_t_Sab, '%H:%i') AS culmina_t_Sab FROM horariosabado WHERE ID_Tienda IN ($IDs_Tiendas)");
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }
-        }
-
-        // SELECT con los horarios del día domingo de tiendas en formato 24 horas
-        public function consultarHorarios_Dom($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_Dom, '%H:%i') AS inicia_m_Dom, DATE_FORMAT(culmina_m_Dom, '%H:%i') AS culmina_m_Dom, DATE_FORMAT(inicia_t_Dom, '%H:%i') AS inicia_t_Dom, DATE_FORMAT(culmina_t_Dom, '%H:%i') AS culmina_t_Dom FROM horariodomingo WHERE ID_Tienda IN ($IDs_Tiendas)");
-
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }

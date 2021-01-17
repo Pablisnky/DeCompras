@@ -81,7 +81,7 @@
         
         //SELECT con horas de apertura de la tienda formto 24 horas   
         public function consultarAperturaTienda_LV($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(culmina_m, '%H:%i') AS culmina_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t FROM horarios WHERE ID_Tienda = :ID_TIENDA");
+            $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicio_m, '%H:%i') AS inicio_m, DATE_FORMAT(culmina_m, '%H:%i') AS culmina_m, DATE_FORMAT(inicia_t, '%H:%i') AS inicia_t, DATE_FORMAT(culmina_t, '%H:%i') AS culmina_t FROM horarios WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
@@ -95,7 +95,7 @@
 
         //SELECT con horas de apertura de la tienda el día sábado formto 24 horas   
         public function consultarAperturaTienda_Sab($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT DATE_FORMAT(inicia_m_Sab, '%H:%i') AS inicia_m_Sab, DATE_FORMAT(culmina_m_Sab, '%H:%i') AS culmina_m_Sab, DATE_FORMAT(inicia_t_Sab, '%H:%i') AS inicia_t_Sab, DATE_FORMAT(culmina_t_Sab, '%H:%i') AS culmina_t_Sab FROM horariosabado WHERE ID_Tienda = :ID_TIENDA");
+            $stmt = $this->dbh->prepare("SELECT sabado_m, sabado_t, DATE_FORMAT(inicia_m_Sab, '%H:%i') AS inicia_m_Sab, DATE_FORMAT(culmina_m_Sab, '%H:%i') AS culmina_m_Sab, DATE_FORMAT(inicia_t_Sab, '%H:%i') AS inicia_t_Sab, DATE_FORMAT(culmina_t_Sab, '%H:%i') AS culmina_t_Sab FROM horariosabado WHERE ID_Tienda = :ID_TIENDA");
 
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 

@@ -15,19 +15,19 @@
 					foreach($Datos['horario_LV'] as $row) :   
 					endforeach; ?>
 					<div class="contInputRadio"> 
-						<input type="checkbox" name="lunes_M" id="Lunes_M" value="Lunes" <?php if(!empty($row['lunes_m']) == 'Lunes'){echo 'checked';}?>/>
+						<input class="diaSemanaMan_JS" type="checkbox" name="lunes_M" id="Lunes_M" value="Lunes" <?php if(!empty($row['lunes_m']) == 'Lunes'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Lunes_M">Lunes</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="martes_M" id="Martes_M" value="Martes" <?php if(!empty($row['martes_m']) == 'Martes'){echo 'checked';}?>/>
+						<input class="diaSemanaMan_JS" type="checkbox" name="martes_M" id="Martes_M" value="Martes" <?php if(!empty($row['martes_m']) == 'Martes'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Martes_M">Martes</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="miercoles_M" id="Miercoles_M" value="Miercoles" <?php if(!empty($row['miercoles_m']) == 'Miercoles'){echo 'checked';}?>/>
+						<input class="diaSemanaMan_JS" type="checkbox" name="miercoles_M" id="Miercoles_M" value="Miercoles" <?php if(!empty($row['miercoles_m']) == 'Miercoles'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Miercoles_M">Miercoles</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="jueves_M" id="Jueves_M" value="Jueves" <?php if(!empty($row['jueves_m']) == 'Jueves'){echo 'checked';}?>/>
+						<input class="diaSemanaMan_JS" type="checkbox" name="jueves_M" id="Jueves_M" value="Jueves" <?php if(!empty($row['jueves_m']) == 'Jueves'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Jueves_M">Jueves</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="viernes_M" id="Viernes_M" value="Viernes" <?php if(!empty($row['viernes_m']) == 'Viernes'){echo 'checked';}?>/>
+						<input class="diaSemanaMan_JS" type="checkbox" name="viernes_M" id="Viernes_M" value="Viernes" <?php if(!empty($row['viernes_m']) == 'Viernes'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Viernes_M">Viernes</label>  
 						<br class="br_1"/>  
 					</div>
@@ -75,19 +75,19 @@
 					foreach($Datos['horario_LV'] as $row) :  
 					endforeach;  ?>
 					<div class="contInputRadio">
-						<input type="checkbox" name="lunes_T" id="Lunes_T" value="Lunes" <?php if(!empty($row['lunes_t']) == 'Lunes'){echo 'checked';}?>/>
+						<input class="diaSemanaTar_JS" type="checkbox" name="lunes_T" id="Lunes_T" value="Lunes" <?php if(!empty($row['lunes_t']) == 'Lunes'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Lunes_T">Lunes</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="martes_T" id="Martes_T" value="Martes" <?php if(!empty($row['martes_t']) == 'Martes'){echo 'checked';}?>/>
+						<input class="diaSemanaTar_JS" type="checkbox" name="martes_T" id="Martes_T" value="Martes" <?php if(!empty($row['martes_t']) == 'Martes'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Martes_T">Martes</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="miercoles_T" id="Miercoles_T" value="Miercoles" <?php if(!empty($row['miercoles_t']) == 'Miercoles'){echo 'checked';}?>/>
+						<input class="diaSemanaTar_JS" type="checkbox" name="miercoles_T" id="Miercoles_T" value="Miercoles" <?php if(!empty($row['miercoles_t']) == 'Miercoles'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Miercoles_T">Miercoles</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="jueves_T" id="Jueves_T" value="Jueves" <?php if(!empty($row['jueves_t']) == 'Jueves'){echo 'checked';}?>/>
+						<input class="diaSemanaTar_JS" type="checkbox" name="jueves_T" id="Jueves_T" value="Jueves" <?php if(!empty($row['jueves_t']) == 'Jueves'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Jueves_T">Jueves</label>
 						<br class="br_1"/>
-						<input type="checkbox" name="viernes_T" id="Viernes_T" value="Viernes" <?php if(!empty($row['viernes_t']) == 'Viernes'){echo 'checked';}?>/>
+						<input class="diaSemanaTar_JS" type="checkbox" name="viernes_T" id="Viernes_T" value="Viernes" <?php if(!empty($row['viernes_t']) == 'Viernes'){echo 'checked';}?>/>
 						<label class="contInputRadio__label" for="Viernes_T">Viernes</label>
 						<br class="br_1"/>
 					</div>

@@ -6,6 +6,76 @@ window.addEventListener('DOMContentLoaded', function(){VerificarCheckbox('Doming
 
 window.addEventListener('DOMContentLoaded', function(){VerificarCheckbox('Domingo_T','InicioTarde_Dom','CulminaTarde_Dom')}, false)
 
+
+window.addEventListener('DOMContentLoaded', function(){
+    let DiaSemanaMan = document.getElementsByClassName("diaSemanaMan_JS")
+    //Se recorren todos los valores del radio button para encontrar el seleccionado
+    for(var j=0; j<DiaSemanaMan.length; j++){
+        if(DiaSemanaMan[j].checked){
+            let DiaLaboral_Man = DiaSemanaMan[j].id;
+            VerificarCheckbox(DiaLaboral_Man,'InicioManana','CulminaManana')
+        }
+    }
+}, false)
+
+window.addEventListener('DOMContentLoaded', function(){
+    let DiaSemanaTar = document.getElementsByClassName("diaSemanaTar_JS")
+    //Se recorren todos los valores del radio button para encontrar el seleccionado
+    for(var j=0; j<DiaSemanaTar.length; j++){
+        if(DiaSemanaTar[j].checked){
+            DiaLaboral_Tar = DiaSemanaTar[j].id;
+            VerificarCheckbox(DiaLaboral_Tar,'IniciaTarde','CulminaTarde')
+        }
+    }
+}, false)
+
+document.addEventListener('click', function(event){
+    if(event.target.classList == 'diaSemanaMan_JS'){
+        //Se declara un array que contendra los dias de la semana LV marcado con checked
+        DiaHabilitado = []
+        let DiasSemana = document.getElementsByClassName("diaSemanaMan_JS")
+        let DiaSeleccionado = event.target
+        let ID_DiaSeleccionado = event.target.id
+
+        console.log(DiaSeleccionado.checked)
+        for(let k = 0; k < DiasSemana.length; k++){
+            if(DiasSemana[k].checked){
+                DiaHabilitado.push(DiasSemana[k].id)
+            }
+        }
+        console.log(DiaHabilitado)
+        if(DiaHabilitado == ""){
+            HabilitarSelects(ID_DiaSeleccionado,'InicioManana','CulminaManana')
+        }
+        else if(DiaHabilitado.length > 0 && DiaSeleccionado.checked == true){
+            HabilitarSelects(ID_DiaSeleccionado,'InicioManana','CulminaManana')
+        }
+    }
+}, false)
+
+document.addEventListener('click', function(event){
+    if(event.target.classList == 'diaSemanaTar_JS'){
+        //Se declara un array que contendra los dias de la semana LV marcado con checked
+        DiaHabilitado = []
+        let DiasSemana = document.getElementsByClassName("diaSemanaTar_JS")
+        let DiaSeleccionado = event.target
+        let ID_DiaSeleccionado = event.target.id
+
+        for(let k = 0; k < DiasSemana.length; k++){
+            if(DiasSemana[k].checked){
+                DiaHabilitado.push(DiasSemana[k].id)
+            }
+        }
+        console.log(DiaHabilitado)
+        if(DiaHabilitado == ""){
+            HabilitarSelects(ID_DiaSeleccionado,'IniciaTarde','CulminaTarde')
+        }
+        else if(DiaHabilitado.length > 0 && DiaSeleccionado.checked == true){
+            HabilitarSelects(ID_DiaSeleccionado,'IniciaTarde','CulminaTarde')
+        }
+    }
+}, false)
+
 window.addEventListener('DOMContentLoaded', function(){
     let DiaEspecial = document.getElementsByName("horario_Espec_M")
     //Se recorren todos los valores del radio button para encontrar el seleccionado
@@ -57,7 +127,7 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
 //************************************************************************************************
     //Habilita los selects que contienen las horas de apertura y cierre de la tienda
     function HabilitarSelects(Dia, HoraApertura, HoraCierre){
-        // console.log("_____Desde HabilitarSelects()_____",Dia + ' ' + HoraApertura + ' ' + HoraCierre)
+        console.log("_____Desde HabilitarSelects()_____",Dia + ' ' + HoraApertura + ' ' + HoraCierre)
         
         let Checkbox = document.getElementById(Dia)
 
@@ -76,7 +146,7 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
     }
 
 //************************************************************************************************
-    //Muestra todo el div que contiene la sección de horarios
+    //Muestra todo el div que contiene la sección de horario especial
     function MostrarExepcionHorario(){
         // console.log("______Desde MostrarExepcionHorario()______") 
         
@@ -84,7 +154,7 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
     }
 
 //************************************************************************************************   
-    //Oculta todo el div que contiene la sección de horarios
+    //Oculta todo el div que contiene la sección de horario especial
     function OcultarExepcionHorario(){
         // console.log("______Desde ocultarHorario()______") 
         
@@ -92,7 +162,7 @@ document.getElementsByClassName('span_17_js')[0].addEventListener('click', Ocult
     }    
 
 //************************************************************************************************ 
-    //Verifica que si un horario ya existe, no desabilite los selects de las horas correspondientes
+    //Verifica que si un horario ya existe en BD, no desabilite los selects de las horas correspondientes
     function VerificarCheckbox(Dia, HoraApertura_M, HoraCierre_M){
         // console.log("______Desde VerificarCHeckbox()______", Dia + ' ' +  HoraApertura_M + ' ' + HoraCierre_M) 
 
