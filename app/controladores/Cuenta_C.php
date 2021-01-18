@@ -519,7 +519,7 @@
             
             //RECIBE HORARIO
             //Seccion datos horarios de atencion al cliente, se almacenará en la tabla horarios
-            if((!empty($_POST['inicioManana']) && !empty($_POST['culminaManana'])) || (!empty($_POST['iniciaTarde']) && !empty($_POST['culminaTarde']))){
+            if(!empty($_POST['lunes_M']) || !empty($_POST['martes_M']) || !empty($_POST['miercoles_M']) || !empty($_POST['jueves_M']) || !empty($_POST['viernes_M']) || !empty($_POST['sabado_M']) &&! empty($_POST['domingo_M']) || !empty($_POST['lunes_T']) || !empty($_POST['martes_T']) || !empty($_POST['miercoles_T']) || !empty($_POST['jueves_T']) || !empty($_POST['viernes_T']) || !empty($_POST['sabado_T']) || !empty($_POST['domingo_T'])){
                 $RecibeHorario_LV = [
                     'Inicio_M' => $_POST['inicioManana'],
                     'Culmina_M' => $_POST['culminaManana'],
@@ -554,8 +554,6 @@
                     'Culmina_T_Dom' => isset($_POST['culminaTarde_Dom']) == 'Domingo' ? $_POST['culminaTarde_Dom'] : 0,
                     'Domingo_T' => isset($_POST['domingo_T']) == 'Domingo' ? $_POST['domingo_T'] : 0,
                 ];
-
-                //Recibe dia especial
                 $RecibeHorario_Esp = [
                     'Inicio_M_Esp' => isset($_POST['inicioManana_Esp']) != '' ? $_POST['inicioManana_Esp'] : 0,
                     'Culmina_M_Esp' => isset($_POST['culminaManana_Esp']) != '' ? $_POST['culminaManana_Esp'] : 0,

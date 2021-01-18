@@ -3,6 +3,7 @@
     if($Datos['disponibilidad'] == 'Cerrado'){        
         require(RUTA_APP . "/vistas/modal/modal_fueraHorario_V.php");
     }
+
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia'];
 

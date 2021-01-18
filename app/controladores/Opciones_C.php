@@ -1,5 +1,4 @@
 <?php
-    //Archivo llamado desde .js por medio de la función llamar_Opciones()
     class Opciones_C extends Controlador{
 
         public function __construct(){
@@ -9,7 +8,7 @@
             ocultarErrores();
         }
         
-        //Los parametros se resiven desde A_Vitrina.js
+        //llamado desde A_Vitrina.js por medio de la función llamar_Opciones()
         public function index($ID_Tienda, $Seccion, $OpcionSelec){  
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
             // echo $ID_Tienda;
@@ -60,7 +59,7 @@
             $this->vista("paginas/opciones_V", $Datos);
         }       
         
-        //Invocado desde opciones_V.php po rmedio de mostrarDetalles()
+        //Invocado desde opciones_V.php por rmedio de mostrarDetalles()
         public function productoAmpliado($DatosAgrupados){
             // echo $DatosAgrupados;
             //$DatosAgrupados contiene una cadena con el ID_Tienda y el producto separados por coma, se convierte en array para separar los elementos

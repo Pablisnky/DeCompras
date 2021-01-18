@@ -526,7 +526,7 @@ button{/*tiendas*/
 	justify-content: space-around;
 	align-items: center;/*para centrar verticalmente el div hijo junto con display flex*/
 	position: fixed;
-	top: 94%;
+	bottom: 0 !important;
 	width: 20%;
 	margin-left:40%;
 	border-top-left-radius: 80px 60px;

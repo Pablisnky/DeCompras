@@ -141,39 +141,70 @@
             </div>
         </div>
 
+        <div class='contenedor_6 borde_1' id="Frutas">
+            <h2 class='h2_1'>FRUTAS, VERDURAS Y HORTALIZAS</h2>
+            <span class="icon-barcode span_8"></span>                 
+            <div class="contenedor_106">
+                <span class="span_21 borde_1">
+                    <?php
+                    foreach($Datos as $arr) :
+                        if($arr['ID_Categoria'] == 20){  
+                            $CantidadFrutas_Verduras = $arr['cantidad']; 
+                            echo $CantidadFrutas_Verduras;  ?>
+                            <style>
+                                #Frutas .span_21{
+                                    background-color: var(--Aciertos);
+                                }
+                            </style>  <?php
+                        }
+                    endforeach; 
+                    if(empty($CantidadFrutas_Verduras)){                                     
+                        echo 0; ?>
+                        <style>
+                            #Frutas{
+                                position: relative;
+                                z-index: -1 !important;      
+                            }
+                            #Frutas .span_21{
+                                background-color: var(--Fallos);
+                            }
+                        </style>  <?php
+                    }   ?>
+                </span>
+            </div>
+        </div>
+
         <div class='contenedor_6 borde_1' id="Repuesto_automotriz">
             <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
             <span class="icon-barcode span_8"></span>                 
-                <div class="contenedor_106">
-                    <span class="span_21 borde_1">
-                        <?php
-                        foreach($Datos as $arr) :
-                            if($arr['ID_Categoria'] == 11){  
-                                $CantidadRepuesto_automotriz = $arr['cantidad']; 
-                                echo $CantidadRepuesto_automotriz;  ?>
-                                <style>
-                                    #Repuesto_automotriz .span_21{
-                                        background-color: var(--Aciertos);
-                                    }
-                                </style>
-                                <?php
-                            }
-                        endforeach; 
-                        if(empty($CantidadRepuesto_automotriz)){                                     
-                            echo 0; ?>
+            <div class="contenedor_106">
+                <span class="span_21 borde_1">
+                    <?php
+                    foreach($Datos as $arr) :
+                        if($arr['ID_Categoria'] == 11){  
+                            $CantidadRepuesto_automotriz = $arr['cantidad']; 
+                            echo $CantidadRepuesto_automotriz;  ?>
                             <style>
-                                #Repuesto_automotriz{
-                                    position: relative;
-                                    z-index: -1 !important;      
-                                }
                                 #Repuesto_automotriz .span_21{
-                                    background-color: var(--Fallos);
+                                    background-color: var(--Aciertos);
                                 }
-                            </style>
-                            <?php
-                        }   ?>
-                    </span>
-                </div>
+                            </style>  <?php
+                        }
+                    endforeach; 
+                    if(empty($CantidadRepuesto_automotriz)){                                     
+                        echo 0; ?>
+                        <style>
+                            #Repuesto_automotriz{
+                                position: relative;
+                                z-index: -1 !important;      
+                            }
+                            #Repuesto_automotriz .span_21{
+                                background-color: var(--Fallos);
+                            }
+                        </style>  <?php
+                    }   ?>
+                </span>
+            </div>
         </div>
 
         <div class='contenedor_6 borde_1' id="Bodega">

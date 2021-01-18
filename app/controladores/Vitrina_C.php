@@ -19,6 +19,8 @@
             $SeccionBuscada = $DatosAgrupados[2];
             $OpcionBuscada = $DatosAgrupados[3];
             $DisponibilidaHoraria = $DatosAgrupados[4];
+            $ProximoApertura = $DatosAgrupados[5];
+            $HoraApertura = $DatosAgrupados[6];
 
             //Se CONSULTAN las categoria de una tienda en particular
             $Categoria = $this->ConsultaVitrina_M->consultarCategoria($ID_Tienda);
@@ -52,7 +54,9 @@
                 'Seccion' => $SeccionBuscada, //Necesaria cuando se viene de E_Inicio.js
                 'Opcion' => $OpcionBuscada, //Necesaria cuando se viene de E_Inicio.js
                 'disponibilidad' => $DisponibilidaHoraria,
-                'HorarioTrabajo' => $HorarioTrabajo
+                'HorarioTrabajo' => $HorarioTrabajo,
+                'ProximoApertura' => $ProximoApertura,
+                'HoraApertura' => $HoraApertura
             ];
 
             // echo "<pre>";

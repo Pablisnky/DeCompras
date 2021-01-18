@@ -132,8 +132,9 @@
             // echo '</pre>';
             // exit;
 
-            // *******************************************
+            // ******************************************* 
             //CALCULO DE CLIENTES SATISFECHOS
+
             //Total despachos solicitados
             $PorcentajeSatisfaccion = [];
             $Nuevo = [];
@@ -191,7 +192,12 @@
             require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
 
             $this->Horario = new CalculoApertura_C;
-            $DisponibilidaHoraria = $this->Horario->disponibilidadHoraria(263);
+            $DisponibilidaHoraria = $this->Horario->disponibilidadHoraria($this->TiendasEnCategoria);
+
+            // echo '<pre>';
+            // print_r($DisponibilidaHoraria);
+            // echo '</pre>';
+            // exit;
 
             $Datos = [
                 'tiendas_categoria' => $this->TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria, estado_Tien, parroquia_Tien 
@@ -202,7 +208,7 @@
                 'tiendas_inconformidades' => $TiendasNoConformidades,//ID_Tienda, count(Inconformidad)
                 'tiendas_satisfaccion' => $PorcentajeSatisfaccion,
                 'tiendas_disputas' => $TiendasDisputas, //ID_Tienda, conunt(Disputas)
-                'tiendas_disponibilidad' => $DisponibilidaHoraria 
+                'tiendas_disponibilidad' => $DisponibilidaHoraria// ID_Tienda, disponibilidad, proximoApertura, horaApertura
             ];
             
             // echo '<pre>';
@@ -212,6 +218,33 @@
 
             $this->vista("inc/header", $Datos);
             $this->vista("paginas/tiendas_V",$Datos);
+        }
+
+        // Invocado en header_TIenda
+        public function horarioTienda($DatosAgrupados){    
+            //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
+            $DatosAgrupados = explode(",", $DatosAgrupados);
+            $ID_Tienda = $DatosAgrupados[0];
+            $NombreTienda = $DatosAgrupados[1]; 
+
+            require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
+
+            $this->HorarioTienda = new CalculoApertura_C;
+            $DisponibilidaHoraria = $this->HorarioTienda->horarioTienda($ID_Tienda);
+
+            $Datos = [
+                'id_tienda' => $ID_Tienda,
+                'nombreTienda' => $NombreTienda,
+                'disponibilidaHoraria' => $DisponibilidaHoraria
+            ];
+            
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
+
+            $this->vista("inc/header_Tienda", $Datos);
+            $this->vista("paginas/tienda/horarioDespacho_V",$Datos);
         }
 
         public function salirTienda(){

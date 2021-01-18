@@ -6,33 +6,38 @@
     <a href="<?php echo RUTA_URL . '/Tiendas_C/tiendasEnCatalogo/'. $Categoria;?>"><span class="icon-cancel-circle spanCerrar"></span></a>
     <div class="contenedor_24">
         <?php 
-        // Datos['proximoDia'] == true -> indica que se abre al dia siguiente
-        // Datos['proximoDia'] == NoAplica -> indica que se abre el dia lunes
-        // Datos['proximoDia'] == false -> indica que se abre ese mismo dia 
+        // Datos['ProximoApertura'] == siguiente -> indica que se abre al dia siguiente
+        // Datos['ProximoApertura'] == lunes -> indica que se abre el dia lunes
+        // Datos['ProximoApertura'] == hoyM -> indica que se abre ese mismo dia en la mañana 
+        // Datos['ProximoApertura'] == hoyT -> indica que se abre ese mismo dia en la tarde
+        // echo "<pre>";
+        // print_r($Datos);
+        // echo "</pre>";
+        // exit();
 
-        //APERTURA EN LA MAÑANA
-        if($Datos['proximoDia'] == 1){  ?>
+        //APERTURA DIA SIGUIENTE
+        if($Datos['ProximoApertura'] == 'AbreDiaSiguiente'){  ?>
             <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>
-            <p class="sectionModal__div__p">Abrimos mañana a las <br class="br_2"><?php echo $Datos['horaApertura']?></p>
+            <p class="sectionModal__div__p">Abrimos mañana a las <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
             <br>
             <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }
         //APERTURA EN LUNES
-        else if($Datos['proximoDia'] == 'NoAplica'){   ?>
+        else if($Datos['ProximoApertura'] == 'NoAplica'){   ?>
             <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>
-            <p class="sectionModal__div__p">Abrimos el lunes a las <br class="br_2"><?php echo $Datos['horaApertura']?></p>
+            <p class="sectionModal__div__p">Abrimos el lunes a las <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
             <br>
             <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }  
-        //APERTURA EN LA TARDE
-        else{   ?>
+        //APERTURA EN LA MAÑANA/TARDE 
+        else if($Datos['ProximoApertura'] == 'AbreMañana' || $Datos['ProximoApertura'] == 'AbreTarde'){   ?>
             <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>
-            <p class="sectionModal__div__p">Abrimos a las  <br class="br_2"><?php echo $Datos['horaApertura']?></p>
+            <p class="sectionModal__div__p">Abrimos a las  <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
             <br>
             <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php

@@ -25,41 +25,41 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="tabla1__td"><?php echo $Lun_m_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Mar_m_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Mie_m_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Jue_m_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Vie_m_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Sab_m_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Dom_m_inicia;?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Lun_m_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mar_m_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mie_m_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Jue_m_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Vie_m_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Sab_m_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Dom_m_inicia'];?></td>
                             </tr>
                             <tr>
-                                <td class="tabla1__td"><?php echo $Lun_m_culminaL;?></td>
-                                <td class="tabla1__td"><?php echo $Mar_m_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Mie_m_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Jue_m_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Vie_m_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Sab_m_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Dom_m_culmina;?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Lun_m_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mar_m_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mie_m_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Jue_m_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Vie_m_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Sab_m_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Dom_m_culmina'];?></td>
                             </tr>
                             <tr style="height: 20px;"></tr>
                             <tr>
-                                <td class="tabla1__td"><?php echo $Lun_t_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Mar_t_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Mie_t_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Jue_t_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Vie_t_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Sab_t_inicia;?></td>
-                                <td class="tabla1__td"><?php echo $Dom_t_inicia;?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Lun_t_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mar_t_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mie_t_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Jue_t_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Vie_t_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Sab_t_inicia'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Dom_t_inicia'];?></td>
                             </tr>
                             <tr>
-                                <td class="tabla1__td"><?php echo $Lun_t_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Mar_t_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Mie_t_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Jue_t_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Vie_t_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Sab_t_culmina;?></td>
-                                <td class="tabla1__td"><?php echo $Dom_t_culmina;?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Lun_t_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mar_t_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Mie_t_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Jue_t_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Vie_t_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Sab_t_culmina'];?></td>
+                                <td class="tabla1__td"><?php echo $Datos['disponibilidaHoraria']['Dom_t_culmina'];?></td>
                             </tr>
                         </tbody>
                     </table>

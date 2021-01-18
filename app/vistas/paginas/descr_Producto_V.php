@@ -55,13 +55,9 @@
             </div>
 
             <div class="contGridUna">
-                <h1 class="h1_11"><?php echo $Producto, PHP_EOL, $Opcion?></h1>
+                <h1 class="h1_11"><?php echo $Producto?></h1>
+                <h1 class="h1_11"><?php echo $Opcion?></h1>
                 <?php
-                // echo "<pre>";
-                // print_r($Datos);
-                // echo "</pre>";
-                // exit();
-
                 if($Datos['Caracteristicas'] != Array ()){  ?>
                     <div class="contenedor_127">
                         <ul>
