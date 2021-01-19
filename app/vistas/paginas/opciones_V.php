@@ -27,12 +27,13 @@
                         $ID_Opcion =  $row['ID_Opcion'];
                         $Producto = $row['producto']; 
                         $Opcion = $row['opcion'];                      
-                        $Precio = $row['precio'];                
+                        $PrecioBolivar = $row['precioBolivar'];         
+                        $PrecioDolar = $row['precioDolar'];               
                         $Seccion = $row['seccion'];              
                         $Fotografia = $row['fotografia'];
         
                         //Se da formato al precio, sin decimales y con separación de miles
-                        $Precio = number_format($Precio, 0, ",", ".");  ?>  
+                        $Precio = number_format($PrecioBolivar, 0, ",", ".");  ?>  
                                 
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             
@@ -50,7 +51,7 @@
                                 <div style="min-height:80px">
 
                                     <!-- PRODUCTO -->
-                                    <label class="input_8 input_8D" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
+                                    <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>" value="<?php echo $Producto;?>"/>
 
                                     <!-- OPCION -->
                                     <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" ><?php echo $Opcion;?></label>
@@ -77,7 +78,8 @@
                                     ?>          
                                     
                                     <!-- PRECIO -->
-                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $Precio;?>  Bs.</label>
+                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioBolivar;?>  Bs.</label>
+                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
                             
                                     <?php 
                                     //En caso de venir desde buscador se sombrea el producto solicitado en la busqueda y se posiciona de primero entre todos los productos

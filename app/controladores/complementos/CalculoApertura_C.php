@@ -329,6 +329,8 @@
                 $ID_Tienda = $row['ID_Tienda'];
                 //Se evalua para cada tienda que se encuproximoApertura $this->IDs_Tienda la disponibilidad
                 $Hor = $this->horarioTienda($ID_Tienda);
+                 
+                date_default_timezone_set('America/Caracas');
 
                 //Con date_format(date_create($Hor['Dom_t_inicia']) se cambia el formato de 12 a 24 horas
                 // DISPONIBILIDAD SABADO MAÑANA (CERRADO - ABIERTO)
@@ -390,19 +392,24 @@
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Mar_t_inicia'], 'Condicional' => 'B'];
                         array_push($Disponibilidad, $Nuevo_2);
 
-                    //ABRE EN LA MAÑANA
+                    //ABRE EN LA MAÑANA (Verificado)
                     elseif($Hor['Lunes_m'] != '0' && date_format(date_create($Hor['Lun_m_inicia']),"H:i") > date('H:i')):
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreMañana', 'horaApertura' => $Hor['Lun_m_inicia'], 'Condicional' => 'C'];
                         array_push($Disponibilidad, $Nuevo_2);
 
-                    //ABRE DIA SIGUIENTE
-                    elseif($Hor['Lunes_m'] != '0' && date_format(date_create($Hor['Lun_m_culmina']),"H:i") < date('H:i')):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Mar_m_inicia'], 'Condicional' => 'D'];
-                        array_push($Disponibilidad, $Nuevo_2);
-                        
-                    //ABRE EN LA TARDE
-                    elseif(date_format(date_create($Hor['Lun_t_inicia']),"H:i") > date('H:i')):
+                    //ABRE EN LA TARDE CERRADO A MEDIODIA (Verificado)
+                    elseif(date_format(date_create($Hor['Lun_t_inicia']),"H:i") > date('H:i') && date_format(date_create($Hor['Lun_m_culmina']),"H:i") < date('H:i')):
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreTarde', 'horaApertura' => $Hor['Lun_t_inicia'], 'Condicional' => 'E'];
+                        array_push($Disponibilidad, $Nuevo_2);
+
+                    //ABRE EN LA TARDE CERRADO A MEDIODIA (Verificado)
+                    elseif(date_format(date_create($Hor['Lun_t_inicia']),"H:i") > date('H:i')):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreTarde', 'horaApertura' => $Hor['Lun_t_inicia'], 'Condicional' => 'E1'];
+                        array_push($Disponibilidad, $Nuevo_2);
+
+                    //ABRE DIA SIGUIENTE (Verificado)
+                    elseif($Hor['Lunes_m'] != '0' && date_format(date_create($Hor['Lun_m_culmina']),"H:i") < date('H:i') && date_format(date_create($Hor['Lun_t_culmina']),"H:i") < date('H:i')):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Mar_m_inicia'], 'Condicional' => 'D'];
                         array_push($Disponibilidad, $Nuevo_2);
 
                     //CIERRA EN LA TARDE

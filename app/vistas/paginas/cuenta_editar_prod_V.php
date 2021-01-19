@@ -18,7 +18,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $ID_SP = $arr['ID_SP'];
         $Producto = $arr['producto'];
         $Opcion = $arr['opcion'];
-        $Precio = $arr['precio'];
+        $PrecioBolivar = $arr['precioBolivar'];
+        $PrecioDolar = $arr['precioDolar'];
         $Seccion = $arr['seccion'];
         $Fotografia = $arr['fotografia'];
     endforeach;     ?>
@@ -55,7 +56,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                     <!-- SECCION PRECIO -->
                     <label>Precio</label>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" value="<?php echo $Precio;?>"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precioBolivar" id="PrecioBolivar" value="<?php echo $PrecioBolivar;?>"/>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precioDolar" id="PrecioDolar" value="<?php echo $PrecioDolar;?>"/>
                     <input class="contador" type="text" id="ContadorPre" value="15"/>
 
                     <!-- SECCION SECCION -->

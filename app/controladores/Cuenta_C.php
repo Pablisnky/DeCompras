@@ -110,13 +110,14 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
-                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precio, seccion, fotografia
+                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, seccion, fotografia
                 // 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja
                 'Apunta' => $Puntero,
                 'slogan' => $Slogan,
                 'variosCaracteristicas' => $Caracteristicas
             ];
+            
             // echo "<pre>";
             // print_r($Datos);
             // echo "</pre>";
@@ -328,7 +329,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
-                'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, fotografia, producto, opcion, precio, seccion, ID_Seccion, ID_SP
+                'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, fotografia, producto, opcion, precioBolivar, precioDolar, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
@@ -790,19 +791,20 @@
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
                 //SECCION DATOS DEL PRODUCTO
-                if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])
-                ){
+                if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBs"]) && !empty($_POST["precioDolar"])){
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
                         'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
-                        'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
+                        'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
+                        'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
                     ];
                     // echo "<pre>";
                     // print_r($RecibeProducto);
                     // echo "</pre>";
+                    // exit;
                 }
                 else{
                     echo "Llene todos los campos del formulario ";
@@ -946,7 +948,7 @@
         //Metodo invocado desde cuenta_editar_prod_V.php
         public function recibeAtualizarProducto(){
             // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precio"])){
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && !empty($_POST["precioDolar"])){
 
                 $RecibeProducto = [
                     //Recibe datos del producto a actualizar
@@ -956,7 +958,8 @@
                     'ID_SP' => filter_input(INPUT_POST, "id_sp", FILTER_SANITIZE_STRING),
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
                     'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
-                    'Precio' => filter_input(INPUT_POST, "precio", FILTER_SANITIZE_STRING),
+                    'PrecioBolivar' => filter_input(INPUT_POST, "precioBolivar", FILTER_SANITIZE_STRING),
+                    'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                     'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
                     'Puntero' => filter_input(INPUT_POST, "puntero", FILTER_SANITIZE_STRING),

@@ -14,12 +14,10 @@
             // echo $ID_Tienda;
             // echo $Seccion;
           
-            $Indicadores = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Seccion);   
-            $Consulta = $Indicadores->fetchAll(PDO::FETCH_ASSOC);
+            $Consulta = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Seccion);   
 
             //CONSULTA las caracteristicas de los productos 
-            $Consulta_2 = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
-            $Caracteristicas = $Consulta_2->fetchAll(PDO::FETCH_ASSOC); 
+            $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
 
             $Datos=[
                 'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Opcion, fotografia, producto, opcion, precio
@@ -27,7 +25,14 @@
                 'ID_Tienda' => $ID_Tienda,
                 'variosCaracteristicas' => $Caracteristicas //ID_Producto, caracteristica 
             ];
-                
+            
+            // ******************************************* 
+            //CALCULO DEL PRECIO EN DOLARES           
+            // require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
+
+            // $this->Reconversion = new CalculoDolar_C;
+            // $Reconversion = $this->Reconversion->TasaCambio($Datos['']);
+
             // echo "<pre>";
             // print_r($Datos);
             // echo "</pre>";
@@ -36,7 +41,7 @@
             $this->vista("paginas/opciones_V", $Datos);
         }  
 
-        // Los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
+        //CUando se vene del buscador, los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
         public function PosicionarEnProducto($DatosAgrupados){ 
             //$DatosAgrupados contiene una cadena con el ID_Tienda y la seccion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);

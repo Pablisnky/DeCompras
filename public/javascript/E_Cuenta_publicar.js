@@ -2,14 +2,23 @@
 
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
 
+document.getElementById("PrecioBs").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value)}, false)
+
+document.getElementById("PrecioDolar").addEventListener('keyup', function(){CambioMonetarioDolar(this.value)}, false)
+
+document.getElementById("PrecioBs").addEventListener('focus', function(){ReiniciaCampo()}, false)
+
+document.getElementById("PrecioDolar").addEventListener('focus', function(){ReiniciaCampo()}, false)
+
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 50)}, false)
 
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoPro')}, false)
 
-document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 50)}, false)
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 500)}, false)
 
-document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoDes')}, false)  
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(500,'ContenidoDes')}, false)  
 
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){autosize('ContenidoDes')}, false)
 // document.addEventListener("keydown", contarDes, false); 
 // document.addEventListener("keyup", contarDes, false);
 // document.addEventListener("keydown", valida_LongitudDes, false);//valida_Longitud() se encuentra en Funciones_varias.js 
@@ -128,7 +137,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){v
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
         let ImagenPrin = document.getElementById('imgInp').value 
-        let Precio = document.getElementById('Precio').value 
+        let PrecioBs = document.getElementById('PrecioBs').value 
         let Seccion = document.getElementById('SeccionPublicar').value 
         
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
@@ -165,7 +174,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 50){
+        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 500){
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()
@@ -177,11 +186,11 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Precio == "" || Precio.indexOf(" ") == 0 || Precio.length > 20 || P_Numeros.test(Precio) == false){
-            alert ("Introduzca un Precio, (Solo números)")
-            document.getElementById("Precio").value = ""
-            document.getElementById("Precio").focus()
-            document.getElementById("Precio").style.backgroundColor = "var(--Fallos)"
+        else if(PrecioBs == "" || PrecioBs.indexOf(" ") == 0 || PrecioBs.length > 20 || P_Numeros.test(PrecioBs) == false){
+            alert ("Introduzca un PrecioBs, (Solo números)")
+            document.getElementById("PrecioBs").value = ""
+            document.getElementById("PrecioBs").focus()
+            document.getElementById("PrecioBs").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -293,3 +302,35 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){v
     }
     
 //************************************************************************************************
+    //Realia el cambio de moneda Bolivar a Dolar
+    function CambioMonetarioDolar(Monto){
+        console.log("______Desde CambioMonetarioDolar______", Monto)
+
+        let Bolivar = document.getElementById("PrecioBs")
+
+        let PrecioDolar = 1548933
+
+        let Cambio_Bolivar = Monto * PrecioDolar
+
+        Bolivar.value = Cambio_Bolivar
+    }
+    
+//************************************************************************************************
+    //Realia el cambio de moneda Dolar a Bolivar
+    function CambioMonetarioBolivar(Monto){
+        console.log("______Desde CambioMonetarioBolivar______", Monto)
+
+        let Dolar = document.getElementById("PrecioDolar")
+
+        let PrecioDolar = 1548933
+
+        let Cambio_Dolar = Monto / PrecioDolar
+       
+        Dolar.value = Cambio_Dolar.toFixed(2)
+    }
+    
+//************************************************************************************************
+    function ReiniciaCampo(){
+        document.getElementById("PrecioDolar").value = ''
+        document.getElementById("PrecioBs").value = ''
+    }

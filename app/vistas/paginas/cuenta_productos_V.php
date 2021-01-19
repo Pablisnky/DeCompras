@@ -9,12 +9,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <div class="contenedor_90 contenedor_91">
             <h2 class="h2_9">Productos ofertados</h2>
             <?php
-            // echo "<pre>";
-            // print_r($Datos);
-            // echo "</pre>";
-            // exit();
-
-            //Mediante operador ternario
+           //Mediante operador ternario
             $Datos['Seccion'] != 'Todos' ? $Datos['Seccion']  : 'Todos';    ?>
             <h3 class="h3_9">( <?php echo $Datos['Seccion'] ;?> )</h3>
         </div>
@@ -27,7 +22,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $Seccion = $arr["seccion"];
                 $Producto = $arr["producto"];
                 $Opcion = $arr["opcion"];
-                $Precio = number_format($arr["precio"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
+                $PrecioBolivar = number_format($arr["precioBolivar"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
+                $PrecioDolar = $arr["precioDolar"];
                 $ID_Producto = $arr["ID_Producto"];
                 $ID_Opcion = $arr["ID_Opcion"];
                 $Fotografia = $arr['fotografia'];
@@ -86,7 +82,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         ?>
 
                         <!-- PRECIO -->
-                        <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>" ><?php echo $Precio;?> Bs.</label>
+                        <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>" ><?php echo $PrecioBolivar;?> Bs.</label>
+                        <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                

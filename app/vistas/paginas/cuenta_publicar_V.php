@@ -28,11 +28,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="contador" type="text" id="ContadorPro" value="50" readonly/>
 
                     <!-- DESCRIPCION -->
-                    <textarea class="textarea_1 borde_1" name="descripcion" id="ContenidoDes"  placeholder="Descripción" tabindex="2" onkeydown="blanquearInput('ContenidoDes')"></textarea>
-                    <input class="contador" type="text" id="ContadorDes" value="50" readonly/>
+                    <textarea class="textarea_1 textarea_4 borde_1" name="descripcion" id="ContenidoDes"  placeholder="Descripción" tabindex="2" onkeydown="blanquearInput('ContenidoDes')"></textarea>
+                    <input class="contador" type="text" id="ContadorDes" value="500" readonly/>
 
                     <!-- PRECIO -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precio" id="Precio" placeholder="Precio ( Solo números )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                    <input class="inputPlaceholder borde_1" type="text" name="precioBs" id="PrecioBs" placeholder="Precio Bs. ( Solo números )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                    <input class="inputPlaceholder borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Precio $ USD ( Solo números )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar a la tasa del BCV correspondiente</small>
 
                     <br>
                     <!-- SECCION --> 

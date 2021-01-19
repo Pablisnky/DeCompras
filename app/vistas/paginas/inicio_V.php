@@ -29,6 +29,43 @@
     
 <section id="Section_2js">
     <div class='contenedor_4' id="Contenedor_4">
+
+        <div class='contenedor_6 borde_1' id="Artesania">
+            <h2 class='h2_1'>ARTE Y LITERATURA</h2>
+            <span class="icon-pen span_8"></span>                 
+            <div class="contenedor_106">
+                <span class="span_21 borde_1">
+                    <?php
+                        foreach($Datos as $arr) :
+                            if($arr['ID_Categoria'] == 7){  
+                                $CantidadArtesania = $arr['cantidad']; 
+                                echo $CantidadArtesania; ?>
+                                <style>
+                                    #Artesania .span_21{
+                                        background-color: var(--Aciertos);
+                                    }
+                                </style>
+                                <?php
+                            }
+                        endforeach; 
+                        if(empty($CantidadArtesania)){                                     
+                            echo 0;?>
+                            <style>
+                                #Artesania{
+                                    position: relative;
+                                    z-index: -1;           
+                                }
+                                #Artesania .span_21{
+                                    background-color: var(--Fallos);
+                                }
+                            </style>
+                            <?php
+                        }  
+                    ?>
+                </span>
+            </div>
+        </div>
+        
         <div class='contenedor_6 borde_1' id="Comida_Rapida">
             <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
             <span class="icon-spoon-knife span_8"></span>                  
@@ -341,42 +378,6 @@
                                     z-index: -1;           
                                 }
                                 #Ropa_Zapato .span_21{
-                                    background-color: var(--Fallos);
-                                }
-                            </style>
-                            <?php
-                        }  
-                    ?>
-                </span>
-            </div>
-        </div>
-
-        <div class='contenedor_6 borde_1' id="Artesania">
-            <h2 class='h2_1'>ARTE Y LITERATURA</h2>
-            <span class="icon-pen span_8"></span>                 
-            <div class="contenedor_106">
-                <span class="span_21 borde_1">
-                    <?php
-                        foreach($Datos as $arr) :
-                            if($arr['ID_Categoria'] == 7){  
-                                $CantidadArtesania = $arr['cantidad']; 
-                                echo $CantidadArtesania; ?>
-                                <style>
-                                    #Artesania .span_21{
-                                        background-color: var(--Aciertos);
-                                    }
-                                </style>
-                                <?php
-                            }
-                        endforeach; 
-                        if(empty($CantidadArtesania)){                                     
-                            echo 0;?>
-                            <style>
-                                #Artesania{
-                                    position: relative;
-                                    z-index: -1;           
-                                }
-                                #Artesania .span_21{
                                     background-color: var(--Fallos);
                                 }
                             </style>

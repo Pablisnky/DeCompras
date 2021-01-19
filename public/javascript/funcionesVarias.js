@@ -165,9 +165,9 @@
     }
 
 //************************************************************************************************
-    //Coloca los puntos de miles en tiempo real al llenar el campo a cedula en registroDes_V.php - cuenta_editar_V.php
+    //Coloca los puntos de miles en tiempo real, a medida que se llena el campo cedula en registroDes_V.php - cuenta_editar_V.php
     function formatoMiles(numero, id){
-        console.log("______Desde formatoMiles()______", numero + " / " + id)
+        // console.log("______Desde formatoMiles()______", numero + " / " + id)
 
         var num = numero.replace(/\./g,'')
         if(!isNaN(num) && numero.length < 11){
