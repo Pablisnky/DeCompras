@@ -248,11 +248,22 @@
                 //Se CONSULTAN el slogan de una tienda en particular
                 $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
+                //Solicita el precio del dolar
+                require(RUTA_APP . "/controladores/Menu_C.php");
+                $this->PrecioDolar = new Menu_C();
+
+                // echo '<pre>';
+                // print_r($this->PrecioDolar);
+                // echo '</pre>';
+
+                $DolarHoy = $this->PrecioDolar->Dolar;
+
                 $Datos = [
                     'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                     'categorias' => $Categorias,
                     'secciones' => $Secciones,
-                    'slogan' => $Slogan
+                    'slogan' => $Slogan,
+                    'dolarHoy' => $DolarHoy
                 ];
 
                 $verifica_2 = 1906;  
@@ -603,7 +614,7 @@
             // print_r($_POST['bancoPagoMovil']);
             // echo '</pre>';
 
-            if(($_POST['banco'][0] == '') && ($_POST['bancoPagoMovil'][0] == '')){
+            if(($_POST['banco'][0] == '') && ($_POST['bancoPagoMovil'][0] == '') && $_POST['bolivar'] == '' && $_POST['dolar'] == '' && $_POST['acordado'] == ''){
                 echo "Ingrese datos de pagos";
                 echo "<br>";
                 echo "<a href='javascript:history.back()'>Regresar</a>";
@@ -1099,9 +1110,6 @@
                     //         exit();
                     //     }
                     // }
-                }
-                else{
-                    echo "Imagen sin nombre";
                 }
             }
 

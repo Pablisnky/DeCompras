@@ -223,7 +223,48 @@
         }
     }
 
- //************************************************************************************************
+//************************************************************************************************ 
+    //ajusta la altura de un texarea con respecto al contenido que trae de la BD
+    function resize(id){
+        console.log("______Desde resize()______", id) 
+        var text = document.getElementById(id);
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+
+//************************************************************************************************ 
+    //Realia el cambio de moneda Bolivar a Dolar
+    function CambioMonetarioDolar(Monto, id){
+        // console.log("______Desde CambioMonetarioDolar______", Monto + " " + id)
+
+        let Bolivar = document.getElementById(id)
+        let PrecioDolar = document.getElementById("CambioOficial").value
+
+        let Cambio_Bolivar = Monto * PrecioDolar
+
+        Bolivar.value = Cambio_Bolivar.toFixed(2)
+    }
+    
+//************************************************************************************************
+    //Realia el cambio de moneda Dolar a Bolivar
+    function CambioMonetarioBolivar(Monto, id){
+        // console.log("______Desde CambioMonetarioBolivar______", Monto + " " + id)
+
+        let Dolar = document.getElementById(id)
+        let PrecioDolar = document.getElementById("CambioOficial").value
+        
+        let Cambio_Dolar = Monto / PrecioDolar
+       
+        Dolar.value = Cambio_Dolar.toFixed(2)
+    }
+    
+//************************************************************************************************
+function ReiniciaCampo(id_1, id_2){
+    document.getElementById(id_1).value = ''
+    document.getElementById(id_2).value = ''
+}
+
+//************************************************************************************************
     //Coloca la clase "activa" en el item seleccionado del menu 
     // function ActivarLink(id){
         // console.log("______Desde ActivarLink()______") 

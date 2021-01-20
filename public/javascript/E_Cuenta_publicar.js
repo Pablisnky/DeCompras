@@ -2,13 +2,13 @@
 
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
 
-document.getElementById("PrecioBs").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value)}, false)
+document.getElementById("PrecioBs").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value, "PrecioDolar")}, false)
 
-document.getElementById("PrecioDolar").addEventListener('keyup', function(){CambioMonetarioDolar(this.value)}, false)
+document.getElementById("PrecioDolar").addEventListener('keyup', function(){CambioMonetarioDolar(this.value, "PrecioBs")}, false)
 
-document.getElementById("PrecioBs").addEventListener('focus', function(){ReiniciaCampo()}, false)
+document.getElementById("PrecioBs").addEventListener('focus', function(){ReiniciaCampo("PrecioBs","PrecioDolar")}, false)
 
-document.getElementById("PrecioDolar").addEventListener('focus', function(){ReiniciaCampo()}, false)
+document.getElementById("PrecioDolar").addEventListener('focus', function(){ReiniciaCampo("PrecioBs","PrecioDolar")}, false)
 
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){contarCaracteres('ContadorPro','ContenidoPro', 50)}, false)
 
@@ -138,6 +138,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         let Descripcion = document.getElementById('ContenidoDes').value 
         let ImagenPrin = document.getElementById('imgInp').value 
         let PrecioBs = document.getElementById('PrecioBs').value 
+        let PrecioDolar = document.getElementById('PrecioDolar').value 
         let Seccion = document.getElementById('SeccionPublicar').value 
         
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
@@ -147,7 +148,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
         //Patron de entrada solo acepta letras
-        let P_Numeros = /^[0-9]*$/
+        let P_Numeros = /^[0-9,.]*$/
 
         //Patron de entrada para archivos de carga permitidos
         var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
@@ -162,7 +163,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 50){
+        else if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 55){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
@@ -174,7 +175,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 500){
+        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 505){
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()
@@ -187,7 +188,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
             return false;
         }
         else if(PrecioBs == "" || PrecioBs.indexOf(" ") == 0 || PrecioBs.length > 20 || P_Numeros.test(PrecioBs) == false){
-            alert ("Introduzca un PrecioBs, (Solo números)")
+            alert ("Introduzca un Precio (Solo números)")
             document.getElementById("PrecioBs").value = ""
             document.getElementById("PrecioBs").focus()
             document.getElementById("PrecioBs").style.backgroundColor = "var(--Fallos)"
@@ -198,7 +199,19 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20){
+        else if(PrecioDolar == "" || PrecioDolar.indexOf(" ") == 0 || PrecioDolar.length > 20 || P_Numeros.test(PrecioDolar) == false){
+            alert ("Introduzca un Precio (Solo números)")
+            document.getElementById("PrecioDolar").value = ""
+            document.getElementById("PrecioDolar").focus()
+            document.getElementById("PrecioDolar").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 25){
             alert ("Introduzca una Sección")
             document.getElementById("SeccionPublicar").value = ""
             document.getElementById("SeccionPublicar").focus()
@@ -273,12 +286,6 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         SeleccionImagenes.reduce((a, b) => a + b)
         console.log("Array imagenes seleccionadas= ", SeleccionImagenes)
         
-
-
-
-
-
-
         //Se busca el id de la etiqueta donde se hizo click
         let ID_Etiqueta = Etiqueta.id
         console.log(ID_Etiqueta)
@@ -299,38 +306,4 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         //Se elimina la imagen
         PadreImagen.removeChild(imagen);  
         PadreImagen.removeChild(Etiqueta);
-    }
-    
-//************************************************************************************************
-    //Realia el cambio de moneda Bolivar a Dolar
-    function CambioMonetarioDolar(Monto){
-        console.log("______Desde CambioMonetarioDolar______", Monto)
-
-        let Bolivar = document.getElementById("PrecioBs")
-
-        let PrecioDolar = 1548933
-
-        let Cambio_Bolivar = Monto * PrecioDolar
-
-        Bolivar.value = Cambio_Bolivar
-    }
-    
-//************************************************************************************************
-    //Realia el cambio de moneda Dolar a Bolivar
-    function CambioMonetarioBolivar(Monto){
-        console.log("______Desde CambioMonetarioBolivar______", Monto)
-
-        let Dolar = document.getElementById("PrecioDolar")
-
-        let PrecioDolar = 1548933
-
-        let Cambio_Dolar = Monto / PrecioDolar
-       
-        Dolar.value = Cambio_Dolar.toFixed(2)
-    }
-    
-//************************************************************************************************
-    function ReiniciaCampo(){
-        document.getElementById("PrecioDolar").value = ''
-        document.getElementById("PrecioBs").value = ''
     }

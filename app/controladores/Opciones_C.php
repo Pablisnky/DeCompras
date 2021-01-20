@@ -27,7 +27,7 @@
             ];
             
             // ******************************************* 
-            //CALCULO DEL PRECIO EN DOLARES           
+            //ACTUALIZA PRECIOS EN BOLIVARES          
             // require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
 
             // $this->Reconversion = new CalculoDolar_C;

@@ -1,6 +1,8 @@
 <?php
     class Menu_C extends Controlador{
 
+        public $Dolar = 1555320;
+
         public function __construct(){
             // $this->ConsultaVitrina_M = $this->modelo("Vitrina_M");
 
@@ -9,24 +11,25 @@
         }
         
         public function index(){
-            $this->vista("paginas/afiliacion_V");
+            require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
+
+            $this->ActualizarPrecio = new CalculoDolar_C();
+            $this->ActualizarPrecio->AjusteCambioMonetario($this->Dolar);
         }
 
         public function afiliacion(){
-            //Se calcula el cambio de moneda
+
             $PlanEmprendedorBs = 2;
             $PlanBasicoBs = 5;
             $PlanMedioBs = 8;
             $PlanMaximoBs = 13;
             $PlanFullBs = 20;
-            $Dolar = 1174992;
-            $Dolar = 
 
-            $PlanEmprendedor = $Dolar * $PlanEmprendedorBs;
-            $PlanBasico = $Dolar * $PlanBasicoBs;
-            $PlanMedio = $Dolar * $PlanMedioBs;
-            $PlanMaximo = $Dolar * $PlanMaximoBs;
-            $PlanFull = $Dolar * $PlanFullBs;
+            $PlanEmprendedor = $this->Dolar * $PlanEmprendedorBs;
+            $PlanBasico = $this->Dolar * $PlanBasicoBs;
+            $PlanMedio = $this->Dolar * $PlanMedioBs;
+            $PlanMaximo = $this->Dolar * $PlanMaximoBs;
+            $PlanFull = $this->Dolar * $PlanFullBs;
 
             $PlanEmprendedor = number_format($PlanEmprendedor, 0, '', '.');
             $PlanBasico = number_format($PlanBasico, 0, '', '.');

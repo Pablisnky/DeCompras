@@ -2,7 +2,19 @@ window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('Con
 
 window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('ContenidoDes','ContadorDes')}, false)
 
-window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('Precio','ContadorPre')}, false)
+document.addEventListener('DOMContentLoaded', function(){resize('ContenidoDes')}, false)
+
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){autosize('ContenidoDes')}, false)
+
+document.getElementById("PrecioBolivar").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value, "PrecioDolar")}, false)
+
+document.getElementById("PrecioDolar").addEventListener('keyup', function(){CambioMonetarioDolar(this.value, "PrecioBolivar")}, false)
+
+document.getElementById("PrecioBolivar").addEventListener('focus', function(){ReiniciaCampo("PrecioBolivar","PrecioDolar")}, false)
+
+document.getElementById("PrecioDolar").addEventListener('focus', function(){ReiniciaCampo("PrecioBolivar","PrecioDolar")}, false)
+
+// window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('Precio','ContadorPre')}, false)
 
 document.addEventListener("click", preEliminarSeccion)
 
@@ -10,13 +22,13 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){c
 
 document.getElementById("ContenidoPro").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoPro')}, false)
 
-document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 50)}, false)
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){contarCaracteres('ContadorDes','ContenidoDes', 500)}, false)
 
-document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoDes')}, false)
+document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(500,'ContenidoDes')}, false)
 
-document.getElementById("Precio").addEventListener('keydown', function(){contarCaracteres('ContadorPre','Precio', 50)}, false)
+// document.getElementById("Precio").addEventListener('keydown', function(){contarCaracteres('ContadorPre','Precio', 50)}, false)
 
-document.getElementById("Precio").addEventListener('keydown', function(){valida_LongitudDes(50,'Precio')}, false)
+// document.getElementById("Precio").addEventListener('keydown', function(){valida_LongitudDes(50,'Precio')}, false)
 
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
 
@@ -169,7 +181,7 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
         // let Especificacion = document.getElementById('ContenidoEsp').value 
-        let Precio = document.getElementById('Precio').value 
+        let PrecioDolar = document.getElementById('PrecioDolar').value 
         let Seccion = document.getElementById('Seccion').value   
         
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
@@ -178,7 +190,7 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
-        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 51){
+        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 55){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
@@ -186,7 +198,7 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
-        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 51){
+        else if(Descripcion == "" || Descripcion.indexOf(" ") == 0 || Descripcion.length > 505){
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()
@@ -202,15 +214,15 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
         //     document.getElementsByClassName("boton")[0].disabled = false
         //     return false;
         // }
-        else if(Precio == "" || Precio.indexOf(" ") == 0 || Precio.length > 16){
+        else if(PrecioDolar == "" || PrecioDolar.indexOf(" ") == 0 || PrecioDolar.length > 30){
             alert ("Introduzca un Precio")
-            document.getElementById("Precio").value = ""
-            document.getElementById("Precio").focus()
+            document.getElementById("PrecioDolar").value = ""
+            document.getElementById("PrecioDolar").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
-        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20){
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 30){
             alert ("Introduzca una Sección")
             document.getElementById("Seccion").value = ""
             document.getElementById("Seccion").focus()

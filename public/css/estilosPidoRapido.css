@@ -390,7 +390,8 @@ button{/*tiendas*/
 	margin: auto;
 	display:flex ;
 	justify-content: center;
-	width: 70%;
+	width: 90%;
+	height: 30px;
 	border-color: yellow;
 	border-width: 2px;
 	border-style: solid;
@@ -1330,11 +1331,9 @@ button{/*tiendas*/
 }
 .h1_11{/*descr_Producto*/
 	display: block;
-	color: var(--OficialOscuro);
 	text-align: left;
-	/* padding: 2% 5%; */
 	font-weight: lighter;
-	font-size: 1.5em;
+	line-height: 25px;
 }
 .h1_12{/*RecibePedido*/
 	font-size: 1.9em !important;
@@ -1620,26 +1619,30 @@ button{/*tiendas*/
 	/* font-size: 0.9em; */
 	display: block;
 }
-.input_8A{/*opciones*/
+.input_8A{/*opciones - cuenta_productos*/
 	margin-top: 3%;
 }
 .input_8C{/*opciones*/
 	height: 40px;
-	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
-	 overflow: hidden; 
-	/*white-space: nowrap; 
-	text-overflow: ellipsis;   */
 	width: 100%;
 	display: block;
 	display: -webkit-box;
 	max-width: 100%;
 	margin: 0 auto;
-   
 	line-height: 1.3em;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
 	overflow: hidden;
+	/*Las proximas lineas permiten colocar tres puntos al final luego de dos lineas de parrafo */
+	-webkit-line-clamp: 2; 
+	-webkit-box-orient: vertical;
 	text-overflow: ellipsis;
+}
+.input_8D{/*opciones*/
+	/* background-color: blue; */
+	/* height: 45px; */
+	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
+	overflow: hidden; 
+	white-space: nowrap; 
+	text-overflow: ellipsis;  
 }
 .input_10{/*opciones*/
 	background-color: yellow;
@@ -2164,6 +2167,11 @@ button{/*tiendas*/
 	color: var(--TextoClaro);
 	margin-top: -4%;
 }
+.strong_1{/*cuenta_editar*/
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	white-space: nowrap; /*mantiene el texto en una sola linea*/
+}
 .span_1{/*tiendas*/
 	font-size: 0.8em;
 }
@@ -2174,7 +2182,7 @@ button{/*tiendas*/
 	margin: auto;
 	text-align: center;
 	display: inline-block;
-	line-height: 30px !important;
+	/* line-height: 30px !important; */
 }
 .span_3, .span_4{/**/
 	cursor: pointer;

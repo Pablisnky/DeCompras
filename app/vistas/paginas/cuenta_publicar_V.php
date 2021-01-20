@@ -2,6 +2,9 @@
 //se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
+
+    //Se da formato al precio, sin decimales y con separación de miles
+    $PrecioDolar = number_format($Datos['dolarHoy'], 0, ",", "."); 
       ?>     
 
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
@@ -31,14 +34,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <textarea class="textarea_1 textarea_4 borde_1" name="descripcion" id="ContenidoDes"  placeholder="Descripción" tabindex="2" onkeydown="blanquearInput('ContenidoDes')"></textarea>
                     <input class="contador" type="text" id="ContadorDes" value="500" readonly/>
 
-                    <!-- PRECIO -->
-                    <input class="inputPlaceholder borde_1" type="text" name="precioBs" id="PrecioBs" placeholder="Precio Bs. ( Solo números )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
-                    <input class="inputPlaceholder borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Precio $ USD ( Solo números )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
-                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar a la tasa del BCV correspondiente</small>
-
-                    <br>
                     <!-- SECCION --> 
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
+                    <br>
+                    <!-- PRECIO -->
+                    <input class="inputPlaceholder borde_1" type="text" name="precioBs" id="PrecioBs" placeholder="Precio Bs. ( 00000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                    <input class="inputPlaceholder borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Precio $ USD ( 000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( 1 USD = <?php echo $PrecioDolar;?> Bs.)</strong></small>
+                    <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/>
+                    
+                    <br>
                     
                     <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
                     <div id="Contenedor_80"></div>

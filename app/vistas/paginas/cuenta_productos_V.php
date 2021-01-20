@@ -83,7 +83,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                         <!-- PRECIO -->
                         <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>" ><?php echo $PrecioBolivar;?> Bs.</label>
-                        <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
+                        <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                

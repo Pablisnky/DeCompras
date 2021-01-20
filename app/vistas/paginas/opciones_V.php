@@ -33,7 +33,8 @@
                         $Fotografia = $row['fotografia'];
         
                         //Se da formato al precio, sin decimales y con separación de miles
-                        $Precio = number_format($PrecioBolivar, 0, ",", ".");  ?>  
+                        $PrecioBolivar = number_format($PrecioBolivar, 0, ",", "."); 
+                        $PrecioDolar = number_format($PrecioDolar, 2, ",", ".");  ?>  
                                 
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             
@@ -41,7 +42,7 @@
                             <div class="contOpciones">
                                 <!-- se colocan el caracter | para usarlo como separardor en Opciones_C/productoAmpliado debido a que el usuario puede usar comas o punto y comas en el texto de opciones o del producto.  -->
                                 <?php $Separador = '|' ;?> 
-                                <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo  $Precio.$Separador?>','<?php echo $Fotografia.$Separador?>','<?php echo $ID_Producto?>')">
+                                <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo  $PrecioBolivar.$Separador?>','<?php echo $Fotografia.$Separador?>','<?php echo $ID_Producto?>')">
                                     <figure class="">
                                         <img class="contOpciones__img" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
                                     </figure>
@@ -51,10 +52,10 @@
                                 <div style="min-height:80px">
 
                                     <!-- PRODUCTO -->
-                                    <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>" value="<?php echo $Producto;?>"/>
-
+                                    <textarea class="input_8 input_8C" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></textarea>
+ 
                                     <!-- OPCION -->
-                                    <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>" ><?php echo $Opcion;?></label>
+                                    <label class="input_8 input_8D" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>"><?php echo $Opcion;?></label>
                                     <!-- AMPLIAR DETALLES -->
                                     <!-- se abre la ventana de detalle de producto utilizando el metodo de enlace con la etiqueta HTML <a></a>-->
                                     <?php        
@@ -78,8 +79,8 @@
                                     ?>          
                                     
                                     <!-- PRECIO -->
-                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioBolivar;?>  Bs.</label>
-                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
+                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioBolivar;?> Bs.</label>
+                                    <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
                             
                                     <?php 
                                     //En caso de venir desde buscador se sombrea el producto solicitado en la busqueda y se posiciona de primero entre todos los productos
@@ -110,7 +111,7 @@
                                         <?php 
                                     }   ?>
                                     <!-- Este input es el que se envia al archivo JS por medio de la función agregarOpcion(), en el valor se colocan el caracter _ para usarlo como separardor en  JS-->
-                                    <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$Precio;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
+                                    <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$PrecioBolivar;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>')"/>
                                 </div>
                                 
                                 <!-- AGREGAR -->

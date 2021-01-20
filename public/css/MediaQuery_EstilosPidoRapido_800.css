@@ -138,6 +138,7 @@
 	margin-bottom: 15%;
 }
 .contenedor_16{/*opciones*/
+	/* top: -45px; */
 	left: 75%;
 }
 .contPedido{/*carrito*/
@@ -177,7 +178,8 @@
 	margin: 2% auto;
 }
 .contenedor_31{/*header*/
-	width: 75%;
+	width: 95%;
+	height: 34px;
 	padding: 0.5%;
 }
 .contenedor_32{/*header*/
@@ -413,7 +415,7 @@
 	width: 100%;
 	grid-template-columns: 53% 47%;
 	column-gap: 0%;/*espacio entre filas*/
-	margin-bottom: 18%;
+	margin-bottom: 25%;
 }
 .contenedor_98{/*footer*/
 	align-items: center;
@@ -671,6 +673,7 @@
 .h1_11{/*descr_Producto*/
 	padding: 2% 5%;
 	padding-top: 8%;
+	font-size: 1em;
 }
 .h2_1{/*inicio*/
 	font-size: 1em;
@@ -802,13 +805,15 @@
 .input_2a{/*opciones*/
 	font-size: 1em;
 	margin: auto;
+	margin-top: 30px;
 	width: 85%;
 }
 .input_3{/*vitrina*/
 	width: 100%;
 }
-.input_5{/*header*/
-	padding-top: 2%;
+.input_5{/*vitrina*/
+	/* padding-top: 2%; */
+	/* line-height: 30px; */
 	/* font-size: 1em !important; */
 }
 .input_6{/*carrito cuenta_producto*/
@@ -818,18 +823,10 @@
 .input_8{/*cuenta_productos - opciones*/
 	/* font-size: 0.9em; */
 	padding: 1%;
+	font-size: 1.1em;
 }
 .input_8A{/*cuenta_productos - opciones*/
-	font-size: 1.1em;
-	margin-top: 5%;
-}
-.input_8D{/*opciones*/
-	/* background-color: blue; */
-	/* height: 45px; */
-	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
-	overflow: hidden; 
-	white-space: nowrap; 
-	text-overflow: ellipsis;  
+	margin-top: 10%;
 }
 .input_9{/*registroCom - registroDes - carrito - login - cuenta_editar*/
 	margin: 0% auto 4% auto !important;
@@ -1046,9 +1043,8 @@
 .select_2{/*carrito - cuenta_editar*/
 	font-size: 1em;
 }
-.span_2{/*header*/
-	/* font-size: 1.3em !important; */
-	padding: 5%;
+.span_2{/*vitrina*/
+	padding: 3%;
 	line-height: 15px !important;
 }
 .span_3{/*inicio*/
@@ -1091,6 +1087,9 @@
 .spanCerrar{/*inicio - modal_fueraHorario*/
 	font-size: 1.5em;
 	margin: -5% 4% 0% 88%;
+}
+.strong_1{/*cuenta_editar*/
+	font-size: 0.9em;
 }
 .tabla1{/*horarioDespacho*/
 	width: 220%;

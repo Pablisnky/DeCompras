@@ -40,7 +40,7 @@
             <div class="contenedor_94">
                 <p class="p_3 p_5">Máximo</p>
                 <p class="p_11">13 USD/mes</p>
-                <p class="p_1"><?php echo $Datos['full'];?> Bs./mes</p>
+                <p class="p_1"><?php echo $Datos['maximo'];?> Bs./mes</p>
                 <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
@@ -50,7 +50,7 @@
             <div class="contenedor_94">
                 <P class="p_3 p_5">Full</P>
                 <p class="p_11">20 USD/mes</p>
-                <p class="p_1"><?php echo $Datos['maximo'];?> Bs./mes</p>
+                <p class="p_1"><?php echo $Datos['full'];?> Bs./mes</p>
                 <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 1.500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>

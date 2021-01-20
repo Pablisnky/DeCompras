@@ -55,7 +55,7 @@
             </div>
 
             <div class="contGridUna">
-                <h1 class="h1_11"><?php echo $Producto?></h1>
+                <h1 class="h1_1"><?php echo $Producto?></h1>
                 <h1 class="h1_11"><?php echo $Opcion?></h1>
                 <?php
                 if($Datos['Caracteristicas'] != Array ()){  ?>
@@ -69,9 +69,6 @@
                             endforeach
                             ?>
                         </ul>
-                        <br>
-                        <!-- <textarea class="textarea_3">Aqui texto general, información adicional, las especificaciones entre barras deen tener un máximo de 70 caracteres</textarea> -->
-                        <br>
                     </div>  
                     <?php
                 }
@@ -91,8 +88,6 @@
     </section>
     
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_descr_Producto.js';?>"></script>
-
-<?php// include(RUTA_APP . "/vistas/inc/footer.php");   ?>
 
 <script>
     //Aqui tambien se pudo usar una funcion IIEEF intentarlo de sa manera

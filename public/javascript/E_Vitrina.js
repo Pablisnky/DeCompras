@@ -83,6 +83,22 @@ document.addEventListener('click', function(event){
         CerrarModal_X('Section_3')
     }
 })
+ 
+// *****************************************************************************************************
+//Escucha desde opciones_V.php, por medio de delegación de eventos, los textarea para ajustar el alto segun su contenido
+// window.addEventListener('load',function(event){ 
+//     console.log("ENTRA")
+//     if(event.target.id == "Section_4"){
+//         var Textarea = document.getElementsByTagName('textarea')
+//         console.log(Textarea.length)
+//         //Se recorren todos los valores del radio button para encontrar el seleccionado
+//         // for(let i = 0; i < Textarea.length; i++){
+//         //     ID = Textarea[i].id
+//         //     console.log(ID)
+//         //     resize(id)
+//         // }
+//     }
+// })
 
 // *****************************************************************************************************
   //obtiene informacion del DOM del elemento donde se hizo click 
@@ -336,6 +352,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
                 //Se muestra el precio del producto donde se hizo click
                 Precio = document.getElementById(Input_PrecioClick).value = Separado[4]
+                console.log(Precio)
                                 
                 //Si un producto se eliminó en una entrada anterior es necesario activar nuevamente el input donde ira la leyenda y los botones de más y menos
                 document.getElementById(Input_LeyendaClick).style.display = "block"          
@@ -345,7 +362,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 InputLeyenda.value = 1 + ' ' + Separado[2] + ' ' + Separado[3] + ' = ' + Separado[4] + ' Bs.'
 
                 //Se cambia el formato del precio, solo numeros sin separador de miles
-                Precio = Precio.replace(".","")
+                Precio = Precio.replace(/[.]/g,'')
                 Precio = Number(Precio)
                 
                 //Se añade el producto carrito(no lo suma), basta con añadir el id_dinamico(ID_Opcion) por cada unidad de produto añadida
@@ -510,8 +527,13 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se muestra todo el pedido (cantidad - producto - opcion - precio unitario - precio por productos)
         for(i = 0; i < AlCarro.length; i++){
             // console.log(AlCarro[i].Cantidad)
-            document.getElementById("Tabla").innerHTML += '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + '</td><td class="td_2">' +  AlCarro[i].Producto + " / " + AlCarro[i].Opcion + '</td><td class="td_3">' + AlCarro[i].Precio + '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
+            document.getElementById("Tabla").innerHTML += '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + '</td><td class="td_2">' +  AlCarro[i].Producto + '</td><td class="td_3">' + AlCarro[i].Precio + '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
         }
+        
+        // for(i = 0; i < AlCarro.length; i++){
+        //     // console.log(AlCarro[i].Cantidad)
+        //     document.getElementById("Tabla").innerHTML += '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + '</td><td class="td_2">' +  AlCarro[i].Producto + " / " + AlCarro[i].Opcion + '</td><td class="td_3">' + AlCarro[i].Precio + '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
+        // }
     }
     
 //************************************************************************************************
@@ -597,7 +619,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 let Precio = inputSeleccionadoLeyen.getElementsByClassName("input_1d")[0].value
                                 
                 //Se cambia el formato del precio
-                Precio = Precio.replace(".","")
+                Precio = Precio.replace(/[.]/g,'')
                 Precio = Number(Precio)
 
                 //Se calcula el total
@@ -707,7 +729,7 @@ console.log(AlCarro)
                 let Precio = Cont_leyenda.getElementsByClassName("input_1d")[0].value
 
                 //Se cambia el formato del precio
-                Precio = Precio.replace(".","")
+                Precio = Precio.replace(/[.]/g,'')
                 Precio = Number(Precio)
                                 
                 //Se calcula el total
@@ -776,7 +798,7 @@ console.log(AlCarro)
                 
                 //Input precio en el elemento hermano del click correspondiente; Aqui se muestra el precio
                 Precio = Cont_leyenda.getElementsByClassName("input_1d")[0].value
-                Precio = Precio.replace(".","")
+                Precio = Precio.replace(/[.]/g,'')
                 Precio = Number(Precio)
 
                 //Input producto en el elemento hermano del click correspondiente; Aqui se muestra el producto
