@@ -55,12 +55,21 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="contador" type="text" id="ContadorDes" value="500"/>
 
                     <!-- SECCION PRECIO -->
-                    <label>Precio</label>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precioBolivar" id="PrecioBolivar" value="<?php echo $PrecioBolivar;?>"/>
+                    <label>Precio</label><br>
+                    <div style="display: flex;">
+                        <div>
+                            <label>Bs.</label><br>
+                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioBolivar" id="PrecioBolivar" value="<?php echo $PrecioBolivar;?>"/>
+                        </div>
+                        <div>
+                            <label>$ USD</label><br>
+                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" value="<?php echo $PrecioDolar;?>"/>
+                        </div>
+                    </div> 
+                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( 1 USD = <?php echo number_format($Datos['dolarHoy'], 0, ",", ".");?> Bs.)</strong></small>
+                    <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/>
                     <br>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="precioDolar" id="PrecioDolar" value="<?php echo $PrecioDolar;?>"/>
-                    <!-- <input class="contador" type="text" id="ContadorPre" value="15"/> -->
-                    <br>
+
                     <!-- SECCION SECCION -->
                     <label>Sección</label>
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">

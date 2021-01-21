@@ -2071,6 +2071,11 @@ button{/*tiendas*/
 .placeholder_4{/*registroCom - cuenta_publicar*/
 	margin-bottom: -0.5% !important;
 }
+.placeholder_5{/*cuenta_editar_prod*/
+	width: 95%;
+	/* margin: initial !important; */
+	display: inline;
+}
 .preloder{/*vitrina*/
 	/* margin: 20% auto;  */
 	width: 70px; 
@@ -2180,7 +2185,7 @@ button{/*tiendas*/
 	padding-left: 2%;
 	font-size: 0.9em;
 	color: var(--TextoClaro);
-	margin-top: -4%;
+	margin-top: 1%;
 }
 .strong_1{/*cuenta_editar*/
 	font-size: 0.9em;

@@ -72,8 +72,8 @@
                     <div class="contenedor_139"></div> <?php
                 }   ?>
                 <div class="contGeneral">
-                    <label class="label_22 borde_1 borde_2"><?php echo $PrecioBolivar?> Bs</label>
-                    <label class="label_22 borde_1 borde_2"><?php echo $PrecioDolar?> $ USD</label>
+                    <label class="label_22 borde_1 borde_2"><small><?php echo $PrecioBolivar?> Bs</small> <br> <?php echo $PrecioDolar?> $ USD </label>
+                    <!-- <label class="label_22 borde_1 borde_2">$ USD</label> -->
                     <div class="contBoton contBoton--100" id="Contenedor_26">                  
                         <label class="boton" onclick="cerrarRegresar()">Regresar</label>
                         <label class="boton" onclick="cerrarAgregar()">Agregar</label>   

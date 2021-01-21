@@ -83,6 +83,7 @@
             $PrecioBolivar = substr($DatosAgrupados[6], 1);
             $Fotografia = substr($DatosAgrupados[7], 1);
             $ID_Producto = substr($DatosAgrupados[8], 1);
+            $PrecioDolar = substr($DatosAgrupados[9], 1);
             
             //CONSULTA las caracteristicas del producto seleccionado
             $Consulta = $this->ConsultaOpciones_M->consultarCaracterisicaProductoEsp($ID_Producto);
@@ -99,6 +100,7 @@
                 'Producto' => $Producto,
                 'Opcion' => $Opcion,
                 'PrecioBolivar' => $PrecioBolivar,
+                'PrecioDolar' => $PrecioDolar,
                 'Fotografia_1' => $Fotografia,
                 'ID_Producto' => $ID_Producto, 
                 'ID_EtiquetaAgregar' => $ID_EtiquetaAgregar, 

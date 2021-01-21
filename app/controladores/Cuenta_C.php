@@ -337,6 +337,12 @@
             //Se CONSULTAN las imagenes añadidas del producto
             $Imagenes = $this->ConsultaCuenta_M->consultarImagnesProducto($ID_Producto);
 
+            //Solicita el precio del dolar
+            require(RUTA_APP . "/controladores/Menu_C.php");
+            $this->PrecioDolar = new Menu_C();
+
+            $DolarHoy = $this->PrecioDolar->Dolar;
+
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
@@ -344,13 +350,15 @@
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
-                'imagenesVarias' => $Imagenes //ID_Imagen, nombre_img
+                'imagenesVarias' => $Imagenes, //ID_Imagen, nombre_img
+                'dolarHoy' => $DolarHoy
             ];
 
             // echo "<pre>";
             // print_r($Datos);
             // echo "</pre>";
             // exit();
+
             $this->vista("paginas/cuenta_editar_prod_V", $Datos);
         }
         
