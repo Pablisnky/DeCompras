@@ -20,7 +20,7 @@
             $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
 
             $Datos=[
-                'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Opcion, fotografia, producto, opcion, precio
+                'Opciones' => $Consulta, //nombreTienda, slogan, seccion,ID_Producto, ID_Opcion, fotografia, producto, opcion,especificacion, precioBolivar, precioDolar
                 'ProductoSelecion' => $OpcionSelec,
                 'ID_Tienda' => $ID_Tienda,
                 'variosCaracteristicas' => $Caracteristicas //ID_Producto, caracteristica 
@@ -80,7 +80,7 @@
             $ID_Tienda = substr($DatosAgrupados[3], 1);
             $Producto = substr($DatosAgrupados[4], 1);
             $Opcion = substr($DatosAgrupados[5], 1);
-            $Precio = substr($DatosAgrupados[6], 1);
+            $PrecioBolivar = substr($DatosAgrupados[6], 1);
             $Fotografia = substr($DatosAgrupados[7], 1);
             $ID_Producto = substr($DatosAgrupados[8], 1);
             
@@ -98,7 +98,7 @@
                 'ID_Tienda' => $ID_Tienda,
                 'Producto' => $Producto,
                 'Opcion' => $Opcion,
-                'Precio' => $Precio,
+                'PrecioBolivar' => $PrecioBolivar,
                 'Fotografia_1' => $Fotografia,
                 'ID_Producto' => $ID_Producto, 
                 'ID_EtiquetaAgregar' => $ID_EtiquetaAgregar, 

@@ -24,13 +24,24 @@
             
             //SELECT para buscar información de otros metodos de pago de la tienda
             $OtrosPagos = $this->ConsultaCarrito_M->consultarOtrosPagos($ID_Tienda); 
+            
+            //Solicita el precio del dolar
+            require(RUTA_APP . "/controladores/Menu_C.php");
+            $this->PrecioDolar = new Menu_C();
+
+            // echo '<pre>';
+            // print_r($this->PrecioDolar);
+            // echo '</pre>';
+
+            $DolarHoy = $this->PrecioDolar->Dolar;
 
             $Datos = [
                 'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
                 'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil
                 'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
                 'ID_Tienda' => $ID_Tienda,
-                'TelefonoTienda' => $ContactoTienda           
+                'TelefonoTienda' => $ContactoTienda ,
+                'precioDolar' => $DolarHoy          
             ];
 
             // echo "<pre>";

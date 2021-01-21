@@ -14,10 +14,6 @@
                 <div class="contenedor_13" id="Contenedor_13Js"> 
                     <?php   
                     $ContadorLabel = 1;
-                    // echo "<pre>";
-                    // print_r($Datos);
-                    // echo "</pre>";
-                    // exit();
                     //$Datos proviene de Opciones_C/index
                     $ID_Tienda = $Datos['ID_Tienda'];
                     foreach($Datos['Opciones'] as $row){
@@ -34,7 +30,7 @@
         
                         //Se da formato al precio, sin decimales y con separación de miles
                         $PrecioBolivar = number_format($PrecioBolivar, 0, ",", "."); 
-                        $PrecioDolar = number_format($PrecioDolar, 2, ",", ".");  ?>  
+                        // $PrecioDolar = number_format($PrecioDolar, 2, ",", ".");  ?>  
                                 
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             
@@ -50,12 +46,13 @@
                             </div>
                             <div> 
                                 <div style="min-height:80px">
-
-                                    <!-- PRODUCTO -->
-                                    <label class="input_8 input_8D" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
- 
-                                    <!-- OPCION -->
-                                    <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>"><?php echo $Opcion;?></label>
+                                    <div style="height: 75px;">
+                                        <!-- PRODUCTO -->
+                                        <label class="input_8 input_8D" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
+    
+                                        <!-- OPCION -->
+                                        <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>"><?php echo $Opcion;?></label>
+                                    </div>
                                     <!-- AMPLIAR DETALLES -->
                                     <!-- se abre la ventana de detalle de producto utilizando el metodo de enlace con la etiqueta HTML <a></a>-->
                                     <?php        

@@ -40,12 +40,12 @@
                     </div>                    
                     <div class="contInputRadio">
                         <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
-                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, 3.000 Bs.</label>
+                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, <?php echo $Datos['precioDolar'];?> Bs.</label>
                     </div>     
                     <div>
                         <h2 class="h2_2">Monto en tienda: <input type="text"  form="DatosUsuario" name="montoTienda"  class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
                         <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
-                        <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text'   form="DatosUsuario" name="despacho" class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
+                        <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text'   form="DatosUsuario" name="despacho" class='input_6' value='<?php echo $Datos['precioDolar'];?>' readonly="readondly"/> Bs.</h2>
                         <hr class="hr_1"/>
                         <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
                     </div>
