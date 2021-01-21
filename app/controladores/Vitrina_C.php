@@ -33,9 +33,12 @@
 
             //Se CONSULTAN el slogan de una tienda en particular
             $Slogan = $this->ConsultaVitrina_M->consultarSloganTienda($ID_Tienda);
+            
+            //Se CONSULTAN la cantidad de productos por seccion de tienda
+            $Cant_ProductosSeccion = $this->ConsultaVitrina_M->consultarCant_ProductosSeccion($ID_Tienda);
 
+            //Se instancia la clase CalculoApertura para conseguir la hora en la abre una tienda
             require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
-
             $this->Horario = new CalculoApertura_C;
             $HorarioTrabajo = $this->Horario->horarioTienda($ID_Tienda);
  
@@ -47,7 +50,7 @@
             $Datos=[
                 'id_tienda' => $ID_Tienda,
                 'categoria' => $Categoria,
-                "seccion" => $Secciones,
+                "seccion" => $Secciones, //ID_Seccion, seccion
                 "NombreTienda" => $NombreTienda,
                 "fotografia" => $Fotografia,
                 'slogan' => $Slogan,
@@ -56,7 +59,8 @@
                 'disponibilidad' => $DisponibilidaHoraria,
                 'HorarioTrabajo' => $HorarioTrabajo,
                 'ProximoApertura' => $ProximoApertura,
-                'HoraApertura' => $HoraApertura
+                'HoraApertura' => $HoraApertura,
+                'cant_productosSeccion' => $Cant_ProductosSeccion //ID_Seccion, CantidadProducto por seccion
             ];
 
             // echo "<pre>";

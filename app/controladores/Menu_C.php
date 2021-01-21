@@ -1,7 +1,7 @@
 <?php
     class Menu_C extends Controlador{
 
-        public $Dolar = 1555320;
+        public $Dolar = 1561382;
 
         public function __construct(){
             // $this->ConsultaVitrina_M = $this->modelo("Vitrina_M");

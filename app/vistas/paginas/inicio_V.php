@@ -44,12 +44,11 @@
                                     #Artesania .span_21{
                                         background-color: var(--Aciertos);
                                     }
-                                </style>
-                                <?php
+                                </style>  <?php
                             }
                         endforeach; 
                         if(empty($CantidadArtesania)){                                     
-                            echo 0;?>
+                            echo 0;     ?>
                             <style>
                                 #Artesania{
                                     position: relative;
@@ -58,8 +57,7 @@
                                 #Artesania .span_21{
                                     background-color: var(--Fallos);
                                 }
-                            </style>
-                            <?php
+                            </style>    <?php
                         }  
                     ?>
                 </span>

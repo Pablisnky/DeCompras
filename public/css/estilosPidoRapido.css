@@ -270,7 +270,7 @@ button{/*tiendas*/
 	border-radius: 15px;
 	text-align: center;
 	width: 100%;
-	padding: 1%;
+	/* padding: 1%; */
 	margin: auto;
 	cursor: pointer;
 }
@@ -772,6 +772,11 @@ button{/*tiendas*/
 .contenedor_106{/*inicio*/
 	position: relative;
 	bottom: 10px;
+}
+.contenedor_106--lineal{/*vitrina*/
+	position: relative;
+	bottom: 50px;
+	/* display: inline; */
 }
 .contenedor_108{/*cuenta_editar*/
 	padding-bottom: 10%;
@@ -1623,16 +1628,17 @@ button{/*tiendas*/
 	margin-top: 3%;
 }
 .input_8C{/*opciones*/
-	height: 40px;
+	height: 60px;
 	width: 100%;
 	display: block;
 	display: -webkit-box;
 	max-width: 100%;
 	margin: 0 auto;
+	margin-bottom: 2%;
 	line-height: 1.3em;
 	overflow: hidden;
 	/*Las proximas lineas permiten colocar tres puntos al final luego de dos lineas de parrafo */
-	-webkit-line-clamp: 2; 
+	-webkit-line-clamp: 3; 
 	-webkit-box-orient: vertical;
 	text-overflow: ellipsis;
 }
@@ -1640,6 +1646,7 @@ button{/*tiendas*/
 	/* background-color: blue; */
 	/* height: 45px; */
 	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
+	font-weight: bold;
 	overflow: hidden; 
 	white-space: nowrap; 
 	text-overflow: ellipsis;  

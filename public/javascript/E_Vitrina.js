@@ -83,22 +83,6 @@ document.addEventListener('click', function(event){
         CerrarModal_X('Section_3')
     }
 })
- 
-// *****************************************************************************************************
-//Escucha desde opciones_V.php, por medio de delegación de eventos, los textarea para ajustar el alto segun su contenido
-// window.addEventListener('load',function(event){ 
-//     console.log("ENTRA")
-//     if(event.target.id == "Section_4"){
-//         var Textarea = document.getElementsByTagName('textarea')
-//         console.log(Textarea.length)
-//         //Se recorren todos los valores del radio button para encontrar el seleccionado
-//         // for(let i = 0; i < Textarea.length; i++){
-//         //     ID = Textarea[i].id
-//         //     console.log(ID)
-//         //     resize(id)
-//         // }
-//     }
-// })
 
 // *****************************************************************************************************
   //obtiene informacion del DOM del elemento donde se hizo click 

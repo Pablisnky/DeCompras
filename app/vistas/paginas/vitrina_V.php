@@ -37,14 +37,28 @@
             $Contador = 1;
             //Se cargan todas las secciones que tenga una tienda
             foreach($Datos['seccion'] as $row){
-                $Seccion = $row['seccion'];       
+                $Seccion = $row['seccion'];     
+                $ID_Seccion = $row['ID_Seccion'];    
                 ?> 
                 <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
                     <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')"> 
                         <div class="contenedor_9 borde_1">
-                            <img class="imagen_2" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
+                            <img class="imagen_2" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/> 
                         </div>  
                         <h2 class="h2_6"><?php echo $Seccion;?></h2>
+                        <div class="contenedor_106--lineal">
+                            <span class="span_21 borde_1">
+                            <?php 
+                            foreach($Datos['cant_productosSeccion'] as $Key):
+                                if($Key['ID_Seccion'] == $ID_Seccion && $Key['CantidadPro'] > 0):
+                                    echo $Key['CantidadPro']; 
+                                endif;
+                            endforeach;
+                            if((empty($Key['CantidadPro']))):
+                                // echo 0;  
+                            endif;  ?>
+                            </span>
+                        </div>
                     </div>
 
                     <!-- Se agregan las leyendas desde TransferirPedido() -->

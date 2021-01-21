@@ -21,7 +21,7 @@
 
         //SELECT de las secciones de la tienda seleccionada
         public function consultarSecciones($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT seccion FROM secciones WHERE ID_Tienda = :Tienda");  
+            $stmt = $this->dbh->prepare("SELECT ID_Seccion, seccion FROM secciones WHERE ID_Tienda = :Tienda");  
             $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,16 +32,16 @@
         }
         
         //SELECT de los productos de la tienda seleccionada
-        // public function consultarProductos($ID_Tienda){
-        //     $stmt = $this->dbh->prepare("SELECT * FROM productos INNER JOIN tiendas_productos ON productos.ID_Producto=tiendas_productos.ID_Producto WHERE tiendas_productos.ID_Tienda = :Tienda");  
-        //     $stmt->bindParam(':Tienda', $ID_Tienda, PDO::PARAM_INT);             
-        //     if($stmt->execute()){
-        //         return $stmt;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
+        public function consultarCant_ProductosSeccion($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT tiendas_secciones.ID_Seccion, COUNT(ID_Producto) AS CantidadPro FROM tiendas_secciones INNER JOIN secciones_productos ON tiendas_secciones.ID_Seccion=secciones_productos.ID_Seccion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA GROUP BY tiendas_secciones.ID_Seccion " );  
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);             
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
 
         // public function consultarNombreTienda($ID_Tienda){
         //     $stmt = $this->dbh->prepare("SELECT nombre_Tien FROM tiendas WHERE ID_Tienda = :Tienda");  
