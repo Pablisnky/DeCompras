@@ -12,7 +12,7 @@
         //Se activa la vista miniatura en formato grande
         Desplazar.style.display = "flex"
 
-        //Si verifica cuantos elementos <li> trae "Desplazar" para colocar el ancho respectivo
+        //Se verifica cuantos elementos <li> trae "Desplazar" para colocar el ancho respectivo
         if(Desplazar.children.length == 1){
             Desplazar.classList.add("ul_3_100")
             switch(ID_Imagen) {

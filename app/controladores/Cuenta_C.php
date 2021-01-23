@@ -68,16 +68,10 @@
 
             if($Seccion  == 'Todos'){
                 //CONSULTA todos los productos de una tienda
-                $Consulta = $this->ConsultaCuenta_M->consultarTodosProductosTienda($this->ID_Tienda);
-                $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
-                //CONSULTA el estatus de la notificacion de una tienda
-                // $Consulta = $this->ConsultaCuenta_M->consultarNotificacionTienda($this->ID_Tienda);
-                // $Notificacion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
+                $Productos = $this->ConsultaCuenta_M->consultarTodosProductosTienda($this->ID_Tienda);
+                
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
-                $Consulta = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
-                $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
 
                 //Se desglosa el valor para que sea solo igual el valor "1"
                 // $Notificacion = $Notificacion[0]['notificacion'];
@@ -86,12 +80,10 @@
             }
             else{
                 //CONSULTA los productos de una sección en especifico según la tienda
-                $Consulta = $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda, $Seccion);
-                $Productos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Productos= $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda, $Seccion);
 
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
-                $Consulta = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
-                $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
 
                 //Se da el valor de notifiación directamente debido a que si la condicion entró en el ELSE ya el afiliado a visitado la página y no tiene notificaciones por leer
                 $Notificacion = 1;
@@ -110,7 +102,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
-                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, seccion, fotografia
+                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, seccion, nombre_img
                 // 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja
                 'Apunta' => $Puntero,
@@ -346,7 +338,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
-                'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, fotografia, producto, opcion, precioBolivar, precioDolar, seccion, ID_Seccion, ID_SP
+                'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, producto, opcion, precioBolivar, precioDolar, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
@@ -1007,6 +999,7 @@
                 // echo "Tamaño = " . $tamanio . "<br>";
                 // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
                 // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
+                // exit;
 
                 //Si existe imagenPrinci_Editar y tiene un tamaño correcto
                 if(($nombre_imgProducto == !NULL) AND ($tamanio <= 7000000)){
@@ -1132,7 +1125,7 @@
             //Para actualizar fotografia principal solo si se ha presionado el boton de buscar fotografia
             if(($_FILES['imagenPrinci_Editar']['name']) != ""){
                 //Se ACTUALIZA la fotografia principal del producto
-                $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Opcion'], $nombre_imgProducto);
+                $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
             }
 
             //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección

@@ -1,11 +1,9 @@
-<!-- Archivo cargado mediante Opciones_C/productoAmpliado -->
 <?php    
     // $Datos proviene de Opciones_C/productoAmpliado
     $Producto = $Datos['Producto'];
     $Opcion = $Datos['Opcion'];
     $PrecioBolivar = $Datos['PrecioBolivar'];
     $PrecioDolar = $Datos['PrecioDolar'];
-    $Fotografia_1 = $Datos['Fotografia_1'];
     $ID_Producto = $Datos['ID_Producto'];
     $ID_LabelAgregar = $Datos['ID_EtiquetaAgregar'];
 ?>
@@ -19,7 +17,7 @@
             <div class="contGridUna">
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_124" id="Contenedor_124"> 
-                    <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Fotografia_1'];?>">                              
+                    <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $Datos['Imagenes']['0']['nombre_img'];?>">                              
                     <ul class="ul_3" id="Ul_1">     <?php   
                         $Contador = 1;  
                         //$Datos proviene de Opciones_C/productoAmpliado             
@@ -72,7 +70,7 @@
                     <div class="contenedor_139"></div> <?php
                 }   ?>
                 <div class="contGeneral">
-                    <label class="label_22 borde_1 borde_2"><small><?php echo $PrecioBolivar?> Bs</small> <br> <?php echo $PrecioDolar?> $ USD </label>
+                    <label class="label_22 borde_1 borde_2"><?php echo $PrecioBolivar?> Bs<br><small class="small_2"> <?php echo $PrecioDolar?> $ USD </small> </label>
                     <!-- <label class="label_22 borde_1 borde_2">$ USD</label> -->
                     <div class="contBoton contBoton--100" id="Contenedor_26">                  
                         <label class="boton" onclick="cerrarRegresar()">Regresar</label>

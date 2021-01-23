@@ -19,20 +19,17 @@
             //CONSULTA las caracteristicas de los productos 
             $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
 
+            //CONSULTA la fotografia principal de cada producto 
+            $Fotografia = $this->ConsultaOpciones_M->consultarFotografiaPrincipal($ID_Tienda, $Seccion);
+
             $Datos=[
-                'Opciones' => $Consulta, //nombreTienda, slogan, seccion,ID_Producto, ID_Opcion, fotografia, producto, opcion,especificacion, precioBolivar, precioDolar
+                'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Producto, ID_Opcion, producto, opcion, especificacion, precioBolivar, precioDolar
                 'ProductoSelecion' => $OpcionSelec,
                 'ID_Tienda' => $ID_Tienda,
-                'variosCaracteristicas' => $Caracteristicas //ID_Producto, caracteristica 
+                'variosCaracteristicas' => $Caracteristicas, //ID_Producto, caracteristica 
+                'fotografia' => $Fotografia //ID_Producto, nombre_img (Imagen principal)
             ];
             
-            // ******************************************* 
-            //ACTUALIZA PRECIOS EN BOLIVARES          
-            // require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
-
-            // $this->Reconversion = new CalculoDolar_C;
-            // $Reconversion = $this->Reconversion->TasaCambio($Datos['']);
-
             // echo "<pre>";
             // print_r($Datos);
             // echo "</pre>";
@@ -41,7 +38,7 @@
             $this->vista("paginas/opciones_V", $Datos);
         }  
 
-        //CUando se vene del buscador, los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
+        //Cuando se vene del buscador, los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
         public function PosicionarEnProducto($DatosAgrupados){ 
             //$DatosAgrupados contiene una cadena con el ID_Tienda y la seccion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);

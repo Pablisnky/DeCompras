@@ -98,7 +98,7 @@
 <!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
 <!-- <div id="Mostrar_Alert"></div> -->
 
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js?1';?>"></script>
 <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
 
 <?php //include(RUTA_APP . "/vistas/inc/footer.php");?>

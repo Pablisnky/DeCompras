@@ -4,11 +4,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
     require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
-    // echo '<br><br><br><br>';
-    // echo '<pre>';
-    // print_r($Datos);
-    // echo '</pre>';
-    // exit;
 
     //$Datos viene del metodo Cuenta_C/actualizarProducto
     foreach($Datos['especificaciones'] as $arr) :
@@ -21,8 +16,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $PrecioBolivar = $arr['precioBolivar'];
         $PrecioDolar = $arr['precioDolar'];
         $Seccion = $arr['seccion'];
-        $Fotografia = $arr['fotografia'];
-    endforeach;     ?>
+    endforeach;  
+
+    //$Datos viene del metodo Cuenta_C/actualizarProducto
+    foreach($Datos['imagenesVarias'] as $arr) :
+        $Imagenes = $arr['nombre_img'];
+    endforeach;  ?>
     
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -39,9 +38,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- SECCION IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
+                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Imagenes;?>"/>
                     <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
-                    <label>Imagen principal</label>
+                    <!-- <div class="contInputRadio">
+                        <input type="radio" name="imagenPrincipal" id="ImagenPrincipal" value="imgInp/>
+                        <label class="contInputRadio__label" for="ImagenPrincipal">Imagen principal</label>
+                    </div> -->
                 </div>
                 <div>
                     <!-- SECCION PRODUCTO -->

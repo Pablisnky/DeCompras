@@ -93,11 +93,10 @@ document.addEventListener('click', function(event){
  }, false)
 
 // *****************************************************************************************************
-//seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos
+//seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos en div Mostrar_Orden ubicado en vitrina_V.php
 document.getElementById('Mostrar_Orden').addEventListener('click', function(event){ 
     // console.log("Iniciando delegando eventos")
     if((event.target.id == "Domicilio_No") || (event.target.id == "Domicilio_Si")){  
-        console.log("¡Delegaste el evento!")
         console.log("______Desde forma_Entrega______")
         console.log(TotalDisplayCarrito)
         console.log(ComisionAplicacion)
@@ -105,28 +104,45 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se recorren todos los valores del radio button para encontrar el seleccionado
         for(var i=0; i<porNombre.length; i++){
             if(porNombre[i].checked){
-                E= porNombre[i].value;
+                E = porNombre[i].value;
+                console.log(E)
             }
         }
+
+        //Se obtiene el valor del domicilio, tarado a un dolar (esto se esta haciendo dss veces en este archivo, corregir)
+        envio = document.getElementById("PrecioEnvio").value
+
         //Se muestra la condicion de despacho
         if(E == "Domicilio_No"){
-            document.getElementById("Despacho").innerHTML = "Recoger pedido en tienda:<input type='text' class='input_6' value='0' readonly='readondly'/> Bs."
+            document.getElementById("Despacho_2").value = 0
             
             //Se cambia el monto total del pedido incluyendo comision y envio
             MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion)
+
+            //Se calcula el monto en Dolares
+            MontoTotalDolares = MontoTotal / envio
             
-            //Se muestra el monto de total de la compra incluyendo comision y envio
+            //Se muestra el monto de total de la compra incluyendo comision y envio en Bolivares
             document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
+            
+            //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
+            document.getElementById("MontoTotalDolares").value = Math.round(MontoTotalDolares)
         }
         else{
-            // <h2 class='h2_2' id="Despacho">Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly="readondly"/> Bs.</h2>
-            document.getElementById("Despacho").innerHTML = "Entrega a domicilio:<input type='text' class='input_6' value='3.000' readonly='readondly'/> Bs."
-            
+
+            document.getElementById("Despacho_2").value = SeparadorMiles(envio)
+
             //Se cambia el monto total del pedido incluyendo comision y envio
-            MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(3000)
+            MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(envio)
             
+            //Se calcula el monto en Dolares
+            MontoTotalDolares = MontoTotal / envio
+
             //Se muestra el monto de total de la compra incluyendo comision y envio
             document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
+
+            //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
+            document.getElementById("MontoTotalDolares").value = Math.round(MontoTotalDolares)
         }
     }
 }, false);    
@@ -495,11 +511,21 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se muestra el monto de la comisión
         document.getElementById("Comision").value = SeparadorMiles(ComisionAplicacion)
         
-        //Se calcula el monto total del pedido incluyendo comision y envio
-        MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(3000)
+        //Se obtiene el monto del envio, esta tarado al precio de un dolar, la tarifa báscia, (Esto ya se hizolineas arriba, corregir para que se haga una sola vez)
+        envio = document.getElementById("PrecioEnvio").value
+
+        //Se calcula el monto total de la compra incluyendo comision y envio
+        MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(envio)
+
+        //Se calcula el monto en Dolares
+        // MontoTotalDolares = MontoTotal / envio
+        // console.log(MontoTotalDolares)
 
         //Se muestra el monto de total de la compra incluyendo comision y envio
         document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
+        
+        //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
+        // document.getElementById("MontoTotalDolares").value = MontoTotalDolares
         
         // console.log(AlCarro)
         //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlCarro[]

@@ -267,6 +267,7 @@ button{/*tiendas*/
 	padding: 0.5% 0%;
 }
 .contenedor_9{/*cuenta_productos - vitrina*/
+	/* background-color: red; */
 	border-radius: 15px;
 	text-align: center;
 	width: 100%;
@@ -1800,7 +1801,7 @@ button{/*tiendas*/
 	margin:5%  auto;
 }
 .label_22{/*descr_Producto*/
-	background-color:  var(--BandaAlerta);
+	/* background-color:  var(--BandaAlerta); */
 	color: var(--OficialOscuro);
 	width: 40%;
 	margin: auto;
@@ -2186,6 +2187,10 @@ button{/*tiendas*/
 	font-size: 0.9em;
 	color: var(--TextoClaro);
 	margin-top: 1%;
+}
+.small_2{/*descr_Producto*/
+	font-size: 0.8em;
+
 }
 .strong_1{/*cuenta_editar*/
 	font-size: 0.9em;

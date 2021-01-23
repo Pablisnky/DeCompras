@@ -1,10 +1,10 @@
 <?php
     class Menu_C extends Controlador{
 
-        public $Dolar = 1561382;
+        public $Dolar = 1738761;
 
         public function __construct(){
-            // $this->ConsultaVitrina_M = $this->modelo("Vitrina_M");
+            $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
@@ -107,8 +107,15 @@
         }
         
         public function borrar(){
-            // $this->vista("inc/header");
-            // $this->vista("paginas/BorrarTablaPedido");
+            $Fotografia = $this->ConsultaMenu_M->consultarImagenePrincipal();
+
+            echo '<pre>';
+            print_r($Fotografia);
+            echo '</pre>';
+            // exit;
+
+            $this->ConsultaMenu_M->InsertarImagenePrincipal($Fotografia);
+            
         }
     }
 ?>

@@ -25,8 +25,7 @@
                         $Opcion = $row['opcion'];                      
                         $PrecioBolivar = $row['precioBolivar'];         
                         $PrecioDolar = $row['precioDolar'];               
-                        $Seccion = $row['seccion'];              
-                        $Fotografia = $row['fotografia'];
+                        $Seccion = $row['seccion'];       
         
                         //Se da formato al precio, sin decimales y con separación de miles
                         $PrecioBolivar = number_format($PrecioBolivar, 0, ",", "."); 
@@ -38,9 +37,15 @@
                             <div class="contOpciones">
                                 <!-- se colocan el caracter | para usarlo como separardor en Opciones_C/productoAmpliado debido a que el usuario puede usar comas o punto y comas en el texto de opciones o del producto.  -->
                                 <?php $Separador = '|' ;?> 
-                                <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo  $PrecioBolivar.$Separador?>','<?php echo $Fotografia.$Separador?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar?>')">
+                                <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo  $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar?>')">
                                     <figure class="">
-                                        <img class="contOpciones__img" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Fotografia;?>"/>
+                                        <?php
+                                            foreach($Datos['fotografia'] as $row){
+                                                if($row['ID_Producto'] == $ID_Producto){
+                                                    $FotoPrincipal = $row['nombre_img'];   ?>
+                                                    <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/productos/<?php echo $FotoPrincipal;?>"/>   <?php
+                                                }
+                                            }   ?>
                                     </figure>
                                 </div>
                             </div>

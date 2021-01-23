@@ -25,7 +25,7 @@
             <?php
         }
         //APERTURA EN LUNES
-        else if($Datos['ProximoApertura'] == 'NoAplica'){   ?>
+        else if($Datos['ProximoApertura'] == 'NoAplica' || $Datos['ProximoApertura'] == 'AbreLunes'){   ?>
             <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
             <br>
             <p class="sectionModal__div__p">Abrimos el lunes a las <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
@@ -41,11 +41,19 @@
             <br>
             <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
-        }   ?> 
+        } 
+        //APERTURA EN DOMINGO
+        else if($Datos['ProximoApertura'] == 'AbreDomingo'){   ?>
+            <h1 class="h1_1 h1_4 bandaAlerta">Despachos no disponibles <br class="br_2"> a esta hora</h1>
+            <br>
+            <p class="sectionModal__div__p">Abrimos el domingo a las <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
+            <br>
+            <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
+            <?php
+        }     ?> 
             <!-- <br class="br_1"> -->
             <div class="contBoton" id="Contenedor_26">
                 <label class="boton boton--centro" id="Label_1" onclick="cerrarModal('sectionModal')">Entrar</label>
             </div>
     </div>               
 </section>
-

@@ -816,8 +816,8 @@
 </section>
 
 
-<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js';?>"></script>
-<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js?1';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js?1';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/convoca_SW.js';?>"></script>
 
 <!-- <script type="text/javascript" src ="<?php // echo RUTA_URL?>/public/javascript/push.min.js"></script>
