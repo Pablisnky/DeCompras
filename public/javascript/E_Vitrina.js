@@ -1153,21 +1153,21 @@ console.log(AlCarro)
 
 //************************************************************************************************
     //Impide que se siga introduciendo caracteres al alcanzar el limite maximo en el telefono
-    var contenidoTelefono = ""; 
-    var num_caracteres_permitidos = 14; 
+    // var contenidoTelefono = ""; 
+    // var num_caracteres_permitidos = 14; 
 
-    function valida_LongitudTelefono(){ 
-        // console.log("______Desde valida_LongitudTelefono()______")
+    // function valida_LongitudTelefono(){ 
+    //     // console.log("______Desde valida_LongitudTelefono()______")
 
-        // let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
+    //     // let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
 
-        // if(num_caracteres_input > 13){ 
-        //     document.getElementById("TelefonoUsuario").value = contenidoTelefono; 
-        // }
-        // else{ 
-        //     contenidoTelefono = document.getElementById("TelefonoUsuario").value;   
-        // } 
-    } 
+    //     // if(num_caracteres_input > 13){ 
+    //     //     document.getElementById("TelefonoUsuario").value = contenidoTelefono; 
+    //     // }
+    //     // else{ 
+    //     //     contenidoTelefono = document.getElementById("TelefonoUsuario").value;   
+    //     // } 
+    // } 
 
 //************************************************************************************************
     //Abre la ventna de detalles de producto, invocado en opciones_V.php

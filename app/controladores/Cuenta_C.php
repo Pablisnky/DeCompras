@@ -326,7 +326,10 @@
             //Se CONSULTAN las caracteristicas añadidas del producto
             $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracteristicasProducto($this->ID_Tienda, $ID_Producto);
 
-            //Se CONSULTAN las imagenes añadidas del producto
+            //Se CONSULTAN la imagenes principal del producto
+            $ImagenPrin = $this->ConsultaCuenta_M->consultarImagenPrincipal($ID_Producto);
+
+            //Se CONSULTAN las imagenes secundarias del producto
             $Imagenes = $this->ConsultaCuenta_M->consultarImagnesProducto($ID_Producto);
 
             //Solicita el precio del dolar
@@ -336,12 +339,13 @@
             $DolarHoy = $this->PrecioDolar->Dolar;
 
             $Datos = [
-                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
                 'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, producto, opcion, precioBolivar, precioDolar, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
+                'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img
                 'imagenesVarias' => $Imagenes, //ID_Imagen, nombre_img
                 'dolarHoy' => $DolarHoy
             ];
@@ -873,12 +877,12 @@
                 //Si se selecionó alguna imagen entra
                 if($_FILES['foto_Producto']["name"] != ""){
                     $nombre_imgProducto = $_FILES['foto_Producto']['name'];
-                    $tipo = $_FILES['foto_Producto']['type'];
-                    $tamaño = $_FILES['foto_Producto']['size'];
+                    $tipo_imgProducto = $_FILES['foto_Producto']['type'];
+                    $tamanio_imgProducto = $_FILES['foto_Producto']['size'];
 
                     // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
-                    // echo "Tipo de archivo = " .$tipo .  "<br>";
-                    // echo "Tamaño = " . $tamaño . "<br>";
+                    // echo "Tipo de archivo = " .$tipo_imgProducto .  "<br>";
+                    // echo "Tamaño = " . $tamanio_imgProducto . "<br>";
                     // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
                     // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
                     // exit();
@@ -904,8 +908,8 @@
                         //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                         move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
 
-                        //Se ACTUALIZA la imagen principal(No se inserta porque ya en la sentencia insertarDescripcionProducto() de este controlador se insertaron los detalles del producto)
-                        $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($ID_Opcion, $nombre_imgProducto);
+                        //Se INSERTA la imagen principal
+                        $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
                 //     }
                 //     else{
                 //         //si no cumple con el formato

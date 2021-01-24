@@ -20,7 +20,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     //$Datos viene del metodo Cuenta_C/actualizarProducto
     foreach($Datos['imagenesVarias'] as $arr) :
-        $Imagenes = $arr['nombre_img'];
+        $Imagenes = $arr['nombre_img']; 
+    endforeach;  
+
+    foreach($Datos['imagenPrin'] as $arr) :
+        $ImagenPrincipal = $arr['nombre_img'];
     endforeach;  ?>
     
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
@@ -38,7 +42,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- SECCION IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $Imagenes;?>"/>
+                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
                     <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
                     <!-- <div class="contInputRadio">
                         <input type="radio" name="imagenPrincipal" id="ImagenPrincipal" value="imgInp/>

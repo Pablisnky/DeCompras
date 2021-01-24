@@ -85,9 +85,11 @@
 
         //SELECT de todos los productos de una sección en una tienda especifica
         public function consultarProductosTienda($ID_Tienda, $Seccion){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = '$Seccion' ORDER BY secciones.seccion, productos.producto, opciones.opcion");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = :SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindValue(':SECCION', $Seccion, PDO::PARAM_STR);
+            $stmt->bindValue(':PRINCIPAL', 1, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -164,7 +166,7 @@
 
         //SELECT de datos de la tienda
         public function consultarDatosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
+            $stmt = $this->dbh->prepare("SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -308,11 +310,27 @@
             }
         }
         
-        //SELECT de las caracteristicas de un producto determinado
-        public function consultarImagnesProducto($ID_Producto){
-            $stmt = $this->dbh->prepare("SELECT ID_Imagen, nombre_img FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+        //SELECT de laIMAGEN PRINCIPAL de un producto determinado
+        public function consultarImagenPrincipal($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT ID_Imagen, nombre_img FROM imagenes WHERE ID_Producto = :ID_PRODUCTO AND fotoPrincipal = :PRINCIPAL");
 
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+            $stmt->bindValue(':PRINCIPAL', 1, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
+        //SELECT de las IMAGENES de un producto determinado
+        public function consultarImagnesProducto($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT ID_Imagen, nombre_img FROM imagenes WHERE ID_Producto = :ID_PRODUCTO AND fotoPrincipal = :PRINCIPAL");
+
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+            $stmt->bindValue(':PRINCIPAL', 0, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -1135,6 +1153,21 @@
                 //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
                 $stmt->execute();
             }
+        }
+
+        //INSERT de las caracteristicas de un producto
+        public function insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img,    tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora) VALUES(:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
+
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
+            $stmt->bindParam(':NOMBRE_IMG', $nombre_imgProducto);
+            $stmt->bindParam(':TIPO_ARCHIVO', $tipo_imgProducto);
+            $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio_imgProducto);
+            $stmt->bindValue(':PRINCIPAL', 1);
+
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
         }
 
         public function insertarDT_ProOpc( $ID_Producto, $ID_Opcion){

@@ -106,12 +106,13 @@
             $this->vista("paginas/descargaApp_V");
         }
         
+        //Ulilizada en su momento para pasar imagene de la tabla opciones a la tabla imagenes
         public function borrar(){
             $Fotografia = $this->ConsultaMenu_M->consultarImagenePrincipal();
 
-            echo '<pre>';
-            print_r($Fotografia);
-            echo '</pre>';
+            // echo '<pre>';
+            // print_r($Fotografia);
+            // echo '</pre>';
             // exit;
 
             $this->ConsultaMenu_M->InsertarImagenePrincipal($Fotografia);

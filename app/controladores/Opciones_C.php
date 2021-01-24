@@ -13,14 +13,25 @@
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
             // echo $ID_Tienda;
             // echo $Seccion;
+            // echo $OpcionSelec;
           
             $Consulta = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Seccion);   
+            // echo "<pre>";
+            // print_r($Consulta);
+            // echo "</pre>";
 
             //CONSULTA las caracteristicas de los productos 
             $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
+            // echo "<pre>";
+            // print_r($Caracteristicas);
+            // echo "</pre>";
 
             //CONSULTA la fotografia principal de cada producto 
             $Fotografia = $this->ConsultaOpciones_M->consultarFotografiaPrincipal($ID_Tienda, $Seccion);
+            // echo "<pre>";
+            // print_r($Fotografia);
+            // echo "</pre>";
+            // exit;
 
             $Datos=[
                 'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Producto, ID_Opcion, producto, opcion, especificacion, precioBolivar, precioDolar

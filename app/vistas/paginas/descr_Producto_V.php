@@ -30,6 +30,7 @@
                         endforeach; ?>
                     </ul>  
                 </div>
+                
                 <!-- IMAGENES SECUNDARIAS (MINIATURAS) -->
                 <div class="contenedor_125">   
                     <?php                
