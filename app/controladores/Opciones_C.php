@@ -49,7 +49,7 @@
             $this->vista("paginas/opciones_V", $Datos);
         }  
 
-        //Cuando se vene del buscador, los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
+        //Cuando se viene del buscador, los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
         public function PosicionarEnProducto($DatosAgrupados){ 
             //$DatosAgrupados contiene una cadena con el ID_Tienda y la seccion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);

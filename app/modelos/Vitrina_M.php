@@ -33,7 +33,7 @@
         
         //SELECT de los productos de la tienda seleccionada
         public function consultarCant_ProductosSeccion($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT tiendas_secciones.ID_Seccion, COUNT(ID_Producto) AS CantidadPro FROM tiendas_secciones INNER JOIN secciones_productos ON tiendas_secciones.ID_Seccion=secciones_productos.ID_Seccion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA GROUP BY tiendas_secciones.ID_Seccion " );  
+            $stmt = $this->dbh->prepare("SELECT tiendas_secciones.ID_Seccion, COUNT(ID_Producto) AS CantidadPro FROM tiendas_secciones INNER JOIN secciones_productos ON tiendas_secciones.ID_Seccion=secciones_productos.ID_Seccion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA GROUP BY tiendas_secciones.ID_Seccion" );  
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);             
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
