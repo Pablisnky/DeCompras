@@ -891,6 +891,7 @@ button{/*tiendas*/
 	align-items: center; /*para centrar verticalmente el div hijo junto con display:flex*/
 }
 .contenedor_134{/*cuenta-editar_prod - */
+	background-color: red;
 	width: 60%;
 	margin: auto;
 	text-align: center;
@@ -1040,6 +1041,10 @@ button{/*tiendas*/
 	margin: auto;
 	padding: 5%;
 	padding-top: 3%;
+}
+.contenedor_170{/*cuenta_editar_prod*/
+	display: flex;	
+	flex-wrap: wrap;
 }
 .contBoton{/*carrito - descr_Producto - pwa*/
 	margin: auto;

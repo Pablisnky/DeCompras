@@ -97,3 +97,28 @@ function respuesta_EliminarImagenSecundaria(){
     }
 }        
 //-------------------------------------------------------------------------------------------------
+//Verifica que no se hayan añadido más de cinco imagenes
+// function Llamar_VerificarCantidad(){
+//     console.log("______Desde Llamar_VerificarCantidad()______ ")
+//     return
+//     var url = "../../Cuenta_C/eliminarImagen/" + ID_Imagen + " / " + ID_Producto
+//     http_request.open('GET', url, true)  
+//     peticion.onreadystatechange = respuesta_EliminarImagenSecundaria
+//     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+//     peticion.send("null")
+// }                                                                        
+// function respuesta_EliminarImagenSecundaria(){
+//     if(peticion.readyState == 4){
+//         if(peticion.status == 200){  
+//             //Se reemplaza el valor del contenedor_80 con lo que se obtenga en el archivo de la url
+//             document.getElementById("Contenedor_114").innerHTML = peticion.responseText
+//         } 
+//         else{
+//             alert('Problemas con la petición.')
+//         }
+//     }
+//     else{ //en caso contrario, mostramos un gif simulando una precarga
+//         // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+//     }
+// }        
+//-------------------------------------------------------------------------------------------------

@@ -960,7 +960,7 @@
             } 
         }
 
-        //Metodo invocado desde cuenta_editar_prod_V.php
+        //Metodo invocado desde cuenta_editar_prod_V.php 8Actualiza la información de un producto)
         public function recibeAtualizarProducto(){
             // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && !empty($_POST["precioDolar"])){
@@ -993,12 +993,12 @@
             //SECCION IMAGEN PRINCIPAL
             // ********************************************************
             // Si se selecionó alguna nueva imagen
-            if(isset($_FILES['imagenPrinci_Editar']["name"])){
+            if($_FILES['imagenPrinci_Editar']["name"] != ''){
                 $nombre_imgProducto = $_FILES['imagenPrinci_Editar']['name'];
                 $tipo = $_FILES['imagenPrinci_Editar']['type'];
                 $tamanio = $_FILES['imagenPrinci_Editar']['size'];
 
-                // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
+                echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
                 // echo "Tipo de archivo = " . $tipo .  "<br>";
                 // echo "Tamaño = " . $tamanio . "<br>";
                 // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
@@ -1041,21 +1041,9 @@
                     }
                 }
             }
-
-            //SECCION CARACTERISTICAS
-            // ********************************************************
-            // Recibe las caracteristicas del producto
-            foreach($_POST['caracteristica'] as $Caracteristica){
-                $Caracteristica = $_POST['caracteristica'];
-            }
-
-            //Se eliminan los elementos repetido que se reciben en caracteristicas
-            $CaracteristicaSinDuplicado = array_unique($Caracteristica);
-
-            // echo "<pre>";
-            // print_r($CaracteristicaSinDuplicado);
-            // echo "</pre>";
-            // exit();
+            // else{
+            //     echo 'No seleciono imagen principal' . '<br>';
+            // }
 
             //SECCION IMAGENES SECUNDARIAS
             // ********************************************************
@@ -1064,12 +1052,12 @@
             // echo $Cantidad . '<br>';
             for($i = 0; $i < $Cantidad ; $i++){
                 //Las imagenes que existian en la BD se reciben sin su nombre por lo que no van a entrar en bucle, solo las imagenes que vienen por medio del input de agregar imagen son las que entran en el bucle
-                if($_FILES['imagen_EditarVarias']["name"][$i] != ""){
+                if($_FILES['imagen_EditarVarias']['name'][$i] != ''){
                     $nombre_imgVarias = $_FILES['imagen_EditarVarias']['name'][$i];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
                     $tipo_imgVarias = $_FILES['imagen_EditarVarias']['type'][$i];
                     $tamanio_imgVarias = $_FILES['imagen_EditarVarias']['size'][$i];
 
-                    // echo "Nombre de la imagen = " . $nombre_imgVarias . "<br>";
+                    echo "Nombre de imagen secundaria= " . $nombre_imgVarias . '<br>';
                     // echo "Tipo de archivo = " .$tipo_imgVarias .  "<br>";
                     // echo "Tamaño = " . $tamanio_imgVarias . "<br>";
                     // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
@@ -1097,15 +1085,24 @@
 
                             //Para actualizar fotografias varias solo si se ha presionado el boton de buscar fotografia; en realidad no se actualizan, simplemente se insertan las que se reciben del formulario
 
-                            //Se INSERTAN las fotografias del producto
-                            $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias);
-                    //     }
-                    //     else{
-                    //         //si no cumple con el formato
-                    //         echo "Solo puede cargar imagenes con formato jpg, jpeg o png";
-                    //         // echo "<a href='../tarjeta/perfil_ingeniero.php'>Regresar</a>";
-                    //         exit();
-                    //     }
+                            //Se consulta la cantidad de imagenes del producto
+                            $CantidadImagenes = $this->ConsultaCuenta_M->consultarCantidadImagenes($RecibeProducto['ID_Producto']);
+                            // echo $CantidadImagenes[0]['CantidadFotos'];
+
+                            //$Cantidad contiene la cantidad de imgenes que se seleccionaron para insertar
+                            // echo $Cantidad;
+
+                            $TotalImagenes = $CantidadImagenes[0]['CantidadFotos'] + $Cantidad;
+                            
+                            if($TotalImagenes < 6){
+                                //Se INSERTAN las fotografias del producto
+                                $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias);
+                            }
+                            else{
+                                echo "Solo puede cargar cuatro imagenes adicionales";
+                                echo "<a href='perfil.php'>Regresar</a>";
+                                exit();
+                            }
                     // }
                     // else{
                     // //si existe imagen_EditarVarias pero se pasa del tamaño permitido
@@ -1117,7 +1114,23 @@
                     // }
                 }
             }
+            
+            //SECCION CARACTERISTICAS
+            // ********************************************************
+            // Recibe las caracteristicas del producto
+            foreach($_POST['caracteristica'] as $Caracteristica){
+                $Caracteristica = $_POST['caracteristica'];
+            }
 
+            //Se eliminan los elementos repetido que se reciben en caracteristicas
+            $CaracteristicaSinDuplicado = array_unique($Caracteristica);
+
+            // echo "<pre>";
+            // print_r($CaracteristicaSinDuplicado);
+            // echo "</pre>";
+            // exit();
+
+            // ********************************************************
             //Estas cinco sentencias de actualización deben realizarce por medio de transsacciones
             $this->ConsultaCuenta_M->actualizarOpcion($RecibeProducto);
             $this->ConsultaCuenta_M->actualizarProducto($RecibeProducto);
@@ -1128,6 +1141,8 @@
 
             //Para actualizar fotografia principal solo si se ha presionado el boton de buscar fotografia
             if(($_FILES['imagenPrinci_Editar']['name']) != ""){
+                echo 'Va a actulizar la imagen principal';
+                // exit;
                 //Se ACTUALIZA la fotografia principal del producto
                 $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
             }

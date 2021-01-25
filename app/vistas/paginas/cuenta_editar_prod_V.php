@@ -49,7 +49,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <label class="contInputRadio__label" for="ImagenPrincipal">Imagen principal</label>
                     </div> -->
                 </div>
-                <div>
+                <div id="Contenedor_152">
                     <!-- SECCION PRODUCTO -->
                     <label>Producto</label>
                     <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro"><?php echo $Producto;?></textarea>
@@ -110,7 +110,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     </div>                        
 
                     <!-- SECCION IMAGENES SECUNDARIAS -->
-                    <divs>
+                    <div class="contenedor_170">
                         <?php
                         $Cont = 1;
                         //Datos proviene de Cuenta_C/actualizarProducto
@@ -129,7 +129,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div id="Contenedor_114">
                             <?php
                             $CantidadImagenes = count($Datos['imagenesVarias']); 
-                            if($CantidadImagenes < 5){ ?>
+                            if($CantidadImagenes < 4){ ?>
                                 <div class="contenedor_49">
                                     <label class="label_5 label_23" for="ImgInp_2" id="ioo">Añadir imagen</label>
                                     <input class="ocultar" type="file" name="imagen_EditarVarias[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/> 
@@ -192,6 +192,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 imgTag = document.createElement("img");
                 imgTag.height = 100;//ESTAS LINEAS NO SON "NECESARIAS"
                 imgTag.width = 200; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
+                imgTag.class = "imagen_6";
                 imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
                 imgTag.src = URL.createObjectURL(archivos[i]);
                 contenedor.appendChild(imgTag);

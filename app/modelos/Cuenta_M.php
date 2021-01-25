@@ -478,6 +478,20 @@
                 return false;
             }
         }
+        
+        public function consultarCantidadImagenes($ID_Producto){
+            $stmt = $this->dbh->prepare("SELECT COUNT(ID_Producto) AS CantidadFotos FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+    
 
 
 
@@ -879,7 +893,7 @@
 
         //UPDATE de la fotografia principal de un producto
         public function actualizarImagenPrincipalProducto($ID_Producto, $nombre_imgProducto){
-            $stmt = $this->dbh->prepare("UPDATE imagenes SET nombre_img = :FOT_PRODUCTO, fotoPrincipal = :FOTOPRINCIPAL WHERE ID_Producto = :ID_PRODUCTO");
+            $stmt = $this->dbh->prepare("UPDATE imagenes SET nombre_img = :FOT_PRODUCTO WHERE ID_Producto = :ID_PRODUCTO AND fotoPrincipal = :FOTOPRINCIPAL");
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':FOT_PRODUCTO', $nombre_imgProducto);
@@ -1170,6 +1184,21 @@
             $stmt->execute();
         }
 
+        //INSERT en la tabla imagenes las fotografias secundarias
+        public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora)VALUES (:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto,);
+            $stmt->bindParam(':NOMBRE_IMG', $archivonombre);
+            $stmt->bindParam(':TIPO_ARCHIVO', $tipo);
+            $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio);
+            $stmt->bindValue(':PRINCIPAL', 0);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        }
+
         public function insertarDT_ProOpc( $ID_Producto, $ID_Opcion){
             $stmt = $this->dbh->prepare("INSERT INTO productos_opciones(ID_Producto, ID_Opcion) VALUES(:ID_PRODUCTO, :ID_OPCION)");
 
@@ -1290,20 +1319,6 @@
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();    
         } 
-
-        //INSERT en la tabla imagenes las fotografias recibidos desde Publicacion_C/recibeRegistro
-        public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio){
-            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fecha, hora)VALUES (:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, CURDATE(), CURTIME())");
-            
-            //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto,);
-            $stmt->bindParam(':NOMBRE_IMG', $archivonombre);
-            $stmt->bindParam(':TIPO_ARCHIVO', $tipo);
-            $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio);
-            
-            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-            $stmt->execute();
-        }
 
         //INSERT de cuenta bancaria
         public function insertarCuentaBancaria($ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif){

@@ -574,6 +574,9 @@
 .contenedor_155{/*carrito*/
 	width: 100%;
 }
+.contenedor_170{/*cuenta_editar_prod*/
+	display: block;	
+}
 .contTabla{/*horarioDespacho*/
 	overflow: auto; /*permite el scroll horizontal dentro del div*/
 	margin-bottom: 10%;
