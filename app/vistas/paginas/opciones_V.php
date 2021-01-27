@@ -25,8 +25,8 @@
                         $Opcion = $row['opcion'];                      
                         $PrecioBolivar = $row['precioBolivar'];         
                         $PrecioDolar = $row['precioDolar'];               
-                        $Seccion = $row['seccion'];       
-        
+                        $Seccion = $row['seccion'];
+
                         //Se da formato al precio, sin decimales y con separación de miles
                         $PrecioBolivar = number_format($PrecioBolivar, 0, ",", "."); 
                         // $PrecioDolar = number_format($PrecioDolar, 2, ",", ".");  ?>  

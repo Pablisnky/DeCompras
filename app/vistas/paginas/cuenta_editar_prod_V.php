@@ -126,21 +126,20 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $Cont ++;
                         endforeach; 
                         ?>
-                        <div id="Contenedor_114">
+                        <!-- <div id="Contenedor_114"> -->
+                        <?php
+                        $CantidadImagenes = count($Datos['imagenesVarias']); 
+                        if($CantidadImagenes < 4){ ?>
+                            <div class="contenedor_49">
+                                <input class="ocultar" type="file" name="imagen_EditarVarias[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/> 
+                                <label class="label_5 label_23" for="ImgInp_2" id="ioo">Añadir imagen</label>
+                            </div>  <?php
+                        }
+                        else{   ?>
+                            <p class="p_5">Máximo de imagenes añadidas</p>
                             <?php
-                            $CantidadImagenes = count($Datos['imagenesVarias']); 
-                            if($CantidadImagenes < 4){ ?>
-                                <div class="contenedor_49">
-                                    <label class="label_5 label_23" for="ImgInp_2" id="ioo">Añadir imagen</label>
-                                    <input class="ocultar" type="file" name="imagen_EditarVarias[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/> 
-                                </div>
-                                <?php
-                            }
-                            else{   ?>
-                                <p class="p_5">Máximo de imagenes añadidas</p>
-                                <?php
-                            }   ?>                            
-                        </div>
+                        }   ?>                            
+                        <!-- </div> -->
                     </div>
 
                     <!-- div muestra las imagenes que se van a añadir -->

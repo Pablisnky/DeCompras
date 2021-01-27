@@ -1,8 +1,8 @@
+window.addEventListener('DOMContentLoaded', function(){resize('ContenidoDes')}, false)
+
 window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('ContenidoPro','ContadorPro')}, false)
 
 window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('ContenidoDes','ContadorDes')}, false)
-
-document.addEventListener('DOMContentLoaded', function(){resize('ContenidoDes')}, false)
 
 document.getElementById("ContenidoDes").addEventListener('keydown', function(){autosize('ContenidoDes')}, false)
 

@@ -1046,6 +1046,9 @@ button{/*tiendas*/
 	display: flex;	
 	flex-wrap: wrap;
 }
+.contenedor_170 > div:last-child{/*cuenta_editar_prod*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
+}
 .contBoton{/*carrito - descr_Producto - pwa*/
 	margin: auto;
 	margin-top: 5%;
@@ -2360,6 +2363,9 @@ button{/*tiendas*/
 	resize: none;
 	font-size: 1em;
 	padding-left: 2%;
+	/* padding-top: 2%;
+	padding-bottom: 2%; */
+	overflow: hidden;
 }
 .textarea_2{/*cuenta_productos*/
 	width: 100%;

@@ -21,7 +21,7 @@
             <br>
             <p class="sectionModal__div__p">Abrimos mañana a las <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
             <br>
-            <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
+            <p class="sectionModal__div__p">Realiza tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }
         //APERTURA EN LUNES
@@ -30,7 +30,7 @@
             <br>
             <p class="sectionModal__div__p">Abrimos el lunes a las <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
             <br>
-            <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
+            <p class="sectionModal__div__p">Realiza tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }  
         //APERTURA EN LA MAÑANA/TARDE 
@@ -39,7 +39,7 @@
             <br>
             <p class="sectionModal__div__p">Abrimos a las  <br class="br_2"><?php echo $Datos['HoraApertura']?></p>
             <br>
-            <p class="sectionModal__div__p">Igualmente puedes realizar tu compra y despacharemos tu pedido al abrir la tienda.</p>
+            <p class="sectionModal__div__p">Realiza tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         } 
         //APERTURA EN DOMINGO

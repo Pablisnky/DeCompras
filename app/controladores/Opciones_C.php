@@ -94,14 +94,12 @@
             $PrecioDolar = substr($DatosAgrupados[9], 1);
             
             //CONSULTA las caracteristicas del producto seleccionado
-            $Consulta = $this->ConsultaOpciones_M->consultarCaracterisicaProductoEsp($ID_Producto);
-            $Caracteristicas = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+            $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicaProductoEsp($ID_Producto);
 
             //CONSULTA las imagenes del producto seleccionado
-            $Consulta_3 = $this->ConsultaOpciones_M->consultarImagenesProducto($ID_Producto);
-            $Imagenes = $Consulta_3->fetchAll(PDO::FETCH_ASSOC); 
+            $Imagenes = $this->ConsultaOpciones_M->consultarImagenesProducto($ID_Producto);
 
-            $Datos=[
+            $Datos=[ 
                 'NombreTienda' => $NombreTienda, 
                 'SloganTienda' => $SloganTienda,
                 'ID_Tienda' => $ID_Tienda,

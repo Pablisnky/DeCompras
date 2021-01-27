@@ -960,7 +960,7 @@
             } 
         }
 
-        //Metodo invocado desde cuenta_editar_prod_V.php 8Actualiza la información de un producto)
+        //Metodo invocado desde cuenta_editar_prod_V.php actualiza la información de un producto)
         public function recibeAtualizarProducto(){
             // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && !empty($_POST["precioDolar"])){
@@ -972,7 +972,7 @@
                     'ID_Seccion' => filter_input(INPUT_POST, "id_seccion", FILTER_SANITIZE_STRING),
                     'ID_SP' => filter_input(INPUT_POST, "id_sp", FILTER_SANITIZE_STRING),
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
-                    'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
+                    'Descripcion' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)),
                     'PrecioBolivar' => filter_input(INPUT_POST, "precioBolivar", FILTER_SANITIZE_STRING),
                     'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                     'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
@@ -998,7 +998,7 @@
                 $tipo = $_FILES['imagenPrinci_Editar']['type'];
                 $tamanio = $_FILES['imagenPrinci_Editar']['size'];
 
-                echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
+                // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
                 // echo "Tipo de archivo = " . $tipo .  "<br>";
                 // echo "Tamaño = " . $tamanio . "<br>";
                 // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
@@ -1036,7 +1036,7 @@
                 //si existe imagenPrinci_Editar pero se pasa del tamaño permitido
                     if($nombre_imgProducto == !NULL){
                         echo "La imagen es demasiado grande ";
-                        // echo "<a href='perfil.php'>Regresar</a>";
+                        echo "<a href='javascript:history.back()'>Regresar</a>";
                         exit();
                     }
                 }
@@ -1057,7 +1057,7 @@
                     $tipo_imgVarias = $_FILES['imagen_EditarVarias']['type'][$i];
                     $tamanio_imgVarias = $_FILES['imagen_EditarVarias']['size'][$i];
 
-                    echo "Nombre de imagen secundaria= " . $nombre_imgVarias . '<br>';
+                    // echo "Nombre de imagen secundaria= " . $nombre_imgVarias . '<br>';
                     // echo "Tipo de archivo = " .$tipo_imgVarias .  "<br>";
                     // echo "Tamaño = " . $tamanio_imgVarias . "<br>";
                     // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
@@ -1100,7 +1100,7 @@
                             }
                             else{
                                 echo "Solo puede cargar cuatro imagenes adicionales";
-                                echo "<a href='perfil.php'>Regresar</a>";
+                                echo "<a href='javascript:history.back()'>Regresar</a>";
                                 exit();
                             }
                     // }
@@ -1108,7 +1108,7 @@
                     // //si existe imagen_EditarVarias pero se pasa del tamaño permitido
                     //     if($nombre_imgVarias == !NULL){
                     //         echo "Una imagen es demasiado grande ";
-                    //         // echo "<a href='perfil.php'>Regresar</a>";
+                            // echo "<a href='javascript:history.back()'>Regresar</a>";
                     //         exit();
                     //     }
                     // }
@@ -1118,12 +1118,18 @@
             //SECCION CARACTERISTICAS
             // ********************************************************
             // Recibe las caracteristicas del producto
-            foreach($_POST['caracteristica'] as $Caracteristica){
-                $Caracteristica = $_POST['caracteristica'];
+            if($_POST['caracteristica'][0] != ''){
+                echo 'Se recibieron caracteristicas';
+                foreach($_POST['caracteristica'] as $Caracteristica){
+                    $Caracteristica = $_POST['caracteristica'];
+                }
+                
+                //Se eliminan los elementos repetido que se reciben en caracteristicas
+                $CaracteristicaSinDuplicado = array_unique($Caracteristica);
             }
-
-            //Se eliminan los elementos repetido que se reciben en caracteristicas
-            $CaracteristicaSinDuplicado = array_unique($Caracteristica);
+            // else{
+            //     echo 'No se recibieron caracteristicas';
+            // }
 
             // echo "<pre>";
             // print_r($CaracteristicaSinDuplicado);
@@ -1141,8 +1147,6 @@
 
             //Para actualizar fotografia principal solo si se ha presionado el boton de buscar fotografia
             if(($_FILES['imagenPrinci_Editar']['name']) != ""){
-                echo 'Va a actulizar la imagen principal';
-                // exit;
                 //Se ACTUALIZA la fotografia principal del producto
                 $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
             }
