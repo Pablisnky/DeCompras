@@ -1170,7 +1170,7 @@ console.log(AlCarro)
     // } 
 
 //************************************************************************************************
-    //Abre la ventna de detalles de producto, invocado en opciones_V.php
+    //Abre la ventana de detalles de producto, invocado en opciones_V.php
     function mostrarDetalles(ContadorLabel, Nombre_Tienda, Slogan_Tienda, ID_Tienda, Producto, Opcion, PrecioBolivar, Fotografia, ID_Producto, PrecioDolar){
         // console.log("______Desde mostrarDetalles()______", ContadorLabel +"/"+ Nombre_Tienda +"/"+ Slogan_Tienda +"/"+ ID_Tienda +"/"+ Producto +"/"+ Opcion +"/"+ PrecioBolivar +"/"+ Fotografia +"/"+ ID_Producto +"/"+ PrecioDolar)
         window.open(`../../Opciones_C/productoAmpliado/${'Etiqueta_' + ContadorLabel},${Nombre_Tienda},${Slogan_Tienda},${ID_Tienda},${Producto},${Opcion},${PrecioBolivar},${Fotografia},${ID_Producto},${PrecioDolar}`, "ventana1", "width=1300,height=650,scrollbars=YES")   
