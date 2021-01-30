@@ -1,0 +1,89 @@
+.slider{
+    width: 45%;
+	overflow: hidden;
+	position: absolute;
+	top: 70%;
+	left: 7%;
+}
+.slider ul{
+	padding: 0;
+	display: flex;
+	width: 500%;
+	animation-name: slider;
+	animation-duration: 20s;	
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-timing-function: ease-out;
+}
+.slider label{
+	font-size: 1.5em;
+}
+.slider li{
+	width: 100%;
+	padding-right: 3%;
+	list-style: none;
+}
+.slider span{
+	font-size: 1.5em;
+}
+
+@keyframes slider{
+	0%{
+		margin-left: 0%;
+	}
+	10%{
+		margin-left: 0%;
+	}
+	20%{
+		margin-left: -100%;
+	}
+	30%{
+		margin-left: -100%;
+	}
+	40%{
+		margin-left: -200%;
+	}
+	50%{
+		margin-left: -200%;
+	}
+	60%{
+		margin-left: -300%;
+	}
+	70%{
+		margin-left: -300%;
+	}
+	80%{
+		margin-left: -400%;
+	}
+	90%{
+		color: rgba(0, 0, 0, 1);
+		margin-left: -400%;
+	}
+	100%{
+		color: rgba(0, 0, 0, 0);
+		margin-left: -400%;
+	}
+}
+
+/* APLICAR EN DISPOSITIVOS CON DIMENSIONES MENORES A 800px */
+@media(max-width: 800px){
+    .slider{
+        width: 75%;
+        top: 65%;
+        padding-left: 3%;
+        left: 0%;
+    }
+	.slider label{
+		font-size: 1.2em;
+	}
+}
+
+/* APLICAR EN DISPOSITIVOS CON DIMENSIONES MENORES A 800px */
+@media(max-width: 350px){
+    .slider{
+        width: 75%;
+    }
+	.slider label{
+		font-size: 1.1em;
+	}
+}

@@ -7,29 +7,24 @@
         <!-- <h2 class="h2_4">Tu tienda en toda la ciudad</h2> -->
         <h2 class="h2_4">MarketPlace</h2>
     </div>
-    <!-- <p class="p_8">Unete a nuestra red de comercialización de productos.</p> -->
-    <div class="contenedor_51" id="Contenedor_51">
-        <div>
-            <span class="icon-cart span_6"></span>
-        </div>
-        <div>
-            <span class="icon-truck span_6"></span>
-        </div>
-        <div>
-            <span class="icon-home2 span_6"></span>
-        </div>
-        <div>
-            <h3 class="h3_2 h3_3" id="H3_3">Compras y despachos <br class="br_2"> en tiendas de tu ciudad</h3>
-        </div>
+    <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
     </div>
-    <div class="contenedor_88" id="Contenedor_88">
-        <label class="a_2" id="Tiendas">Tiendas</label>
+    <div class="slider">
+        <!-- <input type="radio" name="slider" id="Li_1" checked/>
+        <input type="radio" name="slider" id="Li_2"/>
+        <input type="radio" name="slider" id="Li_3"/> -->
+        <ul>
+            <li><label for="Li_2"><span>e-commerce</span><br> para pequeños comercios y emprendimientos.</label></li> 
+            <li><label for="Li_3">Ideal para ventas de comida rapida, minimarket, fruterías, panaderías, ferreterías, bodegas, y más.</label>
+            <li><label>Registra tu tienda por<br class="br_2"> <span>98% menos</span> <br class="br_2">de la renta de un local comercial.</label></li>
+            <li><label for="Li_1">Permite a tus clientes realizar compras en tu tienda virtual con <span>Pagos directos</span> <br class="br_2"> a tus cuentas.</label></li>
+            <li><label for="Li_1">PedidoRemoto, <span>compras y despachos</span> en tiendas de tu ciudad.</label></li>
+        </ul>
     </div>
 </section>
     
 <section id="Section_2js">
     <div class='contenedor_4' id="Contenedor_4">
-
         <div class='contenedor_6 borde_1' id="Artesania">
             <h2 class='h2_1'>ARTE Y LITERATURA</h2>
             <span class="icon-pen span_8"></span>                 
@@ -816,8 +811,8 @@
 </section>
 
 
-<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js?1';?>"></script>
-<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js?1';?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js?v=' . rand();?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js?v=' . rand();?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/convoca_SW.js';?>"></script>
 
 <!-- <script type="text/javascript" src ="<?php // echo RUTA_URL?>/public/javascript/push.min.js"></script>

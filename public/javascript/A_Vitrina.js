@@ -30,7 +30,7 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-//invocada desde vitrina_V.php, muestra la orden de compra
+//Muestra la orden de compra
 function llamar_PedidoEnCarrito(ID_Tienda){
     // console.log("______Desde llamar_PedidoEnCarrito()______",ID_Tienda)
     var url="../../Carrito_C/index/" + ID_Tienda
@@ -61,7 +61,7 @@ function respuesta_PedidoEnCarrito(){
 //-------------------------------------------------------------------------------------------------
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, SeccionSelecionada, OpcionSeleccionada){
-    console.log("______Desde llamar_Opciones()______") 
+    // console.log("______Desde llamar_Opciones()______") 
     // console.log("ID_Tienda= ", ID_Tienda)
     // console.log("Seccion= ", SeccionSelecionada)
     // console.log("Opcion= ", OpcionSeleccionada)

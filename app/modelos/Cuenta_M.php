@@ -166,7 +166,7 @@
 
         //SELECT de datos de la tienda
         public function consultarDatosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
+            $stmt = $this->dbh->prepare("SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -310,9 +310,9 @@
             }
         }
         
-        //SELECT de laIMAGEN PRINCIPAL de un producto determinado
+        //SELECT de la IMAGEN PRINCIPAL de un producto determinado
         public function consultarImagenPrincipal($ID_Producto){
-            $stmt = $this->dbh->prepare("SELECT ID_Imagen, nombre_img FROM imagenes WHERE ID_Producto = :ID_PRODUCTO AND fotoPrincipal = :PRINCIPAL");
+            $stmt = $this->dbh->prepare("SELECT ID_Imagen, nombre_img, fotoSeccion FROM imagenes WHERE ID_Producto = :ID_PRODUCTO AND fotoPrincipal = :PRINCIPAL");
 
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
             $stmt->bindValue(':PRINCIPAL', 1, PDO::PARAM_INT);
@@ -492,6 +492,34 @@
             }
         }
     
+        //SELECT para encontrar la imagen de una sección especifica
+        public function consultarImagenSeccion($RecibeProducto){
+            $stmt = $this->dbh->prepare("SELECT ID_Imagen FROM imagenes WHERE ID_Seccion = :ID_SECCION AND fotoSeccion = :FOTO_SECCION");
+
+            $stmt->bindValue(':ID_SECCION', $RecibeProducto['ID_Seccion'], PDO::PARAM_INT);
+            $stmt->bindValue(':FOTO_SECCION', 1, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+    
+        //SELECT para encontrar la imagen de una sección especifica
+        // public function consultarImagenSeccionEstablecida($ID_Producto){
+        //     $stmt = $this->dbh->prepare("SELECT ID_Imagen, fotoSeccion FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+
+        //     $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+        //     if($stmt->execute()){
+        //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
 
 
@@ -908,6 +936,40 @@
                 return false;
             }
         }
+
+        //UPDATE de la fotografia principal de un producto
+        public function actualizarImagenSeccionSeleccionar($RecibeProducto){
+            $stmt = $this->dbh->prepare("UPDATE imagenes SET fotoSeccion = :FOT_SECCION WHERE ID_Imagen = :ID_IMAGEN_PONER");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_IMAGEN_PONER', $RecibeProducto['ID_Imagen']);
+            $stmt->bindValue(':FOT_SECCION', 1); 
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        //UPDATE de la fotografia principal de un producto
+        public function actualizarImagenSeccionDeseleccionar($ID_ImagenSeccion){ 
+            $stmt = $this->dbh->prepare("UPDATE imagenes SET fotoSeccion = :FOT_SECCION WHERE ID_Imagen = :ID_IMAGEN_QUITAR");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_IMAGEN_QUITAR', $ID_ImagenSeccion['ID_Imagen']);
+            $stmt->bindValue(':FOT_SECCION', 0); 
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
         
         //UPDATE de la fotografia de la tienda
         public function actualizarFotografiaTienda($ID_Tienda, $nombre_imgTienda){
@@ -1077,6 +1139,23 @@
             }
         }
 
+        //UPDATE de horarios de tienda de un día especifico que entra como exepción
+        public function actualizarDT_SecImg($ID_Seccion, $ID_Imagen){
+            $stmt = $this->dbh->prepare("UPDATE secciones_imagenes SET ID_Seccion = :ID_SECCION WHERE ID_Imagen = :ID_IMAGEN");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion);
+            $stmt->bindValue(':ID_IMAGEN', $ID_Imagen);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
 
 
 
@@ -1179,6 +1258,28 @@
             $stmt->bindParam(':TIPO_ARCHIVO', $tipo_imgProducto);
             $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio_imgProducto);
             $stmt->bindValue(':PRINCIPAL', 1);
+
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+
+            //se recupera el ID del registro insertado
+            return $this->dbh->lastInsertId();
+        } 
+
+        //INSERT de Dependencia transitiva en seccion e imagen
+        public function insertarDT_SecImg($ID_Seccion, $ID_Imagen){
+            // echo '<pre>';
+            // print_r($ID_Seccion);
+            // echo '</pre>';
+            // echo '<pre>';
+            // print_r($ID_Imagen);
+            // echo '</pre>';
+            // exit;
+            $stmt = $this->dbh->prepare("INSERT INTO secciones_imagenes(ID_Seccion, ID_Imagen) VALUES(:ID_SECCION, :ID_IMAGEN)");
+
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
+            $stmt->bindParam(':ID_IMAGEN', $ID_Imagen);
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();

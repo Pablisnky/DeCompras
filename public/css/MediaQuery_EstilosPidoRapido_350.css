@@ -6,6 +6,9 @@
 	padding: 0.1% 1% 0.1% 1.5%;
 	letter-spacing: 0.4em;
 }
+.br_2{/*carrito - inicio*/
+	display: block;
+}
 .comandoMenu{/*header - header_Tienda*/
 	margin-top: 13%;
 }

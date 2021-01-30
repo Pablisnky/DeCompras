@@ -16,6 +16,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $PrecioBolivar = $arr['precioBolivar'];
         $PrecioDolar = $arr['precioDolar'];
         $Seccion = $arr['seccion'];
+        // $ImgSeccion = $arr[''];
     endforeach;  
 
     //$Datos viene del metodo Cuenta_C/actualizarProducto
@@ -24,7 +25,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
     endforeach;  
 
     foreach($Datos['imagenPrin'] as $arr) :
+        $ID_ImagenPrincipal = $arr['ID_Imagen'];
         $ImagenPrincipal = $arr['nombre_img'];
+        $ImgSeccion = $arr['fotoSeccion'];
     endforeach;  ?>
     
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
@@ -42,12 +45,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- SECCION IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
+                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/> 
+                    <div class="contInputRadio">     
+                        <input type="checkbox" name="imgSeccion" id="ImgSeccion"  <?php if($ImgSeccion == 1){echo 'checked';} ?>/>
+                        <label class="contInputRadio__label" for="ImgSeccion">Imagen de sección</label>
+                    </div>   
                     <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
-                    <!-- <div class="contInputRadio">
-                        <input type="radio" name="imagenPrincipal" id="ImagenPrincipal" value="imgInp/>
-                        <label class="contInputRadio__label" for="ImagenPrincipal">Imagen principal</label>
-                    </div> -->
                 </div>
                 <div id="Contenedor_152">
                     <!-- SECCION PRODUCTO -->
@@ -155,6 +158,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input class="ocultar" type="text" name="id_seccion" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
                         <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
                         <input class="ocultar" type="text" name="puntero" value="<?php echo $Datos['puntero'];?>"/>
+                        <input class="ocultar" type="text" name="id_imagen" value="<?php echo $ID_ImagenPrincipal;?>"/>
                         <input class="boton" type="submit" value="Guardar"/>
                     </div> 
                 </div>

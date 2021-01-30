@@ -1,5 +1,5 @@
 <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización del capture--> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 <section class="sectionModal">
     <section> <!-- ORDEN DE COMPRA -->
@@ -13,7 +13,7 @@
                     <table class="tabla" id="Tabla">
                         <thead>
                             <tr>
-                                <th class="th_1 th_4">CANTIDAD</th>
+                                <th class="th_1 th_4">CANT.</th>
                                 <th class="th_2 th_4">PRODUCTO</th>
                                 <th class="th_3 th_4">PRECIO UNITARIO</th>
                                 <th class="th_5 th_4">TOTAL</th>
@@ -360,20 +360,3 @@
         </div>
     </section>
 </section>
-
-<script>
-    //Da una vista previa del cpature de transferencia o pagomovil
-    // function muestraImg(){
-    //     console.log("______Desde muestraImg()______")
-    //     var contenedor = document.getElementById("muestrasCapture");
-    //     var archivos = document.getElementById("Capture").files;
-    //     for(i = 0; i < archivos.length; i++){
-    //         imgTag = document.createElement("img");
-    //         imgTag.height = 100;//ESTAS LINEAS NO SON "NECESARIAS"
-    //         imgTag.width = 200; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
-    //         imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
-    //         imgTag.src = URL.createObjectURL(archivos[i]);
-    //         contenedor.appendChild(imgTag);
-    //     }
-    // }
-</script>

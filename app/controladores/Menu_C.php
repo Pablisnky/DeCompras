@@ -6,14 +6,13 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 1786690;
-            echo $this->Dolar . '<br>';
+            $this->Dolar = 1823627;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
-            $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
-            echo '<pre>';
-            print_r($DolarHoy);
-            echo '</pre>';
+            // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
+            // echo '<pre>';
+            // print_r($DolarHoy);
+            // echo '</pre>';
                 
             // $this->Dolar = $DolarHoy['USD']['promedio_real']; 
 
@@ -21,8 +20,7 @@
             ocultarErrores();
         }
         
-        public function index(){
-            
+        public function index(){            
 
             require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
 
@@ -121,15 +119,22 @@
         
         //Ulilizada en su momento para pasar imagene de la tabla opciones a la tabla imagenes
         public function borrar(){
-            $Fotografia = $this->ConsultaMenu_M->consultarImagenePrincipal();
+            // $Fotografia = $this->ConsultaMenu_M->consultarSecciones();
 
             // echo '<pre>';
             // print_r($Fotografia);
             // echo '</pre>';
             // exit;
 
-            $this->ConsultaMenu_M->InsertarImagenePrincipal($Fotografia);
+            // $this->ConsultaMenu_M->InsertarsECCIONES_IMAGENES($Fotografia);
             
+            // $SeccionesImagenes = $this->ConsultaMenu_M->consultarSeccionesImagenes();
+            // echo '<pre>';
+            // print_r($SeccionesImagenes);
+            // echo '</pre>';
+            // exit;
+
+            // $this->ConsultaMenu_M->ActualizaSeccionesImgenes($SeccionesImagenes);
         }
     }
 ?>

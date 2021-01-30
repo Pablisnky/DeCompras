@@ -41,12 +41,10 @@
             require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
             $this->Horario = new CalculoApertura_C;
             $HorarioTrabajo = $this->Horario->horarioTienda($ID_Tienda);
+            
+            //Se CONSULTAN la imagen de cada sección
+            $ImagenSecciones = $this->ConsultaVitrina_M->consultarImagenesSecciones($ID_Tienda);
  
-            // echo "<pre>";
-            // print_r($HorarioTrabajo);
-            // echo "</pre>";
-            // exit();
-
             $Datos=[
                 'id_tienda' => $ID_Tienda,
                 'categoria' => $Categoria,
@@ -60,7 +58,8 @@
                 'HorarioTrabajo' => $HorarioTrabajo,
                 'ProximoApertura' => $ProximoApertura,
                 'HoraApertura' => $HoraApertura,
-                'cant_productosSeccion' => $Cant_ProductosSeccion //ID_Seccion, CantidadProducto por seccion
+                'cant_productosSeccion' => $Cant_ProductosSeccion, //ID_Seccion, CantidadProducto por seccion
+                'imagenSecciones' => $ImagenSecciones//nombre_img, ID_Seccion
             ];
 
             // echo "<pre>";

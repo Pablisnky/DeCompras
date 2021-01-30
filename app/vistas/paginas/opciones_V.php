@@ -28,8 +28,7 @@
                         $Seccion = $row['seccion'];
 
                         //Se da formato al precio, sin decimales y con separación de miles
-                        $PrecioBolivar = number_format($PrecioBolivar, 0, ",", "."); 
-                        // $PrecioDolar = number_format($PrecioDolar, 2, ",", ".");  ?>  
+                        $PrecioBolivar = number_format($PrecioBolivar, 0, ",", "."); ?>  
                                 
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             
@@ -53,32 +52,11 @@
                                 <div style="min-height:80px">
                                     <div style="height: 75px;">
                                         <!-- PRODUCTO -->
-                                        <label class="input_8 input_8D" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
+                                        <label class="input_8 input_8D hyphen" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
     
                                         <!-- OPCION -->
-                                        <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>"><?php echo $Opcion;?></label>
-                                    </div>
-                                    <!-- AMPLIAR DETALLES -->
-                                    <!-- se abre la ventana de detalle de producto utilizando el metodo de enlace con la etiqueta HTML <a></a>-->
-                                    <?php        
-                                        // foreach($Datos['variosCaracteristicas'] as $AA) :
-                                        //     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                                <!-- <a class="input_10" href="<?php// echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $Slogan_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto . ',' .'Etiqueta_' . $ContadorLabel;?>?>" target="_blank" rel="noopener noreferrer">Ampliar detalles</a> -->
-                                                <?php
-                                        //         break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
-                                        //     }                                        
-                                        // endforeach; 
-                                    ?>                            
-                                    <!-- se abre la ventana de detalle de producto utilizando el metodo de window.open-->
-                                    <?php        
-                                        // foreach($Datos['variosCaracteristicas'] as $AA) :
-                                        //     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                                 <!-- <label class="input_8 input_10" onclick="mostrarDetalles('<?php //echo $ContadorLabel.$Separador?>','<?php // echo $Nombre_Tienda.$Separador?>','<?php// echo $Slogan_Tienda.$Separador?>','<?php// echo $ID_Tienda.$Separador?>','<?php //echo $Producto.$Separador?>','<?php // echo $Opcion.$Separador?>','<?php// echo $Precio.$Separador?>','<?php //echo $Fotografia.$Separador?>','<?php //echo $ID_Producto?>')">Ampliar detalles</label> -->
-                                                <?php
-                                        //         break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
-                                        //     }                                        
-                                        // endforeach; 
-                                    ?>          
+                                        <label class="input_8 input_8C hyphen" id="<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>"><?php echo $Opcion;?></label>
+                                    </div>     
                                     
                                     <!-- PRECIO -->
                                     <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioBolivar;?> Bs.</label>

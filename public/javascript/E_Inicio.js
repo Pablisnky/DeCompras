@@ -55,8 +55,6 @@ document.getElementById("Telefonos").addEventListener('click', function(){VerTie
 
 document.getElementById("Papeleria").addEventListener('click', function(){VerTiendas('Papeleria')}, false)
 
-document.getElementById("Contenedor_88").addEventListener('click', transicionTiendas, false)
-
 document.getElementById("Contenedor_34").addEventListener('click', muestraBusqueda, false)
 
 document.getElementById("Contenedor_34").addEventListener('click', function(){autofocus('Input_9')}, false)

@@ -36,8 +36,7 @@
                 // kuecho RUTA_URL . '/' . $_GET["url"];
                     // exit;
                 if(!empty($_GET["url"])){
-                    if($Link == RUTA_URL . '/' . $_GET["url"]){                
-                        //Redirección
+                    if($Link == RUTA_URL . '/' . $_GET["url"]){   
                         header("Location: $url");
                     }
                 }
@@ -46,8 +45,7 @@
             $Datos = $this->ConsultaInicio_M->consultarCantidadTiendas();
             
             $this->vista("inc/header_inicio", $Datos); 
-            $this->vista("paginas/inicio_V", $Datos);
-            
+            $this->vista("paginas/inicio_V", $Datos);            
         }
     }
 ?>

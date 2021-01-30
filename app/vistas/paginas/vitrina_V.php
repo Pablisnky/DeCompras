@@ -17,6 +17,7 @@
         <?php
     }
 ?>
+<!-- Header = header_Tienda.php -->
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
@@ -36,16 +37,26 @@
             <?php
             $Contador = 1;
             //Se cargan todas las secciones que tenga una tienda
-            foreach($Datos['seccion'] as $row){
+            foreach($Datos['seccion'] as $row) :
                 $Seccion = $row['seccion'];     
-                $ID_Seccion = $row['ID_Seccion'];    
+                $ID_Seccion = $row['ID_Seccion'];   
                 ?> 
                 <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
-                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')"> 
-                        <div class="contenedor_9 borde_1">
-                            <img class="imagen_2" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/> 
-                        </div>  
-                        <h2 class="h2_6"><?php echo $Seccion;?></h2>
+                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')">  <?php
+                        foreach($Datos['imagenSecciones'] as $key) : 
+                            if($key['ID_Seccion'] == $ID_Seccion) : 
+                                $SeccionExiste = 'Seccion_'. $Contador; ?>
+                                <div class="contenedor_9 borde_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/productos/<?php echo $key['nombre_img']?>');">
+                                </div>  <?php
+                            endif;  
+                        endforeach;  
+                        if(empty($SeccionExiste)){ ?>
+                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
+                            </div> <?php
+                        }
+                        $SeccionExiste = '';
+                        ?>
+                        <h2 class="boton botonReverso borde_1 boton--largo"><?php echo $Seccion;?></h2>
                         <div class="contenedor_106--lineal">
                             <span class="span_21 borde_1">
                             <?php 
@@ -65,7 +76,7 @@
                 </div>
                 <?php
                 $Contador++;
-            }
+            endforeach;
             ?>
         </div>  
     </div>  
@@ -98,8 +109,8 @@
 <!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
 <!-- <div id="Mostrar_Alert"></div> -->
 
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js';?>"></script>
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js';?>"></script>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js?v=' . rand();?>"></script>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js?v=' . rand();?>';?>"></script>
 
 <?php //include(RUTA_APP . "/vistas/inc/footer.php");?>
 <!-- ******************************************************************************************* -->

@@ -10,7 +10,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta name="MobileOptimized" content="width"/>
 		<meta name="HandheldFriendly" content="true"/>
-		<meta http-equiv="expires" content="12 de julio de 2020"/>
+		<meta http-equiv="Expires" content="0"> 
+		<meta http-equiv="Last-Modified" content="0">
+		<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+ 		<meta http-equiv="Pragma" content="no-cache">
 
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/menu/style_menu.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>
@@ -24,9 +27,12 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/supermercado/style_supermercado.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/artesanos/style_artesanos.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ropa/style_ropa.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/estilosPidoRapido.css?1"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_800.css?1"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_350.css?1"/>
+
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_800.css?v=<?php echo(rand());?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/EstilosPedidoRemoto_slider.css?v=<?php echo(rand());?>"/>
+		
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>	
@@ -39,7 +45,7 @@
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Tiendas</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_4';?>">Tiendas</a></li>
 					<li class="menuLi_1"><a href="#">Nuestro ADN</a>  
 						<ul class="menuContenedor_3 menuContenedor_1">
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos';?>">Quíenes somos</a></li> 

@@ -363,7 +363,7 @@
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' =>   $Hor['Lun_t_inicia']];
                         array_push($Disponibilidad, $Nuevo_2);
 
-                    //Abre en la mañana
+                    //ABRE EN LA MAÑANA
                     elseif($Hor['Domingo_m'] != '0' && $Hor['Domingo_t'] == '0' && $Hor['Dom_m_inicia'] > date('H:i')):
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreMañana'];
                         array_push($Disponibilidad, $Nuevo_2);
@@ -423,6 +423,8 @@
                     elseif($Hor['Lunes_t'] != '0' && date_format(date_create($Hor['Lun_t_culmina']),"H:i") < date('H:i')):
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Mar_t_inicia'], 'Condicional' => '7'];
                         array_push($Disponibilidad, $Nuevo_2);
+
+                    //TIENDA ABIERTA
                     else:
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Abierto', 'proximoApertura' => 'NoAplica', 'horaApertura' => 'NoAplica', 'Condicional' => '8'];
                         array_push($Disponibilidad, $Nuevo_2);
@@ -557,47 +559,53 @@
                 // DISPONIBILIDAD VIERNES (CERRADO - ABIERTO - HORA DE APERTURA)
                 elseif($Dia == 'Viernes'):
                     //ABRE EL LUNES DESPUES DEL VIERNES(verificado)
-                    if($Hor['Sabado_m'] == '0' && $Hor['Sabado_t'] == '0' && $Hor['Domingo_m'] == '0' && $Hor['Domingo_t'] == '0'):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreLunes', 'horaApertura' => $Hor['Lun_m_inicia'], 'Condicional' => 'I'];
+                    if($Hor['Sabado_m'] == '0' && $Hor['Sabado_t'] == '0' && $Hor['Domingo_m'] == '0' && $Hor['Domingo_t'] == '0' && ($Hor['Vie_t_culmina'] != '--' && date_format(date_create($Hor['Vie_t_culmina']),"H:i") < date('H:i'))):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreLunes', 'horaApertura' => $Hor['Lun_m_inicia'], 'Condicional' => '1'];
+                        array_push($Disponibilidad, $Nuevo_2);
+
+                    //ABRE EL LUNES DESPUES DEL VIERNES(verificado)
+                    elseif($Hor['Viernes_t'] == '0' && $Hor['Sabado_m'] == '0' && $Hor['Sabado_t'] == '0' && $Hor['Domingo_m'] == '0' && $Hor['Domingo_t'] == '0'):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreLunes', 'horaApertura' => $Hor['Lun_m_inicia'], 'Condicional' => '1'];
                         array_push($Disponibilidad, $Nuevo_2);
                         
                     //ABRE EN LA MAÑANA (Verificado)
-                    elseif($Hor['Jueves_m'] != '0' && date_format(date_create($Hor['Vie_m_inicia']),"H:i") > date('H:i')):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreMañana', 'horaApertura' => $Hor['Vie_m_inicia'], 'Condicional' => 'A'];
+                    elseif($Hor['Viernes_m'] != '0' && date_format(date_create($Hor['Vie_m_inicia']),"H:i") > date('H:i')):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreMañana', 'horaApertura' => $Hor['Vie_m_inicia'], 'Condicional' => '2'];
                         array_push($Disponibilidad, $Nuevo_2);
 
                     //ABRE EN LA TARDE CERRADO A MEDIODIA (Verificado)
-                    elseif($Hor['Vie_t_inicia'] != '--' && date_format(date_create($Hor['Vie_t_inicia']),"H:i") > date('H:i') && date_format(date_create($Hor['Vie_m_culmina']),"H:i") < date('H:i')):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreTarde', 'horaApertura' => $Hor['Vie_t_inicia'], 'Condicional' => 'E'];
+                    elseif($Hor['Vie_t_inicia'] != '--' && date_format(date_create($Hor['Vie_m_culmina']),"H:i") < date('H:i') && date_format(date_create($Hor['Vie_t_inicia']),"H:i") > date('H:i')):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreTarde', 'horaApertura' => $Hor['Vie_t_inicia'], 'Condicional' => '3'];
                         array_push($Disponibilidad, $Nuevo_2);
 
                     //ABRE DIA SIGUIENTE (Verificado)
                     elseif($Hor['Vie_t_inicia'] != '--' && $Hor['Viernes_m'] != '0' && date_format(date_create($Hor['Vie_m_culmina']),"H:i") < date('H:i') && date_format(date_create($Hor['Vie_t_culmina']),"H:i") < date('H:i')):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_m_inicia'], 'Condicional' => 'D'];
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_m_inicia'], 'Condicional' => '4'];
                         array_push($Disponibilidad, $Nuevo_2);
 
                     //ABRE DIA SIGUIENTE (Verificado, solo horarios vespertinos)
                     elseif($Hor['Viernes_t'] != '0' && date_format(date_create($Hor['Vie_t_culmina']),"H:i") < date('H:i')):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_t_inicia'], 'Condicional' => 'F'];
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_t_inicia'], 'Condicional' => '5'];
                         array_push($Disponibilidad, $Nuevo_2);
+
                         //ABRE DIA SIGUIENTE
                     elseif($Hor['Viernes_m'] == '0' && $Hor['Viernes_t'] == '0' && $Hor['Viernes_m'] != '0'):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_m_inicia'], 'Condicional' => 'C'];
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_m_inicia'], 'Condicional' => '6'];
                         array_push($Disponibilidad, $Nuevo_2);
 
                     //ABRE DIA SIGUIENTE
-                    elseif($Hor['Viernes_m'] == '0' && $Hor['Viernes_t'] == '0' && $Hor['Viernes_m'] == '0'):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_t_inicia'], 'Condicional' => 'B'];
+                    elseif($Hor['Viernes_m'] == '0' && $Hor['Viernes_t'] == '0'):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Sab_t_inicia'], 'Condicional' => '7'];
                         array_push($Disponibilidad, $Nuevo_2);
                         
                     //ABRE DOS DIAS DESPUES DEL VIERNES(verificado)
-                    elseif($Hor['Viernes_t'] == '0' && $Hor['Sabado_m'] == '0' && $Hor['Sabado_t'] == '0'):
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDomingo', 'horaApertura' => $Hor['Dom_m_inicia'], 'Condicional' => 'B'];
+                    elseif($Hor['Viernes_t'] == '0' && $Hor['Sabado_m'] == '0' && date_format(date_create($Hor['Vie_m_culmina']),"H:i") < date('H:i') && $Hor['Sabado_t'] == '0'):
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDomingo', 'horaApertura' => $Hor['Dom_m_inicia'], 'Condicional' => '8'];
                         array_push($Disponibilidad, $Nuevo_2);
 
                     //ABIERTO
                     else:
-                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Abierto', 'proximoApertura' => 'NoAplica', 'horaApertura' => 'NoAplica', 'Condicional' => 'G'];
+                        $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Abierto', 'proximoApertura' => 'NoAplica', 'horaApertura' => 'NoAplica', 'Condicional' => '9'];
                         array_push($Disponibilidad, $Nuevo_2);
                     endif; 
                     

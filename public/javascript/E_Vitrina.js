@@ -498,8 +498,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
     function PedidoEnCarrito(){
-        // console.log("______Desde PedidoEnCarrito()______")
-        
+        // console.log("______Desde PedidoEnCarrito()______")        
         // console.log("monto de la compra", TotalDisplayCarrito)
         
         //Se muestra el monto de la compra en "La Orden". (sin comisión de plataforma y sin despacho)
@@ -537,7 +536,11 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se muestra todo el pedido (cantidad - producto - opcion - precio unitario - precio por productos)
         for(i = 0; i < AlCarro.length; i++){
             // console.log(AlCarro[i].Cantidad)
-            document.getElementById("Tabla").innerHTML += '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + '</td><td class="td_2">' +  AlCarro[i].Producto + '</td><td class="td_3">' + AlCarro[i].Precio + '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
+            document.getElementById("Tabla").innerHTML += 
+            '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + 
+            '</td><td class="td_2 hyphen">' +  AlCarro[i].Producto + 
+            '</td><td class="td_3">' + AlCarro[i].Precio + 
+            '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
         }
         
         // for(i = 0; i < AlCarro.length; i++){

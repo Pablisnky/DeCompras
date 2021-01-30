@@ -332,6 +332,9 @@
             //Se CONSULTAN las imagenes secundarias del producto
             $Imagenes = $this->ConsultaCuenta_M->consultarImagnesProducto($ID_Producto);
 
+            //Se CONSULTAN si el producto es imagen de sección
+            // $ImagenSeccion = $this->ConsultaCuenta_M->consultarImagenSeccionEstablecida($ID_Producto);
+
             //Solicita el precio del dolar
             require(RUTA_APP . "/controladores/Menu_C.php");
             $this->PrecioDolar = new Menu_C();
@@ -345,9 +348,10 @@
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
-                'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img
+                'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img, fotoSeccion
                 'imagenesVarias' => $Imagenes, //ID_Imagen, nombre_img
-                'dolarHoy' => $DolarHoy
+                'dolarHoy' => $DolarHoy,
+                // 'ImagenSeccion' => $ImagenSeccion
             ];
 
             // echo "<pre>";
@@ -435,7 +439,7 @@
                 // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
 
                 //Si existe imagen_Tienda y tiene un tamaño correcto
-                if(($nombre_imgTienda == !NULL) AND ($tamaño_imgTienda <= 70000000)){
+                if(($nombre_imgTienda == !NULL) AND ($tamaño_imgTienda <= 700000000)){
                     //indicamos los formatos que permitimos subir a nuestro servidor
                     if(($_FILES["imagen_Tienda"]["type"] == "image/jpeg")
                         || ($_FILES["imagen_Tienda"]["type"] == "image/jpg") || ($_FILES["imagen_Tienda"]["type"] == "image/png")){
@@ -444,10 +448,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -798,7 +802,7 @@
             $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
-        //Metodo invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
+        //Invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
         public function recibeProductoPublicar(){
             $verifica_2 = $_SESSION['verifica_2'];  
             if($verifica_2 == 1906){// Anteriormente en  se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga esta página.
@@ -806,7 +810,7 @@
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
                 //SECCION DATOS DEL PRODUCTO
-                if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBs"]) && !empty($_POST["precioDolar"])){
+                if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBs"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0)){
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
@@ -827,7 +831,7 @@
                     exit();
                 }
 
-                //SECCION CARACTERISTICAS
+                //CARACTERISTICAS
                 //********************************************************
                 //Si se selecionó alguna nueva caracteristica entra, destaca que se esta recibiendo un array
                 if($_POST['caracteristica'][0] != ""){
@@ -872,7 +876,7 @@
                 //Se ACTUALIZA el campo "publicar en la tabla "tiendas", para que la tienda comience a aparecer en el catalogo de tiendas
                 $this->ConsultaCuenta_M->actualizarTiendaPublicar($RecibeProducto['ID_Tienda']);
 
-                //SECCION IMAGEN PRINCIPAL
+                //IMAGEN PRINCIPAL
                 //********************************************************
                 //Si se selecionó alguna imagen entra
                 if($_FILES['foto_Producto']["name"] != ""){
@@ -897,10 +901,10 @@
                     //         //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         // usar en local
-                        $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -908,8 +912,11 @@
                         //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                         move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
 
-                        //Se INSERTA la imagen principal
-                        $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
+                        //Se INSERTA la imagen principal y devuelve el ID_Imagen
+                        $ID_Imagen = $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
+                        
+                        //Se INSERTA la dependenciatransitiva entre secciones e imagenes
+                        $this->ConsultaCuenta_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
                 //     }
                 //     else{
                 //         //si no cumple con el formato
@@ -940,10 +947,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
@@ -960,10 +967,10 @@
             } 
         }
 
-        //Metodo invocado desde cuenta_editar_prod_V.php actualiza la información de un producto)
+        //Invocado desde cuenta_editar_prod_V.php actualiza la información de un producto)
         public function recibeAtualizarProducto(){
             // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && !empty($_POST["precioDolar"])){
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0)){
 
                 $RecibeProducto = [
                     //Recibe datos del producto a actualizar
@@ -978,6 +985,8 @@
                     'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
                     'Puntero' => filter_input(INPUT_POST, "puntero", FILTER_SANITIZE_STRING),
+                    'ID_Imagen' => filter_input(INPUT_POST, "id_imagen", FILTER_SANITIZE_STRING),
+                    'ImgSeccion' => !empty($_POST['imgSeccion'])
                 ];
                 // echo "<pre>";
                 // print_r($RecibeProducto);
@@ -1015,10 +1024,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1073,10 +1082,10 @@
                     //         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             //usar en local
-                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //se muestra el directorio temporal donde se guarda el archivo
                             //echo $_FILES['imagen']['tmp_name'];
@@ -1119,13 +1128,15 @@
             // ********************************************************
             // Recibe las caracteristicas del producto
             if($_POST['caracteristica'][0] != ''){
-                echo 'Se recibieron caracteristicas';
+                // echo 'Se recibieron caracteristicas';
                 foreach($_POST['caracteristica'] as $Caracteristica){
                     $Caracteristica = $_POST['caracteristica'];
                 }
                 
                 //Se eliminan los elementos repetido que se reciben en caracteristicas
                 $CaracteristicaSinDuplicado = array_unique($Caracteristica);
+
+                $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $RecibeProducto ['ID_Producto'], $CaracteristicaSinDuplicado);
             }
             // else{
             //     echo 'No se recibieron caracteristicas';
@@ -1143,14 +1154,36 @@
             $this->ConsultaCuenta_M->actualizacionSeccion($RecibeProducto);
             // Se eliminan las caracteristicas existentes de un producto especifica
             $this->ConsultaCuenta_M->eliminarCaracteristicas($RecibeProducto['ID_Producto'],);
-            $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $RecibeProducto ['ID_Producto'], $CaracteristicaSinDuplicado);
 
             //Para actualizar fotografia principal solo si se ha presionado el boton de buscar fotografia
             if(($_FILES['imagenPrinci_Editar']['name']) != ""){
                 //Se ACTUALIZA la fotografia principal del producto
                 $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
-            }
+                
+                //Se ACTUALIZA la dependenciatransitiva entre secciones e imagenes
+                $this->ConsultaCuenta_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);
+            } 
 
+            //Para establecer como imagen de sección
+            if($RecibeProducto['ImgSeccion'] == '1'){
+                //Se consulta que imagen esta establecida para la sección
+                $ID_ImagenSeccion = $this->ConsultaCuenta_M->consultarImagenSeccion($RecibeProducto);
+                // echo "<pre>";
+                // print_r($ID_ImagenSeccion);
+                // echo "</pre>";
+                // exit();
+                
+                //Se desseleciona la imagen que esta establecida actualmente
+                $this->ConsultaCuenta_M->actualizarImagenSeccionDeseleccionar($ID_ImagenSeccion);
+                
+                //Se selecciona la imagen que se desea establecer
+                $this->ConsultaCuenta_M->actualizarImagenSeccionSeleccionar($RecibeProducto);
+            }
+            else if(empty($RecibeProducto['ImgSeccion'])){
+                //Se deseleciona la imagen              
+                $this->ConsultaCuenta_M->actualizarImagenSeccionDeseleccionar($RecibeProducto);
+            }
+            
             //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección
             $Seccion = $RecibeProducto['Seccion'];
 

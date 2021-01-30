@@ -12,7 +12,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<meta name="MobileOptimized" content="width"/>
 		<meta name="HandheldFriendly" content="true"/>
-		<meta http-equiv="expires" content="12 de julio de 2020"/>
+		<meta http-equiv="expires" content="12 de julio de 2020 16:00:00 GMT"/>
 
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>

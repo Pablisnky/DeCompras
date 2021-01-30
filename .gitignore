@@ -1,2 +1,6 @@
 # Ignorar el contenido de la carpeta images
 images/
+bd/
+
+#Ignorar los siguientes archivos
+Notas.txt
