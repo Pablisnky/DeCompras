@@ -17,9 +17,11 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/menu/style_menu.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_800.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css"/>
+
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_800.css?v=<?php echo(rand());?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
+		
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
@@ -35,15 +37,15 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio</a></li>
 					<li><a class="a_3" id="Afiliacion" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Afiliación</a></li>
 					<li><a class="a_3" id="Ciudades" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
-					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Tiendas</a></li>
-					<li class="menuLi_1"><a class="a_3">Nuestro ADN</a>  
+					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/menu_C/categorias';?>">Ver Tiendas</a></li>
+					<!-- <li class="menuLi_1"><a class="a_3">Nuestro ADN</a>  
 						<ul class="menuContenedor_3">
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos';?>">Quíenes somos</a></li> 
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos#QueHacemos';?>">Qué hacemos</a></li>
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Menu_C/nuestroADN/quienesSomos#Contactenos';?>">Contactenos</a></li>
 						</ul>
-					</li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Menu_C/descargaApp';?>">Descargar APP</a></li>
+					</li> -->
+					<!-- <li><a class="a_3" href="<?php echo RUTA_URL . '/Menu_C/descargaApp';?>">Descargar APP</a></li> -->
 					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
 				</ul>
 			</nav>

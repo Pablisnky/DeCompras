@@ -47,11 +47,7 @@ body, html{
 }
 
 /* ******************************************************************************** */
-button{/*tiendas*/
-	/* background-color: white;
-	border: none;
-	width: 100% */
-}
+
 .hyphen{
 	/* word-wrap: break-word;
 	overflow-wrap: break-word */  
@@ -87,6 +83,12 @@ button{/*tiendas*/
 	color:white;
 	width: 30%;
 	text-align: center;
+}
+.a_3A{/*inicio*/
+	color: var(--OficialOscuro);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.3em;
+	font-weight: bold;
 }
 .a_4{/*header_AfiCom*/
 	display: none;
@@ -176,7 +178,6 @@ button{/*tiendas*/
 	font-weight: normal;
 	min-height: 28px;
 	line-height: 25px;
-	/* line-height: 17px; */
 }
 .boton--alto{/*afiliacion - carrito */ 
 	height: 45px;
@@ -217,6 +218,12 @@ button{/*tiendas*/
 	border-width: 1px;
 	border-radius: 5px;
 	border-style: solid;
+}
+.borde_3{/*afiliacion*/
+	border-width: 2px;
+	border-style: solid;
+	border-color: var(--BandaAlerta);
+	border-radius: 5px;
 }
 .borde_2{/*registroCom - cuenta_publicar - cuenta_editar - login - */
 	border-radius: 15px;
@@ -475,6 +482,12 @@ button{/*tiendas*/
 .contIconoBuscador:hover{/*header_inicio*/
 	cursor: pointer;
 }
+.Contenedor_34{/*inicio*/
+	width: 10%;
+	position: relative;
+	top: 70%;
+	left: 83%;
+}
 .contenedor_35{/*header_inicio - header_AfiCom*/
 	background-color: var(--OficialOscuro);
 	width: 100%;
@@ -611,8 +624,8 @@ button{/*tiendas*/
 	border-radius: 15px;
 	margin: 1% auto 5% auto !important;
 }
-.contenedor_69{/*tiendas - header - header_AfiCom - header_inicio*/
-	background-color: var(--OficialOscuro);
+.contenedor_69{/*header - header_AfiCom - header_inicio*/
+	/* background-color: var(--OficialOscuro); */
 	position: fixed;
 	top: 0%;
 	left: 0%;
@@ -1180,10 +1193,11 @@ button{/*tiendas*/
 	font-weight: bold;
 }
 .contMuestraBuscador__textarea{/*buscador*/
-	/* background-color: var(--OficialClaro); */
 	width: 100%;
+	max-height: 40px;
 	resize: none;
 	border: none;
+	overflow: hidden;
 	padding-left: 3%;
 }
 .contMuestraBuscador:hover > .contMuestraBuscador__textarea{/*buscador*/
@@ -1293,6 +1307,11 @@ button{/*tiendas*/
 	/* display: block;
 	margin-top: 0px; */
 }
+.contPrincipal{/*inicio*/
+	height: 100vh;
+    overflow: auto;  
+    scroll-snap-type: y mandatory;
+}
 .contSelectVert{/*horario*/
 	width: 100%;
 	margin-top: 15%;
@@ -1306,6 +1325,13 @@ button{/*tiendas*/
 }
 .contTabla{/*horarioDespacho*/
 	margin-bottom: 7%;
+}
+.desactivado{/*inicio*/
+	color: var(--TextoClaro);
+}
+.desactivado:hover{/*inicio*/
+	background-color: initial;
+	cursor: default;
 }
 .sectionModal__div{/*modal_sinSecciones*/
 	background-color: var(--OficialClaro);
@@ -1459,7 +1485,7 @@ button{/*tiendas*/
 	font-weight: normal ;
 }
 .h2_11{/*afiliacion - ciudad*/
-	background-color: var(--BandaAlerta);
+	/* background-color: var(--BandaAlerta); */
 	font-size: 1.3em;
 	font-weight: normal;
 	text-align: center;
@@ -1467,16 +1493,19 @@ button{/*tiendas*/
 	margin: auto;
 	border-radius: 10px;
 	padding: 0.5%;
-	margin-top: -2% !important;
+	margin-top: -1% !important;
 }
 .h2_13{/*ciudad*/
 	margin: 8% auto;
 	width: 70%;
 }
-.h2_14{/*vitrina*/
-}
-.h2_14:hover{
-	background-color: red;
+.h2_14{/*categoria*/
+	margin: auto;
+	margin-top: 4%;	
+	font-size: 1.3em;
+	padding: 1% 3%;
+	font-weight: lighter;
+	text-align: center;
 }
 .contenedor_162 .h2_14{/*tiendas*/
 	font-size: 0.9em !important;
@@ -1959,7 +1988,7 @@ button{/*tiendas*/
 	width: 30%;
 }
 .menuResponsive{/*da formato a barra de menu y contiene todos los enlaces de la misma, solo a la del header*/
-	background-color: var(--OficialOscuro);
+	/* background-color: var(--OficialOscuro); */
 	width: 100%;
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 	justify-content: space-between;
@@ -2199,10 +2228,46 @@ button{/*tiendas*/
 	min-height: 100% ;
 	display: none;
 	width: 100%;
-} 
+}
 .section_1{/*inicio*/
-	background-color: var(--OficialClaro);
 	height: 100%;
+}
+.section_1__div{/*inicio*/
+	background-color:rgba(0, 0, 0, 0.1);
+	display: inline-flex;
+	align-items: center;
+	width: 80%;
+	padding: 0.5% 2%;
+	margin-left: 10%;
+	margin-top: 33%;
+}
+.section_1__div1{/*inicio*/
+	width: 75%;
+}
+.section_1__div2{/*inicio*/
+	/* margin-left: 70%; */
+}
+.section_1__p{/*inicio*/
+	color: white;
+	font-size: 1.5em;
+	line-height: 40px;
+}
+.section_1__boton{/*inicio*/
+	background-color: var(--OficialClaro);
+	color: var(--OficialOscuro);
+	width: 190px;
+	height: 50px; 
+	line-height: 50px;
+	display: inline-block;
+	text-align: center;
+	border-radius: 10px;
+}
+.section_1__boton:hover{/*inicio*/
+	cursor: pointer;
+	color: var(--OficialOscuro);
+	border-color: var(--OficialOscuro);
+	border-width: 1px;
+	border-style: solid;
 }
 .section_2{/*RecibePedido*/
 	padding-top: 10%;
@@ -2216,6 +2281,21 @@ button{/*tiendas*/
 	width: 100%;
 	min-height: 100% !important;
 	/* display: none; */
+}
+.sectionTienda{/*inicio*/
+	background-color: var(--FondoDivModal);
+	position: fixed;
+	top: 0%;
+	width: 100%;
+	min-height: 100% !important;
+	z-index: 5;
+}
+.sectionTienda_div{/*inicio*/
+	background-color: var(--OficialClaro);
+	border-radius: 15px;
+	margin: 10% auto;
+	width: 50%;
+	padding: 2%;
 }
 .section_5{/*afiliacion - ciudad - vitrina - login - login_Vrecord - cuenta_productos - registroCom - registroDes*/
 	min-height: 100%;
@@ -2257,7 +2337,6 @@ button{/*tiendas*/
 }
 .small_2{/*descr_Producto*/
 	font-size: 0.8em;
-
 }
 .strong_1{/*cuenta_editar*/
 	font-size: 0.9em;
@@ -2365,11 +2444,8 @@ button{/*tiendas*/
 	left: 85%;
 	display: block;
 }
-.span_22{/*modal_fueraHorario*/
-	/* width: 40px; */
-	/* display: block !important;
-	font-size: 1.8em;
-	float: right; */
+.span_22{/*inicio*/	
+	font-size: 1.5em;
 }
 .tabla{/*carrito*/
 	width: 100%;

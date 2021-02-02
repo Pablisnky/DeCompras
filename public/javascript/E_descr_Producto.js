@@ -2,7 +2,7 @@
 //************************************************************************************************
     //Muestra en formato grande la miniatura seleccionada
     function verMiniatura(ID_Imagen){
-        console.log("______Desde verMiniatura()______")
+        console.log("______Desde verMiniatura()______",ID_Imagen)
 
         let Desplazar = document.getElementById("Ul_1")
 
@@ -86,3 +86,8 @@
     }
 
 //************************************************************************************************
+    // Muestra la imagen en ventana modal
+    function verImagenModal(ID_Imagen){
+        console.log("______Desde verImagenModal()______", ID_Imagen)
+
+    }

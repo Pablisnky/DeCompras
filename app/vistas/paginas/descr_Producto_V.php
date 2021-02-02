@@ -23,7 +23,7 @@
                         //$Datos proviene de Opciones_C/productoAmpliado             
                         foreach($Datos['Imagenes'] as $key) :   ?>
                             <li class="li_4" >
-                                <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Foto no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>">
+                                <img class="imagen_9 imagen_10" id="Imagen_<?php echo $Contador ?>" alt="Foto no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>" onclick="verImagenModal('ImagenModal_<?php echo $Contador ?>')"/>
                             </li>
                             <?php
                             $Contador ++;
@@ -38,7 +38,7 @@
                         $Contador = 1;   
                         //$Datos proviene de Opciones_C/productoAmpliado                  
                         foreach($Datos['Imagenes'] as $key) :   ?>
-                            <img class="imagen_11 borde_1 borde_2" id="Imagen_<?php echo $Contador ?>" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>" onclick="verMiniatura('Imagen_<?php echo $Contador ?>')">
+                            <img class="imagen_11 borde_1 borde_2" id="Imagen_<?php echo $Contador ?>" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>" onclick="verMiniatura('Imagen_<?php echo $Contador ?>')"/>
                             <?php
                             // echo  $Contador;
                             $Contador ++;
@@ -81,24 +81,25 @@
             </div>
         </div>
     </section>
+
+    <!-- IMAGEN AMPLIADA -->
+    <section class="ocultar" >
+        <div class="contenedor_122"> 
+            <div class="contenedor_123">
+                <div class="contenedor_124" id="Contenedor_124"> 
+                    <!-- $Datos proviene de Opciones_C/imagenAmpliado -->
+                    <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Fotografia no disponible" src="<?php echo RUTA_URL?>/images/productos/<?php echo $key['nombre_img'] ;?>"> 
+                </div>
+            </div>
+        </div>
+    </section>
     
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_descr_Producto.js';?>"></script>
 
 <script>
-    //Aqui tambien se pudo usar una funcion IIEEF intentarlo de sa manera
+    //Aqui tambien se pudo usar una funcion IIEEF
     window.onload = function (){
         document.querySelector(".preloderTapa").style.display = "none"
-    }
-
-    var textarea = document.querySelector('textarea');
-    textarea.addEventListener('keydown', autosize);
-    
-    function autosize(){
-        var el = this;
-        setTimeout(function(){
-            el.style.cssText = 'height:auto; padding:0';
-            el.style.cssText = 'height:' + el.scrollHeight + 'px';
-        },0);
     }
 
     function cerrarAgregar(){   
@@ -107,6 +108,7 @@
         // window.opener.location.reload();        
         window.close()
     }
+
     function cerrarRegresar(){     
         window.close()
     }

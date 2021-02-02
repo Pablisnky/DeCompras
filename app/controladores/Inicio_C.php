@@ -41,11 +41,9 @@
                     }
                 }
             }
-            //Se CONSULTA la cantidad de tiendas que estan afiliadas por categorias
-            $Datos = $this->ConsultaInicio_M->consultarCantidadTiendas();
             
-            $this->vista("inc/header_inicio", $Datos); 
-            $this->vista("paginas/inicio_V", $Datos);            
+            $this->vista("inc/header_inicio"); 
+            $this->vista("paginas/inicio_V");            
         }
     }
 ?>

@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/telefono/style_telefono.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ubicacion/style_ubicacion.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/eliminar/style_eliminar.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="<?php //echo RUTA_URL;?>/public/css/iconos/eliminar/style_eliminar.css"/> -->
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/checked/style_checked.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/menos/style_menos.css"/>
 
@@ -9,7 +9,7 @@
     <div class="contenedor_90">
         <h1 class="h1_1 h1_3 h1_4">Tiendas de <?php echo $Datos['tiendas_categoria'][0]['categoria']?></h1>
         <div>
-            <a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>"><span class="icon-cancel-circle span_5"></span></a>
+            <a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>"></a>
         </div>
     </div>
     <div class='contenedor_10'>

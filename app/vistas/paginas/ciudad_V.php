@@ -8,13 +8,10 @@
     <div class='contenedor_146'>
         <p class="p_6">Venezuela estado Yaracuy</p>
         <div class="contenedor_73">
-            <h2 class="h2_11 h2_13">Cocorote</h2>
-            <h2 class="h2_11 h2_13">Independencia</h2>
-            <h2 class="h2_11 h2_13">San Felipe</h2>
-            <h2 class="h2_11 h2_13">Yaritagua</h2>
-                <!-- <li class="li_1"><a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Independencia</a></li>
-                <li class="li_1"><a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">San Felipe</a></li>
-                <li class="li_1"><a href="<?php echo RUTA_URL . '/Inicio_C#Contenedor_88';?>">Yaritagua</a></li> -->
+            <h2 class="h2_11 h2_13 borde_3">Cocorote</h2>
+            <h2 class="h2_11 h2_13 borde_3">Independencia</h2>
+            <h2 class="h2_11 h2_13 borde_3">San Felipe</h2>
+            <h2 class="h2_11 h2_13 borde_3">Yaritagua</h2>
         </div>
         <P class="p_6">proximamente nuestra oferta de ciudades será ampliada. </p>
     </div>

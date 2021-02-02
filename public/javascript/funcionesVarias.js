@@ -164,6 +164,15 @@
         },0);
     }
 
+//************************************************************************************************ 
+    //ajusta la altura de un texarea con respecto al contenido que trae de la BD
+    function resize(id){
+        // console.log("______Desde resize()______", id) 
+        var text = document.getElementById(id);
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight+'px';
+    }
+
 //************************************************************************************************
     //Coloca los puntos de miles en tiempo real, a medida que se llena el campo cedula en registroDes_V.php - cuenta_editar_V.php
     function formatoMiles(numero, id){
@@ -224,15 +233,6 @@
     }
 
 //************************************************************************************************ 
-    //ajusta la altura de un texarea con respecto al contenido que trae de la BD
-    function resize(id){
-        // console.log("______Desde resize()______", id) 
-        var text = document.getElementById(id);
-        text.style.height = 'auto';
-        text.style.height = text.scrollHeight+'px';
-    }
-
-//************************************************************************************************ 
     //Realia el cambio de moneda Bolivar a Dolar
     function CambioMonetarioDolar(Monto, id){
         // console.log("______Desde CambioMonetarioDolar______", Monto + " " + id)
@@ -259,10 +259,10 @@
     }
     
 //************************************************************************************************
-function ReiniciaCampo(id_1, id_2){
-    document.getElementById(id_1).value = ''
-    document.getElementById(id_2).value = ''
-}
+    function ReiniciaCampo(id_1, id_2){
+        document.getElementById(id_1).value = ''
+        document.getElementById(id_2).value = ''
+    }
 
 //************************************************************************************************
     //Coloca la clase "activa" en el item seleccionado del menu 

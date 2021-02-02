@@ -6,15 +6,15 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 1823627;
+            // $this->Dolar = 1821534;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
-            // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
+            $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
             // echo '<pre>';
             // print_r($DolarHoy);
             // echo '</pre>';
                 
-            // $this->Dolar = $DolarHoy['USD']['promedio_real']; 
+            $this->Dolar = $DolarHoy['USD']['promedio_real']; 
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
@@ -115,6 +115,10 @@
         public function descargaApp(){
             $this->vista("inc/header");
             $this->vista("paginas/descargaApp_V");
+        }
+
+        public function categorias(){ 
+            header("Location: ../Categoria_C");
         }
         
         //Ulilizada en su momento para pasar imagene de la tabla opciones a la tabla imagenes

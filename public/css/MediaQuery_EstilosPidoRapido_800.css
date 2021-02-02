@@ -207,6 +207,11 @@
 	position: fixed;
 	z-index: 2;
 }
+.Contenedor_34{/*inicio*/
+	top: 94%;
+	left: 0%;
+	width: 100%;
+}
 .contenedor_35{/*inicio*/
 	padding: 3% 0%;
 }
@@ -332,8 +337,8 @@
 .contenedor_68{/*afiliacion*/
 	height: 100%;
 }
-.contenedor_69{/*tiendas - header - header_inicio - header_Tienda - header_AfiCom*/
-	height: 8%;
+.contenedor_69{/*header - header_inicio - header_Tienda - header_AfiCom*/
+	height: 45px;
 }
 .contenedor_71{/*afiliacion*/
 	grid-column-start: 0;	
@@ -625,6 +630,10 @@
 .contInputRadio__label{/*carrito - Secciones_Ajax - Categorias_Ajax*/
 	font-size: 0.9em !important;
 }
+.contInputRadio--margen{/*categoria*/
+	margin: 20px ;
+	font-size: 1.2em;
+}
 .contOpciones{/*opciones*/
 	border-radius: 15px;
 	text-align: center;
@@ -739,6 +748,11 @@
 }
 .h2_13{/*ciudad*/
 	margin: 8% auto;
+}
+.h2_14{/*categoria*/
+	font-size: 1em;
+	width: 95%;
+	margin-top: 15%;	
 }
 .h3_1{/*footer - afiliacion - planes*/
 	font-size: 0.6em;
@@ -1029,6 +1043,35 @@
 .rompeFixed{/*modal_Secciones*/
 	position: absolute;
 }
+.section_1__div{/*inicio*/
+	display: block;
+	position: relative;
+	top: 67%;
+	width: 100%;
+	height: 30%;
+	padding: 0.5% 2%;
+	margin-left: 0%;
+	margin-top: 0%;
+}
+.section_1__div1{/*inicio*/
+	width: 100%;
+}
+.section_1__div2{/*inicio*/
+	margin: 5% auto;
+	text-align: center;
+}
+.section_1__p{/*inicio*/
+	text-align: center;
+	font-size: 1.2em;
+	line-height: 30px;
+}
+.section_1__boton{/*inicio*/
+	width: 65%;
+	height: 30px; 
+	display: block;
+	line-height: 30px;
+	margin: auto;
+}
 .section_2{/*RecibePedido*/
 	padding-top: 25%;
 }
@@ -1053,6 +1096,10 @@
 	top:  0%;
 	left: 0%;
 	width: 100% !important;
+}
+.sectionTienda_div{/*inicio*/
+	margin: 10% auto;
+	width: 90%;
 }
 .select_1{/*inicio*/
 	height: 30px;
