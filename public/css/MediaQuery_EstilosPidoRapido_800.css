@@ -217,7 +217,7 @@
 }
 .contenedor_37{/*inicio*/
 	position: absolute;
-	top: 12%;
+	top: 6%;
 	left: 3%;
 }
 .contenedor_38/*afiliacion*/{
@@ -338,6 +338,7 @@
 	height: 100%;
 }
 .contenedor_69{/*header - header_inicio - header_Tienda - header_AfiCom*/
+	background-color: var(--OficialOscuro);
 	height: 45px;
 }
 .contenedor_71{/*afiliacion*/
@@ -511,6 +512,9 @@
 }
 .contenedor_114{/*cuenta_editar_prod*/
 	width: 90%;
+}
+.contenedor_116{/* header_inicio*/
+	background-color: initial;
 }
 .contenedor_118{/*categorias_Ajax - cuenta_publicar*/
 	margin-top: 20%;
@@ -963,6 +967,7 @@
 	font-size: 1.2em;
 	width: 100%;
 	height: 35px;
+	line-height: 35px;
 	text-align: left;
 	padding-left: 5%;
 }

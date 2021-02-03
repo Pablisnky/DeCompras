@@ -27,7 +27,7 @@
             <div class="section_1__div">
                 <div class="section_1__div1">
                     <p class="section_1__p">Muchos de tus clientes estan verdaderamente ocupados</p>
-                    <p class="section_1__p"><span class="span_22">¡ Ponselas facil ! </span><br> digitaliza tu tienda</p>
+                    <p class="section_1__p"><span class="span_22">¡ Pónsela facil ! </span><br> digitaliza tu tienda</p>
                 </div>
                 <div class="section_1__div2" id="BotonRegistrar">
                     <label class="section_1__boton"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a></label>
@@ -70,6 +70,7 @@
 
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js?v=' . rand();?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js?v=' . rand();?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/convoca_SW.js';?>"></script>
 
 <!-- <script type="text/javascript" src ="<?php // echo RUTA_URL?>/public/javascript/push.min.js"></script>
@@ -92,4 +93,4 @@
     });
 </script> -->
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php'); ?>
+<?php // require(RUTA_APP . '/vistas/inc/footer.php'); ?>

@@ -85,10 +85,9 @@ body, html{
 	text-align: center;
 }
 .a_3A{/*inicio*/
-	color: var(--OficialOscuro);
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1.3em;
-	font-weight: bold;
+	color: black;
 }
 .a_4{/*header_AfiCom*/
 	display: none;
@@ -503,7 +502,7 @@ body, html{
 }
 .contenedor_37{/*inicio*/
 	position: absolute;
-	top: 15%;
+	top: 10%;
 	left: 3%;
 }
 .contenedor_38/*afiliacion*/{
@@ -625,12 +624,13 @@ body, html{
 	margin: 1% auto 5% auto !important;
 }
 .contenedor_69{/*header - header_AfiCom - header_inicio*/
-	/* background-color: var(--OficialOscuro); */
+	background-color: var(--OficialOscuro);
+	/* background-color: yellow; */
 	position: fixed;
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	height: 13%;
+	/* height: 13%; */
 	z-index: 3 !important;
 }
 .contenedor_70{/*afiliacion - cuenta_ventas*/
@@ -884,7 +884,7 @@ body, html{
 	width: 100%;
 }
 .contenedor_116{/* header_inicio*/
-	height: 10%;
+	/* height: 10%; */
 }
 .contenedor_119{/*cuenta_publicar - cuenta_editar_prod - cuenta_editar*/
 	width: 60%;
@@ -1988,21 +1988,23 @@ body, html{
 	width: 30%;
 }
 .menuResponsive{/*da formato a barra de menu y contiene todos los enlaces de la misma, solo a la del header*/
-	/* background-color: var(--OficialOscuro); */
-	width: 100%;
-	display: flex; /*Organiza los elementos horizontalmente*/ 
-	justify-content: space-between;
-	position: absolute;
-	bottom: 0px;
+	background-color: var(--OficialOscuro);
+	/* background-color: yellow; */
+	/* width: 100%; */
+	/*display: flex; Organiza los elementos horizontalmente*/ 
+	/* justify-content: space-between; */
+	/* position: absolute;
+	bottom: 0px; */
 }
 .menuResponsive ul{/*Todas  las páginas*/
+	/* background-color: blue; */
 	width: 95%;
 	margin: auto;
 	list-style: none;
 	display: flex; /*Organiza los elementos horizontalmente*/ 
 }
 .menuResponsive li{/*Todas las páginas*/
-	padding-bottom: 0.2%;
+	/* padding-bottom: 0.2%; */
 	flex-grow: 1;/*distribuye proporcionalmente los elementos internos en el eje horizontal, es necesario que el elemento padre tenga la propiedad display con el valor flex*/
 	width: 80%;
 }
@@ -2010,18 +2012,20 @@ body, html{
 	display: block;
 	width: 170px;
 	margin: auto;
-	color: white;
-	font-size: 15px;
+	/* color: black; */
+	font-size: 1.2em;
 	text-align: center;
-	padding:3% 0%;
-	height: 27px;
+	/* padding:3% 0%; */
+	height: 50px;
+	line-height: 50px;
 	box-sizing: border-box;
 }
 .menuResponsive li a:hover{/*Todas las páginas*/
 	font-size: 19px;
 }
 .nav_1{/*header_inicio*/
-	padding-top: 2.5%;
+	background-color: rgba(255, 255, 0, 1);
+	/* color: black; */
 }
 .ocultar{/*vitrina - carrito* - horario*/
 	display: none;
@@ -2447,6 +2451,16 @@ body, html{
 .span_22{/*inicio*/	
 	font-size: 1.5em;
 }
+.snap-container{/*inicio*/
+    height: 100vh;
+    overflow: auto;  
+    scroll-snap-type: y mandatory;  
+}
+.snap-section{/*inicio*/
+    scroll-snap-align: start;
+    min-height: 60vh;
+  }
+
 .tabla{/*carrito*/
 	width: 100%;
 }

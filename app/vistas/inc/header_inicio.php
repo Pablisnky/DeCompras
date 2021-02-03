@@ -32,10 +32,10 @@
 			<label id="ComandoMenu" class="comandoMenu_2 ocultar" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="menuResponsive nav_1">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/menu_C/categorias';?>">Ver Tiendas</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/categorias';?>">Ver Tiendas</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
 				</ul>
 			</nav>
 		</header>
