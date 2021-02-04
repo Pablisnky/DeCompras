@@ -248,7 +248,7 @@
         }
 
         public function salirTienda(){
-            //La función redireccionar se encuantra en url_helper.php
+            //La función redireccionar se encuentra en url_helper.php
             redireccionar("/Inicio_C");
         }
     }

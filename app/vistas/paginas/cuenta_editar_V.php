@@ -100,6 +100,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <option>Seleccione estado</option>
                         <?php
                     }  ?>
+                    <option>Lara</option>
                     <option>Yaracuy</option>
                 </select>
 

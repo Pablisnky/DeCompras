@@ -4,27 +4,31 @@ document.getElementById("Contenedor_34").addEventListener('click', function(){au
                               
 document.getElementById("Span_5").addEventListener('click', function(){CerrarModal_X('Busqueda')})
 
-// window.addEventListener("scroll",function(){
-//     //Se consulta la distancia en px desde el borde superior de la ventana
-//     var ProfundidadBotonRegistrar = document.getElementById("BotonRegistrar")
-//     console.log("ProfundidadBotonRegistrar", ProfundidadBotonRegistrar.getBoundingClientRect().top)
-//     let A = ProfundidadBotonRegistrar.getBoundingClientRect().top
-    
-//     //Se consulta la distancia en px desde el borde superior de la ventana
-//     var ProfundidadBotonVer = document.getElementById("BotonVer")
-//     console.log("ProfundidadBotonVer", ProfundidadBotonVer.getBoundingClientRect().top)
-//     let B = ProfundidadBotonVer.getBoundingClientRect().top
+//Se cambia el color de la cinta del menu principal
+window.addEventListener("scroll",function(){
+    //Se consulta la distancia en px del borde superior de la segunda imagen  
+    var ProfundidadImagen_2 = document.getElementById("Section_1")
+    console.log("Profundidad Imagen_2", ProfundidadImagen_2.getBoundingClientRect().top)
+    let A = ProfundidadImagen_2.getBoundingClientRect().top
+        
+    if(A < 0){
+        document.getElementById("MenuResponsive").style.backgroundColor = "#3D3224"
+        let enlacesMenu = document.querySelectorAll("li a.a_3A")
+        for(let i = 0; i < enlacesMenu.length; i++){
+            console.log(enlacesMenu[i])
+            enlacesMenu[i].style.color = "white"
+        }
+    }
+    else{
+        document.getElementById("MenuResponsive").style.backgroundColor = "rgb(206, 203, 222)"
+        let enlacesMenu = document.querySelectorAll("li a.a_3A")
+        for(let i = 0; i < enlacesMenu.length; i++){
+            console.log(enlacesMenu[i])
+            enlacesMenu[i].style.color = "black"
+        }
+    }  
+})
 
-    
-//     if(A < B){
-//         ProfundidadBotonVer.style.position = "relative"
-//         ProfundidadBotonVer.style.top = "80%"
-//     }
-//     else{
-//         ProfundidadBotonVer.style.position = "fixed"
-//         ProfundidadBotonVer.style.top = "70%"
-//     }  
-// })
 // *****************************************************************************************************
     //Por medio de delegación de eventos se controla el alto de los textarea que contienen el nombre del producto, esto es asi debido a que el archivo dondes estan es cargado mediante ajax    
     // document.getElementById('Buscar_Pedido').addEventListener('change', function(event){

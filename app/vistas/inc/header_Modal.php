@@ -19,7 +19,7 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>	
-		<header class="contenedor_69">
+		<header class="header">
 			<!-- <a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">PedidoRemoto</a> -->
 			<h1 class="h1_10 h1_7">PedidoRemoto</h1>
 		</header>	

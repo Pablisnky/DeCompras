@@ -42,9 +42,19 @@
             $this->Horario = new CalculoApertura_C;
             $HorarioTrabajo = $this->Horario->horarioTienda($ID_Tienda);
             
-            //Se CONSULTAN la imagen de cada sección
+            //Se CONSULTAN la imagen principal de cada sección de una tienda especifica
             $ImagenSecciones = $this->ConsultaVitrina_M->consultarImagenesSecciones($ID_Tienda);
- 
+
+            //Si no hay imagen establecida para una sección, se selecciona la primera imagen que se encuentre de esa sección
+            if($ImagenSecciones == Array()) :
+                $ImagenSecciones = $this->ConsultaVitrina_M->consultarImagenesSeccionForzada($ID_Tienda);
+            endif;
+            
+            // echo "<pre>";
+            // print_r($ImagenSecciones);
+            // echo "</pre>";
+            // exit();
+
             $Datos=[
                 'id_tienda' => $ID_Tienda,
                 'categoria' => $Categoria,

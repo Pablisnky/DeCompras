@@ -62,13 +62,13 @@
 	line-height: 1.5em;
 	font-size: 1.5em;
 }
-.menuResponsive ul{/*Todas  las paginas*/
+.header__menuResponsive ul{/*Todas  las paginas*/
 	width: 100%;
 }
-.menuResponsive li a{/*header*/
+.header__menuResponsive li a{/*header*/
 	font-size: 1.3em;
 }
-.menuResponsive li a:hover{/*Todas las páginas*/
+.header__menuResponsive li a:hover{/*Todas las páginas*/
 	font-size: 1.3em;
 }
 .p_3{/*tiendas - afiliacion*/

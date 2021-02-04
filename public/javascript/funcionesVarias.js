@@ -1,7 +1,7 @@
     //Si en la página existe el footer 
-    if(document.getElementById('Aplicacion_PWA')){
-        document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacion_PWA, false)
-    }
+    // if(document.getElementById('Aplicacion_PWA')){
+    //     document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacion_PWA, false)
+    // }
 
 //************************************************************************************************
     //obtiendo informacion del DOM para identificar el elemento donde se hizo click 

@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
 
-    <section class="section_1" id="Section_1">
+    <section class="section_1">
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
             <!-- <h2 class="h2_4">Tu tienda en toda la ciudad</h2> -->
@@ -8,7 +8,7 @@
         </div>
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
             <div class="Contenedor_34" id="BotonVer">
-                <label class="section_1__boton borde_1"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/menu_C/categorias';?>">Ver tiendas</a></label>
+                <label class="section_1__boton borde_1"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a></label>
             </div>
         </div>
         <div class="slider">
@@ -22,7 +22,7 @@
         </div>
     </section>
 
-    <section class="section_1">
+    <section class="section_1 section_1--vh" id="Section_1">
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">
             <div class="section_1__div">
                 <div class="section_1__div1">
@@ -93,4 +93,4 @@
     });
 </script> -->
 
-<?php // require(RUTA_APP . '/vistas/inc/footer.php'); ?>
+<?php require(RUTA_APP . '/vistas/inc/footer.php'); ?>

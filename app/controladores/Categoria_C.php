@@ -13,7 +13,7 @@
             $CiudadesTiendas = $this->ConsultaCategoria_M->consultarCiudadesTiendas();
            
             $Datos = [
-                'ciudades' => $CiudadesTiendas,
+                'ciudades' => $CiudadesTiendas, //parroquia_Tien
             ];
 
             // echo '<pre>';

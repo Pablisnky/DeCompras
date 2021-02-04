@@ -32,10 +32,26 @@
         }
            
         //SELECT de las imagenes principales de cada sección de una tienda
-        public function consultarImagenesSecciones(){
-            $stmt = $this->dbh->prepare("SELECT nombre_img, ID_Seccion FROM imagenes WHERE fotoSeccion = :FOTOSECCION GROUP BY ID_Seccion");  
+        public function consultarImagenesSecciones($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT nombre_img, imagenes.ID_Seccion FROM imagenes INNER JOIN secciones_imagenes ON imagenes.ID_Imagen=secciones_imagenes.ID_Imagen INNER JOIN secciones ON secciones_imagenes.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA AND fotoSeccion = :FOTOSECCION GROUP BY ID_Seccion");  
             
-            $stmt->bindValue(':FOTOSECCION', 1, PDO::PARAM_INT);            
+            $stmt->bindValue(':FOTOSECCION', 1, PDO::PARAM_INT);        
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+           
+        //SELECT de las imagenes principales de cada sección de una tienda
+        public function consultarImagenesSeccionForzada($ID_Tienda){
+            $stmt = $this->dbh->prepare("SELECT nombre_img, imagenes.ID_Seccion FROM imagenes INNER JOIN secciones_imagenes ON imagenes.ID_Imagen=secciones_imagenes.ID_Imagen INNER JOIN secciones ON secciones_imagenes.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA  GROUP BY ID_Seccion");  
+                    
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 
+
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
@@ -44,7 +60,7 @@
             }
         }
 
-        //SELECT de los productos de la tienda seleccionada
+        //SELECT de los productos por sección de la tienda seleccionada
         public function consultarCant_ProductosSeccion($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT tiendas_secciones.ID_Seccion, COUNT(ID_Producto) AS CantidadPro FROM tiendas_secciones INNER JOIN secciones_productos ON tiendas_secciones.ID_Seccion=secciones_productos.ID_Seccion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA GROUP BY tiendas_secciones.ID_Seccion" );  
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);             

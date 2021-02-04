@@ -34,14 +34,14 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body onload="nobackbutton();">	
-		<header class="contenedor_69">
+		<header class="header">
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111">
 				<h1 class="h1_10"><?php echo $Nombre_Tienda?></h1>
 				<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div> 
 			<label id="ComandoMenu" class="comandoMenu_2" onclick="mostrarMenu()"><span class="icon-menu  span_15" id="Span_6"></span></label>
-			<nav id="MenuResponsive" class="menuResponsive">
+			<nav id="MenuResponsive" class="header__menuResponsive">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="#">Ofertas</a></li>
 					<li><a class="a_3" href="#">Lo más pedido</a></li>

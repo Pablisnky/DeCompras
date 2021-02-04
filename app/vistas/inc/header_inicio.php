@@ -19,6 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>
 
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_800.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/EstilosPedidoRemoto_slider.css?v=<?php echo(rand());?>"/>
@@ -28,12 +29,12 @@
 		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
     </head>
     <body>				
-		<header class="contenedor_69 contenedor_116">
+		<header class="header contenedor_116">
 			<label id="ComandoMenu" class="comandoMenu_2 ocultar" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
-			<nav id="MenuResponsive" class="menuResponsive nav_1">
+			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
-					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li>
+					<!-- <li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li> -->
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/categorias';?>">Ver Tiendas</a></li>
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
 				</ul>

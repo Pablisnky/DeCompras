@@ -6,22 +6,21 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            // $this->Dolar = 1821534;
+            $this->Dolar = 1790207;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
-            $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
+            // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
             // echo '<pre>';
             // print_r($DolarHoy);
             // echo '</pre>';
                 
-            $this->Dolar = $DolarHoy['USD']['promedio_real']; 
+            // $this->Dolar = $DolarHoy['USD']['promedio_real']; 
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
         }
         
-        public function index(){            
-
+        public function index(){    
             require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
 
             $this->ActualizarPrecio = new CalculoDolar_C();

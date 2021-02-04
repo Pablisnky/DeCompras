@@ -1,8 +1,9 @@
 <?php
     if(!empty($Datos['ciudades'])){ ?>
         <section class="sectionTienda" id="Section_4">
+            <a  href="<?php echo RUTA_URL . '/Inicio_C';?>"><span class="icon-cancel-circle spanCerrar"></span></a>
             <div class="sectionTienda_div" id="SectionTiendas">
-                <h1 class="h1_1">Yaracuy - Venezuela</h1>
+                <h1 class="h1_7">Yaracuy</h1>
                 <?php
                     foreach($Datos['ciudades'] as $arr) : ?>
                         <div class="contInputRadio contInputRadio--margen">     
@@ -16,6 +17,7 @@
     <?php
    }   ?>
 
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/comida/style_comida.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/merceria/style_merceria.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/farmacia/style_farmacia.css"/>
@@ -24,11 +26,12 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/artesanos/style_artesanos.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ropa/style_ropa.css"/>
         
-<section id="Section_2js">
+<section class="section_1" id="Section_2js">
     <div id="Contenedor_23"></div>
 </section>
 
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Categorias.js?v=' . rand();?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Categorias.js?v=' . rand();?>"></script>
+<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php'); ?>
+<?php //require(RUTA_APP . '/vistas/inc/footer.php'); ?>
