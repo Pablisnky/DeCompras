@@ -65,7 +65,6 @@
             <!--Carga mediante Ajax las tiendas disponibles para la busqueda solicitada desde buscador_V.php -->
             <div class="contenedor_58" id="Buscar_Pedido"></div>
         </div>
-        </div>
     </section>
 
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js?v=' . rand();?>"></script>

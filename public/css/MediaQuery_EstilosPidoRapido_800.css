@@ -484,9 +484,10 @@
 	margin-bottom: 25%;
 }
 .contenedor_98{/*footer*/
+	/* background-color: red; */
 	align-items: center;
 	position: initial;
-	width: 45%;
+	width: 50%;
 	margin: auto;
 	margin-top: 15%;
 }
@@ -573,6 +574,10 @@
 	margin-top: 20%;
 	padding: 3%;
 }
+.contenedor_119{/*cuenta_editar_prod - cuenta_editar*/
+	width: 95%;
+	height: 180px;
+}
 .contenedor_120{ /*tiendas*/ 
 	height: 160px;
 }
@@ -608,6 +613,10 @@
 .contenedor_135{/*cuenta_editar_prod*/
 	width: 90%;
 	margin: 2% auto 10% auto;
+}
+.contenedor_137{/*pwa*/
+	margin: 25% auto;
+	width: 90%;
 }
 .contenedor_138{/*carrito*/
 	width: 30%;
@@ -850,6 +859,9 @@
 .imagen_5{/*footer*/
 	width: 27%;
 }
+.imagen_5A{/*pwa*/
+	width: 20%;
+}
 .imagen_6{/*buscador - cuenta_editar_prod - cuenta_publicar*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 100%;
@@ -1020,9 +1032,9 @@
 .p_7{/*cuenta*/
 	font-size: 1.1em;
 }
-.p_8{/*afiliacion*/
-	padding-top: 20%;
-	font-size: 1.3em;
+.p_8{/*pwa*/
+	padding-top: 10%;
+	font-size: 1.2em;
 }
 .p_9{/*cuenta_editar*/
 	margin-bottom: 10%;
@@ -1252,6 +1264,14 @@
 .ul_5{/*login*/
 	width: 70%;
 	margin: 10% 0% 10% 25%;
+}
+.ul_6{/*pwa*/
+	width: 90%; 
+	margin-left: 8%;
+}
+.ul_6 li{/*pwa*/
+	margin-bottom: 5%;
+	line-height: 25px;
 }
 ul .menuContenedor_2{/*header_AfiCom*/
 	/* background-color: var(--OficialOscuro);

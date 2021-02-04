@@ -1,5 +1,7 @@
 document.getElementById("Contenedor_34").addEventListener('click', muestraBusqueda, false)
 
+document.getElementById("imagen_5").addEventListener('click', Documentacion_PWA, false)
+
 document.getElementById("Contenedor_34").addEventListener('click', function(){autofocus('Input_9')}, false)
                               
 document.getElementById("Span_5").addEventListener('click', function(){CerrarModal_X('Busqueda')})
@@ -13,7 +15,7 @@ window.addEventListener("scroll",function(){
         
     if(A < 35){
         document.getElementById("MenuResponsive").style.backgroundColor = "rgb(44, 45, 49)" //inferior
-        document.getElementById("MenuResponsive").style.transitionDuration = "2s"
+        document.getElementById("MenuResponsive").style.transitionDuration = "1s"
         let enlacesMenu = document.querySelectorAll("li a.a_3A")
         for(let i = 0; i < enlacesMenu.length; i++){
             console.log(enlacesMenu[i])

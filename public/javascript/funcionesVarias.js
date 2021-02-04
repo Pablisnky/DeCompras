@@ -1,7 +1,7 @@
     //Si en la página existe el footer 
-    // if(document.getElementById('Aplicacion_PWA')){
-    //     document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacion_PWA, false)
-    // }
+    if(document.getElementById('Aplicacion_PWA')){
+        document.getElementById('Aplicacion_PWA').addEventListener('click', Documentacion_PWA, false)
+    }
 
 //************************************************************************************************
     //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
@@ -93,7 +93,7 @@
 //************************************************************************************************ 
     //Muestra que es una PWA
     function Documentacion_PWA(){  
-        // console.log("______Desde Documentacion_PWA()______")      
+        console.log("______Desde Documentacion_PWA()______")      
         window.open("http://localhost/proyectos/PidoRapido/Menu_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");   
         // window.open("https://www.pedidoremoto.com/Menu_C/PWA", "ventana1", "width=1000,height=650,scrollbars=YES");   
     }

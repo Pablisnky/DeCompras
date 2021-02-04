@@ -30,9 +30,7 @@
     </head>
     <body>				
 		<header class="header contenedor_116">
-			<!-- <div class="contIconoBuscador borde_1"> -->
-				<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15Inicio" id="Span_6"></span></label>
-			<!-- </div> -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15Inicio" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
@@ -54,7 +52,6 @@
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
-
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

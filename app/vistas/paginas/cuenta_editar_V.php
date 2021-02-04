@@ -69,8 +69,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Datos de tienda</legend> 
                 <div class="contenedor_119 borde_1 borde_2">
+                    <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../public/images/tiendas/<?php echo $Foto_Tien;?>"/>
                     <label for="imgInp_2"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah_2" alt="Fotografia de la tienda" src="../public/images/tiendas/<?php echo $Foto_Tien;?>"/>
                     <input class="ocultar" type="file" name="imagen_Tienda" id="imgInp_2"/>
                 </div>
 
