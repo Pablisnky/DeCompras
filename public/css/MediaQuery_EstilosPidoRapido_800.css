@@ -13,6 +13,9 @@
 .a_3{/*header - header_inicio*/
 	width: 100% !important;
 }
+.a_3A{/*inicio*/
+	font-size: 1.3em;
+}
 .a_4{/*header_AfiCom*/
 	display: block;
 	width: 100% ;
@@ -59,7 +62,12 @@
 .br_2{/*carrito*/
 	display: block;
 }
+.comandoMenu_Inicio{/*header_inicio*/
+	background-color: var(--OficialClaro);
+	border-radius: 8px !important;
+}
 .comandoMenu_2{/*header_inicio* - header_AfiCom - header - header_Tienda*/
+	border-radius: 10px;
 	visibility: visible;
 	position: absolute;
 	top: 0%;
@@ -106,7 +114,6 @@
 }
 .contenedor_7{/*footer*/
 	margin-top: 0%;
-	min-height: 45%;
 	padding-top: 2%;
 }
 .contenedor_8{/*footer*/
@@ -203,9 +210,13 @@
 	top: 0.5%;
 	left: 85%;
 	padding: 1.5%;
+	padding-bottom: 1%;
 	width: 10%;
 	position: fixed;
 	z-index: 2;
+}
+.contIconoBuscador__span{/*header_inicio*/
+	font-size: 1.3em;
 }
 .Contenedor_34{/*inicio*/
 	top: 94%;
@@ -477,6 +488,7 @@
 	position: initial;
 	width: 45%;
 	margin: auto;
+	margin-top: 15%;
 }
 .contenedor_99{/*afiliacion*/
 	margin: 15% auto;
@@ -710,6 +722,7 @@
 	margin-top: 0% !important;
 	padding-top: 0%;
 	font-weight: normal;
+	min-height: 45%;
 }
 .h1_1{/*carrito - cuenta_productos - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes*/
 	font-size: 1.2em;
@@ -1150,6 +1163,11 @@
 	display: block;
 	color: rgb(239, 245, 245);
 	font-size: 8vw;
+}
+.span_15Inicio{/*header_inicio*/
+	display: block;
+	color:  var(--OficialOscuro);
+	font-size: 1.5em;
 }
 .span_16{/*inicio*/
 	margin-left: 90%;

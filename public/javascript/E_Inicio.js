@@ -11,8 +11,9 @@ window.addEventListener("scroll",function(){
     console.log("Profundidad Imagen_2", ProfundidadImagen_2.getBoundingClientRect().top)
     let A = ProfundidadImagen_2.getBoundingClientRect().top
         
-    if(A < 0){
-        document.getElementById("MenuResponsive").style.backgroundColor = "#3D3224"
+    if(A < 35){
+        document.getElementById("MenuResponsive").style.backgroundColor = "rgb(44, 45, 49)" //inferior
+        document.getElementById("MenuResponsive").style.transitionDuration = "2s"
         let enlacesMenu = document.querySelectorAll("li a.a_3A")
         for(let i = 0; i < enlacesMenu.length; i++){
             console.log(enlacesMenu[i])
@@ -20,7 +21,7 @@ window.addEventListener("scroll",function(){
         }
     }
     else{
-        document.getElementById("MenuResponsive").style.backgroundColor = "rgb(206, 203, 222)"
+        document.getElementById("MenuResponsive").style.backgroundColor = "rgb(206, 203, 222)" //superior
         let enlacesMenu = document.querySelectorAll("li a.a_3A")
         for(let i = 0; i < enlacesMenu.length; i++){
             console.log(enlacesMenu[i])

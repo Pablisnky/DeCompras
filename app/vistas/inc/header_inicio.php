@@ -25,12 +25,14 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/EstilosPedidoRemoto_slider.css?v=<?php echo(rand());?>"/>
 		
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
-		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>	
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>	
 		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
     </head>
     <body>				
 		<header class="header contenedor_116">
-			<label id="ComandoMenu" class="comandoMenu_2 ocultar" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>
+			<!-- <div class="contIconoBuscador borde_1"> -->
+				<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15Inicio" id="Span_6"></span></label>
+			<!-- </div> -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>

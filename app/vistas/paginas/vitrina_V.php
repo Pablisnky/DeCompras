@@ -110,7 +110,7 @@
 <!-- <div id="Mostrar_Alert"></div> -->
 
 <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js?v=' . rand();?>"></script>
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js?v=' . rand();?>';?>"></script>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js?v=' . rand();?>"></script>
 
 <?php //include(RUTA_APP . "/vistas/inc/footer.php");?>
 <!-- ******************************************************************************************* -->

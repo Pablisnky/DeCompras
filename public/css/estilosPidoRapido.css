@@ -85,7 +85,7 @@ body, html{
 	text-align: center;
 }
 .a_3A{/*inicio*/
-	font-family: 'Montserrat', sans-serif;
+	/* font-family: 'Montserrat', sans-serif; */
 	font-size: 1.3em;
 	color: black;
 }
@@ -470,15 +470,19 @@ body, html{
 	background-color: var(--OficialClaro);
 	color: var(--OficialOscuro);
 	position: fixed;
-	top: 15%;
+	top: 10%;
 	left: 93%;
 	border-radius: 10px;
-	padding: 1%;
-	width: 4%;
+	padding: 0.5%;
+	width: 3%;
 	z-index: 4 !important;
 }
 .contIconoBuscador:hover{/*header_inicio*/
 	cursor: pointer;
+}
+.contIconoBuscador__span{/*header_inicio*/
+	color:rgb(51, 51, 51) !important;
+	font-size: 1.5em;
 }
 .Contenedor_34{/*inicio*/
 	width: 10%;
@@ -1365,8 +1369,26 @@ body, html{
 	padding: 3%;
 }
 .footer{
-	background-color: var(--footer);
+	/* background-color: var(--footer); */
+	background:  linear-gradient(to bottom, rgb(11, 11, 11), rgba(44, 45, 49, 0.7));
 	height: 30%;
+}
+.footer__h3{/*footer*/
+	color: white;
+	font-weight: normal;
+	font-size: 0.7em;
+}
+.footer__h6{/*footer*/
+	color: white;
+	text-align: center;
+	font-weight: normal;
+	font-size: 0.6em;
+}
+.footer__h5{/*footer*/
+	color: white;
+	text-align: center;
+	font-weight: normal;
+	font-size: 1em;
 }
 .h1_1{/*carrito - cuenta_productos - Categorias_Ajax - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes - modal_sinProductos*/
 	font-weight: normal;
@@ -1506,10 +1528,6 @@ body, html{
 	border-style: solid;
 	border-color: orange;
 }
-.h3_1{/*footer - afiliacion - planes*/
-	font-weight: normal;
-	font-size: 0.7em;
-}
 .h3_2{/*inicio - carrito*/
 	font-weight: normal;
 	font-size: 1.3em;
@@ -1531,17 +1549,6 @@ body, html{
 }
 .h3_10{/*buscador*/
 	font-size: 1em;
-}
-.h5_1{/*footer*/
-	color: rgba(51, 51, 51, 1);
-	text-align: center;
-	font-weight: normal;
-	font-size: 1em;
-}
-.h6_1{/*footer*/
-	text-align: center;
-	font-weight: normal;
-	font-size: 0.6em;
 }
 .header{/*header - header_AfiCom - header_inicio*/
 	background-color: var(--OficialOscuro);
@@ -1589,7 +1596,7 @@ body, html{
 	text-align: center;
 	/* padding:3% 0%; */
 	/* height: 50px; */
-	line-height: 6vh;
+	line-height: 35px; /*6vh*/
 	box-sizing: border-box;
 }
 .header__menuResponsive li a:hover{/*Todas las páginas*/
@@ -2362,12 +2369,8 @@ body, html{
 	cursor: pointer !important;
 }
 .span_6{/*inicio*/
-	color:rgb(51, 51, 51);
-	font-size: 2.5em;
-}
-.contIconoBuscador__span{/*header_inicio*/
-	color:rgb(51, 51, 51) !important;
-	font-size: 1.5em;
+	/* color:rgb(51, 51, 51);
+	font-size: 2.5em; */
 }
 .span_8{/*inicio*/
 	color:rgba(51, 51, 51, 0.5);
@@ -2405,7 +2408,7 @@ body, html{
 	cursor: pointer;
 }
 .span_15{/*header_inicio - header - header_AfiCom*/
-	color: white;
+	/* color: white; */
 }
 .span_16{/*inicio*/
 	display: block;
