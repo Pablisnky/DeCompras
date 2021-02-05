@@ -1346,6 +1346,9 @@ body, html{
 	text-align: center;
 	margin-bottom: 2%;
 }
+.sectionModal__div--corto{/*modal_recuperarCorreo*/
+	width: 40%;
+}
 .spanCerrar{/*inicio - modal_fueraHorario - categoria*/
 	color: white;
 	font-size: 2em;
@@ -1831,6 +1834,14 @@ body, html{
 .input_13:focus, .textarea_4:focus{/*cuenta_publicar - cuenta_editar*/
 	border-color: rgb(51, 51 ,51);
 }
+.input_13--centro{/*modal_recuperarCorreo*/
+	text-align: center;
+}
+.input_13--sinFormato{/*modal_recuperarCorreo*/
+	background-color: var(--OficialClaro);
+	text-align: center;
+	border: none;
+}
 .input_13A{/*cuenta_editar*/
 	font-size: 1em;
 }
@@ -2036,6 +2047,13 @@ body, html{
 	border: none;
 	margin: 0px !important;
 	width: 30%;
+}
+.modal__div{/*modal_recuperarCorreo*/
+	/* background-color: var(--OficialClaro);
+	width: 70%;
+	margin: 2% auto;
+	padding: 1%;
+	border-radius: 15px; */
 }
 .ocultar{/*vitrina - carrito* - horario*/
 	display: none;

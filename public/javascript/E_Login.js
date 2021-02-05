@@ -2,6 +2,11 @@ window.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, fal
 
 document.getElementById("Label_7").addEventListener('click', ReestablecerContrasena, false)
 
+//Por medio de delegación de eventos, ya que el elemento se carga via Ajax
+document.getElementById("Label_7").addEventListener("click", function(){
+    autofocus('Input_13_JS')
+}, false)
+
 //************************************************************************************************
     //Recupera contraseña olvidada
     function ReestablecerContrasena(){

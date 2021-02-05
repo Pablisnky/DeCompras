@@ -56,7 +56,7 @@
 //************************************************************************************************
     //Coloca el cursor en el input automaticamente 
     function autofocus(id){
-        // console.log("______Desde autofocus()______", id)
+        console.log("______Desde autofocus()______", id)
 
         //Si el elemento existe
         if(document.getElementById(id)){

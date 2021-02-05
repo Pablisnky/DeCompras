@@ -26,7 +26,7 @@ Resoluciones
 MAC en wifi
 Router 34:4d:ea:fa:8c:10
 Telefono Lisbella 7c:a1:77:17:4c:f0
-Tablet C0:3F:D5:C6:DD:99
+Tablet c0:3f:d5:c6:d0:99
 Labtop 44:6d:57:eb:10:57
 Lusvio 34:29:12:bf:e8:fc
 

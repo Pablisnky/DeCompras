@@ -223,14 +223,23 @@
             $Correo= $_POST["correo"];
 
             // EL numero aleatorio es de tipo string se debe cambiar a entero
-            gettype($CodigoUsuario) . "<br>";
+            // echo gettype($CodigoUsuario) . "<br>";
             settype($CodigoUsuario,"integer");
-            gettype($CodigoUsuario) . "<br>";
+            // echo gettype($CodigoUsuario) . "<br>";
             
             //Se comprueba el código enviado por el usuario con el código que hay en la BD
             $VerificaCodigo = $this->ConsultaLogin_M->consultarCodigoAleatorio($Correo, $CodigoUsuario);
 
-            if($VerificaCodigo == 0){//Si el codigo que envia el usuario es diferente al del sistema            
+            if($VerificaCodigo == 0){//Si el codigo que envia el usuario es diferente al del sistema             
+                
+                $Datos = [
+                    'correo' => $Correo,
+                    'bandera' => 'nuevoIntento'
+                ];
+
+                $this->vista("inc/header_Modal"); 
+                $this->vista("modal/modal_recuperarCorreo_V", $Datos);
+
                 echo "<p class='Inicio_16'>Código invalido</p>";
                 echo "<a class='Inicio_16' href='javascript:history.go(-1)'>Regresar</a>";
                 exit();            

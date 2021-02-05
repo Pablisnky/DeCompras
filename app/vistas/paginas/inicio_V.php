@@ -13,11 +13,11 @@
         </div>
         <div class="slider">
             <ul>
+                <li><label for="Li_1"><span>compras y despachos</span><br> en tiendas de tu ciudad.</label></li>
                 <li><label for="Li_2"><span>e-commerce</span><br> para pequeños comercios y emprendimientos.</label></li> 
                 <li><label for="Li_3">Ideal para ventas de comida rapida, minimarket, fruterías, panaderías, ferreterías, bodegas, y más.</label>
                 <li><label>Registra tu tienda por<br class="br_2"> <span>98% menos</span> <br class="br_2">del costo de la renta de un local comercial.</label></li>
                 <li><label for="Li_1">Permite a tus clientes realizar compras en tu tienda virtual con <span>Pagos directos</span> <br class="br_2"> a tus cuentas.</label></li>
-                <li><label for="Li_1">PedidoRemoto, <span>compras y despachos</span> en tiendas de tu ciudad.</label></li>
             </ul>
         </div>
     </section>
@@ -27,7 +27,7 @@
             <div class="section_1__div">
                 <div class="section_1__div1">
                     <p class="section_1__p">Muchos de tus clientes estan verdaderamente ocupados</p>
-                    <p class="section_1__p"><span class="span_22">¡ Pónsela facil ! </span><br> digitaliza tu tienda</p>
+                    <p class="section_1__p"><span class="span_22">¡ Ofrece un servicio Premium ! </span><br> digitalizando tu tienda</p>
                 </div>
                 <div class="section_1__div2" id="BotonRegistrar">
                     <label class="section_1__boton"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a></label>

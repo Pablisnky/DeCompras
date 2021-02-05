@@ -6,14 +6,15 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 1790207;
+            $this->Dolar = 1828405;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
             // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
             // echo '<pre>';
             // print_r($DolarHoy);
             // echo '</pre>';
-                
+            //     exit;
+
             // $this->Dolar = $DolarHoy['USD']['promedio_real']; 
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo

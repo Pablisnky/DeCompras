@@ -169,6 +169,10 @@
 .sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - modal_fueraHorario*/
 	padding-top: 5%;
 }
+.sectionModal__div--corto{/*modal_recuperarCorreo*/
+	margin-top: 5%;
+	width: 95%;
+}
 .sectionModal__div__p{/*modal_sinSecciones* - modal_fueraHorario*/
 	font-size: 1.1em;
 	margin: auto;
