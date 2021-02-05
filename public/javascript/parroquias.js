@@ -10,21 +10,21 @@ function SeleccionarParroquia(form){
 
     if(Estado[1].selected == true){//Lara
         if(Municipio[0].selected == true){
-            Parroquia[0] = new Option("espere","");
+            Parroquia[0] = new Option("espere","Seleccione parroquia");
         }
         if(Municipio[1].selected == true){//Andrés Eloy Blanco
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Quebrada honda");
             Parroquia[2] = new Option("Pio Tamayo");
             Parroquia[3] = new Option("Yacambú");   
         }
         if(Municipio[2].selected == true){//Crespo
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Freitez");
             Parroquia[2] = new Option("José María Blanco");
         }
         if(Municipio[3].selected == true){//Iribarren
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Aguedo Felipe Alvarado");
             Parroquia[2] = new Option("Buena Vista");
             Parroquia[3] = new Option("Catedral");
@@ -37,7 +37,7 @@ function SeleccionarParroquia(form){
             Parroquia[10] = new Option("Unión");
         }
         if(Municipio[4].selected == true){//Jiménez
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Juan Bautista Rodriguez");
             Parroquia[2] = new Option("Cuara");
             Parroquia[3] = new Option("Diego de Lozada");
@@ -48,7 +48,7 @@ function SeleccionarParroquia(form){
             Parroquia[8] = new Option("Coronel Mariano Peraza");
         }
         if(Municipio[5].selected == true){ //Morán
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Anzoátegui");
             Parroquia[2] = new Option("Bolivar");
             Parroquia[3] = new Option("Guarico");
@@ -59,19 +59,19 @@ function SeleccionarParroquia(form){
             Parroquia[8] = new Option("Morán");
         }
         if(Municipio[6].selected == true){//Palavecino
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Cabudare");
             Parroquia[2] = new Option("José Gregorio Bastidas");
             Parroquia[3] = new Option("Agua VIva");
         }
         if(Municipio[7].selected == true){//Simón Planas
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Buría");
             Parroquia[2] = new Option("Gustavo Vega");
             Parroquia[3] = new Option("Sarare");
         }
         if(Municipio[8].selected == true){//Torres
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Altagracia");
             Parroquia[2] = new Option("Antonio Diaz");
             Parroquia[3] = new Option("Camacaro");
@@ -91,7 +91,7 @@ function SeleccionarParroquia(form){
             Parroquia[17] = new Option("Trinidad Samuel");
         }
         if(Municipio[9].selected == true){//Urdaneta
-            Parroquia[0] = new Option("");
+            Parroquia[0] = new Option("Seleccione parroquia");
             Parroquia[1] = new Option("Xaguas");
             Parroquia[2] = new Option("Siquisique");
             Parroquia[3] = new Option("San Miguel");
@@ -100,7 +100,7 @@ function SeleccionarParroquia(form){
     }
     if(Estado[2].selected == true){//Yaracuy
         if(Municipio[0].selected == true){
-            Parroquia[0] = new Option("espere","");
+            Parroquia[0] = new Option("espere","Seleccione parroquia");
         }
         if(Municipio[1].selected == true){//Municipio Cocorote
             Parroquia[0] = new Option("Seleccione parroquia");

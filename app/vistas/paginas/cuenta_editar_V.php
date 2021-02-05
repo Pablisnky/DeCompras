@@ -90,7 +90,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <!-- SECCION DATOS DE UBICACIÓN -->
                 <label>Datos de ubicación</label>
                 </br>
-                <select class="select_2 borde_1" id="Estado_Tien" name="estado_com" onclick="SeleccionarMunicipio(this.form)">
+                <select class="select_2 borde_1" id="Estado_Tien" name="estado_com" onchange="SeleccionarMunicipio(this.form)">
                     <?php
                     if(!empty($Estado_Tien)){ ?>
                         <option selected><?php echo $Estado_Tien;?></option>
@@ -104,7 +104,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <option>Yaracuy</option>
                 </select>
 
-                <select class="select_2 borde_1" id="Municipio_Tien" name="municipio_com" onclick="SeleccionarParroquia(this.form)">
+                <select class="select_2 borde_1" id="Municipio_Tien" name="municipio_com" onchange="SeleccionarParroquia(this.form)">
                     <?php
                     if(!empty($Municipio_Tien)){ ?>
                         <option><?php echo $Municipio_Tien;?></option>

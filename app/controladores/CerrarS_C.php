@@ -11,7 +11,7 @@
 		}
 		
         public function index(){	
-        	header("location:" . RUTA_URL);
+        	header("location:" . RUTA_URL. "/Inicio_C");
         }
 	}
 ?>

@@ -33,9 +33,9 @@
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15Inicio" id="Span_6"></span></label>
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
-					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
-					<!-- <li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/ciudad/Ciudades';?>">Ciudades</a></li> -->
-					<li><a class="a_3A" href="<?php echo RUTA_URL . '/menu_C/categorias';?>">Ver Tiendas</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
+					<!-- <li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/ciudad/Ciudades';?>">Ciudades</a></li> -->
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/categorias';?>">Ver Tiendas</a></li>
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
 				</ul>
 			</nav>

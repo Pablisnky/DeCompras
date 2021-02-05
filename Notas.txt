@@ -24,21 +24,22 @@ Resoluciones
     1920 x 1080 (PC local)
 
 MAC en wifi
-Karina 60:ab:67:9b:07:24
+Router 34:4d:ea:fa:8c:10
+Telefono Lisbella 7c:a1:77:17:4c:f0
+Tablet C0:3F:D5:C6:DD:99
+Labtop 44:6d:57:eb:10:57
 Lusvio 34:29:12:bf:e8:fc
- c0:3f:d5:c6:d0:99
+
+Karina 60:ab:67:9b:07:24
+Esther c0:3f:d5:c6:d0:99
 Esther 14:a3:64:83:e3:dc
 Esther 8c:79:67:1f:4f:b3
-Labtop 7c:a1:77:17:4c:f0
-Telefono 44:6d:57:eb:10:57
-Tablet
 
 Cinco razones para afiliar tu comercio a PedidoRemoto
 1.- Digitalizamos tu tienda y la convertimos en un e-commerce.
 2.- Virtualizamos los pedidos, pagos y despachos de tus clientes. 
 3.- Tiene un costo mensual 98% menos que un local comercial.
 4.- Estamos enfocados a impulsar el comercio citadino.
-
 
 5.- Compras y despachos en tiendas de tu ciudad.
 6.- e-commerce para pequeños comercios.

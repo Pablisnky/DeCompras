@@ -6,8 +6,11 @@ function SeleccionarMunicipio(form){
     var Municipio = form.municipio_com.options;//se captura el elemento select que contiene los municipios
     Municipio.length = null;
 
+    if(Estado[0].selected == true){//Lara
+        Municipio[0] = new Option("Seleccione municipio");
+    }
     if(Estado[1].selected == true){//Lara
-        Municipio[0] = new Option("");
+        Municipio[0] = new Option("Seleccione municipio");
         Municipio[1] = new Option("Andrés Eloy Blanco");
         Municipio[2]  = new Option("Crespo");
         Municipio[3] = new Option("Iribarren");

@@ -14,7 +14,7 @@
                         </div> 
                     </fieldset>  
                     <div class="contenedor_50">
-                        <input class="boton" type="submit" value="Entrar"/>
+                        <input class="boton boton--largo" type="submit" value="Entrar"/>
                         <p class="p_4">¿Olvidaste tu contraseña?</p>
                         <label class="label_7" id="Label_7">Recuperala</label>
                     </div>

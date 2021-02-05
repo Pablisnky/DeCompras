@@ -93,9 +93,8 @@
 //************************************************************************************************ 
     //Muestra que es una PWA
     function Documentacion_PWA(){  
-        console.log("______Desde Documentacion_PWA()______")      
-        window.open("http://localhost/proyectos/PidoRapido/Menu_C/PWA/", "ventana1", "width=1000,height=650,scrollbars=YES");   
-        // window.open("https://www.pedidoremoto.com/Menu_C/PWA", "ventana1", "width=1000,height=650,scrollbars=YES");   
+        // console.log("______Desde Documentacion_PWA()______")     
+        window.open("https://www.pedidoremoto.com/Menu_C/PWA", "ventana1", "width=1000,height=650,scrollbars=YES");   
     }
 
 //************************************************************************************************

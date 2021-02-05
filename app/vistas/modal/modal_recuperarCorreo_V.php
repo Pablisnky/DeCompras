@@ -1,15 +1,17 @@
+<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
+
 <!-- Cargada desde login_Modal_C/modal_sinSecciones_V.php -->
 <?php 
 if($Datos == ''){ ?>
     <section class="sectionModal" id="Section_1">
+        <a href="<?php echo RUTA_URL . '/Login_C';?>"><span class="icon-cancel-circle sectionModal__span"></span></a>
+        <br>
         <div class="contenedor_24">
             <form action="<?php echo RUTA_URL . '/Login_C/RecuperarClave';?>" method="POST" autocomplete="off">
-                <fieldset class="Afiliacion_1" style="border-radius: 15px;">
-                    <p class="">Indiquenos el correo afiliado, enviaremos un código de recuperación</p>
-                    <br>
-                    <input class="" type="text" name="correo"><!--llamar_VerificarCedula() esta en ajaxBuscador.js-->
-                    <input style="margin: auto; display: block;" type="submit" id="BotonGuardar" value="Enviar" onclick="">
-                </fieldset>
+                <p class="p_1">Indiquenos el correo afiliado, enviaremos un código de recuperación</p>
+                <br>
+                <input class="input_13 borde_1" type="text" name="correo">
+                <input class="boton" type="submit" value="Enviar"><!-- id="BotonGuardar" -->
             </form>
         </div>        
     </section>       <?php
