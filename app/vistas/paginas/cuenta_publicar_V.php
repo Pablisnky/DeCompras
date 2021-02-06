@@ -21,10 +21,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
             
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
+                    <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                     <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6 imagen_12" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                     <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
-                </div>        
+                </div>    
                 <div>
                     <!-- PRODUCTO -->
                     <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro" placeholder="Producto" tabindex="1" onkeydown="blanquearInput('ContenidoPro')"></textarea>

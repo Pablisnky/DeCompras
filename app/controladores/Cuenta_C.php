@@ -913,10 +913,10 @@
                         move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
 
                         //Se INSERTA la imagen principal y devuelve el ID_Imagen
-                        $ID_Imagen = $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
+                        $ID_Imagen = $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Seccion, $ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
                         
                         //Se INSERTA la dependenciatransitiva entre secciones e imagenes
-                        $this->ConsultaCuenta_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
+                        // $this->ConsultaCuenta_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
                 //     }
                 //     else{
                 //         //si no cumple con el formato
@@ -1161,7 +1161,7 @@
                 $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
                 
                 //Se ACTUALIZA la dependenciatransitiva entre secciones e imagenes
-                $this->ConsultaCuenta_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);
+                // $this->ConsultaCuenta_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);
             } 
 
             //Para establecer como imagen de sección
@@ -1217,6 +1217,7 @@
             $this->ConsultaCuenta_M->eliminarProductoTienda($ID_Producto);
             $this->ConsultaCuenta_M->eliminarOpcion($ID_Opcion);
             $this->ConsultaCuenta_M->eliminarOpcionSeccion($ID_Opcion);
+            $this->ConsultaCuenta_M->eliminarImagenPrincipal($ID_Producto);
             // *************************************************************************************
             // *************************************************************************************
 

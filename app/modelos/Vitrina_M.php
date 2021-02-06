@@ -33,7 +33,7 @@
            
         //SELECT de las imagenes principales de cada sección de una tienda
         public function consultarImagenesSecciones($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_img, imagenes.ID_Seccion FROM imagenes INNER JOIN secciones_imagenes ON imagenes.ID_Imagen=secciones_imagenes.ID_Imagen INNER JOIN secciones ON secciones_imagenes.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA AND fotoSeccion = :FOTOSECCION GROUP BY ID_Seccion");  
+            $stmt = $this->dbh->prepare("SELECT nombre_img, imagenes.ID_Seccion FROM imagenes INNER JOIN secciones ON imagenes.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA AND fotoSeccion = :FOTOSECCION GROUP BY ID_Seccion");  
             
             $stmt->bindValue(':FOTOSECCION', 1, PDO::PARAM_INT);        
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 
@@ -48,7 +48,7 @@
            
         //SELECT de las imagenes principales de cada sección de una tienda
         public function consultarImagenesSeccionForzada($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_img, imagenes.ID_Seccion FROM imagenes INNER JOIN secciones_imagenes ON imagenes.ID_Imagen=secciones_imagenes.ID_Imagen INNER JOIN secciones ON secciones_imagenes.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA  GROUP BY ID_Seccion");  
+            $stmt = $this->dbh->prepare("SELECT nombre_img, imagenes.ID_Seccion FROM imagenes INNER JOIN secciones ON imagenes.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA  GROUP BY ID_Seccion");  
                     
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 
 

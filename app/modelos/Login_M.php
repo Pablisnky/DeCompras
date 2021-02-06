@@ -71,22 +71,6 @@
             }
         }
 
-        public function insertarCodigoAleatorio($Correo, $Aleatorio){
-            $stmt = $this->dbh->prepare("INSERT INTO codigo_recuperacion(correo, codigoAleatorio, fechaSolicitud)VALUES(:CORREO, :ALEATORIO, NOW())");
-
-            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':ALEATORIO', $Aleatorio);
-            $stmt->bindParam(':CORREO', $Correo);
-            
-            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }            
-        }
-
         public function consultarCodigoAleatorio( $Correo, $Aleatorio){
             $stmt = $this->dbh->prepare("SELECT * FROM codigo_recuperacion WHERE codigoAleatorio = :ALEATORIO AND correo = :CORREO");
 
@@ -116,6 +100,22 @@
             else{
                 return false;
             }           
+        }
+
+        public function insertarCodigoAleatorio($Correo, $Aleatorio){
+            $stmt = $this->dbh->prepare("INSERT INTO codigo_recuperacion(correo, codigoAleatorio, fechaSolicitud) VALUES(:CORREO, :ALEATORIO, NOW())");
+
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':ALEATORIO', $Aleatorio);
+            $stmt->bindParam(':CORREO', $Correo);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }            
         }
 
         public function actualizarcodigoVerificado($CodigoUsuario){

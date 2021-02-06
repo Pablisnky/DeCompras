@@ -21,7 +21,7 @@
             </ul>
         </div>
     </section>
-
+    
     <section class="section_1 section_1--vh" id="Section_1">
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">
             <div class="section_1__div">

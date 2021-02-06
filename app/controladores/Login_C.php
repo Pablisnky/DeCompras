@@ -183,10 +183,10 @@
             $Correo = $_POST["correo"];
             //echo "Correo= " . $Correo . "<br>";
         
-            //Generamos un numero aleatorio que será el código de recuperación de contraseña
+            //Se genera un numero aleatorio que será el código de recuperación de contraseña
             //alimentamos el generador de aleatorios
             mt_srand (time());
-            // //generamos un número aleatorio
+            //generamos un número aleatorio
             $Aleatorio = mt_rand(100000,999999); 
                     
             //Se INSERTA el código aleatorio en la tabla "codigo-recuperacion y se asocia al correo del usuario
@@ -196,9 +196,7 @@
             $email_to = $Correo;
             $email_subject = "Recuperación de contraseña";  
             $email_message ="Código de recuperación de contraseña: " . $Aleatorio;
-            $headers = 'From: '. "admin@horebi.com" ."\r\n".
-        
-            'Reply-To: '. "admin@horebi.com"."\r\n" .        
+            $headers = 'From: '. "PedidoRemoto<master@pedidoremoto.com>" ."\r\n".       
             'X-Mailer: PHP/' . phpversion();
         
             @mail($email_to, $email_subject, $email_message, $headers);

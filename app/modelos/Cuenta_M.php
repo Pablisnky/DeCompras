@@ -704,9 +704,16 @@
         //DELETE de fotografia principal de un producto
         public function eliminarImagenProducto($ID_Imagen){
             $stmt = $this->dbh->prepare("DELETE FROM imagenes WHERE ID_Imagen = :ID_IMAGEN");
-            $stmt->bindValue(':ID_IMAGEN', $ID_Imagen, PDO::PARAM_INT);
+            $stmt->bindParam(':ID_IMAGEN', $ID_Imagen, PDO::PARAM_INT);
             $stmt->execute();          
         }       
+
+        //DELETE de fotografia principal de un producto
+        public function eliminarImagenPrincipal($ID_Producto){
+            $stmt = $this->dbh->prepare("DELETE FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+            $stmt->execute();          
+        }     
                
 //***************************************************************************************************
 //Las siguientes cuatro consultas de eliminación deben realizarse por transacciones
@@ -1140,21 +1147,21 @@
         }
 
         //UPDATE de horarios de tienda de un día especifico que entra como exepción
-        public function actualizarDT_SecImg($ID_Seccion, $ID_Imagen){
-            $stmt = $this->dbh->prepare("UPDATE secciones_imagenes SET ID_Seccion = :ID_SECCION WHERE ID_Imagen = :ID_IMAGEN");
+        // public function actualizarDT_SecImg($ID_Seccion, $ID_Imagen){
+        //     $stmt = $this->dbh->prepare("UPDATE secciones_imagenes SET ID_Seccion = :ID_SECCION WHERE ID_Imagen = :ID_IMAGEN");
 
-            // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_SECCION', $ID_Seccion);
-            $stmt->bindValue(':ID_IMAGEN', $ID_Imagen);
+        //     // Se vinculan los valores de las sentencias preparadas
+        //     $stmt->bindValue(':ID_SECCION', $ID_Seccion);
+        //     $stmt->bindValue(':ID_IMAGEN', $ID_Imagen);
 
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
+        //     // Se ejecuta la actualización de los datos en la tabla
+        //     if($stmt->execute()){
+        //         return true;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
 
 
@@ -1249,10 +1256,11 @@
         }
 
         //INSERT de las caracteristicas de un producto
-        public function insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto){
-            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img,    tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora) VALUES(:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
+        public function insertaImagenPrincipalProducto($ID_Seccion, $ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Seccion, ID_Producto, nombre_img,    tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora) VALUES(:ID_SECCION, :ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
             $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
             $stmt->bindParam(':NOMBRE_IMG', $nombre_imgProducto);
             $stmt->bindParam(':TIPO_ARCHIVO', $tipo_imgProducto);
@@ -1267,23 +1275,23 @@
         } 
 
         //INSERT de Dependencia transitiva en seccion e imagen
-        public function insertarDT_SecImg($ID_Seccion, $ID_Imagen){
-            // echo '<pre>';
-            // print_r($ID_Seccion);
-            // echo '</pre>';
-            // echo '<pre>';
-            // print_r($ID_Imagen);
-            // echo '</pre>';
-            // exit;
-            $stmt = $this->dbh->prepare("INSERT INTO secciones_imagenes(ID_Seccion, ID_Imagen) VALUES(:ID_SECCION, :ID_IMAGEN)");
+        // public function insertarDT_SecImg($ID_Seccion, $ID_Imagen){
+        //     // echo '<pre>';
+        //     // print_r($ID_Seccion);
+        //     // echo '</pre>';
+        //     // echo '<pre>';
+        //     // print_r($ID_Imagen);
+        //     // echo '</pre>';
+        //     // exit;
+        //     $stmt = $this->dbh->prepare("INSERT INTO secciones_imagenes(ID_Seccion, ID_Imagen) VALUES(:ID_SECCION, :ID_IMAGEN)");
 
-            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
-            $stmt->bindParam(':ID_IMAGEN', $ID_Imagen);
+        //     //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+        //     $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
+        //     $stmt->bindParam(':ID_IMAGEN', $ID_Imagen);
 
-            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-            $stmt->execute();
-        }
+        //     //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+        //     $stmt->execute();
+        // }
 
         //INSERT en la tabla imagenes las fotografias secundarias
         public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio){
