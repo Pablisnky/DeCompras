@@ -43,10 +43,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <div class="contenedor_47" id="Contenedor_47">
                 
                     <!-- SECCION IMAGEN PRINCIPAL -->
-                <div class="contenedor_129 borde_1 borde_2">
-                    <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/> 
-                    <div class="contInputRadio">     
+                <div class="">
+                    <!-- <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php //echo $ImagenPrincipal;?>"/>  -->
+                    
+                    <div class="contenedor_119 borde_1 borde_2">
+                        <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
+                        <label for="imgInp_2"><span class="icon-pencil span_18 borde_1"></span></label>
+                        <input class="ocultar" type="file" name="imagen_Tienda" id="imgInp_2"/>
+                    </div>
+                    <div class="contInputRadio contInputRadio--center">     
                         <input type="checkbox" name="imgSeccion" id="ImgSeccion"  <?php if($ImgSeccion == 1){echo 'checked';} ?>/>
                         <label class="contInputRadio__label" for="ImgSeccion">Imagen de sección</label>
                     </div>   

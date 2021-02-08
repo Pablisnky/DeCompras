@@ -83,22 +83,6 @@
             }
         }
 
-        //SELECT de todos los productos de una sección en una tienda especifica
-        public function consultarProductosTienda($ID_Tienda, $Seccion){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = :SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
-
-            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
-            $stmt->bindValue(':SECCION', $Seccion, PDO::PARAM_STR);
-            $stmt->bindValue(':PRINCIPAL', 1, PDO::PARAM_INT);
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return "No se pudo";
-            }
-        }
-
         //SELECT de las caracteristicas de los productos de una tienda
         public function consultarCaracterisicasProducto($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT ID_Producto, caracteristica FROM caracteristicaproducto WHERE ID_Tienda = :ID_TIENDA");
@@ -129,10 +113,26 @@
 
         //SELECT de los productos que tiene una tienda especifica
         public function consultarTodosProductosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, nombre_img FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda  AND fotoPrincipal = :FOTOPRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, nombre_img, fotoSeccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda  AND fotoPrincipal = :FOTOPRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
             $stmt->bindValue(':FOTOPRINCIPAL', 1, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+
+        //SELECT de los productos de una sección en una tienda especifica
+        public function consultarProductosTienda($ID_Tienda, $Seccion){
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = :SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
+
+            $stmt->bindParam(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindParam(':SECCION', $Seccion, PDO::PARAM_STR);
+            $stmt->bindValue(':PRINCIPAL', 1, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -966,7 +966,7 @@
             $stmt = $this->dbh->prepare("UPDATE imagenes SET fotoSeccion = :FOT_SECCION WHERE ID_Imagen = :ID_IMAGEN_QUITAR");
             
             //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_IMAGEN_QUITAR', $ID_ImagenSeccion['ID_Imagen']);
+            $stmt->bindValue(':ID_IMAGEN_QUITAR', $ID_ImagenSeccion[0]['ID_Imagen']);
             $stmt->bindValue(':FOT_SECCION', 0); 
 
             // Se ejecuta la actualización de los datos en la tabla

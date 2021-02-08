@@ -82,6 +82,11 @@
                 //CONSULTA los productos de una sección en especifico según la tienda
                 $Productos= $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda, $Seccion);
 
+                // echo "<pre>";
+                // print_r($Productos);
+                // echo "</pre>";
+                // exit();
+
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
                 $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
 
@@ -90,6 +95,7 @@
 
                 // $Seccion  = 'Seccion especifica';
             }
+
             //CONSULTA los datos de la tienda
             $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
 
@@ -102,7 +108,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
-                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, seccion, nombre_img
+                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, seccion, nombre_img, fotoSeccion
                 // 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja
                 'Apunta' => $Puntero,
@@ -1165,6 +1171,7 @@
             } 
 
             //Para establecer como imagen de sección
+            // echo $RecibeProducto['ImgSeccion'];
             if($RecibeProducto['ImgSeccion'] == '1'){
                 //Se consulta que imagen esta establecida para la sección
                 $ID_ImagenSeccion = $this->ConsultaCuenta_M->consultarImagenSeccion($RecibeProducto);
@@ -1175,7 +1182,6 @@
                 
                 //Se desseleciona la imagen que esta establecida actualmente
                 $this->ConsultaCuenta_M->actualizarImagenSeccionDeseleccionar($ID_ImagenSeccion);
-                
                 //Se selecciona la imagen que se desea establecer
                 $this->ConsultaCuenta_M->actualizarImagenSeccionSeleccionar($RecibeProducto);
             }

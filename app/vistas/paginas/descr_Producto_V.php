@@ -8,11 +8,11 @@
     $ID_LabelAgregar = $Datos['ID_EtiquetaAgregar'];
 ?>
     <!-- Se carga el preloader -->
-    <div class='preloderTapa'>
+    <section class="preloder_tapa--total">
         <div class='preloder preloaderCentrar'></div>
-    </div>
+    </section>
 
-    <section >
+    <section>
         <div class="contenedor_122"> 
             <div class="contGridUna">
                 <!-- IMAGEN PRINCIPAL -->
@@ -99,7 +99,9 @@
 <script>
     //Aqui tambien se pudo usar una funcion IIEEF
     window.onload = function (){
-        document.querySelector(".preloderTapa").style.display = "none"
+        if(document.readyState == "complete"){
+            document.querySelector(".preloder_tapa--total").style.display = "none"
+        }
     }
 
     function cerrarAgregar(){   

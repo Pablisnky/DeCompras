@@ -14,11 +14,12 @@
             // echo $ID_Tienda;
             // echo $Seccion;
             // echo $OpcionSelec;
-          
+
             $Consulta = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Seccion);   
             // echo "<pre>";
             // print_r($Consulta);
             // echo "</pre>";
+            // exit;
 
             //CONSULTA las caracteristicas de los productos 
             $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);

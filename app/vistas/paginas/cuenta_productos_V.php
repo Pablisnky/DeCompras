@@ -10,7 +10,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <h2 class="h2_9">Productos ofertados</h2>
             <?php
            //Mediante operador ternario
-            $Datos['Seccion'] != 'Todos' ? $Datos['Seccion']  : 'Todos';    ?>
+            $Datos['Seccion'] != 'Todos' ? $Datos['Seccion']  : 'Todos';  ?>
             <h3 class="h3_9">( <?php echo $Datos['Seccion'] ;?> )</h3>
         </div>
         <div class="contenedor_13"> 
@@ -19,7 +19,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     
             //$Datos viene de Cuenta_C/Productos
             foreach($Datos['productos'] as $arr) :
-                $Seccion = $arr["seccion"];
+                $Seccion = $arr["seccion"]; 
                 $Producto = $arr["producto"];
                 $Opcion = $arr["opcion"];
                 $PrecioBolivar = number_format($arr["precioBolivar"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
@@ -27,6 +27,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $ID_Producto = $arr["ID_Producto"];
                 $ID_Opcion = $arr["ID_Opcion"];
                 $FotoPrincipal = $arr['nombre_img'];
+                $FotoSeccion = $arr['fotoSeccion'];
 
                 //Esta condición es para verificar si se viene desde el buscador
                 if($Datos['Apunta'] == $Opcion){   ?>
@@ -61,7 +62,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/productos/<?php echo $FotoPrincipal;?>')">
                             <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
                         </div>
-                    </div>
+                            <?php
+                            if($FotoSeccion == 1){   ?>
+                                <label class="contenedor_9--label borde_3">Imagen de sección</label>
+                                <?php
+                            }   ?>
+                        </div>
                     <div>
                         <!-- ID_PRODUCTO -->
                         <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>" value="<?php echo $Producto;?>"/>

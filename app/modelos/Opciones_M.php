@@ -7,19 +7,16 @@
             parent::__construct();  
         }
         
-        //SELECT de las opciones que tiene un producto de una tienda
+        //SELECT de los productos de una sección en una tienda especifica
         public function consultarOpciones($ID_Tienda, $Seccion){
-            $stmt = $this->dbh->prepare("SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, seccion, productos.ID_Producto, opciones.ID_Opcion, productos.producto, opcion, especificacion, precioBolivar, precioDolar FROM opciones INNER JOIN productos_opciones ON opciones.ID_Opcion=productos_opciones.ID_Opcion INNER JOIN productos ON productos_opciones.ID_Producto=productos.ID_Producto INNER JOIN secciones_productos ON productos.ID_Producto=secciones_productos.ID_Producto INNER JOIN secciones ON secciones_productos.ID_Seccion=secciones.ID_Seccion INNER JOIN tiendas_secciones ON secciones.ID_Seccion=tiendas_secciones.ID_Seccion INNER JOIN tiendas ON tiendas_secciones.ID_Tienda=tiendas.ID_Tienda WHERE tiendas.ID_Tienda = :ID_TIENDA AND secciones.seccion = :SECCION ORDER BY productos.producto, opciones.opcion");      
-
+            $stmt = $this->dbh->prepare("SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND seccion = :SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");      
+        
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
             $stmt->bindParam(':SECCION', $Seccion, PDO::PARAM_STR);
+            $stmt->bindValue(':PRINCIPAL', 1, PDO::PARAM_INT);
 
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
                 
         //SELECT de las fotografias principales de las secciones de una tienda
@@ -93,3 +90,21 @@
             }
         }
     }
+
+//     SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas 
+
+// INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda
+
+// INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
+
+// INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion 
+
+// INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto 
+
+// INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto 
+
+// INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion 
+
+// INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto 
+
+// WHERE tiendas_secciones.ID_Tienda = 225 AND seccion = 'Bebidas sin alcohol' AND imagenes.fotoPrincipal = 1 ORDER BY secciones.seccion, productos.producto, opciones.opcion

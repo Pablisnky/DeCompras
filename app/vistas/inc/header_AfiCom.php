@@ -35,7 +35,7 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/ventas';?>">Ventas</a></li>
 					<li class="menuLi_1"><a class="a_3">Productos</a>
-						<ul class="menuContenedor_3 menuContenedor_2">
+						<ul class="menuContenedor_3">
 							<?php
 							//$Datos proviene de Cuenta_C/index -  Cuenta_C/productos -  Cuenta_C/editar -  Cuenta_C/publicar
 							foreach($Datos['secciones'] as $arr) :	

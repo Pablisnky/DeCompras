@@ -1,5 +1,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
 
+    <!-- Se carga el preloader -->
+    <section class="preloder_tapa--total">
+        <div class='preloder preloaderCentrar'></div>
+    </section>
+
     <section class="section_1">
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
@@ -21,7 +26,7 @@
             </ul>
         </div>
     </section>
-    
+
     <section class="section_1 section_1--vh" id="Section_1">
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">
             <div class="section_1__div">
@@ -89,6 +94,15 @@
             this.close();//Cierra la notificación
         }
     });
-</script> -->
+</script> -->  
+
+<script>
+    //Aqui tambien se pudo usar una funcion IIEEF
+    window.onload = function (){
+        if(document.readyState == "complete"){
+            document.querySelector(".preloder_tapa--total").style.display = "none"
+        }
+    }
+</script>
 
 <?php require(RUTA_APP . '/vistas/inc/footer.php'); ?>
