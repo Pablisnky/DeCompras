@@ -1,3 +1,8 @@
+    <!-- Se carga el preloader -->
+    <section class="preloder_tapa--total">
+        <div class='preloder preloaderCentrar'></div>
+    </section>
+
     <div class="contenedor_137">
         <div class="">
         <h1 class="h1_1">PWA - Progresive Web App</h1>
@@ -24,5 +29,14 @@
             <label class="boton boton_1 boton_8" onclick="CerrarModal_2()">Cerrar</label>
         </div>
     </div>  
+
+<script>
+    //Aqui tambien se pudo usar una funcion IIEEF
+    window.onload = function (){
+        if(document.readyState == "complete"){
+            document.querySelector(".preloder_tapa--total").style.display = "none"
+        }
+    }
+</script>
     
 <?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>

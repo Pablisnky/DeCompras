@@ -13,7 +13,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             $Datos['Seccion'] != 'Todos' ? $Datos['Seccion']  : 'Todos';  ?>
             <h3 class="h3_9">( <?php echo $Datos['Seccion'] ;?> )</h3>
         </div>
-        <div class="contenedor_13"> 
+        <div class="contenedor_13 contenedor_13--productos"> 
             <?php
             $Contador = 1; 
     
@@ -24,6 +24,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $Opcion = $arr["opcion"];
                 $PrecioBolivar = number_format($arr["precioBolivar"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
                 $PrecioDolar = $arr["precioDolar"];
+                $Existencia = $arr["cantidad"];
                 $ID_Producto = $arr["ID_Producto"];
                 $ID_Opcion = $arr["ID_Opcion"];
                 $FotoPrincipal = $arr['nombre_img'];
@@ -67,14 +68,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <label class="contenedor_9--label borde_3">Imagen de sección</label>
                                 <?php
                             }   ?>
-                        </div>
+                    </div>
                     <div>
                         <!-- ID_PRODUCTO -->
                         <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>" value="<?php echo $Producto;?>"/>
 
                         <!-- OPCION -->                        
                         <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" ><?php echo $Opcion;?></label>
-                        <br>
+
+                        <!-- UNIDADES EN EXISTNCIA -->                        
+                        <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?></label>
 
                         <!-- ESPECIFICACION -->
                         <?php                  
@@ -104,7 +107,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         </div>
     </section>
        
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js'?>"></script>
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
 
     <?php
 }

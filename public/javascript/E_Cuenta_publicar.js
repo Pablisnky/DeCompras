@@ -2,6 +2,8 @@
 
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
 
+document.getElementById("Disponible").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
+
 document.getElementById("PrecioBs").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value, "PrecioDolar")}, false)
 
 document.getElementById("PrecioDolar").addEventListener('keyup', function(){CambioMonetarioDolar(this.value, "PrecioBs")}, false)

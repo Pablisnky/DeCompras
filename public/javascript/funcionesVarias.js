@@ -262,8 +262,18 @@
         document.getElementById(id_1).value = ''
         document.getElementById(id_2).value = ''
     }
-
-//************************************************************************************************
+    
+//************************************************************************************************ 
+    function deshabilitarCantidad(id){
+        // console.log("______Desde deshabilitarCantidad______", id)
+        if(document.getElementById(id).disabled == false){
+            document.getElementById(id).value= ""
+            document.getElementById(id).disabled = true
+        }
+        else{
+            document.getElementById(id).disabled = false
+        }
+    }
     //Coloca la clase "activa" en el item seleccionado del menu 
     // function ActivarLink(id){
         // console.log("______Desde ActivarLink()______") 

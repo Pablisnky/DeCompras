@@ -25,7 +25,7 @@
 		<header class="header">
 			<div class="contenedor_111">
 				<!-- $Datos viene de Cuenta_C-->
-				<h1 class="h1_10"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></h1>			
+				<h1 class="h1_10 h1_10--afiliado"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></h1>			
 				<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div>
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15" id="Span_6"></span></label>

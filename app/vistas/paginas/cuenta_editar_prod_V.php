@@ -16,7 +16,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $PrecioBolivar = $arr['precioBolivar'];
         $PrecioDolar = $arr['precioDolar'];
         $Seccion = $arr['seccion'];
-        // $ImgSeccion = $arr[''];
+        $Disponible = $arr['disponible'];
+        $Cantidad = $arr['cantidad'];
     endforeach;  
 
     //$Datos viene del metodo Cuenta_C/actualizarProducto
@@ -83,6 +84,22 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     </div> 
                     <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( 1 USD = <?php echo number_format($Datos['dolarHoy'], 0, ",", ".");?> Bs.)</strong></small>
                     <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/>
+                    <br>
+
+                    <!-- CANTIDAD EN EXISTENCIA -->
+                    <label>Unidades en existencia</label>
+                    <?php
+                    if($Disponible == 1){   ?>
+                        <input class="placeholder placeholder_2 placeholder_4" type="text" name="uni_existencia" id="Cantidad" disabled>
+                        <?php
+                    }
+                    else{   ?>                        
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="uni_existencia" id="Cantidad" value="<?php echo $Cantidad;?>">   <?php
+                    }   ?>
+                    <div class="contInputRadio">     
+                        <input type="checkbox" name="disponible" id="Disponible" <?php if($Disponible == 1){echo 'checked';} ?>/>
+                        <label class="contInputRadio__label" for="Disponible">Siempre en existencia</label>
+                    </div>   
                     <br>
 
                     <!-- SECCION SECCION -->
@@ -172,8 +189,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         </form>
     </div>
 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js';?>"></script> 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js';?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js?v=' . rand();?>"></script> 
+    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js?v=' . rand();?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen principal

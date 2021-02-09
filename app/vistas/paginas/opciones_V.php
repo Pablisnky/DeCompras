@@ -24,7 +24,9 @@
                         $Producto = $row['producto']; 
                         $Opcion = $row['opcion'];                      
                         $PrecioBolivar = $row['precioBolivar'];         
-                        $PrecioDolar = $row['precioDolar'];               
+                        $PrecioDolar = $row['precioDolar']; 
+                        $Disponible = $row['disponible'];
+                        $Existencia = $row['cantidad']; 
                         $Seccion = $row['seccion'];
 
                         //Se da formato al precio, sin decimales y con separación de miles
@@ -41,13 +43,32 @@
                                     if($row['ID_Producto'] == $ID_Producto) :
                                         $FotoPrincipal = $row['nombre_img'];    ?> 
                                         <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar?>')">
-                                            <figure class="">
+                                            <figure>
                                                 <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/productos/<?php echo $FotoPrincipal;?>"/> 
                                             </figure>
                                         </div>  <?php  
                                     endif;   
                                 endforeach;   ?>
+                                    <?php
+                                    if($Disponible == 1){ ?>
+                                        <label class="contenedor_9--label borde_3">En existencia</label>
+                                        <?php
+                                    }    
+                                    else if($Disponible == 0 && $Existencia == 1){ ?>
+                                        <label class="contenedor_9--label borde_3"><?php echo $Existencia?> ud. en existencia</label>
+                                        <?php
+                                    }  
+                                    else if($Disponible == 0 && $Existencia > 1){ ?>
+                                        <label class="contenedor_9--label borde_3"><?php echo $Existencia?> uds. en existencia</label>
+                                        <?php
+                                    } 
+                                    else if($Disponible == '0' && $Existencia == '0'){  
+                                        $NoAgrear = true  ?>
+                                        <label class="contenedor_9--label borde_3">Agotado</label>
+                                        <?php
+                                    }   ?>
                             </div>
+                                        
                             <div> 
                                 <div style="min-height:80px">
                                     <div style="height: 75px;">
@@ -95,7 +116,14 @@
                                 </div>
                                 
                                 <!-- AGREGAR -->
-                                <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 borde_1 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
+                                <?php if(isset($NoAgrear) == true){ ?>
+                                    <label class="label_4 label_4--innabilitado borde_1">Agregar</label> 
+                                    <?php
+                                }  
+                                else{ ?>
+                                    <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 borde_1 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
+                                    <?php
+                                }   ?>
                             </div> 
 
                             <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
@@ -127,6 +155,7 @@
                         <?php   
                         $ContadorLabel++;
                     }        
+                    $NoAgrear = false;
                 ?>                    
                 </div>
             </form>

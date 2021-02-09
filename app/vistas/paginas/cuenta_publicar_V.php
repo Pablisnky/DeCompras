@@ -52,7 +52,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         </div>
                     </div>
                     <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( 1 USD = <?php echo $PrecioDolar;?> Bs.)</strong></small>
-                    <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/>
+                    <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/> 
+                    <br>
+
+                    <!-- CANTIDAD DISPONIBLE -->
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="cantidad" id="Cantidad" placeholder="Cantidad disponible">
+                    <div class="contInputRadio">     
+                        <input type="checkbox" name="disponible" id="Disponible"/>
+                        <label class="contInputRadio__label" for="Disponible">Siempre disponible</label>
+                    </div>   
+                    <br>
                     
                     <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
                     <div id="Contenedor_80"></div>

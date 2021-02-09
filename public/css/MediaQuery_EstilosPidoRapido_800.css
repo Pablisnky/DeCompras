@@ -147,7 +147,10 @@
 	display: grid;
 	grid-template-columns: 100%;
 	width: 100%;
-	margin: 25% auto; 
+	margin: 40% auto; 
+}
+.contenedor_13--productos{/*cuenta_productos*/
+	margin: 30% auto; 
 }
 .contenedor_13a{/*vitrina*/
 	margin-top: 10% !important;
@@ -183,6 +186,9 @@
 	line-height: 25px;
 	margin-bottom: 2%;
 	width: 90%;
+}
+.section--tienda{/*tienda*/
+	height: initial !important;
 }
 .contBoton{/*carrito*/
 	margin-top: 15%;
@@ -482,7 +488,7 @@
 	column-gap: 4%;/*espacio entre columnas*/
 }
 .contenedor_90--tiendas{/*tiendas - opciones - cuenta_productos*/
-	top: 82px!important;
+	top: 92px!important;
 	height: 40px!important;
 }
 .contenedor_90{/*tiendas - opciones - cuenta_productos*/
@@ -506,6 +512,9 @@
 	grid-template-columns: 53% 47%;
 	column-gap: 0%;/*espacio entre filas*/
 	margin-bottom: 25%;
+}
+.contenedor_97{/*opciones*/
+	height: 133px; 
 }
 .contenedor_98{/*footer*/
 	/* background-color: red; */
@@ -578,7 +587,7 @@
 }
 .contenedor_111--tienda{/*header_tienda*/
 	background-color: white;
-	height: 45px;
+	height: 55px;
 	text-align: center;
 	margin-top: 37px;
 	padding-bottom: 1%;
@@ -791,12 +800,14 @@
 	text-align: center;
 }
 .h1_10{/*header_Tienda - header_AfiCom*/
-	font-size: 6vw !important;
-	/* color: black; */
+	font-size: 7vw !important; /*unidades vw hace que la letra se adapte dinamicamente al espacio*/
 	margin-top: 2%;
 }
 .h1_10--negro{/*header_Tienda*/
 	color: black;
+}
+.h1_10--afiliado{/*header_AfiCom*/
+	font-size: 6.5vw !important; /*unidades vw hace que la letra se adapte dinamicamente al espacio*/
 }
 .h1_11{/*descr_Producto*/
 	padding: 2% 5%;
@@ -846,6 +857,7 @@
 	margin-top: 0% !important;
 }
 .h2_12{/*header_Tienda - header_AfiCom*/
+	font-size: 4vw;
 	text-align: center;
 	margin-top: 0.1%;
 }

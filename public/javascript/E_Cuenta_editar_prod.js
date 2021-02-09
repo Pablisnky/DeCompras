@@ -4,6 +4,8 @@ window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('Con
 
 window.addEventListener('DOMContentLoaded', function(){CaracteresAlcanzados('ContenidoDes','ContadorDes')}, false)
 
+document.getElementById("Disponible").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
+
 document.getElementById("ContenidoDes").addEventListener('keydown', function(){autosize('ContenidoDes')}, false)
 
 document.getElementById("PrecioBolivar").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value, "PrecioDolar")}, false)
@@ -348,3 +350,5 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             return false;
         }
     }
+    
+//************************************************************************************************ 

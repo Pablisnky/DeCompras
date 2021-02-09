@@ -35,7 +35,7 @@
             // exit;
 
             $Datos=[
-                'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Producto, ID_Opcion, producto, opcion, especificacion, precioBolivar, precioDolar
+                'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Producto, ID_Opcion, producto, opcion, especificacion, precioBolivar, precioDolar, cantidad, disponible
                 'ProductoSelecion' => $OpcionSelec,
                 'ID_Tienda' => $ID_Tienda,
                 'variosCaracteristicas' => $Caracteristicas, //ID_Producto, caracteristica 

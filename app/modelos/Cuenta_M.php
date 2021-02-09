@@ -113,7 +113,7 @@
 
         //SELECT de los productos que tiene una tienda especifica
         public function consultarTodosProductosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, nombre_img, fotoSeccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda  AND fotoPrincipal = :FOTOPRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, secciones.seccion, nombre_img, fotoSeccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda  AND fotoPrincipal = :FOTOPRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
             $stmt->bindValue(':FOTOPRINCIPAL', 1, PDO::PARAM_INT);
@@ -128,7 +128,7 @@
 
         //SELECT de los productos de una sección en una tienda especifica
         public function consultarProductosTienda($ID_Tienda, $Seccion){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = :SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda AND seccion = :SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
             $stmt->bindParam(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
             $stmt->bindParam(':SECCION', $Seccion, PDO::PARAM_STR);
@@ -255,7 +255,7 @@
 
         //SELECT de un producto especificao de una tienda determinada
         public function consultarDescripcionProducto($ID_Tienda, $ID_Producto){
-            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, opciones.ID_Opcion, producto, opcion, precioBolivar, precioDolar, seccion, secciones.ID_Seccion, secciones_productos.ID_SP FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND productos.ID_Producto = :ID_PRODUCTO");
+            $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, opciones.ID_Opcion, producto, opcion, precioBolivar, precioDolar, cantidad, disponible, seccion, secciones.ID_Seccion, secciones_productos.ID_SP FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND productos.ID_Producto = :ID_PRODUCTO");
 
             $stmt->bindParam(':ID_TIENDA', $id_tienda, PDO::PARAM_STR);
             $stmt->bindParam(':ID_PRODUCTO', $id_producto, PDO::PARAM_INT);
@@ -892,13 +892,15 @@
         
         //UPDATE de una opcion
         public function actualizarOpcion($RecibeProducto){
-            $stmt = $this->dbh->prepare("UPDATE opciones SET opcion = :OPCION, precioBolivar = :PRECIOBOLIVAR, precioDolar = :PRECIODOLAR WHERE ID_Opcion = :ID_OPCION");
+            $stmt = $this->dbh->prepare("UPDATE opciones SET opcion = :OPCION, precioBolivar = :PRECIOBOLIVAR, precioDolar = :PRECIODOLAR, cantidad = :CANTIDAD, disponible = :DISPONIBLE WHERE ID_Opcion = :ID_OPCION");
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':OPCION', $RecibeProducto['Descripcion']);
             $stmt->bindValue(':PRECIOBOLIVAR', $RecibeProducto['PrecioBolivar']);
             $stmt->bindValue(':PRECIODOLAR', $RecibeProducto['PrecioDolar']);
             $stmt->bindValue(':ID_OPCION', $RecibeProducto['ID_Opcion']);
+            $stmt->bindValue(':CANTIDAD', $RecibeProducto['Cantidad']);
+            $stmt->bindValue(':DISPONIBLE', $RecibeProducto['Disponible']);
 
             // Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){
@@ -1217,17 +1219,21 @@
             // print_r($RecibeProducto);
             // echo "</pre>";
             // exit;
-            $stmt = $this->dbh->prepare("INSERT INTO opciones(opcion, precioBolivar, precioDolar) VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR)");
+            $stmt = $this->dbh->prepare("INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad, disponible) VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)");
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
             $stmt->bindParam(':OPCION', $Opcion);
             $stmt->bindParam(':PRECIOBS', $PrecioBs);
             $stmt->bindParam(':PRECIODOLAR', $PrecioDolar);
+            $stmt->bindParam(':CANTIDAD', $Cantidad);
+            $stmt->bindParam(':DISPONIBLE', $Disponible);
 
             // insertar una fila
             $Opcion = $RecibeProducto['Descripcion'];
             $PrecioBs = $RecibeProducto['PrecioBs'];
             $PrecioDolar = $RecibeProducto['PrecioDolar'];
+            $Cantidad = $RecibeProducto['Cantidad'];
+            $Disponible = $RecibeProducto['Disponible'];
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){

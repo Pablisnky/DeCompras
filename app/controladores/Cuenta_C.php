@@ -326,6 +326,11 @@
             //CONSULTA las especiicaciones de un producto determinado y de una tienda especifica
             $Especificaciones = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
 
+            // echo "<pre>";
+            // print_r($Especificaciones);
+            // echo "</pre>";
+            // exit();
+
             //Se CONSULTAN el slogan de una tienda en particular
             $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
@@ -350,7 +355,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien
                 'secciones' => $Secciones, //Usado en header_AfiCom.php
-                'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, producto, opcion, precioBolivar, precioDolar, seccion, ID_Seccion, ID_SP
+                'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, producto, opcion, precioBolivar, precioDolar, cantidad, disponible, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
@@ -376,6 +381,68 @@
             $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $this->vista("inc/Select_Ajax_V", $Datos);
+        }
+
+        //Llamado desde A_Cuenta_editar.js
+        public function Categorias(){
+            //CONSULTA las categorias que exiten en la BD
+            $Categorias = $this->ConsultaCuenta_M->consultarCatgorias();
+
+            //CONSULTA las categorias en las que una tienda se ha postulado
+            $CategoriasTienda = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
+
+            $Datos = [
+                'categorias' => $Categorias,
+                'categoriasTienda' => $CategoriasTienda
+            ];
+
+            $this->vista("inc/Categorias_Ajax_V", $Datos);
+        }
+
+        //Invocado desde A_Cuenta_editar.js entrega las secciones activas de una tienda
+        public function Secciones($ID_Producto){
+            //CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
+            $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            // echo "<pre>";
+            // print_r($Seccion);
+            // echo "</pre>";
+            // exit();
+
+            //CONSULTA el ID_Sección al que pertenece un producto de una tienda especifica
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccionActiva($ID_Producto);
+            $ID_Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+            // echo "<pre>";
+            // print_r($ID_Seccion);
+            // echo "</pre>";
+            // exit();
+
+            //La consulta devuelve el ID_Seccion en una array, se convierte en una variable
+            $ID_Seccion = $ID_Seccion[0]['ID_Seccion'];
+
+            //CONSULTA la seccion correspondiente al ID_Seccion
+            $Consulta = $this->ConsultaCuenta_M->consultarSeccion($ID_Seccion);
+            $SeccionActiva = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+            $Datos = [
+                'seccion' => $Seccion,
+                'seccionActiva' => $SeccionActiva
+            ];
+
+            $this->vista("inc/Secciones_Ajax_V", $Datos);
+        }
+
+        //Metodo invocado desde A_Cuenta_publicar.js
+        public function SeccionesDisponibles(){
+            // CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
+            $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+            $Datos = [
+                'seccion' => $Seccion,
+            ];
+
+            $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
         //Recibe el formulario de actualizacion de los datos de una tienda invocado en cuenta_editar_V.php
@@ -745,69 +812,7 @@
             //Redirecciona, La función redireccionar se encuantra en url_helper.php
             redireccionar("/Cuenta_C/Editar");
         }
-
-        //Llamado desde A_Cuenta_editar.js
-        public function Categorias(){
-            //CONSULTA las categorias que exiten en la BD
-            $Categorias = $this->ConsultaCuenta_M->consultarCatgorias();
-
-            //CONSULTA las categorias en las que una tienda se ha postulado
-            $CategoriasTienda = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda );
-
-            $Datos = [
-                'categorias' => $Categorias,
-                'categoriasTienda' => $CategoriasTienda
-            ];
-
-            $this->vista("inc/Categorias_Ajax_V", $Datos);
-        }
-
-        //Invocado desde A_Cuenta_editar.js entrega las secciones activas de una tienda
-        public function Secciones($ID_Producto){
-            //CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
-            $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-            // echo "<pre>";
-            // print_r($Seccion);
-            // echo "</pre>";
-            // exit();
-
-            //CONSULTA el ID_Sección al que pertenece un producto de una tienda especifica
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccionActiva($ID_Producto);
-            $ID_Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-            // echo "<pre>";
-            // print_r($ID_Seccion);
-            // echo "</pre>";
-            // exit();
-
-            //La consulta devuelve el ID_Seccion en una array, se convierte en una variable
-            $ID_Seccion = $ID_Seccion[0]['ID_Seccion'];
-
-            //CONSULTA la seccion correspondiente al ID_Seccion
-            $Consulta = $this->ConsultaCuenta_M->consultarSeccion($ID_Seccion);
-            $SeccionActiva = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
-            $Datos = [
-                'seccion' => $Seccion,
-                'seccionActiva' => $SeccionActiva
-            ];
-
-            $this->vista("inc/Secciones_Ajax_V", $Datos);
-        }
-
-        //Metodo invocado desde A_Cuenta_publicar.js
-        public function SeccionesDisponibles(){
-            // CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
-            $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-
-            $Datos = [
-                'seccion' => $Seccion,
-            ];
-
-            $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
-        }
-
+        
         //Invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
         public function recibeProductoPublicar(){
             $verifica_2 = $_SESSION['verifica_2'];  
@@ -823,6 +828,8 @@
                         'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
+                        'Cantidad' => !empty($_POST['cantidad']),
+                        'Disponible' => !empty($_POST['disponible']),
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
                     ];
@@ -985,9 +992,11 @@
                     'ID_Seccion' => filter_input(INPUT_POST, "id_seccion", FILTER_SANITIZE_STRING),
                     'ID_SP' => filter_input(INPUT_POST, "id_sp", FILTER_SANITIZE_STRING),
                     'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
-                    'Descripcion' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)),
+                    'Descripcion' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                     'PrecioBolivar' => filter_input(INPUT_POST, "precioBolivar", FILTER_SANITIZE_STRING),
                     'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
+                    'Cantidad' => empty($_POST['uni_existencia']) ? 0 : $_POST['uni_existencia'],
+                    'Disponible' => !empty($_POST['disponible']),
                     'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
                     'Puntero' => filter_input(INPUT_POST, "puntero", FILTER_SANITIZE_STRING),
