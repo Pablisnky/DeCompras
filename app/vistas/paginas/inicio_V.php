@@ -31,8 +31,8 @@
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">
             <div class="section_1__div">
                 <div class="section_1__div1">
-                    <p class="section_1__p">Muchos de tus clientes estan verdaderamente ocupados</p>
-                    <p class="section_1__p"><span class="span_22">¡ Ofrece un servicio Premium ! </span><br> digitalizando tu tienda</p>
+                    <p class="section_1__p">Muchos de tus clientes estan verdaderamente ocupados,</p>
+                    <p class="section_1__p"><span class="span_22">¡ Ofreceles un <br class="br_2"> Servicio Premium ! </span><br> digitalizando tu tienda</p>
                 </div>
                 <div class="section_1__div2" id="BotonRegistrar">
                     <label class="section_1__boton"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a></label>
