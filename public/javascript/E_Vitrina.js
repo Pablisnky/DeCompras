@@ -359,7 +359,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
                 //Se muestra la leyenda del producto donde se hizo click
                 InputLeyenda = document.getElementById(Input_LeyendaClick)
-                InputLeyenda.value = 1 + ' ' + Separado[2] + ' ' + Separado[3] + ' = ' + Separado[4] + ' Bs.'
+                InputLeyenda.value = 1 + ' ' + Separado[2] + ' = ' + Separado[4] + ' Bs.'
 
                 //Se cambia el formato del precio, solo numeros sin separador de miles
                 Precio = Precio.replace(/[.]/g,'')
@@ -642,7 +642,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 inputSeleccionadoLeyen.getElementsByClassName("input_1f")[0].value = Total
                 
                 //Muestra la leyenda del pedido por producto
-                inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + ' ' + Opcion + " = " + SeparadorMiles(Total) + " Bs."
+                inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + " = " + SeparadorMiles(Total) + " Bs."
 
                 //Se busca el ID_Opcion del producto selecionado (Este ID fue asignado en la BD) para saber que producto contiene y añadirlo en el carrito
                 //input ID_Opcion en el elemento hermano del click correspondiente; Aqui se mostrará el ID_Opcion
@@ -764,7 +764,7 @@ console.log(AlCarro)
                 // TotalDisplayCarrito = Number(DisplayCarrito[0]) - Number(PrecioARestar);
                 
                 //Muestra la leyenda del pedido por producto
-                Cont_leyenda.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + ' ' + Opcion + " = " + SeparadorMiles(Total) + " Bs."    
+                Cont_leyenda.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto +  " = " + SeparadorMiles(Total) + " Bs."    
 
                 //Busca por el precio dado y devuelve la posición de la primera ocurrencia.
                 let Eliminar = DisplayCarrito.indexOf(Precio)
@@ -826,7 +826,7 @@ console.log(AlCarro)
                 //Se crea una nuevo array del objeto PedidoCar 
                 PedidoGlobal = new PedidoCar(Seccion_tienda, Producto, Cantidades, Opcion, Precio, TotalDisplayCarrito);
 // console.log(AlCarro)
-console.log(AlContenedor)
+// console.log(AlContenedor)
                 //Se elimina el producto del array que contiene el pedido, esta informacion es la que va al resumen de la orden
                 function ProductoEditado(Opcion){
                     var existe = false;
@@ -875,8 +875,8 @@ console.log(AlContenedor)
                 HermanoMasMenos = PadreMasMenos.previousElementSibling 
                 //Se muestra la etiqueta agregar del div HermanoMasMenos que se ocultó en 
                 EtiquetaAgregar = HermanoMasMenos.getElementsByClassName("Label_3js")[0].style.display = "block"
-console.log(EtiquetaAgregar)
-console.log(HermanoMasMenos.getElementsByClassName("Label_3js")[0])
+// console.log(EtiquetaAgregar)
+// console.log(HermanoMasMenos.getElementsByClassName("Label_3js")[0])
 
 // console.log(AlCarro)
                 //Se oculta el display carrito cuando el pedido sea de cero Bolivares y se muestra el boton de agregar opcion
@@ -897,8 +897,8 @@ console.log(HermanoMasMenos.getElementsByClassName("Label_3js")[0])
                 }
             }  
             DisplayDestello()
-console.log(AlContenedor)
-console.log(AlCarro) 
+// console.log(AlContenedor)
+// console.log(AlCarro) 
         }    
     }
 

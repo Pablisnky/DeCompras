@@ -128,21 +128,21 @@
 
                             <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
                                 <div class="contenedor_19">
-                                    <!-- cantidad alimentado desde FuncionesVarias.js agregarOpcion()-->
+                                    <!-- cantidad alimentado desde E_Vitrina.js agregarOpcion()-->
                                     <input type="text" class="input_1e ocultar" id="<?php echo 'Cantidad_' . $ContadorLabel;?>"/>
                                     <!-- seccion -->
                                     <input type="text" class="input_1g ocultar" name="seccion" id="<?php echo 'Seccion_' . $ContadorLabel;?>"/>
-                                    <!-- producto - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                                    <!-- producto - alimentado desde E_Vitrina.js agregarOpcion() -->
                                     <input type="text" class="input_1a ocultar" name="Desc_Producto" id="<?php echo 'Producto_' . $ContadorLabel;?>"/>
-                                    <!-- opcion alimentado desde FuncionesVarias.js agregarOpcion()-->
+                                    <!-- opcion alimentado desde E_Vitrina.js agregarOpcion()-->
                                     <input type="text" class="input_1c ocultar" name="" id="<?php echo 'Opcion_' . $ContadorLabel;?>"/>
                                     <!-- ID_Opcion --> 
                                     <!-- <input type="text" class="input_1b"/> -->
-                                    <!-- Precio - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                                    <!-- Precio - alimentado desde E_Vitrina.js agregarOpcion() -->
                                     <input type="text" class="input_1d ocultar" id="<?php echo 'Precio_' . $ContadorLabel;?>"/>
-                                    <!-- Total - alimentado desde FuncionesVarias.js agregarOpcion()-->
+                                    <!-- Total - alimentado desde E_Vitrina.js agregarOpcion()-->
                                     <input type="text" class="input_1f ocultar" id="<?php echo 'Total_' . $ContadorLabel;?>"/>
-                                    <!-- Leyenda - alimentado desde FuncionesVarias.js agregarOpcion() -->
+                                    <!-- Leyenda - alimentado desde E_Vitrina.js agregarOpcion() -->
                                     <input class="input_2a" type="text" name="leyenda" id="<?php echo 'Leyenda_'. $ContadorLabel;?>"/>
                                 </div> 
                                 <div class="contenedor_16">
