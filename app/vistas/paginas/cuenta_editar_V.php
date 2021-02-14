@@ -187,7 +187,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
-                        <div class="contenedor_80" id="Contenedor_80"><!--Contenedor_80-->
+                        <div class="contenedor_80" id="Contenedor_80">
                             <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección" />
                             <span class="icon-cancel-circle span_10 span_14_js"></span>
                         </div>

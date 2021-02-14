@@ -518,7 +518,39 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let Parroquia = document.getElementById('Parroquia_Tien').value
         let Direccion = document.getElementById('Direccion_Tien').value
         //HORARIO TIENDA
-
+        let lunes_M = document.getElementById('Lunes_M').checked
+        let martes_M = document.getElementById('Martes_M').checked
+        let miercoles_M = document.getElementById('Miercoles_M').checked
+        let jueves_M = document.getElementById('Jueves_M').checked
+        let viernes_M = document.getElementById('Viernes_M').checked
+        let Sabado_M = document.getElementById('Sabado_M').checked
+        let Domingo_M = document.getElementById('Domingo_M').checked
+        let lunes_T = document.getElementById('Lunes_T').checked
+        let martes_T = document.getElementById('Martes_T').checked
+        let miercoles_T = document.getElementById('Miercoles_T').checked
+        let jueves_T = document.getElementById('Jueves_T').checked
+        let viernes_T = document.getElementById('Viernes_T').checked
+        let Sabado_T = document.getElementById('Sabado_T').checked
+        let Domingo_T = document.getElementById('Domingo_T').checked
+        // console.log(lunes_M)
+        // console.log(martes_M)
+        // console.log(miercoles_M)
+        // console.log(jueves_M)
+        // console.log(viernes_M)
+        // console.log(Sabado_M)
+        // console.log(Domingo_M)        
+        let InicioManana = document.getElementById('InicioManana').value
+        let CulminaManana = document.getElementById('CulminaManana').value
+        let IniciaTarde = document.getElementById('IniciaTarde').value
+        let CulminaTarde = document.getElementById('CulminaTarde').value
+        let InicioManana_Sab = document.getElementById('InicioManana_Sab').value
+        let CulminaManana_Sab = document.getElementById('CulminaManana_Sab').value
+        let InicioTarde_Sab = document.getElementById('InicioTarde_Sab').value
+        let CulminaTarde_Sab = document.getElementById('CulminaTarde_Sab').value      
+        let InicioManana_Dom = document.getElementById('InicioManana_Dom').value
+        let CulminaManana_Dom = document.getElementById('CulminaManana_Dom').value
+        let InicioTarde_Dom = document.getElementById('InicioTarde_Dom').value
+        let CulminaTarde_Dom = document.getElementById('CulminaTarde_Dom').value
         // DATOS CUENTA BANCO        
         let Nombre_Banco = document.getElementsByClassName('bancoTransJS')  
         let Titular_Banco = document.getElementsByClassName('titularTransJS') 
@@ -699,7 +731,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')            
             return false;
         }
-        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20 || P_Letras.test(Seccion) == false){
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20){
             alert ("Necesita introducir al menos una Seccion")
             document.getElementById("Seccion").value = ""
             document.getElementById("Seccion").focus()
@@ -711,35 +743,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-
-        //VALIDA MEDIOS DE PAGO
-        if(document.getElementsByClassName('bancoTransJS')[0].value  == "" && document.getElementsByClassName("cedulaJS")[0].value == "" && document.getElementById("Bolivar").value == "" && document.getElementById("Dolar").value == "" && document.getElementById("Acordado").value == ""){
-            alert ("Introduzca al menos un medio de pago (Transferencia, Pagomovil, Efectivo, Acordado")
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
-        
-        //VALIDA HORARIO (DIAS LABORALES)
-        let lunes_M = document.getElementById('Lunes_M').checked
-        let martes_M = document.getElementById('Martes_M').checked
-        let miercoles_M = document.getElementById('Miercoles_M').checked
-        let jueves_M = document.getElementById('Jueves_M').checked
-        let viernes_M = document.getElementById('Viernes_M').checked
-        let lunes_T = document.getElementById('Lunes_T').checked
-        let martes_T = document.getElementById('Martes_T').checked
-        let miercoles_T = document.getElementById('Miercoles_T').checked
-        let jueves_T = document.getElementById('Jueves_T').checked
-        let viernes_T = document.getElementById('Viernes_T').checked
-        let Sabado_M = document.getElementById('Sabado_M').checked
-        let Sabado_T = document.getElementById('Sabado_T').checked
-        let Domingo_M = document.getElementById('Domingo_M').checked
-        let Domingo_T = document.getElementById('Domingo_T').checked
         //Valida que se escoja al menos un dia laboral
-        if(lunes_M == false && martes_M == false && miercoles_M == false && jueves_M == false && viernes_M == false && lunes_T == false && martes_T == false && miercoles_T == false && jueves_T == false && viernes_T == false && Sabado_M == false && Sabado_T == false && Domingo_M == false && Domingo_T == false){
+        else if(lunes_M == false && martes_M == false && miercoles_M == false && jueves_M == false && viernes_M == false && lunes_T == false && martes_T == false && miercoles_T == false && jueves_T == false && viernes_T == false && Sabado_M == false && Sabado_T == false && Domingo_M == false && Domingo_T == false){
             alert ("Introduzca días laborales")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -750,21 +755,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
         }
 
         //VALIDA HORARIO (TURNO MAÑANA Y TARDE lUNE - VIE)
-        let InicioManana = document.getElementById('InicioManana').value
-        let CulminaManana = document.getElementById('CulminaManana').value
-        let IniciaTarde = document.getElementById('IniciaTarde').value
-        let CulminaTarde = document.getElementById('CulminaTarde').value
-        let InicioManana_Sab = document.getElementById('InicioManana_Sab').value
-        let CulminaManana_Sab = document.getElementById('CulminaManana_Sab').value
-        let InicioTarde_Sab = document.getElementById('InicioTarde_Sab').value
-        let CulminaTarde_Sab = document.getElementById('CulminaTarde_Sab').value      
-        let InicioManana_Dom = document.getElementById('InicioManana_Dom').value
-        let CulminaManana_Dom = document.getElementById('CulminaManana_Dom').value
-        let InicioTarde_Dom = document.getElementById('InicioTarde_Dom').value
-        let CulminaTarde_Dom = document.getElementById('CulminaTarde_Dom').value
-
-        //Valida que se seleccione un horario si el bloque de la mañana tiene un dia activo
-        if((lunes_M == true || martes_M == true || miercoles_M == true || jueves_M == true || viernes_M == true) && (InicioManana == '' || InicioManana == '00:00' || CulminaManana == '' || CulminaManana == '00:00')){
+        //Valida que se haya seleccionado un horario si el bloque de la mañana tiene un dia activo
+        else if((lunes_M == true || martes_M == true || miercoles_M == true || jueves_M == true || viernes_M == true) && (InicioManana == '' || InicioManana == '00:00' || CulminaManana == '' || CulminaManana == '00:00')){
             alert ("Introduzca hora de apertura y cierre para el bloque de la mañana")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -773,8 +765,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        //Valida que se seleccione un horario si el bloque de la tarde tiene un dia activo
-        if((lunes_T == true || martes_T == true || miercoles_T == true || jueves_T == true || viernes_T == true) && (IniciaTarde == '' || IniciaTarde == '00:00' || CulminaTarde == '' || CulminaTarde == '00:00')){
+        //Valida que se haya seleccionado un horario si el bloque de la tarde tiene un dia activo
+        else if((lunes_T == true || martes_T == true || miercoles_T == true || jueves_T == true || viernes_T == true) && (IniciaTarde == '' || IniciaTarde == '00:00' || CulminaTarde == '' || CulminaTarde == '00:00')){
             alert ("Introduzca hora de apertura y cierre para el bloque de la tarde")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -783,8 +775,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        //Valida que se seleccione un horario si el bloque de la mañana del sabado esta activo 
-        if((Sabado_M == true) && (InicioManana_Sab == '' || InicioManana_Sab == '00:00' || CulminaManana_Sab == '' || CulminaManana_Sab == '00:00')){
+        //VALIDA HORARIO SABADO (TURNO MAÑANA Y TARDE)
+        //Valida que se haya seleccionado un horario si el bloque de la mañana del sabado esta activo 
+        else if((Sabado_M == true) && (InicioManana_Sab == '' || InicioManana_Sab == '00:00' || CulminaManana_Sab == '' || CulminaManana_Sab == '00:00')){
             alert ("Introduzca horario para el sabado en la mañana")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -793,8 +786,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        //Valida que se seleccione un horario si el bloque de la tarde del sabado esta activo 
-        if((Sabado_T == true) && (InicioTarde_Sab == '' || InicioTarde_Sab == '00:00' || CulminaTarde_Sab == '' || CulminaTarde_Sab == '00:00')){
+        //Valida que se haya seleccionado un horario si el bloque de la tarde del sabado esta activo 
+        else if((Sabado_T == true) && (InicioTarde_Sab == '' || InicioTarde_Sab == '00:00' || CulminaTarde_Sab == '' || CulminaTarde_Sab == '00:00')){
             alert ("Introduzca horario para el sabado en la tarde")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -803,8 +796,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }        
-        //Valida que se seleccione un horario si el bloque de la mañana del domingo esta activo 
-        if((Domingo_M == true) && (InicioManana_Dom == '' || InicioManana_Dom == '00:00' || CulminaManana_Dom == '' || CulminaManana_Dom == '00:00')){
+        //VALIDA HORARIO DOMINGO(TURNO MAÑANA Y TARDE)
+        //Valida que se haya seleccionado un horario si el bloque de la mañana del domingo esta activo 
+        else if((Domingo_M == true) && (InicioManana_Dom == '' || InicioManana_Dom == '00:00' || CulminaManana_Dom == '' || CulminaManana_Dom == '00:00')){
             alert ("Introduzca horario para el domingo en la mañana")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -813,9 +807,21 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        //Valida que se seleccione un horario si el bloque de la tarde del domingo esta activo 
-        if((Domingo_T == true) && (InicioTarde_Dom == '' || InicioTarde_Dom == '00:00' || CulminaTarde_Dom == '' || CulminaTarde_Dom == '00:00')){
+        //Valida que se haya seleccionado un horario si el bloque de la tarde del domingo esta activo 
+        else if((Domingo_T == true) && (InicioTarde_Dom == '' || InicioTarde_Dom == '00:00' || CulminaTarde_Dom == '' || CulminaTarde_Dom == '00:00')){
             alert ("Introduzca horario para el domingo en la tarde")
+            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+
+        //VALIDA MEDIOS DE PAGO
+        else if(document.getElementsByClassName('bancoTransJS')[0].value  == "" && document.getElementsByClassName("cedulaJS")[0].value == "" && document.getElementById("Bolivar").checked == false && document.getElementById("Dolar").checked == false && document.getElementById("Acordado").checked == false
+            ){
+            alert ("Introduzca al menos un medio de pago (Transferencia, Pagomovil, Efectivo, Acordado")
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"

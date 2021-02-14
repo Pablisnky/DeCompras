@@ -29,11 +29,13 @@ Telefono Lisbella 7c:a1:77:17:4c:f0
 Tablet c0:3f:d5:c6:d0:99
 Labtop 44:6d:57:eb:10:57
 Lusvio 34:29:12:bf:e8:fc
-
-Karina 60:ab:67:9b:07:24
-Esther c0:3f:d5:c6:d0:99
+Salvador labtop 6c:88:14:15:26:e4
+Salvador 98:f6:21:7d:f0:ca
 Esther 14:a3:64:83:e3:dc
 Esther 8c:79:67:1f:4f:b3
+
+Karina 60:ab:67:9b:07:24
+Xiomara c0:3f:d5:c6:d0:99
 
 Cinco razones para afiliar tu comercio a PedidoRemoto
 1.- Digitalizamos tu tienda y la convertimos en un e-commerce.

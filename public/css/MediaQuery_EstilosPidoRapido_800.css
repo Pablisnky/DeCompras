@@ -176,6 +176,9 @@
 .sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - modal_fueraHorario*/
 	padding-top: 5%;
 }
+.sectionModal__div{/*modal_sinSecciones*/
+	width: 95%;
+}
 .sectionModal__div--corto{/*modal_recuperarCorreo*/
 	margin-top: 5%;
 	width: 95%;
@@ -184,7 +187,7 @@
 	font-size: 1.1em;
 	margin: auto;
 	line-height: 25px;
-	margin-bottom: 2%;
+	margin-bottom: 4%;
 	width: 90%;
 }
 .section--tienda{/*tienda*/

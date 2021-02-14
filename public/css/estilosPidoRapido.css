@@ -1356,7 +1356,6 @@ body, html{
 	margin: 2% auto;
 	padding: 1%;
 	border-radius: 15px;
-	/* text-align: center; */
 }
 .sectionModal__div__p{/*modal_sinSecciones* - modal_fueraHorario*/
 	font-size: 1.3em;
