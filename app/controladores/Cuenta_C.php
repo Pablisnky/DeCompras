@@ -775,6 +775,21 @@
             // echo "Todos los campos estan llenos";
             // exit();
 
+            //EVALUA CAMBIO DE LINK DE ACCESO
+            //Se crea el link de aceso";  
+            $LinkAcceso = RUTA_URL .'/' . $RecibeDatos['Nombre_com'];
+
+            //Se rellenan los espacios en blanco en el nombre de la tienda en caso de existir
+            $NombreTienda = $RecibeDatos['Nombre_com'];
+            $NombreTienda = str_replace(' ', '%20', $NombreTienda);
+
+            //Se construye la url real de la tienda
+            $URL = RUTA_URL . '/' . 'Vitrina_C/index/' . $this->ID_Tienda . ',' . $NombreTienda . ',NoNecesario_1,NoNecesario_2#no-back-button';
+
+            //Se guarda el link de acceso y la url real en la configuración de la tienda
+            //INSERT del link de acceso directo de una tienda en particular
+            $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso, $URL);
+
             // **********************************************************************************
             //Todo este procedimiento debe ser por medio de TRANSACCIONES
             // **********************************************************************************
@@ -982,7 +997,7 @@
 
         //Invocado desde cuenta_editar_prod_V.php actualiza la información de un producto)
         public function recibeAtualizarProducto(){
-            // Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
+            //Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0)){
 
                 $RecibeProducto = [
@@ -1014,7 +1029,7 @@
                 exit();
             }
 
-            //SECCION IMAGEN PRINCIPAL
+            //IMAGEN PRINCIPAL
             // ********************************************************
             // Si se selecionó alguna nueva imagen
             if($_FILES['imagenPrinci_Editar']["name"] != ''){
@@ -1069,7 +1084,7 @@
             //     echo 'No seleciono imagen principal' . '<br>';
             // }
 
-            //SECCION IMAGENES SECUNDARIAS
+            //IMAGENES SECUNDARIAS
             // ********************************************************
             //Se verifican cuantas imagenes se estan recibiendo, incluyendo las que ya existen en la BD
             $Cantidad = count($_FILES["imagen_EditarVarias"]["name"]);
@@ -1109,20 +1124,21 @@
 
                             //Para actualizar fotografias varias solo si se ha presionado el boton de buscar fotografia; en realidad no se actualizan, simplemente se insertan las que se reciben del formulario
 
-                            //Se consulta la cantidad de imagenes del producto
+                            //Se consulta la cantidad de imagenes que tiene el producto en BD
                             $CantidadImagenes = $this->ConsultaCuenta_M->consultarCantidadImagenes($RecibeProducto['ID_Producto']);
-                            // echo $CantidadImagenes[0]['CantidadFotos'];
+                            // echo $CantidadImagenes[0]['CantidadFotos'] . '<br>';
 
                             //$Cantidad contiene la cantidad de imgenes que se seleccionaron para insertar
-                            // echo $Cantidad;
+                            // echo $Cantidad . '<br>';
 
                             $TotalImagenes = $CantidadImagenes[0]['CantidadFotos'] + $Cantidad;
-                            
-                            if($TotalImagenes < 6){
+                            // echo $TotalImagenes . '<br>';
+                            if($TotalImagenes < 7){
                                 //Se INSERTAN las fotografias del producto
-                                $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias);
+                                $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias,$RecibeProducto['ID_Seccion']);
                             }
                             else{
+                                // echo $TotalImagenes . '<br>';
                                 echo "Solo puede cargar cuatro imagenes adicionales";
                                 echo "<a href='javascript:history.back()'>Regresar</a>";
                                 exit();

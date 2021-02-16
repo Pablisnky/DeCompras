@@ -56,7 +56,7 @@
                 $Sabado_m = $Sabado['sabado_m']; 
                 $Sabado_t = $Sabado['sabado_t']; 
             endforeach;
-
+            
             foreach($DiasLaborales['horarioTienda_Dom'] as $Domingo) :
                 $Domingo_m = $Domingo['domingo_m']; 
                 $Domingo_t = $Domingo['domingo_t']; 
@@ -78,7 +78,7 @@
             $IniciaTarde_Dom = $DiasLaborales['horarioTienda_Dom'][0]['inicia_t_Dom'];
             $CulminaTarde_Dom = $DiasLaborales['horarioTienda_Dom'][0]['culmina_t_Dom'];  
 
-            //Se asignan los valores de los horarios a variables segun existan
+            //Se asignan los valores de las horas de apertura y cierre a variables segun existan
             $Lun_m_inicia = $Lunes_m != '0' ? $InicioManana_LV : '--';
             $Mar_m_inicia = $Martes_m != '0' ? $InicioManana_LV : '--';
             $Mie_m_inicia = $Miercoles_m != '0' ? $InicioManana_LV : '--';
@@ -332,21 +332,7 @@
                  
                 date_default_timezone_set('America/Caracas');
 
-                //Con date_format(date_create($Hor['Dom_t_inicia']) se cambia el formato de 12 a 24 horas
-                // DISPONIBILIDAD SABADO MAÑANA (CERRADO - ABIERTO)
-                // if($Dia == 'Sabado' && ($Hor['Sabado_m'] != '0')):
-                //     if($Hor['Sab_m_inicia'] < date('H:i') && $Hor['Sab_m_inicia'] != '--'):
-                //         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Abierto'];
-                //         array_push($Disponibilidad, $Nuevo_2);
-                //     else:
-                //         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado'];
-                //         array_push($Disponibilidad, $Nuevo_2);
-                //     endif;
-                // elseif($Dia == 'Sabado' && $Hor['Sabado_m'] == '0'):
-                //     $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado'];
-                //     array_push($Disponibilidad, $Nuevo_2);
-                // endif;
-
+               
 
 
 
@@ -556,7 +542,7 @@
 
 
 
-                // DISPONIBILIDAD VIERNES (CERRADO - ABIERTO - HORA DE APERTURA)
+            
                 elseif($Dia == 'Viernes'):
                     //ABRE EL LUNES DESPUES DEL VIERNES(verificado)
                     if($Hor['Sabado_m'] == '0' && $Hor['Sabado_t'] == '0' && $Hor['Domingo_m'] == '0' && $Hor['Domingo_t'] == '0' && ($Hor['Vie_t_culmina'] != '--' && date_format(date_create($Hor['Vie_t_culmina']),"H:i") < date('H:i'))):

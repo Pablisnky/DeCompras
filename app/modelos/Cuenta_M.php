@@ -271,7 +271,7 @@
         public function consultarSloganTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT slogan_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
 
-            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindParam(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -285,7 +285,7 @@
         public function consultarLinkTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT url, link_acceso FROM destinos WHERE ID_Tienda = :ID_Tienda");
 
-            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindParam(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -469,7 +469,7 @@
         public function consultarHorarioTienda_Esp($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT *, DATE_FORMAT(inicia_m_Esp, '%h:%i %p') AS inicia_m_Esp, DATE_FORMAT(culmina_m_Esp, '%h:%i %p') AS culmina_m_Esp, DATE_FORMAT(inicia_t_Esp, '%h:%i %p') AS inicia_t_Esp, DATE_FORMAT(culmina_t_Esp, '%h:%i %p') AS culmina_t_Esp FROM horarioespecial WHERE ID_Tienda = :ID_TIENDA");
 
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -479,10 +479,11 @@
             }
         }
         
+        // SELECT de la cantidad de imagenes que tiene un producto especifico
         public function consultarCantidadImagenes($ID_Producto){
             $stmt = $this->dbh->prepare("SELECT COUNT(ID_Producto) AS CantidadFotos FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
 
-            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -1300,11 +1301,12 @@
         // }
 
         //INSERT en la tabla imagenes las fotografias secundarias
-        public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio){
-            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora)VALUES (:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
+        public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio, $ID_Seccion){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, ID_Seccion, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora)VALUES (:ID_PRODUCTO, :ID_SECCION, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
             
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto,);
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion,);
             $stmt->bindParam(':NOMBRE_IMG', $archivonombre);
             $stmt->bindParam(':TIPO_ARCHIVO', $tipo);
             $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio);

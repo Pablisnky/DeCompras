@@ -3,14 +3,18 @@
         <section class="sectionTienda" id="Section_4">
             <a  href="<?php echo RUTA_URL . '/Inicio_C';?>"><span class="icon-cancel-circle spanCerrar"></span></a>
             <div class="sectionTienda_div" id="SectionTiendas">
-                <h1 class="h1_7">Yaracuy</h1>
                 <?php
-                    foreach($Datos['ciudades'] as $arr) : ?>
-                        <div class="contInputRadio contInputRadio--margen">     
-                            <input class="ciudad_JS" type="radio" name="ciudades" id="<?php echo $arr['parroquia_Tien'];?>" value="<?php echo $arr['parroquia_Tien'];?>" onclick="Llamar_TiendasCiudad(this.id)"/>
-                            <label class="contInputRadio__label" for="<?php echo $arr['parroquia_Tien'];?>"><?php echo $arr['parroquia_Tien'];?></label>
-                        </div>  <?php
-                    endforeach;     ?> 
+                    foreach($Datos['estados'] as $arr) : ?>
+                        <h1 class="h1_7"><?php echo $arr['estado_Tien']?></h1>   <?php
+                        foreach($Datos['ciudades'] as $Key) : 
+                            if($arr['estado_Tien'] == $Key['estado_Tien']) : ?>
+                                <div class="contInputRadio contInputRadio--margen">     
+                                    <input class="ciudad_JS" type="radio" name="ciudades" id="<?php echo $Key['parroquia_Tien'];?>" value="<?php echo $Key['parroquia_Tien'];?>" onclick="Llamar_TiendasCiudad(this.id)"/>
+                                    <label class="contInputRadio__label" for="<?php echo $Key['parroquia_Tien'];?>"><?php echo $Key['parroquia_Tien'];?></label>
+                                </div>  <?php
+                            endif;
+                        endforeach;
+                    endforeach;    ?> 
                 <h2 class="h2_14 borde_3">Proximamente nuestra oferta de ciudades será ampliada.</h2>
             </div>
         </section>
@@ -26,7 +30,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/artesanos/style_artesanos.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ropa/style_ropa.css"/>
         
-<section class="section_1" id="Section_2js">
+<section class="section_1" ><!--id="Section_2js"-->
     <div id="Contenedor_23"></div>
 </section>
 

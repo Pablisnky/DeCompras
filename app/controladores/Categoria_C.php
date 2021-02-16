@@ -10,10 +10,14 @@
         
         public function index(){
             //Se CONSULTAN todas las ciudades en las cuales existen tiendas
+            $EstadosTiendas = $this->ConsultaCategoria_M->consultarEstadosTiendas();
+
+            //Se CONSULTAN todas las ciudades en las cuales existen tiendas
             $CiudadesTiendas = $this->ConsultaCategoria_M->consultarCiudadesTiendas();
-           
+            
             $Datos = [
-                'ciudades' => $CiudadesTiendas, //parroquia_Tien
+                'estados' => $EstadosTiendas, //estado_Tien
+                'ciudades' => $CiudadesTiendas, //parroquia_Tien, estado_Tien
             ];
 
             // echo '<pre>';

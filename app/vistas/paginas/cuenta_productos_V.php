@@ -70,7 +70,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             }   ?>
                     </div>
                     <div>
-                        <!-- ID_PRODUCTO -->
+                        <!-- PRODUCTO -->
                         <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>" value="<?php echo $Producto;?>"/>
 
                         <!-- OPCION -->                        
@@ -78,17 +78,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                         <!-- UNIDADES EN EXISTNCIA -->                        
                         <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?></label>
-
-                        <!-- ESPECIFICACION -->
-                        <?php                  
-                            // foreach($Datos['variosCaracteristicas'] as $AA) :
-                            //     if($AA['ID_Producto'] == $ID_Producto){  ?>
-                                     <!-- <a class="input_10" href="<?php // echo RUTA_URL . '/Opciones_C/productoAmpliado/' . $Nombre_Tienda . ',' . $Slogan_Tienda . ',' . $ID_Tienda . ',' . $Producto . ',' . $Opcion . ',' . $Precio . ',' . $Fotografia . ',' . $ID_Producto ?>" target="_blank" rel="noopener noreferrer">Ver detalles</a> -->
-                                     <?php
-                            //         break; //Solo se toma el primer elemento para mostrar el enlace que es lo que se necesita
-                            //     }                                           
-                            // endforeach; 
-                        ?>
 
                         <!-- PRECIO -->
                         <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>" ><?php echo $PrecioBolivar;?> Bs.</label>

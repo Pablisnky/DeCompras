@@ -27,6 +27,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Foto_Tien = $row['fotografia_Tien'];
     }
 
+    //$Datos viene de Cuenta_C/Editar
     foreach($Datos['link_Tien'] as $row){
         $Link_Acceso = $row['link_acceso'];
     }   

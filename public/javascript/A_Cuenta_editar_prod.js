@@ -86,7 +86,7 @@ function respuesta_EliminarImagenSecundaria(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){  
             //Se reemplaza el valor del contenedor_80 con lo que se obtenga en el archivo de la url
-            document.getElementById("Contenedor_114").innerHTML = peticion.responseText
+            // document.getElementById("Contenedor_114").innerHTML = peticion.responseText
         } 
         else{
             alert('Problemas con la petición.')

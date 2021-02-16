@@ -549,7 +549,7 @@ body, html{
 	/* background-color: blue; */
 	display: grid;
 	grid-template-columns: 40% 60%;
-	/*column-gap: 1%;espacio entre columnas*/
+	column-gap: 3%;/*espacio entre columnas*/
 	width: 60%;
 	margin: auto;
 	padding-top: 1%;
@@ -916,7 +916,7 @@ body, html{
 	border-top-right-radius: 15px;
 }
 .contenedor_121{/*cuenta_editar_prod*/
-	width: 50%;
+	width: 45%;
 	margin-top: 5% !important;
 }
 .contenedor_122{/*descr_Producto*/
@@ -944,8 +944,7 @@ body, html{
 	display: none;
 }
 .contenedor_129{/*cuenta_publicar*/
-	/* background-color: red; */
-	height: 160px; 
+	height: 170px; 
 	text-align: center
 }
 .contenedor_130{/*cuenta_publicar*/
@@ -971,11 +970,11 @@ body, html{
 	justify-content: center;
 	align-items: center; /*para centrar verticalmente el div hijo junto con display:flex*/
 }
-.contenedor_134{/*cuenta-editar_prod - */
+.contenedor_134{/*cuenta-editar_prod */
 	background-color: red;
 	width: 60%;
 	margin: auto;
-	text-align: center;
+	text-align: center !important;
 }
 .contenedor_135{/*cuenta_editar_prod*/
 	width: 70%;
@@ -1703,11 +1702,6 @@ body, html{
 	display: block;
 	margin: auto;
 }
-.imagen_6{/*cuenta_editar_prod*/
-	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
-	width: 160px;
-	height: 100px;
-}
 .imagen_7{/*tiendas*/
 	width: 100%;
 	height: 150px;
@@ -1749,16 +1743,17 @@ body, html{
 	padding: 5%;
 }
 .input_2a{/*opciones*/
-	background-color: rgba(83, 16, 16, 0);
+	/* background-color: rgba(83, 16, 16, 0); */
 	font-size: 0.9em;
 	text-align: center;
 	font-weight: bold;
 	border: none;
 	display: inline-block;
 	width: 100%;
+	margin-top: 3%;
 	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
-	overflow:hidden; 
-	white-space:nowrap; 
+	overflow: hidden; 
+	white-space: nowrap; 
 	text-overflow: ellipsis;
 }
 .input_5{/*vitrina*/

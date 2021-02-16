@@ -28,7 +28,7 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>	
 		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
 
-		<script src="//code.jivosite.com/widget/Wbw4t2Bu2s" async></script>
+		<!-- <script src="//code.jivosite.com/widget/Wbw4t2Bu2s" async></script> -->
     </head>
     <body>				
 		<header class="header contenedor_116">

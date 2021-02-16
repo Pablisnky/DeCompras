@@ -176,7 +176,7 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
     }
 
 //************************************************************************************************
-    //Valida el formulario
+    //Valida el formulario de ediición de producto
     function validarActualizacion(){
         // console.log("______Desde validarActualizacion()______")
 
@@ -192,7 +192,7 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
-        console.log(ImagenesSecundarias.length)
+        // console.log(ImagenesSecundarias.length)
         if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 55){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
@@ -209,14 +209,6 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
-        // else if(Especificacion == "" || Especificacion.indexOf(" ") == 0 || Especificacion.length > 20){
-        //     alert ("Introduzca una Especificacion")
-        //     document.getElementById("ContenidoEsp").value = ""
-        //     document.getElementById("ContenidoEsp").focus()
-        //     document.getElementsByClassName("boton")[0].value = "Guardar"
-        //     document.getElementsByClassName("boton")[0].disabled = false
-        //     return false;
-        // }
         else if(PrecioDolar == "" || PrecioDolar.indexOf(" ") == 0 || PrecioDolar.length > 30){
             alert ("Introduzca un Precio")
             document.getElementById("PrecioDolar").value = ""
@@ -232,23 +224,16 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
-        }
-        
-        //Valida que no se hayan introducido más de cuatro imagenes
+        }        
         else if(ImagenesSecundarias.length > 5){
             alert ("Solo puede introducir 4 imagenes adicionales")
-            document.getElementById("Seccion").value = ""
-            document.getElementById("Seccion").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
-        }
-        
+        }        
         //Si el div tiene mas de cinco elementos no permite el envio del formulario
         else if(document.getElementById("muestrasImg").childElementCount > 4){
             alert("Maximo de imagenes alcanzado")
-            document.getElementById("Seccion").value = ""
-            document.getElementById("Seccion").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             

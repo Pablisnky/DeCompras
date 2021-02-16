@@ -43,11 +43,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">
             <div class="contenedor_47" id="Contenedor_47">
                 
-                    <!-- SECCION IMAGEN PRINCIPAL -->
-                <div class="">
-                    <!-- <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
-                    <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/productos/<?php //echo $ImagenPrincipal;?>"/>  -->
-                    
+                <!-- IMAGEN PRINCIPAL -->
+                <div>                    
                     <div class="contenedor_119 borde_1 borde_2">
                         <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
                         <label for="imgInp_2"><span class="icon-pencil span_18 borde_1"></span></label>
@@ -60,17 +57,17 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
                 </div>
                 <div id="Contenedor_152">
-                    <!-- SECCION PRODUCTO -->
+                    <!-- PRODUCTO -->
                     <label>Producto</label>
                     <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro"><?php echo $Producto;?></textarea>
                     <input class="contador" type="text" id="ContadorPro" value="50"/>
 
-                    <!-- SECCION DESCRIPCION -->
+                    <!-- DESCRIPCION -->
                     <label>Descripcion</label>
                     <textarea class="textarea_1 borde_1" name="descripcion" id="ContenidoDes"><?php echo $Opcion;?></textarea>
                     <input class="contador" type="text" id="ContadorDes" value="500"/>
 
-                    <!-- SECCION PRECIO -->
+                    <!-- PRECIO -->
                     <label>Precio</label><br>
                     <div style="display: flex;">
                         <div>
@@ -102,7 +99,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     </div>   
                     <br>
 
-                    <!-- SECCION SECCION -->
+                    <!-- SECCION -->
                     <label>Sección</label>
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">
 
@@ -110,7 +107,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div id="Contenedor_80"></div> 
                     <br>
 
-                    <!-- SECCION CARACTERISTICA -->                     
+                    <!-- CARACTERISTICAS -->                     
                     <label>Caracteristica ( Opcional )</label>       
                     <div class="Contenedor_82" id="Contenedor_128">
                         <?php
@@ -135,7 +132,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
                     </div>                        
 
-                    <!-- SECCION IMAGENES SECUNDARIAS -->
+                    <!-- IMAGENES SECUNDARIAS -->
                     <div class="contenedor_170">
                         <?php
                         $Cont = 1;
@@ -145,15 +142,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <div class="contenedor_119 contenedor_121 borde_1 borde_2" id="<?php echo 'DivImagenSecun_' . $Cont;?>">
                                 <div>
                                     <span class="icon-cancel-circle span_18 borde_1" onclick="EliminarImagenSecundaria(<?php echo 'DivImagenSecun_' . $Cont;?>); Llamar_EliminarImagenSecundaria('<?php echo  $ID_Imagen;?>','<?php echo $Datos['especificaciones'][0]['ID_Producto'];?>')"></span>
-                                    <img class="imagen_6" id="<?php echo $ID_Imagen;?>" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $arr['nombre_img'];?>"/>
+                                    <img class="contenedor_119__img" id="<?php echo $ID_Imagen;?>" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $arr['nombre_img'];?>"/>
                                 </div>
                             </div>
                             <?php
                             $Cont ++;
                         endforeach; 
-                        ?>
-                        <!-- <div id="Contenedor_114"> -->
-                        <?php
                         $CantidadImagenes = count($Datos['imagenesVarias']); 
                         if($CantidadImagenes < 4){ ?>
                             <div class="contenedor_49">
@@ -164,14 +158,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         else{   ?>
                             <p class="p_5">Máximo de imagenes añadidas</p>
                             <?php
-                        }   ?>                            
-                        <!-- </div> -->
+                        }   ?>          
                     </div>
 
-                    <!-- div muestra las imagenes que se van a añadir -->
-                    <!-- <div class="contenedor_130" id="muestrasImg_2"></div>   -->
-
-                    <!-- div que muestra la previsualización de las imagenes secundarias-->
+                    <!-- div que muestra la previsualización de las imagenes añadidas-->
                     <div class="contenedor_134" id="muestrasImg"></div> 
                                       
                     <div class="contenedor_49 contenedor_81">
@@ -218,7 +208,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 imgTag = document.createElement("img");
                 imgTag.height = 100;//ESTAS LINEAS NO SON "NECESARIAS"
                 imgTag.width = 200; //ÚNICAMENTE HACEN QUE LAS IMÁGENES SE VEAN
-                imgTag.class = "imagen_6";
+                // imgTag.class = "imagen_6";
                 imgTag.id = i;      // ORDENADAS CON UN TAMAÑO ESTÁNDAR
                 imgTag.src = URL.createObjectURL(archivos[i]);
                 contenedor.appendChild(imgTag);

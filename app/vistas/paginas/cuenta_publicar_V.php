@@ -17,8 +17,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <div class="contenedor_42">    
         <p class="p_6">Carga un producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
-            <div class="contenedor_47">
-            
+            <div class="contenedor_47">            
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
@@ -37,10 +36,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- SECCION --> 
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
                     <br>
-                    <!-- PRECIO -->
-                    <!-- <input class="inputPlaceholder borde_1" type="text" name="precioBs" id="PrecioBs" placeholder="Precio Bs. ( 00000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/> -->
-                    <!-- <input class="inputPlaceholder borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Precio $ USD ( 000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/> -->
-                    
+
+                    <!-- PRECIO -->                    
                     <div style="display: flex;	justify-content: space-around;">
                         <div>
                             <label>Bs.</label><br>
@@ -75,7 +72,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <br>
                     <div class="contenedor_128" id="Contenedor_128">  
                         
-                    <!-- SECCION CARACTERISTICAS -->
+                    <!-- CARACTERISTICAS -->
                     <div id="Contenedor_82" class="">
                         <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica (Opcional)"/>
                         <br>
@@ -83,7 +80,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
                     <br>
 
-                    <!-- SECCION IMAGEN SECUNDARIA -->
+                    <!-- IMAGENES SECUNDARIAS -->
                     <div class="contenedor_130" id="muestrasImg_2"></div>  
                         <p class="p_5">Añada hasta 5 fotografias no mayor a 2Mb</p>
 
