@@ -50,17 +50,31 @@
                 $Miercoles_t = $Dias_LV['miercoles_t']; 
                 $Jueves_t = $Dias_LV['jueves_t']; 
                 $Viernes_t = $Dias_LV['viernes_t']; 
-            endforeach;
+            endforeach; 
+            // echo $Lunes_m . '<br>'; 
+            // echo $Martes_m . '<br>'; 
+            // echo $Miercoles_m . '<br>'; 
+            // echo $Jueves_m . '<br>'; 
+            // echo $Viernes_m . '<br>'; 
+            // echo $Lunes_t . '<br>'; 
+            // echo $Martes_t . '<br>'; 
+            // echo $Miercoles_t . '<br>'; 
+            // echo $Jueves_t . '<br>'; 
+            // echo $Viernes_t . '<br>';
             
             foreach($DiasLaborales['horarioTienda_Sab'] as $Sabado) :
                 $Sabado_m = $Sabado['sabado_m']; 
                 $Sabado_t = $Sabado['sabado_t']; 
             endforeach;
+            // echo $Sabado_m . '<br>'; 
+            // echo $Sabado_t . '<br>';
             
             foreach($DiasLaborales['horarioTienda_Dom'] as $Domingo) :
                 $Domingo_m = $Domingo['domingo_m']; 
                 $Domingo_t = $Domingo['domingo_t']; 
-            endforeach;
+            endforeach; 
+            // echo $Domingo_m . '<br>'; 
+            // echo $Domingo_t . '<br>';
                     
             //Con la metodologia del corchete se reciben los horarios de LV
             $InicioManana_LV = $DiasLaborales['horarioTienda_LV'][0]['inicio_m'];

@@ -32,7 +32,7 @@ function conexionAJAX(){
 //*********************************************************************************************** 
     //Redirige para buscar las tiendas de la ciudad seleccionada
     function Llamar_TiendasCiudad(id){
-        console.log("Desde Llamar_TiendasCiudad()", id)
+        // console.log("Desde Llamar_TiendasCiudad()", id)
         var url = "Categoria_C/TiendasPorCategorias/" + id
         http_request.open('GET', url, true)  
         peticion.onreadystatechange = respuesta_TiendasCiudad

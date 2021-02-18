@@ -132,9 +132,9 @@
 
         }
         
-        //INSERTA para habilitar un registro completo que almacenará el horario de la tienda
-        public function insertarHabilitarHorario_FS($ID_Tienda){  
-            $stmt = $this->dbh->prepare("INSERT INTO horariosfinsemana(ID_Tienda) VALUES (:ID_TIENDA)");
+        //INSERTA para habilitar un registro completo que almacenará el horario de la tienda el día sábado
+        public function insertarHabilitarHorario_SAB($ID_Tienda){  
+            $stmt = $this->dbh->prepare("INSERT INTO horariosabado(ID_Tienda) VALUES (:ID_TIENDA)");
 
             //Se vinculan los valores de las sentencias preparadas
             //ztmt es una abreviatura de statement 
@@ -147,7 +147,40 @@
             else{
                 return false;
             }
+        }
+        
+        //INSERTA para habilitar un registro completo que almacenará el horario de la tienda el día domingo
+        public function insertarHabilitarHorario_DOM($ID_Tienda){  
+            $stmt = $this->dbh->prepare("INSERT INTO horariodomingo(ID_Tienda) VALUES (:ID_TIENDA)");
 
+            //Se vinculan los valores de las sentencias preparadas
+            //ztmt es una abreviatura de statement 
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
+            
+            //Se ejecuta la inserción de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //INSERTA para habilitar un registro completo que almacenará el horario de la tienda el día sábado
+        public function insertarHabilitarHorario_ESP($ID_Tienda){  
+            $stmt = $this->dbh->prepare("INSERT INTO horarioespecial(ID_Tienda) VALUES (:ID_TIENDA)");
+
+            //Se vinculan los valores de las sentencias preparadas
+            //ztmt es una abreviatura de statement 
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
+            
+            //Se ejecuta la inserción de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
 
         //CONSULTA los correos de comerciantes existentes en la BD

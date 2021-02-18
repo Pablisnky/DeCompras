@@ -67,7 +67,7 @@ document.getElementById("Contenedor_23").addEventListener('click', function(e){
 // *****************************************************************************************************
     //Abre en la misma ventana las tiendas que pertenecen a una categoria
     function VerTiendas(Categoria){
-        console.log("_____Desde VerTiendas()_____", Categoria)
+        // console.log("_____Desde VerTiendas()_____", Categoria)
         window.open(`Tiendas_C/tiendasEnCatalogo/${Categoria}`,"_self")
     }
 

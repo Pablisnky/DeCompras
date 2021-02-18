@@ -238,10 +238,16 @@
 .contIconoBuscador__span{/*header_inicio*/
 	font-size: 1.3em;
 }
-.Contenedor_34{/*inicio*/
+.contenedor_34{/*inicio*/
 	top: 94%;
 	left: 0%;
 	width: 100%;
+}
+.contenedor_34--WhatsApp{/*inicio*/
+	position: fixed;
+	width: 30%;
+	top: 80%;
+	left: 75%;
 }
 .contenedor_35{/*inicio*/
 	padding: 3% 0%;
@@ -291,11 +297,6 @@
 	width: 70%;
 	margin: 5% auto;
 	text-align: center;
-}
-.contenedor_51{/*inicio - ciudad*/
-	width: 100%;
-	margin-left: 0%;
-	top: 65%;
 }
 .contBuscador__div{/*inicio*/
 	width: 90%;
@@ -427,10 +428,6 @@
 	grid-column-end: 1;
 	padding-bottom: 0%;
 	margin-top: 0%;
-}
-.contenedor_73{/*ciudad*/
-	width: 90%;
-	margin: 15% auto;
 }
 .contenedor_74{/*ciudad*/
 	row-gap: 10%;
@@ -667,11 +664,7 @@
 .contenedor_139{/*desr_Producto*/
 	height: 75px;
 }
-.contenedor_145{/*ciudad*/
-	position: initial;
-	margin-top: 20%;
-}
-.contenedor_146{/*ciudad - quienesSomos*/
+.contenedor_146{/*quienesSomos*/
 	padding-top: 20%;
 }
 .contenedor_147{/*login*/
@@ -867,9 +860,6 @@
 .h2_12--tienda{/*header_Tienda*/
 	color: black;
 }
-.h2_13{/*ciudad*/
-	margin: 8% auto;
-}
 .h2_14{/*categoria*/
 	font-size: 1em;
 	width: 95%;
@@ -878,13 +868,9 @@
 .h3_1{/*footer - afiliacion - planes*/
 	font-size: 0.6em;
 }
-.h3_2{/*inicio*/
+.h3_2{/*carrito*/
 	font-size: 1.2em !important;
 	padding-top: 5%;
-}
-.h3_3{/*inicio */
-	margin: auto;
-	width: 80%;
 }
 .h3_9{/*cuenta_productos*/
 	font-size: 0.8em;
@@ -1144,6 +1130,7 @@
 	padding: 0.5% 2%;
 	margin-left: 0%;
 	margin-top: 0%;
+	z-index: 4;
 }
 .section_1__div1{/*inicio*/
 	width: 100%;
@@ -1189,9 +1176,14 @@
 	left: 0%;
 	width: 100% !important;
 }
-.sectionTienda_div{/*inicio*/
+.sectionTienda_div{/*categoria*/
 	margin: 3% auto;
-	width: 90%;
+	width: 95%;
+	display: block;
+}
+.sectionTienda_div--ciudades{/*categoria*/
+	width: 100%;
+	margin-bottom: 15%;
 }
 .select_1{/*inicio*/
 	height: 30px;
@@ -1213,9 +1205,6 @@
 .span_5{/*opciones*/
 	margin-top: 1%;
 	left: 10%;
-}
-.span_6{/*inicio*/
-	font-size: 2em;
 }
 .span_8{/*inicio - opciones*/
 	font-size: 3em!important;

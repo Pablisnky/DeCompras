@@ -79,8 +79,14 @@
                     //Se INSERTAN el campo de horario en la BD
                     $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);
                     
-                    //Se INSERTAN el campo de horario de sabado y domingo en la BD
-                    $this->ConsultaRegistro_M->insertarHabilitarHorario_FS($ID_Tienda);
+                    //Se INSERTAN el campo de horario para el día sábado en la BD
+                    $this->ConsultaRegistro_M->insertarHabilitarHorario_SAB($ID_Tienda);
+                    
+                    //Se INSERTAN el campo de horario para el día domingo en la BD
+                    $this->ConsultaRegistro_M->insertarHabilitarHorario_DOM($ID_Tienda);
+
+                    //Se INSERTAN el campo de horario para el día especial en la BD
+                    $this->ConsultaRegistro_M->insertarHabilitarHorario_ESP($ID_Tienda);
 
                 $this->ConsultaRegistro_M->commit();
             }

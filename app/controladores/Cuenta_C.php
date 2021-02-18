@@ -616,9 +616,10 @@
                 $RecibeHorario_LV = [
                     'Inicio_M' => $_POST['inicioManana'],
                     'Culmina_M' => $_POST['culminaManana'],
+                    
                     'Lunes_M' => isset($_POST['lunes_M']) == 'Lunes' ? $_POST['lunes_M'] : 0,
                     'Martes_M' => isset($_POST['martes_M']) == 'Martes' ? $_POST['martes_M'] : 0,
-                    'Miercoles_M' => isset($_POST['miercoles_M']) == 'Miercoles' ? $_POST['miercoles_M'] : 0,
+                    'Miercoles_M' => isset($_POST['miercoles_M']) == 'Miercoles' ? $_POST['miercoles_M']:0,
                     'Jueves_M' => isset($_POST['jueves_M']) == 'Jueves' ? $_POST['jueves_M'] : 0,
                     'Viernes_M' => isset($_POST['viernes_M']) == 'Viernes' ? $_POST['viernes_M'] : 0,
 
@@ -626,7 +627,7 @@
                     'Culmina_T' => $_POST['culminaTarde'],
                     'Lunes_T' => isset($_POST['lunes_T']) == 'Lunes' ? $_POST['lunes_T'] : 0,
                     'Martes_T' => isset($_POST['martes_T']) == 'Martes' ? $_POST['martes_T'] : 0,
-                    'Miercoles_T' => isset($_POST['miercoles_T']) == 'Miercoles' ? $_POST['miercoles_T'] : 0,
+                    'Miercoles_T' => isset($_POST['miercoles_T']) == 'Miercoles' ? $_POST['miercoles_T']:0,
                     'Jueves_T' => isset($_POST['jueves_T']) == 'Jueves' ? $_POST['jueves_T'] : 0,
                     'Viernes_T' => isset($_POST['viernes_T']) == 'Viernes' ? $_POST['viernes_T'] : 0
                 ];

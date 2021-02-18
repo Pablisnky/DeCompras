@@ -496,11 +496,16 @@ body, html{
 	color:rgb(51, 51, 51) !important;
 	font-size: 1.5em;
 }
-.Contenedor_34{/*inicio*/
+.contenedor_34{/*inicio*/
 	width: 10%;
 	position: relative;
 	top: 70%;
 	left: 83%;
+}
+.contenedor_34--WhatsApp{/*inicio*/
+	position: fixed;
+	top: 80%;
+	left: 90%;
 }
 .contenedor_35{/*header_inicio - header_AfiCom*/
 	background-color: var(--OficialOscuro);
@@ -569,9 +574,9 @@ body, html{
 	margin: 5% auto;
 	text-align: center;
 }
-.contenedor_51{/*inicio - ciudad*/
-	display: flex; /*Organiza los elementos horizontalmente*/ 
-	justify-content: space-around;
+.contenedor_51{
+	/*display: flex; Organiza los elementos horizontalmente*/ 
+	/* justify-content: space-around;
 	align-items: center;
 	width: 60%;
 	margin-left: 20%;
@@ -579,10 +584,10 @@ body, html{
 	top: 70%;
 	left: 0%;
 	flex-direction: row;
-	flex-wrap: wrap;
+	flex-wrap: wrap; */
 }
-.contenedor_51>div:last-child{/*inicio*/
-	flex: 0 1 100% !important;/*ocupa toda la primera fila en la distribucion flex*/
+.contenedor_51>div:last-child{
+	/*flex: 0 1 100% !important;ocupa toda la primera fila en la distribucion flex*/
 }
 .contenedor_55{/*carrito*/
 	width: 60%;
@@ -650,14 +655,6 @@ body, html{
 .contenedor_72{/*carrito*/
 	width: 100%;
 	/* margin: 0% auto !important; */
-}
-.contenedor_73{/*ciudad*/
-	border-radius: 15px;
-	width: 30%;
-	min-height: 100%;
-	margin: 1% auto;
-	padding: 1%;
-	/* padding-left: 4%; */
 }
 .contenedor_77{/*Categorias_Ajax_V.php*/
 	margin:5% auto 1% auto;
@@ -1019,13 +1016,7 @@ body, html{
 	width: 90%;
 	margin: auto;
 }
-.contenedor_145{/*ciudad*/
-	top: inherit;
-	bottom: 0pt !important;
-	height: 80px;
-	/* margin-bottom: 10%; */
-}
-.contenedor_146{/*ciudad - quienesSomos*/
+.contenedor_146{/*quienesSomos*/
 	padding-top: 10%;
 	width: 90%;
 	margin: auto;
@@ -1305,6 +1296,9 @@ body, html{
 	display: block;
 	margin: auto;
 }
+.contInputRadio--margen{/*categoria*/
+	padding-left: 10% !important;
+}
 .contOpciones{/*opciones*/
 	border-radius: 15px;
 	text-align: center;
@@ -1449,6 +1443,7 @@ body, html{
 .h1_7{/*categoria*/
 	font-size: 1.7em;
 	text-align: center;
+	margin-bottom: 4%;
 }
 .h1_8{/*cuenta_editar*/
 	display: none;
@@ -1520,7 +1515,7 @@ body, html{
 	text-align: center;
 	font-weight: normal ;
 }
-.h2_11{/*afiliacion - ciudad*/
+.h2_11{/*afiliacion*/
 	/* background-color: var(--BandaAlerta); */
 	font-size: 1.3em;
 	font-weight: normal;
@@ -1530,10 +1525,6 @@ body, html{
 	border-radius: 10px;
 	padding: 0.5%;
 	margin-top: -1% !important;
-}
-.h2_13{/*ciudad*/
-	margin: 8% auto;
-	width: 70%;
 }
 .h2_14{/*categoria*/
 	margin: auto;
@@ -1556,7 +1547,7 @@ body, html{
 	border-style: solid;
 	border-color: orange;
 }
-.h3_2{/*inicio - carrito*/
+.h3_2{/*carrito*/
 	font-weight: normal;
 	font-size: 1.3em;
 	text-align: center;
@@ -2143,7 +2134,7 @@ ul .menuContenedor_3{/*header_AfiCom*/
 	margin: 0% auto 5% auto;
 	text-align: center;
 }
-.p_6{/*cuenta_editar - afiliacion - cuenta -ciudad*/
+.p_6{/*cuenta_editar - afiliacion - cuenta*/
 	text-align: center;
 	font-size: 1.5em;
 	margin-bottom: 3%;
@@ -2395,8 +2386,17 @@ ul .menuContenedor_3{/*header_AfiCom*/
 	margin: 0% auto;
 	width: 50%;
 	padding: 2%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
-.section_5{/*afiliacion - ciudad - vitrina - login - login_Vrecord - cuenta_productos - registroCom - registroDes*/
+.sectionTienda_div > h2{/*categoria*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap: wrap*/
+}
+.sectionTienda_div--ciudades{/*categoria*/
+	width: 35%;
+}
+.section_5{/*afiliacion - vitrina - login - login_Vrecord - cuenta_productos - registroCom - registroDes*/
 	min-height: 100%;
 }
 .section_6{/*afiliacion*/
@@ -2465,10 +2465,6 @@ ul .menuContenedor_3{/*header_AfiCom*/
 }
 .span_5:hover{/*inicio - opciones*/
 	cursor: pointer !important;
-}
-.span_6{/*inicio*/
-	/* color:rgb(51, 51, 51);
-	font-size: 2.5em; */
 }
 .span_8{/*inicio*/
 	color:rgba(51, 51, 51, 0.5);

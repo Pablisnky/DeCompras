@@ -53,7 +53,10 @@
                 break;
                 case 'Papeleria':
                     $this->Categoria = 'Papelería';   
-                break;      
+                break;   
+                case 'Licores':
+                    $this->Categoria = 'Licorería';   
+                break;     
                 default:
                 $this->Categoria = $Categoria;
             }
@@ -61,9 +64,11 @@
             return $this->Categoria;
         }
 
+        //Metodo llamado desde E_Categorias.js por medio de VerTiendas()
         public function tiendasEnCatalogo($Categoria){ 
             $this->index($Categoria);
-            
+            // echo $Categoria;
+
             //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas            
             $this->TiendasEnCategoria = $this->ConsultaTienda_M->consultarTiendas($this->Categoria); 
             // echo '<pre>';
@@ -220,7 +225,7 @@
             $this->vista("paginas/tiendas_V",$Datos);
         }
 
-        // Invocado en header_TIenda
+        // Invocado en header_Tienda
         public function horarioTienda($DatosAgrupados){    
             //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);

@@ -12,9 +12,12 @@
             <h2 class="h2_4">MarketPlace</h2>
         </div>
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
-            <div class="Contenedor_34" id="BotonVer">
+            <div class="contenedor_34" id="BotonVer">
                 <label class="section_1__boton borde_1"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a></label>
             </div>
+            <!-- <div class="contenedor_34 contenedor_34--WhatsApp">
+                <a href="https://api.whatsapp.com/send?phone=5804166584057&text=Servicio&nbsp;al&nbsp;cliente&nbsp;PedidoRemoto" target="blank" rel="noopener noreferrer"><img alt="WhatsApp" src="<?php echo RUTA_URL?>/public/images/whatsapp.png"/></a>
+            </div> -->
         </div>
         <div class="slider">
             <ul>

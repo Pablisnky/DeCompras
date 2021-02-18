@@ -1,3 +1,4 @@
+<!-- Archivo mostrado via ajax en categoria_V.php -->
 <div class='contenedor_4' id="Contenedor_4">
     <div class='contenedor_6 borde_1' id="Artesania">
         <h2 class='h2_1'>ARTE Y LITERATURA</h2>

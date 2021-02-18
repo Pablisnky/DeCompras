@@ -7,7 +7,7 @@
 
         //SELECT de las ciudades con tiendas
         public function consultarEstadosTiendas(){                                
-            $stmt = $this->dbh->query("SELECT DISTINCT estado_Tien FROM tiendas WHERE parroquia_Tien != '' AND publicar = 1");
+            $stmt = $this->dbh->query("SELECT DISTINCT estado_Tien FROM tiendas WHERE parroquia_Tien != '' AND publicar = 1 ORDER BY estado_Tien ASC");
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 

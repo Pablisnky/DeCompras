@@ -30,7 +30,7 @@
         }
 
         function TiendasPorCategorias($Parroquia){
-            //Se CONSULTA la cantidad de tiendas que estan afiliadas por categorias
+            //Se CONSULTA la cantidad de tiendas que estan afiliadas, por categorias
             $CantidadTiendas = $this->ConsultaCategoria_M->consultarCantidadTiendas($Parroquia);
 
             $Datos = [

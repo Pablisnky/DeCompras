@@ -28,7 +28,18 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>	
 		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
 
-		<!-- <script src="//code.jivosite.com/widget/Wbw4t2Bu2s" async></script> -->
+		<!-- Chat -->
+		<script src="//code.jivosite.com/widget/Wbw4t2Bu2s" async></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JFWZ0GQYB"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-5JFWZ0GQYB');
+		</script>
     </head>
     <body>				
 		<header class="header contenedor_116">
