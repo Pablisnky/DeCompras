@@ -22,7 +22,7 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>	
-		<header class="header">
+		<header class="header borde_bottom--claro">
 			<div class="contenedor_111">
 				<!-- $Datos viene de Cuenta_C-->
 				<h1 class="h1_10 h1_10--afiliado"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></h1>			

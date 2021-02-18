@@ -23,10 +23,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
 
 <section class="section_5">	
-    <!-- div mostrado solo en responsive -->
-    <section class="">
-        <div class="contenedor_109 borde_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
-    </section>
+    <!-- section mostrado solo en responsive -->
+    <!-- <section class=""> -->
+        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
+    <!-- </section> -->
 
     <div class="contenedor_156"> 
         <div>

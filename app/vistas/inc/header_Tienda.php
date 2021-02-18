@@ -32,24 +32,28 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
+		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body onload="nobackbutton();">	
-		<header class="header header--tienda">
+		<header class="header header--tienda borde_bottom--claro">
+			<!-- icono para responsive -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span class="icon-menu span_15Inicio" id="Span_6"></span></label>
 			
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111--tienda">
-				<h1 class="h1_10 h1_10--negro"><?php echo $Nombre_Tienda?></h1>
-				<h2 class="h2_5 h2_12 h2_12--tienda"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
+				<h1 class="h1_10 font--negro"><?php echo $Nombre_Tienda?></h1>
+				<h2 class="h2_5 h2_12 font--negro"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div> 
+
+			<!-- Bara de navegación -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="#">Ofertas</a></li>
-					<li><a class="a_3" href="#">Lo más pedido</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' .$ID_Tienda . ',' . $Nombre_Tienda;?>">Horario</a></li>
-					<li><a class="a_3" href="#">Dirección</a></li>
+					<li><a class="a_3" href="#">Ofertas<i class="fas fa-gift icono_1"></i></a></li>
+					<li><a class="a_3" href="#">Lo más pedido<i class="far fa-chart-bar icono_1"></i></a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' .$ID_Tienda . ',' . $Nombre_Tienda;?>">Horario<i class="far fa-clock icono_1"></i></a></li>
+					<li><a class="a_3" href="#">Dirección<i class="fas fa-map-marker-alt icono_1"></i></a></li>
 					<hr class="hr_3 hr_4"/>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/salirTienda';?>">Salir de la tienda</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/salirTienda';?>">Salir de la tienda<i class="far fa-times-circle icono_1"></i></a></li>
 				</ul>
 			</nav>
 		</header>
@@ -60,8 +64,7 @@
 			<label>Entregas no disponibles a esta hora</label>
 			<label>nuevamente a las 02:00 pm</label>
 		</div> -->
-		
-		
+				
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
 	

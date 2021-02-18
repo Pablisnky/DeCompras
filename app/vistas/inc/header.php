@@ -27,12 +27,17 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
     </head>
     <body>	
-		<header class="header">
+		<header class="header borde_bottom--claro">
+			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111">
-				<a class="a_1" href="<?php echo RUTA_URL . '/Inicio_C';?>">PedidoRemoto</a>
+				<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C';?>">PedidoRemoto</a>
 				<h2 class="h2_5">MarketPlace</h2>
 			</div>
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><span class="icon-menu span_15" id="Span_6"></span></label>
+
+			<!-- icono para responsive -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><span class="icon-menu span_15 span_15Inicio" id="Span_6"></span></label>
+			
+			<!-- Bara de navegación -->
 			<nav id="MenuResponsive" class="header__menuResponsive">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio</a></li>

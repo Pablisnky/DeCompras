@@ -59,6 +59,11 @@
 .boton--largo{/*cuenta_editar - horarioDespacho - login*/ 
 	width: 200px;
 }
+.borde_bottom--claro{/*header*/
+	border-bottom-color: white;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
 .br_2{/*carrito*/
 	display: block;
 }
@@ -370,11 +375,12 @@
 	height: 100%;
 }
 .header{/*header - header_inicio - header_Tienda - header_AfiCom*/
-	background-color: var(--OficialOscuro);
+	/* background-color: var(--OficialOscuro); */
 	height: 45px;
 }
-.header--tienda{/**/
+.header--tienda{
 	background-color: white;
+	display: block;
 	height: 37px;
 }
 .header__nav_1{/*header_inicio*/
@@ -581,15 +587,17 @@
 	margin-top: 0%;
 }
 .contenedor_111{/*header - header_AfiCom*/
-	background-color: var(--OficialOscuro);
+	/* background-color: var(--OficialOscuro); */
 	width: 100%;
 	padding-left:10%;
 }
 .contenedor_111--tienda{/*header_tienda*/
 	background-color: white;
+	background: initial;
 	height: 55px;
 	text-align: center;
 	margin-top: 37px;
+	padding: 0%;
 	padding-bottom: 1%;
 }
 .contenedor_112{/*cuenta*/
@@ -799,9 +807,6 @@
 	font-size: 7vw !important; /*unidades vw hace que la letra se adapte dinamicamente al espacio*/
 	margin-top: 2%;
 }
-.h1_10--negro{/*header_Tienda*/
-	color: black;
-}
 .h1_10--afiliado{/*header_AfiCom*/
 	font-size: 6.5vw !important; /*unidades vw hace que la letra se adapte dinamicamente al espacio*/
 }
@@ -857,9 +862,6 @@
 	text-align: center;
 	margin-top: 0.1%;
 }
-.h2_12--tienda{/*header_Tienda*/
-	color: black;
-}
 .h2_14{/*categoria*/
 	font-size: 1em;
 	width: 95%;
@@ -887,6 +889,9 @@
 }
 .hr_4{/*header_Tienda*/
 	display: block;
+}
+.icono_1{/*header_tienda*/
+	display: none !important;
 }
 .imagen_2{/*vitrina*/
 	width: 100px;
@@ -1221,7 +1226,7 @@
 }
 .span_15Inicio{/*header_inicio*/
 	display: block;
-	color:  var(--OficialOscuro);
+	color: var(--OficialOscuro);
 	font-size: 1.5em;
 }
 .span_16{/*inicio*/
