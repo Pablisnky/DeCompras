@@ -17,13 +17,12 @@
         <?php
     }
 ?>
-<!-- Header = header_Tienda.php -->
 
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
 
 <section class="section_5">	
-    <!-- section mostrado solo en responsive -->
+    <!-- div mostrado solo en responsive -->
     <!-- <section class=""> -->
         <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
     <!-- </section> -->
@@ -82,6 +81,7 @@
             ?>
         </div>  
     </div>  
+    
     <!-- Se muestra el boton (div) de carrito de compras en el bottom del viewport, aparece por medio de agregarOpcion() en E_Vitrina.js-->
     <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">

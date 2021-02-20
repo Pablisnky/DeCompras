@@ -45,13 +45,11 @@
 	font-size: 1em;
 	width: 130px;
 }
-.botonReverso{
+.botonReverso{/*vitrina*/
 	margin-top: 2%;
-	/* font-size: 1.3em;
-	font-weight: normal; */
+	margin-left: 0%;
+	font-size: 5vw !important;
 	width: 100% !important;
-	/* min-height: 28px;
-	line-height: 25px; */
 }
 .boton--alto{/*afiliacion - carrito*/ 
 	line-height: 20px;
@@ -235,7 +233,7 @@
 	padding-bottom: 1%;
 	width: 10%;
 	position: fixed;
-	z-index: 2;
+	z-index: 3 !important;
 }
 .contIconoBuscador--tienda{/*header_Tienda*/
 	display: block;
@@ -353,13 +351,6 @@
 .contGeneralCenter{/*carrito*/
 	margin-top: 10% !important;
 }
-.contenedor_64{/*carrito*/
-	float: none;
-	padding: 1%;
-	margin-left: 2%;
-	margin-bottom: 4%;
-	width: 95%;
-}
 .contenedor_65{/*carrito*/
 	width: 100%;
 }
@@ -378,8 +369,12 @@
 	/* background-color: var(--OficialOscuro); */
 	height: 45px;
 }
+.header-AfiCom{/*header_AfiCom*/
+	/* background-color: var(--OficialOscuro); */
+	height: 50px;
+}
 .header--tienda{
-	background-color: white;
+	/* background-color: white; */
 	display: block;
 	height: 37px;
 }
@@ -458,6 +453,9 @@
 	width: 100%;
 	height: min-content !important;
 }
+.contenedor_80C{/*cuenta_editar*/	
+	width: 100% !important;
+}
 .contenedor_83{/*cuenta_editar*/
 	position: fixed;
 	top: -90%;
@@ -502,13 +500,12 @@
 	height: 40px!important;
 }
 .contenedor_91{/*cuenta_productos*/
-	height: 35px !important;
-	 padding-top: 0%;
+	height: 40px !important;
+	padding-top: 2%;
 }
 .contenedor_93{/*afiliacion*/
 	padding-top: 1% !important;
 	margin-top: 15%;
-	/* width: 95% !important; */
 }
 .contenedor_94{/*afiliacion*/
 	margin-top: 10%;
@@ -592,7 +589,7 @@
 	padding-left:10%;
 }
 .contenedor_111--tienda{/*header_tienda*/
-	background-color: white;
+	background-color: white !important;
 	background: initial;
 	height: 55px;
 	text-align: center;
@@ -980,7 +977,7 @@
 	padding-left: 5%;
 }
 .input_12{/*cuenta_editar*/
-	width: 90%;
+	/* width: 100% !important; */
 }
 .input_13{/*cuenta_editar - carrito*/
 	font-size: 1em;

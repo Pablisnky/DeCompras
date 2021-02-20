@@ -2,7 +2,7 @@
 <section class="sectionModal">
     <div class="contenedor_24 contenedor_118">   
         <div class="contenedor_102">
-            <h1 class="h1_1">Selecciona una o dos categorias.</h1>   
+            <h1 class="h1_1">Selecciona una categorias.</h1>   
             <span class="span_5" onclick="CerrarCategoria('Mostrar_Categorias')">X</span>
         </div>          
         <form >

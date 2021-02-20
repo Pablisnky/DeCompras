@@ -213,7 +213,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 25){
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 50){
             alert ("Introduzca una Sección")
             document.getElementById("SeccionPublicar").value = ""
             document.getElementById("SeccionPublicar").focus()

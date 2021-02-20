@@ -44,18 +44,56 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
     }
 }, false)
 
+//CONTAR CANTIDAD DE CARACTERES ESCRITOS EN UNA SECCION
+//Por medio de delegación de eventos se detecta la seccion clonada
+window.addEventListener('click', function(e){
+    console.log("______Desde funcion anonima que aplica listerner a secciones")
+    if(e.target.classList[2] == "input_12"){
+        //Se toma el id de la sección seleccionada
+        var ID_SeccionClick = e.target.id
+        console.log("ID_Seccion seleccionada= ",ID_SeccionClick)
+
+        //Se toma el id del input contador que corresponde a la seccion seleccionada
+        // Se obtiene el elemento padre donde se encuentra la seccion donde se hizo click
+        let Padre = e.target.parentElement
+        console.log("Elemento padre de seccion= ",Padre)
+        //Se obtiene el contador que existe en el elemento padre
+        let ID_ContadorSeccion = Padre.getElementsByTagName("INPUT")[1].id
+        console.log("Elemento contador= ", ID_ContadorSeccion)
+
+        //Se llama a la funcion que cuenta los caracteres introducidos en la sección
+        e.target.addEventListener('keydown', function(){
+            contarCaracteres(ID_ContadorSeccion, ID_SeccionClick, 25)}, false)
+    }
+}, false)
+
+//VALIDA LA CANTIDAD DE CARACTERES ESCRITOS EN UNA SECCION
+//Por medio de delegación de eventos se detecta la seccion clonada
+window.addEventListener('click', function(e){
+    console.log("______Desde funcion anonima que aplica listerner a secciones")
+    if(e.target.classList[2] == "input_12"){
+        //Se toma el id de la sección seleccionada
+        var ID_SeccionClick = e.target.id
+        console.log("ID_Seccion seleccionada= ",ID_SeccionClick)
+
+        //Se llama a la funcion que cuenta los caracteres introducidos en la sección
+        e.target.addEventListener('keydown', function(){
+            valida_LongitudDes(25, ID_SeccionClick)}, false)
+    }
+}, false)
+
 // **************************************************************************************************
 //ELIMINAR SECCIONES
 //Por medio de delegación de eventos se detecta la sección a eliminar
 window.addEventListener('click', function(e){
-    // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
+    console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
 
     var ElementoSeleccionado = e.target.classList[2]
     // console.log(ElementoSeleccionado)
 
     //Se ubica el id del elemento seleccionado
     let ID_ElementoSeleccionado = e.target.id
-    // console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
+    console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
 
     if(ElementoSeleccionado == "span_14_js"){
         let ConfirmaEliminar = confirm("Se eliminará la sección y todos sus productos")
@@ -63,18 +101,21 @@ window.addEventListener('click', function(e){
         if(ConfirmaEliminar == true){            
             //Contenedor padre de secciones
             let PadreSecciones = document.getElementById("Contenedor_79")
+            console.log(PadreSecciones.childElementCount)
 
-            //Si hay más de una sección la elimina, si solo hay una borrar el contenido del input
+            //Si hay más de una sección la elimina, si solo hay una, borrar el contenido del input
             if(PadreSecciones.childElementCount > 4){
+
                 // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
                 current = e.target.parentElement
-                // console.log("div a eliminar", current)
+                console.log("div a eliminar", current)
                 
                 //Se busca el nodo padre que contiene el elemento current
                 let elementoPadre = current.parentElement
                 
                 //Se elimina la sección
-                elementoPadre.removeChild(current);
+                elementoPadre.removeChild(current)
+                
             }
             else{
                 document.getElementById("Seccion").value = ""
@@ -191,7 +232,8 @@ document.getElementById("Label_1").addEventListener('click', function(){
     CerrarModal_X("Ejemplo_Secciones")
 });
  
-//************************************************************************************************  
+//************************************************************************************************
+    //CLONA UNA SECCION
     //Añade un nuevo input clonado del div secciones
     var incrementoSeccion = 1
     function clonarSeccion(){
@@ -199,7 +241,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80A")
-        // console.log("div a clonar", clonar)
+        console.log("div a clonar", clonar)
         
         //Contenedor padre
         let Padre = document.getElementById("Contenedor_79")
@@ -209,7 +251,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let Div_clon = clonar.cloneNode(true)
         // console.log("div clon", Div_clon)
 
-        //Se da una clase 
+        //Se da una clase (Al parecer no hace ninguna función, pero se elimina y no hace el clon)
         Div_clon.classList = "contenedorUnico"
 
         //Se da un ID al input que se encuentra en el nuevo elemento clonado
@@ -223,6 +265,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
 
         //El placeholder del nuevo input 
         Div_clon.getElementsByClassName("input_12")[0].placeholder="Indica una seccióne"
+        
+        //Se da un ID al input contador
+        Div_clon.getElementsByClassName("contador_2--seccion")[0].id = 'Contador_' + incrementoSeccion 
         
         //Se especifica el div padre, donde se insertará el nuevo nodo (aparecerá de ultimo)
         Padre.appendChild(Div_clon)
@@ -731,7 +776,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')            
             return false;
         }
-        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 20){
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 50){
             alert ("Necesita introducir al menos una Seccion")
             document.getElementById("Seccion").value = ""
             document.getElementById("Seccion").focus()

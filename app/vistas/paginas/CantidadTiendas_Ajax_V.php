@@ -110,6 +110,42 @@
         </div>
     </div>
 
+    <div class='contenedor_6 borde_1' id="Material_Medico_Quirurgico">
+        <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
+        <span class="icon-barcode span_8"></span>                 
+        <div class="contenedor_106">
+            <span class="span_21 borde_1">
+                <?php
+                    foreach($Datos['cantidadTiendasCategoria'] as $arr) :
+                        if($arr['ID_Categoria'] == 2){  
+                            $CantidadMaterial_Medico_Quirurgico = $arr['cantidad']; 
+                            echo $CantidadMaterial_Medico_Quirurgico; ?>
+                            <style>
+                                #Material_Medico_Quirurgico .span_21{
+                                    background-color: var(--Aciertos);
+                                }
+                            </style>
+                            <?php
+                        }
+                    endforeach; 
+                    if(empty($CantidadMaterial_Medico_Quirurgico)){                                     
+                        echo 0;?>
+                        <style>
+                            #Material_Medico_Quirurgico{
+                                position: relative;
+                                z-index: -1;           
+                            }
+                            #Material_Medico_Quirurgico .span_21{
+                                background-color: var(--Fallos);
+                            }
+                        </style>
+                        <?php
+                    }  
+                ?>
+            </span>
+        </div>
+    </div>
+    
     <div class='contenedor_6 borde_1' id="Merceria">
         <h2 class='h2_1'>MERCERÍA Y TALABARTERÍA</h2>
         <span class="icon-clubs span_8"></span>                
@@ -274,42 +310,6 @@
                                 z-index: -1;           
                             }
                             #Minimarket .span_21{
-                                background-color: var(--Fallos);
-                            }
-                        </style>
-                        <?php
-                    }  
-                ?>
-            </span>
-        </div>
-    </div>
-
-    <div class='contenedor_6 borde_1' id="Material_Medico_Quirurgico">
-        <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
-        <span class="icon-barcode span_8"></span>                 
-        <div class="contenedor_106">
-            <span class="span_21 borde_1">
-                <?php
-                    foreach($Datos['cantidadTiendasCategoria'] as $arr) :
-                        if($arr['ID_Categoria'] == 2){  
-                            $CantidadMaterial_Medico_Quirurgico = $arr['cantidad']; 
-                            echo $CantidadMaterial_Medico_Quirurgico; ?>
-                            <style>
-                                #Material_Medico_Quirurgico .span_21{
-                                    background-color: var(--Aciertos);
-                                }
-                            </style>
-                            <?php
-                        }
-                    endforeach; 
-                    if(empty($CantidadMaterial_Medico_Quirurgico)){                                     
-                        echo 0;?>
-                        <style>
-                            #Material_Medico_Quirurgico{
-                                position: relative;
-                                z-index: -1;           
-                            }
-                            #Material_Medico_Quirurgico .span_21{
                                 background-color: var(--Fallos);
                             }
                         </style>

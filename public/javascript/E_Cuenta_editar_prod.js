@@ -217,7 +217,7 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
-        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 30){
+        else if(Seccion == "" || Seccion.indexOf(" ") == 0 || Seccion.length > 50){
             alert ("Introduzca una Sección")
             document.getElementById("Seccion").value = ""
             document.getElementById("Seccion").focus()

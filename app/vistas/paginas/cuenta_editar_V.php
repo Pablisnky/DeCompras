@@ -181,15 +181,17 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <label>Sección</label>
                     <!-- div a clonar sin eventos y oculto mediante z-index = -1 -->
                     <div class="contenedor_80A" id="Contenedor_80A">
-                        <input class="input_13 input_13A input_12 borde_1" type="text"/>
-                        <span class="icon-cancel-circle span_10 span_14_js"><span>
+                        <div class="contenedor_80C" id="Contenedor_80C">
+                            <input class="input_13 input_13A input_12 borde_1" type="text"/>
+                            <span class="icon-cancel-circle span_10 span_14_js"><span>
+                            <input class="contador_2 contador_2--seccion" type="text" value="25"/>
+                        </div>
                     </div>
-                    
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
                         <div class="contenedor_80" id="Contenedor_80">
-                            <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección" />
+                            <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección"/>
                             <span class="icon-cancel-circle span_10 span_14_js"></span>
                         </div>
                         <?php
@@ -205,6 +207,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
 
                                 <span class="icon-cancel-circle span_10 span_14_js" id="<?php echo $ID_Seccion;?>"></span>
+                                <input class="contador_2 contador_2--seccion" type="text" value="25"/>
                             </div>
                             <?php
                         endforeach;   
