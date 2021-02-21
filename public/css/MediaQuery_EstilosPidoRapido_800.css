@@ -272,12 +272,10 @@
 	margin: 0% auto;
 }
 .contenedor_41{/*afiliacion*/
-	background-color: var(--OficialClaro);
-	/* position: fixed; */
-	/* bottom: 0pt; */
 	width: 100%;
 	margin-left: 0%;
-	padding: 5% 0%;
+	margin-top: 5% !important;
+	padding: 0%;
 }
 .contenedor_42{/*registroCom - registroDes - login*/
 	width: 100%;
@@ -486,6 +484,16 @@
 .contenedor_84__h2{/*modal_Secciones*/
 	height: initial;
 }
+.contenedor_84--UnicoPlan{/*afiliacion*/
+	width: 100%;
+	margin: 20% auto;
+}
+.contenedor_84--UnicoPlan__div{/*afiliacion*/
+	width: 95%;
+	margin: 15% auto;
+	/* margin-bottom: 0% !important; */
+	padding-left: 5%;
+}
 .contenedor_87{/*cuenta_editar*/
 	grid-column-start: initial;
 	grid-column-end: initial;
@@ -510,10 +518,6 @@
 .contenedor_91{/*cuenta_productos*/
 	height: 40px !important;
 	padding-top: 2%;
-}
-.contenedor_93{/*afiliacion*/
-	padding-top: 1% !important;
-	margin-top: 15%;
 }
 .contenedor_94{/*afiliacion*/
 	margin-top: 10%;
@@ -854,12 +858,11 @@
 	text-align: left;
 }
 .h2_11{/*afiliacion*/
-	font-size: 1.1em;
+	font-size: 1em;
 	width: 90%;
-	margin: auto;
+	margin: 5% auto !important;
 	border-radius: 10px;
 	padding: 0.5%;
-	margin-top: 0% !important;
 }
 .h2_12{/*header_Tienda - header_AfiCom*/
 	font-size: 4vw;
@@ -1044,6 +1047,7 @@
 }
 .li_3{/*afiliacion*/
 	width: 95%;
+	margin-bottom: 5%;
 }
 .marcador{/*cuenta_editar*/
 	text-align: center;
@@ -1085,7 +1089,7 @@
 	margin-bottom: 10%;
 }
 .p_11{/*afiliacion*/
-	padding-bottom: 0% !important;
+	padding-bottom: 5% !important;
 }
 .p_13{/*carrito*/
 	font-size: 1em;

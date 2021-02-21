@@ -10,11 +10,11 @@
         </div>
 
         <p class="p_8">¿Que es una PWA?</p>
-        <p class="p_15">Se trata de una tecnologia en aplicaciones móviles accesibles desde un navegador web, y son multiplaformas porque estan construidas para funcionar en las plataforma Android, Apple, Huawey y Web, sin necesidad de descargar todo el paquete de una aplicación movil nativa.</p>
+        <p class="p_15">Se trata de una tecnologia en aplicaciones móviles accesibles desde un navegador web, son llamadas multiplaformas porque estan construidas para funcionar en las plataforma Android, Apple, Huawey, Window y Web, sin necesidad de descargar todo el paquete de una aplicación movil nativa.</p>
 
         <p class="p_8">Instalar una PWA</p>
         <p class="p_15">Acepte la notificación automatica de permiso para instalación que aparece en la página de inicio de la aplicación.</p>
-        <p class="p_15">Si no acepta la instalacion y decide instalarla más adelante, sera necesario borrar la memoria cahe del dispositivo para que la notificación de instalación vuelva a aparecer al entrar al sitio web.</p>
+        <p class="p_15">Si no acepta la instalacion y decide instalarla más adelante o la notificación de instalación no le aparece, sera necesario borrar la memoria cache del navegador de su dispositivo.</p>
 
         <p class="p_8">Diferencias y similitudes entre PWA y APP</p>
         <ul class="ul_6">

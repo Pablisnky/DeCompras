@@ -522,10 +522,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
 
                         //usar en local
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -778,8 +778,45 @@
             // exit();
 
             //EVALUA CAMBIO DE LINK DE ACCESO
+            //Se quitan los espacios en blanco en el nombre de la tienda en caso de existir
+            $LinkTienda = str_replace(' ', '', $RecibeDatos['Nombre_com']);
+            
+            //Se eliminan los acentos del nombre de la tienda
+            function eliminar_tildes($LinkTienda){            
+                //Ahora reemplazamos las letras
+                $LinkTienda = str_replace(
+                    array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),
+                    array('a', 'a', 'a', 'a', 'a', 'A', 'A', 'A', 'A'),
+                    $LinkTienda);            
+                $LinkTienda = str_replace(
+                    array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ê', 'Ë'),
+                    array('e', 'e', 'e', 'e', 'E', 'E', 'E', 'E'),
+                    $LinkTienda);
+                $LinkTienda = str_replace(
+                    array('í', 'ì', 'ï', 'î', 'Í', 'Ì', 'Ï', 'Î'),
+                    array('i', 'i', 'i', 'i', 'I', 'I', 'I', 'I'),
+                    $LinkTienda);            
+                $LinkTienda = str_replace(
+                    array('ó', 'ò', 'ö', 'ô', 'Ó', 'Ò', 'Ö', 'Ô'),
+                    array('o', 'o', 'o', 'o', 'O', 'O', 'O', 'O'),
+                    $LinkTienda );
+                $LinkTienda = str_replace(
+                    array('ú', 'ù', 'ü', 'û', 'Ú', 'Ù', 'Û', 'Ü'),
+                    array('u', 'u', 'u', 'u', 'U', 'U', 'U', 'U'),
+                    $LinkTienda);
+                $LinkTienda = str_replace(
+                    array('ñ', 'Ñ', 'ç', 'Ç'),
+                    array('n', 'N', 'c', 'C'),
+                    $LinkTienda);
+            
+                return $LinkTienda;
+            }
+
+            //Se llama la función que reemplaza acentos y letra ñ
+            $LinkTienda= eliminar_tildes($LinkTienda);
+
             //Se crea el link de aceso";  
-            $LinkAcceso = RUTA_URL .'/' . $RecibeDatos['Nombre_com'];
+            $LinkAcceso = RUTA_URL .'/' . $LinkTienda;
 
             //Se rellenan los espacios en blanco en el nombre de la tienda en caso de existir
             $NombreTienda = $RecibeDatos['Nombre_com'];
@@ -931,10 +968,10 @@
                     //         //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         // usar en local
-                        // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -977,10 +1014,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
@@ -1056,10 +1093,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1114,10 +1151,10 @@
                     //         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             //usar en local
-                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //se muestra el directorio temporal donde se guarda el archivo
                             //echo $_FILES['imagen']['tmp_name'];

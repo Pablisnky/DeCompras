@@ -10,7 +10,7 @@
             ocultarErrores();
         }
         
-        //Metodo cargado desde E_Tiendas.js - E_Inicio.js
+        //Metodo cargado desde E_Tiendas.js por medio de tiendas()
         public function index($DatosAgrupados){            
             //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(",", $DatosAgrupados);
@@ -21,6 +21,14 @@
             $DisponibilidaHoraria = $DatosAgrupados[4];
             $ProximoApertura = $DatosAgrupados[5];
             $HoraApertura = $DatosAgrupados[6];
+            // echo 'ID_Tienda: ' . $ID_Tienda . '<br>';
+            // echo 'Nombre Tienda: ' .  $NombreTienda . '<br>';
+            // echo 'Seccion Buscada: ' .  $SeccionBuscada . '<br>';
+            // echo 'Opcion Buscada: ' .  $OpcionBuscada . '<br>';
+            // echo 'Disponibilidad Horaria: ' .  $DisponibilidaHoraria . '<br>';
+            // echo 'Proximo Apertura: ' .  $ProximoApertura . '<br>';
+            // echo 'Hora Apertura: ' .  $HoraApertura . '<br>';
+            // exit;
 
             //Se CONSULTAN las categoria de una tienda en particular
             $Categoria = $this->ConsultaVitrina_M->consultarCategoria($ID_Tienda);

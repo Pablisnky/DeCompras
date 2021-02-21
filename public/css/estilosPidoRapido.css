@@ -551,7 +551,7 @@ body, html{
 	width: 50%;
 	margin-left: 25%;
 }
-.contenedor_42{/*registroCom - registroDes - login - cuenta_editar - cuenta_publicar - afiliacion - noConformidad*/
+.contenedor_42{/*registroCom - registroDes - login - cuenta_editar - cuenta_publicar - noConformidad*/
 	width: 80%;
 	margin: auto;
 	margin-top: 10%;
@@ -644,14 +644,14 @@ body, html{
 	border-radius: 15px;
 	margin: 1% auto 5% auto !important;
 }
-.contenedor_70{/*afiliacion - cuenta_ventas*/
+.contenedor_70{/*cuenta_ventas*/
 	width: 95%;
 }
 .contenedor_71{/*afiliacion*/
-	grid-column-start: 1;
+	/* grid-column-start: 1;
 	grid-column-end: 4;
 	padding-bottom: 2%;
-	margin-top: 7%;
+	margin-top: 7%; */
 }
 .contenedor_72{/*carrito*/
 	width: 100%;
@@ -715,6 +715,16 @@ body, html{
 .contenedor_84__h2{/*modal_Secciones*/
 	height: 30px;
 }
+.contenedor_84--UnicoPlan{/*afiliacion*/
+	width: 60%;
+	margin: 10% auto;
+}
+.contenedor_84--UnicoPlan__div{/*afiliacion*/
+	background-color: var(--OficialClaro);
+	width: 80%;
+	margin: 5% auto;
+	border-radius: 15px;
+}
 .contenedor_85{/*cuenta_editar*/
 	display: grid;
 	grid-template-columns: 25% 70%;
@@ -762,17 +772,6 @@ body, html{
 .contenedor_91{/*cuenta_productos*/
 	display: block;
 	height: 35px !important;
-}
-.contenedor_93{/*afiliacion*/
-	background-color: var(--OficialClaro);
-	padding-top: 3%;
-	width: 90%;
-	margin: 2% auto;
-	border-radius: 15px;
-}
-.contenedor_93 > div:first-child{/*afiliacion*/
-	/* grid-column-start: 1;
-	grid-column-end: 6; */
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	display: grid;
@@ -1534,11 +1533,10 @@ body, html{
 	font-weight: normal ;
 }
 .h2_11{/*afiliacion*/
-	/* background-color: var(--BandaAlerta); */
 	font-size: 1.3em;
 	font-weight: normal;
 	text-align: center;
-	width: 40%;
+	width: 60%;
 	margin: auto;
 	border-radius: 10px;
 	padding: 0.5%;
@@ -2032,10 +2030,10 @@ body, html{
 	padding-left: 3%;
 }
 .li_3{/*afiliacion*/
-	width: 90%;
+	width: 80%;
 	margin: auto;
 	line-height: 1.5em;
-	padding-bottom: 5%;
+	padding-bottom: 1%;
 }
 .li_4{/*descr_Producto*/
 	width: 100%;
@@ -2126,7 +2124,7 @@ body, html{
 	width: 100% !important;
 }
 .p_5{/*afiliacion*/
-	margin: 0% auto 5% auto;
+	margin: 0% auto;
 	text-align: center;
 }
 .p_6{/*cuenta_editar - afiliacion - cuenta*/
