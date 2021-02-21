@@ -69,13 +69,12 @@
             <article>
                 <div class="contGeneralCentro">   
                     <p class="contGeneral__p">Las compras realizadas fuera del horario de despacho serán entregadas en el siguiente bloque de apertura.</p>   
-                    
                 </div>
             </article>
 
             <article>
                 <div class="contBoton" id="Contenedor_26">
-                    <a class="boton boton--largo" href="javascript:history.back()">Cerrar horario</a>
+                    <a class="boton boton--largo" href="javascript:history.back()">Cerrar</a>
                 </div>
             </article>
         </div>

@@ -50,8 +50,8 @@
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="#">Ofertas<i class="fas fa-gift icono_1"></i></a></li>
 					<li><a class="a_3" href="#">Lo más pedido<i class="far fa-chart-bar icono_1"></i></a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' .$ID_Tienda . ',' . $Nombre_Tienda;?>">Horario<i class="far fa-clock icono_1"></i></a></li>
-					<li><a class="a_3" href="#">Dirección<i class="fas fa-map-marker-alt icono_1"></i></a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' . $ID_Tienda . ',' . $Nombre_Tienda;?>">Horario<i class="far fa-clock icono_1"></i></a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/direccionTienda/' . $ID_Tienda;?>">Dirección<i class="fas fa-map-marker-alt icono_1"></i></a></li>
 					<hr class="hr_3 hr_4"/>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/salirTienda';?>">Salir de la tienda<i class="far fa-times-circle icono_1"></i></a></li>
 				</ul>

@@ -252,6 +252,23 @@
             $this->vista("paginas/tienda/horarioDespacho_V",$Datos);
         }
 
+        // Invocado en header_Tienda
+        public function direccionTienda($ID_Tienda){    
+            echo $ID_Tienda;
+           
+            $Datos = [
+                'id_tienda' => $ID_Tienda,
+            ];
+            
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
+
+            $this->vista("inc/header_Tienda", $Datos);
+            $this->vista("paginas/tienda/direccion_V",$Datos);
+        }
+        
         public function salirTienda(){
             //La función redireccionar se encuentra en url_helper.php
             redireccionar("/Inicio_C");
