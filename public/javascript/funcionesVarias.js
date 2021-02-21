@@ -121,10 +121,10 @@
 
 //************************************************************************************************
     //Indica la cantidad de caracteres que ya tiene el campo; invocado en cuenta_editar_V.php
-    function CaracteresAlcanzados(Contenido, ID_Contador){
-        // console.log("______Desde CaracteresAlcanzados()______",Contenido + " / " + ID_Contador) 
+    function CaracteresAlcanzados(ID_Contenido, ID_Contador){
+        console.log("______Desde CaracteresAlcanzados()______",ID_Contenido + " / " + ID_Contador) 
 
-        var Contenido = document.getElementById(Contenido).value
+        var Contenido = document.getElementById(ID_Contenido).value
         var ContadorContenido = document.getElementById(ID_Contador).value
 
         var CaracteresDisponibles = ContadorContenido - Contenido.length

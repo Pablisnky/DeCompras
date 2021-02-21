@@ -21,6 +21,9 @@
 .comandoMenu{/*header - header_Tienda*/
 	margin-top: 13%;
 }
+.contador_2--seccion{/*cuenta_editar*/
+	left: -55%  !important;
+}
 .contenedor_10{/*tiendas - vitrina - afiliacion - planes*/
 	min-height: initial;
 }

@@ -267,10 +267,11 @@ body, html{
 .contador_2--seccion{/*cuenta_editar*/
 	position: relative;
 	top: 5%;
-	left: 5%;
+	left: 0%;
 	display: block;
-	width: 30% !important;
-	text-align: right;
+	width: 100% !important;
+	text-align: center;
+	margin-left: 0% !important;
 }
 .contador_4{/*quienesSomos - registroCom*/
 	margin-left: 85% !important;
@@ -564,7 +565,6 @@ body, html{
 	text-align: center;
 }
 .contenedor_47{/*cuenta_publicar - cuenta_editar_prod*/
-	/* background-color: blue; */
 	display: grid;
 	grid-template-columns: 40% 60%;
 	column-gap: 3%;/*espacio entre columnas*/
@@ -655,7 +655,6 @@ body, html{
 }
 .contenedor_72{/*carrito*/
 	width: 100%;
-	/* margin: 0% auto !important; */
 }
 .contenedor_77{/*Categorias_Ajax_V.php*/
 	margin:5% auto 1% auto;
@@ -664,9 +663,8 @@ body, html{
 }
 .contenedor_80{/*cuenta_editar - cuenta_publicar - cuenta_editar_prod*/
 	display: flex; /*Organiza los elementos horizontalmente*/
-	justify-content: space-between;
 	font-size: 1em;
-	background-color: yellow;
+	margin-bottom: 5%;
 }
 .contenedor_80A{/*cuenta_editar*/
 	display: flex; /*Organiza los elementos horizontalmente*/
@@ -679,12 +677,15 @@ body, html{
 	width: 100%;
 }
 .contenedor_80C{/*cuenta_editar*/	
-	background-color: red !important;
 	display: flex; /*Organiza los elementos horizontalmente*/
-	justify-content: space-between;
+	margin-bottom: 5%;
+	width: 100% !important;
 }
 .contenedor_80A__div2{/*cuenta_editar*/
 	width: 100%;
+}
+.contenedor__80div{/*cuenta_editar*/
+	width:10% !important;
 }
 .contenedor_81{/*cuenta_publicar*/
 	text-align: center;
@@ -984,7 +985,6 @@ body, html{
 	align-items: center; /*para centrar verticalmente el div hijo junto con display:flex*/
 }
 .contenedor_134{/*cuenta-editar_prod */
-	background-color: red;
 	width: 60%;
 	margin: auto;
 	text-align: center !important;
@@ -1391,7 +1391,6 @@ body, html{
 	width: 100%;
 }
 .fieldset_1{/*registroCom - registroDes - login*/
-	/* background-color: yellow; */
 	width: 40%;
 	margin: auto;
 	border-radius: 15px;
@@ -1611,7 +1610,6 @@ body, html{
 }
 .header__menuResponsive{/*da formato a barra de menu y contiene todos los enlaces de la misma, solo a la del header*/
 	/* background-color: var(--OficialOscuro); */
-	/* background-color: yellow; */
 	/* width: 100%; */
 	/*display: flex; Organiza los elementos horizontalmente*/
 	/* justify-content: space-between; */
@@ -1619,7 +1617,6 @@ body, html{
 	bottom: 0px; */
 }
 .header__menuResponsive ul{/*Todas  las páginas*/
-	/* background-color: blue; */
 	width: 95%;
 	margin: auto;
 	list-style: none;
@@ -1811,7 +1808,6 @@ body, html{
 	font-size: 0.9em;
 }
 .input_8C{/*opciones*/
-	/* background-color: orange; */
 	max-width: 100%;
 	height: 40px;
 	/* width: 100%; */
@@ -1827,7 +1823,6 @@ body, html{
 	text-overflow: ellipsis;
 }
 .input_8D{/*opciones*/
-	/* background-color: red; */
 	min-height: 15px;
 	max-height: 40px;
 	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
@@ -1842,7 +1837,6 @@ body, html{
 	text-overflow: ellipsis;
 }
 .input_10{/*opciones*/
-	background-color: yellow;
 	cursor: pointer;
 	color: var(--Enlaces);
 	visibility: visible;
@@ -1886,9 +1880,6 @@ body, html{
 	height: 20px;
 	border-radius: 50%;
 	text-align: center;
-	/*border: none;
-	font-size: 0.9em;
-	height: 100%  !important; */
 }
 .input_15{/*vitrina*/
 	background-color: rgba(165, 42, 42, 0);
@@ -2478,7 +2469,7 @@ body, html{
 	display: block;
 }
 .span_10{/*cuenta_editar - cuenta_editar_prod*/
-	background-color: blue;
+	width: 10%;
 	font-size: 1.2em;
 	color: rgba(0, 0, 0, 0.6);
 	display: inline-block;
@@ -2487,6 +2478,10 @@ body, html{
 }
 .span_10:hover{/*cuenta_editar*/
 	cursor: pointer;
+}
+.span_10--seccion{/*cuenta_editar*/
+	text-align: center;
+	width: 100%;
 }
 .span_11{/*registroCom*/
 	display: inline-block;

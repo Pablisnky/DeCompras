@@ -44,6 +44,37 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
     }
 }, false)
 
+
+
+
+
+
+
+
+
+
+
+//CUENTA LA CANTIDAD DE CARACTERES QUE YA TIENE UNA SECCION (TRAE DATOS DE BD)
+//Por medio de delegación de eventos se detecta la seccion clonada
+document.addEventListener("DOMContentLoaded", function(){
+    console.log("______Desde funcion anonima cuenta caracteres de BD")
+
+    let Secciones = document.getElementsByClassName("seccionesJS")
+    let Contadores = document.getElementsByClassName("contador_JS")
+    console.log(Secciones.length)
+    console.log(Contadores.length)
+
+    for(var i = 0; i < Secciones.length; i++){
+        console.log("Seccion cargada= ", Secciones[i].value)
+        let Seccion_ID = Secciones[i].id
+
+        console.log("contador cargado= ", Contadores[i].value)
+        let Contador_ID =  Contadores[i].id
+
+        CaracteresAlcanzados(Seccion_ID, Contador_ID) 
+    }    
+}, false)
+
 //CONTAR CANTIDAD DE CARACTERES ESCRITOS EN UNA SECCION
 //Por medio de delegación de eventos se detecta la seccion clonada
 window.addEventListener('click', function(e){
@@ -254,7 +285,12 @@ document.getElementById("Label_1").addEventListener('click', function(){
         //Se da una clase (Al parecer no hace ninguna función, pero se elimina y no hace el clon)
         Div_clon.classList = "contenedorUnico"
 
-        //Se da un ID al input que se encuentra en el nuevo elemento clonado
+        //Se da un ID al input que se encuentra en el nuevo elemento clonado, el valor del id debe ser concecutivo a los que ya existan
+        let SeccionesExistentes = document.getElementsByClassName("input_12")
+        // console.log("Secciones Existentes", SeccionesExistentes.length)
+        CantidadID_Existente = SeccionesExistentes.length
+        incrementoSeccion = CantidadID_Existente + 1
+
         Div_clon.getElementsByClassName("input_12")[0].id = 'InputClon_' + incrementoSeccion 
         
         //Se da un name al input que se encuentra en el nuevo elemento clonado
@@ -495,8 +531,7 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Div_clon.getElementsByClassName("BancoJS")[0].value = ""
         Div_clon.getElementsByClassName("TelefonoJS")[0].value = ""
 
-
-        //Se añade un id a los elementos que estan dentro del nuevo elemento clonado, el valor del id debe ser concecutivo a los que existan
+        //Se añade un id a los elementos que estan dentro del nuevo elemento clonado, el valor del id debe ser concecutivo a los que ya existan
         CantidadID_Existente = CuentasPagoMovil.length
         NuevoID = CantidadID_Existente + 1
 

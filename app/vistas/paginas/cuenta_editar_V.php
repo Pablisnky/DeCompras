@@ -197,6 +197,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <?php
                     }   
                     else{    
+                        $Contador = 1;
                         foreach($Datos['secciones'] as $row) :
                             $Seccion_Tien = $row['seccion'];
                             $ID_Seccion = $row['ID_Seccion'];
@@ -204,12 +205,14 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             ?>
                            
                             <div class="contenedor_80" id="Contenedor_80">
-                                <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
-
-                                <span class="icon-cancel-circle span_10 span_14_js" id="<?php echo $ID_Seccion;?>"></span>
-                                <input class="contador_2 contador_2--seccion" type="text" value="25"/>
+                                <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion_<?php echo $Contador;?>" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
+                                <div class="contenedor__80div">
+                                    <span class="icon-cancel-circle span_10 span_10--seccion span_14_js" id="<?php echo $ID_Seccion;?>"></span>
+                                    <input class="contador_2 contador_2--seccion contador_JS" id="Contador_<?php echo $Contador;?>" type="text" value="25"/>
+                                </div>
                             </div>
                             <?php
+                            $Contador++;
                         endforeach;   
                     }   ?>
                 </div>
