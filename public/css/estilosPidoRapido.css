@@ -1692,6 +1692,14 @@ body, html{
 	/* margin-top: 5px;
 	margin-bottom: 10px; */
 }
+.icono_3{/*header_inicio*/
+	font-size: 20px;
+	width: 100%;
+	text-align: center;
+}
+.icono_4{/*cuenta_editar*/
+	font-size: 20px;
+}
 .image_1{/*tiendas - cuenta*/
 	width: 100%;
 	object-fit: contain ;
@@ -2521,17 +2529,17 @@ body, html{
 	display: inline-block;
 	margin-left: 3%;
 }
-.span_18{/*cuenta_publicar - cuenta_editar_prod*/
+.span_18{/*cuenta_publicar - cuenta_editar_prod - cuenta_editar*/
 	background-color: var(--OficialClaro);
 	border-radius: 30px;
-	padding: 3%;
-	width: 30px;
+	padding: 2%;
+	width: 40px;
 	position: relative;
 	top: -94%;
 	left: 42%;
 	display: inline !important;
 }
-.span_18:hover{/*cuenta_publicar - cuenta_editar_prod*/
+.span_18:hover{/*cuenta_publicar - cuenta_editar_prod  - cuenta_editar*/
 	cursor: pointer;
 }
 .span_21{/*CantidadTiendas_Ajax*/

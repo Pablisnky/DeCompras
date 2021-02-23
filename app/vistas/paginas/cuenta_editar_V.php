@@ -35,7 +35,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     ?>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
+
     <!-- Se coloca en SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
@@ -71,7 +71,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <legend class="legend_1">Datos de tienda</legend> 
                 <div class="contenedor_119 borde_1 borde_2">
                     <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../public/images/tiendas/<?php echo $Foto_Tien;?>"/>
-                    <label for="imgInp_2"><span class="icon-pencil span_18 borde_1"></span></label>
+                    <label for="imgInp_2"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                     <input class="ocultar" type="file" name="imagen_Tienda" id="imgInp_2"/>
                 </div>
 

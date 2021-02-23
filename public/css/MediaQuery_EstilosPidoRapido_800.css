@@ -68,6 +68,7 @@
 .comandoMenu_Inicio{/*header_inicio*/
 	background-color: var(--OficialClaro);
 	border-radius: 8px !important;
+	padding: 0.9% 1.3% !important;
 }
 .comandoMenu_2{/*header_inicio* - header_AfiCom - header - header_Tienda*/
 	border-radius: 10px;
@@ -1243,7 +1244,7 @@
 	color: rgb(239, 245, 245);
 	font-size: 8vw;
 }
-.span_15Inicio{/*header_inicio*/
+.span_15Inicio{/*header_AfiCom*/
 	display: block;
 	color: var(--OficialOscuro);
 	font-size: 1.5em;

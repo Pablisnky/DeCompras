@@ -107,14 +107,14 @@ window.addEventListener('click', function(e){
 //ELIMINAR SECCIONES
 //Por medio de delegación de eventos se detecta la sección a eliminar
 window.addEventListener('click', function(e){
-    console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
+    // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
 
     var ElementoSeleccionado = e.target.classList[2]
     // console.log(ElementoSeleccionado)
 
     //Se ubica el id del elemento seleccionado
     let ID_ElementoSeleccionado = e.target.id
-    console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
+    // console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
 
     if(ElementoSeleccionado == "span_14_js"){
         let ConfirmaEliminar = confirm("Se eliminará la sección y todos sus productos")
@@ -122,21 +122,24 @@ window.addEventListener('click', function(e){
         if(ConfirmaEliminar == true){            
             //Contenedor padre de secciones
             let PadreSecciones = document.getElementById("Contenedor_79")
-            console.log(PadreSecciones.childElementCount)
+            // console.log(PadreSecciones.childElementCount)
 
             //Si hay más de una sección la elimina, si solo hay una, borrar el contenido del input
             if(PadreSecciones.childElementCount > 4){
-
                 // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
                 current = e.target.parentElement
-                console.log("div a eliminar", current)
+                // console.log("div a eliminar", current)
+
+                //Se obtiene el elemento hermano de current
+                let InputSeccion = current.previousElementSibling
+                // console.log("Input Seccion", InputSeccion)
                 
-                //Se busca el nodo padre que contiene el elemento current
+                //Se busca el nodo padre que contiene el elemento "current" y el elemento "InputSeccion" 
                 let elementoPadre = current.parentElement
                 
                 //Se elimina la sección
-                elementoPadre.removeChild(current)
-                
+                elementoPadre.removeChild(current)  
+                elementoPadre.removeChild(InputSeccion)             
             }
             else{
                 document.getElementById("Seccion").value = ""

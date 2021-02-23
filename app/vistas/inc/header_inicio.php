@@ -15,9 +15,6 @@
 		<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
  		<meta http-equiv="Pragma" content="no-cache">
 
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/menu/style_menu.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>
-
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_800.css?v=<?php echo(rand());?>"/>
@@ -28,6 +25,9 @@
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>	
 		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
 
+		<!-- CDN iconos de font-awesome-->
+		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
+		
 		<!-- Chat -->
 		<script src="//code.jivosite.com/widget/Wbw4t2Bu2s" async></script>
 
@@ -43,7 +43,7 @@
     </head>
     <body>				
 		<header class="header contenedor_116">
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span class="icon-menu span_6 span_15Inicio" id="Span_6"></span></label>
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>" rel="noopener noreferrer">Afiliación</a></li>
@@ -54,7 +54,7 @@
 			</nav>
 		</header>
         <div class="contIconoBuscador borde_1" id="Contenedor_34">
-            <span class="icon-search contIconoBuscador__span"></span>
+            <span><i class="fas fa-search icono_3"></i></span>
         </div>
 		<article>
 			<noscript>

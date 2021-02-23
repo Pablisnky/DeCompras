@@ -9,7 +9,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>    
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lapiz/style_lapiz.css"/>
         
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,7 +20,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
-                    <label  for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                    <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                     <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                 </div>    
                 <div>
