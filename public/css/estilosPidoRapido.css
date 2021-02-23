@@ -1445,7 +1445,7 @@ body, html{
 	line-height: 1.5em;
 	width: 100%;
 }
-.h1_4{/*opciones - tienda - modal_sinProductos*/
+.h1_4{/*tienda - modal_sinProductos*/
 	font-size: 1.4em;
 	width: initial;
 	font-weight: lighter !important;
@@ -1678,9 +1678,19 @@ body, html{
 }
 .icono_1{/*header_tienda*/
 	font-size: 20px;
+	/* display: block; */
+	width: 100%;
+	text-align: center;
+}
+.icono_2{/*CantidadTiendas*/
+	font-size: 65px;
 	display: block;
 	width: 100%;
 	text-align: center;
+	position: relative;
+	/* top: -15%; */
+	/* margin-top: 5px;
+	margin-bottom: 10px; */
 }
 .image_1{/*tiendas - cuenta*/
 	width: 100%;
@@ -2459,7 +2469,7 @@ body, html{
 .span_5:hover{/*inicio - opciones*/
 	cursor: pointer !important;
 }
-.span_8{/*inicio*/
+.span_8{/*CantidadTiendas_Ajax*/
 	color:rgba(51, 51, 51, 0.5);
 	font-size: 3.5em !important;
 	margin-top: 8%;
@@ -2524,7 +2534,7 @@ body, html{
 .span_18:hover{/*cuenta_publicar - cuenta_editar_prod*/
 	cursor: pointer;
 }
-.span_21{/*inicio*/
+.span_21{/*CantidadTiendas_Ajax*/
 	background-color: var(--OficialClaro);
 	border-radius: 30px;
 	width: 23px;

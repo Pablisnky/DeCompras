@@ -6,7 +6,7 @@
             <label class="label_9" id="Label_9" style="display: inline;">Secciones</label>
         </div>
         <!-- $Datos viene de Opciones_C -->
-        <h1 class="h1_1 h1_3 h1_4"><?php echo $Datos['Opciones'][0]['seccion']?></h1>
+        <h1 class="h1_1 h1_3"><?php echo $Datos['Opciones'][0]['seccion']?></h1>
     </div>
     <div class="contenedor_156">
         <div class="contenedor_158">

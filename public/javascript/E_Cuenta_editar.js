@@ -6,6 +6,8 @@ document.getElementById("Label_5").addEventListener('click', clonarSeccion, fals
 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
+document.getElementById("UbicarMapa").addEventListener('click',get_current_position(), false)
+
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){contarCaracteres('ContadorSlo','ContenidoSlo', 50)}, false)
 
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoSlo')}, false)
@@ -44,31 +46,21 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
     }
 }, false)
 
-
-
-
-
-
-
-
-
-
-
 //CUENTA LA CANTIDAD DE CARACTERES QUE YA TIENE UNA SECCION (TRAE DATOS DE BD)
 //Por medio de delegación de eventos se detecta la seccion clonada
 document.addEventListener("DOMContentLoaded", function(){
-    console.log("______Desde funcion anonima cuenta caracteres de BD")
+    // console.log("______Desde funcion anonima cuenta caracteres de BD")
 
     let Secciones = document.getElementsByClassName("seccionesJS")
     let Contadores = document.getElementsByClassName("contador_JS")
-    console.log(Secciones.length)
-    console.log(Contadores.length)
+    // console.log(Secciones.length)
+    // console.log(Contadores.length)
 
     for(var i = 0; i < Secciones.length; i++){
-        console.log("Seccion cargada= ", Secciones[i].value)
+        // console.log("Seccion cargada= ", Secciones[i].value)
         let Seccion_ID = Secciones[i].id
 
-        console.log("contador cargado= ", Contadores[i].value)
+        // console.log("contador cargado= ", Contadores[i].value)
         let Contador_ID =  Contadores[i].id
 
         CaracteresAlcanzados(Seccion_ID, Contador_ID) 
@@ -78,19 +70,19 @@ document.addEventListener("DOMContentLoaded", function(){
 //CONTAR CANTIDAD DE CARACTERES ESCRITOS EN UNA SECCION
 //Por medio de delegación de eventos se detecta la seccion clonada
 window.addEventListener('click', function(e){
-    console.log("______Desde funcion anonima que aplica listerner a secciones")
+    // console.log("______Desde funcion anonima que aplica listerner a secciones")
     if(e.target.classList[2] == "input_12"){
         //Se toma el id de la sección seleccionada
         var ID_SeccionClick = e.target.id
-        console.log("ID_Seccion seleccionada= ",ID_SeccionClick)
+        // console.log("ID_Seccion seleccionada= ",ID_SeccionClick)
 
         //Se toma el id del input contador que corresponde a la seccion seleccionada
         // Se obtiene el elemento padre donde se encuentra la seccion donde se hizo click
         let Padre = e.target.parentElement
-        console.log("Elemento padre de seccion= ",Padre)
+        // console.log("Elemento padre de seccion= ",Padre)
         //Se obtiene el contador que existe en el elemento padre
         let ID_ContadorSeccion = Padre.getElementsByTagName("INPUT")[1].id
-        console.log("Elemento contador= ", ID_ContadorSeccion)
+        // console.log("Elemento contador= ", ID_ContadorSeccion)
 
         //Se llama a la funcion que cuenta los caracteres introducidos en la sección
         e.target.addEventListener('keydown', function(){
@@ -101,11 +93,11 @@ window.addEventListener('click', function(e){
 //VALIDA LA CANTIDAD DE CARACTERES ESCRITOS EN UNA SECCION
 //Por medio de delegación de eventos se detecta la seccion clonada
 window.addEventListener('click', function(e){
-    console.log("______Desde funcion anonima que aplica listerner a secciones")
+    // console.log("______Desde funcion anonima que aplica listerner a secciones")
     if(e.target.classList[2] == "input_12"){
         //Se toma el id de la sección seleccionada
         var ID_SeccionClick = e.target.id
-        console.log("ID_Seccion seleccionada= ",ID_SeccionClick)
+        // console.log("ID_Seccion seleccionada= ",ID_SeccionClick)
 
         //Se llama a la funcion que cuenta los caracteres introducidos en la sección
         e.target.addEventListener('keydown', function(){
@@ -117,14 +109,14 @@ window.addEventListener('click', function(e){
 //ELIMINAR SECCIONES
 //Por medio de delegación de eventos se detecta la sección a eliminar
 window.addEventListener('click', function(e){
-    console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
+    // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
 
     var ElementoSeleccionado = e.target.classList[2]
     // console.log(ElementoSeleccionado)
 
     //Se ubica el id del elemento seleccionado
     let ID_ElementoSeleccionado = e.target.id
-    console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
+    // console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
 
     if(ElementoSeleccionado == "span_14_js"){
         let ConfirmaEliminar = confirm("Se eliminará la sección y todos sus productos")
@@ -132,14 +124,14 @@ window.addEventListener('click', function(e){
         if(ConfirmaEliminar == true){            
             //Contenedor padre de secciones
             let PadreSecciones = document.getElementById("Contenedor_79")
-            console.log(PadreSecciones.childElementCount)
+            // console.log(PadreSecciones.childElementCount)
 
             //Si hay más de una sección la elimina, si solo hay una, borrar el contenido del input
             if(PadreSecciones.childElementCount > 4){
 
                 // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
                 current = e.target.parentElement
-                console.log("div a eliminar", current)
+                // console.log("div a eliminar", current)
                 
                 //Se busca el nodo padre que contiene el elemento current
                 let elementoPadre = current.parentElement
@@ -1058,4 +1050,50 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 return false;
             }
         }
+    }
+
+//************************************************************************************************
+    function get_current_position(){
+        console.log("_____Desde mostrarGeolocalizacion()_____")
+
+        if(navigator.geolocation){
+            // geolocation IS available
+            navigator.geolocation.getCurrentPosition(GoogleMap, showError);
+        } 
+        else {
+            // geolocation IS NOT available
+            geo_is_not_available();
+            alert("Su navegador no soporta geolocalización, es imposible realizar una compra bajo esa limitante")
+        }
+        // navigator.geolocation.getCurrentPosition(function(pos){
+        //     //Creamos un objeto mapa y lo situamos en coordenadas actuales
+        //     var map = new google.maps.Map(document.getElementById('Mapa'),{
+        //         center: {lat: pos.coords.latitude, lng: pos.coords.longitude},
+        //         scrollwheel: false,
+        //         zoom: 8
+        //         }
+        //     );
+        // })
+    }
+    // [js autolinks= "true" collapse= "true" firstline= "1" gutter= "false" htmlscript= "false" light= "true" padlinenumbers= "true" smarttabs= "true" tabsize= "4" toolbar= "true"]
+
+    function GoogleMap(position){
+        var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var map = new google.maps.Map(document.getElementById('Mapa'),{
+            zoom: 10,
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+        });
+        var marker = new google.maps.Marker({
+            map: map,
+            position: location,
+            animation: google.maps.Animation.DROP,
+            title: "This is your location"
+        });
+        map.setCenter(location);
+    }
+    
+
+    function showError() {
+        alert("Location can’t be found");
     }

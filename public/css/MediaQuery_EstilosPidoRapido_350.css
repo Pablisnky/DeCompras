@@ -49,10 +49,6 @@
 .contenedor_106{/*inicio*/
 	bottom: 8px;
 }
-.h1_4{/*ciudad - opciones - tiendas*/
-	font-size: 1.2em;
-	font-weight: bold;
-}
 .h2_1{/*inicio*/
 	font-size: 0.9em;
 }
@@ -96,6 +92,9 @@
 }
 .section_6{/*afiliacion*/
 	height: 250%;
+}
+.span_21{/*CantidadTiendas_Ajax*/
+	margin-top: -2% !important;
 }
 .span_2{/*vitrina*/
 	font-size: 1.1em !important;

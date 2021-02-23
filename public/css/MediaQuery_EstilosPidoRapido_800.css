@@ -797,8 +797,9 @@
 	height: 1.3em;
 	/* line-height: 1em; */
 }
-.h1_4{/*opciones - tiendas*/
-	font-size: 1.3em;
+.h1_4{/*tiendas*/
+	width: 100%;
+	font-size: 4.5vw !important; /*unidades vw hace que la letra se adapte dinamicamente al espacio*/
 	font-weight: bold;
 }
 .h1_7{/*categoria*/
@@ -899,6 +900,14 @@
 }
 .icono_1{/*header_tienda*/
 	display: none !important;
+}
+.icono_2{/*CantidadTiendas*/
+	font-size: 50px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	/* margin-top: -10px; */
+	/* margin-bottom: 10px; */
 }
 .imagen_2{/*vitrina*/
 	width: 100px;
@@ -1215,8 +1224,12 @@
 	margin-top: 1%;
 	left: 10%;
 }
-.span_8{/*inicio - opciones*/
+.span_8{/*CantidadTiendas_Ajax*/
 	font-size: 3em!important;
+	margin-top: 0%;
+}
+.span_8--aweson{/*CantidadTiendas_Ajax*/
+	font-size: 5em!important;
 	margin-top: 0%;
 }
 .span_10{/*cuenta_editar - cuenta_editar_prod*/
@@ -1245,6 +1258,9 @@
 .span_20{/*cuenta_editar*/
 	top: 147%;
 	left: 66%;
+}
+.span_21{/*CantidadTiendas_Ajax*/
+	margin-top: -4% !important;
 }
 .span_22{/*inicio*/	
 	/* font-size:6.3vw; */

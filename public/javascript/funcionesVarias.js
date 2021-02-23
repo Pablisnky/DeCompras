@@ -107,7 +107,7 @@
 //************************************************************************************************
     //Indica la cantidad de caracteres que quedan mientras se escribe; invocado en quienesSomos_V.php - cuenta_publicar_V.php - registroCom_V.php - cuenta_editar_V.php
     function contarCaracteres(ID_Contador, ID_Contenido, Max){
-        console.log("______Desde contarCaracteres()______", ID_Contador + " / " + ID_Contenido + " / " + Max) 
+        // console.log("______Desde contarCaracteres()______", ID_Contador + " / " + ID_Contenido + " / " + Max) 
         var max = Max; 
         var cadena = document.getElementById(ID_Contenido).value; 
         var longitud = cadena.length; 
@@ -122,7 +122,7 @@
 //************************************************************************************************
     //Indica la cantidad de caracteres que ya tiene el campo; invocado en cuenta_editar_V.php
     function CaracteresAlcanzados(ID_Contenido, ID_Contador){
-        console.log("______Desde CaracteresAlcanzados()______",ID_Contenido + " / " + ID_Contador) 
+        // console.log("______Desde CaracteresAlcanzados()______",ID_Contenido + " / " + ID_Contador) 
 
         var Contenido = document.getElementById(ID_Contenido).value
         var ContadorContenido = document.getElementById(ID_Contador).value
