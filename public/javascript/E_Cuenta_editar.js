@@ -107,14 +107,14 @@ window.addEventListener('click', function(e){
 //ELIMINAR SECCIONES
 //Por medio de delegación de eventos se detecta la sección a eliminar
 window.addEventListener('click', function(e){
-    console.log("______Desde funcion anonima para eliminar secciones______")
+    console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
 
-    var ElementoSeleccionado = e.target.classList[3]
-    console.log(ElementoSeleccionado)
+    var ElementoSeleccionado = e.target.classList[2]
+    // console.log(ElementoSeleccionado)
 
     //Se ubica el id del elemento seleccionado
     let ID_ElementoSeleccionado = e.target.id
-    // console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
+    console.log("ID_Seccion a eliminar= ", ID_ElementoSeleccionado)
 
     if(ElementoSeleccionado == "span_14_js"){
         let ConfirmaEliminar = confirm("Se eliminará la sección y todos sus productos")
@@ -122,7 +122,7 @@ window.addEventListener('click', function(e){
         if(ConfirmaEliminar == true){            
             //Contenedor padre de secciones
             let PadreSecciones = document.getElementById("Contenedor_79")
-            // console.log(PadreSecciones.childElementCount)
+            console.log(PadreSecciones.childElementCount)
 
             //Si hay más de una sección la elimina, si solo hay una, borrar el contenido del input
             if(PadreSecciones.childElementCount > 4){
@@ -147,7 +147,6 @@ window.addEventListener('click', function(e){
         }  
     }  
 }, false)
-
 // **************************************************************************************************
 //ELIMINAR PAGOMOVIL
 document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(e){ 
