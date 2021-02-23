@@ -6,8 +6,6 @@ document.getElementById("Label_5").addEventListener('click', clonarSeccion, fals
 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
 
-document.getElementById("UbicarMapa").addEventListener('click',get_current_position(), false)
-
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){contarCaracteres('ContadorSlo','ContenidoSlo', 50)}, false)
 
 document.getElementById("ContenidoSlo").addEventListener('keydown', function(){valida_LongitudDes(50,'ContenidoSlo')}, false)
@@ -109,10 +107,10 @@ window.addEventListener('click', function(e){
 //ELIMINAR SECCIONES
 //Por medio de delegación de eventos se detecta la sección a eliminar
 window.addEventListener('click', function(e){
-    // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
+    console.log("______Desde funcion anonima para eliminar secciones______")
 
-    var ElementoSeleccionado = e.target.classList[2]
-    // console.log(ElementoSeleccionado)
+    var ElementoSeleccionado = e.target.classList[3]
+    console.log(ElementoSeleccionado)
 
     //Se ubica el id del elemento seleccionado
     let ID_ElementoSeleccionado = e.target.id
@@ -131,7 +129,7 @@ window.addEventListener('click', function(e){
 
                 // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
                 current = e.target.parentElement
-                // console.log("div a eliminar", current)
+                console.log("div a eliminar", current)
                 
                 //Se busca el nodo padre que contiene el elemento current
                 let elementoPadre = current.parentElement
@@ -230,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('D
  
 
 // *****************************************************************************************************
-//FUNCIONES ANONIMAS
 // por medio de una función anonima debido a que el elemento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo
 document.getElementById('Label_13').addEventListener('click',function(){ 
     // console.log("______Desde funcion anonima que genera el alto de la ventana modal()______")
@@ -260,11 +257,11 @@ document.getElementById("Label_1").addEventListener('click', function(){
     //Añade un nuevo input clonado del div secciones
     var incrementoSeccion = 1
     function clonarSeccion(){
-        console.log("______Desde CrearSección()______")
+        // console.log("______Desde CrearSección()______")
         
         //Contenedor a clonar 
         let clonar = document.getElementById("Contenedor_80A")
-        console.log("div a clonar", clonar)
+        // console.log("div a clonar", clonar)
         
         //Contenedor padre
         let Padre = document.getElementById("Contenedor_79")
@@ -1050,50 +1047,4 @@ document.getElementById("Label_1").addEventListener('click', function(){
                 return false;
             }
         }
-    }
-
-//************************************************************************************************
-    function get_current_position(){
-        console.log("_____Desde mostrarGeolocalizacion()_____")
-
-        if(navigator.geolocation){
-            // geolocation IS available
-            navigator.geolocation.getCurrentPosition(GoogleMap, showError);
-        } 
-        else {
-            // geolocation IS NOT available
-            geo_is_not_available();
-            alert("Su navegador no soporta geolocalización, es imposible realizar una compra bajo esa limitante")
-        }
-        // navigator.geolocation.getCurrentPosition(function(pos){
-        //     //Creamos un objeto mapa y lo situamos en coordenadas actuales
-        //     var map = new google.maps.Map(document.getElementById('Mapa'),{
-        //         center: {lat: pos.coords.latitude, lng: pos.coords.longitude},
-        //         scrollwheel: false,
-        //         zoom: 8
-        //         }
-        //     );
-        // })
-    }
-    // [js autolinks= "true" collapse= "true" firstline= "1" gutter= "false" htmlscript= "false" light= "true" padlinenumbers= "true" smarttabs= "true" tabsize= "4" toolbar= "true"]
-
-    function GoogleMap(position){
-        var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var map = new google.maps.Map(document.getElementById('Mapa'),{
-            zoom: 10,
-            disableDefaultUI: true,
-            mapTypeId: google.maps.MapTypeId.TERRAIN,
-        });
-        var marker = new google.maps.Marker({
-            map: map,
-            position: location,
-            animation: google.maps.Animation.DROP,
-            title: "This is your location"
-        });
-        map.setCenter(location);
-    }
-    
-
-    function showError() {
-        alert("Location can’t be found");
     }

@@ -88,7 +88,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <input class="input_13 input_13A input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off"/>
                 <input class="contador_2" type="text" id="ContadorSlo" value="50"/>
                 
-                <!-- SECCION DATOS DE UBICACIÓN -->
+                <!-- DATOS DE UBICACIÓN -->
                 <label>Datos de ubicación</label>
                 </br>
                 <select class="select_2 borde_1" id="Estado_Tien" name="estado_com" onchange="SeleccionarMunicipio(this.form)">
@@ -209,7 +209,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         </div>
                         <?php
                     }   
-                    else{    
+                    else{  //Entra en el ELSE cuando hay secciones creadas  
                         $Contador = 1;
                         foreach($Datos['secciones'] as $row) :
                             $Seccion_Tien = $row['seccion'];
@@ -441,9 +441,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/Municipios.js?v=' . rand();?>"></script> 
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/parroquias.js?v=' . rand();?>"></script> 
 
-    <!-- API de geolocalizacion de google -->
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
-
     <script> 
         //Da una vista previa de la imagen de la tienda, usada en cuenta_editar_prod_V.php
         function readImage(input, id_Label){
@@ -469,61 +466,3 @@ else{
     redireccionar("/Login_C/");
 }
     ?>
-
-    
-
-<script>
-      var map;
-      var geocoder;
-      var mapOptions = { center: new google.maps.LatLng(0.0, 0.0), zoom: 2,
-        mapTypeId: google.maps.MapTypeId.ROADMAP };
-
-      function initialize() {
-var myOptions = {
-                center: new google.maps.LatLng(36.835769, 10.247693 ),
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            geocoder = new google.maps.Geocoder();
-            var map = new google.maps.Map(document.getElementById("map_canvas"),
-            myOptions);
-            google.maps.event.addListener(map, 'click', function(event) {
-                placeMarker(event.latLng);
-            });
-
-            var marker;
-            function placeMarker(location) {
-                if(marker){ //on vérifie si le marqueur existe
-                    marker.setPosition(location); //on change sa position
-                }else{
-                    marker = new google.maps.Marker({ //on créé le marqueur
-                        position: location, 
-                        map: map
-                    });
-                }
-                document.getElementById('lat').value=location.lat();
-                document.getElementById('lng').value=location.lng();
-                getAddress(location);
-            }
-
-      function getAddress(latLng) {
-        geocoder.geocode( {'latLng': latLng},
-          function(results, status) {
-            if(status == google.maps.GeocoderStatus.OK) {
-              if(results[0]) {
-                document.getElementById("address").value = results[0].formatted_address;
-              }
-              else {
-                document.getElementById("address").value = "No results";
-              }
-            }
-            else {
-              document.getElementById("address").value = status;
-            }
-          });
-        }
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-      
-</script>
