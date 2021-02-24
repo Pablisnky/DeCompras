@@ -42,7 +42,6 @@
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio</a></li>
 					<li><a class="a_3" id="Afiliacion" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>">Afiliación</a></li>
-					<!-- <li><a class="a_3" id="Ciudades" href="<?php echo RUTA_URL . '/Menu_C/ciudad/Ciudades';?>">Ciudades</a></li> -->
 					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Menu_C/categorias';?>">Ver Tiendas</a></li>
 					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
 				</ul>

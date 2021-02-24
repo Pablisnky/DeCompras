@@ -2,6 +2,8 @@
     class Categoria_C extends Controlador{
 
         public function __construct(){
+            session_start();
+            
             $this->ConsultaCategoria_M = $this->modelo("Categoria_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -29,8 +31,9 @@
             $this->vista("paginas/categoria_V", $Datos); 
         }
 
+        //Metodo invocado en A_Categorias.js por medio de Llamar_TiendasCiudad()
         function TiendasPorCategorias($Parroquia){
-            //Se CONSULTA la cantidad de tiendas que estan afiliadas, por categorias
+            //Se CONSULTA la cantidad de tiendas que estan afiliadas en una ciudad por categorias
             $CantidadTiendas = $this->ConsultaCategoria_M->consultarCantidadTiendas($Parroquia);
 
             $Datos = [

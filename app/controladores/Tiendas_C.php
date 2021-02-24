@@ -5,6 +5,8 @@
         private $TiendasEnCategoria;
 
         public function __construct(){
+            session_start();
+             
             $this->ConsultaTienda_M = $this->modelo("Tienda_M");
             // echo "<pre>";
             // print_r($this->ConsultaTienda_M);
@@ -15,7 +17,7 @@
             ocultarErrores();
         }
 
-        //Metodo llamado desde E_inicio.js por medio de VerTiendas() 
+        //Metodo llamado desde  
         public function index($Categoria){
             switch($Categoria){
                 case 'Comida_Rapida':
@@ -69,8 +71,11 @@
             $this->index($Categoria);
             // echo $Categoria;
 
-            //Se CONSULTAN las tiendas que estan afiliadas segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas            
-            $this->TiendasEnCategoria = $this->ConsultaTienda_M->consultarTiendas($this->Categoria); 
+            //Sesion creada en CantidadTiendas_Ajax_V.php      
+            $Ciudad = $_SESSION['Parroquia'];
+
+            //Se CONSULTAN las tiendas que estan afiliadas en una ciudad segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas            
+            $this->TiendasEnCategoria = $this->ConsultaTienda_M->consultarTiendas($this->Categoria, $Ciudad); 
             // echo '<pre>';
             // print_r($this->TiendasEnCategoria);
             // echo '</pre>';

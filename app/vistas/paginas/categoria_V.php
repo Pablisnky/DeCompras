@@ -38,5 +38,3 @@
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Categorias.js?v=' . rand();?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Categorias.js?v=' . rand();?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
-
-<?php //require(RUTA_APP . '/vistas/inc/footer.php'); ?>

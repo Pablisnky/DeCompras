@@ -1,12 +1,18 @@
 <!-- Archivo mostrado via ajax en categoria_V.php -->
 
+<!-- //Se obtiene la parroquia donde se realizara la busqueda -->
+<?php 
+    //Se crean sesiones exigidas en  Tiendas_C/tiendasEnCatalogo()         
+    $_SESSION['Parroquia'] = $Datos['cantidadTiendasCategoria'][0]['parroquia_Tien'];
+?>
+
 <!-- CDN iconos de font-awesome-->
 <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
 
 <div class='contenedor_4' id="Contenedor_4">
     <div class='contenedor_6 borde_1' id="Artesania">
         <h2 class='h2_1'>ARTE Y LITERATURA</h2>
-        <span><i class="fas fa-pen-nib icono_2"></i></span>                 
+        <i class="fas fa-pen-nib icono_2"></i>                 
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -40,14 +46,10 @@
     
     <div class='contenedor_6 borde_1' id="Comida_Rapida">
         <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
-        <span><i class="fas fa-drumstick-bite icono_2"></i></span>                  
+        <i class="fas fa-drumstick-bite icono_2"></i>                 
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
-                    // echo "<pre>";
-                    // print_r($Datos);
-                    // echo "</pre>";
-                    // exit();
                     foreach($Datos['cantidadTiendasCategoria'] as $arr) :
                         if($arr['ID_Categoria'] == 1){  
                             $CantidadComida_Rapida = $arr['cantidad']; 
@@ -80,7 +82,7 @@
 
     <div class='contenedor_6 borde_1' id="Mascotas">
         <h2 class='h2_1'>MASCOTAS</h2>
-        <span><i class="fas fa-cat icono_2"></i></span>                 
+        <i class="fas fa-cat icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -116,7 +118,7 @@
 
     <div class='contenedor_6 borde_1' id="Material_Medico_Quirurgico">
         <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
-        <span><i class="fas fa-hospital icono_2"></i></span>               
+        <i class="fas fa-hospital icono_2"></i>              
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -152,7 +154,7 @@
     
     <div class='contenedor_6 borde_1' id="Merceria">
         <h2 class='h2_1'>MERCERÍA Y TALABARTERÍA</h2>
-        <span><i class="fas fa-hat-cowboy-side icono_2"></i></span>                
+        <i class="fas fa-hat-cowboy-side icono_2"></i>               
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -188,7 +190,7 @@
 
     <div class='contenedor_6 borde_1' id="Frutas">
         <h2 class='h2_1'>FRUTAS, VERDURAS Y HORTALIZAS</h2>
-        <span><i class="fas fa-carrot icono_2"></i></span>                 
+        <i class="fas fa-carrot icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -221,7 +223,7 @@
 
     <div class='contenedor_6 borde_1' id="Repuesto_automotriz">
         <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
-        <span><i class="fas fa-car-crash icono_2"></i></span>                 
+        <i class="fas fa-car-crash icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -254,7 +256,7 @@
 
     <div class='contenedor_6 borde_1' id="Bodega">
         <h2 class='h2_1'>BODEGAS</h2>
-        <span><i class="fas fa-store icono_2"></i></span>                 
+        <i class="fas fa-store icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -326,7 +328,7 @@
 
     <div class='contenedor_6 borde_1' id="Ropa_Zapato">
         <h2 class='h2_1'>ROPA Y ZAPATO</h2>
-        <span><i class="fas fa-tshirt icono_2"></i></span>                 
+        <i class="fas fa-tshirt icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -362,7 +364,7 @@
 
     <div class='contenedor_6 borde_1' id="Farmacia">
         <h2 class='h2_1'>FARMACIA Y SALUD</h2>
-        <span><i class="fas fa-medkit icono_2"></i></span>                 
+        <i class="fas fa-medkit icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -398,7 +400,7 @@
 
     <div class='contenedor_6 borde_1' id="Ferreteria">
         <h2 class='h2_1'>FERRETRÍA Y HOGAR</h2>
-        <span><i class="fas fa-screwdriver icono_2"></i></span>                 
+        <i class="fas fa-screwdriver icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
