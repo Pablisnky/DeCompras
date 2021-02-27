@@ -2,7 +2,7 @@
 <section class="sectionModal">
     <div class="contenedor_24 contenedor_118">   
         <div class="contenedor_102">
-            <h1 class="h1_1">Selecciona una categorias.</h1>   
+            <h1 class="h1_1">Selecciona una categoria.</h1>   
             <span class="span_5" onclick="CerrarCategoria('Mostrar_Categorias')">X</span>
         </div>          
         <form >
@@ -23,12 +23,12 @@
                             foreach($Datos['categoriasTienda'] as $row_2){
                                 $CategoriaT = $row_2['categoria']; 
                             ?>
-                                <input class="categoria_js" type="checkbox" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php   echo $Categoria;?>" 
+                                <input class="categoria_js" type="radio" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php   echo $Categoria;?>" 
                                 <?php // if($CategoriaT == $Categoria){echo "checked = 'checked'";} 
                             }?>/> <?php 
                         }
                         else{   ?>
-                            <input type="checkbox" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php echo $Categoria?>"/> <?php
+                            <input type="radio" name="categoria" id="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>" value="<?php echo $Categoria?>"/> <?php
                         }     ?>           
                         <label class="contInputRadio__label" for="<?php echo 'ContadorCategoria_' . $ContadorCategoria;?>"><?php echo $Categoria;?></label>
                     </div>

@@ -777,7 +777,7 @@
             // echo "Todos los campos estan llenos";
             // exit();
 
-            //EVALUA CAMBIO DE LINK DE ACCESO
+            //LINK DE ACCESO
             //Se quitan los espacios en blanco en el nombre de la tienda en caso de existir
             $LinkTienda = str_replace(' ', '', $RecibeDatos['Nombre_com']);
             
@@ -812,8 +812,17 @@
                 return $LinkTienda;
             }
 
+            function ConvierteMinuscula($LinkTienda){
+                $LinkTienda = strtolower($LinkTienda);
+                
+                return $LinkTienda;
+            }
+
             //Se llama la función que reemplaza acentos y letra ñ
-            $LinkTienda= eliminar_tildes($LinkTienda);
+            $LinkTienda = eliminar_tildes($LinkTienda);
+            
+            //Se llama la función que convierte aminusculas
+            $LinkTienda = ConvierteMinuscula($LinkTienda);
 
             //Se crea el link de aceso";  
             $LinkAcceso = RUTA_URL .'/' . $LinkTienda;

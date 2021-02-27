@@ -781,6 +781,11 @@ body, html{
 	max-height: 150px;
 	margin-bottom: 8%;
 }
+.contenedor_95:hover{
+	background-color: var(--OficialClaro);
+	border-radius: 15px;
+	cursor: pointer;
+}
 .contenedor_96{/*cuenta_productos*/
 	display: flex; /*Organiza los elementos horizontalmente*/
 	width: 100%;
@@ -789,9 +794,6 @@ body, html{
 }
 .contenedor_97{/*opciones*/
 	height: 125px;
-	/*display: flex; Organiza los elementos horizontalmente*/
-	/* align-items: center;
-	justify-content: center; */
 }
 .contenedor_98{/*footer*/
 	display: flex; /*Organiza los elementos horizontalmente*/
@@ -1465,11 +1467,14 @@ body, html{
 .h1_8{/*cuenta_editar*/
 	display: none;
 }
-.h1_10{/*header_Tienda - header_AfiCom*/
+.h1_10{/*header_Tienda - header_AfiCom - headerProducto*/
 	/* color: white; */
 	font-size: 2vw;
 	font-weight: normal;
 	text-align: center;
+}
+.h--producto{
+	color: white;
 }
 .h1_11{/*descr_Producto*/
 	display: block;

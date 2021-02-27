@@ -152,6 +152,42 @@
         </div>
     </div>
     
+    <div class='contenedor_6 borde_1' id="Caramelos">
+        <h2 class='h2_1'>CHOCOLATES Y CARAMELOS</h2>
+        <i class="fas fa-candy-cane icono_2"></i>               
+        <div class="contenedor_106">
+            <span class="span_21 borde_1">
+                <?php
+                    foreach($Datos['cantidadTiendasCategoria'] as $arr) :
+                        if($arr['ID_Categoria'] == 21){  
+                            $CantidadCaramelos = $arr['cantidad']; 
+                            echo $CantidadCaramelos;  ?>
+                            <style>
+                                #Caramelos .span_21{
+                                    background-color: var(--Aciertos);
+                                }
+                            </style>
+                            <?php
+                        }
+                    endforeach; 
+                    if(empty($CantidadCaramelos)){                                     
+                        echo 0;?>
+                        <style>
+                            #Caramelos{
+                                position: relative;
+                                z-index: -1;           
+                            }
+                            #Caramelos .span_21{
+                                background-color: var(--Fallos);
+                            }
+                        </style>
+                        <?php
+                    }
+                ?>
+            </span>
+        </div>
+    </div>
+    
     <div class='contenedor_6 borde_1' id="Merceria">
         <h2 class='h2_1'>MERCERÍA Y TALABARTERÍA</h2>
         <i class="fas fa-hat-cowboy-side icono_2"></i>               
@@ -292,7 +328,7 @@
 
     <div class='contenedor_6 borde_1' id="Minimarket">
         <h2 class='h2_1'>MINIMARKET</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-shopping-basket icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -435,8 +471,8 @@
     </div>
 
     <div class='contenedor_6 borde_1' id="Panaderia">
-        <h2 class='h2_1'>PANADERÍA</h2>
-        <span class="icon-spoon-knife span_8"></span>                 
+        <h2 class='h2_1'>PANADERÍA Y PASTELERÍA</h2>
+        <i class="fas fa-birthday-cake icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -472,7 +508,7 @@
 
     <div class='contenedor_6 borde_1' id="Licores">
         <h2 class='h2_1'>LICORES</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-wine-bottle icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -508,7 +544,7 @@
 
     <div class='contenedor_6 borde_1' id="Relojes">
         <h2 class='h2_1'>JOYAS Y RELOJERÍA</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-gem icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -544,7 +580,7 @@
 
     <div class='contenedor_6 borde_1' id="Deportes">
         <h2 class='h2_1'>DEPORTES</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-biking icono_2"></i>                
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -580,7 +616,7 @@
 
     <div class='contenedor_6 borde_1' id="Floristeria">
         <h2 class='h2_1'>FLORISTERÍA Y DECORACIÓN</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-leaf icono_2"></i>               
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -616,7 +652,7 @@
 
     <div class='contenedor_6 borde_1' id="Construccion">
         <h2 class='h2_1'>CONSTRUCCIÓN</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-hard-hat icono_2"></i>               
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -652,7 +688,7 @@
 
     <div class='contenedor_6 borde_1' id="Telefonos">
         <h2 class='h2_1'>TELEFONOS Y COMPUTADORAS</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-mobile-alt icono_2"></i>                 
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -688,7 +724,7 @@
 
     <div class='contenedor_6 borde_1' id="Papeleria">
         <h2 class='h2_1'>PAPELERÍA Y OFICINA</h2>
-        <span class="icon-barcode span_8"></span>                 
+        <i class="fas fa-paperclip icono_2"></i>                 
         <div class="contenedor_106">
             <span class="span_21 borde_1">
                 <?php
@@ -748,6 +784,42 @@
                                 z-index: -1;           
                             }
                             #Juguetes .span_21{
+                                background-color: var(--Fallos);
+                            }
+                        </style>
+                        <?php
+                    }  
+                ?>
+            </span>
+        </div>
+    </div>
+
+    <div class='contenedor_6 borde_1' id="Libros">
+        <h2 class='h2_1'>LIBRERÍAS Y MÚSICA</h2>
+            <i class="fas fa-book icono_2"></i>
+        <div class="contenedor_106">
+            <span class="span_21 borde_1">
+                <?php
+                    foreach($Datos['cantidadTiendasCategoria'] as $arr) :
+                        if($arr['ID_Categoria'] == 0){  
+                            $CantidadJuguetes = $arr['cantidad'];
+                            echo $CantidadJuguetes; ?>
+                            <style>
+                                #Juguetes .span_21{
+                                    background-color: var(--Aciertos);
+                                }
+                            </style>
+                            <?php
+                        }
+                    endforeach; 
+                    if(empty($CantidadJuguetes)){                                     
+                        echo 0;?>
+                        <style>
+                            #Libros{
+                                position: relative;
+                                z-index: -1;           
+                            }
+                            #Libros .span_21{
                                 background-color: var(--Fallos);
                             }
                         </style>

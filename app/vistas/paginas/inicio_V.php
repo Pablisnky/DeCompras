@@ -8,7 +8,6 @@
     <section class="section_1">
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
-            <!-- <h2 class="h2_4">Tu tienda en toda la ciudad</h2> -->
             <h2 class="h2_4">MarketPlace</h2>
         </div>
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
@@ -21,11 +20,21 @@
         </div>
         <div class="slider">
             <ul>
-                <li><label for="Li_1"><span>compras y despachos</span><br> en tiendas de tu ciudad.</label></li>
-                <li><label for="Li_2"><span>e-commerce</span><br> para pequeños comercios y emprendimientos.</label></li> 
-                <li><label for="Li_3">Ideal para ventas de comida rapida, minimarket, fruterías, panaderías, ferreterías, bodegas, y más.</label>
-                <li><label>Registra tu tienda por<br class="br_2"> <span>98% menos</span> <br class="br_2">del costo de la renta de un local comercial.</label></li>
-                <li><label for="Li_1">Permite a tus clientes realizar compras en tu tienda virtual con <span>Pagos directos</span> <br class="br_2"> a tus cuentas.</label></li>
+                <li>
+                    <label for="Li_1"><span>compras y despachos</span><br> en tiendas de tu ciudad.</label>
+                </li>
+                <li>
+                    <label for="Li_2"><span>e-commerce</span><br> para pequeños comercios y emprendimientos.</label>
+                </li> 
+                <li>
+                    <label>Registra tu tienda <br><span>totalmente gratis</span><br>y sube tu catalogo de productos.</label>
+                </li>
+                <li>
+                    <label for="Li_3">Ideal para ventas de comida rapida, minimarket, fruterías, panaderías, ferreterías, bodegas, y más.</label>
+                </li>
+                <li>
+                    <label for="Li_1">Permite a tus clientes realizar compras en tu tienda virtual con <span>Pagos directos</span> <br class="br_2"> a tus cuentas.</label>
+                </li>
             </ul>
         </div>
     </section>

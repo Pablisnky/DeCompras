@@ -867,7 +867,7 @@
 	padding: 0.5%;
 }
 .h2_12{/*header_Tienda - header_AfiCom*/
-	font-size: 4vw;
+	font-size: 4vw !important;
 	text-align: center;
 	margin-top: 0.1%;
 }
@@ -1135,7 +1135,6 @@
 }
 .section_1{/*inicio*/
 	height: 100%;
-	/* padding-top: 6vh; */
 }
 .section_1--vh{
 	height: 100vh;
