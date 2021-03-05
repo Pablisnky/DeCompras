@@ -495,7 +495,7 @@
     
         //SELECT para encontrar la imagen de una sección especifica
         public function consultarImagenSeccion($RecibeProducto){
-            $stmt = $this->dbh->prepare("SELECT ID_Imagen FROM imagenes WHERE ID_Seccion = :ID_SECCION AND fotoSeccion = :FOTO_SECCION");
+            $stmt = $this->dbh->prepare("SELECT ID_Imagen FROM imagenes INNER JOIN secciones_productos ON imagenes.ID_Producto=secciones_productos.ID_Producto WHERE ID_Seccion = :ID_SECCION AND fotoSeccion = :FOTO_SECCION");
 
             $stmt->bindValue(':ID_SECCION', $RecibeProducto['ID_Seccion'], PDO::PARAM_INT);
             $stmt->bindValue(':FOTO_SECCION', 1, PDO::PARAM_INT);
@@ -1148,8 +1148,24 @@
                 return false;
             }
         }
+        
+        //UPDATE del link de acceso directo de la tienda
+        public function actualizarLinkTienda($ID_Tienda, $LinkAcceso){
+            $stmt = $this->dbh->prepare("UPDATE destinos SET link_acceso = :LINK WHERE ID_Tienda = :ID_TIENDA ");
 
-        //UPDATE de horarios de tienda de un día especifico que entra como exepción
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindParam(':LINK', $LinkAcceso);
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
         // public function actualizarDT_SecImg($ID_Seccion, $ID_Imagen){
         //     $stmt = $this->dbh->prepare("UPDATE secciones_imagenes SET ID_Seccion = :ID_SECCION WHERE ID_Imagen = :ID_IMAGEN");
 
@@ -1262,12 +1278,11 @@
             }
         }
 
-        //INSERT de las caracteristicas de un producto
-        public function insertaImagenPrincipalProducto($ID_Seccion, $ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto){
-            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Seccion, ID_Producto, nombre_img,    tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora) VALUES(:ID_SECCION, :ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
+        //INSERT de la imagen principal de un producto
+        public function insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora) VALUES(:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':ID_SECCION', $ID_Seccion[0]['ID_Seccion']);
             $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
             $stmt->bindParam(':NOMBRE_IMG', $nombre_imgProducto);
             $stmt->bindParam(':TIPO_ARCHIVO', $tipo_imgProducto);

@@ -1,6 +1,6 @@
 <!-- Archivo cargado desde Ajax por medio de Llamar_seccionesDisponible() en A_Cuenta_publicar.js -->
 <section class="sectionModal section_10" id="MostrarSeccion">
-    <div class="contenedor_24 contenedor_118"> 
+    <div class="contenedor_24"> 
       <div class="contenedor_102">
         <h1 class="h1_1 h1_3">Seleccione una sección</h1>   
         <span class="span_5" id="Span_5">X</span>

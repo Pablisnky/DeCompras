@@ -153,7 +153,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
                 <legend class="legend_1">Categoria</legend>
                 <div>
-                    <p class="p_12">Una categoria clasificará tu tienda en un rubro especifico, puedes seleccionar una o dos</p>
+                    <p class="p_12">Una categoria clasificará tu tienda en un rubro especifico</p>
                     <?php
                     //Entra en el IF cuando no hay categorias creadas
                     if($Datos['categoria'] == Array ( )){   ?>                                            

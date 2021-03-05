@@ -60,13 +60,13 @@ function respuesta_PedidoEnCarrito(){
 
 //-------------------------------------------------------------------------------------------------
 //Es invocada desde vitrina_V.php muestra los productos que tiene una sección
-function llamar_Opciones(ID_Tienda, SeccionSelecionada, OpcionSeleccionada){
+function llamar_Opciones(ID_Tienda, ID_Seccion, OpcionSeleccionada){
     // console.log("______Desde llamar_Opciones()______") 
     // console.log("ID_Tienda= ", ID_Tienda)
-    // console.log("Seccion= ", SeccionSelecionada)
+    // console.log("Seccion= ", ID_Seccion)
     // console.log("Opcion= ", OpcionSeleccionada)
     let A = ID_Tienda
-    let B = SeccionSelecionada
+    let B = ID_Seccion
     let C = OpcionSeleccionada
 
     var url="../../Opciones_C/index/" + A + "/" + B  + "/" + C

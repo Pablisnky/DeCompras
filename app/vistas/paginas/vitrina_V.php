@@ -43,7 +43,7 @@
                 $ID_Seccion = $row['ID_Seccion'];   
                 ?> 
                 <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
-                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $Seccion;?>','NoAplica')">  <?php
+                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>','NoAplica')">  <?php
                         foreach($Datos['imagenSecciones'] as $key) : 
                             if($key['ID_Seccion'] == $ID_Seccion) : 
                                 $SeccionExiste = 'Seccion_'. $Contador; ?>

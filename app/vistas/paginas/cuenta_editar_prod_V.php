@@ -3,7 +3,7 @@
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
-    require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
+    // require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
 
     //$Datos viene del metodo Cuenta_C/actualizarProducto
     foreach($Datos['especificaciones'] as $arr) :
@@ -74,11 +74,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioBolivar" id="PrecioBolivar" value="<?php echo $PrecioBolivar;?>"/>
                         </div>
                         <div>
-                            <label>$ USD</label><br>
+                            <label>$</label><br>
                             <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" value="<?php echo $PrecioDolar;?>"/>
                         </div>
                     </div> 
-                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( 1 USD = <?php echo number_format($Datos['dolarHoy'], 0, ",", ".");?> Bs.)</strong></small>
+                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo number_format($Datos['dolarHoy'], 0, ",", ".");?>)</strong></small>
                     <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/>
                     <br>
 
@@ -102,8 +102,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <label>Sección</label>
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">
 
-                    <!-- div alimentado desde Secciones_Ajax_V.php con la seccion que el usuario cargó en su cuenta  -->       
-                    <div id="Contenedor_80"></div> 
                     <br>
 
                     <!-- CARACTERISTICAS -->                     
@@ -177,6 +175,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
             </div>
         </form>
     </div>
+    
+    <!-- div alimentado desde Secciones_Ajax_V.php con la seccion que el usuario cargó en su cuenta  -->       
+    <div id="Contenedor_80"></div> 
 
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prod.js?v=' . rand();?>"></script> 
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js?v=' . rand();?>"></script> 

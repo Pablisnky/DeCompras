@@ -10,7 +10,7 @@
             ocultarErrores();
         }
         
-        //Siempre cargara el metodo por defecto sino se pasa un metodo especifico
+        //Se cargara este metodo por defecto, en caso de no pasar un metodo especifico
         public function index(){
         }
 

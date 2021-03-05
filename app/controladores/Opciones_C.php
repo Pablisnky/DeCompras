@@ -9,13 +9,13 @@
         }
         
         //llamado desde A_Vitrina.js por medio de la función llamar_Opciones()
-        public function index($ID_Tienda, $Seccion, $OpcionSelec){  
+        public function index($ID_Tienda, $ID_Seccion, $OpcionSelec){  
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
             // echo $ID_Tienda;
-            // echo $Seccion;
+            // echo $ID_Seccion;
             // echo $OpcionSelec;
 
-            $Consulta = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $Seccion);   
+            $Consulta = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $ID_Seccion);   
             // echo "<pre>";
             // print_r($Consulta);
             // echo "</pre>";
@@ -28,7 +28,7 @@
             // echo "</pre>";
 
             //CONSULTA la fotografia principal de cada producto 
-            $Fotografia = $this->ConsultaOpciones_M->consultarFotografiaPrincipal($ID_Tienda, $Seccion);
+            $Fotografia = $this->ConsultaOpciones_M->consultarFotografiaPrincipal($ID_Tienda, $ID_Seccion);
             // echo "<pre>";
             // print_r($Fotografia);
             // echo "</pre>";

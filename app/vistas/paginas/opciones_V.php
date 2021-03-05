@@ -22,7 +22,7 @@
                         $ID_Producto = $row['ID_Producto'];
                         $ID_Opcion =  $row['ID_Opcion'];
                         $Producto = $row['producto']; 
-                        $Opcion = $row['opcion'];                      
+                        $Opcion = $row['opcion'];                       
                         $PrecioBolivar = $row['precioBolivar'];         
                         $PrecioDolar = $row['precioDolar']; 
                         $Disponible = $row['disponible'];
@@ -80,8 +80,8 @@
                                     </div>     
                                     
                                     <!-- PRECIO -->
-                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioBolivar;?> Bs.</label>
-                                    <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
+                                    <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" >Bs. <?php echo $PrecioBolivar;?></label>
+                                    <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" >$ <?php echo $PrecioDolar;?></label>
                             
                                     <?php 
                                     //En caso de venir desde buscador se sombrea el producto solicitado en la busqueda y se posiciona de primero entre todos los productos

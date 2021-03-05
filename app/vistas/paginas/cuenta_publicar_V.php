@@ -22,7 +22,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                     <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                     <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
-                </div>    
+                </div>  
                 <div>
                     <!-- PRODUCTO -->
                     <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro" placeholder="Producto" tabindex="1" onkeydown="blanquearInput('ContenidoPro')"></textarea>
@@ -43,11 +43,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text"  name="precioBs" id="PrecioBs" placeholder="Precio Bs. ( 00000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
                         </div>
                         <div>
-                            <label>$ USD</label><br>
-                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Precio $ USD ( 000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                            <label>$</label><br>
+                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Precio $ ( 000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
                         </div>
                     </div>
-                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( 1 USD = <?php echo $PrecioDolar;?> Bs.)</strong></small>
+                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo $PrecioDolar;?>)</strong></small>
                     <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/> 
                     <br>
 

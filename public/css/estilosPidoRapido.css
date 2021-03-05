@@ -333,7 +333,7 @@ body, html{
 	background-position: center;
 	text-align: center;
 	width: 100%;
-	height: 160px;
+	height: 180px;
 	margin: auto;
 	margin-bottom: 5%;
 	cursor: pointer;
@@ -741,21 +741,12 @@ body, html{
 	grid-column-end: 6;
 	text-align: center;
 }
-.contenedor_88{/*inicio*/
-	/* position: absolute;
-	bottom: 0pt;
-	width: 100%;
-	height: 7%;
-	background-color: var(--OficialOscuro);
-	display: flex; /*Organiza los elementos horizontalmente*/
-	/* justify-content: center; */
-	/* align-items: center;  */
-}
-.contenedor_89{/*Secciones_Ajax*/
+.contenedor_89{/*Secciones_Ajax - SeccionesDisponibles_Ajax*/
+	margin-top: 3%;
 	display: grid;
 	grid-template-columns: 22% 22% 22% 22%;
 	column-gap: 1%;/*espacio entre columnas*/
-	justify-content: center;/*centra horizontalmente*/
+	/*justify-content: center;centra horizontalmente*/
 }
 .contenedor_90{/*tiendas - opciones - cuenta_productos*/
 	background-color: var(--OficialClaro) ;
@@ -766,7 +757,7 @@ body, html{
 	top: 12%;
 	left: 0%;
 	width: 100%;
-	height: 30px!important;
+	height: 40px!important;
 	z-index: 2 !important;
 }
 .contenedor_91{/*cuenta_productos*/
@@ -782,9 +773,9 @@ body, html{
 	margin-bottom: 8%;
 }
 .contenedor_95:hover{
-	background-color: var(--OficialClaro);
+	/* background-color: var(--OficialClaro);
 	border-radius: 15px;
-	cursor: pointer;
+	cursor: pointer; */
 }
 .contenedor_96{/*cuenta_productos*/
 	display: flex; /*Organiza los elementos horizontalmente*/
@@ -870,9 +861,9 @@ body, html{
 }
 .contenedor_110{/*vitrina*/
 	display: grid;
-	grid-template-columns: 20% 20% 20% 20%;
+	grid-template-columns: 21% 21% 21% 21%;
 	justify-content: space-around;
-	width: 80%;
+	width: 90%;
 	margin: 10% auto;
 }
 .contenedor_111--tienda{/*header_tienda*/
@@ -1087,7 +1078,7 @@ body, html{
 .contenedor_159{/*opciones*/
 	background-color: var(--BandaAlerta);
 	cursor: pointer;
-	margin-right:2%;
+	/* margin-right:2%; */
 	border-radius:5px;
 	padding: 0% 2%;
 }
@@ -1441,7 +1432,7 @@ body, html{
 	font-size: 4.5em;
 	text-align: right;
 }
-.h1_3{/*opciones  - Secciones_Ajax - tiendas - inicio*/
+.h1_3{/*opciones  - Secciones_Ajax - tiendas*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
@@ -2166,7 +2157,7 @@ body, html{
 	font-size: 1.5em;
 	font-weight: bold;
 }
-.p_9{/*cuenta_editar - afiliacion - tiendas*/
+.p_9{/*cuenta_editar - afiliacion - tiendas - opciones*/
 	grid-column-start: 1;
 	grid-column-end: 6;
 }

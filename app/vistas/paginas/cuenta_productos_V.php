@@ -80,8 +80,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?></label>
 
                         <!-- PRECIO -->
-                        <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>" ><?php echo $PrecioBolivar;?> Bs.</label>
-                        <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" ><?php echo $PrecioDolar;?> $ USD</label>
+                        <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>">Bs.<?php echo $PrecioBolivar;?></label>
+                        <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" > $ <?php echo $PrecioDolar;?></label>
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                

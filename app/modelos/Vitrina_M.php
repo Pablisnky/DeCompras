@@ -33,7 +33,7 @@
            
         //SELECT de las imagenes principales de cada sección de una tienda
         public function consultarImagenesSecciones($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_img, imagenes.ID_Seccion FROM imagenes INNER JOIN secciones ON imagenes.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA AND fotoSeccion = :FOTOSECCION GROUP BY ID_Seccion");  
+            $stmt = $this->dbh->prepare("SELECT nombre_img, secciones.ID_Seccion FROM imagenes INNER JOIN secciones_productos ON imagenes.ID_Producto=secciones_productos.ID_Producto INNER JOIN secciones ON secciones_productos.ID_Seccion=secciones.ID_Seccion  WHERE ID_Tienda = :ID_TIENDA AND fotoSeccion = :FOTOSECCION GROUP BY ID_Seccion");  
             
             $stmt->bindValue(':FOTOSECCION', 1, PDO::PARAM_INT);        
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 

@@ -56,7 +56,7 @@
 //************************************************************************************************
     //Coloca el cursor en el input automaticamente 
     function autofocus(id){
-        console.log("______Desde autofocus()______", id)
+        // console.log("______Desde autofocus()______", id)
 
         //Si el elemento existe
         if(document.getElementById(id)){
@@ -193,7 +193,7 @@
  //************************************************************************************************
     //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
     function mascaraTelefono(TelefonoRecibido, id){
-        console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
+        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
 
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 

@@ -29,7 +29,7 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
 		
 		<!-- Chat -->
-		<script src="//code.jivosite.com/widget/Wbw4t2Bu2s" async></script>
+		<!-- <script src="//code.jivosite.com/widget/Wbw4t2Bu2s" async></script> -->
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JFWZ0GQYB"></script>

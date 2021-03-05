@@ -627,7 +627,7 @@
 .contenedor_116{/* header_inicio*/
 	background-color: initial;
 }
-.contenedor_118{/*categorias_Ajax - cuenta_publicar*/
+.contenedor_118{/*categorias_Ajax */
 	margin-top: 20%;
 	padding: 3%;
 }
@@ -788,6 +788,10 @@
 }
 .h1_1{/*carrito - cuenta_productos - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes*/
 	font-size: 1.2em;
+}
+.h1--corto{/*registroCom*/
+	margin: auto;
+	width: 80%;
 }
 .h1_2{/*inicio*/
 	font-size: 2.5em;

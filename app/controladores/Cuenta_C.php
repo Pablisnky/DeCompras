@@ -52,7 +52,8 @@
         //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - Cuenta_C/recibeProductoPublicar - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
         public function Productos($DatosAgrupados){
             //$DatosAgrupados contiene una cadena con el ID_Producto y el ID_ContProducto separados por coma, se convierte en array para separar los elementos
-            // echo $DatosAgrupados;
+            // echo $DatosAgrupados . '<br>';
+            // echo $this->ID_Tienda;
             // exit();
 
             $DatosAgrupados = explode(",", $DatosAgrupados);
@@ -131,6 +132,7 @@
             }
         }
 
+        //Muestra el formulario de configuración
         public function Editar(){
             //CONSULTA los datos de la tienda
             $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
@@ -370,6 +372,7 @@
             // echo "</pre>";
             // exit();
 
+            $this->vista("inc/header_AfiCom", $Datos); 
             $this->vista("paginas/cuenta_editar_prod_V", $Datos);
         }
         
@@ -399,7 +402,7 @@
             $this->vista("inc/Categorias_Ajax_V", $Datos);
         }
 
-        //Invocado desde A_Cuenta_editar.js entrega las secciones activas de una tienda
+        //Invocado desde A_Cuenta_editar_prod.js entrega las secciones activas de una tienda
         public function Secciones($ID_Producto){
             //CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
             $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
@@ -445,7 +448,7 @@
             $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
-        //Recibe el formulario de actualizacion de los datos de una tienda invocado en cuenta_editar_V.php
+        //Recibe el formulario de configuracion de tienda invocado en cuenta_editar_V.php
         public function recibeRegistroEditado(){
             //Se reciben todos los campos del formulario desde cuenta_editar_V.php se verifica que son enviados por POST y que no estan vacios
             if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["telefono_com"]) && !empty($_POST["direccion_com"])
@@ -512,8 +515,8 @@
                 // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
 
                 //Si existe imagen_Tienda y tiene un tamaño correcto
-                //Si existe imagenPrinci_Editar y tiene un tamaño correcto
-                if(($nombre_imgTienda == !NULL) AND ($tamaño_imgTienda <= 700000000)){
+                //Si existe imagenPrinci_Editar y tiene un tamaño correcto (2Mb)
+                if(($nombre_imgTienda == !NULL) AND ($tamaño_imgTienda <= 2000000)){
                     //indicamos los formatos que permitimos subir a nuestro servidor
                     if(($_FILES["imagen_Tienda"]["type"] == "image/jpeg")
                         || ($_FILES["imagen_Tienda"]["type"] == "image/jpg") || ($_FILES["imagen_Tienda"]["type"] == "image/png")){
@@ -834,9 +837,13 @@
             //Se construye la url real de la tienda
             $URL = RUTA_URL . '/' . 'Vitrina_C/index/' . $this->ID_Tienda . ',' . $NombreTienda . ',NoNecesario_1,NoNecesario_2#no-back-button';
 
+            //Se actualiza el link de acceso 
+            //UPDATE del link de acceso directo de una tienda en particular
+            $this->ConsultaCuenta_M->actualizarLinkTienda($this->ID_Tienda, $LinkAcceso);
+
             //Se guarda el link de acceso y la url real en la configuración de la tienda
             //INSERT del link de acceso directo de una tienda en particular
-            $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso, $URL);
+            // $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso, $URL);
 
             // **********************************************************************************
             //Todo este procedimiento debe ser por medio de TRANSACCIONES
@@ -879,7 +886,7 @@
         //Invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
         public function recibeProductoPublicar(){
             $verifica_2 = $_SESSION['verifica_2'];  
-            if($verifica_2 == 1906){// Anteriormente en  se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga esta página.
+            if($verifica_2 == 1906){// Anteriormente en se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga esta página.
                 unset($_SESSION['verifica_2']);//se borra la sesión verifica. 
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
@@ -888,7 +895,8 @@
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
-                        'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
+                        // 'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
+                        'Descripcion' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                         'Cantidad' => !empty($_POST['cantidad']),
@@ -989,7 +997,7 @@
                         move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
 
                         //Se INSERTA la imagen principal y devuelve el ID_Imagen
-                        $ID_Imagen = $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Seccion, $ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
+                        $ID_Imagen = $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
                         
                         //Se INSERTA la dependenciatransitiva entre secciones e imagenes
                         // $this->ConsultaCuenta_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
@@ -1088,12 +1096,12 @@
                 // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
                 // echo "Tipo de archivo = " . $tipo .  "<br>";
                 // echo "Tamaño = " . $tamanio . "<br>";
-                // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
+                // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
                 // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
                 // exit;
 
                 //Si existe imagenPrinci_Editar y tiene un tamaño correcto
-                if(($nombre_imgProducto == !NULL) AND ($tamanio <= 7000000)){
+                if(($nombre_imgProducto == !NULL) AND ($tamanio <= 2000000)){
                     //indicamos los formatos que permitimos subir a nuestro servidor
                     if (($_FILES["imagenPrinci_Editar"]["type"] == "image/jpeg")
                         || ($_FILES["imagenPrinci_Editar"]["type"] == "image/jpg") || ($_FILES["imagenPrinci_Editar"]["type"] == "image/png")){
@@ -1147,7 +1155,7 @@
                     // echo "Nombre de imagen secundaria= " . $nombre_imgVarias . '<br>';
                     // echo "Tipo de archivo = " .$tipo_imgVarias .  "<br>";
                     // echo "Tamaño = " . $tamanio_imgVarias . "<br>";
-                    // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
+                    // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
                     // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
 
                     //Si existe imagen_EditarVarias y tiene un tamaño correcto
@@ -1244,7 +1252,7 @@
             } 
 
             //Para establecer como imagen de sección
-            // echo $RecibeProducto['ImgSeccion'];
+            echo $RecibeProducto['ImgSeccion'];
             if($RecibeProducto['ImgSeccion'] == '1'){
                 //Se consulta que imagen esta establecida para la sección
                 $ID_ImagenSeccion = $this->ConsultaCuenta_M->consultarImagenSeccion($RecibeProducto);

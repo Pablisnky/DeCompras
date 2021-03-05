@@ -8,23 +8,23 @@
         }
         
         //SELECT de los productos de una sección en una tienda especifica
-        public function consultarOpciones($ID_Tienda, $Seccion){
-            $stmt = $this->dbh->prepare("SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, opciones.cantidad, opciones.disponible, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND seccion = :SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");      
+        public function consultarOpciones($ID_Tienda, $ID_Seccion){
+            $stmt = $this->dbh->prepare("SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, opciones.cantidad, opciones.disponible, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND secciones.ID_Seccion = :ID_SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");      
         
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
-            $stmt->bindParam(':SECCION', $Seccion, PDO::PARAM_STR);
+            $stmt->bindParam(':ID_SECCION', $ID_Seccion, PDO::PARAM_STR);
             $stmt->bindValue(':PRINCIPAL', 1, PDO::PARAM_INT);
 
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
                 
-        //SELECT de las fotografias principales de las secciones de una tienda
-        public function consultarFotografiaPrincipal($ID_Tienda, $Seccion){
-            $stmt = $this->dbh->prepare("SELECT imagenes.ID_Producto, nombre_img FROM imagenes INNER JOIN productos_opciones ON imagenes.ID_Producto=productos_opciones.ID_Producto INNER JOIN secciones_opciones ON productos_opciones.ID_Opcion=secciones_opciones.ID_Opcion INNER JOIN secciones ON secciones_opciones.ID_Seccion=secciones.ID_Seccion WHERE secciones.ID_Tienda = :ID_TIENDA AND secciones.seccion = :SECCION AND fotoPrincipal = 1");     
+        //SELECT de las fotografias principales de los productos de una tienda
+        public function consultarFotografiaPrincipal($ID_Tienda, $ID_Seccion){
+            $stmt = $this->dbh->prepare("SELECT imagenes.ID_Producto, nombre_img FROM imagenes INNER JOIN secciones_productos ON imagenes.ID_Producto=secciones_productos.ID_Producto INNER JOIN secciones ON secciones_productos.ID_Seccion=secciones.ID_Seccion WHERE secciones.ID_Tienda = :ID_TIENDA AND secciones.ID_Seccion = :ID_SECCION AND fotoPrincipal = 1");     
 
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
-            $stmt->bindParam(':SECCION', $Seccion, PDO::PARAM_STR);
+            $stmt->bindParam(':ID_SECCION', $ID_Seccion, PDO::PARAM_STR);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
