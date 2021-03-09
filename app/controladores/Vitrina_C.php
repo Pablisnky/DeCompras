@@ -77,7 +77,7 @@
                 'ProximoApertura' => $ProximoApertura,
                 'HoraApertura' => $HoraApertura,
                 'cant_productosSeccion' => $Cant_ProductosSeccion, //ID_Seccion, CantidadProducto por seccion
-                'imagenSecciones' => $ImagenSecciones//nombre_img, ID_Seccion
+                'imagenSecciones' => $ImagenSecciones//nombre_img, ID_Producto
             ];
 
             // echo "<pre>";

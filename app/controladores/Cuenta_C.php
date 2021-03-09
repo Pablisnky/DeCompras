@@ -51,16 +51,19 @@
 
         //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - Cuenta_C/recibeProductoPublicar - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
         public function Productos($DatosAgrupados){
-            //$DatosAgrupados contiene una cadena con el ID_Producto y el ID_ContProducto separados por coma, se convierte en array para separar los elementos
+            //$DatosAgrupados contiene una cadena con el  separados por coma, se convierte en array para separar los elementos
             // echo $DatosAgrupados . '<br>';
-            // echo $this->ID_Tienda;
-            // exit();
+            // echo $this->ID_Tienda . '<br>';
 
             $DatosAgrupados = explode(",", $DatosAgrupados);
 
             $Seccion = $DatosAgrupados[0];
             //Mediante operador ternario
             $Puntero = empty($DatosAgrupados[1]) ? 'NoAplica' : $DatosAgrupados[1];
+            // echo $Seccion . '<br>';
+            // echo $Puntero . '<br>';
+            // exit();
+
             //$Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
             // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas
             // - Recibirla la variable sin que se elimine el espacio entre palabras
@@ -70,7 +73,11 @@
             if($Seccion  == 'Todos'){
                 //CONSULTA todos los productos de una tienda
                 $Productos = $this->ConsultaCuenta_M->consultarTodosProductosTienda($this->ID_Tienda);
-                
+                // echo "<pre>";
+                // print_r($Productos);
+                // echo "</pre>";
+                // exit();
+
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
                 $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
 
@@ -525,10 +532,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
 
                         //usar en local
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -971,52 +978,48 @@
                     // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
                     // echo "Tipo de archivo = " .$tipo_imgProducto .  "<br>";
                     // echo "Tamaño = " . $tamanio_imgProducto . "<br>";
-                    // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
+                    // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
                     // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
                     // exit();
                     //Si existe foto_Producto y tiene un tamaño correcto
-                    // if(($nombre_imgProducto == !NULL) AND ($tamaño <= 7000000)){
-                    //     //indicamos los formatos que permitimos subir a nuestro servidor
-                    //indicamos los formatos que permitimos subir a nuestro servidor
-                    //     if(($_FILES["foto_Producto"]["type"] == "image/jpeg")
-                    //         || ($_FILES["foto_Producto"]["type"] == "image/jpg") || ($_FILES["foto_Producto"]["type"] == "image/png")){
+                    if(($nombre_imgProducto == !NULL) AND ($tamanio_imgProducto <= 2000000)){
+                        //indicamos los formatos que permitimos subir a nuestro servidor
+                        if(($_FILES["foto_Producto"]["type"] == "image/jpeg")
+                            || ($_FILES["foto_Producto"]["type"] == "image/jpg") || ($_FILES["foto_Producto"]["type"] == "image/png")){
 
-                    //         //Ruta donde se guardarán las imágenes que subamos la variable superglobal
-                    //         //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+                            //Ruta donde se guardarán las imágenes que subamos la variable superglobal
+                            //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
-                        //Usar en remoto
-                        // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            //Usar en remoto
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
-                        // usar en local
-                        $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            // usar en local
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
-                        //se muestra el directorio temporal donde se guarda el archivo
-                        //echo $_FILES['imagen']['tmp_name'];
+                            //se muestra el directorio temporal donde se guarda el archivo
+                            //echo $_FILES['imagen']['tmp_name'];
 
-                        //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
-                        move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
+                            //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                            move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
 
-                        //Se INSERTA la imagen principal y devuelve el ID_Imagen
-                        $ID_Imagen = $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
-                        
-                        //Se INSERTA la dependenciatransitiva entre secciones e imagenes
-                        // $this->ConsultaCuenta_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
-                //     }
-                //     else{
-                //         //si no cumple con el formato
-                //         echo "Solo puede cargar imagenes con formato jpg, jpeg o png";
-                //         // echo "<a href='../tarjeta/perfil_ingeniero.php'>Regresar</a>";
-                //         exit();
-                //     }
-                // // }
-                // // else{
-                // // //si existe foto_Producto pero se pasa del tamaño permitido
-                // // if($nombre_imgProducto == !NULL){
-                // //         echo "La imagen es demasiado grande ";
-                // //         // echo "<a href='perfil.php'>Regresar</a>";
-                // //         exit();
-                //     // }
-                // }
+                            //Se INSERTA la imagen principal y devuelve el ID_Imagen
+                            $ID_Imagen = $this->ConsultaCuenta_M->insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
+                            
+                            //Se INSERTA la dependenciatransitiva entre secciones e imagenes
+                            // $this->ConsultaCuenta_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
+                        }
+                        else{
+                            //si no cumple con el formato
+                            echo 'Solo puede cargar imagenes con formato jpg, jpeg o png';
+                            echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                            exit();
+                        }
+                    }
+                    else{//si se pasa del tamaño permitido
+                        echo 'La imagen principal es demasiado grande ';
+                        echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                        exit();
+                    }
                 }
 
                 //SECCION IMAGENES SECUNDARIAS
@@ -1031,10 +1034,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
@@ -1062,7 +1065,7 @@
                     'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                     'ID_Seccion' => filter_input(INPUT_POST, "id_seccion", FILTER_SANITIZE_STRING),
                     'ID_SP' => filter_input(INPUT_POST, "id_sp", FILTER_SANITIZE_STRING),
-                    'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
+                    'Producto' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                     'Descripcion' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                     'PrecioBolivar' => filter_input(INPUT_POST, "precioBolivar", FILTER_SANITIZE_STRING),
                     'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
@@ -1110,10 +1113,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1168,10 +1171,10 @@
                     //         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             //usar en local
-                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //se muestra el directorio temporal donde se guarda el archivo
                             //echo $_FILES['imagen']['tmp_name'];

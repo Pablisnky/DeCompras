@@ -142,7 +142,6 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         let PrecioBs = document.getElementById('PrecioBs').value 
         let PrecioDolar = document.getElementById('PrecioDolar').value 
         let Seccion = document.getElementById('SeccionPublicar').value 
-        
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
         document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"
@@ -155,8 +154,8 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         //Patron de entrada para archivos de carga permitidos
         var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
         
-        if(Ext_Permitidas.exec(ImagenPrin) == false || ImagenPrin.size > 20000){
-            alert("Introduzca una imagen con extención .jpeg .jpg .png menor a 20 Mb")
+        if(Ext_Permitidas.exec(ImagenPrin) == false || ImagenPrin.size > 2000000){
+            alert("Introduzca una imagen con extención .jpeg .jpg .png menor a 2 Mb")
             document.getElementById("imgInp").value = "";
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
@@ -181,7 +180,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
             alert ("Introduzca una Descripcion")
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()
-            document.getElementById("DireccionContenidoDes_Tien").style.backgroundColor = "var(--Fallos)"
+            document.getElementById("ContenidoDes").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -192,8 +191,8 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         else if(PrecioBs == "" || PrecioBs.indexOf(" ") == 0 || PrecioBs.length > 20 || P_Numeros.test(PrecioBs) == false){
             alert ("Introduzca un Precio (Solo números)")
             document.getElementById("PrecioBs").value = ""
-            document.getElementById("PrecioBs").focus()
-            document.getElementById("PrecioBs").style.backgroundColor = "var(--Fallos)"
+            // document.getElementById("PrecioBs").focus()
+            // document.getElementById("PrecioBs").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
