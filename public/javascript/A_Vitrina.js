@@ -91,7 +91,7 @@ function respuesta_Opciones(){
             //Se consulta el alto de la página vitrina, este tamaño varia segun las secciones que tenga un tienda
             AltoVitrina = document.body.scrollHeight
 
-            //Este alto se estable al div padre en opciones_V para garantizar que cubra todo el contenido de vitrina_V ya que opciones_V es un contenedor coloca via Ajax en vitrina_V
+            //Este alto se estable al div padre en opciones_V para garantizar que cubra todo el contenido de vitrina_V ya que opciones_V es un contenedor coloca via Ajax en vitrina_V y debe sobreponerse sobre todo lo que hay en vitrina_V.php
             document.getElementById("Contenedor_13Js").style.height = AltoVitrina + "px"
             
             //la función es llamada tres veces si se coloca fuera (No se porque)

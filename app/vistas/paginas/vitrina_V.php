@@ -86,7 +86,7 @@
     <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
             <div class="contenedor_31">
-                <span class="icon-cart span_2"></span>
+                <i class="fas fa-shopping-cart span_2"></i>
                 <input type="text" class="input_5" id="Input_5" readonly="readondly"/>
             </div>
         </div>

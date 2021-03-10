@@ -1,13 +1,13 @@
-<!-- Archivo forma parte de vitrina_V como un include -->
+<!-- Archivo forma parte de vitrina_V como un require -->
+
 <!-- Datos proviene de Vitrina_C  -->
 <?php $Categoria = $Datos['categoria'][0]['categoria']; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
 <section class="sectionModal" id="Section_1">
-    <a href="<?php echo RUTA_URL . '/Tiendas_C/tiendasEnCatalogo/'. $Categoria;?>"><span class="icon-cancel-circle spanCerrar"></span></a>
+    <a href="<?php echo RUTA_URL . '/Tiendas_C/tiendasEnCatalogo/'. $Categoria;?>"><i class="fas fa-times spanCerrar"></i></a>
     <div class="contenedor_24">
         <?php 
         // Datos['ProximoApertura'] == siguiente -> indica que se abre al dia siguiente
-        // Datos['ProximoApertura'] == lunes -> indica que se abre el dia lunes
+        // Datos['ProximoApertura'] == lunes -> indica que se abre el dia lunes   
         // Datos['ProximoApertura'] == hoyM -> indica que se abre ese mismo dia en la mañana 
         // Datos['ProximoApertura'] == hoyT -> indica que se abre ese mismo dia en la tarde
         // echo "<pre>";
@@ -51,7 +51,6 @@
             <p class="sectionModal__div__p">Realiza tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }     ?> 
-            <!-- <br class="br_1"> -->
             <div class="contBoton" id="Contenedor_26">
                 <label class="boton boton--centro" id="Label_1" onclick="cerrarModal('sectionModal')">Entrar</label>
             </div>

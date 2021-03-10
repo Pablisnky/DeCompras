@@ -17,7 +17,7 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
-        //SELECT de tiendas que pueden ser publicadas en el catalogo de tiendas
+        //SELECT de tiendas que pueden ser publicadas en el catalogo de tiendas y estan afiliadas en una ciudad por categorias
         public function consultarCantidadTiendas($Parroquia){                                
             $stmt = $this->dbh->prepare("SELECT COUNT(*) AS cantidad, tiendas_categorias.ID_Categoria, parroquia_Tien FROM tiendas INNER JOIN tiendas_categorias ON tiendas.ID_Tienda=tiendas_categorias.ID_Tienda WHERE publicar = :PUBLICAR AND parroquia_Tien = :PARROQUIA GROUP BY ID_Categoria ORDER BY cantidad DESC");
             

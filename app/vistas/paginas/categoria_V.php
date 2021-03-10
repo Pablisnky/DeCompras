@@ -1,7 +1,7 @@
 <?php
     if(!empty($Datos['ciudades'])){ ?>
         <section class="sectionTienda" id="Section_4">
-            <a  href="<?php echo RUTA_URL . '/Inicio_C';?>"><span class="icon-cancel-circle spanCerrar"></span></a>
+            <a  href="<?php echo RUTA_URL . '/Inicio_C';?>"><i class="fas fa-times spanCerrar"></i></a>
             <div class="sectionTienda_div" id="SectionTiendas">
                 <?php
                     foreach($Datos['estados'] as $arr) : ?>
@@ -22,13 +22,6 @@
         </section>
     <?php
    }   ?>
-
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/merceria/style_merceria.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/farmacia/style_farmacia.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ferreteria/style_ferreteria.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/supermercado/style_supermercado.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/ropa/style_ropa.css"/>
         
 <section class="section_1" >
    <!-- Alimentado via Ajax desde A_Categorias.js por medio de Llamar_TiendasCiudad() -->

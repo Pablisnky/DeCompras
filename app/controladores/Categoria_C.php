@@ -37,7 +37,7 @@
             $CantidadTiendas = $this->ConsultaCategoria_M->consultarCantidadTiendas($Parroquia);
 
             $Datos = [
-                'cantidadTiendasCategoria' => $CantidadTiendas
+                'cantidadTiendasCategoria' => $CantidadTiendas //ID_Categoria, parroquia_Tien, (Count cantidad)
             ];
             
             // echo '<pre>';

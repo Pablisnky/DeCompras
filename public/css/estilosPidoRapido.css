@@ -85,7 +85,6 @@ body, html{
 	text-align: center;
 }
 .a_3A{/*inicio*/
-	/* font-family: 'Montserrat', sans-serif; */
 	font-size: 1.3em;
 	color: black;
 }
@@ -291,7 +290,7 @@ body, html{
 	cursor: pointer;
 	border-radius: 15px;
 }
-.contenedor_4{/*inicio - RecibePedido*/
+.contenedor_4{/*CantidadTIendas_Ajax*/
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: center; /*Alinea segun el eje horizontal*/
 	flex-wrap: wrap;
@@ -1003,10 +1002,6 @@ body, html{
 .contenedor_139{/*desr_Producto*/
 	height: 100px;
 }
-.contenedor_140{/*tiendas*/
-	background-size: contain;
-	background-position-y: 5px; /*bajó la imagen 5px*/
-}
 .contenedor_141{/*modal_login*/
 	margin: 5% auto;
 	text-align: center;
@@ -1695,6 +1690,10 @@ body, html{
 }
 .icono_4{/*cuenta_editar*/
 	font-size: 20px;
+}
+.icono_5{/*tiendas*/
+	font-size: 9em;
+	padding-top: 5%;
 }
 .image_1{/*tiendas - cuenta*/
 	width: 100%;

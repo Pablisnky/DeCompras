@@ -58,23 +58,11 @@ if(document.getElementById("Label_1")){
 
 // ************************************************************************************************** 
 //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
-window.addEventListener("click", function(e){   
-    var click = e.target
-    console.log("Se hizo click en: ", click)
-}, false)
+// window.addEventListener("click", function(e){   
+//     var click = e.target
+//     console.log("Se hizo click en: ", click)
+// }, false)
 
-// *****************************************************************************************************
-//Se busca el alto del body de la página para garantizar que el alto del contenedor a cargar  id="Mostrar_Opciones"cubra toda la pagina en caso de que este ultimo sea mas pequeño
-//Cuando carga la página se registran los listener de clic para toda la ventana
-document.addEventListener("click", function(event){
-    if(event.target.id == 'Section_4'){
-        // console.log("______Desde funcion anonima que establece alto de body()______")
-        AltoVitrina = document.body.scrollHeight
-        // console.log(AltoVitrina)
-        document.getElementById("contenedor_13").style.height = AltoVitrina +"px"
-    }
-}, false)
- 
 // *****************************************************************************************************
 //Escucha desde opciones_V.php, archivo que se carga en vitrina_V.php desde Ajax; por medio de delegación de eventos, donde dentro de la función identificas cual fue el objetivo del click, ya sea por id o por clase o por etiqueta según sea tu necesidadtoma la etiqueta span donde se hace click
 document.addEventListener('click', function(event){
@@ -1217,7 +1205,7 @@ console.log(AlCarro)
 //************************************************************************************************
    //Muestra el menu principal en formato movil y tablet  
    function mostrarMenu(){  
-       console.log("______Desde mostrarMenu()______")
+    //    console.log("______Desde mostrarMenu()______")
        let A = document.getElementById("MenuResponsive")
        let B = document.getElementById("Tapa")
 

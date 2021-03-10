@@ -22,16 +22,12 @@
 		<meta name="HandheldFriendly" content="true"/>
 		<!-- <meta http-equiv="expires" content="0" /> -->
 
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/menu/style_menu.css"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>
-
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_800.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
-		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Raleway:400|Montserrat'/>
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
 		
 		<!-- CDN iconos de font-awesome-->
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
@@ -39,7 +35,7 @@
     <body onload="nobackbutton();">	
 		<header class="header header--tienda borde_bottom--claro">
 			<!-- icono para responsive -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span class="icon-menu span_15Inicio" id="Span_6"></span></label>
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>
 			
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111--tienda">
@@ -60,13 +56,9 @@
 			</nav>
 		</header>
         <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
-            <span class="icon-search contIconoBuscador__span"></span>
+			<i class="fas fa-search contIconoBuscador__span""></i>
         </div>
-		<!-- <div class="contenedor_167">
-			<label>Entregas no disponibles a esta hora</label>
-			<label>nuevamente a las 02:00 pm</label>
-		</div> -->
-				
+
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>
 	

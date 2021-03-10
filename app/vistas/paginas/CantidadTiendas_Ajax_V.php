@@ -6,10 +6,7 @@
     $_SESSION['Parroquia'] = $Datos['cantidadTiendasCategoria'][0]['parroquia_Tien'];
 ?>
 
-<!-- CDN iconos de font-awesome-->
-<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
-
-<div class='contenedor_4' id="Contenedor_4">
+<div class="contenedor_4">
     <div class='contenedor_6 borde_1' id="Artesania">
         <h2 class='h2_1'>ARTE Y LITERATURA</h2>
         <i class="fas fa-pen-nib icono_2"></i>                 
