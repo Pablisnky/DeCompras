@@ -22,26 +22,31 @@
         public function index(){
             //Si se ha escrito en la url un controlador que no existe, se CONSULTA si es un acceso directo a tienda 
             $Link_Tienda = $this->ConsultaInicio_M->consultarLinkTiendas();
+            // echo '<pre>';
             // print_r($Link_Tienda);
-            // echo '<br>';
+            // echo '</pre>';
+            // exit;
+
             foreach($Link_Tienda as $row){
                 $Link = $row['link_acceso'];
                 $url = $row['url'];
-                // echo $url;
+                // echo RUTA_URL . '/' . $_GET["url"];
                 // echo '<br>';
-                // echo 'http://localhost/proyectos/PidoRapido/Vitrina_C/index/243,Otaku%20Claud%20Gat,NoNecesario_1,NoNecesario_2#no-back-button';
-                // echo '<br>';
-                // echo $Link;
-                // echo '<br>';
-                // kuecho RUTA_URL . '/' . $_GET["url"];
-                    // exit;
-                if(!empty($_GET["url"])){
+                // echo $_GET["url"];
+                // exit;
+                // if(!empty($_GET["url"])){
                     if($Link == RUTA_URL . '/' . $_GET["url"]){   
                         header("Location: $url");
-                    }
+                    // }
                 }
             }
             
+            $this->vista("inc/header_inicio"); 
+            $this->vista("paginas/inicio_V");            
+        }
+        
+        // Llamado desde CerrarS_C.php
+        public function NoVerificaLink(){
             $this->vista("inc/header_inicio"); 
             $this->vista("paginas/inicio_V");            
         }

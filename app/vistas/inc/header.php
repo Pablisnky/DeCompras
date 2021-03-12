@@ -38,7 +38,7 @@
 			<!-- Barra de navegación -->
 			<nav id="MenuResponsive" class="header__menuResponsive">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio<i class="fas fa-home icono_1"></i></a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">Inicio<i class="fas fa-home icono_1"></i></a></li>
 					<li><a class="a_3" id="Afiliacion" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>">Afiliación<i class="fas fa-address-card icono_1"></i></a></li>
 					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Menu_C/categorias';?>">Ver Tiendas<i class="fas fa-shopping-basket icono_1"></i></a></li>
 					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión<i class="fas fa-user-check icono_1"></i></a></li>
