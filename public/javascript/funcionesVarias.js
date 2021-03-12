@@ -68,14 +68,14 @@
 //************************************************************************************************
     //Invocada desde inicio_V.php - cuenta_productos_V.php - cuenta_editar_V.php
     function CerrarModal_X(id){
-        // console.log("______Desde CerrarModal_X()______")
+        console.log("______Desde CerrarModal_X()______", id)
         document.getElementById(id).style.display = "none"
     }
 
 //************************************************************************************************
-    //invocada desde funcionesVarias.js 
+    
     function CerrarModal(){
-        // console.log("______Desde CerrarModal()______") 
+        console.log("______Desde CerrarModal()______") 
         let Z = document.getElementsByClassName("contenedor_15").id = localStorage.getItem('ID_cont_sombreado'); 
         document.getElementById(Z).style.display = "block";
         document.getElementById(Z).style.backgroundColor = "rgb(252, 252, 252)";

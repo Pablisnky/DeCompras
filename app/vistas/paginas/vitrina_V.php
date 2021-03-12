@@ -21,11 +21,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
 
-<section class="section_5">	
+<div class="section_5">	
     <!-- div mostrado solo en responsive -->
-    <!-- <section class=""> -->
-        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
-    <!-- </section> -->
+    <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
 
     <div class="contenedor_156"> 
         <div>
@@ -87,11 +85,11 @@
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
             <div class="contenedor_31">
                 <i class="fas fa-shopping-cart span_2"></i>
-                <input type="text" class="input_5" id="Input_5" readonly="readondly"/>
+                <input type="text" class="input_5" id="Input_5" readonly/>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
 <div id="Mostrar_Opciones"></div>
@@ -111,10 +109,9 @@
 <!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
 <!-- <div id="Mostrar_Alert"></div> -->
 
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js?v=' . rand();?>"></script>
-<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js?v=' . rand();?>"></script>
+<script src="<?php echo RUTA_URL . '/public/javascript/E_Vitrina.js?v=' . rand();?>"></script>
+<script src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina.js?v=' . rand();?>"></script>
 
-<?php //include(RUTA_APP . "/vistas/inc/footer.php");?>
 <!-- ******************************************************************************************* -->
 
 <?php

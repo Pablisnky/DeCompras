@@ -21,6 +21,6 @@
 				</div>
 			</div> 
 		</footer>
-		<script type="text/javascript" src="<?php echo RUTA_URL;?>/public/javascript/funcionesVarias.js?v=<?php echo rand();?>"></script>     
+		<script src="<?php echo RUTA_URL;?>/public/javascript/funcionesVarias.js?v=<?php echo rand();?>"></script>     
 	</body>
 </html>

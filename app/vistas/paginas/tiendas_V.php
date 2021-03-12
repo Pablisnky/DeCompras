@@ -209,6 +209,6 @@
     </div>
 </section> 
     
-<script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Tiendas.js';?>"></script>
+<script src="<?php echo RUTA_URL . '/public/javascript/E_Tiendas.js';?>"></script>
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
+<?php require(RUTA_APP . '/vistas/inc/footer.php'); ?> 

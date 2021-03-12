@@ -253,7 +253,7 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("inc/header_Tienda", $Datos);
+            $this->vista("inc/header_Modal");
             $this->vista("paginas/tienda/horarioDespacho_V",$Datos);
         }
 

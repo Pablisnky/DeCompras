@@ -9,9 +9,9 @@
                             <h1 class="h1_7"><?php echo $arr['estado_Tien']?></h1>   <?php
                             foreach($Datos['ciudades'] as $Key) : 
                                 if($arr['estado_Tien'] == $Key['estado_Tien']) : ?>
-                                    <div class="contInputRadio contInputRadio--margen" >     
-                                        <input class="ciudad_JS" type="radio" name="ciudades" id="<?php echo $Key['parroquia_Tien'];?>" value="<?php echo $Key['parroquia_Tien'];?>" onclick="Llamar_TiendasCiudad(this.id)"/>
-                                        <label class="contInputRadio__label" for="<?php echo $Key['parroquia_Tien'];?>"><?php echo $Key['parroquia_Tien'];?></label>
+                                    <div class="contInputRadio contInputRadio--margen" >    
+                                        <input class="ciudad_JS" type="radio" name="ciudades" id="<?php echo str_replace(' ', '%20', $Key['parroquia_Tien']);?>" value="<?php echo $Key['parroquia_Tien'];?>" onclick="Llamar_TiendasCiudad(this.id)"/>
+                                        <label class="contInputRadio__label" for="<?php echo str_replace(' ', '%20', $Key['parroquia_Tien']);?>"><?php echo $Key['parroquia_Tien'];?></label>
                                     </div>  <?php
                                 endif;
                             endforeach; ?>
@@ -23,11 +23,11 @@
     <?php
    }   ?>
         
-<section class="section_1" >
+<div class="section_1" >
    <!-- Alimentado via Ajax desde A_Categorias.js por medio de Llamar_TiendasCiudad() -->
     <div id="Contenedor_23"></div>
-</section>
+</div>
 
-<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/E_Categorias.js?v=' . rand();?>"></script>
-<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/A_Categorias.js?v=' . rand();?>"></script>
-<script type="text/javascript" src="<?php echo RUTA_URL.'/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
+<script src="<?php echo RUTA_URL.'/public/javascript/E_Categorias.js?v=' . rand();?>"></script>
+<script src="<?php echo RUTA_URL.'/public/javascript/A_Categorias.js?v=' . rand();?>"></script>
+<script src="<?php echo RUTA_URL.'/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>

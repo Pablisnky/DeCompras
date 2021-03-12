@@ -5,10 +5,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     //Se da formato al precio, sin decimales y con separación de miles
     $PrecioDolar = number_format($Datos['dolarHoy'], 0, ",", "."); 
-      ?>     
-
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>    
+      ?>       
         
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -65,7 +62,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <br>
                     <div class="contenedor_80" onclick="AmpliarDescripcion()">
                         <label class="label_7">Ampliar información (Opcional)</label>
-                        <span class="icon-circle-down span_10"></span>
+                        <i class="fas fa-arrow-down span_10"></i>
                     </div>
                     <br>
                     <br>

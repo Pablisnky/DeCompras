@@ -373,15 +373,16 @@
 	height: 100%;
 }
 .header{/*header - header_inicio - header_Tienda - header_AfiCom*/
-	/* background-color: var(--OficialOscuro); */
 	height: 45px;
 }
 .header-AfiCom{/*header_AfiCom*/
-	/* background-color: var(--OficialOscuro); */
 	height: 50px;
 }
+.header{
+	display: block;
+	height: 45px;
+}
 .header--tienda{
-	/* background-color: white; */
 	display: block;
 	height: 37px;
 }
@@ -398,9 +399,6 @@
 }
 .header__menuResponsive ul{/*Todas las páginas*/
 	background-color:var(--OficialClaro);
-	/* border-bottom-color: rgb(51, 51, 51);
-	border-bottom-style: solid;
-	border-bottom-width: 1px; */
 	flex-direction: column;
 	width: 100%;
 	margin-top: 0%;
@@ -603,6 +601,7 @@
 .contenedor_111--tienda{/*header_tienda*/
 	background-color: white !important;
 	background: initial;
+	width: 100%;
 	height: 55px;
 	text-align: center;
 	margin-top: 37px;
@@ -899,9 +898,6 @@
 }
 .hr_1{/*carrito*/
 	width: 28%;
-}
-.hr_4{/*header_Tienda*/
-	display: block;
 }
 .icono_1{/*header_tienda*/
 	display: none !important;
@@ -1265,9 +1261,6 @@
 }
 .span_21{/*CantidadTiendas_Ajax*/
 	margin-top: -4% !important;
-}
-.span_22{/*inicio*/	
-	/* font-size:6.3vw; */
 }
 .spanCerrar{/*inicio - modal_fueraHorario*/
 	font-size: 1.5em;

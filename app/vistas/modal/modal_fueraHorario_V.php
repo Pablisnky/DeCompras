@@ -6,10 +6,6 @@
     <a href="<?php echo RUTA_URL . '/Tiendas_C/tiendasEnCatalogo/'. $Categoria;?>"><i class="fas fa-times spanCerrar"></i></a>
     <div class="contenedor_24">
         <?php 
-        // Datos['ProximoApertura'] == siguiente -> indica que se abre al dia siguiente
-        // Datos['ProximoApertura'] == lunes -> indica que se abre el dia lunes   
-        // Datos['ProximoApertura'] == hoyM -> indica que se abre ese mismo dia en la mañana 
-        // Datos['ProximoApertura'] == hoyT -> indica que se abre ese mismo dia en la tarde
         // echo "<pre>";
         // print_r($Datos);
         // echo "</pre>";
@@ -51,8 +47,8 @@
             <p class="sectionModal__div__p">Realiza tu compra y despacharemos tu pedido al abrir la tienda.</p>
             <?php
         }     ?> 
-            <div class="contBoton" id="Contenedor_26">
-                <label class="boton boton--centro" id="Label_1" onclick="cerrarModal('sectionModal')">Entrar</label>
-            </div>
+        <div class="contBoton" id="Contenedor_26">
+            <label class="boton boton--centro" id="Label_1">Entrar</label>
+        </div>
     </div>               
 </section>

@@ -10,10 +10,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta name="MobileOptimized" content="width"/>
 		<meta name="HandheldFriendly" content="true"/>
-		<meta http-equiv="Expires" content="0"> 
-		<meta http-equiv="Last-Modified" content="0">
-		<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
- 		<meta http-equiv="Pragma" content="no-cache">
+		<!-- <meta http-equiv="Expires" content="0">  -->
+		<!-- <meta http-equiv="Last-Modified" content="0"> -->
+		<!-- <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+ 		<meta http-equiv="Pragma" content="no-cache"> -->
 
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
@@ -39,7 +39,7 @@
 		</script>
     </head>
     <body>				
-		<header class="header contenedor_116">
+		<header class="header header--inicio contenedor_116">
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
@@ -53,12 +53,10 @@
         <div class="contIconoBuscador borde_1" id="Contenedor_34">
             <span><i class="fas fa-search icono_3"></i></span>
         </div>
-		<article>
-			<noscript>
-				<p>Bienvenido a PedidoRemoto.com</p>
-				<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
-			</noscript>
-		</article>
+		<noscript>
+			<p>Bienvenido a PedidoRemoto.com</p>
+			<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
+		</noscript>
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>

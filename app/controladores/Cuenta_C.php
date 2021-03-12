@@ -185,7 +185,7 @@
                 //Se crea el link de aceso";  
                 $LinkAcceso = RUTA_URL .'/' . $DatosTienda[0]['nombre_Tien'];
 
-                //Se rellenan los espacios en blnco en el nombre de la tienda en caso de existir
+                //Se rellenan los espacios en blanco en el nombre de la tienda en caso de existir
                 $NombreTienda = $DatosTienda[0]['nombre_Tien'];
                 $NombreTienda = str_replace(' ', '%20', $NombreTienda);
 

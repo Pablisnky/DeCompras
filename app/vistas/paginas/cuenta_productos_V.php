@@ -3,7 +3,6 @@
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];    
     ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
 
     <section class="section_3 section_9">
         <div class="contenedor_90 contenedor_91">

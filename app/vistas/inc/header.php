@@ -12,11 +12,6 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<meta name="MobileOptimized" content="width"/>
 		<meta name="HandheldFriendly" content="true"/>
-		<meta http-equiv="expires" content="12 de julio de 2020 16:00:00 GMT"/>
-
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/carrito/style_carrito.css"/>
-		<!-- <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/lupa/style_lupa.css"/> -->
-		<!-- <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/menu/style_menu.css"/> -->
 
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
@@ -31,31 +26,29 @@
     </head>
     <body>	
 		<header class="header borde_bottom--claro">
+			<!-- icono para responsive -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><i class="fas fa-bars icono_3" id="Span_6"></i></label>
+
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111">
 				<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C';?>">PedidoRemoto</a>
 				<h2 class="h2_5">MarketPlace</h2>
 			</div>
-
-			<!-- icono para responsive -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><i class="fas fa-bars icono_3" id="Span_6"></i></label>
 			
-			<!-- Bara de navegación -->
+			<!-- Barra de navegación -->
 			<nav id="MenuResponsive" class="header__menuResponsive">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio</a></li>
-					<li><a class="a_3" id="Afiliacion" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>">Afiliación</a></li>
-					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Menu_C/categorias';?>">Ver Tiendas</a></li>
-					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio<i class="fas fa-home icono_1"></i></a></li>
+					<li><a class="a_3" id="Afiliacion" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>">Afiliación<i class="fas fa-address-card icono_1"></i></a></li>
+					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Menu_C/categorias';?>">Ver Tiendas<i class="fas fa-shopping-basket icono_1"></i></a></li>
+					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>">Inicio sesión<i class="fas fa-user-check icono_1"></i></a></li>
 				</ul>
 			</nav>
-		</header>	
-		<article>    
-			<noscript>
-				<p>Bienvenido a PedidoRemoto.com</p>
-				<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
-			</noscript>
-		</article>
+		</header>   
+		<noscript>
+			<p>Bienvenido a PedidoRemoto.com</p>
+			<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
+		</noscript>
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>

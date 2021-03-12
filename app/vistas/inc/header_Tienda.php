@@ -39,7 +39,7 @@
 			
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111--tienda">
-				<h1 class="h1_10 font--negro"><?php echo $Nombre_Tienda?></h1>
+				<label class="h1_10 font--negro label--block"><?php echo $Nombre_Tienda?></label>
 				<h2 class="h2_5 h2_12 font--negro"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div> 
 
@@ -48,15 +48,14 @@
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="#">Ofertas<i class="fas fa-gift icono_1"></i></a></li>
 					<li><a class="a_3" href="#">Lo más pedido<i class="far fa-chart-bar icono_1"></i></a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' . $ID_Tienda . ',' . $Nombre_Tienda;?>">Horario<i class="far fa-clock icono_1"></i></a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' . $ID_Tienda . ',' . str_replace(' ', '%20', $Nombre_Tienda);?>">Horario<i class="far fa-clock icono_1"></i></a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/direccionTienda/' . $ID_Tienda;?>">Dirección<i class="fas fa-map-marker-alt icono_1"></i></a></li>
-					<hr class="hr_3 hr_4"/>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/salirTienda';?>">Salir de la tienda<i class="far fa-times-circle icono_1"></i></a></li>
 				</ul>
 			</nav>
 		</header>
         <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
-			<i class="fas fa-search contIconoBuscador__span""></i>
+			<i class="fas fa-search contIconoBuscador__span"></i>
         </div>
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
