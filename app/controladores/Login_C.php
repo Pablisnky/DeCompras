@@ -297,12 +297,14 @@
                     // setcookie("id_usuario",'',time()-100);
                     // setcookie("clave",'',time()-100);
                     
-                    $this->vista("inc/header_Modal"); 
-                    $this->vista("modal/modal_recuperarCorreo_V"); 
+                    $this->vista('inc/header_Modal'); 
+                    $this->vista('modal/modal_recuperarCorreo_V'); 
                 }
             }
             else{
-                echo "Las contraseñas no coinciden";
+                echo 'Las contraseñas no coinciden';
+                echo '<br>';
+                echo "<a href='javascript: history.go(-1)'>Regresar</a>";
             }
         }
     }

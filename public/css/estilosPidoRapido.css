@@ -78,7 +78,7 @@ body, html{
 .a_2:hover{/*inicio*/
 	cursor: pointer;
 }
-.a_3{/*header - header_inicio*/
+.a_3{/*header - header_inicio - header_AfiCom*/
 	color: black;
 	width: 30%;
 	text-align: center;
@@ -747,12 +747,12 @@ body, html{
 	/*justify-content: center;centra horizontalmente*/
 }
 .contenedor_90{/*tiendas - opciones - cuenta_productos*/
-	background-color: var(--OficialClaro) ;
+	background-color: var(--OficialClaro);
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	top: 12%;
+	top: 70px;
 	left: 0%;
 	width: 100%;
 	height: 40px!important;
@@ -858,8 +858,12 @@ body, html{
 	width: 90%;
 	margin: 10% auto;
 }
-.contenedor_111{/*header - header_AfiCom*/
+.contenedor_111{/*header*/
 	padding-left: 3%;
+}
+.contenedor_111--Afiliado{/*header_AfiCom*/
+	padding-left: 1%;
+
 }
 .contenedor_111--tienda{/*header_tienda*/
 	background: linear-gradient(to right, rgb(239, 245, 245), white);
@@ -1116,6 +1120,10 @@ body, html{
 .contenedor_170 > div:last-child{/*cuenta_editar_prod*/
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
+.contenedor_171{/*descr_Producto*/
+	text-align: center;
+	margin-bottom: 5%;
+}
 .contBoton{/*carrito - descr_Producto - pwa*/
 	margin: auto;
 	margin-top: 5%;
@@ -1250,15 +1258,8 @@ body, html{
 	line-height: 30px;
 }
 .contGridUna{/*descr_Producto*/
-	display: grid;
-	grid-template-columns: 100%;
-}
-.contGridUna__div{/*descr_Producto*/
-	/* margin: auto;
-	margin-top: 5%;
-	width: 80%;
-	display: flex; /*Organiza los elementos horizontalmente*/
-	/* justify-content: space-around;s */
+	/* display: grid;
+	grid-template-columns: 100%; */
 }
 .contGridTres{/*Categorias_Ajax*/
 	display: grid;
@@ -1294,6 +1295,7 @@ body, html{
 }
 .contInputRadio--margen{/*categoria*/
 	padding-left: 10% !important;
+	margin-bottom: 4%;
 }
 .contOpciones{/*opciones*/
 	border-radius: 15px;
@@ -1410,11 +1412,14 @@ body, html{
 .font--negro{/*header_Tienda*/
 	color: black;
 }
-.h1_1{/*carrito - cuenta_productos - Categorias_Ajax - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes - modal_sinProductos*/
+.h1_1{/*carrito - cuenta_productos - Categorias_Ajax - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes - modal_sinProductos - descr_Producto*/
 	font-weight: normal;
 	text-align: center;
 	font-size: 1.7em;
 	margin-bottom: 2%;
+}
+.h1_1--margin{/*descr_Producto*/
+	margin-bottom: 0%;
 }
 .h1_2{/*inicio*/
 	font-size: 4.5em;
@@ -1493,12 +1498,11 @@ body, html{
 	margin-top: -3%;
 }
 .h2_5{/*header - header_tienda - header_AfiCom*/
-	/* color: white; */
 	font-size: 0.9em;
 	font-weight: lighter;
 	text-align: center;
 	margin-top: -0.2%;
-	height:0.9em;
+	height: 0.9em;
 }
 .h2_6{/*vitrina - modal_sinProductos*/
 	font-size: 1.3em;
@@ -1574,15 +1578,14 @@ body, html{
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	height: 80px;
+	height: 70px;
 	z-index: 3 !important;
 	display: flex;
 	align-items: center;
 }
 .header--tienda{
 	background-color: white;
-	/* width: 100%; */
-	height: 80px;
+	height: 70px;
 	display: flex;
 	align-items: center;
 }
@@ -1595,6 +1598,9 @@ body, html{
 .header__menuResponsive{
 	width: 100%;
 }
+.header__menuResponsive--Afiliado{
+	width: 80%;
+}
 .header__menuResponsive ul{/*Todas  las páginas*/
 	margin: auto;
 	list-style: none;
@@ -1606,15 +1612,17 @@ body, html{
 	width: 80%;
 }
 .header__menuResponsive li a{/*Todas las páginas*/
+	/* background-color: blue; */
 	display: block;
 	width: 170px;
 	margin: auto;
+	margin-top: 1%;
 	/* color: black; */
 	font-size: 1.2em;
 	text-align: center;
 	/* padding:3% 0%; */
 	/* height: 50px; */
-	line-height: 35px; /*6vh*/
+	line-height: 20px; /*6vh*/
 	box-sizing: border-box;
 }
 .header__menuResponsive li a:hover{/*Todas las páginas*/
@@ -1655,7 +1663,6 @@ body, html{
 }
 .icono_1{/*header_tienda - header*/
 	font-size: 20px;
-	/* display: block; */
 	width: 100%;
 	text-align: center;
 }
@@ -1680,6 +1687,9 @@ body, html{
 .icono_5{/*tiendas*/
 	font-size: 9em;
 	padding-top: 5%;
+}
+.icono_6{/*header_inicio*/
+	margin-top: 5%;
 }
 .image_1{/*tiendas - cuenta*/
 	width: 100%;
@@ -1929,6 +1939,9 @@ body, html{
 	color: white;
 	cursor: default;
 }
+.label_4--hidden{/*opciones*/
+	display: none;
+}
 .label_5{/*vitrina*/
 	width: 100% !important;
 	text-align: center;
@@ -2011,8 +2024,9 @@ body, html{
 .label_25{/*cuenta_editar*/
 	pointer-events:none;
 }
-.label--block{/*header_Tienda*/
+.label--block{/*header_Tienda - header_AfiCom*/
 	display: block;
+	width: 100%;
 }
 .legend_1{/*registroCom - registroDes - login - cuenta_editar - horario*/
 	font-size: 1.4em;
@@ -2086,6 +2100,7 @@ body, html{
 .menuLi_2{/*header_AfiCom*/
 	color: var(--OficialOscuro);
 	padding-left: 5%;
+	padding-top: 5%;
 	display: block;
 	width: 110% !important;
 	text-align: left !important;
@@ -2262,20 +2277,20 @@ body, html{
 	}
 }
 .preloderTapa{
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.2);
 	position: absolute;
 	top: 0%;
 	left: 0%;
 	width: 100%;
 	height: 100%;
+	z-index: 5
 }
 .preloder_tapa--total{/*inicio*/
-	background-color:white;
+	background-color: rgba(255, 255, 255, 0.2);
 	position: fixed;
 	top: 0%;
 	height: 100%;
 	width: 100%;
-	z-index: 5
 }
 .preloaderCentrar{/*descr_Producto*/
 	position: absolute;
@@ -2716,9 +2731,7 @@ ul .menuContenedor_3{/*header_AfiCom*/
 	background-color: var(--OficialClaro);
 	display: none;
 	position: absolute;
-	top: 100%;
 	margin-left: 3%;
 	z-index: 5;
-	padding-top: 1%;
-	padding-top: 0.7%;
+	padding-bottom: 1%; 
 }

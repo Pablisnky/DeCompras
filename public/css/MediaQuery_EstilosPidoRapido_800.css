@@ -17,7 +17,7 @@
 	font-size: 1.3em;
 }
 .a_4{/*header_AfiCom*/
-	display: block;
+	/* display: block; */
 	width: 100% ;
 	text-align: right;
 	font-size: 0.7em;
@@ -425,7 +425,7 @@
 }
 .header__menuResponsive li a:hover{/*Todas las páginas*/
 	background-color: var(--OficialOscuro) !important;
-	color: white;
+	color: white !important;
 	font-size: 1.2em;
 	width: 100%;
 }
@@ -1344,7 +1344,6 @@
 	line-height: 25px;
 }
 ul .menuContenedor_3{/*header_AfiComp*/
-	background-color: var(--OficialClaro) !important; 
 	display: none;
 	position: initial;
 	margin-top: -20%;
@@ -1355,5 +1354,8 @@ ul .menuContenedor_3{/*header_AfiComp*/
 .menuLi_1:hover > ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
 	display: block !important;
 	width: 180px;
+}
+.menuLi_2{/*header_AfiCom*/
+	padding-top: 0%;
 }
 }

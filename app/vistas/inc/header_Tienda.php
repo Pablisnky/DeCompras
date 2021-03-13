@@ -32,7 +32,7 @@
 		<!-- CDN iconos de font-awesome-->
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
-    <body onload="nobackbutton();">	
+    <body onload="nobackbutton()">	
 		<header class="header header--tienda borde_bottom--claro">
 			<!-- icono para responsive -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>

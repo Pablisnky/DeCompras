@@ -1,11 +1,10 @@
 <!-- se muestra en login_V.php en div id = "Contenedor_43" -->
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
 
 <!-- Cargada desde login_Modal_C/modal_sinSecciones_V.php -->
 <?php 
 if($Datos == ''){ ?>
     <section class="sectionModal">        
-        <a href="<?php echo RUTA_URL . '/Login_C';?>"><span class="icon-cancel-circle sectionModal__span"></span></a>
+        <a href="<?php echo RUTA_URL . '/Login_C';?>"><i class="fas fa-times spanCerrar"></i></a>
         <br>
         <div class="sectionModal__div sectionModal__div--corto">
             <form action="<?php echo RUTA_URL . '/Login_C/RecuperarClave';?>" method="POST" autocomplete="off">

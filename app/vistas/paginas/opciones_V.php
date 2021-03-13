@@ -2,7 +2,7 @@
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
-            <span class="icon-arrow-left2" style="display:inline;"></span>
+            <i class="fas fa-arrow-left" style="display:inline;"></i>
             <label class="label_9" id="Label_9" style="display: inline;">Secciones</label>
         </div>
         <!-- $Datos viene de Opciones_C -->
@@ -16,7 +16,7 @@
                     $ContadorLabel = 1;
                     //$Datos proviene de Opciones_C/index
                     $ID_Tienda = $Datos['ID_Tienda'];
-                    foreach($Datos['Opciones'] as $row){
+                    foreach($Datos['Opciones'] as $row) :
                         $Nombre_Tienda = $row['nombre_Tien'];
                         $Slogan_Tienda = $row['slogan_Tien'];
                         $ID_Producto = $row['ID_Producto'];
@@ -42,31 +42,16 @@
                                 foreach($Datos['fotografia'] as $row) : 
                                     if($row['ID_Producto'] == $ID_Producto) :
                                         $FotoPrincipal = $row['nombre_img'];    ?> 
-                                        <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar?>')">
+                                        <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar.$Separador?>','<?php echo $Existencia.$Separador?>','<?php echo $Disponible?>')">
                                             <figure>
                                                 <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/productos/<?php echo $FotoPrincipal;?>"/> 
                                             </figure>
                                         </div>  <?php  
                                     endif;   
-                                endforeach;   ?>
-                                    <?php
-                                    if($Disponible == 1){ ?>
-                                        <label class="contenedor_9--label borde_3">En existencia</label>
-                                        <?php
-                                    }    
-                                    else if($Disponible == 0 && $Existencia == 1){ ?>
-                                        <label class="contenedor_9--label borde_3"><?php echo $Existencia?> ud. en existencia</label>
-                                        <?php
-                                    }  
-                                    else if($Disponible == 0 && $Existencia > 1){ ?>
-                                        <label class="contenedor_9--label borde_3"><?php echo $Existencia?> uds. en existencia</label>
-                                        <?php
-                                    } 
-                                    else if($Disponible == '0' && $Existencia == '0'){  
-                                        $NoAgrear = true  ?>
-                                        <label class="contenedor_9--label borde_3">Agotado</label>
-                                        <?php
-                                    }   ?>
+                                endforeach;   
+
+                                require(RUTA_APP . "/vistas/complementos/existencia.php");   ?>
+
                             </div>
                                         
                             <div> 
@@ -116,8 +101,8 @@
                                 </div>
                                 
                                 <!-- AGREGAR -->
-                                <?php if(isset($NoAgrear) == true){ ?>
-                                    <label class="label_4 label_4--innabilitado borde_1">Agregar</label> 
+                                <?php if($NoAgrear == true){ ?>
+                                    <label class="label_4 label_4--hidden">Agregar</label> 
                                     <?php
                                 }  
                                 else{ ?>
@@ -152,8 +137,7 @@
                         </div>
                         <?php   
                         $ContadorLabel++;
-                    }        
-                    $NoAgrear = false;
+                    endforeach;      
                 ?>                    
                 </div>
             </form>

@@ -73,7 +73,7 @@
             $this->vista("paginas/opciones_V", $Datos);
         }       
         
-        //Invocado desde opciones_V.php por rmedio de mostrarDetalles()
+        //Invocado desde opciones_V.php por medio de mostrarDetalles()
         public function productoAmpliado($DatosAgrupados){
             // echo $DatosAgrupados;
             //$DatosAgrupados contiene una cadena con el ID_Tienda y el producto separados por coma, se convierte en array para separar los elementos
@@ -93,6 +93,8 @@
             $Fotografia = substr($DatosAgrupados[7], 1);
             $ID_Producto = substr($DatosAgrupados[8], 1);
             $PrecioDolar = substr($DatosAgrupados[9], 1);
+            $Existencia = substr($DatosAgrupados[10], 1);
+            $Disponible = substr($DatosAgrupados[11], 1);
             
             //CONSULTA las caracteristicas del producto seleccionado
             $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicaProductoEsp($ID_Producto);
@@ -108,6 +110,8 @@
                 'Opcion' => $Opcion,
                 'PrecioBolivar' => $PrecioBolivar,
                 'PrecioDolar' => $PrecioDolar,
+                'Existencia' => $Existencia,
+                'Disponible' => $Disponible,
                 'Fotografia_1' => $Fotografia,
                 'ID_Producto' => $ID_Producto, 
                 'ID_EtiquetaAgregar' => $ID_EtiquetaAgregar, 

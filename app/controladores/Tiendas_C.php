@@ -17,7 +17,6 @@
             ocultarErrores();
         }
 
-        //Metodo llamado desde  
         public function index($Categoria){
             switch($Categoria){
                 case 'Comida_Rapida':

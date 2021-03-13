@@ -24,14 +24,16 @@
     </head>
     <body>	
 		<header class="header header-AfiCom borde_bottom--claro">
-			<div class="contenedor_111">
-				<!-- $Datos viene de Cuenta_C-->
-				<h1 class="h1_10 h1_10--afiliado"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></h1>			
+			<!-- icono para responsive -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>
+
+			<!-- $Datos viene de Cuenta_C-->
+			<div class="contenedor_111--Afiliado">
+				<label class="h1_10 font--negro label--block"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></label>			
 				<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div>
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>
-			
-			<nav id="MenuResponsive" class="header__menuResponsive">
+						
+			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--Afiliado">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li>

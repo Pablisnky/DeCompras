@@ -6,6 +6,9 @@
     $PrecioDolar = $Datos['PrecioDolar'];
     $ID_Producto = $Datos['ID_Producto'];
     $ID_LabelAgregar = $Datos['ID_EtiquetaAgregar'];
+    $Existencia = $Datos['Existencia']; 
+    $Disponible = $Datos['Disponible']; 
+    
 ?>
     <!-- Se carga el preloader -->
     <section class="preloder_tapa--total">
@@ -49,8 +52,11 @@
             </div>
 
             <div class="contGridUna">
-                <h1 class="h1_1"><?php echo $Producto?></h1>
-                <h1 class="h1_11"><?php echo $Opcion?></h1>
+                <h1 class="h1_1 h1_1--margin"><?php echo $Producto?></h1>
+                <div class="contenedor_171">
+                    <?php require(RUTA_APP . "/vistas/complementos/existencia.php");    ?>
+                </div>
+                <h3 class="h1_11"><?php echo $Opcion?></h3>
                 <?php
                 if($Datos['Caracteristicas'] != Array ()){  ?>
                     <div class="contenedor_127">
