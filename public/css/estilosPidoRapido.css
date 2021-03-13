@@ -903,7 +903,7 @@ body, html{
 	margin: 5% auto !important;
 	text-align: center;
 }
-.contenedor_119__img{/*cuenta_editar - cuenta_publicar*/
+.contenedor_119__img{/*cuenta_editar - cuenta_publicar - cuenta_editar_prod*/
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 100%;
 	height: 100%;
@@ -919,7 +919,7 @@ body, html{
 }
 .contenedor_121{/*cuenta_editar_prod*/
 	width: 45%;
-	margin-top: 5% !important;
+	margin-top: 10% !important;
 }
 .contenedor_122{/*descr_Producto*/
 	margin: auto;
@@ -1356,10 +1356,17 @@ body, html{
 .sectionModal__div--corto{/*modal_recuperarCorreo*/
 	width: 40%;
 }
-.spanCerrar{/*inicio - modal_fueraHorario - categoria*/
+.spanCerrar{/*inicio - modal_fueraHorario - categoria - cuentaeditar_prod*/
 	color: white;
 	font-size: 2em;
 	margin: -1% 4% 0% 95%;
+	cursor: pointer;
+}
+.spanCerrar--black{/*cuentaeditar_prod*/
+	position: relative;
+	color: black;
+	top: 0%;
+	left: 40% !important;
 	cursor: pointer;
 }
 .contenedor_60__p1{/*carrito*/
@@ -1672,9 +1679,6 @@ body, html{
 	width: 100%;
 	text-align: center;
 	position: relative;
-	/* top: -15%; */
-	/* margin-top: 5px;
-	margin-bottom: 10px; */
 }
 .icono_3{/*header_inicio*/
 	font-size: 20px;
@@ -1689,7 +1693,7 @@ body, html{
 	padding-top: 5%;
 }
 .icono_6{/*header_inicio*/
-	margin-top: 5%;
+	margin-bottom: 5%;
 }
 .image_1{/*tiendas - cuenta*/
 	width: 100%;

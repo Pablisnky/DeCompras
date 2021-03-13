@@ -1316,12 +1316,11 @@
         // }
 
         //INSERT en la tabla imagenes las fotografias secundarias
-        public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio, $ID_Seccion){
-            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, ID_Seccion, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora)VALUES (:ID_PRODUCTO, :ID_SECCION, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
+        public function insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio){
+            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora)VALUES (:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
             
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto,);
-            $stmt->bindValue(':ID_SECCION', $ID_Seccion,);
             $stmt->bindParam(':NOMBRE_IMG', $archivonombre);
             $stmt->bindParam(':TIPO_ARCHIVO', $tipo);
             $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio);

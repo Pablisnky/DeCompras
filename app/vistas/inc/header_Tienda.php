@@ -46,11 +46,11 @@
 			<!-- Bara de navegación -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="#">Ofertas<i class="fas fa-gift icono_1"></i></a></li>
-					<li><a class="a_3" href="#">Lo más pedido<i class="far fa-chart-bar icono_1"></i></a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' . $ID_Tienda . ',' . str_replace(' ', '%20', $Nombre_Tienda);?>">Horario<i class="far fa-clock icono_1"></i></a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/direccionTienda/' . $ID_Tienda;?>">Dirección<i class="fas fa-map-marker-alt icono_1"></i></a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/salirTienda';?>">Salir de la tienda<i class="far fa-times-circle icono_1"></i></a></li>
+					<li><a class="a_3" href="#"><i class="fas fa-gift icono_1"></i>Ofertas</a></li>
+					<li><a class="a_3" href="#"><i class="far fa-chart-bar icono_1"></i>Lo más pedido</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/horarioTienda/' . $ID_Tienda . ',' . str_replace(' ', '%20', $Nombre_Tienda);?>"><i class="far fa-clock icono_1"></i>Horario</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/direccionTienda/' . $ID_Tienda;?>"><i class="fas fa-map-marker-alt icono_1"></i>Dirección</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Tiendas_C/salirTienda';?>"><i class="far fa-times-circle icono_1"></i>Salir de la tienda</a></li>
 				</ul>
 			</nav>
 		</header>

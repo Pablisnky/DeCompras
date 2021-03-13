@@ -112,7 +112,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         if($Datos['caracteristicas'] == Array ()){    ?>
                             <div class="Contenedor_80" id="Contenedor_82">
                                 <input class="placeholder placeholder_2 placeholder_3 borde_1 caract_js" type="text" name="caracteristica[]" id="Caracteristica" placeholder="Nueva caracteristica"/>
-                                <span class="icon-cancel-circle span_10 span_12_js"></span> 
+                                <i class="fas fa-times span_12_js"></i>
                             </div> 
                             <?php
                         }
@@ -120,7 +120,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             foreach($Datos['caracteristicas'] as $arr) : ?>    
                                 <div class="Contenedor_80" id="Contenedor_82">
                                     <input class="placeholder placeholder_2 placeholder_3 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" value="<?php echo $arr['caracteristica'];?>"/>
-                                    <span class="icon-cancel-circle span_10 span_12_js"></span>
+                                    <i class="fas fa-times span_12_js"></i>
                                     <br>
                                 </div>
                                 <?php
@@ -136,12 +136,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         //Datos proviene de Cuenta_C/actualizarProducto
                         foreach($Datos['imagenesVarias'] as $arr) : 
                             $ID_Imagen =  $arr['ID_Imagen']  ?>
-                            <div class="contenedor_119 contenedor_121 borde_1 borde_2" id="<?php echo 'DivImagenSecun_' . $Cont;?>">
-                                <div>
-                                    <span class="icon-cancel-circle span_18 borde_1" onclick="EliminarImagenSecundaria(<?php echo 'DivImagenSecun_' . $Cont;?>); Llamar_EliminarImagenSecundaria('<?php echo  $ID_Imagen;?>','<?php echo $Datos['especificaciones'][0]['ID_Producto'];?>')"></span>
+                            <div class="contenedor_119 contenedor_121" id="<?php echo 'DivImagenSecun_' . $Cont;?>">
+                                    <span class=" spanCerrar--black" onclick="EliminarImagenSecundaria(<?php echo 'DivImagenSecun_' . $Cont;?>); Llamar_EliminarImagenSecundaria('<?php echo  $ID_Imagen;?>','<?php echo $Datos['especificaciones'][0]['ID_Producto'];?>')"><i class="fas fa-times "></i></span>
                                     <img class="contenedor_119__img" id="<?php echo $ID_Imagen;?>" alt="Fotografia del producto" src="../../public/images/productos/<?php echo $arr['nombre_img'];?>"/>
-                                </div>
                             </div>
+                            
                             <?php
                             $Cont ++;
                         endforeach; 
@@ -153,7 +152,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             </div>  <?php
                         }
                         else{   ?>
-                            <p class="p_5">Máximo de imagenes añadidas</p>
+                            <div class="contenedor_49">
+                                <p class="p_5">Máximo de imagenes añadidas</p>
+                            </div>
                             <?php
                         }   ?>          
                     </div>

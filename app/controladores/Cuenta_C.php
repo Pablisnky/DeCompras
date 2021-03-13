@@ -1024,7 +1024,7 @@
 
                 //SECCION IMAGENES SECUNDARIAS
                 //********************************************************
-                if(!empty($_FILES['imagenes']["name"][0])){
+                if($_FILES['imagenes']["name"][0] != ""){
                     $Cantidad = count($_FILES["imagenes"]["name"]);
                     for($i = 0; $i < $Cantidad; $i++){
                         //nombre original del fichero en la máquina cliente.
@@ -1042,7 +1042,7 @@
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
 
-                        //Se INSERTAN las fotografias del producto
+                        //Se INSERTAN las fotografias secundarias del producto
                         $this->ConsultaCuenta_M->insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio);
                     }
                 }
@@ -1161,14 +1161,14 @@
                     // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
                     // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
 
-                    //Si existe imagen_EditarVarias y tiene un tamaño correcto
-                    // if(($nombre_imgVarias == !NULL) AND ($tamanio_imgVarias <= 7000000)){
-                    //     //indicamos los formatos que permitimos subir a nuestro servidor
-                    //     if (($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpeg")
-                    //         || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpg") || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/png")){
+                    //Se verifica que tenga un formato y tamaño correcto
+                    if(($nombre_imgVarias == !NULL) AND ($tamanio_imgVarias <= 2000000)){
+                        //indicamos los formatos que permitimos subir a nuestro servidor
+                        if(($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpeg")
+                            || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpg") || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/png")){
 
-                    //         // Ruta donde se guardarán las imágenes que subamos la variable superglobal
-                    //         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+                            // Ruta donde se guardarán las imágenes que subamos la variable superglobal
+                            // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
                             $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
@@ -1197,20 +1197,22 @@
                                 $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias,$RecibeProducto['ID_Seccion']);
                             }
                             else{
-                                // echo $TotalImagenes . '<br>';
                                 echo "Solo puede cargar cuatro imagenes adicionales";
                                 echo "<a href='javascript:history.back()'>Regresar</a>";
                                 exit();
                             }
-                    // }
-                    // else{
-                    // //si existe imagen_EditarVarias pero se pasa del tamaño permitido
-                    //     if($nombre_imgVarias == !NULL){
-                    //         echo "Una imagen es demasiado grande ";
-                            // echo "<a href='javascript:history.back()'>Regresar</a>";
-                    //         exit();
-                    //     }
-                    // }
+                        }
+                        else{
+                            echo "La imagen no tiene el formato correcto";
+                            echo "<a href='javascript:history.back()'>Regresar</a>";
+                            exit();
+                        }
+                    }
+                    else{
+                        echo "Una imagen es demasiado grande ";
+                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                        exit();
+                    }
                 }
             }
             

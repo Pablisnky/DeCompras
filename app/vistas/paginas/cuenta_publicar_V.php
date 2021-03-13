@@ -80,7 +80,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div class="contenedor_130" id="muestrasImg_2"></div>  
                         <p class="p_5">Añada hasta 5 fotografias no mayor a 2Mb</p>
 
-                        <label class="label_5 label_23" for="ImgInp_2" id="ioo">Añadir imagen</label>
+                        <label class="label_5 label_23" for="ImgInp_2">Añadir imagen</label>
                         <input class="ocultar" type="file" name="imagenes[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/>  
                     </div>     
 
@@ -96,8 +96,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!--div alimentado desde Secciones_Ajax_V.php con las secciones que el usuario cargó previamente -->    
     <div id="Contenedor_80"></div>
 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
+    <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
+    <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen principal antes de guardarla en la BD usada en cuenta_editar_prod_V.php
@@ -142,16 +142,18 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         var imgTagCreada = document.createElement("img");
                         var spanTagCreada = document.createElement("span")
 
-                        imgTagCreada.height = 200;
                         imgTagCreada.width = 290;
+                        imgTagCreada.height = 290;
                         ImagenD = imgTagCreada.id = "Imagen_" + i;
-                        imgTagCreada.marginBottom = 250
+                        // imgTagCreada.marginBottom = 250
                         imgTagCreada.src = URL.createObjectURL(archivos[i]);
 
                         spanTagCreada.innerHTML = "Eliminar"
                         spanTagCreada.id = "Etiqueta_" + i
                         spanTagCreada.style.color = "rgb(24, 24, 238)"
                         spanTagCreada.style.cursor = "pointer"
+                        spanTagCreada.style.marginBottom = 100
+
                         //Se detecta la etiqueta dondes se hizo click
                         spanTagCreada.addEventListener("click", function(e){   
                             var click = e.target

@@ -392,8 +392,8 @@
 }
 .header__menuResponsive{/*Todas las páginas*/
 	padding-top: 0%;
-	width: 55%; 
-	margin-left: -60%;/*oculta el menu responsive*/
+	width: 70%; 
+	margin-left: -70%;/*oculta el menu responsive*/
 	transition: all 0.5s;
 	position: initial;
 }
@@ -900,7 +900,8 @@
 	width: 28%;
 }
 .icono_1{/*header_tienda*/
-	display: none !important;
+	display: inline !important;
+	padding-right: 8%;
 }
 .icono_2{/*CantidadTiendas*/
 	font-size: 50px;
