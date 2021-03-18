@@ -6,9 +6,9 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar =   1881868 ;
+            // $this->Dolar =   1804479 ;
             
-            //Se conecta a la API de DolarToday para actualizar el valor del dolar
+            // //Se conecta a la API de DolarToday para actualizar el valor del dolar
             // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
             // echo '<pre>';
             // print_r($DolarHoy);
@@ -21,7 +21,68 @@
             ocultarErrores();
         }
         
-        public function index(){    
+        public function index(){     
+             //Se conecta a la API de DolarToday para actualizar el valor del dolar
+            $DolarHoy = file_get_contents('https://s3.amazonaws.com/dolartoday/data.json');
+            
+            // $JsonBien = '[{
+            //     "id": 6,
+            //     "text": "10",
+            //     "item": 0
+            // }, {
+            //     "id": 7,
+            //     "text": "45",
+            //     "item": 1
+            // }, {
+            //     "id": 8,
+            //     "text": "3^2",
+            //     "item": 2
+            // }, {
+            //     "id": 9,
+            //     "text": "6",
+            //     "item": 3
+            // }, {
+            //     "id": 10,
+            //     "text": "666",
+            //     "item": 4
+            // }]';
+            
+            // echo 'Precio Dolar= ' . $JsonBien . '<br>';
+            
+            echo 'Precio Dolar= ' . $DolarHoy . '<br>';
+            
+            $DolarHoy_Json = json_decode($DolarHoy);
+            echo $DolarHoy_Json; 
+            switch(json_last_error()) {
+                case JSON_ERROR_NONE:
+                    echo ' - Sin errores';
+                break;
+                case JSON_ERROR_DEPTH:
+                    echo ' - Excedido tamaño máximo de la pila';
+                break;
+                case JSON_ERROR_STATE_MISMATCH:
+                    echo ' - Desbordamiento de buffer o los modos no coinciden';
+                break;
+                case JSON_ERROR_CTRL_CHAR:
+                    echo ' - Encontrado carácter de control no esperado';
+                break;
+                case JSON_ERROR_SYNTAX:
+                    echo ' - Error de sintaxis, JSON mal formado';
+                break;
+                case JSON_ERROR_UTF8:
+                    echo ' - Caracteres UTF-8 malformados, posiblemente están mal codificados';
+                break;
+                default:
+                    echo ' - Error desconocido';
+                break;
+            }
+            
+            // echo '<pre>';
+            // var_dump($DolarHoy);
+            // echo '</pre>';
+            exit;
+
+            $this->Dolar = $DolarHoy['USD']['promedio_real']; 
             require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
 
             $this->ActualizarPrecio = new CalculoDolar_C();

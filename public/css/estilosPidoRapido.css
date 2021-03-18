@@ -1183,10 +1183,8 @@ body, html{
 	font-size: 1.2em;
 }
 .contMuestraBuscador{/*buscador*/
-	/* background-color: var(--OficialClaro); */
 	border-radius: 15px;
 	margin: auto;
-	/* padding: 1%; */
 	margin: 1%;
 	width: 20%;
 }
@@ -1256,10 +1254,6 @@ body, html{
 	width: 70%;
 	margin: auto;
 	line-height: 30px;
-}
-.contGridUna{/*descr_Producto*/
-	/* display: grid;
-	grid-template-columns: 100%; */
 }
 .contGridTres{/*Categorias_Ajax*/
 	display: grid;

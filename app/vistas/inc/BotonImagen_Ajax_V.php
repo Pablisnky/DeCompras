@@ -7,7 +7,8 @@
         <?php
     }
     else{   ?>                        
-        <p class="p_5">Añada hasta 5 fotografias no mayor a 2Mb</p>
+        <p class="">Añada hasta 4 imagenes no mayor a 2 Mb / C.U</p>
+        <br>
         <label for="ImgInp_2" class="label_5 label_23" >Añadir imagen</label>
         <?php
     }   ?>
