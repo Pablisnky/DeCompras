@@ -34,8 +34,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/> -->
         
     <div class="contenedor_42">    
         <p class="p_6">Actualizar datos de producto</p>
@@ -46,14 +46,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div>                    
                     <div class="contenedor_119 borde_1 borde_2">
                         <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
-                        <label for="imgInp_2"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
-                        <input class="ocultar" type="file" name="imagen_Tienda" id="imgInp_2"/>
+                        <label for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
+                        <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
                     </div>
                     <div class="contInputRadio contInputRadio--center">     
-                        <input type="checkbox" name="imgSeccion" id="ImgSeccion"  <?php if($ImgSeccion == 1){echo 'checked';} ?>/>
+                        <input type="checkbox" name="imgSeccion" id="ImgSeccion" <?php if($ImgSeccion == 1){echo 'checked';} ?>/>
                         <label class="contInputRadio__label" for="ImgSeccion">Imagen de sección</label>
-                    </div>   
-                    <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
+                    </div>  
                 </div>
                 <div id="Contenedor_152">
                     <!-- PRODUCTO -->
@@ -186,21 +185,20 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prod.js?v=' . rand();?>"></script> 
 
     <script> 
-        //Da una vista previa de la imagen principal
-        function readImage(input, id_Label){
-            // console.log("______Desde readImage()______", input + ' | ' + id_Label)
+        //Da una vista previa de la imagen principal antes de guardarla en la BD
+        function readImage(input){
+            // console.log("______Desde readImage()______", input)
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = function(e){
-                    id_Label.attr('src', e.target.result); //Renderizamos la imagen
+                    $('#blah_2').attr('src', e.target.result); // Renderizamos la imagen
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
         $("#imgInp").change(function(){
             //Código a ejecutar cuando se detecta un cambio de archivo en imagen principal
-            var id_Label = $('#blah');
-            readImage(this, id_Label);
+            readImage(this);
         });
         
         //Da una vista previa de las imagenes secundarias seleccionadas

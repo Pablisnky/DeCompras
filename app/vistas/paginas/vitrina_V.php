@@ -18,9 +18,6 @@
     }
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL;?>/public/css/iconos/flechaAtras/style_flechaAtras.css"/>
-
 <div class="section_5">	
     <!-- div mostrado solo en responsive -->
     <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
@@ -50,7 +47,7 @@
                             endif;  
                         endforeach;  
                         if(empty($SeccionExiste)){ ?>
-                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
+                            <div class="contenedor_9 contenedor_9--contain" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
                             </div> <?php
                         }
                         $SeccionExiste = '';

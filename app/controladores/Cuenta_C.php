@@ -116,7 +116,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
-                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, seccion, nombre_img, fotoSeccion
+                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, cantidad, disponible, seccion, nombre_img, fotoSeccion
                 // 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja
                 'Apunta' => $Puntero,
@@ -532,10 +532,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
 
                         //usar en local
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -991,10 +991,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             // usar en local
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //se muestra el directorio temporal donde se guarda el archivo
                             //echo $_FILES['imagen']['tmp_name'];
@@ -1034,10 +1034,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
@@ -1113,10 +1113,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1146,83 +1146,85 @@
             //IMAGENES SECUNDARIAS
             // ********************************************************
             //Se verifican cuantas imagenes se estan recibiendo, incluyendo las que ya existen en la BD
-            $Cantidad = count($_FILES["imagen_EditarVarias"]["name"]);
-            // echo 'Imagenes recibidas= ' . $Cantidad . '<br>';
+            if(isset($_FILES["imagen_EditarVarias"]["name"])) :
+                $Cantidad = count($_FILES["imagen_EditarVarias"]["name"]);
+                // echo 'Imagenes recibidas= ' . $Cantidad . '<br>';
 
-            //BUcle que inserta las imagenes secndarias en la BD, cada vuelta inserta una imagen
-            for($i = 0; $i < $Cantidad ; $i++){
-                //Las imagenes que existian en la BD se reciben sin su nombre por lo que no van a entrar en bucle, solo las imagenes que vienen por medio del input de agregar imagen son las que entran en el bucle
-                if($_FILES['imagen_EditarVarias']['name'][$i] != ''){
-                    $nombre_imgVarias = $_FILES['imagen_EditarVarias']['name'][$i];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
-                    $tipo_imgVarias = $_FILES['imagen_EditarVarias']['type'][$i];
-                    $tamanio_imgVarias = $_FILES['imagen_EditarVarias']['size'][$i];
+                //Bucle que inserta las imagenes secundarias en la BD, cada vuelta inserta una imagen
+                for($i = 0; $i < $Cantidad ; $i++) :
+                    //Las imagenes que existian en la BD se reciben sin su nombre por lo que no van a entrar en bucle, solo las imagenes que vienen por medio del input de agregar imagen son las que entran en el bucle
+                    if($_FILES['imagen_EditarVarias']['name'][$i] != ''){
+                        $nombre_imgVarias = $_FILES['imagen_EditarVarias']['name'][$i];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
+                        $tipo_imgVarias = $_FILES['imagen_EditarVarias']['type'][$i];
+                        $tamanio_imgVarias = $_FILES['imagen_EditarVarias']['size'][$i];
 
-                    // echo "Nombre de imagen secundaria= " . $nombre_imgVarias . '<br>';
-                    // echo "Tipo de archivo = " .$tipo_imgVarias .  "<br>";
-                    // echo "Tamaño = " . $tamanio_imgVarias . "<br>";
-                    // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
-                    // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
+                        // echo "Nombre de imagen secundaria= " . $nombre_imgVarias . '<br>';
+                        // echo "Tipo de archivo = " .$tipo_imgVarias .  "<br>";
+                        // echo "Tamaño = " . $tamanio_imgVarias . "<br>";
+                        // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
+                        // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br><br>";
 
-                    //Se verifica que tenga un formato y tamaño correcto
-                    if(($nombre_imgVarias == !NULL) AND ($tamanio_imgVarias <= 2000000)){
-                        //indicamos los formatos que permitimos subir a nuestro servidor
-                        if(($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpeg")
-                            || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpg") || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/png")){
+                        //Se verifica que tenga un formato y tamaño correcto
+                        if(($nombre_imgVarias == !NULL) AND ($tamanio_imgVarias <= 2000000)){
+                            //indicamos los formatos que permitimos subir a nuestro servidor
+                            if(($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpeg")
+                                || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/jpg") || ($_FILES["imagen_EditarVarias"]["type"][$i] == "image/png")){
 
-                            // Ruta donde se guardarán las imágenes que subamos la variable superglobal
-                            // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+                                // Ruta donde se guardarán las imágenes que subamos la variable superglobal
+                                // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
-                            //Usar en remoto
-                            // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                                //Usar en remoto
+                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
-                            //usar en local
-                            $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                                //usar en local
+                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
-                            //se muestra el directorio temporal donde se guarda el archivo
-                            //echo $_FILES['imagen']['tmp_name'];
-                            
-                            // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
-                            move_uploaded_file($_FILES['imagen_EditarVarias']['tmp_name'][$i], $directorio_5.$nombre_imgVarias);
+                                //se muestra el directorio temporal donde se guarda el archivo
+                                //echo $_FILES['imagen']['tmp_name'];
+                                
+                                // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                                move_uploaded_file($_FILES['imagen_EditarVarias']['tmp_name'][$i], $directorio_5.$nombre_imgVarias);
 
-                            //Para actualizar fotografias varias solo si se ha presionado el boton de buscar fotografia; en realidad no se actualizan, simplemente se insertan las que se reciben del formulario
+                                //Para actualizar fotografias varias solo si se ha presionado el boton de buscar fotografia; en realidad no se actualizan, simplemente se insertan las que se reciben del formulario
 
-                            //Se consulta la cantidad de imagenes que tiene el producto en BD
-                            $CantidadImagenes = $this->ConsultaCuenta_M->consultarCantidadImagenes($RecibeProducto['ID_Producto']);
-                            // echo 'Cantidad de imagenes en BD= ' . $CantidadImagenes[0]['CantidadFotos'] . '<br>';
-                            // exit;
+                                //Se consulta la cantidad de imagenes que tiene el producto en BD
+                                $CantidadImagenes = $this->ConsultaCuenta_M->consultarCantidadImagenes($RecibeProducto['ID_Producto']);
+                                // echo 'Cantidad de imagenes en BD= ' . $CantidadImagenes[0]['CantidadFotos'] . '<br>';
+                                // exit;
 
-                            $ImagenesRecibidas = $CantidadImagenes[0]['CantidadFotos'];
-                            // echo 'Cantidad de imagenes secundarias a isertar en BD= ' .  $ImagenesRecibidas . '<br>';
-                            // exit;
+                                $ImagenesRecibidas = $CantidadImagenes[0]['CantidadFotos'];
+                                // echo 'Cantidad de imagenes secundarias a isertar en BD= ' .  $ImagenesRecibidas . '<br>';
+                                // exit;
 
-                            if($ImagenesRecibidas < 5){
-                                //Se INSERTAN las fotografias del producto
-                                $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias,$RecibeProducto['ID_Seccion']);
-                                // echo 'Imagen insertada existosamente' . '<br>';
+                                if($ImagenesRecibidas < 5){
+                                    //Se INSERTAN las fotografias secundarias del producto
+                                    $this->ConsultaCuenta_M->insertarFotografiasSecun($RecibeProducto['ID_Producto'], $nombre_imgVarias, $tipo_imgVarias, $tamanio_imgVarias,$RecibeProducto['ID_Seccion']);
+                                    // echo 'Imagen insertada existosamente' . '<br>';
+                                }
+                                else{
+                                    echo 'Solo puede cargar cuatro imagenes adicionales' . '<br>';
+                                    echo '<a href="javascript:history.back()">Regresar</a>';
+                                    exit();
+                                }
                             }
                             else{
-                                echo 'Solo puede cargar cuatro imagenes adicionales' . '<br>';
+                                echo 'La imagen no tiene el formato correcto' . '<br>';
                                 echo '<a href="javascript:history.back()">Regresar</a>';
                                 exit();
                             }
                         }
                         else{
-                            echo 'La imagen no tiene el formato correcto' . '<br>';
+                            echo 'Una imagen es demasiado grande' . '<br>';
                             echo '<a href="javascript:history.back()">Regresar</a>';
                             exit();
                         }
                     }
-                    else{
-                        echo 'Una imagen es demasiado grande' . '<br>';
-                        echo '<a href="javascript:history.back()">Regresar</a>';
-                        exit();
-                    }
-                }
-                // echo '<br>';
-            }
+                    // echo '<br>';
+                endfor;            
+            endif;
             
             // exit;
-            //SECCION CARACTERISTICAS
+            //CARACTERISTICAS
             // ********************************************************
             // Recibe las caracteristicas del producto
             if($_POST['caracteristica'][0] != ''){
@@ -1260,10 +1262,10 @@
                 
                 //Se ACTUALIZA la dependenciatransitiva entre secciones e imagenes
                 // $this->ConsultaCuenta_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);
-            } 
+            }
 
             //Para establecer como imagen de sección
-            echo $RecibeProducto['ImgSeccion'];
+            // echo $RecibeProducto['ImgSeccion'];
             if($RecibeProducto['ImgSeccion'] == '1'){
                 //Se consulta que imagen esta establecida para la sección
                 $ID_ImagenSeccion = $this->ConsultaCuenta_M->consultarImagenSeccion($RecibeProducto);
@@ -1292,7 +1294,6 @@
             // $Seccion_Puntero = $Seccion . ',' . $Puntero;
 
             $this->Productos($Seccion);
-            // $this->vista("paginas/cuenta_productos_V");
         }
 
         //Invocado desde cuenta_productos_V.php

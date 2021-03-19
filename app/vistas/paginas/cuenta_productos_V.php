@@ -6,7 +6,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <section class="section_3 section_9">
         <div class="contenedor_90 contenedor_91">
-            <h2 class="h2_9">Productos ofertados</h2>
+            <h2 class="h2_9">Sección</h2>
             <?php
            //Mediante operador ternario
             $Datos['Seccion'] != 'Todos' ? $Datos['Seccion']  : 'Todos';  ?>
@@ -23,6 +23,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $Opcion = $arr["opcion"];
                 $PrecioBolivar = number_format($arr["precioBolivar"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
                 $PrecioDolar = $arr["precioDolar"];
+                $Disponible = $arr['disponible'];
                 $Existencia = $arr["cantidad"];
                 $ID_Producto = $arr["ID_Producto"];
                 $ID_Opcion = $arr["ID_Opcion"];
@@ -75,8 +76,33 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <!-- OPCION -->                        
                         <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" ><?php echo $Opcion;?></label>
 
-                        <!-- UNIDADES EN EXISTNCIA -->                        
-                        <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?></label>
+                        <!-- UNIDADES EN EXISTNCIA -->    
+                        <?php
+                        if($Existencia == 1) :  ?>                   
+                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Unidad</label> <?php
+                        elseif($Existencia > 1) :   ?>
+                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Unidades</label> <?php
+                        elseif($Disponible == 1) :   ?>
+                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >En existencia</label> <?php
+                        elseif($Disponible == 0) :   ?>
+                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: Agotado</label>
+                            <?php
+                        endif;  ?>
+
+                        <?php // require(RUTA_APP . "/vistas/complementos/existencia.php");  ?>
+
+
+
+
+
+
+
+
+
+
+
+
+                        
 
                         <!-- PRECIO -->
                         <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>">Bs.<?php echo $PrecioBolivar;?></label>

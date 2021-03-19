@@ -13,13 +13,28 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <div class="contenedor_42">    
         <p class="p_6">Carga un producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
-            <div class="contenedor_47">            
+            <div class="contenedor_47">    
+
+
+
+
+
+
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                     <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                     <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
                 </div>  
+
+                   
+
+
+
+
+
+
+
                 <div>
                     <!-- PRODUCTO -->
                     <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro" placeholder="Producto" tabindex="1" onkeydown="blanquearInput('ContenidoPro')"></textarea>
@@ -78,7 +93,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                     <!-- IMAGENES SECUNDARIAS -->
                     <div class="contenedor_130" id="muestrasImg_2"></div>  
-                        <p class="p_5">Añada hasta 5 fotografias no mayor a 2Mb</p>
+                        <p class="p_5">Añada hasta 4 fotografias no mayor a 2 Mb / CU</p>
 
                         <label class="label_5 label_23" for="ImgInp_2">Añadir imagen</label>
                         <input class="ocultar" type="file" name="imagenes[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/>  
@@ -100,9 +115,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
 
     <script> 
-        //Da una vista previa de la imagen principal antes de guardarla en la BD usada en cuenta_editar_prod_V.php
+        //Da una vista previa de la imagen principal antes de guardarla en la BD
         function readImage(input){
-        // console.log("______Desde readImage()______")
+        // console.log("______Desde readImage()______", input)
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = function(e){
