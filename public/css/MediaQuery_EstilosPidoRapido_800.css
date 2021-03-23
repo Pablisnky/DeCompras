@@ -525,7 +525,7 @@
 	width: 100%;
 	grid-template-columns: 53% 47%;
 	column-gap: 0%;/*espacio entre filas*/
-	margin-bottom: 25%;
+	margin-bottom: 35%;
 }
 .contenedor_97{/*opciones*/
 	height: 133px; 
@@ -908,8 +908,10 @@
 	display: block;
 	width: 100%;
 	text-align: center;
-	/* margin-top: -10px; */
-	/* margin-bottom: 10px; */
+}
+.icono_7{/*opciones*/
+	padding: 9% 10%;
+	padding-top: 14%;
 }
 .imagen_2{/*vitrina*/
 	width: 100px;

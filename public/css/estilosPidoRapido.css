@@ -390,7 +390,6 @@ body, html{
 }
 .contenedor_14{/*opciones*/
 	display: none;
-	/* grid-template-rows: 0px; */
 	height: 20px;
 	grid-column-start: 1;
 	grid-column-end: 3;
@@ -772,11 +771,6 @@ body, html{
 	width: 32%;
 	max-height: 150px;
 	margin-bottom: 8%;
-}
-.contenedor_95:hover{
-	/* background-color: var(--OficialClaro);
-	border-radius: 15px;
-	cursor: pointer; */
 }
 .contenedor_96{/*cuenta_productos*/
 	display: flex; /*Organiza los elementos horizontalmente*/
@@ -1691,6 +1685,19 @@ body, html{
 }
 .icono_6{/*header_inicio*/
 	margin-bottom: 5%;
+}
+.icono_7{/*opciones*/
+	background-color:rgb(78, 43, 43);
+	color: white;
+	padding: 9% 10%;
+	padding-top: 12%;
+	cursor: pointer;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border: none;
+	margin: 0px !important;
+	width: 30%;
+	font-size: 0.7em !important;
 }
 .image_1{/*tiendas - cuenta*/
 	width: 100%;

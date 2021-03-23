@@ -6,17 +6,17 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            // $this->Dolar = 1804994;
+            $this->Dolar = 1821810;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
-            $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
+            // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
             // echo '<pre>';
             // print_r($DolarHoy);
             // echo '</pre>';
             // exit;
 
-            $this->Dolar = $DolarHoy['USD']['promedio_real']; 
-            $this->Dolar = number_format($this->Dolar, 0, '', '');
+            // $this->Dolar = $DolarHoy['USD']['promedio_real']; 
+            // $this->Dolar = number_format($this->Dolar, 0, '', '');
             // echo $this->Dolar;
             // exit;
 

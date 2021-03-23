@@ -79,9 +79,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <!-- UNIDADES EN EXISTNCIA -->    
                         <?php
                         if($Existencia == 1) :  ?>                   
-                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Unidad</label> <?php
+                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Ud.</label> <?php
                         elseif($Existencia > 1) :   ?>
-                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Unidades</label> <?php
+                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Uds.</label> <?php
                         elseif($Disponible == 1) :   ?>
                             <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >En existencia</label> <?php
                         elseif($Disponible == 0) :   ?>

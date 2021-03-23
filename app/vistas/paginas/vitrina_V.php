@@ -68,7 +68,7 @@
                         </div>
                     </div>
 
-                    <!-- Se agregan las leyendas desde TransferirPedido() -->
+                    <!-- Se agregan las leyendas desde TransferirPedido() en E_Vitrinas.js -->
                 </div>
                 <?php
                 $Contador++;
