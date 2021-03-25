@@ -11,10 +11,11 @@
         //llamado desde A_Vitrina.js por medio de la función llamar_Opciones()
         public function index($ID_Tienda, $ID_Seccion, $OpcionSelec){  
             //PENDIENTE - PENDIENTE estas variable se reciben desde ajax y pierden el formato, (cuando son dos palabras el espacio que las separa se pierde) por eso se realiza este switch para poder hacer la consulta con el texto como debe ser.
-            // echo $ID_Tienda;
-            // echo $ID_Seccion;
-            // echo $OpcionSelec;
-
+            // echo $ID_Tienda . '<br>';
+            // echo $ID_Seccion . '<br>';
+            // echo $OpcionSelec . '<br>';
+            // exit;
+            
             $Consulta = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $ID_Seccion);   
             // echo "<pre>";
             // print_r($Consulta);

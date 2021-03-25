@@ -894,22 +894,22 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 // console.log(AlCarro)
                 // console.log(AlContenedor)
                 //Se elimina el producto del array que contiene el pedido, esta informacion es la que va al resumen de la orden
-                function ProductoEditado(Opcion){
+                function ProductoEditado(Producto){
                     var existe = false;
                     for(i = 0; i < AlCarro.length; i++){
-                        if(AlCarro[i].Opcion == Opcion ){
+                        if(AlCarro[i].Producto == Producto ){
                             AlCarro.splice(i, 1);
                         }
                     }
                   
                     for(i = 0; i < AlContenedor.length; i++){
-                        if(AlContenedor[i].Opcion == Opcion ){
+                        if(AlContenedor[i].Producto == Producto ){
                             AlContenedor.splice(i, 1);
                         }
                     }
                     return existe;
                 }
-                ProductoEditado(PedidoGlobal.Opcion)
+                ProductoEditado(PedidoGlobal.Producto)//Antes Opcion NOTA = CAMBIAR POR ID DE PRODUCTO, ESTA FUNCION ES LLAMADA TAMBIEN EN PRE_INCREMENTE()
                
                 //Busca por el precio del producto a liminar y devuelve la posición de la primera ocurrencia.
                 let Eliminar = DisplayCarrito.indexOf(Precio)
@@ -1453,7 +1453,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     function BotonBloqueado(){
         // console.log("______Desde BotonBloqueado()______")
 
-        alert("Limite alcanzado, producto sin inventario")
+        alert("Limite alcanzado, el producto a quedado sin inventario")
     }
     
 // ************************************************************************************************
