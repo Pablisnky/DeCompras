@@ -708,6 +708,7 @@ body, html{
 	grid-template-rows: min-content !important;
 	column-gap: 3%;/*espacio entre columnas*/
 	justify-content: center;/*centra horizontalmente*/
+	margin: 3% auto;
 }
 .contenedor_84--100{/*modal_Secciones*/
 	width: 100%;
@@ -1713,7 +1714,7 @@ body, html{
 .imagen_2:hover{/*cuenta_editar_prod*/
 	cursor: pointer;
 }
-.imagen_3{/*cuenta_editar*/
+.imagen_3{/*cuenta_editar - footer*/
 	margin: auto;
 	margin-bottom: 1%;
 	display: block;
@@ -2179,7 +2180,13 @@ body, html{
 	color: rgb(51, 51, 51);
 	font-size: 1.9em;
 	text-align: center;
+	margin-top: 5%;
 	padding-bottom: 5%;
+}
+.p_11--complemento{/*afiliacion*/
+	margin-top: -5% !important;
+	font-size: 1em !important;
+	margin-bottom: -5% !important;
 }
 .p_12{/*cuenta_editar*/
 	margin: 0% auto 5% auto;

@@ -1238,12 +1238,6 @@
             // exit;
             $stmt = $this->dbh->prepare("INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad, disponible) VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)");
 
-            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':OPCION', $Opcion);
-            $stmt->bindParam(':PRECIOBS', $PrecioBs);
-            $stmt->bindParam(':PRECIODOLAR', $PrecioDolar);
-            $stmt->bindParam(':CANTIDAD', $Cantidad);
-            $stmt->bindParam(':DISPONIBLE', $Disponible);
 
             // insertar una fila
             $Opcion = $RecibeProducto['Descripcion'];
@@ -1252,6 +1246,13 @@
             $Cantidad = $RecibeProducto['Cantidad'];
             $Disponible = $RecibeProducto['Disponible'];
 
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':OPCION', $Opcion);
+            $stmt->bindParam(':PRECIOBS', $PrecioBs);
+            $stmt->bindParam(':PRECIODOLAR', $PrecioDolar);
+            $stmt->bindParam(':CANTIDAD', $Cantidad);
+            $stmt->bindParam(':DISPONIBLE', $Disponible);
+            
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
                 // se recupera el ID del registro insertado

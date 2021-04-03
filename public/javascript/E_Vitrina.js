@@ -77,11 +77,11 @@ document.addEventListener('click', function(event){
 
 // *****************************************************************************************************
   //obtiene informacion del DOM del elemento donde se hizo click 
- window.addEventListener("click", function(e){
+//  window.addEventListener("click", function(e){
      // console.log("_____Desde función anonima para ocultar menu_____")
-     var click = e.target
+    //  var click = e.target
     //  console.log(click)
- }, false)
+//  }, false)
 
 // *****************************************************************************************************
 //seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos en div Mostrar_Orden ubicado en vitrina_V.php
@@ -759,7 +759,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             boton.onclick = decrementar // Asignar la función decrementar() en su evento click.
         }    
         function decrementar(e){   
-            // console.log("______Desde decrementar()______") 
+            console.log("______Desde decrementar()______") 
             
             //Se obtiene el div padre donde se encuentra el boton menos al que se hizo click
             current = e.target.parentElement
@@ -965,7 +965,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             DisplayDestello()
                      
             //Si la existencia en BD es igual a 1 se oculta el boton de mas y menos para que no se añadan más productos al carrito
-            if(Number(BloquearMasJS.value) >= Cantidades){
+            if(Number(BloquearMasJS.value) >= Cantidades || Number(BloquearMasJS.value) == 0){
                 document.getElementById(ID_LabelMas).style.display = "inline" 
                 document.getElementById(ID_LabelBloqueo).style.display = "none" 
             }

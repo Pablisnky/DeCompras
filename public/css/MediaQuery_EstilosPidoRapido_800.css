@@ -277,6 +277,7 @@
 	margin-left: 0%;
 	margin-top: 5% !important;
 	padding: 0%;
+	margin-bottom: 30%;
 }
 .contenedor_42{/*registroCom - registroDes - login*/
 	width: 100%;
@@ -372,9 +373,9 @@
 .contenedor_68{/*afiliacion*/
 	height: 100%;
 }
-.header{/*header - header_inicio - header_Tienda - header_AfiCom*/
-	height: 45px;
-}
+/* .header{/*header - header_inicio - header_Tienda - header_AfiCom*/
+	/* height: 45px; */
+} */
 .header-AfiCom{/*header_AfiCom*/
 	height: 50px;
 }
@@ -1087,6 +1088,9 @@
 	margin: 2% auto 1% auto ;
 	text-align: center;
 }
+.p_5--complemento{/*afiliacion*/
+	margin-top:25% !important;
+}
 .p_6{/*cuenta_editar - afiliacion*/
 	margin-top: 5%;
 	font-size: 1em!important;
@@ -1102,7 +1106,13 @@
 	margin-bottom: 10%;
 }
 .p_11{/*afiliacion*/
-	padding-bottom: 5% !important;
+	margin-top: 3%;
+	padding-bottom: 0% !important;
+}
+.p_11--complemento{/*afiliacion*/
+	margin-top: 0% !important;
+	font-size: 1em !important;
+	margin-bottom: -5% !important;
 }
 .p_13{/*carrito*/
 	font-size: 1em;
