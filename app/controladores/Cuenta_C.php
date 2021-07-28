@@ -51,9 +51,9 @@
 
         //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - Cuenta_C/recibeProductoPublicar - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
         public function Productos($DatosAgrupados){
-            //$DatosAgrupados contiene una cadena con el  separados por coma, se convierte en array para separar los elementos
-            // echo $DatosAgrupados . '<br>';
-            // echo $this->ID_Tienda . '<br>';
+            //$DatosAgrupados contiene una cadena con el separados por coma, se convierte en array para separar los elementos
+            // echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
+            // echo 'ID_Tienda= ' . $this->ID_Tienda . '<br>';
 
             $DatosAgrupados = explode(",", $DatosAgrupados);
 
@@ -362,8 +362,8 @@
             $DolarHoy = $this->PrecioDolar->Dolar;
 
             $Datos = [
-                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien
-                'secciones' => $Secciones, //Usado en header_AfiCom.php
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
+                'secciones' => $Secciones, //ID_Seccion, seccion  - Usado en header_AfiCom.php
                 'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, producto, opcion, precioBolivar, precioDolar, cantidad, disponible, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
@@ -903,10 +903,10 @@
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
                         // 'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
-                        'Descripcion' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
+                        'Descripcion' => preg_replace("[\n|\r|\n\r|\]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
-                        'Cantidad' => !empty($_POST['cantidad']),
+                        'Cantidad' => $_POST['cantidad'],
                         'Disponible' => !empty($_POST['disponible']),
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
@@ -970,10 +970,10 @@
                 //IMAGEN PRINCIPAL
                 //********************************************************
                 //Si se selecionó alguna imagen entra
-                if($_FILES['foto_Producto']["name"] != ""){
-                    $nombre_imgProducto = $_FILES['foto_Producto']['name'];
-                    $tipo_imgProducto = $_FILES['foto_Producto']['type'];
-                    $tamanio_imgProducto = $_FILES['foto_Producto']['size'];
+                // if($_FILES['foto_Producto']["name"] != ""){
+                    $nombre_imgProducto = $_FILES['foto_Producto']['name'] != '' ? $_FILES['foto_Producto']['name'] : 'imagen.png';
+                    $tipo_imgProducto = $_FILES['foto_Producto']['type'] != '' ? $_FILES['foto_Producto']['type'] : 'image/png';
+                    $tamanio_imgProducto = $_FILES['foto_Producto']['size'] != '' ?  $_FILES['foto_Producto']['size'] : '28,0 KB';
 
                     // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
                     // echo "Tipo de archivo = " .$tipo_imgProducto .  "<br>";
@@ -984,8 +984,8 @@
                     //Si existe foto_Producto y tiene un tamaño correcto
                     if(($nombre_imgProducto == !NULL) AND ($tamanio_imgProducto <= 2000000)){
                         //indicamos los formatos que permitimos subir a nuestro servidor
-                        if(($_FILES["foto_Producto"]["type"] == "image/jpeg")
-                            || ($_FILES["foto_Producto"]["type"] == "image/jpg") || ($_FILES["foto_Producto"]["type"] == "image/png")){
+                        if(($tipo_imgProducto == "image/jpeg")
+                            || ($tipo_imgProducto == "image/jpg") || ($tipo_imgProducto == 'image/png')){
 
                             //Ruta donde se guardarán las imágenes que subamos la variable superglobal
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
@@ -1020,7 +1020,7 @@
                         echo '<a href="javascript: history.go(-1)">Regresar</a>';
                         exit();
                     }
-                }
+                // }
 
                 //SECCION IMAGENES SECUNDARIAS
                 //********************************************************
@@ -1362,7 +1362,7 @@
             $this->Editar();
         }
         
-        //Invocado desde cuenta_editar_V.php
+        //Invocado desde cuenta_editar_V.php - A_Cuenta_editar.js
         public function ActualizarSeccion($Seccion, $ID_Seccion){
             //Se ACTUALIZA una seccion 
             $this->ConsultaCuenta_M->ActualizarSeccion($Seccion, $ID_Seccion);
