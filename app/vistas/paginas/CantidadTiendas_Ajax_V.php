@@ -113,6 +113,39 @@
         </div>
     </div>
 
+    <div class='contenedor_6 borde_1' id="Repuesto_automotriz">
+        <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
+        <i class="fas fa-car-crash icono_2"></i>                
+        <div class="contenedor_106">
+            <span class="span_21 borde_1">
+                <?php
+                foreach($Datos['cantidadTiendasCategoria'] as $arr) :
+                    if($arr['ID_Categoria'] == 11){  
+                        $CantidadRepuesto_automotriz = $arr['cantidad']; 
+                        echo $CantidadRepuesto_automotriz;  ?>
+                        <style>
+                            #Repuesto_automotriz .span_21{
+                                background-color: var(--Aciertos);
+                            }
+                        </style>  <?php
+                    }
+                endforeach; 
+                if(empty($CantidadRepuesto_automotriz)){                                     
+                    echo 0; ?>
+                    <style>
+                        #Repuesto_automotriz{
+                            position: relative;
+                            z-index: -1 !important;      
+                        }
+                        #Repuesto_automotriz .span_21{
+                            background-color: var(--Fallos);
+                        }
+                    </style>  <?php
+                }   ?>
+            </span>
+        </div>
+    </div>
+
     <div class='contenedor_6 borde_1' id="Material_Medico_Quirurgico">
         <h2 class='h2_1'>MATERIAL MÉDICO QUIRURGICO</h2>
         <i class="fas fa-hospital icono_2"></i>              
@@ -246,39 +279,6 @@
                             z-index: -1 !important;      
                         }
                         #Frutas .span_21{
-                            background-color: var(--Fallos);
-                        }
-                    </style>  <?php
-                }   ?>
-            </span>
-        </div>
-    </div>
-
-    <div class='contenedor_6 borde_1' id="Repuesto_automotriz">
-        <h2 class='h2_1'>REPUESTO AUTOMOTRIZ</h2>
-        <i class="fas fa-car-crash icono_2"></i>                
-        <div class="contenedor_106">
-            <span class="span_21 borde_1">
-                <?php
-                foreach($Datos['cantidadTiendasCategoria'] as $arr) :
-                    if($arr['ID_Categoria'] == 11){  
-                        $CantidadRepuesto_automotriz = $arr['cantidad']; 
-                        echo $CantidadRepuesto_automotriz;  ?>
-                        <style>
-                            #Repuesto_automotriz .span_21{
-                                background-color: var(--Aciertos);
-                            }
-                        </style>  <?php
-                    }
-                endforeach; 
-                if(empty($CantidadRepuesto_automotriz)){                                     
-                    echo 0; ?>
-                    <style>
-                        #Repuesto_automotriz{
-                            position: relative;
-                            z-index: -1 !important;      
-                        }
-                        #Repuesto_automotriz .span_21{
                             background-color: var(--Fallos);
                         }
                     </style>  <?php

@@ -185,9 +185,13 @@
 
         //CONSULTA los correos de comerciantes existentes en la BD
         public function consultarCorreoCom(){  
-            $stmt = $this->dbh->prepare("SELECT correo_AfiCom FROM afiliado_com");
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_AfiCom 
+                FROM afiliado_com"
+            );
+            
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;
@@ -196,14 +200,31 @@
 
         //CONSULTA los correos de despachadores existentes en la BD
         public function consultarCorreoDes(){  
-            $stmt = $this->dbh->prepare("SELECT correo_AfiDes FROM afiliado_des");
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_AfiDes 
+                FROM afiliado_des"
+            );
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;
             }
         }  
+
+        //CONSULTA los nombre de tiendas existentes en la BD
+        public function consultarNombresTiendas(){  
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_Tien 
+                FROM tiendas"
+            );
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
 
         //CONSULTA las claves de despachadores existentes en la BD
         public function consultarClaveDes(){ 

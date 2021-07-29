@@ -29,6 +29,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $ID_Opcion = $arr["ID_Opcion"];
                 $FotoPrincipal = $arr['nombre_img'];
                 $FotoSeccion = $arr['fotoSeccion'];
+                // echo "<pre>";
+                // print_r($Datos['productos']);
+                // echo "</pre>";
+                // exit;
 
                 //Esta condición es para verificar si se viene desde el buscador
                 if($Datos['Apunta'] == $Opcion){   ?>
@@ -88,21 +92,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: Agotado</label>
                             <?php
                         endif;  ?>
-
-                        <?php // require(RUTA_APP . "/vistas/complementos/existencia.php");  ?>
-
-
-
-
-
-
-
-
-
-
-
-
-                        
 
                         <!-- PRECIO -->
                         <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>">Bs.<?php echo $PrecioBolivar;?></label>

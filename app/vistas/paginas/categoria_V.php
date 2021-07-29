@@ -1,5 +1,5 @@
 <?php
-    if(!empty($Datos['ciudades'])){ ?>
+    // if(!empty($Datos['ciudades'])){ ?>
         <section class="sectionTienda" id="Section_4">
             <a  href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>"><i class="fas fa-times spanCerrar"></i></a>
             <div class="sectionTienda_div" id="SectionTiendas">
@@ -21,7 +21,7 @@
             </div>
         </section>
     <?php
-   }   ?>
+//    }   ?>
         
 <div class="section_1" >
    <!-- Alimentado via Ajax desde A_Categorias.js por medio de Llamar_TiendasCiudad() -->

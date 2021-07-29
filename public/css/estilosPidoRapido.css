@@ -167,11 +167,11 @@ body, html{
 	border-width: 1px;
 	border-style: solid;
 }
-.botonReverso{
+.botonReverso{/*vitrina*/
 	background-color: var(--OficialClaro);
 	color: var(--OficialOscuro);
 	height: 20px;
-	font-size: 5hw;
+	/* font-size: 5hw; */
 	font-weight: normal;
 	min-height: 28px;
 	line-height: 25px;
@@ -847,7 +847,7 @@ body, html{
 }
 .contenedor_109{/*vitrina*/
 	display: none;
-	background-repeat: no-repeat; */
+	background-repeat: no-repeat;
 }
 .contenedor_110{/*vitrina*/
 	display: grid;
@@ -1714,7 +1714,7 @@ body, html{
 .imagen_2:hover{/*cuenta_editar_prod*/
 	cursor: pointer;
 }
-.imagen_3{/*cuenta_editar - footer*/
+.imagen_3{/*cuenta_editar*/
 	margin: auto;
 	margin-bottom: 1%;
 	display: block;

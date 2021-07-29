@@ -138,7 +138,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
 
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
-        let ImagenPrin = document.getElementById('imgInp').value 
+        // let ImagenPrin = document.getElementById('imgInp').value 
         let PrecioBs = document.getElementById('PrecioBs').value 
         let PrecioDolar = document.getElementById('PrecioDolar').value 
         let Seccion = document.getElementById('SeccionPublicar').value 
@@ -154,17 +154,17 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         //Patron de entrada para archivos de carga permitidos
         var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
         
-        if(Ext_Permitidas.exec(ImagenPrin) == false || ImagenPrin.size > 2000000){
-            alert("Introduzca una imagen con extención .jpeg .jpg .png menor a 2 Mb")
-            document.getElementById("imgInp").value = "";
-            document.getElementsByClassName("boton")[0].value = "Guardar"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
-        else if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 55){
+        // if(Ext_Permitidas.exec(ImagenPrin) == false || ImagenPrin.size > 2000000){
+        //     alert("Introduzca una imagen con extención .jpeg .jpg .png menor a 2 Mb")
+        //     document.getElementById("imgInp").value = "";
+        //     document.getElementsByClassName("boton")[0].value = "Guardar"
+        //     document.getElementsByClassName("boton")[0].disabled = false
+        //     document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+        //     document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+        //     document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+        //     return false;
+        // }
+        if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 55){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()

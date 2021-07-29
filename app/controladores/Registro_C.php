@@ -10,9 +10,9 @@
             ocultarErrores();
         }
         
-        //Se cargara este metodo por defecto, en caso de no pasar un metodo especifico
-        public function index(){
-        }
+        // //Se cargara este metodo por defecto, en caso de no pasar un metodo especifico
+        // public function index(){
+        // }
 
         public function registroComerciante(){  
             //se crea una sesion llamada verifica, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de registro, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
@@ -60,54 +60,61 @@
                 exit();
             }
 
-            //Las siguientes tres inserciones se realizan por medio de transacciones
-            try{
+            //Se verifica que el correo y el nombre de la tienda no existan en la BD, de no existir, se procede a crear la tienda, sesion creada en el metodo VerificarCorreo()
+            if($_SESSION["CorreoExiste"]){
+                echo 'El correo ya existe' .'<br>';
+                exit("<a href='javascript:history.back()'>Regresar</a>");
+            }
+            else if($_SESSION["NombreIendaExiste"]){
+                echo 'El nombre de tienda ya existe' .'<br>';
+                exit("<a href='javascript:history.back()'>Regresar</a>");
+            }
+            else{//EL correo no existe, se procede a crear la tienda
+
+                //Las siguientes inserciones se debenrealizar por medio de transacciones
                 //se cifran la contraseña del afiliado con un algoritmo de encriptación
                 $ClaveCifrada= password_hash($RecibeDatos["Clave_Afcom"], PASSWORD_DEFAULT);
                 
-                $ID_AfiliadoCom = $this->ConsultaRegistro_M->startTransaction();
-
-                    //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
-                    $ID_AfiliadoCom = $this->ConsultaRegistro_M->insertarAfiliadoComercial($RecibeDatos);
-                
-                    //Se INSERTAN los datos de la tienda en la BD y se retorna el ID del registro recien insertado
-                    $ID_Tienda = $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);        
-                            
-                    //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
-                    $this->ConsultaRegistro_M->insertarAccesoComerciante($ID_AfiliadoCom, $ClaveCifrada);
-                    
-                    //Se INSERTAN el campo de horario en la BD
-                    $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);
-                    
-                    //Se INSERTAN el campo de horario para el día sábado en la BD
-                    $this->ConsultaRegistro_M->insertarHabilitarHorario_SAB($ID_Tienda);
-                    
-                    //Se INSERTAN el campo de horario para el día domingo en la BD
-                    $this->ConsultaRegistro_M->insertarHabilitarHorario_DOM($ID_Tienda);
-
-                    //Se INSERTAN el campo de horario para el día especial en la BD
-                    $this->ConsultaRegistro_M->insertarHabilitarHorario_ESP($ID_Tienda);
-
-                $this->ConsultaRegistro_M->commit();
-            }
-            catch(Exception $e){
-                $this->ConsultaRegistro_M->rollback();
-            }
+                //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
+                $ID_AfiliadoCom = $this->ConsultaRegistro_M->insertarAfiliadoComercial($RecibeDatos);
             
-            // ****************************************
+                //Se INSERTAN los datos de la tienda en la BD y se retorna el ID del registro recien insertado
+                $ID_Tienda = $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom);        
+                        
+                //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
+                $this->ConsultaRegistro_M->insertarAccesoComerciante($ID_AfiliadoCom, $ClaveCifrada);
+                
+                //Se INSERTAN el campo de horario en la BD
+                $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);
+                
+                //Se INSERTAN el campo de horario para el día sábado en la BD
+                $this->ConsultaRegistro_M->insertarHabilitarHorario_SAB($ID_Tienda);
+                
+                //Se INSERTAN el campo de horario para el día domingo en la BD
+                $this->ConsultaRegistro_M->insertarHabilitarHorario_DOM($ID_Tienda);
 
-            //Se envia al correo pcabeza7@gmail.com la notificación de nuevo cliente registrado
-            $email_subject = 'Nueva tienda registrada en PedidoRemoto'; 
-            $email_to = 'pcabeza7@gmail.com'; 
-            $headers = 'From: PedidoRemoto<master@pedidoremoto.com>';
-            $email_message = 'Tienda afiliada' . ' ' . $RecibeDatos['Nombre_tienda'];
+                //Se INSERTAN el campo de horario para el día especial en la BD
+                $this->ConsultaRegistro_M->insertarHabilitarHorario_ESP($ID_Tienda);
+            
+                // ****************************************
 
-            mail($email_to, $email_subject, $email_message, $headers); 
+                //Se envia al correo pcabeza7@gmail.com la notificación de nuevo cliente registrado
+                $email_subject = 'Nueva tienda registrada en PedidoRemoto'; 
+                $email_to = 'pcabeza7@gmail.com'; 
+                $headers = 'From: PedidoRemoto<master@pedidoremoto.com>';
+                $email_message = 'Tienda afiliada' . ' ' . $RecibeDatos['Nombre_tienda'];
 
-            // ****************************************
+                mail($email_to, $email_subject, $email_message, $headers); 
 
-            //Redirecciona, La función redireccionar se encuantra en url_helper.php
-            redireccionar("/Login_C/index/CNE");
+                // ****************************************
+                
+                //Se borra la sesión creada en los metodos VerificarCorreo() y VerificarNombreTienda()
+                unset($_SESSION['CorreoExiste']);
+                unset($_SESSION["NombreIendaExiste"]);
+
+                //Redirecciona, La función redireccionar se encuantra en url_helper.php
+                redireccionar("/Login_C/index/CNE");
+            }
         }
    
         public function recibeRegistroDes(){            
@@ -181,8 +188,7 @@
         public function VerificarCorreo($Correo, $Afiliado){
             if(($Afiliado) == 'AfiDes'){
                 //CONSULTA los correos de despachadores existente en la BD
-                $Consulta = $this->ConsultaRegistro_M->consultarCorreoDes();
-                $CorreoBD = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
+                $CorreoBD = $this->ConsultaRegistro_M->consultarCorreoDes();
                 
                 foreach($CorreoBD as $key){
                     $CorreoBD =  $key['correo_AfiDes'];
@@ -203,14 +209,18 @@
             }
             else{
                 //CONSULTA los correos de comerciantes existente en la BD
-                $Consulta = $this->ConsultaRegistro_M->consultarCorreoCom();
-                $CorreoBD = $Consulta->fetchAll(PDO::FETCH_ASSOC); 
-            
+                $CorreoBD = $this->ConsultaRegistro_M->consultarCorreoCom();
+                
                 foreach($CorreoBD as $key){
                     $CorreoBD =  $key['correo_AfiCom'];
     
                     if($CorreoBD == $Correo){
-                        echo "La dirección de correo ya existe";  ?>
+                        echo "La dirección de correo ya existe";
+
+                        //Se crea una sesion que se solicitara en el metodo recibeRegistroCom()          
+                        $_SESSION["CorreoExiste"] = true;
+
+                        ?>
                         <style>
                             .contenedor_43{
                                 background-color: yellow;  
@@ -223,6 +233,33 @@
                     }
                 }
             }
+        }
+
+        public function verificarNombreTienda($Nombre_Tienda){
+            //CONSULTA los nombres de tiendas existente en la BD
+            $NombreTienda = $this->ConsultaRegistro_M->consultarNombresTiendas();
+        
+            foreach($NombreTienda as $key){
+                $NombreTienda =  $key['nombre_Tien'];
+
+                if($NombreTienda == $Nombre_Tienda){
+                    echo "Una tienda con este nombre ya existe";  
+
+                    //Se crea una sesion que se solicitara en el metodo recibeRegistroCom()          
+                    $_SESSION["NombreIendaExiste"] = true;?>
+                    
+                    <style>
+                        .contenedor_43{
+                            background-color: yellow;  
+                            display: block;
+                            text-align: center; 
+                            font-size: 0.9em;    
+                        }
+                    </style>
+                    <?php
+                }
+            }
+
         }
 
         public function VerificarClave($Clave, $Afiliado){

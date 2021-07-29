@@ -30,9 +30,8 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-    //Es llamada desde registroCom_V.php
     function llamar_verificaCorreo(id, Afiliado){
-        console.log("_____Desde llamar_verificaCorreo()_____")
+        // console.log("_____Desde llamar_verificaCorreo()_____")
         A = document.getElementById(id).value;
         var url="../Registro_C/VerificarCorreo/" + A + "/" + Afiliado;
         http_request.open('GET',url,true);     
@@ -52,7 +51,6 @@ function conexionAJAX(){
     }
 
 //-------------------------------------------------------------------------------------------------
-//Es llamada desde registroCom_V.php
 function llamar_verificaClave(Clave, Afiliado){
     // console.log("_____Desde llamar_verificaClave()_____",Clave + " | " + Afiliado)
     if(Clave == ""){
@@ -68,7 +66,6 @@ function llamar_verificaClave(Clave, Afiliado){
 function respuesta_verificaClave(){
     if (peticion.readyState == 4){
         if (peticion.status == 200){
-            console.log(peticion.status)
            document.getElementById('Mostrar_verificaClave').innerHTML = peticion.responseText;
         } 
         else{
@@ -76,3 +73,25 @@ function respuesta_verificaClave(){
         }
     }
 }
+
+//-------------------------------------------------------------------------------------------------
+function llamar_verificarNombreTienda(NombreTienda){
+    // console.log("_____Desde llamar_verificarNombreTienda()_____", + NombreTienda);
+    var url="../Registro_C/verificarNombreTienda/" + NombreTienda;
+    http_request.open('GET',url,true);     
+    peticion.onreadystatechange = respuesta_verificarNombreTienda;
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    peticion.send("null");
+}                                                           
+function respuesta_verificarNombreTienda(){
+    if (peticion.readyState == 4){
+        if(peticion.status == 200){
+            document.getElementById('Mostrar_verificarNombreTienda').innerHTML = peticion.responseText;
+        } 
+        else{
+            alert('Hubo problemas con la petición.');
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------------------------

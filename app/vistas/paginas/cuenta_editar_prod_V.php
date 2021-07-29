@@ -3,8 +3,6 @@
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
-    // require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
-
     //$Datos viene del metodo Cuenta_C/actualizarProducto
     foreach($Datos['especificaciones'] as $arr) :
         $ID_Producto = $arr['ID_Producto'];
@@ -29,7 +27,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $ID_ImagenPrincipal = $arr['ID_Imagen'];
         $ImagenPrincipal = $arr['nombre_img'];
         $ImgSeccion = $arr['fotoSeccion'];
-    endforeach;  ?>
+    endforeach;  
+    
+    // echo "<pre>";
+    // print_r($Datos);
+    // echo "</pre>";
+    // exit();  
+    ?>
     
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -45,7 +49,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <!-- IMAGEN PRINCIPAL -->
                 <div>                    
                     <div class="contenedor_119 borde_1 borde_2">
-                        <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
+                        <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
                         <label for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                         <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
                     </div>

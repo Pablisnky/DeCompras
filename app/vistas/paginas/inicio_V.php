@@ -7,6 +7,8 @@
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
             <h2 class="h2_4">MarketPlace</h2>
+<!-- Elemento usado para recibir la API De dolar Today   -->
+
         </div>
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
             <div class="contenedor_34" id="BotonVer">
@@ -79,8 +81,9 @@
 <script src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js?v=' . rand();?>"></script>
 <script src="<?php echo RUTA_URL.'/public/convoca_SW.js';?>"></script>
 
-<!--			
-<script>
+			
+<!-- Notificacion PUSH al realizar un pedido -->
+<!--<script>
     window.onload = function(){
         Push.Permission.request()
     }
@@ -97,9 +100,8 @@
         }
     });
 </script> -->  
-
 <script>
-    //Aqui tambien se pudo usar una funcion IIEEF
+    //Aqui tambien se pudo usar una funcion IIEEF (autoejecutable)
     window.onload = function (){
         if(document.readyState == "complete"){
            document.querySelector(".preloder_tapa--total").style.display = "none"

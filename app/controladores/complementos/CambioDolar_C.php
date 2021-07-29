@@ -12,7 +12,9 @@
         }
         
         public function AjusteCambioMonetario($ValorDolar){
-            $this->PrecioDolar = $ValorDolar;
+            // $this->PrecioDolar = $ValorDolar;
+            // echo $this->PrecioDolar;
+            // exit;
             
             //Se consultan los precios en dolares.
             $Precios = $this->ConsultaCambioDolar_M->ConsultaPrecios();
@@ -21,7 +23,7 @@
             // echo '</pre>';
             // exit;
 
-            //Se declara un array donde se almacenaran los prcios actualizados de cada producto
+            //Se declara un array donde se almacenaran los precios actualizados de cada producto
             $NuevoPrecioBolivar = [];
             $Intermedio = [];
 
