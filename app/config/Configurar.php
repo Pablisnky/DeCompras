@@ -1,5 +1,5 @@
 <?php
-//Muestra la ruta raiz donde se encuentra el archivo incluyendo al archivo
+// //Muestra la ruta raiz donde se encuentra el archivo incluyendo al archivo
 // echo __FILE__ . "<br>";
 
 //Muestra la ruta raiz donde se encuentra el archivo
