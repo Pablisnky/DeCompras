@@ -8,7 +8,7 @@
 //Muestra la ruta raiz donde se encuentra el archivo excluyendo una carpeta
 // echo dirname(dirname(__FILE__)) . "<br>";
 
-
+// ************************************************************************************************
 // PARA CONEXION EN LOCAL
 define("RUTA_APP", dirname(dirname(__FILE__)));
 define("RUTA_URL", "http://localhost/proyectos/PidoRapido");
