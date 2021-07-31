@@ -22,7 +22,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Municipio_Tien = $row['municipio_Tien'];
         $Parroquia_Tien = $row['parroquia_Tien'];
         $Direccion_Tien = $row['direccion_Tien']; 
-        $Telefono_Tien = $row['telefono_Tien'];
         $Slogan_Tien = $row['slogan_Tien'];
         $Foto_Tien = $row['fotografia_Tien'];
     }
@@ -33,6 +32,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
     }   
     
     ?>
+    
+    <!-- CDN iconos de font-awesome-->
+    <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
+    
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/flechaAbajo/style_flechaAbajo.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/>
 
@@ -55,10 +58,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <input class="input_13 input_13A borde_1" type="text" name="apellido_Afcom" id="Apellido_Aficom"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off"/>
                
                 <label>Cedula (Solo números)</label>
-                <input class="input_13 input_13A borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off"/>
+                <input class="input_13 input_13A borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off" placeholder="00000000000"/>
                 
                 <label>Telefono (Solo números)</label>
-                <input class="input_13 input_13A borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" placeholder="0000-000.00.00"/>
+                <input class="input_13 input_13A borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" placeholder="00000000000"/>
                 
                 <label>Correo</label>
                 <input class="input_13 input_13A borde_1" type="text" name="correo_Afcom" id="Correo_Aficom" value="<?php echo $Correo_AfiCom;?>" onchange="validarFormatoCorreo(); setTimeout(llamar_verificaCorreo,200)" onclick="ColorearCorreo()" autocomplete="off"/>
@@ -80,9 +83,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                 <label>Acceso directo a tu tienda</label>
                 <input class="input_13 input_13A borde_1" type="text" name="link_acceso" id="Link_Acceso" value="<?php echo $Link_Acceso;?>" autocomplete="off" readonly="readonly"/>
-
-                <label>Telefono tienda</label>
-                <input class="input_13 input_13A borde_1" type="text" name="telefono_com" id="Telefono_Tien" value="<?php echo $Telefono_Tien;?>" autocomplete="off" placeholder="0000-000.00.00"/>
 
                 <label>Slogan tienda (opcional)</label>
                 <input class="input_13 input_13A input_16 borde_1" type="text" name="slogan_com" id="ContenidoSlo" value="<?php echo $Slogan_Tien;?>" autocomplete="off"/>

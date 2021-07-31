@@ -7,14 +7,14 @@
         <div class="contenedor_37"  id="Contenedor_37">
             <h1 class="h1_2">PedidoRemoto</h1>
             <h2 class="h2_4">MarketPlace</h2>
-<!-- Elemento usado para recibir la API De dolar Today   -->
-
         </div>
+
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
             <div class="contenedor_34" id="BotonVer">
                 <label class="section_1__boton borde_1"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a></label>
             </div>
         </div>
+
         <div class="slider">
             <ul>
                 <li>
@@ -52,7 +52,7 @@
 
     <div><!--BUSCADOR-->
         <div class="contBuscador contBuscador__borrar" id="Busqueda">   
-        <i class="fas fa-times spanCerrar" id="Span_5"></i>
+            <i class="fas fa-times spanCerrar" id="Span_5"></i>
             <div class="contBuscador__div">     
                 <div class="contFlex50 contFlex--around">
                     <div class="contFlex__div">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="contBuscador__div__div">
-                    <input class="placeholder borde_1" id="Input_9" type="text" placeholder="Ingrese un producto"/>
+                    <input class="placeholder borde_1" id="Input_9" type="text" placeholder="Ingrese un producto o tienda"/>
                 </div>
             </div>
             

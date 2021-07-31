@@ -458,7 +458,7 @@
         //Recibe el formulario de configuracion de tienda invocado en cuenta_editar_V.php
         public function recibeRegistroEditado(){
             //Se reciben todos los campos del formulario desde cuenta_editar_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["telefono_com"]) && !empty($_POST["direccion_com"])
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["direccion_com"])
             ){
                 $RecibeDatos = [
                     //RECIBE DATOS PERSONA RESPONSABLE
@@ -470,7 +470,6 @@
 
                     //RECIBE DATOS TIENDA
                     'Nombre_com' => filter_input(INPUT_POST, 'nombre_com', FILTER_SANITIZE_STRING),
-                    'Telefono_com' => filter_input(INPUT_POST, 'telefono_com', FILTER_SANITIZE_STRING),
                     'Estado_com' => filter_input(INPUT_POST, 'estado_com', FILTER_SANITIZE_STRING),
                     'Municipio_com' => filter_input(INPUT_POST, 'municipio_com', FILTER_SANITIZE_STRING),
                     'Parroquia_com' => filter_input(INPUT_POST, 'parroquia_com', FILTER_SANITIZE_STRING),

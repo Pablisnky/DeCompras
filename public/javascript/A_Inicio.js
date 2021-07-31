@@ -1,10 +1,10 @@
 document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_buscador(this.value)})
     
 //*********************************************************************************************** 
-    //Busca un producto segun lo que escriba el usuario en el input
+    //Busca un producto segun lo que escriba el usuario en el input de busqueda
     function Llamar_buscador(nombre){
         // console.log("______Desde Llamar_buscador()______")
-        var divContenedor = document.getElementById("Buscar_Pedido")//se recibe desde inicio_V.php 
+        var divContenedor = document.getElementById("Buscar_Pedido")
         var xmlhttp
         if(window.XMLHttpRequest){ //Mozilla, Safari, Chrome...
             xmlhttp = new XMLHttpRequest()
@@ -80,7 +80,8 @@ function conexionAJAX(){
         peticion.onreadystatechange = respuesta_TiendasCiudad
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
         peticion.send("null")
-    }                                                           
+    }                     
+    //Se analiza la respuesta                                      
     function respuesta_TiendasCiudad(){
         if(peticion.readyState == 4){
             if(peticion.status == 200){    

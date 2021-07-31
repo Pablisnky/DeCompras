@@ -6,10 +6,9 @@ document.getElementById("NombreTienda").addEventListener('keydown', function(){v
     
 //Por medio de delegación de eventos se detecta cada input donde se debe aplicar la funcion blanquearInput()
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
-    console.log("______Desde función anonima()______")   
+    console.log("______Desde función anonima que detecta INPUTS______")   
     if(e.target.tagName == "INPUT"){
         var ID_Input = e.target.id
-        // console.log(ID_Input)
         
         document.getElementById(ID_Input).addEventListener('keyup', function(){blanquearInput(ID_Input)}, false)
     } 
@@ -25,9 +24,9 @@ document.getElementsByTagName("body")[0].addEventListener('keydown', function(e)
         let NombreTienda = document.getElementById('NombreTienda').value 
         let Clave = document.getElementById('Clave').value 
         let ConfirmarClave = document.getElementById('ConfirmarClave').value  
-        // let Div_AlertaClave = document.getElementById('Mostrar_verificaClave')
+        let Div_AlertaClave = document.getElementById('Mostrar_verificaClave')
         let Div_AlertaCorreo = document.getElementById('Mostrar_verificaCorreo')
-        console.log(Div_AlertaCorreo)
+        let Div_AlertaNombreTienda = document.getElementById('Mostrar_verificarNombreTienda')
         document.getElementsByClassName("boton")[0].value = "Creando tienda ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
         document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"
@@ -67,6 +66,23 @@ document.getElementsByTagName("body")[0].addEventListener('keydown', function(e)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
+        else if(Div_AlertaCorreo.innerHTML != ""){
+            alert("El correo ya esta registrado")
+            document.getElementById("CorreoAfiCom").value = ""
+            document.getElementById("CorreoAfiCom").focus()
+            document.getElementById("CorreoAfiCom").style.backgroundColor = "var(--Fallos)"
+            // // Se elimina el nodo hijo donde aparece el mensaje del alert
+            while(Div_AlertaCorreo.firstChild){
+                Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild);
+              };
+            document.getElementsByClassName("boton")[0].value = "Registrarse"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            document.getElementById("Mostrar_verificaCorreo").style.visibility = "hidden";
+            return false;
+        }
         else if(NombreTienda == "" || NombreTienda.indexOf(" ") == 0  ||  NombreTienda.length > 50){
             alert ("Nombre de tienda invalido")
             document.getElementById("NombreTienda").value = ""
@@ -77,6 +93,23 @@ document.getElementsByTagName("body")[0].addEventListener('keydown', function(e)
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
             document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        }
+        else if(Div_AlertaNombreTienda.innerHTML != ""){
+            alert("El nombre de tienda ya esta registrado")
+            document.getElementById("NombreTienda").value = ""
+            document.getElementById("NombreTienda").focus()
+            document.getElementById("NombreTienda").style.backgroundColor = "var(--Fallos)"
+            // // Se elimina el nodo hijo donde aparece el mensaje del alert
+            while(Div_AlertaCorreo.firstChild){
+                Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild);
+              };
+            document.getElementsByClassName("boton")[0].value = "Registrarse"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            document.getElementById("Mostrar_verificaCorreo").style.visibility = "hidden";
             return false;
         }
         else if(Clave == "" || Clave.indexOf(" ") == 0 || Clave.length > 70){
@@ -115,7 +148,7 @@ document.getElementsByTagName("body")[0].addEventListener('keydown', function(e)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Div_AlertaClave.childElementCount > 1){
+        else if(Div_AlertaClave.innerHTML != ""){
             console.log(Div_AlertaClave.childElementCount)
             alert("La clave no es permitida")
             document.getElementById("Clave").value = ""
@@ -133,35 +166,18 @@ document.getElementsByTagName("body")[0].addEventListener('keydown', function(e)
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
         }
-        else if(document.getElementById('Mostrar_verificaCorreo').style.display == "block"){
-            console.log(Div_AlertaCorreo)
-            alert("El correo ya esta registrado")
-            document.getElementById("CorreoAfiCom").value = ""
-            document.getElementById("CorreoAfiCom").focus()
-            document.getElementById("CorreoAfiCom").style.backgroundColor = "var(--Fallos)"
-            // Se elimina el nodo hijo donde aparece el mensaje del alert
-            while(Div_AlertaCorreo.firstChild){
-                Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild);
-              };
-            document.getElementsByClassName("boton")[0].value = "Registrarse"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
     }
     
 //************************************************************************************************
-    // function removerContenidoDiv(){
+    function removerContenidoDiv(){
         // console.log("_____Desde removerDiv()_____")
 
-        // let Div_AlertaCorreo = document.getElementById('Mostrar_verificaCorreo')
+        let Div_AlertaCorreo = document.getElementById('Mostrar_verificaCorreo')
 
-        // if(Div_AlertaCorreo.firstChild){
-        //     Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild)  
-        // }      
-    // }
+        if(Div_AlertaCorreo.firstChild){
+            Div_AlertaCorreo.removeChild(Div_AlertaCorreo.firstChild)  
+        }      
+    }
 
 //************************************************************************************************
     //Valida el formulario de afiliació de despachador

@@ -60,16 +60,23 @@
                 exit();
             }
 
-            //Se verifica que el correo y el nombre de la tienda no existan en la BD, de no existir, se procede a crear la tienda, sesion creada en el metodo VerificarCorreo()
-            if($_SESSION["CorreoExiste"]){
+            //Se verifica que el correo, la clave y el nombre de la tienda no existan en la BD, de no existir, se procede a crear la tienda, sesion creada en el metodo VerificarCorreo()
+            if(!empty($_SESSION["CorreoExiste"])){
                 echo 'El correo ya existe' .'<br>';
+                unset($_SESSION['CorreoExiste']);
                 exit("<a href='javascript:history.back()'>Regresar</a>");
             }
-            else if($_SESSION["NombreIendaExiste"]){
+            else if(!empty($_SESSION["NombreIendaExiste"])){
                 echo 'El nombre de tienda ya existe' .'<br>';
+                unset($_SESSION['NombreIendaExiste']);
                 exit("<a href='javascript:history.back()'>Regresar</a>");
             }
-            else{//EL correo no existe, se procede a crear la tienda
+            else if(!empty($_SESSION["ClaveExiste"])){
+                echo 'La clave no es permitida' .'<br>';
+                unset($_SESSION['ClaveExiste']);
+                exit("<a href='javascript:history.back()'>Regresar</a>");
+            }
+            else{//EL correo, la clave y el nombre de la tienda no existen, se procede a crear la tienda
 
                 //Las siguientes inserciones se debenrealizar por medio de transacciones
                 //se cifran la contraseña del afiliado con un algoritmo de encriptación
@@ -108,10 +115,6 @@
 
                 // ****************************************
                 
-                //Se borra la sesión creada en los metodos VerificarCorreo() y VerificarNombreTienda()
-                unset($_SESSION['CorreoExiste']);
-                unset($_SESSION["NombreIendaExiste"]);
-
                 //Redirecciona, La función redireccionar se encuantra en url_helper.php
                 redireccionar("/Login_C/index/CNE");
             }
@@ -211,24 +214,27 @@
                 //CONSULTA los correos de comerciantes existente en la BD
                 $CorreoBD = $this->ConsultaRegistro_M->consultarCorreoCom();
                 
+                if(!empty($_SESSION['CorreoExiste'])){
+			        unset($_SESSION['CorreoExiste']);
+                }
+                
                 foreach($CorreoBD as $key){
                     $CorreoBD =  $key['correo_AfiCom'];
-    
+                    
                     if($CorreoBD == $Correo){
-                        echo "La dirección de correo ya existe";
+                        echo "La dirección de correo que introdujo no es permitida";
 
                         //Se crea una sesion que se solicitara en el metodo recibeRegistroCom()          
                         $_SESSION["CorreoExiste"] = true;
 
                         ?>
                         <style>
-                            .contenedor_43{
+                            #Mostrar_verificaCorreo{
                                 background-color: yellow;  
                                 display: block;
                                 text-align: center; 
-                                font-size: 0.9em;    
                             }
-                        </style>
+                        </style> 
                         <?php
                     }
                 }
@@ -259,7 +265,6 @@
                     <?php
                 }
             }
-
         }
 
         public function VerificarClave($Clave, $Afiliado){
@@ -285,13 +290,22 @@
             }
             else{
                 //CONSULTA las claves de afiliados existente en la BD
-                $Consulta = $this->ConsultaRegistro_M->consultarClaveCom();
-                $ClaveBD = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+                $ClaveBD = $this->ConsultaRegistro_M->consultarClaveCom();
+                
+                if(!empty($_SESSION['ClaveExiste'])){
+			        unset($_SESSION['ClaveExiste']);
+                }
 
                 foreach($ClaveBD as $key){
                     $ClaveBD =  $key['claveCifrada'];
+
                     if($Clave == password_verify($Clave, $ClaveBD)){
-                        echo "La contraseña que introdujo ya existe en nuestros registros"; ?>
+                        echo "La contraseña que introdujo no es permitida"; 
+                        
+                        //Se crea una sesion que se solicitara en el metodo recibeRegistroCom()          
+                        $_SESSION["ClaveExiste"] = true;
+
+                        ?>
                         <style>
                             .contenedor_3{
                                 background-color: yellow;  

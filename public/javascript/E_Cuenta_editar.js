@@ -19,10 +19,6 @@ document.getElementById("Cedula_Aficom").addEventListener('keyup', function(){fo
 document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Aficom')}, false)
 
 document.getElementById("Telefono_Aficom").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Aficom')}, false)
-
-document.getElementById("Telefono_Tien").addEventListener('keyup', function(){mascaraTelefono(this.value, 'Telefono_Tien')}, false)
-
-document.getElementById("Telefono_Tien").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Tien')}, false)
     
 //Por medio de delegación de eventos se detecta cada input y textarea debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
@@ -579,7 +575,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
         let CorreoAficom = document.getElementById('Correo_Aficom').value         
         // DATOS TIENDA
         let NombreTien = document.getElementById('Nombre_Tien').value
-        let TelefonoTien = document.getElementById('Telefono_Tien').value
         let Categoria = document.getElementById('Contenedor_80js')    
         // console.log("Cantidad de elementos dentro de \"Contenedor_80js\"", Categoria.childElementCount)
         let Seccion = document.getElementById('Seccion').value    
@@ -725,18 +720,6 @@ document.getElementById("Label_1").addEventListener('click', function(){
             document.getElementById("Nombre_Tien").value = ""
             document.getElementById("Nombre_Tien").focus()
             document.getElementById("Nombre_Tien").style.backgroundColor = "var(--Fallos)"
-            document.getElementsByClassName("boton")[0].value = "Guardar cambios"
-            document.getElementsByClassName("boton")[0].disabled = false
-            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
-            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
-            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
-            return false;
-        }
-        else if(TelefonoTien == "" || TelefonoTien.indexOf(" ") == 0 || TelefonoTien.length != 14){
-            alert ("Introduzca un Telefono para la tienda")
-            document.getElementById("Telefono_Tien").value = ""
-            document.getElementById("Telefono_Tien").focus()
-            document.getElementById("Telefono_Tien").style.backgroundColor = "var(--Fallos)"
             document.getElementsByClassName("boton")[0].value = "Guardar cambios"
             document.getElementsByClassName("boton")[0].disabled = false
             document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"

@@ -449,8 +449,8 @@
 	margin-top: 10%;
 }
 .contenedor_77{/*Categorias_Ajax*/
-	margin: 10% auto 1% auto;
-	width: 50%;
+	/* margin: 10% auto 1% auto;
+	width: 50%; */
 }
 .contenedor_79{/*afiliacion*/
 	margin-top: 15%;
@@ -628,7 +628,7 @@
 	background-color: initial;
 }
 .contenedor_118{/*categorias_Ajax */
-	margin-top: 20%;
+	margin-top: 5%;
 	padding: 3%;
 }
 .contenedor_119{/*cuenta_editar_prod - cuenta_editar*/
@@ -745,6 +745,9 @@
 }
 .contGridTres{/*Categorias_Ajax*/
 	grid-template-columns: 100%;
+}
+.contInputRadio{/*carrito - SeccionesDisponibles_Ajax - categoria - Categorias_Ajax*/
+	margin-bottom: 15px !important;
 }
 .contInputRadio__label{/*carrito - Secciones_Ajax - Categorias_Ajax*/
 	font-size: 0.9em !important;
@@ -1233,9 +1236,9 @@
 .span_4{/*inicio*/
 	font-size: 1em;
 }
-.span_5{/*opciones*/
+.span_5{/*opciones - Categorias_Ajax*/
 	margin-top: 1%;
-	left: 10%;
+	margin-left: 90%;
 }
 .span_8{/*CantidadTiendas_Ajax*/
 	font-size: 3em!important;

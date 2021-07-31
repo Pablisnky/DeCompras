@@ -31,7 +31,7 @@
 
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111">
-				<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C';?>">PedidoRemoto</a>
+				<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
 				<h2 class="h2_5">MarketPlace</h2>
 			</div>
 			

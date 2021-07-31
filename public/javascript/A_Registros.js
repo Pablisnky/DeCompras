@@ -45,7 +45,7 @@ function conexionAJAX(){
                 document.getElementById('Mostrar_verificaCorreo').innerHTML = peticion.responseText;
             } 
             else{
-                alert('Hubo problemas con la petición.');
+                alert('Hubo problemas con la petición en L_VeCo.');
             }
         }
     }
@@ -69,7 +69,7 @@ function respuesta_verificaClave(){
            document.getElementById('Mostrar_verificaClave').innerHTML = peticion.responseText;
         } 
         else{
-            alert('Hubo problemas con la petición.');
+            alert('Hubo problemas con la petición en L_VeCl.');
         }
     }
 }
@@ -89,9 +89,28 @@ function respuesta_verificarNombreTienda(){
             document.getElementById('Mostrar_verificarNombreTienda').innerHTML = peticion.responseText;
         } 
         else{
-            alert('Hubo problemas con la petición.');
+            alert('Hubo problemas con la petición en L_VeNoTi.');
         }
     }
 }
 
 //-------------------------------------------------------------------------------------------------
+// function Llamar_eliminar_Sesion_CorreoExiste(){
+//     console.log("_____Desde Llamar_eliminar_Sesion_CorreoExiste()_____");
+//     var url="../Registro_C/borrar_Sesion_CorreoExiste/";
+//     http_request.open('GET',url,true);     
+//     peticion.onreadystatechange = respuesta_eliminar_Sesion_CorreoExiste;
+//     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+//     peticion.send("null");
+// }                                                           
+// function respuesta_eliminar_Sesion_CorreoExiste(){
+//     if (peticion.readyState == 4){
+//         if(peticion.status == 200){
+//             console.log("Resiviendo respuesta")
+//             document.getElementById('Mostrar_verifica').innerHTML = peticion.responseText;
+//         } 
+//         else{
+//             alert('Hubo problemas con la petición en L_ElSeCo.');
+//         }
+//     }
+// }

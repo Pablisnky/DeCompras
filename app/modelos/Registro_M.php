@@ -239,9 +239,12 @@
 
         //CONSULTA las claves de comerciantes existentes  en la BD
         public function consultarClaveCom(){ 
-            $stmt = $this->dbh->prepare("SELECT claveCifrada FROM afiliado_comingreso");
+            $stmt = $this->dbh->prepare(
+                "SELECT claveCifrada 
+                FROM afiliado_comingreso"
+            );
             if($stmt->execute()){
-                return $stmt;
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;
