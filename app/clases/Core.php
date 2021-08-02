@@ -4,17 +4,18 @@
 
 class Core{
     // En la url el controlador es el index 0, el metodo el index 1, el parametro el index 2
-    protected $controladorActual = "Inicio_C";
-    protected $metodoActual = "index";
+    protected $controladorActual = 'Inicio_C';
+    protected $metodoActual = 'index';
     protected $parametros = [];
 
     public function __construct(){
+        // echo 'Entra al constructor' . '<br>';
         // print_r($this->geturl());
-        // echo "<br>";
+        // echo '<br>';
         $url = $this->geturl();
-        // echo "<pre>";
+        // echo '<pre>';
         // print_r($url);
-        // echo "</pre>";
+        // echo '</pre>';
         
         // echo "************************************************************************"  . "<br>";
 
@@ -73,14 +74,23 @@ class Core{
 
     public function geturl(){
         //La url se obtiene via get[] desde htaccess que esta en la carpeta public, que mapea todo lo que se hace
-        // echo " 1.- Se obtiene el controlador[0], metodo[1] y parametro[2] de la url: " . $_GET["url"] . "<br>";
+        // echo " 1.- Se obtiene el controlador[0], metodo[1] y parametro[2] de la url: " . $_GET['url'] . "<br>";
         //Se verifica que la url este seteada
-        if(isset($_GET["url"])){
-            $url= rtrim($_GET["url"],'/');
+        if(isset($_GET['url'])){
+            // echo '$_GET["url"] esta declarada y vale:' . '<br>';
+            // echo $_GET['url'] . '<br>';
+            
+            // echo "************************************************************************"  . "<br>";
+            $url= rtrim($_GET['url'],'/');
             //Al usar FILTER_SANITIZE_URL entre otras cosas se eliminan los espacios en blanco de los parametros enviados.
             // $url= filter_var($url, FILTER_SANITIZE_URL);
             //La cadena se convierte en un array para obtener en cad indice el controlador, el metodo y los parametros
-            $url= explode('/',$url);
+            $url= explode('/', $url);
+            return $url;
+        }
+        else{
+            // echo '$_GET["url"] no esta declarada';
+            $url = array('Inicio_C');            
             return $url;
         }
     }

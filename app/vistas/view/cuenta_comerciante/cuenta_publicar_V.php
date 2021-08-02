@@ -7,13 +7,14 @@ if(!empty($_SESSION["ID_Afiliado"])){
     $PrecioDolar = number_format($Datos['dolarHoy'], 0, ",", "."); 
       ?>       
         
-    <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
+    <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <div class="contenedor_42">    
         <p class="p_6">Carga un producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
             <div class="contenedor_47">    
+                
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
@@ -99,6 +100,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
+    <!-- <script src="<?php //echo RUTA_URL . '/public/javascript/funcionesVarias.js';?>"></script>  -->
 
     <script> 
         //Da una vista previa de la imagen principal antes de guardarla en la BD

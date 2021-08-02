@@ -11,7 +11,7 @@
         }
         
         public function index(){
-            //$this->vista("paginas/RecibePedido_V/recibeRegistro");
+            //$this->vista("view/RecibePedido_V/recibeRegistro");
         }
 
         //Invocado en carrito_V.php
@@ -243,7 +243,7 @@
 
                 // ****************************************
                 $this->vista("inc/header");
-                $this->vista("paginas/RecibePedido_V");
+                $this->vista("view/RecibePedido_V");
             }
             else{
                 header('location:' . RUTA_URL);

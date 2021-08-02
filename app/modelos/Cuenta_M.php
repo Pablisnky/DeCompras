@@ -508,19 +508,22 @@
             }
         }
     
-        //SELECT para encontrar la imagen de una sección especifica
-        // public function consultarImagenSeccionEstablecida($ID_Producto){
-        //     $stmt = $this->dbh->prepare("SELECT ID_Imagen, fotoSeccion FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
+        //SELECT de todas las imagenes de un producto
+        public function consultarImagenesEliminar($ID_Producto){
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_img 
+                FROM imagenes 
+                WHERE ID_Producto = :ID_PRODUCTO");
 
-        //     $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
 
-        //     if($stmt->execute()){
-        //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
 
 
 
@@ -1211,7 +1214,10 @@
         
         //INSERT de un producto
         public function insertarProducto($RecibeProducto){
-            $stmt = $this->dbh->prepare("INSERT INTO productos(producto) VALUES (:PRODUCTO)");
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO productos(producto) 
+                VALUES (:PRODUCTO)
+            ");
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
             $stmt->bindParam(':PRODUCTO', $Producto);
@@ -1236,7 +1242,6 @@
             // echo "</pre>";
             // exit;
             $stmt = $this->dbh->prepare("INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad, disponible) VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)");
-
 
             // insertar una fila
             $Opcion = $RecibeProducto['Descripcion'];

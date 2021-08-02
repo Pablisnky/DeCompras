@@ -20,11 +20,11 @@
             $_SESSION["Verifica_AfiliacionComerciante"] = $Verifica_AfiliacionComerciante; 
 
             $this->vista("inc/header");
-            $this->vista("paginas/registroCom_V");
+            $this->vista("view/registroCom_V");
         }
         
         public function registroDespachador(){
-            $this->vista("paginas/registroDes_V");
+            $this->vista("view/registroDes_V");
         }
    
         public function recibeRegistroCom(){            

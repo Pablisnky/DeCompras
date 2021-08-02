@@ -42,11 +42,11 @@
                 'slogan' => $Slogan,
             ];
 
-            $this->vista("paginas/cuenta_V", $Datos);
+            $this->vista("view/cuenta_comerciante/cuenta_V", $Datos);
         }
 
         public function Despachador(){
-            $this->vista("paginas/cuenta_despachador_V");
+            $this->vista("view/cuenta_comerciante/cuenta_despachador_V");
         }
 
         //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - Cuenta_C/recibeProductoPublicar - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
@@ -135,7 +135,7 @@
             }
             else{
                 $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
-                $this->vista("paginas/cuenta_productos_V", $Datos);
+                $this->vista("view/cuenta_comerciante/cuenta_productos_V", $Datos);
             }
         }
 
@@ -230,7 +230,7 @@
             }
 
             $this->vista("inc/header_AfiCom", $Datos); 
-            $this->vista("paginas/cuenta_editar_V", $Datos);
+            $this->vista("view/cuenta_comerciante/cuenta_editar_V", $Datos);
         }
 
         public function Publicar(){
@@ -278,7 +278,7 @@
                 //Se crea esta sesion para impedir que se recargue la información enviada por el formulario mandandolo varias veces a la base de datos
 
                 $this->vista("inc/header_AfiCom", $Datos);
-                $this->vista("paginas/cuenta_publicar_V", $Datos);
+                $this->vista("view/cuenta_comerciante/cuenta_publicar_V", $Datos);
             }
         }
 
@@ -313,7 +313,7 @@
                 ];
 
                 $this->vista("inc/header_AfiCom", $Datos);
-                $this->vista("paginas/cuenta_ventas_V", $Datos);
+                $this->vista("view/cuenta_comerciante/cuenta_ventas_V", $Datos);
             }
         }        
 
@@ -380,7 +380,7 @@
             // exit();
 
             $this->vista("inc/header_AfiCom", $Datos); 
-            $this->vista("paginas/cuenta_editar_prod_V", $Datos);
+            $this->vista("view/cuenta_comerciante/cuenta_editar_prod_V", $Datos);
         }
         
         // HASTA AQUI SON LOS METODOS QUE RESPONDEN AL MENU
@@ -531,10 +531,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
 
                         //usar en local
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -889,7 +889,7 @@
             redireccionar("/Cuenta_C/Editar");
         }
         
-        //Invocado en cuenta_publicar_V.php recibe el formulario de cargar un nuevo producto
+        //Invocado en cuenta_publicar_V.php recibe el formulario para cargar un nuevo producto
         public function recibeProductoPublicar(){
             $verifica_2 = $_SESSION['verifica_2'];  
             if($verifica_2 == 1906){// Anteriormente en se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga esta página.
@@ -901,8 +901,8 @@
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
-                        // 'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
-                        'Descripcion' => preg_replace("[\n|\r|\n\r|\]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
+                        'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
+                        // 'Descripcion' => preg_replace("[\n|\r|\n\r|\]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                         'Cantidad' => $_POST['cantidad'],
@@ -939,6 +939,7 @@
 
                 //********************************************************
                 //Las siguientes consultas se deben realizar por medio de Transacciones BD
+
                 //Se INSERTA el producto en la BD y se retorna el ID recien insertado
                 $ID_Producto = $this->ConsultaCuenta_M->insertarProducto($RecibeProducto);
 
@@ -990,10 +991,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             // usar en local
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //se muestra el directorio temporal donde se guarda el archivo
                             //echo $_FILES['imagen']['tmp_name'];
@@ -1033,10 +1034,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
@@ -1112,10 +1113,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1173,10 +1174,10 @@
                                 // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                                 //Usar en remoto
-                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                                 //usar en local
-                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                                 //se muestra el directorio temporal donde se guarda el archivo
                                 //echo $_FILES['imagen']['tmp_name'];
@@ -1310,12 +1311,34 @@
             // *************************************************************************************
             //La siguientes cinco consultas entran en el procedimeinto para ELIMINAR un producto de una tienda, esto debe hacerse mediante transacciones
             // *************************************************************************************
+            // *************************************************************************************
+
+            //Se consulta el nombre de la imagen principal y las imagenes secundaria del producto
+            $ImagenesEliminar = $this->ConsultaCuenta_M->consultarImagenesEliminar($ID_Producto);
+            // echo '<pre>';
+            // print_r($ImagenesEliminar);
+            // echo '</pre>';
+            // exit;
+
             $this->ConsultaCuenta_M->eliminarProductoSeccion($ID_Producto);
             $this->ConsultaCuenta_M->eliminarProductoOpcion($ID_Producto);
             $this->ConsultaCuenta_M->eliminarProductoTienda($ID_Producto);
             $this->ConsultaCuenta_M->eliminarOpcion($ID_Opcion);
             $this->ConsultaCuenta_M->eliminarOpcionSeccion($ID_Opcion);
             $this->ConsultaCuenta_M->eliminarImagenPrincipal($ID_Producto);
+            
+            //Se eliminan los archivo de la carpeta public/images/productos
+            foreach($ImagenesEliminar as $KeyImagenes)  :
+                $NombreImagenEliminar = $KeyImagenes['nombre_img'];
+
+                //Usar en remoto
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
+                    
+                //usar en local
+                // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/' . $NombreImagenEliminar);
+                
+            endforeach;
+              
             // *************************************************************************************
             // *************************************************************************************
 
@@ -1328,7 +1351,7 @@
 
             //Se redirecciona a la vista donde se encontraba el producto eliminado
             $this->Productos($Seccion);
-            // $this->vista("paginas/cuenta_productos_V", $Datos);
+            // $this->vista("view/cuenta_comerciante/cuenta_productos_V", $Datos);
         }
 
         //Invocado desde A_Cuenta_editar_prod.js por medio de Llamar_EliminarImagenSecundaria()

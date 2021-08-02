@@ -35,18 +35,18 @@
                 ];
 
                 //Se entra al formulario de sesion que esta rellenado con los datos del usuario
-                $this->vista("paginas/login_Vrecord", $Datos);
+                $this->vista("view/login_Vrecord", $Datos);
             }
             else if($Datos == 1){
                 $Datos = 'CE';
                 //carga la vista login_V en formulario login
                 $this->vista("inc/header");
-                $this->vista("paginas/login_V", $Datos);
+                $this->vista("view/login_V", $Datos);
             }
             else{
                 //carga la vista login_V en acuse de recibo de registro de tienda
                 $this->vista("inc/header");
-                $this->vista("paginas/login_V", $Datos);
+                $this->vista("view/login_V", $Datos);
             }
         }
 

@@ -226,7 +226,7 @@
             // exit;
 
             $this->vista("inc/header", $Datos);
-            $this->vista("paginas/tiendas_V",$Datos);
+            $this->vista("view/tiendas_V",$Datos);
         }
 
         // Invocado en header_Tienda
@@ -253,7 +253,7 @@
             // exit;
 
             $this->vista("inc/header_Modal");
-            $this->vista("paginas/tienda/horarioDespacho_V",$Datos);
+            $this->vista("view/tienda/horarioDespacho_V",$Datos);
         }
 
         // Invocado en header_Tienda
@@ -270,7 +270,7 @@
             // exit;
 
             $this->vista("inc/header_Tienda", $Datos);
-            $this->vista("paginas/tienda/direccion_V",$Datos);
+            $this->vista("view/tienda/direccion_V",$Datos);
         }
         
         public function salirTienda(){

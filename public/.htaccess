@@ -7,7 +7,7 @@
 	RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 </IfModule>
 
-#Redireccionamiento de dominio sin https a dominio con https (Desconectar en local porque redirigen al sitio en rmeoto)
+#Redireccionamiento de dominio sin https a dominio con https (Desconectar en local porque redirigen al sitio en remoto)
 <IfModule mod_rewrite.c>
 	#RewriteCond %{HTTPS} off
 	#RewriteRule (.*) https://www.pedidoremoto.com/$1 [R=301,L,QSA]

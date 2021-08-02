@@ -9,7 +9,19 @@
         
         //SELECT de los productos de una sección en una tienda especifica
         public function consultarOpciones($ID_Tienda, $ID_Seccion){
-            $stmt = $this->dbh->prepare("SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, opciones.cantidad, opciones.disponible, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND secciones.ID_Seccion = :ID_SECCION AND imagenes.fotoPrincipal = :PRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");      
+            $stmt = $this->dbh->prepare(
+                "SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, opciones.cantidad, opciones.disponible, secciones.seccion, imagenes.nombre_img, fotoSeccion 
+                FROM tiendas 
+                INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda 
+                INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
+                INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion 
+                INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto 
+                INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto 
+                INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion 
+                INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto 
+                WHERE tiendas_secciones.ID_Tienda = :ID_TIENDA AND secciones.ID_Seccion = :ID_SECCION AND imagenes.fotoPrincipal = :PRINCIPAL 
+                ORDER BY secciones.seccion, productos.producto, opciones.opcion"
+            );      
         
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
             $stmt->bindParam(':ID_SECCION', $ID_Seccion, PDO::PARAM_STR);

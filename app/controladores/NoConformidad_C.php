@@ -42,7 +42,7 @@
             // exit;
             
             $this->vista("inc/header");
-            $this->vista("paginas/noConformidad_V", $Datos);
+            $this->vista("view/noConformidad_V", $Datos);
         }
         
         //Invocado desde noConformidad_V.php para recibir el formulario de no conformidad
@@ -79,7 +79,7 @@
                 // ****************************************
                 $Datos = 'AcuseRecibo';
                 $this->vista("inc/header");
-                $this->vista("paginas/noConformidad_V", $Datos);
+                $this->vista("view/noConformidad_V", $Datos);
             }
             else{
                 header('location:' . RUTA_URL);

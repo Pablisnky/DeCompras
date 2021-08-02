@@ -1,5 +1,6 @@
 <!-- Archivo cargado desde Ajax por medio de Llamar_categorias() en E_Cuenta_editar.js y mostrado en cuenta_editar_V.php -->    
 <section class="sectionModal">
+
     <!-- ICONO DE CERRAR PAGINA -->
     <span onclick="CerrarCategoria('Mostrar_Categorias')"><i class="fas fa-times span_5"></i></span>
 

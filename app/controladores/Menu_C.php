@@ -63,25 +63,25 @@
             ];
 
             $this->vista("inc/header");
-            $this->vista("paginas/afiliacion_V", $Datos);
+            $this->vista("view/afiliacion_V", $Datos);
         }
 
         public function instruccion(){
-            $this->vista("paginas/instrucion_V");
+            $this->vista("view/instrucion_V");
         }
 
         public function ciudad($Datos){
-            $this->vista("paginas/ciudad_V", $Datos);
+            $this->vista("view/ciudad_V", $Datos);
         }
 
         public function PWA(){
             $this->vista("inc/header_Modal");
-            $this->vista("paginas/pwa_V");
+            $this->vista("view/pwa_V");
         }
         
         public function nuestroADN(){
             $this->vista("inc/header");
-            $this->vista("paginas/quienesSomos_V");
+            $this->vista("view/quienesSomos_V");
         }
                 
         public function recibeContactenos(){         
@@ -115,12 +115,12 @@
             // ****************************************
 
             $this->vista("inc/header");
-            $this->vista("paginas/quienesSomos_V");
+            $this->vista("view/quienesSomos_V");
         }
         
         public function descargaApp(){
             $this->vista("inc/header");
-            $this->vista("paginas/descargaApp_V");
+            $this->vista("view/descargaApp_V");
         }
 
         public function categorias(){ 

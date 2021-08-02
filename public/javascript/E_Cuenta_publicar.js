@@ -134,7 +134,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
 //************************************************************************************************
     //Valida el formulario de cargar producto
     function validarPublicacion(){
-        //console.log("______Desde validarPublicacion()______")
+        console.log("______Desde validarPublicacion()______")
 
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 

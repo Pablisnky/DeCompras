@@ -53,6 +53,6 @@
             $_SESSION['verifica_2'] = $verifica_2; 
             //Se crea esta sesion para impedir que se acceda a la pagina que procesa el formulario (RecibePedido_V.php) o se recargue mandandolo varias veces a la base de datos
             
-            $this->vista("paginas/carrito_V", $Datos);
+            $this->vista("view/carrito_V", $Datos);
         }        
     }

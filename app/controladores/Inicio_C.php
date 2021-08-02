@@ -18,18 +18,18 @@
             // echo '</pre>';
             // exit;
 
-            $Dolar = "<p id='XX'></p>";
+            // $Dolar = "<p id='XX'></p>";
             
-            require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
-            $this->ActualizarPrecio = new CalculoDolar_C();
-            $this->ActualizarPrecio->AjusteCambioMonetario($Dolar);
+            // require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
+            // $this->ActualizarPrecio = new CalculoDolar_C();
+            // $this->ActualizarPrecio->AjusteCambioMonetario($Dolar);
             
             // echo 'Perfecto, Dolar actualizado' . '<br>';
             // echo "<a href='javascript: history.go(-1)'>Regresar</a>";            
             ?>
 
             <!-- Se consume la API de DolarToday para obtener el precio del dolar, no se puede utilizar la funcion nativa de php json_decode porque la API viene con un error en el Json, una palabra "sábado" tiene problemas con acento -->
-            <script>
+            <!-- <script>
                 async function TraerPais(){
                     const respuesta = await fetch('https://s3.amazonaws.com/dolartoday/data.json');
 
@@ -43,7 +43,7 @@
                 }
 
                 TraerPais().then(PrecioDolar);
-            </script> 
+            </script>  -->
         <?php
         }
         
@@ -60,23 +60,27 @@
                 $url = $row['url'];
                 // echo RUTA_URL . '/' . $_GET["url"];
                 // echo '<br>';
-                // echo $_GET["url"];
+                // echo $url;
                 // exit;
-                // if(!empty($_GET["url"])){
+                if(!empty($_GET["url"])){
                     if($Link == RUTA_URL . '/' . $_GET['url']){   
                         header("Location: $url");
                     }
-                // }
+                }
+                else{                  
+                    $this->vista("inc/header_inicio"); 
+                    $this->vista("view/inicio_V");   
+                }
             }
             
             // $this->vista("inc/header_inicio"); 
-            // $this->vista("paginas/inicio_V");            
+            // $this->vista("view/inicio_V");            
         }
         
         // Llamado desde CerrarS_C.php
         public function NoVerificaLink(){
             $this->vista("inc/header_inicio"); 
-            $this->vista("paginas/inicio_V");            
+            $this->vista("view/inicio_V");            
         }
     }
 ?>

@@ -29,8 +29,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     //$Datos viene de Cuenta_C/Editar
     foreach($Datos['link_Tien'] as $row){
         $Link_Acceso = $row['link_acceso'];
-    }   
-    
+    }       
     ?>
     
     <!-- CDN iconos de font-awesome-->
@@ -436,10 +435,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
     <!-- <did id="ReadOnly"></did> -->
 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js?v=' . rand();?>"></script> 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js?v=' . rand();?>"></script> 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/Municipios.js?v=' . rand();?>"></script> 
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/parroquias.js?v=' . rand();?>"></script> 
+    <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar.js?v=' . rand();?>"></script> 
+    <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js?v=' . rand();?>"></script> 
+    <script src="<?php echo RUTA_URL . '/public/javascript/Municipios.js?v=' . rand();?>"></script> 
+    <script src="<?php echo RUTA_URL . '/public/javascript/parroquias.js?v=' . rand();?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen de la tienda, usada en cuenta_editar_prod_V.php

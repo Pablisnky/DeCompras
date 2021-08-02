@@ -28,7 +28,7 @@
             // exit;
             
             $this->vista("inc/header"); 
-            $this->vista("paginas/categoria_V", $Datos); 
+            $this->vista("view/categoria_V", $Datos); 
         }
 
         //Metodo invocado en A_Categorias.js por medio de Llamar_TiendasCiudad()
@@ -45,7 +45,7 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("paginas/CantidadTiendas_Ajax_V", $Datos); 
+            $this->vista("view/CantidadTiendas_Ajax_V", $Datos); 
         }
     }
 ?>

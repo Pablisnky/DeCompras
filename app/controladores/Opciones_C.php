@@ -16,7 +16,7 @@
             // echo $OpcionSelec . '<br>';
             // exit;
             
-            $Consulta = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $ID_Seccion);   
+            $Opciones = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $ID_Seccion);   
             // echo "<pre>";
             // print_r($Consulta);
             // echo "</pre>";
@@ -36,7 +36,7 @@
             // exit;
 
             $Datos=[
-                'Opciones' => $Consulta, //nombreTienda, slogan, seccion, ID_Producto, ID_Opcion, producto, opcion, especificacion, precioBolivar, precioDolar, cantidad, disponible
+                'Opciones' => $Opciones, //nombreTienda, slogan, seccion, ID_Producto, ID_Opcion, producto, opcion, especificacion, precioBolivar, precioDolar, cantidad, disponible
                 'ProductoSelecion' => $OpcionSelec,
                 'ID_Tienda' => $ID_Tienda,
                 'variosCaracteristicas' => $Caracteristicas, //ID_Producto, caracteristica 
@@ -48,7 +48,7 @@
             // echo "</pre>";
             // exit();
             
-            $this->vista("paginas/opciones_V", $Datos);
+            $this->vista("view/opciones_V", $Datos);
         }  
 
         //Cuando se viene del buscador, los parametros se reciben desde E_Inicio.js por medio de la funcion OpcionSeleccionada()
@@ -68,10 +68,10 @@
             // echo "<pre>";
             // print_r($Datos);
             // echo "</pre>";
-            //         exit();
+            // exit();
             
             $this->vista("inc/header_Tienda");
-            $this->vista("paginas/opciones_V", $Datos);
+            $this->vista("view/opciones_V", $Datos);
         }       
         
         //Invocado desde opciones_V.php por medio de mostrarDetalles()
@@ -126,13 +126,13 @@
             // exit();
             
             $this->vista("inc/headerProducto", $Datos);
-            $this->vista("paginas/descr_Producto_V", $Datos);
+            $this->vista("view/descr_Producto_V", $Datos);
         } 
         
         public function imagenAmpliado($Fotografia){
             $Datos = $Fotografia;
 
-            $this->vista("paginas/imagenApliada_V", $Datos);
+            $this->vista("view/imagenApliada_V", $Datos);
         }
     }
 ?>    
