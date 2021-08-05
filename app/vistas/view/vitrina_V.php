@@ -25,7 +25,7 @@
     <div class="contenedor_156"> 
         <div>
             <aside class="aside_1">
-                <!-- <p class="p_17 borde_1">SECCIONES</p> -->
+                <p class="p_17 borde_1">SECCIONES</p>
             </aside>
         </div>
 

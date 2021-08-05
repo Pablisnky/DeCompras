@@ -78,6 +78,11 @@
                 // echo "</pre>";
                 // exit();
 
+                //Si no hay productos cargados, la tienda se oculta a los usuarios
+                if($Productos == Array()){
+                    $this->ConsultaCuenta_M->actualizarMostarTienda($this->ID_Tienda);
+                }
+
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
                 $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
 
@@ -531,10 +536,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
 
                         //usar en local
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -905,7 +910,7 @@
                         // 'Descripcion' => preg_replace("[\n|\r|\n\r|\]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
-                        'Cantidad' => $_POST['cantidad'],
+                        'Cantidad' => !empty($_POST['cantidad']),
                         'Disponible' => !empty($_POST['disponible']),
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
@@ -981,7 +986,8 @@
                     // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
                     // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
                     // exit();
-                    //Si existe foto_Producto y tiene un tamaño correcto
+
+                    //Si existe foto_Producto y tiene un tamaño correcto (maximo 2Mb)
                     if(($nombre_imgProducto == !NULL) AND ($tamanio_imgProducto <= 2000000)){
                         //indicamos los formatos que permitimos subir a nuestro servidor
                         if(($tipo_imgProducto == "image/jpeg")
@@ -991,10 +997,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             // usar en local
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //se muestra el directorio temporal donde se guarda el archivo
                             //echo $_FILES['imagen']['tmp_name'];
@@ -1034,10 +1040,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
@@ -1113,10 +1119,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1174,10 +1180,10 @@
                                 // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                                 //Usar en remoto
-                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                                 //usar en local
-                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                                 //se muestra el directorio temporal donde se guarda el archivo
                                 //echo $_FILES['imagen']['tmp_name'];
@@ -1332,10 +1338,10 @@
                 $NombreImagenEliminar = $KeyImagenes['nombre_img'];
 
                 //Usar en remoto
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
+                // unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
                     
                 //usar en local
-                // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/' . $NombreImagenEliminar);
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/' . $NombreImagenEliminar);
                 
             endforeach;
               

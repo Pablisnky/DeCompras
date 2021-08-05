@@ -11,7 +11,7 @@
         }
         
         public function index(){
-            //Se CONSULTAN todas las ciudades en las cuales existen tiendas
+            //Se CONSULTAN todos los estados en los cuales existen tiendas disponibles para mostrar a usuarios
             $EstadosTiendas = $this->ConsultaCategoria_M->consultarEstadosTiendas();
 
             //Se CONSULTAN todas las ciudades en las cuales existen tiendas

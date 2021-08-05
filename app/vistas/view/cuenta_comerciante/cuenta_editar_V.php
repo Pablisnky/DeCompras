@@ -56,10 +56,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <label>Apellido</label>
                 <input class="input_13 input_13A borde_1" type="text" name="apellido_Afcom" id="Apellido_Aficom"  value="<?php echo $Apellido_AfiCom;?>" autocomplete="off"/>
                
-                <label>Cedula (Solo números)</label>
+                <label>Cédula (Solo números)</label>
                 <input class="input_13 input_13A borde_1" type="text" name="cedula_Afcom" id="Cedula_Aficom"  value="<?php echo $Cedula_AfiCom;?>" autocomplete="off" placeholder="00000000000"/>
                 
-                <label>Telefono (Solo números)</label>
+                <label>teléfono (Solo números)</label>
                 <input class="input_13 input_13A borde_1" type="text" name="telefono_Afcom" id="Telefono_Aficom"  value="<?php echo $Telefono_AfiCom;?>" autocomplete="off" placeholder="00000000000"/>
                 
                 <label>Correo</label>
@@ -150,16 +150,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <!-- CATEGORIAS --> 
             <a id="Categoria" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2" id="Fieldset">
-                <legend class="legend_1">Categoria</legend>
+                <legend class="legend_1">Categoría</legend>
                 <div>
-                    <p class="p_12">Una categoria clasificará tu tienda en un rubro especifico</p>
+                    <p class="p_12">Una categoría clasificará tu tienda en un rubro específico</p>
                     <?php
                     //Entra en el IF cuando no hay categorias creadas
                     if($Datos['categoria'] == Array ( )){   ?>                                            
                         <div id="Label_13">
                             <div id="Contenedor_80js" style="margin-bottom: 5%;">
                                 <div class="contenedor_80">
-                                    <label>Categoria</label>
+                                    <label>Categoría</label>
                                     <span class="icon-circle-down span_10 span_12_js"></span>
                                 </div>                              
                                 <span></span><!-- span de rellenar para pasar la validacion de categoria-->   
@@ -195,17 +195,30 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div class="contenedor_80A" id="Contenedor_80A">
                         <div class="contenedor_80C" id="Contenedor_80C">
                             <input class="input_13 input_13A input_12 borde_1" type="text"/>
-                            <span class="icon-cancel-circle span_10 span_14_js"><span>
+                            <span class="icon-cancel-circle span_10"><i class="fas fa-times span_14_js"></i><span>
                             <input class="contador_2 contador_2--seccion" type="text" value="25"/>
                         </div>
+                        <!-- <div class="contenedor_80B borde_1 borde_2">
+                            <img class="contenedor_119__img" id="" alt="Fotografia de la sección" src="../public/images/secciones/imagen.png"/>
+                            <label for=""><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
+                            <input class="ocultar" type="file" name="imagen_Seccion" id=""/>
+                        </div> -->
                     </div>
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
                     if($Datos['secciones'] == Array ( )){  ?>
-                        <div class="contenedor_80" id="Contenedor_80">
+                        <div class="contenedor_80 cont_seccion--div-1" id="Contenedor_80">
                             <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección"/>
-                            <span class="icon-cancel-circle span_10 span_14_js"></span>
+                            <div class="cont_seccion--icono_Contador">
+                                <span class="span_10"><i class="fas fa-times span_14_js"></i></span>
+                                <input class="contador_2 contador_2--seccion" type="text" value="25"/>
+                            </div>
                         </div>
+                        <!-- <div class="contenedor_80B borde_1 borde_2">
+                            <label for="Img_Seccion"><i class="fas fa-pencil-alt icono_4 cont_seccion--icono_editar borde_1"></i></label>
+                            <img class="contenedor_119__img" id="ImagenSeccion" alt="Fotografia de la sección" src="../public/images/secciones/imagen.png"/>
+                            <input class="ocultar" type="file" name="imagen_Seccion" id="Img_Seccion"/>
+                        </div> -->
                         <?php
                     }   
                     else{  //Entra en el ELSE cuando hay secciones creadas  
@@ -232,7 +245,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             </fieldset>
             
             <!-- HORARIO -->
-            <?php require(RUTA_APP . "/vistas/paginas/tienda/horario_V.php"); ?>
+            <?php require(RUTA_APP . "/vistas/view/tienda/horario_V.php"); ?>
 
             <!-- OFERTAS -->
             
@@ -242,7 +255,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <a id="marcador_06" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Cuentas bancarias</legend>
-                <span>Los pagos de los pedidos realizados a tu tienda se depositan directamente a tus cuentas bancarias por medio de transferencias o pago movil, los pedidos pagados por transferencia de cuentas de otros bancos causan una demora de 48 hrs en el despacho del pedido para que verifiques la transferencia.</span>
+                <span>Los pagos de los pedidos realizados a tu tienda se depositan directamente a tus cuentas bancarias por medio de transferencias o pago móvil, los pedidos pagados por transferencia de cuentas de otros bancos causan una demora de 48 hrs en el despacho del pedido para que verifiques la transferencia.</span>
                 </br>
                 <label>Información para recibir pagos por transferencia</label>                   
                 <div id="Mostrar_CuentaBancaria">
@@ -259,7 +272,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <input class="input_13 input_13A titularTransJS borde_1" type="text" name="titular[]" id="Titular_Banco" placeholder="Titular" autocomplete="off"/>
 
                             <!-- NUMERO CUENTA -->
-                            <input class="input_13 input_13A cuentaTransJS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Numero de cuenta" autocomplete="off"/>
+                            <input class="input_13 input_13A cuentaTransJS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Número de cuenta" autocomplete="off"/>
 
                             <!-- RIF BANCO -->
                             <input class="input_13 input_13A rifTransJS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off"/>
@@ -302,8 +315,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <!-- CUENTAS PAGOMOVIL -->
             <a id="marcador_07" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">                    
-                <legend class="legend_1">Cuentas PagoMovil</legend>
-                <label>Información para recibir pagos por pagomovil</label>   
+                <legend class="legend_1">Cuentas PagoMóvil</legend>
+                <label>Información para recibir pagos por pagomóvil</label>   
                 <div id="Mostrar_PagoMovil">
                     <!-- Entra en el IF cuando no hay cuentas de pagomovil creadas -->
                     <?php
@@ -312,14 +325,14 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div class="contenedor_67 borde_1" id="Contenedor_68">
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
-                            <!-- CEDULA PAGOMOVIL -->
+                            <!-- CÉDULA PAGOMOVIL -->
                             <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
 
                             <!-- BANCO PAGOMOVIL -->
                             <input class="input_13 input_13A borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
 
                             <!-- TELEFONO PAGOMOVIL -->
-                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefonico 0000-000.00.00" autocomplete="off"/>
+                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefónico 0000-000.00.00" autocomplete="off"/>
                         </div>
                         <?php
                     }
@@ -333,8 +346,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <div class="contenedor_67 borde_1" id="Contenedor_68">
                                 <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
-                                <!-- CEDULA PAGOMOVIL -->
-                                <label>Cedula (Solo números)</label>
+                                <!-- CÉDULA PAGOMOVIL -->
+                                <label>Cédula (Solo números)</label>
                                 <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
 
                                 <!-- BANCO PAGOMOVIL -->
@@ -342,14 +355,14 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <input class="input_13 input_13A borde_1 BancoJS" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
-                                <label>Nº telefono (Solo números)</label>
+                                <label>Nº teléfono (Solo números)</label>
                                 <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="<?php echo 'TelefonoPagoMovil_' . $Iterador?>" value="<?php echo $TelefonoPagoMovil?>" autocomplete="off"/>
                             </div>
                             <?php
                             $Iterador++;
                         endforeach;
                     }   ?>        
-                    <label class="label_4 label_24" id="Label_7">Añadir telefono </br> PagoMovil</label>
+                    <label class="label_4 label_24" id="Label_7">Añadir teléfono </br> PagoMóvil</label>
                 </div>
             </fieldset>   
             
@@ -371,7 +384,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     </div>  
                     <div class="contenedor_166">   
                         <input type="checkbox" name="acordado" id="Acordado"/>
-                        <label class="label_11" for="Acordado">Aceptar pago acordados con el cliente via telefonica</label>
+                        <label class="label_11" for="Acordado">Aceptar pago acordados con el cliente vía telefonica</label>
                     </div>
                 <?php
                 }
@@ -395,7 +408,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         </div>  
                         <div class="contenedor_166">   
                             <input type="checkbox" name="acordado" id="Acordado" <?php if($PagoAcordado == 1){echo 'checked';} ?>/>
-                            <label class="label_11" for="Acordado">Aceptar pago acordados con el cliente via telefonica</label>
+                            <label class="label_11" for="Acordado">Aceptar pago acordados con el cliente vía telefonica</label>
                         </div> <?php
                     endforeach; 
                 } ?>
@@ -406,13 +419,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_83 borde_1">
                     <a class="marcador" href="#marcador_01">Persona responsable</a>
                     <a class="marcador" href="#marcador_02">Datos de tienda</a>
-                    <a class="marcador" href="#Categoria">Categoria</a>
+                    <a class="marcador" href="#Categoria">Categoría</a>
                     <a class="marcador" href="#Secciones">Secciones</a>
                     <a class="marcador" href="#Horario">Horario</a>
                     <!-- <a class="marcador" href="#marcador_04">Ofertas</a> -->
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas transferencia</a>
-                    <a class="marcador" href="#marcador_07">Cuentas PagoMovil</a>
+                    <a class="marcador" href="#marcador_07">Cuentas PagoMóvil</a>
                     <a class="marcador" href="#OtrosPago">Otros medios de pago</a>
                     <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>"/>
@@ -421,7 +434,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div class="contenedor_45">
                         <!-- <input type="checkbox" id="Publicar" name="publicar" value="1" onclick="llamar_publicarTienda()" <?php //if($CategoriaT == $Categoria){echo "checked = 'checked'";};?>
                         /> -->
-                        <!-- <label class="label_19" for="Publicar">Mostrar tienda al publico.</label> -->
+                        <!-- <label class="label_19" for="Publicar">Mostrar tienda al público.</label> -->
                         <div id="Mostrar_tienda"></div>
                     </div> 
                 </div>
@@ -456,6 +469,24 @@ if(!empty($_SESSION["ID_Afiliado"])){
             // Código a ejecutar cuando se detecta un cambio de imagen de tienda
             var id_Label = $('#blah_2');
             readImage(this, id_Label);
+        });
+
+        
+        //Da una vista previa de la imagen de la seccion
+        function Muestra_Imagen_Seccion(input, id_Label){
+            // console.log("______Desde Muestra_Imagen_Seccion()______", input + ' | ' + id_Label)
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    id_Label.attr('src', e.target.result); //Renderizamos la imagen
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }        
+        $("#Img_Seccion").change(function(){
+            // Código a ejecutar cuando se detecta un cambio de imagen de tienda
+            var id_Label = $('#ImagenSeccion');
+            Muestra_Imagen_Seccion(this, id_Label);
         });
     </script>
         

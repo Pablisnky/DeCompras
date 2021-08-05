@@ -40,6 +40,42 @@
             </span>
         </div>
     </div>
+
+    <div class='contenedor_6 borde_1' id="Bodega">
+        <h2 class='h2_1'>BODEGAS</h2>
+        <i class="fas fa-store icono_2"></i>                
+        <div class="contenedor_106">
+            <span class="span_21 borde_1">
+                <?php
+                    foreach($Datos['cantidadTiendasCategoria'] as $arr) :
+                        if($arr['ID_Categoria'] == 4){  
+                            $CantidadBodega = $arr['cantidad']; 
+                            echo $CantidadBodega; ?>
+                            <style>
+                                #Bodega .span_21{
+                                    background-color: var(--Aciertos);
+                                }
+                            </style>
+                            <?php
+                        }
+                    endforeach; 
+                    if(empty($CantidadBodega)){                                     
+                        echo 0;?>
+                        <style>
+                            #Bodega{
+                                position: relative;
+                                z-index: -1;           
+                            }
+                            #Bodega .span_21{
+                                background-color: var(--Fallos);
+                            }
+                        </style>
+                        <?php
+                    }  
+                ?>
+            </span>
+        </div>
+    </div>
     
     <div class='contenedor_6 borde_1' id="Comida_Rapida">
         <h2 class='h2_1'>COMIDA RAPIDA Y RESTAURANTS</h2>
@@ -283,42 +319,6 @@
                         }
                     </style>  <?php
                 }   ?>
-            </span>
-        </div>
-    </div>
-
-    <div class='contenedor_6 borde_1' id="Bodega">
-        <h2 class='h2_1'>BODEGAS</h2>
-        <i class="fas fa-store icono_2"></i>                
-        <div class="contenedor_106">
-            <span class="span_21 borde_1">
-                <?php
-                    foreach($Datos['cantidadTiendasCategoria'] as $arr) :
-                        if($arr['ID_Categoria'] == 4){  
-                            $CantidadBodega = $arr['cantidad']; 
-                            echo $CantidadBodega; ?>
-                            <style>
-                                #Bodega .span_21{
-                                    background-color: var(--Aciertos);
-                                }
-                            </style>
-                            <?php
-                        }
-                    endforeach; 
-                    if(empty($CantidadBodega)){                                     
-                        echo 0;?>
-                        <style>
-                            #Bodega{
-                                position: relative;
-                                z-index: -1;           
-                            }
-                            #Bodega .span_21{
-                                background-color: var(--Fallos);
-                            }
-                        </style>
-                        <?php
-                    }  
-                ?>
             </span>
         </div>
     </div>

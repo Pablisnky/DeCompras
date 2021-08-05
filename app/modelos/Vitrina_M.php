@@ -46,9 +46,16 @@
             }
         }
            
-        //SELECT de las imagenes principales de cada sección de una tienda
+        //SELECT de las imagenes principales de cada sección de una tienda (seleccion forzada por la aplicación)
         public function consultarImagenesSeccionForzada($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_img, secciones.ID_Seccion FROM imagenes INNER JOIN secciones_productos ON imagenes.ID_Producto=secciones_productos.ID_Producto INNER JOIN secciones ON secciones_productos.ID_Seccion=secciones.ID_Seccion WHERE ID_Tienda = :ID_TIENDA  GROUP BY secciones.ID_Seccion");  
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_img, secciones.ID_Seccion 
+                 FROM imagenes 
+                 INNER JOIN secciones_productos ON imagenes.ID_Producto=secciones_productos.ID_Producto 
+                 INNER JOIN secciones ON secciones_productos.ID_Seccion=secciones.ID_Seccion 
+                 WHERE ID_Tienda = :ID_TIENDA  
+                 GROUP BY secciones.ID_Seccion"
+            );  
                     
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 
 

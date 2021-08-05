@@ -43,12 +43,12 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
 //CUENTA LA CANTIDAD DE CARACTERES QUE YA TIENE UNA SECCION (TRAE DATOS DE BD)
 //Por medio de delegación de eventos se detecta la seccion clonada
 document.addEventListener("DOMContentLoaded", function(){
-    // console.log("______Desde funcion anonima cuenta caracteres de BD")
+    // console.log("______Desde funcion anonima cuenta caracteres de secciones que vienen de BD")
 
     let Secciones = document.getElementsByClassName("seccionesJS")
     let Contadores = document.getElementsByClassName("contador_JS")
-    // console.log(Secciones.length)
-    // console.log(Contadores.length)
+    // console.log("Input con secciones", Secciones.length)
+    // console.log("Input con contadores", Contadores.length)
 
     for(var i = 0; i < Secciones.length; i++){
         // console.log("Seccion cargada= ", Secciones[i].value)
@@ -103,7 +103,7 @@ window.addEventListener('click', function(e){
 //ELIMINAR SECCIONES
 //Por medio de delegación de eventos se detecta la sección a eliminar
 window.addEventListener('click', function(e){
-    // console.log("______Desde funcion anonima que aplica listerner para eliminar secciones______")
+    console.log("______Desde eliminar secciones______")
 
     var ElementoSeleccionado = e.target.classList[2]
     // console.log(ElementoSeleccionado)
@@ -124,7 +124,7 @@ window.addEventListener('click', function(e){
             if(PadreSecciones.childElementCount > 4){
                 // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
                 current = e.target.parentElement
-                // console.log("div a eliminar", current)
+                // console.log("Padre del boton X", current)
 
                 //Se obtiene el elemento hermano de current
                 let InputSeccion = current.previousElementSibling
@@ -132,16 +132,25 @@ window.addEventListener('click', function(e){
                 
                 //Se busca el nodo padre que contiene el elemento "current" y el elemento "InputSeccion" 
                 let elementoPadre = current.parentElement
+                // console.log("Elemento Padre", elementoPadre)
+
+                //Se busca el elemento hermano de "elementoPadre" 
+                let ImagenSeccion = elementoPadre.nextElementSibling
+                // console.log("Imagen de la Seccion = ", ImagenSeccion)
+
+                //Se busca el elemento padre donde esta toda la seccion
+                let elementoPadreSeccion = ImagenSeccion.parentElement
                 
                 //Se elimina la sección
                 elementoPadre.removeChild(current)  
-                elementoPadre.removeChild(InputSeccion)             
+                elementoPadre.removeChild(InputSeccion)   
+                elementoPadreSeccion.removeChild(ImagenSeccion)           
             }
             else{
                 document.getElementById("Seccion").value = ""
             }
 
-            //Se procede a eliminar del servidor
+            //Se procede a eliminar la sección del servidor
             Llamar_EliminarSeccion(ID_ElementoSeleccionado, Secciones)
         }  
     }  

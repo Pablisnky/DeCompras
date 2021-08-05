@@ -6,7 +6,7 @@
         <div class="contenedor_84--100">
             <h2 class="h2_9 h2_3 contenedor_84__h2">Supermercado</h2>
             <ul class="ul_2">
-                <li class="li_5">Viveres</li>
+                <li class="li_5">Víveres</li>
                 <li class="li_5">Desinfectante</li>
                 <li class="li_5">Verduras</li>
                 <li class="li_5">Aseo personal</li>
@@ -35,7 +35,7 @@
                 <li class="li_5">Pan dulce</li>
                 <li class="li_5">Pan salado</li>
                 <li class="li_5">Tortas</li>
-                <li class="li_5">Dulces frios</li>
+                <li class="li_5">Dulces fríos</li>
                 <li class="li_5">Pasteles</li>
                 <li class="li_5">Pan de sandwich</li>
                 <li class="li_5">Quesos</li>
@@ -56,13 +56,13 @@
             </ul>
         </div>
         <div class="contenedor_84--100">
-            <h2 class="h2_9 h2_3 contenedor_84__h2">Venta de Material médico quirurgico</h2>
+            <h2 class="h2_9 h2_3 contenedor_84__h2">Venta de Material médico quirúrgico</h2>
             <ul class="ul_2">
                 <li class="li_5">Stent</li>
                 <li class="li_5">Inyectadoras</li>
-                <li class="li_5">Termometros</li>
+                <li class="li_5">Termómetros</li>
                 <li class="li_5">Soluciones</li>
-                <li class="li_5">Protesis</li>
+                <li class="li_5">Prótesis</li>
                 <li class="li_5">Marcapasos</li>
                 <li class="li_5">Gasas</li>
                 <li class="li_5">...</li>

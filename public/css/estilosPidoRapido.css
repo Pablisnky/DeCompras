@@ -671,18 +671,25 @@ body, html{
 	justify-content: space-between;
 	font-size: 1em;
 	position: absolute; /*esto se hace para poder dar z-index y ocultar el elemento*/
-	z-index: -1;
-	top: -5%;
+	z-index: -1 !important;
+	top: -15%;
 	left: 0%;
 	width: 100%;
+}
+.contenedor_80B{/*cuenta_editar*/	
+	/* display: flex; 
+	margin-bottom: 5%; */
+	margin: auto;
+	margin-top: 0%;
+	width: 45% !important;
 }
 .contenedor_80C{/*cuenta_editar*/	
 	display: flex; /*Organiza los elementos horizontalmente*/
 	margin-bottom: 5%;
-	width: 100% !important;
+	width: 45% !important;
 }
 .contenedor_80A__div2{/*cuenta_editar*/
-	width: 100%;
+	/* width: 100%; */
 }
 .contenedor__80div{/*cuenta_editar*/
 	width:10% !important;
@@ -1312,6 +1319,23 @@ body, html{
     overflow: auto;
     scroll-snap-type: y mandatory;
 }
+.cont_seccion--icono_Contador{/*cuenta_editar*/
+	width: 10%;
+	text-align: center;
+}
+.cont_seccion--icono_editar{/*cuenta_editar*/
+	background-color: var(--OficialClaro);
+	border-radius: 30px;
+	padding: 2%;
+	width: 30px;
+	float: right;
+	/* display: inline !important; */
+	cursor: pointer;	
+	font-size: 20px;
+}
+.cont_seccion--div-1{/*cuenta_editar*/
+	margin-bottom: 0%;
+}
 .contSelectVert{/*horario*/
 	width: 100%;
 	margin-top: 15%;
@@ -1678,7 +1702,7 @@ body, html{
 	text-align: center;
 }
 .icono_4{/*cuenta_editar*/
-	font-size: 20px;
+	/* font-size: 20px; */
 }
 .icono_5{/*tiendas*/
 	font-size: 9em;
@@ -1821,7 +1845,7 @@ body, html{
 }
 .input_8A{/*opciones - cuenta_productos*/
 	margin-top: 10%;
-	font-size: 0.9em;
+	/* font-size: 0.9em; */
 }
 .input_8C{/*opciones*/
 	max-width: 100%;

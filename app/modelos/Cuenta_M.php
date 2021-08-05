@@ -1168,21 +1168,25 @@
             }
         }
 
-        // public function actualizarDT_SecImg($ID_Seccion, $ID_Imagen){
-        //     $stmt = $this->dbh->prepare("UPDATE secciones_imagenes SET ID_Seccion = :ID_SECCION WHERE ID_Imagen = :ID_IMAGEN");
+        public function actualizarMostarTienda($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "UPDATE tiendas 
+                SET publicar = 0 
+                WHERE ID_Tienda = :ID_TIENDA"
+            );
 
-        //     // Se vinculan los valores de las sentencias preparadas
-        //     $stmt->bindValue(':ID_SECCION', $ID_Seccion);
-        //     $stmt->bindValue(':ID_IMAGEN', $ID_Imagen);
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
 
-        //     // Se ejecuta la actualización de los datos en la tabla
-        //     if($stmt->execute()){
-        //         return true;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        }
 
 
 
@@ -1241,7 +1245,10 @@
             // print_r($RecibeProducto);
             // echo "</pre>";
             // exit;
-            $stmt = $this->dbh->prepare("INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad, disponible) VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)");
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad, disponible) 
+                VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)"
+            );
 
             // insertar una fila
             $Opcion = $RecibeProducto['Descripcion'];
