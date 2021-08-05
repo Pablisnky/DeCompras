@@ -1294,7 +1294,7 @@ body, html{
 }
 .contInputRadio--margen{/*categoria*/
 	padding-left: 10% !important;
-	margin-bottom: 4%;
+	margin-bottom: 10px !important;
 }
 .contOpciones{/*opciones*/
 	border-radius: 15px;
@@ -2133,7 +2133,7 @@ body, html{
 .menuLi_2{/*header_AfiCom*/
 	color: var(--OficialOscuro);
 	padding-left: 5%;
-	padding-top: 5%;
+	padding-top: 7%;
 	display: block;
 	width: 110% !important;
 	text-align: left !important;
@@ -2775,5 +2775,6 @@ ul .menuContenedor_3{/*header_AfiCom*/
 	position: absolute;
 	margin-left: 3%;
 	z-index: 5;
+	padding-top: 0.5%;
 	padding-bottom: 1%; 
 }

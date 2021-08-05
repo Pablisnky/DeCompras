@@ -73,7 +73,9 @@
             </div>
             
             <!--Carga mediante Ajax las tiendas disponibles para la busqueda solicitada desde buscador_V.php -->
-            <div class="contenedor_58" id="Buscar_Pedido"></div>
+            <div class="contenedor_58" id="Buscar_Pedido">
+                cargo
+            </div>
         </div>
     </div>
 

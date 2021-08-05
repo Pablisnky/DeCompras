@@ -753,7 +753,7 @@
 	font-size: 0.9em !important;
 }
 .contInputRadio--margen{/*categoria*/
-	margin: 20px ;
+	margin: 20px !important;
 	font-size: 1.2em;
 }
 .contOpciones{/*opciones*/

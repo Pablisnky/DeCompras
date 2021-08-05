@@ -66,7 +66,7 @@
     }
 
 //************************************************************************************************
-    //Invocada desde inicio_V.php - cuenta_productos_V.php - cuenta_editar_V.php
+    //Invocada desde inicio_V.php - cuenta_productos_V.php - cuenta_editar_V.php - E_Inicio.js
     function CerrarModal_X(id){
         // console.log("______Desde CerrarModal_X()______", id)
         document.getElementById(id).style.display = "none"

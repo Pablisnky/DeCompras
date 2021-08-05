@@ -52,6 +52,8 @@
 				</ul>
 			</nav>
 		</header>
+
+		<!-- Icono de busqueda Lupa -->
         <div class="contIconoBuscador borde_1" id="Contenedor_34">
             <span><i class="fas fa-search icono_3"></i></span>
         </div>

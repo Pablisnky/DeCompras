@@ -17,7 +17,7 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("view/buscador_V", $Datos);
+            $this->vista("view/ajax/buscador_V", $Datos);
         } 
     }
-?>    
+?>

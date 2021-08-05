@@ -9,7 +9,7 @@
                             <h1 class="h1_7"><?php echo $arr['estado_Tien']?></h1>   <?php
                             foreach($Datos['ciudades'] as $Key) : 
                                 if($arr['estado_Tien'] == $Key['estado_Tien']) : ?>
-                                    <div class="contInputRadio contInputRadio--margen" >    
+                                    <div class="contInputRadio contInputRadio--margen">    
                                         <input class="ciudad_JS" type="radio" name="ciudades" id="<?php echo str_replace(' ', '%20', $Key['parroquia_Tien']);?>" value="<?php echo $Key['parroquia_Tien'];?>" onclick="Llamar_TiendasCiudad(this.id)"/>
                                         <label class="contInputRadio__label" for="<?php echo str_replace(' ', '%20', $Key['parroquia_Tien']);?>"><?php echo $Key['parroquia_Tien'];?></label>
                                     </div>  <?php
