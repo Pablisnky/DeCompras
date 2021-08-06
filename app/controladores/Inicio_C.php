@@ -53,28 +53,30 @@
             // echo '<pre>';
             // print_r($Link_Tienda);
             // echo '</pre>';
+            
+            // echo '**********************<br>';
             // exit;
 
             foreach($Link_Tienda as $row){
                 $Link = $row['link_acceso'];
-                $url = $row['url'];
-                // echo RUTA_URL . '/' . $_GET["url"];
-                // echo '<br>';
+                $url = RUTA_URL . '/' . $_GET['url'];
+                $LinkTienda = $row['url'];
                 // echo $url;
-                // exit;
+                // echo '<br>';
+                // echo $Link;
+                // echo '<br>';
+                // echo $LinkTienda;
+                // echo '<br>';
                 if(!empty($_GET["url"])){
-                    if($Link == RUTA_URL . '/' . $_GET['url']){   
-                        header("Location: $url");
+                    if($Link == $url){   
+                        header("Location:" . $LinkTienda);
                     }
                 }
                 else{                  
                     $this->vista("inc/header_inicio"); 
                     $this->vista("view/inicio_V");   
                 }
-            }
-            
-            // $this->vista("inc/header_inicio"); 
-            // $this->vista("view/inicio_V");            
+            }          
         }
         
         // Llamado desde CerrarS_C.php

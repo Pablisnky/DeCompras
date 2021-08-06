@@ -112,6 +112,42 @@
             </span>
         </div>
     </div> 
+    
+    <div class='contenedor_6 borde_1' id="Cosmeticos">
+        <h2 class='h2_1'>COSMETICOS</h2>  
+        <i class="fas fa-female icono_2"></i>        
+        <div class="contenedor_106">
+            <span class="span_21 borde_1">
+                <?php
+                    foreach($Datos['cantidadTiendasCategoria'] as $arr) :
+                        if($arr['ID_Categoria'] == 22){  
+                            $CantidadCosmeticos = $arr['cantidad']; 
+                            echo $CantidadCosmeticos; ?>
+                            <style>
+                                #Cosmeticos .span_21{
+                                    background-color: var(--Aciertos);
+                                }
+                            </style>
+                            <?php
+                        }
+                    endforeach; 
+                    if(empty($CantidadCosmeticos)){                                     
+                        echo 0;?>
+                        <style>
+                            #Cosmeticos{
+                                position: relative;
+                                z-index: -1;            
+                            }
+                            #Cosmeticos .span_21{
+                                background-color: var(--Fallos);
+                            }
+                        </style>
+                        <?php
+                    } 
+                ?>
+            </span>
+        </div>
+    </div> 
 
     <div class='contenedor_6 borde_1' id="Mascotas">
         <h2 class='h2_1'>MASCOTAS</h2>
