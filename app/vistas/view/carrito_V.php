@@ -40,8 +40,8 @@
                     </div>                    
                     <div class="contInputRadio">
                         <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
-                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, <?php echo number_format($Datos['precioDolar'], 0, ",", ".");?> Bs.</label>
-                        <input class="ocultar" type="text" id="PrecioEnvio" value="<?php echo $Datos['precioDolar'];?>"/>
+                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, <?php echo number_format($Datos['Delivery'], 0, ",", ".");?> Bs.</label>
+                        <input class="ocultar" type="text" id="PrecioEnvio" value="<?php echo $Datos['Delivery'];?>"/>
                     </div>     
                     
                         <!--DIV ALIMENTADO DESDE CARRITO.JS PedidoEnCarrito() -->
@@ -50,7 +50,7 @@
 
                         <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
 
-                        <h2 class='h2_2'>Monto de envio:<input type='text' form="DatosUsuario" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['precioDolar'], 0, ",", ".");?>' readonly="readondly"/> Bs.</h2>
+                        <h2 class='h2_2'>Monto de envio:<input type='text' form="DatosUsuario" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['Delivery'], 0, ",", ".");?>' readonly="readondly"/> Bs.</h2>
 
                         <hr class="hr_1"/>
                         <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>

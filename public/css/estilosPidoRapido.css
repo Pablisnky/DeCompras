@@ -326,7 +326,7 @@ body, html{
 	padding: 0.5% 0%;
 }
 .contenedor_9{/*cuenta_productos - vitrina*/
-	background-size: cover; /*fill, cover, contain, none, scale-down, inherit, initial, unset*/
+	background-size: contain; /*fill, cover, contain, none, scale-down, inherit, initial, unset*/
 	background-repeat: no-repeat;
 	background-position: center;
 	text-align: center;
@@ -695,8 +695,11 @@ body, html{
 	width:10% !important;
 }
 .contenedor_81{/*cuenta_publicar*/
+	position: absolute;
+	top: 35%;
+	left: 26%;
 	text-align: center;
-	width: 60%;
+	width: 20%;
 }
 .contenedor_83{/*cuenta_editar*/
 	background-color: var(--OficialClaro);

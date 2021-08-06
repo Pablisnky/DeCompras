@@ -22,7 +22,10 @@
 
         //SELECT de los link de acceso existentes
         public function consultarLinkTiendas(){                                
-            $stmt = $this->dbh->query("SELECT link_acceso, url FROM destinos");
+            $stmt = $this->dbh->query(
+                "SELECT link_acceso, url 
+                 FROM destinos"
+                );
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 

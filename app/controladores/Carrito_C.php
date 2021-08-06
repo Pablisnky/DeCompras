@@ -35,18 +35,21 @@
 
             $DolarHoy = $this->PrecioDolar->Dolar;
 
+            //El delivery cuesta 1,3 dolares, se entrega un numero entero
+            $CostoDelivery = intval(1.30 * $DolarHoy);
+
             $Datos = [
                 'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
                 'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil
                 'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
                 'ID_Tienda' => $ID_Tienda,
                 'TelefonoTienda' => $ContactoTienda,
-                'precioDolar' => $DolarHoy          
+                'Delivery' => $CostoDelivery          
             ];
 
             // echo "<pre>";
             // print_r($Datos);
-            // echo "</pre>";            
+            // echo "</pre>";          
             // exit();
             
             $verifica_2 = 1906;  

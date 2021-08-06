@@ -57,26 +57,35 @@
             // echo '**********************<br>';
             // exit;
 
-            foreach($Link_Tienda as $row){
-                $Link = $row['link_acceso'];
-                $url = RUTA_URL . '/' . $_GET['url'];
-                $LinkTienda = $row['url'];
-                // echo $url;
-                // echo '<br>';
-                // echo $Link;
-                // echo '<br>';
-                // echo $LinkTienda;
-                // echo '<br>';
-                if(!empty($_GET["url"])){
+            if(!empty($_GET["url"])){
+                foreach($Link_Tienda as $row)   :
+                    $Link = $row['link_acceso'];
+                    $url = RUTA_URL . '/' . $_GET['url'];
+                    $LinkTienda = $row['url'];
+                    // echo  $Link;
+                    // echo '<br>';
+                    // echo  $url;
+                    // echo '<br>';
+                    // echo  'Dirección tomada de la BD: ' . $LinkTienda;
+                    // echo '<br>';
+                    // echo $_GET["url"];
                     if($Link == $url){   
-                        header("Location:" . $LinkTienda);
+                        // echo $LinkTienda;
+                        // echo $LinkTienda;
+                        // echo '<br>';
+                        // echo "https://www.pedidoremoto.com/Vitrina_C/index/265,La%20Bodega%20Digital,NoNecesario_1,NoNecesario_2,Cerrado,AbreTarde,02:00%20PM#no-back-button";
+                        
+                    // exit;
+                        header('Location:' . $LinkTienda);
+                        // terminamos inmediatamente la ejecución del script, evitando que se envíe más salida al cliente.
+                        die();
                     }
-                }
-                else{                  
-                    $this->vista("inc/header_inicio"); 
-                    $this->vista("view/inicio_V");   
-                }
-            }          
+                endforeach;
+            }
+            else{                  
+                $this->vista("inc/header_inicio"); 
+                $this->vista("view/inicio_V");   
+            }     
         }
         
         // Llamado desde CerrarS_C.php

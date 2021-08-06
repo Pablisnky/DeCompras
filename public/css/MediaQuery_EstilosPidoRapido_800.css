@@ -462,6 +462,11 @@
 .contenedor_80C{/*cuenta_editar*/	
 	width: 100% !important;
 }
+.contenedor_81{/*cuenta_publicar*/
+	position: initial;
+	text-align: center;
+	width: 100%;
+}
 .contenedor_83{/*cuenta_editar*/
 	position: fixed;
 	top: -90%;
