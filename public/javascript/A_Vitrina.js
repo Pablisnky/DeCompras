@@ -60,18 +60,10 @@ function respuesta_PedidoEnCarrito(){
 
 //-------------------------------------------------------------------------------------------------
 //Muestra los productos que tiene una sección
-function llamar_Opciones(ID_Tienda, ID_Seccion, OpcionSeleccionada){
-    // console.log("______Desde llamar_Opciones()______") 
-    // console.log("ID_Tienda= ", ID_Tienda)
-    // console.log("Seccion= ", ID_Seccion)
-    // console.log("Opcion= ", OpcionSeleccionada)
-    let A = ID_Tienda
-    let B = ID_Seccion
-    let C = OpcionSeleccionada
-
-    var url="../../Opciones_C/index/" + A + "/" + B  + "/" + C
+function llamar_Opciones(ID_Tienda, ID_Seccion, OpcionSeleccionada = 'NoAplica'){
+    var url="../../Opciones_C/index/" + ID_Tienda + "/" + ID_Seccion  + "/" + OpcionSeleccionada
     http_request.open('GET', url, true)
-    //Se define que función va hacer invocada cada vez que cuando cambie onreadystatechange
+    //Se define que función va hacer invocada cada vez que cambie onreadystatechange
     peticion.onreadystatechange = respuesta_Opciones
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null")    

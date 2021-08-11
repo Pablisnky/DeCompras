@@ -1,4 +1,5 @@
 <!-- Archivo cargado por petición Ajax desde vitrina_V.php por medio de llamar_Opciones() -->
+
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
@@ -53,7 +54,9 @@
                                     endif;   
                                 endforeach;   
 
-                                require(RUTA_APP . "/vistas/complementos/existencia.php");   ?>
+                                require(RUTA_APP . "/vistas/complementos/existencia.php");   
+                                
+                                ?>
 
                             </div>
                                         
@@ -99,13 +102,14 @@
                                         </style> 
                                         <?php 
                                     }   ?>
+
                                     <!-- Este input es el que se envia al archivo JS por medio de la función agregarOpcion(), en el valor se colocan el caracter _ para usarlo como separardor en  JS-->
                                     <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$PrecioBolivar;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>','<?php echo $Existencia;?>','<?php echo 'ID_BotonMas_'. $ContadorLabel;?>','<?php echo 'ID_BloquearMas_'. $ContadorLabel;?>')"/>
                                 </div>
                                                                 
                                 <!-- AGREGAR -->
                                 <?php if($NoAgrear == true){ ?>
-                                    <label class="label_4 label_4--hidden">Agregar</label> 
+                                    <label class="label_4 label_4--innabilitado">Agregar</label> 
                                     <?php
                                 }  
                                 else{ ?>

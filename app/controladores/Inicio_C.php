@@ -62,20 +62,18 @@
                     $Link = $row['link_acceso'];
                     $url = RUTA_URL . '/' . $_GET['url'];
                     $LinkTienda = $row['url'];
-                    // echo  $Link;
+                    // echo '<b>Link en BD:</b> ' . '<br>';
+                    // echo $Link . '<br><br>';
+                    // echo  '<b>url escrita por el usuario: </b>' . '<br>';
+                    // echo  $url . '<br><br>';
+                    // echo  '<b>Dirección real de la tienda, guardada en BD: </b>' . '<br>';
+                    // echo $LinkTienda . '<br><br>';
+                    // echo  '<b>Dirección real de la tienda: </b>' . '<br>';
+                    // echo "https://www.pedidoremoto.com/Vitrina_C/index/265,La%20Bodega%20Digital,NoNecesario_1,NoNecesario_2,Cerrado,AbreTarde,02:00%20PM#no-back-button" . '<br>';
                     // echo '<br>';
-                    // echo  $url;
-                    // echo '<br>';
-                    // echo  'Dirección tomada de la BD: ' . $LinkTienda;
-                    // echo '<br>';
-                    // echo $_GET["url"];
-                    if($Link == $url){   
-                        // echo $LinkTienda;
-                        // echo $LinkTienda;
-                        // echo '<br>';
-                        // echo "https://www.pedidoremoto.com/Vitrina_C/index/265,La%20Bodega%20Digital,NoNecesario_1,NoNecesario_2,Cerrado,AbreTarde,02:00%20PM#no-back-button";
-                        
+                    // // echo $_GET["url"];
                     // exit;
+                    if($Link == $url){   
                         header('Location:' . $LinkTienda);
                         // terminamos inmediatamente la ejecución del script, evitando que se envíe más salida al cliente.
                         die();

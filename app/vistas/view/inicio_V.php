@@ -11,7 +11,7 @@
 
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
             <div class="contenedor_34" id="BotonVer">
-                <label class="section_1__boton borde_1"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a></label>
+                <a class="section_1__boton" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
             </div>
         </div>
 
@@ -21,16 +21,16 @@
                     <label><span>compras y despachos</span><br> en tiendas de tu ciudad.</label>
                 </li>
                 <li>
-                    <label><span>e-commerce</span><br> para pequeños comercios y emprendimientos.</label>
+                    <label><span>e-commerce</span><br> para pequeños y medianos comercios.</label>
                 </li> 
                 <li>
-                    <label>Registra tu tienda <br><span>totalmente gratis</span><br>y sube tu catalogo de productos.</label>
+                    <label>Registra tu tienda <br><span>totalmente gratis</span></label>
                 </li>
                 <li>
                     <label>Ideal para ventas de comida rapida, minimarket, fruterías, panaderías, ferreterías, bodegas, y más.</label>
                 </li>
                 <li>
-                    <label>Permite a tus clientes realizar compras en tu tienda virtual con <span>Pagos directos</span> <br class="br_2"> a tus cuentas.</label>
+                    <label>Permite a tus clientes realizar compras en tu <br class="br_2"><span>tienda virtual </span></label>
                 </li>
             </ul>
         </div>
@@ -44,7 +44,7 @@
                     <p class="section_1__p"><span class="span_22">¡ Ofreceles un <br class="br_2"> Servicio Premium ! </span><br> digitalizando tu tienda</p>
                 </div>
                 <div class="section_1__div2" id="BotonRegistrar">
-                    <label class="section_1__boton"><a class="a_3 a_3A" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a></label>
+                    <a class="section_1__boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a>
                 </div>
             </div>
         </div>

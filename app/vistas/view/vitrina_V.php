@@ -38,7 +38,7 @@
                 $ID_Seccion = $row['ID_Seccion'];   
                 ?> 
                 <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
-                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>','NoAplica')">  <?php
+                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>')">  <?php
                         foreach($Datos['imagenSecciones'] as $key) : 
                             if($key['ID_Seccion'] == $ID_Seccion) : 
                                 $SeccionExiste = 'Seccion_'. $Contador; ?>
@@ -88,7 +88,7 @@
     </div>
 </div>
 
-<!-- "Mostrar_Opciones" Trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
+<!-- Se trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
 <div id="Mostrar_Opciones"></div>
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->

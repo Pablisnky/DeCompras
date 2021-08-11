@@ -13,9 +13,6 @@
 .a_3{/*header - header_inicio*/
 	width: 100% !important;
 }
-.a_3A{/*inicio*/
-	font-size: 1.3em;
-}
 .a_4{/*header_AfiCom*/
 	/* display: block; */
 	width: 100% ;
@@ -251,7 +248,7 @@
 	font-size: 1.3em;
 }
 .contenedor_34{/*inicio*/
-	top: 94%;
+	top: 93%;
 	left: 0%;
 	width: 100%;
 }
@@ -1184,7 +1181,7 @@
 	line-height: 30px;
 }
 .section_1__boton{/*inicio*/
-	width: 65%;
+	/* width: 100px; */
 	height: 30px; 
 	display: block;
 	line-height: 30px;
