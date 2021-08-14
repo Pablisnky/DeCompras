@@ -107,12 +107,12 @@
                                     <input class="ocultar" type="radio" name="opcion" id="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" value="<?php echo $Seccion.','.'_'.$ID_Opcion.','.'_'.$Producto.','.'_'.$Opcion .','.'_'.$PrecioBolivar;?>" onclick="agregarOpcion(this.form, '<?php echo 'Etiqueta_' . $ContadorLabel;?>','<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>','<?php echo 'Cantidad_' . $ContadorLabel;?>','<?php echo $Seccion;?>','<?php echo 'Seccion_' . $ContadorLabel;?>','<?php echo 'Producto_' . $ContadorLabel;?>','<?php echo 'Opcion_' . $ContadorLabel;?>','<?php echo 'Precio_' . $ContadorLabel;?>','<?php echo 'Total_' . $ContadorLabel;?>','<?php echo 'Leyenda_' . $ContadorLabel;?>','<?php echo 'Cont_Producto_' . $ContadorLabel;?>','<?php echo 'Item_'. $ContadorLabel;?>','<?php echo $Existencia;?>','<?php echo 'ID_BotonMas_'. $ContadorLabel;?>','<?php echo 'ID_BloquearMas_'. $ContadorLabel;?>')"/>
                                 </div>
                                                                 
-                                <!-- AGREGAR -->
-                                <?php if($NoAgrear == true){ ?>
+                                <!-- BOTON AGREGAR -->
+                                <?php if($NoAgrear == true){ ?><!--SINO HAY PRODUCTOS EN INVENTARIO SE DESABILITA-->
                                     <label class="label_4 label_4--innabilitado">Agregar</label> 
                                     <?php
                                 }  
-                                else{ ?>
+                                else{ ?><!--SI HAY PRODUCTOS EN INVENTARIO SE HABILITA-->
                                     <label for="<?php echo 'ContadorLabel_' . $ContadorLabel;?>" class="label_4 borde_1 Label_3js" id="<?php echo 'Etiqueta_' . $ContadorLabel;?>">Agregar</label> 
                                     <?php
                                 }   ?>

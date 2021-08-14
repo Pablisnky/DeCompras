@@ -2,6 +2,7 @@
     class Cuenta_C extends Controlador{
         private $ID_Tienda;
         private $ID_Afiliado;
+        public $Horario;
 
         public function __construct(){
             session_start();
@@ -186,24 +187,17 @@
             $Link_Tien = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
             
             //Se verifica si existe el link de acceso directo y se crea en caso de no existir
-            if(empty($Link_Tien)){
+            if(empty($Link_Tien)): 
                 //Se crea el link de aceso";  
                 $LinkAcceso = RUTA_URL .'/' . $DatosTienda[0]['nombre_Tien'];
 
-                //Se rellenan los espacios en blanco en el nombre de la tienda en caso de existir
-                $NombreTienda = $DatosTienda[0]['nombre_Tien'];
-                $NombreTienda = str_replace(' ', '%20', $NombreTienda);
-
-                //Se construye la url real de la tienda
-                $URL = RUTA_URL . '/' . 'Vitrina_C/index/' . $this->ID_Tienda . ',' . $NombreTienda . ',NoNecesario_1,NoNecesario_2#no-back-button';
-
                 //Se guarda el link de acceso y la url real en la configuración de la tienda
                 //INSERT del link de acceso directo de una tienda en particular
-                $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso, $URL);
+                $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso);
 
                 //Se CONSULTA el link de acceso directo creado para insertar en el array $Datos
                 $Link_Tien = $this->ConsultaCuenta_M->consultarLinkTienda($this->ID_Tienda);
-            }
+            endif;
 
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
@@ -791,7 +785,7 @@
             // echo "Todos los campos estan llenos";
             // exit();
 
-            //LINK DE ACCESO
+            //RECIBE LINK DE ACCESO
             //Se quitan los espacios en blanco en el nombre de la tienda en caso de existir
             $LinkTienda = str_replace(' ', '', $RecibeDatos['Nombre_com']);
             
@@ -838,23 +832,13 @@
             //Se llama la función que convierte aminusculas
             $LinkTienda = ConvierteMinuscula($LinkTienda);
 
-            //Se crea el link de aceso";  
+            //Se crea el link de acceso";  
             $LinkAcceso = RUTA_URL .'/' . $LinkTienda;
+            // echo $LinkAcceso;
+            // exit;
 
-            //Se rellenan los espacios en blanco en el nombre de la tienda en caso de existir
-            $NombreTienda = $RecibeDatos['Nombre_com'];
-            $NombreTienda = str_replace(' ', '%20', $NombreTienda);
-
-            //Se construye la url real de la tienda
-            $URL = RUTA_URL . '/' . 'Vitrina_C/index/' . $this->ID_Tienda . ',' . $NombreTienda . ',NoNecesario_1,NoNecesario_2#no-back-button';
-
-            //Se actualiza el link de acceso 
-            //UPDATE del link de acceso directo de una tienda en particular
+            //Se actualiza el link de acceso directo de una tienda en particular
             $this->ConsultaCuenta_M->actualizarLinkTienda($this->ID_Tienda, $LinkAcceso);
-
-            //Se guarda el link de acceso y la url real en la configuración de la tienda
-            //INSERT del link de acceso directo de una tienda en particular
-            // $this->ConsultaCuenta_M->insertarLinkTienda($this->ID_Tienda, $LinkAcceso, $URL);
 
             // **********************************************************************************
             //Todo este procedimiento debe ser por medio de TRANSACCIONES

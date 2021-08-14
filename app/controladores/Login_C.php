@@ -83,7 +83,7 @@
             }
         
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
-            if(isset($_POST["recordar"]) && $_POST["recordar"] == 1){//si pidió memorizar el usuario, se recibe desde principal.php   
+            if(isset($_POST["recordar"]) && $_POST["recordar"] == 1): //si pidió memorizar el usuario, se recibe desde principal.php   
                  //1) Se crea una marca aleatoria en el registro de este usuario
                  //Se alimenta el generador de aleatorios
                 //  mt_srand (time());
@@ -97,7 +97,7 @@
         
                 // echo "La cookie ID_Usuario = " . $_COOKIE["id_usuario"] . "<br>";
                 // echo "La cookie clave = " . $_COOKIE["clave"] . "<br>"; 
-            }
+            endif;
 
             //Verifica si los campo que se van a recibir estan vacios
             if(empty($_POST["correo_Arr"]) || empty($_POST["clave_Arr"])){        

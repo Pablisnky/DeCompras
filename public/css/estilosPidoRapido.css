@@ -512,15 +512,34 @@ body, html{
 	font-size: 1.5em;
 }
 .contenedor_34{/*inicio*/
-	width: 10%;
+	width: 15%;
 	position: relative;
 	top: 70%;
 	left: 83%;
+} 
+.contenedor_34--boton{/*inicio*/
+	background-color: var(--OficialClaro);
+	color: black;
+	width: 190px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	font-size: 1.3em;
+	text-align: center;
+	border-radius: 10px;
+	cursor: pointer;
+	border-color: var(--OficialOscuro);
+	border-width: 1px;
+	border-style: solid;
 }
-.contenedor_34--WhatsApp{/*inicio*/
-	position: fixed;
-	top: 80%;
-	left: 90%;
+.contenedor_34--p{/*inicio*/
+	background-color: var(--BandaAlerta);
+	font-weight: bold;
+	position: absolute;
+	bottom: 0pt;
+	width: 100%;
+	text-align: center;
+	line-height: 25px;
 }
 .contenedor_35{/*header_inicio - header_AfiCom*/
 	background-color: var(--OficialOscuro);
@@ -2369,7 +2388,6 @@ body, html{
 }
 .section_1{/*inicio*/
 	height: 100vh;
-	/* padding-top: 6vh; */
 }
 .section_1__div{/*inicio*/
 	background-color:rgba(0, 0, 0, 0.1);
@@ -2383,29 +2401,10 @@ body, html{
 .section_1__div1{/*inicio*/
 	width: 75%;
 }
-.section_1__div2{/*inicio*/
-	/* margin-left: 70%; */
-}
 .section_1__p{/*inicio*/
 	color: white;
 	font-size: 1.5em;
 	line-height: 40px;
-}
-.section_1__boton{/*inicio*/
-	background-color: var(--OficialClaro);
-	color: var(--OficialOscuro);
-	width: 190px;
-	height: 40px;
-	line-height: 40px;
-	display: inline-block;
-	font-size: 1.3em;
-	text-align: center;
-	border-radius: 10px;
-	cursor: pointer;
-	color: var(--OficialOscuro);
-	border-color: var(--OficialOscuro);
-	border-width: 1px;
-	border-style: solid;
 }
 .section_2{/*RecibePedido*/
 	padding-top: 10%;

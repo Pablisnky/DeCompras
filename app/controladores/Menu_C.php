@@ -2,11 +2,13 @@
     class Menu_C extends Controlador{
 
         public $Dolar;
+        public $Reserve;
 
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 4094502;
+            $this->Dolar = 4113365;
+            $this->Reserve = 4160000;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
             // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
@@ -26,11 +28,10 @@
         
         public function index(){ 
             require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
-
             $this->ActualizarPrecio = new CalculoDolar_C();
-            $this->ActualizarPrecio->AjusteCambioMonetario($this->Dolar);
+            $this->ActualizarPrecio->AjusteCambioMonetario($this->Dolar, $this->Reserve);
             
-            echo 'Perfecto, Dolar actualizado' . '<br>';
+            echo 'Perfecto, Dolar y tasa "Reserve" actualizado' . '<br>';
             echo "<a href='javascript: history.go(-1)'>Regresar</a>";
         }
 
@@ -85,17 +86,17 @@
         }
                 
         public function recibeContactenos(){         
-            // Se reciben todos los campos del formulario, desde quienesSomos_V.php 
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombreUsuario"]) && !empty($_POST["telefonoUsuario"]) && !empty($_POST["correoUsuario"]) && !empty($_POST["asunto"])){
-                //si son enviados por POST y sino estan vacios, entra aqui
-                $RecibeDatos = [
-                    // DATOS DEL USUARIO
-                    'Nombre' => filter_input(INPUT_POST, "nombreUsuario", FILTER_SANITIZE_STRING),
-                    'Telefono' => filter_input(INPUT_POST, "telefonoUsuario", FILTER_SANITIZE_NUMBER_INT),
-                    'Correo' => $_POST['correoUsuario'],
-                    'Asunto' => filter_input(INPUT_POST, "asunto", FILTER_SANITIZE_STRING)
-                ];
-            }
+            // Se reciben todos los campos del formulario, desde  
+            // if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombreUsuario"]) && !empty($_POST["telefonoUsuario"]) && !empty($_POST["correoUsuario"]) && !empty($_POST["asunto"])){
+            //     //si son enviados por POST y sino estan vacios, entra aqui
+            //     $RecibeDatos = [
+            //         // DATOS DEL USUARIO
+            //         'Nombre' => filter_input(INPUT_POST, "nombreUsuario", FILTER_SANITIZE_STRING),
+            //         'Telefono' => filter_input(INPUT_POST, "telefonoUsuario", FILTER_SANITIZE_NUMBER_INT),
+            //         'Correo' => $_POST['correoUsuario'],
+            //         'Asunto' => filter_input(INPUT_POST, "asunto", FILTER_SANITIZE_STRING)
+            //     ];
+            // }
 
             // echo "<pre>";
             // print_r($RecibeDatos);
@@ -105,17 +106,17 @@
             // // ****************************************
 
             //Se envia al correo pcabeza7@gmail.com el mensaje que el usaurio a dejado
-            $email_subject = 'Mensaje desde contactenos'; 
-            $email_to = 'pcabeza7@gmail.com';  
-            $headers = 'From: PedidoRemoto'.'<'.$RecibeDatos['Correo'].'>';
-            $email_message = $RecibeDatos['Asunto'];
+            // $email_subject = 'Mensaje desde contactenos'; 
+            // $email_to = 'pcabeza7@gmail.com';  
+            // $headers = 'From: PedidoRemoto'.'<'.$RecibeDatos['Correo'].'>';
+            // $email_message = $RecibeDatos['Asunto'];
 
-            mail($email_to, $email_subject, $email_message, $headers); 
+            // mail($email_to, $email_subject, $email_message, $headers); 
 
             // ****************************************
 
-            $this->vista("inc/header");
-            $this->vista("view/quienesSomos_V");
+            // $this->vista("inc/header");
+            // $this->vista("view/quienesSomos_V");
         }
         
         public function descargaApp(){

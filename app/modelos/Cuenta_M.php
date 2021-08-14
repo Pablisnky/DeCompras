@@ -283,7 +283,11 @@
 
         //SELECT del link de acceso directo        
         public function consultarLinkTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT url, link_acceso FROM destinos WHERE ID_Tienda = :ID_Tienda");
+            $stmt = $this->dbh->prepare(
+                "SELECT link_acceso 
+                 FROM destinos 
+                 WHERE ID_Tienda = :ID_Tienda"
+            );
 
             $stmt->bindParam(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -1153,7 +1157,11 @@
         
         //UPDATE del link de acceso directo de la tienda
         public function actualizarLinkTienda($ID_Tienda, $LinkAcceso){
-            $stmt = $this->dbh->prepare("UPDATE destinos SET link_acceso = :LINK WHERE ID_Tienda = :ID_TIENDA ");
+            $stmt = $this->dbh->prepare(
+                "UPDATE destinos 
+                 SET link_acceso = :LINK
+                 WHERE ID_Tienda = :ID_TIENDA"
+            );
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindParam(':LINK', $LinkAcceso);
@@ -1493,13 +1501,15 @@
         }        
         
         //INSERT de link acceso a tienda
-        public function insertarLinkTienda($ID_Tienda, $LinkAcceso, $URL){
-            $stmt = $this->dbh->prepare("INSERT INTO destinos(ID_Tienda, link_acceso, url, fecha, hora)VALUES (:ID_TIENDA, :LINK_ACCESO, :URL, CURDATE(), CURTIME())");
+        public function insertarLinkTienda($ID_Tienda, $LinkAcceso){
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO destinos(ID_Tienda, link_acceso, fecha, hora)
+                 VALUES (:ID_TIENDA, :LINK_ACCESO, CURDATE(), CURTIME())"
+            );
             
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
             $stmt->bindValue(':LINK_ACCESO', $LinkAcceso);
-            $stmt->bindValue(':URL', $URL);
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();

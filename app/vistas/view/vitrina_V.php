@@ -62,7 +62,6 @@
                                 endif;
                             endforeach;
                             if((empty($Key['CantidadPro']))):
-                                // echo 0;  
                             endif;  ?>
                             </span>
                         </div>

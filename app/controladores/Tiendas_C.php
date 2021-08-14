@@ -217,7 +217,7 @@
                 'tiendas_inconformidades' => $TiendasNoConformidades,//ID_Tienda, count(Inconformidad)
                 'tiendas_satisfaccion' => $PorcentajeSatisfaccion,
                 'tiendas_disputas' => $TiendasDisputas, //ID_Tienda, conunt(Disputas)
-                'tiendas_disponibilidad' => $DisponibilidaHoraria// ID_Tienda, disponibilidad, proximoApertura, horaApertura
+                'tiendas_disponibilidad' => $DisponibilidaHoraria// ID_Tienda, disponibilidad, proximoApertura, horaApertura, Condicional
             ];
             
             // echo '<pre>';

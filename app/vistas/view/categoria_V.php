@@ -1,7 +1,7 @@
 <?php
     // if(!empty($Datos['ciudades'])){ ?>
         <section class="sectionTienda" id="Section_4">
-            <a  href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>"><i class="fas fa-times spanCerrar"></i></a>
+            <a href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>"><i class="fas fa-times spanCerrar"></i></a>
             <div class="sectionTienda_div" id="SectionTiendas">
                 <?php
                     foreach($Datos['estados'] as $arr) : ?>

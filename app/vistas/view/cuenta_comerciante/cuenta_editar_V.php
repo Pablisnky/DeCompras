@@ -326,13 +326,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
 
                             <!-- CÉDULA PAGOMOVIL -->
-                            <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula" autocomplete="off"/>
+                            <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula (solo números)" autocomplete="off"/>
 
                             <!-- BANCO PAGOMOVIL -->
-                            <input class="input_13 input_13A borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Banco" autocomplete="off"/>
+                            <input class="input_13 input_13A borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Código Banco" autocomplete="off"/>
 
                             <!-- TELEFONO PAGOMOVIL -->
-                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefónico 0000-000.00.00" autocomplete="off"/>
+                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefónico (solo números)" autocomplete="off"/>
                         </div>
                         <?php
                     }

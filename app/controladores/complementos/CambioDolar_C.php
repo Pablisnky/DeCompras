@@ -2,6 +2,8 @@
     class CalculoDolar_C extends Controlador{
 
         public $PrecioDolar;
+        public $Reserve;
+        public $TasaReserve;
 
         public function __construct(){
             $this->ConsultaCambioDolar_M = $this->complementos("CambioDolar_M");
@@ -11,15 +13,21 @@
             ocultarErrores();
         }
         
-        public function AjusteCambioMonetario($ValorDolar){
-            // $this->PrecioDolar = $ValorDolar;
-            // echo $this->PrecioDolar;
+        public function AjusteCambioMonetario($ValorDolar, $Reserve){
+            $this->PrecioDolar = $ValorDolar;
+            $this->Reserve = $Reserve;
+            // echo $this->PrecioDolar . '<br>';
+            // echo $this->Reserve . '<br>';
+
+            // Se calcula la tasa 'Reserve' para comprar dolares
+            // $this->TasaReserve = $this->Reserve - $this->PrecioDolar;
+            // echo $this->TasaReserve;
             // exit;
             
             //Se consultan los precios en dolares.
             $Precios = $this->ConsultaCambioDolar_M->ConsultaPrecios();
             // echo '<pre>';
-            // print_r($PrecioEnDolar);
+            // print_r($Precios);
             // echo '</pre>';
             // exit;
 
@@ -29,7 +37,8 @@
 
             foreach($Precios as $Key):
                 $ID_Opcion = $Key['ID_Opcion'];
-                $PrecioActualBs = $Key['precioDolar'] * $this->PrecioDolar;
+                // $PrecioActualBs = ($Key['precioDolar'] * $this->PrecioDolar) + $this->TasaReserve;
+                $PrecioActualBs = ($Key['precioDolar'] * $this->PrecioDolar);
 
                 $Intermedio = ['ID_Opcion' => $ID_Opcion, 'precioActualizadoBs' => $PrecioActualBs];
                 array_push($NuevoPrecioBolivar, $Intermedio);

@@ -339,11 +339,19 @@
                 break; 
             endswitch;
 
+            // echo '<pre>';
+            // print_r($TiendasEnCategoria);
+            // echo '</pre>';
+
             foreach($TiendasEnCategoria as $row):
                 $ID_Tienda = $row['ID_Tienda'];
                 //Se evalua para cada tienda que se encuproximoApertura $this->IDs_Tienda la disponibilidad
                 $Hor = $this->horarioTienda($ID_Tienda);
                  
+                // echo '<pre>';
+                // print_r($Hor);
+                // echo '</pre>';
+                // exit;
                 date_default_timezone_set('America/Caracas');
 
                 // DISPONIBILIDAD DOMINGO (CERRADO - ABIERTO - HORA DE APERTURA)

@@ -23,15 +23,35 @@
         //SELECT de los link de acceso existentes
         public function consultarLinkTiendas(){                                
             $stmt = $this->dbh->query(
-                "SELECT link_acceso, url 
+                "SELECT ID_Tienda, link_acceso 
                  FROM destinos"
-                );
+            );
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         //SELECT con la información de la hora y fecha del servidor MySQL
         public function consultarFechaHora(){                          
-            $stmt = $this->dbh->query("SELECT CURDATE() AS Fecha_MySQL, time_format(NOW(),'%H:%i') AS hora_MySQL ");
+            $stmt = $this->dbh->query(
+                "SELECT CURDATE() AS Fecha_MySQL, time_format(NOW(),'%H:%i') AS hora_MySQL"
+            );
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
+        //SELECT del nombre de tienda segun el ID_Tienda
+        public function consultarNombreTienda($ID_Tienda){                                  
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_Tien 
+                 FROM tiendas 
+                 WHERE ID_Tienda = :ID_TIENDA"
+            );
+            
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
         }
     }

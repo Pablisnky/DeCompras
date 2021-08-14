@@ -38,9 +38,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
-    <!-- <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/fotoProduc/style_fotoProduct.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/iconos/eliminar/style_eliminar.css"/> -->
-        
     <div class="contenedor_42">    
         <p class="p_6">Actualizar datos de producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">

@@ -11,8 +11,9 @@
 
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
             <div class="contenedor_34" id="BotonVer">
-                <a class="section_1__boton" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
+                <a class="contenedor_34--boton" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
             </div>
+            <p class="contenedor_34--p">Cambio oficial a tasa del BCV <br class="br_2">&nbsp&nbsp 1 $ = <?php echo number_format($Datos, 0, ",", ".");?> Bs.</p>
         </div>
 
         <div class="slider">
