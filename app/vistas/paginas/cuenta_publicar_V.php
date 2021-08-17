@@ -7,14 +7,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
     $PrecioDolar = number_format($Datos['dolarHoy'], 0, ",", "."); 
       ?>       
         
-    <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
+    <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <div class="contenedor_42">    
         <p class="p_6">Carga un producto</p>
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
             <div class="contenedor_47">    
-                
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_129 borde_1 borde_2">
                     <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
@@ -39,18 +38,18 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div style="display: flex;	justify-content: space-around;">
                         <div>
                             <label>Bs.</label><br>
-                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text"  name="precioBs" id="PrecioBs" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text"  name="precioBs" id="PrecioBs" placeholder="Precio Bs. ( 00000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
                         </div>
                         <div>
                             <label>$</label><br>
-                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Precio $ ( 000.0 )" tabindex="3" onkeydown="blanquearInput('Precio')"/>
                         </div>
                     </div>
                     <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo $PrecioDolar;?>)</strong></small>
                     <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/> 
                     <br>
 
-                    <!-- CANTIDAD -->
+                    <!-- CANTIDAD DISPONIBLE -->
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="cantidad" id="Cantidad" placeholder="Cantidad disponible">
                     <div class="contInputRadio">     
                         <input type="checkbox" name="disponible" id="Disponible"/>
@@ -100,7 +99,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicar.js';?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicar.js';?>"></script> 
-    <!-- <script src="<?php //echo RUTA_URL . '/public/javascript/funcionesVarias.js';?>"></script>  -->
 
     <script> 
         //Da una vista previa de la imagen principal antes de guardarla en la BD

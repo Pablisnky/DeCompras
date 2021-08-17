@@ -32,8 +32,7 @@
                         'Correo' => $_POST['correoUsuario'],
                         'Direccion' => filter_input(INPUT_POST, "direccionUsuario", FILTER_SANITIZE_STRING), 
                         'MontoTotal' => filter_input(INPUT_POST, "montoTotal", FILTER_SANITIZE_STRING),                        
-                        'MontoTienda' => filter_input(INPUT_POST, "montoTienda", FILTER_SANITIZE_STRING),       
-                        // 'MontoEntrega' => filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING),       
+                        'MontoTienda' => filter_input(INPUT_POST, "montoTienda", FILTER_SANITIZE_STRING)     
                     ];
                     // echo "<pre>";
                     // print_r($RecibeDatosUsuario);
@@ -44,7 +43,8 @@
                         // DATOS DEL PEDIDO
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_NUMBER_INT),
                         'FormaPago' => filter_input(INPUT_POST, "formaPago", FILTER_SANITIZE_STRING),
-                        'Despacho' => filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING), 
+                        'Despacho' => filter_input(INPUT_POST, "entrega", FILTER_SANITIZE_STRING),      
+                        'MontoEntrega' => filter_input(INPUT_POST, "despacho", FILTER_SANITIZE_STRING),  
                         'CodigoTransferencia' => filter_input(INPUT_POST, "codigoTransferencia", FILTER_SANITIZE_STRING),
                     ];              
                     
@@ -83,8 +83,9 @@
                     // echo '<pre>';
                     // print_r($Resultado);
                     // echo '</pre>';
-                    // exit;
-                    //La horano se toma del servidor MySQL porque no corresponde a nuestro uso horario
+                    // // exit;
+
+                    //La hora no se toma del servidor MySQL porque no corresponde a nuestro uso horario
                     date_default_timezone_set('America/Caracas');
                     $Hora = date('H:i');
 
@@ -111,11 +112,11 @@
                     exit();
                 }
                 
-                // Se evalua el monto del delivery
+                //MONTO POR DELIVERY
                 // *****************************************
                 //Si hay despacho se calcula el monto del envio (Por ahora es fijo en 3000 Bs)
                 if($RecibeDatosPedido['Despacho'] == 'Domicilio_Si'){
-                    $Delivery = '3.000';
+                    $Delivery = $RecibeDatosPedido['MontoEntrega'];
                 }
                 else{
                     $Delivery = '0';

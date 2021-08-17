@@ -56,7 +56,12 @@
         
         // SELECT con la cantidad de despachos de tiendas 
         public function consultarDespachos($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT COUNT(ID_Tienda) AS 'Despachos', ID_Tienda FROM pedidos WHERE ID_Tienda IN ($IDs_Tiendas) GROUP BY ID_Tienda");    
+            $stmt = $this->dbh->prepare(
+                "SELECT COUNT(ID_Tienda) AS 'Despachos', ID_Tienda 
+                 FROM pedidos 
+                 WHERE ID_Tienda IN ($IDs_Tiendas) 
+                 GROUP BY ID_Tienda"
+            );    
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }

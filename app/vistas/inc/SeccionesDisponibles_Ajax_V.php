@@ -3,7 +3,7 @@
     <div class="contenedor_24"> 
       <div class="contenedor_102">
         <h1 class="h1_1 h1_3">Seleccione una sección</h1>   
-        <span class="span_5" id="Span_5">X</span>
+        <span class="span_5 span_5--black" id="Span_5">X</span>
       </div>
       <form>
           <div class="contenedor_89">
@@ -23,6 +23,6 @@
           </div> 
       </form>   
       <hr class="hr_3"/>
-      <label class="label_18">Sino encuentra una sección adecuada para su producto, añada una nueva sección en Configurar cuenta</label>   
+      <label class="label_18">Sino encuentra una sección adecuada para su producto, añada una nueva sección en "Configurar" del menu principal.</label>   
     </div>
 </section>    

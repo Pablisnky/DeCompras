@@ -2,9 +2,10 @@
 
 <!-- Datos proviene de Vitrina_C  -->
 <?php $Categoria = $Datos['categoria'][0]['categoria']; ?>
+
 <section class="sectionModal" id="Section_1">
     <a href="<?php echo RUTA_URL . '/Tiendas_C/tiendasEnCatalogo/'. $Categoria;?>"><i class="fas fa-times spanCerrar"></i></a>
-    <div class="contenedor_24">
+    <div class="contenedor_24 contenedor_24--Width-90">
         <?php 
         // echo "<pre>";
         // print_r($Datos);

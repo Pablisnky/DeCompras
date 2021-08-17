@@ -1247,7 +1247,7 @@ body, html{
 	display: flex;
 	justify-content: space-between;
 	width: 55%;
-	margin: 2% auto;
+	margin: 3% auto;
 }
 .contFlex--around{/*inicio*/
 	justify-content: space-around;
@@ -1273,6 +1273,7 @@ body, html{
 	margin-bottom: 2%;
 }
 .contGeneralCentro{/*carrito - horarioDespacho*/
+	margin-top: 2%;
 	text-align: center;
 }
 .contGeneral__p{/*horarioDespacho*/
@@ -1468,7 +1469,7 @@ body, html{
 	font-size: 4.5em;
 	text-align: right;
 }
-.h1_3{/*opciones  - Secciones_Ajax - tiendas*/
+.h1_3{/*opciones  - Secciones_Ajax - tiendas - SeccionesDisponibles_Ajax*/
 	margin-bottom: 0%;
 	height: 1.5em;
 	line-height: 1.5em;
@@ -1910,7 +1911,7 @@ body, html{
 	width: 95% !important;
 	display: inline-block;
 }
-.input_13{/*cuenta_editar - carrito*/
+.input_13{/*cuenta_editar - carrito - login*/
 	font-size: 1.2em;
 	line-height: 30px;
 	padding-left: 5%;
@@ -1928,7 +1929,7 @@ body, html{
 	text-align: center;
 	border: none;
 }
-.input_13A{/*cuenta_editar*/
+.input_13A{/*cuenta_editar - login*/
 	font-size: 1em;
 }
 .input_14{/*cuenta_productos*/
@@ -2269,7 +2270,7 @@ body, html{
 	font-size: 0.9em !important;
 	width: 90%;
 }
-.placeholder{/*registroCom - registroDes - login*/
+.placeholder{/*registroCom - registroDes*/
 	margin: 0% auto 2% auto !important;
 	display: block;
 	font-size: 0.8em;
@@ -2505,15 +2506,16 @@ body, html{
 .span_3, .span_4{/**/
 	cursor: pointer;
 }
-.span_5{/*opciones - tiendas - Selecciones_Ajax - Categorias_Ajax*/
-	/* color: rgb(51, 51, 51) ; */
+.span_5{/*opciones - tiendas - Selecciones_Ajax - Categorias_Ajax - SeccionesDisponibles_Ajax*/
 	margin-top: 1%;
-	margin-left: 85%;
 	color: white;
 	font-size: 1.5em;
 }
 .span_5:hover{/*inicio - opciones*/
 	cursor: pointer !important;
+}
+.span_5--black{
+	color: black;
 }
 .span_8{/*CantidadTiendas_Ajax*/
 	color:rgba(51, 51, 51, 0.5);
@@ -2536,6 +2538,9 @@ body, html{
 .span_10--seccion{/*cuenta_editar*/
 	text-align: center;
 	width: 100%;
+}
+.span_10--categoria{/*cuenta_editar*/
+	width: 30px;
 }
 .span_11{/*registroCom*/
 	display: inline-block;
@@ -2618,7 +2623,7 @@ body, html{
 	height: 30px;
 }
 .tabla_2{/*carrito*/
-	margin-bottom: 3%;
+	/* margin-bottom: 1%; */
 	width: 100%;
 }
 .tabla2__tr1{/*carrito*/

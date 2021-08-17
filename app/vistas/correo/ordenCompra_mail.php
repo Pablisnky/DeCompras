@@ -35,20 +35,52 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
             <title>Este es un mensaje</title>
+
             <style type="text/css">  
-                body{margin: 0; padding: 0; min-width: 100%!important;} 
-                h1{color: #8bc34a;}
-                p{font-size: 1rem;}
-                img{width: 10rem; height: 10rem; margin-top: 5%}            
-                tr{height: 15px} 
-                .hr_1{margin-bottom: 1%;}
-                .td_1{text-align: left; width: 180px;}
+                body{
+                    margin: 0; 
+                    padding: 0; 
+                    min-width: 100% !important;
+                } 
+                h1{
+                    color: #8bc34a;
+                }
+                p{
+                    font-size: 1rem;
+                }
+                img{
+                    width: 10rem; 
+                    height: 10rem; 
+                    margin-top: 5%
+                }            
+                tr{
+                    height: 15px
+                } 
+                .hr_1{
+                    margin-bottom: 1%;
+                }
+                .td_1{
+                    text-align: left; 
+                    width: 180px;
+                }
+                .tr_1{
+                    height: 30px;
+                }
 
                 @media(max-width: 800px){/*medio con dimensiones menores a lo indicado*/
-                    img{width: 6rem; height: 6rem; margin-top: 10%} 
-                    h1{font-size: 1.6em}
-                    .img__capture{width: 8rem; height: 8rem}
+                    img{
+                        width: 6rem; 
+                        height: 6rem; 
+                        margin-top: 10%} 
+                    h1{
+                        font-size: 1.6em
+                    }
+                    .img__capture{
+                        width: 8rem; 
+                        height: 8rem
+                    }
                 }
             </style>
         </head>
@@ -105,10 +137,6 @@
             $email_message .= "<table>";
                 foreach($DatosCorreo['informacion_pedido'] as $DatosPedido) :
                     $email_message .= "<tr>";
-                    $email_message .= "<td class='td_1'>CANTIDAD</td>";
-                    $email_message .= "<td>" . $DatosPedido["cantidad"] . "</td>";
-                    $email_message .= "</tr>";
-                    $email_message .= "<tr>";
                     $email_message .= "<td>PRODUCTO</td>"; 
                     $email_message .= "<td class='td_1'>" . $DatosPedido["producto"] . "</td>";
                     $email_message .= "</tr>";
@@ -117,14 +145,18 @@
                     $email_message .= "<td>" . $DatosPedido["opcion"] . "</td>";
                     $email_message .= "</tr>";
                     $email_message .= "<tr>";
-                    $email_message .= "<td>PRECIO UNITARIO</td>"; 
-                    $email_message .= "<td>" . $DatosPedido["precio"] . ' Bs.' . "</td>"; 
+                    $email_message .= "<td class='td_1'>PRECIO UNITARIO</td>"; 
+                    $email_message .= "<td>" . $DatosPedido["precio"] . " Bs." . "</td>"; 
                     $email_message .= "</tr>";
-                    $email_message .="<tr>";
-                    $email_message .= "<td>SUB-TOTAL</td>"; 
-                    $email_message .= "<td>" . $DatosPedido["total"] . ' Bs.' . "</td>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>CANTIDAD</td>";
+                    $email_message .= "<td>" . $DatosPedido["cantidad"] . "</td>";
                     $email_message .= "</tr>";
-                    $email_message .="<tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>SUB-TOTAL</td>"; 
+                    $email_message .= "<td>" . $DatosPedido["total"] . " Bs." . "</td>";
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr  class='tr_1'>";
                     $email_message .= "</tr>";
                 endforeach;
             $email_message .= "</table>";                

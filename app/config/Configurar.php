@@ -11,7 +11,7 @@
 // ************************************************************************************************
 // PARA CONEXION EN LOCAL
 define("RUTA_APP", dirname(dirname(__FILE__)));
-define("RUTA_URL", "http://localhost/proyectos/PidoRapido");
+define("RUTA_URL", "https://localhost/proyectos/PidoRapido");
 define("NOMBRESITIO","PedidoRemoto");
 
 //credenciales para conexion a la BD en local

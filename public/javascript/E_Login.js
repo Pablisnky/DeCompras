@@ -1,27 +1,16 @@
 window.addEventListener('DOMContentLoaded', function(){autofocus('Correo')}, false)
-
-if(document.getElementById("Label_7") != null){    
-    document.getElementById("Label_7").addEventListener('click', ReestablecerContrasena, false)
-
-    //Por medio de delegación de eventos, ya que el elemento se carga via Ajax
-    document.getElementById("Label_7").addEventListener("click", function(){
-        autofocus('Input_13_JS')
-    }, false)
-}
+document.getElementById("Label_7").addEventListener('click', ReestablecerContrasena, false)
 
 //************************************************************************************************
     //Recupera contraseña olvidada
     function ReestablecerContrasena(){
-        // console.log("______Desde ReestablecerContrasena()______")
-        
-        document.getElementById("Contenedor_43").style.display = "block"
+        document.getElementById("Contenedor_43").style.display = "block";
+        autofocus('Input_13_JS');        
     }
 
 //************************************************************************************************
     //Valida el formulario de login
     function validarLogin(){
-        // console.log("______Desde validarLogin()______")
-
         document.getElementsByClassName("boton")[0].value = "Iniciando sesión ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
         document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"

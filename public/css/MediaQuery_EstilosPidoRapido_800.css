@@ -182,6 +182,9 @@
 .contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax* - modal_fueraHorario*/
 	width: 95%;
 }
+.contenedor_24--Width-90{/*modal_fueraHorario*/
+	width: 90%;
+}
 .sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - modal_fueraHorario*/
 	padding-top: 5%;
 }
@@ -190,7 +193,7 @@
 }
 .sectionModal__div--corto{/*modal_recuperarCorreo*/
 	margin-top: 5%;
-	width: 95%;
+	width: 90%;
 }
 .sectionModal__div__p{/*modal_sinSecciones* - modal_fueraHorario*/
 	font-size: 1.1em;
@@ -586,7 +589,7 @@
 .contenedor_109{/*vitrina*/
 	display: block;
 	margin-top: 23%;	
-	background-size: contain; /*cover*/
+	background-size: cover; /*contain*/
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 175px;
@@ -746,6 +749,9 @@
 }
 .contGeneral__p{/*horarioDespacho*/
 	width: 95%;
+}
+.contGeneralCentro{/*carrito - horarioDespacho*/
+	margin-top: 5%;
 }
 .contGridTres{/*Categorias_Ajax*/
 	grid-template-columns: 100%;
@@ -1232,10 +1238,6 @@
 }
 .span_4{/*inicio*/
 	font-size: 1em;
-}
-.span_5{/*opciones - tiendas - Selecciones_Ajax - Categorias_Ajax*/
-	/* margin-top: 1%;
-	margin-left: 90%; */
 }
 .span_8{/*CantidadTiendas_Ajax*/
 	font-size: 3em!important;

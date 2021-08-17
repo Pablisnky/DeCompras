@@ -274,8 +274,7 @@
         }
         
         public function salirTienda(){
-            //La función redireccionar se encuentra en url_helper.php
-            redireccionar("/Inicio_C/NoVerificaLink");
+        	header("location:" . RUTA_URL. '/Inicio_C/NoVerificaLink');
         }
     }
 ?>

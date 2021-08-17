@@ -1,7 +1,7 @@
 <!-- se muestra en login_V.php en div id = "Contenedor_43" -->
 
-<!-- Cargada desde login_Modal_C/modal_sinSecciones_V.php -->
 <?php 
+// Entra en el if por defecto
 if($Datos == ''){ ?>
     <section class="sectionModal">        
         <a href="<?php echo RUTA_URL . '/Login_C';?>"><i class="fas fa-times spanCerrar"></i></a>

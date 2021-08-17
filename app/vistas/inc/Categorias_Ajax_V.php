@@ -2,7 +2,7 @@
 <section class="sectionModal">
 
     <!-- ICONO DE CERRAR PAGINA -->
-    <span onclick="CerrarCategoria('Mostrar_Categorias')"><i class="fas fa-times span_5"></i></span>
+    <i class="fas fa-times span_5" onclick="CerrarCategoria('Mostrar_Categorias')"></i>
 
     <div class="contenedor_24 contenedor_118">   
         <div class="contenedor_102">
@@ -12,7 +12,7 @@
             <div class="contGridTres">
                 <?php                        
                 $ContadorCategoria = 1;
-                //$Datos['categorias'] trae información de la consulta categorias() llamada desde Cuenta_C.php con todas las categorias que hay en la plataforma
+                // $Datos['categorias'] trae información de la consulta categorias() llamada desde Cuenta_C.php con todas las categorias que hay en la plataforma
                 // echo '<pre>';
                 // print_r($Datos);
                 // echo '</pre>';

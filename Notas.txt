@@ -5,6 +5,7 @@ albertcabeza76@gmail.com       cccc    Otaku Claud Gat
 vivas@gmail.com         vvvv
 lisbella@gmail.com      llll
 jean@gmail.com          jjjj    Chica sabrosa
+pcabeza7@gmail.com      bbdd    la bodega digital
 
 En local y en remoto
     Cambiar en Configurar.php; 

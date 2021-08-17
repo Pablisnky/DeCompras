@@ -1,15 +1,13 @@
 <?php
+    //$Datos viene desde Login_C/index
     if($Datos == 'CE'){  ?>
         <section class="section_5" id="Section_5">
             <div class="contenedor_42">
                 <form action="<?php echo RUTA_URL . '/Login_C/ValidarSesion';?>" method="POST" name="formLogin" onsubmit = "return validarLogin()">	
                     <fieldset class="fieldset_1">
                         <legend class="legend_1">Datos de acceso</legend>
-                        
-                        <input class="input_13 input_13A borde_1" type="text" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off" onkeydown="blanquearInput('Correo')">  
-          
-                        <input class="input_13 input_13A  borde_1" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
-
+                        <input class="placeholder borde_1" type="text" name="correo_Arr" id="Correo" placeholder="e-mail" autocomplete="off" onkeydown="blanquearInput('Correo')">                
+                        <input class="placeholder borde_1" type="password" name="clave_Arr" id="Clave" placeholder="Contraseña" autocomplete="off">             
                         <div class="contenedor_45">
                             <input type="checkbox" id="Recordar" name="recordar" value="1">
                             <label class="label_20" for="Recordar">Recordar datos en este equipo.</label>
@@ -62,6 +60,6 @@
         <?php
     }   ?> 
 		
-<script src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
+<script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
 
 <?php include(RUTA_APP . "/vistas/inc/footer.php");?>

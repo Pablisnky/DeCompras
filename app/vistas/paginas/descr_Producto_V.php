@@ -34,7 +34,7 @@
                     </ul>  
                 </div>
                 
-                <!-- IMAGENES SECUNDARIAS (MAX 5 MINIATURAS DEL PRODUCTO) -->
+                <!-- IMAGENES SECUNDARIAS (MINIATURAS) -->
                 <div class="contenedor_125">   
                     <?php                
                     if($Datos['Imagenes'] != Array()){      

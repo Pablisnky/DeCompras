@@ -5,7 +5,7 @@
         <P class="p_6">En breve se le notificará los datos del despachador y hora aproximada de entrega </P>
         <div class="contenedor_33">
             <p class="p_1">Gracias por confiar en nuestro servicio</p>
-            <a class="boton" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">Inicio</a>
+            <a class="boton" href="<?php echo RUTA_URL . '/Inicio_C';?>">Inicio</a>
         </div>
     </div>
 </section>

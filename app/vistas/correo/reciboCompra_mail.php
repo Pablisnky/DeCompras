@@ -91,10 +91,6 @@
             $email_message .= "<table>";
                 foreach($DatosCorreo['informacion_pedido'] as $DatosPedido) :
                     $email_message .= "<tr>";
-                    $email_message .= "<td class='td_1'>CANTIDAD</td>";
-                    $email_message .= "<td>" . $DatosPedido["cantidad"] . "</td>";
-                    $email_message .= "</tr>";
-                    $email_message .= "<tr>";
                     $email_message .= "<td>PRODUCTO</td>"; 
                     $email_message .= "<td class='td_1'>" . $DatosPedido["producto"] . "</td>";
                     $email_message .= "</tr>";
@@ -105,6 +101,10 @@
                     $email_message .= "<tr>";
                     $email_message .= "<td>PRECIO UNITARIO</td>"; 
                     $email_message .= "<td>" . $DatosPedido["precio"] . ' Bs.' . "</td>"; 
+                    $email_message .= "</tr>";
+                    $email_message .= "<tr>";
+                    $email_message .= "<td class='td_1'>CANTIDAD</td>";
+                    $email_message .= "<td>" . $DatosPedido["cantidad"] . "</td>";
                     $email_message .= "</tr>";
                     $email_message .="<tr>";
                     $email_message .= "<td>SUB-TOTAL</td>"; 

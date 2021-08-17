@@ -220,7 +220,7 @@
             // echo "</pre>";
             // exit();
 
-            //Se crea una sesión con el contenido de una seccion para verificar que el usuario ya tiene creada al menos una cuando vaya a cargar un producto
+            //Se crea una sesión con el contenido de una seccion de la tienda, para verificar que el usuario ya tiene creada al menos una cuando vaya a cargar un producto
             if(!empty($Datos['secciones'])){
                 foreach($Datos['secciones'] as $Key){
                     $Seccion = $Key['seccion'];
@@ -445,7 +445,6 @@
         public function SeccionesDisponibles(){
             // CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
             $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
-            // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
             $Datos = [
                 'seccion' => $Seccion,
@@ -874,8 +873,7 @@
             // //Se ACTUALIZAN las categorias en las que se encuentra una tienda
             // $this->ConsultaCuenta_M->actualizarCategoriaTienda($this->ID_Tienda, $ID_Categ);
 
-            //Redirecciona, La función redireccionar se encuantra en url_helper.php
-            redireccionar("/Cuenta_C/Editar");
+        	header("location:" . RUTA_URL. '/Cuenta_C/Editar');
         }
         
         //Invocado en cuenta_publicar_V.php recibe el formulario para cargar un nuevo producto
@@ -894,7 +892,7 @@
                         // 'Descripcion' => preg_replace("[\n|\r|\n\r|\]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
-                        'Cantidad' => !empty($_POST['cantidad']),
+                        'Cantidad' => $_POST['cantidad'],
                         'Disponible' => !empty($_POST['disponible']),
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),

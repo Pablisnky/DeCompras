@@ -1,7 +1,5 @@
-<!-- Archivo cargado via AJAX en el div "Mostrar_Orden" del archivovitrina_V.php -->
-
 <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización del capture--> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
 <section class="sectionModal">
     <section> <!-- ORDEN DE COMPRA -->
@@ -42,8 +40,8 @@
                     </div>                    
                     <div class="contInputRadio">
                         <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
-                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, <?php echo number_format($Datos['Delivery'], 0, ",", ".");?> Bs.</label>
-                        <input class="ocultar" type="text" id="PrecioEnvio" value="<?php echo $Datos['Delivery'];?>"/>
+                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, <?php echo number_format($Datos['precioDolar'], 0, ",", ".");?> Bs.</label>
+                        <input class="ocultar" type="text" id="PrecioEnvio" value="<?php echo $Datos['precioDolar'];?>"/>
                     </div>     
                     
                         <!--DIV ALIMENTADO DESDE CARRITO.JS PedidoEnCarrito() -->
@@ -52,7 +50,7 @@
 
                         <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
 
-                        <h2 class='h2_2'>Monto de envio:<input type='text' form="DatosUsuario" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['Delivery'], 0, ",", ".");?>' readonly="readondly"/> Bs.</h2>
+                        <h2 class='h2_2'>Monto de envio:<input type='text' form="DatosUsuario" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['precioDolar'], 0, ",", ".");?>' readonly="readondly"/> Bs.</h2>
 
                         <hr class="hr_1"/>
                         <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
@@ -111,7 +109,7 @@
                                 <div class="contenedor_155">
                                     <select class="select_2 borde_1" id="Estado" onchange="blanquearInput('Estado')">
                                         <option disabled selected>Seleccione un estado</option>
-                                        <option selected="true">Yaracuy</option>
+                                        <option>Yaracuy</option>
                                     </select>
                                 </div>
                                 <div class="contenedor_155">
@@ -120,6 +118,7 @@
                                         <option>Cocorote</option>
                                         <option>Independencia</option>
                                         <option>San Felipe</option>
+                                        <option>Yaritagua</option>
                                     </select>
                                 </div>
                             </div>
@@ -129,9 +128,8 @@
                         </div>        
                     </div>
                 </article>    
-                
-                <!-- FORMAS DE PAGO -->
-                <article> 
+
+                <article> <!-- FORMAS DE PAGO -->
                     <div class="contenedor_24">
                         <div class="contGeneral contGeneral--left">
                             <h1 class="h1_1">Formas de pago</h1>
@@ -249,7 +247,12 @@
                                     <input class="ocultar" type="file" name="imagenTransferencia" id="ImagenTransferencia" onchange="CaptureTransferencia()"/>
                                     <br>
 
-                                    <!-- div que muestra la previsualización del capture-->
+                                    <!-- <div class="contenedor_129 borde_1 borde_2">
+                                        <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                        <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/imagen.png"/>
+                                    </div> -->
+
+                                    <!-- div que muestra la previsualización de las imagenes secundarias-->
                                     <div class="contGeneralCentro" id="DivCaptureTransferencia"></div>
                                 </div> 
                             </div>
@@ -301,16 +304,21 @@
                                     </tbody>
                                 </table>
                                 
-                                <h3 class="h3_2">Informe su pago mediante el capture del PagoMovil</h3>
+                                <p class="contenedor_60__p1">Informe su pago mediante el capture del PagoMovil</p>
                                                     
-                                <!-- <br class="br_1"/> -->
+                                <br class="br_1"/>
                                 <!-- IMAGEN CAPTURE -->
                                 <div class="contGeneral" id="CapturePagoMovil">
                                     <label class="boton boton--largo boton--centro" for="ImagenPagoMovil">Insertar capture</label>
                                     <input class="ocultar" type="file" name="imagenPagoMovil" id="ImagenPagoMovil" onchange="CapturePagoMovil()"/>
-                                    <!-- <br class="br_1"> -->
+                                    <br class="br_1">
 
-                                    <!-- div que muestra la previsualización del capture-->
+                                    <!-- <div class="contenedor_129 borde_1 borde_2">
+                                        <label for="imgInp"><span class="icon-pencil span_18 borde_1"></span></label>
+                                        <img class="imagen_6" id="blah" alt="Fotografia del producto" src="../../public/images/imagen.png"/>
+                                    </div> -->
+
+                                    <!-- div que muestra la previsualización de las imagenes secundarias-->
                                     <div class="contGeneralCentro" id="DivCapturePagoMovil"></div>
                                 </div> 
                             </div>

@@ -91,7 +91,10 @@
 
         // SELECT del pedido realizado
         function consultarPedido($Aleatorio){                    
-            $stmt = $this->dbh->prepare("SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i:%p') AS hora, usuarios.montoDelivery, usuarios.montoTienda, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago, usuarios.codigoPago, usuarios.capture FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido WHERE aleatorio = :ALEATORIO");
+            $stmt = $this->dbh->prepare(
+                "SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, aleatorio, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i:%p') AS hora, usuarios.montoDelivery, usuarios.montoTienda, usuarios.montoTotal, usuarios.despacho, usuarios.formaPago, usuarios.codigoPago, usuarios.capture 
+                FROM pedidos INNER JOIN usuarios ON pedidos.aleatorio=usuarios.ID_Pedido 
+                WHERE aleatorio = :ALEATORIO");
             
             $stmt->bindValue(':ALEATORIO', $Aleatorio, PDO::PARAM_INT);
 
