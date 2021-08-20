@@ -1,6 +1,6 @@
 <?php
     class Cuenta_C extends Controlador{
-        private $ID_Tienda;
+        // private $ID_Tienda;
         private $ID_Afiliado;
         public $Horario;
 
@@ -21,7 +21,7 @@
             ocultarErrores();
         }
 
-        // invocado desde el metodo recibeRegistroEditado() en este mismo archivo
+        // invocado desde el metodo recibeRegistroEditado() en esta misma clase
         public function index(){
             //CONSULTA los datos de la tienda
             $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
@@ -55,14 +55,17 @@
             //$DatosAgrupados contiene una cadena con el separados por coma, se convierte en array para separar los elementos
             // echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
             // echo 'ID_Tienda= ' . $this->ID_Tienda . '<br>';
+            // exit;
 
             $DatosAgrupados = explode(",", $DatosAgrupados);
 
             $Seccion = $DatosAgrupados[0];
             //Mediante operador ternario
-            $Puntero = empty($DatosAgrupados[1]) ? 'NoAplica' : $DatosAgrupados[1];
+            $ID_Seccion = empty($DatosAgrupados[1]) ? 'NoAplica' : $DatosAgrupados[1];
+            $Puntero =  empty($DatosAgrupados[2]) ? 'NoAplica' : $DatosAgrupados[2];
             // echo $Seccion . '<br>';
             // echo $Puntero . '<br>';
+            // echo $ID_Seccion . '<br>';
             // exit();
 
             //$Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
@@ -106,8 +109,6 @@
 
                 //Se da el valor de notifiación directamente debido a que si la condicion entró en el ELSE ya el afiliado a visitado la página y no tiene notificaciones por leer
                 $Notificacion = 1;
-
-                // $Seccion  = 'Seccion especifica';
             }
 
             //CONSULTA los datos de la tienda
@@ -122,12 +123,13 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
-                'productos' => $Productos, //ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, cantidad, disponible, seccion, nombre_img, fotoSeccion
+                'productos' => $Productos, //ID_Seccion, ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, cantidad, disponible, seccion, nombre_img, fotoSeccion
                 // 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja
                 'Apunta' => $Puntero,
                 'slogan' => $Slogan,
-                'variosCaracteristicas' => $Caracteristicas
+                'variosCaracteristicas' => $Caracteristicas,
+                'ID_Seccion' => $ID_Seccion //ID_Seccion de la cual se estan visualizando sus productos
             ];
             
             // echo "<pre>";
@@ -137,7 +139,7 @@
 
             //En el caso que no se haya configurado ninguna seccion o categoria
             if($Datos['secciones'] == Array ()){
-                redireccionar("/Modal_C/tiendaSinProductos");
+                header("location:" . RUTA_URL. '/Modal_C/tiendaSinProductos');
             }
             else{
                 $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
@@ -1390,6 +1392,73 @@
             if($Consulta[0]['publicar'] == 0){
                 echo "Es necesario configurar la totalidad de la tienda";  
             }
+        }
+
+        //Invocado desde E_Cuenta_Productos.js
+        public function EstablecerImageSeccion($ID_Seccion){
+
+            $Datos = $ID_Seccion;
+            // echo $Datos;
+            // exit;
+
+            $this->vista('inc/header_Modal'); 
+            $this->vista('modal/modal_establecerImageSeccion_V', $Datos);
+        }
+
+        public function recibeImagenSeccion(){
+            $nombre_imgSeccion = $_FILES['img_Seccion']['name'] != '' ? $_FILES['img_Seccion']['name'] : 'imagen.png';
+            $tipo_imgSeccion = $_FILES['img_Seccion']['type'] != '' ? $_FILES['img_Seccion']['type'] : 'image/png';
+            $tamanio_imgSeccion = $_FILES['img_Seccion']['size'] != '' ?  $_FILES['img_Seccion']['size'] : '20,0 KB';
+            $ID_Seccion = $_POST['id_seccion'];
+
+            // echo 'Nombre de la imagen = ' . $nombre_imgSeccion . '<br>';
+            // echo 'Tipo de archivo = ' .$tipo_imgSeccion .  '<br>';
+            // echo 'Tamaño = ' . $tamanio_imgSeccion . '<br>';
+            // echo 'Tamaño maximo permitido = 2.000.000' . '<br>';// en bytes
+            // echo 'ID_Seccion = ' . $ID_Seccion;
+            // exit();
+
+            //Si existe img_Seccion y tiene un tamaño correcto (maximo 2Mb)
+            if(($nombre_imgSeccion == !NULL) AND ($tamanio_imgSeccion <= 2000000)){
+                //indicamos los formatos que permitimos subir a nuestro servidor
+                if(($tipo_imgSeccion == "image/jpeg")
+                    || ($tipo_imgSeccion == "image/jpg") || ($tipo_imgSeccion == 'image/png')){
+
+                    //Usar en remoto
+                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/secciones/';
+
+                    // usar en local
+                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/secciones/';
+
+                    //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                    move_uploaded_file($_FILES['img_Seccion']['tmp_name'], $directorio_6.$nombre_imgSeccion);
+
+                    //Se INSERTA la imagen de la seccion
+                    $this->ConsultaCuenta_M->actualizaImagenSeccion($ID_Seccion, $nombre_imgSeccion, $tipo_imgSeccion, $tamanio_imgSeccion);
+                }
+                else{
+                    //si no cumple con el formato
+                    echo 'Solo puede cargar imagenes con formato jpg, jpeg o png';
+                    echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                    exit();
+                }
+            }
+            else{//si se pasa del tamaño permitido
+                echo 'La imagen principal es demasiado grande ';
+                echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                exit();
+            }
+
+             //Para actualizar fotografia de seccion solo si se ha presionado el boton de buscar fotografia
+            //  if(($_FILES['imagenPrinci_Editar']['name']) != ""){
+            //     //Se ACTUALIZA la fotografia principal del producto
+            //     $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
+                
+                //Se ACTUALIZA la dependenciatransitiva entre secciones e imagenes
+                // $this->ConsultaCuenta_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);
+            // }
+            
+            echo '<script>window.close();</script>';
         }
     }
 ?>

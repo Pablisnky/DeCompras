@@ -43,8 +43,9 @@
 							<?php
 							//$Datos proviene de Cuenta_C/index -  Cuenta_C/productos -  Cuenta_C/editar -  Cuenta_C/publicar
 							foreach($Datos['secciones'] as $arr) :	
-								$Seccion = $arr['seccion'];?>
-								<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/Cuenta_C/Productos/' . urlencode($Seccion) . ',NoAplica'?>"><?php echo $Seccion;?></a></li>	<?php
+								$ID_Seccion = $arr['ID_Seccion'];	
+								$Seccion = $arr['seccion'];	?>
+								<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/Cuenta_C/Productos/' . urlencode($Seccion) . ',' . $ID_Seccion . ',NoAplica'?>"><?php echo $Seccion;?></a></li>	<?php
 							endforeach;	?>
 							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/Todos';?>">Todos</a></li>
 						</ul> 	

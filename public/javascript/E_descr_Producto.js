@@ -86,8 +86,3 @@
     }
 
 //************************************************************************************************
-    // Muestra la imagen en ventana modal
-    function verImagenModal(ID_Imagen){
-        console.log("______Desde verImagenModal()______", ID_Imagen)
-
-    }

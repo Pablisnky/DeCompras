@@ -457,21 +457,21 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
         
         //Da una vista previa de la imagen de la seccion
-        function Muestra_Imagen_Seccion(input, id_Label){
-            // console.log("______Desde Muestra_Imagen_Seccion()______", input + ' | ' + id_Label)
-            if(input.files && input.files[0]){
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    id_Label.attr('src', e.target.result); //Renderizamos la imagen
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }        
-        $("#Img_Seccion").change(function(){
-            // Código a ejecutar cuando se detecta un cambio de imagen de tienda
-            var id_Label = $('#ImagenSeccion');
-            Muestra_Imagen_Seccion(this, id_Label);
-        });
+        // function Muestra_Imagen_Seccion(input, id_Label){
+        //     // console.log("______Desde Muestra_Imagen_Seccion()______", input + ' | ' + id_Label)
+        //     if(input.files && input.files[0]){
+        //         var reader = new FileReader();
+        //         reader.onload = function(e){
+        //             id_Label.attr('src', e.target.result); //Renderizamos la imagen
+        //         }
+        //         reader.readAsDataURL(input.files[0]);
+        //     }
+        // }        
+        // $("#Img_Seccion").change(function(){
+        //     // Código a ejecutar cuando se detecta un cambio de imagen de tienda
+        //     var id_Label = $('#ImagenSeccion');
+        //     Muestra_Imagen_Seccion(this, id_Label);
+        // });
     </script>
         
     <?php include(RUTA_APP . '/vistas/inc/footer.php');

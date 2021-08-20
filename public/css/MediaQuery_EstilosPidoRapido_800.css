@@ -48,7 +48,7 @@
 	font-size: 5vw !important;
 	width: 100% !important;
 }
-.boton--alto{/*afiliacion - carrito*/ 
+.boton--alto{/*afiliacion - carrito - tiendas*/ 
 	line-height: 20px;
 }
 .boton--largo{/*cuenta_editar - horarioDespacho - login*/ 
@@ -58,6 +58,9 @@
 	border-bottom-color: white;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
+}
+.boton-excepcion{/*tiendas*/ 
+	line-height: 45px;
 }
 .br_2{/*carrito*/
 	display: block;

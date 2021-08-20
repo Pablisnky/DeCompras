@@ -7,13 +7,19 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <section class="section_3 section_9">
         <div class="contenedor_90 contenedor_91">
             <h2 class="h2_9">Sección</h2>
-            <?php
-           //Mediante operador ternario
-            $Datos['Seccion'] != 'Todos' ? $Datos['Seccion']  : 'Todos';  ?>
-            <h3 class="h3_9">( <?php echo $Datos['Seccion'] ;?> )</h3>
+            <!-- Mediante operador ternario -->
+            <?php $Datos['Seccion'] != 'Todos' ? $Datos['Seccion'] : 'Todos';  ?>
+
+            <h3 class="h3_9">( <?php echo $Datos['Seccion'];?> )</h3>
         </div>
         <div class="contenedor_13 contenedor_13--productos"> 
-            <?php
+            <?php 
+                if($Datos['ID_Seccion'] != 'NoAplica'){ ?>
+                    <div class="contenedor_13--Primeralinea">
+                        <label class="boton" onclick="ImagenSeccion(<?php echo $Datos['ID_Seccion'];?>)">Imagen de sección</label>
+                    </div>
+                    <?php
+                }
             $Contador = 1; 
     
             //$Datos viene de Cuenta_C/Productos
@@ -29,6 +35,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $ID_Opcion = $arr["ID_Opcion"];
                 $FotoPrincipal = $arr['nombre_img'];
                 $FotoSeccion = $arr['fotoSeccion'];
+
                 // echo "<pre>";
                 // print_r($Datos['productos']);
                 // echo "</pre>";
@@ -110,10 +117,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
         </div>
     </section>
        
-    <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
+    <script src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
+    <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_Producto.js?v=' . rand();?>"></script>
 
     <?php
 }
 else{
-    redireccionar("/Login_C/");
+    header("location:" . RUTA_URL. "/Inicio_C");
 }   ?>

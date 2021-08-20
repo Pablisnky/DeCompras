@@ -38,18 +38,24 @@
                 $ID_Seccion = $row['ID_Seccion'];   
                 ?> 
                 <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
-                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>')">  <?php
+                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>')">  
+                        <?php
+
+                        // IMAGEN DE SECCION
                         foreach($Datos['imagenSecciones'] as $key) : 
                             if($key['ID_Seccion'] == $ID_Seccion) : 
-                                $SeccionExiste = 'Seccion_'. $Contador; ?>
-                                <div class="contenedor_9 borde_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/productos/<?php echo $key['nombre_img']?>');">
-                                </div>  <?php
+                                $SeccionExiste = 'Seccion_'. $Contador; 
+                                if($key['nombre_img_seccion'] == ''){ ?>
+                                    <div class="contenedor_9 contenedor_9--contain" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
+                                    </div> <?php
+                                }   
+                                else{    ?>
+                                    <div class="contenedor_9 borde_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/secciones/<?php echo $key['nombre_img_seccion']?>');">
+                                    </div>  <?php
+                                } ;  
                             endif;  
                         endforeach;  
-                        if(empty($SeccionExiste)){ ?>
-                            <div class="contenedor_9 contenedor_9--contain" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
-                            </div> <?php
-                        }
+
                         $SeccionExiste = '';
                         ?>
                         <h2 class="boton botonReverso borde_1 boton--largo"><?php echo $Seccion;?></h2>

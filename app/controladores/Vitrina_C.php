@@ -49,15 +49,10 @@
             require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
             $this->Horario = new CalculoApertura_C;
             $HorarioTrabajo = $this->Horario->horarioTienda($ID_Tienda);
-            
-            //Se CONSULTAN la imagen principal de cada sección de una tienda especifica
+                        
+            // Se consultan las imagenes de las secciones de la tienda
             $ImagenSecciones = $this->ConsultaVitrina_M->consultarImagenesSecciones($ID_Tienda);
-
-            //Si no hay imagen establecida para una sección, se selecciona la primera imagen que se encuentre de esa sección
-            if($ImagenSecciones == Array()) :
-                $ImagenSecciones = $this->ConsultaVitrina_M->consultarImagenesSeccionForzada($ID_Tienda);
-            endif;
-            
+           
             // echo "<pre>";
             // print_r($ImagenSecciones);
             // echo "</pre>";
@@ -77,7 +72,7 @@
                 'ProximoApertura' => $ProximoApertura,
                 'HoraApertura' => $HoraApertura,
                 'cant_productosSeccion' => $Cant_ProductosSeccion, //ID_Seccion, CantidadProducto por seccion
-                'imagenSecciones' => $ImagenSecciones//nombre_img, ID_Producto
+                'imagenSecciones' => $ImagenSecciones //ID_Seccion, nombre_img_seccion
             ];
 
             // echo "<pre>";

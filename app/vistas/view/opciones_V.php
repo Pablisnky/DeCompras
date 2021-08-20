@@ -4,12 +4,13 @@
     <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
             <!-- Icono flecha atras -->
-            <i class="fas fa-arrow-left" style="display:inline;"></i>
+            <i class="fas fa-arrow-left" style="display: inline;"></i>
             <label class="label_9" id="Label_9" style="display: inline;">Secciones</label>
         </div>
         
-        <!-- $Datos viene de Opciones_C -->
         <h1 class="h1_1 h1_3"><?php echo $Datos['Opciones'][0]['seccion']?></h1>
+
+        <h2>Ver todos</h2>
     </div>
 
     <div class="contenedor_156">
