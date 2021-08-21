@@ -1,6 +1,4 @@
 <?php
-    // require(RUTA_APP . "/clases/Conexion_BD.php");
-
     class Cuenta_M extends Conexion_BD{
 
         public function __construct(){
@@ -909,24 +907,26 @@
         }
         
         //UPDATE de una opcion
-        public function actualizarOpcion($RecibeProducto){
-            $stmt = $this->dbh->prepare("UPDATE opciones SET opcion = :OPCION, precioBolivar = :PRECIOBOLIVAR, precioDolar = :PRECIODOLAR, cantidad = :CANTIDAD, disponible = :DISPONIBLE WHERE ID_Opcion = :ID_OPCION");
+        public function actualizarOpcion($RecibeProducto){   
+            $stmt = $this->dbh->prepare(
+                "UPDATE opciones 
+                 SET opcion = :OPCION, precioBolivar = :PRECIOBOLIVAR, precioDolar = :PRECIODOLAR, cantidad = :CANTIDAD, disponible = :DISPONIBLE 
+                  WHERE ID_Opcion = :ID_OPCION"
+            );
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':OPCION', $RecibeProducto['Descripcion']);
             $stmt->bindValue(':PRECIOBOLIVAR', $RecibeProducto['PrecioBolivar']);
             $stmt->bindValue(':PRECIODOLAR', $RecibeProducto['PrecioDolar']);
-            $stmt->bindValue(':ID_OPCION', $RecibeProducto['ID_Opcion']);
             $stmt->bindValue(':CANTIDAD', $RecibeProducto['Cantidad']);
             $stmt->bindValue(':DISPONIBLE', $RecibeProducto['Disponible']);
+            $stmt->bindValue(':ID_OPCION', $RecibeProducto['ID_Opcion']);
 
             // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
+            $stmt->execute();
+        
+            //Se envia información de cuantos registros se vieron afectados por la consulta
+            // return $stmt->rowCount();
         }
         
         //UPDATE de una seccion
@@ -1330,7 +1330,10 @@
 
         //INSERT de la imagen principal de un producto
         public function insertaImagenPrincipalProducto($ID_Producto, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto){
-            $stmt = $this->dbh->prepare("INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fecha, hora) VALUES(:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, CURDATE(), CURTIME())");
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO imagenes(ID_Producto, nombre_img, tipoArchivo, tamanoArchivo, fotoPrincipal, fotoSeccion, fecha, hora) 
+                VALUES(:ID_PRODUCTO, :NOMBRE_IMG, :TIPO_ARCHIVO, :TAMANIO_ARCHIVO, :PRINCIPAL, :SECCION, CURDATE(), CURTIME())"
+            );
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
             $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
@@ -1338,6 +1341,7 @@
             $stmt->bindParam(':TIPO_ARCHIVO', $tipo_imgProducto);
             $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio_imgProducto);
             $stmt->bindValue(':PRINCIPAL', 1);
+            $stmt->bindValue(':SECCION', 0);
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();

@@ -1,5 +1,5 @@
 <?php
-    class CalculoDolar_C extends Controlador{
+    class CambioDlar_C extends Controlador{
 
         public $PrecioDolar;
         public $Reserve;

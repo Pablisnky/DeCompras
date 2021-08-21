@@ -28,7 +28,7 @@
         
         public function index(){ 
             require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
-            $this->ActualizarPrecio = new CalculoDolar_C();
+            $this->ActualizarPrecio = new CambioDlar_C();
             $this->ActualizarPrecio->AjusteCambioMonetario($this->Dolar, $this->Reserve);
             
             echo 'Perfecto, Dolar y tasa "Reserve" actualizado' . '<br>';
