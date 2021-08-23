@@ -80,7 +80,7 @@
             // echo "</pre>";
             // exit();
 
-            $this->vista("inc/header_Tienda", $Datos);
+            $this->vista("header/header_Tienda", $Datos);
             $this->vista("view/vitrina_V",  $Datos);
         }
     }

@@ -75,4 +75,4 @@
 		
 <script type="application/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_NoConformidad.js';?>"></script>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/footer/footer.php");?>

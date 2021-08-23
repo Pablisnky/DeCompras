@@ -3,7 +3,7 @@
 	$Verifica_AfiliacionDespachador = 1908;  
     $_SESSION["Verifica_AfiliacionDespachador"] = $Verifica_AfiliacionDespachador; 
 
-    require(RUTA_APP . "/vistas/inc/header.php");
+    require(RUTA_APP . "/vistas/header/header.php");
 ?>
 
 <section class="section_5">
@@ -52,4 +52,4 @@
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Registros.js';?>"></script>
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Registros.js';?>"></script>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/footer/footer.php");?>

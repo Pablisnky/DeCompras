@@ -1,4 +1,4 @@
-<?php require(RUTA_APP . "/vistas/inc/header.php");?>
+<?php require(RUTA_APP . "/vistas/header/header.php");?>
 
 <section class="section_5">
 	<div class="contenedor_42">
@@ -18,4 +18,4 @@
 
 <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/footer/footer.php");?>

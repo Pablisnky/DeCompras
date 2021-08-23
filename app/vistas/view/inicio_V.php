@@ -37,21 +37,22 @@
         </div>
     </section>
 
-    <div class="section_1 section_1--vh" id="Section_1">
+    <section class="section_1 section_1--vh" id="Section_1">
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">
             <div class="section_1__div">
                 <div class="section_1__div1">
                     <p class="section_1__p">Muchos de tus clientes estan verdaderamente ocupados,</p>
-                    <p class="section_1__p"><span class="span_22">¡ Ofreceles un <br class="br_2"> Servicio Premium ! </span><br> digitalizando tu tienda</p>
+                    <p class="section_1__p"><span class="span_22">¡ Ofrece un <br class="br_2"> Servicio Premium ! </span><br> digitalizando tu tienda</p>
                 </div>
                 <div class="section_1__div2" id="BotonRegistrar">
-                    <a class="section_1__boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a>
+                    <a class="contenedor_34--boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div><!--BUSCADOR-->
+    </section>
+    
+    <!--BUSCADOR-->
+    <div>
         <div class="contBuscador contBuscador__borrar" id="Busqueda">   
             <i class="fas fa-times spanCerrar" id="Span_5"></i>
             <div class="contBuscador__div">     
@@ -75,7 +76,6 @@
             
             <!--Carga mediante Ajax las tiendas disponibles para la busqueda solicitada desde buscador_V.php -->
             <div class="contenedor_58" id="Buscar_Pedido">
-                cargo
             </div>
         </div>
     </div>
@@ -112,4 +112,4 @@
     }
 </script>
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php'); ?>
+<?php require(RUTA_APP . '/vistas/footer/footer.php'); ?>

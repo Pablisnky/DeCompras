@@ -7,8 +7,8 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 4122223;
-            $this->Reserve = 4160000;
+            $this->Dolar = 4123464;
+            $this->Reserve = 4170000;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
             // $DolarHoy = json_decode(file_get_contents('https://s3.amazonaws.com/dolartoday/data.json'),true);
@@ -63,25 +63,21 @@
                 'full' => $PlanFull
             ];
 
-            $this->vista("inc/header");
-            $this->vista("view/afiliacion_V", $Datos);
+            $this->vista('header/header');
+            $this->vista('view/afiliacion_V', $Datos);
         }
 
         public function instruccion(){
             $this->vista("view/instrucion_V");
         }
 
-        public function ciudad($Datos){
-            $this->vista("view/ciudad_V", $Datos);
-        }
-
         public function PWA(){
-            $this->vista("inc/header_Modal");
+            $this->vista("header/header_Modal");
             $this->vista("view/pwa_V");
         }
         
         public function nuestroADN(){
-            $this->vista("inc/header");
+            $this->vista("header/header");
             $this->vista("view/quienesSomos_V");
         }
                 
@@ -115,12 +111,12 @@
 
             // ****************************************
 
-            // $this->vista("inc/header");
+            // $this->vista("header/header");
             // $this->vista("view/quienesSomos_V");
         }
         
         public function descargaApp(){
-            $this->vista("inc/header");
+            $this->vista("header/header");
             $this->vista("view/descargaApp_V");
         }
 

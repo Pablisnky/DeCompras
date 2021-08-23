@@ -3,7 +3,7 @@
 if(!empty($_SESSION["ID_Afiliado"])){
     echo "Bienvenido a tu sesion";
     
-    include(RUTA_APP . "/vistas/inc/footer.php");
+    include(RUTA_APP . "/vistas/footer/footer.php");
 }
 else{
     redireccionar("/Login_C/");

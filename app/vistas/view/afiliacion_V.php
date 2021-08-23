@@ -10,6 +10,11 @@
                 <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 50 productos.</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
+                    <li class="li_3">Control de inventario.</li>
+                    <li class="li_3"><p>Ajuste diario automatico de tasa dolar BCV.</p></li>
+                    <li class="li_3">Ajuste semanal automatico por inflación.</li>
+                    <li class="li_3">Alertas por productos proximos a agotarse.</li>
+                    <li class="li_3">Reporte de ventas diarias, semanales y mensuales.</li>
                 </ul>   
             </div>
             <div class="contenedor_94">
@@ -19,6 +24,11 @@
                 <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 200 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
+                    <li class="li_3">Control de inventario.</li>
+                    <li class="li_3"><p>Ajuste diario automatico de tasa dolar BCV.</p></li>
+                    <li class="li_3">Ajuste semanal automatico por inflación.</li>
+                    <li class="li_3">Alertas por productos proximos a agotarse.</li>
+                    <li class="li_3">Reporte de ventas diarias, semanales y mensuales.</li>
                 </ul>   
             </div>
             <div class="contenedor_94">
@@ -28,6 +38,11 @@
                 <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
+                    <li class="li_3">Control de inventario.</li>
+                    <li class="li_3"><p>Ajuste diario automatico de tasa dolar BCV.</p></li>
+                    <li class="li_3">Ajuste semanal automatico por inflación.</li>
+                    <li class="li_3">Alertas por productos proximos a agotarse.</li>
+                    <li class="li_3">Reporte de ventas diarias, semanales y mensuales.</li>
                 </ul>
             </div>        
             <div class="contenedor_94">
@@ -37,6 +52,11 @@
                 <ul class="ul_1">
                     <li class="li_3"><p>Catalogo hasta 1.500 productos</p></li>
                     <li class="li_3"><p>Link de acceso directo a tienda.</p></li>
+                    <li class="li_3">Control de inventario.</li>
+                    <li class="li_3"><p>Ajuste diario automatico de tasa dolar BCV.</p></li>
+                    <li class="li_3">Ajuste semanal automatico por inflación.</li>
+                    <li class="li_3">Alertas por productos proximos a agotarse.</li>
+                    <li class="li_3">Reporte de ventas diarias, semanales y mensuales.</li>
                     <li class="li_3"><p>Subdominio</p></li>
                 </ul>
             </div>
@@ -49,4 +69,4 @@
     </div>
 </section>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/footer/footer.php");?>

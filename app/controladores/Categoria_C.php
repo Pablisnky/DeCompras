@@ -27,7 +27,7 @@
             // echo '</pre>';
             // exit;
             
-            $this->vista("inc/header"); 
+            $this->vista("header/header"); 
             $this->vista("view/categoria_V", $Datos); 
         }
 

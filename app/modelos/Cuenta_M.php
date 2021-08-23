@@ -109,7 +109,7 @@
             }
         }
 
-        //SELECT de los productos que tiene una tienda especifica
+        //SELECT de los productos que tiene una tienda especifica 
         public function consultarTodosProductosTienda($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, disponible, secciones.seccion, nombre_img, fotoSeccion FROM tiendas_secciones INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto WHERE tiendas_secciones.ID_Tienda = :ID_Tienda  AND fotoPrincipal = :FOTOPRINCIPAL ORDER BY secciones.seccion, productos.producto, opciones.opcion");
 
@@ -313,6 +313,24 @@
             $stmt = $this->dbh->prepare("SELECT ID_Caracteristica, caracteristica FROM caracteristicaproducto WHERE ID_Tienda = :ID_TIENDA AND ID_Producto = :ID_PRODUCTO");
 
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return "No se pudo";
+            }
+        }
+        
+        //SELECT de las caracteristicas de un producto determinado
+        public function consultarReposicionProducto($ID_Producto){
+            $stmt = $this->dbh->prepare( 
+                "SELECT incremento, DATE_FORMAT(fecha_dotacion, '%d-%m-%Y') AS fecha_dotacion, DATE_FORMAT(fecha_reposicion, '%d-%m-%Y') AS fecha_reposicion  
+                 FROM fechareposicion  
+                 WHERE ID_Producto = :ID_PRODUCTO"
+            );
+
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
 
             if($stmt->execute()){
@@ -537,6 +555,34 @@
                 return false;
             }
         }
+        
+        //SELECT del inventario que tiene una tienda especifica 
+        public function consultarInventario($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "SELECT productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, disponible, secciones.seccion, nombre_img, fotoSeccion, DATE_FORMAT(fecha_dotacion, '%d-%m-%Y') AS fecha_dotacion, DATE_FORMAT(fecha_reposicion, '%d-%m-%Y') AS fecha_reposicion, incremento 
+                
+                FROM tiendas_secciones 
+                INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
+                INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion 
+                INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto 
+                INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto 
+                INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion 
+                INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto 
+                INNER JOIN fechareposicion ON productos.ID_Producto=fechareposicion.ID_Producto 
+                WHERE tiendas_secciones.ID_Tienda = :ID_Tienda  AND fotoPrincipal = :FOTOPRINCIPAL 
+                ORDER BY secciones.seccion, productos.producto, opciones.opcion"
+            );
+
+            $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindValue(':FOTOPRINCIPAL', 1, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return "No se pudo";
+            }
+        }
 
 
 
@@ -691,8 +737,18 @@
         }
 
         //DELETE de productos de una tienda
-        public function eliminarProductoTienda($ID_Producto){
+        public function eliminarProducto($ID_Producto){
             $stmt = $this->dbh->prepare("DELETE FROM productos WHERE ID_Producto = :ID_PRODUCTO");
+            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+
+        //DELETE de fecha de reposicion de un producto
+        public function eliminarFechaReposicion($ID_Producto){
+            $stmt = $this->dbh->prepare(
+                "DELETE FROM fechareposicion  
+                 WHERE ID_Producto = :ID_PRODUCTO"
+            );
             $stmt->bindValue(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
             $stmt->execute();          
         }
@@ -936,6 +992,30 @@
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_SP', $RecibeProducto['ID_SP']);
             $stmt->bindValue(':ID_SECCION', $RecibeProducto['ID_Seccion']);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){    
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //UPDATE de reposicion
+        public function actualizacionReposicion($RecibeProducto){ 
+            $stmt = $this->dbh->prepare(
+                "UPDATE fechareposicion  
+                 SET fecha_dotacion = :FECHA_DOTACION, incremento = :INCREMENTO, fecha_reposicion = :FECHA_REPOSICION
+                 WHERE ID_Producto = :ID_PRODUCTO"
+            );
+
+            // Se vinculan los valores de las sentencias preparadas
+            //Se introduce la fecha en la BD en formato año - mes - dia
+            $stmt->bindValue(':FECHA_DOTACION', date('Y-m-d', strtotime($RecibeProducto['FechaDotacion'])));
+            $stmt->bindValue(':INCREMENTO', $RecibeProducto['Incremento']);
+            $stmt->bindValue(':FECHA_REPOSICION', date('Y-m-d', strtotime($RecibeProducto['FechaReposicion'])));
+            $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
 
             // Se ejecuta la actualización de los datos en la tabla
             if($stmt->execute()){    
@@ -1206,7 +1286,7 @@
             }
         }
         
-        //INSERT de la imagen de seccion
+        //UPDATE de la imagen de seccion
         public function actualizaImagenSeccion($ID_Seccion, $nombre_imgSeccion, $tipo_imgSeccion, $tamanio_imgSeccion){
             $stmt = $this->dbh->prepare(
                 "UPDATE secciones
@@ -1279,33 +1359,45 @@
 
         //INSERT de la opcion y el precio de un producto
         public function insertarOpcionesProducto($RecibeProducto){
-            // echo "<pre>";
-            // print_r($RecibeProducto);
-            // echo "</pre>";
-            // exit;
             $stmt = $this->dbh->prepare(
                 "INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad, disponible) 
                 VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)"
             );
 
-            // insertar una fila
-            $Opcion = $RecibeProducto['Descripcion'];
-            $PrecioBs = $RecibeProducto['PrecioBs'];
-            $PrecioDolar = $RecibeProducto['PrecioDolar'];
-            $Cantidad = $RecibeProducto['Cantidad'];
-            $Disponible = $RecibeProducto['Disponible'];
-
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':OPCION', $Opcion);
-            $stmt->bindParam(':PRECIOBS', $PrecioBs);
-            $stmt->bindParam(':PRECIODOLAR', $PrecioDolar);
-            $stmt->bindParam(':CANTIDAD', $Cantidad);
-            $stmt->bindParam(':DISPONIBLE', $Disponible);
+            $stmt->bindParam(':OPCION', $RecibeProducto['Descripcion']);
+            $stmt->bindParam(':PRECIOBS', $RecibeProducto['PrecioBs']);
+            $stmt->bindParam(':PRECIODOLAR', $RecibeProducto['PrecioDolar']);
+            $stmt->bindParam(':CANTIDAD', $RecibeProducto['Cantidad']);
+            $stmt->bindParam(':DISPONIBLE', $RecibeProducto['Disponible']);
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
                 // se recupera el ID del registro insertado
                 return $this->dbh->lastInsertId();
+            }
+            else{
+                return false;
+            }
+        }
+
+        //INSERT de la opcion y el precio de un producto
+        public function insertarReposicion($RecibeProducto, $ID_Producto){
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO  fechareposicion(ID_Producto, incremento, fecha_dotacion, fecha_reposicion) 
+                VALUES (:ID_PRODUCTO, :INCREMENTO, :FECHA_DOTACION, :FECHA_REPOSICION)"
+            );
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
+            $stmt->bindParam(':INCREMENTO', $RecibeProducto['Incremento']);
+            //Se introduce la fecha en la BD en formato año - mes - dia
+            $stmt->bindParam(':FECHA_DOTACION', date('Y-m-d', strtotime($RecibeProducto['Fecha_dotacion'])));
+            $stmt->bindParam(':FECHA_REPOSICION', date('Y-m-d', strtotime($RecibeProducto['Fecha_reposicion'])));
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            if($stmt->execute()){
+                // se recupera el ID del registro insertado
+                return true;
             }
             else{
                 return false;

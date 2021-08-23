@@ -1,4 +1,4 @@
-<?php require(RUTA_APP . "/vistas/inc/header.php");  ?>
+<?php require(RUTA_APP . "/vistas/header/header.php");  ?>
 
 <!-- Cargada desde Modal_C/tiendaSinProductos -->
 <section class="sectionModal">

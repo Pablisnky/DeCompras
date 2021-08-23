@@ -41,7 +41,7 @@
             // echo '</pre>';
             // exit;
             
-            $this->vista("inc/header");
+            $this->vista("header/header");
             $this->vista("view/noConformidad_V", $Datos);
         }
         
@@ -78,7 +78,7 @@
                 
                 // ****************************************
                 $Datos = 'AcuseRecibo';
-                $this->vista("inc/header");
+                $this->vista("header/header");
                 $this->vista("view/noConformidad_V", $Datos);
             }
             else{

@@ -36,8 +36,8 @@
 			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--Afiliado">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/ventas';?>">Ventas</a></li>
+					<!-- <li><a class="a_3" href="<?php //echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li> -->
+					<!-- <li><a class="a_3" href="<?php //echo RUTA_URL . '/Cuenta_C/ventas';?>">Ventas</a></li> -->
 					<li class="menuLi_1"><a class="a_3">Productos</a>
 						<ul class="menuContenedor_3">
 							<?php
@@ -51,6 +51,7 @@
 						</ul> 	
 					</li>
                     <li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Publicar/';?>">Cargar producto</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Inventario/';?>">Inventario</a></li>
                     <li><a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a></li>
 				</ul>
 			</nav>

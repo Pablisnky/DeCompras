@@ -142,7 +142,7 @@
                 header("location:" . RUTA_URL. '/Modal_C/tiendaSinProductos');
             }
             else{
-                $this->vista("inc/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
+                $this->vista("header/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
                 $this->vista("view/cuenta_comerciante/cuenta_productos_V", $Datos);
             }
         }
@@ -230,7 +230,7 @@
                 $_SESSION['Seccion'] = $Seccion;
             }
 
-            $this->vista("inc/header_AfiCom", $Datos); 
+            $this->vista("header/header_AfiCom", $Datos); 
             $this->vista("view/cuenta_comerciante/cuenta_editar_V", $Datos);
         }
 
@@ -244,10 +244,10 @@
             
             //En el caso que no se haya configurado ninguna seccion o categoria
             if($Cant_Seccion == 0){ 
-                redireccionar("/Modal_C/tiendaSinSecciones");
+                header('location:' . RUTA_URL. '/Modal_C/tiendaSinSecciones');
             }
             else{
-                //CONSULTA las categorias en las que una tienda se ha postulado
+                //CONSULTA la categoria de una tienda 
                 $Categorias = $this->ConsultaCuenta_M->consultarCategoriaTiendas($this->ID_Tienda);
 
                 //CONSULTA las secciones que tiene una tienda
@@ -260,9 +260,11 @@
                 require(RUTA_APP . "/controladores/Menu_C.php");
                 $this->PrecioDolar = new Menu_C();
 
-                // echo '<pre>';
-                // print_r($this->PrecioDolar);
-                // echo '</pre>';
+                // Se guarda la fecha actual
+                $FechaDotacion = date('d-m-Y');
+
+                //Se suman siete dias a la fecha actual
+                $fechaReposicion = date("d-m-Y", strtotime($FechaDotacion."+ 7 days"));
 
                 $DolarHoy = $this->PrecioDolar->Dolar;
 
@@ -271,14 +273,16 @@
                     'categorias' => $Categorias,
                     'secciones' => $Secciones,
                     'slogan' => $Slogan,
-                    'dolarHoy' => $DolarHoy
+                    'dolarHoy' => $DolarHoy,
+                    'fechaDotacion' => $FechaDotacion, 
+                    'fechaReposicion' => $fechaReposicion
                 ];
 
                 $verifica_2 = 1906;  
                 $_SESSION['verifica_2'] = $verifica_2; 
                 //Se crea esta sesion para impedir que se recargue la información enviada por el formulario mandandolo varias veces a la base de datos
 
-                $this->vista("inc/header_AfiCom", $Datos);
+                $this->vista("header/header_AfiCom", $Datos);
                 $this->vista("view/cuenta_comerciante/cuenta_publicar_V", $Datos);
             }
         }
@@ -313,7 +317,7 @@
                     'slogan' => $Slogan
                 ];
 
-                $this->vista("inc/header_AfiCom", $Datos);
+                $this->vista("header/header_AfiCom", $Datos);
                 $this->vista("view/cuenta_comerciante/cuenta_ventas_V", $Datos);
             }
         }        
@@ -336,24 +340,22 @@
             //CONSULTA las especiicaciones de un producto determinado y de una tienda especifica
             $Especificaciones = $this->ConsultaCuenta_M->consultarDescripcionProducto($this->ID_Tienda, $ID_Producto);
 
-            // echo "<pre>";
-            // print_r($Especificaciones);
-            // echo "</pre>";
-            // exit();
-
-            //Se CONSULTAN el slogan de una tienda en particular
+            //CONSULTAN el slogan de una tienda en particular
             $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
-            //Se CONSULTAN las caracteristicas añadidas del producto
+            //CONSULTAN las caracteristicas añadidas del producto
             $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracteristicasProducto($this->ID_Tienda, $ID_Producto);
+            
+            //CONSULTAN los datos de reposicion del producto
+            $Reposicion = $this->ConsultaCuenta_M->consultarReposicionProducto($ID_Producto);
 
-            //Se CONSULTAN la imagenes principal del producto
+            //CONSULTAN la imagenes principal del producto
             $ImagenPrin = $this->ConsultaCuenta_M->consultarImagenPrincipal($ID_Producto);
 
-            //Se CONSULTAN las imagenes secundarias del producto
+            //CONSULTAN las imagenes secundarias del producto
             $Imagenes = $this->ConsultaCuenta_M->consultarImagnesProducto($ID_Producto);
 
-            //Se CONSULTAN si el producto es imagen de sección
+            //CONSULTAN si el producto es imagen de sección
             // $ImagenSeccion = $this->ConsultaCuenta_M->consultarImagenSeccionEstablecida($ID_Producto);
 
             //Solicita el precio del dolar
@@ -372,7 +374,7 @@
                 'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img, fotoSeccion
                 'imagenesVarias' => $Imagenes, //ID_Imagen, nombre_img
                 'dolarHoy' => $DolarHoy,
-                // 'ImagenSeccion' => $ImagenSeccion
+                'reposicion' => $Reposicion
             ];
 
             // echo "<pre>";
@@ -380,18 +382,48 @@
             // echo "</pre>";
             // exit();
 
-            $this->vista("inc/header_AfiCom", $Datos); 
+            $this->vista("header/header_AfiCom", $Datos); 
             $this->vista("view/cuenta_comerciante/cuenta_editar_prod_V", $Datos);
         }
+
+        public function Inventario(){
+            //CONSULTA los datos de la tienda
+            $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
+
+            //CONSULTA las secciones que tiene una tienda
+            $Secciones = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
+            
+            //Se CONSULTAN el slogan de una tienda en particular
+            $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
+
+            $Inventario = $this->ConsultaCuenta_M->consultarInventario($this->ID_Tienda);
+            
+            $Datos = [
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
+                'secciones' => $Secciones,
+                'slogan' => $Slogan,
+                'inventario' => $Inventario
+            ];
+
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
+
+            $this->vista('header/header_AfiCom', $Datos);
+            $this->vista('view/cuenta_comerciante/cuenta_inventario_V', $Datos);
+        }
         
+        //*****************************************************************************
         // HASTA AQUI SON LOS METODOS QUE RESPONDEN AL MENU
+        //*****************************************************************************
 
         public function ConsultarOpciones($OpcionProd){
             //CONSULTA las opciones de productos que existen en la BD segun la categoria seleccionada
             $Consulta = $this->ConsultaCuenta_M->consultarOpcionesProductos($OpcionProd);
             $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            $this->vista("inc/Select_Ajax_V", $Datos);
+            $this->vista("header/Select_Ajax_V", $Datos);
         }
 
         //Llamado desde A_Cuenta_editar.js
@@ -407,7 +439,7 @@
                 'categoriasTienda' => $CategoriasTienda
             ];
 
-            $this->vista("inc/Categorias_Ajax_V", $Datos);
+            $this->vista("header/Categorias_Ajax_V", $Datos);
         }
 
         //Invocado desde A_Cuenta_editar_prod.js entrega las secciones activas de una tienda
@@ -440,7 +472,7 @@
                 'seccionActiva' => $SeccionActiva
             ];
 
-            $this->vista("inc/Secciones_Ajax_V", $Datos);
+            $this->vista("header/Secciones_Ajax_V", $Datos);
         }
 
         //Metodo invocado desde A_Cuenta_publicar.js
@@ -452,7 +484,7 @@
                 'seccion' => $Seccion,
             ];
 
-            $this->vista("inc/SeccionesDisponibles_Ajax_V", $Datos);
+            $this->vista("header/SeccionesDisponibles_Ajax_V", $Datos);
         }
 
         //Recibe el formulario de configuracion de tienda invocado en cuenta_editar_V.php
@@ -531,10 +563,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
 
                         //usar en local
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -886,7 +918,7 @@
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
                 //SECCION DATOS DEL PRODUCTO
-                if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBs"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0)){
+                if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBs"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0) && !empty($_POST["fecha_dotacion"]) && !empty($_POST["incremento"]) && !empty($_POST["fecha_reposicion"])){
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
@@ -898,6 +930,9 @@
                         'Disponible' => empty($_POST['disponible']) ? 0 : $_POST['disponible'],
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
+                        'Fecha_dotacion' => $_POST['fecha_dotacion'],
+                        'Incremento' => $_POST['incremento'],
+                        'Fecha_reposicion' => $_POST['fecha_reposicion']
                     ];
                     // echo "<pre>";
                     // print_r($RecibeProducto);
@@ -934,6 +969,9 @@
 
                 //Se INSERTA la opcion y precio del producto en la BD y se retorna el ID recien insertado
                 $ID_Opcion = $this->ConsultaCuenta_M->insertarOpcionesProducto($RecibeProducto);
+                
+                //Se INSERTA la informacion de reposicion
+                $this->ConsultaCuenta_M->insertarReposicion($RecibeProducto, $ID_Producto);
 
                 if($_POST['caracteristica'][0] != ""){
                     //Se INSERTAN las caracteristicas del producto
@@ -981,10 +1019,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             // usar en local
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
@@ -1026,10 +1064,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
@@ -1041,7 +1079,6 @@
                 $this->Productos("Todos");
             }
             else{
-                // header('location:' . RUTA_URL);
                 $this->Productos("Todos");
             } 
         }
@@ -1049,7 +1086,7 @@
         //Invocado desde cuenta_editar_prod_V.php actualiza la información de un producto)
         public function recibeAtualizarProducto(){
             //Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0)){
+            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0) && !empty($_POST["fecha_dotacion"]) && !empty($_POST["incremento"]) && !empty($_POST["fecha_reposicion"])){
 
                 $RecibeProducto = [
                     //Recibe datos del producto a actualizar
@@ -1067,7 +1104,10 @@
                     'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
                     'Puntero' => filter_input(INPUT_POST, "puntero", FILTER_SANITIZE_STRING),
                     'ID_Imagen' => filter_input(INPUT_POST, "id_imagen", FILTER_SANITIZE_STRING),
-                    'ImgSeccion' => !empty($_POST['imgSeccion'])
+                    'ImgSeccion' => !empty($_POST['imgSeccion']),
+                    'FechaDotacion' => $_POST['fecha_dotacion'],
+                    'Incremento' => $_POST['incremento'],
+                    'FechaReposicion' => $_POST['fecha_reposicion']
                 ];
                 // echo "<pre>";
                 // print_r($RecibeProducto);
@@ -1105,10 +1145,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1166,10 +1206,10 @@
                                 // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                                 //Usar en remoto
-                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                                 //usar en local
-                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                                 //se muestra el directorio temporal donde se guarda el archivo
                                 //echo $_FILES['imagen']['tmp_name'];
@@ -1240,10 +1280,11 @@
             // exit();
 
             // ********************************************************
-            //Estas cinco sentencias de actualización deben realizarce por medio de transsacciones
+            //Estas seis sentencias de actualización deben realizarce por medio de transsacciones
             $this->ConsultaCuenta_M->actualizarOpcion($RecibeProducto);
             $this->ConsultaCuenta_M->actualizarProducto($RecibeProducto);
             $this->ConsultaCuenta_M->actualizacionSeccion($RecibeProducto);
+            $this->ConsultaCuenta_M->actualizacionReposicion($RecibeProducto);
             // Se eliminan las caracteristicas existentes de un producto especifica
             $this->ConsultaCuenta_M->eliminarCaracteristicas($RecibeProducto['ID_Producto'],);
 
@@ -1314,20 +1355,21 @@
 
             $this->ConsultaCuenta_M->eliminarProductoSeccion($ID_Producto);
             $this->ConsultaCuenta_M->eliminarProductoOpcion($ID_Producto);
-            $this->ConsultaCuenta_M->eliminarProductoTienda($ID_Producto);
-            $this->ConsultaCuenta_M->eliminarOpcion($ID_Opcion);
             $this->ConsultaCuenta_M->eliminarOpcionSeccion($ID_Opcion);
             $this->ConsultaCuenta_M->eliminarImagenPrincipal($ID_Producto);
+            $this->ConsultaCuenta_M->eliminarFechaReposicion($ID_Producto);
+            $this->ConsultaCuenta_M->eliminarProducto($ID_Producto);
+            $this->ConsultaCuenta_M->eliminarOpcion($ID_Opcion);
             
             //Se eliminan los archivo de la carpeta public/images/productos
             foreach($ImagenesEliminar as $KeyImagenes)  :
                 $NombreImagenEliminar = $KeyImagenes['nombre_img'];
 
                 //Usar en remoto
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
+                // unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
                     
                 //usar en local
-                // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/' . $NombreImagenEliminar);
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/' . $NombreImagenEliminar);
                 
             endforeach;
               
@@ -1359,7 +1401,7 @@
             // echo '</pre>';
             // exit;
             
-            $this->vista("inc/BotonImagen_Ajax_V", $Datos);
+            $this->vista("header/BotonImagen_Ajax_V", $Datos);
         }
         
         //Invocado desde A_Cuenta_editar.js.php por medio de la funcion Llamar_EliminarSeccion()
@@ -1403,7 +1445,7 @@
             // echo $Datos;
             // exit;
 
-            $this->vista('inc/header_Modal'); 
+            $this->vista('header/header_Modal'); 
             $this->vista('modal/modal_establecerImageSeccion_V', $Datos);
         }
 
@@ -1427,10 +1469,10 @@
                     || ($tipo_imgSeccion == "image/jpg") || ($tipo_imgSeccion == 'image/png')){
 
                     //Usar en remoto
-                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/secciones/';
+                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/secciones/';
 
                     // usar en local
-                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/secciones/';
+                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/secciones/';
 
                     //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                     move_uploaded_file($_FILES['img_Seccion']['tmp_name'], $directorio_6.$nombre_imgSeccion);

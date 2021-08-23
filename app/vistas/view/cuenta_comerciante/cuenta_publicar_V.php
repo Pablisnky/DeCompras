@@ -10,88 +10,133 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <div class="contenedor_42">    
-        <p class="p_6">Carga un producto</p>
+    <div class="contenedor_42">  
         <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeProductoPublicar" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
-            <div class="contenedor_47">    
+
+            <a id="Ancla_01" class="ancla_1"></a>
+            <fieldset class="fieldset_1 fieldset_3"> 
+                <legend class="legend_1">Cargar producto</legend>
+                <div class="contenedor_47">    
+                    
+                    <!-- IMAGEN PRINCIPAL -->
+                    <div class="contenedor_129 borde_1 borde_2">
+                        <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
+                        <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
+                        <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
+                    </div>          
+
+                    <div>
+                        <!-- PRODUCTO -->
+                        <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro" placeholder="Producto" tabindex="1" onkeydown="blanquearInput('ContenidoPro')"></textarea>
+                        <input class="contador" type="text" id="ContadorPro" value="50" readonly/>
+
+                        <!-- DESCRIPCION -->
+                        <textarea class="textarea_1 textarea_4 borde_1" name="descripcion" id="ContenidoDes"  placeholder="Descripción" tabindex="2" onkeydown="blanquearInput('ContenidoDes')"></textarea>
+                        <input class="contador" type="text" id="ContadorDes" value="500" readonly/>
+
+                        <!-- SECCION --> 
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
+                        <br>
+
+                        <!-- PRECIO -->                    
+                        <div style="display: flex;	justify-content: space-around;">
+                            <div>
+                                <label>Bs.</label><br>
+                                <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text"  name="precioBs" id="PrecioBs" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                            </div>
+                            <div>
+                                <label>$</label><br>
+                                <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                            </div>
+                        </div>
+                        <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo $PrecioDolar;?>)</strong></small>
+                        <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/> 
+                        <br>
+                        
+                        <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
+                        <div id="Contenedor_80"></div>
+                    </div>          
+                </div>
+            </fieldset>
+            
+            <a id="Ancla_02" class="ancla_1"></a>
+            <fieldset class="fieldset_1 fieldset_3">
+                <legend class="legend_1">Reposición</legend>
                 
-                <!-- IMAGEN PRINCIPAL -->
-                <div class="contenedor_129 borde_1 borde_2">
-                    <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
-                    <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
-                    <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
-                </div>          
-
-                <div>
-                    <!-- PRODUCTO -->
-                    <textarea class="textarea_1 borde_1" name="producto" id="ContenidoPro" placeholder="Producto" tabindex="1" onkeydown="blanquearInput('ContenidoPro')"></textarea>
-                    <input class="contador" type="text" id="ContadorPro" value="50" readonly/>
-
-                    <!-- DESCRIPCION -->
-                    <textarea class="textarea_1 textarea_4 borde_1" name="descripcion" id="ContenidoDes"  placeholder="Descripción" tabindex="2" onkeydown="blanquearInput('ContenidoDes')"></textarea>
-                    <input class="contador" type="text" id="ContadorDes" value="500" readonly/>
-
-                    <!-- SECCION --> 
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion" id="SeccionPublicar" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
-                    <br>
-
-                    <!-- PRECIO -->                    
-                    <div style="display: flex;	justify-content: space-around;">
-                        <div>
-                            <label>Bs.</label><br>
-                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text"  name="precioBs" id="PrecioBs" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
-                        </div>
-                        <div>
-                            <label>$</label><br>
-                            <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
-                        </div>
-                    </div>
-                    <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo $PrecioDolar;?>)</strong></small>
-                    <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/> 
-                    <br>
-
-                    <!-- CANTIDAD -->
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="cantidad" id="Cantidad" placeholder="Cantidad disponible">
+                <!-- CANTIDAD EN EXISTENCIA -->
+                <div id="Contenedor_152">
+                    <label>Unidades en existencia</label>
+                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="cantidad" id="Cantidad">
                     <div class="contInputRadio">     
                         <input type="checkbox" name="disponible" id="Disponible"/>
-                        <label class="contInputRadio__label" for="Disponible">Siempre disponible</label>
+                        <label class="contInputRadio__label small_3" for="Disponible">Siempre disponible</label>
                     </div>   
-                    <br>
+                </div>  
+                <br>
+
+                <!-- FECHA DOTACION -->
+                <label>Fecha dotación</label>
+                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_dotacion" id="Fecha_Dotacion" value="<?php echo $Datos['fechaDotacion'];?>"/>
+                <br>
                     
-                    <!-- Recibe Ajax desde SeccionesDisponibles_Ajax.php -->
-                    <div id="Contenedor_80"></div>
-                    
-                    <br>
-                    <div class="contenedor_80" onclick="AmpliarDescripcion()">
-                        <label class="label_7">Ampliar información (Opcional)</label>
-                        <i class="fas fa-arrow-down span_10"></i>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="contenedor_128" id="Contenedor_128">  
-                        
-                    <!-- CARACTERISTICAS -->
-                    <div id="Contenedor_82" class="">
-                        <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica (Opcional)"/>
+                <!-- % REPOSICION -->
+                <label>% de incremento por reposición</label>
+                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="incremento" id="Incremento"/>
+                <small class="small_1">Este % sera uzado para estimar cuanto costará el producto para la proxima fecha de reposición, de esta manera se garantiza el suministro de mercancia.</small>
+                <br>
+                
+                <!-- FECHA REPOSICION -->
+                <label>Fecha proxima reposición (sugerencia 7 dias)</label>
+                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_reposicion" id="Fecha_Reposicion" value="<?php echo $Datos['fechaReposicion'];?>"/>
+                <small class="small_1">La fecha de reposición se recomienda sea de siete dias despues de la fecha de suministro, la tasa de incremento de inflación es alta y se ha observado cambios en 17% mensual en algunos productos de uso cotidiano.</small>
+            </fieldset>   
+
+            <a id="Ancla_03" class="ancla_1"></a>
+            <fieldset class="fieldset_1 fieldset_3">
+                <legend class="legend_1">Inf. Adicional</legend>                  
+
+                <div class="contenedor_80" onclick="AmpliarDescripcion()">
+                            <label class="label_7">Ampliar información (Opcional)</label>
+                            <i class="fas fa-arrow-down span_10"></i>
+                        </div>
                         <br>
-                    </div>
-                    <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
-                    <br>
+                        <br>
+                        <div class="contenedor_128" id="Contenedor_128">  
+                            
+                        <!-- CARACTERISTICAS -->
+                        <div id="Contenedor_82" class="">
+                            <input class="placeholder placeholder_2 borde_1 caract_js" id="Caracteristica" type="text" name="caracteristica[]" placeholder="Nueva caracteristica (Opcional)"/>
+                            <br>
+                        </div>
+                        <label class="label_5 label_23" id="Label_5">Añadir caracteristica</label>
+                        <br>
 
-                    <!-- IMAGENES SECUNDARIAS -->
-                    <div class="contenedor_130" id="muestrasImg_2"></div>  
-                        <p class="p_5">Añada hasta 4 fotografias no mayor a 2 Mb / CU</p>
+                        <!-- IMAGENES SECUNDARIAS -->
+                        <div class="contenedor_130" id="muestrasImg_2"></div>  
+                            <p class="p_5">Añada hasta 4 fotografias no mayor a 2 Mb / CU</p>
 
-                        <label class="label_5 label_23" for="ImgInp_2">Añadir imagen</label>
-                        <input class="ocultar" type="file" name="imagenes[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/>  
-                    </div>     
+                            <label class="label_5 label_23" for="ImgInp_2">Añadir imagen</label>
+                            <input class="ocultar" type="file" name="imagenes[]" multiple="multiple" id="ImgInp_2" onchange="muestraImg()"/>  
+                        </div>     
 
-                    <div class="contenedor_49 contenedor_81">
-                        <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
-                        <input class="boton" type="Submit" value="Guardar" tabindex="5"/>
-                    </div> 
-                </div>          
-            </div>
+                        <div class="contenedor_49 contenedor_81">
+                            <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
+                            <input class="boton" type="Submit" value="Guardar" tabindex="5"/>
+                        </div> 
+            </fieldset>   
+
+            <!-- MENU INDICE -->
+            <section> 
+                <div class="contenedor_83 borde_1">
+                    <a class="marcador" href="#Ancla_01">Cargar Producto</a>
+                    <a class="marcador" href="#Ancla_02">Reposición</a>
+                    <a class="marcador" href="#Ancla_03">Inf. Adicional</a>
+                    <div class="contenedor_49 contenedor_101">
+                        <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>"/>
+                        <input class="boton boton--largo" type="submit" value="Guardar cambios"/>
+                    </div>          
+                </div>
+            </section> 
         </form>
     </div>        
 
@@ -180,8 +225,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         }
     </script>
 
-    <?php include(RUTA_APP . "/vistas/inc/footer.php");
+    <?php include(RUTA_APP . "/vistas/footer/footer.php");
 }
 else{
-    redireccionar("/Login_C/");
+    header("location:" . RUTA_URL. "/Login_C");
 }   ?>

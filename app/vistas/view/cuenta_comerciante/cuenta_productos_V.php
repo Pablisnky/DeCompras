@@ -107,6 +107,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                
                             <a class="a_9" href="<?php echo RUTA_URL?>/Cuenta_C/actualizarProducto/<?php echo $ID_Producto;?>,<?php echo $Opcion;?>">Actualizar</a>
+                            
                             <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/eliminarProducto/' . $ID_Producto . ',' . $ID_Opcion . ',' . $Seccion?>">Eliminar</a>
                         </div>
                     </div>

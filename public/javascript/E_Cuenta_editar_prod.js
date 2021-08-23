@@ -28,8 +28,6 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){c
 
 document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(500,'ContenidoDes')}, false)
 
-// document.getElementById("Precio").addEventListener('keydown', function(){contarCaracteres('ContadorPre','Precio', 50)}, false)
-
 // document.getElementById("Precio").addEventListener('keydown', function(){valida_LongitudDes(50,'Precio')}, false)
 
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
@@ -185,6 +183,9 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
         let ImagenesSecundarias = document.getElementsByClassName('imagen_6')
         let PrecioDolar = document.getElementById('PrecioDolar').value 
         let Seccion = document.getElementById('Seccion').value   
+        let Fecha_Dotacion = document.getElementById('Fecha_Dotacion').value 
+        let Incremento = document.getElementById('Incremento').value 
+        let Fecha_Reposicion = document.getElementById('Fecha_Reposicion').value 
         
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
@@ -224,7 +225,31 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementsByClassName("boton")[0].value = "Guardar"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
-        }        
+        }  
+        else if(Fecha_Dotacion == "" || Seccion.indexOf(" ") == 0){
+            alert ("Introduzca una fecha de dotación")
+            document.getElementById("Fecha_Dotacion").value = ""
+            document.getElementById("Fecha_Dotacion").focus()
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            return false;
+        }          
+        else if(Incremento == "" || Seccion.indexOf(" ") == 0){
+            alert ("Introduzca el porcentaje de incremento")
+            document.getElementById("Incremento").value = ""
+            document.getElementById("Incremento").focus()
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            return false;
+        }    
+        else if(Fecha_Reposicion == "" || Seccion.indexOf(" ") == 0){
+            alert ("Introduzca una fecha de reposicion")
+            document.getElementById("Fecha_Reposicion").value = ""
+            document.getElementById("Fecha_Reposicion").focus()
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            return false;
+        }    
         else if(ImagenesSecundarias.length > 5){
             alert ("Solo puede introducir 4 imagenes adicionales")
             document.getElementsByClassName("boton")[0].value = "Guardar"
@@ -334,6 +359,25 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             //alert('Cancelo la eliminacion');
             return false;
         }
+    }
+    
+//************************************************************************************************ 
+    //suma dias a la fecha de dotación
+    function sumaFecha(d, fecha){
+        var Fecha = new Date();
+        var sFecha = fecha || (Fecha.getDate() + "/" + (Fecha.getMonth() +1) + "/" + Fecha.getFullYear());
+        var sep = sFecha.indexOf('/') != -1 ? '/' : '-';
+        var aFecha = sFecha.split(sep);
+        var fecha = aFecha[2]+'/'+aFecha[1]+'/'+aFecha[0];
+        fecha= new Date(fecha);
+        fecha.setDate(fecha.getDate()+parseInt(d));
+        var anno=fecha.getFullYear();
+        var mes= fecha.getMonth()+1;
+        var dia= fecha.getDate();
+        mes = (mes < 10) ? ("0" + mes) : mes;
+        dia = (dia < 10) ? ("0" + dia) : dia;
+        var fechaFinal = dia+sep+mes+sep+anno;
+        document.getElementById("Fecha_Reposicion").value = fechaFinal
     }
     
 //************************************************************************************************ 

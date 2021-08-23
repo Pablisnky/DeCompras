@@ -1,6 +1,5 @@
 <?php 
     $ID_Tienda = $_SESSION["ID_Tienda"];
-    require(RUTA_APP . "/vistas/inc/header_AfiCom.php"); 
 
     //Se verifica que la sesion del usuario halla sido creada y exista
     if(isset($_SESSION["ID_Tienda"])){         
@@ -75,5 +74,5 @@
         header("location:" . RUTA_URL);
     }
     
-    include(RUTA_APP . "/vistas/inc/footer.php");
+    include(RUTA_APP . "/vistas/footer/footer.php");
     ?>

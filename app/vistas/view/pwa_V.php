@@ -39,4 +39,4 @@
     }
 </script>
     
-<?php require(RUTA_APP . '/vistas/inc/footer.php');  ?>
+<?php require(RUTA_APP . '/vistas/footer/footer.php');  ?>

@@ -40,12 +40,12 @@
             else if($Datos == 1){
                 $Datos = 'CE';
                 //carga la vista login_V en formulario login
-                $this->vista("inc/header");
+                $this->vista("header/header");
                 $this->vista("view/login_V", $Datos);
             }
             else{
                 //carga la vista login_V en acuse de recibo de registro de tienda
-                $this->vista("inc/header");
+                $this->vista("header/header");
                 $this->vista("view/login_V", $Datos);
             }
         }
@@ -211,7 +211,7 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("inc/header_Modal", $Datos); 
+            $this->vista("header/header_Modal", $Datos); 
             $this->vista("modal/modal_recuperarCorreo_V", $Datos); 
         }
 
@@ -235,7 +235,7 @@
                     'bandera' => 'nuevoIntento'
                 ];
 
-                $this->vista("inc/header_Modal"); 
+                $this->vista("header/header_Modal"); 
                 $this->vista("modal/modal_recuperarCorreo_V", $Datos);
 
                 echo "<p class='Inicio_16'>Código invalido</p>";
@@ -253,7 +253,7 @@
                     'bandera' => 'verificado'
                 ];
 
-                $this->vista("inc/header_Modal", $Datos); 
+                $this->vista("header/header_Modal", $Datos); 
                 $this->vista("modal/modal_recuperarCorreo_V", $Datos); 
             }
         }
@@ -297,7 +297,7 @@
                     // setcookie("id_usuario",'',time()-100);
                     // setcookie("clave",'',time()-100);
                     
-                    $this->vista('inc/header_Modal'); 
+                    $this->vista('header/header_Modal'); 
                     $this->vista('modal/modal_recuperarCorreo_V'); 
                 }
             }

@@ -69,7 +69,7 @@
             // echo "</pre>";
             // exit();
             
-            $this->vista("inc/header_Tienda");
+            $this->vista("header/header_Tienda");
             $this->vista("view/opciones_V", $Datos);
         }       
         
@@ -124,7 +124,7 @@
             // echo "</pre>";
             // exit();
             
-            $this->vista("inc/headerProducto", $Datos);
+            $this->vista("header/headerProducto", $Datos);
             $this->vista("view/descr_Producto_V", $Datos);
         } 
         

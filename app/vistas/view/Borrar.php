@@ -3,7 +3,7 @@
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
-    require(RUTA_APP . "/vistas/inc/header_AfiCom.php");
+    require(RUTA_APP . "/vistas/header/header_AfiCom.php");
     // echo "<br><br><br><br><br>";
     // echo "<pre>";
     // print_r($Datos);
@@ -424,7 +424,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         });
     </script>
         
-    <?php include(RUTA_APP . "/vistas/inc/footer.php");
+    <?php include(RUTA_APP . "/vistas/footer/footer.php");
 }
 else{
     redireccionar("/Login_C/");

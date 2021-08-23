@@ -67,7 +67,7 @@
                 endforeach; 
             }    
             else{                  
-                $this->vista("inc/header_inicio"); 
+                $this->vista("header/header_inicio"); 
                 $this->vista("view/inicio_V", $Datos);   
             }            
         }
@@ -77,7 +77,7 @@
         public function NoVerificaLink(){            
             $Datos = $this->DolarHoy;
 
-            $this->vista("inc/header_inicio"); 
+            $this->vista("header/header_inicio"); 
             $this->vista("view/inicio_V", $Datos);            
         }
     }

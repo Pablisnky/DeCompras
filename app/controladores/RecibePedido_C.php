@@ -243,7 +243,7 @@
                 $this->correo("reciboCompra_mail", $DatosCorreo); 
 
                 // ****************************************
-                $this->vista("inc/header");
+                $this->vista("header/header");
                 $this->vista("view/RecibePedido_V");
             }
             else{

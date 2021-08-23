@@ -225,7 +225,7 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("inc/header", $Datos);
+            $this->vista("header/header", $Datos);
             $this->vista("view/tiendas_V",$Datos);
         }
 
@@ -252,7 +252,7 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("inc/header_Modal");
+            $this->vista("header/header_Modal");
             $this->vista("view/tienda/horarioDespacho_V",$Datos);
         }
 
@@ -269,7 +269,7 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("inc/header_Tienda", $Datos);
+            $this->vista("header/header_Tienda", $Datos);
             $this->vista("view/tienda/direccion_V",$Datos);
         }
         

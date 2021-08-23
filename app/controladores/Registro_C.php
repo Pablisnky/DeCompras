@@ -19,7 +19,7 @@
             $Verifica_AfiliacionComerciante = 1906;  
             $_SESSION["Verifica_AfiliacionComerciante"] = $Verifica_AfiliacionComerciante; 
 
-            $this->vista("inc/header");
+            $this->vista("header/header");
             $this->vista("view/registroCom_V");
         }
         

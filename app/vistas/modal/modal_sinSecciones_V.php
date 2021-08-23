@@ -1,4 +1,4 @@
-<?php require(RUTA_APP . "/vistas/inc/header_Modal.php");  ?>
+<?php require(RUTA_APP . "/vistas/header/header_Modal.php");  ?>
 
 <section class="sectionModal"  id="Ejemplo_Secciones">
     <div class="sectionModal__div">

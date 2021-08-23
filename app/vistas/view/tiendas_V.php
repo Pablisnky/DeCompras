@@ -46,7 +46,8 @@
                     
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
-                            <label class="boton boton--corto boton--alto" onclick="AtrasTarjeta(<?php echo $ID_Tienda;?>)">Acerca de<br class="br_2"> nosotros</label>
+                            <label class="boton boton--corto boton--altoDosLinneas" onclick="AtrasTarjeta(<?php echo $ID_Tienda;?>)">Acerca de<br class="br_2"> nosotros</label>
+
                             <label class="boton boton--corto boton--alto boton-excepcion" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2','<?php echo $Disponibilidad;?>','<?php echo $ProximoApertura;?>','<?php echo $HoraApertura;?>')">Entrar</label><!--El argumento no necesario es debido a que la función Tiendas() recibe cuatro argumentos, el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
                         </div>
                     </article>
@@ -224,6 +225,7 @@
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
                             <label class="boton boton--corto boton--alto boton-excepcion" onclick="FrenteTarjeta(<?php echo $ID_Tienda;?>)">Salir</label>
+                            
                             <label class="boton boton--corto boton--alto boton-excepcion" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2','<?php echo $Disponibilidad;?>','<?php echo $ProximoApertura;?>','<?php echo $HoraApertura;?>')">Entrar</label><!--El argumento no necesario es debido a que la función Tiendas() recibe cuatro argumentos, el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
                         </div>
                     </article>
@@ -238,4 +240,4 @@
     
 <script src="<?php echo RUTA_URL . '/public/javascript/E_Tiendas.js?v=' . rand();?>"></script>
 
-<?php require(RUTA_APP . '/vistas/inc/footer.php'); ?> 
+<?php require(RUTA_APP . '/vistas/footer/footer.php'); ?> 

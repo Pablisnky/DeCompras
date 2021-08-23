@@ -1,4 +1,4 @@
-<?php include(RUTA_APP . '/vistas/inc/header.php');  ?>
+<?php include(RUTA_APP . '/vistas/header/header.php');  ?>
 
 <section class="section_2">
     <div class='contenedor_4'>

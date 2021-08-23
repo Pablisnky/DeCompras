@@ -142,17 +142,21 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         let PrecioBs = document.getElementById('PrecioBs').value 
         let PrecioDolar = document.getElementById('PrecioDolar').value 
         let Seccion = document.getElementById('SeccionPublicar').value 
+        let Fecha_Dotacion = document.getElementById('Fecha_Dotacion').value 
+        let Incremento = document.getElementById('Incremento').value 
+        let FechaReposicion = document.getElementById('Fecha_Reposicion').value 
         document.getElementsByClassName("boton")[0].value = "Guardando ..."
         document.getElementsByClassName("boton")[0].disabled = "disabled"
         document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialClaro)"
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
-        document.getElementsByClassName("boton")[0].classList.add('borde_1')
+        document.getElementsByClassName("boton")[0].classList.add('borde_1')    
 
         //Patron de entrada solo acepta letras
         let P_Numeros = /^[0-9,.]*$/
-
         //Patron de entrada para archivos de carga permitidos
-        var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
+        // var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
+        //Patron para fechas
+        var P_Fecha = /^\d{1,2}\-\d{1,2}\-\d{2,4}$/;
         
         // if(Ext_Permitidas.exec(ImagenPrin) == false || ImagenPrin.size > 2000000){
         //     alert("Introduzca una imagen con extención .jpeg .jpg .png menor a 2 Mb")
@@ -223,7 +227,43 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
             document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].classList.remove('borde_1')
             return false;
+        }        
+        else if(P_Fecha.test(Fecha_Dotacion) == false || Fecha_Dotacion == "" || Fecha_Dotacion.indexOf(" ") == 0){
+            alert ("Introduzca la fecha de dotación")
+            document.getElementById("Fecha_Dotacion").value = ""
+            document.getElementById("Fecha_Dotacion").focus()
+            document.getElementById("Fecha_Dotacion").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
         }
+        else if(Incremento == "" || Incremento.indexOf(" ") == 0){
+            alert ("Introduzca el porcentaje de incremento")
+            document.getElementById("Incremento").value = ""
+            document.getElementById("Incremento").focus()
+            document.getElementById("Incremento").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        } 
+        else if(P_Fecha.test(FechaReposicion) == false || FechaReposicion == "" || FechaReposicion.indexOf(" ") == 0){
+            alert ("Introduzca una fecha de reposicion")
+            document.getElementById("FechaReposicion").value = ""
+            document.getElementById("FechaReposicion").focus()
+            document.getElementById("FechaReposicion").style.backgroundColor = "var(--Fallos)"
+            document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].disabled = false
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
+            document.getElementsByClassName("boton")[0].classList.remove('borde_1')
+            return false;
+        } 
         //Si se superan todas las validaciones la función devuelve verdadero
         return true
     }
@@ -308,3 +348,4 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         PadreImagen.removeChild(imagen);  
         PadreImagen.removeChild(Etiqueta);
     }
+

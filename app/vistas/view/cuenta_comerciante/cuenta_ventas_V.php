@@ -25,7 +25,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script type="text/javascript" src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_ventas.js';?>"></script>  -->
 
 
-    <?php include(RUTA_APP . "/vistas/inc/footer.php");
+    <?php include(RUTA_APP . "/vistas/footer/footer.php");
 }
 else{
     echo "Página no  autorizada";

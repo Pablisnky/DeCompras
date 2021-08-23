@@ -10,4 +10,4 @@
     </div>
 </section>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/footer/footer.php");?>

@@ -41,4 +41,4 @@
 <script src="<?php echo RUTA_URL . '/public/javascript/E_Registros.js';?>"></script>
 <script src="<?php echo RUTA_URL . '/public/javascript/A_Registros.js';?>"></script>
 
-<?php include(RUTA_APP . "/vistas/inc/footer.php");?>
+<?php include(RUTA_APP . "/vistas/footer/footer.php");?>
