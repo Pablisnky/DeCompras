@@ -7,10 +7,10 @@
         public function __construct(){
             session_start();
              
-            $this->ConsultaTienda_M = $this->modelo("Tienda_M");
-            // echo "<pre>";
+            $this->ConsultaTienda_M = $this->modelo('Tienda_M');
+            // echo '<pre>';
             // print_r($this->ConsultaTienda_M);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit;
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -89,7 +89,7 @@
             endforeach;
             
             //Se cambia el array $IDs_Tiendas por una cadena para introducirla en la consulta tipo a BD
-            $this->IDs_Tiendas = implode(",", $this->IDs_Tiendas); 
+            $this->IDs_Tiendas = implode(',', $this->IDs_Tiendas); 
             // echo '<pre>';
             // print_r($this->IDs_Tiendas);
             // echo '</pre>';
@@ -198,7 +198,7 @@
 
             // ******************************************* 
             //CALCULO DE DISPONIBILIDAD HORARIA            
-            require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
+            require(RUTA_APP . '/controladores/complementos/CalculoApertura_C.php');
 
             $this->Horario = new CalculoApertura_C;
             $DisponibilidaHoraria = $this->Horario->disponibilidadHoraria($this->TiendasEnCategoria);
@@ -209,7 +209,7 @@
             // exit;
 
             $Datos = [
-                'tiendas_categoria' => $this->TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien, telefono_Tien, fotografia_Tien, categoria, estado_Tien, parroquia_Tien 
+                'tiendas_categoria' => $this->TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien,  fotografia_Tien, estado_Tien, parroquia_Tien, slogan_Tien, categoria, telefono_AfiCom,
                 'tiendas_transferencias' => $TiendasTransferencias,
                 'tiendas_pagomovil' => $TiendasPagoMovil,
                 'tiendasOtrosPagos' => $TiendasOtrosPagos, //ID_Tienda, efectivoBolivar, efectivoDolar, acordado
@@ -225,18 +225,18 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("header/header", $Datos);
-            $this->vista("view/tiendas_V",$Datos);
+            $this->vista('header/header', $Datos);
+            $this->vista('view/tiendas_V',$Datos);
         }
 
         // Invocado en header_Tienda
         public function horarioTienda($DatosAgrupados){    
             //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
-            $DatosAgrupados = explode(",", $DatosAgrupados);
+            $DatosAgrupados = explode(',', $DatosAgrupados);
             $ID_Tienda = $DatosAgrupados[0];
             $NombreTienda = $DatosAgrupados[1]; 
 
-            require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
+            require(RUTA_APP . '/controladores/complementos/CalculoApertura_C.php');
 
             $this->HorarioTienda = new CalculoApertura_C;
             $DisponibilidaHoraria = $this->HorarioTienda->horarioTienda($ID_Tienda);
@@ -252,8 +252,8 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("header/header_Modal");
-            $this->vista("view/tienda/horarioDespacho_V",$Datos);
+            $this->vista('header/header_Modal');
+            $this->vista('view/tienda/horarioDespacho_V',$Datos);
         }
 
         // Invocado en header_Tienda
@@ -269,12 +269,12 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("header/header_Tienda", $Datos);
-            $this->vista("view/tienda/direccion_V",$Datos);
+            $this->vista('header/header_Tienda', $Datos);
+            $this->vista('view/tienda/direccion_V',$Datos);
         }
         
         public function salirTienda(){
-        	header("location:" . RUTA_URL. '/Inicio_C/NoVerificaLink');
+        	header('location:' . RUTA_URL. '/Inicio_C/NoVerificaLink');
         }
     }
 ?>

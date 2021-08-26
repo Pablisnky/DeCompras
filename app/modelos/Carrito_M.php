@@ -19,7 +19,7 @@
             }
         }
     
-        //SELECT con los datos para realizar PagoMovil
+        //SELECT de los datos para realizar PagoMovil
         public function consultarPagoMovil($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT cedula_pagomovil, banco_pagomovil, telefono_pagomovil FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
 
@@ -33,7 +33,7 @@
             }
         } 
 
-        //SELECT con los datos para realizar pagos con otros metodos
+        //SELECT de los datos para realizar pagos con otros metodos
         public function consultarOtrosPagos($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT efectivoBolivar, efectivoDolar, acordado FROM otrospagos WHERE ID_Tienda = :ID_TIENDA");
 
@@ -47,9 +47,14 @@
             }
         } 
        
-        //SELECT con los datos para contactar con la tienda
+        //SELECT de los datos para contactar con la tienda
         public function consultarResponsableTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT telefono_Tien FROM tiendas WHERE ID_Tienda = :ID_TIENDA");
+            $stmt = $this->dbh->prepare(
+                "SELECT telefono_AfiCom 
+                 FROM afiliado_com  
+                 INNER JOIN tiendas ON afiliado_com.ID_AfiliadoCom=tiendas.ID_AfiliadoCom
+                 WHERE ID_Tienda = :ID_TIENDA"
+            );
 
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 

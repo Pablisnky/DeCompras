@@ -1,39 +1,7 @@
 <?php 
 //se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
 if(!empty($_SESSION["ID_Afiliado"])){
-    $ID_Tienda = $_SESSION["ID_Tienda"];
-
-    //$Datos viene del metodo Cuenta_C/actualizarProducto
-    // foreach($Datos['especificaciones'] as $arr) :
-    //     $ID_Producto = $arr['ID_Producto'];
-    //     $ID_Opcion = $arr['ID_Opcion'];
-    //     $ID_Seccion = $arr['ID_Seccion'];
-    //     $ID_SP = $arr['ID_SP'];
-    //     $Producto = $arr['producto'];
-    //     $Opcion = $arr['opcion'];
-    //     $PrecioBolivar = $arr['precioBolivar'];
-    //     $PrecioDolar = $arr['precioDolar'];
-    //     $Seccion = $arr['seccion'];
-    //     $Disponible = $arr['disponible'];
-    //     $Cantidad = $arr['cantidad'];
-    // endforeach;  
-
-    // //$Datos viene del metodo Cuenta_C/actualizarProducto
-    // foreach($Datos['imagenesVarias'] as $arr) :
-    //     $Imagenes = $arr['nombre_img']; 
-    // endforeach;  
-
-    // foreach($Datos['imagenPrin'] as $arr) :
-    //     $ID_ImagenPrincipal = $arr['ID_Imagen'];
-    //     $ImagenPrincipal = $arr['nombre_img'];
-    //     $ImgSeccion = $arr['fotoSeccion'];
-    // endforeach;  
-    
-    // echo "<pre>";
-    // print_r($Datos);
-    // echo "</pre>";
-    // exit();  
-    ?>
+    $ID_Tienda = $_SESSION["ID_Tienda"];    ?>
             
     <div class="contenedor_42">    
         <table class="tabla_inventario">
@@ -46,7 +14,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <th class="tabla_inventario__th--fecha">Fecha ultima reposición</th>
                 <th class="tabla_inventario__th--fecha">Ajuste por reposición</th>
                 <th class="tabla_inventario__th--fecha">Fecha ajuste precio proveedor</th>
-                
             </thead>
             <tbody class="tabla_inventario--tbody">
                 <?php 

@@ -4,27 +4,23 @@
         public function __construct(){  
             session_start(); 
 
-            $this->ConsultaRegistro_M = $this->modelo("Registro_M");  
+            $this->ConsultaRegistro_M = $this->modelo('Registro_M');  
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
         }
         
-        // //Se cargara este metodo por defecto, en caso de no pasar un metodo especifico
-        // public function index(){
-        // }
-
         public function registroComerciante(){  
             //se crea una sesion llamada verifica, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de registro, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
             $Verifica_AfiliacionComerciante = 1906;  
-            $_SESSION["Verifica_AfiliacionComerciante"] = $Verifica_AfiliacionComerciante; 
+            $_SESSION['Verifica_AfiliacionComerciante'] = $Verifica_AfiliacionComerciante; 
 
-            $this->vista("header/header");
-            $this->vista("view/registroCom_V");
+            $this->vista('header/header');
+            $this->vista('view/registroCom_V');
         }
         
         public function registroDespachador(){
-            $this->vista("view/registroDes_V");
+            $this->vista('view/registroDes_V');
         }
    
         public function recibeRegistroCom(){            
@@ -113,10 +109,7 @@
 
                 mail($email_to, $email_subject, $email_message, $headers); 
 
-                // ****************************************
-                
-                //Redirecciona, La función redireccionar se encuantra en url_helper.php
-                redireccionar("/Login_C/index/CNE");
+                header('location:' . RUTA_URL. '/Login_C/index/CNE');
             }
         }
    
@@ -184,8 +177,8 @@
             'X-Mailer: PHP/' . phpversion();
 
             mail($email_to, $email_subject, $email_message, $headers);
-            //Redirecciona, La función redireccionar se encuantra en url_helper.php
-            header("location:" . RUTA_URL . "/Login_C");
+
+            header('location:' . RUTA_URL . '/Login_C');
         }
 
         public function VerificarCorreo($Correo, $Afiliado){
@@ -197,7 +190,7 @@
                     $CorreoBD =  $key['correo_AfiDes'];
 
                     if($CorreoBD == $Correo){
-                        echo "La dirección de correo ya existe";  ?>
+                        echo 'La dirección de correo ya existe';  ?>
                         <style>
                             .contenedor_43{
                                 background-color: yellow;  

@@ -7,15 +7,15 @@
         public function __construct(){
             session_start();
 
-            $this->ConsultaCuenta_M = $this->modelo("Cuenta_M");
+            $this->ConsultaCuenta_M = $this->modelo('Cuenta_M');
 
             //Sesion creada en Login_C
-            if(isset($_SESSION["ID_Tienda"])){
-                $this->ID_Tienda = $_SESSION["ID_Tienda"];
+            if(isset($_SESSION['ID_Tienda'])){
+                $this->ID_Tienda = $_SESSION['ID_Tienda'];
             }
 
             //Sesion creada en Login_C
-            $this->ID_Afiliado = $_SESSION["ID_Afiliado"];
+            $this->ID_Afiliado = $_SESSION['ID_Afiliado'];
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
@@ -43,11 +43,11 @@
                 'slogan' => $Slogan,
             ];
 
-            $this->vista("view/cuenta_comerciante/cuenta_V", $Datos);
+            $this->vista('view/cuenta_comerciante/cuenta_V', $Datos);
         }
 
         public function Despachador(){
-            $this->vista("view/cuenta_comerciante/cuenta_despachador_V");
+            $this->vista('view/cuenta_comerciante/cuenta_despachador_V');
         }
 
         //Invocado desde login_C/ValidarSesion - Cuenta_C/eliminarProducto - Cuenta_C/recibeAtualizarProducto - Cuenta_C/recibeProductoPublicar - header_AfiCom.php, muestra todos los productos publicados o los de una sección en especifico
@@ -57,7 +57,7 @@
             // echo 'ID_Tienda= ' . $this->ID_Tienda . '<br>';
             // exit;
 
-            $DatosAgrupados = explode(",", $DatosAgrupados);
+            $DatosAgrupados = explode(',', $DatosAgrupados);
 
             $Seccion = $DatosAgrupados[0];
             //Mediante operador ternario
@@ -77,9 +77,9 @@
             if($Seccion  == 'Todos'){
                 //CONSULTA todos los productos de una tienda
                 $Productos = $this->ConsultaCuenta_M->consultarTodosProductosTienda($this->ID_Tienda);
-                // echo "<pre>";
+                // echo '<pre>';
                 // print_r($Productos);
-                // echo "</pre>";
+                // echo '</pre>';
                 // exit();
 
                 //Si no hay productos cargados, la tienda se oculta a los usuarios
@@ -90,7 +90,7 @@
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
                 $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracterisicasProducto($this->ID_Tienda);
 
-                //Se desglosa el valor para que sea solo igual el valor "1"
+                //Se desglosa el valor para que sea solo igual el valor '1'
                 // $Notificacion = $Notificacion[0]['notificacion'];
 
                 $Seccion  = 'Todos';
@@ -99,9 +99,9 @@
                 //CONSULTA los productos de una sección en especifico según la tienda
                 $Productos= $this->ConsultaCuenta_M->consultarProductosTienda($this->ID_Tienda, $Seccion);
 
-                // echo "<pre>";
+                // echo '<pre>';
                 // print_r($Productos);
-                // echo "</pre>";
+                // echo '</pre>';
                 // exit();
 
                 //CONSULTA las caracteristicas de los productos de una sección de una tienda
@@ -132,18 +132,18 @@
                 'ID_Seccion' => $ID_Seccion //ID_Seccion de la cual se estan visualizando sus productos
             ];
             
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($Datos);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
             //En el caso que no se haya configurado ninguna seccion o categoria
             if($Datos['secciones'] == Array ()){
-                header("location:" . RUTA_URL. '/Modal_C/tiendaSinProductos');
+                header('location:' . RUTA_URL. '/Modal_C/tiendaSinProductos');
             }
             else{
-                $this->vista("header/header_AfiCom", $Datos);//Evaluar como mandar solo la seccion del array $Datos
-                $this->vista("view/cuenta_comerciante/cuenta_productos_V", $Datos);
+                $this->vista('header/header_AfiCom', $Datos);//Evaluar como mandar solo la seccion del array $Datos
+                $this->vista('view/cuenta_comerciante/cuenta_productos_V', $Datos);
             }
         }
 
@@ -190,7 +190,7 @@
             
             //Se verifica si existe el link de acceso directo y se crea en caso de no existir
             if(empty($Link_Tien)): 
-                //Se crea el link de aceso";  
+                //Se crea el link de aceso';  
                 $LinkAcceso = RUTA_URL .'/' . $DatosTienda[0]['nombre_Tien'];
 
                 //Se guarda el link de acceso y la url real en la configuración de la tienda
@@ -217,9 +217,9 @@
                 'otrosPagos' => $OtrosPagos
             ];
             
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($Datos);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
             //Se crea una sesión con el contenido de una seccion de la tienda, para verificar que el usuario ya tiene creada al menos una cuando vaya a cargar un producto
@@ -230,8 +230,8 @@
                 $_SESSION['Seccion'] = $Seccion;
             }
 
-            $this->vista("header/header_AfiCom", $Datos); 
-            $this->vista("view/cuenta_comerciante/cuenta_editar_V", $Datos);
+            $this->vista('header/header_AfiCom', $Datos); 
+            $this->vista('view/cuenta_comerciante/cuenta_editar_V', $Datos);
         }
 
         public function Publicar(){
@@ -240,7 +240,7 @@
 
             //CONSULTA si existe al menos una sección donde cargar productos
             $Cant_Seccion = $this->ConsultaCuenta_M->consultarSecciones($this->ID_Tienda);
-            // echo "Registros encontrados: " . $Cant_Seccion;
+            // echo 'Registros encontrados: ' . $Cant_Seccion;
             
             //En el caso que no se haya configurado ninguna seccion o categoria
             if($Cant_Seccion == 0){ 
@@ -257,33 +257,34 @@
                 $Slogan = $this->ConsultaCuenta_M->consultarSloganTienda($this->ID_Tienda);
 
                 //Solicita el precio del dolar
-                require(RUTA_APP . "/controladores/Menu_C.php");
+                require(RUTA_APP . '/controladores/Menu_C.php');
                 $this->PrecioDolar = new Menu_C();
 
-                // Se guarda la fecha actual
-                $FechaDotacion = date('d-m-Y');
-
-                //Se suman siete dias a la fecha actual
-                $fechaReposicion = date("d-m-Y", strtotime($FechaDotacion."+ 7 days"));
-
-                $DolarHoy = $this->PrecioDolar->Dolar;
-
+                //Solicita la fecha actual
+                require(RUTA_APP . '/controladores/complementos/Fechas.php');
+                $this->Fecha = new Fechas();
+        
                 $Datos = [
                     'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien,
                     'categorias' => $Categorias,
                     'secciones' => $Secciones,
                     'slogan' => $Slogan,
-                    'dolarHoy' => $DolarHoy,
-                    'fechaDotacion' => $FechaDotacion, 
-                    'fechaReposicion' => $fechaReposicion
+                    'dolarHoy' => $this->PrecioDolar->Dolar,
+                    'fechaDotacion' => $this->Fecha->FechaDotacion, 
+                    'fechaReposicion' => $this->Fecha->fechaReposicion
                 ];
+                
+                // echo "<pre>";
+                // print_r($Datos);
+                // echo "</pre>";
+                // exit();
 
                 $verifica_2 = 1906;  
                 $_SESSION['verifica_2'] = $verifica_2; 
                 //Se crea esta sesion para impedir que se recargue la información enviada por el formulario mandandolo varias veces a la base de datos
 
-                $this->vista("header/header_AfiCom", $Datos);
-                $this->vista("view/cuenta_comerciante/cuenta_publicar_V", $Datos);
+                $this->vista('header/header_AfiCom', $Datos);
+                $this->vista('view/cuenta_comerciante/cuenta_publicar_V', $Datos);
             }
         }
 
@@ -362,8 +363,6 @@
             require(RUTA_APP . "/controladores/Menu_C.php");
             $this->PrecioDolar = new Menu_C();
 
-            $DolarHoy = $this->PrecioDolar->Dolar;
-
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
                 'secciones' => $Secciones, //ID_Seccion, seccion  - Usado en header_AfiCom.php
@@ -373,17 +372,17 @@
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
                 'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img, fotoSeccion
                 'imagenesVarias' => $Imagenes, //ID_Imagen, nombre_img
-                'dolarHoy' => $DolarHoy,
-                'reposicion' => $Reposicion
+                'dolarHoy' => $this->PrecioDolar->Dolar,
+                'reposicion'=> $Reposicion
             ];
 
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($Datos);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
-            $this->vista("header/header_AfiCom", $Datos); 
-            $this->vista("view/cuenta_comerciante/cuenta_editar_prod_V", $Datos);
+            $this->vista('header/header_AfiCom', $Datos); 
+            $this->vista('view/cuenta_comerciante/cuenta_editar_prod_V', $Datos);
         }
 
         public function Inventario(){
@@ -405,9 +404,9 @@
                 'inventario' => $Inventario
             ];
 
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($Datos);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
             $this->vista('header/header_AfiCom', $Datos);
@@ -423,7 +422,7 @@
             $Consulta = $this->ConsultaCuenta_M->consultarOpcionesProductos($OpcionProd);
             $Datos = $Consulta->fetchAll(PDO::FETCH_ASSOC);
 
-            $this->vista("header/Select_Ajax_V", $Datos);
+            $this->vista('header/Select_Ajax_V', $Datos);
         }
 
         //Llamado desde A_Cuenta_editar.js
@@ -439,7 +438,7 @@
                 'categoriasTienda' => $CategoriasTienda
             ];
 
-            $this->vista("header/Categorias_Ajax_V", $Datos);
+            $this->vista('header/Categorias_Ajax_V', $Datos);
         }
 
         //Invocado desde A_Cuenta_editar_prod.js entrega las secciones activas de una tienda
@@ -447,17 +446,17 @@
             //CONSULTA las secciones que tiene una tienda llamada desde Funciones_Ajax.js
             $Seccion = $this->ConsultaCuenta_M->consultarSeccionesTienda($this->ID_Tienda);
             // $Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($Seccion);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
             //CONSULTA el ID_Sección al que pertenece un producto de una tienda especifica
             $Consulta = $this->ConsultaCuenta_M->consultarSeccionActiva($ID_Producto);
             $ID_Seccion = $Consulta->fetchAll(PDO::FETCH_ASSOC);
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($ID_Seccion);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
             //La consulta devuelve el ID_Seccion en una array, se convierte en una variable
@@ -472,7 +471,7 @@
                 'seccionActiva' => $SeccionActiva
             ];
 
-            $this->vista("header/Secciones_Ajax_V", $Datos);
+            $this->vista('header/Secciones_Ajax_V', $Datos);
         }
 
         //Metodo invocado desde A_Cuenta_publicar.js
@@ -484,13 +483,13 @@
                 'seccion' => $Seccion,
             ];
 
-            $this->vista("header/SeccionesDisponibles_Ajax_V", $Datos);
+            $this->vista('header/SeccionesDisponibles_Ajax_V', $Datos);
         }
 
         //Recibe el formulario de configuracion de tienda invocado en cuenta_editar_V.php
         public function recibeRegistroEditado(){
             //Se reciben todos los campos del formulario desde cuenta_editar_V.php se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["nombre_Afcom"]) && !empty($_POST["apellido_Afcom"]) && !empty($_POST["cedula_Afcom"]) && !empty($_POST["telefono_Afcom"]) && !empty($_POST["correo_Afcom"]) && !empty($_POST["nombre_com"]) && !empty($_POST["direccion_com"])
+            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['nombre_Afcom']) && !empty($_POST['apellido_Afcom']) && !empty($_POST['cedula_Afcom']) && !empty($_POST['telefono_Afcom']) && !empty($_POST['correo_Afcom']) && !empty($_POST['nombre_com']) && !empty($_POST['direccion_com'])
             ){
                 $RecibeDatos = [
                     //RECIBE DATOS PERSONA RESPONSABLE
@@ -509,29 +508,29 @@
                     'Slogan_com' => filter_input(INPUT_POST, 'slogan_com', FILTER_SANITIZE_STRING),
                 ];
 
-                // echo "<pre>";
+                // echo '<pre>';
                 // print_r($RecibeDatos);
-                // echo "</pre>";
+                // echo '</pre>';
                 // exit;
                 // $RecibeDatos = [
-                //         'Nombre' => ucwords($_POST["nombre"]),
-                //         'Cedula' => is_numeric($_POST["cedula"]) ? $_POST["cedula"]: false,
-                //         'Telefono' => is_numeric($_POST["telefono"]) ? $_POST["telefono"]: false,
-                //         'Correo' => mb_strtolower($_POST["correo"]),
-                //         'Clave' => $_POST["clave"],
-                //         'RepiteClave' => $_POST["confirmarClave"],
+                //         'Nombre' => ucwords($_POST['nombre']),
+                //         'Cedula' => is_numeric($_POST['cedula']) ? $_POST['cedula']: false,
+                //         'Telefono' => is_numeric($_POST['telefono']) ? $_POST['telefono']: false,
+                //         'Correo' => mb_strtolower($_POST['correo']),
+                //         'Clave' => $_POST['clave'],
+                //         'RepiteClave' => $_POST['confirmarClave'],
                 // ];
 
                 //Despues de evaluar con is_numeric se da un aviso en caso de fallo
-                // if($RecibeDatos["Telefono_Afcom"] == false){
-                //     exit("El telefono debe ser solo números");
+                // if($RecibeDatos['Telefono_Afcom'] == false){
+                //     exit('El telefono debe ser solo números');
                 // }
                 // //Despues de evaluar con is_numeric se da un aviso en caso de fallo
-                // if($RecibeDatos["Cedula_Afcom"] == false){
-                //     exit("La cedula debe ser solo números");
+                // if($RecibeDatos['Cedula_Afcom'] == false){
+                //     exit('La cedula debe ser solo números');
             }
             else{
-                echo "Llene todos los campos del formulario de registro";
+                echo 'Llene todos los campos del formulario de registro';
                 echo '<br>';
                 echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                 exit();
@@ -540,24 +539,24 @@
             //RECIBE IMAGEN TIENDA
             // ********************************************************
             //Recibe la imagen de la tienda solo si se ha presionado el boton de buscar fotografia
-            if(($_FILES['imagen_Tienda']['name']) != ""){
+            if(($_FILES['imagen_Tienda']['name']) != ''){
                 //Al nombre de la imagen se le añade un prefijo para evitar que sobreescriba otra imagen ya existente en el directorio dondes se guardan las imagenes
                 $nombre_imgTienda = $this->ID_Tienda . $_FILES['imagen_Tienda']['name'];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
                 $tipo_imgTienda = $_FILES['imagen_Tienda']['type'];
                 $tamaño_imgTienda = $_FILES['imagen_Tienda']['size'];
 
-                // echo "Nombre de la imagen = " . $nombre_imgTienda . "<br>";
-                // echo "Tipo de archivo = " .$tipo_imgTienda .  "<br>";
-                // echo "Tamaño = " . $tamaño_imgTienda . "<br>";
-                // echo "Tamaño maximo permitido = 7.000.000" . "<br>";// en bytes
-                // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
+                // echo 'Nombre de la imagen = ' . $nombre_imgTienda . '<br>';
+                // echo 'Tipo de archivo = ' .$tipo_imgTienda .  '<br>';
+                // echo 'Tamaño = ' . $tamaño_imgTienda . '<br>';
+                // echo 'Tamaño maximo permitido = 7.000.000' . '<br>';// en bytes
+                // echo 'Ruta del servidor = ' . $_SERVER['DOCUMENT_ROOT'] . '<br>';
 
                 //Si existe imagen_Tienda y tiene un tamaño correcto
                 //Si existe imagenPrinci_Editar y tiene un tamaño correcto (2Mb)
                 if(($nombre_imgTienda == !NULL) AND ($tamaño_imgTienda <= 2000000)){
                     //indicamos los formatos que permitimos subir a nuestro servidor
-                    if(($_FILES["imagen_Tienda"]["type"] == "image/jpeg")
-                        || ($_FILES["imagen_Tienda"]["type"] == "image/jpg") || ($_FILES["imagen_Tienda"]["type"] == "image/png")){
+                    if(($_FILES['imagen_Tienda']['type'] == 'image/jpeg')
+                        || ($_FILES['imagen_Tienda']['type'] == 'image/jpg') || ($_FILES['imagen_Tienda']['type'] == 'image/png')){
 
                         // Ruta donde se guardarán las imágenes que subamos la variable superglobal
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
@@ -574,7 +573,7 @@
                         move_uploaded_file($_FILES['imagen_Tienda']['tmp_name'], $directorio_1.$nombre_imgTienda);
 
                         //Para actualizar fotografia de perfil solo si se ha presionado el boton de buscar fotografia
-                        if(($_FILES['imagen_Tienda']['name']) != ""){
+                        if(($_FILES['imagen_Tienda']['name']) != ''){
                             //Se ACTUALIZA la fotografia de la tienda
                             $this->ConsultaCuenta_M->actualizarFotografiaTienda($this->ID_Tienda, $nombre_imgTienda);
                         }
@@ -582,8 +581,8 @@
                 }
                 else{
                     //si no cumple con el formato
-                    echo "Solo puede cargar imagenes con formato jpg, jpeg o png";
-                    echo "<br>";
+                    echo 'Solo puede cargar imagenes con formato jpg, jpeg o png';
+                    echo '<br>';
                     echo "<a href='javascript:history.back()'>Regresar</a>";
                     exit();
                 }
@@ -606,15 +605,15 @@
                 }
             }
             else{
-                echo "Ingrese al menos una categoría";
-                echo "<br>";
+                echo 'Ingrese al menos una categoría';
+                echo '<br>';
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
-            // echo "Categorias recibidas";
-            // echo "<pre>";
+            // echo 'Categorias recibidas';
+            // echo '<pre>';
             // print_r($Categoria);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
             //RECIBE SECCIONES
@@ -628,28 +627,28 @@
                 $SeccionesRecibidas = array_unique($Seccion);
             }
             else{
-                echo "Ingrese al menos una sección";
-                echo "<br>";
+                echo 'Ingrese al menos una sección';
+                echo '<br>';
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
-            // echo "Secciones recibidas";
-            // echo "<pre>";
+            // echo 'Secciones recibidas';
+            // echo '<pre>';
             // print_r($SeccionesRecibidas);
-            // echo "</pre>";
+            // echo '</pre>';
 
             //Se CONSULTA las secciones existenete en BD
             $SecccionesExistentes = $this->ConsultaCuenta_M->consultarSecciones_2($this->ID_Tienda);
-            // echo "Secciones existentes";
-            // echo "<pre>";
+            // echo 'Secciones existentes';
+            // echo '<pre>';
             // print_r($SecccionesExistentes);
-            // echo "</pre>";
+            // echo '</pre>';
             
             $Secciones = array_diff($SeccionesRecibidas, $SecccionesExistentes);
-            // echo "Secciones a insertar";
-            // echo "<pre>";
+            // echo 'Secciones a insertar';
+            // echo '<pre>';
             // print_r($Secciones);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
             
             //RECIBE HORARIO
@@ -701,8 +700,8 @@
 
             }
             else{
-                echo "Ingrese el horario de despacho";
-                echo "<br>";
+                echo 'Ingrese el horario de despacho';
+                echo '<br>';
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
@@ -739,8 +738,8 @@
             // echo '</pre>';
 
             if(($_POST['banco'][0] == '') && ($_POST['bancoPagoMovil'][0] == '') && $_POST['bolivar'] == '' && $_POST['dolar'] == '' && $_POST['acordado'] == ''){
-                echo "Ingrese datos de pagos";
-                echo "<br>";
+                echo 'Ingrese datos de pagos';
+                echo '<br>';
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
@@ -749,7 +748,7 @@
                 //Se ELIMINAN todas las cuentas bancarias
                 $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
 
-                if($_POST['banco'][0] != ""){
+                if($_POST['banco'][0] != ''){
                     foreach(array_keys($_POST['banco']) as $key){
                         if(!empty($_POST['banco'][$key]) && !empty($_POST['titular'][$key]) && !empty($_POST['numeroCuenta'][$key]) && !empty($_POST['rif'][$key])
                         ){
@@ -762,8 +761,8 @@
                             $this->ConsultaCuenta_M->insertarCuentaBancaria($this->ID_Tienda, $Banco, $Titular, $NumeroCuenta, $Rif);
                         }
                         else{
-                            echo "Ingrese datos bancarios completos";
-                            echo "<br>";
+                            echo 'Ingrese datos bancarios completos';
+                            echo '<br>';
                             echo "<a href='javascript:history.back()'>Regresar</a>";
                             exit();
                         }
@@ -791,8 +790,8 @@
                             $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $CedulapagoMovil, $BancopagoMovil, $TelefonopagoMovil);
                         }
                         else{
-                            echo "Ingrese datos pagoMovil";
-                            echo "<br>";
+                            echo 'Ingrese datos pagoMovil';
+                            echo '<br>';
                             echo "<a href='javascript:history.back()'>Regresar</a>";
                             exit();
                         }
@@ -815,7 +814,7 @@
             //Se INSERTA los medios de pago alternativos
             $this->ConsultaCuenta_M->insertarOtrosPagos($this->ID_Tienda, $PagoBolivar, $PagoDolar, $PagoAcordado);
 
-            // echo "Todos los campos estan llenos";
+            // echo 'Todos los campos estan llenos';
             // exit();
 
             //RECIBE LINK DE ACCESO
@@ -865,7 +864,7 @@
             //Se llama la función que convierte aminusculas
             $LinkTienda = ConvierteMinuscula($LinkTienda);
 
-            //Se crea el link de acceso";  
+            //Se crea el link de acceso;  
             $LinkAcceso = RUTA_URL .'/' . $LinkTienda;
             // echo $LinkAcceso;
             // exit;
@@ -907,7 +906,7 @@
             // //Se ACTUALIZAN las categorias en las que se encuentra una tienda
             // $this->ConsultaCuenta_M->actualizarCategoriaTienda($this->ID_Tienda, $ID_Categ);
 
-        	header("location:" . RUTA_URL. '/Cuenta_C/Editar');
+        	header('location:' . RUTA_URL. '/Cuenta_C/Editar');
         }
         
         //Invocado en cuenta_publicar_V.php recibe el formulario para cargar un nuevo producto
@@ -918,12 +917,12 @@
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
                 //SECCION DATOS DEL PRODUCTO
-                if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBs"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0) && !empty($_POST["fecha_dotacion"]) && !empty($_POST["incremento"]) && !empty($_POST["fecha_reposicion"])){
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBs']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0) && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])){
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
-                        'Producto' => filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING),
-                        'Descripcion' => filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING),
-                        // 'Descripcion' => preg_replace("[\n|\r|\n\r|\]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
+                        'Producto' => filter_input(INPUT_POST, 'producto', FILTER_SANITIZE_STRING),
+                        'Descripcion' => filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_STRING),
+                        // 'Descripcion' => preg_replace('[\n|\r|\n\r|\]','',filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                         'Cantidad' => $_POST['cantidad'],
@@ -934,13 +933,13 @@
                         'Incremento' => $_POST['incremento'],
                         'Fecha_reposicion' => $_POST['fecha_reposicion']
                     ];
-                    // echo "<pre>";
+                    // echo '<pre>';
                     // print_r($RecibeProducto);
-                    // echo "</pre>";
+                    // echo '</pre>';
                     // exit;
                 }
                 else{
-                    echo "Llene todos los campos del formulario ";
+                    echo 'Llene todos los campos del formulario ';
                     echo "<a href='javascript: history.go(-1)'>Regresar</a>";
                     exit();
                 }
@@ -948,7 +947,7 @@
                 //CARACTERISTICAS
                 //********************************************************
                 //Si se selecionó alguna nueva caracteristica entra, destaca que se esta recibiendo un array
-                if($_POST['caracteristica'][0] != ""){
+                if($_POST['caracteristica'][0] != ''){
                     foreach($_POST['caracteristica'] as $Caracteristica){
                         $Caracteristica = $_POST['caracteristica'];
                     }
@@ -973,7 +972,7 @@
                 //Se INSERTA la informacion de reposicion
                 $this->ConsultaCuenta_M->insertarReposicion($RecibeProducto, $ID_Producto);
 
-                if($_POST['caracteristica'][0] != ""){
+                if($_POST['caracteristica'][0] != ''){
                     //Se INSERTAN las caracteristicas del producto
                     $this->ConsultaCuenta_M->insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $Caracteristica);
                 }
@@ -997,23 +996,23 @@
                 //IMAGEN PRINCIPAL
                 //********************************************************
                 //Si se selecionó alguna imagen entra
-                if($_FILES['foto_Producto']["name"] != ""){
+                if($_FILES['foto_Producto']["name"] != ''){
                     $nombre_imgProducto = $_FILES['foto_Producto']['name'] != '' ? $_FILES['foto_Producto']['name'] : 'imagen.png';
                     $tipo_imgProducto = $_FILES['foto_Producto']['type'] != '' ? $_FILES['foto_Producto']['type'] : 'image/png';
                     $tamanio_imgProducto = $_FILES['foto_Producto']['size'] != '' ?  $_FILES['foto_Producto']['size'] : '28,0 KB';
 
-                    // echo "Nombre de la imagen = " . $nombre_imgProducto . "<br>";
-                    // echo "Tipo de archivo = " .$tipo_imgProducto .  "<br>";
-                    // echo "Tamaño = " . $tamanio_imgProducto . "<br>";
-                    // echo "Tamaño maximo permitido = 2.000.000" . "<br>";// en bytes
-                    // echo "Ruta del servidor = " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
+                    // echo 'Nombre de la imagen = ' . $nombre_imgProducto . '<br>';
+                    // echo 'Tipo de archivo = ' .$tipo_imgProducto .  '<br>';
+                    // echo 'Tamaño = ' . $tamanio_imgProducto . '<br>';
+                    // echo 'Tamaño maximo permitido = 2.000.000' . '<br>';// en bytes
+                    // echo 'Ruta del servidor = ' . $_SERVER['DOCUMENT_ROOT'] . '<br>';
                     // exit();
 
                     //Si existe foto_Producto y tiene un tamaño correcto (maximo 2Mb)
                     if(($nombre_imgProducto == !NULL) AND ($tamanio_imgProducto <= 2000000)){
                         //indicamos los formatos que permitimos subir a nuestro servidor
-                        if(($tipo_imgProducto == "image/jpeg")
-                            || ($tipo_imgProducto == "image/jpg") || ($tipo_imgProducto == 'image/png')){
+                        if(($tipo_imgProducto == 'image/jpeg')
+                            || ($tipo_imgProducto == 'image/jpg') || ($tipo_imgProducto == 'image/png')){
 
                             //Ruta donde se guardarán las imágenes que subamos la variable superglobal
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
@@ -1054,8 +1053,8 @@
 
                 //SECCION IMAGENES SECUNDARIAS
                 //********************************************************
-                if($_FILES['imagenes']["name"][0] != ""){
-                    $Cantidad = count($_FILES["imagenes"]["name"]);
+                if($_FILES['imagenes']['name'][0] != ''){
+                    $Cantidad = count($_FILES['imagenes']['name']);
                     for($i = 0; $i < $Cantidad; $i++){
                         //nombre original del fichero en la máquina cliente.
                         $archivonombre = $_FILES['imagenes']['name'][$i];
@@ -1070,48 +1069,48 @@
                         $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
-                        move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES["imagenes"]["name"][$i]);
+                        move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES['imagenes']['name'][$i]);
 
                         //Se INSERTAN las fotografias secundarias del producto
                         $this->ConsultaCuenta_M->insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio);
                     }
                 }
-                $this->Productos("Todos");
+                $this->Productos('Todos');
             }
             else{
-                $this->Productos("Todos");
+                $this->Productos('Todos');
             } 
         }
 
         //Invocado desde cuenta_editar_prod_V.php actualiza la información de un producto)
         public function recibeAtualizarProducto(){
             //Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["seccion"]) && !empty($_POST["producto"]) && !empty($_POST["descripcion"]) && !empty($_POST["precioBolivar"]) && (!empty($_POST["precioDolar"]) || $_POST["precioDolar"] == 0) && !empty($_POST["fecha_dotacion"]) && !empty($_POST["incremento"]) && !empty($_POST["fecha_reposicion"])){
+            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBolivar']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0) && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])){
 
                 $RecibeProducto = [
                     //Recibe datos del producto a actualizar
-                    'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
-                    'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
-                    'ID_Seccion' => filter_input(INPUT_POST, "id_seccion", FILTER_SANITIZE_STRING),
-                    'ID_SP' => filter_input(INPUT_POST, "id_sp", FILTER_SANITIZE_STRING),
-                    'Producto' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "producto", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
-                    'Descripcion' => preg_replace("[\n|\r|\n\r]","",filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
-                    'PrecioBolivar' => filter_input(INPUT_POST, "precioBolivar", FILTER_SANITIZE_STRING),
-                    'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
+                    'ID_Tienda' => filter_input(INPUT_POST, 'id_tienda', FILTER_SANITIZE_STRING),
+                    'Seccion' => filter_input(INPUT_POST, 'seccion', FILTER_SANITIZE_STRING),
+                    'ID_Seccion' => filter_input(INPUT_POST, 'id_seccion', FILTER_SANITIZE_STRING),
+                    'ID_SP' => filter_input(INPUT_POST, 'id_sp', FILTER_SANITIZE_STRING),
+                    'Producto' => preg_replace('[\n|\r|\n\r]','',filter_input(INPUT_POST, 'producto', FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
+                    'Descripcion' => preg_replace('[\n|\r|\n\r]','',filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
+                    'PrecioBolivar' => filter_input(INPUT_POST, 'precioBolivar', FILTER_SANITIZE_STRING),
+                    'PrecioDolar' => filter_input(INPUT_POST, 'precioDolar', FILTER_SANITIZE_STRING),
                     'Cantidad' => empty($_POST['uni_existencia']) ? 0 : $_POST['uni_existencia'],
                     'Disponible' => empty($_POST['disponible']) ? 0 : $_POST['disponible'],
-                    'ID_Producto' => filter_input(INPUT_POST, "id_producto", FILTER_SANITIZE_STRING),
-                    'ID_Opcion' => filter_input(INPUT_POST, "id_opcion", FILTER_SANITIZE_STRING),
-                    'Puntero' => filter_input(INPUT_POST, "puntero", FILTER_SANITIZE_STRING),
-                    'ID_Imagen' => filter_input(INPUT_POST, "id_imagen", FILTER_SANITIZE_STRING),
+                    'ID_Producto' => filter_input(INPUT_POST, 'id_producto', FILTER_SANITIZE_STRING),
+                    'ID_Opcion' => filter_input(INPUT_POST, 'id_opcion', FILTER_SANITIZE_STRING),
+                    'Puntero' => filter_input(INPUT_POST, 'puntero', FILTER_SANITIZE_STRING),
+                    'ID_Imagen' => filter_input(INPUT_POST, 'id_imagen', FILTER_SANITIZE_STRING),
                     'ImgSeccion' => !empty($_POST['imgSeccion']),
                     'FechaDotacion' => $_POST['fecha_dotacion'],
                     'Incremento' => $_POST['incremento'],
                     'FechaReposicion' => $_POST['fecha_reposicion']
                 ];
-                // echo "<pre>";
+                // echo '<pre>';
                 // print_r($RecibeProducto);
-                // echo "</pre>";
+                // echo '</pre>';
                 // exit();
             }
             else{
@@ -1335,7 +1334,7 @@
             // echo $DatosAgrupados;
             // exit();
 
-            $DatosAgrupados = explode(",", $DatosAgrupados);
+            $DatosAgrupados = explode(',', $DatosAgrupados);
 
             $ID_Producto = $DatosAgrupados[0];
             $ID_Opcion = $DatosAgrupados[1];
@@ -1385,7 +1384,7 @@
 
             //Se redirecciona a la vista donde se encontraba el producto eliminado
             $this->Productos($Seccion);
-            // $this->vista("view/cuenta_comerciante/cuenta_productos_V", $Datos);
+            // $this->vista('view/cuenta_comerciante/cuenta_productos_V', $Datos);
         }
 
         //Invocado desde A_Cuenta_editar_prod.js por medio de Llamar_EliminarImagenSecundaria()
@@ -1401,7 +1400,7 @@
             // echo '</pre>';
             // exit;
             
-            $this->vista("header/BotonImagen_Ajax_V", $Datos);
+            $this->vista('header/BotonImagen_Ajax_V', $Datos);
         }
         
         //Invocado desde A_Cuenta_editar.js.php por medio de la funcion Llamar_EliminarSeccion()
@@ -1430,11 +1429,11 @@
         //Invocado en cuenta_editar_V.php autoriza si la tienda se suspende o se publica en el catalogo de tiendas
         public function publicarTienda(){            
             $Consulta = $this->ConsultaCuenta_M->consultaPermisoPublicar($this->ID_Tienda);
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($Consulta);
-            // echo "</pre>";
+            // echo '</pre>';
             if($Consulta[0]['publicar'] == 0){
-                echo "Es necesario configurar la totalidad de la tienda";  
+                echo 'Es necesario configurar la totalidad de la tienda';  
             }
         }
 
@@ -1465,8 +1464,8 @@
             //Si existe img_Seccion y tiene un tamaño correcto (maximo 2Mb)
             if(($nombre_imgSeccion == !NULL) AND ($tamanio_imgSeccion <= 2000000)){
                 //indicamos los formatos que permitimos subir a nuestro servidor
-                if(($tipo_imgSeccion == "image/jpeg")
-                    || ($tipo_imgSeccion == "image/jpg") || ($tipo_imgSeccion == 'image/png')){
+                if(($tipo_imgSeccion == 'image/jpeg')
+                    || ($tipo_imgSeccion == 'image/jpg') || ($tipo_imgSeccion == 'image/png')){
 
                     //Usar en remoto
                     // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/secciones/';

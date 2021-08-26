@@ -7,7 +7,7 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 4123464;
+            $this->Dolar = 4147300;
             $this->Reserve = 4170000;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
@@ -116,32 +116,35 @@
         }
         
         public function descargaApp(){
-            $this->vista("header/header");
-            $this->vista("view/descargaApp_V");
+            $this->vista('header/header');
+            $this->vista('view/descargaApp_V');
         }
 
         public function categorias(){ 
-            header("Location: ../Categoria_C");
+            header('Location: ../Categoria_C');
         }
         
-        //Ulilizada en su momento para pasar imagene de la tabla opciones a la tabla imagenes
-        public function borrar(){
-            // $Fotografia = $this->ConsultaMenu_M->consultarSecciones();
+//********************************************************************************************
+//********************************************************************************************
+//********************************************************************************************
+        //Ulilizada en su momento para cargar o eliminar datos 
+        // public function borrar(){
+        //     $ID_Producto = $this->ConsultaMenu_M->consultarID_Productos();
 
-            // echo '<pre>';
-            // print_r($Fotografia);
-            // echo '</pre>';
-            // exit;
+        //     // echo '<pre>';
+        //     // print_r($ID_Producto);
+        //     // echo '</pre>';
+        //     // exit;
 
-            // $this->ConsultaMenu_M->InsertarsECCIONES_IMAGENES($Fotografia);
+        //     $this->ConsultaMenu_M->Insertar_ID_Producto($ID_Producto);
             
-            // $SeccionesImagenes = $this->ConsultaMenu_M->consultarSeccionesImagenes();
-            // echo '<pre>';
-            // print_r($SeccionesImagenes);
-            // echo '</pre>';
-            // exit;
+        //     // $SeccionesImagenes = $this->ConsultaMenu_M->consultarSeccionesImagenes();
+        //     // echo '<pre>';
+        //     // print_r($SeccionesImagenes);
+        //     // echo '</pre>';
+        //     // exit;
 
-            // $this->ConsultaMenu_M->ActualizaSeccionesImgenes($SeccionesImagenes);
-        }
+        //     // $this->ConsultaMenu_M->ActualizaSeccionesImgenes($SeccionesImagenes);
+        // }
     }
 ?>

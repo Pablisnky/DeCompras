@@ -73,7 +73,9 @@
     <section> 
         <div class="contOculto" id="MuestraEnvioFactura">
             <form action="../../RecibePedido_C/recibePedido/" method="POST" enctype="multipart/form-data" onsubmit="return validarDespacho()" id="DatosUsuario">
-                <article><!-- DATOS DE DESPACHO -->
+                
+                <!-- DATOS DE DESPACHO -->
+                <article>
                     <div class="contenedor_24">
                         <header>
                             <h1 class="h1_1">Datos de despacho</h1>
@@ -125,6 +127,18 @@
                             </div>
                             <div class="contenedor_72">
                                 <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
+                            </div>
+
+                            <!-- REGISTRO DE USUARIO -->
+                            <div class="" style="position: relative; top:-200px; left:0%; height: 100%; background-color: yellow">
+                                <div class="contInputRadio">     
+                                    <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
+                                    <label class="contInputRadio__label" for="Domicilio_No">Usuario no registrado</label>
+                                </div>  
+                                <div class="contInputRadio">     
+                                    <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
+                                    <label class="contInputRadio__label" for="Domicilio_No">Usuario registrado</label>
+                                </div>  
                             </div>
                         </div>        
                     </div>
@@ -330,7 +344,7 @@
                             <!-- PAGO ACORDADO -->
                             <?php
                                 foreach($Datos['TelefonoTienda'] as $row) : 
-                                            $TelefonoTienda = $row['telefono_Tien'];
+                                            $TelefonoTienda = $row['telefono_AfiCom'];
                                 endforeach;     ?>
                             <div class="contInforPago" id="Contenedor_60e">
                                 <h3 class="h3_2">Acuerdo con tienda</h3>

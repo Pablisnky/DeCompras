@@ -1,6 +1,6 @@
 <section class="section_11">
     <div class="contenedor_90">
-        <h1 class="h1_1 h1_3 h1_4">Tiendas de <?php echo $Datos['tiendas_categoria'][0]['categoria']?></h1>
+        <h1 class="h1_1 h1_3 h1_4">Categoria: <?php echo $Datos['tiendas_categoria'][0]['categoria']?></h1>
     </div>
     <div class='contenedor_10'>
         <?php
@@ -10,7 +10,7 @@
             $Nombre = $row['nombre_Tien'];
             $Slogan = $row['slogan_Tien'];
             $Direccion = $row['direccion_Tien'];
-            $Telefono = $row['telefono_Tien'];
+            $Telefono = $row['telefono_AfiCom'];
             $Fotografia = $row['fotografia_Tien'];
             $Ciudad = $row['parroquia_Tien'];
             $Estado = $row['estado_Tien'];

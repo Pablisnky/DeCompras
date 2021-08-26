@@ -161,7 +161,11 @@
 
         //SELECT de datos del responsable de la tienda
         public function consultarResponsableTienda($ID_Afiliado){
-            $stmt = $this->dbh->prepare("SELECT nombre_AfiCom, apellido_AfiCom, cedula_AfiCom, telefono_AfiCom, correo_AfiCom, fotografia_AfiCom FROM afiliado_com WHERE ID_AfiliadoCom = :ID_Afiliado");
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_AfiCom, apellido_AfiCom, cedula_AfiCom, telefono_AfiCom, correo_AfiCom, fotografia_AfiCom 
+                 FROM afiliado_com 
+                 WHERE ID_AfiliadoCom = :ID_Afiliado"
+            );
 
             $stmt->bindValue(':ID_Afiliado', $ID_Afiliado, PDO::PARAM_INT);
 
@@ -584,6 +588,8 @@
             }
         }
 
+        
+
 
 
 
@@ -896,12 +902,10 @@
 
         //UPDATE de los datos de la tienda
         public function actualizarTienda($ID_AfiliadoCom, $RecibeDatos){
-            // echo "<pre>";
-            // print_r($RecibeDatos);
-            // echo "</pre>";
-            // echo $ID_AfiliadoCom;
-            // exit;
-            $stmt = $this->dbh->prepare("UPDATE tiendas SET nombre_Tien = :NOMBRE_TIEN, estado_Tien = :ESTADO_TIEN, municipio_Tien = :MUNICIPIO_TIEN, parroquia_Tien = :PARROQUIA_TIEN, direccion_Tien = :DIRECCION_TIEN, slogan_Tien = :SLOGAN_TIEN WHERE ID_AfiliadoCom = :AFILIADO");
+            $stmt = $this->dbh->prepare(
+                "UPDATE tiendas 
+                SET nombre_Tien = :NOMBRE_TIEN, estado_Tien = :ESTADO_TIEN, municipio_Tien = :MUNICIPIO_TIEN, parroquia_Tien = :PARROQUIA_TIEN, direccion_Tien = :DIRECCION_TIEN, slogan_Tien = :SLOGAN_TIEN WHERE ID_AfiliadoCom = :AFILIADO"
+            );
 
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':NOMBRE_TIEN', $RecibeDatos['Nombre_com']);
@@ -1338,7 +1342,7 @@
         public function insertarProducto($RecibeProducto){
             $stmt = $this->dbh->prepare(
                 "INSERT INTO productos(producto) 
-                VALUES (:PRODUCTO)
+                 VALUES (:PRODUCTO)
             ");
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement

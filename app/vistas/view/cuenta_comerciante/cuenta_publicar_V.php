@@ -73,16 +73,22 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     </div>   
                 </div>  
                 <br>
-
-                <!-- FECHA DOTACION -->
-                <label>Fecha dotación</label>
-                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_dotacion" id="Fecha_Dotacion" value="<?php echo $Datos['fechaDotacion'];?>"/>
-                <br>
                     
                 <!-- % REPOSICION -->
                 <label>% de incremento por reposición</label>
                 <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="incremento" id="Incremento"/>
                 <small class="small_1">Este % sera uzado para estimar cuanto costará el producto para la proxima fecha de reposición, de esta manera se garantiza el suministro de mercancia.</small>
+                <br>
+
+                <!-- PRECIO ESTIMADO PROXIMA REPOSICIÓN -->
+                <label>Precio estimado para proxima reposición</label>
+                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="incremento" id="Incremento"/>
+                <small class="small_1">Este precio es calculado al incrementar el precio del proveedor en el % que usted a estimado.</small>
+                <br>
+
+                <!-- FECHA DOTACION -->
+                <label>Fecha dotación</label>
+                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_dotacion" id="Fecha_Dotacion" value="<?php echo $Datos['fechaDotacion'];?>"/>
                 <br>
                 
                 <!-- FECHA REPOSICION -->

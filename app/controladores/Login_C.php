@@ -137,21 +137,21 @@
                         $_SESSION["ID_Tienda"] = $ID_Tienda;
                         
                         //Se crea la sesion que guarda el ID_Afiliado           
-                        $_SESSION["ID_Afiliado"] = $ID_Afiliado;
+                        $_SESSION['ID_Afiliado'] = $ID_Afiliado;
                             
                         // Se verifica a donde se redirecciona segun la condición de la tienda
                         if($Cant_Seccion == 0){//Sino hay seccion creada
-                            header("location:" . RUTA_URL . "/Modal_C/tiendaSinSecciones"); 
+                            header('location:' . RUTA_URL . '/Modal_C/tiendaSinSecciones'); 
                         }
                         else if($Publicar == 0){//Si hay seccion creada sin producto
-                            header("location:" . RUTA_URL . "/Modal_C/tiendaSinProductos"); 
+                            header('location:' . RUTA_URL . '/Modal_C/tiendaSinProductos'); 
                         }   
                         else{//Si hay seccion creada con producto
-                            header("location:" . RUTA_URL . "/Cuenta_C/Productos/Todos"); 
+                            header('location:' . RUTA_URL . '/Cuenta_C/Productos/Todos'); 
                         }      
                     }
                     else{ 
-                        header("location:" . RUTA_URL . "/Modal_C/loginIncorrecto");
+                        header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
                     } 
                 }
                 //Entra en cuenta de despachador
@@ -165,23 +165,23 @@
                     if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
 
                         // Se crea la sesion que guarda el ID_Afiliado           
-                        $_SESSION["ID_Afiliado"] = $ID_Afiliado;
+                        $_SESSION['ID_Afiliado'] = $ID_Afiliado;
     
                         // Se crea una sesión que almacena el nombre del despachador           
                         $_SESSION["NombreDespachador"] = $Nombre;
                             
-                        header("location:" . RUTA_URL . "/Cuenta_C/Despachador");          
+                        header('location:' . RUTA_URL . '/Cuenta_C/Despachador');          
                     }
                     else{ 
-                        header("location:" . RUTA_URL . "/Modal_C/loginIncorrecto");
+                        header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
                     } 
                 }                     
             }   
         }
         
         public function RecuperarClave(){
-            $Correo = $_POST["correo"];
-            //echo "Correo= " . $Correo . "<br>";
+            $Correo = $_POST['correo'];
+            //echo 'Correo= ' . $Correo . '<br>';
         
             //Se genera un numero aleatorio que será el código de recuperación de contraseña
             //alimentamos el generador de aleatorios

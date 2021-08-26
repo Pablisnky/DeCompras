@@ -41,8 +41,7 @@ body, html{
 	--Aciertos: rgba(0, 0, 255, 0.2);
 	--footer: rgb(239, 245, 245);
 	--Enlaces: rgb(24, 24, 238);
-	--BandaAlerta: orange;
-	--BandaAlertaClaro: rgb(248, 246, 113);
+	--BandaAlerta: rgb(248, 246, 113);
 	--BordeClaro: rgba(51, 51, 51, 0.2);
 	--TextoClaro: rgba(0, 0, 0, 0.6);
 }
@@ -223,7 +222,7 @@ body, html{
 .borrar_4{/*inicio*/
 	width: 100%;
 }
-.borde_1{/*tiendas - vitrina - cuenta_editar_prod - cuenta_editar - carrito*/
+.borde_1{/*tiendas - vitrina - cuenta_editar_prod - cuenta_editar - carrito - afiliacion*/
 	border-color: var(--BordeClaro);
 	border-width: 1px;
 	border-radius: 5px;
@@ -238,7 +237,7 @@ body, html{
 	border-color: var(--BandaAlerta);
 	border-radius: 5px;
 }
-.borde_2{/*registroCom - cuenta_publicar - cuenta_editar - login - */
+.borde_2{/*registroCom - cuenta_publicar - cuenta_editar - login - afiliacion*/
 	border-radius: 15px;
 }
 .borde_bottom{/*carrito*/
@@ -470,6 +469,7 @@ body, html{
 }
 .contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax - modal_fueraHorario*/
 	background-color: var(--OficialClaro);
+	background-color: red;
 	width: 70%;
 	margin: 2% auto;
 	padding: 1%;
@@ -556,7 +556,7 @@ body, html{
 	border-style: solid;
 }
 .contenedor_34--p{/*inicio*/
-	background-color: var(--BandaAlertaClaro);
+	background-color: var(--BandaAlerta);
 	font-weight: bold;
 	position: absolute;
 	bottom: 0pt;
@@ -592,7 +592,8 @@ body, html{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: space-around;
 	width: 50%;
-	margin-left: 25%;
+	margin: auto;
+	margin-bottom: 5%;
 }
 .contenedor_42{/*registroCom - registroDes - login - cuenta_editar - cuenta_publicar - noConformidad - cuenta_editar_prod*/
 	width: 80%;
@@ -690,15 +691,6 @@ body, html{
 	border-radius: 15px;
 	margin: 1% auto 5% auto !important;
 }
-.contenedor_70{/*cuenta_ventas*/
-	width: 95%;
-}
-.contenedor_71{/*afiliacion*/
-	/* grid-column-start: 1;
-	grid-column-end: 4;
-	padding-bottom: 2%;
-	margin-top: 7%; */
-}
 .contenedor_72{/*carrito*/
 	width: 100%;
 }
@@ -755,29 +747,20 @@ body, html{
 	left: 83%;
 	width: 18%;
 }
-.contenedor_84{/*cuenta_editar - afiliacion*/
+.contenedor_84{/*afiliacion - modal_Secciones*/
 	display: grid;
-	grid-template-columns: 17% 17% 17% 17%;
+	grid-template-columns: 22% 22% 22% 22%;
 	grid-template-rows: min-content !important;
 	column-gap: 3%;/*espacio entre columnas*/
 	justify-content: center;/*centra horizontalmente*/
 	margin: 3% auto;
+	padding: 2.5% 0% 2.5% 0%;
 }
 .contenedor_84--100{/*modal_Secciones*/
 	width: 100%;
 }
 .contenedor_84__h2{/*modal_Secciones*/
 	height: 30px;
-}
-.contenedor_84--UnicoPlan{/*afiliacion*/
-	width: 60%;
-	margin: 10% auto;
-}
-.contenedor_84--UnicoPlan__div{/*afiliacion*/
-	background-color: var(--OficialClaro);
-	width: 80%;
-	margin: 5% auto;
-	border-radius: 15px;
 }
 .contenedor_85{/*cuenta_editar*/
 	display: grid;
@@ -900,7 +883,6 @@ body, html{
 }
 .contenedor_109{/*vitrina*/
 	display: none;
-	background-repeat: no-repeat;
 }
 .contenedor_110{/*vitrina*/
 	display: grid;
@@ -959,7 +941,7 @@ body, html{
 	width: 100%;
 	height: 100%;
 }
-.contenedor_120{ /*tiendas*/
+.contenedor_120{/*tiendas*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1261,7 +1243,8 @@ body, html{
 .contMuestraBuscador:hover > .contMuestraBuscador__textarea{/*buscador*/
 	background-color: var(--OficialClaro);
 }
-.contFlex{/*carrito - inicio - horario*/
+.contFlex{/*carrito*/
+	background-color: blue;
 	display: flex; /*Organiza los elementos horizontalmente*/
 	flex-wrap: wrap; /*permite pasar a la segunda fila*/
 	justify-content: space-between;

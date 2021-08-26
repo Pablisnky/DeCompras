@@ -131,10 +131,11 @@
 .contenedor_8{/*footer*/
 	margin-top: 50% !important;
 }
-.contenedor_9{/*cuenta_productos - tiendas - opciones */
-	/* height: 140px; */
+.contenedor_9{/*cuenta_productos - vitrina */
+	height: 140px;
 	width: 90%;
 	margin: 0% auto;
+	background-size: cover	
 }
 .contenedor_9--label{/*cuenta_productos*/
 	font-size: 0.9em;
@@ -482,11 +483,10 @@
 	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
 }
-.contenedor_84{/*cuenta_editar - afiliacion*/
+.contenedor_84{/*afiliacion - modal_Secciones*/
 	display: block;
 	/* flex-wrap: wrap; */
-	padding: 10%;
-	margin-top: 15%;
+	/* margin-top: 15%; */
 	/*align-content: flex-start !important; Rompe la distribución proporcional verticaly coloca los div hijos desde el top, debe tener la propiedad flex-wrap = wrap. la distribucion vertical proporcional ocurre cuando el contenedor general tiene altura de 100%*/
 }
 .contenedor_84--100{/*modal_Secciones*/
@@ -494,16 +494,6 @@
 }
 .contenedor_84__h2{/*modal_Secciones*/
 	height: initial;
-}
-.contenedor_84--UnicoPlan{/*afiliacion*/
-	width: 100%;
-	margin: 20% auto;
-}
-.contenedor_84--UnicoPlan__div{/*afiliacion*/
-	width: 95%;
-	margin: 15% auto;
-	/* margin-bottom: 0% !important; */
-	padding-left: 5%;
 }
 .contenedor_87{/*cuenta_editar*/
 	grid-column-start: initial;
@@ -531,7 +521,7 @@
 	padding-top: 2%;
 }
 .contenedor_94{/*afiliacion*/
-	margin-top: 10%;
+	margin-top: 25%;
 }
 .contenedor_95{/*cuenta_productos - opciones*/
 	width: 100%;
@@ -593,10 +583,13 @@
 .contenedor_109{/*vitrina*/
 	display: block;
 	margin-top: 23%;	
-	background-size: cover; /*contain*/
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 175px;
+}
+.contenedor_109--imgDefecto{/*vitrina*/
+	background-size: 130px 130px;
 }
 .contenedor_110{/*vitrina*/
 	display: grid;

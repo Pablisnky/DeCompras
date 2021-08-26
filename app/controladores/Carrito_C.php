@@ -1,5 +1,6 @@
 <?php
     //Archivo llamado desde A_Vitrina.js por medio de llamar_PedidoEnCarrito()
+
     class Carrito_C extends Controlador{
 
         public function __construct(){
@@ -11,7 +12,6 @@
             ocultarErrores();
         }
     
-        //Invocado desde A_Vitrina.js por medio de llamar_PedidoEnCarrito()
         public function index($ID_Tienda){  
             //SELECT para buscar información del responsable de la tienda
             $ContactoTienda = $this->ConsultaCarrito_M->consultarResponsableTienda($ID_Tienda);
@@ -43,7 +43,7 @@
                 'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil
                 'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
                 'ID_Tienda' => $ID_Tienda,
-                'TelefonoTienda' => $ContactoTienda,
+                'TelefonoTienda' => $ContactoTienda, //telefono_AfiCom
                 'Delivery' => $CostoDelivery          
             ];
 

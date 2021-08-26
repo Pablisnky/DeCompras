@@ -48,27 +48,6 @@
                 return false;
             }
         }
-           
-        //SELECT de las imagenes principales de cada sección de una tienda (seleccion forzada por la aplicación)
-        public function consultarImagenesSeccionForzada($ID_Tienda){
-            $stmt = $this->dbh->prepare(
-                "SELECT nombre_img, secciones.ID_Seccion 
-                 FROM imagenes 
-                 INNER JOIN secciones_productos ON imagenes.ID_Producto=secciones_productos.ID_Producto 
-                 INNER JOIN secciones ON secciones_productos.ID_Seccion=secciones.ID_Seccion 
-                 WHERE ID_Tienda = :ID_TIENDA  
-                 GROUP BY secciones.ID_Seccion"
-            );  
-                    
-            $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }
-        }
 
         //SELECT de los productos por sección de la tienda seleccionada
         public function consultarCant_ProductosSeccion($ID_Tienda){
@@ -81,6 +60,27 @@
                 return false;
             }
         }
+           
+        //SELECT de las imagenes principales de cada sección de una tienda (seleccion forzada por la aplicación)
+        // public function consultarImagenesSeccionForzada($ID_Tienda){
+        //     $stmt = $this->dbh->prepare(
+        //         "SELECT nombre_img, secciones.ID_Seccion 
+        //          FROM imagenes 
+        //          INNER JOIN secciones_productos ON imagenes.ID_Producto=secciones_productos.ID_Producto 
+        //          INNER JOIN secciones ON secciones_productos.ID_Seccion=secciones.ID_Seccion 
+        //          WHERE ID_Tienda = :ID_TIENDA  
+        //          GROUP BY secciones.ID_Seccion"
+        //     );  
+                    
+        //     $stmt->bindParam(':ID_TIENDA', $ID_Tienda , PDO::PARAM_INT); 
+
+        //     if($stmt->execute()){
+        //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
         // public function consultarNombreTienda($ID_Tienda){
         //     $stmt = $this->dbh->prepare("SELECT nombre_Tien FROM tiendas WHERE ID_Tienda = :Tienda");  

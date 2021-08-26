@@ -1,14 +1,12 @@
 <?php 
-    //$Datos proviene de Vitrina_C
     if($Datos['disponibilidad'] == 'Cerrado'){        
-        require(RUTA_APP . "/vistas/modal/modal_fueraHorario_V.php");
+        require(RUTA_APP . '/vistas/modal/modal_fueraHorario_V.php');
     }
 
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia'];
 
     //Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
-    //$Datos proviene de Vitrina_C
     if($Datos['Seccion'] != 'NoNecesario_1'){//'NoNecesario_1' es creado en tiendas porque comparte el controlador index de Vitrina_C
         ?> 
         <div style="background-color:rgb(239, 245, 245); height: 100%; width: 100%; position: absolute;top: 0%; left: 0%" id='Tapa_1'>
@@ -19,8 +17,14 @@
 ?>
 
 <div class="section_5">	
-    <!-- div mostrado solo en responsive -->
-    <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>
+    <!-- IMAGEN DE TIENDA SOLO MOSTRADO EN MOVILES -->
+    <?php                    
+    if($Fotografia[0]['fotografia_Tien'] == 'tienda.png'){    ?> 
+        <div class="contenedor_109 contenedor_109--imgDefecto" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/tienda.png');"></div>  <?php
+    } 
+    else{   ?>
+        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>    <?php
+    }   ?>
 
     <div class="contenedor_156"> 
         <div>
@@ -50,7 +54,7 @@
                                     </div> <?php
                                 }   
                                 else{    ?>
-                                    <div class="contenedor_9 borde_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/secciones/<?php echo $key['nombre_img_seccion']?>');">
+                                    <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/secciones/<?php echo $key['nombre_img_seccion']?>');">
                                     </div>  <?php
                                 } ;  
                             endif;  
@@ -74,6 +78,7 @@
                     </div>
 
                     <!-- Se agregan las leyendas desde TransferirPedido() en E_Vitrinas.js -->
+
                 </div>
                 <?php
                 $Contador++;

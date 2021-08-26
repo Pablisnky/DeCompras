@@ -1,10 +1,10 @@
 <?php
     class Vitrina_C extends Controlador{
-        //creamos la variable donde se instanciará la clase "CalculoApertura_C"
+        //creamos la variable donde se instanciará la clase 'CalculoApertura_C'
         public $Horario;
 
         public function __construct(){
-            $this->ConsultaVitrina_M = $this->modelo("Vitrina_M");
+            $this->ConsultaVitrina_M = $this->modelo('Vitrina_M');
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
@@ -13,7 +13,7 @@
         //Metodo cargado desde E_Tiendas.js por medio de tiendas()
         public function index($DatosAgrupados){            
             //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
-            $DatosAgrupados = explode(",", $DatosAgrupados);
+            $DatosAgrupados = explode(',', $DatosAgrupados);
             $ID_Tienda = $DatosAgrupados[0];
             $NombreTienda = $DatosAgrupados[1];
             $SeccionBuscada = $DatosAgrupados[2];
@@ -46,24 +46,24 @@
             $Cant_ProductosSeccion = $this->ConsultaVitrina_M->consultarCant_ProductosSeccion($ID_Tienda);
 
             //Se instancia la clase CalculoApertura para conseguir la hora en la abre una tienda
-            require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
+            require(RUTA_APP . '/controladores/complementos/CalculoApertura_C.php');
             $this->Horario = new CalculoApertura_C;
             $HorarioTrabajo = $this->Horario->horarioTienda($ID_Tienda);
                         
             // Se consultan las imagenes de las secciones de la tienda
             $ImagenSecciones = $this->ConsultaVitrina_M->consultarImagenesSecciones($ID_Tienda);
            
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($ImagenSecciones);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
             $Datos=[
                 'id_tienda' => $ID_Tienda,
                 'categoria' => $Categoria,
-                "seccion" => $Secciones, //ID_Seccion, seccion
-                "NombreTienda" => $NombreTienda,
-                "fotografia" => $Fotografia,
+                'seccion' => $Secciones, //ID_Seccion, seccion
+                'NombreTienda' => $NombreTienda,
+                'fotografia' => $Fotografia,
                 'slogan' => $Slogan,
                 'Seccion' => $SeccionBuscada, //Necesaria cuando se viene de E_Inicio.js
                 'Opcion' => $OpcionBuscada, //Necesaria cuando se viene de E_Inicio.js
@@ -75,13 +75,13 @@
                 'imagenSecciones' => $ImagenSecciones //ID_Seccion, nombre_img_seccion
             ];
 
-            // echo "<pre>";
+            // echo '<pre>';
             // print_r($Datos);
-            // echo "</pre>";
+            // echo '</pre>';
             // exit();
 
-            $this->vista("header/header_Tienda", $Datos);
-            $this->vista("view/vitrina_V",  $Datos);
+            $this->vista('header/header_Tienda', $Datos);
+            $this->vista('view/vitrina_V',  $Datos);
         }
     }
 ?>    
