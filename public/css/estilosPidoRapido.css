@@ -200,6 +200,10 @@ body, html{
 	display: block;
 	margin: auto;
 }
+.boton--color{/*carrito*/
+	background-color: var(--OficialClaro);
+	color: black;
+}
 .borrar{/*inicio*/
 	width: 100%;
 	height: 100%;
@@ -403,7 +407,6 @@ body, html{
 	margin-top: 12%;
 }
 .contenedor_13--Primeralinea{/*cuenta_productos*/
-	/* background-color: yellow;  */
 	position: absolute;
 	top: 110px;
 	left: 0%;
@@ -469,7 +472,6 @@ body, html{
 }
 .contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax - modal_fueraHorario*/
 	background-color: var(--OficialClaro);
-	background-color: red;
 	width: 70%;
 	margin: 2% auto;
 	padding: 1%;
@@ -518,7 +520,7 @@ body, html{
 	color: var(--OficialOscuro);
 	position: fixed;
 	top: 10%;
-	left: 93%;
+	right: 3%;
 	border-radius: 10px;
 	padding: 0.5%;
 	width: 3%;
@@ -535,15 +537,15 @@ body, html{
 	font-size: 1.5em;
 }
 .contenedor_34{/*inicio*/
-	width: 15%;
-	position: relative;
+	width: 14%;
+	position: absolute;
 	top: 70%;
-	left: 83%;
+	right: 3%;
 } 
 .contenedor_34--boton{/*inicio*/
 	background-color: var(--OficialClaro);
 	color: black;
-	width: 190px;
+	width: 100%;
 	height: 40px;
 	line-height: 40px;
 	display: inline-block;
@@ -1244,7 +1246,6 @@ body, html{
 	background-color: var(--OficialClaro);
 }
 .contFlex{/*carrito*/
-	background-color: blue;
 	display: flex; /*Organiza los elementos horizontalmente*/
 	flex-wrap: wrap; /*permite pasar a la segunda fila*/
 	justify-content: space-between;
@@ -1261,6 +1262,15 @@ body, html{
 }
 .contFlex--around{/*inicio*/
 	justify-content: space-around;
+}
+.contFlex--suscribir{/*carrito*/
+	background-color: var(--BandaAlerta);
+	width: 50%;
+	margin: 2% auto 0% auto;
+	justify-content: space-around;
+	text-align: center;
+	border-radius: 15px;
+	padding: 0.5%;
 }
 .contFlex__div{/*inicio*/
 	width: 40%;
@@ -1281,6 +1291,16 @@ body, html{
 	width: 100%;
 	margin: auto;
 	margin-bottom: 2%;
+}
+.contFlex--usuarios{/*carrito*/
+	background-color: var(--FondoDivModal); 
+	position: absolute; 
+	width: 100%; 
+	height: 100%; 
+	display:flex; 
+	justify-content: space-around;
+	padding: 5% 25% 0% 25%;
+	flex-wrap: wrap;
 }
 .contGeneralCentro{/*carrito - horarioDespacho*/
 	margin-top: 2%;
@@ -1671,7 +1691,6 @@ body, html{
 	width: 80%;
 }
 .header__menuResponsive li a{/*Todas las páginas*/
-	/* background-color: blue; */
 	display: block;
 	width: 170px;
 	margin: auto;
@@ -2381,6 +2400,9 @@ body, html{
 	bottom: 0%;
 	margin: auto;
 }
+.rompe_Flex{/*carrito*/
+	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap: wrap*/
+}
 .sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - Categorias_Ajax - modal_fueraHorario*/
 	background-color: var(--FondoDivModal);
 	position: absolute;
@@ -2423,6 +2445,19 @@ body, html{
 .section_1__div1{/*inicio*/
 	width: 75%;
 }
+.section_1--cont__radios{/*inicio*/
+	position: fixed;
+	top: 40%;
+	right: 3%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 10%;
+}
+.section_1--radios{/*inicio*/
+	cursor: pointer;
+}
+
 .section_1__p{/*inicio*/
 	color: white;
 	font-size: 1.5em;
@@ -2838,8 +2873,6 @@ ul .menuContenedor_3{/*header_AfiCom*/
 	width: 100%;
 	bottom: 3pt;
 }
-
-
 .contenedor_15--tarjeta{/*tiendas*/
     position: relative;
     transform-style: preserve-3d; 

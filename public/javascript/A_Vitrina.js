@@ -97,3 +97,46 @@ function respuesta_Opciones(){
     //     document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';    
     // }    
 }
+
+function Llamar_UsuarioRegistrado(cedula){
+    console.log("______Desde Llamar_UsuarioRegistrado()______", cedula)
+    var url="../../Carrito_C/UsuarioRegistrado/" + cedula
+    http_request.open('GET', url, true);    
+    peticion.onreadystatechange = respuesta_UsuarioRegistrado;
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+    peticion.send("null");
+
+}                                                         
+function respuesta_UsuarioRegistrado(){
+    if(peticion.readyState == 4){
+        if(peticion.status == 200){            
+            document.getElementById("Mostrar_Cedula").style.display = "none"
+            document.getElementById("ModalTipoUsuario").style.display = "none"
+            
+            //Coloca el cursor en el top de la pagina
+            // window.scroll(0, 0)
+
+            // Se recibe desde php (Carrito_C/UsuarioRegistrado()) una cadena de texto que se guarda en A,
+            var A = peticion.responseText 
+
+            // Lavariable A se convierte en un Array
+            A = A.split(','); 
+
+            document.getElementById('NombreUsuario').value =  A[0];  
+            document.getElementById('ApellidoUsuario').value =  A[1]; 
+            document.getElementById('CedulaUsuario').value =  A[2]; 
+            document.getElementById('TelefonoUsuario').value =  A[3]; 
+            document.getElementById('CorreoUsuario').value =  A[4];  
+            document.getElementById('Estado').value =  A[5];      
+            document.getElementById('Ciudad').value =  A[6];    
+            document.getElementById('DireccionUsuario').value =  A[7];  
+            document.getElementById('ID_Usuario').value =  A[8];  
+        } 
+        else{
+            alert('Hubo problemas con la petición en llamar_UsuarioRegistrado()')
+        }
+    }
+    else{ //en caso contrario, mostramos un gif simulando una precarga
+        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    }    
+}

@@ -55,8 +55,8 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
 //     var click = e.target
 //     console.log("Se hizo click en: ", click)
 // }, false)
-
 // ************************************************************************************************** 
+
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función Pre_incremento  y Pre_decremento 
 document.addEventListener("click", Pre_decremento)
 document.addEventListener("click", Pre_incremento)
@@ -1024,7 +1024,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Valida el formulario de despacho de producto
     function validarDespacho(){
-        console.log("______Desde validarDespacho()______")
 
         document.getElementsByClassName("botonJS")[0].value = "Enviando ..."
         document.getElementsByClassName("botonJS")[0].disabled = "disabled"
@@ -1067,7 +1066,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
 
         //Patron de entrada solo acepta numeros,guion y puntos          
-        // let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+        let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
 
         // let P_LetrasNumero = /[A-Za-z0-9]/;
         
@@ -1098,7 +1097,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Cedula =="" || Cedula.indexOf(" ") == 0 || Cedula.length < 9  || Cedula.length > 10){
+        else if(Cedula =="" || Cedula.indexOf(" ") == 0 || Cedula.length < 9  ||  Cedula.length > 10){
             alert ("número de cedula invalido");
             document.getElementById("CedulaUsuario").value = "";
             document.getElementById("CedulaUsuario").focus();
@@ -1110,7 +1109,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 14){
+        else if(P_Telefono.test(Telefono) == false || Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 14){
             alert ("Telefono invalido");
             document.getElementById("TelefonoUsuario").value = "";
             document.getElementById("TelefonoUsuario").focus();
@@ -1257,9 +1256,13 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
 
 //************************************************************************************************
-    function CerrarModal_X(id){
-        // console.log("______Desde CerrarModal_X()______")
+    function CerrarModal_X(id, Inputfocus=""){
+        // console.log("______Desde CerrarModal_X()______", id + " / " + Inputfocus)
         document.getElementById(id).style.display = "none"
+
+        if(focus!= ""){
+            document.getElementById(Inputfocus).focus()
+        }
     }
     
 //************************************************************************************************
@@ -1310,8 +1313,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Coloca los puntos de miles en tiempo real al llenar el campo a cedula
     function formatoMiles(numero, id){
-        // console.log("______Desde formatoMiles()______", numero + " / " + id)
-
         var num = numero.replace(/\./g,'')
         if(!isNaN(num) && numero.length < 11){
             num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.')
@@ -1328,15 +1329,12 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){        
-        // console.log("______Desde blanquearInput()______", id)
         document.getElementById(id).style.backgroundColor = "white"
     }
     
  //************************************************************************************************
     //Agrega los puntos en tiempo real en tiempo real    
-    function mascaraTelefono(TelefonoRecibido, id){
-        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
-        
+    function mascaraTelefono(TelefonoRecibido, id){        
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 
         }
@@ -1346,23 +1344,10 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         else if(TelefonoRecibido.length == 11){
             document.getElementById(id).value += ".";  
         }
-    }
-
-//************************************************************************************************
-    //Valida el formato de telefono
-    function validarFormatoTelefono(NroTelefono,id){
-        // console.log("______Desde validarFormatoTelefono()______",NroTelefono)
-
-        var P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
-            
-        if(P_Telefono.test(NroTelefono) == true){            
-            console.log("Telefono con formato correcto");
-            return true;
-        }
-        else{
-            alert("Telefono con formato incorrecto");
+        else if(TelefonoRecibido.length > 14){
+            alert("Telefono con Formato Incorrecto");
             document.getElementById(id).value = "";
-            // document.getElementById(id).focus()
+            document.getElementById(id).focus();
             document.getElementById(id).style.backgroundColor = 'var(--Fallos)'; 
             return false;
         }
@@ -1371,8 +1356,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
 //Muestra el contenedor del input transferencia
     function verInputTransferencia(){
-        // console.log("______Desde verInputTransferencia()______)
-        
         document.getElementById("InputTransferencia").style.display = "block"
         document.getElementById("CaptureTransferencia").style.display = "none"
     }
@@ -1380,8 +1363,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Muestra el contenedor del capture transferencia
     function verCaptureTransferencia(){
-        // console.log("______Desde verInputTransferencia()______)
-        
         document.getElementById("InputTransferencia").style.display = "none"
         document.getElementById("CaptureTransferencia").style.display = "block"
     }
@@ -1389,7 +1370,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Da una vista previa del capture de transferencia bancaria
     function CaptureTransferencia(){
-        // console.log("______Desde CaptureTransferencia()______")
         var contenedor = document.getElementById("DivCaptureTransferencia");
         var archivos = document.getElementById("ImagenTransferencia").files;
 
@@ -1446,6 +1426,14 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementById(id).focus()
             document.getElementById(id).value = ""
         }
+    }
+
+
+// ************************************************************************************************
+    function mostrar_cedula(){
+        document.getElementById("No_Registrado").style.display = "none";
+        document.getElementById("Registrado").style.display = "none";
+        document.getElementById("Mostrar_Cedula").style.display = "block";
     }
 
 // ************************************************************************************************

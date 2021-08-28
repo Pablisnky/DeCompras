@@ -7,7 +7,7 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 4147300;
+            $this->Dolar =  4139860;
             $this->Reserve = 4170000;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
@@ -28,7 +28,7 @@
         
         public function index(){ 
             require(RUTA_APP . "/controladores/complementos/CambioDolar_C.php");
-            $this->ActualizarPrecio = new CambioDlar_C();
+            $this->ActualizarPrecio = new CambioDolar_C();
             $this->ActualizarPrecio->AjusteCambioMonetario($this->Dolar, $this->Reserve);
             
             echo 'Perfecto, Dolar y tasa "Reserve" actualizado' . '<br>';

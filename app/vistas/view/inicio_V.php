@@ -8,6 +8,11 @@
             <h1 class="h1_2">PedidoRemoto</h1>
             <h2 class="h2_4">MarketPlace</h2>
         </div>
+        <div class="section_1--cont__radios">
+            <input class="section_1--radios" type="radio" name="slider">
+            <input class="section_1--radios" type="radio" name="slider">
+            <input class="section_1--radios" type="radio" name="slider">
+        </div>
 
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
             <div class="contenedor_34" id="BotonVer">
@@ -41,8 +46,8 @@
         <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">
             <div class="section_1__div">
                 <div class="section_1__div1">
-                    <p class="section_1__p">Muchos de tus clientes estan verdaderamente ocupados,</p>
-                    <p class="section_1__p"><span class="span_22">¡ Ofrece un <br class="br_2"> Servicio Premium ! </span><br> digitalizando tu tienda</p>
+                    <p class="section_1__p">Si tus clientes estan ocupados,</p>
+                    <p class="section_1__p"><span class="span_22">¡ Ofreceles un <br class="br_2"> Servicio Premium ! </span><br> digitalizando tu tienda</p>
                 </div>
                 <div class="section_1__div2" id="BotonRegistrar">
                     <a class="contenedor_34--boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a>
@@ -51,6 +56,26 @@
         </div>
     </section>
     
+    <section class="section_1 section_1--vh" id="Section_1">
+        <div class="borrar" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_3.jpg');">
+            <div class="section_1__div">
+                <div class="section_1__div1">
+                    <ul>
+                        <li>Control de inventario.</li>
+                        <li>Ajuste diario automatico de tasa dolar BCV.</li>
+                        <li>Ajuste semanal automatico por inflación.</li>
+                        <li>Alertas por productos proximos a agotarse.</li>
+                        <li>Reporte de ventas diarias, semanales y mensuales.</li>
+                    </ul>
+                    <p class="section_1__p"><span class="span_22">Tambien te ayudamos <br class="br_2">con el control administrativo de tu tienda</span><br> </p>
+                </div>
+                <div class="section_1__div2" id="BotonRegistrar">
+                    <a class="contenedor_34--boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Registrar tienda</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!--BUSCADOR-->
     <div>
         <div class="contBuscador contBuscador__borrar" id="Busqueda">   

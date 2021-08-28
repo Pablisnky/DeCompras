@@ -65,4 +65,23 @@
                 return false;
             }
         }
+
+       
+        //SELECT de los datos de un usuario registrado
+        public function consultarUsuario($Cedula){
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, estado_usu, ciudad_usu, direccion_usu, ID_Usuario
+                 FROM usuarios 
+                 WHERE cedula_usu  = :CEDULA"
+            );
+
+            $stmt->bindParam(':CEDULA', $Cedula, PDO::PARAM_STR);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
     }

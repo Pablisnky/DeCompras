@@ -58,4 +58,17 @@
             
             $this->vista("view/carrito_V", $Datos);
         }        
+        
+        public function UsuarioRegistrado($Cedula){
+            //Se CONSULTA si el usuario esta registrdo
+            $Usuario = $this->ConsultaCarrito_M->consultarUsuario($Cedula);
+
+            if($Usuario == Array ()){
+                echo 'Usuario no registrado';
+            }
+            else{
+                //Se separa cada variable pooque llegara a Javascript como una cadena de texto, luego se convertira en un array utilizando las , como caracter separador 
+                echo $Usuario[0]['nombre_usu'] . ',' . $Usuario[0]['apellido_usu'] . ',' .  $Usuario[0]['cedula_usu'] . ',' .$Usuario[0]['telefono_usu'] . ',' . $Usuario[0]['correo_usu'] . ',' . $Usuario[0]['estado_usu'] . ',' . $Usuario[0]['ciudad_usu'] . ',' . $Usuario[0]['direccion_usu'] . ',' . $Usuario[0]['ID_Usuario'];
+            }
+        }
     }

@@ -61,11 +61,11 @@
             }
         } 
         
-        // SELECT con la cantidad de despachos de tiendas 
+        // SELECT con la cantidad de despachos de cada tienda tiendas 
         public function consultarDespachos($IDs_Tiendas){
             $stmt = $this->dbh->prepare(
                 "SELECT COUNT(ID_Tienda) AS 'Despachos', ID_Tienda 
-                 FROM pedidos 
+                 FROM detallepedido 
                  WHERE ID_Tienda IN ($IDs_Tiendas) 
                  GROUP BY ID_Tienda"
             );    

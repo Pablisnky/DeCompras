@@ -64,7 +64,7 @@
             <article>
                 <div class="contBoton" id="Contenedor_26">
                     <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a mostrador</label>
-                    <label class="boton boton--alto" onclick="MuestraEnvioFactura(); autofocus('NombreUsuario')">Confirmar <br class="br_2"> orden</label>
+                    <label class="boton boton--alto" onclick="MuestraEnvioFactura()">Confirmar <br class="br_2"> orden</label>
                 </div>
             </article>
         </div>
@@ -72,7 +72,7 @@
 
     <section> 
         <div class="contOculto" id="MuestraEnvioFactura">
-            <form action="../../RecibePedido_C/recibePedido/" method="POST" enctype="multipart/form-data" onsubmit="return validarDespacho()" id="DatosUsuario">
+            <form action="../../RecibePedido_C" method="POST" enctype="multipart/form-data" onsubmit="return validarDespacho()" id="DatosUsuario">
                 
                 <!-- DATOS DE DESPACHO -->
                 <article>
@@ -81,7 +81,7 @@
                             <h1 class="h1_1">Datos de despacho</h1>
                         </header>
 
-                        <div class="contFlex">
+                        <div class="contFlex" style="position: relative;">
                             <!-- NOMBRE -->
                             <div class="contenedor_29">
                                 <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
@@ -100,7 +100,7 @@
 
                             <!-- TELEFONO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')" onblur="validarFormatoTelefono(this.value,'TelefonoUsuario')"/>
+                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')"/>
                             </div>
 
                             <!-- CORREO -->
@@ -111,13 +111,13 @@
                             <!-- DIRECCION -->
                             <div class="contenedor_55 contenedor_154">
                                 <div class="contenedor_155">
-                                    <select class="select_2 borde_1" id="Estado" onchange="blanquearInput('Estado')">
+                                    <select class="select_2 borde_1" name="estado" id="Estado" onchange="blanquearInput('Estado')">
                                         <option disabled selected>Seleccione un estado</option>
                                         <option selected="true">Yaracuy</option>
                                     </select>
                                 </div>
                                 <div class="contenedor_155">
-                                    <select class="select_2 borde_1" id="Ciudad" onclick="blanquearInput('Ciudad')">
+                                    <select class="select_2 borde_1" name="ciudad" id="Ciudad" onclick="blanquearInput('Ciudad')">
                                         <option id="Option_1" disabled selected>Seleccione una ciudad</option>
                                         <option>Cocorote</option>
                                         <option>Independencia</option>
@@ -128,19 +128,34 @@
                             <div class="contenedor_72">
                                 <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
                             </div>
-
-                            <!-- REGISTRO DE USUARIO -->
-                            <div class="" style="position: relative; top:-200px; left:0%; height: 100%; background-color: yellow">
-                                <div class="contInputRadio">     
-                                    <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
-                                    <label class="contInputRadio__label" for="Domicilio_No">Usuario no registrado</label>
+                            
+                            <!-- SUSCRIBIRSE -->
+                            <div class="contFlex contFlex--suscribir">
+                                <P class="rompe_Flex">Desea que sus datos se guarden para futuras compras</P>
+                                <div class="contInputRadio" id="">     
+                                    <input type="radio" name="suscrito" id="Suscrito_No" value="Suscrito_No"/>
+                                    <label class="contInputRadio__label" for="Suscrito_No">No guardar</label>
                                 </div>  
-                                <div class="contInputRadio">     
-                                    <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
-                                    <label class="contInputRadio__label" for="Domicilio_No">Usuario registrado</label>
+                                <div class="contInputRadio" id="">
+                                    <input type="radio" name="suscrito" id="Suscrito_Si" value="Suscrito_Si" checked/>
+                                    <label class="contInputRadio__label" for="Suscrito_Si">Guardar</label>
                                 </div>  
                             </div>
-                        </div>        
+
+                            <!-- CONFIRMACION DE USUARIO -->
+                            <div class="contFlex--usuarios" id="ModalTipoUsuario">
+                                <div class="contInputRadio" id="No_Registrado">     
+                                    <label class="boton boton--color"  onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')">Usuario no registrado</label>
+                                </div>  
+                                <div class="contInputRadio" id="Registrado">
+                                    <label class="boton boton--color" onclick="mostrar_cedula()">Usuario registrado</label>
+                                </div>  
+                                <div class="ocultar" id="Mostrar_Cedula">
+                                    <input class="input_13 borde_1" type="text" placeholder="Introduzca Nº Cedula (Solo números)" value="12.728.036" onblur="Llamar_UsuarioRegistrado(this.value)"/>
+                                    <label class="boton boton--color boton--centro" >Enviar</label>
+                                </div>
+                            </div>      
+                        </div>  
                     </div>
                 </article>    
                 
@@ -356,6 +371,9 @@
                                 <input class="ocultar" type="text" name="id_tienda" value="<?php echo $Datos['ID_Tienda']?>"/>
 
                                 <input class="ocultar" type="text" id="Pedido" name="pedido"/>
+
+                                <!-- Cargado via Ajax cuando el usuario es recordado -->
+                                <input class="ocultar" type="text" id="ID_Usuario" name="ID_Usuario"/>
 
                                 <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a mostrador</label>
                                 <input class="boton boton--alto botonJS" type="submit" value="Comprar"/>

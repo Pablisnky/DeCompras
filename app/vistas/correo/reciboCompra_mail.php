@@ -4,17 +4,37 @@
     // print_r($DatosCorreo);
     // echo "</pre>"; 
     // exit();                  
+
+    function limpiarAsunto($email_subject_2){
+        $cadena = "Subject";
+        $longitud = strlen($cadena) + 2;
+        return substr(
+            iconv_mime_encode(
+                $cadena,
+                $email_subject_2,
+                [
+                    "input-charset" => "UTF-8",
+                    "output-charset" => "UTF-8",
+                ]
+            ),
+            $longitud
+        );
+    }
+
+ 
+    $email_subject_2 = limpiarAsunto($DatosCorreo['informacion_tienda'][0]['nombre_Tien'] . ", recibo de compra");
+    $email_to = $DatosCorreo['informacion_usuario'][0]['correo_usu'];
+    
+    $Tienda = $DatosCorreo['informacion_tienda'][0]['nombre_Tien']; 
+    $ID_Tienda = $DatosCorreo['informacion_tienda'][0]['ID_Tienda'];
     $ID_Pedido = $DatosCorreo['informacion_pedido'][0]['ID_Pedidos'];
     $Hora = $DatosCorreo['informacion_pedido'][0]['hora'];
     $Fecha = $DatosCorreo['informacion_pedido'][0]['fecha'];
-    $ID_Tienda = $DatosCorreo['informacion_tienda'][0]['ID_Tienda']; 
-    $Tienda = $DatosCorreo['informacion_tienda'][0]['nombre_Tien']; 
 
-    $email_subject_2 = $DatosCorreo['informacion_tienda'][0]['nombre_Tien'] . ", recibo de compra";
-    $email_to = $DatosCorreo['informacion_usuario'][0]['correo_usu'];
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html; charset=UTF-8" . "\r\n";
-    $headers .= 'From: PedidoRemoto<contacto@pedidoremoto.com>';          
+    $headers .= 'From: PedidoRemoto<contacto@pedidoremoto.com>';       
+
     $email_message = 
         '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -152,4 +172,4 @@
             // $email_message = wordwrap($email_message, 70, "\r\n");
             mail($email_to, $email_subject_2, $email_message, $headers);
         '</body>';
-?> 
+?>
