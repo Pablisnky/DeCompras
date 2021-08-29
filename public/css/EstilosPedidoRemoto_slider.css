@@ -3,7 +3,7 @@
 	overflow: hidden;
 	position: absolute;
 	top: 70%;
-	left: 7%;
+	margin-left: 7%;
 }
 .slider ul{
 	padding: 0;
@@ -71,7 +71,7 @@
         width: 75%;
         top: 60%;
         padding-left: 3%;
-        left: 0%;
+        margin-left: 0%;
     }
 	.slider label{
 		font-size: 1.2em;

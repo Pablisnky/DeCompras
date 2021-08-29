@@ -88,9 +88,9 @@ document.addEventListener('click', function(event){
 document.getElementById('Mostrar_Orden').addEventListener('click', function(event){ 
     // console.log("Iniciando delegando eventos")
     if((event.target.id == "Domicilio_No") || (event.target.id == "Domicilio_Si")){  
-        console.log("______Desde forma_Entrega______")
-        console.log(TotalDisplayCarrito)
-        console.log(ComisionAplicacion)
+        // console.log("______Desde forma_Entrega______")
+        // console.log(TotalDisplayCarrito)
+        // console.log(ComisionAplicacion)
         let porNombre = document.getElementsByName("entrega")
         //Se recorren todos los valores del radio button para encontrar el seleccionado
         for(var i=0; i<porNombre.length; i++){

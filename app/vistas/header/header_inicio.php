@@ -15,11 +15,11 @@
 		<!-- <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
  		<meta http-equiv="Pragma" content="no-cache"> -->
 
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/estilosPidoRapido.css?v=<?php echo(rand());?>"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_800.css?v=<?php echo(rand());?>"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/EstilosPedidoRemoto_slider.css?v=<?php echo(rand());?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/estilosPidoRapido.css?v=<?php echo rand();?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo rand();?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_800.css?v=<?php echo rand();?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo rand( );?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/EstilosPedidoRemoto_slider.css?v=<?php echo rand();?>"/>
 		
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>	

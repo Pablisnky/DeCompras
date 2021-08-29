@@ -81,10 +81,6 @@
 
                     $Resultado = json_decode($RecibeDirecto, true); 
 
-                    //La hora no se toma del servidor MySQL porque no corresponde a nuestro uso horario
-                    // date_default_timezone_set('America/Caracas');
-                    // $Hora = date('H:i');
-
                     // echo '<pre>';
                     // print_r($Resultado);
                     // echo '</pre>';
@@ -105,7 +101,7 @@
                         endforeach;
                     }
                     else{
-                        echo 'Hubo un error en la entrega de los datos del pedido';
+                        echo 'Error en la entrega de los detalles del pedido';
                         echo '<br>';
                     }
                 }
@@ -140,7 +136,7 @@
                     $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario);
                 }
 
-                //Se INSERTAN los datos basicos del pedido en la BD
+                //Se INSERTAN los datos generales del pedido en la BD
                 $this->ConsultaRecibePedido_M->insertarPedido($RecibeDatosUsuario, $CodigoTransferencia, $RecibeDatosPedido, $Ale_NroOrden, $Delivery);
                 
                 //Se recibe y se inserta el capture de transferencia 
@@ -162,10 +158,7 @@
                     // exit;
 
                     //Usar en remoto
-                    // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
-
-                    //usar en local
-                    $directorio = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/capture/';
+                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
 
                     //Subimos el fichero al servidor
                     move_uploaded_file($Ruta_Temporal, $directorio.$archivonombre);
@@ -192,10 +185,7 @@
                     // exit;
 
                     //Usar en remoto
-                    // $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
-
-                    //usar en local
-                    $directorio = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/capture/';
+                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
 
                     //Subimos el fichero al servidor
                     move_uploaded_file($Ruta_Temporal, $directorio.$archivonombre);

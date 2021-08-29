@@ -21,7 +21,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
         
@@ -35,7 +35,7 @@
                 return $stmt->fetchAll(PDO::FETCH_COLUMN);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -49,7 +49,7 @@
                 return $stmt;
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -63,7 +63,7 @@
                 return $stmt;
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -77,7 +77,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -91,7 +91,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -105,7 +105,7 @@
                 return $stmt;
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -120,7 +120,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -147,7 +147,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -173,13 +173,17 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return 'Existe un fallo';
             }
         }
 
         //SELECT de datos de la tienda
         public function consultarDatosTienda($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien FROM tiendas WHERE ID_Tienda = :ID_Tienda");
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, slogan_Tien, fotografia_Tien 
+                 FROM tiendas 
+                 WHERE ID_Tienda = :ID_Tienda"
+            );
 
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
 
@@ -187,7 +191,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return 'Existe un fallo';
             }
         }
 
@@ -201,7 +205,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -215,7 +219,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -290,7 +294,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -308,7 +312,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
         
@@ -323,7 +327,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
         
@@ -341,7 +345,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
         
@@ -356,7 +360,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -371,7 +375,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 
@@ -584,7 +588,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return "No se pudo";
+                return  'Existe un fallo';
             }
         }
 

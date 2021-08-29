@@ -36,14 +36,14 @@
                 return true;
             }
             else{
-                return false;
+                return 'Existe un fallo';
             }
         }
         
         public function insertarPedido($RecibeDatosUsuario, $CodigoTransferencia, $RecibeDatosPedido, $Ale_NroOrden, $Delivery){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO pedido(ID_Usuario, numeroorden, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago)
-                VALUES(:ID_Usuario, :NumeroOrden, :MontoDelivery, :MontoTienda, :MontoTotal, :Despacho, :FormaPago, :CodigoPago)"
+                "INSERT INTO pedido(ID_Usuario, numeroorden, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, fecha, hora)
+                VALUES(:ID_Usuario, :NumeroOrden, :MontoDelivery, :MontoTienda, :MontoTotal, :Despacho, :FormaPago, :CodigoPago, CURDATE(), CURTIME())"
             ); 
 
             //Se vinculan los valores de las sentencias preparadas
@@ -61,14 +61,14 @@
                 return true;
             }
             else{
-                return false;
+                return 'Existe un fallo';
             }
         }
         
         function insertarDetallePedido($RecibeDatosPedido, $Ale_NroOrden, $Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO detallepedido(ID_Tienda, numeroorden, seccion, producto, cantidad, opcion, precio, total, fecha, hora)
-                VALUES(:ID_TIENDA, :Ale_NroOrden, :SECCION, :PRODUCTO, :CANTIDAD, :OPCION, :PRECIO, :TOTAL, CURDATE(), CURTIME())"
+                "INSERT INTO detallepedido(ID_Tienda, numeroorden, seccion, producto, cantidad, opcion, precio, total)
+                VALUES(:ID_TIENDA, :Ale_NroOrden, :SECCION, :PRODUCTO, :CANTIDAD, :OPCION, :PRECIO, :TOTAL)"
             ); 
 
             //Se vinculan los valores de las sentencias preparadas
@@ -81,10 +81,14 @@
             $stmt->bindParam(':OPCION', $Opcion);
             $stmt->bindParam(':PRECIO', $Precio);
             $stmt->bindParam(':TOTAL', $Total);
-            
-            //Se ejecuta la inserción de los datos en la tabla por medio de sentencia preparada
-            $stmt->execute();            
-            return true;
+
+             //Se ejecuta la inserción de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return 'Existe un fallo';
+            }
         }
 
         // SELECT del detalle del pedido realizado
@@ -92,7 +96,8 @@
             $stmt = $this->dbh->prepare(
                 "SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, detallepedido.numeroorden, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i %p') AS hora, pedido.montoDelivery, pedido.montoTienda, pedido.montoTotal, pedido.despacho, pedido.formaPago, pedido.codigoPago, pedido.capture 
                 FROM detallepedido INNER JOIN pedido ON detallepedido.numeroorden=pedido.numeroorden 
-                WHERE detallepedido.numeroorden = :ALE_NUMERO_ORDEN");
+                WHERE detallepedido.numeroorden = :ALE_NUMERO_ORDEN"
+            );
             
             $stmt->bindValue(':ALE_NUMERO_ORDEN', $Ale_NroOrden, PDO::PARAM_INT);
 
@@ -100,7 +105,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return false;
+                return 'Existe un fallo';
             }
         }
 
@@ -117,7 +122,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return false;
+                return 'Existe un fallo';
             }        
         } 
 
@@ -131,7 +136,7 @@
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
-                return false;
+                return 'Existe un fallo';
             }        
         }
 
@@ -152,7 +157,7 @@
                 return true;
             }
             else{
-                return false;
+                return 'Existe un fallo';
             }
             
         }

@@ -7,7 +7,7 @@
     // echo $DatosCorreo['informacion_tienda'][0]['correo_AfiCom'] . '<br>';
     // exit();                  
 
-    function limpiarAsunto($email_subject){
+    function limpiarAsunto_2($email_subject){
         $cadena = "Subject";
         $longitud = strlen($cadena) + 2;
         return substr(
@@ -23,7 +23,7 @@
         );
     }
 
-    $email_subject = limpiarAsunto($DatosCorreo['informacion_tienda'][0]['nombre_Tien'] .", nuevo pedido para despachar");
+    $email_subject = limpiarAsunto_2($DatosCorreo['informacion_tienda'][0]['nombre_Tien'] .", nuevo pedido para despachar");
     $email_to = $DatosCorreo['informacion_tienda'][0]['correo_AfiCom'] ;
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html; charset=UTF-8" . "\r\n";

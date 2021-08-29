@@ -59,7 +59,7 @@
             </style>
         </head>
         <body>
-            <h1>Recibo de compra en <br>"'   . $DatosCorreo['informacion_tienda'][0]['nombre_Tien'] . '"</h1>' .
+            <h1>Recibo de compra en <br> " ' . $DatosCorreo['informacion_tienda'][0]['nombre_Tien'] . ' " </h1>' .
 
             // DATOS DE LA COMPRA
             $email_message = "<h2>Datos de la compra</h2>";

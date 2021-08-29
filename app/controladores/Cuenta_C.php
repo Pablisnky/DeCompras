@@ -202,7 +202,7 @@
             endif;
 
             $Datos = [
-                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, slogan_Tien, fotografia_Tien
                 'datosResposable' => $DatosResposable,
                 'horario_LV' => $Horario_LV,
                 'horario_Sab' => $Horario_Sab,
@@ -414,7 +414,9 @@
         }
         
         //*****************************************************************************
+        //*****************************************************************************
         // HASTA AQUI SON LOS METODOS QUE RESPONDEN AL MENU
+        //*****************************************************************************
         //*****************************************************************************
 
         public function ConsultarOpciones($OpcionProd){

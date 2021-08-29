@@ -144,21 +144,19 @@
 
                             <!-- CONFIRMACION DE USUARIO -->
                             <div class="contFlex--usuarios" id="ModalTipoUsuario">
-                                <div class="contInputRadio" id="No_Registrado">     
-                                    <label class="boton boton--color"  onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')">Usuario no registrado</label>
-                                </div>  
-                                <div class="contInputRadio" id="Registrado">
-                                    <label class="boton boton--color" onclick="mostrar_cedula()">Usuario registrado</label>
-                                </div>  
+                                <!-- <article> -->
+                                    <label class="boton boton--alto" id="No_Registrado" onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')">Usuario no registrado</label>
+                                    <label class="boton boton--alto" id="Registrado" onclick="mostrar_cedula()">Usuario <br class="br_2"> registrado</label>
+                                <!-- </article> -->
                                 <div class="ocultar" id="Mostrar_Cedula">
                                     <input class="input_13 borde_1" type="text" placeholder="Introduzca Nº Cedula (Solo números)" value="12.728.036" onblur="Llamar_UsuarioRegistrado(this.value)"/>
                                     <label class="boton boton--color boton--centro" >Enviar</label>
-                                </div>
+                                </div> 
                             </div>      
                         </div>  
                     </div>
                 </article>    
-                
+
                 <!-- FORMAS DE PAGO -->
                 <article> 
                     <div class="contenedor_24">

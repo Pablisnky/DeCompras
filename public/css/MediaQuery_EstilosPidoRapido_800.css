@@ -216,6 +216,17 @@
 .contFlex{/*carrito*/
 	padding: 5%;
 }
+.contFlex--usuarios{/*carrito*/
+	background-color: var(--FondoDivModal--claro);
+	padding: 5% 0%;
+	left: 0%; 
+	width: 100%; 
+	height: 95%; 
+	flex-wrap: nowrap;
+}
+.contFlex--suscribir{/*carrito*/
+	width: 100%;
+}
 .contenedor_29{/*carrito*/
 	width: 100%;
 	font-size: 1.2em;
@@ -255,14 +266,16 @@
 	font-size: 1.3em;
 }
 .contenedor_34{/*inicio*/
-	top: 85%;
+	top: 85%;	
 	left: 5%;
+	/* margin-left: 5%; */
 }
 .contenedor_34--boton{/*inicio*/
 	height: 30px; 
 	display: block;
 	line-height: 30px;
-	width: 160px;
+	width: 170px;
+	margin: auto;
 }
 .contenedor_34--p{/*inicio*/
 	line-height: 18px;
@@ -1156,6 +1169,9 @@
 .rompeFixed{/*modal_Secciones*/
 	position: absolute;
 }
+.rompe_Flex{/*carrito*/
+	margin-bottom: 10%;
+}
 .section_1{/*inicio*/
 	height: 100%;
 }
@@ -1173,10 +1189,18 @@
 	margin-top: 0%;
 	z-index: 4;
 }
+.section_1--cont__radios{/*inicio*/
+	top: 27%;
+	right: 3%;
+}
 .section_1__div1{/*inicio*/
 	width: 100%;
 }
 .section_1__div2{/*inicio*/
+	margin: 5% auto;
+	text-align: center;
+}
+.section_1__div3{/*inicio*/
 	margin: 5% auto;
 	text-align: center;
 }
