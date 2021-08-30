@@ -1445,3 +1445,18 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
     
 // ************************************************************************************************
+    function soloNumeros(valor, Cedula){
+        let elemento = document.getElementById(Cedula).value;
+        let P_Numeros = /^([0-9])*$/;
+
+        if(P_Numeros.test(valor) == false || elemento == ''|| elemento.indexOf(" ") == 0 || elemento.length > 8 || elemento.length < 7){            
+            alert ("Ingrese un número de cedula valido");
+            document.getElementById("Cedula_Usuario").value = "";
+            document.getElementById("Cedula_Usuario").focus();
+        }        
+        else{
+            let NumeroFormateado = SeparadorMiles(valor)
+            Llamar_UsuarioRegistrado(NumeroFormateado);
+        }
+        return false;
+    }

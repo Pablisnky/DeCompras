@@ -149,7 +149,7 @@
                                     <label class="boton boton--alto" id="Registrado" onclick="mostrar_cedula()">Usuario <br class="br_2"> registrado</label>
                                 <!-- </article> -->
                                 <div class="ocultar" id="Mostrar_Cedula">
-                                    <input class="input_13 borde_1" type="text" placeholder="Introduzca Nº Cedula (Solo números)" value="12.728.036" onblur="Llamar_UsuarioRegistrado(this.value)"/>
+                                    <input class="input_13 borde_1" type="text" id="Cedula_Usuario" placeholder="Introduzca Nº Cedula (Solo números)" onblur="soloNumeros(this.value, 'Cedula_Usuario')"/>
                                     <label class="boton boton--color boton--centro" >Enviar</label>
                                 </div> 
                             </div>      

@@ -226,12 +226,7 @@
                 $this->correo('reciboCompra_mail', $DatosCorreo); 
 
                 //Carga la plantilla de correo orden de compra dirigida al cliente y al marketplace
-                // $this->correo('ordenCompra_mail', $DatosCorreo); 
-
-                
-                //Carga la plantilla de correo recibo de compra dirigida al usuario
-                $this->correo('borrar_mail'); 
-
+                $this->correo('ordenCompra_mail', $DatosCorreo); 
 
                 // ****************************************
                 $this->vista('header/header');
