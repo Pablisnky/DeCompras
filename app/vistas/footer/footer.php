@@ -2,7 +2,7 @@
                                           <!-- FOOTER -->
 <!-- ******************************************************************************************** -->
 
-		<footer class="footer">
+		<!-- <footer class="footer">
 			<div class="contenedor_7"> 
 				<div>
 					<div class="contenedor_98" id="Aplicacion_PWA">
@@ -19,7 +19,7 @@
 					<h6 class="footer__h6">Calle 15 3ntr Avs. 11 y 12, Telf: 0254-231.57.32 San Felipe - Yaracuy</h6>
 				</div>
 			</div> 
-		</footer>
+		</footer> -->
 		<script src="<?php echo RUTA_URL;?>/public/javascript/funcionesVarias.js?v=<?php echo rand();?>"></script>     
 	</body>
 </html>

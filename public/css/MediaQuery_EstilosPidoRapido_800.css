@@ -65,6 +65,9 @@
 .br_2{/*carrito*/
 	display: block;
 }
+.br_3{/*carrito*/
+	display: none;
+}
 .comandoMenu_Inicio{/*header_inicio*/
 	background-color: var(--OficialClaro);
 	border-radius: 8px !important;
@@ -114,14 +117,14 @@
 .contenedor_3{/*header*/
 	grid-template-columns: 65fr 35fr;
 }
-.contenedor_4{/*inicio - RecibePedido*/
-	display: block;
+.contenedor_4{/*CantidadTiendas_Ajax*/
 	width: 100%;
-	margin:1% auto;
+	margin: 1% auto;
+	padding-top: 20%;
 }
-.contenedor_6{/*inicio*/
-	margin: 10% auto;	
-	width: 60%;
+.contenedor_6{/*CantidadTiendas_Ajax*/
+	margin: 5% auto;	
+	width: 40%;
 	height: 120px !important;
 }
 .contenedor_7{/*footer*/
@@ -252,7 +255,7 @@
 }
 .contIconoBuscador{/*header_inicio*/
 	top: 0.5%;
-	left: 85%;
+	left: 87%;
 	padding: 1.5%;
 	padding-bottom: 1%;
 	width: 10%;
@@ -265,21 +268,14 @@
 .contIconoBuscador__span{/*header_inicio*/
 	font-size: 1.3em;
 }
-.contenedor_34{/*inicio*/
-	top: 85%;	
+.div__Botones--uno{/*inicio*/
+	margin-top: 148%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/	
 	left: 5%;
-	/* margin-left: 5%; */
-}
-.contenedor_34--boton{/*inicio*/
-	height: 30px; 
-	display: block;
-	line-height: 30px;
-	width: 170px;
-	margin: auto;
 }
 .contenedor_34--p{/*inicio*/
 	line-height: 18px;
 	font-size: 0.9em;
+	z-index: 1;
 }
 .contenedor_35{/*inicio*/
 	padding: 3% 0%;
@@ -287,7 +283,7 @@
 .contenedor_37{/*inicio*/
 	position: absolute;
 	top: 6%;
-	left: 3%;
+	left: 4%;
 }
 .contenedor_38/*afiliacion*/{
 	margin: 0% auto;
@@ -393,6 +389,16 @@
 .contenedor_68{/*afiliacion*/
 	height: 100%;
 }
+.div__Botones--boton{/*inicio*/
+	height: 30px; 
+	display: block;
+	line-height: 30px;
+	width: 150px;
+	margin: auto;
+}
+.div__Botones--uno{/*inicio*/
+	right: 40%;
+} 
 .header{/*header - header_inicio - header_Tienda - header_AfiCom*/
 	height: 45px;
 }
@@ -1172,37 +1178,34 @@
 .rompe_Flex{/*carrito*/
 	margin-bottom: 10%;
 }
-.section_1{/*inicio*/
-	height: 100%;
-}
-.section_1--vh{
-	height: 100vh;
-}
 .section_1__div{/*inicio*/
 	display: block;
 	position: relative;
-	top: 67%;
+	top: 70%;
 	width: 100%;
 	height: 30%;
 	padding: 0.5% 2%;
 	margin-left: 0%;
-	margin-top: 0%;
+	margin-top: -10%;
 	z-index: 4;
 }
 .section_1--cont__radios{/*inicio*/
 	top: 27%;
 	right: 3%;
+	height: 15%;
 }
 .section_1__div1{/*inicio*/
 	width: 100%;
 }
-.section_1__div2{/*inicio*/
-	margin: 5% auto;
-	text-align: center;
+.div__Botones{/*inicio*/
+	width: 100%;
+	top: 85%;
+	left: 0%;
 }
 .section_1__div3{/*inicio*/
-	margin: 5% auto;
-	text-align: center;
+	width: 100%;
+	top: 85%;
+	left: 0%;
 }
 .section_1__p{/*inicio*/
 	text-align: center;
@@ -1297,6 +1300,7 @@
 }
 .span_21{/*CantidadTiendas_Ajax*/
 	margin-top: -4% !important;
+	left: 78%;
 }
 .spanCerrar{/*inicio - modal_fueraHorario*/
 	font-size: 1.5em;
@@ -1329,7 +1333,7 @@
 	width: 100%;
 	height: 400%!important;
 	background-color: rgba(0, 0, 0, 0.8);
-	z-index: 1;
+	z-index: 2;
 }
 .textarea_1{/*carrito - cuenta_publicar - descr_Producto*/
 	width: 100%;

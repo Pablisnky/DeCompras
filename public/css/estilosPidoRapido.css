@@ -206,8 +206,8 @@ body, html{
 	color: black;
 }
 .borrar{/*inicio*/
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -324,7 +324,7 @@ body, html{
 	display: none;
 	width: 80%;
 }
-.contenedor_6{/*inicio*/
+.contenedor_6{/*CantidadTIendas_Ajax*/
 	width: 20%;
 	margin: 2%;
 	height: 150px;
@@ -525,6 +525,7 @@ body, html{
 	border-radius: 10px;
 	padding: 0.5%;
 	width: 3%;
+	
 	/* z-index: 4 !important; */
 }
 .contIconoBuscador:hover{/*header_inicio*/
@@ -537,31 +538,18 @@ body, html{
 	color:rgb(51, 51, 51) !important;
 	font-size: 1.5em;
 }
-.contenedor_34{/*inicio*/
-	position: absolute;
-	top: 70%;
-	right: 3%;
-	width: 14%;
-} 
-.contenedor_34--boton{/*inicio*/
-	background-color: var(--OficialClaro);
-	color: black;
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
-	display: inline-block;
-	font-size: 1.3em;
-	text-align: center;
-	border-radius: 10px;
-	cursor: pointer;
-	border-color: var(--OficialOscuro);
-	border-width: 1px;
-	border-style: solid;
+.contenedor_34--main{/*inicio*/
+	height: 300%;
 }
+.div__Botones--uno{/*inicio*/
+	position: absolute;
+	margin-top: 35%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
+	right: 3%;
+} 
 .contenedor_34--p{/*inicio*/
 	background-color: var(--BandaAlerta);
 	font-weight: bold;
-	position: absolute;
+	position: fixed;
 	bottom: 0pt;
 	width: 100%;
 	text-align: center;
@@ -875,7 +863,7 @@ body, html{
 	left: 0%;
 	bottom: 5px;
 }
-.contenedor_106{/*inicio*/
+.contenedor_106{/*CantidadTiendas_Ajax*/
 	position: relative;
 	bottom: 10px;
 }
@@ -1405,6 +1393,29 @@ body, html{
 .contTabla{/*horarioDespacho*/
 	margin-bottom: 7%;
 }
+.div__Botones{/*inicio*/
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	width: 22%;
+	top: 77%;
+	left: 75%;
+}
+.div__Botones--boton{/*inicio*/
+	background-color: var(--OficialClaro);
+	color: black;
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	width: 140px;
+	font-size: 1.3em;
+	text-align: center;
+	border-radius: 10px;
+	cursor: pointer;
+	border-color: var(--OficialOscuro);
+	border-width: 1px;
+	border-style: solid;
+}
 .desactivado{/*inicio*/
 	color: var(--TextoClaro);
 }
@@ -1494,6 +1505,9 @@ body, html{
 }
 .font--negro{/*header_Tienda - inicio*/
 	color: black;
+}
+.font--white{/* inicio*/
+	color: white;
 }
 .h1_1{/*carrito - cuenta_productos - Categorias_Ajax - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes - modal_sinProductos - descr_Producto*/
 	font-weight: normal;
@@ -2454,6 +2468,12 @@ body, html{
 .section_1__div1{/*inicio*/
 	width: 75%;
 }
+.section_1__div3{/*inicio*/
+	position: relative;
+	width: 13%;
+	top: 77%;
+	left: 84%;
+}
 .section_1--cont__radios{/*inicio*/
 	position: fixed;
 	top: 40%;
@@ -2462,16 +2482,32 @@ body, html{
 	flex-direction: column;
 	justify-content: space-between;
 	height: 10%;
-	z-index: 4;
+	/* z-index: 4; */
 }
 .section_1--radios{/*inicio*/
 	cursor: pointer;
 }
-
+.section_1--cont__radios--cinco{/*inicio*/
+	position: relative;
+	/* top: 40%;*/
+	left: 15%; 
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 40%;
+	z-index: 4;
+}
+.section_1--radios--cinco{/*inicio*/
+	cursor: pointer;
+	width: 8px;
+}
 .section_1__p{/*inicio*/
+	background-color: var(--FondoDivModal--claro);
+	padding: 1% 2%;
 	color: white;
 	font-size: 1.5em;
 	line-height: 40px;
+	border-radius: 15px;
 }
 .section_2{/*RecibePedido*/
 	padding-top: 10%;

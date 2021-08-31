@@ -1,9 +1,9 @@
 .slider{
-    width: 45%;
+    width: 40%;
 	overflow: hidden;
 	position: absolute;
-	top: 70%;
-	margin-left: 7%;
+	margin-top: 30%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
+	left: 7%;
 }
 .slider ul{
 	padding: 0;
@@ -69,13 +69,22 @@
 @media(max-width: 800px){
     .slider{
         width: 75%;
-        top: 60%;
+        margin-top: 110%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
         padding-left: 3%;
-        margin-left: 0%;
+        left: 0%;
     }
 	.slider label{
 		font-size: 1.2em;
 	}
+	.slider li{
+		padding-right: 0%;
+	}
+    .slider--portada{
+		width: 100% !important;
+		text-align: center ;
+		padding: 0% 3%;
+        margin-top: 120%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
+    }
 }
 
 /* APLICAR EN DISPOSITIVOS CON DIMENSIONES MENORES A 800px */

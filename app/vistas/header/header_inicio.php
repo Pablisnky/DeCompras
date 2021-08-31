@@ -38,7 +38,7 @@
 			gtag('config', 'G-5JFWZ0GQYB');
 		</script>
     </head>
-    <body>				
+    <body style="overflow-y:hidden">				
 		<header class="header header--inicio contenedor_116">
 			<!-- icono hamburguesa para responsive -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
