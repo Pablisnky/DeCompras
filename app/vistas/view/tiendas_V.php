@@ -25,6 +25,7 @@
             endforeach;
             ?> 
             <section class="contenedor_15--tarjeta" id="<?php echo $ID_Tienda;?>">
+                <!-- LADO FRONTAL DE TARJETA -->
                 <div class="contenedor_15 borde_1 borde_1--color adelante">
 
                     <!-- IMAGEN DE PORTADA DE LA TIENDA -->
@@ -53,12 +54,28 @@
                     </article>
                 </div>
 
+                <!-- LADO POSTERIOR DE TARJETA -->
                 <div class="contenedor_15 borde_1 borde_1--color atras">
+                    
                     <!-- REPUTACION -->
-                    <div class="contenedor_17">
-                        <div>
-                            <h3 class="h3_4">Reputación <span class="span_1">(Ultimos 3 meses)</span> </h3>
-                        </div>
+                    <div class="contenedor_17">                        
+                        <?php 
+                        foreach($Datos['tiendas_disponibilidad'] as $Row) :
+                            if($Row['ID_Tienda'] == $ID_Tienda){  
+                                if($Row['disponibilidad'] == 'Abierto'){   ?>
+                                        <div>
+                                            <h3 class="h3_4">Reputación <span class="span_1">(Ultimos 3 meses)</span> </h3>
+                                        </div>
+                                    <?php
+                                }
+                                else{   ?>
+                                    <div class="contenedor_162">
+                                        <h2 class="h2_14">Despachos no disponibles a esta hora</h2>
+                                    </div> 
+                                    <?php
+                                }  
+                            } 
+                        endforeach;  ?>
                         <div style="width: 50%; margin: 2% auto;">
                             <p class="p_2 p_18">Clientes satisfechos</p>
                             <?php
@@ -198,30 +215,18 @@
                     </div>
 
                     <!-- DIRECCION Y CONTACTO -->
-                    <?php 
-                    foreach($Datos['tiendas_disponibilidad'] as $Row) :
-                        if($Row['ID_Tienda'] == $ID_Tienda){  
-                            if($Row['disponibilidad'] == 'Abierto'){   ?>
-                                <div class="contenedor_162">
-                                    <div class="contenedor_132">
-                                    <i class="fas fa-phone-alt span_17"></i> 
-                                        <p class="p_2"><?php echo $Telefono?></p>
-                                    </div>
-                                    <div class="contenedor_131">
-                                        <i class="fas fa-map-marker-alt span_17"></i>
-                                        <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo $Ciudad?> - <?php echo $Estado?></p>
-                                    </div>
-                                </div> 
-                                <?php
-                            }
-                            else{   ?>
-                                <div class="contenedor_162">
-                                    <h2 class="h2_14">Despachos no disponibles a esta hora</h2>
-                                </div>  <?php
-                            }  
-                        } 
-                    endforeach;  ?>
+                    <div class="cont_direccion">
+                        <div class="contenedor_132">
+                            <i class="fas fa-phone-alt span_17"></i> 
+                            <p class="p_2"><?php echo $Telefono?></p>
+                        </div>
+                        <div class="contenedor_131">
+                            <i class="fas fa-map-marker-alt span_17"></i>
+                            <p class="p_2"><?php echo $Direccion?>&nbsp / &nbsp<?php echo $Ciudad?> - <?php echo $Estado?></p>
+                        </div>
+                    </div> 
                 
+                    <!-- BOTONES -->
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
                             <label class="boton boton--corto boton--alto boton-excepcion" onclick="FrenteTarjeta(<?php echo $ID_Tienda;?>)">Salir</label>

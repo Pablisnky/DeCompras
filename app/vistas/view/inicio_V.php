@@ -8,6 +8,14 @@
         <input class="section_1--radios" type="radio" name="slider" id="Portada_2"/>
         <input class="section_1--radios" type="radio" name="slider" id="Portada_3"/> 
     </div>
+    
+    <div class="contenedor_98 contenedor_98--inicio" id="Aplicacion_PWA">
+        <div>
+            <h3 class="footer__h3 footer__h3--inicio">APLICACIÓN</h3>
+            <h3 class="footer__h3 footer__h3--inicio">MULTIPLATAFORMA</h3>
+        </div>
+        <img class="imagen_5 imagen_5--inicio" alt="Logo PWA" src="<?php echo RUTA_URL;?>/public/images/PWA.png"/>
+    </div>
 
     <div class="contenedor_34--main" id="ImgPortada">
         <div class="borrar section_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
@@ -54,13 +62,13 @@
             <div class="slider slider--portada">
                 <ul>
                     <li>
-                        <label class="font--white">Para tus clientes ocupados<span>¡ Ofrece un Servicio Premium !</span>digitaliza tu tienda</label>
+                        <label class="font--white">Muchos de tus clientes estan <br>verdaderamente ocupados, un <br><span>¡ Servicio Premium !</span><br> es digitalizar tienda</label>
                     </li>
                     <li>
-                        <label class="font--white"><span>e-commerce</span><br> para pequeños y medianos comercios.</label>
+                        <label class="font--white"><span>Crea fácil tu tienda en línea</span>  y potencia tu negocio con un nuevo canal de ventas.</label>
                     </li> 
                     <li>
-                        <label class="font--white">Registra tu tienda <br><span>totalmente gratis</span></label>
+                        <label class="font--white">Afilia tu tienda <br><span>totalmente gratis</span>, sube tu cátalogo de productos, y vende las 24 horas del día </label>
                     </li>
                     <li>
                         <label class="font--white">Ideal para ventas de comida rapida, minimarket, fruterías, panaderías, ferreterías, bodegas, y más.</label>
@@ -76,23 +84,24 @@
             </div>
         </div>    
             
-        <div class="borrar section_1" id="Section_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_3.jpg');">        
-            <div class="slider slider--portada">
+        <div class="borrar section_1" id="Section_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_3.jpg');">     
+            <div class="slider slider--portada">   
+                <span>Al registrar tu tienda, te ayudamos con:</span>
                 <ul>
                     <li>
-                        <label><span>Te ayudamos </span>con el control administrativo de tu tienda</label>
+                        <label>Control de inventario y notificaciones administrativas.</label>
                     </li>
                     <li>
-                        <label><span>Control de inventario,</span>Reporte de ventas diarias, semanales y mensuales.</label>
+                        <label>Reporte de ventas diarias, semanales y mensuales.</label>
                     </li> 
                     <li>
-                        <label><span>Alertas por productos </span>proximos a agotarse.</label>
+                        <label>Alertas por productos proximos a agotarse.</label>
                     </li>
                     <li>
-                        <label><span>Ajuste diario automatico</span> de tasa dolar BCV.</label>
+                        <label>Ajuste diario automatico por cambio en tasa dolar BCV.</label>
                     </li>
                     <li>
-                        <label><span>Ajuste semanal automatico</span> por inflación.</label>
+                        <label>Ajuste semanal automatico por variación en indice de inflación.</label>
                     </li>
                 </ul>
             </div>
@@ -132,6 +141,7 @@
         </div>
     </div>
 
+<script src="<?php echo RUTA_URL.'/public/javascript/funcionesVarias.js?v='. rand();?>"></script>
 <script src="<?php echo RUTA_URL.'/public/javascript/E_Inicio.js?v=' . rand();?>"></script>
 <script src="<?php echo RUTA_URL.'/public/javascript/A_Inicio.js?v=' . rand();?>"></script>
 <script src="<?php echo RUTA_URL.'/public/convoca_SW.js';?>"></script>
@@ -163,5 +173,3 @@
         }
     }
 </script>
-
-<?php require(RUTA_APP . '/vistas/footer/footer.php'); ?>

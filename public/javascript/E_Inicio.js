@@ -35,7 +35,7 @@ document.getElementById("Span_5").addEventListener('click', function(){CerrarMod
 // })
 
 //************************************************************************************************
-//Detecta si se hace scrool hacia abajo para ocultar la cinta del precio del dolar
+//Detecta si se hace scrool hacia abajo para ocultar la cinta del precio del dolar (NO FUNCIONA)
 var scrollPos = 0;
     window.addEventListener('scroll', function(){
     if((document.body.getBoundingClientRect()).top > scrollPos){
@@ -62,12 +62,14 @@ var scrollPos = 0;
     }
 
 //************************************************************************************************
+    //Cambia la imagen de portada y los colores de textos y cinta del menu principal
     document.getElementById('Botones_radios').addEventListener('click', function(event){ 
         if(event.target.id == "Portada_1"){ 
             console.log(event.target.id )
             document.getElementById('ImgPortada').style.marginTop = "-0vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
+            document.getElementById("Aplicacion_PWA").classList.remove('cont_background') 
             document.getElementById("MenuResponsive").style.backgroundColor = "rgb(206, 203, 222)";
             document.getElementById("Titulo").classList.remove('font--white')
             document.getElementById("SubTitulo").classList.remove('font--white')
@@ -81,6 +83,7 @@ var scrollPos = 0;
             document.getElementById('ImgPortada').style.marginTop = "-100vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
+            document.getElementById("Aplicacion_PWA").classList.add('cont_background') 
             document.getElementById("MenuResponsive").style.backgroundColor = "rgb(44, 45, 49)";
             document.getElementById("MenuResponsive").style.transitionDuration = "1s";
             document.getElementById("Titulo").classList.add('font--white')
@@ -95,6 +98,7 @@ var scrollPos = 0;
             document.getElementById('ImgPortada').style.marginTop = "-200vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
+            document.getElementById("Aplicacion_PWA").classList.remove('cont_background') 
             document.getElementById("MenuResponsive").style.backgroundColor = "rgb(225, 220, 216)";
             document.getElementById("MenuResponsive").style.transitionDuration = "1s";
             document.getElementById("Titulo").classList.remove('font--white')
