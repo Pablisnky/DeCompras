@@ -891,7 +891,7 @@
 
             //Se CONSULTA el ID_Seccion de las secciones que tiene la tienda
             $ID_Seccion = $this->ConsultaCuenta_M->consultarTodosID_Seccion($this->ID_Tienda);
-
+            
             //Se INSERTAN la dependencia transitiva entre las secciones y la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
             $this->ConsultaCuenta_M->insertarDT_TieSec($this->ID_Tienda, $ID_Seccion); 
 
@@ -1053,7 +1053,7 @@
                     exit();
                 }
 
-                //SECCION IMAGENES SECUNDARIAS
+                //IMAGENES SECUNDARIAS
                 //********************************************************
                 if($_FILES['imagenes']['name'][0] != ''){
                     $Cantidad = count($_FILES['imagenes']['name']);

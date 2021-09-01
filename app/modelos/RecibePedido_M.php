@@ -42,11 +42,12 @@
         
         public function insertarPedido($RecibeDatosUsuario, $CodigoTransferencia, $RecibeDatosPedido, $Ale_NroOrden, $Delivery){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO pedido(ID_Usuario, numeroorden, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, fecha, hora)
-                VALUES(:ID_Usuario, :NumeroOrden, :MontoDelivery, :MontoTienda, :MontoTotal, :Despacho, :FormaPago, :CodigoPago, CURDATE(), CURTIME())"
+                "INSERT INTO pedido(ID_Tienda, ID_Usuario, numeroorden, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, fecha, hora)
+                VALUES(:ID_Tienda, :ID_Usuario, :NumeroOrden, :MontoDelivery, :MontoTienda, :MontoTotal, :Despacho, :FormaPago, :CodigoPago, CURDATE(), CURTIME())"
             ); 
 
             //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindParam(':ID_Tienda', $RecibeDatosPedido['ID_Tienda']);
             $stmt->bindParam(':ID_Usuario', $RecibeDatosUsuario['ID_Usuario']);
             $stmt->bindParam(':MontoTienda', $RecibeDatosUsuario['MontoTienda']);
             $stmt->bindParam(':MontoTotal', $RecibeDatosUsuario['MontoTotal']);

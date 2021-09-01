@@ -12,14 +12,17 @@ En local y en remoto
     .htaccess de la carpeta public
 
 Resoluciones
+    320 x 534 (Maria Esther Samsumg mini S3)
+    320 x 570 (Maria Esther ZTE)
+    320 x 640 (Pablo Alcatel - Antonieta)
+
     360 x 720 (Lisbella)
     360 x 570 (Silvia Huawey Y7)
     360 x 640 (Claudia)
-    320 x 534 (Maria Esther Samsumg mini S3)
-    320 x 570 Maria Esther ZTE)
-    320 x 640 (Antonieta - Pablo Alcatel)
-    393 x 851 (Orlando)
+    393 x 851 (Monica - Esther Xiaomi - Orlando Valladares)
+    ---------------
     1280 x 800 (tablet Canaima horizontal)
+    ---------------
     1366 x 768 (Pablo Labtop)
     1280 x 1024 (Lisbella PC)
     1920 x 1080 (PC local)

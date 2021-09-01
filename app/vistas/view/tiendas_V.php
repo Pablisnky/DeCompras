@@ -66,7 +66,7 @@
                                         <div>
                                             <h3 class="h3_4">Reputación <span class="span_1">(Ultimos 3 meses)</span> </h3>
                                         </div>
-                                    <?php
+                                        <?php
                                 }
                                 else{   ?>
                                     <div class="contenedor_162">
@@ -78,12 +78,11 @@
                         endforeach;  ?>
                         <div style="width: 50%; margin: 2% auto;">
                             <p class="p_2 p_18">Clientes satisfechos</p>
-                            <?php
+                                <?php
                                 if($Datos['tiendas_despachos'] == Array()){?>
                                     <label>Aún no califica</label>    <?php
                                 }
-                                else if(($Datos['tiendas_satisfaccion'][0]['ID_Tienda'] != $ID_Tienda)){
-                                    ?>
+                                else if(($Datos['tiendas_satisfaccion'][0]['ID_Tienda'] != $ID_Tienda)){    ?>
                                     <label>Aún no califica</label>    <?php
                                 }
                                 else{
@@ -101,10 +100,12 @@
                             <p class="p_2 p_18">Pedidos entregados</p>
                             <?php 
                                 if($Datos['tiendas_despachos'] == Array()){?>
-                                    <label>0</label>    <?php
+                                    <label>0</label>    
+                                    <?php
                                 }
                                 else if($Datos['tiendas_satisfaccion'][0]['ID_Tienda'] != $ID_Tienda){?>
-                                    <label>0</label>    <?php
+                                    <label>0</label>    
+                                    <?php
                                 }
                                 else{
                                     foreach($Datos['tiendas_despachos'] as $row) :

@@ -1511,19 +1511,19 @@
         public function insertarSeccionesTienda($ID_Tienda, $Seccion){ 
             //Debido a que $Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo    
             foreach($Seccion as $key){
-                // echo $key . "<br>";
-                $stmt = $this->dbh->prepare("INSERT INTO secciones(ID_Tienda, seccion) VALUES(:ID_TIENDA, :SECCION)");
+                echo $key . "<br>";
+                echo $ID_Tienda;
+                $stmt = $this->dbh->prepare(
+                    "INSERT INTO secciones(ID_Tienda, seccion) 
+                     VALUES(:ID_TIENDA, :SECCION)"
+                );
 
                 //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 $stmt->bindParam(':SECCION', $key);
 
                 //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada)
-                if($stmt->execute()){           
-                }
-                else{
-                    return false;
-                }
+                $stmt->execute();
             }
         }
 

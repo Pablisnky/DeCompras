@@ -99,7 +99,7 @@
             $TiendasDespachos = $this->ConsultaTienda_M->consultarDespachos($this->IDs_Tiendas);     
             
             //SELECT para verificar la cantidad de no conformidades de una tienda
-            //$TiendasNoConformidades=$this->ConsultaTienda_M->consultarInconformidades($this->IDs_Tiendas;            
+            //$TiendasNoConformidades=$this->ConsultaTienda_M->consultarInconformidades($this->IDs_Tiendas;             
             
             //SELECT para verificar la cantidad de disputas de una tienda
             $TiendasDisputas = $this->ConsultaTienda_M->consultarDisputas($this->IDs_Tiendas);  

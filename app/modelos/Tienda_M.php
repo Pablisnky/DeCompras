@@ -65,7 +65,7 @@
         public function consultarDespachos($IDs_Tiendas){
             $stmt = $this->dbh->prepare(
                 "SELECT COUNT(ID_Tienda) AS 'Despachos', ID_Tienda 
-                 FROM detallepedido 
+                 FROM pedido 
                  WHERE ID_Tienda IN ($IDs_Tiendas) 
                  GROUP BY ID_Tienda"
             );    

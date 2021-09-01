@@ -42,7 +42,7 @@
                         <label>Pide desde tú casa, y<span> <br>llevamos hasta <br class="br_2">tú casa</span></label>
                     </li>
                     <li>
-                        <label><span>Compra desde <br class="br_2">tu telefono</span> <br class="br_2"> viveres, repuestos, cosmeticos, empanadas<br class="br_2"> y más.</label>
+                        <label><span>Compra desde <br class="br_2">tu telefono</span> <br class="br_2"> viveres, repuestos, cosmeticos, empanadas<br class="br_2 br_3"> y más.</label>
                     </li>
                     <li>
                         <label><span>e-commerce</span><br> con las tiendas que ya conoces.</label>
