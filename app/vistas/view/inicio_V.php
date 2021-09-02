@@ -25,7 +25,7 @@
             </div>                
             
             <div class="div__Botones--uno" id="BotonVer">
-                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
+                <a class="div__Botones--boton div__Botones--boton--uno" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
             </div>
 
             <p class="contenedor_34--p" id="Contenedor_34--p">Cambio oficial a tasa del BCV <br class="br_2">&nbsp&nbsp 1 $ = <?php echo number_format($Datos, 0, ",", ".");?> Bs.</p>
@@ -60,21 +60,22 @@
 
         <div class="borrar section_1" id="ImgPortada_2" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">            
             <div class="slider slider--portada">
+                <span class="font--white">Muchos de tus clientes estan verdaderamente ocupados</span>
                 <ul>
                     <li>
-                        <label class="font--white">Muchos de tus clientes estan <br>verdaderamente ocupados, un <br><span>¡ Servicio Premium !</span><br> es digitalizar tienda</label>
+                        <label class="font--white">Sube tu cátalogo de productos, <br>y vende 24 horas al día</label>
                     </li>
                     <li>
-                        <label class="font--white"><span>Crea fácil tu tienda en línea</span>  y potencia tu negocio con un nuevo canal de ventas.</label>
+                        <label class="font--white">Crea tu tienda en línea y abre un nuevo canal de ventas.</label>
                     </li> 
                     <li>
-                        <label class="font--white">Afilia tu tienda <br><span>totalmente gratis</span>, sube tu cátalogo de productos, y vende las 24 horas del día </label>
+                        <label class="font--white">Afilia tu tienda <br>totalmente gratis</label>
                     </li>
                     <li>
-                        <label class="font--white">Ideal para ventas de comida rapida, minimarket, fruterías, panaderías, ferreterías, bodegas, y más.</label>
+                        <label class="font--white">Comida rapida, panaderías, repuestos, bodegas, y más.</label>
                     </li>
                     <li>
-                        <label class="font--white">Permite a tus clientes realizar compras en tu <br class="br_2"><span>tienda virtual </span></label>
+                        <label class="font--white">Ofrece a tus clientes compras <br class="br_2">en tu tienda virtual </label>
                     </li>
                 </ul>
             </div>
@@ -86,7 +87,7 @@
             
         <div class="borrar section_1" id="Section_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_3.jpg');">     
             <div class="slider slider--portada">   
-                <span>Al registrar tu tienda, te ayudamos con:</span>
+                <span>Al registrar tu tienda, te<br class="br_2"> ayudamos con:</span>
                 <ul>
                     <li>
                         <label>Control de inventario y notificaciones administrativas.</label>

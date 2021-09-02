@@ -271,10 +271,6 @@
 .contIconoBuscador__span{/*header_inicio*/
 	font-size: 1.3em;
 }
-.div__Botones--uno{/*inicio*/
-	margin-top: 148%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/	
-	left: 5%;
-}
 .contenedor_34--p{/*inicio*/
 	line-height: 18px;
 	font-size: 0.9em;
@@ -392,15 +388,29 @@
 .contenedor_68{/*afiliacion*/
 	height: 100%;
 }
+.div__Botones{/*inicio*/
+	width: 100%;
+	top: 87%;
+	left: 0%;
+}
 .div__Botones--boton{/*inicio*/
-	height: 30px; 
+	height: 25px; 
 	display: block;
-	line-height: 30px;
-	width: 150px;
+	line-height: 25px;
+	width: 110px;
 	margin: auto;
+	font-size: 1em;
+}
+.div__Botones--boton--uno{/*inicio*/
+	height: 28px; 
+	line-height: 28px;
+	width: 130px;
+	font-size: 1.2em;
 }
 .div__Botones--uno{/*inicio*/
-	right: 40%;
+	right: 50%;
+	margin-top: 152%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/	
+	/* left: 5%; */	
 } 
 .header{/*header - header_inicio - header_Tienda - header_AfiCom*/
 	height: 45px;
@@ -1213,11 +1223,6 @@
 }
 .section_1__div1{/*inicio*/
 	width: 100%;
-}
-.div__Botones{/*inicio*/
-	width: 100%;
-	top: 85%;
-	left: 0%;
 }
 .section_1__div3{/*inicio*/
 	width: 100%;
