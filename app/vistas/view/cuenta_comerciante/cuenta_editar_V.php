@@ -64,7 +64,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div class="contenedor_43" id="Mostrar_verificaCorreo"></div>
             </fieldset>
 
-            <!-- SECCION DATOS TIENDA -->
+            <!-- DATOS TIENDA -->
             <a id="marcador_02" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Datos de tienda</legend> 
@@ -179,14 +179,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div class="contenedor_80A" id="Contenedor_80A">
                         <div class="contenedor_80C" id="Contenedor_80C">
                             <input class="input_13 input_13A input_12 borde_1" type="text"/>
-                            <span class="icon-cancel-circle span_10"><i class="fas fa-times span_14_js"></i><span>
-                            <input class="contador_2 contador_2--seccion" type="text" value="25"/>
+                            <div class="contenedor__80div">
+                                <i class="far fa-times-circle span_10 span_14_js span_10--seccion"></i>
+                                <input class="contador_2 contador_2--seccion" type="text" value="25"/>
+                            </div>
                         </div>
-                        <!-- <div class="contenedor_80B borde_1 borde_2">
-                            <img class="contenedor_119__img" id="" alt="Fotografia de la sección" src="../public/images/secciones/imagen.png"/>
-                            <label for=""><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
-                            <input class="ocultar" type="file" name="imagen_Seccion" id=""/>
-                        </div> -->
                     </div>
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
@@ -194,7 +191,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div class="contenedor_80 cont_seccion--div-1" id="Contenedor_80">
                             <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección"/>
                             <div class="cont_seccion--icono_Contador">
-                                <span class="span_10"><i class="fas fa-times span_14_js"></i></span>
+                            <i class="far fa-times-circle span_10 span_14_js span_10--seccion"></i>
                                 <input class="contador_2 contador_2--seccion" type="text" value="25"/>
                             </div>
                         </div>
@@ -211,12 +208,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $Seccion_Tien = $row['seccion'];
                             $ID_Seccion = $row['ID_Seccion'];
                             $CantidadSeccion = count($Datos['secciones']);
-                            ?>
-                           
+                            ?>                           
                             <div class="contenedor_80" id="Contenedor_80">
                                 <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion_<?php echo $Contador;?>" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>
                                 <div class="contenedor__80div">
-                                    <span class="icon-cancel-circle span_10 span_14_js span_10--seccion " id="<?php echo $ID_Seccion;?>"></span>
+                                    <i class="far fa-times-circle span_10 span_14_js span_10--seccion" id="<?php echo $ID_Seccion;?>"></i>
                                     <input class="contador_2 contador_2--seccion contador_JS" id="Contador_<?php echo $Contador;?>" type="text" value="25"/>
                                 </div>
                             </div>

@@ -65,7 +65,7 @@ var scrollPos = 0;
     //Cambia la imagen de portada y los colores de textos y cinta del menu principal
     document.getElementById('Botones_radios').addEventListener('click', function(event){ 
         if(event.target.id == "Portada_1"){ 
-            console.log(event.target.id )
+            // console.log(event.target.id )
             document.getElementById('ImgPortada').style.marginTop = "-0vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
@@ -79,7 +79,7 @@ var scrollPos = 0;
             }
         }
         else if(event.target.id == "Portada_2"){ 
-            console.log(event.target.id )
+            // console.log(event.target.id )
             document.getElementById('ImgPortada').style.marginTop = "-100vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
@@ -94,7 +94,7 @@ var scrollPos = 0;
             }
         }
         else if(event.target.id == "Portada_3"){ 
-            console.log(event.target.id )
+            // console.log(event.target.id )
             document.getElementById('ImgPortada').style.marginTop = "-200vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             

@@ -20,6 +20,7 @@ document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){
 
 document.getElementById("Telefono_Aficom").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Aficom')}, false)
     
+// **************************************************************************************************
 //Por medio de delegación de eventos se detecta cada input y textarea debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
     // console.log("______Desde funcion anonima que aplica listerner a elementos tipo input")
@@ -30,6 +31,7 @@ document.getElementsByTagName("body")[0].addEventListener('keydown', function(e)
     } 
 }, false)
 
+// **************************************************************************************************
 //Por medio de delegación de eventos se detecta cada select debido a que son muchos elementos tipo select
 document.getElementsByTagName("body")[0].addEventListener('change', function(e){
     // console.log("______Desde funcion anonima que aplica listerner a elementos tipo select")
@@ -40,6 +42,7 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
     }
 }, false)
 
+// **************************************************************************************************
 //CUENTA LA CANTIDAD DE CARACTERES QUE YA TIENE UNA SECCION (TRAE DATOS DE BD)
 //Por medio de delegación de eventos se detecta la seccion clonada
 document.addEventListener("DOMContentLoaded", function(){
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }    
 }, false)
 
+// **************************************************************************************************
 //CONTAR CANTIDAD DE CARACTERES ESCRITOS EN UNA SECCION
 //Por medio de delegación de eventos se detecta la seccion clonada
 window.addEventListener('click', function(e){
@@ -84,6 +88,7 @@ window.addEventListener('click', function(e){
     }
 }, false)
 
+// **************************************************************************************************
 //VALIDA LA CANTIDAD DE CARACTERES ESCRITOS EN UNA SECCION
 //Por medio de delegación de eventos se detecta la seccion clonada
 window.addEventListener('click', function(e){
@@ -105,7 +110,7 @@ window.addEventListener('click', function(e){
 window.addEventListener('click', function(e){
     console.log("______Desde eliminar secciones______")
 
-    var ElementoSeleccionado = e.target.classList[2]
+    var ElementoSeleccionado = e.target.classList[3]
     // console.log(ElementoSeleccionado)
 
     //Se ubica el id del elemento seleccionado
@@ -122,29 +127,17 @@ window.addEventListener('click', function(e){
 
             //Si hay más de una sección la elimina, si solo hay una, borrar el contenido del input
             if(PadreSecciones.childElementCount > 4){
-                // Se obtiene el elemento padre donde se encuentra el boton donde se hizo click
-                current = e.target.parentElement
-                // console.log("Padre del boton X", current)
+                // Se obtiene el elemento que se quieren eliminar
+                let current_a = e.target.parentElement
+                let elementoEliminar = current_a.parentElement
+                console.log("ELemento a eliminar", elementoEliminar)
 
-                //Se obtiene el elemento hermano de current
-                let InputSeccion = current.previousElementSibling
-                // console.log("Input Seccion", InputSeccion)
-                
-                //Se busca el nodo padre que contiene el elemento "current" y el elemento "InputSeccion" 
-                let elementoPadre = current.parentElement
-                // console.log("Elemento Padre", elementoPadre)
-
-                //Se busca el elemento hermano de "elementoPadre" 
-                let ImagenSeccion = elementoPadre.nextElementSibling
-                // console.log("Imagen de la Seccion = ", ImagenSeccion)
-
-                //Se busca el elemento padre donde esta toda la seccion
-                let elementoPadreSeccion = ImagenSeccion.parentElement
-                
+                //Se busca el elemento padre donde esta el elemento que se desea borrar
+                let elementoPadre = elementoEliminar.parentElement
+                console.log("Padre del elemento a eliminar", elementoPadre)
+               
                 //Se elimina la sección
-                elementoPadre.removeChild(current)  
-                elementoPadre.removeChild(InputSeccion)   
-                elementoPadreSeccion.removeChild(ImagenSeccion)           
+                elementoPadre.removeChild(elementoEliminar)           
             }
             else{
                 document.getElementById("Seccion").value = ""
@@ -155,6 +148,7 @@ window.addEventListener('click', function(e){
         }  
     }  
 }, false)
+
 // **************************************************************************************************
 //ELIMINAR PAGOMOVIL
 document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(e){ 
@@ -296,7 +290,9 @@ document.getElementById("Label_1").addEventListener('click', function(){
         Div_clon.getElementsByClassName("input_12")[0].value = "" 
 
         //El placeholder del nuevo input 
-        Div_clon.getElementsByClassName("input_12")[0].placeholder="Indica una seccióne"
+        Div_clon.getElementsByClassName("input_12")[0].placeholder="Indica una sección"
+
+        // document.getElementsByClassName("input_12")[0].classList.add('contenedor_80A') 
         
         //Se da un ID al input contador
         Div_clon.getElementsByClassName("contador_2--seccion")[0].id = 'Contador_' + incrementoSeccion 

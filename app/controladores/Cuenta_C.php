@@ -888,7 +888,7 @@
             
             //Se INSERTAN las secciones de la tienda, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
             $this->ConsultaCuenta_M->insertarSeccionesTienda($this->ID_Tienda, $Secciones); 
-
+            
             //Se CONSULTA el ID_Seccion de las secciones que tiene la tienda
             $ID_Seccion = $this->ConsultaCuenta_M->consultarTodosID_Seccion($this->ID_Tienda);
             

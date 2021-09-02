@@ -708,7 +708,7 @@ body, html{
 	justify-content: space-between;
 	font-size: 1em;
 	position: absolute; /*esto se hace para poder dar z-index y ocultar el elemento*/
-	z-index: -1 !important;
+	z-index: -1 !important; /*!important; para ocultar el elemento*/
 	top: -15%;
 	left: 0%;
 	width: 100%;
@@ -723,7 +723,7 @@ body, html{
 .contenedor_80C{/*cuenta_editar*/	
 	display: flex; /*Organiza los elementos horizontalmente*/
 	margin-bottom: 5%;
-	width: 45% !important;
+	width: 100% !important;
 }
 .contenedor__80div{/*cuenta_editar*/
 	width:10% !important;
@@ -1982,8 +1982,8 @@ body, html{
 	text-overflow: ellipsis; */
 }
 .input_12{/*cuenta_editar*/
-	width: 95% !important;
-	display: inline-block;
+	width: 90% !important;
+	/* display: inline-block; */
 }
 .input_13{/*cuenta_editar - carrito - login*/
 	font-size: 1.2em;

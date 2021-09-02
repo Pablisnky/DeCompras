@@ -1,6 +1,7 @@
 <?php
     class Inicio_C extends Controlador{
-        public $DolarHoy; //Declarada public todos los metodos pueden consumirla
+
+        public $DolarHoy; //Declarada public todos los metodos de esta clase pueden consumir esta propiedad
 
         public function __construct(){
             $this->ConsultaInicio_M = $this->modelo("Inicio_M");
@@ -72,8 +73,7 @@
             }            
         }
         
-
-        // Llamado desde CerrarS_C.php
+        //Cargar el inicio menos cuando recien se entra a la aplicación
         public function NoVerificaLink(){            
             $Datos = $this->DolarHoy;
 

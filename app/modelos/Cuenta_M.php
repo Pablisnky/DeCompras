@@ -654,35 +654,20 @@
 //***************************************************************************************************
         //DELETE de Dependencia Transitiva entre tiendas y secciones
         public function eliminarDT_Tienda_Secciones($ID_Tienda, $SeccionNoEliminar){
-            // echo "ID_Seccion que no se eliminaran";
-            // // echo $ID_Tienda;
-            // echo "<pre>";
-            // print_r($SeccionNoEliminar);
-            // echo "</pre>";
-
             $Busqueda_3 = "";
             foreach($SeccionNoEliminar as $key) :
                 //Se da formato a la cadena para convertir el array en un string separado por comas y entre comillas
                 $Busqueda_3 .=  $key['ID_Seccion'] . ",";
             endforeach;
 
-            // echo $Busqueda_3 ;
-            // Esto quita el ultimo espacio y coma del string generado con lo cual
-            // el string queda 'id1','id2','id3'
-            // $Busqueda_3 = substr($Busqueda_3, 0, -1);
-
             $array = explode(",", $Busqueda_3);
-            // print_r($array);
 
             for($i = 0; $i<count($array); $i++){
                 $Cambio = settype($array[$i],"integer");
-                // echo $Cambio  ."<br>";
             }
 
             settype($array[0],"integer");
-            // echo gettype($Busqueda_3) ."<br>";
-            // echo "Para concluir " .  $Busqueda_3 ."<br>";
-               exit();
+
             $stmt = $this->dbh->prepare("DELETE FROM tiendas_secciones WHERE ID_Tienda = :ID_TIENDA AND ID_Seccion NOT IN ($Busqueda_3)");
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
             $stmt->execute();  
@@ -690,9 +675,6 @@
 
         //DELETE de las secciones de una tienda
         public function eliminarSeccionesTienda($ID_Tienda, $EliminarSeccion){
-            // echo "<pre>";
-            // print_r($EliminarSeccion);
-            // echo "</pre>";
             $Busqueda_2 = "";
             foreach($EliminarSeccion as $key) :
                 //Se da formato a la cadena para convertir el array en un string separado por comas y entre comillas                
@@ -701,7 +683,6 @@
             // Esto quita el ultimo espacio y coma del string generado con lo cual
             // el string queda 'id1','id2','id3'
             $Busqueda_2 = substr($Busqueda_2, 0, -2);
-            // echo "Para concluir " .  $Busqueda_2 ."<br>";
                 
             $stmt = $this->dbh->prepare("DELETE FROM secciones WHERE ID_Tienda = :ID_Tienda AND seccion NOT IN($Busqueda_2)");
             $stmt->bindValue(':ID_Tienda', $ID_Tienda, PDO::PARAM_INT);
@@ -1510,9 +1491,9 @@
         //INSERT de las secciones de una tienda
         public function insertarSeccionesTienda($ID_Tienda, $Seccion){ 
             //Debido a que $Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo    
-            foreach($Seccion as $key){
-                echo $key . "<br>";
-                echo $ID_Tienda;
+            foreach($Seccion as $key)   :
+                // echo $key . "<br>";
+                // echo $ID_Tienda . "<br>";
                 $stmt = $this->dbh->prepare(
                     "INSERT INTO secciones(ID_Tienda, seccion) 
                      VALUES(:ID_TIENDA, :SECCION)"
@@ -1522,9 +1503,9 @@
                 $stmt->bindParam(':ID_TIENDA', $ID_Tienda);
                 $stmt->bindParam(':SECCION', $key);
 
-                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada)
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
                 $stmt->execute();
-            }
+            endforeach;
         }
 
         public function insertarDT_TieSec($ID_Tienda, $ID_Seccion){
