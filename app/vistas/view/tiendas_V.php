@@ -44,12 +44,34 @@
 
                     <p class="p_3"><?php echo $Nombre?></p>
                     <p><?php echo $Slogan?></p>
+
+                    <article style="display: flex; margin-top: 2%;  justify-content: space-between;">
+            <!-- //Se busca si la tienda esta abierta o cerrada según su horario
+            foreach($Datos['tiendas_disponibilidad'] as $Row) :
+                if($Row['ID_Tienda'] == $ID_Tienda) : 
+                    $Disponibilidad = $Row['disponibilidad'];
+                    $ProximoApertura = $Row['proximoApertura'];
+                    $HoraApertura = $Row['horaApertura'];
+                endif;
+            endforeach; -->
+                        <!-- IMAGENES MINIATURAS DE SLIDER -->
+                        <?php                        
+                        foreach($Datos['tiendas_productosDestacados'] as $Row) : ?> 
+                            <div>
+                                <figure>
+                                    <img class="contOpciones__img contOpciones__img--tienda" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public//images/productos/<?php echo $Row['nombre_img'];?>"/> 
+                                </figure>                        
+                                <label class="input_8 input_8E" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>">Bs. <?php echo number_format($Row['precioBolivar'], 0, ",", ".");?></label>
+                            </div>  
+                                <?php
+                        endforeach; ?>
+                    </article>
                     
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
-                            <label class="boton boton--corto boton--altoDosLinneas" onclick="AtrasTarjeta(<?php echo $ID_Tienda;?>)">Acerca de<br class="br_2"> nosotros</label>
+                            <label class="boton boton--corto" onclick="AtrasTarjeta(<?php echo $ID_Tienda;?>)">Sobre nosotros</label>
 
-                            <label class="boton boton--corto boton--alto boton-excepcion" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2','<?php echo $Disponibilidad;?>','<?php echo $ProximoApertura;?>','<?php echo $HoraApertura;?>')">Entrar</label><!--El argumento no necesario es debido a que la función Tiendas() recibe cuatro argumentos, el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
+                            <label class="boton boton--corto" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2','<?php echo $Disponibilidad;?>','<?php echo $ProximoApertura;?>','<?php echo $HoraApertura;?>')">Entrar</label><!--El argumento no necesario es debido a que la función Tiendas() recibe cuatro argumentos, el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
                         </div>
                     </article>
                 </div>
@@ -118,6 +140,17 @@
                                     endforeach;
                                 }  ?>
                         </div>
+                    </div>
+
+                    <!-- FORMAS DE ENVIO Y ENTREGA-->
+                    <div class="contenedor_17">
+                        <h3 class="h3_4">Formas de envio y entrega</h3>    
+                        <div class="contenedor_161">
+                            <p class="p_19">Compra en línea, recoje en tienda</p><i class="fas fa-check"></i>
+                        </div>     
+                        <div class="contenedor_161">
+                            <p class="p_19">Despacho a domicilio</p><i class="fas fa-check"></i>
+                        </div> 
                     </div>
 
                     <!-- METODOS DE PAGO -->
@@ -230,9 +263,9 @@
                     <!-- BOTONES -->
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
-                            <label class="boton boton--corto boton--alto boton-excepcion" onclick="FrenteTarjeta(<?php echo $ID_Tienda;?>)">Salir</label>
+                            <label class="boton boton--corto" onclick="FrenteTarjeta(<?php echo $ID_Tienda;?>)">Salir</label>
                             
-                            <label class="boton boton--corto boton--alto boton-excepcion" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2','<?php echo $Disponibilidad;?>','<?php echo $ProximoApertura;?>','<?php echo $HoraApertura;?>')">Entrar</label><!--El argumento no necesario es debido a que la función Tiendas() recibe cuatro argumentos, el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
+                            <label class="boton boton--corto" onclick="tiendas('<?php echo $ID_Tienda;?>','<?php echo $Nombre;?>', 'NoNecesario_1', 'NoNecesario_2','<?php echo $Disponibilidad;?>','<?php echo $ProximoApertura;?>','<?php echo $HoraApertura;?>')">Entrar</label><!--El argumento no necesario es debido a que la función Tiendas() recibe cuatro argumentos, el controlador index en Vitrina_C el cual recibe cuatro argumentos --> 
                         </div>
                     </article>
                 </div>

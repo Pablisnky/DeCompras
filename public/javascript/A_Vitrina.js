@@ -109,10 +109,7 @@ function Llamar_UsuarioRegistrado(cedula){
 }                                                         
 function respuesta_UsuarioRegistrado(){
     if(peticion.readyState == 4){
-        if(peticion.status == 200){            
-            document.getElementById("Mostrar_Cedula").style.display = "none"
-            document.getElementById("ModalTipoUsuario").style.display = "none"
-            
+        if(peticion.status == 200){                        
             //Coloca el cursor en el top de la pagina
             // window.scroll(0, 0)
 
@@ -122,15 +119,27 @@ function respuesta_UsuarioRegistrado(){
             // Lavariable A se convierte en un Array
             A = A.split(','); 
 
-            document.getElementById('NombreUsuario').value =  A[0];  
-            document.getElementById('ApellidoUsuario').value =  A[1]; 
-            document.getElementById('CedulaUsuario').value =  A[2]; 
-            document.getElementById('TelefonoUsuario').value =  A[3]; 
-            document.getElementById('CorreoUsuario').value =  A[4];  
-            document.getElementById('Estado').value =  A[5];      
-            document.getElementById('Ciudad').value =  A[6];    
-            document.getElementById('DireccionUsuario').value =  A[7];  
-            document.getElementById('ID_Usuario').value =  A[8];  
+            // E caso de que el usuario no este registrado se recibira un string con "Usuario no registado"
+            if(A[0] == "Usuario no registrado"){
+                alert("Usuario no registrado")        
+                document.getElementById("Cedula_Usuario").value = "";
+                document.getElementById("Cedula_Usuario").focus();
+                return
+            }
+            else{
+                document.getElementById("Mostrar_Cedula").style.display = "none"
+                document.getElementById("ModalTipoUsuario").style.display = "none"
+
+                document.getElementById('NombreUsuario').value =  A[0];  
+                document.getElementById('ApellidoUsuario').value =  A[1]; 
+                document.getElementById('CedulaUsuario').value =  A[2]; 
+                document.getElementById('TelefonoUsuario').value =  A[3]; 
+                document.getElementById('CorreoUsuario').value =  A[4];  
+                document.getElementById('Estado').value =  A[5];      
+                document.getElementById('Ciudad').value =  A[6];    
+                document.getElementById('DireccionUsuario').value =  A[7];  
+                document.getElementById('ID_Usuario').value =  A[8];  
+            }
         } 
         else{
             alert('Hubo problemas con la petición en llamar_UsuarioRegistrado()')

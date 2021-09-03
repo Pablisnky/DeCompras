@@ -28,6 +28,29 @@
             }
         }
         
+        //SELECT de los nueve prodcctos que van en banner de tarjetas de cada tienda
+        public function consultarProductosDestacados($IDs_Tiendas){
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_img, precioBolivar
+                 FROM tiendas 
+                 INNER JOIN tiendas_categorias ON tiendas.ID_Tienda=tiendas_categorias.ID_Tienda
+                 INNER JOIN categorias ON tiendas_categorias.ID_Categoria=categorias.ID_Categoria
+                 INNER JOIN tiendas_secciones ON tiendas.ID_Tienda=tiendas_secciones.ID_Tienda
+                 INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
+                 INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion 
+                 INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto 
+                 INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto 
+                 INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto
+                 INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion
+                 WHERE secciones.ID_Tienda IN ($IDs_Tiendas)GROUP BY seccion ORDER BY  producto ASC LIMIT 3"
+            );      
+        
+            $stmt->bindParam(':ID_TIENDA', $IDs_Tiendas, PDO::PARAM_INT);
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
         //SELECT con las tiendas que aceptan pagos por transferencia
         public function consultarTransferencias($IDs_Tiendas){
             $stmt = $this->dbh->prepare("SELECT DISTINCT ID_Tienda FROM bancos WHERE ID_Tienda IN ($IDs_Tiendas)");    

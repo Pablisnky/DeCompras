@@ -195,7 +195,7 @@ body, html{
 	line-height: 20px;
 }
 .boton--corto{/*tiendas*/
-	width: 140px;
+	width: 150px;
 }
 .boton--centro{/*carrito*/
 	display: block;
@@ -427,15 +427,15 @@ body, html{
 	grid-column-end: 3;
 }
 .contenedor_15{/*tiendas*/
-	width: 90%;
-	height: 335px;
+	width: 100%;
+	height: 405px;
 	margin: auto;
 	border-radius: 15px;
 	text-align: center;
 	z-index: 2; /*verificar - se colocó para ver si todo el div se pone por arriba de los elementos hijos y no se ve el efecto click sobre estos en responsive; esto en realidad se soluciona con teoria de niveles de apilamiento, como se hizo con los div que contienen las categorias en inicio_V.php que al hacer click sobre los que no tienen tiendas no llevan a la categoria en cuestión*/
 }
 .contenedor_15:hover{/*tiendas*/
-	background-color: var(--OficialClaro);
+	/* background-color: var(--OficialClaro); */
 }
 .contenedor_16{/*opciones*/
 	width: 20%;
@@ -952,7 +952,7 @@ body, html{
 	vertical-align: middle;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
-	margin-bottom: 7%;
+	/* margin-bottom: 2%; */
 }
 .contenedor_121{/*cuenta_editar_prod*/
 	width: 45%;
@@ -1116,7 +1116,7 @@ body, html{
 }
 .contenedor_161{/*tiendas*/
 	display: flex;
-	width: 75%;
+	width: 90%;
 	margin: 2% auto;
 }
 .contenedor_162{/*tiendas*/
@@ -1126,7 +1126,7 @@ body, html{
 	padding-top: 2%; */
 }
 .contenedor_163{/*tiendas*/
-	margin: 2% auto;
+	/* margin: 2% auto; */
 	min-height: 130px;
 }
 .contenedor_166{/*cuenta_editar*/
@@ -1295,7 +1295,7 @@ body, html{
 	margin-bottom: 2%;
 }
 .contFlex--usuarios{/*carrito*/
-	background-color: var(--FondoDivModal); 
+	background-color: var(--FondoDivModal--claro); 
 	position: absolute; 
 	width: 100%; 
 	height: 100%; 
@@ -1364,6 +1364,13 @@ body, html{
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 190px;
 	max-height: 120px;
+	/* display: block;
+	margin-top: 0px; */
+}
+.contOpciones__img--tienda{/*tienda*/
+	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
+	width: 190px;
+	height: 90px;
 	/* display: block;
 	margin-top: 0px; */
 }
@@ -1670,10 +1677,11 @@ body, html{
 }
 .h3_4{/*tiendas*/
 	background-color: var(--OficialClaro);
-	padding: 1% 0%;
+	padding: 0.5% 0%;
 	font-weight: bold;
 	font-size: 1em;
 	margin: auto;
+	width: 100%;
 }
 .h3_9{/*cuenta_productos - buscador*/
 	width: 100%;
@@ -1970,6 +1978,9 @@ body, html{
 	-webkit-line-clamp: 2 !important;
 	-webkit-box-orient: vertical;
 	text-overflow: ellipsis;
+}
+.input_8E{/*tiendas*/
+	font-size: 0.9em;
 }
 .input_10{/*opciones*/
 	cursor: pointer;

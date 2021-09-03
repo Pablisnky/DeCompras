@@ -176,6 +176,7 @@
 }
 .contenedor_15{/*tiendas*/
 	width: 95%;
+	height: 390px;
 	margin-bottom: 15%;
 }
 .contenedor_16{/*opciones*/
@@ -223,7 +224,7 @@
 	padding: 5%;
 }
 .contFlex--usuarios{/*carrito*/
-	background-color: var(--FondoDivModal--claro);
+	/* background-color: var(--FondoDivModal--claro); */
 	padding: 5% 0%;
 	left: 0%; 
 	width: 100%; 
@@ -814,10 +815,14 @@
 .contOpciones__img{/*opciones*/
 	/*object-fit: contain !important; esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 100%;
+	
 	/* height: 95px; */
 	/* display: block;
 	margin: auto; */
 	/* margin: 4% auto; */
+}
+.contOpciones__img--tienda{/*tienda*/
+	width: 190px;
 }
 .contOpciones--pointer{/*cuenta_productos*/
 	cursor: default;
@@ -1047,6 +1052,9 @@
 }
 .input_8A{/*cuenta_productos - opciones*/
 	/* font-size: 0.85em; */
+}
+.input_8E{/*tiendas*/
+	font-size: 0.8em;
 }
 .input_9{/*registroCom - registroDes - carrito - login - cuenta_editar*/
 	margin: 0% auto 4% auto !important;

@@ -96,8 +96,11 @@
             $TiendasOtrosPagos = $this->ConsultaTienda_M->consultarPagoBolivar($this->IDs_Tiendas);
 
             //SELECT para verificar la cantidad de despachos que ha realizado una tienda
-            $TiendasDespachos = $this->ConsultaTienda_M->consultarDespachos($this->IDs_Tiendas);     
+            $TiendasDespachos = $this->ConsultaTienda_M->consultarDespachos($this->IDs_Tiendas);  
             
+            //SELECT que trae los nueve productos destacados por tienda
+            $TiendasProductosDestacados = $this->ConsultaTienda_M->consultarProductosDestacados($this->IDs_Tiendas);        
+
             //SELECT para verificar la cantidad de no conformidades de una tienda
             //$TiendasNoConformidades=$this->ConsultaTienda_M->consultarInconformidades($this->IDs_Tiendas;             
             
@@ -161,7 +164,8 @@
                 'tiendas_inconformidades' => $TiendasNoConformidades,//ID_Tienda, count(Inconformidad)
                 'tiendas_satisfaccion' => $PorcentajeSatisfaccion,
                 'tiendas_disputas' => $TiendasDisputas, //ID_Tienda, conunt(Disputas)
-                'tiendas_disponibilidad' => $DisponibilidaHoraria// ID_Tienda, disponibilidad, proximoApertura, horaApertura, Condicional
+                'tiendas_disponibilidad' => $DisponibilidaHoraria,// ID_Tienda, disponibilidad, proximoApertura, horaApertura, Condicional
+                'tiendas_productosDestacados' => $TiendasProductosDestacados//nombre_img, precioBolivar
             ];
             
             // echo '<pre>';
@@ -202,19 +206,19 @@
 
         // Invocado en header_Tienda
         public function direccionTienda($ID_Tienda){    
-            echo $ID_Tienda;
+            // echo $ID_Tienda;
            
-            $Datos = [
-                'id_tienda' => $ID_Tienda,
-            ];
+            // $Datos = [
+            //     'id_tienda' => $ID_Tienda,
+            // ];
             
-            // echo '<pre>';
-            // print_r($Datos);
-            // echo '</pre>';
-            // exit;
+            // // echo '<pre>';
+            // // print_r($Datos);
+            // // echo '</pre>';
+            // // exit;
 
-            $this->vista('header/header_Tienda', $Datos);
-            $this->vista('view/tienda/direccion_V',$Datos);
+            // $this->vista('header/header_Tienda', $Datos);
+            // $this->vista('view/tienda/direccion_V',$Datos);
         }
         
         public function salirTienda(){
