@@ -42,7 +42,7 @@
                  INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto 
                  INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto
                  INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion
-                 WHERE secciones.ID_Tienda IN ($IDs_Tiendas)GROUP BY seccion ORDER BY  producto ASC LIMIT 3"
+                 WHERE secciones.ID_Tienda IN ($IDs_Tiendas) AND productos.destacar = 1 ORDER BY producto"
             );      
         
             $stmt->bindParam(':ID_TIENDA', $IDs_Tiendas, PDO::PARAM_INT);

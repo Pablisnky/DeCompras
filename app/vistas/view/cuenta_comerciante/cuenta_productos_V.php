@@ -25,7 +25,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
             //$Datos viene de Cuenta_C/Productos
             foreach($Datos['productos'] as $arr) :
                 $Seccion = $arr["seccion"]; 
-                $Producto = $arr["producto"];
+                $Producto = $arr["producto"]; 
+                $Destacar = $arr["destacar"];
                 $Opcion = $arr["opcion"];
                 $PrecioBolivar = number_format($arr["precioBolivar"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
                 $PrecioDolar = $arr["precioDolar"];
@@ -34,7 +35,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $ID_Producto = $arr["ID_Producto"];
                 $ID_Opcion = $arr["ID_Opcion"];
                 $FotoPrincipal = $arr['nombre_img'];
-                $FotoSeccion = $arr['fotoSeccion'];
 
                 // echo "<pre>";
                 // print_r($Datos['productos']);
@@ -75,8 +75,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
                         </div>
                             <?php
-                            if($FotoSeccion == 1){   ?>
-                                <label class="contenedor_9--label borde_3">Imagen de sección</label>
+                            if($Destacar == 1){   ?>
+                                <label class="contenedor_9--label borde_3">Producto destacado</label>
                                 <?php
                             }   ?>
                     </div>

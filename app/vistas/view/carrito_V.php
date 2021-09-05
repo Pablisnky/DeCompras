@@ -144,16 +144,15 @@
 
                             <!-- CONFIRMACION DE USUARIO -->
                             <div class="contFlex--usuarios" id="ModalTipoUsuario">
-                                <!-- <article> -->
                                     <label class="boton boton--alto" id="No_Registrado" onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')">Usuario no registrado</label>
                                     <label class="boton boton--alto" id="Registrado" onclick="mostrar_cedula()">Usuario <br class="br_2"> registrado</label>
-                                <!-- </article> -->
                                 <div class="ocultar" id="Mostrar_Cedula">
+                                    <i class="far fa-times-circle spanCerrar spanCerrar--modal"  onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')"></i>
                                     <input class="input_13 borde_1" type="text" id="Cedula_Usuario" placeholder="Nº Cedula (Solo números)" onblur="soloNumeros(this.value, 'Cedula_Usuario')"/>
                                     <label class="boton boton--color boton--centro" >Enviar</label>
                                 </div> 
                             </div>      
-                        </div>  
+                        </div>   
                     </div>
                 </article>    
 

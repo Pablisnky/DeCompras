@@ -19,7 +19,7 @@
 
     <div class="contenedor_34--main" id="ImgPortada">
         <div class="borrar section_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
-            <div class="contenedor_37"  id="Contenedor_37">
+            <div class="contenedor_37" id="Contenedor_37">
                 <h1 class="h1_2" id="Titulo">PedidoRemoto</h1>
                 <h2 class="h2_4" id="SubTitulo">MarketPlace</h2>
             </div>                
@@ -63,7 +63,7 @@
                 <span class="font--white">Muchos de tus clientes estan verdaderamente ocupados</span>
                 <ul>
                     <li>
-                        <label class="font--white">Sube tu cátalogo de productos, <br>y vende 24 horas al día</label>
+                        <label class="font--white">Sube tu cátalogo de productos, <br>y vende las 24 horas</label>
                     </li>
                     <li>
                         <label class="font--white">Crea tu tienda en línea y abre un nuevo canal de ventas.</label>

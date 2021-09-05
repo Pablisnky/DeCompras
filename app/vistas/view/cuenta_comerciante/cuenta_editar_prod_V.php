@@ -16,6 +16,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Seccion = $arr['seccion'];
         $Disponible = $arr['disponible'];
         $Cantidad = $arr['cantidad'];
+        $Pro_Destacado = $arr['destacar'];
     endforeach;  
 
     //$Datos viene del metodo Cuenta_C/actualizarProducto
@@ -26,7 +27,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     foreach($Datos['imagenPrin'] as $arr) :
         $ID_ImagenPrincipal = $arr['ID_Imagen'];
         $ImagenPrincipal = $arr['nombre_img'];
-        $ImgSeccion = $arr['fotoSeccion'];
     endforeach;  
     
     foreach($Datos['reposicion'] as $arr) :
@@ -60,8 +60,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
                         </div>
                         <div class="contInputRadio contInputRadio--center">     
-                            <input type="checkbox" name="imgSeccion" id="ImgSeccion" <?php if($ImgSeccion == 1){echo 'checked';} ?>/>
-                            <label class="contInputRadio__label" for="ImgSeccion">Imagen de sección</label>
+                            <input type="checkbox" name="pro_destacado" id="Pro_Destacado" <?php  if($Pro_Destacado == 1){echo 'checked';} ?>/>
+                            <label class="contInputRadio__label" for="Pro_Destacado">Producto destacado</label>
                         </div>  
                     </div>
                 

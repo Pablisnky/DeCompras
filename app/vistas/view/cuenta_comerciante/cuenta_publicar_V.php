@@ -22,8 +22,12 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <div class="contenedor_129 borde_1 borde_2">
                         <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                         <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
-                        <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>
-                    </div>          
+                        <input class="ocultar" type="file" name="foto_Producto" id="imgInp"/>   
+                        <div class="contInputRadio contInputRadio--center">     
+                            <input type="checkbox" name="produc_destacado" id="Produc_Destacado"/>
+                            <label class="contInputRadio__label" for="Produc_Destacado">Producto destacado</label>
+                        </div> 
+                    </div>        
 
                     <div>
                         <!-- PRODUCTO -->
@@ -127,7 +131,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                         <div class="contenedor_49 contenedor_81">
                             <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda;?>">
-                            <input class="boton" type="Submit" value="Guardar" tabindex="5"/>
                         </div> 
             </fieldset>   
 

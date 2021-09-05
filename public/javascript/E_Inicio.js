@@ -65,10 +65,11 @@ var scrollPos = 0;
     //Cambia la imagen de portada y los colores de textos y cinta del menu principal
     document.getElementById('Botones_radios').addEventListener('click', function(event){ 
         if(event.target.id == "Portada_1"){ 
-            // console.log(event.target.id )
             document.getElementById('ImgPortada').style.marginTop = "-0vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
+            document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-2')
+            document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-3')
             document.getElementById("Aplicacion_PWA").classList.remove('cont_background') 
             document.getElementById("MenuResponsive").style.backgroundColor = "rgb(206, 203, 222)";
             document.getElementById("Titulo").classList.remove('font--white')
@@ -83,6 +84,10 @@ var scrollPos = 0;
             document.getElementById('ImgPortada').style.marginTop = "-100vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
+            if(window.screen.width>800){
+                document.getElementById("Contenedor_37").classList.add('cont_background--titulo-2')
+                document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-3')
+            }
             document.getElementById("Aplicacion_PWA").classList.add('cont_background') 
             document.getElementById("MenuResponsive").style.backgroundColor = "rgb(44, 45, 49)";
             document.getElementById("MenuResponsive").style.transitionDuration = "1s";
@@ -94,10 +99,13 @@ var scrollPos = 0;
             }
         }
         else if(event.target.id == "Portada_3"){ 
-            // console.log(event.target.id )
             document.getElementById('ImgPortada').style.marginTop = "-200vh";
             document.getElementById('ImgPortada').style.transition = ".5s ease" 
             
+            if(window.screen.width>800){
+                document.getElementById("Contenedor_37").classList.add('cont_background--titulo-3')
+                document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-2')                
+            }
             document.getElementById("Aplicacion_PWA").classList.remove('cont_background') 
             document.getElementById("MenuResponsive").style.backgroundColor = "rgb(225, 220, 216)";
             document.getElementById("MenuResponsive").style.transitionDuration = "1s";

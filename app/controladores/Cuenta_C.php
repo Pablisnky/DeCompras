@@ -123,7 +123,7 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, 
                 'secciones' => $Secciones, //ID_Seccion, seccion (necesario en header_AfiCom, arma el item productos del menu)
-                'productos' => $Productos, //ID_Seccion, ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, cantidad, disponible, seccion, nombre_img, fotoSeccion
+                'productos' => $Productos, //ID_Seccion, destacar, ID_Producto, producto, ID_Opcion, opcion, precioBolivar, prcioDolar, cantidad, disponible, seccion, nombre_img
                 // 'notificacion' => $Notificacion,
                 'Seccion' => $Seccion, //necesario para identificar la sección en la banda naranja
                 'Apunta' => $Puntero,
@@ -366,11 +366,11 @@
             $Datos = [
                 'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, telefono_Tien, slogan_Tien, fotografia_Tien
                 'secciones' => $Secciones, //ID_Seccion, seccion  - Usado en header_AfiCom.php
-                'especificaciones' => $Especificaciones, //ID_Producto, ID_Opcion, producto, opcion, precioBolivar, precioDolar, cantidad, disponible, seccion, ID_Seccion, ID_SP
+                'especificaciones' => $Especificaciones, //ID_Producto, destacar, ID_Opcion, producto, opcion, precioBolivar, precioDolar, cantidad, disponible, seccion, ID_Seccion, ID_SP
                 'puntero' => $Opcion,
                 'slogan' => $Slogan,
                 'caracteristicas' => $Caracteristicas, //ID_Caracteristica, caracteristica
-                'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img, fotoSeccion
+                'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img
                 'imagenesVarias' => $Imagenes, //ID_Imagen, nombre_img
                 'dolarHoy' => $this->PrecioDolar->Dolar,
                 'reposicion'=> $Reposicion
@@ -928,6 +928,7 @@
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                         'Cantidad' => $_POST['cantidad'],
+                        'Producto_Destacado' => empty($_POST['produc_destacado']) ? 0 : 1,
                         'Disponible' => empty($_POST['disponible']) ? 0 : $_POST['disponible'],
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
@@ -1077,6 +1078,7 @@
                         $this->ConsultaCuenta_M->insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio);
                     }
                 }
+                exit;
                 $this->Productos('Todos');
             }
             else{
@@ -1084,7 +1086,7 @@
             } 
         }
 
-        //Invocado desde cuenta_editar_prod_V.php actualiza la información de un producto)
+        //Invocado desde cuenta_editar_prod_V.php actualiza la información de un producto
         public function recibeAtualizarProducto(){
             //Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
             if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBolivar']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0) && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])){
@@ -1105,7 +1107,7 @@
                     'ID_Opcion' => filter_input(INPUT_POST, 'id_opcion', FILTER_SANITIZE_STRING),
                     'Puntero' => filter_input(INPUT_POST, 'puntero', FILTER_SANITIZE_STRING),
                     'ID_Imagen' => filter_input(INPUT_POST, 'id_imagen', FILTER_SANITIZE_STRING),
-                    'ImgSeccion' => !empty($_POST['imgSeccion']),
+                    'producto_destacado' => empty($_POST['pro_destacado']) ? 0 : 1,
                     'FechaDotacion' => $_POST['fecha_dotacion'],
                     'Incremento' => $_POST['incremento'],
                     'FechaReposicion' => $_POST['fecha_reposicion']
@@ -1295,27 +1297,37 @@
                 $this->ConsultaCuenta_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
                 
                 //Se ACTUALIZA la dependenciatransitiva entre secciones e imagenes
-                // $this->ConsultaCuenta_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);
+                // $this->ConsultaCuenta_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);   actualizarImagenSeccionDeseleccionar
             }
 
-            //Para establecer como imagen de sección
-            // echo $RecibeProducto['ImgSeccion'];
-            if($RecibeProducto['ImgSeccion'] == '1'){
-                //Se consulta que imagen esta establecida para la sección
-                $ID_ImagenSeccion = $this->ConsultaCuenta_M->consultarImagenSeccion($RecibeProducto);
+            //Para establecer como producto destacado  
+            // echo $RecibeProducto['producto_destacado'];
+            if($RecibeProducto['producto_destacado'] == '1'){
+                //Se consultan cuantos productos estan seleccionadas como destacadas (solo pueden ser nueve productos)
+                $productos_destacados = $this->ConsultaCuenta_M->consultarPoductosDestacados($RecibeProducto);
+            
                 // echo "<pre>";
-                // print_r($ID_ImagenSeccion);
+                // print_r($productos_destacados);
                 // echo "</pre>";
                 // exit();
                 
-                //Se desseleciona la imagen que esta establecida actualmente
-                $this->ConsultaCuenta_M->actualizarImagenSeccionDeseleccionar($ID_ImagenSeccion);
-                //Se selecciona la imagen que se desea establecer
-                $this->ConsultaCuenta_M->actualizarImagenSeccionSeleccionar($RecibeProducto);
+                foreach ($productos_destacados as $value) :
+                    $value;
+                endforeach;
+                
+                if($value > 9){
+                    //Se deseleciona la imagen que esta establecida actualmente
+                    $this->ConsultaCuenta_M->actualizarProductoDestacadoOn($RecibeProducto);
+                }
+                else{
+                    echo 'Ha alcanzado máximo de productos a destacar, recuerde son solo nueve productos' . '<br>';
+                    echo '<a href="javascript:history.back()">Regresar</a>';
+                    exit();
+                }
             }
-            else if(empty($RecibeProducto['ImgSeccion'])){
-                //Se deseleciona la imagen              
-                $this->ConsultaCuenta_M->actualizarImagenSeccionDeseleccionar($RecibeProducto);
+            else if(empty($RecibeProducto['producto_destacado'])){
+                //Se deseleciona de los productos destacados            
+                $this->ConsultaCuenta_M->actualizarProductoDestacadoOff($RecibeProducto);
             }
             
             //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección
@@ -1450,6 +1462,7 @@
             $this->vista('modal/modal_establecerImageSeccion_V', $Datos);
         }
 
+        //Invocado desde .php actualiza la imagen de un producto
         public function recibeImagenSeccion(){
             $nombre_imgSeccion = $_FILES['img_Seccion']['name'] != '' ? $_FILES['img_Seccion']['name'] : 'imagen.png';
             $tipo_imgSeccion = $_FILES['img_Seccion']['type'] != '' ? $_FILES['img_Seccion']['type'] : 'image/png';

@@ -9,16 +9,12 @@ class Core{
     protected $parametros = [];
 
     public function __construct(){
-        // echo 'Entra al constructor' . '<br>';
         // print_r($this->geturl());
         // echo '<br>';
         $url = $this->geturl();
-        // echo '<pre>';
-        // print_r($url);
-        // echo '</pre>';
         
         // echo "************************************************************************"  . "<br>";
-
+        //CARGA CONTROLADOR
         //Busca en la carpeta controladores si el controlador que hay en la url existe
         //Si existe se setea como controlador; sino, por defecto el controlador es "inicio_C"
         if(file_exists("../app/controladores/" . ucwords($url[0]) . ".php")){

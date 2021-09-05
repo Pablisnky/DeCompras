@@ -299,8 +299,18 @@ body, html{
 	padding: 0.5%;
 	border-radius: 5px;
 }
+.cont_background--titulo-2{/*inicio*/
+	background-color: rgba(32, 26, 26, 0.3);
+	padding: 0.5%;
+	border-radius: 15px;
+}
+.cont_background--titulo-3{/*inicio*/
+	background-color: rgba(221, 214, 214, 0.4);
+	padding: 0.5%;
+	border-radius: 15px;
+}
 .contenedor_1{/*header*/
-	padding: 3%;
+	padding: 1%;
 	width: 33%;
 }
 .contenedor_2{/*tiendas*/
@@ -1220,23 +1230,39 @@ body, html{
 	font-weight: lighter;
 	font-size: 1.2em;
 }
-.contMuestraBuscador{/*buscador*/
+.cont_miniaturaSlider{
+	margin-top: 2%; 
+	width: 100%; 
+	overflow: scroll;
+	scroll-behavior: smooth;
+	overflow-y:hidden;
+	overflow-x: hidden;
+}
+.cont_miniaturaSlider__2{
+	display: flex; 
+	overflow: hidden;
+	width: 300%; 
+}
+.cont_miniaturaSlider__3{
+	width: 11%;
+}
+.contMuestra_Buscador{
 	border-radius: 15px;
 	margin: auto;
 	margin: 1%;
 	width: 20%;
 }
-.contMuestraBuscador:hover{/*buscador*/
+.contMuestraBuscador:hover{
 	cursor: pointer !important;
 	background-color: var(--OficialClaro);
 }
-.contMuestraBuscador__label{/*buscador*/
+.contMuestraBuscador__label{
 	display: block;
 	text-align: center;
 	cursor: pointer;
 	font-weight: bold;
 }
-.contMuestraBuscador__textarea{/*buscador*/
+.contMuestraBuscador__textarea{
 	width: 100%;
 	max-height: 40px;
 	resize: none;
@@ -1244,7 +1270,7 @@ body, html{
 	overflow: hidden;
 	padding-left: 3%;
 }
-.contMuestraBuscador:hover > .contMuestraBuscador__textarea{/*buscador*/
+.contMuestraBuscador:hover > .contMuestraBuscador__textarea{
 	background-color: var(--OficialClaro);
 }
 .contFlex{/*carrito*/
@@ -1447,34 +1473,42 @@ body, html{
 	padding: 1%;
 	border-radius: 15px;
 }
-.sectionModal__div__p{/*modal_sinSecciones* - modal_fueraHorario*/
+.sectionModal__div__p{
 	font-size: 1.3em;
 	text-align: center;
 	margin-bottom: 2%;
 }
-.sectionModal__div--corto{/*modal_recuperarCorreo*/
+.sectionModal__div--corto{
 	width: 40%;
 }
-.spanCerrar{/*inicio - modal_fueraHorario - categoria - cuentaeditar_prod*/
+.spanCerrar{
 	color: white;
 	font-size: 2em;
 	margin: -1% 4% 0% 95%;
 	cursor: pointer;
 }
-.spanCerrar--black{/*cuentaeditar_prod*/
+.spanCerrar--black{
 	position: relative;
 	color: black;
 	top: 0%;
 	left: 40% !important;
 	cursor: pointer;
 }
-.contenedor_60__p1{/*carrito*/
+.spanCerrar--modal{
+	color: white;
+	font-size: 2em;
+	cursor: pointer;
+	position: absolute;
+	margin: -1% 4% 0% 60%;
+	top: 8%;
+}
+.contenedor_60__p1{
 	text-align: justify;
 }
-.contOculto{/*carrito*/
+.contOculto{
 	display: none;
 }
-.figure_2{/*quienesSomos*/
+.figure_2{
 	margin: auto;
 	width: 100%;
 }
@@ -1689,7 +1723,7 @@ body, html{
 	text-align: center;
 	font-weight: normal ;
 }
-.h3_10{/*buscador*/
+.h3_10{
 	font-size: 1em;
 }
 .header{/*header - header_AfiCom - header_inicio*/

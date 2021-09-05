@@ -41,6 +41,7 @@
         }
         
         public function insertarPedido($RecibeDatosUsuario, $CodigoTransferencia, $RecibeDatosPedido, $Ale_NroOrden, $Delivery){
+
             $stmt = $this->dbh->prepare(
                 "INSERT INTO pedido(ID_Tienda, ID_Usuario, numeroorden, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, fecha, hora)
                 VALUES(:ID_Tienda, :ID_Usuario, :NumeroOrden, :MontoDelivery, :MontoTienda, :MontoTotal, :Despacho, :FormaPago, :CodigoPago, CURDATE(), CURTIME())"
