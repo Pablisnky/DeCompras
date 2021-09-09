@@ -1077,11 +1077,9 @@
         //UPDATE para activar un producto destacado
         public function actualizarProductoDestacadoOn($RecibeProducto){ 
             $stmt = $this->dbh->prepare("UPDATE productos SET destacar = :DESTACAR WHERE ID_Producto = :ID_PRODUCTO");
-           
-            $ID_Producto = $RecibeProducto[0]['ID_Producto'];
 
             //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_PRODUCTO', $ID_Producto);
+            $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
             $stmt->bindValue(':DESTACAR', 1); 
 
             // Se ejecuta la actualización de los datos en la tabla
@@ -1098,7 +1096,7 @@
             $stmt = $this->dbh->prepare("UPDATE productos SET destacar = :DESTACAR WHERE ID_Producto = :ID_PRODUCTO");
            
             //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto[0]['ID_Producto']);
+            $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
             $stmt->bindValue(':DESTACAR', 0); 
 
             // Se ejecuta la actualización de los datos en la tabla
@@ -1417,12 +1415,17 @@
                 "INSERT INTO  fechareposicion(ID_Producto, incremento, fecha_dotacion, fecha_reposicion) 
                 VALUES (:ID_PRODUCTO, :INCREMENTO, :FECHA_DOTACION, :FECHA_REPOSICION)"
             );
+
+            //Se introduce la fecha en la BD en formato año - mes - dia
+            $FechaDotacion = date('Y-m-d', strtotime($RecibeProducto['Fecha_dotacion']));
+            $FechaReposicion =  date('Y-m-d', strtotime($RecibeProducto['Fecha_reposicion']));
+            $Incremento = $RecibeProducto['Incremento'];
+
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
             $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
-            $stmt->bindParam(':INCREMENTO', $RecibeProducto['Incremento']);
-            //Se introduce la fecha en la BD en formato año - mes - dia
-            $stmt->bindParam(':FECHA_DOTACION', date('Y-m-d', strtotime($RecibeProducto['Fecha_dotacion'])));
-            $stmt->bindParam(':FECHA_REPOSICION', date('Y-m-d', strtotime($RecibeProducto['Fecha_reposicion'])));
+            $stmt->bindParam(':INCREMENTO', $Incremento);
+            $stmt->bindParam(':FECHA_DOTACION',  $FechaDotacion);
+            $stmt->bindParam(':FECHA_REPOSICION', $FechaReposicion);
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){

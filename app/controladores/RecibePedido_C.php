@@ -76,7 +76,7 @@
                     //Se genera un número Ale_NroOrden que sera el numero de orden del pedido
                     $Ale_NroOrden = mt_rand(1000000,999999999);
                     
-                    //El pedido como es un string en formato json se recibe sin filtrar para que el metodo jsodecode lo pueda reconocer y convertir en un array.
+                    //El pedido como es un string en formato json se recibe sin filtrar desde vitrina.js PedidoEnCarrito() para que el metodo jsodecode lo pueda reconocer y convertir en un array.
                     $RecibeDirecto = $_POST['pedido'];
 
                     $Resultado = json_decode($RecibeDirecto, true); 
@@ -98,6 +98,9 @@
                             
                             //Se INSERTAN los detalles del pedido en la BD
                             $this->ConsultaRecibePedido_M->insertarDetallePedido($RecibeDatosPedido['ID_Tienda'], $Ale_NroOrden, $Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total);
+                            
+                            // Se ACTUALIZA el inventario de los productos pedidos
+                            // $this->ConsultaRecibePedido_M->UpdateInventario($opcon);
                         endforeach;
                     }
                     else{
@@ -226,7 +229,7 @@
                 $this->correo('reciboCompra_mail', $DatosCorreo); 
 
                 //Carga la plantilla de correo orden de compra dirigida al cliente y al marketplace
-                // $this->correo('ordenCompra_mail', $DatosCorreo); 
+                $this->correo('ordenCompra_mail', $DatosCorreo); 
 
                 // ****************************************
                 $this->vista('header/header');

@@ -17,7 +17,7 @@
                             endforeach; ?>
                         </div>  <?php
                     endforeach;    ?> 
-                <h2 class="h2_14 borde_3">Proximamente nuestra oferta de ciudades será ampliada.</h2>
+                <h2 class="h2_14 h2_14-font">Proximamente nuestra oferta de ciudades será ampliada.</h2>
             </div>
         </section>
     <?php

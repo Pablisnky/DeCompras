@@ -1301,7 +1301,6 @@
             }
 
             //Para establecer como producto destacado  
-            // echo $RecibeProducto['producto_destacado'];
             if($RecibeProducto['producto_destacado'] == '1'){
                 //Se consultan cuantos productos estan seleccionadas como destacadas (solo pueden ser nueve productos)
                 $productos_destacados = $this->ConsultaCuenta_M->consultarPoductosDestacados($RecibeProducto);
@@ -1311,12 +1310,12 @@
                 // echo "</pre>";
                 // exit();
                 
-                foreach ($productos_destacados as $value) :
-                    $value;
+                foreach($productos_destacados as $value) :
+                    settype($value, 'integer');
                 endforeach;
                 
-                if($value > 9){
-                    //Se deseleciona la imagen que esta establecida actualmente
+                if($value < 9){
+                    //Se seleciona la imagen que esta establecida actualmente
                     $this->ConsultaCuenta_M->actualizarProductoDestacadoOn($RecibeProducto);
                 }
                 else{

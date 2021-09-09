@@ -1,23 +1,46 @@
 //Al cargar el DOM comienza el tiempo para cambiar imagenes de slider
-document.addEventListener('DOMContentLoaded', function(){setInterval(sliderTarjeta, 3000)}, false)
-
-// document.addEventListener('DOMContentLoaded', function(){
-//     //Se obtienen la cantidad de elementos del slider
-//     let Elementos = document.getElementsByClassName("cont_miniaturaSlider__3")
-//     let CantidadElementos = Elementos.length
-//     console.log(CantidadElementos)
+document.addEventListener('DOMContentLoaded', function(){
+    //Se obtienen la cantidad de elementos del slider
+    let Elementos = document.getElementsByClassName("cont_miniaturaSlider__3")
+    let CantidadElementos = Elementos.length
     
-// }, false)
+    setInterval(function(){sliderTarjeta(CantidadElementos)}, 3000)
+    
+}, false)
 
-function sliderTarjeta(){
+
+let  contador = 0;
+function sliderTarjeta(CantidadElementos){
     let Contenedor_slider = document.getElementById("Cont_miniaturaSlider")
     Contenedor_slider.scrollLeft += 100
+    contador++;
 
+    console.log(contador)
+    console.log(CantidadElementos)
+
+    SliderTope = CantidadElementos 
+    // console.log(SliderTope)
     // if(document.body.scrollWidth - window.innerWidth === window.scrollX) {
     //     // hacer fetch
     //     console.log('estoy en el final del scroll')
     // }
+//     var contador=0;
+// function hola(){
+// alert('hola');
+// if(contador>10){clearInterval(asd);alert('FIN!');}
+// }
+ 
+ 
+// var asd=setInterval(hola, 100);
 }
+     
+
+
+
+
+
+
+
    
 //************************************************************************************************
 //Muestra la pagina de la tienda solicitada, invocada desde tiendas_V.php

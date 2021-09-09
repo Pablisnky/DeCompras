@@ -194,7 +194,7 @@ body, html{
 	height: 45px;
 	line-height: 20px;
 }
-.boton--corto{/*tiendas*/
+.boton--corto{
 	width: 150px;
 }
 .boton--centro{/*carrito*/
@@ -233,7 +233,7 @@ body, html{
 	border-radius: 5px;
 	border-style: solid;
 }
-.borde_1--color{/*tiendas*/
+.borde_1--color{
 	border-color: var(--OficialOscuro);
 }
 .borde_3{/*afiliacion*/
@@ -313,13 +313,13 @@ body, html{
 	padding: 1%;
 	width: 33%;
 }
-.contenedor_2{/*tiendas*/
+.contenedor_2{
 	width: 100%;
 	height: 300px;
 	margin: 2%;
 	margin-bottom: 0px;
 }
-.contenedor_2:hover{/*tiendas*/
+.contenedor_2:hover{
 	background-color: rgba(165, 42, 42, 0.3);
 	cursor: pointer;
 	border-radius: 15px;
@@ -436,7 +436,7 @@ body, html{
 	grid-column-start: 1;
 	grid-column-end: 3;
 }
-.contenedor_15{/*tiendas*/
+.contenedor_15{
 	width: 100%;
 	height: 405px;
 	margin: auto;
@@ -444,7 +444,7 @@ body, html{
 	text-align: center;
 	z-index: 2; /*verificar - se colocó para ver si todo el div se pone por arriba de los elementos hijos y no se ve el efecto click sobre estos en responsive; esto en realidad se soluciona con teoria de niveles de apilamiento, como se hizo con los div que contienen las categorias en inicio_V.php que al hacer click sobre los que no tienen tiendas no llevan a la categoria en cuestión*/
 }
-.contenedor_15:hover{/*tiendas*/
+.contenedor_15:hover{
 	/* background-color: var(--OficialClaro); */
 }
 .contenedor_16{/*opciones*/
@@ -454,13 +454,13 @@ body, html{
 	left: 75%;
 	text-align: right;
 }
-.contenedor_17{/*tiendas*/
+.contenedor_17{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	margin: 0% auto ;
 }
-.contenedor_17>div:first-child{/*tiendas*/
+.contenedor_17>div:first-child{
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
 .contenedor_18{/*vitrina*/
@@ -954,7 +954,7 @@ body, html{
 	width: 100%;
 	height: 100%;
 }
-.contenedor_120{/*tiendas*/
+.contenedor_120{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1000,12 +1000,12 @@ body, html{
 	margin-top: 5%;
 	text-align: center;
 }
-.contenedor_131{/*tiendas*/
+.contenedor_131{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	align-items: center;/*para centrar verticalmente el div hijo junto con display:flex*/
 	height: 30px;
 }
-.contenedor_132{/*tiendas*/
+.contenedor_132{
 	display: flex; /*Organiza los elementos horizontalmente*/
 }
 .contenedor_133{/*headerProducto*/
@@ -1124,18 +1124,18 @@ body, html{
 .contenedor_160 > div:last-child{/*inicio*/
 	/*flex: 0 1 0% !important;rompe la ocupacion de toda la primera fila en la distribucion flex*/
 }
-.contenedor_161{/*tiendas*/
+.contenedor_161{
 	display: flex;
 	width: 90%;
 	margin: 2% auto;
 }
-.contenedor_162{/*tiendas*/
+.contenedor_162{
 	/* border-top: 1px solid var(--BordeClaro); */
 	/* background-color: red;
 	height: 55px;
 	padding-top: 2%; */
 }
-.contenedor_163{/*tiendas*/
+.contenedor_163{
 	/* margin: 2% auto; */
 	min-height: 130px;
 }
@@ -1279,7 +1279,7 @@ body, html{
 	justify-content: space-between;
 	margin-bottom: 2%;
 }
-.contFlex>p:first-child{/*tiendas*/
+.contFlex>p:first-child{
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
 .contFlex50{/*carrito*/
@@ -1680,16 +1680,19 @@ body, html{
 	padding: 0.5%;
 	margin-top: -1% !important;
 }
-.h2_14{/*categoria*/
+.h2_14{
 	margin: auto;
 	margin-top: 4%;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	padding: 1% 3%;
 	font-weight: lighter;
 	text-align: center;
-}
-.contenedor_162 .h2_14{/*tiendas*/
 	background-color: var(--BandaAlerta);
+}
+.h2_14-font{
+	font-size: 1em;
+}
+.contenedor_162 .h2_14{
 	font-size: 0.9em !important;
 	font-weight: normal;
 	width: 95% !important;
@@ -1699,7 +1702,7 @@ body, html{
 	margin: auto;
 	text-align: center;
 }
-.cont_direccion{/*tiendas*/
+.cont_direccion{
 	border-top:  1px solid black;
 	padding-top: 2%;
 }
@@ -1709,7 +1712,7 @@ body, html{
 	text-align: center;
 	padding: 1% 0% 3% 0%;
 }
-.h3_4{/*tiendas*/
+.h3_4{
 	background-color: var(--OficialClaro);
 	padding: 0.5% 0%;
 	font-weight: bold;
@@ -1834,7 +1837,7 @@ body, html{
 .icono_4{/*cuenta_editar*/
 	/* font-size: 20px; */
 }
-.icono_5{/*tiendas*/
+.icono_5{
 	font-size: 9em;
 	padding-top: 5%;
 }
@@ -1890,7 +1893,7 @@ body, html{
 	display: block;
 	margin: auto;
 }
-.imagen_7{/*tiendas*/
+.imagen_7{
 	width: 100%;
 	height: 150px;
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
@@ -2013,7 +2016,7 @@ body, html{
 	-webkit-box-orient: vertical;
 	text-overflow: ellipsis;
 }
-.input_8E{/*tiendas*/
+.input_8E{
 	font-size: 0.9em;
 }
 .input_10{/*opciones*/
@@ -2292,7 +2295,7 @@ body, html{
 	font-size: 1.2em;
 	text-align: center;
 }
-.p_2{/*tiendas*/
+.p_2{
 	text-align: left;
 	padding-left: 2%;
 	padding-right: 1%;
@@ -2378,11 +2381,11 @@ body, html{
 	line-height: 40px;
 	margin-top: 100%;
 }
-.p_18{/*tiendas*/
+.p_18{
 	text-align: center;
 	font-size: 0.9em !important;
 }
-.p_19{/*tiendas*/
+.p_19{
 	text-align: left;
 	display: inline-block !important;
 	font-size: 0.9em !important;
@@ -2620,7 +2623,7 @@ body, html{
 .section_9{/*opciones - cuenta_productos*/
 	background-color: white;
 }
-.section_11{/*tiendas*/
+.section_11{
 	min-height: 100%;
 }
 .section_13{/*cuenta_editar*/
@@ -2657,7 +2660,7 @@ body, html{
 	letter-spacing: 1px;
 	white-space: nowrap; /*mantiene el texto en una sola linea*/
 }
-.span_1{/*tiendas*/
+.span_1{
 	font-size: 0.8em;
 }
 .span_2{/*vitrina*/
@@ -2734,7 +2737,7 @@ body, html{
 	display: block;
 	margin-left: 95%;
 }
-.span_17{/*tiendas*/
+.span_17{
 	display: inline-block;
 	margin-left: 3%;
 }
@@ -2974,17 +2977,17 @@ ul .menuContenedor_3{/*header_AfiCom*/
 
 
 /* *********************************************************************************** */
-.Componente_boton{/*tiendas*/
+.Componente_boton{
 	position: absolute;
 	width: 100%;
 	bottom: 3pt;
 }
-.contenedor_15--tarjeta{/*tiendas*/
+.contenedor_15--tarjeta{
     position: relative;
     transform-style: preserve-3d; 
     transition: .5s ease;
 }
-.adelante, .atras{/*tiendas*/
+.adelante, .atras{
     position: absolute;
     top: 0%;
     left: 2.5%;

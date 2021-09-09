@@ -1,7 +1,7 @@
 <section class="section_5">
     <div class="contenedor_42">
         <h1 class="h1_1">Planes de afiliación para comerciantes.</h1>
-        <h2 class="h2_11 borde_3">1 mes gratis <br class="br_2"> al registrar tu tienda</h2>
+        <h2 class="h2_11 h2_14">1 mes gratis <br class="br_2"> al registrar tu tienda</h2>
         <div class='contenedor_84 borde_1 borde_2'>
             <div class="">
                 <P class="p_3 p_5 p_5--complemento">Básico</P>
