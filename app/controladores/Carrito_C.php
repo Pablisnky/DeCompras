@@ -22,6 +22,15 @@
             //SELECT para buscar información de pago por PagoMovil de la tienda
             $PagoMovil = $this->ConsultaCarrito_M->consultarPagoMovil($ID_Tienda); 
             
+            //SELECT para buscar información de pago por Reserve de la tienda
+            $Reserve = $this->ConsultaCarrito_M->consultarReserve($ID_Tienda); 
+            
+            //SELECT para buscar información de pago por Paypal de la tienda
+            $Paypal = $this->ConsultaCarrito_M->consultarPaypal($ID_Tienda); 
+            
+            //SELECT para buscar información de pago por Zelle de la tienda
+            $Zelle = $this->ConsultaCarrito_M->consultarZelle($ID_Tienda); 
+            
             //SELECT para buscar información de otros metodos de pago de la tienda
             $OtrosPagos = $this->ConsultaCarrito_M->consultarOtrosPagos($ID_Tienda); 
             
@@ -40,7 +49,10 @@
 
             $Datos = [
                 'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
-                'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil
+                'Pagomovil' => $PagoMovil, //cedula_pagomovil, banco_pagomovil, telefono_pagomovil               
+                'Reserve' => $Reserve,//usuarioReserve
+                'Paypal' => $Paypal,//correo_paypal
+                'Zelle' => $Zelle,//correo_zelle
                 'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
                 'ID_Tienda' => $ID_Tienda,
                 'TelefonoTienda' => $ContactoTienda, //telefono_AfiCom

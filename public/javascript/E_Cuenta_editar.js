@@ -2,6 +2,8 @@ document.getElementById("Label_4").addEventListener('click', clonarCuentaBancari
 
 document.getElementById("Label_7").addEventListener('click', clonarCuentaPagoMovil, false)
 
+document.getElementById("Label_8").addEventListener('click', clonarCuentaReserve, false)
+
 document.getElementById("Label_5").addEventListener('click', clonarSeccion, false)
 
 document.getElementById('Span_1').addEventListener('click', mostrarSecciones, false)
@@ -46,19 +48,18 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
 //CUENTA LA CANTIDAD DE CARACTERES QUE YA TIENE UNA SECCION (TRAE DATOS DE BD)
 //Por medio de delegación de eventos se detecta la seccion clonada
 document.addEventListener("DOMContentLoaded", function(){
-    // console.log("______Desde funcion anonima cuenta caracteres de secciones que vienen de BD")
 
     let Secciones = document.getElementsByClassName("seccionesJS")
     let Contadores = document.getElementsByClassName("contador_JS")
-    // console.log("Input con secciones", Secciones.length)
-    // console.log("Input con contadores", Contadores.length)
+    console.log("Input con secciones", Secciones.length)
+    console.log("Input con contadores", Contadores.length)
 
     for(var i = 0; i < Secciones.length; i++){
         // console.log("Seccion cargada= ", Secciones[i].value)
         let Seccion_ID = Secciones[i].id
 
         // console.log("contador cargado= ", Contadores[i].value)
-        let Contador_ID =  Contadores[i].id
+        let Contador_ID = Contadores[i].id
 
         CaracteresAlcanzados(Seccion_ID, Contador_ID) 
     }    
@@ -539,6 +540,53 @@ document.getElementById("Label_1").addEventListener('click', function(){
         
         //Se especifica el div padre y la posición donde se insertará el nuevo nodo
         ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
+    }
+
+//************************************************************************************************  
+    //Clona todo el div que contiene los inputs que capturan los datos de Reserve
+    function clonarCuentaReserve(){
+        // console.log("______Desde clonarCuentaPagoMovil()______")
+        
+        // Calcula cuantas cuentas de PagoMovil existen tomando uno de sus requisitos (Cedula)
+        // let CuentasPagoMovil = document.getElementsByClassName("cedulaJS")
+        // // console.log("Cuentas PagoMovil existentes", CuentasPagoMovil.length)
+
+        // //Se verifica que no existan cuentas PagoMovil con campos sin llenar
+        // for(var i = 0; i < CuentasPagoMovil.length; i++){
+        //     if(document.getElementsByClassName("cedulaJS")[i].value == "" || document.getElementsByClassName("BancoJS")[i].value == "" || document.getElementsByClassName("TelefonoJS")[i].value == ""){
+        //         alert("Aún no completa cuenta PagoMovil")
+        //         return
+        //     }
+        // }
+
+        // //Contenedor a clonar 
+        // let clonar = document.getElementById("Contenedor_68")
+
+        // // Se crea el clon
+        // let Div_clon = clonar.cloneNode(true)
+        // // console.log(Div_clon)
+
+        // //El value de los elementos que estan dentro del nuevo clon debe estar vacio
+        // Div_clon.getElementsByClassName("cedulaJS")[0].value = ""
+        // Div_clon.getElementsByClassName("BancoJS")[0].value = ""
+        // Div_clon.getElementsByClassName("TelefonoJS")[0].value = ""
+
+        // //Se añade un id a los elementos que estan dentro del nuevo elemento clonado, el valor del id debe ser concecutivo a los que ya existan
+        // CantidadID_Existente = CuentasPagoMovil.length
+        // NuevoID = CantidadID_Existente + 1
+
+        // Div_clon.getElementsByClassName("cedulaJS")[0].id = "CedulaPagoMovil_" + NuevoID
+        // Div_clon.getElementsByClassName("BancoJS")[0].id = "BancoPagoMovil_" + NuevoID
+        // Div_clon.getElementsByClassName("TelefonoJS")[0].id = "TelefonoPagoMovil_" + NuevoID
+
+        // //Se especifica el div padre, donde se insertará el nuevo nodo     
+        // ElementoPadre = document.getElementById("Mostrar_PagoMovil")
+        
+        // //Se especificael el elemento que sera la referencia para insertar el nuevo nodo
+        // let Ref_Ubicacion= document.getElementById("Label_7")
+        
+        // //Se especifica el div padre y la posición donde se insertará el nuevo nodo
+        // ElementoPadre.insertBefore(Div_clon, Ref_Ubicacion)
     }
 
 //************************************************************************************************ 

@@ -21,7 +21,65 @@
     
         //SELECT de los datos para realizar PagoMovil
         public function consultarPagoMovil($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT cedula_pagomovil, banco_pagomovil, telefono_pagomovil FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
+            $stmt = $this->dbh->prepare(
+                "SELECT cedula_pagomovil, banco_pagomovil, telefono_pagomovil 
+                 FROM pagomovil 
+                 WHERE ID_Tienda = :ID_TIENDA"
+            );
+
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
+    
+        //SELECT de los datos para realizar pago via Reserve
+        public function consultarReserve($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "SELECT usuarioReserve
+                 FROM pago_reserve 
+                 WHERE ID_Tienda = :ID_TIENDA"
+            );
+
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
+    
+        //SELECT de los datos para realizar pago via Paypal
+        public function consultarPaypal($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_paypal
+                 FROM pago_paypal 
+                 WHERE ID_Tienda = :ID_TIENDA"
+            );
+
+            $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
+    
+        //SELECT de los datos para realizar pago via Zelle
+        public function consultarZelle($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_zelle
+                 FROM pago_zelle 
+                 WHERE ID_Tienda = :ID_TIENDA"
+            );
 
             $stmt->bindParam(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 

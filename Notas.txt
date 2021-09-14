@@ -1,11 +1,12 @@
-monica@gmail.com     mmmm   Arte y moda
+pcabeza7@gmail.com      bbdd    la bodega digital
+sebastian@gmail.com     ssss   La Tienda de Sebastian
+
 pablo@gmail.com      ppcc    Las Empanadas de Pablo
-sebastian@gmail.com     ssss
+monica@gmail.com     mmmm   Arte y moda
 albertcabeza76@gmail.com       cccc    Otaku Claud Gat
 vivas@gmail.com         vvvv
 lisbella@gmail.com      llll
-jean@gmail.com          jjjj    Chica sabrosa
-pcabeza7@gmail.com      bbdd    la bodega digital
+jean@gmail.com          jjjj    Chicha sabrosa
 
 En local y en remoto
     Cambiar en Configurar.php; 

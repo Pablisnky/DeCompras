@@ -1,12 +1,18 @@
-<!-- Archivo mostrado via ajax en categoria_V.php -->
-
 <!-- //Se obtiene la parroquia donde se realizara la busqueda -->
 <?php 
-    //Se crean sesiones exigidas en  Tiendas_C/tiendasEnCatalogo()         
+    //Se crean sesiones exigidas en Tiendas_C/tiendasEnCatalogo() y VItrina_C        
     $_SESSION['Parroquia'] = $Datos['cantidadTiendasCategoria'][0]['parroquia_Tien'];
 ?>
 
-<div class="contenedor_4">
+<div class="contenedor_90">
+    <div class="contenedor_159" id="Span_3">
+        <!-- Icono flecha atras -->
+        <i class="fas fa-arrow-left" style="display: inline;"></i>
+        <a class="font--negro" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ciudades</a>
+    </div>        
+    <h1 class="h1_1 h1_3 h1_4"><?php echo $_SESSION['Parroquia']?></h1>
+</div>
+<div class="contenedor_4" id="Cont_Categorias">
     <div class='contenedor_6 borde_1' id="Artesania">
         <h2 class='h2_1'>ARTE Y LITERATURA</h2>
         <i class="fas fa-pen-nib icono_2"></i>                 
@@ -863,3 +869,6 @@
         </div>
     </div>
 </div>
+
+<script src="<?php echo RUTA_URL.'/public/javascript/E_Categorias.js?v=' . rand();?>"></script>
+<script src="<?php echo RUTA_URL.'/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>

@@ -15,24 +15,13 @@
             // echo $OpcionSelec . '<br>';
             // exit;
             
-            $Opciones = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $ID_Seccion);   
-            // echo "<pre>";
-            // print_r($Consulta);
-            // echo "</pre>";
-            // exit;
+            $Opciones = $this->ConsultaOpciones_M->consultarOpciones($ID_Tienda, $ID_Seccion); 
 
             //CONSULTA las caracteristicas de los productos 
             $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicasProducto($ID_Tienda);
-            // echo "<pre>";
-            // print_r($Caracteristicas);
-            // echo "</pre>";
 
             //CONSULTA la fotografia principal de cada producto 
             $Fotografia = $this->ConsultaOpciones_M->consultarFotografiaPrincipal($ID_Tienda, $ID_Seccion);
-            // echo "<pre>";
-            // print_r($Fotografia);
-            // echo "</pre>";
-            // exit;
 
             $Datos=[
                 'Opciones' => $Opciones, //nombreTienda, slogan, seccion, ID_Producto, ID_Opcion, producto, opcion, especificacion, precioBolivar, precioDolar, cantidad, disponible

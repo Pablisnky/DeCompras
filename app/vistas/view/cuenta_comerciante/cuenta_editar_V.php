@@ -26,11 +26,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Foto_Tien = $row['fotografia_Tien'];
     }
 
-    //$Datos viene de Cuenta_C/Editar
-    foreach($Datos['link_Tien'] as $row){
+    foreach($Datos['link_Tien'] as $row)    :
         $Link_Acceso = $row['link_acceso'];
-    }       
-    ?>
+    endforeach;      ?>
     
     <!-- CDN iconos de font-awesome-->
     <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
@@ -191,15 +189,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div class="contenedor_80 cont_seccion--div-1" id="Contenedor_80">
                             <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección"/>
                             <div class="cont_seccion--icono_Contador">
-                            <i class="far fa-times-circle span_10 span_14_js span_10--seccion"></i>
-                                <input class="contador_2 contador_2--seccion" type="text" value="25"/>
+                                <i class="far fa-times-circle span_10 span_14_js span_10--seccion"></i>
+                                <input class="contador_2 contador_2--seccion contador_JS" type="text" value="25"/>
                             </div>
                         </div>
-                        <!-- <div class="contenedor_80B borde_1 borde_2">
-                            <label for="Img_Seccion"><i class="fas fa-pencil-alt icono_4 cont_seccion--icono_editar borde_1"></i></label>
-                            <img class="contenedor_119__img" id="ImagenSeccion" alt="Fotografia de la sección" src="../public/images/secciones/imagen.png"/>
-                            <input class="ocultar" type="file" name="imagen_Seccion" id="Img_Seccion"/>
-                        </div> -->
                         <?php
                     }   
                     else{  //Entra en el ELSE cuando hay secciones creadas  
@@ -254,8 +247,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             <!-- NUMERO CUENTA -->
                             <input class="input_13 input_13A cuentaTransJS borde_1" type="text" name="numeroCuenta[]" id="NroCuenta_Banco" placeholder="Número de cuenta" autocomplete="off"/>
 
-                            <!-- RIF BANCO -->
-                            <input class="input_13 input_13A rifTransJS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="RIF_Banco" autocomplete="off"/>
+                            <!-- CEDULA TITULAR -->
+                            <input class="input_13 input_13A rifTransJS borde_1" type="text" name="rif[]" id="RIF_Banco" placeholder="Cedula titular / RIF" autocomplete="off"/>
                         </div> 
                         <?php
                     }
@@ -344,7 +337,126 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     }   ?>        
                     <label class="label_4 label_24" id="Label_7">Añadir teléfono </br> PagoMóvil</label>
                 </div>
-            </fieldset>   
+            </fieldset>             
+            
+            <!-- CUENTAS RESERVE -->
+            <a id="marcador_08" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2">                    
+                <legend class="legend_1">Cuenta Reserve</legend>
+                <label>Información para recibir pagos por Reserve</label>   
+                <div id="Mostrar_PagoMovil">
+                    <!-- Entra en el IF cuando no hay cuentas de reserve creadas -->
+                    <?php
+                    if($Datos['datosReserve'] == Array ()){ ?>
+                        <div class="contenedor_67 borde_1" id="Contenedor_68">
+                            <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+
+                            <!-- USUARIO RESERVE -->
+                            <input class="input_13 input_13A borde_1 BancoJS" type="text" name="usuario_reserve[]" id="UsuarioReserve" placeholder="Usuario Reserve" autocomplete="off"/>
+
+                            <!-- TELEFONO RESERVE -->
+                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefono_reserve[]" id="TelefonoReserve" placeholder="Número telefónico (solo números)" autocomplete="off"/>
+                        </div>
+                        <?php
+                    }
+                    else{
+                        $Iterador = 1;
+                        foreach($Datos['datosReserve'] as $row) :
+                            $UsuarioReserve =  $row['usuarioReserve'];
+                            $TelefonoReserve = $row['telefonoReserve']; 
+                            ?>
+                            <div class="contenedor_67 borde_1" id="Contenedor_68">
+                                <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+
+                                <!-- USUARIO RESERVE -->
+                                <label>Usuario</label>
+                                <input class="input_13 input_13A borde_1 BancoJS" type="text" name="usuario_reserve[]" id="<?php echo 'UsuarioReserve_' . $Iterador?>" value="<?php echo $UsuarioReserve?>" autocomplete="off"/>
+                                
+                                <!-- TELEFONO RESERVE -->
+                                <label>Nº teléfono (Solo números)</label>
+                                <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefono_reserve[]" id="<?php echo 'TelefonoReserve_' . $Iterador?>" value="<?php echo $TelefonoReserve?>" autocomplete="off"/>
+                            </div>
+                            <?php
+                            $Iterador++;
+                        endforeach;
+                    }   ?>        
+                    <label class="label_4 label_24" id="Label_8">Añadir cuenta </br> Reserve</label>
+                </div>
+            </fieldset>         
+            
+            <!-- CUENTAS PAYPAL -->
+            <a id="marcador_09" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2">                    
+                <legend class="legend_1">Cuenta Paypal</legend>
+                <label>Información para recibir pagos por Paypal</label>   
+                <div id="Mostrar_PagoMovil">
+                    <!-- Entra en el IF cuando no hay cuentas de Paypal creadas -->
+                    <?php
+                    if($Datos['datosPaypal'] == Array ()){ ?>
+                        <div class="contenedor_67 borde_1" id="Contenedor_68">
+                            <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+
+                            <!-- CORREO PAYPAL -->
+                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="correro_paypal[]" id="CorreoPaypal" placeholder="Correo electrónico" autocomplete="off"/>
+                        </div>
+                        <?php
+                    }
+                    else{   //Entra en el else cuando hay cuentas de Paypal creadas 
+                        $Iterador = 1;
+                        foreach($Datos['datosPaypal'] as $row) :
+                            $CorreoPaypal = $row['correo_paypal']; 
+                            ?>
+                            <div class="contenedor_67 borde_1" id="Contenedor_68">
+                                <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+
+                                <!-- CORREO PAYPAL -->
+                                <label>Correo Paypal</label>
+                                <input class="input_13 input_13A borde_1 BancoJS" type="text" name="correro_paypal[]" id="<?php echo 'CorreoPaypal_' . $Iterador?>" value="<?php echo $CorreoPaypal?>" autocomplete="off"/>
+                            </div>
+                            <?php
+                            $Iterador++;
+                        endforeach;
+                    }   ?>        
+                    <label class="label_4 label_24" id="Label_8">Añadir cuenta </br> Paypal</label>
+                </div>
+            </fieldset>        
+            
+            <!-- CUENTAS ZELLE -->
+            <a id="marcador_10" class="ancla_2"></a>
+            <fieldset class="fieldset_1 fieldset_2">                    
+                <legend class="legend_1">Cuenta Zelle</legend>
+                <label>Información para recibir pagos por Zelle</label>   
+                <div id="Mostrar_PagoMovil">
+                    <!-- Entra en el IF cuando no hay cuentas de Paypal creadas -->
+                    <?php
+                    if($Datos['datosZelle'] == Array ()){ ?>
+                        <div class="contenedor_67 borde_1" id="Contenedor_68">
+                            <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+
+                            <!-- CORREO PAYPAL -->
+                            <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="correro_zelle[]" id="CorreoZelle" placeholder="Correo electrónico" autocomplete="off"/>
+                        </div>
+                        <?php
+                    }
+                    else{   //Entra en el else cuando hay cuentas de Paypal creadas 
+                        $Iterador = 1;
+                        foreach($Datos['datosZelle'] as $row) :
+                            $CorreoZelle = $row['correo_zelle']; 
+                            ?>
+                            <div class="contenedor_67 borde_1" id="Contenedor_68">
+                                <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+
+                                <!-- CORREO ZELLE -->
+                                <label>Correo Zelle</label>
+                                <input class="input_13 input_13A borde_1 BancoJS" type="text" name="correro_zelle[]" id="<?php echo 'CorreoZelle_' . $Iterador?>" value="<?php echo $CorreoZelle?>" autocomplete="off"/>
+                            </div>
+                            <?php
+                            $Iterador++;
+                        endforeach;
+                    }   ?>        
+                    <label class="label_4 label_24" id="Label_8">Añadir cuenta </br> Zelle</label>
+                </div>
+            </fieldset>
             
             <!-- OTROS MEDIOS DE PAGO -->
             <a id="OtrosPago" class="ancla_2"></a>
@@ -406,6 +518,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas transferencia</a>
                     <a class="marcador" href="#marcador_07">Cuentas PagoMóvil</a>
+                    <a class="marcador" href="#marcador_08">Cuentas Reserve</a>
+                    <a class="marcador" href="#marcador_09">Cuentas Paypal</a>
+                    <a class="marcador" href="#marcador_10">Cuentas Zelle</a>
                     <a class="marcador" href="#OtrosPago">Otros medios de pago</a>
                     <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>"/>

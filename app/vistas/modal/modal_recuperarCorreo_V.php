@@ -6,21 +6,22 @@ if($Datos == ''){ ?>
     <section class="sectionModal">        
         <a href="<?php echo RUTA_URL . '/Login_C';?>"><i class="fas fa-times spanCerrar"></i></a>
         <br>
-        <div class="sectionModal__div sectionModal__div--corto">
+         <div class="sectionModal__div sectionModal__div--corto">
+            <p class="sectionModal__div__p">Indiquenos el correo afiliado, <br> enviaremos un código de recuperación</p>
+            <br>
             <form action="<?php echo RUTA_URL . '/Login_C/RecuperarClave';?>" method="POST" autocomplete="off">
-                <p class="sectionModal__div__p">Indiquenos el correo afiliado, <br> enviaremos un código de recuperación</p>
-                <br>
                 <input class="input_13 input_13--centro borde_1"  type="text" name="correo" id="Input_13_JS">
                 <div class="contBoton">
                     <input class="boton" type="submit" value="Enviar">
                 </div>
             </form>
         </div>   
-    </section>       <?php
+    </section>      
+    <?php
 }
 else if($Datos['bandera'] == 'aleatorioinsertado'){    ?> 
     <section class="sectionModal">        
-        <a href="<?php echo RUTA_URL . '/Login_C';?>"><span class="icon-cancel-circle sectionModal__span"></span></a>
+        <a href="<?php echo RUTA_URL . '/Login_C';?>"><i class="fas fa-times spanCerrar"></i></a>
         <br> 
         <div class="sectionModal__div sectionModal__div--corto">
             <p class='sectionModal__div__p'>Se ha enviado un código al correo suministrado.</p> 
@@ -33,11 +34,12 @@ else if($Datos['bandera'] == 'aleatorioinsertado'){    ?>
                 </div>
             </form>  
         </div>         
-    </section>  <?php
+    </section> 
+     <?php
 }
 else if($Datos['bandera'] == 'nuevoIntento'){    ?> 
     <section class="sectionModal">        
-        <a href="<?php echo RUTA_URL . '/Login_C';?>"><span class="icon-cancel-circle sectionModal__span"></span></a>
+        <a href="<?php echo RUTA_URL . '/Login_C';?>"><i class="fas fa-times spanCerrar"></i></a>
         <br> 
         <div class="sectionModal__div sectionModal__div--corto">
             <p class='sectionModal__div__p'>El código insertado es invalido.</p> 
@@ -54,9 +56,9 @@ else if($Datos['bandera'] == 'nuevoIntento'){    ?>
 }
 else if($Datos['bandera'] == 'verificado'){   ?>  
     <section class="sectionModal">         
-        <a href="<?php echo RUTA_URL . '/Login_C';?>"><span class="icon-cancel-circle sectionModal__span"></span></a>
+        <a href="<?php echo RUTA_URL . '/Login_C';?>"><i class="fas fa-times spanCerrar"></i></a>
         <br> 
-        <div class="sectionModal__div sectionModal__div--corto" onclick= "ocultarMenu()">
+        <div class="sectionModal__div sectionModal__div--corto">
             <p class="sectionModal__div__p">Inserte nueva clave</p>
             <br>
             <form action="<?php echo RUTA_URL . '/Login_C/recibeCambioClave';?>" method="POST">

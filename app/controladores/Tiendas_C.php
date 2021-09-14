@@ -65,7 +65,7 @@
         public function tiendasEnCatalogo($Categoria){ 
             $this->index($Categoria);
 
-            //Sesion creada en CantidadTiendas_Ajax_V.php      
+            //Sesion creada en Categorias_V.php      
             $Ciudad = $_SESSION['Parroquia'];
 
             //Se CONSULTAN las tiendas que estan afiliadas en una ciudad segun la categoria solicitada y que pueden ser publicadas en el catalogo de tiendas            
@@ -91,6 +91,15 @@
 
             //SELECT para verificar tiendas que acepten PagoMovil como metodo de pago
             $TiendasPagoMovil = $this->ConsultaTienda_M->consultarPagoMovil($this->IDs_Tiendas);
+
+            //SELECT para verificar tiendas que acepten Reserve como metodo de pago
+            $TiendasReserve = $this->ConsultaTienda_M->consultarReserve($this->IDs_Tiendas);
+
+            //SELECT para verificar tiendas que acepten Paypal como metodo de pago
+            $TiendasPaypal = $this->ConsultaTienda_M->consultarPaypal($this->IDs_Tiendas);
+
+            //SELECT para verificar tiendas que acepten Zelle como metodo de pago
+            $TiendasZelle = $this->ConsultaTienda_M->consultarZelle($this->IDs_Tiendas);
 
             //SELECT para verificar tiendas que acepten otros medios de pago
             $TiendasOtrosPagos = $this->ConsultaTienda_M->consultarPagoBolivar($this->IDs_Tiendas);
@@ -159,6 +168,9 @@
                 'tiendas_categoria' => $this->TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien,  fotografia_Tien, estado_Tien, parroquia_Tien, slogan_Tien, categoria, telefono_AfiCom,
                 'tiendas_transferencias' => $TiendasTransferencias,
                 'tiendas_pagomovil' => $TiendasPagoMovil,
+                'tiendas_reserve' => $TiendasReserve,
+                'tiendas_paypal' => $TiendasPaypal,
+                'tiendas_zelle' => $TiendasZelle,
                 'tiendasOtrosPagos' => $TiendasOtrosPagos, //ID_Tienda, efectivoBolivar, efectivoDolar, acordado
                 'tiendas_despachos' => $TiendasDespachos, //ID_Tienda, count(ID_tienda)
                 'tiendas_inconformidades' => $TiendasNoConformidades,//ID_Tienda, count(Inconformidad)
@@ -221,8 +233,8 @@
             // $this->vista('view/tienda/direccion_V',$Datos);
         }
         
-        public function salirTienda(){
-        	header('location:' . RUTA_URL. '/Inicio_C/NoVerificaLink');
-        }
+        // public function salirTienda(){
+        // 	header('location:' . RUTA_URL. '/Inicio_C/NoVerificaLink');
+        // }
     }
 ?>

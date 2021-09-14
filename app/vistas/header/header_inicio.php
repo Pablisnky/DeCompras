@@ -48,7 +48,7 @@
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>" rel="noopener noreferrer"><i class="fas fa-address-card icono_1 icono_6"></i>Afiliación</a></li>
-					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/categorias';?>"><i class="fas fa-shopping-basket icono_1 icono_6"></i>Ver Tiendas</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Ciudades_C';?>"><i class="fas fa-shopping-basket icono_1 icono_6"></i>Ver Tiendas</a></li>
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>"><i class="fas fa-user-check icono_1 icono_6"></i>Inicio sesión</a></li>
 				</ul>
 			</nav>

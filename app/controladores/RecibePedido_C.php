@@ -16,7 +16,6 @@
             if($verifica_2 == 1906){// Anteriormente en carrito_V.php se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga esta página.
                 unset($_SESSION['verifica_2']);//se borra la sesión verifica.        
             
-                // Se reciben todos los campos del formulario, desde carrito_V.php 
                 if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['nombreUsuario']) && !empty($_POST['apellidoUsuario']) && !empty($_POST['cedulaUsuario']) && !empty($_POST['telefonoUsuario']) && !empty($_POST['direccionUsuario']) && !empty($_POST['pedido'])){
                     //si son enviados por POST y sino estan vacios, entra aqui
                     $RecibeDatosUsuario = [
@@ -38,7 +37,7 @@
                     // print_r($RecibeDatosUsuario);
                     // echo '</pre>';
                     // exit();
-
+                    
                     $RecibeDatosPedido = [
                         // DATOS DEL PEDIDO
                         'ID_Tienda' => filter_input(INPUT_POST, 'id_tienda', FILTER_SANITIZE_NUMBER_INT),
@@ -76,7 +75,7 @@
                     //Se genera un número Ale_NroOrden que sera el numero de orden del pedido
                     $Ale_NroOrden = mt_rand(1000000,999999999);
                     
-                    //El pedido como es un string en formato json se recibe sin filtrar desde vitrina.js PedidoEnCarrito() para que el metodo jsodecode lo pueda reconocer y convertir en un array.
+                    //El pedido como es un string en formato json se recibe sin filtrar o sanear desde vitrina.js PedidoEnCarrito() para que el metodo jsodecode lo pueda reconocer y convertir en un array.
                     $RecibeDirecto = $_POST['pedido'];
 
                     $Resultado = json_decode($RecibeDirecto, true); 
@@ -95,12 +94,23 @@
                             $Opcion = $Value['Opcion'];
                             $Precio = $Value['Precio'];
                             $Total = $Value['Total'];
+                            $ID_Opcion = $Value['ID_Opcion'];
                             
                             //Se INSERTAN los detalles del pedido en la BD
                             $this->ConsultaRecibePedido_M->insertarDetallePedido($RecibeDatosPedido['ID_Tienda'], $Ale_NroOrden, $Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total);
                             
                             // Se ACTUALIZA el inventario de los productos pedidos
-                            // $this->ConsultaRecibePedido_M->UpdateInventario($opcon);
+                            //Se consulta la cantidad de existencia del producto
+                            $Existencia = $this->ConsultaRecibePedido_M->consultarExistencia($ID_Opcion);
+                        
+                            foreach($Existencia as $Key) :
+                                $Key['cantidad'];
+                            endforeach;
+
+                            //Se resta lo que el usuario pidio y el resultado se introduce en BD
+                            $Inventario = $Key['cantidad'] - $Cantidad;
+                            
+                            $this->ConsultaRecibePedido_M->UpdateInventario($ID_Opcion, $Inventario);
                         endforeach;
                     }
                     else{
@@ -151,14 +161,6 @@
                 else{
                     $archivonombre = $_FILES['imagenTransferencia']['name'];
                     $Ruta_Temporal = $_FILES['imagenTransferencia']['tmp_name'];
-                    $tipo = $_FILES['imagenTransferencia']['type'];
-                    $tamanio = $_FILES['imagenTransferencia']['size'];
-
-                    // echo $archivonombre .'<br>';
-                    // echo $Ruta_Temporal .'<br>';
-                    // echo $tipo .'<br>';
-                    // echo $tamanio .'<br>';
-                    // exit;
 
                     //Usar en remoto
                     $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
@@ -169,23 +171,11 @@
                     //Se INSERTA el capture del pago por medio de un UPDATE debido a que ya existe un registro con el pedido en curso
                     $this->ConsultaRecibePedido_M->UpdateCapturePago($Ale_NroOrden, $archivonombre);
                 }
-                // else{
-                //     echo 'No se recibio capture de Transferencia';
-                //     exit;
-                // }
                 
-                //Se recibe y se inserta el capture de PagoMovil
-                if($_FILES['imagenPagoMovil']['name'] != ''){
+                //RECIBE CAPTURE PAGOMOVIL
+                if($_FILES['imagenPagoMovil']['name'] != '' && $RecibeDatosPedido['FormaPago'] == 'PagoMovil'){
                     $archivonombre = $_FILES['imagenPagoMovil']['name'];
                     $Ruta_Temporal = $_FILES['imagenPagoMovil']['tmp_name'];
-                    $tipo = $_FILES['imagenPagoMovil']['type'];
-                    $tamanio = $_FILES['imagenPagoMovil']['size'];
-
-                    // echo $archivonombre .'<br>';
-                    // echo $Ruta_Temporal .'<br>';
-                    // echo $tipo .'<br>';
-                    // echo $tamanio .'<br>';
-                    // exit;
 
                     //Usar en remoto
                     $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
@@ -201,8 +191,65 @@
                 //     exit;
                 // }
 
-                //DATOS ENVIADOS POR CORREOS
+                //RECIBE CAPTURE RESERVE
+                if($_FILES['imagenPagoReserve']['name'] != '' && $RecibeDatosPedido['FormaPago'] == 'Reserve'){
+                    $archivonombre = $_FILES['imagenPagoReserve']['name'];
+                    $Ruta_Temporal = $_FILES['imagenPagoReserve']['tmp_name'];
+
+                    //Usar en remoto
+                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
+
+                    //Subimos el fichero al servidor
+                    move_uploaded_file($Ruta_Temporal, $directorio.$archivonombre);
+
+                    //Se INSERTA el capture del pago por medio de un UPDATE debido a que ya existe un registro con el pedido en curso
+                    $this->ConsultaRecibePedido_M->UpdateCapturePago($Ale_NroOrden, $archivonombre);
+                }
+                // else{
+                //     echo 'No se recibio capture de pago en Reserve';
+                //     exit;
+                // }
+
+                //RECIBE CAPTURE PAYPAL
+                if($_FILES['imagenPagoPaypal']['name'] != '' && $RecibeDatosPedido['FormaPago'] == 'Paypal'){
+                    $archivonombre = $_FILES['imagenPagoPaypal']['name'];
+                    $Ruta_Temporal = $_FILES['imagenPagoPaypal']['tmp_name'];
+
+                    //Usar en remoto
+                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
+
+                    //Subimos el fichero al servidor
+                    move_uploaded_file($Ruta_Temporal, $directorio.$archivonombre);
+
+                    //Se INSERTA el capture del pago por medio de un UPDATE debido a que ya existe un registro con el pedido en curso
+                    $this->ConsultaRecibePedido_M->UpdateCapturePago($Ale_NroOrden, $archivonombre);
+                }
+                // else{
+                //     echo 'No se recibio capture de pago en Paypal';
+                //     exit;
+                // }
+
+                //RECIBE CAPTURE ZELLE
+                if($_FILES['imagenPagoZelle']['name'] != '' && $RecibeDatosPedido['FormaPago'] == 'Zelle'){
+                    $archivonombre = $_FILES['imagenPagoZelle']['name'];
+                    $Ruta_Temporal = $_FILES['imagenPagoZelle']['tmp_name'];
+
+                    //Usar en remoto
+                    $directorio = $_SERVER['DOCUMENT_ROOT'] . '/public/images/capture/';
+
+                    //Subimos el fichero al servidor
+                    move_uploaded_file($Ruta_Temporal, $directorio.$archivonombre);
+
+                    //Se INSERTA el capture del pago por medio de un UPDATE debido a que ya existe un registro con el pedido en curso
+                    $this->ConsultaRecibePedido_M->UpdateCapturePago($Ale_NroOrden, $archivonombre);
+                }
+                // else{
+                //     echo 'No se recibio capture de pago en Zelle';
+                //     exit;
+                // }
+
                 // ****************************************
+                //DATOS ENVIADOS POR CORREOS
                 //Se CONSULTA el pedido recien ingresado a la BD
                 $Pedido = $this->ConsultaRecibePedido_M->consultarPedido($Ale_NroOrden);
                 

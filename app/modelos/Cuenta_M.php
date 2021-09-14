@@ -449,6 +449,60 @@
                 return false;
             }
         }
+        
+        //SELECT de las cuentas de Reserve de una tienda especifica
+        public function consultarCuentasReserve($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "SELECT usuarioReserve, telefonoReserve 
+                FROM pago_reserve 
+                WHERE ID_Tienda = :ID_TIENDA"
+            );
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //SELECT de las cuentas de Paypal de una tienda especifica
+        public function consultarCuentasPaypal($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_paypal 
+                FROM pago_paypal 
+                WHERE ID_Tienda = :ID_TIENDA"
+            );
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //SELECT de las cuentas de Paypal de una tienda especifica
+        public function consultarCuentasZelle($ID_Tienda){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_zelle 
+                FROM pago_zelle 
+                WHERE ID_Tienda = :ID_TIENDA"
+            );
+
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
                 
         //SELECT de las cuentas de pagomovil de una tienda especifica
         public function consultarOtrosMediosPago($ID_Tienda){
@@ -846,6 +900,27 @@
         //DELETE de cuentas bancarias 
         public function eliminarPagoMovil($ID_Tienda){
             $stmt = $this->dbh->prepare("DELETE FROM pagomovil WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+                
+        //DELETE de cuentas Reserve 
+        public function eliminarReserve($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM pago_reserve WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+                
+        //DELETE de cuentas Paypal 
+        public function eliminarPaypal($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM pago_paypal WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+                
+        //DELETE de cuentas Zelle 
+        public function eliminarZelle($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM pago_zelle WHERE ID_Tienda = :ID_TIENDA");
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
             $stmt->execute();          
         }
@@ -1657,6 +1732,43 @@
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
         }        
+
+        //INSERT de cuenta reserve
+        public function insertarReserve($ID_Tienda, $UsuarioReserve, $TelefonoReserve){
+            $stmt = $this->dbh->prepare("INSERT INTO pago_reserve(ID_Tienda, usuarioReserve, telefonoReserve,  fecha, hora)VALUES (:ID_TIENDA, :USUARIO_RESERVE, :TELEFONO_RESERVE, CURDATE(), CURTIME())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':USUARIO_RESERVE', $UsuarioReserve);
+            $stmt->bindValue(':TELEFONO_RESERVE', $TelefonoReserve);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        }      
+
+        //INSERT de cuenta paypal
+        public function insertarPaypal($ID_Tienda, $CorreoPaypal){
+            $stmt = $this->dbh->prepare("INSERT INTO pago_paypal(ID_Tienda, correo_paypal, fecha, hora)VALUES (:ID_TIENDA, :CORREO_PAYPAL, CURDATE(), CURTIME())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':CORREO_PAYPAL', $CorreoPaypal);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        }      
+
+        //INSERT de cuenta zelle
+        public function insertarZelle($ID_Tienda, $CorreoZelle){
+            $stmt = $this->dbh->prepare("INSERT INTO pago_zelle(ID_Tienda, correo_zelle, fecha, hora)VALUES (:ID_TIENDA, :CORREO_ZELLE, CURDATE(), CURTIME())");
+            
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':CORREO_ZELLE', $CorreoZelle);
+            
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        } 
         
         //INSERT de link acceso a tienda
         public function insertarLinkTienda($ID_Tienda, $LinkAcceso){

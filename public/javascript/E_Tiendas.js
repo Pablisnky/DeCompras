@@ -33,14 +33,6 @@ function sliderTarjeta(CantidadElementos){
  
 // var asd=setInterval(hola, 100);
 }
-     
-
-
-
-
-
-
-
    
 //************************************************************************************************
 //Muestra la pagina de la tienda solicitada, invocada desde tiendas_V.php
@@ -65,4 +57,3 @@ function FrenteTarjeta(ID_Tienda){
     document.getElementById(ID_Tienda).style.transition = ".5s ease";
     document.getElementById(ID_Tienda).style.perspective = "600px";
 }
-

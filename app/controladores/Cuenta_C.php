@@ -173,6 +173,15 @@
             //CONSULTA los datos de cuentas pagmovil de la tienda
             $DatosPagoMovil = $this->ConsultaCuenta_M->consultarCuentasPagomovil($this->ID_Tienda);
 
+            //CONSULTA los datos de cuentas Reserve de la tienda
+            $DatosReserve = $this->ConsultaCuenta_M->consultarCuentasReserve($this->ID_Tienda);
+
+            //CONSULTA los datos de cuentas Paypal de la tienda
+            $DatosPaypal = $this->ConsultaCuenta_M->consultarCuentasPaypal($this->ID_Tienda);
+
+            //CONSULTA los datos de cuentas Zelle de la tienda
+            $DatosZelle = $this->ConsultaCuenta_M->consultarCuentasZelle($this->ID_Tienda);
+
             //CONSULTA otros medios de pago
             $OtrosPagos = $this->ConsultaCuenta_M->consultarOtrosMediosPago($this->ID_Tienda);
 
@@ -210,6 +219,9 @@
                 'horario_Esp' => $Horario_Esp,
                 'datosBancos' => $DatosBancos,
                 'datosPagomovil' => $DatosPagoMovil,
+                'datosReserve' => $DatosReserve, //usuarioReserve, telefonoReserve
+                'datosPaypal' => $DatosPaypal, //correo_paypal
+                'datosZelle' => $DatosZelle,
                 'categoria' => $Categoria, // categoria
                 'secciones' => $Secciones,
                 'slogan' => $Slogan,
@@ -501,7 +513,7 @@
                     'Telefono_Afcom'=> filter_input(INPUT_POST, 'telefono_Afcom', FILTER_SANITIZE_STRING),
                     'Correo_Afcom' => filter_input(INPUT_POST, 'correo_Afcom', FILTER_SANITIZE_STRING),
 
-                    //RECIBE DATOS TIENDA
+                    //RECIBE DATOS UBICACION TIENDA
                     'Nombre_com' => filter_input(INPUT_POST, 'nombre_com', FILTER_SANITIZE_STRING),
                     'Estado_com' => filter_input(INPUT_POST, 'estado_com', FILTER_SANITIZE_STRING),
                     'Municipio_com' => filter_input(INPUT_POST, 'municipio_com', FILTER_SANITIZE_STRING),
@@ -739,6 +751,7 @@
             // print_r($_POST['bancoPagoMovil']);
             // echo '</pre>';
 
+            //RECIBE TRANSFERENCIAS
             if(($_POST['banco'][0] == '') && ($_POST['bancoPagoMovil'][0] == '') && $_POST['bolivar'] == '' && $_POST['dolar'] == '' && $_POST['acordado'] == ''){
                 echo 'Ingrese datos de pagos';
                 echo '<br>';
@@ -746,7 +759,6 @@
                 exit();
             }
             else{
-                //RECIBE TRANSFERENCIAS
                 //Se ELIMINAN todas las cuentas bancarias
                 $this->ConsultaCuenta_M->eliminarCuentaBancaria($this->ID_Tienda);
 
@@ -770,36 +782,113 @@
                         }
                     }
                 }
+            }
                 
-                // ******************************************************** 
-                //RECIBE PAGOMOVIL 
-                // Se ELIMINAN todas las cuentas de pagomovil
-                $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
+            // ******************************************************** 
+            //RECIBE PAGOMOVIL 
+            // Se ELIMINAN todas las cuentas de pagomovil
+            $this->ConsultaCuenta_M->eliminarPagoMovil($this->ID_Tienda);
 
-                // echo $_POST['cedulaPagoMovil'][0] . '<br>';
-                // echo $_POST['bancoPagoMovil'][0] . '<br>';
-                // echo $_POST['telefonoPagoMovil'][0] . '<br>';
-                // exit;
+            // echo $_POST['cedulaPagoMovil'][0] . '<br>';
+            // echo $_POST['bancoPagoMovil'][0] . '<br>';
+            // echo $_POST['telefonoPagoMovil'][0] . '<br>';
+            // exit;
 
-                if($_POST['cedulaPagoMovil'][0] != '' || $_POST['bancoPagoMovil'][0] != '' || $_POST['telefonoPagoMovil'][0] != ""){                                         
-                    foreach(array_keys($_POST['telefonoPagoMovil']) as $key){
-                        if(!empty($_POST['cedulaPagoMovil'][$key]) && !empty($_POST['telefonoPagoMovil'][$key]) && !empty($_POST['bancoPagoMovil'][$key])){
-                            $CedulapagoMovil = $_POST['cedulaPagoMovil'][$key];
-                            $TelefonopagoMovil = $_POST['telefonoPagoMovil'][$key];
-                            $BancopagoMovil = $_POST['bancoPagoMovil'][$key];
+            if($_POST['cedulaPagoMovil'][0] != '' || $_POST['bancoPagoMovil'][0] != '' || $_POST['telefonoPagoMovil'][0] != ""){                                         
+                foreach(array_keys($_POST['telefonoPagoMovil']) as $key){
+                    if(!empty($_POST['cedulaPagoMovil'][$key]) && !empty($_POST['telefonoPagoMovil'][$key]) && !empty($_POST['bancoPagoMovil'][$key])){
+                        $CedulapagoMovil = $_POST['cedulaPagoMovil'][$key];
+                        $TelefonopagoMovil = $_POST['telefonoPagoMovil'][$key];
+                        $BancopagoMovil = $_POST['bancoPagoMovil'][$key];
 
-                            //Se INSERTA la cuenta de CuentapagoMovil
-                            $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $CedulapagoMovil, $BancopagoMovil, $TelefonopagoMovil);
-                        }
-                        else{
-                            echo 'Ingrese datos pagoMovil';
-                            echo '<br>';
-                            echo "<a href='javascript:history.back()'>Regresar</a>";
-                            exit();
-                        }
+                        //Se INSERTA la cuenta de CuentapagoMovil
+                        $this->ConsultaCuenta_M->insertarPagoMovil($this->ID_Tienda, $CedulapagoMovil, $BancopagoMovil, $TelefonopagoMovil);
+                    }
+                    else{
+                        echo 'Ingrese datos pagoMovil';
+                        echo '<br>';
+                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                        exit();
                     }
                 }
             }
+                
+            // ******************************************************** 
+            //RECIBE RESERVE 
+            // Se ELIMINAN todas las cuentas de Reserve
+            $this->ConsultaCuenta_M->eliminarReserve($this->ID_Tienda);
+
+            // echo $_POST['usuario_reserve'][0] . '<br>';
+            // echo $_POST['telefono_reserve'][0] . '<br>';
+            // exit;
+
+            if($_POST['usuario_reserve'][0] != ''|| $_POST['telefono_reserve'][0] != ""){
+                foreach(array_keys($_POST['telefono_reserve']) as $key)    :
+                    if(!empty($_POST['usuario_reserve'][$key]) && !empty($_POST['telefono_reserve'][$key])){
+                        $UsuarioReserve = $_POST['usuario_reserve'][$key];
+                        $TelefonoReserve = $_POST['telefono_reserve'][$key];
+
+                        //Se INSERTA la cuenta de Reserve
+                        $this->ConsultaCuenta_M->insertarReserve($this->ID_Tienda, $UsuarioReserve, $TelefonoReserve);
+                    }
+                    else{
+                        echo 'Ingrese datos de cuenta Reserve';
+                        echo '<br>';
+                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                        exit();
+                    }
+                endforeach;
+            }
+
+             // ******************************************************** 
+            //RECIBE PAYPAL 
+            // Se ELIMINAN todas las cuentas de Reserve
+            $this->ConsultaCuenta_M->eliminarPaypal($this->ID_Tienda);
+
+            // echo $_POST['correro_paypal'][0] . '<br>';
+            // exit;
+
+            if($_POST['correro_paypal'][0] != ''){
+                foreach(array_keys($_POST['correro_paypal']) as $key)    :
+                    if(!empty($_POST['correro_paypal'][$key])){
+                        $CorreoPaypal = $_POST['correro_paypal'][$key];
+
+                        //Se INSERTA la cuenta de Paypal
+                        $this->ConsultaCuenta_M->insertarPaypal($this->ID_Tienda, $CorreoPaypal);
+                    }
+                    else{
+                        echo 'Ingrese datos de cuenta Paypal';
+                        echo '<br>';
+                        echo "<a href='javascript:history.back()'>Regresar</a>";
+                        exit();
+                    }
+                endforeach;
+            }
+
+            // ******************************************************** 
+           //RECIBE ZELLE 
+           // Se ELIMINAN todas las cuentas de Reserve
+           $this->ConsultaCuenta_M->eliminarZelle($this->ID_Tienda);
+
+           // echo $_POST['correro_paypal'][0] . '<br>';
+           // exit;
+
+           if($_POST['correro_zelle'][0] != ''){
+               foreach(array_keys($_POST['correro_zelle']) as $key)    :
+                   if(!empty($_POST['correro_zelle'][$key])){
+                       $CorreoZelle = $_POST['correro_zelle'][$key];
+
+                       //Se INSERTA la cuenta de Zelle
+                       $this->ConsultaCuenta_M->insertarZelle($this->ID_Tienda, $CorreoZelle);
+                   }
+                   else{
+                       echo 'Ingrese datos de cuenta Zelle';
+                       echo '<br>';
+                       echo "<a href='javascript:history.back()'>Regresar</a>";
+                       exit();
+                   }
+               endforeach;
+           }
             
             //RECIBE OTROS MEDIOS DE PAGO
             // ********************************************************

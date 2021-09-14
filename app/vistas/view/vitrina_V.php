@@ -20,10 +20,12 @@
     <!-- IMAGEN DE TIENDA SOLO MOSTRADO EN MOVILES -->
     <?php                    
     if($Fotografia[0]['fotografia_Tien'] == 'tienda.png'){    ?> 
-        <div class="contenedor_109 contenedor_109--imgDefecto" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/tienda.png');"></div>  <?php
+        <div class="contenedor_109 contenedor_109--imgDefecto" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/tienda.png');"></div>  
+        <?php
     } 
     else{   ?>
-        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>    <?php
+        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>    
+        <?php
     }   ?>
 
     <div class="contenedor_156"> 
@@ -50,7 +52,7 @@
                             if($key['ID_Seccion'] == $ID_Seccion) : 
                                 $SeccionExiste = 'Seccion_'. $Contador; 
                                 if($key['nombre_img_seccion'] == ''){ ?>
-                                    <div class="contenedor_9 contenedor_9--contain" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
+                                    <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
                                     </div> <?php
                                 }   
                                 else{    ?>
@@ -62,6 +64,8 @@
 
                         $SeccionExiste = '';
                         ?>
+
+                        <!-- CIRCULO QUE INDICA CANTIDAD DE PRODUCTOS EN IMAGEN DE SECCION -->
                         <h2 class="boton botonReverso borde_1 boton--largo"><?php echo $Seccion;?></h2>
                         <div class="contenedor_106--lineal">
                             <span class="span_21 borde_1">
@@ -77,8 +81,7 @@
                         </div>
                     </div>
 
-                    <!-- Se agregan las leyendas desde TransferirPedido() en E_Vitrinas.js -->
-
+                    <!-- Se añaden las leyendas por medio de E_Vitrina.js con la funcion TransferirPedido() -->
                 </div>
                 <?php
                 $Contador++;
@@ -91,14 +94,16 @@
     <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
             <div class="contenedor_31">
+                <small class="small_1 small_4">Ver <br class="br_3"> carrito</small>
                 <i class="fas fa-shopping-cart span_2"></i>
+                <!-- input que va cargando desde vitrina.js el monto total de la compra  -->
                 <input type="text" class="input_5" id="Input_5" readonly/>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Se trae por medio de Ajax las productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
+<!-- Muestra los productos de cada seccion, los valores los toma desde opciones_V.php que es invovado desde llamar_Opciones()-->
 <div id="Mostrar_Opciones"></div>
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carrito_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->

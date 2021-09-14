@@ -83,7 +83,7 @@
     .slider--portada{
 		width: 100% !important;
 		text-align: center ;
-		padding: 0% 3%;
+		padding: 0% 2%;
         margin-top: 120%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
     }
 	.slider span{

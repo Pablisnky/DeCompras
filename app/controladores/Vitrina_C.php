@@ -1,9 +1,12 @@
 <?php
     class Vitrina_C extends Controlador{
+
         //creamos la variable donde se instanciará la clase 'CalculoApertura_C'
         public $Horario;
 
         public function __construct(){
+            session_start();
+
             $this->ConsultaVitrina_M = $this->modelo('Vitrina_M');
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -52,11 +55,6 @@
                         
             // Se consultan las imagenes de las secciones de la tienda
             $ImagenSecciones = $this->ConsultaVitrina_M->consultarImagenesSecciones($ID_Tienda);
-           
-            // echo '<pre>';
-            // print_r($ImagenSecciones);
-            // echo '</pre>';
-            // exit();
 
             $Datos=[
                 'id_tienda' => $ID_Tienda,
@@ -72,7 +70,8 @@
                 'ProximoApertura' => $ProximoApertura,
                 'HoraApertura' => $HoraApertura,
                 'cant_productosSeccion' => $Cant_ProductosSeccion, //ID_Seccion, CantidadProducto por seccion
-                'imagenSecciones' => $ImagenSecciones //ID_Seccion, nombre_img_seccion
+                'imagenSecciones' => $ImagenSecciones, //ID_Seccion, nombre_img_seccion
+                'ciudad' => $_SESSION['Parroquia'] //Sesion creada en categoria_V
             ];
 
             // echo '<pre>';

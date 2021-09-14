@@ -1,4 +1,4 @@
-<!-- Archivo cargado por petición Ajax desde vitrina_V.php por medio de llamar_Opciones() -->
+<!-- Archivo cargado en div id= "Mostrar_Opciones" en vitrina_V.php por petición Ajax desde por medio de llamar_Opciones()-->
 
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
@@ -6,11 +6,8 @@
             <!-- Icono flecha atras -->
             <i class="fas fa-arrow-left" style="display: inline;"></i>
             <label class="label_9" id="Label_9" style="display: inline;">Secciones</label>
-        </div>
-        
+        </div>        
         <h1 class="h1_1 h1_3"><?php echo $Datos['Opciones'][0]['seccion']?></h1>
-
-        <!-- <h2>Ver todos</h2> -->
     </div>
 
     <div class="contenedor_156">
@@ -148,10 +145,9 @@
                         </div>
                         <?php   
                         $ContadorLabel++;
-                    endforeach;      
-                ?>                    
+                    endforeach;   ?>                    
                 </div>
             </form>
         </div>
     </div>
-</section>  
+</section>

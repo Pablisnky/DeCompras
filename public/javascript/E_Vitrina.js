@@ -18,13 +18,14 @@ TotalDisplayCarrito = []
 ProductoEnCarrito = []
 
 //Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito, este objeto alimenta al array AlCarro[]
-function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total){
+function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total, ID_Opcion){
     this.Seccion = Seccion
     this.Producto = Producto
     this.Cantidad = Cantidad
     this.Opcion = Opcion
     this.Precio = Precio
     this.Total = Total
+    this.ID_Opcion = ID_Opcion
 }
 
 //Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito,este objeto alimenta al array AlContenedor[]
@@ -66,22 +67,32 @@ if(document.getElementById("Label_1")){
     document.getElementById("Label_1").addEventListener('click', function(){CerrarModal_X('Section_1')}, false)
 }
 
+//************************************************************************************************
+   //Ocultar el menu principal en responsive haciendo click por fuera del boton menu
+   let div = document.getElementById("MenuResponsive")
+   let span= document.getElementById("Span_6")
+   let B = document.getElementById("Tapa")
+   window.addEventListener("click", function(e){
+       //obtiendo informacion del DOM del elemento donde se hizo click 
+       var click = e.target
+       // console.log("Click en: ", click)
+       AltoVitrina = document.body.scrollHeight
+       if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
+           div.style.marginLeft = "-70%"
+           B.style.display = "none"
+           //Se detiene la propagación de los eventos en caso de hacer click en un elemento que contenga algun evento
+           event.stopPropagation();
+       }
+   }, true)
+
 // *****************************************************************************************************
-//Escucha desde opciones_V.php, archivo que se carga en vitrina_V.php desde Ajax; por medio de delegación de eventos, donde dentro de la función identificas cual fue el objetivo del click, ya sea por id o por clase o por etiqueta según sea tu necesidadtoma la etiqueta span donde se hace click
+//Escucha desde opciones_V.php, archivo que se carga via Ajax en vitrina_V.php; por medio de delegación de eventos
 document.addEventListener('click', function(event){
     if(event.target.id == 'Span_3' || event.target.id == 'Label_9'){
         TransferirPedido()
         CerrarModal_X('Section_3')
     }
 })
-
-// *****************************************************************************************************
-  //obtiene informacion del DOM del elemento donde se hizo click 
-//  window.addEventListener("click", function(e){
-     // console.log("_____Desde función anonima para ocultar menu_____")
-    //  var click = e.target
-    //  console.log(click)
-//  }, false)
 
 // *****************************************************************************************************
 //seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos en div Mostrar_Orden ubicado en vitrina_V.php
@@ -147,6 +158,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60c").style.display = "none"
         document.getElementById("Contenedor_60d").style.display = "none"
         document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
     }
 
 //************************************************************************************************
@@ -158,6 +172,51 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60c").style.display = "none"
         document.getElementById("Contenedor_60d").style.display = "none"
         document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoReserve(){
+        // console.log("______Desde verPagoReserve()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "block"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoPaypal(){
+        // console.log("______Desde verPagoPaypal()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "block"
+        document.getElementById("Contenedor_60h").style.display = "none"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoZelle(){
+        // console.log("______Desde verPagoZelle()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "block"
     }
 
 //************************************************************************************************
@@ -169,6 +228,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60c").style.display = "block"
         document.getElementById("Contenedor_60d").style.display = "none"
         document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
     }
 
 //************************************************************************************************
@@ -180,6 +242,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60c").style.display = "none"
         document.getElementById("Contenedor_60d").style.display = "block"
         document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
     }
 
 //************************************************************************************************
@@ -191,6 +256,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60c").style.display = "none"
         document.getElementById("Contenedor_60d").style.display = "none"
         document.getElementById("Contenedor_60e").style.display = "block"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
     }
     
 //************************************************************************************************
@@ -281,7 +349,8 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se recibe el ID del input que va a mostrar la opcion del producto donde se hizo click
         Input_OpcionClick = ID_InputOpcion
         localStorage.setItem('ID_InputOpcion', Input_OpcionClick)
-        LS_ID_InputOpcion = localStorage.getItem('ID_InputOpcion')  
+        LS_ID_InputOpcion = localStorage.getItem('ID_InputOpcion') 
+
         
         //Se recibe el ID del input que va a mostrar el precio del producto donde se hizo click
         Input_PrecioClick = ID_InputPrecio
@@ -371,7 +440,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
               
                 //Se añade el producto al array que contiene el carrito de compras
-                PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4])
+                PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4], Separado[1])
                 AlCarro.push(PedidoAtomico) 
 
                 //Se muestra el div que contiene el icono del carrito en vitrina_V.php
@@ -402,28 +471,25 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             DisplayDestello()
         }
         AlContenedor.push(Contenedores)
-        // console.log("Contenido de carrito", AlContenedor)
-
-        // console.log(AlCarro)
     }
 
 //************************************************************************************************
-    //invocada desde opciones_V.php al regresar a vitrina_V.php, muestra en cada seccion los productos que estas tienen cargado en carrito
+    //invocada desde opciones_V.php al regresar a vitrina_V.php, agrega las leyendas en cada seccion  con los productos que estas tienen cargado en carrito
     function TransferirPedido(){
-        // console.log("______Desde TransferirPedido()______")
 
-        //Se especifica la seccion donde se va a insertar el nuevo elemento en vitrina_V.php, este localStoorage se creo en verOpciones()
+        //Se especifica la seccion donde se va a insertar la leyenda en vitrina_V.php, este localStorage se creo en verOpciones()
         InputLeyendaDinamico = localStorage.getItem('ContSeccion')
         Padre = document.getElementById(InputLeyendaDinamico)
-
+        console.log(Padre)
         //Se guarda la sección donde esta el producto cargado a pedido
-        Seccion = localStorage.getItem('SeccionCLick')        
+        Seccion = localStorage.getItem('SeccionCLick')     
+        console.log(Seccion)   
 
         //Se recorre todos los elementos que contengan la clase input_15 para eliminarlos
         //Se especifica a que seccion pertenecen los productos que se van a eliminar
         elementoHijo = Padre.getElementsByClassName("input_15")
 
-        //Se cuentan cuantos productos exiten ene el contenedor
+        //Se cuentan cuantos productos exiten en el contenedor
         Elementos = elementoHijo.length
 
         if(Elementos){
@@ -445,19 +511,40 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 existe = true;
                 //Se crean los input que cargaran las leyendas contenidas en el array filtered
                 var NuevoElemento = document.createElement("input")
-                
-                //Se dan propiedades al nuevo elemento creado
+
+                //Se dan propiedades al nuevo elemento creado (leyenda)
                 NuevoElemento.value = filtered[i].Cantidad + ' ' + filtered[i].Producto + ' = ' + filtered[i].Total + ' Bs.'
                 NuevoElemento.classList.add("input_15")
                 NuevoElemento.name = "leyenda"
-                NuevoElemento.id = "Input_Leyenda_" + id_dinamico
+                NuevoElemento.id = filtered[i].ID_Opcion 
                 NuevoElemento.readOnly = true
 
                 //Se especifica el elemento donde se va a insertar el nuevo elemento            
                 var ElementoPadre = document.getElementById(InputLeyendaDinamico)
                 
                 //Se inserta en el DOM el input creado
-                inputNuevo = ElementoPadre.appendChild(NuevoElemento) 
+                ElementoPadre.appendChild(NuevoElemento) 
+                
+                // -------------------------------------
+
+                //Se crean los botones para dar la opción de eliminar las leyendas creadas
+                var EliminarLeyenda = document.createElement("label")
+
+                //Se dan propiedades al nuevo boton creado 
+                EliminarLeyenda.innerHTML = "X"
+                EliminarLeyenda.classList.add("input_15", "input_15--eliminar")
+                // EliminarLeyenda.id = filtered[i].ID_Opcion      
+                EliminarLeyenda.readOnly = true
+                EliminarLeyenda.onclick = Eliminar_Leyenda
+          
+                localStorage.setItem('ID_Label_X', EliminarLeyenda.id)
+
+                //Se especifica el elemento donde se va a insertar el nuevo elemento            
+                var ElementoPadre = document.getElementById(InputLeyendaDinamico)
+                
+                //Se inserta en el DOM el input creado
+                ElementoPadre.appendChild(EliminarLeyenda) 
+
                 id_dinamico++         
             }
             return existe;
@@ -466,15 +553,41 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
 
 //************************************************************************************************
+    function Eliminar_Leyenda(e){
+        // alert("Función temporalmente desactivada, elimine directamente desde el producto")
+        var click = e.target
+        console.log("Se hizo click en: ", click)//se tiene el boton eliminar
+        console.log("Padre", e.target.parentElement)
+        console.log(e.target.previousSibling.id)//se tiene la leyenda correspondiente al boton eliminar
+        var ID = e.target.previousSibling.id
+        e.target.parentElement.removeChild(e.target.previousSibling);
+        e.target.parentElement.removeChild(e.target);
+        
+        //Se busca dentro del array AlCarro el producto que corresponde a la leyenda que se va a liminar
+        console.log(AlCarro)
+
+        var filtrado = AlCarro.filter(function(item_2){
+            return item_2.ID_Opcion != ID; 
+        });
+
+        AlCarro = filtrado
+        console.log(AlCarro)
+        console.log("COntenedor", AlContenedor)
+
+        // for(i = 0; i < AlCarro.length; i++){
+        //     console.log(AlCarro[i].ID_Opcion)
+        //     console.log(localStorage.getItem('ID_Label_X'))
+        // }
+
+      }
+//************************************************************************************************
     //invocada al cargarse llamar_Opciones() en Funciones_Ajax.js especifica los productos que ya estan cargados al carrito de compra y muestra su leyenda en la vista opciones_V.php
-    function ProductosEnCarrito(){      
-        // console.log("______Desde ProductosEnCarrito()______")        
+    function ProductosEnCarrito(){             
     
         //Se filtran las leyendas que correspondan a la seccion seleccionada
         var filtered = AlContenedor.filter(function(item){
             return item.Cont_Seccion == LS_ID_Cont_Seccion 
         })
-        // console.log("Productos en carrito", filtered)
         
         for(let i = 0; i < filtered.length; i++){
             //Del objeto filtrado filtered se toman las propiedades Cont_Leyenda para rellenar la leyenda
@@ -511,9 +624,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
         Pre_decremento()
         Pre_incremento()
-        
-        // console.log(AlContenedor)
-        // console.log(AlCarro)
     }    
 
 //************************************************************************************************
@@ -573,8 +683,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Identifica los elementos de la sección donde se hizo click.
     function verOpciones(Cont_Seccion, Seccion){ 
-        // console.log("______Desde verOpciones()______")     
-
         //Captura el valor del id dinanmico de la seccion donde se hizo click
         localStorage.setItem('ContSeccion', Cont_Seccion)         
         LS_ID_Cont_Seccion = localStorage.getItem('ContSeccion')
@@ -1039,8 +1147,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         let Direccion = document.getElementById('DireccionUsuario').value  
         let Estado = document.getElementById('Estado').value 
         let Ciudad = document.getElementById('Ciudad').value
-        let Pago = document.getElementsByName('formaPago') 
+        let Pago = document.getElementsByName('formaPago')//transferencia, pagomovil, reserve, paypal, zelle, etc
         let FormaPago = document.getElementsByName('referenciaPago') 
+
         //Recorremos todos los valores del radio button para encontrar el metodo de pago seleccionado
         for(let i = 0; i < Pago.length; i++){
             if(Pago[i].checked){
@@ -1057,7 +1166,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         }       
         let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
         let CaptureTransferencia = document.getElementById('ImagenTransferencia').value  
-        let CapturePagoMovil = document.getElementById('ImagenPagoMovil').value
+        let CapturePagoMovil = document.getElementById('ImagenPagoMovil').value 
+        let CapturePagoReserve = document.getElementById('ImagenPagoReserve').value
+        let CapturePagoPaypal = document.getElementById('ImagenPagoPaypal').value
         
         //Patron de entrada solo acepta letras (Nombre - Apellido)
         let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
@@ -1109,7 +1220,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(P_Telefono.test(Telefono) == false || Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 14){
+        else if(P_Telefono.test(Telefono) == false || Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 20){
             alert ("Telefono invalido");
             document.getElementById("TelefonoUsuario").value = "";
             document.getElementById("TelefonoUsuario").focus();
@@ -1215,8 +1326,30 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             }
         }
         else if(PagoSeleccionado == "PagoMovil"){            
-            if(Ext_Permitidas.exec(CapturePagoMovil ) == false || CapturePagoMovil .size > 20000){
+            if(Ext_Permitidas.exec(CapturePagoMovil) == false || CapturePagoMovil .size > 20000){
                 alert("Introduzca el capture del PagoMovil")
+                document.getElementsByClassName("botonJS")[0].value = "Comprar"
+                document.getElementsByClassName("botonJS")[0].disabled = false
+                document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+                return false;
+            }
+        }
+        else if(PagoSeleccionado == "Reserve"){            
+            if(Ext_Permitidas.exec(CapturePagoReserve) == false || CapturePagoReserve .size > 20000){
+                alert("Introduzca el capture del pago en Reserve")
+                document.getElementsByClassName("botonJS")[0].value = "Comprar"
+                document.getElementsByClassName("botonJS")[0].disabled = false
+                document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
+                document.getElementsByClassName("botonJS")[0].style.color = "var(--OficialClaro)"
+                document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
+                return false;
+            }
+        }
+        else if(PagoSeleccionado == "Paypal"){            
+            if(Ext_Permitidas.exec(CapturePagoPaypal) == false || CapturePagoPaypal .size > 20000){
+                alert("Introduzca el capture del pago en Paypal")
                 document.getElementsByClassName("botonJS")[0].value = "Comprar"
                 document.getElementsByClassName("botonJS")[0].disabled = false
                 document.getElementsByClassName("botonJS")[0].style.backgroundColor = "var(--OficialOscuro)"
@@ -1256,11 +1389,12 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
 
 //************************************************************************************************
-    function CerrarModal_X(id, Inputfocus=""){
-        // console.log("______Desde CerrarModal_X()______", id + " / " + Inputfocus)
+    function CerrarModal_X(id, Inputfocus = ""){
         document.getElementById(id).style.display = "none"
+        //Coloca el cursor en el top de la pagina
+        window.scroll(0, 0)
 
-        if(focus!= ""){
+        if(Inputfocus != ""){
             document.getElementById(Inputfocus).focus()
         }
     }
@@ -1268,30 +1402,10 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Desactiva el boton de volver atras del navegador
     function nobackbutton(){
-        // console.log("______Desde nobackbutton()______")
         window.location.hash="no-back-button";
         window.location.hash="Again-No-back-button" //chrome
         window.onhashchange = function(){window.location.hash="no-back-button";}
     }
-
-//************************************************************************************************
-   //Funcion anonima para ocultar el menu principal en responsive haciendo click por fuera del boton menu
-   let div = document.getElementById("MenuResponsive")
-   let span= document.getElementById("Span_6")
-   let B = document.getElementById("Tapa")
-   window.addEventListener("click", function(e){
-       // console.log("_____Desde función anonima para ocultar menu_____")
-       //obtiendo informacion del DOM del elemento donde se hizo click 
-       var click = e.target
-       // console.log("Click en: ", click)
-       AltoVitrina = document.body.scrollHeight
-       if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
-           div.style.marginLeft = "-70%"
-           B.style.display = "none"
-           //Se detiene la propagación de los eventos en caso de hacer click en un elemento que contenga algun evento
-           event.stopPropagation();
-       }
-   }, true)
 
 //************************************************************************************************
    //Muestra el menu principal en formato movil y tablet  
@@ -1330,27 +1444,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     //Quita el color de fallo en un input y lo deja en su color original
     function blanquearInput(id){        
         document.getElementById(id).style.backgroundColor = "white"
-    }
-    
- //************************************************************************************************
-    //Agrega los puntos en tiempo real en tiempo real    
-    function mascaraTelefono(TelefonoRecibido, id){        
-        if(TelefonoRecibido.length == 4){
-            document.getElementById(id).value += "-"; 
-        }
-        else if(TelefonoRecibido.length == 8){
-            document.getElementById(id).value += ".";  
-        }
-        else if(TelefonoRecibido.length == 11){
-            document.getElementById(id).value += ".";  
-        }
-        else if(TelefonoRecibido.length > 14){
-            alert("Telefono con Formato Incorrecto");
-            document.getElementById(id).value = "";
-            document.getElementById(id).focus();
-            document.getElementById(id).style.backgroundColor = 'var(--Fallos)'; 
-            return false;
-        }
     }
 
 //************************************************************************************************
@@ -1394,7 +1487,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //Da una vista previa del capture del pagoMovil
     function CapturePagoMovil(){
-        console.log("______Desde CapturePagoMovil()______")
         var contenedor = document.getElementById("DivCapturePagoMovil");
         var archivos = document.getElementById("ImagenPagoMovil").files;
 
@@ -1413,6 +1505,78 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             contenedor.removeChild(imgTag);
 
             CapturePagoMovil()
+        }
+    }
+
+//************************************************************************************************
+    //Da una vista previa del capture del pagoMovil
+    function CapturePagoReserve(){
+        var contenedor = document.getElementById("DivCapturePagoReserve");
+        var archivos = document.getElementById("ImagenPagoReserve").files;
+
+        if(contenedor.childElementCount < 1){
+            for(i = 0; i < archivos.length; i++){
+                imgTag = document.createElement("img");
+                imgTag.height = 400;
+                imgTag.width = 280;   
+                imgTag.objectFit = "cover" 
+                imgTag.src = URL.createObjectURL(archivos[i]);
+                contenedor.appendChild(imgTag);
+            }
+        }
+        else{
+            //Se elimina la imagen existente
+            contenedor.removeChild(imgTag);
+
+            CapturePagoReserve()
+        }
+    }
+
+//************************************************************************************************
+    //Da una vista previa del capture del pagoMovil
+    function CapturePagoPaypal(){
+        var contenedor = document.getElementById("DivCapturePagoPaypal");
+        var archivos = document.getElementById("ImagenPagoPaypal").files;
+
+        if(contenedor.childElementCount < 1){
+            for(i = 0; i < archivos.length; i++){
+                imgTag = document.createElement("img");
+                imgTag.height = 400;
+                imgTag.width = 280;   
+                imgTag.objectFit = "cover" 
+                imgTag.src = URL.createObjectURL(archivos[i]);
+                contenedor.appendChild(imgTag);
+            }
+        }
+        else{
+            //Se elimina la imagen existente
+            contenedor.removeChild(imgTag);
+
+            CapturePagoPaypal()
+        }
+    }
+
+//************************************************************************************************
+    //Da una vista previa del capture del pagoMovil
+    function CapturePagoZelle(){
+        var contenedor = document.getElementById("DivCapturePagoZelle");
+        var archivos = document.getElementById("ImagenPagoZelle").files;
+
+        if(contenedor.childElementCount < 1){
+            for(i = 0; i < archivos.length; i++){
+                imgTag = document.createElement("img");
+                imgTag.height = 400;
+                imgTag.width = 280;   
+                imgTag.objectFit = "cover" 
+                imgTag.src = URL.createObjectURL(archivos[i]);
+                contenedor.appendChild(imgTag);
+            }
+        }
+        else{
+            //Se elimina la imagen existente
+            contenedor.removeChild(imgTag);
+
+            CapturePagoZelle()
         }
     }
 
@@ -1459,4 +1623,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             Llamar_UsuarioRegistrado(NumeroFormateado);
         }
         return false;
+    }
+
+// ************************************************************************************************
+    function EliminarLeyendaVitrina(){
+        alert("HOA")
     }

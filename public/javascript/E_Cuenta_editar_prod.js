@@ -176,8 +176,6 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
 //************************************************************************************************
     //Valida el formulario de ediición de producto
     function validarActualizacion(){
-        // console.log("______Desde validarActualizacion()______")
-
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
         let ImagenesSecundarias = document.getElementsByClassName('imagen_6')
@@ -193,12 +191,13 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton")[0].classList.add('borde_1')
 
-        // console.log(ImagenesSecundarias.length)
         if(Producto == "" || Producto.indexOf(" ") == 0 || Producto.length > 55){
             alert ("Necesita introducir un Producto")
             document.getElementById("ContenidoPro").value = "";
             document.getElementById("ContenidoPro").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
@@ -207,6 +206,8 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementById("ContenidoDes").value = ""
             document.getElementById("ContenidoDes").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
@@ -215,6 +216,8 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementById("PrecioDolar").value = ""
             document.getElementById("PrecioDolar").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }
@@ -223,6 +226,8 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementById("Seccion").value = ""
             document.getElementById("Seccion").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }  
@@ -231,6 +236,8 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementById("Fecha_Dotacion").value = ""
             document.getElementById("Fecha_Dotacion").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }          
@@ -239,6 +246,8 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementById("Incremento").value = ""
             document.getElementById("Incremento").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }    
@@ -247,12 +256,16 @@ document.getElementById("ContenidoPro").addEventListener('keydown', function(){v
             document.getElementById("Fecha_Reposicion").value = ""
             document.getElementById("Fecha_Reposicion").focus()
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }    
         else if(ImagenesSecundarias.length > 5){
             alert ("Solo puede introducir 4 imagenes adicionales")
             document.getElementsByClassName("boton")[0].value = "Guardar"
+            document.getElementsByClassName("boton")[0].style.backgroundColor = "var(--OficialOscuro)"
+            document.getElementsByClassName("boton")[0].style.color = "var(--OficialClaro)"
             document.getElementsByClassName("boton")[0].disabled = false
             return false;
         }        

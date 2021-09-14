@@ -58,7 +58,7 @@ function respuesta_PedidoEnCarrito(){
     }    
 }
 
-//-------------------------------------------------------------------------------------------------
+//****************************************************************************************************
 //Muestra los productos que tiene una sección
 function llamar_Opciones(ID_Tienda, ID_Seccion, OpcionSeleccionada = 'NoAplica'){
     var url="../../Opciones_C/index/" + ID_Tienda + "/" + ID_Seccion  + "/" + OpcionSeleccionada
@@ -78,13 +78,15 @@ function respuesta_Opciones(){
 
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
+
+            //Se recibe la respuesta el servidor
             document.getElementById('Mostrar_Opciones').innerHTML = peticion.responseText;
                         
             //Se consulta el alto de la página vitrina, este tamaño varia segun las secciones que tenga un tienda
             AltoVitrina = document.body.scrollHeight
 
             //Este alto se estable al div padre en opciones_V para garantizar que cubra todo el contenido de vitrina_V ya que opciones_V es un contenedor coloca via Ajax en vitrina_V y debe sobreponerse sobre todo lo que hay en vitrina_V.php
-            document.getElementById("Contenedor_13Js").style.height = AltoVitrina + "px"
+            document.getElementById("Contenedor_13Js").style.minHeight = AltoVitrina + "px"
             
             //la función es llamada tres veces si se coloca fuera (No se porque)
             ProductosEnCarrito()
@@ -98,6 +100,7 @@ function respuesta_Opciones(){
     // }    
 }
 
+//****************************************************************************************************
 function Llamar_UsuarioRegistrado(cedula){
     console.log("______Desde Llamar_UsuarioRegistrado()______", cedula)
     var url="../../Carrito_C/UsuarioRegistrado/" + cedula

@@ -1,4 +1,4 @@
-<!-- Archivo cargado via AJAX en el div "Mostrar_Orden" del archivovitrina_V.php -->
+<!-- Archivo cargado via AJAX en el div id="Mostrar_Orden" del archivovitrina_V.php -->
 
 <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización del capture--> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -63,7 +63,7 @@
 
             <article>
                 <div class="contBoton" id="Contenedor_26">
-                    <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a mostrador</label>
+                    <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a secciones</label>
                     <label class="boton boton--alto" onclick="MuestraEnvioFactura()">Confirmar <br class="br_2"> orden</label>
                 </div>
             </article>
@@ -100,7 +100,7 @@
 
                             <!-- TELEFONO -->
                             <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')" onkeyup="mascaraTelefono(this.value, 'TelefonoUsuario')"/>
+                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')"/>
                             </div>
 
                             <!-- CORREO -->
@@ -165,6 +165,8 @@
                             <!-- SELECCIONAR FORMA DE PAGO -->
                             <div class="contInputRadio">
                                 <?php
+
+                                // SELECCIONAR TRANSFERENCIA
                                 if($Datos['Banco'] != Array()){ ?>                                
                                 <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="Transferencia" value="Transferencia" onclick="verPagoTransferencia()"/>
@@ -173,14 +175,44 @@
                                     <?php
                                 }   
 
+                                // SELECCIONAR PAGOMOVIL
                                 if($Datos['Pagomovil'] != Array()){ ?>                                
                                 <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="PagoMovil" value="PagoMovil" onclick="verPagoMovil()"/>
                                     <label class="contInputRadio__label" for="PagoMovil">Pago movil</label> 
                                 </div>
                                     <?php
-                                }     
+                                }    
 
+                                // SELECCIONAR RESERVE
+                                if($Datos['Reserve'] != Array()){ ?>                                
+                                <div class="contInputRadio">    
+                                    <input type="radio" name="formaPago" id="Reserve" value="Reserve" onclick="verPagoReserve()"/>
+                                    <label class="contInputRadio__label" for="Reserve">Reserve</label> 
+                                </div>
+                                    <?php
+                                }   
+
+                                // SELECCIONAR PAYPAL
+                                if($Datos['Paypal'] != Array()){ ?>                                
+                                <div class="contInputRadio">    
+                                    <input type="radio" name="formaPago" id="Paypal" value="Paypal" onclick="verPagoPaypal()"/>
+                                    <label class="contInputRadio__label" for="Paypal">Paypal</label> 
+                                </div>
+                                    <?php
+                                }   
+
+                                // SELECCIONAR ZELLE
+                                if($Datos['Zelle'] != Array()){ ?>                                
+                                <div class="contInputRadio">    
+                                    <input type="radio" name="formaPago" id="Zelle" value="Zelle" onclick="verPagoZelle()"/>
+                                    <label class="contInputRadio__label" for="Zelle">Zelle</label> 
+                                </div>
+                                    <?php
+                                }    
+                                
+
+                                // SELECCIONAR EFECTIVO BOLIVAR
                                 if($Datos['OtrosPagos'][0]['efectivoBolivar']  != 0){ ?>
                                 <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="EfectivoBolivar" value="Efectivo_Bolivar" onclick="verPagoEfectivoBolivar()"/>
@@ -189,6 +221,7 @@
                                     <?php
                                 }    
 
+                                // SELECCIONAR DOLAR
                                 if($Datos['OtrosPagos'][0]['efectivoDolar'] != 0){ ?>
                                 <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="EfectivoDolar" value="Efectivo_Dolar" onclick="verPagoEfectivoDolar()"/>
@@ -196,7 +229,9 @@
                                 </div>
                                     <?php
                                 }     
+                                
 
+                                // SELECCIONAR ACORADADO
                                 if($Datos['OtrosPagos'][0]['acordado'] != 0){ ?>
                                 <div class="contInputRadio">    
                                     <input type="radio" name="formaPago" id="Acordado" value="acordado" onclick="verPagoAcordado()"/>
@@ -209,24 +244,9 @@
                             <!-- PAGO TRANSFERENCIA -->
                             <div class="contInforPago" id="Contenedor_60a">
                                 <h3 class="h3_2">Cuentas para transferencias</h3>
-                                <!-- <ul class="ul_1">
-                                    <li class="li_1">Pedidos realizados desde zona metropolitana de su ciudad</li> 
-                                </ul> 
-                                <p>Transferencias realizadas del mismo banco habilitan el despacho inmediatamente.</p>
-                                <p>Transferencias realizadas de otros bancos habilitan el despacho pasada 48 horas.</p>
-                                <ul class="ul_1">
-                                    <li class="li_1">Pedidos realizados desde otra ciudad</li>
-                                </ul>            
-                                <p>Despachos enviados via Zoom</p> -->
                                 <table class="tabla_2">
                                     <tbody>
-                                        <?php
-                                        // $Datos viene de Carrito_C/index
-                                        // echo "<pre>";
-                                        // print_r($Datos);
-                                        // echo "</pre>";            
-                                        // exit();
-                                        
+                                        <?php                                        
                                         foreach($Datos['Banco'] as $row) :                                     
                                             $Banco = $row['bancoNombre'];
                                             $Cuenta = $row['bancoCuenta'];
@@ -283,24 +303,10 @@
                             <!-- PAGOMOVIL -->
                             <div class="contInforPago" id="Contenedor_60b">
                                 <h3 class="h3_2">Cuentas para PagoMovil</h3>
-                                <!-- <p>(Pedidos realizados desde zona metropolitana de su ciudad)</p>
-                                <ul class="ul_1">
-                                    <li class="li_1">Despachos inmediatos</li>
-                                </ul>                            
-                                <p>(Pedidos realizados desde otra ciudad)</p>
-                                <ul class="ul_1">
-                                    <li class="li_1">Despachos enviados via Zoom</li>
-                                </ul>    -->
                                 
                                 <table class="tabla_2">
                                     <tbody>
-                                        <?php
-                                        // $Datos viene de Carrito_C/index
-                                        // echo "<pre>";
-                                        // print_r($Datos);
-                                        // echo "</pre>";            
-                                        // exit();
-                                        
+                                        <?php                                        
                                         foreach($Datos['Pagomovil'] as $row): 
                                             $Banco = $row['banco_pagomovil'];                                    
                                             $Cedula = $row['cedula_pagomovil'];
@@ -327,9 +333,8 @@
                                     </tbody>
                                 </table>
                                 
-                                <h3 class="h3_2">Informe su pago mediante el capture del PagoMovil</h3>
+                                <h3 class="h3_2">Informe su pago.</h3>
                                                     
-                                <!-- <br class="br_1"/> -->
                                 <!-- IMAGEN CAPTURE -->
                                 <div class="contGeneral" id="CapturePagoMovil">
                                     <label class="boton boton--largo boton--centro" for="ImagenPagoMovil">Insertar capture</label>
@@ -338,6 +343,99 @@
 
                                     <!-- div que muestra la previsualización del capture-->
                                     <div class="contGeneralCentro" id="DivCapturePagoMovil"></div>
+                                </div> 
+                            </div>
+
+                            <!-- RESERVE -->
+                            <div class="contInforPago" id="Contenedor_60f">
+                                <h3 class="h3_2">Usuario Reserve</h3>
+                                
+                                <table class="tabla_2">
+                                    <tbody>
+                                        <?php                                        
+                                        foreach($Datos['Reserve'] as $row): 
+                                            $Usuario_Reserve = $row['usuarioReserve'];    ?>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Usuario</td>
+                                                <td><?php echo $Usuario_Reserve?></td>
+                                            </tr>
+                                            <?php 
+                                        endforeach;   ?>
+                                    </tbody>
+                                </table>
+                                
+                                <h3 class="h3_2">Informe su pago.</h3>
+                                                    
+                                <!-- IMAGEN CAPTURE -->
+                                <div class="contGeneral" id="CapturePagoReserve">
+                                    <label class="boton boton--largo boton--centro" for="ImagenPagoReserve">Insertar capture</label>
+                                    <input class="ocultar" type="file" name="imagenPagoReserve" id="ImagenPagoReserve" onchange="CapturePagoReserve()"/>
+                                    <!-- <br class="br_1"> -->
+
+                                    <!-- div que muestra la previsualización del capture-->
+                                    <div class="contGeneralCentro" id="DivCapturePagoReserve"></div>
+                                </div> 
+                            </div>
+
+                            <!-- PAYPAL -->
+                            <div class="contInforPago" id="Contenedor_60g">
+                                <h3 class="h3_2">Usuario Paypal</h3>
+                                
+                                <table class="tabla_2">
+                                    <tbody>
+                                        <?php                                        
+                                        foreach($Datos['Paypal'] as $row): 
+                                            $Usuario_Paypal = $row['correo_paypal'];    ?>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Usuario</td>
+                                                <td><?php echo $Usuario_Paypal?></td>
+                                            </tr>
+                                            <?php 
+                                        endforeach;   ?>
+                                    </tbody>
+                                </table>
+                                
+                                <h3 class="h3_2">Informe su pago.</h3>
+                                                    
+                                <!-- IMAGEN CAPTURE -->
+                                <div class="contGeneral" id="CapturePagoPaypal">
+                                    <label class="boton boton--largo boton--centro" for="ImagenPagoPaypal">Insertar capture</label>
+                                    <input class="ocultar" type="file" name="imagenPagoPaypal" id="ImagenPagoPaypal" onchange="CapturePagoPaypal()"/>
+                                    <!-- <br class="br_1"> -->
+
+                                    <!-- div que muestra la previsualización del capture-->
+                                    <div class="contGeneralCentro" id="DivCapturePagoPaypal"></div>
+                                </div> 
+                            </div>
+
+                            <!-- ZELLE -->
+                            <div class="contInforPago" id="Contenedor_60h">
+                                <h3 class="h3_2">Usuario Zelle</h3>
+                                
+                                <table class="tabla_2">
+                                    <tbody>
+                                        <?php                                        
+                                        foreach($Datos['Zelle'] as $row): 
+                                            $Usuario_Zelle = $row['correo_zelle'];    ?>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Usuario</td>
+                                                <td><?php echo $Usuario_Zelle?></td>
+                                            </tr>
+                                            <?php 
+                                        endforeach;   ?>
+                                    </tbody>
+                                </table>
+                                
+                                <h3 class="h3_2">Informe su pago.</h3>
+                                                    
+                                <!-- IMAGEN CAPTURE -->
+                                <div class="contGeneral" id="CapturePagoZelle">
+                                    <label class="boton boton--largo boton--centro" for="ImagenPagoZelle">Insertar capture</label>
+                                    <input class="ocultar" type="file" name="imagenPagoZelle" id="ImagenPagoZelle" onchange="CapturePagoZelle()"/>
+                                    <!-- <br class="br_1"> -->
+
+                                    <!-- div que muestra la previsualización del capture-->
+                                    <div class="contGeneralCentro" id="DivCapturePagoZelle"></div>
                                 </div> 
                             </div>
 
@@ -372,7 +470,7 @@
                                 <!-- Cargado via Ajax cuando el usuario es recordado -->
                                 <input class="ocultar" type="text" id="ID_Usuario" name="ID_Usuario"/>
 
-                                <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a mostrador</label>
+                                <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a secciones</label>
                                 <input class="boton boton--alto botonJS" type="submit" value="Comprar"/>
                             </div>
                     </div>

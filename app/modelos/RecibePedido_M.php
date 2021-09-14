@@ -140,6 +140,24 @@
             else{
                 return 'Existe un fallo';
             }        
+        }   
+
+        // SELECT de unidades en existencia de un producto
+        function consultarExistencia($ID_Opcion){                    
+            $stmt = $this->dbh->prepare(
+                "SELECT cantidad
+                 FROM opciones 
+                 WHERE ID_Opcion = :ID_OPCION"
+            );
+            
+            $stmt->bindValue(':ID_OPCION', $ID_Opcion, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return 'Existe un fallo';
+            }        
         }
 
         //UPDATE para agregar la imagen del capture de pago
@@ -160,7 +178,27 @@
             }
             else{
                 return 'Existe un fallo';
+            } 
+        }
+
+        //UPDATE para agregar la imagen del capture de pago
+        function UpdateInventario($ID_Opcion, $Inventario){
+            $stmt = $this->dbh->prepare(
+                "UPDATE opciones 
+                 SET cantidad = :CANTIDAD 
+                 WHERE ID_Opcion = :ID_OPCION"
+            );
+
+            //Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_OPCION', $ID_Opcion);
+            $stmt->bindValue(':CANTIDAD', $Inventario);
+
+            //Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
             }
-            
+            else{
+                return 'Existe un fallo';
+            } 
         }
     }

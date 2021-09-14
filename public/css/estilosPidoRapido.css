@@ -67,7 +67,7 @@ body, html{
 	display: block;
 	font-size: 2em;
 }
-.a_2{/*inicio*/
+.a_2{
 	background-color: var(--OficialClaro);
 	color: var(--OficialOscuro);
 	font-size: 1.5em;
@@ -76,26 +76,26 @@ body, html{
 	padding: 0.1% 1% 0.1% 1.5%;
 	letter-spacing: 0.5em;
 }
-.a_2:hover{/*inicio*/
+.a_2:hover{
 	cursor: pointer;
 }
-.a_3{/*header - header_inicio - header_AfiCom*/
+.a_3{
 	color: black;
 	width: 30%;
 	text-align: center;
 }
-.a_3A{/*inicio*/
+.a_3A{
+	color: black;
 	font-size: 1.3em;
 	width: 100%;
-	color: black;
 }
-.a_4{/*header_AfiCom*/
+.a_4{
 	display: none;
 }
-.a_5{/*entrada*/
+.a_5{
 	font-size: 0.8em;
 }
-.a_5:hover{/*entrada*/
+.a_5:hover{
 	background-color: rgba(51, 51, 51, 0.2);
 	border-radius: 15px;
 	padding: 1%;
@@ -116,17 +116,17 @@ body, html{
 	color: white;
 	font-size:1.4em
 }
-.a_9{/*cuenta_productos*/
+.a_9{
 	display: inline-block;
 	font-size: 0.8em;
 }
-.a_9:hover{/*cuenta_productos*/
+.a_9:hover{
 	background-color: rgb(239, 245, 245);
 }
 .a_11{/*header_tienda - recibePedido*/
 	text-align: center;
 }
-.ancla_1{/*cuenta_editar_prod*/
+.ancla_1{
 	display: block;
 	content: "marcador ";
 	margin-top: -10%;
@@ -135,14 +135,14 @@ body, html{
 	margin-bottom: 5%;
 
 }
-.ancla_2{/*cuenta_editar*/
+.ancla_2{
 	display: block;
 	content: "marcador ";
 	margin-top: -5%;
 	height: 50px;
 	visibility: hidden;
 }
-.aside_1{/*vitrina*/
+.aside_1{
 	position: fixed;
 }
 .Blink{/*header*/
@@ -178,7 +178,7 @@ body, html{
 	border-width: 1px;
 	border-style: solid;
 }
-.botonReverso{/*vitrina*/
+.botonReverso{
 	background-color: var(--OficialClaro);
 	color: var(--OficialOscuro);
 	height: 20px;
@@ -197,15 +197,15 @@ body, html{
 .boton--corto{
 	width: 150px;
 }
-.boton--centro{/*carrito*/
+.boton--centro{
 	display: block;
 	margin: auto;
 }
-.boton--color{/*carrito*/
+.boton--color{
 	background-color: var(--OficialClaro);
 	color: black;
 }
-.borrar{/*inicio*/
+.borrar{
 	/* width: 100%;
 	height: 100%; */
 	background-repeat: no-repeat;
@@ -219,12 +219,12 @@ body, html{
 	top: 60%;
 	left: 7%;
 }
-.borrar_3{/*inicio*/
+.borrar_3{
 	display: flex;
 	width: 300%;
 	list-style: none;
 }
-.borrar_4{/*inicio*/
+.borrar_4{
 	width: 100%;
 }
 .borde_1{/*tiendas - vitrina - cuenta_editar_prod - cuenta_editar - carrito - afiliacion*/
@@ -236,7 +236,7 @@ body, html{
 .borde_1--color{
 	border-color: var(--OficialOscuro);
 }
-.borde_3{/*afiliacion*/
+.borde_3{
 	border-width: 2px;
 	border-style: solid;
 	border-color: var(--BandaAlerta);
@@ -245,7 +245,7 @@ body, html{
 .borde_2{/*registroCom - cuenta_publicar - cuenta_editar - login - afiliacion*/
 	border-radius: 15px;
 }
-.borde_bottom{/*carrito*/
+.borde_bottom{
 	border-bottom-color: var(--OficialOscuro);
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
@@ -260,6 +260,9 @@ body, html{
 }
 .br_2{/*carrito - inicio - tiendas*/
 	display: none;
+}
+.br_3{
+	line-height: 10px;
 }
 .comandoMenu_2{/*header_inicio - header_AfiCom - header - header_Tienda*/
 	display: none;
@@ -282,7 +285,7 @@ body, html{
 	text-align: right;
 	margin-bottom: 1%;
 }
-.contador_2--seccion{/*cuenta_editar*/
+.contador_2--seccion{
 	position: relative;
 	top: 5%;
 	left: 0%;
@@ -294,17 +297,17 @@ body, html{
 .contador_4{/*quienesSomos - registroCom*/
 	margin-left: 85% !important;
 }
-.cont_background{/*inicio*/
+.cont_background{
 	background-color: rgba(255, 255, 255, 0.3);
 	padding: 0.5%;
 	border-radius: 5px;
 }
-.cont_background--titulo-2{/*inicio*/
+.cont_background--titulo-2{
 	background-color: rgba(32, 26, 26, 0.3);
 	padding: 0.5%;
 	border-radius: 15px;
 }
-.cont_background--titulo-3{/*inicio*/
+.cont_background--titulo-3{
 	background-color: rgba(221, 214, 214, 0.4);
 	padding: 0.5%;
 	border-radius: 15px;
@@ -324,7 +327,7 @@ body, html{
 	cursor: pointer;
 	border-radius: 15px;
 }
-.contenedor_4{/*CantidadTIendas_Ajax*/
+.contenedor_4{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: center; /*Alinea segun el eje horizontal*/
 	flex-wrap: wrap;
@@ -332,24 +335,24 @@ body, html{
 	margin: auto;
 	padding-top: 8%;
 }
-.contenedor_5{/*inicio*/
+.contenedor_5{
 	margin: auto;
 	margin-top: 3%;
 	margin-bottom: 8%;
 	display: none;
 	width: 80%;
 }
-.contenedor_6{/*CantidadTIendas_Ajax*/
+.contenedor_6{
 	width: 20%;
 	margin: 2%;
 	height: 150px;
 	border-radius: 15px;
 }
-.contenedor_6:hover{/*inicio*/
+.contenedor_6:hover{
 	background-color: var(--OficialClaro);
 	cursor: pointer;
 }
-.contenedor_7{/*footer*/
+.contenedor_7{
 	position: relative;
 	height: 100%;
 }
@@ -360,7 +363,7 @@ body, html{
 	bottom: 1pt;
 	padding: 0.5% 0%;
 }
-.contenedor_9{/*cuenta_productos - vitrina*/
+.contenedor_9{
 	background-size: contain; /*fill, cover, contain, none, scale-down, inherit, initial, unset*/
 	background-repeat: no-repeat;
 	background-position: center;
@@ -377,18 +380,15 @@ body, html{
 	border-radius: 5px;
 	border-style: solid;
 }
-.contenedor_9--pointer{/*cuenta_productos - vitrina*/
+.contenedor_9--pointer{
 	cursor: default;
 }
-.contenedor_9--label{/*cuenta_productos*/
+.contenedor_9--label{
 	display: inline-block;
 	margin-top: 2%;
 	padding: 1% 5%;
 }
-.contenedor_9--contain{/*vitrina*/
-	background-size: contain !important; /*fill, cover, contain, none, scale-down, inherit, initial, unset*/
-}
-.contenedor_10{/*tiendas - afiliacion*/
+.contenedor_10{
 	display: grid;
 	grid-template-columns: 35fr 35fr 35fr;
 	grid-template-rows: min-content;
@@ -398,31 +398,30 @@ body, html{
 	width: 85%;
 	height: 92%;
 }
-.contenedor_11{/*vitrina*/
+.contenedor_11{
 	margin-bottom: 25%;
 	text-align: center;
 }
-.contenedor_11a:hover{/*vitrina*/
+.contenedor_11a:hover{
 	cursor: pointer;
 	border-radius: 15px;
 }
-.contenedor_12{/*descargaApp*/
+.contenedor_12{
 	background-color: var(--OficialClaro);
 	border-radius: 15px;
 	margin: 3% auto 5% auto;
 	width: 70%;
 }
-.contenedor_13{/*opciones - cuenta_productos*/
+.contenedor_13{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	flex-wrap: wrap;
 	align-content: flex-start; /*Alinea segun el eje vertical, con el valor flex-start rompe la distribución proporcional vertical y coloca los div hijos desde el top, la distribucion vertical proporcional ocurre cuando el contenedor general tiene altura de 100%*/
 	width: 90%;
 	margin: auto;
-	/* border-radius: 15px; */
 	justify-content: space-between;
 	margin-top: 12%;
 }
-.contenedor_13--Primeralinea{/*cuenta_productos*/
+.contenedor_13--Primeralinea{
 	position: absolute;
 	top: 110px;
 	left: 0%;
@@ -430,7 +429,7 @@ body, html{
 	text-align: center;
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap: wrap*/
 }
-.contenedor_14{/*opciones*/
+.contenedor_14{
 	display: none;
 	height: 20px;
 	grid-column-start: 1;
@@ -447,7 +446,7 @@ body, html{
 .contenedor_15:hover{
 	/* background-color: var(--OficialClaro); */
 }
-.contenedor_16{/*opciones*/
+.contenedor_16{
 	width: 20%;
 	position: relative;
 	top: -45px;
@@ -463,30 +462,30 @@ body, html{
 .contenedor_17>div:first-child{
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
-.contenedor_18{/*vitrina*/
+.contenedor_18{
 	grid-column-start: 1;
 	grid-column-end: 4;
 	margin:2% auto;
 	width: 100%;
 }
-.contenedor_19{/*opciones*/
+.contenedor_19{
 	width: 100%;
 	float: left;
 }
-.contPedido{/*carrito*/
+.contPedido{
 	width: 100%;
 	padding-bottom: 4%;
 }
-.contenedor_21:hover{/*opciones - vitrina*/
+.contenedor_21{
 	cursor: pointer;
 }
-.contenedor_22{/*header.php*/
+.contenedor_22{
 	width: 33%;
 }
-.contenedor_23{/*header.php*/
+.contenedor_23{
 	width: 33%;
 }
-.contenedor_24{/*carrito - Categorias_Ajax - cuenta_editar - Secciones_Ajax - modal_fueraHorario*/
+.contenedor_24{
 	background-color: var(--OficialClaro);
 	width: 70%;
 	margin: 2% auto;
@@ -498,20 +497,21 @@ body, html{
 	margin-top: 5%;
 	text-align: center;
 }
-.contenedor_27{/*carrito - cuenta_editar*/
+.contenedor_27{
 	display: none;
 	margin: 2% auto !important;
 }
-.contenedor_29{/*carrito*/
+.contenedor_29{
 	width: 50%;
 	/* font-size: 1.2em; */
 }
-.contenedor_31{/*vitrina - opciones*/
+.contenedor_31{
 	background-color: var(--OficialOscuro);
 	border-radius: 10px;
 	margin: auto;
 	display:flex ;
 	justify-content: center;
+	align-items: center;
 	width: 90%;
 	height: 30px;
 	border-color: yellow;
@@ -553,15 +553,15 @@ body, html{
 	color:rgb(51, 51, 51) !important;
 	font-size: 1.5em;
 }
-.contenedor_34--main{/*inicio*/
+.contenedor_34--main{
 	height: 300%;
 }
-.div__Botones--uno{/*inicio*/
+.div__Botones--uno{
 	position: absolute;
 	margin-top: 35%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
 	right: 3%;
 } 
-.contenedor_34--p{/*inicio*/
+.contenedor_34--p{
 	background-color: var(--BandaAlerta);
 	font-weight: bold;
 	position: fixed;
@@ -579,32 +579,32 @@ body, html{
 	position: absolute;
 	padding: 0.5% 0%;
 }
-.contenedor_36{/*inicio*/
+.contenedor_36{
 	display: grid;
 	grid-template-columns: 80%;
 }
-.contenedor_37{/*inicio*/
+.contenedor_37{
 	position: absolute;
 	top: 10%;
 	left: 3%;
 }
-.contenedor_38/*afiliacion*/{
+.contenedor_38{
 	height: 70%;
 }
-.contenedor_39{/*RecibePedido*/
+.contenedor_39{
 	height: 100%;
 	width: 90%;
 	text-align: center;
 	margin: auto;
 }
-.contenedor_41{/*afiliacion*/
+.contenedor_41{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: space-around;
 	width: 50%;
 	margin: auto;
 	margin-bottom: 5%;
 }
-.contenedor_42{/*registroCom - registroDes - login - cuenta_editar - cuenta_publicar - noConformidad - cuenta_editar_prod*/
+.contenedor_42{
 	width: 80%;
 	margin: auto;
 	margin-top: 10%;
@@ -629,7 +629,7 @@ body, html{
 .contenedor_47--width-60{
 	width: 60%;
 }
-.contenedor_48{/*afiliacion*/
+.contenedor_48{
 	position: initial !important;
 	margin-top: 3%;
 }
@@ -638,7 +638,7 @@ body, html{
 	margin: 15% auto;
 	text-align: right;
 }
-.contenedor_50{/*login*/
+.contenedor_50{
 	width: 40%;
 	margin: 5% auto;
 	text-align: center;
@@ -658,12 +658,12 @@ body, html{
 .contenedor_51>div:last-child{
 	/*flex: 0 1 100% !important;ocupa toda la primera fila en la distribucion flex*/
 }
-.contenedor_55{/*carrito*/
+.contenedor_55{
 	width: 60%;
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: space-around;
 }
-.contenedor_58{/*inicio*/
+.contenedor_58{
 	background-color: white;
 	display: none;
 	flex-wrap: wrap;
@@ -675,7 +675,7 @@ body, html{
 	text-align: center;
 	align-content: flex-start;
 }
-.contenedor_61{/*vitrina*/
+.contenedor_61{
 	background-color: var(--OficialOscuro);
 	visibility: hidden;/*con esta forma de ocultar se mantiene el area del elemento ocupada, se usa porque ya existe el display flex para este elemento*/
 	display: flex; /*Organiza los elementos horizontalmente*/
@@ -683,7 +683,7 @@ body, html{
 	align-items: center;/*para centrar verticalmente el div hijo junto con display flex*/
 	position: fixed;
 	bottom: 0 !important;
-	width: 20%;
+	width: 22%;
 	margin-left:40%;
 	border-top-left-radius: 80px 60px;
 	border-top-right-radius: 80px 60px;
@@ -695,12 +695,12 @@ body, html{
 	width: 70%;
 	margin: 5% auto 15% auto;
 }
-.contenedor_67{/*cuenta_editar*/
+.contenedor_67{
 	padding: 5% 2%;
 	border-radius: 15px;
 	margin: 1% auto 5% auto !important;
 }
-.contenedor_72{/*carrito*/
+.contenedor_72{
 	width: 100%;
 }
 .contenedor_77{/*Categorias_Ajax_V.php*/
@@ -713,7 +713,7 @@ body, html{
 	font-size: 1em;
 	margin-bottom: 5%;
 }
-.contenedor_80A{/*cuenta_editar*/
+.contenedor_80A{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: space-between;
 	font-size: 1em;
@@ -723,19 +723,19 @@ body, html{
 	left: 0%;
 	width: 100%;
 }
-.contenedor_80B{/*cuenta_editar*/	
+.contenedor_80B{	
 	/* display: flex; 
 	margin-bottom: 5%; */
 	margin: auto;
 	margin-top: 0%;
 	width: 45% !important;
 }
-.contenedor_80C{/*cuenta_editar*/	
+.contenedor_80C{	
 	display: flex; /*Organiza los elementos horizontalmente*/
 	margin-bottom: 5%;
 	width: 100% !important;
 }
-.contenedor__80div{/*cuenta_editar*/
+.contenedor__80div{
 	width:10% !important;
 }
 .contenedor_81{/*cuenta_publicar*/
@@ -745,7 +745,7 @@ body, html{
 	text-align: center;
 	width: 20%;
 }
-.contenedor_83{/*cuenta_editar*/
+.contenedor_83{
 	background-color: var(--OficialClaro);
 	padding: 1%;
 	padding-right: 2%;
@@ -771,18 +771,18 @@ body, html{
 .contenedor_84__h2{/*modal_Secciones*/
 	height: 30px;
 }
-.contenedor_85{/*cuenta_editar*/
+.contenedor_85{
 	display: grid;
 	grid-template-columns: 25% 70%;
 	grid-template-rows: min-content;
 	column-gap: 5%;/*espacio entre columnas*/
 }
-.contenedor_86{/*cuenta_editar*/
+.contenedor_86{
 	border-right-color: var(--OficialOscuro);
 	border-right-width: 1px;
 	border-right-style: solid;
 }
-.contenedor_87{/*cuenta_editar*/
+.contenedor_87{
 	grid-column-start: 1;
 	grid-column-end: 6;
 	text-align: center;
@@ -806,7 +806,7 @@ body, html{
 	height: 40px!important;
 	z-index: 2 !important;
 }
-.contenedor_91{/*cuenta_productos*/
+.contenedor_91{
 	display: block;
 	height: 35px !important;
 }
@@ -818,13 +818,13 @@ body, html{
 	max-height: 150px;
 	margin-bottom: 8%;
 }
-.contenedor_96{/*cuenta_productos*/
+.contenedor_96{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	width: 100%;
 	margin: 1% auto;
 	justify-content: space-around;
 }
-.contenedor_97{/*opciones*/
+.contenedor_97{
 	height: 125px;
 }
 .contenedor_98{/*footer - inicio*/
@@ -842,11 +842,11 @@ body, html{
 .contenedor_98 > div > h3{/*footer - inicio ; este selector aplica la propiedad al hijo del contenedor*/
 	cursor: pointer;
 }
-.contenedor_98--inicio{/*inicio*/
+.contenedor_98--inicio{
 	bottom: 45px;
 	right: 3%;
 }
-.contenedor_99{/*afiliacion*/
+.contenedor_99{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: space-between; /*distribucion horizontal*/
 	margin: 5% auto;
@@ -870,7 +870,7 @@ body, html{
 	padding: 2%;
 	border-radius: 15px;
 }
-.contenedor_104{/*login*/
+.contenedor_104{
 	width: 100%;
 	margin: 5% auto;
 	display: grid;
@@ -882,22 +882,22 @@ body, html{
 	left: 0%;
 	bottom: 5px;
 }
-.contenedor_106{/*CantidadTiendas_Ajax*/
+.contenedor_106{
 	position: relative;
 	bottom: 10px;
 }
-.contenedor_106--lineal{/*vitrina*/
+.contenedor_106--lineal{
 	position: relative;
 	bottom: 65px;
 	right: -5px;
 }
-.contenedor_108{/*cuenta_editar*/
+.contenedor_108{
 	padding-bottom: 10%;
 }
-.contenedor_109{/*vitrina*/
+.contenedor_109{
 	display: none;
 }
-.contenedor_110{/*vitrina*/
+.contenedor_110{
 	display: grid;
 	grid-template-columns: 21% 21% 21% 21%;
 	justify-content: space-around;
@@ -907,7 +907,7 @@ body, html{
 .contenedor_111{/*header*/
 	padding-left: 3%;
 }
-.contenedor_111--Afiliado{/*header_AfiCom*/
+.contenedor_111--Afiliado{
 	padding-left: 1%;
 
 }
@@ -930,7 +930,7 @@ body, html{
 	margin: auto;
 	margin-bottom: 2%;
 }
-.contenedor_114{/*cuenta_editar_prod*/
+.contenedor_114{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -964,7 +964,7 @@ body, html{
 	border-top-right-radius: 15px;
 	/* margin-bottom: 2%; */
 }
-.contenedor_121{/*cuenta_editar_prod*/
+.contenedor_121{
 	width: 45%;
 	margin-top: 10% !important;
 }
@@ -1024,13 +1024,13 @@ body, html{
 	margin: auto;
 	text-align: center !important;
 }
-.contenedor_135{/*cuenta_editar_prod*/
+.contenedor_135{
 	width: 70%;
 	margin: 2% auto;
 	display: flex;
 	justify-content: space-between;
 }
-.contenedor_136{/*carrito*/
+.contenedor_136{
 	background-color: green;
 	margin-bottom: 2% !important;
 	display: flex;
@@ -1040,7 +1040,7 @@ body, html{
 	margin:5% auto;
 	width: 90%;
 }
-.contenedor_138{/*carrito*/
+.contenedor_138{
 	width: 18%;
 }
 .contenedor_139{/*desr_Producto*/
@@ -1050,7 +1050,7 @@ body, html{
 	margin: 5% auto;
 	text-align: center;
 }
-.contenedor_142{/*cuenta_productos*/
+.contenedor_142{
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1058,17 +1058,17 @@ body, html{
 	height: 100px;
 	align-items: center;
 }
-.contenedor_144{/*quienesSomos*/
+.contenedor_144{
 	padding-top: 5%;
 	width: 90%;
 	margin: auto;
 }
-.contenedor_146{/*quienesSomos*/
+.contenedor_146{
 	padding-top: 10%;
 	width: 90%;
 	margin: auto;
 }
-.contenedor_147{/*login*/
+.contenedor_147{
 	width: 75%;
 	margin-left: 30%;
 	background-size: contain;
@@ -1076,7 +1076,7 @@ body, html{
 	background-position: center;
 	vertical-align: middle;
 }
-.contenedor_149{/*quienesSomos*/
+.contenedor_149{
 	padding-top: 10%;
 	width: 80%;
 	margin: auto;
@@ -1084,44 +1084,39 @@ body, html{
 	justify-content: space-between;
 	align-items: center;
 }
-.contenedor_151{/*quienesSomos*/
+.contenedor_151{
 	width: 45%;
 	margin: auto;
 }
-.contenedor_152{/*quienesSomos*/
+.contenedor_152{
 	width: 80%;
 	padding-right: 5%
 }
-.contenedor_153{/*quienesSomos*/
+.contenedor_153{
 	width: 20%;
 	margin-top:5%
 }
-.contenedor_154{/*carrito*/
+.contenedor_154{
 	width: 100% !important;
 }
-.contenedor_155{/*carrito*/
+.contenedor_155{
 	width: 50%;
 }
-.contenedor_156{/*vitrina - opciones*/
+.contenedor_156{
 	display: flex;
 	width: 100%;
-	/* flex-wrap: wrap; */
 }
-/*.contenedor_156>div:first-child{tiendas - vitrina
-	flex: 0 1 100% !important; ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap
-} */
-.contenedor_158{/*opciones*/
+.contenedor_158{
 	justify-content: space-between;
 	width: 100%;
 }
-.contenedor_159{/*opciones*/
+.contenedor_159{
 	background-color: var(--BandaAlerta);
 	cursor: pointer;
-	/* margin-right:2%; */
 	border-radius:5px;
 	padding: 0% 2%;
 }
-.contenedor_160 > div:last-child{/*inicio*/
+.contenedor_160 > div:last-child{
 	/*flex: 0 1 0% !important;rompe la ocupacion de toda la primera fila en la distribucion flex*/
 }
 .contenedor_161{
@@ -1129,23 +1124,23 @@ body, html{
 	width: 90%;
 	margin: 2% auto;
 }
-.contenedor_162{
-	/* border-top: 1px solid var(--BordeClaro); */
-	/* background-color: red;
-	height: 55px;
-	padding-top: 2%; */
+.contenedor_161--fijo{
+	margin-top: 30px;
 }
 .contenedor_163{
-	/* margin: 2% auto; */
-	min-height: 130px;
+	height: 140px;
+	overflow-y: scroll;
 }
-.contenedor_166{/*cuenta_editar*/
+.contenedor_161--span{
+	margin-left: 82%;
+	position: fixed;
+}
+.contenedor_166{
 	display: flex;
 	margin-bottom: 5%;
 }
-.contenedor_167{/*vitrina*/
+.contenedor_167{
 	background-color:  var(--BandaAlerta);
-	/* display: none; */
 	position: fixed;
 	top: 13%;
 	left: 0%;
@@ -1155,24 +1150,24 @@ body, html{
 	width: 100%;
 	z-index: 3 !important;
 }
-.contenedor_169{/*noConformidad*/
+.contenedor_169{
 	width: 70%;
 	margin: auto;
 	padding: 5%;
 	padding-top: 3%;
 }
-.contenedor_170{/*cuenta_editar_prod*/
+.contenedor_170{
 	display: flex;
 	flex-wrap: wrap;
 }
-.contenedor_170 > div:last-child{/*cuenta_editar_prod*/
+.contenedor_170 > div:last-child{
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
 .contenedor_171{/*descr_Producto*/
 	text-align: center;
 	margin-bottom: 5%;
 }
-.contBoton{/*carrito - descr_Producto - pwa - tiendas*/
+.contBoton{
 	margin: auto;
 	margin-top: 5%;
 	width: 50%;
@@ -1182,7 +1177,7 @@ body, html{
 .contBoton--100{/*descr_Producto - tiendas*/
 	width: 100%;
 }
-.contBuscador{/*inicio*/
+.contBuscador{
 	display: none;
 	background-color: var(--FondoDivModal);
 	position: absolute;
@@ -1192,17 +1187,17 @@ body, html{
 	left: 0%;
 	z-index: 4; /*Para que se sobreponga al header*/
 }
-.contBuscador__borrar{/*inicio*/
+.contBuscador__borrar{
 	padding-top: 2%;
 }
-.contBuscador__div{/*inicio*/
+.contBuscador__div{
 	background-color: var(--OficialClaro);
 	width: 60%;
 	padding: 1% 0% 1% 0%;
 	margin: 0% auto 1% auto;
 	border-radius: 15px;
 }
-.contBuscador__div__div{/*inicio*/
+.contBuscador__div__div{
 	width: 65%;
 	margin: auto;
 }
@@ -1273,7 +1268,7 @@ body, html{
 .contMuestraBuscador:hover > .contMuestraBuscador__textarea{
 	background-color: var(--OficialClaro);
 }
-.contFlex{/*carrito*/
+.contFlex{
 	display: flex; /*Organiza los elementos horizontalmente*/
 	flex-wrap: wrap; /*permite pasar a la segunda fila*/
 	justify-content: space-between;
@@ -1282,16 +1277,16 @@ body, html{
 .contFlex>p:first-child{
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap*/
 }
-.contFlex50{/*carrito*/
+.contFlex50{
 	display: flex;
 	justify-content: space-between;
 	width: 55%;
 	margin: 3% auto;
 }
-.contFlex--around{/*inicio*/
+.contFlex--around{
 	justify-content: space-around;
 }
-.contFlex--suscribir{/*carrito*/
+.contFlex--suscribir{
 	background-color: var(--BandaAlerta);
 	width: 50%;
 	margin: 2% auto 0% auto;
@@ -1300,14 +1295,14 @@ body, html{
 	border-radius: 15px;
 	padding: 0.5%;
 }
-.contFlex__div{/*inicio*/
+.contFlex__div{
 	width: 40%;
 	margin: auto;
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: space-around;
 	align-items: center;
 }
-.contFlex__select{/*inicio*/
+.contFlex__select{
 	display: block;
 	font-size: 1em;
 	height: 33px;
@@ -1320,7 +1315,7 @@ body, html{
 	margin: auto;
 	margin-bottom: 2%;
 }
-.contFlex--usuarios{/*carrito*/
+.contFlex--usuarios{
 	background-color: var(--FondoDivModal--claro); 
 	position: absolute; 
 	width: 100%; 
@@ -1344,7 +1339,7 @@ body, html{
 	grid-template-columns: 32% 32% 32%;
 	justify-content: space-around;
 }
-.contInforPago{/*carrito*/
+.contInforPago{
 	display: none;
 	margin: auto !important;
 	width: 80%;
@@ -1356,7 +1351,7 @@ body, html{
 .contInputRadio{/*carrito - SeccionesDisponibles_Ajax - categoria -  Categorias_Ajax*/
 	margin-bottom: 1% !important;
 }
-.contInputRadio--center{/*cuenta_editar_prod*/
+.contInputRadio--center{
 	text-align: center;
 }
 .contInputRadio__label{/*carrito - Secciones_Ajax - Categorias_Ajax*/
@@ -1375,7 +1370,7 @@ body, html{
 	padding-left: 10% !important;
 	margin-bottom: 10px !important;
 }
-.contOpciones{/*opciones*/
+.contOpciones{
 	border-radius: 15px;
 	text-align: center;
 	width: 100%;
@@ -1383,10 +1378,10 @@ body, html{
 	margin: auto;
 	cursor: pointer;
 }
-.contOpciones--pointer{/*cuenta_productos*/
+.contOpciones--pointer{
 	cursor: default;
 }
-.contOpciones__img{/*opciones*/
+.contOpciones__img{
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 190px;
 	max-height: 120px;
@@ -1400,16 +1395,16 @@ body, html{
 	/* display: block;
 	margin-top: 0px; */
 }
-.contPrincipal{/*inicio*/
+.contPrincipal{
 	height: 100vh;
     overflow: auto;
     scroll-snap-type: y mandatory;
 }
-.cont_seccion--icono_Contador{/*cuenta_editar*/
+.cont_seccion--icono_Contador{
 	width: 10%;
 	text-align: center;
 }
-.cont_seccion--icono_editar{/*cuenta_editar*/
+.cont_seccion--icono_editar{
 	background-color: var(--OficialClaro);
 	border-radius: 30px;
 	padding: 2%;
@@ -1419,7 +1414,7 @@ body, html{
 	cursor: pointer;	
 	font-size: 20px;
 }
-.cont_seccion--div-1{/*cuenta_editar*/
+.cont_seccion--div-1{
 	margin-bottom: 0%;
 }
 .contSelectVert{/*horario*/
@@ -1436,7 +1431,7 @@ body, html{
 .contTabla{/*horarioDespacho*/
 	margin-bottom: 7%;
 }
-.div__Botones{/*inicio*/
+.div__Botones{
 	display: flex;
 	justify-content: space-between;
 	position: relative;
@@ -1444,7 +1439,7 @@ body, html{
 	top: 77%;
 	left: 75%;
 }
-.div__Botones--boton{/*inicio*/
+.div__Botones--boton{
 	background-color: var(--OficialClaro);
 	color: black;
 	height: 40px;
@@ -1459,10 +1454,10 @@ body, html{
 	border-width: 1px;
 	border-style: solid;
 }
-.desactivado{/*inicio*/
+.desactivado{
 	color: var(--TextoClaro);
 }
-.desactivado:hover{/*inicio*/
+.desactivado:hover{
 	background-color: initial;
 	cursor: default;
 }
@@ -1484,7 +1479,7 @@ body, html{
 .spanCerrar{
 	color: white;
 	font-size: 2em;
-	margin: -1% 4% 0% 95%;
+	margin: 0% 4% 0% 95%;
 	cursor: pointer;
 }
 .spanCerrar--black{
@@ -1521,37 +1516,36 @@ body, html{
 .fieldset_2{/*registroCom - registroDes*/
 	margin-top: 5%;
 }
-.fieldset_3{/*cuenta_editar_prod*/
+.fieldset_3{
 	width: 60%;
 	padding: 3%;
 	margin-bottom: 5%;
 }
-.fieldset_4{/*noConformidad*/
+.fieldset_4{
 	width: 90%;
 	margin: auto;
 	border-radius: 15px;
 	padding: 3%;
 }
 .footer{
-	/* background-color: var(--footer); */
 	background:  linear-gradient(to bottom, rgb(11, 11, 11), rgba(44, 45, 49, 0.7));
 	height: 30%;
 }
-.footer__h3{/*footer*/
+.footer__h3{
 	color: white;
 	font-weight: normal;
 	font-size: 0.7em;
 }
-.footer__h3--inicio{/*footer*/
+.footer__h3--inicio{
 	color: black;
 }
-.footer__h6{/*footer*/
+.footer__h6{
 	color: white;
 	text-align: center;
 	font-weight: normal;
 	font-size: 0.6em;
 }
-.footer__h5{/*footer*/
+.footer__h5{
 	color: white;
 	text-align: center;
 	font-weight: normal;
@@ -1560,7 +1554,7 @@ body, html{
 .font--negro{/*header_Tienda - inicio*/
 	color: black;
 }
-.font--white{/* inicio*/
+.font--white{
 	color: white;
 }
 .h1_1{/*carrito - cuenta_productos - Categorias_Ajax - cuenta_ventas - opciones - tiendas - Secciones_Ajax- cuenta_editar - registroCom - registroDes - modal_sinProductos - descr_Producto*/
@@ -1572,7 +1566,7 @@ body, html{
 .h1_1--margin{/*descr_Producto*/
 	margin-bottom: 0%;
 }
-.h1_2{/*inicio*/
+.h1_2{
 	font-size: 4.5em;
 	text-align: right;
 }
@@ -1591,7 +1585,7 @@ body, html{
 	margin: 2% auto;
 	width: 100%;
 }
-.h1_6{/*cuenta_productos*/
+.h1_6{
 	margin-bottom: 0%;
 }
 .h1_7{/*categoria*/
@@ -1599,7 +1593,7 @@ body, html{
 	text-align: center;
 	margin-bottom: 4%;
 }
-.h1_8{/*cuenta_editar*/
+.h1_8{
 	display: none;
 }
 .h1_10{/*header_Tienda - header_AfiCom - headerProducto*/
@@ -1616,7 +1610,7 @@ body, html{
 	font-weight: lighter;
 	line-height: 25px;
 }
-.h1_12{/*RecibePedido*/
+.h1_12{
 	font-size: 1.9em !important;
 }
 .h1_13{/*ciudad*/
@@ -1626,14 +1620,14 @@ body, html{
 	font-size: 1.5em;
 	margin-left: -12% !important;
 }
-.h2_1{/*inicio*/
+.h2_1{
 	font-weight: normal;
 	text-align: center;
 	padding: 4%;
 	min-height: 4em; /*para garantizar que cubra dos lineas y los iconos se alineen a partir de alli */
 	cursor: pointer;
 }
-.h2_2{/*carrito*/
+.h2_2{
 	font-weight: normal;
 	text-align: right;
 	margin-right: 5%;
@@ -1642,7 +1636,7 @@ body, html{
 .h2_3{/*carrito modal_Secciones*/
 	font-weight: bold !important;
 }
-.h2_4{/*inicio*/
+.h2_4{
 	font-size: 1.3em;
 	font-weight: lighter;
 	text-align: right;
@@ -1670,7 +1664,7 @@ body, html{
 	text-align: center;
 	font-weight: normal ;
 }
-.h2_11{/*afiliacion*/
+.h2_11{
 	font-size: 1.3em;
 	font-weight: normal;
 	text-align: center;
@@ -1704,9 +1698,10 @@ body, html{
 }
 .cont_direccion{
 	border-top:  1px solid black;
+	margin-top: 2%;
 	padding-top: 2%;
 }
-.h3_2{/*carrito*/
+.h3_2{
 	font-weight: normal;
 	font-size: 1.3em;
 	text-align: center;
@@ -1719,6 +1714,9 @@ body, html{
 	font-size: 1em;
 	margin: auto;
 	width: 100%;
+}
+.h3_4--fijo{
+	position: fixed;
 }
 .h3_9{/*cuenta_productos - buscador*/
 	width: 100%;
@@ -1758,22 +1756,21 @@ body, html{
 .header__menuResponsive--Afiliado{
 	width: 80%;
 }
-.header__menuResponsive ul{/*Todas  las páginas*/
+.header__menuResponsive ul{
 	margin: auto;
 	list-style: none;
 	display: flex; /*Organiza los elementos horizontalmente*/
 }
-.header__menuResponsive li{/*Todas las páginas*/
+.header__menuResponsive li{
 	/* padding-bottom: 0.2%; */
 	flex-grow: 1;/*distribuye proporcionalmente los elementos internos en el eje horizontal, es necesario que el elemento padre tenga la propiedad display con el valor flex*/
 	width: 80%;
 }
-.header__menuResponsive li a{/*Todas las páginas*/
+.header__menuResponsive li a{
 	display: block;
 	width: 170px;
 	margin: auto;
 	margin-top: 1%;
-	/* color: black; */
 	font-size: 1.2em;
 	text-align: center;
 	/* padding:3% 0%; */
@@ -1781,10 +1778,10 @@ body, html{
 	line-height: 20px; /*6vh*/
 	box-sizing: border-box;
 }
-.header__menuResponsive li a:hover{/*Todas las páginas*/
+.header__menuResponsive li a:hover{
 	font-size: 19px;
 }
-.hr_1{/*carrito*/
+.hr_1{
 	width: 40%;
     border: none;
 	height: 1px;
@@ -1793,7 +1790,7 @@ body, html{
     color: #333; /* old IE */
     background-color: #333; /* Modern Browsers */
 }
-.hr_2{/*afiliacion*/
+.hr_2{
 	width: 40%;
     border: none;
 	height: 1px;
@@ -1801,7 +1798,7 @@ body, html{
     color: #333; /* old IE */
     background-color: #333; /* Modern Browsers */
 }
-.hr_3{/*login*/
+.hr_3{
 	width: 100%;
     border: none;
 	height: 1px;
@@ -1834,7 +1831,7 @@ body, html{
 	width: 100%;
 	text-align: center;
 }
-.icono_4{/*cuenta_editar*/
+.icono_4{
 	/* font-size: 20px; */
 }
 .icono_5{
@@ -1844,7 +1841,7 @@ body, html{
 .icono_6{/*header_inicio*/
 	margin-bottom: 5%;
 }
-.icono_7{/*opciones*/
+.icono_7{
 	background-color:rgb(78, 43, 43);
 	color: white;
 	padding: 9% 10%;
@@ -1862,29 +1859,29 @@ body, html{
 	object-fit: contain ;
 	padding: 10%;
 }
-.imagen_2{/*vitrina*/
+.imagen_2{
 	border-radius: 15px;
 	object-fit: scale-down !important;
 	width: 150px;
 	height: 180px;
 }
-.imagen_2:hover{/*cuenta_editar_prod*/
+.imagen_2:hover{
 	cursor: pointer;
 }
-.imagen_3{/*cuenta_editar*/
+.imagen_3{
 	margin: auto;
 	margin-bottom: 1%;
 	display: block;
 	width: 5% !important;
 }
-.imagen_4{/*inicio*/
+.imagen_4{
 	width: 40% !important;
 }
-.imagen_4{/*cuenta_editar*/
+.imagen_4{
 	width: 50%;
 	display: inline-block;
 }
-.imagen_5{/*footer*/
+.imagen_5{
 	width: 28%;
 	object-fit: contain;/*esta propiedad necesita el ancho y alto de la imagen definidos*/
 }
@@ -1900,7 +1897,7 @@ body, html{
 	margin-bottom: 5%;
 	border-radius: 15px;
 }
-.imagen_8{/*vitrina*/
+.imagen_8{
 	object-fit: contain !important; /*esta propiedad necesita el ancho y alto de la imagen definidos*/
 	width: 20%;
 	margin: auto;
@@ -1926,12 +1923,12 @@ body, html{
 	cursor: pointer;
 	object-fit: contain; /*fill, cover, contain, none, scale-down, inherit, initial, unset*/
 }
-.input_1{/*vitrina*/
+.input_1{
 	border: none;
 	text-align: right;
 	padding-right: 5%;
 }
-.input_2{/*vitrina*/
+.input_2{
 	background-color:rgb(44, 29, 29) ;
 	color: white;
 	border: none;
@@ -1940,7 +1937,7 @@ body, html{
 	text-align: center;
 	padding: 5%;
 }
-.input_2a{/*opciones*/
+.input_2a{
 	/* background-color: rgba(83, 16, 16, 0); */
 	font-size: 0.9em;
 	text-align: center;
@@ -1954,7 +1951,7 @@ body, html{
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.input_5{/*vitrina*/
+.input_5{
 	background-color: var(--OficialOscuro);
 	color: white;
 	border: none;
@@ -1972,10 +1969,10 @@ body, html{
 	text-align: right;
 	width: 80px !important;
 }
-.input_7{/*carrito*/
+.input_7{
 	font-weight: bold;
 }
-.input_8{/*opciones*/
+.input_8{
 	width: 100%;
 	border: none;
 	margin-bottom: 1%;
@@ -1983,11 +1980,11 @@ body, html{
 	/* font-size: 0.9em; */
 	display: block;
 }
-.input_8A{/*opciones - cuenta_productos*/
+.input_8A{
 	margin-top: 10%;
 	/* font-size: 0.9em; */
 }
-.input_8C{/*opciones*/
+.input_8C{
 	max-width: 100%;
 	height: 40px;
 	/* width: 100%; */
@@ -2002,7 +1999,7 @@ body, html{
 	-webkit-box-orient: vertical;
 	text-overflow: ellipsis;
 }
-.input_8D{/*opciones*/
+.input_8D{
 	min-height: 15px;
 	max-height: 40px;
 	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
@@ -2019,7 +2016,7 @@ body, html{
 .input_8E{
 	font-size: 0.9em;
 }
-.input_10{/*opciones*/
+.input_10{
 	cursor: pointer;
 	color: var(--Enlaces);
 	visibility: visible;
@@ -2029,24 +2026,23 @@ body, html{
 	white-space:nowrap;
 	text-overflow: ellipsis; */
 }
-.input_12{/*cuenta_editar*/
+.input_12{
 	width: 90% !important;
-	/* display: inline-block; */
 }
-.input_13{/*cuenta_editar - carrito - login*/
+.input_13{
 	font-size: 1.2em;
 	line-height: 30px;
 	padding-left: 5%;
 	width: 100%;
 	margin: 1% auto 2% auto;
 }
-.input_13:focus, .textarea_4:focus{/*cuenta_publicar - cuenta_editar*/
+.input_13:focus, .textarea_4:focus{
 	border-color: rgb(51, 51 ,51);
 }
-.input_13--centro{/*modal_recuperarCorreo*/
+.input_13--centro{
 	text-align: center;
 }
-.input_13--sinFormato{/*modal_recuperarCorreo*/
+.input_13--sinFormato{
 	background-color: var(--OficialClaro);
 	text-align: center;
 	border: none;
@@ -2054,7 +2050,7 @@ body, html{
 .input_13A{/*cuenta_editar - login*/
 	font-size: 1em;
 }
-.input_14{/*cuenta_productos*/
+.input_14{
 	background-color: var(--OficialClaro);
 	position: relative !important;
 	top: -50px;
@@ -2064,32 +2060,39 @@ body, html{
 	border-radius: 50%;
 	text-align: center;
 }
-.input_15{/*vitrina*/
-	background-color: rgba(165, 42, 42, 0);
+.input_15{
+	background-color: var(--OficialClaro);
 	font-size: 0.8em;
 	font-weight: bold;
 	border: none;
-	text-align: center;
-	line-height: 30px;
-	height: 30px;
-	display: block;
-	width: 100%;
-	/* las proximas 3 líneas, le indicando al contenido que si se sale por un lateral que no se muestre, que no se cambie de línea el contenido “inline” y que, en caso de salirse el texto por un lateral, que le incluya los puntos suspensivos automáticamente por donde proceda. */
-	overflow:hidden;
-	white-space:nowrap;
-	text-overflow: ellipsis;
+	text-align: left;
+	line-height: 20px;
+	height: 20px;
+	display: inline-block;
+	width: 85%;
+	border-radius: 15px;
+	margin: 0% 2% 2% 0%;
+	padding: 0% 5%;
 }
-.input_16{/*cuenta_editar*/
+.input_15--eliminar{
+	background-color: initial;
+	color: var(--Fallos);
+	width: 10%;
+	text-align: center;
+	cursor: pointer;
+	padding: 0%;
+}
+.input_16{
 	margin-bottom: 0%;
 }
-.input--textCenter{/*carrito*/
+.input--textCenter{
 	text-align: center;
 }
-.label_2{/*vitrina*/
+.label_2{
 	font-weight: bold;
 	padding-right: 10%;
 }
-.label_4{/*opciones - cuenta_editar*/
+.label_4{
 	background-color: var(--OficialOscuro);
 	color:white ;
 	position: relative;
@@ -2102,21 +2105,21 @@ body, html{
 	padding: 1%;
 	border-radius: 10px;
 }
-.label_4:hover{/*vitrina*/
+.label_4:hover{
 	background-color: var(--OficialClaro);
 	color: var(--OficialOscuro);
 	cursor: pointer;
 }
-.label_4--innabilitado{/*opciones*/
+.label_4--innabilitado{
 	background-color: rgba(51, 51, 51, 0.5);
 	padding: 1.5%;
 }
-.label_4--innabilitado:hover{/*opciones*/
+.label_4--innabilitado:hover{
 	background-color: rgba(51, 51, 51, 0.5);
 	color: white;
 	cursor: default;
 }
-.label_5{/*vitrina*/
+.label_5{
 	width: 100% !important;
 	text-align: center;
 	margin-left: auto;
@@ -2128,10 +2131,10 @@ body, html{
 	cursor: pointer;
 	border-radius: 10px;
 }
-.label_7{/*login*/
+.label_7{
 	color: blueviolet;
 }
-.label_7:hover{/*login*/
+.label_7:hover{
 	cursor: pointer;
 }
 .label_11{/*RegistroCom_V - cuenta_editar*/
@@ -2143,7 +2146,7 @@ body, html{
 .label_15{/*registroCom*/
 	color: rgba(0, 0, 0, 0.6);
 }
-.label_16{/*cuenta_editar*/
+.label_16{
 	font-size: 1em;
 	display: inline-block;
 }
@@ -2161,13 +2164,13 @@ body, html{
 	width: 90%;
 	margin: auto !important;
 }
-.label_19{/*cuenta_editar*/
+.label_19{
 	font-size: 0.8em;
 }
 .label_19:hover{/**/
 	cursor: pointer!important;
 }
-.label_21{/*cuenta_productos*/
+.label_21{
 	width: 20%;
 	display: block;
 	margin:5%  auto;
@@ -2189,13 +2192,13 @@ body, html{
 	font-size: 0.9em;
 	padding: 1%;
 }
-.label_24{/*cuenta_editar*/
+.label_24{
 	margin: auto;
 	border-color: var(--OficialOscuro);
 	border-width: 1px;
 	border-style: solid;
 }
-.label_25{/*cuenta_editar*/
+.label_25{
 	pointer-events:none;
 }
 .label--block{/*header_Tienda - header_AfiCom*/
@@ -2219,7 +2222,7 @@ body, html{
 	border-radius: 15px;
 	padding-left: 3%;
 }
-.li_3{/*afiliacion*/
+.li_3{
 	width: 80%;
 	margin: auto;
 	line-height: 1.5em;
@@ -2231,7 +2234,7 @@ body, html{
 .li_5{/*cuenta_ediitar*/
 	font-size: 0.9em;
 }
-.mas{/*opciones*/
+.mas{
 	background-color:rgb(78, 43, 43);
 	color: white;
 	padding: 5% 10%;
@@ -2242,7 +2245,7 @@ body, html{
 	margin: 0px !important;
 	width: 30%;
 }
-.marcador{/*cuenta_editar*/
+.marcador{
 	color: rgb(51, 51 ,51);
 	text-align: right;
 	line-height: 30px;
@@ -2256,7 +2259,7 @@ body, html{
 	border-radius: 15px;
 	padding-right: 5%;
 }
-.menos{/*opciones*/
+.menos{
 	background-color:rgb(78, 43, 43);
 	color: white;
 	padding: 5% 10%;
@@ -2271,7 +2274,7 @@ body, html{
 	display: inline-block !important;
 	width: 20%;
 }
-.menuLi_2{/*header_AfiCom*/
+.menuLi_2{
 	color: var(--OficialOscuro);
 	padding-left: 5%;
 	padding-top: 7%;
@@ -2285,7 +2288,7 @@ body, html{
 .ol_1{/*cuenta*/
 	margin-left: 3%;
 }
-.ol_2{/*descargaApp*/
+.ol_2{
 	margin-left: 5%;
 	line-height: 30px;
 	text-align: justify;
@@ -2303,7 +2306,7 @@ body, html{
 	cursor: pointer;
 	width: 100%;
 }
-.p_3{/*tiendas - afiliacion*/
+.p_3{
 	margin: 2% auto;
 	text-align: center;
 	font-size: 1.6em;
@@ -2313,11 +2316,11 @@ body, html{
 	text-align: center;
 	width: 100% !important;
 }
-.p_5{/*afiliacion*/
+.p_5{
 	margin: 0% auto;
 	text-align: center;
 }
-.p_6{/*cuenta_editar*/
+.p_6{
 	/* text-align: center;
 	font-size: 1.5em; */
 	/* margin-bottom: 3%; */
@@ -2340,25 +2343,25 @@ body, html{
 .p_10{/*header_Tienda*/
 	color: white;
 }
-.p_11{/*afiliacion*/
+.p_11{
 	color: rgb(51, 51, 51);
 	font-size: 1.9em;
 	text-align: center;
 	margin-top: 5%;
 	padding-bottom: 5%;
 }
-.p_11--complemento{/*afiliacion*/
+.p_11--complemento{
 	margin-top: -5% !important;
 	font-size: 1em !important;
 	margin-bottom: -5% !important;
 }
-.p_12{/*cuenta_editar*/
+.p_12{
 	margin: 0% auto 5% auto;
 }
-.p_13{/*carrito*/
+.p_13{
 	font-weight: bold;
 }
-.p_13, .p_14{/*carrito*/
+.p_13, .p_14{
 	line-height: 25px;
 }
 .p_15{/*pwa - descargaApp*/
@@ -2370,7 +2373,7 @@ body, html{
 	font-size: 1.3em;
 	line-height: 35px;
 }
-.p_17{/*vitrina - opciones*/
+.p_17{
 	background-color: var(--OficialClaro);
 	text-align: center;
 	height: 100%;
@@ -2421,7 +2424,7 @@ body, html{
 	width: 100%;
 	margin-bottom: -0.5% !important;
 }
-.placeholder_3{/*cuenta_editar_prod*/
+.placeholder_3{
 	width: 90%;
 	margin: initial !important;
 	margin-bottom: 5% !important;
@@ -2430,12 +2433,12 @@ body, html{
 .placeholder_4{/*registroCom - cuenta_publicar*/
 	margin-bottom: -0.5% !important;
 }
-.placeholder_5{/*cuenta_editar_prod*/
+.placeholder_5{
 	width: 95%;
 	/* margin: initial !important; */
 	display: inline;
 }
-.preloder{/*vitrina*/
+.preloder{
 	width: 70px;
 	height: 70px;
 	border: 10px solid #eee;
@@ -2465,7 +2468,7 @@ body, html{
 	height: 100%;
 	z-index: 9
 }
-.preloder_tapa--total{/*inicio*/
+.preloder_tapa--total{
 	/* background-color: rgba(255, 255, 255, 0.2); */
 	background-color: white;
 	position: fixed;
@@ -2481,7 +2484,7 @@ body, html{
 	bottom: 0%;
 	margin: auto;
 }
-.rompe_Flex{/*carrito*/
+.rompe_Flex{
 	flex: 0 1 100% !important;/*ocupa toda la primera fila de la distribucion flex, el padre debe tener flex-wrap: wrap*/
 }
 .sectionModal{/*carrito - SeccionesDisponibles_Ajax - cuenta_editar - Categorias_Ajax - modal_fueraHorario*/
@@ -2503,23 +2506,23 @@ body, html{
 	display: none;
 	width: 100%;
 }
-.sectionModal__span{/*modal_recuperarCorreo*/
-	float: right;
+.sectionModal__span{
+	/* float: right;
 	margin-right: 3%;
 	color: white;
 	font-size: 1.6em;
-	z-index: 4;
+	z-index: 4; */
 }
-.section__main{/*inicio*/
+.section__main{
 	display: flex;
 	width: 300%;
 	overflow: hidden;
 }
-.section_1{/*inicio*/
+.section_1{
 	width: 100%;
 	height: 100vh;
 }
-.section_1__div{/*inicio*/
+.section_1__div{
 	background-color:rgba(0, 0, 0, 0.1);
 	display: inline-flex;
 	align-items: center;
@@ -2528,16 +2531,16 @@ body, html{
 	margin-left: 10%;
 	margin-top: 33%;
 }
-.section_1__div1{/*inicio*/
+.section_1__div1{
 	width: 75%;
 }
-.section_1__div3{/*inicio*/
+.section_1__div3{
 	position: relative;
 	width: 13%;
 	top: 77%;
 	left: 84%;
 }
-.section_1--cont__radios{/*inicio*/
+.section_1--cont__radios{
 	position: fixed;
 	top: 40%;
 	right: 3%;
@@ -2547,10 +2550,10 @@ body, html{
 	height: 10%;
 	/* z-index: 4; */
 }
-.section_1--radios{/*inicio*/
+.section_1--radios{
 	cursor: pointer;
 }
-.section_1--cont__radios--cinco{/*inicio*/
+.section_1--cont__radios--cinco{
 	position: relative;
 	/* top: 40%;*/
 	left: 15%; 
@@ -2560,11 +2563,11 @@ body, html{
 	width: 40%;
 	z-index: 4;
 }
-.section_1--radios--cinco{/*inicio*/
+.section_1--radios--cinco{
 	cursor: pointer;
 	width: 8px;
 }
-.section_1__p{/*inicio*/
+.section_1__p{
 	background-color: var(--FondoDivModal--claro);
 	padding: 1% 2%;
 	color: white;
@@ -2572,7 +2575,7 @@ body, html{
 	line-height: 40px;
 	border-radius: 15px;
 }
-.section_2{/*RecibePedido*/
+.section_2{
 	padding-top: 10%;
 	height: 100%;
 }
@@ -2613,27 +2616,27 @@ body, html{
 .section_5{/*afiliacion - vitrina - login - login_Vrecord - cuenta_productos - registroCom - registroDes*/
 	min-height: 100%;
 }
-.section_6{/*afiliacion*/
+.section_6{
 	background-color: rgb(239, 245, 245);
 	height: 90%;
 }
 .section_7{/*carrito - opciones*/
 	display: none;
 }
-.section_9{/*opciones - cuenta_productos*/
+.section_9{
 	background-color: white;
 }
 .section_11{
 	min-height: 100%;
 }
-.section_13{/*cuenta_editar*/
+.section_13{
 	display: none;
 	position: absolute;
 	top:  0%;
 	left: 0%;
 	width: 100% !important;
 }
-.select_2{/*carrito - cuenta_editar*/
+.select_2{
 	font-size: 1.1em;
 	height: 33px !important;
 	padding-left: 3%;
@@ -2641,7 +2644,7 @@ body, html{
 	border-radius: 5px;
 	margin: 2% auto;
 }
-.small_1{/*cuenta_editar*/
+.small_1{
 	display: block;
 	padding-left: 2%;
 	font-size: 0.9em;
@@ -2651,11 +2654,17 @@ body, html{
 .small_2{/*descr_Producto*/
 	font-size: 0.8em;
 }
-.small_3{/*cuenta_editar*/
+.small_3{
 	font-size: 0.9em;
 	color: var(--TextoClaro);
 }
-.strong_1{/*cuenta_editar*/
+.small_4{
+	font-size: 0.7em;
+	color: white;
+	margin-top: 0%;
+	text-align: center;
+}
+.strong_1{
 	font-size: 0.9em;
 	letter-spacing: 1px;
 	white-space: nowrap; /*mantiene el texto en una sola linea*/
@@ -2663,7 +2672,7 @@ body, html{
 .span_1{
 	font-size: 0.8em;
 }
-.span_2{/*vitrina*/
+.span_2{
 	/* font-size: 1.4em !important; */
 	background-color: var(--OficialOscuro);
 	color: white;
@@ -2686,7 +2695,7 @@ body, html{
 .span_5--black{
 	color: black;
 }
-.span_8{/*CantidadTiendas_Ajax*/
+.span_8{
 	color:rgba(51, 51, 51, 0.5);
 	font-size: 3.5em !important;
 	margin-top: 8%;
@@ -2701,25 +2710,25 @@ body, html{
 	/* margin-left: auto; */
 	text-align: center;
 }
-.span_10:hover{/*cuenta_editar*/
+.span_10:hover{
 	cursor: pointer;
 }
-.span_10--seccion{/*cuenta_editar*/
+.span_10--seccion{
 	text-align: center;
 	width: 100%;
 }
-.span_10--categoria{/*cuenta_editar*/
+.span_10--categoria{
 	width: 30px;
 }
 .span_11{/*registroCom*/
 	display: inline-block;
 	margin-left: 75%;
 }
-.span_13{/*cuenta_editar*/
+.span_13{
 	color: blueviolet;
 	display: inline-block;
 }
-.span_13:hover{/*cuenta_editar*/
+.span_13:hover{
 	cursor: pointer;
 }
 .span_14{/*cuenta_editar - modal_fueraHorario*/
@@ -2727,13 +2736,13 @@ body, html{
 	float: right;
 	margin-top: -2%;
 }
-.span_14:hover{/*cuenta_editar*/
+.span_14:hover{
 	cursor: pointer;
 }
 .span_15{/*header_inicio - header - header_AfiCom*/
 	/* color: white; */
 }
-.span_16{/*inicio*/
+.span_16{
 	display: block;
 	margin-left: 95%;
 }
@@ -2754,7 +2763,7 @@ body, html{
 .span_18:hover{/*cuenta_publicar - cuenta_editar_prod  - cuenta_editar*/
 	cursor: pointer;
 }
-.span_21{/*CantidadTiendas_Ajax*/
+.span_21{
 	background-color: var(--OficialClaro);
 	border-radius: 30px;
 	width: 23px;
@@ -2764,20 +2773,20 @@ body, html{
 	left: 85%;
 	display: block;
 }
-.span_22{/*inicio*/
+.span_22{
 	font-size: 1.5em;
 }
-.snap-container{/*inicio*/
+.snap-container{
     height: 100vh;
     overflow: auto;
     scroll-snap-type: y mandatory;
 }
-.snap-section{/*inicio*/
+.snap-section{
     scroll-snap-align: start;
     min-height: 60vh;
   }
 
-.tabla{/*carrito*/
+.tabla{
 	width: 100%;
 }
 .tabla1{/*horarioDespacho*/
@@ -2817,32 +2826,32 @@ body, html{
 	text-align: center;
 	height: 30px;
 }
-.tabla_2{/*carrito*/
+.tabla_2{
 	width: 100%;
 }
-.tabla2__tr1{/*carrito*/
+.tabla2__tr1{
 	height: 25px;
 }
-.tabla2__tr2{/*carrito*/
+.tabla2__tr2{
 	height: 20px;
 }
-.tabla2__td1{/*carrito*/
+.tabla2__td1{
 	font-weight: bold;
 	width: 20%;
 }
 .td_1{/*carrito - noConformidad - horarioDespacho*/
 	text-align: center;
 }
-.td_2{/*carrito*/
+.td_2{
 	padding-left: 3%;
 }
-.td_3{/*carrito*/
+.td_3{
 	text-align: center;
 }
-.td_4{/*cuenta_productos*/
+.td_4{
 	padding-left: 1%;
 }
-.td_6{/*carrito*/
+.td_6{
 	height: 20px;
 }
 .td_7{/*horarioDespacho*/
@@ -2857,7 +2866,7 @@ body, html{
 	padding-bottom: 2%; */
 	overflow: hidden;
 }
-.textarea_2{/*cuenta_productos*/
+.textarea_2{
 	width: 100%;
 	margin-bottom: 2%;
 	border: none;
@@ -2880,44 +2889,44 @@ body, html{
 .th_1{/*carrito - noConformidad*/
 	width: 10%;
 }
-.th_2{/*carrito*/
+.th_2{
 	width: 50%;
 }
 .th_3{/*carrito - cuenta_productos*/
 	width: 17%;
 }
-.th_4{/*carrito*/
+.th_4{
 	background-color: rgba(51, 51, 51, 0.4);
 	height: 25px;
 	font-size: 0.9em;
 }
-.th_5{/*carrito*/
+.th_5{
 	width: 10%;
 }
-.th_6{/*entrada*/
+.th_6{
 	width: 30%;
 	text-align: left;
 }
-.th_7{/*entrada*/
+.th_7{
 	width: 35%;
 	text-align: left;
 }
-.th_8{/*entrada*/
+.th_8{
 	width: 10%;
 	text-align: left;
 }
-.th_9{/*entrada*/
+.th_9{
 	width: 10%;
 	text-align: left;
 }
-.th_10{/*entrada*/
+.th_10{
 	width: 20%;
 	text-align: left;
 }
-.th_11{/*cuenta_productos*/
+.th_11{
 	text-align: left;
 }
-.tr_1:hover{/*entrada*/
+.tr_1:hover{
 	background-color:rgb(239, 245, 245);
 }
 .ul_1{/*carrito - afiliacion*/
@@ -2950,12 +2959,12 @@ body, html{
 .ul_4{/*cuenta*/
 	padding-left: 2%;
 }
-.ul_5{/*login*/
+.ul_5{
 	width: 40%;
 	margin: 4% 0% 4% 30%;
 	line-height: 25px;
 }
-.ul_5 > li{/*login*/
+.ul_5 > li{
 	font-size: 1.1em;
 }
 .ul_6{/*pwa*/
@@ -2965,7 +2974,7 @@ body, html{
 ul .menuContenedor_1{/*header_inicio*/
 	left: 50% !important;
 }
-ul .menuContenedor_3{/*header_AfiCom*/
+ul .menuContenedor_3{
 	background-color: var(--OficialClaro);
 	display: none;
 	position: absolute;

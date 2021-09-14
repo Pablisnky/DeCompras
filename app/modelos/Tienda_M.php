@@ -53,7 +53,11 @@
         
         //SELECT con las tiendas que aceptan pagos por transferencia
         public function consultarTransferencias($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT DISTINCT ID_Tienda FROM bancos WHERE ID_Tienda IN ($IDs_Tiendas)");    
+            $stmt = $this->dbh->prepare(
+                "SELECT DISTINCT ID_Tienda 
+                 FROM bancos 
+                 WHERE ID_Tienda IN ($IDs_Tiendas)"
+            );    
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
@@ -64,12 +68,61 @@
         
         // SELECT con las tiendas que aceptan pagos por PagoMovil
         public function consultarPagoMovil($IDs_Tiendas){
-            $stmt = $this->dbh->prepare("SELECT DISTINCT ID_Tienda FROM pagomovil WHERE ID_Tienda IN ($IDs_Tiendas)");    
+            $stmt = $this->dbh->prepare(
+                "SELECT DISTINCT ID_Tienda 
+                 FROM pagomovil 
+                 WHERE ID_Tienda IN ($IDs_Tiendas)"
+            );    
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else{
                 return false;
+            }
+        } 
+
+        // SELECT con las tiendas que aceptan pagos por Reserve
+        public function consultarReserve($IDs_Tiendas){
+            $stmt = $this->dbh->prepare(
+                "SELECT DISTINCT ID_Tienda 
+                 FROM pago_reserve 
+                 WHERE ID_Tienda IN ($IDs_Tiendas)"
+            );    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return 'Existe un fallo';
+            }
+        } 
+
+        // SELECT con las tiendas que aceptan pagos por Paypal
+        public function consultarPaypal($IDs_Tiendas){
+            $stmt = $this->dbh->prepare(
+                "SELECT DISTINCT ID_Tienda 
+                 FROM pago_paypal 
+                 WHERE ID_Tienda IN ($IDs_Tiendas)"
+            );    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return 'Existe un fallo';
+            }
+        } 
+
+        // SELECT con las tiendas que aceptan pagos por Zelle
+        public function consultarZelle($IDs_Tiendas){
+            $stmt = $this->dbh->prepare(
+                "SELECT DISTINCT ID_Tienda 
+                 FROM pago_zelle 
+                 WHERE ID_Tienda IN ($IDs_Tiendas)"
+            );    
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return 'Existe un fallo';
             }
         } 
         

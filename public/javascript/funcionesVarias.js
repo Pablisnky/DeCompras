@@ -191,10 +191,8 @@
     }
     
  //************************************************************************************************
-    //Mascara de entrada para el telefono, agrega los puntos en tiempo real en tiempo real al llenar el campo    
+    //agrega los puntos en tiempo real al llenar el campo    
     function mascaraTelefono(TelefonoRecibido, id){
-        // console.log("______Desde mascaraTelefono()______", TelefonoRecibido + " / " + id)
-
         if(TelefonoRecibido.length == 4){
             document.getElementById(id).value += "-"; 
         }
@@ -205,9 +203,11 @@
             document.getElementById(id).value += ".";  
         }
         else if(TelefonoRecibido.length >= 15){
-            alert("Número telefonico invalido"); 
-            document.getElementById(id).value = ""
-            return 
+            alert("Telefono con Formato Incorrecto");
+            document.getElementById(id).value = "";
+            document.getElementById(id).focus();
+            document.getElementById(id).style.backgroundColor = 'var(--Fallos)'; 
+            return false;
         }
     }
      

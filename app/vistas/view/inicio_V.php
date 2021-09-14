@@ -25,7 +25,7 @@
             </div>                
             
             <div class="div__Botones--uno" id="BotonVer">
-                <a class="div__Botones--boton div__Botones--boton--uno" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
+                <a class="div__Botones--boton div__Botones--boton--uno" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ver tiendas</a>
             </div>
 
             <p class="contenedor_34--p" id="Contenedor_34--p">Cambio oficial a tasa del BCV <br class="br_2">&nbsp&nbsp 1 $ = <?php echo number_format($Datos, 0, ",", ".");?> Bs.</p>
@@ -60,10 +60,10 @@
 
         <div class="borrar section_1" id="ImgPortada_2" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">            
             <div class="slider slider--portada">
-                <span class="font--white">Muchos de tus clientes estan verdaderamente ocupados</span>
+                <span class="font--white">Sube tu cátalogo de productos<br> y vende las 24 horas</span>
                 <ul>
                     <li>
-                        <label class="font--white">Sube tu cátalogo de productos, <br>y vende las 24 horas</label>
+                        <label class="font--white">Diversidad en medios de pago en linea y logistica de envío</label>
                     </li>
                     <li>
                         <label class="font--white">Crea tu tienda en línea y abre un nuevo canal de ventas.</label>
@@ -81,7 +81,7 @@
             </div>
             <div class="div__Botones" id="BotonRegistrar">
                 <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Afiliar tienda</a>
-                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
+                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ver tiendas</a>
             </div>
         </div>    
             
@@ -108,7 +108,7 @@
             </div>
             <div class="div__Botones" id="BotonRegistrar">
                 <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Afiliar tienda</a>
-                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/Categoria_C';?>">Ver tiendas</a>
+                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ver tiendas</a>
             </div>
         </div>
     </div>
