@@ -1467,10 +1467,13 @@
                 VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)"
             );
 
+            //Se da formato al precio, dos decimales
+            $PrecioDolar = number_format($RecibeProducto['PrecioDolar'], 2, '.', '');
+
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
             $stmt->bindParam(':OPCION', $RecibeProducto['Descripcion']);
             $stmt->bindParam(':PRECIOBS', $RecibeProducto['PrecioBs']);
-            $stmt->bindParam(':PRECIODOLAR', $RecibeProducto['PrecioDolar']);
+            $stmt->bindParam(':PRECIODOLAR', $PrecioDolar);
             $stmt->bindParam(':CANTIDAD', $RecibeProducto['Cantidad']);
             $stmt->bindParam(':DISPONIBLE', $RecibeProducto['Disponible']);
             

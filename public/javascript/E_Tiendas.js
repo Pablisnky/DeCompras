@@ -36,8 +36,8 @@ function sliderTarjeta(CantidadElementos){
    
 //************************************************************************************************
 //Muestra la pagina de la tienda solicitada, invocada desde tiendas_V.php
-function tiendas(ID_Tienda, NombreTienda, NoNecesario_1, NoNecesario_2, Disponibilidad, ProximoApertura, HoraApertura){  
-    window.open(`../../Vitrina_C/index/${ID_Tienda},${NombreTienda},${NoNecesario_1},${NoNecesario_2},${Disponibilidad},${ProximoApertura},${HoraApertura}`,"_self") 
+function tiendas(ID_Tienda, NombreTienda, Seccion, Opcion, Disponibilidad, ProximoApertura, HoraApertura){  
+    window.open(`../../Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion},${Disponibilidad},${ProximoApertura},${HoraApertura}`,"_self") 
 }
 
 //************************************************************************************************

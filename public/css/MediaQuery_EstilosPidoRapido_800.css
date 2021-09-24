@@ -122,7 +122,7 @@
 }
 .contenedor_4{
 	width: 100%;
-	margin: 10% auto;
+	margin: 8% auto;
 	padding-top: 20%;
 }
 .contenedor_6{
@@ -490,10 +490,6 @@
 	padding-left: 5%;
 	margin-top: 10%;
 }
-.contenedor_77{
-	/* margin: 10% auto 1% auto;
-	width: 50%; */
-}
 .contenedor_79{
 	margin-top: 15%;
 } 
@@ -642,7 +638,6 @@
 	margin-top: 0%;
 }
 .contenedor_111{
-	/* background-color: var(--OficialOscuro); */
 	width: 100%;
 	padding-left:10%;
 }
@@ -1353,7 +1348,11 @@
 	height: 30px; */
 }
 .tabla2__td1{
-	width: 40%;
+	width: 80px;
+}
+.tabla2__td2{
+	padding-left: 3%;
+	font-size: 1em;
 }
 .tapa{
 	display: none;

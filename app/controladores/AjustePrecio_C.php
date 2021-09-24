@@ -105,4 +105,3 @@
             $this->vista("view/afiliacion_V", $Datos);
         }
     }
-?>

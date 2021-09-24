@@ -31,4 +31,3 @@
             $this->vista("view/ciudades_V", $Datos); 
         }
     }
-?>

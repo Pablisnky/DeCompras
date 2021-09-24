@@ -55,10 +55,9 @@ var scrollPos = 0;
 
 //************************************************************************************************
     //Apunta el curso al producto seleccionado en la busqueda, invocada desde buscador_V.php
-    function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion, Opcion, NoNecesario_1){
-        // console.log("______Desde OpcionSeleccionada()______")
-
-        window.open(`Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion},${NoNecesario_1}`,"_self") 
+    function OpcionSeleccionada(ID_Tienda, NombreTienda, Seccion, Opcion, Disponibilidad, ProximoApertura, HoraApertura){
+        // console.log("______Desde OpcionSeleccionada()______", ID_Tienda + "/" + NombreTienda + "/" + Seccion + "/" + Opcion + "/" + Disponibilidad + "/" + ProximoApertura + "/" + HoraApertura);
+        window.open(`../Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion},${Disponibilidad},${ProximoApertura},${HoraApertura}`,"_self") 
     }
 
 //************************************************************************************************

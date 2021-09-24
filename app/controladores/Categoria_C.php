@@ -28,4 +28,3 @@
             $this->vista("view/categorias_V", $Datos); 
         }
     }
-?>

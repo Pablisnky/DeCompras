@@ -146,7 +146,12 @@
                     
                 //Se INSERTAN los datos del usuario en la BD si el usuario acepta
                 if($RecibeDatosUsuario['Suscribir'] == 'Suscrito_Si'){
-                    $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario);
+                    $Suscrito = 1;
+                    $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Suscrito);
+                }
+                else{
+                    $Suscrito = 0;
+                    $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Suscrito);
                 }
 
                 //Se INSERTAN los datos generales del pedido en la BD
@@ -259,16 +264,24 @@
                 //Se CONSULTA el correo y el nombre de la tienda
                 $Tienda = $this->ConsultaRecibePedido_M->consultarCorreo($RecibeDatosPedido['ID_Tienda']);
 
+                // Se genera el código de despacho que será solicitado por el despachador
+                $Ale_CodigoDespacho = mt_rand(0001,9999);
+
                 $DatosCorreo = [
                     'informacion_pedido' => $Pedido, // ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, numeroorden, fecha, hora, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, capture
                     'informacion_usuario' => $Usuario, //nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, Estado_usu, Ciudad_usu, direccion_usu
                     'informacion_tienda' => $Tienda, //ID_Tienda, correo_AfiCom, nombre_Tien
+                    'Codigo_despacho' => $Ale_CodigoDespacho
                 ];
 
                 // echo '<pre>';
                 // print_r($DatosCorreo);
                 // echo '</pre>';
                 // exit;
+
+                $Datos = [
+                    'Codigo_despacho' => $Ale_CodigoDespacho
+                ];
 
                 // CORREOS
                 // **************************************** 
@@ -280,7 +293,7 @@
 
                 // ****************************************
                 $this->vista('header/header');
-                $this->vista('view/RecibePedido_V');
+                $this->vista('view/RecibePedido_V', $Datos);
             }
             else{
                 header('location:' . RUTA_URL . '/Inicio_C/NoVerificaLink');

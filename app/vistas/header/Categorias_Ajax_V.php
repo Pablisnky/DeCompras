@@ -31,9 +31,6 @@
                 endforeach;
                 ?>
             </div> 
-            <!-- <div class="contenedor_77">
-                <input type="text" class="boton" value="Seleccionar"/>
-            </div> -->
         </form>
     </div>
 </section>

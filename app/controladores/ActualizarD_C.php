@@ -17,4 +17,3 @@
             $this->Dolar = $DolarHoy['USD']['promedio_real'];           
         }
     }
-?>

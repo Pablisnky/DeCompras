@@ -22,6 +22,10 @@ document.getElementById("Telefono_Aficom").addEventListener('keyup', function(){
 
 document.getElementById("Telefono_Aficom").addEventListener('change', function(){validarFormatoTelefono(this.value,'Telefono_Aficom')}, false)
     
+document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('ContenidoSlo','ContadorSlo')}, false)    
+
+document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('Direccion_Tien','ContadorDireccion')}, false) 
+
 // **************************************************************************************************
 //Por medio de delegación de eventos se detecta cada input y textarea debido a que son muchos elementos tipo input
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
@@ -46,7 +50,6 @@ document.getElementsByTagName("body")[0].addEventListener('change', function(e){
 
 // **************************************************************************************************
 //CUENTA LA CANTIDAD DE CARACTERES QUE YA TIENE UNA SECCION (TRAE DATOS DE BD)
-//Por medio de delegación de eventos se detecta la seccion clonada
 document.addEventListener("DOMContentLoaded", function(){
 
     let Secciones = document.getElementsByClassName("seccionesJS")
@@ -55,13 +58,13 @@ document.addEventListener("DOMContentLoaded", function(){
     console.log("Input con contadores", Contadores.length)
 
     for(var i = 0; i < Secciones.length; i++){
-        // console.log("Seccion cargada= ", Secciones[i].value)
-        let Seccion_ID = Secciones[i].id
+        console.log("Seccion cargada= ", Secciones[i].value)
+        // let Seccion_ID = Secciones[i].id
 
-        // console.log("contador cargado= ", Contadores[i].value)
-        let Contador_ID = Contadores[i].id
+        console.log("contador cargado= ", Contadores[i].value)
+        // let Contador_ID = Contadores[i].id
 
-        CaracteresAlcanzados(Seccion_ID, Contador_ID) 
+        CaracteresAlcanzados(Secciones[i].id, Contadores[i].id) 
     }    
 }, false)
 
@@ -153,12 +156,11 @@ window.addEventListener('click', function(e){
 // **************************************************************************************************
 //ELIMINAR PAGOMOVIL
 document.getElementById("Mostrar_PagoMovil").addEventListener('click', function(e){ 
-    console.log("______Desde funcion anonima que aplica listerner para eliminar PagoMovil______")
     var click = e.target
 
-    if(e.target.classList[3] == "span_15_js"){ 
+    if(e.target.classList[4] == "PagoMovil_js"){ 
         //Se obtienen la cantidad de cuentas PagoMovil que existen
-        let Eliminar_CuentaPagoMovil = document.getElementsByClassName('span_15_js')
+        let Eliminar_CuentaPagoMovil = document.getElementsByClassName('PagoMovil_js')
 
         if(Eliminar_CuentaPagoMovil.length == 1){            
             document.getElementsByClassName("cedulaJS")[0].value = ""
@@ -223,11 +225,6 @@ document.getElementById("Mostrar_PagoMovil").addEventListener('keydown', functio
         document.getElementById(click.id).addEventListener('keyup', function(){mascaraTelefono(click.value, click.id)}, false)
     }
 }, false)
-
-// ************************************************************************************************** 
-document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('ContenidoSlo','ContadorSlo')}, false)    
-document.addEventListener("DOMContentLoaded", function(){CaracteresAlcanzados('Direccion_Tien','ContadorDireccion')}, false) 
- 
 
 // *****************************************************************************************************
 // por medio de una función anonima debido a que el elemento no esta cargado en el DOM por ser una solicitud Ajax o porque el manejador de eventos se encuentra en otro archivo

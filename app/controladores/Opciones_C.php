@@ -123,4 +123,3 @@
             $this->vista("view/imagenApliada_V", $Datos);
         }
     }
-?>    

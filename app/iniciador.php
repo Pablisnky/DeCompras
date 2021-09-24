@@ -5,10 +5,8 @@
     require_once('clases/Controlador.php');
     require_once('clases/Core.php');
     require_once('helpers/local_remoto.php');
-    require_once('helpers/url_helper.php');
 
     //Se utiliza un autoload para no cargar las clases manualmente
     // spl_autoload_register(function($nombreClase){
     //     require_once('librerias/' . $nombreClase . '.php');
     // })
-?>

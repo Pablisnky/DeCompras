@@ -309,8 +309,7 @@
         }
         
         //Retorna si una tienda esta abierta o cerrada segun la hora actual(Tiendas_C/Reputacion_ModosDePago)
-        public function disponibilidadHoraria($TiendasEnCategoria){
-            
+        public function disponibilidadHoraria($IDs_Tiendas){
             $Nuevo_2 = [];
             $Disponibilidad = [];
 
@@ -339,13 +338,7 @@
                 break; 
             endswitch;
 
-            // echo '<pre>';
-            // print_r($TiendasEnCategoria);
-            // echo '</pre>';
-
-            foreach($TiendasEnCategoria as $row):
-                $ID_Tienda = $row['ID_Tienda'];
-                //Se evalua para cada tienda que se encuproximoApertura $this->IDs_Tienda la disponibilidad
+            foreach($IDs_Tiendas as $ID_Tienda):
                 $Hor = $this->horarioTienda($ID_Tienda);
                  
                 // echo '<pre>';
@@ -549,6 +542,7 @@
                     elseif($Hor['Jueves_m'] == '0' && $Hor['Jueves_t'] == '0' && $Hor['Jueves_m'] == '0'):
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda, 'disponibilidad' => 'Cerrado', 'proximoApertura' => 'AbreDiaSiguiente', 'horaApertura' => $Hor['Vie_t_inicia'], 'Condicional' => 'B'];
                         array_push($Disponibilidad, $Nuevo_2);
+
                     else:
                         $Nuevo_2 = ['ID_Tienda' => $ID_Tienda,  'disponibilidad' => 'Abierto', 'proximoApertura' => 'NoAplica', 'horaApertura' => 'NoAplica', 'Condicional' => 'G'];
                         array_push($Disponibilidad, $Nuevo_2);
@@ -694,4 +688,4 @@
 
             return $Disponibilidad;
         }
-    }   ?>
+    }

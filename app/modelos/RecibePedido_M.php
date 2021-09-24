@@ -5,10 +5,10 @@
             parent::__construct();  
         }
 
-        public function insertarUsuario($RecibeDatosUsuario){
+        public function insertarUsuario($RecibeDatosUsuario, $Suscrito){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO usuarios(nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, Estado_usu, Ciudad_usu, direccion_usu, fecha, hora)
-                VALUES(:Nombre, :Apellido, :Cedula, :Telefono, :Correo, :Estado, :Ciudad, :Direccion, CURDATE(), CURTIME())"
+                "INSERT INTO usuarios(nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, Estado_usu, Ciudad_usu, direccion_usu, suscrito,  fecha, hora)
+                VALUES(:Nombre, :Apellido, :Cedula, :Telefono, :Correo, :Estado, :Ciudad, :Direccion, :Suscrito, CURDATE(), CURTIME())"
             );
 
             //Se vinculan los valores de las sentencias preparadas
@@ -19,7 +19,8 @@
             $stmt->bindParam(':Correo', $correo);
             $stmt->bindParam(':Estado', $Estado);
             $stmt->bindParam(':Ciudad', $Ciudad);
-            $stmt->bindParam(':Direccion', $direccion);
+            $stmt->bindParam(':Direccion', $Direccion);
+            $stmt->bindParam(':Suscrito', $Suscrito);
             
             // insertar una fila
             $nombre = $RecibeDatosUsuario['Nombre'];
@@ -29,7 +30,7 @@
             $correo = $RecibeDatosUsuario['Correo'];
             $Estado = $RecibeDatosUsuario['Estado'];
             $Ciudad = $RecibeDatosUsuario['Ciudad'];
-            $direccion = $RecibeDatosUsuario['Direccion'];
+            $Direccion = $RecibeDatosUsuario['Direccion'];
             
             //Se ejecuta la inserción de los datos en la tabla
             if($stmt->execute()){

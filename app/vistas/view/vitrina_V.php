@@ -29,11 +29,9 @@
     }   ?>
 
     <div class="contenedor_156"> 
-        <div>
-            <aside class="aside_1">
-                <p class="p_17 borde_1">SECCIONES</p>
-            </aside>
-        </div>
+        <aside class="aside_1">
+            <p class="p_17 borde_1">SECCIONES</p>
+        </aside>
 
         <div class="contenedor_110" id="Section_4">
             <?php
@@ -43,8 +41,8 @@
                 $Seccion = $row['seccion'];     
                 $ID_Seccion = $row['ID_Seccion'];   
                 ?> 
-                <div class='contenedor_11 contenedor_11a' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
-                    <div id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>')">  
+                <div class='contenedor_11' id="<?php echo 'Cont_Seccion_' . $Contador;?>">
+                    <div class="contenedor_11a" id="<?php echo 'Cont_imagen_' . $Contador;?>" onclick="verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $Seccion;?>'); llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>')">  
                         <?php
 
                         // IMAGEN DE SECCION
@@ -69,19 +67,20 @@
                         <h2 class="boton botonReverso borde_1 boton--largo"><?php echo $Seccion;?></h2>
                         <div class="contenedor_106--lineal">
                             <span class="span_21 borde_1">
-                            <?php 
-                            foreach($Datos['cant_productosSeccion'] as $Key):
-                                if($Key['ID_Seccion'] == $ID_Seccion && $Key['CantidadPro'] > 0):
-                                    echo $Key['CantidadPro']; 
-                                endif;
-                            endforeach;
-                            if((empty($Key['CantidadPro']))):
-                            endif;  ?>
+                                <?php 
+                                foreach($Datos['cant_productosSeccion'] as $Key):
+                                    if($Key['ID_Seccion'] == $ID_Seccion && $Key['CantidadPro'] > 0):
+                                        echo $Key['CantidadPro']; 
+                                    endif;
+                                endforeach;
+                                if((empty($Key['CantidadPro']))) :
+                                endif;  ?>
                             </span>
                         </div>
                     </div>
 
                     <!-- Se añaden las leyendas por medio de E_Vitrina.js con la funcion TransferirPedido() -->
+                    
                 </div>
                 <?php
                 $Contador++;
@@ -92,7 +91,7 @@
     
     <!-- Se muestra el boton (div) de carrito de compras en el bottom del viewport, aparece por medio de agregarOpcion() en E_Vitrina.js-->
     <div class="contenedor_61" id="Contenedor_61">
-        <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>')">
+        <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>','<?php echo $Datos['dolarHoy'];?>')">
             <div class="contenedor_31">
                 <small class="small_1 small_4">Ver <br class="br_3"> carrito</small>
                 <i class="fas fa-shopping-cart span_2"></i>
@@ -132,24 +131,27 @@
     if($Datos['Seccion'] != 'NoNecesario'){//'NoNecesario' es creado en tiendas porque comparte el controlador index de Vitrina_C         
         $SeccionSelecionada = $Datos['Seccion'];
         $OpcionSeleccionada = $Datos['Opcion']; 
-
+        // echo 'Seccion Seleccionada= ' . $SeccionSelecionada  . '<br>';
+        // echo 'opcion = ' . $OpcionSeleccionada  . '<br>';
         $Contador = 1;
         
         //Se cargan todas las secciones que tenga una tienda
-        //$Datos proviene de Vitrina_C
         foreach($Datos['seccion'] as $row){
-            $Seccion = $row['seccion'];  ?>
+            $Seccion = $row['seccion']; 
+            $ID_Seccion = $row['ID_Seccion']; 
+            // echo 'Seccion = ' . $Seccion  . '<br>';
+            // exit;
+             ?>
             <script>
                 //Se busca el contenedor que corresponde con la sección del producto seleccionado y se entra en los productos que contiene
                 if('<?php echo $SeccionSelecionada == $Seccion?>'){
                     verOpciones('<?php echo 'Cont_Seccion_' . $Contador;?>','<?php echo $SeccionSelecionada?>')
-                    llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $SeccionSelecionada;?>','<?php echo $OpcionSeleccionada?>')
+                    llamar_Opciones('<?php echo $ID_Tienda;?>','<?php echo $ID_Seccion;?>','<?php echo $OpcionSeleccionada?>')
                 }
             </script>
             <?php
             $Contador++;
-        }   ?>   
-        <?php
+        }   
     }
 ?>
 

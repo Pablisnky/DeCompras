@@ -34,7 +34,8 @@
     </head>
     <body onload="nobackbutton()">	
 		<header class="header header--tienda borde_bottom--claro">
-			<!-- icono para responsive -->
+
+			<!-- icono menu hamburguesa para responsive -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>
 			
 			<!-- $Nombre_Tienda viene de Vitrina_C-->
@@ -54,6 +55,8 @@
 				</ul>
 			</nav>
 		</header>
+
+		<!-- icono de buscador -->
         <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
 			<i class="fas fa-search contIconoBuscador__span"></i>
         </div>

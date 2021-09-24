@@ -111,6 +111,9 @@
                     endforeach;
                 $email_message .= '</table>
                 <hr class="hr_1">  
+                <h2>Código de despacho</h2> 
+                <h2>' . $DatosCorreo["Codigo_despacho"] . '</h2>                
+                <hr class="hr_1">  
                 <h2>Datos del comprador</h2>
                 <table>';
                     foreach($DatosCorreo['informacion_usuario'] as $DatosUsuarios)  :
@@ -146,9 +149,6 @@
                 $email_message .= '</table> 
 
                 <br>
-
-                <p>0123</p> 
-                <p>Código de recepción, será solicitado por el despachador al momento de entregarle su compra</p>
     
                 <p>Si existe alguna no conformidad con su despacho, ingrese en <a href="https://www.pedidoremoto.com/NoConformidad_C/noConformidad/'.$ID_Pedido.','.$Fecha.','.$Hora.','.$ID_Tienda.','.$Tienda.'">no conformidades</a>, y reporte su caso, <br> de ser necesario un operador de <strong>PedidoRemoto</strong> lo contactará para ayudarle.</p> 
     

@@ -97,7 +97,6 @@ document.addEventListener('click', function(event){
 // *****************************************************************************************************
 //seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos en div Mostrar_Orden ubicado en vitrina_V.php
 document.getElementById('Mostrar_Orden').addEventListener('click', function(event){ 
-    // console.log("Iniciando delegando eventos")
     if((event.target.id == "Domicilio_No") || (event.target.id == "Domicilio_Si")){  
         // console.log("______Desde forma_Entrega______")
         // console.log(TotalDisplayCarrito)
@@ -111,7 +110,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             }
         }
 
-        //Se obtiene el valor del domicilio, tarado a un dolar (esto se esta haciendo dss veces en este archivo, corregir)
+        //Se obtiene el valor del domicilio, tarado a un 1,3 dolares (esto se esta haciendo dss veces en este archivo, corregir)
         envio = document.getElementById("PrecioEnvio").value
 
         //Se muestra la condicion de despacho
@@ -122,29 +121,29 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion)
 
             //Se calcula el monto en Dolares
-            MontoTotalDolares = MontoTotal / envio
+            MontoTotalDolares = MontoTotal / Local_ValorDolarHoy
             
-            //Se muestra el monto de total de la compra incluyendo comision y envio en Bolivares
+            //Se muestra el monto de total de la compra incluyendo envio en Bolivares
             document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
             
-            //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
-            document.getElementById("MontoTotalDolares").value = Math.round(MontoTotalDolares)
+            //Se muestra el monto de total de la compra incluyendo envio en Dolares, con dos decimales
+            document.getElementById("MontoTotalDolares").value = Number.parseFloat(MontoTotalDolares).toFixed(2)
         }
-        else{
-
+        else{//Entra en ele ELSE en caso de pagar por despacho
             document.getElementById("Despacho_2").value = SeparadorMiles(envio)
 
             //Se cambia el monto total del pedido incluyendo comision y envio
             MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(envio)
+            console.log(MontoTotal)
             
             //Se calcula el monto en Dolares
-            MontoTotalDolares = MontoTotal / envio
+            MontoTotalDolares = MontoTotal / Local_ValorDolarHoy
 
             //Se muestra el monto de total de la compra incluyendo comision y envio
             document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
 
-            //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
-            document.getElementById("MontoTotalDolares").value = Math.round(MontoTotalDolares)
+            //Se muestra el monto de total de la compra incluyendo envio en Dolares, con dos decimales
+            document.getElementById("MontoTotalDolares").value = Number.parseFloat(MontoTotalDolares).toFixed(2)
         }
     }
 }, false);    
@@ -161,6 +160,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60f").style.display = "none"
         document.getElementById("Contenedor_60g").style.display = "none"
         document.getElementById("Contenedor_60h").style.display = "none"
+        
+        //Se muestra el monto de total de la compra incluyendo envio en Bolivares
+        document.getElementById("PagarTransferencia").value = SeparadorMiles(MontoTotal) + " Bs."
     }
 
 //************************************************************************************************
@@ -175,12 +177,14 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60f").style.display = "none"
         document.getElementById("Contenedor_60g").style.display = "none"
         document.getElementById("Contenedor_60h").style.display = "none"
+
+        //Se muestra el monto de total de la compra incluyendo envio en Bolivares
+        document.getElementById("PagarPagoMovil").value = SeparadorMiles(MontoTotal) + " Bs."
     }
 
 //************************************************************************************************
     // invocada desde carrito_V.php
     function verPagoReserve(){
-        // console.log("______Desde verPagoReserve()______") 
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "none"
         document.getElementById("Contenedor_60c").style.display = "none"
@@ -189,12 +193,14 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60f").style.display = "block"
         document.getElementById("Contenedor_60g").style.display = "none"
         document.getElementById("Contenedor_60h").style.display = "none"
+
+        //Se muestra el monto de total de la compra en Dolares
+        document.getElementById("PagarDolaresReserve").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
     }
 
 //************************************************************************************************
     // invocada desde carrito_V.php
     function verPagoPaypal(){
-        // console.log("______Desde verPagoPaypal()______") 
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "none"
         document.getElementById("Contenedor_60c").style.display = "none"
@@ -203,12 +209,14 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60f").style.display = "none"
         document.getElementById("Contenedor_60g").style.display = "block"
         document.getElementById("Contenedor_60h").style.display = "none"
+        
+        //Se muestra el monto de total de la compra en Dolares
+        document.getElementById("PagarDolaresPaypal").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
     }
 
 //************************************************************************************************
     // invocada desde carrito_V.php
     function verPagoZelle(){
-        // console.log("______Desde verPagoZelle()______") 
         document.getElementById("Contenedor_60a").style.display = "none"
         document.getElementById("Contenedor_60b").style.display = "none"
         document.getElementById("Contenedor_60c").style.display = "none"
@@ -217,6 +225,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("Contenedor_60f").style.display = "none"
         document.getElementById("Contenedor_60g").style.display = "none"
         document.getElementById("Contenedor_60h").style.display = "block"
+        
+        //Se muestra el monto de total de la compra en Dolares
+        document.getElementById("PagarDolaresZelle").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
     }
 
 //************************************************************************************************
@@ -554,31 +565,25 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
 //************************************************************************************************
     function Eliminar_Leyenda(e){
-        // alert("Función temporalmente desactivada, elimine directamente desde el producto")
-        var click = e.target
-        console.log("Se hizo click en: ", click)//se tiene el boton eliminar
-        console.log("Padre", e.target.parentElement)
-        console.log(e.target.previousSibling.id)//se tiene la leyenda correspondiente al boton eliminar
-        var ID = e.target.previousSibling.id
-        e.target.parentElement.removeChild(e.target.previousSibling);
-        e.target.parentElement.removeChild(e.target);
+        alert("Función temporalmente desactivada, elimine directamente desde el producto")
+        // var click = e.target
+        // console.log("Se hizo click en: ", click)//se tiene el boton eliminar
+        // console.log("Padre", e.target.parentElement)
+        // console.log(e.target.previousSibling.id)//se tiene la leyenda correspondiente al boton eliminar
+        // var ID = e.target.previousSibling.id
+        // e.target.parentElement.removeChild(e.target.previousSibling);
+        // e.target.parentElement.removeChild(e.target);
         
         //Se busca dentro del array AlCarro el producto que corresponde a la leyenda que se va a liminar
-        console.log(AlCarro)
+        // console.log(AlCarro)
 
-        var filtrado = AlCarro.filter(function(item_2){
-            return item_2.ID_Opcion != ID; 
-        });
+        // var filtrado = AlCarro.filter(function(item_2){
+        //     return item_2.ID_Opcion != ID; 
+        // });
 
-        AlCarro = filtrado
-        console.log(AlCarro)
-        console.log("COntenedor", AlContenedor)
-
-        // for(i = 0; i < AlCarro.length; i++){
-        //     console.log(AlCarro[i].ID_Opcion)
-        //     console.log(localStorage.getItem('ID_Label_X'))
-        // }
-
+        // AlCarro = filtrado
+        // console.log(AlCarro)
+        // console.log("COntenedor", AlContenedor)
       }
 //************************************************************************************************
     //invocada al cargarse llamar_Opciones() en Funciones_Ajax.js especifica los productos que ya estan cargados al carrito de compra y muestra su leyenda en la vista opciones_V.php
@@ -627,10 +632,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }    
 
 //************************************************************************************************
-    //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "LaOrden" de compra
-    function PedidoEnCarrito(){
-        // console.log("______Desde PedidoEnCarrito()______")        
-        // console.log("monto de la compra", TotalDisplayCarrito)
+    //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "La orden de compra"
+    function PedidoEnCarrito(ValorDolar){
+        console.log("______Desde PedidoEnCarrito()______", Number(ValorDolar))
         
         //Se muestra el monto de la compra en "La Orden". (sin comisión de plataforma y sin despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
@@ -641,43 +645,38 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se muestra el monto de la comisión
         document.getElementById("Comision").value = SeparadorMiles(ComisionAplicacion)
         
-        //Se obtiene el monto del envio, esta tarado al precio de un dolar, la tarifa báscia, (Esto ya se hizolineas arriba, corregir para que se haga una sola vez)
+        //Se obtiene el monto del envio, esta tarado al precio de un dolar, la tarifa báscia, (Esto ya se hizo lineas arriba, corregir para que se haga una sola vez)
         envio = document.getElementById("PrecioEnvio").value
 
         //Se calcula el monto total de la compra incluyendo comision y envio
         MontoTotal = Number(TotalDisplayCarrito) + Number(ComisionAplicacion) + Number(envio)
 
         //Se calcula el monto en Dolares
-        // MontoTotalDolares = MontoTotal / envio
-        // console.log(MontoTotalDolares)
+        MontoTotalDolares = MontoTotal / Number(ValorDolar)
+
+        // Se toman dos decimales del monto en dolares
+        MontoTotalDolares = Number.parseFloat(MontoTotalDolares).toFixed(2);
 
         //Se muestra el monto de total de la compra incluyendo comision y envio
         document.getElementById("MontoTotal").value = SeparadorMiles(MontoTotal)
         
         //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
-        // document.getElementById("MontoTotalDolares").value = MontoTotalDolares
+        document.getElementById("MontoTotalDolares").value = MontoTotalDolares
         
-        // console.log(AlCarro)
         //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlCarro[]
         //1.- Se convierte el JSON en un string
         var sendJSON = JSON.stringify(AlCarro)
         //2.- Se envia al input que lo almacena en la vista carrito_V.php
         document.getElementById('Pedido').value = sendJSON
 
-        //Se muestra todo el pedido (cantidad - producto - opcion - precio unitario - precio por productos)
+        //Se muestra todo el pedido (cantidad - producto - precio unitario - precio por productos)
         for(i = 0; i < AlCarro.length; i++){
-            // console.log(AlCarro[i].Cantidad)
             document.getElementById("Tabla").innerHTML += 
             '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + 
             '</td><td class="td_2 hyphen">' +  AlCarro[i].Producto + 
             '</td><td class="td_3">' + AlCarro[i].Precio + 
             '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
         }
-        
-        // for(i = 0; i < AlCarro.length; i++){
-        //     // console.log(AlCarro[i].Cantidad)
-        //     document.getElementById("Tabla").innerHTML += '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + '</td><td class="td_2">' +  AlCarro[i].Producto + " / " + AlCarro[i].Opcion + '</td><td class="td_3">' + AlCarro[i].Precio + '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
-        // }
     }
     
 //************************************************************************************************
@@ -1089,7 +1088,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************ 
     //invocada desde carrito_V.php
     function ocultarPedido(){   
-        // console.log("______Desde ocultarPedido()______") 
         //Coloca el cursor en el top de la pagina
         window.scroll(0, 0)
         document.getElementById("Mostrar_Orden").style.display = "none";
@@ -1171,13 +1169,13 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         let CapturePagoPaypal = document.getElementById('ImagenPagoPaypal').value
         
         //Patron de entrada solo acepta letras (Nombre - Apellido)
-        let P_Letras = /^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$/
+        let P_Letras = /^[ñA-Za-zÁÉÍÓÚáéíóú _]*[ñA-Za-zÁÉÍÓÚáéíóú][ñA-Za-zÁÉÍÓÚáéíóú _]*$/
 
         //Patron de entrada para archivos de carga permitidos
         var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
 
-        //Patron de entrada solo acepta numeros,guion y puntos          
-        let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
+        //Patron de entrada solo acepta numeros, guion y puntos          
+        // let P_Telefono = /^\d{4}\-\d{3}\.\d{2}\.\d{2}$/;
 
         // let P_LetrasNumero = /[A-Za-z0-9]/;
         
@@ -1220,7 +1218,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementsByClassName("botonJS")[0].classList.remove('borde_1')
             return false;
         }
-        else if(P_Telefono.test(Telefono) == false || Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 20){
+        else if(Telefono =="" || Telefono.indexOf(" ") == 0 || Telefono.length > 20){
             alert ("Telefono invalido");
             document.getElementById("TelefonoUsuario").value = "";
             document.getElementById("TelefonoUsuario").focus();
@@ -1628,4 +1626,10 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 // ************************************************************************************************
     function EliminarLeyendaVitrina(){
         alert("HOA")
+    }
+
+// ************************************************************************************************
+//Se muestra el monto de total de la compra en Reserve, Paypal o Zelle
+    function MontoPagarDolares(){
+        document.getElementById("PagarEnDolares").value = Number.parseFloat(MontoTotalDolares).toFixed(2)        
     }

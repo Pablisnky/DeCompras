@@ -1,6 +1,5 @@
 <?php
     class Vitrina_C extends Controlador{
-
         //creamos la variable donde se instanciará la clase 'CalculoApertura_C'
         public $Horario;
 
@@ -13,8 +12,11 @@
             ocultarErrores();
         }
         
-        //Metodo cargado desde E_Tiendas.js por medio de tiendas()
-        public function index($DatosAgrupados){            
+        //Metodo cargado desde E_Tiendas.js por medio de tiendas() - E:Inicio.js por medio de OpcionSeleccionada
+        public function index($DatosAgrupados){           
+            // echo $DatosAgrupados;
+            // exit;
+
             //$DatosAgrupados contiene una cadena con el ID_Tienda, el nombre de tienda, la seccion y la opcion separados por coma, se convierte en array para separar los elementos
             $DatosAgrupados = explode(',', $DatosAgrupados);
             $ID_Tienda = $DatosAgrupados[0];
@@ -32,6 +34,9 @@
             // echo 'Proximo Apertura: ' .  $ProximoApertura . '<br>';
             // echo 'Hora Apertura: ' .  $HoraApertura . '<br>';
             // exit;
+            //Solicita el precio del dolar
+            require(RUTA_APP . '/controladores/Menu_C.php');
+            $this->PrecioDolar = new Menu_C();
 
             //Se CONSULTAN las categoria de una tienda en particular
             $Categoria = $this->ConsultaVitrina_M->consultarCategoria($ID_Tienda);
@@ -71,7 +76,8 @@
                 'HoraApertura' => $HoraApertura,
                 'cant_productosSeccion' => $Cant_ProductosSeccion, //ID_Seccion, CantidadProducto por seccion
                 'imagenSecciones' => $ImagenSecciones, //ID_Seccion, nombre_img_seccion
-                'ciudad' => $_SESSION['Parroquia'] //Sesion creada en categoria_V
+                'ciudad' => $_SESSION['Parroquia'], //Sesion creada en categoria_V
+                'dolarHoy' => $this->PrecioDolar->Dolar
             ];
 
             // echo '<pre>';
@@ -83,4 +89,4 @@
             $this->vista('view/vitrina_V',  $Datos);
         }
     }
-?>    
+?>

@@ -7,7 +7,7 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 3996013;
+            $this->Dolar = 4040871;
             $this->Reserve = 4170000;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
@@ -67,18 +67,43 @@
             $this->vista('view/afiliacion_V', $Datos);
         }
 
-        public function instruccion(){
-            $this->vista("view/instrucion_V");
+        public function codigo_QR(){
+            //Se agrega la libreria que genera el códigos QR
+            require(RUTA_APP . '/codigo_QR/phpqrcode/qrlib.php');
+            
+            //Se declara una carpeta temporal para guardar la imagenes generadas
+            $dir = RUTA_APP . '/codigo_QR/codigosRegistrados/';
+            
+            //Si no existe la carpeta se crea
+            if(!file_exists($dir))
+                mkdir($dir);
+            
+            //Se declara la ruta y nombre del archivo a generar (archivo que contiene el codigo_QR)
+            $filename = $dir . 'La_Bodega_Digital.png';
+        
+            //Parametros de Condiguración
+            $tamaño = 6; //Tamaño de Pixel
+            $level = 'H'; //Precisión Alta
+            $framSize = 3; //Tamaño en blanco
+        
+            //Se inserta la ruta a donde va a llevar el código QR
+            $contenido = "https://www.pedidoremoto.com/Tiendas_C/tiendasEnCatalogo/Bodega"; 
+            
+            //Se envian los parametros a la Función para generar código QR 
+            QRcode::png($contenido, $filename, $level, $tamaño, $framSize); 
+            
+            //Se muestra la imagen generada
+            echo '<img alt="Codigo QR" src="' . $filename . '"/>'; 
+
+            // ***************************************************************************************
+            // Linea 13, Se escribe el nombre del archivo donde esta el codigo QR
+            // Linea 20, Se introduce la url asignada al afiliado en el archivo .php
+            // Se abre el proyecto pidorapido en localhost y se añade a la url de inicio el siguiente complemento ( Menu_C/codigo_QR ) para generar el código QR de la tienda
         }
 
         public function PWA(){
             $this->vista("header/header_Modal");
             $this->vista("view/pwa_V");
-        }
-        
-        public function nuestroADN(){
-            $this->vista("header/header");
-            $this->vista("view/quienesSomos_V");
         }
                 
         public function recibeContactenos(){         
@@ -147,4 +172,3 @@
         //     // $this->ConsultaMenu_M->ActualizaSeccionesImgenes($SeccionesImagenes);
         // }
     }
-?>

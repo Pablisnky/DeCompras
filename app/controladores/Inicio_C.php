@@ -37,9 +37,8 @@
                         $Nombre_Tienda = $Nombre_Tienda[0]['nombre_Tien'];
                         // echo $Nombre_Tienda;
 
-                        // se solicita la disponibilidad horaria necesaria para construir la ruta      
+                        //CALCULO DE DISPONIBILIDAD HORARIA (necesaria para construir la ruta URL)     
                         require(RUTA_APP . "/controladores/complementos/CalculoApertura_C.php");
-
                         $this->Horario = new CalculoApertura_C;
 
                         //se declara un array donde su primera posicion es otro array, esto es asi porque el metodo disponibilidadHoraria en CalculoApertura_C.php lo exige
@@ -81,4 +80,3 @@
             $this->vista("view/inicio_V", $Datos);            
         }
     }
-?>

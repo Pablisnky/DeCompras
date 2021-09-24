@@ -293,23 +293,23 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <div id="Mostrar_PagoMovil">
                     <!-- Entra en el IF cuando no hay cuentas de pagomovil creadas -->
                     <?php
-                    // $Datos['datosPagomovil'][0]['cedula_pagomovil'] == ""
                     if($Datos['datosPagomovil'] == Array ()){ ?>
                         <div class="contenedor_67 borde_1" id="Contenedor_68">
-                            <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+                            <i class="far fa-times-circle span_10 span_14 PagoMovil_js"></i>
 
                             <!-- CÉDULA PAGOMOVIL -->
                             <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="CedulaPagoMovil" placeholder="Número cedula (solo números)" autocomplete="off"/>
 
                             <!-- BANCO PAGOMOVIL -->
-                            <input class="input_13 input_13A borde_1 BancoJS" type="text"  name="bancoPagoMovil[]" id="BancoPagoMovil" placeholder="Código Banco" autocomplete="off"/>
+                            <!-- <select class="select_2 select_3 borde_1 BancoJS" name="bancoPagoMovil[]" id="BancoPagoMovil"> -->
+                            <?php require(RUTA_APP . "/vistas/view/complementos_V/bancos_V.php");?>
 
                             <!-- TELEFONO PAGOMOVIL -->
                             <input class="input_13 input_13A borde_1 TelefonoJS" type="text" name="telefonoPagoMovil[]" id="TelefonoPagoMovil" placeholder="Número telefónico (solo números)" autocomplete="off"/>
                         </div>
                         <?php
                     }
-                    else{
+                    else{ //Entra en el ELSE cuando hay cuentas de pagomovil creadas
                         $Iterador = 1;
                         foreach($Datos['datosPagomovil'] as $row) :
                             $CedulaPagoMovil =  $row['cedula_pagomovil'];
@@ -317,15 +317,17 @@ if(!empty($_SESSION["ID_Afiliado"])){
                             $TelefonoPagoMovil = $row['telefono_pagomovil']; 
                             ?>
                             <div class="contenedor_67 borde_1" id="Contenedor_68">
-                                <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>
+                                <i class="far fa-times-circle span_10 span_14 PagoMovil_js"></i>
 
                                 <!-- CÉDULA PAGOMOVIL -->
                                 <label>Cédula (Solo números)</label>
                                 <input class="input_13 input_13A borde_1 cedulaJS" type="text" name="cedulaPagoMovil[]" id="<?php echo 'CedulaPagoMovil_' . $Iterador?>" value="<?php echo $CedulaPagoMovil?>" autocomplete="off"/>
 
                                 <!-- BANCO PAGOMOVIL -->
-                                <label>Banco</label>
-                                <input class="input_13 input_13A borde_1 BancoJS" type="text" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" value="<?php echo $BancoPagoMovil?>" autocomplete="off"/>
+                                <label>Banco</label>                                    
+                                <select class="select_2 select_3 borde_1 BancoJS" name="bancoPagoMovil[]" id="<?php echo 'BancoPagoMovil_' . $Iterador?>" onclick="SeleccionarBanco(this.form)">
+                                    <option value="<?php echo $BancoPagoMovil?>"><?php echo $BancoPagoMovil?></option>
+                                </select>
                                 
                                 <!-- TELEFONO PAGOMOVIL -->
                                 <label>Nº teléfono (Solo números)</label>
@@ -547,6 +549,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar.js?v=' . rand();?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/Municipios.js?v=' . rand();?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/parroquias.js?v=' . rand();?>"></script> 
+    <script src="<?php echo RUTA_URL . '/public/javascript/Bancos.js?v=' . rand();?>"></script> 
 
     <script> 
         //Da una vista previa de la imagen de la tienda, usada en cuenta_editar_prod_V.php
@@ -560,28 +563,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 reader.readAsDataURL(input.files[0]);
             }
         }        
-        $("#imgInp_2").change(function(){
-            // Código a ejecutar cuando se detecta un cambio de imagen de tienda
-            var id_Label = $('#blah_2');
-            readImage(this, id_Label);
-        });
-
-        
-        //Da una vista previa de la imagen de la seccion
-        // function Muestra_Imagen_Seccion(input, id_Label){
-        //     // console.log("______Desde Muestra_Imagen_Seccion()______", input + ' | ' + id_Label)
-        //     if(input.files && input.files[0]){
-        //         var reader = new FileReader();
-        //         reader.onload = function(e){
-        //             id_Label.attr('src', e.target.result); //Renderizamos la imagen
-        //         }
-        //         reader.readAsDataURL(input.files[0]);
-        //     }
-        // }        
-        // $("#Img_Seccion").change(function(){
+        // $("#imgInp_2").change(function(){
         //     // Código a ejecutar cuando se detecta un cambio de imagen de tienda
-        //     var id_Label = $('#ImagenSeccion');
-        //     Muestra_Imagen_Seccion(this, id_Label);
+        //     var id_Label = $('#blah_2');
+        //     readImage(this, id_Label);
         // });
     </script>
         

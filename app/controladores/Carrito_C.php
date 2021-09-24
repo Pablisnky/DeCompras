@@ -56,7 +56,8 @@
                 'OtrosPagos' => $OtrosPagos, //efectivoBolivar, efectivoDolar, acordado
                 'ID_Tienda' => $ID_Tienda,
                 'TelefonoTienda' => $ContactoTienda, //telefono_AfiCom
-                'Delivery' => $CostoDelivery          
+                'Delivery' => $CostoDelivery,
+                'DolarHoy' => $DolarHoy          
             ];
 
             // echo "<pre>";
@@ -72,7 +73,7 @@
         }        
         
         public function UsuarioRegistrado($Cedula){
-            //Se CONSULTA si el usuario esta registrdo
+            //Se CONSULTA si el usuario esta suscrito
             $Usuario = $this->ConsultaCarrito_M->consultarUsuario($Cedula);
 
             if($Usuario == Array ()){

@@ -46,11 +46,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div style="display: flex;	justify-content: space-around;">
                             <div>
                                 <label>Bs.</label><br>
-                                <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text"  name="precioBs" id="PrecioBs" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                                <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text"  name="precioBs" id="PrecioBs" placeholder="0.00" tabindex="3" onkeydown="blanquearInput('Precio')"/>
                             </div>
                             <div>
                                 <label>$</label><br>
-                                <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="Solo números" tabindex="3" onkeydown="blanquearInput('Precio')"/>
+                                <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" placeholder="0.00" tabindex="3" onkeydown="blanquearInput('Precio')"/>
                             </div>
                         </div>
                         <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo $PrecioDolar;?>)</strong></small>

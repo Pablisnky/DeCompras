@@ -79,7 +79,7 @@
                 array_push($this->IDs_Tiendas, $Nuevo_ID_Tienda);
             endforeach;
             
-            //Se cambia el array $IDs_Tiendas por una cadena para introducirla en la consulta tipo a BD
+            //Se cambia el array $IDs_Tiendas por una cadena para enviarlo como parametro en la consulta a BD
             $this->IDs_Tiendas = implode(',', $this->IDs_Tiendas); 
             
             $this->Reputacion_ModosDePago();
@@ -156,13 +156,15 @@
             if($TiendasDespachos == Array()) :
                 $TiendasNoConformidades = 0;
             endif;
+            
+            // Se convierte $this->IDs_Tiendas en un array nuevamente
+            $this->IDs_Tiendas = explode(",", $this->IDs_Tiendas);
 
-            // ******************************************* 
             //CALCULO DE DISPONIBILIDAD HORARIA            
             require(RUTA_APP . '/controladores/complementos/CalculoApertura_C.php');
-
             $this->Horario = new CalculoApertura_C;
-            $DisponibilidaHoraria = $this->Horario->disponibilidadHoraria($this->TiendasEnCategoria);
+            
+            $DisponibilidaHoraria = $this->Horario->disponibilidadHoraria($this->IDs_Tiendas);
 
             $Datos = [
                 'tiendas_categoria' => $this->TiendasEnCategoria,//ID_Tienda, nombre_Tien, direccion_Tien,  fotografia_Tien, estado_Tien, parroquia_Tien, slogan_Tien, categoria, telefono_AfiCom,
@@ -215,26 +217,4 @@
             $this->vista('header/header_Modal');
             $this->vista('view/tienda/horarioDespacho_V',$Datos);
         }
-
-        // Invocado en header_Tienda
-        public function direccionTienda($ID_Tienda){    
-            // echo $ID_Tienda;
-           
-            // $Datos = [
-            //     'id_tienda' => $ID_Tienda,
-            // ];
-            
-            // // echo '<pre>';
-            // // print_r($Datos);
-            // // echo '</pre>';
-            // // exit;
-
-            // $this->vista('header/header_Tienda', $Datos);
-            // $this->vista('view/tienda/direccion_V',$Datos);
-        }
-        
-        // public function salirTienda(){
-        // 	header('location:' . RUTA_URL. '/Inicio_C/NoVerificaLink');
-        // }
     }
-?>

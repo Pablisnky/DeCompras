@@ -9,7 +9,6 @@
         </div>        
         <h1 class="h1_1 h1_3"><?php echo $Datos['Opciones'][0]['seccion']?></h1>
     </div>
-
     <div class="contenedor_156">
         <div class="contenedor_158">
             <form id="Formulario">

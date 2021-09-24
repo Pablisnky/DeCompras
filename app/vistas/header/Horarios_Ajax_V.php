@@ -45,7 +45,7 @@
                     <option>9:30 pm</option>
                 </select>
             </div>
-            <div class="contenedor_77">
+            <div class="">
                 <label class="boton" onclick="transferirHorarios()">Guardar</label>
             </div>
         </form>

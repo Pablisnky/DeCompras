@@ -46,7 +46,7 @@
                         <input class="ocultar" type="text" id="PrecioEnvio" value="<?php echo $Datos['Delivery'];?>"/>
                     </div>     
                     
-                        <!--DIV ALIMENTADO DESDE CARRITO.JS PedidoEnCarrito() -->
+                        <!--DIV ALIMENTADO DESDE E_Vitrina.js PedidoEnCarrito() -->
                     <div>
                         <h2 class="h2_2">Monto en tienda: <input type="text" form="DatosUsuario" name="montoTienda" class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
 
@@ -56,7 +56,9 @@
 
                         <hr class="hr_1"/>
                         <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
-                        <!-- <h2 class="h2_2 h2_3"><input type="text" form="DatosUsuario" name="" class="input_6 input_7" id="MontoTotalDolares" readonly="readondly"/> $ USD</h2> -->
+                        <h2 class="h2_2 h2_3"><input type="text" form="DatosUsuario" name="" class="input_6 input_7" id="MontoTotalDolares" readonly="readondly"/> $ USD</h2>
+
+                        <small class="small_1 small_1A">Cambio oficial a tasa del BCV <strong class="strong_1">( 1 $ = <?php echo number_format($Datos['DolarHoy'], 0, ",", ".");?> Bs.)</strong></small>
                     </div>
                 </div>
             <!-- </article> -->
@@ -147,7 +149,7 @@
                                     <label class="boton boton--alto" id="No_Registrado" onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')">Usuario no registrado</label>
                                     <label class="boton boton--alto" id="Registrado" onclick="mostrar_cedula()">Usuario <br class="br_2"> registrado</label>
                                 <div class="ocultar" id="Mostrar_Cedula">
-                                    <i class="far fa-times-circle spanCerrar spanCerrar--modal"  onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')"></i>
+                                    <i class="fas fa-times spanCerrar"  onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')"></i>
                                     <input class="input_13 borde_1" type="text" id="Cedula_Usuario" placeholder="Nº Cedula (Solo números)" onblur="soloNumeros(this.value, 'Cedula_Usuario')"/>
                                     <label class="boton boton--color boton--centro" >Enviar</label>
                                 </div> 
@@ -254,19 +256,23 @@
                                             $Rif = $row['bancoRif']; ?>
                                             <tr class="tabla2__tr1">
                                                 <td class="tabla2__td1">Banco</td>
-                                                <td><?php echo $Banco?></td>
+                                                <td class="tabla2__td2"><?php echo $Banco?></td>
                                             </tr>
                                             <tr class="tabla2__tr1">
                                                 <td class="tabla2__td1">Titular</td>
-                                                <td><?php echo $Titular?></td>
+                                                <td class="tabla2__td2"><?php echo $Titular?></td>
                                             </tr>
                                             <tr class="tabla2__tr1">
                                                 <td class="tabla2__td1">Nº cuenta</td>
-                                                <td><?php echo $Cuenta?></td>
+                                                <td class="tabla2__td2"><?php echo $Cuenta?></td>
                                             </tr>
                                             <tr class="tabla2__tr1">
                                                 <td class="tabla2__td1">Cedula/RIF</td>
-                                                <td><?php echo $Rif?></td>
+                                                <td class="tabla2__td2"><?php echo $Rif?></td>
+                                            </tr class="tabla2__tr1">
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Monto</td>
+                                                <td class="tabla2__td2"><input class="contInforPago--input" type="text" id="PagarTransferencia" readonly></td>
                                             </tr class="tabla2__tr1">
                                             <tr class="tabla2__tr2"></tr>
                                             <?php 
@@ -287,9 +293,8 @@
                                 <!-- INPUT TRANSFERENCIA -->
                                 <div class="contOculto contGeneral" id="InputTransferencia">
                                     <input class="input_13 input--textCenter borde_1" type="text" name="codigoTransferencia" id="RegistroPago_Transferencia" placeholder="Código transferencia" onkeydown="blanquearInput('RegistroPago_Transferencia')"/>
-                                </div>
-                                                    
-                                    <!-- CAPTURE TRANSFERENCIA -->
+                                </div>                                                    
+                                <!-- CAPTURE TRANSFERENCIA -->
                                 <div class="contOculto contGeneral" id="CaptureTransferencia">
                                     <label class="boton boton--largo boton--centro" for="ImagenTransferencia">Insertar capture</label>
                                     <input class="ocultar" type="file" name="imagenTransferencia" id="ImagenTransferencia" onchange="CaptureTransferencia()"/>
@@ -302,8 +307,7 @@
 
                             <!-- PAGOMOVIL -->
                             <div class="contInforPago" id="Contenedor_60b">
-                                <h3 class="h3_2">Cuentas para PagoMovil</h3>
-                                
+                                <h3 class="h3_2">Cuentas para PagoMovil</h3>                                
                                 <table class="tabla_2">
                                     <tbody>
                                         <?php                                        
@@ -313,16 +317,20 @@
                                             $Telefono = $row['telefono_pagomovil']; ?>
                                             <tr class="tabla2__tr1">
                                                 <td class="tabla2__td1">Banco</td>
-                                                <td><?php echo $Banco?></td>
+                                                <td class="tabla2__td2"><?php echo $Banco?></td>
                                             </tr>
                                             <tr class="tabla2__tr1">
                                                 <td class="tabla2__td1">Cedula</td>
-                                                <td><?php echo $Cedula?></td>
+                                                <td class="tabla2__td2"><?php echo $Cedula?></td>
                                             </tr>
                                             <tr class="tabla2__tr1">
-                                                <td class="tabla2__td1">Nº telefono</td>
-                                                <td><?php echo $Telefono?></td>
+                                                <td class="tabla2__td1">Telefono</td>
+                                                <td class="tabla2__td2"><?php echo $Telefono?></td>
                                             </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Monto</td>
+                                                <td class="tabla2__td2"><input class="contInforPago--input" type="text" id="PagarPagoMovil" readonly></td>
+                                            </tr class="tabla2__tr1">
                                             <tr>
                                                 <td class="td_6"></td>
                                                 <td></td>
@@ -348,8 +356,7 @@
 
                             <!-- RESERVE -->
                             <div class="contInforPago" id="Contenedor_60f">
-                                <h3 class="h3_2">Usuario Reserve</h3>
-                                
+                                <h3 class="h3_2">Reserve</h3>                                
                                 <table class="tabla_2">
                                     <tbody>
                                         <?php                                        
@@ -359,18 +366,19 @@
                                                 <td class="tabla2__td1">Usuario</td>
                                                 <td><?php echo $Usuario_Reserve?></td>
                                             </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Monto</td>
+                                                <td><input class="contInforPago--input" type="text" id="PagarDolaresReserve" readonly></td>
+                                            </tr>
                                             <?php 
                                         endforeach;   ?>
                                     </tbody>
-                                </table>
-                                
-                                <h3 class="h3_2">Informe su pago.</h3>
-                                                    
-                                <!-- IMAGEN CAPTURE -->
+                                </table>                                                     
+                                <!-- IMAGEN CAPTURE -->                      
+                                <h3 class="h3_2">Informe su pago.</h3>  
                                 <div class="contGeneral" id="CapturePagoReserve">
                                     <label class="boton boton--largo boton--centro" for="ImagenPagoReserve">Insertar capture</label>
                                     <input class="ocultar" type="file" name="imagenPagoReserve" id="ImagenPagoReserve" onchange="CapturePagoReserve()"/>
-                                    <!-- <br class="br_1"> -->
 
                                     <!-- div que muestra la previsualización del capture-->
                                     <div class="contGeneralCentro" id="DivCapturePagoReserve"></div>
@@ -379,8 +387,7 @@
 
                             <!-- PAYPAL -->
                             <div class="contInforPago" id="Contenedor_60g">
-                                <h3 class="h3_2">Usuario Paypal</h3>
-                                
+                                <h3 class="h3_2">Paypal</h3>                                
                                 <table class="tabla_2">
                                     <tbody>
                                         <?php                                        
@@ -390,18 +397,20 @@
                                                 <td class="tabla2__td1">Usuario</td>
                                                 <td><?php echo $Usuario_Paypal?></td>
                                             </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Monto</td>
+                                                <td><input class="contInforPago--input" type="text" id="PagarDolaresPaypal" readonly></td>
+                                            </tr>
                                             <?php 
                                         endforeach;   ?>
                                     </tbody>
-                                </table>
-                                
-                                <h3 class="h3_2">Informe su pago.</h3>
-                                                    
-                                <!-- IMAGEN CAPTURE -->
+                                </table>      
+ 
+                                <!-- IMAGEN CAPTURE -->                  
+                                <h3 class="h3_2">Informe su pago.</h3>                                            
                                 <div class="contGeneral" id="CapturePagoPaypal">
                                     <label class="boton boton--largo boton--centro" for="ImagenPagoPaypal">Insertar capture</label>
                                     <input class="ocultar" type="file" name="imagenPagoPaypal" id="ImagenPagoPaypal" onchange="CapturePagoPaypal()"/>
-                                    <!-- <br class="br_1"> -->
 
                                     <!-- div que muestra la previsualización del capture-->
                                     <div class="contGeneralCentro" id="DivCapturePagoPaypal"></div>
@@ -410,8 +419,7 @@
 
                             <!-- ZELLE -->
                             <div class="contInforPago" id="Contenedor_60h">
-                                <h3 class="h3_2">Usuario Zelle</h3>
-                                
+                                <h3 class="h3_2">Zelle</h3>                                
                                 <table class="tabla_2">
                                     <tbody>
                                         <?php                                        
@@ -421,18 +429,19 @@
                                                 <td class="tabla2__td1">Usuario</td>
                                                 <td><?php echo $Usuario_Zelle?></td>
                                             </tr>
+                                            <tr class="tabla2__tr1">
+                                                <td class="tabla2__td1">Monto</td>
+                                                <td><input class="contInforPago--input" type="text" id="PagarDolaresZelle" readonly></td>
+                                            </tr>
                                             <?php 
                                         endforeach;   ?>
                                     </tbody>
-                                </table>
-                                
-                                <h3 class="h3_2">Informe su pago.</h3>
-                                                    
-                                <!-- IMAGEN CAPTURE -->
+                                </table>                         
+                                <!-- IMAGEN CAPTURE -->       
+                                <h3 class="h3_2">Informe su pago.</h3>                                     
                                 <div class="contGeneral" id="CapturePagoZelle">
                                     <label class="boton boton--largo boton--centro" for="ImagenPagoZelle">Insertar capture</label>
                                     <input class="ocultar" type="file" name="imagenPagoZelle" id="ImagenPagoZelle" onchange="CapturePagoZelle()"/>
-                                    <!-- <br class="br_1"> -->
 
                                     <!-- div que muestra la previsualización del capture-->
                                     <div class="contGeneralCentro" id="DivCapturePagoZelle"></div>

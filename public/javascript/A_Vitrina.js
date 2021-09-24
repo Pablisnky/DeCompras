@@ -31,13 +31,16 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
 //Muestra la orden de compra
-function llamar_PedidoEnCarrito(ID_Tienda){
-    // console.log("______Desde llamar_PedidoEnCarrito()______",ID_Tienda)
+function llamar_PedidoEnCarrito(ID_Tienda, ValorDolar){
+    // console.log("______Desde llamar_PedidoEnCarrito()______",ID_Tienda + "/" + ValorDolar)
     var url="../../Carrito_C/index/" + ID_Tienda
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null");
+    
+    localStorage.setItem('ValorDolarHoy', ValorDolar)         
+    Local_ValorDolarHoy = localStorage.getItem('ValorDolarHoy')
 }                                                           
 function respuesta_PedidoEnCarrito(){
     if(peticion.readyState == 4){
@@ -47,7 +50,7 @@ function respuesta_PedidoEnCarrito(){
             window.scroll(0, 0)
             document.getElementById('Mostrar_Orden').innerHTML = peticion.responseText 
     
-            PedidoEnCarrito()           
+            PedidoEnCarrito(Local_ValorDolarHoy)           
         } 
         else{
             alert('Hubo problemas con la petición en llamar_PedidoEnCarrito()')
@@ -102,7 +105,6 @@ function respuesta_Opciones(){
 
 //****************************************************************************************************
 function Llamar_UsuarioRegistrado(cedula){
-    console.log("______Desde Llamar_UsuarioRegistrado()______", cedula)
     var url="../../Carrito_C/UsuarioRegistrado/" + cedula
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_UsuarioRegistrado;

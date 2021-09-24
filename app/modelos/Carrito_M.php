@@ -130,7 +130,7 @@
             $stmt = $this->dbh->prepare(
                 "SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, estado_usu, ciudad_usu, direccion_usu, ID_Usuario
                  FROM usuarios 
-                 WHERE cedula_usu  = :CEDULA"
+                 WHERE cedula_usu  = :CEDULA AND suscrito = 1"
             );
 
             $stmt->bindParam(':CEDULA', $Cedula, PDO::PARAM_STR);

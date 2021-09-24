@@ -134,8 +134,6 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
 //************************************************************************************************
     //Valida el formulario de cargar producto
     function validarPublicacion(){
-        console.log("______Desde validarPublicacion()______")
-
         let Producto = document.getElementById('ContenidoPro').value
         let Descripcion = document.getElementById('ContenidoDes').value 
         // let ImagenPrin = document.getElementById('imgInp').value 
@@ -151,10 +149,12 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         document.getElementsByClassName("boton")[0].style.color = "var(--OficialOscuro)"
         document.getElementsByClassName("boton")[0].classList.add('borde_1')    
 
-        //Patron de entrada solo acepta letras
+        // //Patron de entrada solo acepta numeros
         let P_Numeros = /^[0-9,.]*$/
+
         //Patron de entrada para archivos de carga permitidos
         // var Ext_Permitidas = /^[.jpg|.jpeg|.png]*$/
+        
         //Patron para fechas
         var P_Fecha = /^\d{1,2}\-\d{1,2}\-\d{2,4}$/;
         

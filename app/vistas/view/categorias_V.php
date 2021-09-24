@@ -4,14 +4,15 @@
     $_SESSION['Parroquia'] = $Datos['cantidadTiendasCategoria'][0]['parroquia_Tien'];
 ?>
 
-<div class="contenedor_90">
+<div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
     <div class="contenedor_159" id="Span_3">
         <!-- Icono flecha atras -->
         <i class="fas fa-arrow-left" style="display: inline;"></i>
         <a class="font--negro" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ciudades</a>
     </div>        
-    <h1 class="h1_1 h1_3 h1_4"><?php echo $_SESSION['Parroquia']?></h1>
+    <h1 class="h1_1 h1_3"><?php echo $_SESSION['Parroquia']?></h1>
 </div>
+
 <div class="contenedor_4" id="Cont_Categorias">
     <div class='contenedor_6 borde_1' id="Artesania">
         <h2 class='h2_1'>ARTE Y LITERATURA</h2>

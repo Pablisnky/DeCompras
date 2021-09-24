@@ -14,4 +14,3 @@
         	header('location:' . RUTA_URL . '/Inicio_C/NoVerificaLink');
         }
 	}
-?>

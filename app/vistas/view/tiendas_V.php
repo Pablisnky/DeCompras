@@ -1,11 +1,11 @@
 <section class="section_11">
-    <div class="contenedor_90">
+    <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
             <!-- Icono flecha atras -->
             <i class="fas fa-arrow-left" style="display: inline;"></i>
             <a class="font--negro" href="<?php echo RUTA_URL . '/Categoria_C/index/' . $Datos['tiendas_categoria'][0]['parroquia_Tien'];?>">Categorias</a>
         </div>        
-        <h1 class="h1_1 h1_3 h1_4">Categoria: <?php echo $Datos['tiendas_categoria'][0]['categoria']?></h1>
+        <h1 class="h1_1 h1_3">Categoria: <?php echo $Datos['tiendas_categoria'][0]['categoria']?></h1>
     </div>
     <div class='contenedor_10'>
         <?php
@@ -29,7 +29,7 @@
                 endif;
             endforeach;
             ?> 
-            <section class="contenedor_15--tarjeta" id="<?php echo $ID_Tienda;?>">
+            <section class="contenedor_15--tarjeta"  id="<?php echo $ID_Tienda;?>">
                 <!-- LADO FRONTAL DE TARJETA -->
                 <div class="contenedor_15 borde_1 borde_1--color adelante">
 
@@ -235,16 +235,16 @@
                             if($ID_TiendaConZelle == $ID_Tienda){  
                                 $VerificarZelle = 'Zelle_' . $ID_Tienda; ?>
                                 <div class="contenedor_161">
-                                     <p class="p_19">Zelle</p><i class="fas fa-check"></i>
-                                 </div>  
+                                    <p class="p_19">Zelle</p><i class="fas fa-check"></i>
+                                </div>  
                                 <?php
                             }
                         endforeach;
                         if($VerificarZelle != 'Zelle_' . $ID_Tienda){  ?>
-                             <div class="contenedor_161">
-                                 <p class="p_19">Zelle</p><i class="fas fa-minus"></i>
-                             </div>  
-                             <?php
+                            <div class="contenedor_161">
+                                <p class="p_19">Zelle</p><i class="fas fa-minus"></i>
+                            </div>  
+                            <?php
                         }
                             
                         // EFECTIVO BOLIVAR
@@ -282,7 +282,7 @@
                                 </div>  <?php
                             }
                         endforeach; 
-                                 
+                                
                         // ACORDADO EN TIENDA
                         foreach($Datos['tiendasOtrosPagos'] as $row_2) :
                             $ID_TiendaConPagoAcordado = $row_2['ID_Tienda'];

@@ -23,7 +23,8 @@
             $stmt = $this->dbh->query(
                 "SELECT DISTINCT parroquia_Tien, estado_Tien 
                  FROM tiendas 
-                 WHERE parroquia_Tien != '' "
+                 WHERE parroquia_Tien != '' 
+                 AND publicar = 1 "
             );
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }

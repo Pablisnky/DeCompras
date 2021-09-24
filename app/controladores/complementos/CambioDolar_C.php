@@ -53,4 +53,3 @@
             $this->ConsultaCambioDolar_M->ActualizarPrecio($NuevoPrecioBolivar);
         }
     }
-?>

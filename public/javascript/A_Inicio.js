@@ -3,20 +3,21 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
 //*********************************************************************************************** 
     //Busca un producto segun lo que escriba el usuario en el input de busqueda
     function Llamar_buscador(nombre){
-        // console.log("______Desde Llamar_buscador()______")
+        console.log("Desde Llamar_buscador", nombre)
         var divContenedor = document.getElementById("Buscar_Pedido")
         var xmlhttp
         if(window.XMLHttpRequest){ //Mozilla, Safari, Chrome...
             xmlhttp = new XMLHttpRequest()
+            // alert("Instancia creada exitosamente en navegador");
         } 
         else{ 
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
             if(!xmlhttp){
-                alert('No es posible crear una instancia XMLHTTP')
-                return false
+                alert('No es posible crear una instancia XMLHTTP');
+                return false;
             }
             else{
-                alert("Instancia creada exitosamente")
+                alert("Instancia creada exitosamente");
             }     
         }
 
@@ -25,6 +26,8 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
         }
         else{//si hay algo escrito en el input de buscar se ejecuta la peticion de Ajax
             xmlhttp.onreadystatechange = function(){
+                console.log(xmlhttp.readyState);
+                console.log(this.status)
                 if(xmlhttp.readyState === 4 && this.status === 200){
                     divContenedor.innerHTML = xmlhttp.responseText
                 } 
@@ -34,7 +37,7 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
                 }  
             }          
             document.getElementById("Buscar_Pedido").style.display = "flex"
-            xmlhttp.open("GET", "Buscador_C/index/" + nombre, true)
+            xmlhttp.open("GET", "../Buscador_C/index/" + nombre, true)
             //se envia la informacion cargada en el input por el usuario al servidor, true, significa que se va a hacer de manera asincrona se utiliza el metodo send para enviar.               
             xmlhttp.send()
         }
