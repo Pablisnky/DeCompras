@@ -2,10 +2,7 @@
 //Verificar para que sirve, creo que solo es util en la función decremento
 PedidoCarrito = []
 
-//Declarar el array que contiene los detalles de cada producto pedido (cantidad, producto, precio, total) cada detalle se inserta al array como un objeto JSON, es usado para alimentar "Tu Orden" en carrito_V.php
-AlCarro = []
-
-//Declarar el array que contiene los detalles de las leyendas y la ubicación de la misma dentro de una sección, cada detalle se inserta al array como un objeto JSON, es usado en opciones_V.php
+//Declarar el array que contiene los detalles de cada producto pedido y la ubicación de cada uno dentro de una sección, cada detalle se inserta al array como un objeto JSON, es usado en opciones_V.php, es usado para alimentar "Tu Orden" en carrito_V.php y las leyendas en cada sección y en cada producto
 AlContenedor = []
 
 //Guarda cada precio de los productos pedidos 
@@ -17,19 +14,15 @@ TotalDisplayCarrito = []
 //Guarda los contenedores que muestran productos que han sido cargados al carrito
 ProductoEnCarrito = []
 
-//Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito, este objeto alimenta al array AlCarro[]
-function PedidoCar(Seccion, Producto, Cantidad, Opcion, Precio, Total, ID_Opcion){
-    this.Seccion = Seccion
+//Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito, este objeto edita al array AlContenedor[]
+function PedidoCar(Producto, Cantidad, Total){
     this.Producto = Producto
     this.Cantidad = Cantidad
-    this.Opcion = Opcion
-    this.Precio = Precio
     this.Total = Total
-    this.ID_Opcion = ID_Opcion
 }
 
-//Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito,este objeto alimenta al array AlContenedor[]
-function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Agregar, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputDisplayCant, Cantidad, Producto, Opcion, Precio,Total, Existencia, ID_BotonMas, ID_BotonBloqueo){
+//Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito, este objeto alimenta al array AlContenedor[]
+function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Agregar, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputDisplayCant, Cantidad, Seccion, ID_Opcion, Producto, Opcion, Precio,Total, Existencia, ID_BotonMas, ID_BotonBloqueo){
     this.Cont_Seccion = Cont_Seccion
     this.Cont_Leyenda = Cont_Leyenda  
     this.ID_Input_Leyenda = ID_Input_Leyenda
@@ -41,6 +34,8 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     this.ID_InputTotal = ID_InputTotal
     this.ID_InputDisplayCant = ID_InputDisplayCant
     this.Cantidad = Cantidad
+    this.Seccion = Seccion
+    this.ID_Opcion = ID_Opcion
     this.Producto = Producto
     this.Opcion = Opcion
     this.Precio = Precio
@@ -146,132 +141,8 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementById("MontoTotalDolares").value = Number.parseFloat(MontoTotalDolares).toFixed(2)
         }
     }
-}, false);    
+}, false);  
 
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoTransferencia(){
-        // console.log("______Desde verTransferenciaBancaria()______") 
-        document.getElementById("Contenedor_60a").style.display = "block"
-        document.getElementById("Contenedor_60b").style.display = "none"
-        document.getElementById("Contenedor_60c").style.display = "none"
-        document.getElementById("Contenedor_60d").style.display = "none"
-        document.getElementById("Contenedor_60e").style.display = "none"
-        document.getElementById("Contenedor_60f").style.display = "none"
-        document.getElementById("Contenedor_60g").style.display = "none"
-        document.getElementById("Contenedor_60h").style.display = "none"
-        
-        //Se muestra el monto de total de la compra incluyendo envio en Bolivares
-        document.getElementById("PagarTransferencia").value = SeparadorMiles(MontoTotal) + " Bs."
-    }
-
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoMovil(){
-        // console.log("______Desde verPagoMovil()______") 
-        document.getElementById("Contenedor_60a").style.display = "none"
-        document.getElementById("Contenedor_60b").style.display = "block"
-        document.getElementById("Contenedor_60c").style.display = "none"
-        document.getElementById("Contenedor_60d").style.display = "none"
-        document.getElementById("Contenedor_60e").style.display = "none"
-        document.getElementById("Contenedor_60f").style.display = "none"
-        document.getElementById("Contenedor_60g").style.display = "none"
-        document.getElementById("Contenedor_60h").style.display = "none"
-
-        //Se muestra el monto de total de la compra incluyendo envio en Bolivares
-        document.getElementById("PagarPagoMovil").value = SeparadorMiles(MontoTotal) + " Bs."
-    }
-
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoReserve(){
-        document.getElementById("Contenedor_60a").style.display = "none"
-        document.getElementById("Contenedor_60b").style.display = "none"
-        document.getElementById("Contenedor_60c").style.display = "none"
-        document.getElementById("Contenedor_60d").style.display = "none"
-        document.getElementById("Contenedor_60e").style.display = "none"
-        document.getElementById("Contenedor_60f").style.display = "block"
-        document.getElementById("Contenedor_60g").style.display = "none"
-        document.getElementById("Contenedor_60h").style.display = "none"
-
-        //Se muestra el monto de total de la compra en Dolares
-        document.getElementById("PagarDolaresReserve").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
-    }
-
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoPaypal(){
-        document.getElementById("Contenedor_60a").style.display = "none"
-        document.getElementById("Contenedor_60b").style.display = "none"
-        document.getElementById("Contenedor_60c").style.display = "none"
-        document.getElementById("Contenedor_60d").style.display = "none"
-        document.getElementById("Contenedor_60e").style.display = "none"
-        document.getElementById("Contenedor_60f").style.display = "none"
-        document.getElementById("Contenedor_60g").style.display = "block"
-        document.getElementById("Contenedor_60h").style.display = "none"
-        
-        //Se muestra el monto de total de la compra en Dolares
-        document.getElementById("PagarDolaresPaypal").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
-    }
-
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoZelle(){
-        document.getElementById("Contenedor_60a").style.display = "none"
-        document.getElementById("Contenedor_60b").style.display = "none"
-        document.getElementById("Contenedor_60c").style.display = "none"
-        document.getElementById("Contenedor_60d").style.display = "none"
-        document.getElementById("Contenedor_60e").style.display = "none"
-        document.getElementById("Contenedor_60f").style.display = "none"
-        document.getElementById("Contenedor_60g").style.display = "none"
-        document.getElementById("Contenedor_60h").style.display = "block"
-        
-        //Se muestra el monto de total de la compra en Dolares
-        document.getElementById("PagarDolaresZelle").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
-    }
-
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoEfectivoBolivar(){
-        // console.log("______Desde verPagoEfectivoBolivar()______") 
-        document.getElementById("Contenedor_60a").style.display = "none"
-        document.getElementById("Contenedor_60b").style.display = "none"
-        document.getElementById("Contenedor_60c").style.display = "block"
-        document.getElementById("Contenedor_60d").style.display = "none"
-        document.getElementById("Contenedor_60e").style.display = "none"
-        document.getElementById("Contenedor_60f").style.display = "none"
-        document.getElementById("Contenedor_60g").style.display = "none"
-        document.getElementById("Contenedor_60h").style.display = "none"
-    }
-
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoEfectivoDolar(){
-        // console.log("______Desde verPagoEfectivoDolar()______") 
-        document.getElementById("Contenedor_60a").style.display = "none"
-        document.getElementById("Contenedor_60b").style.display = "none"
-        document.getElementById("Contenedor_60c").style.display = "none"
-        document.getElementById("Contenedor_60d").style.display = "block"
-        document.getElementById("Contenedor_60e").style.display = "none"
-        document.getElementById("Contenedor_60f").style.display = "none"
-        document.getElementById("Contenedor_60g").style.display = "none"
-        document.getElementById("Contenedor_60h").style.display = "none"
-    }
-
-//************************************************************************************************
-    // invocada desde carrito_V.php
-    function verPagoAcordado(){
-        // console.log("______Desde verPagoAcordado()______") 
-        document.getElementById("Contenedor_60a").style.display = "none"
-        document.getElementById("Contenedor_60b").style.display = "none"
-        document.getElementById("Contenedor_60c").style.display = "none"
-        document.getElementById("Contenedor_60d").style.display = "none"
-        document.getElementById("Contenedor_60e").style.display = "block"
-        document.getElementById("Contenedor_60f").style.display = "none"
-        document.getElementById("Contenedor_60g").style.display = "none"
-        document.getElementById("Contenedor_60h").style.display = "none"
-    }
-    
 //************************************************************************************************
     //invocada desde carrito_V.php 
     function MuestraEnvioFactura(){
@@ -315,6 +186,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
         // En el caso que la seccion tenga un solo producto, se añade un input radio, sino se añade el Opcion.legth sera undefined y no entrará en el ciclo for
         if(Opcion.length == undefined){
+
         //Se añade una opcion al input tipo radio para que existan al menos dos opciones, cuando es uno el valor de Opcion.length es undefined lo que impide que se ejecute el ciclo for más adelante, esto sucede cuando solo existe un producto en una seccción
             //Se crea un input tipo radio que pertenezca a los de name="opcion"
             var NuevoElemento = document.createElement("input")
@@ -361,7 +233,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         Input_OpcionClick = ID_InputOpcion
         localStorage.setItem('ID_InputOpcion', Input_OpcionClick)
         LS_ID_InputOpcion = localStorage.getItem('ID_InputOpcion') 
-
         
         //Se recibe el ID del input que va a mostrar el precio del producto donde se hizo click
         Input_PrecioClick = ID_InputPrecio
@@ -411,7 +282,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 document.getElementById(ID_InputSeccion).value = Seccion_tienda  
 
                 //Se muestra la cantidad de producto donde se hizo click
-                A = document.getElementById(Input_CantidadClick).value = 1
+                Cantidad_uno = document.getElementById(Input_CantidadClick).value = 1
                 // console.log("Cantidad agregada a carrito = ", A)
 
                 //Se muestra el ID_Opcion en BD donde se hizo click
@@ -438,10 +309,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 Precio = Precio.replace(/[.]/g,'')
                 Precio = Number(Precio)
                 
-                //Se añade el producto carrito(no lo suma), basta con añadir el id_dinamico(ID_Opcion) por cada unidad de produto añadida
-                // PedidoCarrito.push(Separado[0])
-
-                //Se ingresa el monto del nuevo pedido al array que contiene todos los precios del pedido,                   
+                //Se añade el producto al carrito(no lo suma), basta con añadir el id_dinamico(ID_Opcion) por cada unidad de produto añadida
                 DisplayCarrito.push(Precio) 
 
                 //Suma todos los precios del pedido, este es el monto que se muestra en el display del carrito e informa al usuario de como va la cuenta  
@@ -449,10 +317,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
                 //Muestra el monto del pedido en el display carrito(se encuentra en vitrina_V.php)
                 MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
-              
-                //Se añade el producto al array que contiene el carrito de compras
-                PedidoAtomico = new PedidoCar(Separado[0], Separado[2], 1, Separado[3], Separado[4], Separado[4], Separado[1])
-                AlCarro.push(PedidoAtomico) 
 
                 //Se muestra el div que contiene el icono del carrito en vitrina_V.php
                 document.getElementById("Contenedor_61").style.visibility = "visible"
@@ -467,10 +331,10 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 // console.log(ID_BotonMas + " " + ID_BotonBloqueo )
 
                 //Guarda en el objeto "AlContenedor", la leyenda del producto segun su contenedor de seccion, cada detalle en si es un array, por lo que AlContenedor es un array de objetos
-                Contenedores = new ContenedorCar(LS_ID_Cont_Seccion, LS_ID_Cont_Leyenda, LS_ID_InputLeyenda, LS_ID_BotonAgregar, LS_ID_InputCantidad, LS_ID_InputProducto, LS_ID_InputOpcion, LS_ID_InputPrecio, LS_ID_InputTotal, LS_ID_InputDisplayCant, A, Separado[2], Separado[3], Separado[4], Separado[4], existencia, ID_BotonMas, ID_BotonBloqueo)
+                Contenedores = new ContenedorCar(LS_ID_Cont_Seccion, LS_ID_Cont_Leyenda, LS_ID_InputLeyenda, LS_ID_BotonAgregar, LS_ID_InputCantidad, LS_ID_InputProducto, LS_ID_InputOpcion, LS_ID_InputPrecio, LS_ID_InputTotal, LS_ID_InputDisplayCant, Cantidad_uno, Separado[0], Separado[1], Separado[2], Separado[3], Separado[4], Separado[4], existencia, ID_BotonMas, ID_BotonBloqueo)
                              
                 //Si la existencia en BD es igual a 1 se oculta el boton de mas y menos para que no se añadan más productos al carrito
-                if(existencia == A){
+                if(existencia == Cantidad_uno){
                     document.getElementById(ID_BotonMas).style.display = "none" 
                     document.getElementById(ID_BloqueoMas).style.display = "inline" 
                 }
@@ -482,6 +346,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             DisplayDestello()
         }
         AlContenedor.push(Contenedores)
+        // console.log("AlContenedor", AlContenedor)
     }
 
 //************************************************************************************************
@@ -491,10 +356,11 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se especifica la seccion donde se va a insertar la leyenda en vitrina_V.php, este localStorage se creo en verOpciones()
         InputLeyendaDinamico = localStorage.getItem('ContSeccion')
         Padre = document.getElementById(InputLeyendaDinamico)
-        console.log(Padre)
+        // console.log("Cont_Seccion", Padre)
+
         //Se guarda la sección donde esta el producto cargado a pedido
         Seccion = localStorage.getItem('SeccionCLick')     
-        console.log(Seccion)   
+        // console.log("Seccion", Seccion)   
 
         //Se recorre todos los elementos que contengan la clase input_15 para eliminarlos
         //Se especifica a que seccion pertenecen los productos que se van a eliminar
@@ -510,10 +376,11 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             }
         }
 
-        //Se evaluaran solo los elementos de AlCarro que correspondan a la sección donde se hizo click
+        //Se evaluaran solo los elementos del array "AlContenedor" que correspondan a la sección donde se hizo click
         function ProductoEditado(Seccion){
             var existe = false;
-            var filtered = AlCarro.filter(function(item){
+
+            var filtered = AlContenedor.filter(function(item){
                 return item.Seccion == Seccion; 
             });
 
@@ -565,25 +432,60 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
 //************************************************************************************************
     function Eliminar_Leyenda(e){
-        alert("Función temporalmente desactivada, elimine directamente desde el producto")
-        // var click = e.target
+        // alert("Función temporalmente desactivada, elimine directamente desde el producto")
+        var click = e.target
         // console.log("Se hizo click en: ", click)//se tiene el boton eliminar
         // console.log("Padre", e.target.parentElement)
-        // console.log(e.target.previousSibling.id)//se tiene la leyenda correspondiente al boton eliminar
-        // var ID = e.target.previousSibling.id
-        // e.target.parentElement.removeChild(e.target.previousSibling);
-        // e.target.parentElement.removeChild(e.target);
+        // console.log(e.target.previousSibling.id)//
+        var ID_ProductoEliminar = e.target.previousSibling.id
+        e.target.parentElement.removeChild(e.target.previousSibling);
+        e.target.parentElement.removeChild(e.target);
         
-        //Se busca dentro del array AlCarro el producto que corresponde a la leyenda que se va a liminar
-        // console.log(AlCarro)
+        //Se busca dentro del array AlContenedor el producto que corresponde a la leyenda que se va a liminar
+        // console.log("AlContenedor completo", AlContenedor)
 
-        // var filtrado = AlCarro.filter(function(item_2){
-        //     return item_2.ID_Opcion != ID; 
-        // });
+        var filtrado = AlContenedor.filter(function(item_2){
+            console.log("ID_ProductoEliminar", ID_ProductoEliminar);
+            return item_2.ID_Opcion != ID_ProductoEliminar; 
+        });
 
-        // AlCarro = filtrado
-        // console.log(AlCarro)
-        // console.log("COntenedor", AlContenedor)
+        //Array AlContenedor con el producto eliminado
+        AlContenedor = filtrado
+        console.log("AlContenedor editado", AlContenedor)
+
+        //Se buscan los precios totales de cada producto en AlContenedor
+        var PrecioEnDisplayCarrito = AlContenedor.filter(function(item_3){
+            return item_3.Total; 
+        });
+        console.log("Totales", PrecioEnDisplayCarrito)
+
+        //Input precio en el elemento hermano del click correspondiente; Aqui se muestra el precio
+        // let Precio = Cont_leyenda.getElementsByClassName("input_1d")[0].value
+
+        //Se cambia el formato del precio
+        // Precio = Precio.replace(/[.]/g,'')
+        // Precio = Number(Precio)
+                        
+        // //Se calcula el total
+        // let Total = Cantidades * Precio    
+         
+        // //Input total en el elemento hermano del click correspondiente; Aqui se mostrará el total
+        // Cont_leyenda.getElementsByClassName("input_1f")[0].value = Total
+        
+        // //Muestra la leyenda del pedido por producto
+        // Cont_leyenda.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto +  " = " + SeparadorMiles(Total) + " Bs."    
+
+        // //Busca por el precio dado y devuelve la posición de la primera ocurrencia.
+        // let Eliminar = DisplayCarrito.indexOf(Precio)
+
+        // //Elimina la posicion del array guardada en "Eliminar"
+        // DisplayCarrito.splice(Eliminar, 1)
+
+        // //Se resta del display carrito el producto eliminado
+        // TotalDisplayCarrito = TotalDisplayCarrito - Precio
+
+        // //Muestra el monto del pedido en el display carrito
+        // MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs."   
       }
 //************************************************************************************************
     //invocada al cargarse llamar_Opciones() en Funciones_Ajax.js especifica los productos que ya estan cargados al carrito de compra y muestra su leyenda en la vista opciones_V.php
@@ -663,19 +565,19 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
         document.getElementById("MontoTotalDolares").value = MontoTotalDolares
         
-        //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlCarro[]
+        //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlContenedor[]
         //1.- Se convierte el JSON en un string
-        var sendJSON = JSON.stringify(AlCarro)
+        var sendJSON = JSON.stringify(AlContenedor)
         //2.- Se envia al input que lo almacena en la vista carrito_V.php
         document.getElementById('Pedido').value = sendJSON
 
         //Se muestra todo el pedido (cantidad - producto - precio unitario - precio por productos)
-        for(i = 0; i < AlCarro.length; i++){
+        for(i = 0; i < AlContenedor.length; i++){
             document.getElementById("Tabla").innerHTML += 
-            '<tbody><tr><td class="td_1">' +  AlCarro[i].Cantidad + 
-            '</td><td class="td_2 hyphen">' +  AlCarro[i].Producto + 
-            '</td><td class="td_3">' + AlCarro[i].Precio + 
-            '</td><td class="td_3">' + AlCarro[i].Total + '</td></tr></tbody>'
+            '<tbody><tr><td class="td_1">' +  AlContenedor[i].Cantidad + 
+            '</td><td class="td_2 hyphen">' +  AlContenedor[i].Producto + 
+            '</td><td class="td_3">' + AlContenedor[i].Precio + 
+            '</td><td class="td_3">' + AlContenedor[i].Total + '</td></tr></tbody>'
         }
     }
     
@@ -789,13 +691,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 //Muestra la leyenda del pedido por producto
                 inputSeleccionadoLeyen.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto + " = " + SeparadorMiles(Total) + " Bs."
 
-                //Se busca el ID_Opcion del producto selecionado (Este ID fue asignado en la BD) para saber que producto contiene y añadirlo en el carrito
-                //input ID_Opcion en el elemento hermano del click correspondiente; Aqui se mostrará el ID_Opcion
-                // let ID_Opcion = inputSeleccionadoLeyen.getElementsByClassName("input_1b")[0].value
-           
-                //Se añade el producto al array PedidoCarrito, basta con añadir el id_dinamico(ID_Opcion) por cada unidad de produto añadida
-                // PedidoCarrito.push(ID_Opcion)
-
                 //Se añade el precio al array que contiene todos los montos individules por productos
                 DisplayCarrito.push(Precio)
 
@@ -806,25 +701,25 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs." 
               
                 //Se crea una nuevo array del objeto PedidoCar 
-                PedidoGlobal = new PedidoCar(Seccion_tienda, Producto, Cantidades, Opcion, Precio, TotalDisplayCarrito);
+                PedidoGlobal = new PedidoCar(Producto, Cantidades, TotalDisplayCarrito);
 
-                //Se verifica que el producto existe en el array AlCarro y que contiene el pedidio, se edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden
+                //Se verifica que el producto existe en el array AlContenedor y que contiene el pedidio, se edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden y a cada leyenda
                 function ProductoEditado(Producto){
                     // console.log("Entra en ProductoEditado()", Producto)
                     var existe = false;
-                    for(i = 0; i < AlCarro.length; i++){
-                        if(AlCarro[i].Producto == Producto ){ 
+                    for(i = 0; i < AlContenedor.length; i++){
+                        if(AlContenedor[i].Producto == Producto ){ 
                             existe = true;
-                            AlCarro[i].Cantidad = Cantidades
+                            AlContenedor[i].Cantidad = Cantidades
                             
-                            // console.log("AlCarro = ", AlCarro[i].Cantidad)  
-                            AlCarro[i].Total = SeparadorMiles(Total)  
+                            // console.log("AlContenedor = ", AlContenedor[i].Cantidad)  
+                            AlContenedor[i].Total = SeparadorMiles(Total)  
                         }
                     }
                     
                     var existe = false;
                     for(i = 0; i < AlContenedor.length; i++){
-                        if(AlCarro[i].Producto == Producto ){
+                        if(AlContenedor[i].Producto == Producto ){
                             existe = true;
                             AlContenedor[i].Cantidad = Cantidades
                             AlContenedor[i].Total = Total
@@ -832,8 +727,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                     }
                     return existe;
                 }
-                ProductoEditado(PedidoGlobal.Producto) //Antes Opcion NOTA = CAMBIAR POR ID DE PRODUCTO, ESTA FUNCION ES LLAMADA TAMBIEN EN PRE_DECREMENTE()
-                ProductoEditado(PedidoGlobal.Producto)  //antes Opcion                      
+                ProductoEditado(PedidoGlobal.Producto)                    
             }  
             DisplayDestello()
                      
@@ -848,7 +742,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             }
 
             // console.log("AlContenedor = ", AlContenedor)
-            // console.log("AlCarro = ", AlCarro)
+            // console.log("AlContenedor = ", AlContenedor)
         }  
     }   
 
@@ -923,50 +817,39 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                  
                 //Input total en el elemento hermano del click correspondiente; Aqui se mostrará el total
                 Cont_leyenda.getElementsByClassName("input_1f")[0].value = Total
-
-                //Se busca el ID_Opcion del producto selecionado (Este ID fue asignado en la BD) para saber que producto contiene y añadirlo en el carrito
-                //input ID_Opcion en el elemento hermano del click correspondiente; Aqui se mostrará el ID_Opcion
-                // ID_Opcion = Cont_leyenda.getElementsByClassName("input_1b")[0].value
-                
-                //Se añade el precio del pedido a remover del array que contiene el monto total del pedido
-                // SinPunto = Precio.replace(".","")
-                // PrecioARestar = Number(SinPunto)
-                // DisplayCarrito.push(PrecioARestar)
-
-                //Se resta el precio del pedido al array que contiene el monto total del pedido
-                // TotalDisplayCarrito = Number(DisplayCarrito[0]) - Number(PrecioARestar);
                 
                 //Muestra la leyenda del pedido por producto
                 Cont_leyenda.getElementsByClassName("input_2a")[0].value = Cantidades + " " + Producto +  " = " + SeparadorMiles(Total) + " Bs."    
 
                 //Busca por el precio dado y devuelve la posición de la primera ocurrencia.
                 let Eliminar = DisplayCarrito.indexOf(Precio)
+
                 //Elimina la posicion del array guardada en "Eliminar"
                 DisplayCarrito.splice(Eliminar, 1)
 
                 //Se resta del display carrito el producto eliminado
                 TotalDisplayCarrito = TotalDisplayCarrito - Precio
 
-                //Muestra el monto del pedido en el display carrito(se encuentra en header.php)
+                //Muestra el monto del pedido en el display carrito
                 MontoCarrito = document.getElementById("Input_5").value = SeparadorMiles(TotalDisplayCarrito) + " Bs."  
 
                 //Se crea una nuevo array del objeto PedidoCar 
-                PedidoGlobal = new PedidoCar(Seccion_tienda, Producto, Cantidades, Opcion, Precio, TotalDisplayCarrito);
+                PedidoGlobal = new PedidoCar(Producto, Cantidades, TotalDisplayCarrito);
 
-                //Se verifica que el producto existe en el array AlCarro que contiene los productos pedidos y si edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden, de igual manera se verifica el array AlContenedor que contiene la información de cada leyenda
+                //Se verifica que el producto existe en el array AlContenedor que contiene los productos pedidos y se edita la cantidad y el monto total acumulado por ese producto, esta informacion es la que va al resumen de la orden y a la información de cada leyenda
                 function ProductoEditado(Producto){
                     var existe = false;
-                    for(i = 0; i < AlCarro.length; i++){
-                        if(AlCarro[i].Producto == Producto ){
+                    for(i = 0; i < AlContenedor.length; i++){
+                        if(AlContenedor[i].Producto == Producto ){
                             existe = true;
-                            AlCarro[i].Cantidad = Cantidades
-                            AlCarro[i].Total = SeparadorMiles(Total)
+                            AlContenedor[i].Cantidad = Cantidades
+                            AlContenedor[i].Total = SeparadorMiles(Total)
                         }
                     }
                     
                     var existe = false;
                     for(i = 0; i < AlContenedor.length; i++){
-                        if(AlCarro[i].Producto == Producto ){
+                        if(AlContenedor[i].Producto == Producto ){
                             existe = true;
                             AlContenedor[i].Cantidad = Cantidades
                             AlContenedor[i].Total = Total
@@ -974,8 +857,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                     }
                     return existe;
                 }
-                ProductoEditado(PedidoGlobal.Producto) //Antes Opcion NOTA = CAMBIAR POR ID DE PRODUCTO, ESTA FUNCION ES LLAMADA TAMBIEN EN PRE_INCREMENTE()
-                // console.log(AlContenedor) 
+                ProductoEditado(PedidoGlobal.Producto);
             }        
             else{//Si no hay mas producto que eliminar
                 // confirm("Desea eliminar el pedido de ???")
@@ -997,15 +879,14 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 Cantidades = Cont_leyenda.getElementsByClassName("input_1e")[0].value = 0
 
                 //Se crea una nuevo array del objeto PedidoCar 
-                PedidoGlobal = new PedidoCar(Seccion_tienda, Producto, Cantidades, Opcion, Precio, TotalDisplayCarrito);
-                // console.log(AlCarro)
-                // console.log(AlContenedor)
+                PedidoGlobal = new PedidoCar(Producto, Cantidades, TotalDisplayCarrito);
+
                 //Se elimina el producto del array que contiene el pedido, esta informacion es la que va al resumen de la orden
                 function ProductoEditado(Producto){
                     var existe = false;
-                    for(i = 0; i < AlCarro.length; i++){
-                        if(AlCarro[i].Producto == Producto ){
-                            AlCarro.splice(i, 1);
+                    for(i = 0; i < AlContenedor.length; i++){
+                        if(AlContenedor[i].Producto == Producto ){
+                            AlContenedor.splice(i, 1);
                         }
                     }
                   
@@ -1039,8 +920,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 // current.style.display = "none"
                 // console.log(current)             
 
-
-
                 //En los proximos tres pasos, se hace una "escala DOM" para obtener y mostrar la etiqueta "Agregar" del div que contiene el producto analizado
                 //Se obtiene el div padre de los botones mas y menos
                 PadreMasMenos = current.parentElement
@@ -1051,7 +930,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 // console.log(EtiquetaAgregar)
                 // console.log(HermanoMasMenos.getElementsByClassName("Label_3js")[0])
 
-                // console.log(AlCarro)
+                // console.log(AlContenedor)
                 //Se oculta el display carrito cuando el pedido sea de cero Bolivares y se muestra el boton de agregar opcion
                 if(TotalDisplayCarrito == 0 ){ 
                     // console.log(LS_ID_Cont_Leyenda)
@@ -1081,7 +960,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 document.getElementById(ID_LabelBloqueo).style.display = "inline" 
             }
             // console.log(AlContenedor)
-            // console.log(AlCarro) 
         }    
     }
 
@@ -1382,7 +1260,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     //Abre la ventana de detalles de producto, invocado en opciones_V.php
     function mostrarDetalles(ContadorLabel, Nombre_Tienda, Slogan_Tienda, ID_Tienda, Producto, Opcion, PrecioBolivar, Fotografia, ID_Producto, PrecioDolar, Existencia, Disponible){
         // console.log("______Desde mostrarDetalles()______", ContadorLabel +"/"+ Nombre_Tienda +"/"+ Slogan_Tienda +"/"+ ID_Tienda +"/"+ Producto +"/"+ Opcion +"/"+ PrecioBolivar +"/"+ Fotografia +"/"+ ID_Producto +"/"+ PrecioDolar)
-        
         window.open(`../../Opciones_C/productoAmpliado/${'Etiqueta_' + ContadorLabel},${Nombre_Tienda},${Slogan_Tienda},${ID_Tienda},${Producto},${Opcion},${PrecioBolivar},${Fotografia},${ID_Producto},${PrecioDolar},${Existencia},${Disponible}`, "ventana1", "width=1300,height=650,scrollbars=YES")   
     }
 
@@ -1633,3 +1510,129 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     function MontoPagarDolares(){
         document.getElementById("PagarEnDolares").value = Number.parseFloat(MontoTotalDolares).toFixed(2)        
     }
+      
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoTransferencia(){
+        // console.log("______Desde verTransferenciaBancaria()______") 
+        document.getElementById("Contenedor_60a").style.display = "block"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+        
+        //Se muestra el monto de total de la compra incluyendo envio en Bolivares
+        document.getElementById("PagarTransferencia").value = SeparadorMiles(MontoTotal) + " Bs."
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoMovil(){
+        // console.log("______Desde verPagoMovil()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "block"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+
+        //Se muestra el monto de total de la compra incluyendo envio en Bolivares
+        document.getElementById("PagarPagoMovil").value = SeparadorMiles(MontoTotal) + " Bs."
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoReserve(){
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "block"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+
+        //Se muestra el monto de total de la compra en Dolares
+        document.getElementById("PagarDolaresReserve").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoPaypal(){
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "block"
+        document.getElementById("Contenedor_60h").style.display = "none"
+        
+        //Se muestra el monto de total de la compra en Dolares
+        document.getElementById("PagarDolaresPaypal").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoZelle(){
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "block"
+        
+        //Se muestra el monto de total de la compra en Dolares
+        document.getElementById("PagarDolaresZelle").value = Number.parseFloat(MontoTotalDolares).toFixed(2) + " USD"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoEfectivoBolivar(){
+        // console.log("______Desde verPagoEfectivoBolivar()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "block"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoEfectivoDolar(){
+        // console.log("______Desde verPagoEfectivoDolar()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "block"
+        document.getElementById("Contenedor_60e").style.display = "none"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+    }
+
+//************************************************************************************************
+    // invocada desde carrito_V.php
+    function verPagoAcordado(){
+        // console.log("______Desde verPagoAcordado()______") 
+        document.getElementById("Contenedor_60a").style.display = "none"
+        document.getElementById("Contenedor_60b").style.display = "none"
+        document.getElementById("Contenedor_60c").style.display = "none"
+        document.getElementById("Contenedor_60d").style.display = "none"
+        document.getElementById("Contenedor_60e").style.display = "block"
+        document.getElementById("Contenedor_60f").style.display = "none"
+        document.getElementById("Contenedor_60g").style.display = "none"
+        document.getElementById("Contenedor_60h").style.display = "none"
+    }
+    
