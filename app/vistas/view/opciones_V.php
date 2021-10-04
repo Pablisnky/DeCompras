@@ -15,7 +15,6 @@
                 <div class="contenedor_13" id="Contenedor_13Js"> 
                     <?php   
                     $ContadorLabel = 1;
-                    //$Datos proviene de Opciones_C/index
                     $ID_Tienda = $Datos['ID_Tienda'];
                     foreach($Datos['Opciones'] as $row) :
                         $Nombre_Tienda = $row['nombre_Tien'];
@@ -31,7 +30,8 @@
                         $Seccion = $row['seccion'];
 
                         //Se da formato al precio, sin decimales y con separación de miles
-                        $PrecioBolivar = number_format($PrecioBolivar, 0, ",", "."); ?>  
+                        settype($PrecioBolivar, "float");
+                        $PrecioBolivar = number_format($PrecioBolivar, 6, ",", ".");    ?>  
                         
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             

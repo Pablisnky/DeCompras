@@ -5,7 +5,7 @@
         <br>
         <h2 class=""><?php echo $Datos['Codigo_despacho'];?></h2>
         <br>
-        <p>Este código sera solicitado por el despachador para realizar la entregar.</p>
+        <p>Este código sera solicitado por el despachador para realizar la entrega.</p>
         <div class="contenedor_33">
             <p class="p_1">Gracias por confiar en nuestro servicio</p>
             <br><br>

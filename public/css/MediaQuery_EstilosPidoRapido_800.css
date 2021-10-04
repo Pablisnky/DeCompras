@@ -539,12 +539,12 @@
 	grid-template-columns: 45% 45%;
 	column-gap: 4%;/*espacio entre columnas*/
 }
-.contenedor_90--tiendas{
-	top: 92px!important;
-	height: 40px!important;
-}
 .contenedor_90{
 	top: 45px;
+	height: 40px!important;
+}
+.contenedor_90--tiendas{
+	top: 92px!important;
 	height: 40px!important;
 }
 .contenedor_91{
@@ -1062,6 +1062,10 @@
 	text-align: center;
 	margin-left: 2%;
 	font-size: 0.7em;
+}
+.input_15--eliminar{
+	margin-bottom: 15px;
+	font-size: 0.9em;
 }
 .label_4{	
 	width: 50% !important;

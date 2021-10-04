@@ -4,7 +4,7 @@
     $_SESSION['Parroquia'] = $Datos['cantidadTiendasCategoria'][0]['parroquia_Tien'];
 ?>
 
-<div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
+<div class="contenedor_90 p_9 borde_1">
     <div class="contenedor_159" id="Span_3">
         <!-- Icono flecha atras -->
         <i class="fas fa-arrow-left" style="display: inline;"></i>

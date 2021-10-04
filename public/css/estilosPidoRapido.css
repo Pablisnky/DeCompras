@@ -399,7 +399,6 @@ body, html{
 	height: 92%;
 }
 .contenedor_11{
-	/* margin-bottom: 25%; */
 	text-align: center;
 	cursor: pointer;
 	border-radius: 15px;
@@ -785,14 +784,14 @@ body, html{
 	grid-column-end: 6;
 	text-align: center;
 }
-.contenedor_89{/*Secciones_Ajax - SeccionesDisponibles_Ajax*/
+.contenedor_89{
 	margin-top: 3%;
 	display: grid;
 	grid-template-columns: 22% 22% 22% 22%;
 	column-gap: 1%;/*espacio entre columnas*/
 	/*justify-content: center;centra horizontalmente*/
 }
-.contenedor_90{/*tiendas - opciones - cuenta_productos*/
+.contenedor_90{
 	background-color: var(--OficialClaro);
 	display: flex; /*Organiza los elementos horizontalmente*/
 	justify-content: center;

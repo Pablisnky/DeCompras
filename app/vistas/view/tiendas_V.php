@@ -1,11 +1,11 @@
 <section class="section_11">
-    <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
+    <div class="contenedor_90 p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
             <!-- Icono flecha atras -->
             <i class="fas fa-arrow-left" style="display: inline;"></i>
             <a class="font--negro" href="<?php echo RUTA_URL . '/Categoria_C/index/' . $Datos['tiendas_categoria'][0]['parroquia_Tien'];?>">Categorias</a>
         </div>        
-        <h1 class="h1_1 h1_3">Categoria: <?php echo $Datos['tiendas_categoria'][0]['categoria']?></h1>
+        <h1 class="h1_1 h1_3"><?php echo $Datos['tiendas_categoria'][0]['categoria']?></h1>
     </div>
     <div class='contenedor_10'>
         <?php
@@ -57,7 +57,7 @@
                             foreach($Datos['tiendas_productosDestacados'] as $Row) : ?> 
                                 <div class="cont_miniaturaSlider__3" id="Cont_miniaturaSlider__3" >
                                     <img class="contOpciones__img contOpciones__img--tienda" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public//images/productos/<?php echo $Row['nombre_img'];?>"/>                      
-                                    <label class="input_8 input_8E" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>">Bs. <?php echo number_format($Row['precioBolivar'], 0, ",", ".");?></label>
+                                    <label class="input_8 input_8E" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>">Bs. <?php echo number_format($Row['precioBolivar'], 6, ",", ".");?></label>
                                 </div>  
                                 <?php
                             endforeach; ?>

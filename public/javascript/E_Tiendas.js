@@ -15,8 +15,8 @@ function sliderTarjeta(CantidadElementos){
     Contenedor_slider.scrollLeft += 100
     contador++;
 
-    console.log(contador)
-    console.log(CantidadElementos)
+    // console.log(contador)
+    // console.log(CantidadElementos)
 
     SliderTope = CantidadElementos 
     // console.log(SliderTope)

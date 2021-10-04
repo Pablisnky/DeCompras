@@ -37,6 +37,10 @@
                     foreach($DatosCorreo['informacion_pedido'] as $DatosCompra) :
                         $Capture =  $DatosCompra['capture'];
                         $email_message .= "<tr>";
+                        $email_message .= "<td class='td_1'>Nro. Orden</td>";
+                        $email_message .= "<td>" . $DatosCompra["numeroorden"] ."</td>";
+                        $email_message .= "</tr>";
+                        $email_message .= "<tr>";
                         $email_message .= "<td class='td_1'>FECHA</td>";
                         $email_message .= "<td>" . $DatosCompra['fecha'] . "</td>";
                         $email_message .= "</tr>";
@@ -101,9 +105,13 @@
                         $email_message .= "</tr>";
                     endforeach;
                 $email_message .= '</table>
-                <hr class="hr_1">
 
+                <hr class="hr_1">  
+                <h2>Código de despacho</h2> 
+                <h2>' . $DatosCorreo["Codigo_despacho"] . '</h2>                
+                <hr class="hr_1">
                 <h2>Datos del comprador</h2>
+
                 <table>';
                     foreach($DatosCorreo['informacion_usuario'] as $DatosUsuarios)  :
                         $email_message .= "<tr>";

@@ -80,7 +80,13 @@
                     <label class="label_22 borde_1 borde_2">Bs. <?php echo $PrecioBolivar?><br><small class="small_2">$ <?php echo $PrecioDolar?></small></label>
                     <div class="contBoton contBoton--100" id="Contenedor_26">                  
                         <label class="boton" onclick="cerrarRegresar()">Regresar</label>
-                        <label class="boton" onclick="cerrarAgregar()">Agregar</label>   
+                        <?php
+                        // if(){   ?>
+                            <label class="boton" onclick="cerrarAgregar()">Agregar</label>   
+                            <?php
+                        // }
+                        ?>
+
                     </div>
                 </div>           
             </div>
@@ -106,6 +112,12 @@
     window.onload = function (){
         if(document.readyState == "complete"){
             document.querySelector(".preloder_tapa--total").style.display = "none"
+        }
+        if(AlContenedor === "undefined"){
+            console.log("AlContenedor", AlContenedor)
+        }
+        else{
+            console.log("AlContenedor no definido aún")
         }
     }
 

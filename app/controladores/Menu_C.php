@@ -7,7 +7,7 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 4142727;
+            $this->Dolar = 4.181781;
             $this->Reserve = 4170000;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
@@ -49,11 +49,11 @@
             $PlanMaximo = $this->Dolar * $PlanMaximoBs;
             $PlanFull = $this->Dolar * $PlanFullBs;
 
-            $PlanEmprendedor = number_format($PlanEmprendedor, 0, '', '.');
-            $PlanBasico = number_format($PlanBasico, 0, '', '.');
-            $PlanMedio = number_format($PlanMedio, 0, '', '.');
-            $PlanMaximo = number_format($PlanMaximo, 0, '', '.');
-            $PlanFull = number_format($PlanFull, 0, '', '.');
+            $PlanEmprendedor = number_format($PlanEmprendedor, 6, '', '.');
+            $PlanBasico = number_format($PlanBasico, 6, ',', '.');
+            $PlanMedio = number_format($PlanMedio, 6, ',', '.');
+            $PlanMaximo = number_format($PlanMaximo, 6, ',', '.');
+            $PlanFull = number_format($PlanFull, 6, ',', '.');
 
             $Datos = [
                 'emprendedor' => $PlanEmprendedor,
@@ -154,21 +154,35 @@
 //********************************************************************************************
         //Ulilizada en su momento para cargar o eliminar datos 
         // public function borrar(){
-        //     $ID_Producto = $this->ConsultaMenu_M->consultarID_Productos();
+        //     //Se consultan los precios en bolivares.
+        //     $Precios = $this->ConsultaMenu_M->ConsultaPreciosBs();
 
-        //     // echo '<pre>';
-        //     // print_r($ID_Producto);
-        //     // echo '</pre>';
-        //     // exit;
-
-        //     $this->ConsultaMenu_M->Insertar_ID_Producto($ID_Producto);
+        //     //Se quitan los seis ceros de la reconversion
             
-        //     // $SeccionesImagenes = $this->ConsultaMenu_M->consultarSeccionesImagenes();
-        //     // echo '<pre>';
-        //     // print_r($SeccionesImagenes);
-        //     // echo '</pre>';
-        //     // exit;
+        //     //Se declara un array donde se almacenaran los precios actualizados de cada producto
+        //     $NuevoPrecioBolivar = [];
+        //     $Intermedio = [];
 
-        //     // $this->ConsultaMenu_M->ActualizaSeccionesImgenes($SeccionesImagenes);
+        //     //Se cambian los precios al nuevo cono monetario
+        //     foreach($Precios as $Key):
+        //         $ID_Opcion = $Key['ID_Opcion'];
+        //         // $PrecioActualBs = ($Key['precioDolar'] * $this->PrecioDolar) + $this->TasaReserve;
+        //         $PrecioActualBs = ($Key['precioBolivar'] * 1000000);
+
+        //         $Intermedio = [
+        //             'ID_Opcion' => $ID_Opcion, 
+        //             'precioActualizadoBs' => $PrecioActualBs
+        //         ];
+
+        //         array_push($NuevoPrecioBolivar, $Intermedio);
+        //     endforeach;
+        //     // echo "<pre>";
+        //     // print_r($NuevoPrecioBolivar);
+        //     // echo "</pre>";
+        //     // exit();
+            
+        //     //Se ACTUALIZAN los precios en bolivares.
+        //     $this->ConsultaMenu_M->actualizarNuevoConoMonetario($NuevoPrecioBolivar);            
         // }
+        
     }
