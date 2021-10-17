@@ -1332,6 +1332,9 @@
 	font-size: 1.5em;
 	margin: -5% 4% 0% 85%;
 }
+.spanCerrar_carrito{
+	margin: -15% 4% 0% 95%;
+}
 .spanCerrar--modal{
 	top: 5%;
 }
@@ -1346,11 +1349,6 @@
 	width: 100%;
 	width: 100px !important;
 }
-.tabla1__td{
-	/* font-size: 0.9em;
-	text-align: center;
-	height: 30px; */
-}
 .tabla2__td1{
 	width: 80px;
 }
@@ -1359,23 +1357,26 @@
 	font-size: 1em;
 }
 .tapa{
+	background-color: rgba(0, 0, 0, 0.8);
 	display: none;
 	position: absolute;
 	top: 0%;
 	left: 0%;
 	width: 100%;
-	height: 400%!important;
-	background-color: rgba(0, 0, 0, 0.8);
+	height: 400% !important;
 	z-index: 2;
+}
+.tapa-logo{
+	position: fixed;
+	width: 100%;
+	top: 90% !important
 }
 .textarea_1{
 	width: 100%;
-	/* margin-top: 2%; */
 }
 .textarea_2{
 	width: 80%;
 	padding-left: 5%;
-	/* margin-top: 2%; */
 }
 .td_1, .td_2{
 	font-size: 0.9em;

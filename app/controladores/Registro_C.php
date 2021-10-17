@@ -74,30 +74,22 @@
             }
             else{//Si eL correo, la clave y el nombre de la tienda no existen, se procede a crear la tienda
 
-                //Las siguientes inserciones se debenrealizar por medio de transacciones
                 //se cifran la contraseña del afiliado con un algoritmo de encriptación
                 $ClaveCifrada= password_hash($RecibeDatos["Clave_Afcom"], PASSWORD_DEFAULT);
-                                                       
-                //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
-                $ID_AfiliadoCom = $this->ConsultaRegistro_M->insertarAfiliadoComercial($RecibeDatos);
-            
-                // //Se INSERTAN los datos de la tienda en la BD y se retorna el ID del registro recien insertado
-                $ID_Tienda = $this->ConsultaRegistro_M->insertarTienda($RecibeDatos, $ID_AfiliadoCom); 
-                                            
-                //Se INSERTAN los datos de acceso de la cuenta comerciante en la BD
-                $this->ConsultaRegistro_M->insertarAccesoComerciante($ID_AfiliadoCom, $ClaveCifrada);
+                              
+                $this->ConsultaRegistro_M->Transaccion_registrarTienda($RecibeDatos,$ClaveCifrada);
+                                                            
+                // //Se INSERTAN el campo de horario en la BD
+                // $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);
                 
-                //Se INSERTAN el campo de horario en la BD
-                $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);
+                // //Se INSERTAN el campo de horario para el día sábado en la BD
+                // $this->ConsultaRegistro_M->insertarHabilitarHorario_SAB($ID_Tienda);
                 
-                //Se INSERTAN el campo de horario para el día sábado en la BD
-                $this->ConsultaRegistro_M->insertarHabilitarHorario_SAB($ID_Tienda);
-                
-                //Se INSERTAN el campo de horario para el día domingo en la BD
-                $this->ConsultaRegistro_M->insertarHabilitarHorario_DOM($ID_Tienda);
+                // //Se INSERTAN el campo de horario para el día domingo en la BD
+                // $this->ConsultaRegistro_M->insertarHabilitarHorario_DOM($ID_Tienda);
 
-                //Se INSERTAN el campo de horario para el día especial en la BD
-                $this->ConsultaRegistro_M->insertarHabilitarHorario_ESP($ID_Tienda);
+                // //Se INSERTAN el campo de horario para el día especial en la BD
+                // $this->ConsultaRegistro_M->insertarHabilitarHorario_ESP($ID_Tienda);
                 
                 // ****************************************
 

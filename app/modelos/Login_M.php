@@ -44,7 +44,7 @@
         } 
 
         public function consultarID_Tienda($ID_Afiliado){
-            $stmt = $this->dbh->prepare("SELECT ID_Tienda, nombre_Tien, ID_AfiliadoCom, publicar FROM tiendas WHERE ID_AfiliadoCom = :ID_AFILIADO");
+            $stmt = $this->dbh->prepare("SELECT ID_Tienda, nombre_Tien, ID_AfiliadoCom, publicar_Tien FROM tiendas WHERE ID_AfiliadoCom = :ID_AFILIADO");
 
             $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado, PDO::PARAM_INT);
 

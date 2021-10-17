@@ -23,7 +23,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Parroquia_Tien = $row['parroquia_Tien'];
         $Direccion_Tien = $row['direccion_Tien']; 
         $Slogan_Tien = $row['slogan_Tien'];
-        $Foto_Tien = $row['fotografia_Tien'];
+        $Foto_Tien = $row['fotografia_Tien']; 
+        $Desactivar_Tien = $row['desactivar_Tien'];
     }
 
     foreach($Datos['link_Tien'] as $row)    :
@@ -516,8 +517,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <a class="marcador" href="#Categoria">Categoría</a>
                     <a class="marcador" href="#Secciones">Secciones</a>
                     <a class="marcador" href="#Horario">Horario</a>
-                    <!-- <a class="marcador" href="#marcador_04">Ofertas</a> -->
-                    <!-- <a class="marcador" href="#marcador_05">Lo más pedido</a> -->
                     <a class="marcador" href="#marcador_06">Cuentas transferencia</a>
                     <a class="marcador" href="#marcador_07">Cuentas PagoMóvil</a>
                     <a class="marcador" href="#marcador_08">Cuentas Reserve</a>
@@ -529,9 +528,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <input class="boton boton--largo" type="submit" value="Guardar cambios"/>
                     </div>          
                     <div class="contenedor_45">
-                        <!-- <input type="checkbox" id="Publicar" name="publicar" value="1" onclick="llamar_publicarTienda()" <?php //if($CategoriaT == $Categoria){echo "checked = 'checked'";};?>
-                        /> -->
-                        <!-- <label class="label_19" for="Publicar">Mostrar tienda al público.</label> -->
+                        <input type="checkbox" id="Publicar" name="desactivar_com" <?php if($Desactivar_Tien == 1){echo "checked = 'checked'";};?>/>
+                        <label class="label_19" for="Publicar">Desactivar tienda.</label>
                         <div id="Mostrar_tienda"></div>
                     </div> 
                 </div>

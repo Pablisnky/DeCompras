@@ -11,7 +11,8 @@
                 "SELECT DISTINCT estado_Tien 
                 FROM tiendas 
                 WHERE parroquia_Tien != '' 
-                AND publicar = 1 
+                AND publicar_Tien = 1  
+                AND desactivar_Tien = 0 
                 ORDER BY estado_Tien 
                 ASC"
             );
@@ -24,7 +25,8 @@
                 "SELECT DISTINCT parroquia_Tien, estado_Tien 
                  FROM tiendas 
                  WHERE parroquia_Tien != '' 
-                 AND publicar = 1 "
+                 AND publicar_Tien = 1 
+                AND desactivar_Tien = 0 "
             );
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }

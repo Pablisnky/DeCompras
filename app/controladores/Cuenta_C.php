@@ -211,7 +211,7 @@
             endif;
 
             $Datos = [
-                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, slogan_Tien, fotografia_Tien
+                'datosTienda' => $DatosTienda, //nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, slogan_Tien, fotografia_Tien, desactivar_Tien
                 'datosResposable' => $DatosResposable,
                 'horario_LV' => $Horario_LV,
                 'horario_Sab' => $Horario_Sab,
@@ -246,6 +246,7 @@
             $this->vista('view/cuenta_comerciante/cuenta_editar_V', $Datos);
         }
 
+        // Carga la vista donde se carga un producto
         public function Publicar(){
             //CONSULTA los datos de la tienda
             $DatosTienda = $this->ConsultaCuenta_M->consultarDatosTienda($this->ID_Tienda);
@@ -513,13 +514,14 @@
                     'Telefono_Afcom'=> filter_input(INPUT_POST, 'telefono_Afcom', FILTER_SANITIZE_STRING),
                     'Correo_Afcom' => filter_input(INPUT_POST, 'correo_Afcom', FILTER_SANITIZE_STRING),
 
-                    //RECIBE DATOS UBICACION TIENDA
+                    //RECIBE DATOS DE LA TIENDA
                     'Nombre_com' => filter_input(INPUT_POST, 'nombre_com', FILTER_SANITIZE_STRING),
                     'Estado_com' => filter_input(INPUT_POST, 'estado_com', FILTER_SANITIZE_STRING),
                     'Municipio_com' => filter_input(INPUT_POST, 'municipio_com', FILTER_SANITIZE_STRING),
                     'Parroquia_com' => filter_input(INPUT_POST, 'parroquia_com', FILTER_SANITIZE_STRING),
                     'Direccion_com' => filter_input(INPUT_POST, 'direccion_com', FILTER_SANITIZE_STRING),
                     'Slogan_com' => filter_input(INPUT_POST, 'slogan_com', FILTER_SANITIZE_STRING),
+                    'Desactivar_com' => empty($_POST['desactivar_com']) ? 0 : 1
                 ];
 
                 // echo '<pre>';
@@ -542,6 +544,9 @@
                 // //Despues de evaluar con is_numeric se da un aviso en caso de fallo
                 // if($RecibeDatos['Cedula_Afcom'] == false){
                 //     exit('La cedula debe ser solo números');
+                
+                //Se ACTUALIZAN los datos de la tienda, el registro de la tienda fue creado cuando el afiliado creo la tienda
+                $this->ConsultaCuenta_M->actualizarTienda($this->ID_Afiliado, $RecibeDatos);
             }
             else{
                 echo 'Llene todos los campos del formulario de registro';
@@ -712,6 +717,40 @@
                     'DiaEspecial_T' => isset($_POST['horario_Espec_T']) != '' ? $_POST['horario_Espec_T'] : 0,
                 ];
 
+                // echo '<pre>';
+                // print_r($RecibeHorario_LV);
+                // echo '</pre>';
+                // echo '<pre>';
+                // print_r($RecibeHorario_Sab);
+                // echo '</pre>';
+                // echo '<pre>';
+                // print_r($RecibeHorario_Dom);
+                // echo '</pre>';
+                // echo '<pre>';
+                // print_r($RecibeHorario_Esp);
+                // echo '</pre>';
+                // exit;
+                
+                //Se ELIMINAN el horario de la tienda de lunes a viernes
+                $this->ConsultaCuenta_M->eliminarHorarioTienda_LV($this->ID_Tienda);
+                //Se INSERTA el horario de la tienda de lunes a viernes
+                $this->ConsultaCuenta_M->insertarHorarioTienda_LV($this->ID_Tienda, $RecibeHorario_LV);
+                
+                //Se ELIMINAN el horario de la tienda del dia sabado
+                $this->ConsultaCuenta_M->eliminarHorarioTienda_Sab($this->ID_Tienda);
+                //Se INSERTA el horario de la tienda del dia sabado
+                $this->ConsultaCuenta_M->insertarHorarioTienda_Sab($this->ID_Tienda, $RecibeHorario_Sab);
+                
+                //Se ELIMINAN el horario de la tienda del dia domingo
+                $this->ConsultaCuenta_M->eliminarHorarioTienda_Dom($this->ID_Tienda);
+                //Se INSERTA el horario de la tienda del dia domingo
+                $this->ConsultaCuenta_M->insertarHorarioTienda_Dom($this->ID_Tienda, $RecibeHorario_Dom);
+                
+                //Se ELIMINAN el horario de la tienda del dia especial
+                $this->ConsultaCuenta_M->eliminarHorarioTienda_Esp($this->ID_Tienda);
+                //Se INSERTA el horario de la tienda del dia especial
+                $this->ConsultaCuenta_M->insertarHorarioTienda_Esp($this->ID_Tienda, $RecibeHorario_Esp);
+
             }
             else{
                 echo 'Ingrese el horario de despacho';
@@ -719,26 +758,6 @@
                 echo "<a href='javascript:history.back()'>Regresar</a>";
                 exit();
             }
-
-            // echo '<pre>';
-            // print_r($RecibeHorario_LV);
-            // echo '</pre>';
-            // echo '<pre>';
-            // print_r($RecibeHorario_Sab);
-            // echo '</pre>';
-            // echo '<pre>';
-            // print_r($RecibeHorario_Dom);
-            // echo '</pre>';
-            // echo '<pre>';
-            // print_r($RecibeHorario_Esp);
-            // echo '</pre>';
-            // exit;
-            
-            //Se ACTUALIZA el horario de la tienda
-            $this->ConsultaCuenta_M->actualizarHorarioTienda_LV($this->ID_Tienda, $RecibeHorario_LV);
-            $this->ConsultaCuenta_M->actualizarHorarioTienda_Sab($this->ID_Tienda, $RecibeHorario_Sab);
-            $this->ConsultaCuenta_M->actualizarHorarioTienda_Dom($this->ID_Tienda, $RecibeHorario_Dom);
-            $this->ConsultaCuenta_M->actualizarHorarioTienda_Esp($this->ID_Tienda, $RecibeHorario_Esp);
 
             //RECIBE INFORMACION DE PAGOS
             // ********************************************************            
@@ -986,9 +1005,6 @@
 
             //Se ACTUALIZAN los datos personales del responsable de la tienda en la BD y se retorna el ID recien insertado, el registro de la tienda fue creado cuando el afiliado creo la tienda
             $this->ConsultaCuenta_M->actualizarAfiliadoComercial($this->ID_Afiliado, $RecibeDatos);
-
-            //Se ACTUALIZAN los datos de la tienda, el registro de la tienda fue creado cuando el afiliado creo la tienda
-            $this->ConsultaCuenta_M->actualizarTienda($this->ID_Afiliado, $RecibeDatos);
            
             //Se consulta el ID_Categoria de las categorias seleccionadas
             // $ID_Categoria = $this->ConsultaCuenta_M->consultarID_Categoria($Categoria);
@@ -1082,7 +1098,7 @@
                 //Se INSERTA la dependenciatransitiva entre secciones y los productos
                 $this->ConsultaCuenta_M->insertarDT_SecPro($ID_Seccion, $ID_Producto);
 
-                //Se ACTUALIZA el campo "publicar en la tabla "tiendas", para que la tienda comience a aparecer en el catalogo de tiendas
+                //Se ACTUALIZA el campo "publicar_Tien" en la tabla "tiendas", para que la tienda comience a aparecer en el catalogo de tiendas
                 $this->ConsultaCuenta_M->actualizarTiendaPublicar($RecibeProducto['ID_Tienda']);
 
                 //IMAGEN PRINCIPAL
@@ -1167,7 +1183,6 @@
                         $this->ConsultaCuenta_M->insertarFotografiasSecun($ID_Producto, $archivonombre, $tipo, $tamanio);
                     }
                 }
-                exit;
                 $this->Productos('Todos');
             }
             else{
@@ -1529,15 +1544,15 @@
         }
 
         //Invocado en cuenta_editar_V.php autoriza si la tienda se suspende o se publica en el catalogo de tiendas
-        public function publicarTienda(){            
-            $Consulta = $this->ConsultaCuenta_M->consultaPermisoPublicar($this->ID_Tienda);
-            // echo '<pre>';
-            // print_r($Consulta);
-            // echo '</pre>';
-            if($Consulta[0]['publicar'] == 0){
-                echo 'Es necesario configurar la totalidad de la tienda';  
-            }
-        }
+        // public function publicarTienda(){            
+        //     $Consulta = $this->ConsultaCuenta_M->consultaPermisoPublicar($this->ID_Tienda);
+        //     // echo '<pre>';
+        //     // print_r($Consulta);
+        //     // echo '</pre>';
+        //     if($Consulta[0]['publicar'] == 0){
+        //         echo 'Es necesario configurar la totalidad de la tienda';  
+        //     }
+        // }
 
         //Invocado desde E_Cuenta_Productos.js
         public function EstablecerImageSeccion($ID_Seccion){

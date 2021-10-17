@@ -89,7 +89,7 @@
         </div>  
     </div>  
     
-    <!-- Se muestra el boton (div) de carrito de compras en el bottom del viewport, aparece por medio de agregarOpcion() en E_Vitrina.js-->
+    <!-- Se muestra el boton de carrito de compras en el bottom del viewport, aparece por medio de agregarOpcion() en E_Vitrina.js-->
     <div class="contenedor_61" id="Contenedor_61">
         <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_PedidoEnCarrito('<?php echo $ID_Tienda;?>','<?php echo $Datos['dolarHoy'];?>')">
             <div class="contenedor_31">

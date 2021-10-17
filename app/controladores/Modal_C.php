@@ -14,4 +14,9 @@
         public function tiendaSinSecciones(){
             $this->vista('modal/modal_sinSecciones_V'); 
         }
+
+        //Invocado en Login_C/ValidarSesion
+        public function tiendaDesactiva(){
+            $this->vista('modal/modal_desactivarTienda_V'); 
+        }
 	}

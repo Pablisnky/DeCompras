@@ -5,8 +5,58 @@
             parent::__construct();       
         }
 
+        public function Transaccion_registrarTienda($RecibeDatos, $ClaveCifrada){  
+            try{  
+                $this->dbh->beginTransaction();  
+                
+                // *********** OPERACION 1 *******************
+                //Se INSERTAN los datos personales del responsable de la tienda en la BD y se retorna el ID del registro recien insertado
+                $stmt = $this->dbh->prepare("INSERT INTO afiliado_com(nombre_AfiCom, correo_AfiCom) VALUES (:Nombre,:Correo)");
+
+                $stmt->bindParam(':Nombre', $nombre);
+                $stmt->bindParam(':Correo', $correo);
+
+                $nombre = $RecibeDatos['Nombre_Afcom'];
+                $correo = $RecibeDatos['Correo_Afcom'];
+                
+                //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
+                $stmt->execute();
+                $ID_AfiliadoCom = $this->dbh->lastInsertId();
+
+                // *********** OPERACION 2 *******************  
+                //Se INSERTAN los datos de acceso (CONTRASEÑA) de la cuenta comerciante en la BD                  
+                $stmt = $this->dbh->prepare("INSERT INTO afiliado_comingreso(ID_Afiliado, claveCifrada) VALUES (:ID_Usuario, :Clave)");
+
+                $stmt->bindParam(':ID_Usuario', $ID_AfiliadoCom);
+                $stmt->bindParam(':Clave', $ClaveCifrada);
+                
+                $stmt->execute();  
+
+                // *********** OPERACION 3 ******************* 
+                //Se INSERTAN los datos de la tienda en la BD y se retorna el ID del registro recien insertado        
+                $stmt = $this->dbh->prepare("INSERT INTO tiendas(nombre_Tien, ID_AfiliadoCom, fecha_afiliacion, hora_afiliacion) VALUES (:Nombre_Ti, :ID_Afiliado_Ti, CURDATE(), time_format(NOW(), '%H:%i'))");
+    
+                $stmt->bindParam(':Nombre_Ti', $nombre_T);
+                $stmt->bindParam(':ID_Afiliado_Ti', $responsable_T);
+    
+                $nombre_T = $RecibeDatos['Nombre_tienda'];
+                $responsable_T = $ID_AfiliadoCom;
+                
+                //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
+                $stmt->execute();
+                $this->dbh->lastInsertId();
+                    
+                $this->dbh->commit();  
+            }
+            catch(PDOException $e){
+                $this->dbh->rollback();  
+                $this->error = $e->getMessage();
+                echo 'Error al conectarse con la base de datos: ' . $this->error;
+            }
+        }
+
         //INSERTA los datos del afiliado comercial
-        public function insertarAfiliadoComercial($RecibeDatos){            
+        public function insertarAfiliadoComercial($RecibeDatos){  
             $stmt = $this->dbh->prepare("INSERT INTO afiliado_com(nombre_AfiCom, correo_AfiCom) VALUES (:Nombre,:Correo)");
 
             //Se vinculan los valores de las sentencias preparadas

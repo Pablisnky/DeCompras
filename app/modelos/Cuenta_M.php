@@ -189,7 +189,7 @@
         //SELECT de datos de la tienda
         public function consultarDatosTienda($ID_Tienda){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, slogan_Tien, fotografia_Tien 
+                "SELECT nombre_Tien, estado_Tien, municipio_Tien, parroquia_Tien, direccion_Tien, slogan_Tien, fotografia_Tien, desactivar_Tien
                  FROM tiendas 
                  WHERE ID_Tienda = :ID_Tienda"
             );
@@ -411,18 +411,18 @@
         }
         
         //SELECT de las caracteristicas de un producto determinado
-        public function consultaPermisoPublicar($ID_Tienda){
-            $stmt = $this->dbh->prepare("SELECT publicar FROM tiendas WHERE ID_Tienda = :ID_TIENDA");
+        // public function consultaPermisoPublicar($ID_Tienda){
+        //     $stmt = $this->dbh->prepare("SELECT publicar FROM tiendas WHERE ID_Tienda = :ID_TIENDA");
 
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+        //     $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
 
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }
-        }
+        //     if($stmt->execute()){
+        //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
         
         public function consultarSecciones($ID_Tienda){
             $stmt = $this->dbh->prepare("SELECT ID_Seccion FROM secciones WHERE ID_Tienda = :ID_TIENDA");
@@ -931,6 +931,34 @@
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
             $stmt->execute();          
         }
+        
+        //DELETE horario de la tienda de lunes a viernes
+        public function eliminarHorarioTienda_LV($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM horarios WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+        
+        //DELETE horario de la tienda del dia sabado
+        public function eliminarHorarioTienda_Sab($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM horariosabado WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+        
+        //DELETE horario de la tienda del dia domingo
+        public function eliminarHorarioTienda_Dom($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM horariodomingo WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
+        
+        //DELETE horario de la tienda del dia especial
+        public function eliminarHorarioTienda_Esp($ID_Tienda){
+            $stmt = $this->dbh->prepare("DELETE FROM horarioespecial WHERE ID_Tienda = :ID_TIENDA");
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->execute();          
+        }
 
 
 
@@ -982,21 +1010,22 @@
                 return false;
             }
         }
-
+        
         //UPDATE de los datos de la tienda
         public function actualizarTienda($ID_AfiliadoCom, $RecibeDatos){
             $stmt = $this->dbh->prepare(
                 "UPDATE tiendas 
-                SET nombre_Tien = :NOMBRE_TIEN, estado_Tien = :ESTADO_TIEN, municipio_Tien = :MUNICIPIO_TIEN, parroquia_Tien = :PARROQUIA_TIEN, direccion_Tien = :DIRECCION_TIEN, slogan_Tien = :SLOGAN_TIEN WHERE ID_AfiliadoCom = :AFILIADO"
+                SET nombre_Tien = :NOMBRE_TIEN, estado_Tien = :ESTADO_TIEN, municipio_Tien = :MUNICIPIO_TIEN, parroquia_Tien = :PARROQUIA_TIEN, direccion_Tien = :DIRECCION_TIEN, slogan_Tien = :SLOGAN_TIEN, desactivar_Tien = :DESACTIVAR_TIEN WHERE ID_AfiliadoCom = :AFILIADO"
             );
 
-            //Se vinculan los valores de las sentencias preparadas
+            //Se vinculan los valores de las sentencias preparadas 
             $stmt->bindValue(':NOMBRE_TIEN', $RecibeDatos['Nombre_com']);
             $stmt->bindValue(':ESTADO_TIEN', $RecibeDatos['Estado_com']);
             $stmt->bindValue(':MUNICIPIO_TIEN', $RecibeDatos['Municipio_com']);
             $stmt->bindValue(':PARROQUIA_TIEN', $RecibeDatos['Parroquia_com']);
             $stmt->bindValue(':DIRECCION_TIEN', $RecibeDatos['Direccion_com']);
             $stmt->bindValue(':SLOGAN_TIEN', $RecibeDatos['Slogan_com']);
+            $stmt->bindValue(':DESACTIVAR_TIEN', $RecibeDatos['Desactivar_com']);
             $stmt->bindValue(':AFILIADO', $ID_AfiliadoCom);
 
             //Se ejecuta la actualización de los datos en la tabla
@@ -1219,7 +1248,7 @@
                 
         //UPDATE del campo publicar (autoriza a publicar la tienda en el catalogo de tiendas)
         public function actualizarTiendaPublicar($ID_Tienda){
-            $stmt = $this->dbh->prepare("UPDATE tiendas SET publicar = :PUBLICAR WHERE ID_Tienda = :ID_TIENDA ");
+            $stmt = $this->dbh->prepare("UPDATE tiendas SET publicar_Tien = :PUBLICAR WHERE ID_Tienda = :ID_TIENDA ");
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':PUBLICAR', 1);
@@ -1240,106 +1269,6 @@
 
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':PUBLICAR', 0);
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
-
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        //UPDATE de horarios de tienda de lunes a viernes
-        public function actualizarHorarioTienda_LV($ID_Tienda, $RecibeHorario_LV){
-            $stmt = $this->dbh->prepare("UPDATE horarios SET inicio_m = :INICIA_M, culmina_m = :CULMINA_M, lunes_m = :LUNES_M, martes_m = :MARTES_M, miercoles_m = :MIERCOLES_M, jueves_m = :JUEVES_M, viernes_m = :VIERNES_M, inicia_t = :INICIA_T, culmina_t = :CULMINA_T, lunes_t = :LUNES_T, martes_t = :MARTES_T, miercoles_t = :MIERCOLES_T, jueves_t = :JUEVES_T, viernes_t = :VIERNES_T WHERE ID_Tienda = :ID_TIENDA");
-
-            // Se vinculan los valores de las sentencias preparadas
-            //Se introduce en la BD en formato 24 horas
-            $stmt->bindValue(':INICIA_M', date('H:i', strtotime($RecibeHorario_LV['Inicio_M'])));
-            $stmt->bindValue(':CULMINA_M', date('H:i', strtotime($RecibeHorario_LV['Culmina_M'])));
-            $stmt->bindValue(':LUNES_M', $RecibeHorario_LV['Lunes_M']);
-            $stmt->bindValue(':MARTES_M', $RecibeHorario_LV['Martes_M']);
-            $stmt->bindValue(':MIERCOLES_M', $RecibeHorario_LV['Miercoles_M']);
-            $stmt->bindValue(':JUEVES_M', $RecibeHorario_LV['Jueves_M']);
-            $stmt->bindValue(':VIERNES_M', $RecibeHorario_LV['Viernes_M']);
-            //Se introduce en la BD en formato 24 horas
-            $stmt->bindValue(':INICIA_T', date('H:i', strtotime($RecibeHorario_LV['Inicia_T'])));
-            $stmt->bindValue(':CULMINA_T', date('H:i', strtotime($RecibeHorario_LV['Culmina_T'])));
-            $stmt->bindValue(':LUNES_T', $RecibeHorario_LV['Lunes_T']);
-            $stmt->bindValue(':MARTES_T', $RecibeHorario_LV['Martes_T']);
-            $stmt->bindValue(':MIERCOLES_T', $RecibeHorario_LV['Miercoles_T']);
-            $stmt->bindValue(':JUEVES_T', $RecibeHorario_LV['Jueves_T']);
-            $stmt->bindValue(':VIERNES_T', $RecibeHorario_LV['Viernes_T']);
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
-
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        //UPDATE de horarios de tienda del día sábado
-        public function actualizarHorarioTienda_Sab($ID_Tienda, $RecibeHorario_Sab){
-            $stmt = $this->dbh->prepare("UPDATE horariosabado SET inicia_m_Sab = :INICIA_M_SAB, culmina_m_Sab = :CULMINA_M_SAB, sabado_m = :SABADO_M, inicia_t_Sab = :INICIA_T_SAB, culmina_t_Sab = :CULMINA_T_SAB, sabado_t = :SABADO_T WHERE ID_Tienda = :ID_TIENDA");
-
-            // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':INICIA_M_SAB', date('H:i', strtotime($RecibeHorario_Sab['Inicio_M_Sab'])));
-            $stmt->bindValue(':CULMINA_M_SAB', date('H:i', strtotime($RecibeHorario_Sab['Culmina_M_Sab'])));
-            $stmt->bindValue(':SABADO_M', $RecibeHorario_Sab['Sabado_M']);
-            $stmt->bindValue(':INICIA_T_SAB', date('H:i', strtotime($RecibeHorario_Sab['Inicia_T_Sab'])));
-            $stmt->bindValue(':CULMINA_T_SAB', date('H:i', strtotime($RecibeHorario_Sab['Culmina_T_Sab'])));
-            $stmt->bindValue(':SABADO_T', $RecibeHorario_Sab['Sabado_T']);
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
-
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        //UPDATE de horarios de tienda del día domingo
-        public function actualizarHorarioTienda_Dom($ID_Tienda, $RecibeHorario_Dom){
-            $stmt = $this->dbh->prepare("UPDATE horariodomingo SET inicia_m_Dom = :INICIA_M_DOM, culmina_m_Dom = :CULMINA_M_DOM, domingo_m = :DOMINGO_M, inicia_t_Dom = :INICIA_T_DOM, culmina_t_Dom = :CULMINA_T_DOM, domingo_t = :DOMINGO_T WHERE ID_Tienda = :ID_TIENDA");
-
-            // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':INICIA_M_DOM', date('H:i', strtotime($RecibeHorario_Dom['Inicio_M_Dom'])));
-            $stmt->bindValue(':CULMINA_M_DOM', date('H:i', strtotime($RecibeHorario_Dom['Culmina_M_Dom'])));
-            $stmt->bindValue(':DOMINGO_M', $RecibeHorario_Dom['Domingo_M']);
-            $stmt->bindValue(':INICIA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Inicia_T_Dom'])));
-            $stmt->bindValue(':CULMINA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Culmina_T_Dom'])));
-            $stmt->bindValue(':DOMINGO_T', $RecibeHorario_Dom['Domingo_T']);
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
-
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        //UPDATE de horarios de tienda de un día especifico que entra como exepción
-        public function actualizarHorarioTienda_Esp($ID_Tienda, $RecibeHorario_Esp){
-            $stmt = $this->dbh->prepare("UPDATE horarioespecial SET inicia_m_Esp = :INICIA_M_ESP, culmina_m_Esp = :CULMINA_M_ESP, especial_m = :ESPECIAL_M, inicia_t_Esp = :INICIA_T_ESP, culmina_t_Esp = :CULMINA_T_ESP, especial_t = :ESPECIAL_T  WHERE ID_Tienda = :ID_TIENDA");
-
-            // Se vinculan los valores de las sentencias preparadas
-            //Se introduce en la BD en formato 24 horas
-            $stmt->bindValue(':INICIA_M_ESP', date('H:i', strtotime($RecibeHorario_Esp['Inicio_M_Esp'])));
-            $stmt->bindValue(':CULMINA_M_ESP', date('H:i', strtotime($RecibeHorario_Esp['Culmina_M_Esp'])));
-            $stmt->bindValue(':ESPECIAL_M', $RecibeHorario_Esp['DiaEspecial_M']);
-            //Se introduce en la BD en formato 24 horas
-            $stmt->bindValue(':INICIA_T_ESP', date('H:i', strtotime($RecibeHorario_Esp['Inicia_T_Esp'])));
-            $stmt->bindValue(':CULMINA_T_ESP', date('H:i', strtotime($RecibeHorario_Esp['Culmina_T_Esp'])));
-            $stmt->bindValue(':ESPECIAL_T', $RecibeHorario_Esp['DiaEspecial_T']);
             $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
 
             // Se ejecuta la actualización de los datos en la tabla
@@ -1800,7 +1729,109 @@
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
+        }        
+
+        //INSERTAR horarios de tienda de lunes a viernes
+        public function insertarHorarioTienda_LV($ID_Tienda, $RecibeHorario_LV){
+            $stmt = $this->dbh->prepare("INSERT INTO horarios(ID_Tienda, inicio_m, culmina_m, lunes_m, martes_m, miercoles_m, jueves_m, viernes_m, inicia_t, culmina_t, lunes_t, martes_t, miercoles_t, jueves_t, viernes_t) VALUES (:ID_TIENDA, :INICIA_M, :CULMINA_M, :LUNES_M, :MARTES_M, :MIERCOLES_M, :JUEVES_M, :VIERNES_M, :INICIA_T, :CULMINA_T, :LUNES_T, :MARTES_T, :MIERCOLES_T, :JUEVES_T, :VIERNES_T)");
+
+            // Se vinculan los valores de las sentencias preparadas
+            //Se introduce en la BD en formato 24 horas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':INICIA_M', date('H:i', strtotime($RecibeHorario_LV['Inicio_M'])));
+            $stmt->bindValue(':CULMINA_M', date('H:i', strtotime($RecibeHorario_LV['Culmina_M'])));
+            $stmt->bindValue(':LUNES_M', $RecibeHorario_LV['Lunes_M']);
+            $stmt->bindValue(':MARTES_M', $RecibeHorario_LV['Martes_M']);
+            $stmt->bindValue(':MIERCOLES_M', $RecibeHorario_LV['Miercoles_M']);
+            $stmt->bindValue(':JUEVES_M', $RecibeHorario_LV['Jueves_M']);
+            $stmt->bindValue(':VIERNES_M', $RecibeHorario_LV['Viernes_M']);
+            //Se introduce en la BD en formato 24 horas
+            $stmt->bindValue(':INICIA_T', date('H:i', strtotime($RecibeHorario_LV['Inicia_T'])));
+            $stmt->bindValue(':CULMINA_T', date('H:i', strtotime($RecibeHorario_LV['Culmina_T'])));
+            $stmt->bindValue(':LUNES_T', $RecibeHorario_LV['Lunes_T']);
+            $stmt->bindValue(':MARTES_T', $RecibeHorario_LV['Martes_T']);
+            $stmt->bindValue(':MIERCOLES_T', $RecibeHorario_LV['Miercoles_T']);
+            $stmt->bindValue(':JUEVES_T', $RecibeHorario_LV['Jueves_T']);
+            $stmt->bindValue(':VIERNES_T', $RecibeHorario_LV['Viernes_T']);
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
+
+        //INSERT de horario de tienda del día sábado
+        public function insertarHorarioTienda_Sab($ID_Tienda, $RecibeHorario_Sab){
+            $stmt = $this->dbh->prepare("INSERT INTO horariosabado (ID_Tienda, inicia_m_Sab, culmina_m_Sab, sabado_m, inicia_t_Sab, culmina_t_Sab, sabado_t) VALUE(:ID_TIENDA, :INICIA_M_SAB, :CULMINA_M_SAB, :SABADO_M, :INICIA_T_SAB, :CULMINA_T_SAB, :SABADO_T)");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':INICIA_M_SAB', date('H:i', strtotime($RecibeHorario_Sab['Inicio_M_Sab'])));
+            $stmt->bindValue(':CULMINA_M_SAB', date('H:i', strtotime($RecibeHorario_Sab['Culmina_M_Sab'])));
+            $stmt->bindValue(':SABADO_M', $RecibeHorario_Sab['Sabado_M']);
+            $stmt->bindValue(':INICIA_T_SAB', date('H:i', strtotime($RecibeHorario_Sab['Inicia_T_Sab'])));
+            $stmt->bindValue(':CULMINA_T_SAB', date('H:i', strtotime($RecibeHorario_Sab['Culmina_T_Sab'])));
+            $stmt->bindValue(':SABADO_T', $RecibeHorario_Sab['Sabado_T']);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        //INSERT de horarios de tienda del día domingo
+        public function insertarHorarioTienda_Dom($ID_Tienda, $RecibeHorario_Dom){
+            $stmt = $this->dbh->prepare("INSERT INTO horariodomingo (ID_Tienda, inicia_m_Dom, culmina_m_Dom, domingo_m, inicia_t_Dom, culmina_t_Dom, domingo_t) VALUE(:ID_TIENDA, :INICIA_M_DOM, :CULMINA_M_DOM, :DOMINGO_M, :INICIA_T_DOM, :CULMINA_T_DOM, :DOMINGO_T)");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':INICIA_M_DOM', date('H:i', strtotime($RecibeHorario_Dom['Inicio_M_Dom'])));
+            $stmt->bindValue(':CULMINA_M_DOM', date('H:i', strtotime($RecibeHorario_Dom['Culmina_M_Dom'])));
+            $stmt->bindValue(':DOMINGO_M', $RecibeHorario_Dom['Domingo_M']);
+            $stmt->bindValue(':INICIA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Inicia_T_Dom'])));
+            $stmt->bindValue(':CULMINA_T_DOM', date('H:i', strtotime($RecibeHorario_Dom['Culmina_T_Dom'])));
+            $stmt->bindValue(':DOMINGO_T', $RecibeHorario_Dom['Domingo_T']);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //INSERT de horarios de tienda de un día especifico que entra como exepción
+        public function insertarHorarioTienda_Esp($ID_Tienda, $RecibeHorario_Esp){
+            $stmt = $this->dbh->prepare("INSERT INTO horarioespecial (ID_Tienda, inicia_m_Esp, culmina_m_Esp, especial_m, inicia_t_Esp, culmina_t_Esp, especial_t) VALUE(:ID_TIENDA, :INICIA_M_ESP, :CULMINA_M_ESP, :ESPECIAL_M, :INICIA_T_ESP, :CULMINA_T_ESP, :ESPECIAL_T)");
+
+            // Se vinculan los valores de las sentencias preparadas
+            //Se introduce en la BD en formato 24 horas
+            $stmt->bindValue(':ID_TIENDA', $ID_Tienda);
+            $stmt->bindValue(':INICIA_M_ESP', date('H:i', strtotime($RecibeHorario_Esp['Inicio_M_Esp'])));
+            $stmt->bindValue(':CULMINA_M_ESP', date('H:i', strtotime($RecibeHorario_Esp['Culmina_M_Esp'])));
+            $stmt->bindValue(':ESPECIAL_M', $RecibeHorario_Esp['DiaEspecial_M']);
+            //Se introduce en la BD en formato 24 horas
+            $stmt->bindValue(':INICIA_T_ESP', date('H:i', strtotime($RecibeHorario_Esp['Inicia_T_Esp'])));
+            $stmt->bindValue(':CULMINA_T_ESP', date('H:i', strtotime($RecibeHorario_Esp['Culmina_T_Esp'])));
+            $stmt->bindValue(':ESPECIAL_T', $RecibeHorario_Esp['DiaEspecial_T']);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
         // //INSERT de las caracteristicas de un producto especifico
         // public function insertarCaracteristicas($ID_Tienda, $ID_Producto, $Caracteristica){
         //     //Debido a que $Caracteristica es un array con varios elemento se hace un recorrido de cada uno para actualizar en cada vuelta

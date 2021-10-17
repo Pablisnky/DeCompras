@@ -64,7 +64,12 @@
 		</noscript>
 		
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
-	<div class="tapa" id="Tapa"></div>
+	<div class="tapa" id="Tapa">
+		<div class="tapa-logo">
+			<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+			<h2 class="h2_5 font--white">MarketPlace</h2>
+		</div>
+	</div>
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

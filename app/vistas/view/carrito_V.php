@@ -38,27 +38,27 @@
                 <div class="contGeneral">  
                     <div class="contInputRadio">     
                         <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/>
-                        <label class="contInputRadio__label" for="Domicilio_No">Recoger pedido en tienda, 0 Bs.</label>
+                        <label class="contInputRadio__label" for="Domicilio_No">Recoger pedido en tienda: 0,00 Bs.</label>
                     </div>                    
                     <div class="contInputRadio">
                         <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/>
-                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio, <?php echo number_format($Datos['Delivery'], 0, ",", ".");?> Bs.</label>
+                        <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio: <?php echo number_format($Datos['Delivery'], 2, ",", ".");?> Bs.</label>
                         <input class="ocultar" type="text" id="PrecioEnvio" value="<?php echo $Datos['Delivery'];?>"/>
                     </div>     
                     
-                        <!--DIV ALIMENTADO DESDE E_Vitrina.js PedidoEnCarrito() -->
+                    <!--DIV ALIMENTADO DESDE E_Vitrina.js PedidoEnCarrito() -->
                     <div>
                         <h2 class="h2_2">Monto en tienda: <input type="text" form="DatosUsuario" name="montoTienda" class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
 
                         <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
 
-                        <h2 class='h2_2'>Monto de envio:<input type='text' form="DatosUsuario" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['Delivery'], 0, ",", ".");?>' readonly="readondly"/> Bs.</h2>
+                        <h2 class='h2_2'>Monto de envio:<input type='text' form="DatosUsuario" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['Delivery'], 2, ",", ".");?>' readonly="readondly"/> Bs.</h2>
 
                         <hr class="hr_1"/>
                         <h2 class="h2_2 h2_3">Monto total: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
-                        <h2 class="h2_2 h2_3"><input type="text" form="DatosUsuario" name="" class="input_6 input_7" id="MontoTotalDolares" readonly="readondly"/> $ USD</h2>
+                        <h2 class="h2_2 h2_3"><input type="text" form="DatosUsuario" name="" class="input_6 input_7" id="MontoTotalDolares" readonly="readondly"/> $</h2>
 
-                        <small class="small_1 small_1A">Cambio oficial a tasa del BCV <strong class="strong_1">( 1 $ = <?php echo number_format($Datos['DolarHoy'], 0, ",", ".");?> Bs.)</strong></small>
+                        <small class="small_1 small_1A">Cambio oficial a tasa del BCV <strong class="strong_1">( 1 $ = <?php echo number_format($Datos['DolarHoy'], 4, ",", ".");?> Bs.)</strong></small>
                     </div>
                 </div>
             <!-- </article> -->
@@ -146,10 +146,11 @@
 
                             <!-- CONFIRMACION DE USUARIO -->
                             <div class="contFlex--usuarios" id="ModalTipoUsuario">
-                                    <label class="boton boton--alto" id="No_Registrado" onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')">Usuario no registrado</label>
-                                    <label class="boton boton--alto" id="Registrado" onclick="mostrar_cedula()">Usuario <br class="br_2"> registrado</label>
+                                <label class="boton boton--alto" id="No_Registrado" onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')">Usuario no registrado</label>
+                                <label class="boton boton--alto" id="Registrado" onclick="mostrar_cedula()">Usuario <br class="br_2">registrado</label>
+                                 
                                 <div class="ocultar" id="Mostrar_Cedula">
-                                    <i class="fas fa-times spanCerrar"  onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')"></i>
+                                    <i class="fas fa-times spanCerrar_carrito" onclick="CerrarModal_X('ModalTipoUsuario', 'NombreUsuario')"></i>
                                     <input class="input_13 borde_1" type="text" id="Cedula_Usuario" placeholder="Nº Cedula (Solo números)" onblur="soloNumeros(this.value, 'Cedula_Usuario')"/>
                                     <label class="boton boton--color boton--centro" >Enviar</label>
                                 </div> 

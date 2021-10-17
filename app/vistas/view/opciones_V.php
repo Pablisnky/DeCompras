@@ -31,7 +31,7 @@
 
                         //Se da formato al precio, sin decimales y con separación de miles
                         settype($PrecioBolivar, "float");
-                        $PrecioBolivar = number_format($PrecioBolivar, 6, ",", ".");    ?>  
+                        $PrecioBolivar = number_format($PrecioBolivar, 2, ",", ".");    ?>  
                         
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             

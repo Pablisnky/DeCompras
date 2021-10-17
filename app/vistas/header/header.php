@@ -29,7 +29,6 @@
 			<!-- icono para responsive -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><i class="fas fa-bars icono_3" id="Span_6"></i></label>
 
-			<!-- $Nombre_Tienda viene de Vitrina_C-->
 			<div class="contenedor_111">
 				<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
 				<h2 class="h2_5">MarketPlace</h2>

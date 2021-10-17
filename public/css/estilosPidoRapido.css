@@ -610,15 +610,15 @@ body, html{
 	margin-top: 10%;
 	min-height: 75%;
 }
-.contenedor_43{/*login - registroCom*/
+.contenedor_43{
 	display: none;
 }
-.contenedor_45{/*login - cuenta_editar*/
+.contenedor_45{
 	width: 100%;
 	margin: 1% auto;
 	text-align: center;
 }
-.contenedor_47{/*cuenta_publicar - cuenta_editar_prod*/
+.contenedor_47{
 	display: grid;
 	grid-template-columns: 40% 60%;
 	column-gap: 3%;/*espacio entre columnas*/
@@ -633,7 +633,7 @@ body, html{
 	position: initial !important;
 	margin-top: 3%;
 }
-.contenedor_49{/*cuenta_publicar - cuenta_editar_prod*/
+.contenedor_49{
 	width: 100%;
 	margin: 15% auto;
 	text-align: right;
@@ -721,8 +721,6 @@ body, html{
 	width: 100%;
 }
 .contenedor_80B{	
-	/* display: flex; 
-	margin-bottom: 5%; */
 	margin: auto;
 	margin-top: 0%;
 	width: 45% !important;
@@ -1327,7 +1325,7 @@ body, html{
 	margin-top: 2%;
 	text-align: center;
 }
-.contGeneral__p{/*horarioDespacho*/
+.contGeneral__p{
 	width: 70%;
 	margin: auto;
 	line-height: 30px;
@@ -1435,7 +1433,7 @@ body, html{
 	margin:3% 0% 15% 0% !important;
 	font-size: 0.9em;
 }
-.contTabla{/*horarioDespacho*/
+.contTabla{
 	margin-bottom: 7%;
 }
 .div__Botones{
@@ -1484,6 +1482,12 @@ body, html{
 	width: 40%;
 }
 .spanCerrar{
+	color: white;
+	font-size: 2em;
+	margin: 0% 4% 0% 95%;
+	cursor: pointer;
+}
+.spanCerrar_carrito{
 	color: white;
 	font-size: 2em;
 	margin: 0% 4% 0% 95%;
@@ -2466,7 +2470,6 @@ body, html{
 	}
 }
 .preloderTapa{
-	/* background-color: rgba(255, 255, 255, 0.2); */
 	background-color: white;
 	position: absolute;
 	top: 0%;
@@ -2476,7 +2479,6 @@ body, html{
 	z-index: 9
 }
 .preloder_tapa--total{
-	/* background-color: rgba(255, 255, 255, 0.2); */
 	background-color: white;
 	position: fixed;
 	top: 0%;
@@ -2787,39 +2789,39 @@ body, html{
 .tabla{
 	width: 100%;
 }
-.tabla1{/*horarioDespacho*/
+.tabla1{
 	width: 90%;
 	margin: auto;
 	margin-bottom: 2%;
 	border-collapse: collapse;
 }
-.tabla_inventario{/*cuenta_inventario*/
+.tabla_inventario{
 	border-collapse: collapse;
 	width: 100%;
 }
-.tabla_inventario td {/*cuenta_inventario*/
+.tabla_inventario td {
 	font-size: 0.9em;
 }
-.tabla_inventario__td{/*cuenta_inventario*/
+.tabla_inventario__td{
 	text-align: center;
 }
-.tabla_inventario--thead{/*cuenta_inventario*/
+.tabla_inventario--thead{
 	background-color: var(--BordeClaro);
 }
-.tabla_inventario--tbody{/*cuenta_inventario*/
+.tabla_inventario--tbody{
 	line-height: 40px;
 }
-.tabla_inventario th{/*cuenta_inventario*/
+.tabla_inventario th{
 	font-size: 0.9em;
 	line-height: 20px;
 }
-.tabla_inventario__th--fecha{/*cuenta_inventario*/
+.tabla_inventario__th--fecha{
 	width: 140px;
 }
-.tabla_inventario__tr:hover{/*cuenta_inventario*/
+.tabla_inventario__tr:hover{
 	background-color:  var(--BordeClaro);
 }
-.tabla1__td{/*horarioDespacho*/
+.tabla1__td{
 	font-size: 0.9em;
 	text-align: center;
 	height: 30px;
@@ -2852,7 +2854,7 @@ body, html{
 .td_6{
 	height: 20px;
 }
-.td_7{/*horarioDespacho*/
+.td_7{
 	height: 30px;
 }
 .textarea_1{/*carrito - cuenta_editar_prod*/

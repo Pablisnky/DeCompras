@@ -1,4 +1,5 @@
 <?php 
+    declare(strict_types = 1);
     class Login_C extends Controlador{
         
         public function __construct(){  
@@ -10,8 +11,8 @@
             ocultarErrores();
         }
 
-        //Es llamadao desde Registro_C.php por medio de recibeRegistro() - Cuenta_C - header_inicio.php - cuenta_publicar_V.php
-        public function index($Datos){
+        //Es llamadao desde Registro_C.php - Cuenta_C - header_inicio.php - cuenta_publicar_V.php
+        public function index(string $Datos){
             // echo "Datos = " . $Datos;
             // exit();
 
@@ -126,7 +127,8 @@
                             $ID_Tienda = $arr["ID_Tienda"];
                             $ID_Afiliado = $arr["ID_AfiliadoCom"];
                             $NombreTienda = $arr["nombre_Tien"];
-                            $Publicar = $arr["publicar"];
+                            $Publicar = $arr["publicar_Tien"];
+                            $Desactivar = $arr["desactivar_Tien"];
                         }
                         
                         //CONSULTA si existe al menos una sección donde cargar productos
@@ -146,6 +148,9 @@
                         else if($Publicar == 0){//Si hay seccion creada sin producto
                             header('location:' . RUTA_URL . '/Modal_C/tiendaSinProductos'); 
                         }   
+                        else if($Desactivar == 1){//Si el cliente tiene desctivada su tienda
+                            header('location:' . RUTA_URL . '/Modal_C/tiendaDesactiva'); 
+                        }
                         else{//Si hay seccion creada con producto
                             header('location:' . RUTA_URL . '/Cuenta_C/Productos/Todos'); 
                         }      
