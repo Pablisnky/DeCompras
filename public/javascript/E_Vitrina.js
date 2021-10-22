@@ -125,11 +125,14 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             document.getElementById("MontoTotalDolares").value = SeparadorMiles(MontoTotalDolares)
         }
         else{//Entra en ele ELSE en caso de pagar por despacho
+            envio = Number.parseFloat(envio).toFixed(2);
+            // console.log(envio)
             document.getElementById("Despacho_2").value = SeparadorMiles(envio)
 
             //Se cambia el monto total del pedido incluyendo comision y envio
             MontoTotal = Number(TotalDisplayCarrito) + Number(envio)
-            console.log(MontoTotal)
+            MontoTotal = MontoTotal.toFixed(2)
+            // console.log("MontoTotal", MontoTotal)
             
             //Se calcula el monto en Dolares
             MontoTotalDolares = MontoTotal / Local_ValorDolarHoy
@@ -356,6 +359,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
             //Se suma el precio de todos los producto cargado a carrito
             TotalDisplayCarrito = DisplayMonto.reduce((a, b) => a + b, 0);
+
+            //Se permiten solo dos decimales
+            TotalDisplayCarrito = TotalDisplayCarrito.toFixed(2)
         }        
 
         if(AlContenedor.length == 0){
@@ -539,7 +545,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************
     //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "La orden de compra"
     function PedidoEnCarrito(ValorDolar){
-        console.log("______Desde PedidoEnCarrito()______", Number(ValorDolar))
+        // console.log("______Desde PedidoEnCarrito()______", Number(ValorDolar))
         
         //Se muestra el monto de la compra en "La Orden". (sin carga por despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
@@ -549,6 +555,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 
         //Se calcula el monto total de la compra incluyendo comision y envio
         MontoTotal = Number(TotalDisplayCarrito) + Number(envio)
+        MontoTotal = Number.parseFloat(MontoTotal).toFixed(2);
         
         //Se calcula el monto en Dolares
         MontoTotalDolares = MontoTotal / Number(ValorDolar)
@@ -628,7 +635,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
             boton.onclick = incrementar //Asignar la función incrementar(), al evento click.
         }
         function incrementar(e){
-            // console.log("______Desde Incrementar()______")
+            console.log("______Desde Incrementar()______")
 
             //Se obtiene el elemento padre donde se encuentra el boton mas al que se hizo click
             let current = e.target.parentElement
@@ -663,30 +670,30 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                 // console.log(inputSeleccionado)
                 
                 //Input seccion Aqui se muestra la seccion de la tienda
-                // let Seccion = inputSeleccionadoLeyen.getElementsByClassName("input_1g")[0].value
+                let Seccion = inputSeleccionadoLeyen.getElementsByClassName("input_1g")[0].value
 
                 //ID_Producto desde BD 
                 let Producto = inputSeleccionadoLeyen.getElementsByClassName("input_1a")[0].value
-                // console.log(Producto)
-
-                //Input opcion Aqui se muestra la Opcion del producto
-                // let Opcion = inputSeleccionadoLeyen.getElementsByClassName("input_1c")[0].value
                 
                 //input cantidad Aqui se mostrará la cantidad
                 var Cantidades = inputSeleccionadoLeyen.getElementsByClassName("input_1e")[0].value = A
-                // console.log("Unidades pedidas", Cantidades)
 
                 //Input precio Aqui se muestra el precio
                 let Precio = inputSeleccionadoLeyen.getElementsByClassName("input_1d")[0].value
                                 
-                //Se cambia el formato del precio, se reemplaza la coma por punto
+                //Se cambia el formato del precio, se reemplaza la coma por punto para poder hacer la multiplicacion, luego se convierte a numero 
+                // console.log(typeof Precio)
                 Precio = Precio.replace(/,/g, '.')
                 Precio = Number(Precio)
 
-                //Se calcula el total
-                let Total = Cantidades * Precio  
+                //Se calcula el total y se restringe a dos decimales
+                let Total = (Cantidades * Precio).toFixed(2)
 
-                //Input total Aqui se mostrará el total
+                //"Total" Se cambia a string y luego se cambia el formato, el punto decimal se convierte en coma
+                Total = String(Total)
+                Total = Total.replace(/\./g, ',')
+
+                //Input total Aqui se mostrará el total(al parecer no hace falta)
                 inputSeleccionadoLeyen.getElementsByClassName("input_1f")[0].value = Total
                 
                 //Muestra la leyenda del pedido por producto
@@ -807,6 +814,10 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
                                 
                 //Se calcula el total
                 let Total = Cantidades * Precio    
+
+                //"Total" Se cambia a string y luego se cambia el formato, el punto decimal se convierte en coma
+                Total = String(Total)
+                Total = Total.replace(/\./g, ',')
                  
                 //Input total en el elemento hermano del click correspondiente; Aqui se mostrará el total
                 Cont_leyenda.getElementsByClassName("input_1f")[0].value = Total

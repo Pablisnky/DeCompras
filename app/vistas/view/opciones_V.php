@@ -31,7 +31,9 @@
 
                         //Se da formato al precio, sin decimales y con separación de miles
                         settype($PrecioBolivar, "float");
-                        $PrecioBolivar = number_format($PrecioBolivar, 2, ",", ".");    ?>  
+                        settype($PrecioDolar, "float");
+                        $PrecioBolivar = number_format($PrecioBolivar, 2, ",", "."); 
+                        $PrecioDolar = number_format($PrecioDolar, 2, ",", ".");   ?>  
                         
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             
@@ -51,10 +53,7 @@
                                     endif;   
                                 endforeach;   
 
-                                require(RUTA_APP . "/vistas/complementos/existencia.php");   
-                                
-                                ?>
-
+                                require(RUTA_APP . "/vistas/complementos/existencia.php"); ?>
                             </div>
                                         
                             <div> 
@@ -69,6 +68,7 @@
                                     
                                     <!-- PRECIO -->
                                     <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" >Bs. <?php echo $PrecioBolivar;?></label>
+
                                     <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" >$ <?php echo $PrecioDolar;?></label>
                             
                                     <?php 
@@ -116,6 +116,8 @@
                             </div> 
 
                             <div class="contenedor_14" id="<?php echo 'Cont_Leyenda_' . $ContadorLabel;?>">
+                            
+                                <!-- LEYENDA -->
                                 <div class="contenedor_19">
                                     <!-- cantidad alimentado desde E_Vitrina.js agregarOpcion()-->
                                     <input type="text" class="input_1e ocultar" id="<?php echo 'Cantidad_' . $ContadorLabel;?>"/>
@@ -132,6 +134,8 @@
                                     <!-- LEYENDA - alimentado desde E_Vitrina.js agregarOpcion() -->
                                     <input class="input_2a" type="text" name="leyenda" id="<?php echo 'Leyenda_'. $ContadorLabel;?>"/>
                                 </div> 
+
+                                <!-- BOTON MAS Y MENOS -->
                                 <div class="contenedor_16">
                                     <label class="menos MenosJS" id="<?php echo 'ID_BotonMenos_'. $ContadorLabel;?>">-</label>
                                     <input class="input_2" type="text" id="<?php echo 'Item_'. $ContadorLabel;?>"  value="1"/>

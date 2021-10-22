@@ -45,7 +45,7 @@
             $DolarHoy = $this->PrecioDolar->Dolar;
 
             //El delivery cuesta 1,3 dolares, se entrega un numero entero
-            $CostoDelivery = intval(1.30 * $DolarHoy);
+            $CostoDelivery = 1.30 * $DolarHoy;
 
             $Datos = [
                 'Banco' => $Banco, //bancoNombre, bancoCuenta, bancoTitular, bancoRif
