@@ -78,9 +78,10 @@ class Core{
             
             // echo "************************************************************************"  . "<br>";
             $url= rtrim($_GET['url'],'/');
+            // $url= filter_var($url, FILTER_SANITIZE_URL); esta linea es importante pero no deja que la letra ñ y letras con acentos aparezcan en la url
             //Al usar FILTER_SANITIZE_URL entre otras cosas se eliminan los espacios en blanco de los parametros enviados.
             // $url= filter_var($url, FILTER_SANITIZE_URL);
-            //La cadena se convierte en un array para obtener en cad indice el controlador, el metodo y los parametros
+            //La cadena se convierte en un array para obtener en cada indice el controlador, el metodo y los parametros
             $url= explode('/', $url);
             return $url;
         }

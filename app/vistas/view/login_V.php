@@ -62,6 +62,6 @@
         <?php
     }   ?> 
 		
-<script src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
+<!-- <script src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script> -->
 
 <?php include(RUTA_APP . "/vistas/footer/footer.php");?>

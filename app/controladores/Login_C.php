@@ -1,10 +1,10 @@
 <?php 
     declare(strict_types = 1);
+
     class Login_C extends Controlador{
         
         public function __construct(){  
             session_start();
-
             $this->ConsultaLogin_M = $this->modelo("Login_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -57,18 +57,41 @@
             $Clave = $_POST["clave_Arr"];
             $Correo = $_POST["correo_Arr"];
 
-            //Se CONSULTA el usuario registrados en el sistema con el correo dado como argumento
-            $usuarios = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
-                // echo '<pre>';
-                // print_r($usuarios); 
-                // echo '</pre>';
-                // exit();
-            if($usuarios != Array()){
-                $ID_Afiliado = $usuarios[0]['ID_AfiliadoCom'];
-                $CorreoBD = $usuarios[0]['correo_AfiCom'];
-                $Nombre = $usuarios[0]['nombre_AfiCom'];
+            //Se CONSULTA si el correo existe como comerciante
+            $usuarioCom = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
+            
+            echo '<pre>';
+            print_r($usuarioCom); 
+            echo '</pre>';
+            // exit();
+
+            //Se CONSULTA si el correo existe como mayorista
+            $usuarioMay = $this->ConsultaLogin_M->consultarAfiliadosMay($Correo);
+
+            echo '<pre>';
+            print_r($usuarioMay); 
+            echo '</pre>';
+            // exit();
+
+            if($usuarioCom != Array() && $usuarioMay != Array()){//Existe como comerciante y como mayorista
+                //Redirecciona a ventan donde se solicita que seleccione como desea ingresar, como comerciante o mayorista
+                // echo '<br><br><br><br><br><br><br>';
+                // echo 'HOLA';
+                exit();
+            } 
+            else if($usuarioCom != Array() && $usuarioCom[0]['ID_AfiliadoCom'] != ""){//Existe como comerciante
+                $ID_Afiliado = $usuarioCom[0]['ID_AfiliadoCom'];
+                $CorreoBD = $usuarioCom[0]['correo_AfiCom'];
+                $Nombre = $usuarioCom[0]['nombre_AfiCom'];
 
                 $CuentaCom = true;
+            }
+            else if($usuarioMay != Array() && $usuarioMay[0]['ID_AfiliadoMay'] != ""){//Existe como mayorista
+                $ID_Afiliado = $usuarioMay[0]['ID_AfiliadoMay'];
+                $CorreoBD = $usuarioMay[0]['correo_AfiMay'];
+                $Nombre = $usuarioMay[0]['nombre_AfiMay'];
+
+                $CuentaMay = true;
             }
             else{
                 $usuarios = $this->ConsultaLogin_M->consultarAfiliadosDes($Correo);
@@ -77,10 +100,10 @@
                 $Nombre = $usuarios[0]['nombre_AfiDes'];
                                 
                 $CuentaCom = false;
-                // echo '<pre>';
-                // print_r($usuarios); 
-                // echo '</pre>';
-                // exit();
+                echo '<pre>';
+                print_r($usuarios); 
+                echo '</pre>';
+                exit();
             }
         
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
@@ -111,9 +134,7 @@
                 $Clave = filter_input(INPUT_POST, 'clave_Arr', FILTER_SANITIZE_STRING);
         
                 //Se CONSULTA la contraseña enviada, que sea igual a la contraseña de la BD
-
-                //Entra en cuenta de comerciante
-                if($CuentaCom == true){
+                if(isset($CuentaCom)){
                     $usuarios_2= $this->ConsultaLogin_M->consultarContrasenaCom($ID_Afiliado);
                     while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
                         $ClaveBD = $arr['claveCifrada'];
@@ -138,7 +159,7 @@
                         //Se crean sesiones exigidas en las páginas de una cuenta de comerciante           
                         $_SESSION["ID_Tienda"] = $ID_Tienda;
                         
-                        //Se crea la sesion que guarda el ID_Afiliado           
+                        //Se crea la sesion que guarda el ID_Afiliado, pedida en archivo de login           
                         $_SESSION['ID_Afiliado'] = $ID_Afiliado;
                             
                         // Se verifica a donde se redirecciona segun la condición de la tienda
@@ -154,6 +175,32 @@
                         else{//Si hay seccion creada con producto
                             header('location:' . RUTA_URL . '/Cuenta_C/Productos/Todos'); 
                         }      
+                    }
+                    else{ 
+                        header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
+                    } 
+                }
+                else if(isset($CuentaMay)){
+                    $usuarios_2= $this->ConsultaLogin_M->consultarContrasenaMay($ID_Afiliado);
+                    while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
+                        $ClaveBD = $arr['claveCifradaMay'];
+                    }          
+
+                    //se descifra la contraseña con un algoritmo de desencriptado.
+                    if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
+                        //SELECT para hallar el ID_Mayorista, el nombre del mayorista, ID_AfiliadoMay
+                        $Consulta= $this->ConsultaLogin_M->consultarID_Mayorista($ID_Afiliado);
+                        while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
+                            $ID_Mayorista = $arr["ID_Mayorista"];
+                            // $ID_AfiliadoMay = $arr["ID_AfiliadoMay"];
+                            $Nombre_Mayorista = $arr["nombreMay"];
+                        }
+                                                                        
+                        //Se crea la sesion que guarda el ID_Mayorista          
+                        $_SESSION['ID_Mayorista'] = $ID_Mayorista;            
+                        $_SESSION['Nombre_Mayorista'] = $Nombre_Mayorista;        
+                            
+                        header('location:' . RUTA_URL . '/Mayorista_C/admin');    
                     }
                     else{ 
                         header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');

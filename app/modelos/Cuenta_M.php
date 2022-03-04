@@ -1417,32 +1417,32 @@
         }
 
         //INSERT de la opcion y el precio de un producto
-        public function insertarReposicion($RecibeProducto, $ID_Producto){
-            $stmt = $this->dbh->prepare(
-                "INSERT INTO  fechareposicion(ID_Producto, incremento, fecha_dotacion, fecha_reposicion) 
-                VALUES (:ID_PRODUCTO, :INCREMENTO, :FECHA_DOTACION, :FECHA_REPOSICION)"
-            );
+        // public function insertarReposicion($RecibeProducto, $ID_Producto){
+        //     $stmt = $this->dbh->prepare(
+        //         "INSERT INTO  fechareposicion(ID_Producto, incremento, fecha_dotacion, fecha_reposicion) 
+        //         VALUES (:ID_PRODUCTO, :INCREMENTO, :FECHA_DOTACION, :FECHA_REPOSICION)"
+        //     );
 
-            //Se introduce la fecha en la BD en formato año - mes - dia
-            $FechaDotacion = date('Y-m-d', strtotime($RecibeProducto['Fecha_dotacion']));
-            $FechaReposicion =  date('Y-m-d', strtotime($RecibeProducto['Fecha_reposicion']));
-            $Incremento = $RecibeProducto['Incremento'];
+        //     //Se introduce la fecha en la BD en formato año - mes - dia
+        //     $FechaDotacion = date('Y-m-d', strtotime($RecibeProducto['Fecha_dotacion']));
+        //     $FechaReposicion =  date('Y-m-d', strtotime($RecibeProducto['Fecha_reposicion']));
+        //     $Incremento = $RecibeProducto['Incremento'];
 
-            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
-            $stmt->bindParam(':INCREMENTO', $Incremento);
-            $stmt->bindParam(':FECHA_DOTACION',  $FechaDotacion);
-            $stmt->bindParam(':FECHA_REPOSICION', $FechaReposicion);
+        //     //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+        //     $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
+        //     $stmt->bindParam(':INCREMENTO', $Incremento);
+        //     $stmt->bindParam(':FECHA_DOTACION',  $FechaDotacion);
+        //     $stmt->bindParam(':FECHA_REPOSICION', $FechaReposicion);
             
-            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-            if($stmt->execute()){
-                // se recupera el ID del registro insertado
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
+        //     //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+        //     if($stmt->execute()){
+        //         // se recupera el ID del registro insertado
+        //         return true;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
         //INSERT de las caracteristicas de un producto
         public function insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $Caracteristica){

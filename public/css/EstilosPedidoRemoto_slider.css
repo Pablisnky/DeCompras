@@ -1,8 +1,8 @@
 .slider{
-    width: 40%;
+    width: 45%;
 	overflow: hidden;
 	position: absolute;
-	margin-top: 30%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
+	margin-top: 27%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/
 	left: 7%;
 }
 .slider ul{

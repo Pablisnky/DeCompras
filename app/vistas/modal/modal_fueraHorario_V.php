@@ -1,4 +1,4 @@
-<!-- Archivo forma parte de vitrina_V como un require -->
+<!-- Archivo forma parte de opcionesMayorista_V como un require -->
 
 <!-- Datos proviene de Vitrina_C  -->
 <?php $Categoria = $Datos['categoria'][0]['categoria']; ?>

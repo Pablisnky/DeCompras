@@ -34,6 +34,7 @@
             // echo 'Proximo Apertura: ' .  $ProximoApertura . '<br>';
             // echo 'Hora Apertura: ' .  $HoraApertura . '<br>';
             // exit;
+            
             //Solicita el precio del dolar
             require(RUTA_APP . '/controladores/Menu_C.php');
             $this->PrecioDolar = new Menu_C();

@@ -29,11 +29,11 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $ImagenPrincipal = $arr['nombre_img'];
     endforeach;  
     
-    foreach($Datos['reposicion'] as $arr) :
-        $Fecha_Dotacion = $arr['fecha_dotacion'];
-        $Fecha_Reposicion = $arr['fecha_reposicion'];
-        $Incremento = $arr['incremento'];
-    endforeach; 
+    // foreach($Datos['reposicion'] as $arr) :
+    //     $Fecha_Dotacion = $arr['fecha_dotacion'];
+    //     $Fecha_Reposicion = $arr['fecha_reposicion'];
+    //     $Incremento = $arr['incremento'];
+    // endforeach; 
     
     // echo "<pre>";
     // print_r($Datos);
@@ -109,50 +109,50 @@ if(!empty($_SESSION["ID_Afiliado"])){
                                 <input class="placeholder placeholder_2 placeholder_5 borde_1" type="text" name="precioDolar" id="PrecioDolar" value="<?php echo $PrecioDolar;?>"/>
                             </div>
                         </div> 
-                        <small class="small_1">El sistema realiza automaticamente la conversión entre Bolivar y Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo number_format($Datos['dolarHoy'], 0, ",", ".");?>)</strong></small>
+                        <small class="small_1">El sistema realiza automaticamente la conversión Bolivar / Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo number_format($Datos['dolarHoy'], 4, ",", ".");?>)</strong></small>
                         <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/>
+                        <br>
+
+                        <!-- CANTIDAD EN EXISTENCIA -->
+                        <div id="Contenedor_152">
+                            <label>Unidades cargadas</label>
+                            <?php
+                            if($Disponible == 1){   ?>
+                                <input class="placeholder placeholder_2 placeholder_4" type="text" name="uni_existencia" id="Cantidad" disabled>
+                                <?php
+                            }
+                            else{   ?>                        
+                                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="uni_existencia" id="Cantidad" value="<?php echo $Cantidad;?>">   <?php
+                            }   ?>
+                            <div class="contInputRadio">     
+                                <input type="checkbox" name="disponible" id="Disponible" <?php if($Disponible == 1){echo 'checked';} ?>/>
+                                <label class="contInputRadio__label small_3" for="Disponible">Siempre en existencia</label>
+                            </div>   
+                        </div>  
                     </div>  
                 </div>
             </fieldset>   
             
-            <a id="Ancla_02" class="ancla_1"></a>
+            <!-- <a id="Ancla_02" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3">
-                <legend class="legend_1">Actualizar reposición</legend>
-
-                    <!-- CANTIDAD EN EXISTENCIA -->
-                    <div id="Contenedor_152">
-                        <label>Unidades cargadas</label>
-                        <?php
-                        if($Disponible == 1){   ?>
-                            <input class="placeholder placeholder_2 placeholder_4" type="text" name="uni_existencia" id="Cantidad" disabled>
-                            <?php
-                        }
-                        else{   ?>                        
-                            <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="uni_existencia" id="Cantidad" value="<?php echo $Cantidad;?>">   <?php
-                        }   ?>
-                        <div class="contInputRadio">     
-                            <input type="checkbox" name="disponible" id="Disponible" <?php if($Disponible == 1){echo 'checked';} ?>/>
-                            <label class="contInputRadio__label small_3" for="Disponible">Siempre en existencia</label>
-                        </div>   
-                    </div>  
-                    <br>
+                <legend class="legend_1">Actualizar reposición</legend> -->
                     
                     <!-- % REPOSICION -->
-                    <label>% de incremento por reposición</label>
+                    <!-- <label>% de incremento por reposición</label>
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="incremento" id="Incremento" value="<?php echo $Incremento;?>">
                     <small class="small_1">Este % sera uzado para estimar cuanto costará el producto para la proxima fecha de reposición, de esta manera se garantiza el suministro de mercancia.</small>
-                    <br>
+                    <br> -->
                     
                     <!-- FECHA DOTACION -->
-                    <label>Fecha dotación</label>
+                    <!-- <label>Fecha dotación</label>
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_dotacion" id="Fecha_Dotacion" value="<?php echo $Fecha_Dotacion;?>" onchange="sumaFecha(7, this.value)"/>
-                    <br>  
+                    <br>   -->
                     
                     <!-- FECHA REPOSICION -->
-                    <label>Fecha proxima reposición (sugerencia 7 dias)</label>
+                    <!-- <label>Fecha proxima reposición (sugerencia 7 dias)</label>
                     <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_reposicion" id="Fecha_Reposicion" value="<?php echo $Fecha_Reposicion;?>">
                     <small class="small_1">La fecha de reposición se recomienda sea de siete dias despues de la fecha de suministro, la tasa de incremento de inflación es alta y se ha observado cambios en 17% mensual en algunos productos de uso cotidiano.</small>
-            </fieldset>   
+            </fieldset>    -->
 
             <a id="Ancla_03" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3">
@@ -233,7 +233,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <section> 
                 <div class="contenedor_83 borde_1">
                     <a class="marcador" href="#Ancla_01">Datos generales</a>
-                    <a class="marcador" href="#Ancla_02">Reposición</a>
+                    <!-- <a class="marcador" href="#Ancla_02">Reposición</a> -->
                     <a class="marcador" href="#Ancla_03">Inf. Adicional</a>
                     <div class="contenedor_49 contenedor_101">
                         <input class="ocultar" type="text" name="ID_Tienda" value="<?php echo $ID_Tienda;?>"/>

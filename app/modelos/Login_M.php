@@ -6,7 +6,25 @@
         }
 
         public function consultarAfiliadosCom($Correo){
-            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_com WHERE correo_AfiCom = :CORREO");
+            $stmt = $this->dbh->prepare(
+                "SELECT * 
+                FROM afiliado_com 
+                WHERE correo_AfiCom = :CORREO");
+            $stmt->bindValue(':CORREO', $Correo, PDO::PARAM_STR);
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function consultarAfiliadosMay($Correo){
+            $stmt = $this->dbh->prepare(
+                "SELECT * 
+                FROM afiliado_may 
+                WHERE correo_AfiMay = :CORREO");
             $stmt->bindValue(':CORREO', $Correo, PDO::PARAM_STR);
             
             if($stmt->execute()){
@@ -35,6 +53,13 @@
             $stmt->execute();
             return $stmt;
         } 
+        
+        public function consultarContrasenaMay($ID_Afiliado){
+            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_mayingreso WHERE ID_AfiliadoMay = :ID_AFILIADO");
+            $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt;
+        } 
 
         public function consultarContrasenaDes($ID_Afiliado){
             $stmt = $this->dbh->prepare("SELECT * FROM afiliado_desingreso WHERE ID_AfiliadoDes = :id_afiliado");
@@ -47,6 +72,15 @@
             $stmt = $this->dbh->prepare("SELECT ID_Tienda, nombre_Tien, ID_AfiliadoCom, publicar_Tien FROM tiendas WHERE ID_AfiliadoCom = :ID_AFILIADO");
 
             $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado, PDO::PARAM_INT);
+
+            $stmt->execute();
+            return $stmt;
+        } 
+
+        public function consultarID_Mayorista($ID_Afiliado){
+            $stmt = $this->dbh->prepare("SELECT ID_Mayorista, nombreMay, ID_AfiliadoMay FROM mayorista WHERE ID_AfiliadoMay = :ID_AFILIADO_MAY");
+
+            $stmt->bindValue(':ID_AFILIADO_MAY', $ID_Afiliado, PDO::PARAM_INT);
 
             $stmt->execute();
             return $stmt;

@@ -310,6 +310,11 @@
         
         //Retorna si una tienda esta abierta o cerrada segun la hora actual(Tiendas_C/Reputacion_ModosDePago)
         public function disponibilidadHoraria($IDs_Tiendas){
+            // echo '<pre>';
+            // print_r($IDs_Tiendas);
+            // echo '</pre>';
+            // exit;
+
             $Nuevo_2 = [];
             $Disponibilidad = [];
 

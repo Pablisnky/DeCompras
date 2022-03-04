@@ -1,7 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function(){autofocus('ContenidoPro')}, false)
-
-document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
-
 document.getElementById("Disponible").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
 
 document.getElementById("Cantidad").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
@@ -23,23 +19,21 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){c
 document.getElementById("ContenidoDes").addEventListener('keydown', function(){valida_LongitudDes(500,'ContenidoDes')}, false)  
 
 document.getElementById("ContenidoDes").addEventListener('keydown', function(){autosize('ContenidoDes')}, false)
-// document.addEventListener("keydown", contarDes, false); 
-// document.addEventListener("keyup", contarDes, false);
-// document.addEventListener("keydown", valida_LongitudDes, false);//valida_Longitud() se encuentra en Funciones_varias.js 
-// document.addEventListener("keyup", valida_LongitudDes, false);//valida_Longitud() se encuentra en 
 
-// document.addEventListener("keydown", contar, false);//contar() se encuentra en Funciones_varias.js 
-// document.addEventListener("keyup", contar, false);//contar() se encuentra en Funciones_varias.js 
-// document.addEventListener("keydown", valida_Longitud, false);//valida_Longitud() se encuentra en Funciones_varias.js 
-// document.addEventListener("keyup", valida_Longitud, false);//valida_Longitud() se encuentra en 
 //************************************************************************************************
 
-///Escucha en cuenta_publicar_V.php por medio de delegación de eventos debido ya que el evento no esta cargado en el DOM por ser una solicitud Ajax   
-    document.getElementById('Contenedor_80').addEventListener('click',function(event){    
+///Escucha en cuenta_publicarMay_V.php por medio de delegación de eventos debido ya que el evento no esta cargado en el DOM por ser una solicitud Ajax   
+    document.getElementById('Contenedor_80May').addEventListener('click',function(event){    
     if(event.target.id == 'Span_5'){
         CerrarModal_X('MostrarSeccion')
     }
 }, false);
+
+//************************************************************************************************
+    function CerrarModal_X(id){
+        // console.log("______Desde CerrarModal_X()______", id)
+        document.getElementById(id).style.display = "none"
+    }
 
 //************************************************************************************************
     //Llamada desde cuenta_publicar_V.php
@@ -110,20 +104,19 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
     // } 
     
 //************************************************************************************************
-    //invocada desde cuenta_publicar.php selecciona una sección donde estará un producto
-    function transferirSeccion(form, id){
-        console.log("______Desde transferirSeccion()______")
+    //invocada desde modal_SeccionesDIsponiblesMay_V.php selecciona una sección donde estará un producto
+    function transferirSeccionMay(form, id){
         //Se declara el array que contendra la cantidad de categorias seleccionadas
         // var TotalCategoria = []
 
         //Se reciben los elementos del formulario mediante su atributo name
-        Seccion = form.seccion
+        SeccionMay = form.seccionMay
 
         //Se recorre todos los elementos para encontrar el que esta seleccionado
-        for(var i = 0; i<Seccion.length; i++){ 
-            if(Seccion[i].checked){
+        for(var i = 0; i<SeccionMay.length; i++){ 
+            if(SeccionMay[i].checked){
                 //Se toma el valor del seleccionado
-                Seleccionado = Seccion[i].value
+                Seleccionado = SeccionMay[i].value
             }            
         } 
 
@@ -284,40 +277,6 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         }
     }
 
-//************************************************************************************************
-    //Añade un nuevo input para crear una nueva caracteristica del producto
-    var incremento = 1
-    function AgregarCaracteristica(){
-        console.log("______Desde AgregarCaracteristica()______")
-        
-        //Contenedor a clonar 
-        let clonar = document.getElementById("Contenedor_82")
-
-        //Contenedor padre
-        let Padre = document.getElementById("Contenedor_128")
-        console.log("div padre", Padre)
-
-        //Se crea el clon
-        let Div_clon = clonar.cloneNode(true)
-        console.log("div clon", Div_clon)
-
-        //Se da un ID al input que se encuentra en el nuevo elemento clonado
-        Div_clon.getElementsByClassName("caract_js")[0].id = 'InputClon_' + incremento 
-                
-        //El valor del nuevo input debe estar vacio
-        Div_clon.getElementsByClassName("caract_js")[0].value = "" 
-
-        //El placeholder del nuevo input 
-        Div_clon.getElementsByClassName("caract_js")[0].placeholder="Nueva caracteristica del producto "
-        
-        //Se indica el elemento que sera referencia para insertar el nuevo nodo
-        let BotonAgregar = document.getElementById("Label_5")
-
-        //Se especifica el div padre y la posición donde se insertará el nuevo nodo
-        Padre.insertBefore(Div_clon, BotonAgregar)
-        incremento++
-    }
-
 //************************************************************************************************ 
     //Elimina imagenes previsualizadas
     function EliminarImagenSecundaria(Etiqueta, SeleccionImagenes){
@@ -351,3 +310,13 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         PadreImagen.removeChild(Etiqueta);
     }
 
+    function deshabilitarCantidad(id){
+        if(document.getElementById(id).disabled == false){
+            document.getElementById(id).value= ""
+            document.getElementById(id).disabled = true
+        }
+        else{
+            document.getElementById(id).disabled = false
+            document.getElementById(id).focus()
+        }
+    }

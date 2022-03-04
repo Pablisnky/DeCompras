@@ -29,7 +29,7 @@
                 endif;
             endforeach;
             ?> 
-            <section class="contenedor_15--tarjeta"  id="<?php echo $ID_Tienda;?>">
+            <section class="contenedor_15--tarjeta" id="<?php echo $ID_Tienda;?>">
                 <!-- LADO FRONTAL DE TARJETA -->
                 <div class="contenedor_15 borde_1 borde_1--color adelante">
 
@@ -64,6 +64,7 @@
                         </div>
                     </article>
                     
+                    <!-- BOTONES POSTERIORES-->
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
                             <label class="boton boton--corto" onclick="AtrasTarjeta(<?php echo $ID_Tienda;?>)">Sobre nosotros</label>
@@ -313,7 +314,7 @@
                         </div>
                     </div> 
                 
-                    <!-- BOTONES -->
+                    <!-- BOTONES ANTERIORES-->
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
                             <label class="boton boton--corto" onclick="FrenteTarjeta(<?php echo $ID_Tienda;?>)">Salir</label>

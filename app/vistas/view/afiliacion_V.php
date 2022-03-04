@@ -61,12 +61,14 @@
                 </ul>
             </div>
         </div>
-
-        <div class="contenedor_41">
-            <a class="boton boton--altoDosLinneas" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a>
-
-            <a class="boton boton--altoDosLinneas" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Unirme como comerciante</a>
-        </div>  
+        
+        <article>
+            <div class="contenedor_41">
+                <!-- <a class="boton boton--altoDosLinneas" href="<?php echo RUTA_URL . '/Registro_C/registroDespachador';?>">Unirme como despachador</a> -->
+                <a class="boton boton--altoDosLinneas" href="<?php echo RUTA_URL . '/Registro_C/registroComerciante';?>">Unirme como comerciante</a>
+                <a class="boton boton--altoDosLinneas" href="<?php echo RUTA_URL . '/Registro_C/registroMayorista';?>">Unirme como mayorista</a>
+            </div>  
+        </article>
     </div>
 </section>
 

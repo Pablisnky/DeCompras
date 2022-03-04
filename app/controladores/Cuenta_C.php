@@ -361,7 +361,7 @@
             $Caracteristicas = $this->ConsultaCuenta_M->consultarCaracteristicasProducto($this->ID_Tienda, $ID_Producto);
             
             //CONSULTAN los datos de reposicion del producto
-            $Reposicion = $this->ConsultaCuenta_M->consultarReposicionProducto($ID_Producto);
+            // $Reposicion = $this->ConsultaCuenta_M->consultarReposicionProducto($ID_Producto);
 
             //CONSULTAN la imagenes principal del producto
             $ImagenPrin = $this->ConsultaCuenta_M->consultarImagenPrincipal($ID_Producto);
@@ -386,7 +386,7 @@
                 'imagenPrin' => $ImagenPrin, //ID_Imagen, nombre_img
                 'imagenesVarias' => $Imagenes, //ID_Imagen, nombre_img
                 'dolarHoy' => $this->PrecioDolar->Dolar,
-                'reposicion'=> $Reposicion
+                // 'reposicion'=> $Reposicion
             ];
 
             // echo '<pre>';
@@ -581,10 +581,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/';
 
                         //usar en local
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1024,7 +1024,8 @@
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
                 //SECCION DATOS DEL PRODUCTO
-                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBs']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0) && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])){
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBs']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0)){
+                    // && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, 'producto', FILTER_SANITIZE_STRING),
@@ -1032,14 +1033,14 @@
                         // 'Descripcion' => preg_replace('[\n|\r|\n\r|\]','',filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
                         'PrecioBs' => filter_input(INPUT_POST, "precioBs", FILTER_SANITIZE_STRING),
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
-                        'Cantidad' => $_POST['cantidad'],
+                        'Cantidad' => empty($_POST['cantidad']) ? 0 : $_POST['cantidad'],
                         'Producto_Destacado' => empty($_POST['produc_destacado']) ? 0 : 1,
-                        'Disponible' => empty($_POST['disponible']) ? 0 : $_POST['disponible'],
+                        'Disponible' => empty($_POST['disponible']) ? 0 : 1,
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
-                        'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING),
-                        'Fecha_dotacion' => $_POST['fecha_dotacion'],
-                        'Incremento' => $_POST['incremento'],
-                        'Fecha_reposicion' => $_POST['fecha_reposicion']
+                        'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING)
+                        // 'Fecha_dotacion' => $_POST['fecha_dotacion'],
+                        // 'Incremento' => $_POST['incremento'],
+                        // 'Fecha_reposicion' => $_POST['fecha_reposicion']
                     ];
                     // echo '<pre>';
                     // print_r($RecibeProducto);
@@ -1078,7 +1079,7 @@
                 $ID_Opcion = $this->ConsultaCuenta_M->insertarOpcionesProducto($RecibeProducto);
                 
                 //Se INSERTA la informacion de reposicion
-                $this->ConsultaCuenta_M->insertarReposicion($RecibeProducto, $ID_Producto);
+                // $this->ConsultaCuenta_M->insertarReposicion($RecibeProducto, $ID_Producto);
 
                 if($_POST['caracteristica'][0] != ''){
                     //Se INSERTAN las caracteristicas del producto
@@ -1126,10 +1127,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                             // usar en local
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
@@ -1171,10 +1172,10 @@
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
                         //Usar en remoto
-                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'].'/proyectos/PidoRapido/public/images/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES['imagenes']['name'][$i]);
@@ -1193,7 +1194,8 @@
         //Invocado desde cuenta_editar_prod_V.php actualiza la información de un producto
         public function recibeAtualizarProducto(){
             //Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBolivar']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0) && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])){
+            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBolivar']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0)){
+            // {&& !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])
 
                 $RecibeProducto = [
                     //Recibe datos del producto a actualizar
@@ -1206,15 +1208,15 @@
                     'PrecioBolivar' => filter_input(INPUT_POST, 'precioBolivar', FILTER_SANITIZE_STRING),
                     'PrecioDolar' => filter_input(INPUT_POST, 'precioDolar', FILTER_SANITIZE_STRING),
                     'Cantidad' => empty($_POST['uni_existencia']) ? 0 : $_POST['uni_existencia'],
-                    'Disponible' => empty($_POST['disponible']) ? 0 : $_POST['disponible'],
+                    'Disponible' => empty($_POST['disponible']) ? 0 : 1,
                     'ID_Producto' => filter_input(INPUT_POST, 'id_producto', FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, 'id_opcion', FILTER_SANITIZE_STRING),
                     'Puntero' => filter_input(INPUT_POST, 'puntero', FILTER_SANITIZE_STRING),
                     'ID_Imagen' => filter_input(INPUT_POST, 'id_imagen', FILTER_SANITIZE_STRING),
-                    'producto_destacado' => empty($_POST['pro_destacado']) ? 0 : 1,
-                    'FechaDotacion' => $_POST['fecha_dotacion'],
-                    'Incremento' => $_POST['incremento'],
-                    'FechaReposicion' => $_POST['fecha_reposicion']
+                    'producto_destacado' => empty($_POST['pro_destacado']) ? 0 : 1
+                    // 'FechaDotacion' => $_POST['fecha_dotacion'],
+                    // 'Incremento' => $_POST['incremento'],
+                    // 'FechaReposicion' => $_POST['fecha_reposicion']
                 ];
                 // echo '<pre>';
                 // print_r($RecibeProducto);
@@ -1252,10 +1254,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                         //usar en local
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -1313,10 +1315,10 @@
                                 // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                                 //Usar en remoto
-                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
 
                                 //usar en local
-                                $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
+                                // $directorio_5 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/';
 
                                 //se muestra el directorio temporal donde se guarda el archivo
                                 //echo $_FILES['imagen']['tmp_name'];
@@ -1482,10 +1484,10 @@
                 $NombreImagenEliminar = $KeyImagenes['nombre_img'];
 
                 //Usar en remoto
-                // unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
                     
                 //usar en local
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/' . $NombreImagenEliminar);
+                // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/productos/' . $NombreImagenEliminar);
                 
             endforeach;
               
@@ -1586,10 +1588,10 @@
                     || ($tipo_imgSeccion == 'image/jpg') || ($tipo_imgSeccion == 'image/png')){
 
                     //Usar en remoto
-                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/secciones/';
+                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/secciones/';
 
                     // usar en local
-                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/secciones/';
+                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/secciones/';
 
                     //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                     move_uploaded_file($_FILES['img_Seccion']['tmp_name'], $directorio_6.$nombre_imgSeccion);

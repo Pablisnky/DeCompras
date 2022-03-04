@@ -55,7 +55,7 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
 
 //Cuando carga la página vitrina_V.php se registran listener para el evento clic en toda la ventana, es decir, cada vez que se hace click en esa página se esta llamanado a la función Pre_incremento  y Pre_decremento 
 document.addEventListener("click", Pre_decremento)
-document.addEventListener("click", Pre_incremento)
+document.addEventListener("click", Pre_incremento) 
 
 //Escucha desde modal_fueraHorario_V.php
 if(document.getElementById("Label_1")){
@@ -156,7 +156,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }
     
 //************************************************************************************************
-    //invocada desde opciones_V.php añade un producto al carrito   
+    //invocada desde opciones_Mayorista_V.php añade un producto al carrito   
     function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion, ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan, existencia, ID_BotonMas, ID_BloqueoMas){
         // console.log("______Desde agregarOpcion()______") 
         // console.log(form)    
@@ -543,7 +543,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }    
 
 //************************************************************************************************
-    //invocada desde A_Vitrina.js por medio de llamar_PedidoEnCarrito(), muestra "La orden de compra"
+    //invocada desde A_Vitrina_Mayorista.js por medio de llamar_PedidoEnCarrito(), muestra "La orden de compra"
     function PedidoEnCarrito(ValorDolar){
         // console.log("______Desde PedidoEnCarrito()______", Number(ValorDolar))
         
@@ -570,7 +570,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("MontoTotalDolares").value = SeparadorMiles(MontoTotalDolares)
         
         //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlContenedor[]
-        console.log(AlContenedor)
+        // console.log(AlContenedor)
         //1.- Se convierte el JSON en un string
         var sendJSON = JSON.stringify(AlContenedor)
         //2.- Se envia al input que lo almacena en la vista carrito_V.php
@@ -588,7 +588,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     
 //************************************************************************************************
     //Identifica los elementos de la sección donde se hizo click.
-    function verOpciones(Cont_Seccion, Seccion){ 
+    function verOpcionesMayorista(Cont_Seccion, Seccion){ 
         //Captura el valor del id dinanmico de la seccion donde se hizo click
         localStorage.setItem('ContSeccion', Cont_Seccion)         
         LS_ID_Cont_Seccion = localStorage.getItem('ContSeccion')
@@ -1312,6 +1312,15 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("InputTransferencia").style.display = "block"
         document.getElementById("CaptureTransferencia").style.display = "none"
     }
+
+//************************************************************************************************ 
+    //Impide que se sigan introduciendo caracteres al escribir el codigo de despacho
+    function codigoDespacho(CodigoDespacho){
+        let TotalDigitos = CodigoDespacho.length
+        if(TotalDigitos == 5){ //6 es la cantidad de digitos del codigo de despacho
+            MuestraEnvioFactura(CodigoDespacho)
+        }
+    } 
 
 //************************************************************************************************
     //Muestra el contenedor del capture transferencia

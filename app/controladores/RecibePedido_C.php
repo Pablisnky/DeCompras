@@ -145,11 +145,16 @@
                 }
                     
                 //Se INSERTAN los datos del usuario en la BD si el usuario acepta
-                if($RecibeDatosUsuario['Suscribir'] == 'Suscrito_Si'){
-                    $Suscrito = 1;
-                    $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Suscrito);
+                if($RecibeDatosUsuario['Suscribir'] == 'Suscribir'){
+                    //Se consulta si el usuario ya existe en la BD
+                    $UsuarioPedido = $this->ConsultaRecibePedido_M->consultarUsuario($RecibeDatosUsuario['Cedula']);
+                    if($UsuarioPedido == Array()){
+                        $Suscrito = 1;
+                        $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Suscrito);
+                    }
                 }
                 else{
+                    //Se insertan pero no se recuerdan porque e usuario no aceptó guardar datos
                     $Suscrito = 0;
                     $this->ConsultaRecibePedido_M->insertarUsuario($RecibeDatosUsuario, $Suscrito);
                 }
@@ -285,13 +290,13 @@
 
                 // CORREOS
                 // **************************************** 
+                echo 'Correos';
                 //Carga la plantilla de correo recibo de compra dirigida al usuario
                 $this->correo('reciboCompra_mail', $DatosCorreo); 
 
                 //Carga la plantilla de correo orden de compra dirigida al cliente y al marketplace
                 $this->correo('ordenCompra_mail', $DatosCorreo); 
 
-                // ****************************************
                 $this->vista('header/header');
                 $this->vista('view/RecibePedido_V', $Datos);
             }

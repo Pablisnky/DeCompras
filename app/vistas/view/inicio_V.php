@@ -9,6 +9,7 @@
         <input class="section_1--radios" type="radio" name="slider" id="Portada_3"/> 
     </div>
     
+    <!-- EXPLICACION PWA -->
     <div class="contenedor_98 contenedor_98--inicio" id="Aplicacion_PWA">
         <div>
             <h3 class="footer__h3 footer__h3--inicio">APLICACIÓN</h3>
@@ -18,7 +19,7 @@
     </div>
 
     <div class="contenedor_34--main" id="ImgPortada">
-        <div class="borrar section_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
+        <div class="borrar imgPortada" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada.jpg');">
             <div class="contenedor_37" id="Contenedor_37">
                 <h1 class="h1_2" id="Titulo">PedidoRemoto</h1>
                 <h2 class="h2_4" id="SubTitulo">MarketPlace</h2>
@@ -36,7 +37,7 @@
                         <label><span>compras y despachos</span> en <br class="br_2">tiendas de tu ciudad.</label>
                     </li>
                     <li>
-                        <label>Operamos en<br> <span>San Felipe e <br> Independencia</span><br> estado Yaracuy.</label>
+                        <label>Operamos en<br> <span>San Felipe e <br class="br_2"> Independencia</span><br> estado Yaracuy.</label>
                     </li>
                     <li>
                         <label>Pide desde tú casa, y<span> <br>llevamos hasta <br class="br_2">tú casa</span></label>

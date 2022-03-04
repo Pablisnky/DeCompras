@@ -55,6 +55,56 @@
             }
         }
 
+        public function Transaccion_registrarMayorista($RecibeDatos, $ClaveCifrada){  
+            try{  
+                $this->dbh->beginTransaction();  
+                
+                // *********** OPERACION 1 *******************
+                //Se INSERTAN los datos personales de la persona responsable mayorista en la BD y se retorna el ID del registro recien insertado
+                $stmt = $this->dbh->prepare("INSERT INTO afiliado_may(nombre_AfiMay, correo_AfiMay) VALUES (:Nombre,:Correo)");
+
+                $stmt->bindParam(':Nombre', $nombre);
+                $stmt->bindParam(':Correo', $correo);
+
+                $nombre = $RecibeDatos['Nombre_AfiMay'];
+                $correo = $RecibeDatos['Correo_AfiMay'];
+                
+                //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
+                $stmt->execute();
+                $ID_AfiliadoCom = $this->dbh->lastInsertId();
+
+                // *********** OPERACION 2 *******************  
+                //Se INSERTAN los datos de acceso (CONTRASEÑA) de la cuenta mayorista en la BD                  
+                $stmt = $this->dbh->prepare("INSERT INTO afiliado_mayingreso(ID_AfiliadoMay, claveCifradaMay) VALUES (:ID_Usuario, :Clave)");
+
+                $stmt->bindParam(':ID_Usuario', $ID_AfiliadoCom);
+                $stmt->bindParam(':Clave', $ClaveCifrada);
+                
+                $stmt->execute();  
+
+                // *********** OPERACION 3 ******************* 
+                //Se INSERTAN los datos de la distribuidora mayorista en la BD y se retorna el ID del registro recien insertado        
+                $stmt = $this->dbh->prepare("INSERT INTO mayorista(nombre_Mayorista, ID_AfiliadoMay, fecha_afiliacion_Mayorista, hora_afiliacion_Mayorista) VALUES (:NOMBRE_MAYORISTA, :ID_AFILIADO_MAYORISTA, CURDATE(), time_format(NOW(), '%H:%i'))");
+    
+                $stmt->bindParam(':NOMBRE_MAYORISTA', $nombre_T);
+                $stmt->bindParam(':ID_AFILIADO_MAYORISTA', $responsable_T);
+    
+                $nombre_T = $RecibeDatos['Nombre_tienda'];
+                $responsable_T = $ID_AfiliadoCom;
+                
+                //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
+                $stmt->execute();
+                $this->dbh->lastInsertId();
+                    
+                $this->dbh->commit();  
+            }
+            catch(PDOException $e){
+                $this->dbh->rollback();  
+                $this->error = $e->getMessage();
+                echo 'Error al conectarse con la base de datos: ' . $this->error;
+            }
+        }
+
         //INSERTA los datos del afiliado comercial
         public function insertarAfiliadoComercial($RecibeDatos){  
             $stmt = $this->dbh->prepare("INSERT INTO afiliado_com(nombre_AfiCom, correo_AfiCom) VALUES (:Nombre,:Correo)");
@@ -248,6 +298,21 @@
             }
         }  
 
+        //CONSULTA los correos de mayoristas existentes en la BD
+        public function consultarCorreoMay(){  
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_AfiMay 
+                FROM afiliado_may"
+            );
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
+
         //CONSULTA los correos de despachadores existentes en la BD
         public function consultarCorreoDes(){  
             $stmt = $this->dbh->prepare(
@@ -300,4 +365,18 @@
                 return false;
             }
         }      
+
+        //CONSULTA las claves de mayoristas existentes  en la BD
+        public function consultarClaveMay(){ 
+            $stmt = $this->dbh->prepare(
+                "SELECT claveCifradaMay
+                FROM afiliado_mayingreso"
+            );
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }    
     }

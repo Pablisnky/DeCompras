@@ -22,13 +22,15 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/MediaQuery_EstilosPidoRapido_H800.css?v=<?php echo rand( );?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/public/css/EstilosPedidoRemoto_slider.css?v=<?php echo rand();?>"/>
 		
-		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
-		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>	
+		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>	
 		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
+		
+		<!-- CDN iconos de fuentes de google-->
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
 
 		<!-- CDN iconos de font-awesome-->
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
-		
+
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5JFWZ0GQYB"></script>
 		<script>
@@ -48,7 +50,8 @@
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>" rel="noopener noreferrer"><i class="fas fa-address-card icono_1 icono_6"></i>Afiliación</a></li>
-					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Ciudades_C';?>"><i class="fas fa-shopping-basket icono_1 icono_6"></i>Ver Tiendas</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Ciudades_C';?>"><i class="fas fa-shopping-basket icono_1 icono_6"></i>Tiendas</a></li>
+					<li><a class="a_3A" href="<?php echo RUTA_URL . '/VitrinaMayorista_C';?>"><i class="fas fa-truck-moving icono_1 icono_6"></i>Mayoristas</a></li>
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>"><i class="fas fa-user-check icono_1 icono_6"></i>Inicio sesión</a></li>
 				</ul>
 			</nav>
@@ -58,18 +61,19 @@
         <div class="contIconoBuscador borde_1" id="Contenedor_34">
             <span><i class="fas fa-search icono_3"></i></span>
         </div>
+		
 		<noscript>
 			<p>Bienvenido a PedidoRemoto.com</p>
 			<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
 		</noscript>
 		
-	<!--div utilizado para tapar el body mientras esta el menu responsive -->
-	<div class="tapa" id="Tapa">
-		<div class="tapa-logo">
-			<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
-			<h2 class="h2_5 font--white">MarketPlace</h2>
+		<!--div utilizado para tapar el body mientras esta el menu responsive -->
+		<div class="tapa" id="Tapa">
+			<div class="tapa-logo">
+				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+				<h2 class="h2_5 font--white">MarketPlace</h2>
+			</div>
 		</div>
-	</div>
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

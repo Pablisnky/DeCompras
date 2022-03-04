@@ -34,15 +34,14 @@ function conexionAJAX(){
 // document.getElementById("Seccion").addEventListener('click', Llamar_seccion, false)
 
 //-------------------------------------------------------------------------------------------------
-function Llamar_seccion(ID_Producto){    
-    var url = "../../Cuenta_C/Secciones/" + ID_Producto
+function Llamar_seccionSeleccionadaMay(ID_Producto){    
+    var url = "../../Mayorista_C/SeccionesSeleccionadasMay/" + ID_Producto
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_seccion
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null")
 }                                                           
 function respuesta_seccion(){
-    console.log(peticion.readyState)
     if(peticion.readyState == 4){
         if(peticion.status == 200){ 
             //Se remueve el contenido añadido al contenedor_47 (especificamente el preloder)

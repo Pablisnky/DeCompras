@@ -42,7 +42,11 @@
                         $this->Horario = new CalculoApertura_C;
 
                         //se declara un array donde su primera posicion es otro array, esto es asi porque el metodo disponibilidadHoraria en CalculoApertura_C.php lo exige
-                        $this->TiendasEnCategoria = array(array('ID_Tienda' => $row['ID_Tienda']));
+                        $this->TiendasEnCategoria = array('ID_Tienda' => $row['ID_Tienda']);
+                        // echo '<pre>';
+                        // print_r($this->TiendasEnCategoria);
+                        // echo '</pre>';
+                        // exit();
                         
                         $DisponibilidaHoraria = $this->Horario->disponibilidadHoraria($this->TiendasEnCategoria);
                         // echo '<pre>';

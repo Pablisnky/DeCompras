@@ -28,8 +28,8 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $Producto = $arr["producto"]; 
                 $Destacar = $arr["destacar"];
                 $Opcion = $arr["opcion"];
-                $PrecioBolivar = number_format($arr["precioBolivar"], "0", "", ".");//Se cambia el formato del precio, viene sin separador de miles; 0= sin decimales, "" =sin coma de decimales
-                $PrecioDolar = $arr["precioDolar"];
+                $PrecioBolivar = number_format($arr["precioBolivar"], "2", ",", ".");//Se cambia el formato del precio, viene sin separador de miles
+                $PrecioDolar = number_format($arr["precioDolar"], "2", ",", ".");
                 $Disponible = $arr['disponible'];
                 $Existencia = $arr["cantidad"];
                 $ID_Producto = $arr["ID_Producto"];

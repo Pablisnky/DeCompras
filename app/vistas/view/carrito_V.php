@@ -135,12 +135,12 @@
                             <div class="contFlex contFlex--suscribir">
                                 <P class="rompe_Flex">Desea que sus datos se guarden para futuras compras</P>
                                 <div class="contInputRadio" id="">     
-                                    <input type="radio" name="suscrito" id="Suscrito_No" value="Suscrito_No"/>
-                                    <label class="contInputRadio__label" for="Suscrito_No">No guardar</label>
+                                    <input type="radio" name="suscrito" id="No_Suscribir" value="No_Suscribir"/>
+                                    <label class="contInputRadio__label" for="No_Suscribir">No guardar</label>
                                 </div>  
-                                <div class="contInputRadio" id="">
-                                    <input type="radio" name="suscrito" id="Suscrito_Si" value="Suscrito_Si" checked/>
-                                    <label class="contInputRadio__label" for="Suscrito_Si">Guardar</label>
+                                <div class="contInputRadio">
+                                    <input type="radio" name="suscrito" id="Suscribir" value="Suscribir" checked/>
+                                    <label class="contInputRadio__label" for="Suscribir">Guardar</label>
                                 </div>  
                             </div>
 

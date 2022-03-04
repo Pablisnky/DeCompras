@@ -39,7 +39,10 @@
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>"><i class="fas fa-home icono_1"></i>Inicio</a></li>
 					<li><a class="a_3" id="Afiliacion" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>"><i class="fas fa-address-card icono_1"></i>Afiliación</a></li>
-					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Ciudades_C';?>"><i class="fas fa-shopping-basket icono_1"></i>Ver Tiendas</a></li>
+
+					<li><a class="a_3" id="Tiendas" href="<?php echo RUTA_URL . '/Ciudades_C';?>"><i class="fas fa-shopping-basket icono_1"></i>Tiendas</a></li>
+
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/VitrinaMayorista_C';?>"><i class="fas fa-truck-moving icono_1"></i>Mayoristas</a></li>
 					<li><a class="a_3" id="Inicio" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>"><i class="fas fa-user-check icono_1"></i>Inicio sesión</a></li>
 				</ul>
 			</nav>

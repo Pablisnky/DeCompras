@@ -31,7 +31,6 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
     function llamar_verificaCorreo(id, Afiliado){
-        // console.log("_____Desde llamar_verificaCorreo()_____")
         A = document.getElementById(id).value;
         var url="../Registro_C/VerificarCorreo/" + A + "/" + Afiliado;
         http_request.open('GET',url,true);     
@@ -52,7 +51,6 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
 function llamar_verificaClave(Clave, Afiliado){
-    // console.log("_____Desde llamar_verificaClave()_____",Clave + " | " + Afiliado)
     if(Clave == ""){
         return
     }
