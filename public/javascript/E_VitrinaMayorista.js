@@ -148,14 +148,6 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 }, false);  
 
 //************************************************************************************************
-    //invocada desde carrito_V.php 
-    function MuestraEnvioFactura(){
-        // console.log("______Desde MuestraEnvioFactura()______") 
-        document.getElementById("MuestraEnvioFactura").style.display = "block"
-        document.getElementById("Contenedor_26").style.display = "none"
-    }
-    
-//************************************************************************************************
     //invocada desde opciones_Mayorista_V.php añade un producto al carrito   
     function agregarOpcion(form, ID_Etiqueta, ID_Cont_Leyenda, ID_InputCantidad, Seccion, ID_InputSeccion, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputLeyenda, ID_Cont_Producto, ID_InputDisplayCan, existencia, ID_BotonMas, ID_BloqueoMas){
         // console.log("______Desde agregarOpcion()______") 
@@ -1316,9 +1308,10 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
 //************************************************************************************************ 
     //Impide que se sigan introduciendo caracteres al escribir el codigo de despacho
     function codigoDespacho(CodigoDespacho){
+        console.log(CodigoDespacho)
         let TotalDigitos = CodigoDespacho.length
-        if(TotalDigitos == 5){ //6 es la cantidad de digitos del codigo de despacho
-            MuestraEnvioFactura(CodigoDespacho)
+        if(TotalDigitos == 6){ //6 es la cantidad de digitos del codigo de despacho
+            Llamar_datosMinorista(CodigoDespacho);
         }
     } 
 

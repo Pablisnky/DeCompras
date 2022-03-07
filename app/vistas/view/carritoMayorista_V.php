@@ -61,19 +61,13 @@
                     </div>
                 </div>
 
-            <!-- CODIGODE DESPACHO -->
-            <input class="input--despacho" placeholder="Código de despacho" onkeydown="codigoDespacho(this.value)"/>
-            <!-- <article>
-                <div class="contBoton" id="Contenedor_26">
-                    <label class="boton boton--alto" onclick="ocultarPedido()">Regresar a secciones</label>
-                    <label class="boton boton--alto" onclick="MuestraEnvioFactura()">Confirmar <br class="br_2"> orden</label>
-                </div>
-            </article> -->
+            <!-- CODIGODE DESPACHO -->  
+            <input class="input--despacho" id="CodigoDespacho" placeholder="Código de despacho" onkeydown="codigoDespacho(this.value)" onkeyup="codigoDespacho(this.value)"/>
         </div>
     </section>
 
-    <section> 
-        <div class="contOculto" id="MuestraEnvioFactura">
+    <section>         
+        <div class="contOculto" id="Muestra_datosMinorista">
             <form action="../../RecibePedido_C" method="POST" enctype="multipart/form-data" onsubmit="return validarDespacho()" id="DatosUsuario">
                 
                 <!-- DATOS DEL MINORISTA -->
@@ -85,46 +79,53 @@
 
                         <div class="contFlex" style="position: relative;">
                             <!-- NOMBRE MINORISTA-->
-                            <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="nombreUsuario" id="NombreUsuario" autocomplete="off" placeholder="Nombre" onkeydown="blanquearInput('NombreUsuario')"/>
+                            <div class="contenedor_29 contenedor_29--label">
+                                <label>Nombre</label>
+                                <input class="input_13 borde_1" type="text" name="nombreMinorista" id="NombreMinorista"/>
                             </div>
 
                             <!-- RIF MINORISTA -->
-                            <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="apellidoUsuario" id="ApellidoUsuario" autocomplete="off" placeholder="Apellido" onkeydown="blanquearInput('ApellidoUsuario')"/>
+                            <div class="contenedor_29 contenedor_29--label">
+                                <label>RIF</label>
+                                <input class="input_13 borde_1" type="text" name="rifMinorista" id="RifMinorista"/>
                             </div>
 
-                            <!-- DIRECCION MINORISTA -->
-                            <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="cedulaUsuario" id=
-                            "CedulaUsuario" autocomplete="off" placeholder="Cedula / RIF (solo números)"  onkeydown="blanquearInput('CedulaUsuario')" onkeyup="formatoMiles(this.value, 'CedulaUsuario')"/>
+                            <!-- CODIGO MINORISTA -->
+                            <div class="contenedor_29 contenedor_29--label">
+                                <label>Código de despacho</label>
+                                <input class="input_13 borde_1" type="text" name="codigoMinorista"  id="CodigoMinorista"/>
                             </div>
 
                             <!-- TELEFONO MINORISTA -->
-                            <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="text" name="telefonoUsuario" id="TelefonoUsuario" autocomplete="off" placeholder="Telefono (solo números)" onkeydown="blanquearInput('TelefonoUsuario')"/>
+                            <div class="contenedor_29 contenedor_29--label">
+                                <label>Telefono</label>
+                                <input class="input_13 borde_1" type="text" name="telefonoMinorista" id="TelefonoMinorista"/>
                             </div>
 
                             <!-- CORREO MINORISTA -->
-                            <div class="contenedor_29">
-                                <input class="input_13 borde_1" type="correo" name="correoUsuario" id="CorreoUsuario" autocomplete="off" placeholder="correo" onkeydown="blanquearInput('CorreoUsuario')"/>
+                            <div class="contenedor_29 contenedor_29--label">
+                                <label>Correo</label>
+                                <input class="input_13 borde_1" type="correo" name="correoMinorista"  id="CorreoMinorista"/>
+                            </div>
+
+                            <!-- ZONA MINORISTA -->
+                            <div class="contenedor_29 contenedor_29--label">
+                                <label>Zona</label>
+                                <input class="input_13 borde_1" type="correo" name="zonaMinorista"  id="ZonaMinorista"/>
                             </div>
 
                             <!-- DIRECCION -->
                             <div class="contenedor_72">
-                                <textarea class="textarea_1 borde_1" name="direccionUsuario" id="DireccionUsuario" autocomplete="off" placeholder="Dirección" onkeydown="blanquearInput('DireccionUsuario')"></textarea>
+                                <label>Dirección</label>
+                                <textarea class="textarea_1 borde_1" name="direccionMinorista" id="DireccionMinorista"></textarea>
                             </div>  
                         </div>   
+                        <div class="contFlex50">
+                            <input class="ocultar" type="text" id="Pedido" name="pedido"/>
+                            <input class="boton boton--alto boton--largo botonJS" type="submit" value="Generar pedido"/>
+                        </div>
                     </div>
                 </article>    
-
-                <div class="contFlex50">
-
-                    <input class="ocultar" type="text" id="Pedido" name="pedido"/>
-
-                    <!-- <label class="boton boton--alto">Regresar a secciones</label> -->
-                    <input class="boton boton--alto botonJS" type="submit" value="Comprar"/>
-                </div>
             </form>
         </div>
     </section>

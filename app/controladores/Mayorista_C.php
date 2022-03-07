@@ -523,11 +523,140 @@
 
         //llamado desde header_AfiMay.php
         public function vendedores(){
+            //CONSULTA las vendedores de un mayorista especifico
+            $Vendedores = $this->ConsultaMayorista_M->consultarVendedoresMay($this->ID_Mayorista);
+            
             $Datos = [
                 'seccionesMay' => $this->SeccionesMay, //ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay
+                'vendedores' => $Vendedores //ID_AfiliadoVen, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, zona_AfiVen, codigo_AfiVen, Status_AfiVen
             ];
 
             $this->vista('header/header_AfiMay', $Datos); 
             $this->vista('view/cuenta_mayorista/cuenta_vendedorMay_V', $Datos);
+        }
+
+        //llamado desde cuenta_vendedorMay_V
+        public function agregarVendedor(){
+            //CONSULTA las vendedores de un mayorista especifico
+            // $Vendedores = $this->ConsultaMayorista_M->consultarVendedoresMay($this->ID_Mayorista);
+
+            $Datos = [
+                'seccionesMay' => $this->SeccionesMay //ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay
+            ];
+
+            $this->vista('header/header_AfiMay', $Datos); 
+            $this->vista('view/cuenta_mayorista/cuenta_agregarvendedorMay_V', $Datos);
+        }
+        //Invocado en cuenta_agregarvendedorrMay_V.php recibe el formulario para cargar un nuevo vendedor
+        public function recibeAgregarVendedorrMay(){
+            // $verifica_2 = $_SESSION['verifica_2'];  
+            // if($verifica_2 == 1906){// Anteriormente en se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga la página que carga los productos.
+            //     unset($_SESSION['verifica_2']);//se borra la sesión verifica. 
+
+                //Se reciben todos los campos del formulario, desde cuenta_publicarMay_V.php se verifica que son enviados por POST y que no estan vacios
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['nombreVen']) && !empty($_POST['apellidoVen']) && !empty($_POST['cedulaVen']) && !empty($_POST['telefonoVen']) && !empty($_POST['correoVen']) && !empty($_POST['zonaVen']) && !empty($_POST['codigoVen'])){
+                    $RecibeVendedor = [
+                        //Recibe datos del producto que se va a cargar al sistema
+                        'Nombre_Ven' => filter_input(INPUT_POST, 'nombreVen', FILTER_SANITIZE_STRING),
+                        'Apellido_Ven' => filter_input(INPUT_POST, 'apellidoVen', FILTER_SANITIZE_STRING),
+                        // 'Descripcion' => preg_replace('[\n|\r|\n\r|\]','',filter_input(INPUT_POST, "descripcion", FILTER_SANITIZE_STRING)), //evita los saltos de lineas realizados por el usuario al separar parrafos
+                        'Cedula_Ven' => filter_input(INPUT_POST, "cedulaVen", FILTER_SANITIZE_STRING),
+                        'Telefono_Ven' => filter_input(INPUT_POST, "telefonoVen", FILTER_SANITIZE_STRING),
+                        'Correo_Ven' => filter_input(INPUT_POST, 'correoVen', FILTER_SANITIZE_STRING),
+
+                        'Direccion_Ven' => filter_input(INPUT_POST, 'direccionVen', FILTER_SANITIZE_STRING),
+                        'Zona_Ven' => filter_input(INPUT_POST, 'zonaVen', FILTER_SANITIZE_STRING),
+                        'Fechaincorporacion_Ven' => filter_input(INPUT_POST, 'fechaincorporacionVen', FILTER_SANITIZE_STRING),
+                        'Fechadesincorporacion_Ven' => filter_input(INPUT_POST, 'fechadesincorporacionVen', FILTER_SANITIZE_STRING),
+                        'Status_Ven' => filter_input(INPUT_POST, 'statusVen', FILTER_SANITIZE_STRING),
+                        'Codigo_Ven' => filter_input(INPUT_POST, 'codigoVen', FILTER_SANITIZE_STRING),
+                    ];
+                    // echo '<pre>';
+                    // print_r($RecibeVendedor);
+                    // echo '</pre>';
+                    // exit;
+                }
+                else{
+                    echo 'Llene todos los campos del formulario ';
+                    echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+                    exit();
+                }
+                                
+                //IMAGEN VENDEDOR
+                //********************************************************
+                //Si se selecionó alguna imagen entra
+                if($_FILES['foto_vendedor']["name"] != ''){
+                    $nombre_imgVendedor = $_FILES['foto_vendedor']['name'] != '' ? $_FILES['foto_vendedor']['name'] : 'imagen.png';
+                    $tipo_imgVendedor = $_FILES['foto_vendedor']['type'] != '' ? $_FILES['foto_vendedor']['type'] : 'image/png';
+                    $tamanio_imgVendedor = $_FILES['foto_vendedor']['size'] != '' ?  $_FILES['foto_vendedor']['size'] : '28,0 KB';
+
+                    // echo 'Nombre de la imagen = ' . $nombre_imgVendedor . '<br>';
+                    // echo 'Tipo de archivo = ' .$tipo_imgVendedor .  '<br>';
+                    // echo 'Tamaño = ' . $tamanio_imgVendedor . '<br>';
+                    // echo 'Tamaño maximo permitido = 2.000.000' . '<br>';// en bytes
+                    // echo 'Ruta del servidor = ' . $_SERVER['DOCUMENT_ROOT'] . '<br>';
+                    // exit();
+
+                    //Si existe foto_vendedor y tiene un tamaño correcto (maximo 2Mb)
+                    if(($nombre_imgVendedor == !NULL) AND ($tamanio_imgVendedor <= 2000000)){
+                        //indicamos los formatos que permitimos subir a nuestro servidor
+                        if(($tipo_imgVendedor == 'image/jpeg')
+                            || ($tipo_imgVendedor == 'image/jpg') || ($tipo_imgVendedor == 'image/png')){
+
+                            //Ruta donde se guardarán las imágenes que subamos la variable superglobal
+                            //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+
+                            //Usar en remoto
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/equipo';
+
+                            // usar en local
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/equipo';
+
+                            //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                            move_uploaded_file($_FILES['foto_vendedor']['tmp_name'], $directorio_2.$nombre_imgVendedor);
+
+                            //Se INSERTA la imagen principal y devuelve el ID_Imagen
+                            // $ID_Imagen = $this->ConsultaMayorista_M->insertaImagenVendedor($ID_Vendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor);
+                            
+                            //Se INSERTA la dependenciatransitiva entre secciones e imagenes
+                            // $this->ConsultaMayorista_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
+                        }
+                        else{
+                            //si no cumple con el formato
+                            echo 'Solo puede cargar imagenes con formato jpg, jpeg o png';
+                            echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                            exit();
+                        }
+                    }
+                    else{//si se pasa del tamaño permitido
+                        echo 'La imagen principal es demasiado grande ';
+                        echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                        exit();
+                    }
+                }
+                else{//si no se selecciono ninguna imagen principal
+                    $nombre_imgVendedor = $_FILES['foto_vendedor']['name'] = 'Perfil.jpg';
+                    $tipo_imgVendedor = $_FILES['foto_vendedor']['name'] = 'jpg';
+                    $tamanio_imgVendedor = $_FILES['foto_vendedor']['name'] = '20,0 KB';
+                }
+                
+                //********************************************************
+                //Las siguientes consultas se deben realizar por medio de Transacciones BD
+                //Se INSERTA el vendedor en la BD y se retorna el ID recien insertado
+                $this->ConsultaMayorista_M->insertarVendeodr($this->ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor);
+
+                //Se INSERTA la contraseña del vendedore en BD
+                // $this->ConsultaMayorista_M->insertarContraeniaVendedor($RecibeVendedor);
+               
+                // echo '<pre>';
+                // print_r($ID_SeccionMay);
+                // echo '</pre>';
+                // exit;
+                
+                // $this->Productos();
+            // }
+            // else{
+            //     $this->Productos('Todos');
+            // } 
         }
     }

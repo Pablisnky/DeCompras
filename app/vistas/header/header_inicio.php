@@ -42,11 +42,11 @@
 		</script>
     </head>
     <body style="overflow-y:hidden">				
-		<header class="header header--inicio contenedor_116">
-			<!-- icono hamburguesa para responsive -->
+		<header class="header">
+			<!-- ICONO HAMBURGUESA -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
 			
-			<!-- Barra de navegación -->
+			<!-- BARRA DE NAVEGACION -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>" rel="noopener noreferrer"><i class="fas fa-address-card icono_1 icono_6"></i>Afiliación</a></li>
@@ -57,7 +57,7 @@
 			</nav>
 		</header>
 
-		<!-- Icono de busqueda Lupa -->
+		<!-- ICONO DE BUSQUEDA LUPA -->
         <div class="contIconoBuscador borde_1" id="Contenedor_34">
             <span><i class="fas fa-search icono_3"></i></span>
         </div>
@@ -67,7 +67,7 @@
 			<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
 		</noscript>
 		
-		<!--div utilizado para tapar el body mientras esta el menu responsive -->
+		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
 		<div class="tapa" id="Tapa">
 			<div class="tapa-logo">
 				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>

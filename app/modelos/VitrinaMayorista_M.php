@@ -19,10 +19,10 @@
             }
         }
         
-        //SELECT con las tiendas afiliadas en una ciudad y una categoria especifica
+        //SELECT con los mayoristas afiliados
         public function consultarMayorista(){
             $stmt = $this->dbh->query(
-                "SELECT ID_Mayorista, nombreMay
+                "SELECT ID_Mayorista, nombreMay, fotografiaMay, telefonoMay, direccionMay, municipioMay, estadoMay
                 FROM mayorista"
             );      
                         

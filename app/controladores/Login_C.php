@@ -60,17 +60,24 @@
             //Se CONSULTA si el correo existe como comerciante
             $usuarioCom = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
             
-            echo '<pre>';
-            print_r($usuarioCom); 
-            echo '</pre>';
+            // echo '<pre>';
+            // print_r($usuarioCom); 
+            // echo '</pre>';
             // exit();
 
             //Se CONSULTA si el correo existe como mayorista
             $usuarioMay = $this->ConsultaLogin_M->consultarAfiliadosMay($Correo);
 
-            echo '<pre>';
-            print_r($usuarioMay); 
-            echo '</pre>';
+            // echo '<pre>';
+            // print_r($usuarioMay); 
+            // echo '</pre>';
+            // exit();
+            
+            $usuarioDes = $this->ConsultaLogin_M->consultarAfiliadosDes($Correo);
+
+            // echo '<pre>';
+            // print_r($usuarioDes); 
+            // echo '</pre>';
             // exit();
 
             if($usuarioCom != Array() && $usuarioMay != Array()){//Existe como comerciante y como mayorista
@@ -93,17 +100,15 @@
 
                 $CuentaMay = true;
             }
-            else{
-                $usuarios = $this->ConsultaLogin_M->consultarAfiliadosDes($Correo);
-                $ID_Afiliado = $usuarios[0]['ID_AfiliadoDes'];
-                $CorreoBD = $usuarios[0]['correo_AfiDes'];
-                $Nombre = $usuarios[0]['nombre_AfiDes'];
+            else if($usuarioDes != Array() && $usuarioDes[0]['ID_AfiliadoDes'] != ""){
+                $ID_Afiliado = $usuarioDes[0]['ID_AfiliadoDes'];
+                $CorreoBD = $usuarioDes[0]['correo_AfiDes'];
+                $Nombre = $usuarioDes[0]['nombre_AfiDes'];
                                 
-                $CuentaCom = false;
-                echo '<pre>';
-                print_r($usuarios); 
-                echo '</pre>';
-                exit();
+                $CuentaDes = true;
+            }
+            else{                        
+                header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
             }
         
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
@@ -207,7 +212,7 @@
                     } 
                 }
                 //Entra en cuenta de despachador
-                else{
+                else if(isset($CuentaDes)){
                     $usuarios_2= $this->ConsultaLogin_M->consultarContrasenaDes($ID_Afiliado);
                     while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
                         $ClaveBD = $arr['claveCifradaDes'];
@@ -227,7 +232,10 @@
                     else{ 
                         header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
                     } 
-                }                     
+                }  
+                else{
+                    echo "Usuario o contraseña no son validos";
+                }                   
             }   
         }
         

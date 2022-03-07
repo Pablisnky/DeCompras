@@ -3,7 +3,7 @@
 <section class="section_3 section_9" id="Section_3"> 
     <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
-            <!-- Icono flecha atras -->
+            <!-- ICONO FLECHA ATRAS -->
             <i class="fas fa-arrow-left" style="display: inline;"></i>
             <label class="label_9" id="Label_9" style="display: inline;">Secciones</label>
         </div>        

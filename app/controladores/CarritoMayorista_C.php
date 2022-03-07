@@ -72,16 +72,21 @@
             $this->vista("view/carritoMayorista_V", $Datos);
         }        
         
-        public function UsuarioRegistrado($Cedula){
-            //Se CONSULTA si el usuario esta suscrito
-            $Usuario = $this->ConsultaCarrito_M->consultarUsuario($Cedula);
+        public function informacionMinorista($CodigoDespacho){
+            //Se CONSULTA si el minorista esta suscrito
+            $Minorista = $this->ConsultaCarritoVitrina_M->consultarMinorista($CodigoDespacho);
 
-            if($Usuario == Array ()){
-                echo 'Usuario no registrado';
+            // echo "<pre>";
+            // print_r($Minorista);
+            // echo "</pre>";          
+            // exit();
+
+            if($Minorista == Array ()){
+                echo 'Minorista no registrado';
             }
             else{
                 //Se separa cada variable pooque llegara a Javascript como una cadena de texto, luego se convertira en un array utilizando las , como caracter separador 
-                echo $Usuario[0]['nombre_usu'] . ',' . $Usuario[0]['apellido_usu'] . ',' .  $Usuario[0]['cedula_usu'] . ',' .$Usuario[0]['telefono_usu'] . ',' . $Usuario[0]['correo_usu'] . ',' . $Usuario[0]['estado_usu'] . ',' . $Usuario[0]['ciudad_usu'] . ',' . $Usuario[0]['direccion_usu'] . ',' . $Usuario[0]['ID_Usuario'];
+                echo $Minorista[0]['nombre_AfiMin'] . ',' . $Minorista[0]['rif_AfiMin'] . ',' .  $Minorista[0]['telefono_AfiMin'] . ',' .$Minorista[0]['correo_AfiMin'] . ',' . $Minorista[0]['zona_AfiVen'] . ',' . $Minorista[0]['codigo_AfiMin'] . ',' . $Minorista[0]['direccion_AfiMin'];
             }
         }
     }

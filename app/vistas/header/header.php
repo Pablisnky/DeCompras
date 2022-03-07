@@ -25,17 +25,12 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body>	
-		<header class="header borde_bottom--claro">
-			<!-- icono para responsive -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><i class="fas fa-bars icono_3" id="Span_6"></i></label>
-
-			<div class="contenedor_111">
-				<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
-				<h2 class="h2_5">MarketPlace</h2>
-			</div>
+		<header class="header">
+			<!-- ICONO HAMBURGUESA -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
 			
-			<!-- Barra de navegación -->
-			<nav id="MenuResponsive" class="header__menuResponsive">
+			<!-- BARRA DE NAVEGACION -->
+			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>"><i class="fas fa-home icono_1"></i>Inicio</a></li>
 					<li><a class="a_3" id="Afiliacion" href="<?php echo RUTA_URL . '/Menu_C/afiliacion';?>"><i class="fas fa-address-card icono_1"></i>Afiliación</a></li>
@@ -47,13 +42,25 @@
 				</ul>
 			</nav>
 		</header>   
+
+		<!-- MEMBRETE -->
+		<div class="contenedor_111">
+			<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+			<h2 class="h2_5">MarketPlace</h2>
+		</div>
+
 		<noscript>
 			<p>Bienvenido a PedidoRemoto.com</p>
 			<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
 		</noscript>
 
-	<!--div utilizado para tapar el body mientras esta el menu responsive -->
-	<div class="tapa" id="Tapa"></div>
+		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
+		<div class="tapa" id="Tapa">
+			<div class="tapa-logo">
+				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+				<h2 class="h2_5 font--white">MarketPlace</h2>
+			</div>
+		</div>
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

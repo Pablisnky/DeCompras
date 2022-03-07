@@ -1,16 +1,14 @@
-<?php // require(RUTA_APP . '/vistas/modal/modal_codigoMayorista_V.php');?>
-
 <div class="section_5">	
-    <!-- IMAGEN DE TIENDA SOLO MOSTRADO EN MOVILES -->
+    <!-- IMAGEN DE MAYORISTA SOLO MOSTRADO EN MOVILES -->
     <?php                    
-    // if($Fotografia[0]['fotografia_Tien'] == 'tienda.png'){    ?> 
-        <!-- <div class="contenedor_109 contenedor_109--imgDefecto" style="background-image: url('<?php //echo RUTA_URL?>/public/images/tiendas/tienda.png');"></div>   -->
+    if($Datos['fotoMayorista'] == 'tienda.png'){    ?> 
+        <div class="contenedor_109 contenedor_109--imgDefecto" style="background-image: url('<?php //echo RUTA_URL?>/public/images/tiendas/tienda.png');"></div>  
         <?php
-    // } 
-    // else{   ?>
-        <!-- <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>     -->
+    } 
+    else{ ?>
+        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/<?php echo $Datos['fotoMayorista'];?>');"></div>    
         <?php
-    // }   ?>
+    }   ?>
 
     <div class="contenedor_156"> 
         <aside class="aside_1">
@@ -94,18 +92,5 @@
 <!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carritoMayorista_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->
 <div id="Mostrar_Orden"></div>
 
-<!-- Trae por medio de Ajax la dirección de la tienda, la información es suministrada por direccion_V.php invocada por la función () en este mismoarchivo-->
-<!-- <div id="Mostrar_Direccion"></div> -->
-
-<!-- Trae por medio de Ajax las ofertas de la tienda, la información es suministrada por ofertas_V.php invocada por la función () en este mismoarchivo-->
-<!-- <div id="Mostrar_Ofertas"></div> -->
-
-<!-- Trae por medio de Ajax lo más pedido de la tienda, la información es suministrada por LoMasPedido_V.php invocada por la función () en este mismoarchivo-->
-<!-- <div id="Mostrar_LoMasPedido"></div> -->
-
-<!-- Trae por medio de Ajax la ventana de alerta que se va a eliminar un producto del pedido -->
-<!-- <div id="Mostrar_Alert"></div> -->
-
 <script src="<?php echo RUTA_URL . '/public/javascript/E_VitrinaMayorista.js?v=' . rand();?>"></script>
-<script src="<?php echo RUTA_URL . '/public/javascript/A_Vitrina_Mayorista.js?v=' . rand();?>"></script>
-
+<script src="<?php echo RUTA_URL . '/public/javascript/A_VitrinaMayorista.js?v=' . rand();?>"></script>

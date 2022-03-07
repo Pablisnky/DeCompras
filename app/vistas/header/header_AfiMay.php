@@ -24,16 +24,15 @@
     </head>
     <body>	
 		<header class="header header--tienda borde_bottom--claro">
-
-			<!-- icono menu hamburguesa para responsive -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>
+			<!-- ICONO HAMBURGUESA -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
 			
             <!-- $this->Nombre_Mayorista = $_SESSION['Nombre_Mayorista']; -->
-			<div class="contenedor_111--tienda">
+			<div class="header_membrete--tienda">
 				<label class="h1_10 font--negro label--block"><?php echo $_SESSION['Nombre_Mayorista']?></label>
 			</div> 
 
-			<!-- Bara de navegación -->
+			<!-- BARRA DE NAVEGACION -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Mayorista_C/vendedores'?>">Vendedores</a></li>
@@ -61,7 +60,12 @@
         </div>
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
-	<div class="tapa" id="Tapa"></div>
+	<div class="tapa" id="Tapa">
+		<div class="tapa-logo">
+			<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+			<h2 class="h2_5 font--white">MarketPlace</h2>
+		</div>
+	</div>
 	
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

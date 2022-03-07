@@ -123,17 +123,16 @@
                 return false;
             }
         }
-
        
         //SELECT de los datos de un usuario registrado
-        public function consultarUsuario($Cedula){
+        public function consultarMinorista($CodigoDespacho){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, estado_usu, ciudad_usu, direccion_usu, ID_Usuario
-                 FROM usuarios 
-                 WHERE cedula_usu  = :CEDULA AND suscrito = 1"
+                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, zona_AfiVen, codigo_AfiMin, direccion_AfiMin
+                 FROM afiliado_min  
+                 WHERE codigo_AfiMin = :CODIGODESPACHO"
             );
 
-            $stmt->bindParam(':CEDULA', $Cedula, PDO::PARAM_STR);
+            $stmt->bindParam(':CODIGODESPACHO', $CodigoDespacho, PDO::PARAM_STR);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

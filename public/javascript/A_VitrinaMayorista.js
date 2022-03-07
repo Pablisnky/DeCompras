@@ -32,7 +32,7 @@ function conexionAJAX(){
 //-------------------------------------------------------------------------------------------------
 //Muestra la orden de compra
 function llamar_PedidoEnCarrito(ID_Mayorista, ValorDolar){
-    console.log("______Desde llamar_PedidoEnCarrito()______",ID_Mayorista + "/" + ValorDolar)
+    // console.log("______Desde llamar_PedidoEnCarrito()______",ID_Mayorista + "/" + ValorDolar)
     var url="../../CarritoMayorista_C/index/" + ID_Mayorista
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
@@ -100,46 +100,44 @@ function respuesta_OpcionesMayorista(){
 }
 
 //****************************************************************************************************
-function Llamar_UsuarioRegistrado(cedula){
-    var url="../../Carrito_C/UsuarioRegistrado/" + cedula
+function Llamar_datosMinorista(CodigoDespacho){
+    var url="../../CarritoMayorista_C/informacionMinorista/" + CodigoDespacho
     http_request.open('GET', url, true);    
-    peticion.onreadystatechange = respuesta_UsuarioRegistrado;
+    peticion.onreadystatechange = respuesta_datosMinorista;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null");
 
 }                                                         
-function respuesta_UsuarioRegistrado(){
+function respuesta_datosMinorista(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){                        
             //Coloca el cursor en el top de la pagina
             // window.scroll(0, 0)
 
-            // Se recibe desde php (Carrito_C/UsuarioRegistrado()) una cadena de texto que se guarda en A,
             var A = peticion.responseText 
 
             // Lavariable A se convierte en un Array
             A = A.split(','); 
-
+            console.log(A)
+           
             // E caso de que el usuario no este registrado se recibira un string con "Usuario no registado"
-            if(A[0] == "Usuario no registrado"){
-                alert("Usuario no registrado")        
-                document.getElementById("Cedula_Usuario").value = "";
-                document.getElementById("Cedula_Usuario").focus();
+            if(A[0] == "Minorista no registrado"){
+                alert("Código de despacho no registrado")        
+                document.getElementById("CodigoDespacho").value = "";
+                document.getElementById("CodigoDespacho").focus();
                 return
             }
             else{
-                document.getElementById("Mostrar_Cedula").style.display = "none"
-                document.getElementById("ModalTipoUsuario").style.display = "none"
+                document.getElementById("Muestra_datosMinorista").style.display = "block"
+                // document.getElementById("Contenedor_26").style.display = "none"
 
-                document.getElementById('NombreUsuario').value =  A[0];  
-                document.getElementById('ApellidoUsuario').value =  A[1]; 
-                document.getElementById('CedulaUsuario').value =  A[2]; 
-                document.getElementById('TelefonoUsuario').value =  A[3]; 
-                document.getElementById('CorreoUsuario').value =  A[4];  
-                document.getElementById('Estado').value =  A[5];      
-                document.getElementById('Ciudad').value =  A[6];    
-                document.getElementById('DireccionUsuario').value =  A[7];  
-                document.getElementById('ID_Usuario').value =  A[8];  
+                document.getElementById('NombreMinorista').value =  A[0];  
+                document.getElementById('RifMinorista').value =  A[1]; 
+                document.getElementById('TelefonoMinorista').value =  A[2]; 
+                document.getElementById('CorreoMinorista').value =  A[3]; 
+                document.getElementById('ZonaMinorista').value =  A[4];  
+                document.getElementById('CodigoMinorista').value =  A[5];      
+                document.getElementById('DireccionMinorista').value =  A[6]; 
             }
         } 
         else{

@@ -34,18 +34,17 @@
     </head>
     <body onload="nobackbutton()">	
 		<header class="header header--tienda borde_bottom--claro">
-
-			<!-- icono menu hamburguesa para responsive -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>
+			<!-- ICONO HAMBURGUESA -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
 			
-			<!-- $Nombre_Tienda viene de Vitrina_C-->
-			<div class="contenedor_111--tienda">
+			<!-- NOMBRE TIENDA-->
+			<div class="">
 				<label class="h1_10 font--negro label--block"><?php echo $Nombre_Tienda?></label>
 				<h2 class="h2_5 h2_12 font--negro"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 			</div> 
 
-			<!-- Bara de navegación -->
-			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda">
+			<!-- BARRA DE NAVEGACION -->
+			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda header__nav_1">
 				<ul id="MenuContenedor">
 					<!-- <li><a class="a_3" href="#"><i class="fas fa-gift icono_1"></i>Ofertas</a></li>
 					<li><a class="a_3" href="#"><i class="far fa-chart-bar icono_1"></i>Lo más pedido</a></li> -->
@@ -56,9 +55,9 @@
 			</nav>
 		</header>
 
-		<!-- icono de buscador -->
-        <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
-			<i class="fas fa-search contIconoBuscador__span"></i>
+		<!-- ICONO DE BUSQUEDA LUPA -->
+        <div class="contIconoBuscador borde_1" id="Contenedor_34">
+			<i class="fas fa-search icono_3"></i>
         </div>
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->

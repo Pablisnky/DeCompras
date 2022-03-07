@@ -10,6 +10,7 @@
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
             ocultarErrores();
         }     
+        
         //llamado desde header_inicio
         public function index(){   
             //Se CONSULTAN los mayoristas que estan afiliados       
@@ -21,7 +22,7 @@
             // exit;
             
             $Datos = [
-                'mayoristas_afiliados' => $this->Mayorista, //ID_Mayorista, nombreMay
+                'mayoristas_afiliados' => $this->Mayorista, //ID_Mayorista, nombreMay, fotografiaMay, telefonoMay, direccionMay, municipioMay, estadoMay
             ];
 
             $this->vista("header/header");
@@ -37,7 +38,8 @@
             $DatosAgrupados = explode(',', $DatosAgrupados);
 
             $ID_Mayorista = $DatosAgrupados[0];
-            $NombreMayorista = $DatosAgrupados[1];
+            $NombreMayorista = $DatosAgrupados[1]; 
+            $Foto_Mayorista = $DatosAgrupados[2];
             // exit();
 
             //Solicita el precio del dolar
@@ -53,6 +55,7 @@
             $Datos = [
                 'id_mayorista' => $ID_Mayorista,
                 'nombreMayorista' => $NombreMayorista,
+                'fotoMayorista' => $Foto_Mayorista,
                 'categoriaMayorista' => $Secciones, //ID_Mayorista, ID_SeccionMay, seccionMay,nombre_img_seccionMay 
                 'dolarHoy' => $this->PrecioDolar->Dolar
             ];
