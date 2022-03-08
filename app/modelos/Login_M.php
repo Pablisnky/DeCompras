@@ -46,6 +46,21 @@
                 return false;
             }
         }
+
+        public function consultarAfiliadosVen($Correo){
+            $stmt = $this->dbh->prepare(
+                "SELECT * 
+                FROM afiliado_ven 
+                WHERE correo_AfiVen = :CORREO");
+            $stmt->bindValue(':CORREO', $Correo, PDO::PARAM_STR);
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
         
         public function consultarContrasenaCom($ID_Afiliado){
             $stmt = $this->dbh->prepare("SELECT * FROM afiliado_comingreso WHERE ID_Afiliado = :id_afiliado");
@@ -56,6 +71,13 @@
         
         public function consultarContrasenaMay($ID_Afiliado){
             $stmt = $this->dbh->prepare("SELECT * FROM afiliado_mayingreso WHERE ID_AfiliadoMay = :ID_AFILIADO");
+            $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt;
+        } 
+        
+        public function consultarContrasenaVen($ID_Afiliado){
+            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_veningreso WHERE ID_AfiliadoVen = :ID_AFILIADO");
             $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt;
@@ -85,6 +107,16 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function consultarID_AfiliadoVen($ID_Afiliado){
+            $stmt = $this->dbh->prepare("SELECT ID_Mayorista, nombre_AfiVen, codigo_AfiVen FROM afiliado_ven  WHERE ID_AfiliadoVen = :ID_AFILIADO_VEN");
+
+            $stmt->bindValue(':ID_AFILIADO_VEN', $ID_Afiliado, PDO::PARAM_INT);
+
+            $stmt->execute();
+            return $stmt;
+        }
+
 
         public function consultarUsuarioRecordado($Cookie_usuario){
             $stmt = $this->dbh->prepare("SELECT correo_AfiCom FROM afiliado_com WHERE ID_AfiliadoCom = :ID_AFILIADO ");

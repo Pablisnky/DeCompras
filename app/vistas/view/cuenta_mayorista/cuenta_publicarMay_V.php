@@ -11,7 +11,7 @@ if(!empty($_SESSION["ID_Mayorista"])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <div class="contenedor_42">  
-        <form action="<?php echo RUTA_URL; ?>/Mayorista_C/recibeProductoPublicarMay" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
+        <form action="<?php echo RUTA_URL; ?>/CuentaMayorista_C/recibeProductoPublicarMay" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
 
             <a id="Ancla_01" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3"> 

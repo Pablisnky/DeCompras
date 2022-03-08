@@ -1,5 +1,5 @@
 <?php
-    class Mayorista_M extends Conexion_BD{
+    class CuentaMayorista_M extends Conexion_BD{
 
         public function __construct(){ 
             parent::__construct();  
@@ -140,7 +140,7 @@
         } 
 
         //INSERT de datos de vendedor
-        public function insertarVendeodr($ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor){
+        public function insertarVendeodr($ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor, $Ale_CodigoVendedor){
             $stmt = $this->dbh->prepare(
                 "INSERT INTO afiliado_ven (ID_Mayorista, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, correo_AfiVen, direccion_AfiVen, zona_AfiVen, Fechaincorporación_AfiVen, Fechadesincorporación_AfiVen, Status_AfiVen, nombre_imgAfiVen, tipo_imgAfiVen, tamanio_imgAfiVen, codigo_AfiVen) 
                 VALUES(:ID_MAYORISTA, :NOMBRE_AFIVEN, :APELLIDO_AFIVEN, :CEDULA_AFIVEN, :TELEFONO_AFIVEN, :CORREO_AFIVEN, :DIRECCION_AFIVEN, :ZONA_AFIVEN, CURDATE(), CURDATE(), :STATUS_AFIVEN, :NOMBREIMG_AFIVEN, :TIPOIMG_AFIVEN, :TAMANIOIMG_AFIVEN, :CODIGO_AFIVEN)"
@@ -159,11 +159,35 @@
             $stmt->bindParam(':NOMBREIMG_AFIVEN', $nombre_imgVendedor);
             $stmt->bindParam(':TIPOIMG_AFIVEN', $tipo_imgVendedor);
             $stmt->bindParam(':TAMANIOIMG_AFIVEN', $tamanio_imgVendedor);
-            $stmt->bindParam(':CODIGO_AFIVEN', $RecibeVendedor['Codigo_Ven']);
+            $stmt->bindParam(':CODIGO_AFIVEN', $Ale_CodigoVendedor);
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
+
+            //se recupera el ID del registro insertado
+            return $this->dbh->lastInsertId();
         } 
+
+        //Se INSERTAN los datos de acceso de un vendedor
+        public function insertarContraeniaVendedor($ID_Vendedor, $ClaveVenCifrada){         
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO afiliado_veningreso(ID_AfiliadoVen, claveCifradaVen) 
+                VALUES (:ID_AFILIADOVEN, :CLAVE)"
+            );
+
+            //Se vinculan los valores de las sentencias preparadas
+            //ztmt es una abreviatura de statement 
+            $stmt->bindParam(':ID_AFILIADOVEN', $ID_Vendedor);
+            $stmt->bindParam(':CLAVE', $ClaveVenCifrada);
+            
+            //Se ejecuta la inserción de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
 
 

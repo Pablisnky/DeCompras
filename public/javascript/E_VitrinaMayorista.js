@@ -535,9 +535,9 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     }    
 
 //************************************************************************************************
-    //invocada desde A_Vitrina_Mayorista.js por medio de llamar_PedidoEnCarrito(), muestra "La orden de compra"
+    //invocada desde A_VitrinaMayorista.js por medio de llamar_PedidoEnCarrito(), pinta los datos de "La orden de compra"
     function PedidoEnCarrito(ValorDolar){
-        // console.log("______Desde PedidoEnCarrito()______", Number(ValorDolar))
+        console.log("______Desde PedidoEnCarrito()______", Number(ValorDolar))
         
         //Se muestra el monto de la compra en "La Orden". (sin carga por despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)
@@ -562,10 +562,11 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
         document.getElementById("MontoTotalDolares").value = SeparadorMiles(MontoTotalDolares)
         
         //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlContenedor[]
-        // console.log(AlContenedor)
+        console.log(AlContenedor)
         //1.- Se convierte el JSON en un string
         var sendJSON = JSON.stringify(AlContenedor)
-        //2.- Se envia al input que lo almacena en la vista carrito_V.php
+        console.log(sendJSON)
+        //2.- Se envia al input que lo almacena en la vista carritoMayorista_V.php
         document.getElementById('Pedido').value = sendJSON
 
         //Se muestra todo el pedido (cantidad - producto - precio unitario - precio por productos)

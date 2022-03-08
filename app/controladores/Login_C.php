@@ -72,11 +72,20 @@
             // print_r($usuarioMay); 
             // echo '</pre>';
             // exit();
-            
+
+            //Se CONSULTA si el correo existe como despachador            
             $usuarioDes = $this->ConsultaLogin_M->consultarAfiliadosDes($Correo);
 
             // echo '<pre>';
             // print_r($usuarioDes); 
+            // echo '</pre>';
+            // exit();
+
+            //Se CONSULTA si el correo existe como vendedor            
+            $usuarioVen = $this->ConsultaLogin_M->consultarAfiliadosVen($Correo);
+
+            // echo '<pre>';
+            // print_r($usuarioVen); 
             // echo '</pre>';
             // exit();
 
@@ -106,6 +115,13 @@
                 $Nombre = $usuarioDes[0]['nombre_AfiDes'];
                                 
                 $CuentaDes = true;
+            }
+            else if($usuarioVen != Array() && $usuarioVen[0]['ID_AfiliadoVen'] != ""){
+                $ID_Afiliado = $usuarioVen[0]['ID_AfiliadoVen'];
+                $CorreoBD = $usuarioVen[0]['correo_AfiVen'];
+                $Nombre = $usuarioVen[0]['nombre_AfiVen'];
+                                
+                $CuentaVen = true;
             }
             else{                        
                 header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
@@ -201,11 +217,40 @@
                             $Nombre_Mayorista = $arr["nombreMay"];
                         }
                                                                         
-                        //Se crea la sesion que guarda el ID_Mayorista          
+                        //Se crea la sesion que guarda el ID_Mayorista SOLICITADA EN TODOS LOS ARCHIVOS DE CUENTA MAYORISTA         
                         $_SESSION['ID_Mayorista'] = $ID_Mayorista;            
                         $_SESSION['Nombre_Mayorista'] = $Nombre_Mayorista;        
                             
-                        header('location:' . RUTA_URL . '/Mayorista_C/admin');    
+                        header('location:' . RUTA_URL . '/CuentaMayorista_C/admin');    
+                    }
+                    else{ 
+                        header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
+                    } 
+                }
+                //Entra en cuenta de vendedor
+                else if(isset($CuentaVen)){
+                    $usuarios_2= $this->ConsultaLogin_M->consultarContrasenaVen($ID_Afiliado);
+                    while($arr = $usuarios_2->fetch(PDO::FETCH_ASSOC)){
+                        $ClaveBD = $arr['claveCifradaVen'];
+                    }          
+
+                    //se descifra la contraseña con un algoritmo de desencriptado.
+                    if($Correo == $CorreoBD AND $Clave == password_verify($Clave, $ClaveBD)){
+                        //SELECT para hallar el nombre del vendedor
+                        $Consulta= $this->ConsultaLogin_M->consultarID_AfiliadoVen($ID_Afiliado);
+                        while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
+                            $ID_Mayorista = $arr["ID_Mayorista"];
+                            $Nombre_AfiVen = $arr["nombre_AfiVen "];
+                            $Codigo_AfiVen = $arr["codigo_AfiVen"];
+                        }
+                                                                        
+                        //Se crea la sesion que guarda el ID_Mayorista SOLICITADA EN TODOS LOS ARCHIVOS DE CUENTA MAYORISTA         
+                        $_SESSION['ID_Mayorista'] = $ID_Mayorista; 
+                        $_SESSION['ID_Vendedor'] = $ID_Afiliado;            
+                        $_SESSION['Nombre_Vendedor'] = $Nombre_AfiVen;         
+                        $_SESSION['Codigo_Vendedor'] = $Codigo_AfiVen;        
+                            
+                        header('location:' . RUTA_URL . '/CuentaMayorista_C/adminVen');    
                     }
                     else{ 
                         header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');

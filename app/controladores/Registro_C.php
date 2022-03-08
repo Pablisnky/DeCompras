@@ -89,7 +89,7 @@
                 //se cifran la contraseña del afiliado con un algoritmo de encriptación
                 $ClaveCifrada= password_hash($RecibeDatos["Clave_Afcom"], PASSWORD_DEFAULT);
                               
-                $this->ConsultaRegistro_M->Transaccion_registrarTienda($RecibeDatos,$ClaveCifrada);
+                $this->ConsultaRegistro_M->Transaccion_registrarTienda($RecibeDatos, $ClaveCifrada);
                                                             
                 // //Se INSERTAN el campo de horario en la BD
                 // $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);

@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <!--tabla es rellenada desde E_Vitrina.js por medio de PedidoEnCarrito()-->
+                                <!--tabla es rellenada desde E_VitrinaMayorista.js por medio de PedidoEnCarrito()-->
                                 <td><input type="text" class="ocultar" id="Input_cantidadCar"/></td>
                                 <td><input type="text" class="ocultar" id="Input_productoCar"/></td>
                                 <td><input type="text" class="ocultar" id="Input_precioCar"/></td>
@@ -68,7 +68,7 @@
 
     <section>         
         <div class="contOculto" id="Muestra_datosMinorista">
-            <form action="../../RecibePedido_C" method="POST" enctype="multipart/form-data" onsubmit="return validarDespacho()" id="DatosUsuario">
+             <form action="../../RecibePedidoMayorista_C" method="POST" enctype="multipart/form-data"  id="DatosUsuario"> <!-- onsubmit="return validarDespacho()" -->
                 
                 <!-- DATOS DEL MINORISTA -->
                 <article>
@@ -81,43 +81,43 @@
                             <!-- NOMBRE MINORISTA-->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>Nombre</label>
-                                <input class="input_13 borde_1" type="text" name="nombreMinorista" id="NombreMinorista"/>
+                                <input class="input_13 borde_1" type="text" id="NombreMinorista"/>
                             </div>
 
                             <!-- RIF MINORISTA -->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>RIF</label>
-                                <input class="input_13 borde_1" type="text" name="rifMinorista" id="RifMinorista"/>
+                                <input class="input_13 borde_1" type="text" id="RifMinorista"/>
                             </div>
 
                             <!-- CODIGO MINORISTA -->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>Código de despacho</label>
-                                <input class="input_13 borde_1" type="text" name="codigoMinorista"  id="CodigoMinorista"/>
+                                <input class="input_13 borde_1" type="text" id="CodigoMinorista" name="codigoMinorista"/>
                             </div>
 
                             <!-- TELEFONO MINORISTA -->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>Telefono</label>
-                                <input class="input_13 borde_1" type="text" name="telefonoMinorista" id="TelefonoMinorista"/>
+                                <input class="input_13 borde_1" type="text" id="TelefonoMinorista"/>
                             </div>
 
                             <!-- CORREO MINORISTA -->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>Correo</label>
-                                <input class="input_13 borde_1" type="correo" name="correoMinorista"  id="CorreoMinorista"/>
+                                <input class="input_13 borde_1" type="correo" id="CorreoMinorista"/>
                             </div>
 
                             <!-- ZONA MINORISTA -->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>Zona</label>
-                                <input class="input_13 borde_1" type="correo" name="zonaMinorista"  id="ZonaMinorista"/>
+                                <input class="input_13 borde_1" type="correo" id="ZonaMinorista"/>
                             </div>
 
                             <!-- DIRECCION -->
                             <div class="contenedor_72">
                                 <label>Dirección</label>
-                                <textarea class="textarea_1 borde_1" name="direccionMinorista" id="DireccionMinorista"></textarea>
+                                <textarea class="textarea_1 borde_1" id="DireccionMinorista"></textarea>
                             </div>  
                         </div>   
                         <div class="contFlex50">

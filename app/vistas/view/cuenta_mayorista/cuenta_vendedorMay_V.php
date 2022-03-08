@@ -3,18 +3,11 @@
 // if(!empty($_SESSION["ID_Afiliado"])){  
 
     // $ID_Tienda = $_SESSION["ID_Tienda"];
-    ?>
-    
-    <!-- CDN iconos de font-awesome-->
-    <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
-
-    <!-- CDN libreria JQuery, necesaria para la previsualización de la imagen--> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
+    ?>    
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
 
         <!-- LISTADO VENDEDORES -->      
-        <a class="boton a--vendedor" href="<?php echo RUTA_URL . '/Mayorista_C/agregarVendedor'?>">Agregar</a>     
+        <a class="boton a--vendedor" href="<?php echo RUTA_URL . '/CuentaMayorista_C/agregarVendedor'?>">Agregar</a>     
         <table class="tabla_inventario">
             <thead class="tabla_inventario--thead">
                 <th class="">Nombre</th>

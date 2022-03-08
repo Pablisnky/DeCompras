@@ -1,14 +1,14 @@
 <?php    
-//se invoca sesion con el ID_Afiliado creada en validarSesion.php para autentificar la entrada a la vista
-if(!empty($_SESSION["ID_Mayorista"])){
-    $ID_Mayorista = $_SESSION["ID_Mayorista"];
+//se invoca sesion con el ID_Mayorista creada en validarSesion.php para autentificar la entrada a la vista
+if(!empty($_SESSION['ID_Mayorista'])){
+    $ID_Mayorista = $_SESSION['ID_Mayorista'];
       ?>       
         
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <div class="contenedor_42">  
-        <form action="<?php echo RUTA_URL; ?>/Mayorista_C/recibeAgregarVendedorrMay" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
+        <form action="<?php echo RUTA_URL; ?>/CuentaMayorista_C/recibeAgregarVendedorrMay" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
 
             <a id="Ancla_01" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3"> 
@@ -54,6 +54,7 @@ if(!empty($_SESSION["ID_Mayorista"])){
                             <option>Zona</option>
                             <option>Barquisimeto</option>
                             <option>Cabudare</option>
+                            <option>Carora</option>
                             <option>Yaritagua</option>
                         </select>
 
@@ -62,15 +63,15 @@ if(!empty($_SESSION["ID_Mayorista"])){
                         <br>
 
                         <!-- FECHA DESNCORPORACION VENDEDOR --> 
-                        <input class="input_13 input_13A borde_1" type="text" name="fechadesincorporacionVen" id="" placeholder="Fecha desincorporacion" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
-                        <br>
+                        <!-- <input class="input_13 input_13A borde_1" type="text" name="fechadesincorporacionVen" id="" placeholder="Fecha desincorporacion" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
+                        <br> -->
 
                         <!-- STATUS VENDEDOR --> 
                         <input class="input_13 input_13A borde_1" type="text" name="statusVen" id="" placeholder="Status" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
                         <br>
 
                         <!-- CODIGO VENDEDOR --> 
-                        <input class="input_13 input_13A borde_1" type="text" name="codigoVen" id="" placeholder="Código" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
+                        <!-- <input class="input_13 input_13A borde_1" type="text" name="codigoVen" id="" placeholder="Código" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/> -->
                     </div>          
                 </div>
             </fieldset>

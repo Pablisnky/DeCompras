@@ -81,9 +81,9 @@
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                
-                            <a class="a_9" href="<?php echo RUTA_URL?>/Mayorista_C/actualizarProductoMay/<?php echo $ID_Producto;?>,<?php echo $Opcion;?>">Actualizar</a>
+                            <a class="a_9" href="<?php echo RUTA_URL?>/CuentaMayorista_C/actualizarProductoMay/<?php echo $ID_Producto;?>,<?php echo $Opcion;?>">Actualizar</a>
                             
-                            <a class="a_9" href="<?php echo RUTA_URL . '/Mayorista_C/eliminarProductoMay/' . $ID_Producto . ',' . $ID_Opcion . ',' . $Seccion?>">Eliminar</a>
+                            <a class="a_9" href="<?php echo RUTA_URL . '/CuentaMayorista_C/eliminarProductoMay/' . $ID_Producto . ',' . $ID_Opcion . ',' . $Seccion?>">Eliminar</a>
                         </div>
                     </div>
                 </div>

@@ -2834,6 +2834,7 @@ body, html{
 }
 .tabla_inventario__tr:hover{
 	background-color:  var(--BordeClaro);
+	cursor: pointer;
 }
 .tabla1__td{
 	font-size: 0.9em;

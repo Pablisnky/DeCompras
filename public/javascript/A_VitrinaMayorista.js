@@ -30,10 +30,10 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-//Muestra la orden de compra
+//Muestra la orden de compra, invocado en vitrinaMayorista_V.php
 function llamar_PedidoEnCarrito(ID_Mayorista, ValorDolar){
-    // console.log("______Desde llamar_PedidoEnCarrito()______",ID_Mayorista + "/" + ValorDolar)
-    var url="../../CarritoMayorista_C/index/" + ID_Mayorista
+    console.log("______Desde llamar_PedidoEnCarrito()______",ID_Mayorista + "/" + ValorDolar)
+    var url="../../CarritoMayorista_C/index/"
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
