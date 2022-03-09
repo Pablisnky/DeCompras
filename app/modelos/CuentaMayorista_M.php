@@ -140,10 +140,10 @@
         } 
 
         //INSERT de datos de vendedor
-        public function insertarVendeodr($ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor, $Ale_CodigoVendedor){
+        public function insertarVendeodr($ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO afiliado_ven (ID_Mayorista, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, correo_AfiVen, direccion_AfiVen, zona_AfiVen, Fechaincorporación_AfiVen, Fechadesincorporación_AfiVen, Status_AfiVen, nombre_imgAfiVen, tipo_imgAfiVen, tamanio_imgAfiVen, codigo_AfiVen) 
-                VALUES(:ID_MAYORISTA, :NOMBRE_AFIVEN, :APELLIDO_AFIVEN, :CEDULA_AFIVEN, :TELEFONO_AFIVEN, :CORREO_AFIVEN, :DIRECCION_AFIVEN, :ZONA_AFIVEN, CURDATE(), CURDATE(), :STATUS_AFIVEN, :NOMBREIMG_AFIVEN, :TIPOIMG_AFIVEN, :TAMANIOIMG_AFIVEN, :CODIGO_AFIVEN)"
+                "INSERT INTO afiliado_ven (ID_Mayorista, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, correo_AfiVen, direccion_AfiVen, zona_AfiVen, Fechaincorporación_AfiVen, Fechadesincorporación_AfiVen, Status_AfiVen, nombre_imgAfiVen, tipo_imgAfiVen, tamanio_imgAfiVen) 
+                VALUES(:ID_MAYORISTA, :NOMBRE_AFIVEN, :APELLIDO_AFIVEN, :CEDULA_AFIVEN, :TELEFONO_AFIVEN, :CORREO_AFIVEN, :DIRECCION_AFIVEN, :ZONA_AFIVEN, CURDATE(), CURDATE(), :STATUS_AFIVEN, :NOMBREIMG_AFIVEN, :TIPOIMG_AFIVEN, :TAMANIOIMG_AFIVEN)"
             );
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
@@ -159,7 +159,6 @@
             $stmt->bindParam(':NOMBREIMG_AFIVEN', $nombre_imgVendedor);
             $stmt->bindParam(':TIPOIMG_AFIVEN', $tipo_imgVendedor);
             $stmt->bindParam(':TAMANIOIMG_AFIVEN', $tamanio_imgVendedor);
-            $stmt->bindParam(':CODIGO_AFIVEN', $Ale_CodigoVendedor);
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
@@ -188,6 +187,30 @@
                 return false;
             }
         }
+        
+        //INSERT de datos de minorista
+        public function insertarMinorista($RecibeMinorista, $nombre_imgMinorista, $tipo_imgMinorista, $tamanio_imgMinorista, $Ale_CodigoMinorista){
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO minorista (ID_Vendedor, nombre_AfiMin, rif_AfiMin, codigodespacho, telefono_AfiMin, correo_AfiMin, zona_AfiVen, direccion_AfiMin, nombreImg_AfiMin, tipo_AfiMin, tamanio_AfiMin, fecha, hora) 
+                VALUES(:ID_VENDEDOR, :NOMBRE_AFIMIN, :RIF_AFIMIN, :CODIGO_AFIMIN, :TELEFONO_AFIMIN, :CORREO_AFIMIN, :ZONA_AFIMIN, :DIRECCION_AFIMIN, :NOMBREIMG_AFIMIN, :TIPOIMG_AFIMIN, :TAMANIOIMG_AFIMIN, CURDATE(), CURDATE())"
+            );
+
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':ID_VENDEDOR', $RecibeMinorista['id_vendedor']);
+            $stmt->bindParam(':NOMBRE_AFIMIN', $RecibeMinorista['nombre_Min']);
+            $stmt->bindParam(':RIF_AFIMIN', $RecibeMinorista['rif_Min']);
+            $stmt->bindParam(':CODIGO_AFIMIN', $Ale_CodigoMinorista);
+            $stmt->bindParam(':TELEFONO_AFIMIN', $RecibeMinorista['telefono_Min']);
+            $stmt->bindParam(':CORREO_AFIMIN', $RecibeMinorista['correo_Min']);
+            $stmt->bindParam(':ZONA_AFIMIN', $RecibeMinorista['Zona_Ven']);
+            $stmt->bindParam(':DIRECCION_AFIMIN', $RecibeMinorista['direccion_Min']);
+            $stmt->bindParam(':NOMBREIMG_AFIMIN', $nombre_imgMinorista);
+            $stmt->bindParam(':TIPOIMG_AFIMIN', $tipo_imgMinorista);
+            $stmt->bindParam(':TAMANIOIMG_AFIMIN', $tamanio_imgMinorista);
+
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        } 
 
 
 
@@ -212,9 +235,10 @@
     
         public function consultarSeccionesMayorista($ID_Mayorista){
             $stmt = $this->dbh->prepare(
-                "SELECT ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay
+                "SELECT ID_SeccionMay, mayorista.ID_Mayorista, seccionMay, nombre_img_seccionMay, nombreMay
                 FROM seccionesmayorista  
-                WHERE ID_Mayorista = :ID_MAYORISTA"
+                INNER JOIN mayorista ON seccionesmayorista.ID_Mayorista=mayorista.ID_Mayorista
+                WHERE mayorista.ID_Mayorista = :ID_MAYORISTA"
             );      
         
             $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
@@ -431,12 +455,32 @@
         //SELECT de la IMAGEN de un producto determinado
         public function consultarVendedoresMay($ID_Mayorista){
             $stmt = $this->dbh->prepare(
-                "SELECT ID_AfiliadoVen, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, zona_AfiVen, codigo_AfiVen, Status_AfiVen
+                "SELECT ID_AfiliadoVen, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, zona_AfiVen, Status_AfiVen, correo_AfiVen
                 FROM  afiliado_ven  
                 WHERE ID_Mayorista = :ID_MAYORISTA"
             );
 
             $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+
+        }
+        
+
+        //SELECT de la IMAGEN de un producto determinado
+        public function consultarClientes_Ven($ID_Vendedor){
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho
+                FROM  minorista  
+                WHERE ID_Vendedor = :ID_VENDEDOR"
+            );
+
+            $stmt->bindParam(':ID_VENDEDOR', $ID_Vendedor, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -46,6 +46,7 @@
             $this->vista("view/carritoMayorista_V", $Datos);
         }        
         
+        //Invocado en A_VitrinaMayorista.js por medio de Llamar_datosMinorista()
         public function informacionMinorista($CodigoDespacho){
             //Se CONSULTA si el minorista esta suscrito
             $Minorista = $this->ConsultaCarritoVitrina_M->consultarMinorista($CodigoDespacho);
@@ -56,11 +57,11 @@
             // exit();
 
             if($Minorista == Array ()){
-                echo 'Minorista no registrado';
+                echo 'Código invalido';
             }
             else{
                 //Se separa cada variable pooque llegara a Javascript como una cadena de texto, luego se convertira en un array utilizando las , como caracter separador 
-                echo $Minorista[0]['nombre_AfiMin'] . ',' . $Minorista[0]['rif_AfiMin'] . ',' .  $Minorista[0]['telefono_AfiMin'] . ',' .$Minorista[0]['correo_AfiMin'] . ',' . $Minorista[0]['zona_AfiVen'] . ',' . $Minorista[0]['codigo_AfiMin'] . ',' . $Minorista[0]['direccion_AfiMin'];
+                echo $Minorista[0]['nombre_AfiMin'] . ',' . $Minorista[0]['rif_AfiMin'] . ',' .  $Minorista[0]['telefono_AfiMin'] . ',' .$Minorista[0]['correo_AfiMin'] . ',' . $Minorista[0]['zona_AfiVen'] . ',' . $Minorista[0]['codigodespacho'] . ',' . $Minorista[0]['direccion_AfiMin'];
             }
         }
     }

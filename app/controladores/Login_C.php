@@ -240,15 +240,13 @@
                         $Consulta= $this->ConsultaLogin_M->consultarID_AfiliadoVen($ID_Afiliado);
                         while($arr = $Consulta->fetch(PDO::FETCH_ASSOC)){
                             $ID_Mayorista = $arr["ID_Mayorista"];
-                            $Nombre_AfiVen = $arr["nombre_AfiVen "];
-                            $Codigo_AfiVen = $arr["codigo_AfiVen"];
+                            $_SESSION['Nombre_Vendedor'] = $arr["nombre_AfiVen"];
+                            $_SESSION['Apellido_Vendedor'] = $arr["apellido_AfiVen"];
                         }
                                                                         
                         //Se crea la sesion que guarda el ID_Mayorista SOLICITADA EN TODOS LOS ARCHIVOS DE CUENTA MAYORISTA         
                         $_SESSION['ID_Mayorista'] = $ID_Mayorista; 
-                        $_SESSION['ID_Vendedor'] = $ID_Afiliado;            
-                        $_SESSION['Nombre_Vendedor'] = $Nombre_AfiVen;         
-                        $_SESSION['Codigo_Vendedor'] = $Codigo_AfiVen;        
+                        $_SESSION['ID_Vendedor'] = $ID_Afiliado;       
                             
                         header('location:' . RUTA_URL . '/CuentaMayorista_C/adminVen');    
                     }

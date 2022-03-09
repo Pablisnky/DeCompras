@@ -100,6 +100,7 @@ function respuesta_OpcionesMayorista(){
 }
 
 //****************************************************************************************************
+//invocada en E_VitrinaMayorista.js
 function Llamar_datosMinorista(CodigoDespacho){
     var url="../../CarritoMayorista_C/informacionMinorista/" + CodigoDespacho
     http_request.open('GET', url, true);    
@@ -121,8 +122,8 @@ function respuesta_datosMinorista(){
             console.log(A)
            
             // E caso de que el usuario no este registrado se recibira un string con "Usuario no registado"
-            if(A[0] == "Minorista no registrado"){
-                alert("Código de despacho no registrado")        
+            if(A[0] == "Código invalido"){
+                alert("Código de despacho invalido")        
                 document.getElementById("CodigoDespacho").value = "";
                 document.getElementById("CodigoDespacho").focus();
                 return

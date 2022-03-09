@@ -1567,6 +1567,10 @@ body, html{
 .font--white{
 	color: white;
 }
+.font--mono{
+	font-family: consolas, monaco, monospace;
+
+}
 .h1_1{
 	font-weight: normal;
 	text-align: center;
@@ -2871,6 +2875,10 @@ body, html{
 }
 .td_7{
 	height: 30px;
+}
+.td--alerta{
+	background-color: var(--BandaAlerta);
+	text-align: center;
 }
 .textarea_1{
 	width: 100%;

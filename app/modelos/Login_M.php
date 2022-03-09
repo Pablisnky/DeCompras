@@ -109,7 +109,11 @@
         }
 
         public function consultarID_AfiliadoVen($ID_Afiliado){
-            $stmt = $this->dbh->prepare("SELECT ID_Mayorista, nombre_AfiVen, codigo_AfiVen FROM afiliado_ven  WHERE ID_AfiliadoVen = :ID_AFILIADO_VEN");
+            $stmt = $this->dbh->prepare(
+                "SELECT ID_Mayorista, nombre_AfiVen, apellido_AfiVen
+                FROM afiliado_ven  
+                WHERE ID_AfiliadoVen = :ID_AFILIADO_VEN"
+            );
 
             $stmt->bindValue(':ID_AFILIADO_VEN', $ID_Afiliado, PDO::PARAM_INT);
 
