@@ -18,12 +18,14 @@
             
                 if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['codigoMinorista'])){
                     //si son enviados por POST y sino estan vacios, entra aqui
-                    $RecibeCodigoMinorista = [
+                    $RecibeDatosMinorista = [
                         // DATOS DEL USUARIO                        
+                        'ID_Minorista' => $_POST['id_minorista'],
                         'CodigoMinorista' => $_POST['codigoMinorista'],    
+                        'MontoTienda' => $_POST['montoTienda'], 
                     ];
                     // echo '<pre>';
-                    // print_r($RecibeCodigoMinorista);
+                    // print_r($RecibeDatosMinorista);
                     // echo '</pre>';
                     // exit();               
                     
@@ -39,6 +41,9 @@
                     // print_r($Resultado);
                     // echo '</pre>';
                     // exit();
+                    
+                    //Se INSERTA el pedido en la BD
+                    $this->ConsultaRecibePedidoMayorista_M->insertarPedidoMayorista($RecibeDatosMinorista, $Ale_NroOrden);
 
                     //Se reciben los detalles del pedido
                     if(is_array($Resultado) || is_object($Resultado)){
@@ -52,7 +57,7 @@
                             $ID_Opcion = $Value['ID_Opcion'];
                             
                             //Se INSERTAN los detalles del pedido en la BD
-                            $this->ConsultaRecibePedidoMayorista_M->insertarPedidoMayorista($RecibeCodigoMinorista['CodigoMinorista'], $Ale_NroOrden, $Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total);
+                            $this->ConsultaRecibePedidoMayorista_M->insertarDetallePedidoMayorista( $Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total);
                             
                             // Se ACTUALIZA el inventario de los productos pedidos
                             //Se consulta la cantidad de existencia del producto

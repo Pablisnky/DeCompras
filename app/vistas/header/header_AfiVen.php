@@ -23,32 +23,29 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body>	
-		<header class="header header--tienda borde_bottom--claro">
-			<!-- ICONO HAMBURGUESA -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
-			
-			<div class="header_membrete--tienda">
-				<label class="h1_10 font--negro label--block"><?php echo $Datos['nombreMay']?></label>
-			</div> 
+		<header class="header--inicio header borde_bottom--claro">
 
+			<!-- ICONO HAMBURGUESA -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
+			
 			<!-- BARRA DE NAVEGACION -->
-			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda">
+			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/adminVen'?>">Panel</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/minorista'?>">Clientes</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/clientes'?>">C. Cobrar</a></li>
-                    <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/Publicar/';?>">Pedidos</a></li>
-                    <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/Publicar/';?>">Inventario</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a><label><?php echo $Datos['nombreVen'] . ' ' . $Datos['apellidoVen']?></label></li>
-					
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C'?>">Panel</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/clienteVen'?>">Clientes</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/clientes'?>">C. Cobrar</a></li>
+                    <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/pedidosVen/';?>">Pedidos</a></li>
+                    <!-- <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/Publicar/';?>">Inventario</a></li> -->
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a><label class="ocultar-movil"><?php echo $Datos['nombreVen'] . ' ' . $Datos['apellidoVen']?></label></li>
 				</ul>
 			</nav>
 		</header>
 
-		<!-- icono de buscador -->
-        <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
-			<i class="fas fa-search contIconoBuscador__span"></i>
-        </div>
+		<!-- MEMBRETE -->
+		<div class="contenedor_111">
+			<label class="a_1 a_7 font--negro"><?php echo $Datos['nombreMay']?></label>
+			<p class="h3_10 font-right separador_1"><?php echo $Datos['nombreVen'] . ' ' . $Datos['apellidoVen']?></p>
+		</div> 
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa">

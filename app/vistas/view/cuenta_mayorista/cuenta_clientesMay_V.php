@@ -7,7 +7,7 @@
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
 
         <!-- LISTADO VENDEDORES -->      
-        <a class="boton a--vendedor" href="<?php echo RUTA_URL . '/CuentaMayorista_C/agregarminorista'?>">Agregar</a>     
+        <a class="boton a--vendedor" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarclienteVen'?>">Agregar</a>     
         <table class="tabla_inventario">
             <thead class="tabla_inventario--thead">
                 <th></th>
@@ -15,20 +15,22 @@
                 <th class="">Rif</th>
                 <th class="">Telefono</th>
                 <th class="">Correo</th>
+                <th class="">Zona</th>
                 <th class="">Dirección</th>
                 <th class="tabla_inventario__th--fecha">Código</th>
             </thead>
             <tbody class="tabla_inventario--tbody">
                 <?php 
                 $Iterador = 1;
-                if($Datos['clientes_ven'] != Array ()){
-                    foreach($Datos['clientes_ven'] as $row)  :   ?>
+                if($Datos['clientes_may'] != Array ()){
+                    foreach($Datos['clientes_may'] as $row)  :   ?>
                     <tr class="tabla_inventario__tr"> 
                         <td><?php echo $Iterador; ?></td>
                         <td><?php echo $row['nombre_AfiMin'];?></td>
                         <td><?php echo $row['rif_AfiMin'];?></td> 
                         <td><?php echo $row['telefono_AfiMin'];?></td> 
                         <td><?php echo $row['correo_AfiMin'];?></td>
+                        <td><?php echo $row['zona_AfiVen'];?></td>
                         <td><?php echo $row['direccion_AfiMin'];?></td> 
                         <td class="font--mono"><?php echo $row['codigodespacho'];?></td>
                     </tr> <?php

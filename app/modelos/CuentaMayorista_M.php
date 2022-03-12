@@ -488,6 +488,20 @@
             else{
                 return  'Existe un fallo';
             }
+        }
+        //SELECT de la IMAGEN de un producto determinado
+        public function consultarClientes(){
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho, zona_AfiVen
+                FROM  minorista"
+            );
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
 
         }
         

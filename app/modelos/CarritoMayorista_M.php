@@ -127,7 +127,7 @@
         //SELECT de los datos de un miorista
         public function consultarMinorista($CodigoDespacho){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, zona_AfiVen, codigodespacho, direccion_AfiMin
+                "SELECT ID_AfiliadoMin, nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, zona_AfiVen, codigodespacho, direccion_AfiMin
                  FROM minorista  
                  WHERE codigodespacho = :CODIGODESPACHO"
             );

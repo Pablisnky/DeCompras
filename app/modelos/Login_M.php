@@ -77,7 +77,11 @@
         } 
         
         public function consultarContrasenaVen($ID_Afiliado){
-            $stmt = $this->dbh->prepare("SELECT * FROM afiliado_veningreso WHERE ID_AfiliadoVen = :ID_AFILIADO");
+            $stmt = $this->dbh->prepare(
+                "SELECT * 
+                FROM afiliado_veningreso 
+                WHERE ID_AfiliadoVen = :ID_AFILIADO"
+            );
             $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt;
@@ -158,20 +162,6 @@
             }           
         }
 
-        public function consultaID_Afiliado($Correo){
-            $stmt = $this->dbh->prepare("SELECT ID_AfiliadoCom FROM afiliado_com WHERE correo_AfiCom = :CORREO");
-
-            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':CORREO', $Correo);
-            
-            if($stmt->execute()){   
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }           
-        }
-
         public function insertarCodigoAleatorio($Correo, $Aleatorio){
             $stmt = $this->dbh->prepare("INSERT INTO codigo_recuperacion(correo, codigoAleatorio, fechaSolicitud) VALUES(:CORREO, :ALEATORIO, NOW())");
 
@@ -203,11 +193,59 @@
             }
         }
 
-        public function actualizarClave($ID_Afiliado, $ClaveCifrada){
+        public function actualizarClaveCom($ID_Afiliado, $ClaveCifrada){
             $stmt = $this->dbh->prepare("UPDATE afiliado_comingreso SET claveCifrada = :CLAVE_CIFRADA WHERE ID_Afiliado = :ID_AFILIADO");
            
             // Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_AFILIADO', $ID_Afiliado[0]['ID_AfiliadoCom']);
+            $stmt->bindValue(':CLAVE_CIFRADA', $ClaveCifrada);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function actualizarClaveMay($ID_AfiliadoMay, $ClaveCifrada){
+            $stmt = $this->dbh->prepare("UPDATE afiliado_mayingreso SET claveCifradaMay = :CLAVE_CIFRADA WHERE ID_AfiliadoMay = :ID_AFILIADOMAY");
+           
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_AFILIADOMAY', $ID_AfiliadoMay[0]['ID_AfiliadoMay']);
+            $stmt->bindValue(':CLAVE_CIFRADA', $ClaveCifrada);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function actualizarClaveVen($ID_AfiliadoVen, $ClaveCifrada){
+            $stmt = $this->dbh->prepare("UPDATE afiliado_veningreso SET claveCifradaVen = :CLAVE_CIFRADA WHERE ID_AfiliadoVen = :ID_AFILIADOVEN");
+           
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_AFILIADOVEN', $ID_AfiliadoVen[0]['ID_AfiliadoVen']);
+            $stmt->bindValue(':CLAVE_CIFRADA', $ClaveCifrada);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function actualizarClaveDes($ID_AfiliadoDes, $ClaveCifrada){
+            $stmt = $this->dbh->prepare("UPDATE afiliado_desingreso SET claveCifradaDes = :CLAVE_CIFRADA WHERE ID_AfiliadoDes = :ID_AFILIADODES");
+           
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_AFILIADODES', $ID_AfiliadoDes[0]['ID_AfiliadoDes']);
             $stmt->bindValue(':CLAVE_CIFRADA', $ClaveCifrada);
 
             // Se ejecuta la actualización de los datos en la tabla

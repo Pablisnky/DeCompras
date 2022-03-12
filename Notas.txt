@@ -3,7 +3,7 @@ sebastian@gmail.com     ssss    La Tienda de Sebastian    comerciante
 sebastian@gmail.com     ssss    La Tienda de Sebastian    mayorista
 alberto@gmail.com       aaaa    MiniMarket ALberto
 pablo@gmail.com      ppcc    Las Empanadas de Pablo
-monica@gmail.com     mmmm   Arte y moda
+monica@gmail.com     mmmm   Arte y moda     vendedor
 albertcabeza76@gmail.com       cccc    Otaku Claud Gat
 vivas@gmail.com         vvvv
 lisbella@gmail.com      llll

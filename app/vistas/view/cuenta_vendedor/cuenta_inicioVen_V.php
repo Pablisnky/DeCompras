@@ -7,6 +7,7 @@
         <section class="section_8">
             <div class="contenedor_112 borde_1">
                 <ul>
+                    <li>Proximas visitas para reposición</li>
                     <li>Grafico de barras horizontales con las ventas semanales.(compara las ultimas cinco semanas).</li>
                     <li>Tabla de cuentas por cobrar.</li>
                     <li>Tabla de despachos pendientes.</li>
@@ -20,5 +21,5 @@
     //     header("location:" . RUTA_URL);
     // }
     
-    // include(RUTA_APP . "/vistas/footer/footer.php");
+    include(RUTA_APP . "/vistas/footer/footer.php");
     ?>

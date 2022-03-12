@@ -248,7 +248,7 @@
                         $_SESSION['ID_Mayorista'] = $ID_Mayorista; 
                         $_SESSION['ID_Vendedor'] = $ID_Afiliado;       
                             
-                        header('location:' . RUTA_URL . '/CuentaMayorista_C/adminVen');    
+                        header('location:' . RUTA_URL . '/CuentaVendedor_C');    
                     }
                     else{ 
                         header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
@@ -292,7 +292,7 @@
             //generamos un número aleatorio
             $Aleatorio = mt_rand(100000,999999); 
                     
-            //Se INSERTA el código aleatorio en la tabla "codigo-recuperacion y se asocia al correo del usuario
+            //Se INSERTA el código aleatorio en la tabla "codigo-recuperacion para asociarlo al correo del usuario
             $this->ConsultaLogin_M->insertarCodigoAleatorio($Correo, $Aleatorio);
             
             //Se envia correo al usuario informandole el código que debe insertar para verificar
@@ -341,9 +341,9 @@
                 $this->vista("header/header_Modal"); 
                 $this->vista("modal/modal_recuperarCorreo_V", $Datos);
 
-                echo "<p class='Inicio_16'>Código invalido</p>";
-                echo "<a class='Inicio_16' href='javascript:history.go(-1)'>Regresar</a>";
-                exit();            
+                // echo "<p class='Inicio_16'>Código invalido</p>";
+                // echo "<a class='Inicio_16' href='javascript:history.go(-1)'>Regresar</a>";
+                // exit();            
             }
             else{//Si los códigos coinciden se permite hacer el cambio de contraseña
                 // echo "cambie la contraseña";
@@ -376,22 +376,15 @@
                 $ClaveCifrada = password_hash($ClaveNueva, PASSWORD_DEFAULT);
                 // echo "Clave cifrada= " . $ClaveCifrada . "<br>";
                 
-                //Se consulta el ID_Participante correspondiente al correo
-                $ID_Afiliado = $this->ConsultaLogin_M->consultaID_Afiliado($Correo);
+                //Se consulta el ID_Participante correspondiente al corrreo en las cuentas de Comerciante, despachador, mayorista y vendedor
+                $ID_AfiliadoCom = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
+                $ID_AfiliadoMay = $this->ConsultaLogin_M->consultarAfiliadosMay($Correo);
+                $ID_AfiliadoVen = $this->ConsultaLogin_M->consultarAfiliadosVen($Correo);
+                $ID_AfiliadoDes = $this->ConsultaLogin_M->consultarAfiliadosDes($Correo);
 
-                if($ID_Afiliado == Array()){
-                    echo 'No exist el correo';
-                    echo "<a class='Inicio_16' href='javascript:history.go(-3)'>Regresar</a>";
-                    exit;
-                }
-                else{
-                    // echo '<pre>';
-                    // print_r($ID_Afiliado);
-                    // echo '</pre>';
-                    // exit;
-
+                if($ID_AfiliadoCom != Array()){
                     //Se actualiza en la base de datos la clave del usuario
-                    $this->ConsultaLogin_M->actualizarClave($ID_Afiliado, $ClaveCifrada);
+                    $this->ConsultaLogin_M->actualizarClaveCom($ID_AfiliadoCom, $ClaveCifrada);
 
                     //Se destruyen las cookies que recuerdan la contraseña antigua, creadas en validarSesion.php
                     // echo "Cookie_usuario= " . $_COOKIE["id_usuario"] . "<br>";
@@ -402,6 +395,53 @@
                     
                     $this->vista('header/header_Modal'); 
                     $this->vista('modal/modal_recuperarCorreo_V'); 
+                }
+                else if($ID_AfiliadoMay != Array()){
+                    //Se actualiza en la base de datos la clave del usuario
+                    $this->ConsultaLogin_M->actualizarClaveMay($ID_AfiliadoMay, $ClaveCifrada);
+
+                    //Se destruyen las cookies que recuerdan la contraseña antigua, creadas en validarSesion.php
+                    // echo "Cookie_usuario= " . $_COOKIE["id_usuario"] . "<br>";
+                    // echo "Cookie_clave= " . $_COOKIE["clave"] . "<br>";
+
+                    // setcookie("id_usuario",'',time()-100);
+                    // setcookie("clave",'',time()-100);
+                    
+                    $this->vista('header/header_Modal'); 
+                    $this->vista('modal/modal_recuperarCorreo_V'); 
+                }
+                else if($ID_AfiliadoVen != Array()){
+                    //Se actualiza en la base de datos la clave del usuario
+                    $this->ConsultaLogin_M->actualizarClaveVen($ID_AfiliadoVen, $ClaveCifrada);
+
+                    //Se destruyen las cookies que recuerdan la contraseña antigua, creadas en validarSesion.php
+                    // echo "Cookie_usuario= " . $_COOKIE["id_usuario"] . "<br>";
+                    // echo "Cookie_clave= " . $_COOKIE["clave"] . "<br>";
+
+                    // setcookie("id_usuario",'',time()-100);
+                    // setcookie("clave",'',time()-100);
+                    
+                    $this->vista('header/header_Modal'); 
+                    $this->vista('modal/modal_recuperarCorreo_V'); 
+                }
+                else if($ID_AfiliadoDes != Array()){
+                    //Se actualiza en la base de datos la clave del usuario
+                    $this->ConsultaLogin_M->actualizarClaveDes($ID_AfiliadoDes, $ClaveCifrada);
+
+                    //Se destruyen las cookies que recuerdan la contraseña antigua, creadas en validarSesion.php
+                    // echo "Cookie_usuario= " . $_COOKIE["id_usuario"] . "<br>";
+                    // echo "Cookie_clave= " . $_COOKIE["clave"] . "<br>";
+
+                    // setcookie("id_usuario",'',time()-100);
+                    // setcookie("clave",'',time()-100);
+                    
+                    $this->vista('header/header_Modal'); 
+                    $this->vista('modal/modal_recuperarCorreo_V'); 
+                }
+                else{
+                    echo 'No exist el correo';
+                    echo "<a class='Inicio_16' href='javascript:history.go(-3)'>Regresar</a>";
+                    exit;
                 }
             }
             else{

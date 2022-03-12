@@ -536,155 +536,6 @@
             $this->vista('header/header_AfiMay', $Datos); 
             $this->vista('view/cuenta_mayorista/cuenta_vendedorMay_V', $Datos);
         }
-        
-        //llamado desde header_AfiVen.php
-        public function minorista(){            
-            //CONSULTA las clientes de un vendedor especifico
-            $ClientesVen = $this->ConsultaMayorista_M->consultarClientes_Ven($_SESSION['ID_Vendedor']);//Sesion creadas en Login_C
-            
-            $Datos = [
-                'clientes_ven' => $ClientesVen, //nombre_AfiMin, rif_AfiMin. telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho
-                'nombreMay' => $this->Mayorista,
-                'nombreVen' => $_SESSION['Nombre_Vendedor'],
-                'apellidoVen' => $_SESSION['Apellido_Vendedor']
-            ];
-            
-            // echo '<pre>';
-            // print_r($Datos);
-            // echo '</pre>';
-            // exit();
-
-            $this->vista('header/header_AfiVen', $Datos); 
-            $this->vista('view/cuenta_mayorista/cuenta_minorista_V', $Datos);
-        }
-
-        //llamado desde cuenta_minorista_V
-        public function agregarMinorista(){
-            //se crea una sesion llamada AGRECA_CLIENTE, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de nuevo cliente, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
-            $_SESSION['AGREGA_MINORISTA'] = 'AGR_MIN';
-
-            //CONSULTA las vendedores de un mayorista especifico
-            // $Vendedores = $this->ConsultaMayorista_M->consultarVendedoresMay($this->ID_Mayorista);
-
-            $Datos = [
-                'nombreMay' => $this->Mayorista,
-                'nombreVen' => $_SESSION['Nombre_Vendedor'],
-                'apellidoVen' => $_SESSION['Apellido_Vendedor']
-            ];
-
-            $this->vista('header/header_AfiVen', $Datos ); 
-            $this->vista('view/cuenta_mayorista/cuenta_agregarminorista_V');
-        }
-        
-        //Invocado en cuenta_agregarminorista_V.php recibe el formulario para cargar un nuevo minorista
-        public function recibeAgregarMinorista(){;  
-            if($_SESSION['AGREGA_MINORISTA'] == 'AGR_MIN'){// Anteriormente en el metodo agregarminorista() de este mismo archivo se generó la variable $_SESSION['AGREGA_MINORISTA'] con un valor de AGR_MIN; con esto se evita que no se pueda recarga la página que carga los minorista.
-                unset($_SESSION['AGREGA_MINORISTA']);//se borra la sesión verifica. 
-
-                //Se reciben todos los campos del formulario, desde cuenta_agregarminorista_V.php se verifica que son enviados por POST y que no estan vacios
-                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['nombreMin']) && !empty($_POST['rifMin']) && !empty($_POST['telefonoMin']) && !empty($_POST['correoMin']) && !empty($_POST['direccionMin']) && !empty($_POST['zonaMin'])){
-                    $RecibeMinorista = [
-                        //Recibe datos del producto que se va a cargar al sistema
-                        'nombre_Min' => filter_input(INPUT_POST, 'nombreMin', FILTER_SANITIZE_STRING),
-                        'rif_Min' => filter_input(INPUT_POST, 'rifMin', FILTER_SANITIZE_STRING),
-                        'telefono_Min' => filter_input(INPUT_POST, "telefonoMin", FILTER_SANITIZE_STRING),
-                        'correo_Min' => filter_input(INPUT_POST, "correoMin", FILTER_SANITIZE_STRING),
-                        'direccion_Min' => filter_input(INPUT_POST, 'direccionMin', FILTER_SANITIZE_STRING),
-                        'Zona_Ven' => filter_input(INPUT_POST, 'zonaMin', FILTER_SANITIZE_STRING),
-                        'id_vendedor' => filter_input(INPUT_POST, 'id_vendedor', FILTER_SANITIZE_STRING)
-                    ];
-                    // echo '<pre>';
-                    // print_r($RecibeMinorista);
-                    // echo '</pre>';
-                    // exit;
-                }
-                else{
-                    echo 'Llene todos los campos del formulario ';
-                    echo "<a href='javascript: history.go(-1)'>Regresar</a>";
-                    exit();
-                }
-                                
-                //IMAGEN VENDEDOR
-                //********************************************************
-                //Si se selecionó alguna imagen entra
-                if($_FILES['fotoMin']["name"] != ''){
-                    $nombre_imgMinorista = $_FILES['fotoMin']['name'] != '' ? $_FILES['fotoMin']['name'] : 'imagen.png';
-                    $tipo_imgMinorista = $_FILES['fotoMin']['type'] != '' ? $_FILES['fotoMin']['type'] : 'image/png';
-                    $tamanio_imgMinorista = $_FILES['fotoMin']['size'] != '' ?  $_FILES['fotoMin']['size'] : '28,0 KB';
-
-                    // echo 'Nombre de la imagen = ' . $nombre_imgMinorista . '<br>';
-                    // echo 'Tipo de archivo = ' .$tipo_imgMinorista .  '<br>';
-                    // echo 'Tamaño = ' . $tamanio_imgMinorista . '<br>';
-                    // echo 'Tamaño maximo permitido = 2.000.000' . '<br>';// en bytes
-                    // echo 'Ruta del servidor = ' . $_SERVER['DOCUMENT_ROOT'] . '<br>';
-                    // exit();
-
-                    //Si existe fotoMin y tiene un tamaño correcto (maximo 2Mb)
-                    if(($nombre_imgMinorista == !NULL) AND ($tamanio_imgMinorista <= 2000000)){
-                        //indicamos los formatos que permitimos subir a nuestro servidor
-                        if(($tipo_imgMinorista == 'image/jpeg')
-                            || ($tipo_imgMinorista == 'image/jpg') || ($tipo_imgMinorista == 'image/png')){
-
-                            //Ruta donde se guardarán las imágenes que subamos la variable superglobal
-                            //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
-
-                            //Usar en remoto
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/minorista';
-
-                            // usar en local
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/minorista';
-
-                            //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
-                            move_uploaded_file($_FILES['fotoMin']['tmp_name'], $directorio_2.$nombre_imgMinorista);
-                        }
-                        else{
-                            //si no cumple con el formato
-                            echo 'Solo puede cargar imagenes con formato jpg, jpeg o png';
-                            echo '<a href="javascript: history.go(-1)">Regresar</a>';
-                            exit();
-                        }
-                    }
-                    else{//si se pasa del tamaño permitido
-                        echo 'La imagen principal es demasiado grande ';
-                        echo '<a href="javascript: history.go(-1)">Regresar</a>';
-                        exit();
-                    }
-                }
-                else{//si no se selecciono ninguna imagen
-                    $nombre_imgMinorista = $_FILES['fotoMin']['name'] = 'Perfil.jpg';
-                    $tipo_imgMinorista = $_FILES['fotoMin']['name'] = 'jpg';
-                    $tamanio_imgMinorista = $_FILES['fotoMin']['name'] = '20,0 KB';
-                }
-                
-                // SE GENERA EL CODIGO DE DESPACHO DEL MINORISTA
-                $Ale_CodigoMinorista = mt_rand(99999,999999);
-
-                //********************************************************
-                //Las siguientes consultas se deben realizar por medio de Transacciones BD
-                //Se INSERTA el minorista en la BD
-                $this->ConsultaMayorista_M->insertarMinorista($RecibeMinorista, $nombre_imgMinorista, $tipo_imgMinorista, $tamanio_imgMinorista, $Ale_CodigoMinorista);
-                                
-                $this->minorista();
-            }
-            else{
-                $this->agregarMinorista();
-            } 
-        }
-        
-        //llamado desde Login_C
-        public function adminVen(){            
-            //CONSULTA las vendedores de un mayorista especifico
-            // $Vendedores = $this->ConsultaMayorista_M->consultarVendedoresMay($this->ID_Mayorista);
-
-            $Datos = [
-                'nombreMay' => $this->Mayorista,
-                'nombreVen' => $_SESSION['Nombre_Vendedor'],
-                'apellidoVen' => $_SESSION['Apellido_Vendedor'],
-            ];
-
-            $this->vista('header/header_AfiVen', $Datos); 
-            $this->vista('view/cuenta_mayorista/cuenta_iniciovendedor_V');
-        }
 
         //llamado desde cuenta_vendedorMay_V
         public function agregarVendedor(){
@@ -820,5 +671,25 @@
             else{
                 $this->agregarVendedor();
             } 
+        }
+        
+        //llamado desde header_AfiMay.php
+        public function clientes(){            
+            //CONSULTA todos los clientes de la compañia
+            $Clientes = $this->ConsultaMayorista_M->consultarClientes();
+            
+            $Datos = [
+                'clientes_may' => $Clientes, //nombre_AfiMin, rif_AfiMin. telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho, zona_AfiVen
+                'nombreMay' => $this->Mayorista,
+                'seccionesMay' => $this->SeccionesMay //ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay
+            ];
+            
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit();
+
+            $this->vista('header/header_AfiMay', $Datos); 
+            $this->vista('view/cuenta_mayorista/cuenta_clientesMay_V', $Datos);
         }
     }

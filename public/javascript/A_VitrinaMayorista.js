@@ -45,10 +45,10 @@ function llamar_PedidoEnCarrito(ID_Mayorista, ValorDolar){
 function respuesta_PedidoEnCarrito(){
     if(peticion.readyState == 4){
         if(peticion.status == 200){            
-            document.getElementById("Mostrar_Orden").style.display = "block"
+            document.getElementById("Mostrar_OrdenMayorista").style.display = "block"
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
-            document.getElementById('Mostrar_Orden').innerHTML = peticion.responseText 
+            document.getElementById('Mostrar_OrdenMayorista').innerHTML = peticion.responseText 
     
             PedidoEnCarrito(Local_ValorDolarHoy)           
         } 
@@ -119,7 +119,7 @@ function respuesta_datosMinorista(){
 
             // Lavariable A se convierte en un Array
             A = A.split(','); 
-            console.log(A)
+            // console.log(A)
            
             // E caso de que el usuario no este registrado se recibira un string con "Usuario no registado"
             if(A[0] == "Código invalido"){
@@ -132,13 +132,15 @@ function respuesta_datosMinorista(){
                 document.getElementById("Muestra_datosMinorista").style.display = "block"
                 // document.getElementById("Contenedor_26").style.display = "none"
 
+                //Alimentan los input que contienen los datos del minorista en CarritoMayorista_V.php
                 document.getElementById('NombreMinorista').value =  A[0];  
                 document.getElementById('RifMinorista').value =  A[1]; 
                 document.getElementById('TelefonoMinorista').value =  A[2]; 
                 document.getElementById('CorreoMinorista').value =  A[3]; 
                 document.getElementById('ZonaMinorista').value =  A[4];  
                 document.getElementById('CodigoMinorista').value =  A[5];      
-                document.getElementById('DireccionMinorista').value =  A[6]; 
+                document.getElementById('DireccionMinorista').value =  A[6];   
+                document.getElementById('ID_Minorista').value =  A[7]; 
             }
         } 
         else{

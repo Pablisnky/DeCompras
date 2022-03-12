@@ -2,11 +2,12 @@
     <!-- IMAGEN DE MAYORISTA SOLO MOSTRADO EN MOVILES -->
     <?php                    
     if($Datos['fotoMayorista'] == 'tienda.png'){    ?> 
-        <div class="contenedor_109 contenedor_109--imgDefecto" style="background-image: url('<?php //echo RUTA_URL?>/public/images/tiendas/tienda.png');"></div>  
+        <div class="contenedor_109 contenedor_109--imgDefecto contenedor_109--mayorista" style="background-image: url('<?php //echo RUTA_URL?>/public/images/tiendas/tienda.png');"></div>  
         <?php
     } 
     else{ ?>
-        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/<?php echo $Datos['fotoMayorista'];?>');"></div>    
+        <!-- <div class="contenedor_109 contenedor_109--mayorista" style="background-image: url('<?php //echo RUTA_URL?>/public/images/proveedor/Don_Rigo/<?php //echo $Datos['fotoMayorista'];?>');"></div>   -->
+        <div class="contenedor_109 contenedor_109--mayorista" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/Portada.jpg"></div>  
         <?php
     }   ?>
 
@@ -90,7 +91,7 @@
 <div id="Mostrar_Opciones_Mayorista"></div>
 
 <!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carritoMayorista_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->
-<div id="Mostrar_Orden"></div>
+<div id="Mostrar_OrdenMayorista"></div>
 
 <script src="<?php echo RUTA_URL . '/public/javascript/E_VitrinaMayorista.js?v=' . rand();?>"></script>
 <script src="<?php echo RUTA_URL . '/public/javascript/A_VitrinaMayorista.js?v=' . rand();?>"></script>

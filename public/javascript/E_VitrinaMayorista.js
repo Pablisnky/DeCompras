@@ -90,8 +90,8 @@ document.addEventListener('click', function(event){
 })
 
 // *****************************************************************************************************
-//seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos en div Mostrar_Orden ubicado en vitrina_V.php
-document.getElementById('Mostrar_Orden').addEventListener('click', function(event){ 
+//seleccionar si el despacho sera enviado o recogido en tienda por medio de delegación de eventos en div Mostrar_OrdenMayorista ubicado en vitrina_V.php
+document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', function(event){ 
     if((event.target.id == "Domicilio_No") || (event.target.id == "Domicilio_Si")){  
         // console.log("______Desde forma_Entrega______")
         // console.log(TotalDisplayCarrito)
@@ -946,7 +946,7 @@ document.getElementById('Mostrar_Orden').addEventListener('click', function(even
     function ocultarPedido(){   
         //Coloca el cursor en el top de la pagina
         window.scroll(0, 0)
-        document.getElementById("Mostrar_Orden").style.display = "none";
+        document.getElementById("Mostrar_OrdenMayorista").style.display = "none";
     }    
 
     //************************************************************************************************

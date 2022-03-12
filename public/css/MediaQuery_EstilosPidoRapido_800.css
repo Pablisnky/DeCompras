@@ -19,7 +19,7 @@
 	font-size: 0.7em;
 }
 .a_7{
-	font-size: 1.3em;	
+	font-size: 1.5em;	
 }
 .a_10{
 	font-size: 1.3em;
@@ -48,11 +48,6 @@
 }
 .boton--largo{ 
 	width: 200px;
-}
-.borde_bottom--claro{
-	/* border-bottom-color: white;
-	border-bottom-width: 1px;
-	border-bottom-style: solid; */
 }
 .boton-excepcion{ 
 	line-height: 45px;
@@ -298,7 +293,7 @@
 }
 .contenedor_42{
 	width: 100%;
-	margin-top: 25%;
+	/* margin-top: 25%; */
 }
 .contenedor_44{
 	top: 10%;
@@ -390,6 +385,30 @@
 .contenedor_68{
 	height: 100%;
 }
+.cont_clientesVen{
+	display: grid;
+	grid-template-columns: 50% 50% ;
+	row-gap: 3%; /*espacio entre filas*/
+	margin: auto;
+	margin-bottom: 8%;
+	width: 98%;
+	padding: 2% 2% 4% 2%;
+	border-radius: 15px;;
+	/* grid-template-rows: 20% 20% 20% 20%; */
+	/*justify-content: space-around;
+	grid-column-start: 1;
+	grid-column-end: 3;	*/
+}
+.cont_clientesVen:hover{
+	background-color:  var(--rellenoTablas);
+	cursor: pointer;
+}
+.cont_clientesVen--renglon{
+	display: block;
+	font-size: 0.8em;
+	font-weight: bold;
+	margin-top: 2%
+}
 .div__Botones{
 	width: 100%;
 	top: 87%;
@@ -414,8 +433,14 @@
 	margin-top: 152%;/*no se utiliza la propiedad "top" para que pueda desplazarse con la diapositiva*/	
 	/* left: 5%; */	
 } 
-.header{
+.header--inicio{
 	height: 45px;
+}
+.header{
+	/* width: initial; */
+	left: initial;
+	height: initial;
+	background-color: initial;
 }
 .header-AfiCom{
 	height: 50px;
@@ -429,12 +454,8 @@
 	display: block;
 	height: 37px;
 }
-.header__nav_1{
-	/* background-color: rgb(247, 247, 89) !important; */
-	margin-top: 12%;
-}
 .header__menuResponsive{
-	padding-top: 0%;
+	/* margin-top: 15% ; */
 	width: 70%; 
 	margin-left: -70%;/*oculta el menu responsive*/
 	transition: all 0.5s;
@@ -444,10 +465,10 @@
 	background-color:var(--OficialClaro);
 	flex-direction: column;
 	width: 100%;
-	margin-top: 0%;
+	margin-top: 20% !important;
 }
 .header__menuResponsive--tienda ul{
-	margin-top: -15%;
+	/* margin-top: -30%; */
 	position: relative; 
 	z-index: 7;
 }
@@ -641,8 +662,10 @@
 	margin-top: 0%;
 }
 .contenedor_111{
+	background-color: initial;
 	width: 100%;
-	padding-left:10%;
+	padding-left: 10%;
+	height: initial;
 }
 .contenedor_111--tienda{
 	background-color: white !important;
@@ -1143,6 +1166,9 @@
 .nav_1{
 	margin-top: 12%;
 }
+.ocultar-movil{
+	display: none;
+}
 .ol_1{
 	margin-left: 5%;
 }
@@ -1263,6 +1289,7 @@
 	height: 150%;
 }
 .section_8{
+	min-height: 90%;
 	padding-top: 15%;
 }
 .section_9{
@@ -1379,7 +1406,7 @@
 }
 .tapa{
 	background-color: rgba(0, 0, 0, 0.8);
-	display: none;
+	/* display: none; */
 	position: absolute;
 	top: 0%;
 	left: 0%;

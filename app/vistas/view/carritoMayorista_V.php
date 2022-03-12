@@ -1,4 +1,4 @@
-<!-- Archivo cargado via AJAX en el div id="Mostrar_Orden" del archivo vitrinaMayorista_V.php -->
+<!-- Archivo cargado via AJAX en el div id="Mostrar_OrdenMayorista" del archivo vitrinaMayorista_V.php -->
 
 <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización del capture--> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -70,7 +70,7 @@
         <div class="contOculto" id="Muestra_datosMinorista">
              <form action="../../RecibePedidoMayorista_C" method="POST" enctype="multipart/form-data"  id="DatosUsuario"> <!-- onsubmit="return validarDespacho()" -->
                 
-                <!-- DATOS DEL MINORISTA -->
+                <!-- DATOS DEL MINORISTA vienen de A_VitrinaMayorista.js por medio de Llamar_datosMinorista()-->
                 <article>
                     <div class="contenedor_24">
                         <header>
@@ -122,6 +122,7 @@
                         </div>   
                         <div class="contFlex50">
                             <input class="ocultar" type="text" id="Pedido" name="pedido"/>
+                            <input class="ocultar" type="text" id="ID_Minorista" name="id_minorista"/>
                             <input class="boton boton--alto boton--largo botonJS" type="submit" value="Generar pedido"/>
                         </div>
                     </div>

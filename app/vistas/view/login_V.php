@@ -31,8 +31,9 @@
             <!-- RECUPERAR CONTRASEÑA -->
             <div class="contenedor_43" id="Contenedor_43"">
                 <?php 
-                $Datos = '';
-                require(RUTA_APP . "/vistas/modal/modal_recuperarCorreo_V.php"); ?>
+                    $Datos = '';
+                    require(RUTA_APP . "/vistas/modal/modal_recuperarCorreo_V.php"); 
+                ?>
             </div>
         </section>
         <?php
@@ -62,6 +63,6 @@
         <?php
     }   ?> 
 		
-<!-- <script src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script> -->
+<script src="<?php echo RUTA_URL . '/public/javascript/E_Login.js';?>"></script>
 
 <?php include(RUTA_APP . "/vistas/footer/footer.php");?>

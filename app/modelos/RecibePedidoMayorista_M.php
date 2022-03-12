@@ -4,60 +4,19 @@
         public function __construct(){ 
             parent::__construct();  
         }
-
-        public function insertarUsuario($RecibeDatosUsuario, $Suscrito){
-            $stmt = $this->dbh->prepare(
-                "INSERT INTO usuarios(nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, Estado_usu, Ciudad_usu, direccion_usu, suscrito,  fecha, hora)
-                VALUES(:Nombre, :Apellido, :Cedula, :Telefono, :Correo, :Estado, :Ciudad, :Direccion, :Suscrito, CURDATE(), CURTIME())"
-            );
-
-            //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindParam(':Nombre', $nombre);
-            $stmt->bindParam(':Apellido', $apellido);
-            $stmt->bindParam(':Cedula', $cedula);
-            $stmt->bindParam(':Telefono', $telefono);
-            $stmt->bindParam(':Correo', $correo);
-            $stmt->bindParam(':Estado', $Estado);
-            $stmt->bindParam(':Ciudad', $Ciudad);
-            $stmt->bindParam(':Direccion', $Direccion);
-            $stmt->bindParam(':Suscrito', $Suscrito);
-            
-            // insertar una fila
-            $nombre = $RecibeDatosUsuario['Nombre'];
-            $apellido = $RecibeDatosUsuario['Apellido'];
-            $cedula = $RecibeDatosUsuario['Cedula'];
-            $telefono = $RecibeDatosUsuario['Telefono'];
-            $correo = $RecibeDatosUsuario['Correo'];
-            $Estado = $RecibeDatosUsuario['Estado'];
-            $Ciudad = $RecibeDatosUsuario['Ciudad'];
-            $Direccion = $RecibeDatosUsuario['Direccion'];
-            
-            //Se ejecuta la inserción de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return 'Existe un fallo';
-            }
-        }
         
-        public function insertarPedido($RecibeDatosUsuario, $CodigoTransferencia, $RecibeDatosPedido, $Ale_NroOrden, $Delivery){
+        public function insertarPedidoMayorista($RecibeDatosMinorista, $Ale_NroOrden){
 
             $stmt = $this->dbh->prepare(
-                "INSERT INTO pedido(ID_Tienda, ID_Usuario, numeroorden, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, fecha, hora)
-                VALUES(:ID_Tienda, :ID_Usuario, :NumeroOrden, :MontoDelivery, :MontoTienda, :MontoTotal, :Despacho, :FormaPago, :CodigoPago, CURDATE(), CURTIME())"
+                "INSERT INTO pedidomayorista(ID_AfiliadoMin, codigoDespacho, numeroorden_May, montoTotal, fecha, hora)
+                VALUES(:ID_MINORISTA, :CODIGODESPACHO, :NUMEROORDEN, :MONTOTOTAL, CURDATE(), CURTIME())"
             ); 
 
             //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindParam(':ID_Tienda', $RecibeDatosPedido['ID_Tienda']);
-            $stmt->bindParam(':ID_Usuario', $RecibeDatosUsuario['ID_Usuario']);
-            $stmt->bindParam(':MontoTienda', $RecibeDatosUsuario['MontoTienda']);
-            $stmt->bindParam(':MontoTotal', $RecibeDatosUsuario['MontoTotal']);
-            $stmt->bindParam(':NumeroOrden', $Ale_NroOrden);
-            $stmt->bindParam(':MontoDelivery', $Delivery);
-            $stmt->bindParam(':CodigoPago', $CodigoTransferencia);
-            $stmt->bindParam(':Despacho', $RecibeDatosPedido['Despacho']);
-            $stmt->bindParam(':FormaPago', $RecibeDatosPedido['FormaPago']);
+            $stmt->bindParam(':CODIGODESPACHO', $RecibeDatosMinorista['CodigoMinorista']);
+            $stmt->bindParam(':ID_MINORISTA', $RecibeDatosMinorista['ID_Minorista']);
+            $stmt->bindParam(':NUMEROORDEN', $Ale_NroOrden);
+            $stmt->bindParam(':MONTOTOTAL', $RecibeDatosMinorista['MontoTienda']);
                         
             //Se ejecuta la inserción de los datos en la tabla
             if($stmt->execute()){
@@ -68,20 +27,19 @@
             }
         }
         
-        function insertarPedidoMayorista($RecibeDatosPedido, $Ale_NroOrden, $Seccion, $Producto, $Cantidad, $Opcion, $Precio, $Total){
+        function insertarDetallePedidoMayorista($Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO detallepedidomayorista(ID_Mayorista, numeroorden_May, seccion_May, producto_May, cantidad_May, opcion_May, precio_May, total_May)
-                VALUES(:ID_MAYORISTA, :ALE_N_ORDEN, :SECCION, :PRODUCTO, :CANTIDAD, :OPCION, :PRECIO, :TOTAL)"
+                "INSERT INTO detallepedidomayorista(numeroorden_May, seccion_May, producto_May, opcion_May,cantidad_May, precio_May, total_May)
+                VALUES(:ALE_N_ORDEN, :SECCION, :PRODUCTO, :OPCION, :CANTIDAD, :PRECIO, :TOTAL)"
             ); 
 
             //Se vinculan los valores de las sentencias preparadas
             //ztmt es una abreviatura de statement 
-            $stmt->bindParam(':ID_MAYORISTA', $RecibeDatosPedido);
             $stmt->bindParam(':ALE_N_ORDEN', $Ale_NroOrden);
             $stmt->bindParam(':SECCION', $Seccion);
             $stmt->bindParam(':PRODUCTO', $Producto);
-            $stmt->bindParam(':CANTIDAD', $Cantidad);
             $stmt->bindParam(':OPCION', $Opcion);
+            $stmt->bindParam(':CANTIDAD', $Cantidad);
             $stmt->bindParam(':PRECIO', $Precio);
             $stmt->bindParam(':TOTAL', $Total);
 
@@ -112,24 +70,7 @@
             }
         }
 
-        // SELECT del usuario que realizó un pedido
-        function consultarUsuario($Cedula){                    
-            $stmt = $this->dbh->prepare(
-                "SELECT nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, Estado_usu, Ciudad_usu, direccion_usu
-                FROM usuarios 
-                WHERE cedula_usu = :CEDULA");
-            
-            $stmt->bindValue(':CEDULA', $Cedula, PDO::PARAM_STR);
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return 'Existe un fallo';
-            }        
-        } 
-
-        // SELECT del pedido realizado
+        // SELECT 
         function consultarCorreo($ID_Tienda){                    
             $stmt = $this->dbh->prepare("SELECT ID_Tienda, correo_AfiCom, tiendas.nombre_Tien FROM afiliado_com INNER JOIN tiendas ON afiliado_com.ID_AfiliadoCom=tiendas.ID_AfiliadoCom WHERE ID_Tienda = :ID_TIENDA");
             
@@ -159,27 +100,6 @@
             else{
                 return 'Existe un fallo';
             }        
-        }
-
-        //UPDATE para agregar la imagen del capture de pago
-        function UpdateCapturePago($Ale_NroOrden, $archivonombre){
-            $stmt = $this->dbh->prepare(
-                "UPDATE pedido 
-                 SET capture = :CAPTURE 
-                 WHERE numeroorden = :Ale_NroOrden"
-            );
-
-            //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':CAPTURE', $archivonombre);
-            $stmt->bindValue(':Ale_NroOrden', $Ale_NroOrden);
-
-            //Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return 'Existe un fallo';
-            } 
         }
 
         //UPDATE para actualizar invenario

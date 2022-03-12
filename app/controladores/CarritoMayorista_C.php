@@ -59,9 +59,9 @@
             if($Minorista == Array ()){
                 echo 'Código invalido';
             }
-            else{
+            else{ 
                 //Se separa cada variable pooque llegara a Javascript como una cadena de texto, luego se convertira en un array utilizando las , como caracter separador 
-                echo $Minorista[0]['nombre_AfiMin'] . ',' . $Minorista[0]['rif_AfiMin'] . ',' .  $Minorista[0]['telefono_AfiMin'] . ',' .$Minorista[0]['correo_AfiMin'] . ',' . $Minorista[0]['zona_AfiVen'] . ',' . $Minorista[0]['codigodespacho'] . ',' . $Minorista[0]['direccion_AfiMin'];
+                echo $Minorista[0]['nombre_AfiMin'] . ',' . $Minorista[0]['rif_AfiMin'] . ',' .  $Minorista[0]['telefono_AfiMin'] . ',' .$Minorista[0]['correo_AfiMin'] . ',' . $Minorista[0]['zona_AfiVen'] . ',' . $Minorista[0]['codigodespacho'] . ',' . $Minorista[0]['direccion_AfiMin']. ',' . $Minorista[0]['ID_AfiliadoMin'];
             }
         }
     }

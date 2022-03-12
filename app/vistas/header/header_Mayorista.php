@@ -23,17 +23,12 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body onload="nobackbutton()">	
-		<header class="header header--tienda ">
+		<header class="header--inicio header">
 			<!-- ICONO HAMBURGUESA -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio"></i></span></label>
 			 
-			<!-- NOMBRE MAYORISTA -->
-			<div class="">
-				<label class="h1_10 font--negro label--block"><?php echo $Datos['nombreMayorista']?></label>
-			</div>
-
 			<!-- BARRA DE NAVEGACION -->
-			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda header__nav_1">
+			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php //echo RUTA_URL . '/CerrarS_C';?>">Obtener código</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Salir de la tienda</a></li>
@@ -41,11 +36,15 @@
 			</nav>
 		</header>
 
+		<!-- NOMBRE MAYORISTA -->
+		<div class="contenedor_111">
+			<label class="h1_10 font--negro label--block"><?php echo $Datos['nombreMayorista']?></label>
+		</div>
 
 		<!-- ICONO BUSACADOR LUPA -->
-        <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
+        <!-- <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
 			<i class="fas fa-search contIconoBuscador__span"></i>
-        </div>
+        </div> -->
 
 		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
 		<div class="tapa" id="Tapa">
