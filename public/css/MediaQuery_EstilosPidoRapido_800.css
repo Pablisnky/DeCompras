@@ -387,17 +387,13 @@
 }
 .cont_clientesVen{
 	display: grid;
-	grid-template-columns: 50% 50% ;
+	grid-template-columns: 33% 33% 33%;
 	row-gap: 3%; /*espacio entre filas*/
 	margin: auto;
-	margin-bottom: 8%;
+	margin-bottom: 3%;
 	width: 98%;
 	padding: 2% 2% 4% 2%;
 	border-radius: 15px;;
-	/* grid-template-rows: 20% 20% 20% 20%; */
-	/*justify-content: space-around;
-	grid-column-start: 1;
-	grid-column-end: 3;	*/
 }
 .cont_clientesVen:hover{
 	background-color:  var(--rellenoTablas);
@@ -407,7 +403,7 @@
 	display: block;
 	font-size: 0.8em;
 	font-weight: bold;
-	margin-top: 2%
+	margin-top: 2%;
 }
 .div__Botones{
 	width: 100%;
@@ -638,7 +634,7 @@
 	cursor: pointer !important;
 }
 .contenedor_108{
-	padding-bottom: 40%;
+	padding-bottom: 5%;
 }
 .contenedor_109{
 	display: block;
@@ -1289,8 +1285,23 @@
 	height: 150%;
 }
 .section_8{
-	min-height: 90%;
-	padding-top: 15%;
+	max-height: 90%;
+	margin-top: -3%;
+	display: flex;
+	width: 200%;
+	overflow: scroll;
+	scroll-behavior: smooth;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	/*flex-grow: 1;distribuye proporcionalmente los elementos internos en el eje horizontal, es necesario que el elemento padre tenga la propiedad display con el valor flex*/
+}
+.section_8__div{
+	width: 100%;
+	height: 100vh;
+	/* overflow: hidden; */
+	/*background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover; cover - auto - contain*/ 
 }
 .section_9{
 	padding-top: 15%;
@@ -1441,9 +1452,6 @@
 .th_4{
 	height: 30px;
 	font-size: 0.6em;
-}
-.th_5{
-	width: 15%;
 }
 .ul_1{
 	margin-left: 5%;

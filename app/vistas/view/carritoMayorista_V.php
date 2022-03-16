@@ -4,7 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <section class="sectionModal">
-    <i class="fas fa-arrow-left spanCerrar spanCerrar--fijo" onclick="ocultarPedido()"></i>
+    <i class="fas fa-arrow-left spanCerrar spanCerrar--fijo" onclick="ocultar('Mostrar_OrdenMayorista')"></i>
     <section> <!-- ORDEN DE COMPRA -->
         <div class="contenedor_24">
             <header>
@@ -19,7 +19,7 @@
                                 <th class="th_1 th_4">CANT.</th>
                                 <th class="th_2 th_4">PRODUCTO</th>
                                 <th class="th_3 th_4">PRECIO UNITARIO</th>
-                                <th class="th_5 th_4">TOTAL</th>
+                                <th class="th_1 th_4">TOTAL</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,12 +62,13 @@
                 </div>
 
             <!-- CODIGODE DESPACHO -->  
-            <input class="input--despacho" id="CodigoDespacho" placeholder="Código de despacho" onkeydown="codigoDespacho(this.value)" onkeyup="codigoDespacho(this.value)"/>
+            <input class="input--despacho" id="CodigoVenta" placeholder="Código de despacho" onkeydown="codigoVenta(this.value)" onkeyup="codigoVenta(this.value)"/>
         </div>
     </section>
-
+    
     <section>         
         <div class="contOculto" id="Muestra_datosMinorista">
+            <i class="fas fa-times spanCerrar spanCerrar--fijo" onclick="ocultarListadoMay('Muestra_datosMinorista')">X</i>
              <form action="../../RecibePedidoMayorista_C" method="POST" enctype="multipart/form-data"  id="DatosUsuario"> <!-- onsubmit="return validarDespacho()" -->
                 
                 <!-- DATOS DEL MINORISTA vienen de A_VitrinaMayorista.js por medio de Llamar_datosMinorista()-->

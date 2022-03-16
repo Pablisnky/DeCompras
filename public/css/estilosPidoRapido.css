@@ -212,6 +212,7 @@ body, html{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover; /*cover - auto - contain*/ 
+	overflow: auto; /*permite el scroll horizontal dentro del div*/
 }
 .borrar_1{
 	width: 40%;
@@ -861,13 +862,17 @@ body, html{
 }
 .contenedor_106{
 	position: relative;
-	bottom: 10px;
+	bottom: 10px; 
 }
 .contenedor_106--lineal{
 	background-color: blue;
 	position: relative;
 	bottom: 65px;
 	right: -5px;
+}
+.contenedor_106--pedidos{
+	position: relative;
+	top: 30px;   
 }
 .contenedor_108{
 	padding-bottom: 10%;
@@ -1811,6 +1816,10 @@ body, html{
 .header__menuResponsive li a:hover{
 	font-size: 19px;
 }
+.hover--off:hover{
+	background-color: initial !important;
+	cursor: default !important;
+}
 .hr_1{
 	width: 40%;
     border: none;
@@ -2575,18 +2584,19 @@ body, html{
 	cursor: pointer;
 }
 .section_1--cont__radios--cinco{
-	position: relative;
+	/* background-color: red; */
+	/* position: relative; */
 	/* top: 40%;*/
-	left: 15%; 
+	/* left: 15%;  */
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 40%;
-	z-index: 4;
+	/* /* flex-direction: row; */
+	justify-content: space-around; */
+	width: 100%;
+	/* z-index: 8 !important ; */
 }
 .section_1--radios--cinco{
 	cursor: pointer;
-	width: 8px;
+	width: 20px;
 }
 .section_1__p{
 	background-color: var(--FondoDivModal--claro);
@@ -2822,6 +2832,7 @@ body, html{
 	display: none;
 }
 .tabla{
+	border-collapse: collapse;
 	width: 100%;
 }
 .tabla1{
@@ -2835,7 +2846,7 @@ body, html{
 	width: 100%;
 }
 .tabla_inventario__tr:hover{
-	background-color:  var(--rellenoTablas);
+	background-color: var(--rellenoTablas);
 	cursor: pointer;
 }
 .tabla_inventario td {
@@ -2947,10 +2958,10 @@ body, html{
 	font-size: 0.9em;
 }
 .th_5{
-	width: 10%;
+	text-align: left;
 }
 .th_6{
-	width: 30%;
+	width: 20%;
 	text-align: left;
 }
 .th_7{
@@ -2970,7 +2981,7 @@ body, html{
 	text-align: left;
 }
 .th_11{
-	text-align: left;
+	width: 7%;
 }
 .tr_1:hover{
 	background-color:rgb(239, 245, 245);

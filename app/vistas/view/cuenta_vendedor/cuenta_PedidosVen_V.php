@@ -12,16 +12,48 @@
         if($Datos['pedidos_ven'] != Array ()){ 
             foreach($Datos['pedidos_ven'] as $row)  : 
                 $Nro_Orden = $row['numeroorden_May'];   ?>
-                <div class="cont_clientesVen borde_1" onclick="Llamar_pedidosVen(<?php echo $Nro_Orden;?>)">
+                <!-- INDICADOR DE DEUDA       background-color: var(--Fallos); -->
+                <div class="contenedor_106--pedidos">
+                    <?php
+                    // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
+                    if($row['factura'] != 'No Asignada' && $row['pagado'] == 0){    ?>
+                        <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check"></i></span> <?php 
+                    }
+                    // PEDIDO FACTURADO Y PAGADO
+                    else if($row['pagado'] == 1){  ?>
+                        <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check-double"></i></span>
+                        <?php
+                    }
+                    // PEDIDO SIN FACTURAR
+                    else if($row['factura'] == 'No Asignada') {  ?>
+                           <span class="span_21 borde_1" style="background-color:;"><i class="far fa-clock icono_1"></i></span>
+                        <?php
+                    }
+                    // PEDIDO FACTURADO Y QUE HA PERDIDO LA GANANCIA POR COMISION
+                    else{   ?>
+                        <span class="span_21 borde_1" style="background-color: var(--Fallos);"><i class="fas fa-times"></i></span>
+                        <?php 
+                    }   ?>
+                </div>
+                <div class="cont_clientesVen borde_1" onclick="Llamar_pedidosVen('<?php echo $Nro_Orden;?>')">
                     <div style="grid-column-start: 1; grid-column-end: 3;">
                         <label class="cont_clientesVen--renglon">Razon social</label>
                         <label class="font--TituloTarjetaCliente"><?php echo $row['nombre_AfiMin'];?></label>
                     </div> 
-                    <div style="grid-column-start: 1; grid-column-end: 2;">
-                        <label class="cont_clientesVen--renglon">Nº Orden</label>
-                        <label><?php echo $row['numeroorden_May'];?></label>
-                    </div> 
-                    <div style="grid-column-start: 2; grid-column-end: 3;">
+                        <?php
+                        if($row['factura'] == 'No Asignada'){    ?>
+                            <div style="grid-column-start: 1; grid-column-end: 3;">
+                                <label class="cont_clientesVen--renglon">Orden despacho</label>
+                                <label><?php echo $row['numeroorden_May'];?></label>
+                            </div> <?php
+                        }
+                        else{  ?>
+                            <div style="grid-column-start: 1; grid-column-end: 3;">
+                                <label class="cont_clientesVen--renglon">Factura</label>
+                                <label><?php echo $row['factura'];?></label>
+                            </div> <?php
+                        }   ?>
+                    <div style="grid-column-start: 3; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">Total</label>
                         <label><?php echo $row['montoTotal'];?></label>
                     </div> 
@@ -37,22 +69,14 @@
                         <label class="cont_clientesVen--renglon">Dirección</label>
                         <label>Calle 25 entre Avs. 5 y 6</label>
                     </div> 
-                </div><?php
+                </div>
+                <?php
             endforeach; 
         }  
         else{   ?>
                 <label class="td--alerta" colspan="7">Sin pedidos registrados</label>
             <?php
         }   ?>
-            
-        <!-- MENU INDICE -->
-        <!-- <section>  
-            <div class="contenedor_83 borde_1">
-                <a class="marcador" href="#marcador_01">Por entregar</a>
-                <a class="marcador" href="#marcador_02">Despachados</a>
-                <a class="marcador" href="#Categoria">Todos</a>
-            </div>
-        </section>  -->
     </div>
 
     <!--div alimentado via Ajax por medio de la funcion Llamar_pedidosVen() alimentado por el archivo cuenta_pedidsdetalleVen_V.php-->

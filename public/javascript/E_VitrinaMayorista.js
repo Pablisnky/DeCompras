@@ -943,13 +943,24 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
 
 //************************************************************************************************ 
     //invocada desde carrito_V.php
-    function ocultarPedido(){   
+    function ocultar(id){   
         //Coloca el cursor en el top de la pagina
         window.scroll(0, 0)
-        document.getElementById("Mostrar_OrdenMayorista").style.display = "none";
+        document.getElementById(id).style.display = "none";
     }    
 
-    //************************************************************************************************
+//************************************************************************************************ 
+    //invocada desde carrito_V.php
+    function ocultarListadoMay(id){   
+        console.log("______Desde ocultarListadoMay()______", id)  
+        //Coloca el cursor en el top de la pagina
+        window.scroll(0, 0)
+        document.getElementById(id).style.display = "none";
+        document.getElementById("CodigoVenta").value = "";
+        document.getElementById("CodigoVenta").focus();
+    }  
+
+//************************************************************************************************
     //ajusta el texarea con respecto al contenido que trae de la BD es llamado desde opciones_V.php
     function resize(){
         var text = document.getElementById("OpcionPro");
@@ -962,18 +973,12 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
     function verificarDiv(){
         // console.log("______Desde verificarDiv()______")  
         if(document.getElementById('Mostrar_Opciones').childElementCount < 1){
-            // console.log("No hay elementos en el div id=\"Mostrar_Opciones\"")
-            
+            // console.log("No hay elementos en el div id=\"Mostrar_Opciones\"")   
         }
-        else{
-            // console.log("Los productos de la seccion son:", document.getElementsByClassName('contenedor_95'))            
-        }
-
     }
 
 //************************************************************************************************
     function stopInterval(){
-        // console.log("______Desde stopInterval()______")
         clearInterval(interval)
     }
 
@@ -1008,14 +1013,12 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
         for(let i = 0; i < Pago.length; i++){
             if(Pago[i].checked){
                 var PagoSeleccionado = Pago[i].value
-                console.log("Pago", PagoSeleccionado)
             }
         }       
         //Recorremos todos los valores del radio button para encontrar el medio de pago seleccionado
         for(let i = 0; i < FormaPago.length; i++){
             if(FormaPago[i].checked){
                 var FormaPagoSeleccionada = FormaPago[i].value
-                console.log("FormaPago", FormaPagoSeleccionada)
             }
         }       
         let RegistroPago_Transferencia = document.getElementById('RegistroPago_Transferencia').value
@@ -1222,7 +1225,6 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
     // var num_caracteres_permitidos = 14; 
 
     // function valida_LongitudTelefono(){ 
-    //     // console.log("______Desde valida_LongitudTelefono()______")
 
     //     // let num_caracteres_input = document.getElementById("TelefonoUsuario").value.length
 
@@ -1237,7 +1239,6 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
 //************************************************************************************************
     //Abre la ventana de detalles de producto, invocado en opciones_V.php
     function mostrarDetalles(ContadorLabel, Nombre_Tienda, Slogan_Tienda, ID_Tienda, Producto, Opcion, PrecioBolivar, Fotografia, ID_Producto, PrecioDolar, Existencia, Disponible){
-        // console.log("______Desde mostrarDetalles()______", ContadorLabel +"/"+ Nombre_Tienda +"/"+ Slogan_Tienda +"/"+ ID_Tienda +"/"+ Producto +"/"+ Opcion +"/"+ PrecioBolivar +"/"+ Fotografia +"/"+ ID_Producto +"/"+ PrecioDolar)
         window.open(`../../Opciones_C/productoAmpliado/${'Etiqueta_' + ContadorLabel},${Nombre_Tienda},${Slogan_Tienda},${ID_Tienda},${Producto},${Opcion},${PrecioBolivar},${Fotografia},${ID_Producto},${PrecioDolar},${Existencia},${Disponible}`, "ventana1", "width=1300,height=650,scrollbars=YES")   
     }
 
@@ -1263,7 +1264,6 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
 //************************************************************************************************
    //Muestra el menu principal en formato movil y tablet  
    function mostrarMenu(){  
-    //    console.log("______Desde mostrarMenu()______")
        let A = document.getElementById("MenuResponsive")
        let B = document.getElementById("Tapa")
 
@@ -1308,11 +1308,10 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
 
 //************************************************************************************************ 
     //Impide que se sigan introduciendo caracteres al escribir el codigo de despacho
-    function codigoDespacho(CodigoDespacho){
-        console.log(CodigoDespacho)
-        let TotalDigitos = CodigoDespacho.length
+    function codigoVenta(CodigoVenta){
+        let TotalDigitos = CodigoVenta.length
         if(TotalDigitos == 6){ //6 es la cantidad de digitos del codigo de despacho
-            Llamar_datosMinorista(CodigoDespacho);
+            Llamar_listaMinorista(CodigoVenta);
         }
     } 
 

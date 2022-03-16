@@ -58,7 +58,7 @@
         //INSERT de datos de minorista
         public function insertarMinorista($RecibeMinorista, $nombre_imgMinorista, $tipo_imgMinorista, $tamanio_imgMinorista, $Ale_CodigoMinorista){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO minorista (ID_Vendedor, nombre_AfiMin, rif_AfiMin, codigodespacho, telefono_AfiMin, correo_AfiMin, zona_AfiVen, direccion_AfiMin, nombreImg_AfiMin, tipo_AfiMin, tamanio_AfiMin, fecha, hora) 
+                "INSERT INTO minorista (ID_Vendedor, nombre_AfiMin, rif_AfiMin, codigodespacho, telefono_AfiMin, correo_AfiMin, Zona_AfiMin, direccion_AfiMin, nombreImg_AfiMin, tipo_AfiMin, tamanio_AfiMin, fecha, hora) 
                 VALUES(:ID_VENDEDOR, :NOMBRE_AFIMIN, :RIF_AFIMIN, :CODIGO_AFIMIN, :TELEFONO_AFIMIN, :CORREO_AFIMIN, :ZONA_AFIMIN, :DIRECCION_AFIMIN, :NOMBREIMG_AFIMIN, :TIPOIMG_AFIMIN, :TAMANIOIMG_AFIMIN, CURDATE(), CURDATE())"
             );
 
@@ -69,7 +69,7 @@
             $stmt->bindParam(':CODIGO_AFIMIN', $Ale_CodigoMinorista);
             $stmt->bindParam(':TELEFONO_AFIMIN', $RecibeMinorista['telefono_Min']);
             $stmt->bindParam(':CORREO_AFIMIN', $RecibeMinorista['correo_Min']);
-            $stmt->bindParam(':ZONA_AFIMIN', $RecibeMinorista['Zona_Ven']);
+            $stmt->bindParam(':ZONA_AFIMIN', $RecibeMinorista['Zona_Min']);
             $stmt->bindParam(':DIRECCION_AFIMIN', $RecibeMinorista['direccion_Min']);
             $stmt->bindParam(':NOMBREIMG_AFIMIN', $nombre_imgMinorista);
             $stmt->bindParam(':TIPOIMG_AFIMIN', $tipo_imgMinorista);
@@ -79,13 +79,14 @@
             $stmt->execute();
         } 
         
-        //SELECT de los pedidos de n vendedor especifico
+        //SELECT de los pedidos de un vendedor especifico
         public function consultarPedidos_Ven($ID_Vendedor){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, numeroorden_May, montoTotal, pedidomayorista.fecha, pedidomayorista.hora 
+                "SELECT nombre_AfiMin, numeroorden_May, montoTotal, pedidomayorista.factura, pedidomayorista.fecha, pedidomayorista.hora, pagado
                 FROM minorista 
                 INNER JOIN pedidomayorista ON pedidomayorista.codigoDespacho=minorista.codigoDespacho 
-                WHERE ID_Vendedor = :ID_VENDEDOR"
+                WHERE ID_Vendedor = :ID_VENDEDOR
+                ORDER BY fecha DESC, hora DESC"
             );
 
             $stmt->bindParam(':ID_VENDEDOR', $ID_Vendedor, PDO::PARAM_INT);
@@ -98,15 +99,16 @@
             }
         }
         
-        //SELECT de los pedidos de n vendedor especifico
+        //SELECT del detalle de un pedido de un vendedor especifico
         public function consultarDetallePedido_Ven($Nro_Orden){
             $stmt = $this->dbh->prepare(
-                "SELECT seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, fecha, hora 
-                FROM pedidomayorista  
-                INNER JOIN  detallepedidomayorista ON pedidomayorista.numeroorden_May =detallepedidomayorista.numeroorden_May  
-                WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
+                "SELECT nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, pedidomayorista.fecha, pedidomayorista.hora
+            FROM pedidomayorista 
+            INNER JOIN detallepedidomayorista ON pedidomayorista.numeroorden_May =detallepedidomayorista.numeroorden_May 
+            INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin=minorista.ID_AfiliadoMin 
+            WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
             );
-
+            
             $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
 
             if($stmt->execute()){
@@ -114,6 +116,141 @@
             }
             else{
                 return  'Existe un fallo';
+            }
+        }    
+
+        //SELECT de un pedido de un vendedor especifico
+        public function consultarPedido_Ven($Nro_Orden){ 
+            $stmt = $this->dbh->prepare(
+                "SELECT montoTotal, pagado, factura
+                FROM pedidomayorista  
+                WHERE numeroorden_May = :NRO_ORDEN"
+            );
+            
+            $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return 'Existe un fallo';
+            }
+        }    
+
+        //SELECT de los pedidos por pagar de un vendedor especifico
+        public function consultarPedidosPorCobrar_Ven($ID_Vendedor){
+            $stmt = $this->dbh->prepare(
+                "SELECT montoTotal, pedidomayorista.fecha, minorista.nombre_AfiMin, pedidomayorista.numeroorden_May 
+                FROM pedidomayorista                 
+                INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin =minorista.ID_AfiliadoMin  
+                WHERE minorista.ID_Vendedor = :ID_VENDEDOR AND pagado = 0 
+                ORDER BY fecha DESC"
+            );
+
+            $stmt->bindParam(':ID_VENDEDOR', $ID_Vendedor, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }
+        
+        //SELECT del saldo total abonado a un pedido
+        public function consultarDeudaPedido_Ven($Nro_Orden){ 
+            $stmt = $this->dbh->prepare(
+                "SELECT  SUM(abono) AS TotalAbonado
+                FROM pagosmayorista 
+                WHERE numeroorden_May = :NRO_ORDEN"
+            );
+            
+            $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }         
+        
+        
+        //SELECT del saldo total abonado a un pedido
+        public function consultarAbonosPedido_Ven($Nro_Orden){ 
+            $stmt = $this->dbh->prepare(
+                "SELECT pedidomayorista.factura, abono, fechaabono, formapago
+                FROM pagosmayorista 
+                INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May
+                WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
+            );
+            
+            $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }       
+
+        //INSERT de saldo a bonado a un pedido
+        public function insertarPagoAbonado($RecibeAbono){
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO pagosmayorista(numeroorden_May, factura, abono, formapago, fechaabono,  horaabono) 
+                VALUES(:NUMEROORDEN, :FACTURA, :ABONO, :FORMAPAGO, CURDATE(), CURTIME())"
+            );
+
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':NUMEROORDEN', $RecibeAbono['Nro_Orden']);
+            $stmt->bindParam(':FACTURA', $RecibeAbono['Factura']);
+            $stmt->bindParam(':ABONO', str_replace(',', '.', $RecibeAbono['Monto_Abono']));//en BD los decimales deben entrar con .
+            $stmt->bindParam(':FORMAPAGO', $RecibeAbono['Metodo_Abono']);
+
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        } 
+
+        //UPDATE del status del pedido, se cambia a pagado totalmente
+        public function actualizarPagoAbonado($RecibeAbono){
+            $stmt = $this->dbh->prepare(
+                "UPDATE  pedidomayorista   
+                SET pagado = :PAGADO
+                WHERE numeroorden_May = :NUMEROORDEN"
+            );
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':PAGADO', 1);
+            $stmt->bindParam(':NUMEROORDEN', $RecibeAbono['Nro_Orden']); 
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //UPDATE del Nro de factura
+        public function actualizarFactura($RecibeFactura){ 
+            $stmt = $this->dbh->prepare(
+                "UPDATE pedidomayorista   
+                SET factura = :NUMEROFACTURA
+                WHERE numeroorden_May = :NUMEROORDEN"
+            );
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindParam(':NUMEROFACTURA', $RecibeFactura['Nro_factura']);
+            $stmt->bindParam(':NUMEROORDEN', $RecibeFactura['Nro_orden']); 
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
             }
         }
     }

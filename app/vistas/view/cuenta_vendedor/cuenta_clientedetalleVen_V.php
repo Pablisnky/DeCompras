@@ -17,10 +17,10 @@
                     <caption>Pedidos pendientes</caption>
                     <thead class="tabla_inventario--thead">
                         <th class="th--n"></th>
-                        <th class="th_11">Nro. Orden</th>
-                        <th class="th_11">Monto</th>
-                        <th class="th_11">Fecha</th>
-                        <th class="th_11">Hora</th>
+                        <th class="th_5">Nro. Orden</th>
+                        <th class="th_5">Monto</th>
+                        <th class="th_5">Fecha</th>
+                        <th class="th_5">Hora</th>
                     </thead>
                     <tbody class="tabla_inventario--tbody">
                         <?php 
@@ -42,6 +42,7 @@
                 </table> 
                 <label>Deuda Pendiente</label><br/>
                 <label>Forma de pago</label><br/>
+                <label>Reposición</label><br/>
                 <label>Imprimir</label><br/>
                     
                 <!-- MENU INDICE -->

@@ -31,10 +31,10 @@
 			<!-- BARRA DE NAVEGACION -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C'?>">Panel</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C'?>">Balance</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/clienteVen'?>">Clientes</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/clientes'?>">C. Cobrar</a></li>
                     <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/pedidosVen/';?>">Pedidos</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/porcobrar'?>">C. Cobrar</a></li>
                     <!-- <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaVendedor_C/Publicar/';?>">Inventario</a></li> -->
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a><label class="ocultar-movil"><?php echo $Datos['nombreVen'] . ' ' . $Datos['apellidoVen']?></label></li>
 				</ul>

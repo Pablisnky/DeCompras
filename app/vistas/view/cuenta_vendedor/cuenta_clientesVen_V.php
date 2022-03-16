@@ -14,7 +14,7 @@
             <thead class="tabla_inventario--thead">
                 <th class="th--n"></th>
                 <th class="th_10">Razon social</th>
-                <th class="th_11">Código despacho</th>
+                <th class="th_5">Código despacho</th>
             </thead>
             <?php
             if($Datos['clientes_ven'] != Array ()){ ?>

@@ -29,11 +29,11 @@
             $this->vista("view/mayoristas_V", $Datos);
         }  
 
-        //Llamado desde E_Mayorista.js
+        //Llamado desde E_Mayorista.js - cienta_pedidodetalleVen_V.php
         public function vitrina_Mayorista($DatosAgrupados){
             //$DatosAgrupados contiene una cadena separados por coma, se convierte en array para separar los elementos
-            // echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
-            // exit;
+            echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
+            exit;
 
             $DatosAgrupados = explode(',', $DatosAgrupados);
 

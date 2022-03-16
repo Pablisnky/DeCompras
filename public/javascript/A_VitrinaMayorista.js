@@ -32,7 +32,6 @@ function conexionAJAX(){
 //-------------------------------------------------------------------------------------------------
 //Muestra la orden de compra, invocado en vitrinaMayorista_V.php
 function llamar_PedidoEnCarrito(ID_Mayorista, ValorDolar){
-    console.log("______Desde llamar_PedidoEnCarrito()______",ID_Mayorista + "/" + ValorDolar)
     var url="../../CarritoMayorista_C/index/"
     http_request.open('GET', url, true);    
     peticion.onreadystatechange = respuesta_PedidoEnCarrito;
@@ -64,7 +63,6 @@ function respuesta_PedidoEnCarrito(){
 //****************************************************************************************************
 //Muestra los productos que tiene una sección
 function llamar_OpcionesMayorista(ID_Mayorista, ID_Seccion){
-    // console.log( ID_Mayorista + "/" + ID_Seccion);
     var url="../../Opciones_Mayorista_C/index/" + ID_Mayorista + "/" + ID_Seccion;
     http_request.open('GET', url, true);
     //Se define que función va hacer invocada cada vez que cambie onreadystatechange
@@ -107,7 +105,6 @@ function Llamar_datosMinorista(CodigoDespacho){
     peticion.onreadystatechange = respuesta_datosMinorista;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
     peticion.send("null");
-
 }                                                         
 function respuesta_datosMinorista(){
     if(peticion.readyState == 4){
@@ -119,7 +116,6 @@ function respuesta_datosMinorista(){
 
             // Lavariable A se convierte en un Array
             A = A.split(','); 
-            // console.log(A)
            
             // E caso de que el usuario no este registrado se recibira un string con "Usuario no registado"
             if(A[0] == "Código invalido"){
@@ -129,8 +125,9 @@ function respuesta_datosMinorista(){
                 return
             }
             else{
+                document.getElementById("Mostrar_minoristas").style.display = "none"
                 document.getElementById("Muestra_datosMinorista").style.display = "block"
-                // document.getElementById("Contenedor_26").style.display = "none"
+                // document.getElementById("ListadoMinorista").style.display = "block"
 
                 //Alimentan los input que contienen los datos del minorista en CarritoMayorista_V.php
                 document.getElementById('NombreMinorista').value =  A[0];  
@@ -142,6 +139,34 @@ function respuesta_datosMinorista(){
                 document.getElementById('DireccionMinorista').value =  A[6];   
                 document.getElementById('ID_Minorista').value =  A[7]; 
             }
+        } 
+        else{
+            alert('Hubo problemas con la petición en llamar_UsuarioRegistrado()')
+        }
+    }
+    else{ //en caso contrario, mostramos un gif simulando una precarga
+        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    }    
+}
+
+//****************************************************************************************************
+//invocada en E_VitrinaMayorista.js
+function Llamar_listaMinorista(CodigoVenta){
+    var url="../../CarritoMayorista_C/listaMinorista/" + CodigoVenta
+    http_request.open('GET', url, true);    
+    peticion.onreadystatechange = respuesta_listaMinorista;
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+    peticion.send("null"); 
+}                  
+function respuesta_listaMinorista(){
+    if(peticion.readyState == 4){
+        if(peticion.status == 200){                        
+            //Coloca el cursor en el top de la pagina
+            window.scroll(0, 0)
+           
+            //Se recibe la respuesta el servidor
+            document.getElementById('Mostrar_minoristas').style.display= "block"
+            document.getElementById('Mostrar_minoristas').innerHTML = peticion.responseText;
         } 
         else{
             alert('Hubo problemas con la petición en llamar_UsuarioRegistrado()')

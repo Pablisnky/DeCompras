@@ -18,7 +18,7 @@
                                 <th class="th_1 th_4">CANT.</th>
                                 <th class="th_2 th_4">PRODUCTO</th>
                                 <th class="th_3 th_4">PRECIO UNITARIO</th>
-                                <th class="th_5 th_4">TOTAL</th>
+                                <th class="th_1 th_4">TOTAL</th>
                             </tr>
                         </thead>
                         <tbody>

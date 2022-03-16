@@ -127,12 +127,31 @@
         //SELECT de los datos de un miorista
         public function consultarMinorista($CodigoDespacho){
             $stmt = $this->dbh->prepare(
-                "SELECT ID_AfiliadoMin, nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, zona_AfiVen, codigodespacho, direccion_AfiMin
+                "SELECT ID_AfiliadoMin, nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, zona_AfiMin, codigodespacho, direccion_AfiMin
                  FROM minorista  
                  WHERE codigodespacho = :CODIGODESPACHO"
             );
 
             $stmt->bindParam(':CODIGODESPACHO', $CodigoDespacho, PDO::PARAM_STR);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+        
+        //SELECT de los mioristas asignados a un vnededor
+        public function consultarMinoristasVen($CodigoVenta){
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_AfiMin, rif_AfiMin, codigodespacho
+                 FROM minorista 
+                 INNER JOIN afiliado_ven ON afiliado_ven.ID_AfiliadoVen=minorista.ID_Vendedor
+                 WHERE codigoVenta_AfiVen = :CODIGOVENTA"
+            );
+
+            $stmt->bindParam(':CODIGOVENTA', $CodigoVenta, PDO::PARAM_STR);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

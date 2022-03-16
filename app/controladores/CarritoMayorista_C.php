@@ -61,7 +61,24 @@
             }
             else{ 
                 //Se separa cada variable pooque llegara a Javascript como una cadena de texto, luego se convertira en un array utilizando las , como caracter separador 
-                echo $Minorista[0]['nombre_AfiMin'] . ',' . $Minorista[0]['rif_AfiMin'] . ',' .  $Minorista[0]['telefono_AfiMin'] . ',' .$Minorista[0]['correo_AfiMin'] . ',' . $Minorista[0]['zona_AfiVen'] . ',' . $Minorista[0]['codigodespacho'] . ',' . $Minorista[0]['direccion_AfiMin']. ',' . $Minorista[0]['ID_AfiliadoMin'];
+                echo $Minorista[0]['nombre_AfiMin'] . ',' . $Minorista[0]['rif_AfiMin'] . ',' .  $Minorista[0]['telefono_AfiMin'] . ',' .$Minorista[0]['correo_AfiMin'] . ',' . $Minorista[0]['zona_AfiMin'] . ',' . $Minorista[0]['codigodespacho'] . ',' . $Minorista[0]['direccion_AfiMin']. ',' . $Minorista[0]['ID_AfiliadoMin'];
             }
+        }              
+        
+        //Invocado en A_VitrinaMayorista.js por medio de Llamar_datosMinorista()
+        public function listaMinorista($CodigoVenta){
+            //Se CONSULTA los minoristas asignados a un vnededor
+            $MinoristaVen = $this->ConsultaCarritoVitrina_M->consultarMinoristasVen($CodigoVenta);
+            
+            $Datos = [
+                'minoristaVen' => $MinoristaVen, // nombre_AfiMin, rif_AfiMin, codigodespacho      
+            ];
+
+            // echo "<pre>";
+            // print_r($MinoristaVen);
+            // echo "</pre>";          
+            // exit();
+            
+            $this->vista("view/ajax/listadoMinorista_V", $Datos);
         }
     }

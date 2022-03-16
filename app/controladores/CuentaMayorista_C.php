@@ -644,16 +644,16 @@
                 }
                 
                 //********************************************************
+                // SE GENERA EL CODIGO DE VENTA DEL VENDEDOR, ESTE MISMO SE UTILIZARA COMO CONTRASEÑA PROVISONAL PARA LA CUENTA DEL VENDEDOR
+                $Ale_CodigoVendedor = mt_rand(99999,999999);
+
                 //Las siguientes consultas se deben realizar por medio de Transacciones BD
                 //Se INSERTA el vendedor en la BD y se retorna el ID recien insertado
-                $ID_Vendedor = $this->ConsultaMayorista_M->insertarVendeodr($this->ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor);
+                $ID_Vendedor = $this->ConsultaMayorista_M->insertarVendeodr($this->ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor, $Ale_CodigoVendedor);
                 // echo '<pre>';
                 // print_r($ID_Vendedor);
                 // echo '</pre>';
                 // exit;
-
-                // SE GENERA LA CONTRASEÑA PROVISONAL PARA LA CUENTA DEL VENDEDOR
-                $Ale_CodigoVendedor = mt_rand(99999,999999);
 
                 //se cifran el codigo de vendedor con un algoritmo de encriptación, para insertarlo como contraseña en la cuenta de vendedor  luego el vendedor debera cambiarla
                 $ClaveVenCifrada= password_hash($Ale_CodigoVendedor, PASSWORD_DEFAULT);
