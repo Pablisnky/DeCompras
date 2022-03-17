@@ -206,24 +206,65 @@
             //CONSULTA las clientes de un vendedor especifico
             $PedidosVen = $this->ConsultaVendedor_M->consultarPedidos_Ven($_SESSION['ID_Vendedor']);//Sesion creadas en Login_C
 
-            $Nro_Orden = $PedidosVen[0]['numeroorden_May'];
+            $Ordenes = []; //contiene todas las ordenes de un vendedor
+            foreach($PedidosVen as $Key)    :
+                $Nro_Orden = $Key['numeroorden_May'];
+                array_push($Ordenes, $Nro_Orden);
+            endforeach;
+            // echo '<pre>';
+            // print_r($Ordenes);
+            // echo '</pre>';
+            // exit;
 
-            //CONSULTA el saldo total abonado a un pedido
-            // $DeudaPedidoVen = $this->ConsultaVendedor_M->consultarDeudaPedido_Ven($Nro_Orden);
+            //Consulta las ordenes que tienen pagos abonados
+            $OrdeneseAbonadas_2 = []; // Contienen solo ordenes abonadas
+            $OrdeneseAbonadas = $this->ConsultaVendedor_M->consultarOrdeneseAbonadas($Ordenes);
+            foreach($OrdeneseAbonadas as $Key)    :
+                $Nro_Orden_2 = $Key['numeroorden_May'];
+                array_push($OrdeneseAbonadas_2, $Nro_Orden_2);
+            endforeach;
+            // echo '<pre>';
+            // print_r($OrdeneseAbonadas_2);
+            // echo '</pre>';
+            // // exit;
             
-            // $Total = $PedidoVen[0]['montoTotal'];
-            // $TotalAbonado = $DeudaPedidoVen[0]['TotalAbonado'];
+            $OrdenesSinAbono = array_diff($Ordenes, $OrdeneseAbonadas_2);
+            // echo '<pre>';
+            // print_r($OrdenesSinAbono);
+            // echo '</pre>';
+            // exit;
 
-            // // se cambia el formato de los decimales, de coma a punto, para procesar la operacion ( a pesar que en MySQL estan en formato decimal  .) 
-            // $Total = str_replace(',', '.', $Total);   
-            // $Deuda = str_replace(',', '.', $TotalAbonado);  
+            //CONSULTA el saldo total abonado en las ordenes seleccionadas  
+            $Ordenesedefinitiva = [];
+            $DeudasEnPedido = $this->ConsultaVendedor_M->consultarDeudasEnPedido_Ven($OrdeneseAbonadas_2);
+            // echo '<pre>';
+            // print_r($DeudasEnPedido);
+            // echo '</pre>';
 
-            // //Se calcula la deuda pendiente del pedido especifico
-            // $Deuda = $Total - $TotalAbonado; 
-            
+            foreach($DeudasEnPedido as $Key)    :
+                $Nro_Orden_3 = $Key[0]['numeroorden_May']; 
+                $TotalAbonado = $Key[0]['TotalAbonado'];
+                $MontoTotal = $Key[0]['montoTotal'];
+                
+                // se cambia el formato de los decimales, de coma a punto, para procesar la operacion ( a pesar que en MySQL estan en formato decimal  .) 
+                $Total = str_replace(',', '.', $MontoTotal);   
+                $Deuda = str_replace(',', '.', $TotalAbonado); 
+
+                //Se calcula la deuda pendiente del pedido especifico
+                $Deuda = $Total - $TotalAbonado; 
+
+                $OrdeneseAbonadas_3 = ['deuda' => $Deuda, 'numeroordenMay' => $Nro_Orden_3];
+                array_push($Ordenesedefinitiva, $OrdeneseAbonadas_3);
+            endforeach;
+            // echo '<pre>';
+            // print_r($Ordenesedefinitiva);
+            // echo '</pre>';
+            // exit;
+
             $Datos = [
-                'pedidos_ven' => $PedidosVen, //nombre_AfiMin, numeroorden_May, montoTotal, fecha, hora, factura, pagado
-                // 'deuda' => $Deuda,
+                'pedidos_ven' => $PedidosVen, //nombre_AfiMin, numeroorden_May, montoTotal, FechaPedido, HoraPedido, factura, pagado
+                'deuda' => $Ordenesedefinitiva, //deuda, numeroorden_May 
+                'ordenesSinAbono' => $OrdenesSinAbono,
                 'nombreMay' => $this->Mayorista,
                 'nombreVen' => $_SESSION['Nombre_Vendedor'],
                 'apellidoVen' => $_SESSION['Apellido_Vendedor']
@@ -265,7 +306,7 @@
             $Datos = [
                 'NroOrden' => $Nro_Orden,
                 'pedido' => $PedidoVen, //numeroorden_May , montoTotal, factura
-                'detallepedido_ven' => $DetallePedidoVen, //nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, fecha, hora 
+                'detallepedido_ven' => $DetallePedidoVen, //nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, FechaPedido, HoraPedido 
                 'pagos' => $AbonosPedidoVen, //factura, abono, fechaabono, formapago, pagada
                 'deuda_May' => $Deuda,
                 'nombreMay' => $this->Mayorista,
@@ -461,5 +502,26 @@
             else{
                 header('location:' . RUTA_URL. '/CuentaVendedor_C/pedidosVen/');
             } 
+        }
+        
+        //llamado desde A_Cuenta_pedidodetalleVen_V
+        public function agregarProductoAPedido(){            
+            //CONSULTA datos necesarios para pasar al controlador VitrinaMayorista_C
+            $InformacionMayorista = $this->ConsultaVendedor_M->consultarDatosMayorista($_SESSION['ID_Mayorista']);
+            
+            foreach($InformacionMayorista as $Row)   :
+                $NombreMayorista = $Row['nombreMay'];
+                $FotografiaMayorista = $Row['fotografiaMay'];
+            endforeach;
+            
+            // echo '<pre>';
+            // print_r($InformacionMayorista);
+            // echo '</pre>';
+            // exit;
+
+            //Se genera un token para informar que viene de este controlador, debido a que el controlador al que se va a redirigir tambien es solicitdo por otros medios
+            $Token_A = 'TOKEN_A';
+
+            header('location:' . RUTA_URL. '/VitrinaMayorista_C/vitrina_Mayorista/' . $_SESSION['ID_Mayorista'] . ',' . $NombreMayorista . ',' .  $FotografiaMayorista . ',' .  $Token_A);
         }
     }

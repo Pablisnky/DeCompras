@@ -3,6 +3,7 @@
         <div class='preloder preloaderCentrar'></div>
     </div>
 
+    <!-- BOTONES RADIO -->
     <div class="section_1--cont__radios" id="Botones_radios">
         <input class="section_1--radios" type="radio" name="slider" id="Portada_1" checked/>
         <input class="section_1--radios" type="radio" name="slider" id="Portada_2"/>

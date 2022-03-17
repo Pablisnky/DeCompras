@@ -7,10 +7,10 @@
     <section class="sectionModal">
         <i class="fas fa-arrow-left spanCerrar spanCerrar--fijo" onclick="ocultarPedido()"></i>
         <div class="contenedor_24">
-            <div class="contenedor_42 contenedor_108" id="Contenedor_42">                  
+            <div class="contenedor_108" id="Contenedor_42">                  
                 <div class="cont_clientesVen hover--off">
                     <div style="grid-column-start: 1; grid-column-end: 4;">
-                        <label class="cont_clientesVen--renglon">Razon social</label>
+                        <label class="cont_clientesVen--renglon";>Razon social</label>
                         <label class="font--TituloTarjetaCliente"><?php echo $Datos['detallepedido_ven'][0]['nombre_AfiMin'];?></label>
                     </div> 
                     <div style="grid-column-start: 1; grid-column-end: 2;">
@@ -36,11 +36,11 @@
                     </div> 
                     <div style="grid-column-start: 1; grid-column-end: 2;">
                         <label class="cont_clientesVen--renglon">F. pedido</label>
-                        <label><?php echo $Datos['detallepedido_ven'][0]['fecha'];?></label>
+                        <label><?php echo $Datos['detallepedido_ven'][0]['FechaPedido'];?></label>
                     </div> 
                     <div style="grid-column-start: 2; grid-column-end: 3;">
                         <label class="cont_clientesVen--renglon">H. pedido</label>
-                        <label><?php echo $Datos['detallepedido_ven'][0]['hora'];?></label>
+                        <label><?php echo $Datos['detallepedido_ven'][0]['HoraPedido'];?></label>
                     </div> 
                     <div style="grid-column-start: 3; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">F. despacho</label>
@@ -90,7 +90,7 @@
 
                 <!-- DETALLE DEL PEDIDO -->        
                 <table class="tabla">       
-                    <caption>Detalle del pedido<a class="" style="float:right" href="<?php echo RUTA_URL . '/VitrinaMayorista_C/vitrina_Mayorista/' . 1 . '-' . 2 . '-' . 3?>">Agregar</a></caption>    
+                    <caption>Detalle del pedido<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarProductoAPedido/'?>">Agregar</a></caption>    
                     <thead class="">
                         <th class="th_1 th_4">CANT.</th>
                         <th class="th_2 th_4">PRODUCTO</th>

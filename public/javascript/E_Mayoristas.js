@@ -1,6 +1,10 @@
 //Muestra la pagina del mayorista, invocada desde mayorista_V.php
-function mayorista(ID_Mayorista, Nombre_Mayorista, Foto_Mayorista){  
-    window.open(`VitrinaMayorista_C/vitrina_Mayorista/${ID_Mayorista},${Nombre_Mayorista},${Foto_Mayorista}`,"_self") 
+function mayorista(ID_Mayorista, Nombre_Mayorista, Foto_Mayorista){ 
+    
+    //Se genera un token para informar que viene de este controlador, debido a que el controlador al que se va a redirigir tambien es solicitdo por otros medios 
+    let Token_B = "TOKEN_B";
+    
+    window.open(`VitrinaMayorista_C/vitrina_Mayorista/${ID_Mayorista},${Nombre_Mayorista},${Foto_Mayorista}`+ Token_B,"_self") 
 }
 
 //************************************************************************************************

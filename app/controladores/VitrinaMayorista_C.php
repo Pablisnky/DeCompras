@@ -29,18 +29,18 @@
             $this->vista("view/mayoristas_V", $Datos);
         }  
 
-        //Llamado desde E_Mayorista.js - cienta_pedidodetalleVen_V.php
+        //Llamado desde E_Mayorista.js - CuentaVendedor_C/agregarProductoAPedido
         public function vitrina_Mayorista($DatosAgrupados){
             //$DatosAgrupados contiene una cadena separados por coma, se convierte en array para separar los elementos
-            echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
-            exit;
+            // echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
+            // exit;
 
             $DatosAgrupados = explode(',', $DatosAgrupados);
 
             $ID_Mayorista = $DatosAgrupados[0];
             $NombreMayorista = $DatosAgrupados[1]; 
             $Foto_Mayorista = $DatosAgrupados[2];
-            // exit();
+            $Token = $DatosAgrupados[3];
 
             //Solicita el precio del dolar
             require(RUTA_APP . '/controladores/Menu_C.php');
@@ -66,7 +66,9 @@
             // exit;
             
             $this->vista("header/header_Mayorista", $Datos);
-            $this->vista("modal/modal_codigoMayorista_V", $Datos);
+            if($Token != 'TOKEN_A'){//No carga la ventana modal si viene de una cuenta de usuario
+                $this->vista("modal/modal_codigoMayorista_V", $Datos);
+            }
             $this->vista("view/VitrinaMayorista_V", $Datos);
         }
     }

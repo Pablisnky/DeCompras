@@ -1,6 +1,7 @@
 <!-- Ventana modal cargada por medio de CuentaVendedor_C/agregarpagoVen -->
 
 <section class="sectionModal"  id="Ejemplo_Secciones">
+    <a href="<?php echo RUTA_URL . '/CuentaVendedor_C/pedidosVen/';?>"><i class="fas fa-times spanCerrar"></i></a>
     <div class="sectionModal__div">
         <form action="<?php echo RUTA_URL; ?>/CuentaVendedor_C/recibeAgregarPagoVen" method="POST" autocomplete="off">
             <fieldset class="fieldset_1 fieldset_3"> 

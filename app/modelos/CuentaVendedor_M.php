@@ -79,13 +79,13 @@
             $stmt->execute();
         } 
         
-        //SELECT de los pedidos de un vendedor especifico
+        //SELECT de los pedidos correspondientes a un vendedor especifico 
         public function consultarPedidos_Ven($ID_Vendedor){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, numeroorden_May, montoTotal, pedidomayorista.factura, pedidomayorista.fecha, pedidomayorista.hora, pagado
-                FROM minorista 
+                "SELECT nombre_AfiMin, numeroorden_May, montoTotal, pedidomayorista.factura, DATE_FORMAT(fecha, '%d-%m-%y') AS FechaPedido, DATE_FORMAT(hora, '%h:%i %p') AS HoraPedido, pagado                
+                FROM minorista                                 
                 INNER JOIN pedidomayorista ON pedidomayorista.codigoDespacho=minorista.codigoDespacho 
-                WHERE ID_Vendedor = :ID_VENDEDOR
+                WHERE ID_Vendedor = :ID_VENDEDOR                               
                 ORDER BY fecha DESC, hora DESC"
             );
 
@@ -98,15 +98,15 @@
                 return  'Existe un fallo';
             }
         }
-        
+
         //SELECT del detalle de un pedido de un vendedor especifico
         public function consultarDetallePedido_Ven($Nro_Orden){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, pedidomayorista.fecha, pedidomayorista.hora
-            FROM pedidomayorista 
-            INNER JOIN detallepedidomayorista ON pedidomayorista.numeroorden_May =detallepedidomayorista.numeroorden_May 
-            INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin=minorista.ID_AfiliadoMin 
-            WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
+                "SELECT nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, DATE_FORMAT(fecha,'%d-%m-%y') AS FechaPedido, DATE_FORMAT(hora,'%h:%i %p') AS HoraPedido
+                FROM pedidomayorista 
+                INNER JOIN detallepedidomayorista ON pedidomayorista.numeroorden_May =detallepedidomayorista.numeroorden_May 
+                INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin=minorista.ID_AfiliadoMin 
+                WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
             );
             
             $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
@@ -160,7 +160,7 @@
         //SELECT del saldo total abonado a un pedido
         public function consultarDeudaPedido_Ven($Nro_Orden){ 
             $stmt = $this->dbh->prepare(
-                "SELECT  SUM(abono) AS TotalAbonado
+                "SELECT  SUM(abono) AS TotalAbonado, numeroorden_May 
                 FROM pagosmayorista 
                 WHERE numeroorden_May = :NRO_ORDEN"
             );
@@ -173,10 +173,48 @@
             else{
                 return  'Existe un fallo';
             }
-        }         
-        
-        
+        }     
+
         //SELECT del saldo total abonado a un pedido
+        public function consultarOrdeneseAbonadas($Ordenes){ 
+            //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
+            foreach($Ordenes as $key)  :
+                $stmt = $this->dbh->prepare(
+                    "SELECT DISTINCT numeroorden_May 
+                    FROM pagosmayorista 
+                    WHERE abono != '' " 
+                );
+                
+                $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
+            
+                $stmt->execute();
+                
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            endforeach;
+        }        
+
+        //SELECT del saldo total abonado a un pedido
+        public function consultarDeudasEnPedido_Ven($Ordenes){ 
+            //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
+            $AlmacenarOrdenes = [];
+            foreach($Ordenes as $key)  :
+                $stmt = $this->dbh->prepare(
+                    "SELECT SUM(abono) AS TotalAbonado, pedidomayorista.numeroorden_May, montoTotal 
+                    FROM pagosmayorista 
+                    INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May 
+                    WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
+                );
+                
+                $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
+            
+                $stmt->execute();
+
+               array_push($AlmacenarOrdenes, $stmt->fetchAll(PDO::FETCH_ASSOC));
+            endforeach;
+            return $AlmacenarOrdenes;
+        }        
+        
+        //SELECT del saldo total abonado a un pedido 
         public function consultarAbonosPedido_Ven($Nro_Orden){ 
             $stmt = $this->dbh->prepare(
                 "SELECT pedidomayorista.factura, abono, fechaabono, formapago
@@ -253,4 +291,22 @@
                 return false;
             }
         }
+        
+        //SELECT 
+        public function consultarDatosMayorista($ID_Mayorista){ 
+            $stmt = $this->dbh->prepare(
+                "SELECT nombreMay, fotografiaMay
+                FROM mayorista 
+                WHERE ID_Mayorista = :ID_MAYORISTA"
+            );
+            
+            $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }       
     }

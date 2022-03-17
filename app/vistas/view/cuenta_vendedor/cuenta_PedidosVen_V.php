@@ -12,7 +12,7 @@
         if($Datos['pedidos_ven'] != Array ()){ 
             foreach($Datos['pedidos_ven'] as $row)  : 
                 $Nro_Orden = $row['numeroorden_May'];   ?>
-                <!-- INDICADOR DE DEUDA       background-color: var(--Fallos); -->
+                <!-- INDICADOR DE DEUDA  -->
                 <div class="contenedor_106--pedidos">
                     <?php
                     // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
@@ -31,43 +31,62 @@
                     }
                     // PEDIDO FACTURADO Y QUE HA PERDIDO LA GANANCIA POR COMISION
                     else{   ?>
-                        <span class="span_21 borde_1" style="background-color: var(--Fallos);"><i class="fas fa-times"></i></span>
+                        <span class="span_21 borde_1" style="background-color: yellow;"><i class="fas fa-times"></i></span>
                         <?php 
                     }   ?>
                 </div>
+
                 <div class="cont_clientesVen borde_1" onclick="Llamar_pedidosVen('<?php echo $Nro_Orden;?>')">
-                    <div style="grid-column-start: 1; grid-column-end: 3;">
+                    <div style="grid-column-start: 1; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">Razon social</label>
                         <label class="font--TituloTarjetaCliente"><?php echo $row['nombre_AfiMin'];?></label>
                     </div> 
+                    <div style="grid-column-start: 1; grid-column-end: 2;">
                         <?php
                         if($row['factura'] == 'No Asignada'){    ?>
-                            <div style="grid-column-start: 1; grid-column-end: 3;">
-                                <label class="cont_clientesVen--renglon">Orden despacho</label>
+                                <label class="cont_clientesVen--renglon">Nº Orden</label>
                                 <label><?php echo $row['numeroorden_May'];?></label>
-                            </div> <?php
+                            <?php
                         }
                         else{  ?>
-                            <div style="grid-column-start: 1; grid-column-end: 3;">
                                 <label class="cont_clientesVen--renglon">Factura</label>
-                                <label><?php echo $row['factura'];?></label>
-                            </div> <?php
+                                <label><?php echo $row['factura'];?></label><?php
                         }   ?>
-                    <div style="grid-column-start: 3; grid-column-end: 4;">
-                        <label class="cont_clientesVen--renglon">Total</label>
-                        <label><?php echo $row['montoTotal'];?></label>
                     </div> 
+                    <div style="grid-column-start: 2; grid-column-end: 3; text-align: center">
+                        <label class="cont_clientesVen--renglon">Total</label>
+                        <label><?php echo $row['montoTotal'];?> $</label>
+                    </div> 
+                         <?php                    
+                        //  ORDENES CON DEUDA PARCIAL
+                        foreach($Datos['deuda'] as $Key)  : 
+                            if($row['numeroorden_May'] == $Key['numeroordenMay']){ ?>
+                                <div style="grid-column-start:3 ; grid-column-end: 4;">
+                                    <label class="cont_clientesVen--renglon">Deuda</label>
+                                    <label><?php echo $Key['deuda'];?> $</label>
+                                </div> 
+                                <?php
+                            } 
+                        endforeach; 
+                                  
+                        // ORDENES CON DEUDA TOTAL
+                        foreach($Datos['ordenesSinAbono'] as $Key)  : 
+                            if($row['numeroorden_May'] == $Key){ ?>
+                                <div style="grid-column-start:3 ; grid-column-end: 4;">
+                                    <label class="cont_clientesVen--renglon">Deuda</label>
+                                    <label><?php echo $row['montoTotal'];?> $</label>
+                                </div> 
+                                <?php
+                            }
+                        endforeach; 
+                            ?>
                     <div style="grid-column-start: 1; grid-column-end: 2;">
                         <label class="cont_clientesVen--renglon">Fecha</label>
-                        <label><?php echo $row['fecha'];?></label>
+                        <label><?php echo $row['FechaPedido'];?></label>
                     </div> 
                     <div style="grid-column-start: 2; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">Hora</label>
-                        <label><?php echo $row['hora'];?></label>
-                    </div> 
-                    <div class="ocultar-movil">
-                        <label class="cont_clientesVen--renglon">Dirección</label>
-                        <label>Calle 25 entre Avs. 5 y 6</label>
+                        <label><?php echo $row['HoraPedido'];?></label>
                     </div> 
                 </div>
                 <?php

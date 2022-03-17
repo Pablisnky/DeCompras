@@ -31,7 +31,7 @@
 }
 .aside_1{
 	position: sticky;
-	top: 0%;
+	top: 80%;
 }
 .boton{
 	font-size: 1em;
@@ -293,7 +293,7 @@
 }
 .contenedor_42{
 	width: 100%;
-	/* margin-top: 25%; */
+	margin-top: 15%;
 }
 .contenedor_44{
 	top: 10%;
@@ -404,6 +404,8 @@
 	font-size: 0.8em;
 	font-weight: bold;
 	margin-top: 2%;
+}
+.cont_clientesVen--restringido{
 }
 .div__Botones{
 	width: 100%;
@@ -658,10 +660,12 @@
 	margin-top: 0%;
 }
 .contenedor_111{
-	background-color: initial;
+	background-color: white;
 	width: 100%;
 	padding-left: 10%;
 	height: initial;
+	position: fixed;
+	top: 0%;
 }
 .contenedor_111--tienda{
 	background-color: white !important;
@@ -1227,7 +1231,7 @@
 	margin: 5% auto;
 }
 .p_17{
-	/* margin-top: inherit; */
+	margin-top: inherit;
 }
 .placeholder{
 	font-size: 1em;	
@@ -1285,23 +1289,17 @@
 	height: 150%;
 }
 .section_8{
-	max-height: 90%;
-	margin-top: -3%;
-	display: flex;
-	width: 200%;
-	overflow: scroll;
-	scroll-behavior: smooth;
-	overflow-y: hidden;
-	overflow-x: hidden;
-	/*flex-grow: 1;distribuye proporcionalmente los elementos internos en el eje horizontal, es necesario que el elemento padre tenga la propiedad display con el valor flex*/
+	/* max-height: 85%; */
+	/* display: flex; */
+	overflow: auto;
+	padding-top: 18%;
+	/* scroll-behavior: smooth;  */
+	/* width: 200%; */
 }
 .section_8__div{
 	width: 100%;
-	height: 100vh;
-	/* overflow: hidden; */
-	/*background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover; cover - auto - contain*/ 
+	/* height: 80vh; */
+	/* width: 100% !important; */
 }
 .section_9{
 	padding-top: 15%;

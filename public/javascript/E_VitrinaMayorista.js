@@ -81,11 +81,11 @@ if(document.getElementById("Label_1")){
    }, true)
 
 // *****************************************************************************************************
-//Escucha desde opciones_V.php, archivo que se carga via Ajax en vitrina_V.php; por medio de delegación de eventos
+//Escucha desde opciones_Mayorista_V.php, archivo que se carga via Ajax en vitrinaMayorista_V.php; por medio de delegación de eventos
 document.addEventListener('click', function(event){
-    if(event.target.id == 'Span_3' || event.target.id == 'Label_9'){
-        TransferirPedido()
-        CerrarModal_X('Section_3')
+    if(event.target.id == 'Span_3' || event.target.id == 'Label_9'){ 
+        TransferirPedido();
+        CerrarModal_X('Section_3');
     }
 })
 
@@ -376,7 +376,7 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
     }
 
 //************************************************************************************************
-    //invocada desde opciones_V.php al regresar a vitrina_V.php, agrega las leyendas en cada seccion  con los productos que estas tienen cargado en carrito
+    //invocada desde opciones_Mayorista_V.php al regresar a vitrinaMayorista_V.php, agrega las leyendas en cada seccion  con los productos que estas tienen cargado en carrito
     function TransferirPedido(){
 
         //Se especifica la seccion donde se va a insertar la leyenda en vitrina_V.php, este localStorage se creo en verOpciones()
