@@ -29,10 +29,11 @@
     }   ?>
 
     <div class="contenedor_156"> 
-        <aside class="aside_1">
-            <p class="p_17 borde_1">SECCIONES</p>
-        </aside>
-
+        <div>   
+            <aside class="aside_1">
+                <p class="p_17 borde_1">SECCIONES</p>
+            </aside>
+        </div>
         <div class="contenedor_110" id="Section_4">
             <?php
             $Contador = 1;

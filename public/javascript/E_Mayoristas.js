@@ -2,9 +2,9 @@
 function mayorista(ID_Mayorista, Nombre_Mayorista, Foto_Mayorista){ 
     
     //Se genera un token para informar que viene de este controlador, debido a que el controlador al que se va a redirigir tambien es solicitdo por otros medios 
-    let Token_B = "TOKEN_B";
+    let Token_B = false;
     
-    window.open(`VitrinaMayorista_C/vitrina_Mayorista/${ID_Mayorista},${Nombre_Mayorista},${Foto_Mayorista}`+ Token_B,"_self") 
+    window.open(`VitrinaMayorista_C/vitrina_Mayorista/${ID_Mayorista},${Nombre_Mayorista},${Foto_Mayorista},${Token_B}`, "_self") 
 }
 
 //************************************************************************************************

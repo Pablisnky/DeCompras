@@ -3,7 +3,7 @@
         private $ID_Mayorista;
 
         public function __construct(){
-            // session_start();
+            session_start();
 
             $this->ConsultaVitrina_M = $this->modelo('VitrinaMayorista_M');
 
@@ -66,7 +66,7 @@
             // exit;
             
             $this->vista("header/header_Mayorista", $Datos);
-            if($Token != 'TOKEN_A'){//No carga la ventana modal si viene de una cuenta de usuario
+            if($Token == false){//No carga la ventana modal si viene de una cuenta de usuario
                 $this->vista("modal/modal_codigoMayorista_V", $Datos);
             }
             $this->vista("view/VitrinaMayorista_V", $Datos);

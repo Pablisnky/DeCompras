@@ -505,22 +505,25 @@
         }
         
         //llamado desde A_Cuenta_pedidodetalleVen_V
-        public function agregarProductoAPedido(){            
+        public function agregarProductoAPedido($Nro_Orden){            
             //CONSULTA datos necesarios para pasar al controlador VitrinaMayorista_C
             $InformacionMayorista = $this->ConsultaVendedor_M->consultarDatosMayorista($_SESSION['ID_Mayorista']);
+
+            //Se crea una sesion con el Nro de orden, que sera solicitada en carritoMayorista_V.php, luego es destruida una vez consumida alli
+            $_SESSION['Nro_Orden'] = $Nro_Orden;
             
             foreach($InformacionMayorista as $Row)   :
                 $NombreMayorista = $Row['nombreMay'];
                 $FotografiaMayorista = $Row['fotografiaMay'];
             endforeach;
-            
+            // echo $Nro_Orden; 
             // echo '<pre>';
             // print_r($InformacionMayorista);
             // echo '</pre>';
             // exit;
 
             //Se genera un token para informar que viene de este controlador, debido a que el controlador al que se va a redirigir tambien es solicitdo por otros medios
-            $Token_A = 'TOKEN_A';
+            $Token_A = true;
 
             header('location:' . RUTA_URL. '/VitrinaMayorista_C/vitrina_Mayorista/' . $_SESSION['ID_Mayorista'] . ',' . $NombreMayorista . ',' .  $FotografiaMayorista . ',' .  $Token_A);
         }

@@ -90,7 +90,7 @@
 
                 <!-- DETALLE DEL PEDIDO -->        
                 <table class="tabla">       
-                    <caption>Detalle del pedido<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarProductoAPedido/'?>">Agregar</a></caption>    
+                    <caption>Detalle del pedido<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarProductoAPedido/' . $Datos['NroOrden'] ?>">Agregar</a></caption>    
                     <thead class="">
                         <th class="th_1 th_4">CANT.</th>
                         <th class="th_2 th_4">PRODUCTO</th>

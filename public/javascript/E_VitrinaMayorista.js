@@ -537,7 +537,6 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
 //************************************************************************************************
     //invocada desde A_VitrinaMayorista.js por medio de llamar_PedidoEnCarrito(), pinta los datos de "La orden de compra"
     function PedidoEnCarrito(ValorDolar){
-        console.log("______Desde PedidoEnCarrito()______", Number(ValorDolar))
         
         //Se muestra el monto de la compra en "La Orden". (sin carga por despacho)
         document.getElementById("MontoTienda").value = SeparadorMiles(TotalDisplayCarrito)

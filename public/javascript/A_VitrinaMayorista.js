@@ -60,6 +60,37 @@ function respuesta_PedidoEnCarrito(){
     }    
 }
 
+//-------------------------------------------------------------------------------------------------
+//Muestra la orden de compra, invocado en vitrinaMayorista_V.php
+function llamar_AgregarPedidoEnCarrito(ID_Mayorista, ValorDolar){
+    console.log("llamar_AgregarPedidoEnCarrito", ID_Mayorista + " , " + ValorDolar)
+    var url="../../CarritoMayorista_C/AgregarA_PedidoPrevio/"
+    http_request.open('GET', url, true);    
+    peticion.onreadystatechange = respuesta_AgregarPedidoEnCarrito;
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
+    peticion.send("null");
+    
+    localStorage.setItem('ValorDolarHoy', ValorDolar)         
+    Local_ValorDolarHoy = localStorage.getItem('ValorDolarHoy')
+}                                                           
+function respuesta_AgregarPedidoEnCarrito(){
+    if(peticion.readyState == 4){
+        if(peticion.status == 200){            
+            document.getElementById("Mostrar_OrdenMayorista").style.display = "block"
+            //Coloca el cursor en el top de la pagina
+            window.scroll(0, 0)
+            document.getElementById('Mostrar_OrdenMayorista').innerHTML = peticion.responseText 
+    
+            PedidoEnCarrito(Local_ValorDolarHoy)           
+        } 
+        else{
+            alert('Hubo problemas con la petición en llamar_PedidoEnCarrito()')
+        }
+    }
+    else{ //en caso contrario, mostramos un gif simulando una precarga
+        // document.getElementById('Mostrar_Maquinas').innerHTML='Cargando registros';
+    }    
+}
 //****************************************************************************************************
 //Muestra los productos que tiene una sección
 function llamar_OpcionesMayorista(ID_Mayorista, ID_Seccion){
@@ -98,7 +129,7 @@ function respuesta_OpcionesMayorista(){
 }
 
 //****************************************************************************************************
-//invocada en E_VitrinaMayorista.js
+//invocada en listadoMinorista_V.php
 function Llamar_datosMinorista(CodigoDespacho){
     var url="../../CarritoMayorista_C/informacionMinorista/" + CodigoDespacho
     http_request.open('GET', url, true);    
@@ -150,7 +181,7 @@ function respuesta_datosMinorista(){
 }
 
 //****************************************************************************************************
-//invocada en E_VitrinaMayorista.js
+//invocada en E_VitrinaMayorista.js por medio de codigoVenta()
 function Llamar_listaMinorista(CodigoVenta){
     var url="../../CarritoMayorista_C/listaMinorista/" + CodigoVenta
     http_request.open('GET', url, true);    

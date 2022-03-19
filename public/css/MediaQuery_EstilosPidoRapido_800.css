@@ -31,7 +31,7 @@
 }
 .aside_1{
 	position: sticky;
-	top: 80%;
+	top: 8%;
 }
 .boton{
 	font-size: 1em;
@@ -451,6 +451,9 @@
 	/* background-color: white; */
 	display: block;
 	height: 37px;
+}
+.header__menuResponsive--inicio{
+	margin-top: 65%;
 }
 .header__menuResponsive{
 	/* margin-top: 15% ; */

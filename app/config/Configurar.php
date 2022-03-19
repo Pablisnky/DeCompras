@@ -26,8 +26,8 @@ define("DB_NOMBRE","pido_rap");
 // define("RUTA_URL", "https://www.pedidoremoto.com");
 // define("NOMBRESITIO","PedidoRemoto");
 
-// // // credenciales para conexion a la BD en remoto
+// // credenciales para conexion a la BD en remoto
 // define("DB_HOST","pedidoremoto.com");
-// define("DB_USUARIO","pedidore_Pa_Cabeza");
-// define("DB_PASSWORD","159ADNjpg.");
-// define("DB_NOMBRE","pedidore_pido_rap");
+// define("DB_USUARIO","pedidor1_Pa_Cabeza");
+// define("DB_PASSWORD","007PHPcake");
+// define("DB_NOMBRE","pedidor1_pido_rap");

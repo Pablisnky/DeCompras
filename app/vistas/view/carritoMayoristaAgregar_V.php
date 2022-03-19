@@ -61,75 +61,14 @@
                     </div>
                 </div>
 
-            <!-- CODIGO DE DESPACHO -->                         
-            <div class="contFlex50">
-                <input class="input--despacho" id="CodigoVenta" placeholder="Código de despacho" onkeydown="codigoVenta(this.value)" onkeyup="codigoVenta(this.value)"/>
-            </div>
-        </div>
-    </section>
-    
-    <section>         
-        <div class="contOculto" id="Muestra_datosMinorista">
-            <i class="fas fa-times spanCerrar spanCerrar--fijo" onclick="ocultarListadoMay('Muestra_datosMinorista')">X</i>
-             <form action="../../RecibePedidoMayorista_C" method="POST" id="DatosUsuario"></form> <!-- onsubmit="return validarDespacho()" -->
-                
-                <!--LOS DATOS DEL MINORISTA vienen de A_VitrinaMayorista.js por medio de Llamar_datosMinorista()-->
-                <article>
-                    <div class="contenedor_24">
-                        <header>
-                            <h1 class="h1_1">Datos del cliente</h1>
-                        </header>
-
-                        <div class="contFlex" style="position: relative;">
-                            <!-- NOMBRE MINORISTA-->
-                            <div class="contenedor_29 contenedor_29--label">
-                                <label>Nombre</label>
-                                <input class="input_13 borde_1" type="text" id="NombreMinorista"/>
-                            </div>
-
-                            <!-- RIF MINORISTA -->
-                            <div class="contenedor_29 contenedor_29--label">
-                                <label>RIF</label>
-                                <input class="input_13 borde_1" type="text" id="RifMinorista"/>
-                            </div>
-
-                            <!-- CODIGO MINORISTA -->
-                            <div class="contenedor_29 contenedor_29--label">
-                                <label>Código de despacho</label>
-                                <input class="input_13 borde_1" type="text" id="CodigoMinorista" name="codigoMinorista"/>
-                            </div>
-
-                            <!-- TELEFONO MINORISTA -->
-                            <div class="contenedor_29 contenedor_29--label">
-                                <label>Telefono</label>
-                                <input class="input_13 borde_1" type="text" id="TelefonoMinorista"/>
-                            </div>
-
-                            <!-- CORREO MINORISTA -->
-                            <div class="contenedor_29 contenedor_29--label">
-                                <label>Correo</label>
-                                <input class="input_13 borde_1" type="correo" id="CorreoMinorista"/>
-                            </div>
-
-                            <!-- ZONA MINORISTA -->
-                            <div class="contenedor_29 contenedor_29--label">
-                                <label>Zona</label>
-                                <input class="input_13 borde_1" type="correo" id="ZonaMinorista"/>
-                            </div>
-
-                            <!-- DIRECCION -->
-                            <div class="contenedor_72">
-                                <label>Dirección</label>
-                                <textarea class="textarea_1 borde_1" id="DireccionMinorista"></textarea>
-                            </div>  
-                        </div>   
-                        <div class="contFlex50">
-                            <input class="ocultar" type="text" id="Pedido" name="pedido"/>
-                            <input class="ocultar" type="text" id="ID_Minorista" name="id_minorista"/>
-                            <input class="boton boton--alto boton--largo botonJS" type="submit" value="Generar pedido"/>
-                        </div>
-                    </div>
-                </article>    
+            <!-- BOTON AÑADIR A PEDIDO-->  
+             <form action="../../RecibeAgregarPedidoMayorista_C" method="POST" id="DatosUsuario"> <!-- onsubmit="return validarDespacho()" -->
+                <div class="contFlex50">
+                    <input class="ocultar" type="text" id="Pedido" name="pedido"/>
+                    <input class="ocultar" type="text" name="id_minorista" value="0"/>
+                    <input class="ocultar" type="text" name="codigoMinorista" value="N/A"/>
+                    <input class="boton botonJS" type="submit" form="DatosUsuario" value="Agregar"/>
+                </div>
             </form>
         </div>
     </section>
