@@ -8,10 +8,10 @@ if(!empty($_SESSION["ID_Mayorista"])){
       ?>       
         
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
-    <div class="contenedor_42">  
-        <form action="<?php echo RUTA_URL; ?>/CuentaMayorista_C/recibeProductoPublicarMay" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarPublicacion()">
+    <div class="contenedor_108">  
+        <form action="<?php echo RUTA_URL; ?>/CuentaMayorista_C/recibeProductoPublicarMay" method="POST" enctype="multipart/form-data" autocomplete="off" > <!-- onsubmit="return validarPublicacion()" -->
 
             <a id="Ancla_01" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3"> 
@@ -36,7 +36,7 @@ if(!empty($_SESSION["ID_Mayorista"])){
 
                         <!-- SECCION --> 
                         <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccionMay" id="SeccionPublicarMay" placeholder="Sección" tabindex="4" onkeydown="blanquearInput('SeccionPublicar')"/>
-                        <br>
+                        <br><br>
 
                         <!-- PRECIO -->                    
                         <div style="display: flex;	justify-content: space-around;">

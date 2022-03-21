@@ -93,6 +93,26 @@ function respuesta_verificarNombreTienda(){
 }
 
 //-------------------------------------------------------------------------------------------------
+function llamar_verificarNombreMayorista(NombreMayorista){
+    console.log("_____Desde llamar_verificarNombreMayorista()_____", + NombreMayorista);
+    var url="../Registro_C/verificarNombreMayorista/" + NombreMayorista;
+    http_request.open('GET',url,true);     
+    peticion.onreadystatechange = respuesta_verificarNombreMayorista;
+    peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    peticion.send("null");
+}                                                           
+function respuesta_verificarNombreMayorista(){
+    if (peticion.readyState == 4){
+        if(peticion.status == 200){
+            document.getElementById('Mostrar_verificarNombreMayorista').innerHTML = peticion.responseText;
+        } 
+        else{
+            alert('Hubo problemas con la petición en L_VeNoTi.');
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------------------------
 // function Llamar_eliminar_Sesion_CorreoExiste(){
 //     console.log("_____Desde Llamar_eliminar_Sesion_CorreoExiste()_____");
 //     var url="../Registro_C/borrar_Sesion_CorreoExiste/";

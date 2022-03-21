@@ -15,15 +15,15 @@
         public function index(){   
             //Se CONSULTAN los mayoristas que estan afiliados       
             $this->Mayorista = $this->ConsultaVitrina_M->consultarMayorista(); 
-                     
-            // echo '<pre>';
-            // print_r($this->Mayorista);
-            // echo '</pre>';
-            // exit;
             
             $Datos = [
                 'mayoristas_afiliados' => $this->Mayorista, //ID_Mayorista, nombreMay, fotografiaMay, telefonoMay, direccionMay, municipioMay, estadoMay
             ];
+              
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
 
             $this->vista("header/header");
             $this->vista("view/mayoristas_V", $Datos);
@@ -69,6 +69,6 @@
             if($Token == false){//No carga la ventana modal si viene de una cuenta de usuario
                 $this->vista("modal/modal_codigoMayorista_V", $Datos);
             }
-            $this->vista("view/VitrinaMayorista_V", $Datos);
+            $this->vista("view/vitrinaMayorista_V", $Datos);
         }
     }

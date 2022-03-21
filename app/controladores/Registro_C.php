@@ -172,21 +172,11 @@
 
                 //se cifran la contraseña del afiliado con un algoritmo de encriptación
                 $ClaveCifrada= password_hash($RecibeDatos["Clave_AfiMay"], PASSWORD_DEFAULT);
+                // echo $ClaveCifrada;
+                // exit;
                               
                 $this->ConsultaRegistro_M->Transaccion_registrarMayorista($RecibeDatos, $ClaveCifrada);
-                                                            
-                // //Se INSERTAN el campo de horario en la BD
-                // $this->ConsultaRegistro_M->insertarHabilitarHorario_LV($ID_Tienda);
-                
-                // //Se INSERTAN el campo de horario para el día sábado en la BD
-                // $this->ConsultaRegistro_M->insertarHabilitarHorario_SAB($ID_Tienda);
-                
-                // //Se INSERTAN el campo de horario para el día domingo en la BD
-                // $this->ConsultaRegistro_M->insertarHabilitarHorario_DOM($ID_Tienda);
-
-                // //Se INSERTAN el campo de horario para el día especial en la BD
-                // $this->ConsultaRegistro_M->insertarHabilitarHorario_ESP($ID_Tienda);
-                
+                                                                            
                 // ****************************************
 
                 //Se envia al correo pcabeza7@gmail.com la notificación de nuevo cliente registrado
@@ -377,6 +367,32 @@
             }
         }
 
+        public function verificarNombreMayorista($Nombre_Mayorista){
+            //CONSULTA los nombres de mayorista existente en la BD
+            $NombreTienda = $this->ConsultaRegistro_M->consultarNombresMayoristas();
+        
+            foreach($NombreTienda as $key){
+                $NombreTienda =  $key['nombreMay'];
+
+                if($NombreTienda == $Nombre_Mayorista){
+                    echo "Una tienda con este nombre ya existe";  
+
+                    //Se crea una sesion que se solicitara en el metodo recibeRegistroCom()          
+                    $_SESSION["NombreIendaExiste"] = true;?>
+                    
+                    <style>
+                        .contenedor_43{
+                            background-color: yellow;  
+                            display: block;
+                            text-align: center; 
+                            font-size: 0.9em;    
+                        }
+                    </style>
+                    <?php
+                }
+            }
+        }
+
         public function VerificarClave($Clave, $Afiliado){
             if($Afiliado == 'AfiDes'){
                 //CONSULTA las claves de afiliados existente en la BD
@@ -436,7 +452,7 @@
                 }
 
                 foreach($ClaveBD as $key){
-                    $ClaveBD =  $key['claveCifrada'];
+                    $ClaveBD =  $key['claveCifradaMay'];
 
                     if($Clave == password_verify($Clave, $ClaveBD)){
                         echo "La contraseña que introdujo no es permitida"; 

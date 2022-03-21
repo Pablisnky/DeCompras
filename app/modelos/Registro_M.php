@@ -63,38 +63,37 @@
                 //Se INSERTAN los datos personales de la persona responsable mayorista en la BD y se retorna el ID del registro recien insertado
                 $stmt = $this->dbh->prepare("INSERT INTO afiliado_may(nombre_AfiMay, correo_AfiMay) VALUES (:Nombre,:Correo)");
 
-                $stmt->bindParam(':Nombre', $nombre);
-                $stmt->bindParam(':Correo', $correo);
-
                 $nombre = $RecibeDatos['Nombre_AfiMay'];
                 $correo = $RecibeDatos['Correo_AfiMay'];
+
+                $stmt->bindParam(':Nombre', $nombre);
+                $stmt->bindParam(':Correo', $correo);
                 
-                //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
+                //Se ejecuta la inserción de los datos y se recupera el ID del registro insertado
                 $stmt->execute();
-                $ID_AfiliadoCom = $this->dbh->lastInsertId();
+                $ID_AfiliadoMay = $this->dbh->lastInsertId();
 
                 // *********** OPERACION 2 *******************  
                 //Se INSERTAN los datos de acceso (CONTRASEÑA) de la cuenta mayorista en la BD                  
                 $stmt = $this->dbh->prepare("INSERT INTO afiliado_mayingreso(ID_AfiliadoMay, claveCifradaMay) VALUES (:ID_Usuario, :Clave)");
 
-                $stmt->bindParam(':ID_Usuario', $ID_AfiliadoCom);
+                $stmt->bindParam(':ID_Usuario', $ID_AfiliadoMay);
                 $stmt->bindParam(':Clave', $ClaveCifrada);
                 
                 $stmt->execute();  
 
                 // *********** OPERACION 3 ******************* 
                 //Se INSERTAN los datos de la distribuidora mayorista en la BD y se retorna el ID del registro recien insertado        
-                $stmt = $this->dbh->prepare("INSERT INTO mayorista(nombre_Mayorista, ID_AfiliadoMay, fecha_afiliacion_Mayorista, hora_afiliacion_Mayorista) VALUES (:NOMBRE_MAYORISTA, :ID_AFILIADO_MAYORISTA, CURDATE(), time_format(NOW(), '%H:%i'))");
-    
+                $stmt = $this->dbh->prepare("INSERT INTO mayorista(nombreMay, ID_AfiliadoMay, fecha_afiliacionMay, hora_afiliacionMay) VALUES (:NOMBRE_MAYORISTA, :ID_AFILIADO_MAYORISTA, CURDATE(), CURTIME())");
+        
+                $nombre_T = $RecibeDatos['Nombre_tienda'];
+                $responsable_T = $ID_AfiliadoMay;
+                
                 $stmt->bindParam(':NOMBRE_MAYORISTA', $nombre_T);
                 $stmt->bindParam(':ID_AFILIADO_MAYORISTA', $responsable_T);
-    
-                $nombre_T = $RecibeDatos['Nombre_tienda'];
-                $responsable_T = $ID_AfiliadoCom;
                 
                 //Se ejecuta la inserción de los datos en la tabla y se recupera el ID del registro insertado
                 $stmt->execute();
-                $this->dbh->lastInsertId();
                     
                 $this->dbh->commit();  
             }
@@ -332,6 +331,20 @@
             $stmt = $this->dbh->prepare(
                 "SELECT nombre_Tien 
                 FROM tiendas"
+            );
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        } 
+
+        //CONSULTA los nombre de mayoristas existentes en la BD
+        public function consultarNombresMayoristas(){  
+            $stmt = $this->dbh->prepare(
+                "SELECT nombreMay 
+                FROM mayorista "
             );
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

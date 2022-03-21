@@ -23,18 +23,15 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body>	
-		<header class="header header--tienda borde_bottom--claro">
-			<!-- ICONO HAMBURGUESA -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
-			
-            <!-- $this->Nombre_Mayorista = $_SESSION['Nombre_Mayorista']; -->
-			<div class="header_membrete--tienda">
-				<label class="h1_10 font--negro label--block"><?php echo $_SESSION['Nombre_Mayorista']?></label>
-			</div> 
+		<header class="header--inicio header borde_bottom--claro">
 
-			<!-- BARRA DE NAVEGACION -->
-			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda">
+			<!-- ICONO HAMBURGUESA -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
+			
+			<!-- BARRA DE NAVEGACION header__menuResponsive--tienda-->
+			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/configurar'?>">Configurar</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/vendedores'?>">Vendedores</a></li>
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/clientes'?>">Clientes</a></li>
 					<li class="menuLi_1"><a class="a_3">Productos</a>
@@ -54,11 +51,17 @@
 				</ul>
 			</nav>
 		</header>
+		
+		<!-- MEMBRETE -->
+		<div class="">
+			<label class="a_1 a_7 font--negro"><?php echo $_SESSION['Nombre_Mayorista']?></label>
+			<p class="h3_10 font-right separador_1">Administrador</p>
+		</div> 
 
 		<!-- icono de buscador -->
-        <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
+        <!-- <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
 			<i class="fas fa-search contIconoBuscador__span"></i>
-        </div>
+        </div> -->
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa">

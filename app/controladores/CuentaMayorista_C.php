@@ -11,7 +11,8 @@
             
             //Sesiones creadas en Login_C
             $this->ID_Mayorista = $_SESSION['ID_Mayorista'];
-            
+            // echo $this->ID_Mayorista;
+
             //Se CONSULTAN las secciones de un mayorista en particular, solicitado en el header y otros metodos
             $this->SeccionesMay = $this->ConsultaMayorista_M->consultarSeccionesMayorista($this->ID_Mayorista);
             // echo '<pre>';
@@ -36,6 +37,179 @@
             
             $this->vista("header/header_AfiMay", $Datos);
             $this->vista("view/cuenta_mayorista/cuenta_inicioMay_V");
+        }
+
+        // invocado desde el header_AfiMay.php
+        public function configurar(){
+            //CONSULTA los datos del mayorista
+            $DatosMayorista = $this->ConsultaMayorista_M->consultarDatosMayorista($this->ID_Mayorista);
+
+            $Datos = [
+                'datosMayorista' => $DatosMayorista, //ID_Mayorista , nombreMay, estadoMay, municipioMay, parroquiaMay, direccionMay, fotografiaMay, desactivarMay
+                'secciones' => $this->SeccionesMay
+            ];
+            
+            // echo "<pre>";
+            // print_r($Datos);
+            // echo "</pre>";
+            // exit();
+
+            $this->vista('header/header_AfiMay', $Datos);
+            $this->vista('view/cuenta_mayorista/cuenta_editarMay_V', $Datos);
+        }
+
+        //Recibe el formulario de configuracion de mayorista invocado en cuenta_editarMay_V.php
+        public function recibeRegistroEditado(){
+            //Se reciben todos los campos del formulario desde cuenta_editar_V.php se verifica que son enviados por POST y que no estan vacios
+            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['nombre_May'])){
+                $RecibeDatos = [
+                    //RECIBE DATOS DE LA TIENDA
+                    'Nombre_may' => filter_input(INPUT_POST, 'nombre_May', FILTER_SANITIZE_STRING),
+                    'id_mayorista' => filter_input(INPUT_POST, 'ID_Mayorista', FILTER_SANITIZE_STRING)
+                ];
+            }
+            else{
+                echo 'Llene todos los campos del formulario de registro';
+                echo '<br>';
+                echo "<a href='javascript: history.go(-1)'>Regresar</a>";
+                exit();
+            }
+
+            //RECIBE IMAGEN MAYORISTA
+            // ********************************************************
+            //Recibe la imagen de la tienda solo si se ha presionado el boton de buscar fotografia
+            if(($_FILES['imagen_mayorista']['name']) != ''){
+                $nombre_imgMayorista = $_FILES['imagen_mayorista']['name'];//se recibe un archivo cn $_FILE y el nombre del campo en el formulario, luego se hace referencia a la propiedad que se va a guardar en la variable.
+                $tipo_imgMayorista = $_FILES['imagen_mayorista']['type'];
+                $tamaño_imgMayorista = $_FILES['imagen_mayorista']['size'];
+
+                // echo 'Nombre de la imagen = ' . $nombre_imgMayorista . '<br>';
+                // echo 'Tipo de archivo = ' .$tipo_imgMayorista .  '<br>';
+                // echo 'Tamaño = ' . $tamaño_imgMayorista . '<br>';
+                // echo 'Tamaño maximo permitido = 7.000.000' . '<br>';// en bytes
+                // echo 'Ruta del servidor = ' . $_SERVER['DOCUMENT_ROOT'] . '<br>';
+
+                //Si existe imagen_mayorista y tiene un tamaño correcto
+                //Si existe imagenPrinci_Editar y tiene un tamaño correcto (2Mb)
+                if(($nombre_imgMayorista == !NULL) AND ($tamaño_imgMayorista <= 2000000)){
+                    //indicamos los formatos que permitimos subir a nuestro servidor
+                    if(($_FILES['imagen_mayorista']['type'] == 'image/jpeg')
+                        || ($_FILES['imagen_mayorista']['type'] == 'image/jpg') || ($_FILES['imagen_mayorista']['type'] == 'image/png')){
+
+                        // Ruta donde se guardarán las imágenes que subamos la variable superglobal
+                        // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
+
+                        //Usar en remoto
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/';
+
+                        //usar en local
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
+
+                        //se muestra el directorio temporal donde se guarda el archivo
+                        //echo $_FILES['imagen']['tmp_name'];
+                        // finalmente se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                        move_uploaded_file($_FILES['imagen_mayorista']['tmp_name'], $directorio_1.$nombre_imgMayorista);
+
+                        //Para actualizar fotografia de perfil solo si se ha presionado el boton de buscar fotografia
+                        if(($_FILES['imagen_mayorista']['name']) != ''){
+                            //Se ACTUALIZA la fotografia de la Mayorista
+                            $this->ConsultaMayorista_M->actualizarFotografiaMayorista($this->ID_Mayorista, $nombre_imgMayorista);
+                        }
+                    }
+                }
+                else{
+                    //si no cumple con el formato
+                    echo 'Solo puede cargar imagenes con formato jpg, jpeg o png';
+                    echo '<br>';
+                    echo "<a href='javascript:history.back()'>Regresar</a>";
+                    exit();
+                }
+
+                //si existe imagen_mayorista pero se pasa del tamaño permitido
+                // if($nombre_imgTienda == !NULL){
+                //     echo "La imagen es demasiado grande ";
+                //     echo "<br>";
+                //     echo "<a href='javascript:history.back()'>Regresar</a>";
+                //     exit();
+                // }
+            }
+
+            //RECIBE SECCIONES
+            // ********************************************************
+            //Recibe las secciones por nombre (son las nuevas creadas)
+            if(array_keys($_POST['seccion']) != Array ()){
+                foreach($_POST['seccion'] as $Seccion){
+                    $Seccion = $_POST['seccion'];
+                }
+                //El array trae elemenos duplicados, se eliminan los duplicado
+                $SeccionesRecibidas = array_unique($Seccion);
+            }
+            else{
+                echo 'Ingrese al menos una sección';
+                echo '<br>';
+                echo "<a href='javascript:history.back()'>Regresar</a>";
+                exit();
+            }
+            // echo 'Secciones recibidas';
+            // echo '<pre>';
+            // print_r($SeccionesRecibidas);
+            // echo '</pre>';
+
+            //Se CONSULTA las secciones existenete en BD
+            $SecccionesExistentes = $this->ConsultaMayorista_M->consultarSecciones($this->ID_Mayorista);
+            // echo 'Secciones existentes';
+            // echo '<pre>';
+            // print_r($SecccionesExistentes);
+            // // echo '</pre>';
+            
+            $Secciones = array_diff($SeccionesRecibidas, $SecccionesExistentes);
+            // echo 'Secciones a insertar';
+            // echo '<pre>';
+            // print_r($Secciones);
+            // echo '</pre>';
+            // echo $this->ID_Mayorista;
+            // exit();
+        
+
+            // **********************************************************************************
+            //Todo este procedimiento debe ser por medio de TRANSACCIONES
+            // **********************************************************************************
+            
+            //Se ACTUALIZAN los datos del mayorista, el registro de la tienda fue creado cuando el afiliado creo la tienda
+            $this->ConsultaMayorista_M->actualizarMayorista($RecibeDatos);
+
+            //Se INSERTAN las secciones del mayorista, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una mismo mayorista
+            $this->ConsultaMayorista_M->insertarSeccionesMayorista($this->ID_Mayorista, $Secciones); 
+            
+            //Se CONSULTA el ID_Seccion de las secciones que tiene el mayorista
+            $ID_Seccion = $this->ConsultaMayorista_M->consultarTodosID_SeccionMayorista($this->ID_Mayorista);
+            
+            //Se INSERTAN la dependencia transitiva entre las seccionesmayoristas y la tabla mayorista, en caso de que sean las mismas secciones existentes la tabla tiene un indice unico que impide insertar secciones repetidas en una misma tienda
+            $this->ConsultaMayorista_M->insertarDT_mayorista_seccionesmayorista($this->ID_Mayorista, $ID_Seccion); 
+
+        	header('location:' . RUTA_URL. '/CuentaMayorista_C/configurar');
+        }
+
+        //Invocado desde  A_Cuenta_editarMayorista.js
+        public function ActualizarSeccion($Seccion, $ID_Seccion){
+            //Se ACTUALIZA una seccion 
+            $this->ConsultaMayorista_M->ActualizarSeccion($Seccion, $ID_Seccion);
+
+            //Se redirecciona a la vista de configuración para dejar al usuario donde estaba
+            $this->configurar();
+        }
+        
+        //Invocado desde A_Cuenta_editarMayorista.js por medio de la funcion Llamar_EliminarSeccion()
+        public function eliminarSeccion($ID_Seccion){
+            $this->ConsultaMayorista_M->Transaccion_eliminarSeccionesMayorista($ID_Seccion);
+
+            // $this->ConsultaMayorista_M->eliminarSeccionesMayorista($ID_Seccion);
+            // $this->ConsultaMayorista_M->eliminarSeccionesMayorista_OpcionesMayorista($ID_Seccion);
+            // $this->ConsultaMayorista_M->eliminarSeccionesMayorista_ProductosMayorista($ID_Seccion);
+            // $this->ConsultaMayorista_M->eliminarSeccionesMayorista_Mayorista($ID_Seccion);
+
+            //Se redirecciona a la vista de configuración para dejar al usuario donde estaba
+            $this->configurar();
         }
 
         // Carga la vista donde se carga un producto de mayorista
@@ -166,10 +340,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/';
 
                             // usar en local
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['foto_ProductoMay']['tmp_name'], $directorio_2.$nombre_imgProducto);
@@ -357,10 +531,10 @@
                 $NombreImagenEliminar = $KeyImagenes['nombre_imgMay'];
 
                 //Usar en remoto
-                // unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/productos/' . $NombreImagenEliminar);
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/' . $NombreImagenEliminar);
                     
                 //usar en local
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/' . $NombreImagenEliminar);                
+                // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/' . $NombreImagenEliminar);                
             endforeach;
               
             //Se redirecciona a la vista donde se encontraba el producto eliminado
@@ -474,10 +648,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/';
 
                         //usar en local
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -568,11 +742,8 @@
                         'Cedula_Ven' => filter_input(INPUT_POST, "cedulaVen", FILTER_SANITIZE_STRING),
                         'Telefono_Ven' => filter_input(INPUT_POST, "telefonoVen", FILTER_SANITIZE_STRING),
                         'Correo_Ven' => filter_input(INPUT_POST, 'correoVen', FILTER_SANITIZE_STRING),
-
                         'Direccion_Ven' => filter_input(INPUT_POST, 'direccionVen', FILTER_SANITIZE_STRING),
-                        'Zona_Ven' => filter_input(INPUT_POST, 'zonaVen', FILTER_SANITIZE_STRING),
-                        'Fechaincorporacion_Ven' => filter_input(INPUT_POST, 'fechaincorporacionVen', FILTER_SANITIZE_STRING),
-                        'Status_Ven' => filter_input(INPUT_POST, 'statusVen', FILTER_SANITIZE_STRING)
+                        'Zona_Ven' => filter_input(INPUT_POST, 'zonaVen', FILTER_SANITIZE_STRING)
                     ];
                     // echo '<pre>';
                     // print_r($RecibeVendedor);
@@ -610,10 +781,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/equipo';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/equipo';
 
                             // usar en local
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/equipo';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/equipo';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['foto_vendedor']['tmp_name'], $directorio_2.$nombre_imgVendedor);

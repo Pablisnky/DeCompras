@@ -72,7 +72,7 @@
     <?php
     // Se muestra el boton de carrito de compras, invocado en agregarOpcion() en E_Vitrina_Mayorista.js
     // Sesion creada en CUentaVendedor_C/agregarProductoAPedido
-    if($_SESSION['Nro_Orden'] == true){ ?> <!-- En caso de agregar productos a pedido existente -->
+    if(isset($_SESSION['Nro_Orden']) == true){ ?> <!-- En caso de agregar productos a pedido existente -->
         <div class="contenedor_61" id="Contenedor_61">
             <div class="contenedor_21" id="Mostrar_Carrito" onclick="llamar_AgregarPedidoEnCarrito('<?php echo $ID_Mayorista;?>','<?php echo $Datos['dolarHoy'];?>')">
                 <div class="contenedor_31">

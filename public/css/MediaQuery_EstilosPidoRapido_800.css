@@ -138,7 +138,7 @@
 }
 .contenedor_10{
 	grid-template-columns: 100%;
-	margin: 14% auto 20% auto;
+	margin: 25% auto 20% auto;
 	width: 100%;
 	row-gap: 2%;/*espacio entre filas*/
 }
@@ -169,7 +169,9 @@
 	height: 390px;
 	margin-bottom: 15%;
 }
-.contenedor_16{
+.contenedor_15--tarjeta{
+}
+.contenedor_16{ 
 	/* top: -45px; */
 	left: 75%;
 }
@@ -457,8 +459,8 @@
 }
 .header__menuResponsive{
 	/* margin-top: 15% ; */
-	width: 70%; 
-	margin-left: -70%;/*oculta el menu responsive*/
+	width: 80%; 
+	margin-left: -80%;/*oculta el menu responsive*/
 	transition: all 0.5s;
 	position: initial;
 }
@@ -907,6 +909,7 @@
 	margin: 0% auto;
 }
 .h1_8{
+	display: block; 
 	font-size: 1.1em;
 	font-weight: normal;
 	margin-bottom: 0%;
@@ -1292,7 +1295,7 @@
 	height: 150%;
 }
 .section_8{
-	/* max-height: 85%; */
+	min-height: 85%;
 	/* display: flex; */
 	overflow: auto;
 	padding-top: 18%;

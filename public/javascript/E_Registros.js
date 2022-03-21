@@ -6,7 +6,7 @@ document.getElementById("NombreTienda").addEventListener('keydown', function(){v
     
 //Por medio de delegación de eventos se detecta cada input donde se debe aplicar la funcion blanquearInput()
 document.getElementsByTagName("body")[0].addEventListener('keydown', function(e){
-    console.log("______Desde función anonima que detecta INPUTS______")   
+    // console.log("______Desde función anonima que detecta INPUTS______")   
     if(e.target.tagName == "INPUT"){
         var ID_Input = e.target.id
         

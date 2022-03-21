@@ -299,7 +299,7 @@
             $email_to = $Correo;
             $email_subject = "Recuperación de contraseña";  
             $email_message ="Código de recuperación de contraseña: " . $Aleatorio;
-            $headers = 'From: '. "PedidoRemoto<master@pedidoremoto.com>" ."\r\n".       
+            $headers = 'From: '. "PedidoRemoto<cpanel@pedidoremoto.com>" ."\r\n".       
             'X-Mailer: PHP/' . phpversion();
         
             @mail($email_to, $email_subject, $email_message, $headers);

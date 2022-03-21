@@ -12,18 +12,33 @@
             $Estado = $Row['estadoMay'];
             ?>
             <section class="contenedor_15--tarjeta" id="<?php echo $ID_Mayorista;?>">
-
                 <!-- LADO FRONTAL DE TARJETA -->
                 <div class="contenedor_15 borde_1 borde_1--color adelante">
-                    <div class="contenedor_120 contenedor_120__mayorista" style="background-image: url('public/images/proveedor/Don_Rigo/Portada_ant.jpg')">            
-                        <article class="Componente_boton">
-                            <div class="contBoton contBoton--100" id="">
-                                <label class="boton boton--corto" onclick="AtrasTarjetaMayorista(<?php echo $ID_Mayorista;?>)">Sobre nosotros</label>
 
-                                <label class="boton boton--corto" onclick="mayorista('<?php echo $ID_Mayorista;?>','<?php echo $Nombre_Mayorista;?>','<?php echo $Foto_Mayorista;?>')">Entrar</label>
-                            </div>
-                        </article>
-                    </div>
+                    <!-- IMAGEN DE PORTADA DEL MAYORISTA -->
+                    <?php                    
+                    if($Foto_Mayorista == 'tienda.png'){    ?> 
+                        <div class="contenedor_120">
+                            <i class="fas fa-store icono_5"></i> 
+                        </div>
+                        <?php
+                    } 
+                    else{  ?>
+                        <div class="contenedor_120 contenedor_120__mayorista" style="background-image: url('public/images/proveedor/Don_Rigo/Portada_ant.jpg')">     
+                        </div>  
+                        <?php
+                    }
+                        ?>
+                    <p class="p_3"><?php echo $Nombre_Mayorista?></p>
+
+                    <!-- BOTONES DELANTEROS -->
+                    <article class="Componente_boton">
+                        <div class="contBoton contBoton--100" id="">
+                            <label class="boton boton--corto" onclick="AtrasTarjetaMayorista(<?php echo $ID_Mayorista;?>)">Sobre nosotros</label>
+
+                            <label class="boton boton--corto" onclick="mayorista('<?php echo $ID_Mayorista;?>','<?php echo $Nombre_Mayorista;?>','<?php echo $Foto_Mayorista;?>')">Entrar</label>
+                        </div>
+                    </article>
                 </div>
 
                 <!-- LADO POSTERIOR DE TARJETA -->
@@ -104,9 +119,8 @@
                             <label class="boton boton--corto" onclick="mayorista('<?php echo $ID_Mayorista;?>','<?php echo $Nombre_Mayorista;?>','<?php echo $Foto_Mayorista;?>')">Entrar</label>
                         </div>
                     </article>
-                </div>
-            </section>
-            
+                </div> 
+            </section>            
             <?php
             $Contador++;
         endforeach;

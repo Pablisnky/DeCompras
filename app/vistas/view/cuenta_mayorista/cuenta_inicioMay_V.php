@@ -6,9 +6,7 @@
         ?>
         <section class="section_8">
             <div class="contenedor_112 borde_1">
-                <p class="p_7">Grafico de barras horizontales ventas semanales.(compara las ultimas cinco semanas)</p>
-                <p class="p_7">Tabla de cuentas por cobrar.</p>
-                <p class="p_7">Tabla de despachos pendientes.</p>
+                <p class="p_7">Diseñar un panel de control con rectangulos, tipo categorias en tiendas.</p>
             </div>
         </section>
         <?php
@@ -18,5 +16,5 @@
     //     header("location:" . RUTA_URL);
     // }
     
-    // include(RUTA_APP . "/vistas/footer/footer.php");
+    include(RUTA_APP . "/vistas/footer/footer.php");
     ?>

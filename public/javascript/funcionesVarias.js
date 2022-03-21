@@ -22,7 +22,7 @@
         // console.log("Click en: ", click)
         AltoVitrina = document.body.scrollHeight
         if((div.style.marginLeft == "0%") && (click != div) && (click != span)){
-            div.style.marginLeft = "-70%"
+            div.style.marginLeft = "-80%"
             B.style.display = "none"
             //Se detiene la propagación de los eventos en caso de hacer click en un elemento que contenga algun evento
             e.stopPropagation();
@@ -41,7 +41,7 @@
             B.style.display = "block"
         }
         else if(A.style.marginLeft = "0%"){//Se oculta el menu
-            A.style.marginLeft = "-70%"
+            A.style.marginLeft = "-80%"
             B.style.backgroundColor = "none"
         }
     }

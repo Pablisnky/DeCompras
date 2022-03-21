@@ -288,7 +288,7 @@
         //SELECT de datos del mayorista
         public function consultarDatosMayorista($ID_Mayorista){
             $stmt = $this->dbh->prepare(
-                "SELECT nombreMay, estadoMay, municipioMay, parroquiaMay, direccionMay, fotografiaMay, desactivarMay
+                "SELECT ID_Mayorista , nombreMay, estadoMay, municipioMay, parroquiaMay, direccionMay, fotografiaMay, desactivarMay
                  FROM mayorista 
                  WHERE ID_Mayorista = :ID_MAYORISTA"
             );
@@ -489,10 +489,10 @@
                 return  'Existe un fallo';
             }
         }
-        //SELECT de la IMAGEN de un producto determinado
+        //SELECT de los clientes de un mayorista
         public function consultarClientes(){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho, zona_AfiVen
+                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho, zona_AfiMin
                 FROM  minorista"
             );
 
@@ -505,6 +505,19 @@
 
         }
         
+        //SELECT de secciones de un mayorista especifico
+        public function consultarSecciones($ID_Mayorista){
+            $stmt = $this->dbh->prepare("SELECT seccionMay FROM seccionesmayorista WHERE ID_Mayorista = :ID_MAYORISTA");
+
+            $stmt->bindValue(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_COLUMN);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }
 
 
 
@@ -579,9 +592,46 @@
             );
             $stmt->bindValue(':ID_OPCION', $ID_Opcion, PDO::PARAM_INT);
             $stmt->execute();          
+        }  
+    
+        public function Transaccion_eliminarSeccionesMayorista($ID_Seccion){  
+            try{  
+                $this->dbh->beginTransaction();  
+                
+                // *********** OPERACION 1 *******************
+                //DELETE de una seccion de un mayorista
+                $stmt = $this->dbh->prepare("DELETE FROM seccionesmayorista WHERE ID_SeccionMay = :ID_SECCION");
+                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+                $stmt->execute();
+
+                //Se envia información de cuantos registros se vieron afectados por la consulta
+                // return $stmt->rowCount(); 
+
+                // *********** OPERACION 2 *******************  
+                //DELETE de Dependencia Transitiva entre seccionesmayorista y opcionesmayorista
+                $stmt = $this->dbh->prepare("DELETE FROM seccionesmayorista_opcionesmayorista WHERE ID_SeccionMay  = :ID_SECCION");
+                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+                $stmt->execute();          
+
+                // *********** OPERACION 3 ******************* 
+                 //DELETE de Dependencia Transitiva entre seccionesmayorista y productosmayorista
+                $stmt = $this->dbh->prepare("DELETE FROM seccionesmayorista_productosmayorista WHERE ID_SeccionMay = :ID_SECCION");
+                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+                $stmt->execute();       
+
+                // *********** OPERACION 4 ******************* 
+                $stmt = $this->dbh->prepare("DELETE FROM mayorista_seccionesmayorista WHERE ID_Mayorista  = :ID_SECCION");
+                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
+                $stmt->execute();          
+                    
+                $this->dbh->commit();  
+            }
+            catch(PDOException $e){
+                $this->dbh->rollback();  
+                $this->error = $e->getMessage();
+                echo 'Error al conectarse con la base de datos: ' . $this->error;
+            }
         }
-
-
 
 
 
@@ -699,4 +749,100 @@
         //         return false;
         //     }
         // }
+        
+        //UPDATE de la fotografia de mayorista
+        public function actualizarFotografiaMayorista($ID_Mayorista, $nombre_imgMayorista){
+            $stmt = $this->dbh->prepare("UPDATE mayorista SET fotografiaMay = :FOTOGRAFIA WHERE ID_Mayorista = :ID_MAYORISTA ");
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_MAYORISTA', $ID_Mayorista);
+            $stmt->bindValue(':FOTOGRAFIA', $nombre_imgMayorista);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+
+        
+        
+        //UPDATE de los datos del mayorista
+        public function actualizarMayorista($RecibeDatos){
+            $stmt = $this->dbh->prepare(
+                "UPDATE mayorista 
+                SET nombreMay = :NOMBRE_MAY WHERE ID_Mayorista  = :ID_MAYORISTA"
+            );
+
+            //Se vinculan los valores de las sentencias preparadas 
+            $stmt->bindValue(':NOMBRE_MAY', $RecibeDatos['Nombre_may']);
+            $stmt->bindValue(':ID_MAYORISTA', $RecibeDatos['id_mayorista']);
+
+            //Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                // echo 'Bien';
+                // exit;
+                return true;
+            }
+            else{
+                // echo 'Mal';
+                // exit;
+                return false;
+            }
+        }
+
+        //INSERT de las secciones de un mayorista
+        public function insertarSeccionesMayorista($ID_Mayorista, $Seccion){ 
+            //Debido a que $Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo    
+            foreach($Seccion as $key)   :
+                // echo $key . "<br>";
+                // echo $ID_Tienda . "<br>";
+                $stmt = $this->dbh->prepare(
+                    "INSERT INTO seccionesmayorista(ID_Mayorista, seccionMay ) 
+                     VALUES(:ID_MAYORISTA, :SECCION)"
+                );
+
+                //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+                $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista);
+                $stmt->bindParam(':SECCION', $key);
+
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+                $stmt->execute();
+            endforeach;
+        }
+        
+        //SELECT de los ID_Sección de las secciónes de una tienda especifica
+        public function consultarTodosID_SeccionMayorista($ID_Mayorista){
+            $stmt = $this->dbh->prepare("SELECT ID_SeccionMay  FROM seccionesmayorista WHERE ID_Mayorista  = :ID_MAYORISTA");
+
+            $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function insertarDT_mayorista_seccionesmayorista($ID_Tienda, $ID_Seccion){
+            //Debido a que $ID_Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo
+            for($i = 0; $i<count($ID_Seccion); $i++){
+                foreach($ID_Seccion[$i] as $key){
+                    $key;  
+                }
+                $stmt = $this->dbh->prepare("INSERT INTO mayorista_seccionesmayorista(ID_Mayorista , ID_SeccionMay) VALUES (:ID_MAYORISTA, :ID_SECCION) ON DUPLICATE KEY UPDATE ID_Mayorista = :ID_MAYORISTA, ID_SeccionMay = :ID_SECCION ");
+
+                //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+                $stmt->bindParam(':ID_MAYORISTA', $ID_Tienda);
+                $stmt->bindParam(':ID_SECCION', $key);
+
+                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+                $stmt->execute();
+            }
+        }
     }

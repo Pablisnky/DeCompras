@@ -1,7 +1,7 @@
 <section class="section_5">
     <div class="contenedor_42">
         <h1 class="h1_1 h1--corto">Registro de distribuidores mayoristas.</h1>
-        <form action="../Registro_C/recibeRegistroMay" method="POST" id="FormularioCom" name="formRegistroCom" onsubmit="return validarAfiliacionCom()">
+        <form action="../Registro_C/recibeRegistroMay" method="POST" id="FormularioCom" name="formRegistroCom" "> <!-- onsubmit="return validarAfiliacionCom() -->
             <fieldset class="fieldset_1">
                 <legend class="legend_1">Registro de Mayorista</legend> 
                 
@@ -14,7 +14,7 @@
                 
                 <!-- NOMBRE DEL MAYORISTA -->
                 <div style="width:100%; margin:auto">
-                    <input class="placeholder placeholder_4 borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la distribuidora" autocomplete="off" tabindex="3" onblur="llamar_verificarNombreMayorista(this.value)"/>
+                    <input class="placeholder borde_1" type="text" name="nombre_tienda" id="NombreTienda" placeholder="Nombre de la distribuidora" autocomplete="off" tabindex="3" onblur="llamar_verificarNombreMayorista(this.value)"/>
                     <input class="contador_2 contador_4" type="text" id="ContadorNombre" value="50" readonly/>
                 </div>
                 <div class="contenedor_43" id="Mostrar_verificarNombreMayorista"></div>

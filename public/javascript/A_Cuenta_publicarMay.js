@@ -50,7 +50,7 @@ function respuesta_seccionMay(){
             document.getElementById("Contenedor_80May").innerHTML = peticion.responseText
         } 
         else{
-            alert('Problemas con la petición.')
+            alert('Problemas con la petición en "seccionesDisponibleMay"')
         }
     }
     else{ //en caso contrario, mostramos un gif simulando una precarga

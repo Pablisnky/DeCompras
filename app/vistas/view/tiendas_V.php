@@ -64,7 +64,7 @@
                         </div>
                     </article>
                     
-                    <!-- BOTONES POSTERIORES-->
+                    <!-- BOTONES DELANTEROS -->
                     <article class="Componente_boton">
                         <div class="contBoton contBoton--100" id="">
                             <label class="boton boton--corto" onclick="AtrasTarjeta(<?php echo $ID_Tienda;?>)">Sobre nosotros</label>

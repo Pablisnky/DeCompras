@@ -20,7 +20,7 @@ img{
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
+	font-size: 16px;
 	box-sizing: border-box;
 }
 a{
@@ -391,6 +391,7 @@ body, html{
 	padding: 1% 5%;
 }
 .contenedor_10{
+	background-color: yellow !important;
 	display: grid;
 	grid-template-columns: 35fr 35fr 35fr;
 	grid-template-rows: min-content;
@@ -3050,6 +3051,7 @@ ul .menuContenedor_3{
 }
 .contenedor_15--tarjeta{
     /* position: relative; */
+	background-color: red !important;
     transform-style: preserve-3d; 
     transition: .5s ease;
 }
