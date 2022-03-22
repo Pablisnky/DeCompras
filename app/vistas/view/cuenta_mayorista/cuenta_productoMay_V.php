@@ -7,19 +7,21 @@
     <section class="section_3 section_9">
         <div class="contenedor_90 contenedor_91">
             <h2 class="h2_9">Sección</h2>
-            <!-- Mediante operador ternario -->
-            <?php //$Datos['seccionesMay'] != 'Todos' ? $Datos['seccionesMay'] : 'Todos';  ?>
-
             <h3 class="h3_9">( <?php echo $Datos['seccionInvocada'];?> )</h3>
+            <?php 
+                if($Datos['seccionInvocada'] != 'Todos' ){ 
+                    foreach($Datos['seccionesMay'] as $Key) :
+                        if($Key['seccionMay'] == $Datos['seccionInvocada'] ){
+                                ?>
+                            <span class="borde_1" style="display: inline; float: right" onclick="ImagenSeccionMayorista(<?php echo $Key['ID_SeccionMay'];?>)"><i class="fas fa-pencil-alt icono_4"></i></span>
+                            <?php
+                        }
+                    endforeach;
+                }
+                ?>
         </div>
         <div class="contenedor_13 contenedor_13--productos"> 
             <?php 
-                // if($Datos['ID_SeccionMay'] != 'NoAplica'){ ?>
-                     <!-- <div class="contenedor_13--Primeralinea">
-                         <label class="boton" onclick="ImagenSeccion(<?php echo $Datos['ID_SeccionMay'];?>)">Imagen de sección</label>
-                     </div> -->
-                    <?php
-                // }
             $Contador = 1; 
     
             //$Datos viene de Mayorista_C/Productos
@@ -94,7 +96,7 @@
     </section>
        
     <script src="<?php echo RUTA_URL . '/public/javascript/funcionesVarias.js?v=' . rand();?>"></script>
-    <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_Producto.js?v=' . rand();?>"></script>
+    <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_ProductoMayorista.js?v=' . rand();?>"></script>
 
     <?php
 // }

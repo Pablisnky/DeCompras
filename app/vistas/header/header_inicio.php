@@ -43,6 +43,7 @@
     </head>
     <body style="overflow-y: hidden">				
 		<header class="header--inicio">
+			
 			<!-- ICONO HAMBURGUESA -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
 			

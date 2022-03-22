@@ -275,6 +275,8 @@
             document.getElementById(id).focus()
         }
     }
+
+//************************************************************************************************ 
     //Coloca la clase "activa" en el item seleccionado del menu 
     // function ActivarLink(id){
         // console.log("______Desde ActivarLink()______") 

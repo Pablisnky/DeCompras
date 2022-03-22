@@ -1,7 +1,7 @@
 <!-- Archivo cargado en div id= "Mostrar_Opciones_Mayorista" en vitrina_Mayorista_V.php por petición Ajax desde por medio de llamar_Opciones_Mayorista()-->
 
 <section class="section_3 section_9" id="Section_3"> 
-    <div class="contenedor_90 contenedor_90--tiendas p_9 borde_1">
+    <div class="contenedor_90 p_9 borde_1">
         <div class="contenedor_159" id="Span_3">
             <!-- ICONO FLECHA ATRAS -->
             <i class="fas fa-arrow-left" style="display: inline;"></i>

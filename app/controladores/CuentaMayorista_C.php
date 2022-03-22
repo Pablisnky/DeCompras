@@ -46,7 +46,7 @@
 
             $Datos = [
                 'datosMayorista' => $DatosMayorista, //ID_Mayorista , nombreMay, estadoMay, municipioMay, parroquiaMay, direccionMay, fotografiaMay, desactivarMay
-                'secciones' => $this->SeccionesMay
+                'seccionesMay' => $this->SeccionesMay
             ];
             
             // echo "<pre>";
@@ -313,7 +313,7 @@
                 $this->ConsultaMayorista_M->insertarDT_SecMayProMay($ID_SeccionMay, $ID_ProductoMay);
 
                 //Se INSERTA la dependenciatransitiva entre mayorista y la seccion del producto(esta consulta no permite datos dulicados, si ya existe la relación entre el mayorista y la sección se obvia)
-                $this->ConsultaMayorista_M->insertarDT_maysecMay( $this->ID_Mayorista, $ID_SeccionMay[0]['ID_SeccionMay']);
+                // $this->ConsultaMayorista_M->insertarDT_maysecMay( $this->ID_Mayorista, $ID_SeccionMay[0]['ID_SeccionMay']);
                 
                 //IMAGEN PRODUCTO
                 //********************************************************
@@ -463,6 +463,83 @@
 
             $this->vista("header/header_AfiMay", $Datos);
             $this->vista("view/cuenta_mayorista/cuenta_productoMay_V", $Datos);
+        }
+
+        //Invocado desde E_Cuenta_ProductoMayorista.js
+        public function EstablecerImageSeccionMayorista($ID_Seccion){
+
+            $Datos = $ID_Seccion;
+            $Token = true;
+            
+            $Datos = [
+                'token' => $Token,
+                'id_seccion' => $ID_Seccion
+            ];
+            
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
+
+            $this->vista('header/header_Modal'); 
+            $this->vista('modal/modal_establecerImageSeccion_V', $Datos);
+        }
+
+        //Invocado desde modal_establecerimagenSeccion_V.php actualiza la imagen de un producto
+        public function recibeImagenSeccionMayorista(){
+            $nombre_imgSeccionMayorista = $_FILES['img_SeccionMay']['name'] != '' ? $_FILES['img_SeccionMay']['name'] : 'imagen.png';
+            $tipo_imgSeccion = $_FILES['img_SeccionMay']['type'] != '' ? $_FILES['img_SeccionMay']['type'] : 'image/png';
+            $tamanio_imgSeccion = $_FILES['img_SeccionMay']['size'] != '' ?  $_FILES['img_SeccionMay']['size'] : '20,0 KB';
+            $ID_SeccionMay = $_POST['id_seccionMay'];
+
+            // echo 'Nombre de la imagen = ' . $nombre_imgSeccionMayorista . '<br>';
+            // echo 'Tipo de archivo = ' .$tipo_imgSeccion .  '<br>';
+            // echo 'Tamaño = ' . $tamanio_imgSeccion . '<br>';
+            // echo 'Tamaño maximo permitido = 2.000.000' . '<br>';// en bytes
+            // echo 'ID_Seccion = ' . $ID_SeccionMay;
+            // exit();
+
+            //Si existe img_SeccionMay y tiene un tamaño correcto (maximo 2Mb)
+            if(($nombre_imgSeccionMayorista == !NULL) AND ($tamanio_imgSeccion <= 2000000)){
+                //indicamos los formatos que permitimos subir a nuestro servidor
+                if(($tipo_imgSeccion == 'image/jpeg')
+                    || ($tipo_imgSeccion == 'image/jpg') || ($tipo_imgSeccion == 'image/png')){
+
+                    //Usar en remoto
+                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/secciones/';
+
+                    // usar en local
+                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/secciones/';
+
+                    //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
+                    move_uploaded_file($_FILES['img_SeccionMay']['tmp_name'], $directorio_6.$nombre_imgSeccionMayorista);
+
+                    //Se INSERTA la imagen de la seccion
+                    $this->ConsultaMayorista_M->actualizaImagenSeccionMayorista($ID_SeccionMay, $nombre_imgSeccionMayorista, $tipo_imgSeccion, $tamanio_imgSeccion);
+                }
+                else{
+                    //si no cumple con el formato
+                    echo 'Solo puede cargar imagenes con formato jpg, jpeg o png';
+                    echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                    exit();
+                }
+            }
+            else{//si se pasa del tamaño permitido
+                echo 'La imagen principal es demasiado grande ';
+                echo '<a href="javascript: history.go(-1)">Regresar</a>';
+                exit();
+            }
+
+             //Para actualizar fotografia de seccion solo si se ha presionado el boton de buscar fotografia
+            //  if(($_FILES['imagenPrinci_Editar']['name']) != ""){
+            //     //Se ACTUALIZA la fotografia principal del producto
+            //     $this->ConsultaMayorista_M->actualizarImagenPrincipalProducto($RecibeProducto['ID_Producto'], $nombre_imgProducto);
+                
+                //Se ACTUALIZA la dependenciatransitiva entre secciones e imagenes
+                // $this->ConsultaMayorista_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);
+            // }
+            
+            echo '<script>window.close();</script>';
         }
 
         //Metodo invocado desde A_Cuenta_publicarMay.js

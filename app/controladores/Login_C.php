@@ -299,7 +299,7 @@
             $email_to = $Correo;
             $email_subject = "Recuperación de contraseña";  
             $email_message ="Código de recuperación de contraseña: " . $Aleatorio;
-            $headers = 'From: '. "PedidoRemoto<cpanel@pedidoremoto.com>" ."\r\n".       
+            $headers = 'From: '. "PedidoRemoto<administrador@pedidoremoto.com>" ."\r\n".       
             'X-Mailer: PHP/' . phpversion();
         
             @mail($email_to, $email_subject, $email_message, $headers);
@@ -420,6 +420,10 @@
 
                     // setcookie("id_usuario",'',time()-100);
                     // setcookie("clave",'',time()-100);
+
+                    //Se introduce el codigo de despacho del vendedor, es el mismo que la clave
+                    $this->ConsultaLogin_M->actualizarCodigoVenta($ID_AfiliadoVen, $ClaveNueva);
+
                     
                     $this->vista('header/header_Modal'); 
                     $this->vista('modal/modal_recuperarCorreo_V'); 

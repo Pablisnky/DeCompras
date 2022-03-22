@@ -35,7 +35,7 @@
                             </div> <?php
                         }   
                         else{    ?>
-                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/<?php echo $row['nombre_img_seccionMay']?>');">
+                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/secciones/<?php echo $row['nombre_img_seccionMay']?>');">
                             </div>  <?php
                         } ;  
 
@@ -107,7 +107,7 @@
 <!-- Trae por medio de Ajax todo el pedido del usuario "La Orden de compra", la información es suministrada por carritoMayorista_V.php invocada por la función llamar_PedidoEnCarrito() en este mismo archivo-->
 <div id="Mostrar_OrdenMayorista"></div>
 
-<div style="background-color:white" id="Mostrar_minoristas"></div>
+<div style="background-color: white" id="Mostrar_minoristas"></div>
 
 <script src="<?php echo RUTA_URL . '/public/javascript/E_VitrinaMayorista.js?v=' . rand();?>"></script>
 <script src="<?php echo RUTA_URL . '/public/javascript/A_VitrinaMayorista.js?v=' . rand();?>"></script>

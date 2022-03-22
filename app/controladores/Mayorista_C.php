@@ -47,7 +47,7 @@
             // echo '</pre>';
             // exit();
 
-            // $this->vista('modal/modal_SeccionesDisponiblesMay_V', $Datos);
+            $this->vista('modal/modal_SeccionesDisponiblesMay_V', $Datos);
         }
 
         //Metodo invocado desde A_Cuenta_editar_proMay.js

@@ -41,6 +41,11 @@
             $NombreMayorista = $DatosAgrupados[1]; 
             $Foto_Mayorista = $DatosAgrupados[2];
             $Token = $DatosAgrupados[3];
+           
+            // $Token es un string, se convierte a booleano
+            $Token = filter_var($Token, FILTER_VALIDATE_BOOLEAN);
+            // var_dump($Tokenizado);
+            // exit; 
 
             //Solicita el precio del dolar
             require(RUTA_APP . '/controladores/Menu_C.php');

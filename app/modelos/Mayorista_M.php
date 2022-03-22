@@ -1,5 +1,5 @@
 <?php
-    class CuentaMayorista_M extends Conexion_BD{
+    class Mayorista_M extends Conexion_BD{
 
         public function __construct(){ 
             parent::__construct();  
@@ -142,8 +142,8 @@
         //INSERT de datos de vendedor
         public function insertarVendeodr($ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO afiliado_ven (ID_Mayorista, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, correo_AfiVen, direccion_AfiVen, zona_AfiVen, Fechaincorporación_AfiVen, Fechadesincorporación_AfiVen, Status_AfiVen, nombre_imgAfiVen, tipo_imgAfiVen, tamanio_imgAfiVen) 
-                VALUES(:ID_MAYORISTA, :NOMBRE_AFIVEN, :APELLIDO_AFIVEN, :CEDULA_AFIVEN, :TELEFONO_AFIVEN, :CORREO_AFIVEN, :DIRECCION_AFIVEN, :ZONA_AFIVEN, CURDATE(), CURDATE(), :STATUS_AFIVEN, :NOMBREIMG_AFIVEN, :TIPOIMG_AFIVEN, :TAMANIOIMG_AFIVEN)"
+                "INSERT INTO afiliado_ven (ID_Mayorista, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, correo_AfiVen, direccion_AfiVen, zona_AfiVen, Fechaincorporación_AfiVen, Fechadesincorporación_AfiVen, Status_AfiVen, nombre_imgAfiVen, tipo_imgAfiVen, tamanio_imgAfiVen, codigo_AfiVen) 
+                VALUES(:ID_MAYORISTA, :NOMBRE_AFIVEN, :APELLIDO_AFIVEN, :CEDULA_AFIVEN, :TELEFONO_AFIVEN, :CORREO_AFIVEN, :DIRECCION_AFIVEN, :ZONA_AFIVEN, CURDATE(), CURDATE(), :STATUS_AFIVEN, :NOMBREIMG_AFIVEN, :TIPOIMG_AFIVEN, :TAMANIOIMG_AFIVEN, :CODIGO_AFIVEN)"
             );
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
@@ -159,54 +159,7 @@
             $stmt->bindParam(':NOMBREIMG_AFIVEN', $nombre_imgVendedor);
             $stmt->bindParam(':TIPOIMG_AFIVEN', $tipo_imgVendedor);
             $stmt->bindParam(':TAMANIOIMG_AFIVEN', $tamanio_imgVendedor);
-
-            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-            $stmt->execute();
-
-            //se recupera el ID del registro insertado
-            return $this->dbh->lastInsertId();
-        } 
-
-        //Se INSERTAN los datos de acceso de un vendedor
-        public function insertarContraeniaVendedor($ID_Vendedor, $ClaveVenCifrada){         
-            $stmt = $this->dbh->prepare(
-                "INSERT INTO afiliado_veningreso(ID_AfiliadoVen, claveCifradaVen) 
-                VALUES (:ID_AFILIADOVEN, :CLAVE)"
-            );
-
-            //Se vinculan los valores de las sentencias preparadas
-            //ztmt es una abreviatura de statement 
-            $stmt->bindParam(':ID_AFILIADOVEN', $ID_Vendedor);
-            $stmt->bindParam(':CLAVE', $ClaveVenCifrada);
-            
-            //Se ejecuta la inserción de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        
-        //INSERT de datos de minorista
-        public function insertarMinorista($RecibeMinorista, $nombre_imgMinorista, $tipo_imgMinorista, $tamanio_imgMinorista, $Ale_CodigoMinorista){
-            $stmt = $this->dbh->prepare(
-                "INSERT INTO minorista (ID_Vendedor, nombre_AfiMin, rif_AfiMin, codigodespacho, telefono_AfiMin, correo_AfiMin, zona_AfiVen, direccion_AfiMin, nombreImg_AfiMin, tipo_AfiMin, tamanio_AfiMin, fecha, hora) 
-                VALUES(:ID_VENDEDOR, :NOMBRE_AFIMIN, :RIF_AFIMIN, :CODIGO_AFIMIN, :TELEFONO_AFIMIN, :CORREO_AFIMIN, :ZONA_AFIMIN, :DIRECCION_AFIMIN, :NOMBREIMG_AFIMIN, :TIPOIMG_AFIMIN, :TAMANIOIMG_AFIMIN, CURDATE(), CURDATE())"
-            );
-
-            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':ID_VENDEDOR', $RecibeMinorista['id_vendedor']);
-            $stmt->bindParam(':NOMBRE_AFIMIN', $RecibeMinorista['nombre_Min']);
-            $stmt->bindParam(':RIF_AFIMIN', $RecibeMinorista['rif_Min']);
-            $stmt->bindParam(':CODIGO_AFIMIN', $Ale_CodigoMinorista);
-            $stmt->bindParam(':TELEFONO_AFIMIN', $RecibeMinorista['telefono_Min']);
-            $stmt->bindParam(':CORREO_AFIMIN', $RecibeMinorista['correo_Min']);
-            $stmt->bindParam(':ZONA_AFIMIN', $RecibeMinorista['Zona_Ven']);
-            $stmt->bindParam(':DIRECCION_AFIMIN', $RecibeMinorista['direccion_Min']);
-            $stmt->bindParam(':NOMBREIMG_AFIMIN', $nombre_imgMinorista);
-            $stmt->bindParam(':TIPOIMG_AFIMIN', $tipo_imgMinorista);
-            $stmt->bindParam(':TAMANIOIMG_AFIMIN', $tamanio_imgMinorista);
+            $stmt->bindParam(':CODIGO_AFIVEN', $RecibeVendedor['Codigo_Ven']);
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             $stmt->execute();
@@ -235,10 +188,9 @@
     
         public function consultarSeccionesMayorista($ID_Mayorista){
             $stmt = $this->dbh->prepare(
-                "SELECT ID_SeccionMay, mayorista.ID_Mayorista, seccionMay, nombre_img_seccionMay, nombreMay
+                "SELECT ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay
                 FROM seccionesmayorista  
-                INNER JOIN mayorista ON seccionesmayorista.ID_Mayorista=mayorista.ID_Mayorista
-                WHERE mayorista.ID_Mayorista = :ID_MAYORISTA"
+                WHERE ID_Mayorista = :ID_MAYORISTA"
             );      
         
             $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
@@ -288,7 +240,7 @@
         //SELECT de datos del mayorista
         public function consultarDatosMayorista($ID_Mayorista){
             $stmt = $this->dbh->prepare(
-                "SELECT ID_Mayorista , nombreMay, estadoMay, municipioMay, parroquiaMay, direccionMay, fotografiaMay, desactivarMay
+                "SELECT nombreMay, estadoMay, municipioMay, parroquiaMay, direccionMay, fotografiaMay, desactivarMay
                  FROM mayorista 
                  WHERE ID_Mayorista = :ID_MAYORISTA"
             );
@@ -455,7 +407,7 @@
         //SELECT de la IMAGEN de un producto determinado
         public function consultarVendedoresMay($ID_Mayorista){
             $stmt = $this->dbh->prepare(
-                "SELECT ID_AfiliadoVen, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, zona_AfiVen, Status_AfiVen, correo_AfiVen
+                "SELECT ID_AfiliadoVen, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, zona_AfiVen, codigo_AfiVen, Status_AfiVen
                 FROM  afiliado_ven  
                 WHERE ID_Mayorista = :ID_MAYORISTA"
             );
@@ -472,53 +424,6 @@
         }
         
 
-        //SELECT de la IMAGEN de un producto determinado
-        public function consultarClientes_Ven($ID_Vendedor){
-            $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho
-                FROM  minorista  
-                WHERE ID_Vendedor = :ID_VENDEDOR"
-            );
-
-            $stmt->bindParam(':ID_VENDEDOR', $ID_Vendedor, PDO::PARAM_INT);
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return  'Existe un fallo';
-            }
-        }
-        //SELECT de los clientes de un mayorista
-        public function consultarClientes(){
-            $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho, zona_AfiMin
-                FROM  minorista"
-            );
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return  'Existe un fallo';
-            }
-
-        }
-        
-        //SELECT de secciones de un mayorista especifico
-        public function consultarSecciones($ID_Mayorista){
-            $stmt = $this->dbh->prepare("SELECT seccionMay FROM seccionesmayorista WHERE ID_Mayorista = :ID_MAYORISTA");
-
-            $stmt->bindValue(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_COLUMN);
-            }
-            else{
-                return  'Existe un fallo';
-            }
-        }
-
 
 
 
@@ -531,9 +436,9 @@
 
 
         
-//***************************************************************************************************
-//Las siguientes cinco consultas de eliminación deben realizarse por transacciones
-//***************************************************************************************************
+        //***************************************************************************************************
+        //Las siguientes cinco consultas de eliminación deben realizarse por transacciones
+        //***************************************************************************************************
         //DELETE de productos de una tienda
         public function eliminarProductoSeccion($ID_Producto){
             $stmt = $this->dbh->prepare(
@@ -592,46 +497,9 @@
             );
             $stmt->bindValue(':ID_OPCION', $ID_Opcion, PDO::PARAM_INT);
             $stmt->execute();          
-        }  
-    
-        public function Transaccion_eliminarSeccionesMayorista($ID_Seccion){  
-            try{  
-                $this->dbh->beginTransaction();  
-                
-                // *********** OPERACION 1 *******************
-                //DELETE de una seccion de un mayorista
-                $stmt = $this->dbh->prepare("DELETE FROM seccionesmayorista WHERE ID_SeccionMay = :ID_SECCION");
-                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
-                $stmt->execute();
-
-                //Se envia información de cuantos registros se vieron afectados por la consulta
-                // return $stmt->rowCount(); 
-
-                // *********** OPERACION 2 *******************  
-                //DELETE de Dependencia Transitiva entre seccionesmayorista y opcionesmayorista
-                $stmt = $this->dbh->prepare("DELETE FROM seccionesmayorista_opcionesmayorista WHERE ID_SeccionMay  = :ID_SECCION");
-                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
-                $stmt->execute();          
-
-                // *********** OPERACION 3 ******************* 
-                 //DELETE de Dependencia Transitiva entre seccionesmayorista y productosmayorista
-                $stmt = $this->dbh->prepare("DELETE FROM seccionesmayorista_productosmayorista WHERE ID_SeccionMay = :ID_SECCION");
-                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
-                $stmt->execute();       
-
-                // *********** OPERACION 4 ******************* 
-                $stmt = $this->dbh->prepare("DELETE FROM mayorista_seccionesmayorista WHERE ID_Mayorista  = :ID_SECCION");
-                $stmt->bindValue(':ID_SECCION', $ID_Seccion, PDO::PARAM_INT);
-                $stmt->execute();          
-                    
-                $this->dbh->commit();  
-            }
-            catch(PDOException $e){
-                $this->dbh->rollback();  
-                $this->error = $e->getMessage();
-                echo 'Error al conectarse con la base de datos: ' . $this->error;
-            }
         }
+
+
 
 
 
@@ -749,121 +617,4 @@
         //         return false;
         //     }
         // }
-        
-        //UPDATE de la fotografia de mayorista
-        public function actualizarFotografiaMayorista($ID_Mayorista, $nombre_imgMayorista){
-            $stmt = $this->dbh->prepare("UPDATE mayorista SET fotografiaMay = :FOTOGRAFIA WHERE ID_Mayorista = :ID_MAYORISTA ");
-
-            // Se vinculan los valores de las sentencias preparadas
-            $stmt->bindValue(':ID_MAYORISTA', $ID_Mayorista);
-            $stmt->bindValue(':FOTOGRAFIA', $nombre_imgMayorista);
-
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-
-
-        
-        
-        //UPDATE de los datos del mayorista
-        public function actualizarMayorista($RecibeDatos){
-            $stmt = $this->dbh->prepare(
-                "UPDATE mayorista 
-                SET nombreMay = :NOMBRE_MAY WHERE ID_Mayorista  = :ID_MAYORISTA"
-            );
-
-            //Se vinculan los valores de las sentencias preparadas 
-            $stmt->bindValue(':NOMBRE_MAY', $RecibeDatos['Nombre_may']);
-            $stmt->bindValue(':ID_MAYORISTA', $RecibeDatos['id_mayorista']);
-
-            //Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){
-                // echo 'Bien';
-                // exit;
-                return true;
-            }
-            else{
-                // echo 'Mal';
-                // exit;
-                return false;
-            }
-        }
-
-        //INSERT de las secciones de un mayorista
-        public function insertarSeccionesMayorista($ID_Mayorista, $Seccion){ 
-            //Debido a que $Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo    
-            foreach($Seccion as $key)   :
-                // echo $key . "<br>";
-                // echo $ID_Tienda . "<br>";
-                $stmt = $this->dbh->prepare(
-                    "INSERT INTO seccionesmayorista(ID_Mayorista, seccionMay ) 
-                     VALUES(:ID_MAYORISTA, :SECCION)"
-                );
-
-                //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-                $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista);
-                $stmt->bindParam(':SECCION', $key);
-
-                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-                $stmt->execute();
-            endforeach;
-        }
-        
-        //SELECT de los ID_Sección de las secciónes de una tienda especifica
-        public function consultarTodosID_SeccionMayorista($ID_Mayorista){
-            $stmt = $this->dbh->prepare("SELECT ID_SeccionMay  FROM seccionesmayorista WHERE ID_Mayorista  = :ID_MAYORISTA");
-
-            $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return false;
-            }
-        }
-
-        public function insertarDT_mayorista_seccionesmayorista($ID_Tienda, $ID_Seccion){
-            //Debido a que $ID_Seccion es un array con todas las secciones, deben introducirse una a una mediante un ciclo
-            for($i = 0; $i<count($ID_Seccion); $i++){
-                foreach($ID_Seccion[$i] as $key){
-                    $key;  
-                }
-                $stmt = $this->dbh->prepare("INSERT INTO mayorista_seccionesmayorista(ID_Mayorista , ID_SeccionMay) VALUES (:ID_MAYORISTA, :ID_SECCION) ON DUPLICATE KEY UPDATE ID_Mayorista = :ID_MAYORISTA, ID_SeccionMay = :ID_SECCION ");
-
-                //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-                $stmt->bindParam(':ID_MAYORISTA', $ID_Tienda);
-                $stmt->bindParam(':ID_SECCION', $key);
-
-                //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-                $stmt->execute();
-            }
-        }
-        
-        //UPDATE de la imagen de seccion de mayorista
-        public function actualizaImagenSeccionMayorista($ID_Seccion, $nombre_imgSeccion, $tipo_imgSeccion, $tamanio_imgSeccion){
-            $stmt = $this->dbh->prepare(
-                "UPDATE seccionesmayorista
-                 SET nombre_img_seccionMay = :NOMBRE_IMG, tipoArchivo_img_seccionMay = :TIPO_ARCHIVO, tamanoArchivo_img_seccionMay = :TAMANIO_ARCHIVO
-                 WHERE ID_SeccionMay  = :ID_SECCION"
-            );
-
-            //Se vinculan los valores de las sentencias preparadas
-            $stmt->bindParam(':ID_SECCION', $ID_Seccion);
-            $stmt->bindParam(':NOMBRE_IMG', $nombre_imgSeccion);
-            $stmt->bindParam(':TIPO_ARCHIVO', $tipo_imgSeccion);
-            $stmt->bindParam(':TAMANIO_ARCHIVO', $tamanio_imgSeccion);
-
-            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-            $stmt->execute();
-
-            //se recupera el ID del registro insertado
-            // return $this->dbh->lastInsertId();
-        } 
     }

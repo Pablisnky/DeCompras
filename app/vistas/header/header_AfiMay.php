@@ -26,7 +26,7 @@
 		<header class="header--inicio header borde_bottom--claro">
 
 			<!-- ICONO HAMBURGUESA -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio"></i></span></label>
 			
 			<!-- BARRA DE NAVEGACION header__menuResponsive--tienda-->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
@@ -63,13 +63,13 @@
 			<i class="fas fa-search contIconoBuscador__span"></i>
         </div> -->
 
-	<!--div utilizado para tapar el body mientras esta el menu responsive -->
-	<div class="tapa" id="Tapa">
-		<div class="tapa-logo">
-			<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
-			<h2 class="h2_5 font--white">MarketPlace</h2>
+		<!--div utilizado para tapar el body mientras esta el menu responsive -->
+		<div class="tapa" id="Tapa">
+			<div class="tapa-logo">
+				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+				<h2 class="h2_5 font--white">MarketPlace</h2>
+			</div>
 		</div>
-	</div>
 	
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

@@ -24,12 +24,12 @@
                         <?php
                     } 
                     else{  ?>
-                        <div class="contenedor_120 contenedor_120__mayorista" style="background-image: url('public/images/proveedor/Don_Rigo/Portada_ant.jpg')">     
-                        </div>  
+                        <div class="contenedor_120 contenedor_120__mayorista" style="background-image: url('public/images/proveedor/Don_Rigo/Portada.jpg')"> 
+                        </div>      
+                        <p class="p_3"><?php echo $Nombre_Mayorista?></p>
                         <?php
                     }
                         ?>
-                    <p class="p_3"><?php echo $Nombre_Mayorista?></p>
 
                     <!-- BOTONES DELANTEROS -->
                     <article class="Componente_boton">

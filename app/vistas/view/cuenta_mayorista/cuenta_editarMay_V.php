@@ -54,7 +54,7 @@
                     </div>
                     <?php   
                     //Entra en el IF cuando no hay secciones creadas
-                    if($Datos['secciones'] == Array ( )){  ?>
+                    if($Datos['seccionesMay'] == Array ( )){  ?>
                         <div class="contenedor_80 cont_seccion--div-1" id="Contenedor_80">
                             <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion" placeholder="Indica una sección"/>
                             <div class="cont_seccion--icono_Contador">
@@ -66,10 +66,10 @@
                     }   
                     else{  //Entra en el ELSE cuando hay secciones creadas  
                         $Contador = 1;
-                        foreach($Datos['secciones'] as $row) :
+                        foreach($Datos['seccionesMay'] as $row) :
                             $Seccion_Tien = $row['seccionMay'];
                             $ID_Seccion = $row['ID_SeccionMay'];
-                            $CantidadSeccion = count($Datos['secciones']);
+                            $CantidadSeccion = count($Datos['seccionesMay']);
                             ?>                           
                             <div class="contenedor_80" id="Contenedor_80">
                                 <input class="input_13 input_13A input_12 borde_1 seccionesJS" type="text" name="seccion[]" id="Seccion_<?php echo $Contador;?>" value="<?php echo $Seccion_Tien;?>" onblur="Llamar_ActualizarSeccion(this.value,'<?php echo $ID_Seccion;?>')"/>

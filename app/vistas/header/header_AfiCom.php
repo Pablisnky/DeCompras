@@ -23,16 +23,13 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body>	
-		<header class="header header-AfiCom borde_bottom--claro">
-			<!-- icono para responsive -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_3" onclick="mostrarMenu()"><i class="fas fa-bars icono_3 span_15Inicio" id="Span_6"></i></label>
+		<header class="header--inicio header borde_bottom--claro">
 
-			<div class="header_membrete--Afiliado">
-				<label class="h1_10 font--negro label--block"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></label>			
-				<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
-			</div>
+			<!-- ICONO HAMBURGUESA -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio"></i></span></label>
 						
-			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--Afiliado">
+			<!-- BARRA DE NAVEGACION header__menuResponsive--tienda-->
+			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
 					<!-- <li><a class="a_3" href="<?php //echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li> -->
@@ -55,9 +52,20 @@
 				</ul>
 			</nav>
 		</header>	
-		
+
+		<!-- MEMBRETE -->		
+		<div class="">
+			<label class="a_1 a_7 font--negro"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></label>			
+			<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
+		</div>
+
 		<!--div utilizado para tapar el body mientras esta el menu responsive -->
-		<div class="tapa" id="Tapa"></div>
+		<div class="tapa" id="Tapa">
+			<!-- <div class="tapa-logo">
+				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+				<h2 class="h2_5 font--white">MarketPlace</h2>
+			</div> -->
+		</div>
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

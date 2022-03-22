@@ -1,7 +1,5 @@
 document.getElementById("Disponible").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
 
-document.getElementById("Cantidad").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
-
 document.getElementById("PrecioBs").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value, "PrecioDolar")}, false)
 
 document.getElementById("PrecioDolar").addEventListener('keyup', function(){CambioMonetarioDolar(this.value, "PrecioBs")}, false)
@@ -262,61 +260,5 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
         //Si se superan todas las validaciones la función devuelve verdadero
         return true
     }
-    
-//************************************************************************************************
-    //Muestra el div para ampliar informacicón del producto
-    Desplegado = false
-    function AmpliarDescripcion(){
-        if(Desplegado == false){
-            document.getElementById("Contenedor_128").style.display = "block"
-            Desplegado = true
-        }
-        else{
-            document.getElementById("Contenedor_128").style.display = "none"
-            Desplegado = false
-        }
-    }
 
 //************************************************************************************************ 
-    //Elimina imagenes previsualizadas
-    function EliminarImagenSecundaria(Etiqueta, SeleccionImagenes){
-        console.log("______Desde EliminarImagenSecundaria______", Etiqueta + " / " + SeleccionImagenes)
-        
-        console.log("Array imagenes seleccionadas= ", SeleccionImagenes)
-        //Se elimina un elemento del array que contiene las imagenes para evitar que se inserten más de cinco
-        b = 1
-        SeleccionImagenes.reduce((a, b) => a + b)
-        console.log("Array imagenes seleccionadas= ", SeleccionImagenes)
-        
-        //Se busca el id de la etiqueta donde se hizo click
-        let ID_Etiqueta = Etiqueta.id
-        console.log(ID_Etiqueta)
-
-        //Se busca la imagen que corresponde a la etiqueta "Eliminar" donde se hizo click
-        imagen = document.getElementById(ID_Etiqueta).previousSibling
-        console.log(imagen)
-
-        //Detectar la imagen que acompaña la etiqueta
-        // let ImagenEliminar = document.getElementById(ID_Imagen)
-        // console.log(ImagenEliminar)
-        // console.log(EtiquetaEliminar)
-                
-        //Se busca el nodo padre que contiene la imagen y la etiqueta a eliminar
-        let PadreImagen = imagen.parentElement
-        // let PadreEtiqueta = EtiquetaEliminar.parentElement
-            
-        //Se elimina la imagen
-        PadreImagen.removeChild(imagen);  
-        PadreImagen.removeChild(Etiqueta);
-    }
-
-    function deshabilitarCantidad(id){
-        if(document.getElementById(id).disabled == false){
-            document.getElementById(id).value= ""
-            document.getElementById(id).disabled = true
-        }
-        else{
-            document.getElementById(id).disabled = false
-            document.getElementById(id).focus()
-        }
-    }

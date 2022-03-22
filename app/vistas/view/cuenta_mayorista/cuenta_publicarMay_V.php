@@ -8,7 +8,7 @@ if(!empty($_SESSION["ID_Mayorista"])){
       ?>       
         
     <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <div class="contenedor_108">  
         <form action="<?php echo RUTA_URL; ?>/CuentaMayorista_C/recibeProductoPublicarMay" method="POST" enctype="multipart/form-data" autocomplete="off" > <!-- onsubmit="return validarPublicacion()" -->
@@ -56,6 +56,7 @@ if(!empty($_SESSION["ID_Mayorista"])){
                         <!-- CANTIDAD EN EXISTENCIA -->
                         <div id="Contenedor_152">
                             <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="cantidadMay" id="Cantidad" placeholder="Unidades en existencia">
+                            <br>
                             <div class="contInputRadio">     
                                 <input type="checkbox" name="disponibleMay" id="Disponible"/>
                                 <label class="contInputRadio__label small_3" for="Disponible">Siempre disponible</label>

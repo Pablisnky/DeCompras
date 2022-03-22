@@ -158,7 +158,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script> 
         //Da una vista previa de la imagen principal antes de guardarla en la BD
         function readImage(input){
-        // console.log("______Desde readImage()______", input)
             if(input.files && input.files[0]){
                 var reader = new FileReader();
                 reader.onload = function(e){

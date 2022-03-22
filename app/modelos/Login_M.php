@@ -256,6 +256,26 @@
                 return false;
             }
         }
+        
+        public function actualizarCodigoVenta($ID_AfiliadoVen, $CodigoVenta){
+            $stmt = $this->dbh->prepare(
+                "UPDATE afiliado_ven  
+                SET codigoVenta_AfiVen = :CODIGO_VENTA 
+                WHERE ID_AfiliadoVen = :ID_AFILIADOVEN"
+            );
+           
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_AFILIADOVEN', $ID_AfiliadoVen[0]['ID_AfiliadoVen']);
+            $stmt->bindValue(':CODIGO_VENTA', $CodigoVenta);
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }
 
            

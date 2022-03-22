@@ -560,15 +560,16 @@
 	height: 10%;
 }
 .contenedor_89{
-	grid-template-columns: 45% 45%;
+	grid-template-columns: 80% ;
 	column-gap: 4%;/*espacio entre columnas*/
+	justify-content: center; /*centra horizontalmente*/
 }
 .contenedor_90{
-	top: 45px;
+	top: 40px;
 	height: 40px!important;
 }
 .contenedor_90--tiendas{
-	top: 92px!important;
+	/* top: 92px!important; */
 	height: 40px!important;
 }
 .contenedor_91{
@@ -641,6 +642,8 @@
 	cursor: pointer !important;
 }
 .contenedor_108{
+	min-height: 100%;
+	padding-top: 8%;
 	padding-bottom: 5%;
 }
 .contenedor_109{
@@ -668,29 +671,9 @@
 	background-color: white;
 	width: 100%;
 	padding-left: 10%;
-	height: initial;
+	height: 45px;
 	position: fixed;
 	top: 0%;
-}
-.contenedor_111--tienda{
-	background-color: white !important;
-	background: initial;
-	width: 100%;
-	height: 55px;
-	text-align: center;
-	margin-top: 37px;
-	padding: 0%;
-	padding-bottom: 1%;
-}
-.contenedor_111--mayorista{
-	background-color: white !important;
-	background: initial;
-	width: 100%;
-	height: 30px;
-	text-align: center;
-	margin-top: 37px;
-	padding: 0%;
-	padding-bottom: 1%;
 }
 .contenedor_112{
 	background-color: var(--OficialClaro);
@@ -835,6 +818,10 @@
 }
 .contInputRadio{
 	margin-bottom: 15px !important;
+}
+.contInputRadio--secciones{
+	width: 70%;
+	margin: auto;
 }
 .contInputRadio__label{
 	font-size: 0.9em !important;
@@ -1209,7 +1196,7 @@
 	font-size: 1.2em;
 }
 .p_9{
-	margin-bottom: 10%;
+	/* margin-bottom: 10%; */
 }
 .p_11{
 	margin-top: 3%;
@@ -1308,7 +1295,7 @@
 	/* width: 100% !important; */
 }
 .section_9{
-	padding-top: 15%;
+	top: 35px !important;
 }
 .section_11{
 	padding-top: 15% !important;
@@ -1419,6 +1406,10 @@
 	padding-left: 3%;
 	font-size: 1em;
 }
+.tabla_inventario{
+	width: 95%;
+	margin: auto;
+}
 .tapa{
 	background-color: rgba(0, 0, 0, 0.8);
 	/* display: none; */
@@ -1480,10 +1471,10 @@
 ul .menuContenedor_3{
 	display: none;
 	position: initial;
-	margin-top: -20%;
 	margin-left: 100%;
 	z-index: 5;
 	padding-top: 1%;
+	margin-top: -22% !important;
 }
 .menuLi_1:hover > ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
 	display: block !important;

@@ -12,17 +12,17 @@
               //$Datos['seccion'] trae información desde Mayorista_C/SeccionesDisponiblesMay
               foreach($Datos['seccionesMay'] as $row){
                 $SeccionMayorista = $row['seccionMay']; ?>
-                <div class="contInputRadio">
+                <div class="contInputRadio contInputRadio--secciones ">
                     <input class="" type="radio" name="seccionMay" id="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>" value="<?php echo $SeccionMayorista?>" onclick="transferirSeccionMay(this.form, 'SeccionPublicarMay')"/> 
                     <label class="contInputRadio__label" for="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>"> <?php echo $SeccionMayorista ?></label>
-              </div>
+                </div>
                 <?php
               $ContadorSeccion++;
               }  
               ?>  
           </div> 
       </form>   
-      <!-- <hr class="hr_3"/> -->
-      <!-- <label class="label_18">Sino encuentra una sección adecuada para su producto, añada una nueva sección en "Configurar" del menu principal.</label>    -->
+      <hr class="hr_3"/>
+      <label class="label_18">Sino encuentra una sección adecuada para su producto, añada una nueva sección en "Configurar" del menu principal.</label>
     </div>
 </section>    

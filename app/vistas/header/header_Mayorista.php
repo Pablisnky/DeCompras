@@ -23,9 +23,10 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body onload="nobackbutton()">	
-		<header class="header--inicio header">
+		<header class="header header--inicio ">
+
 			<!-- ICONO HAMBURGUESA -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio"></i></span></label>
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
 			 
 			<!-- BARRA DE NAVEGACION -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
@@ -36,15 +37,10 @@
 			</nav>
 		</header>
 
-		<!-- NOMBRE MAYORISTA -->
-		<div class="contenedor_111">
-			<label class="h1_10 font--negro label--block"><?php echo $Datos['nombreMayorista']?></label>
+		<!-- MEMBRETE -->
+		<div class="contenedor_111" style="z-index:1">
+			<label class="a_1 a_7 font--negro"><?php echo $Datos['nombreMayorista']?></label>
 		</div>
-
-		<!-- ICONO BUSACADOR LUPA -->
-        <!-- <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
-			<i class="fas fa-search contIconoBuscador__span"></i>
-        </div> -->
 
 		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
 		<div class="tapa" id="Tapa">
