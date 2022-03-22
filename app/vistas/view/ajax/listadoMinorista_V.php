@@ -6,6 +6,7 @@
     <!-- LISTADO DE PEDIDOS -->       
     <div class="sectionModal__div">
         <p class="font--titulo">Listado de clientes</p>
+        </br>
             <?php
         if($Datos['minoristaVen'] != Array ()){
             foreach($Datos['minoristaVen'] as $row)  :  
@@ -27,9 +28,10 @@
             endforeach;  
         }
         else{   ?>
-            <div class="cont_clientesVen borde_1">
+            <div class="contenedor_65 borde_1">
                 <p class="bandaAlerta">ALERTA</p>
-                <P>No tiene clientes registrdos en su cuenta.</P>
+                <br>
+                <P class="font--center">No tiene clientes registrados en su cuenta.</P>
             </div>
             <?php
         } ?>

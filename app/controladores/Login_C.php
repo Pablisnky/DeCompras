@@ -424,9 +424,12 @@
                     //Se introduce el codigo de despacho del vendedor, es el mismo que la clave
                     $this->ConsultaLogin_M->actualizarCodigoVenta($ID_AfiliadoVen, $ClaveNueva);
 
-                    
+                    $Datos = [
+                        'bandera' => 'finalizado'
+                    ];
+
                     $this->vista('header/header_Modal'); 
-                    $this->vista('modal/modal_recuperarCorreo_V'); 
+                    $this->vista('modal/modal_recuperarCorreo_V', $Datos); 
                 }
                 else if($ID_AfiliadoDes != Array()){
                     //Se actualiza en la base de datos la clave del usuario

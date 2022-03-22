@@ -70,14 +70,14 @@
     
     <section>         
         <div class="contOculto" id="Muestra_datosMinorista">
-            <i class="fas fa-times spanCerrar spanCerrar--fijo" onclick="ocultarListadoMay('Muestra_datosMinorista')">X</i>
-             <form action="../../RecibePedidoMayorista_C" method="POST" id="DatosUsuario"></form> <!-- onsubmit="return validarDespacho()" -->
+             <form action="../../RecibePedidoMayorista_C" method="POST" id="DatosUsuario"> <!-- onsubmit="return validarDespacho()" -->
                 
                 <!--LOS DATOS DEL MINORISTA vienen de A_VitrinaMayorista.js por medio de Llamar_datosMinorista()-->
                 <article>
                     <div class="contenedor_24">
+                        <i class="fas fa-times spanCerrar font--negro" onclick="ocultarListadoMay('Muestra_datosMinorista')"></i> 
                         <header>
-                            <h1 class="h1_1">Datos del cliente</h1>
+                            <h1 class="h1_1">Datos del cliente <?php echo $_SESSION['verfica_pedido']?></h1>
                         </header>
 
                         <div class="contFlex" style="position: relative;">

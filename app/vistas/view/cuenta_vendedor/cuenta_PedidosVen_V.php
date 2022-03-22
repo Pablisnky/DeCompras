@@ -12,7 +12,8 @@
         if($Datos['pedidos_ven'] != Array ()){ 
             foreach($Datos['pedidos_ven'] as $row)  : 
                 $Nro_Orden = $row['numeroorden_May'];   ?>
-                <!-- INDICADOR DE DEUDA  -->
+
+                    <!-- INDICADOR DE DEUDA  -->
                 <div class="contenedor_106--pedidos">
                     <?php
                     // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
@@ -26,7 +27,7 @@
                     }
                     // PEDIDO SIN FACTURAR
                     else if($row['factura'] == 'No Asignada') {  ?>
-                           <span class="span_21 borde_1" style="background-color:;"><i class="far fa-clock icono_1"></i></span>
+                           <span class="span_21 borde_1" style="background-color:;"><i class="far fa-clock"></i></span>
                         <?php
                     }
                     // PEDIDO FACTURADO Y QUE HA PERDIDO LA GANANCIA POR COMISION
