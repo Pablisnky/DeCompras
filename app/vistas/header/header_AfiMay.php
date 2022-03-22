@@ -23,12 +23,12 @@
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body>	
-		<header class="header--inicio header borde_bottom--claro">
+		<header class="header header--inicio">
 
 			<!-- ICONO HAMBURGUESA -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio"></i></span></label>
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3"></i></span></label>
 			
-			<!-- BARRA DE NAVEGACION header__menuResponsive--tienda-->
+			<!-- BARRA DE NAVEGACION -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/configurar'?>">Configurar</a></li>
@@ -53,17 +53,12 @@
 		</header>
 		
 		<!-- MEMBRETE -->
-		<div class="">
+		<div class="contenedor_111" style="z-index:1">
 			<label class="a_1 a_7 font--negro"><?php echo $_SESSION['Nombre_Mayorista']?></label>
 			<p class="h3_10 font-right separador_1">Administrador</p>
 		</div> 
 
-		<!-- icono de buscador -->
-        <!-- <div class="contIconoBuscador contIconoBuscador--tienda borde_1" id="Contenedor_34">
-			<i class="fas fa-search contIconoBuscador__span"></i>
-        </div> -->
-
-		<!--div utilizado para tapar el body mientras esta el menu responsive -->
+		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
 		<div class="tapa" id="Tapa">
 			<div class="tapa-logo">
 				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>

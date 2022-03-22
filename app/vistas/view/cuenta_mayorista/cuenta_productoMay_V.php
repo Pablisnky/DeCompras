@@ -5,7 +5,7 @@
     ?>
 
     <section class="section_3 section_9">
-        <div class="contenedor_90 contenedor_91">
+        <div class="contenedor_90 contenedor_90--mayorista">
             <h2 class="h2_9">Sección</h2>
             <h3 class="h3_9">( <?php echo $Datos['seccionInvocada'];?> )</h3>
             <?php 
@@ -13,7 +13,7 @@
                     foreach($Datos['seccionesMay'] as $Key) :
                         if($Key['seccionMay'] == $Datos['seccionInvocada'] ){
                                 ?>
-                            <span class="borde_1" style="display: inline; float: right" onclick="ImagenSeccionMayorista(<?php echo $Key['ID_SeccionMay'];?>)"><i class="fas fa-pencil-alt icono_4"></i></span>
+                            <span class="borde_1" style="display: inline-block; float: right; margin-right: 20px" onclick="ImagenSeccionMayorista(<?php echo $Key['ID_SeccionMay'];?>)"><i class="fas fa-pencil-alt icono_4"></i></span>
                             <?php
                         }
                     endforeach;
@@ -28,7 +28,6 @@
             foreach($Datos['productos'] as $arr) :
                 $Seccion = $arr["seccionMay"]; 
                 $Producto = $arr["productoMay"]; 
-                $Destacar = $arr["destacarMay"];
                 $Opcion = $arr["opcionMay"];
                 $PrecioBolivar = number_format($arr["precioBolivarMay"], "2", ",", ".");//Se cambia el formato del precio, viene sin separador de miles
                 $PrecioDolar = number_format($arr["precioDolarMay"], "2", ",", ".");
@@ -45,17 +44,12 @@
                 ?>
 
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $Contador;?>">
-                        <!-- IMAGEN PRINCIPAL -->
+
+                        <!-- IMAGEN PRODUCTO -->
                     <div class="contenedor_9 contenedor_9--pointer">
                         <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/<?php echo $FotoProducto;?>')">
                             <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
                         </div>
-                            <?php
-                            // if($Destacar == 1){   ?>
-                                <!-- <label class="contenedor_9--label borde_3">Producto destacado</label> -->
-                                <?php
-                            // }   
-                            ?>
                     </div>
                     <div>
                         <!-- PRODUCTO -->
@@ -63,7 +57,7 @@
 
                         <!-- OPCION -->                        
                         <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" ><?php echo $Opcion;?></label>
-
+                            
                         <!-- UNIDADES EN EXISTNCIA -->    
                         <?php
                         if($Existencia == 1) :  ?>                   
@@ -80,6 +74,69 @@
                         <!-- PRECIO -->
                         <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>">Bs.<?php echo $PrecioBolivar;?></label>
                         <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" > $ <?php echo $PrecioDolar;?></label>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <?php 
+                                    //En caso de venir desde actualizar el producto se posiciona de primero entre todos los productos de la sección
+                                    // if($Opcion == $Datos['ProductoSelecion']){ ?>
+                                        <!-- <style>
+                                            @media (max-width: 800px){
+                                                .section_9{/*opciones - cuenta_productos*/
+                                                    padding-top: 75%;
+                                                }
+                                                #<?php echo 'Cont_Producto_' . $ContadorLabel;?>{
+                                                    background-color: var(--OficialClaro);
+                                                    position: absolute;
+                                                    height: 8%;
+                                                    top: 150px;
+                                                    z-index: 1 !important;
+                                                }
+                                                #<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>{
+                                                    background-color: var(--OficialClaro);
+                                                }
+                                                #<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>{
+                                                    background-color: var(--OficialClaro);
+                                                }
+                                                #<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>{
+                                                    background-color: var(--OficialClaro);
+                                                }
+                                            }
+                                        </style>  -->
+                                        <?php 
+                                    // }   
+                                    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                

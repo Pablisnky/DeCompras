@@ -123,6 +123,24 @@
                 return false;
             }
         }
+
+        //SELECT de los datos de un vendedor
+        public function consultarVendedor($CodigoVenta){
+            $stmt = $this->dbh->prepare(
+                "SELECT ID_AfiliadoVen  
+                 FROM afiliado_ven  
+                 WHERE codigoVenta_AfiVen = :CODIGO_VENTA"
+            );
+
+            $stmt->bindParam(':CODIGO_VENTA', $CodigoVenta, PDO::PARAM_STR);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
        
         //SELECT de los datos de un miorista
         public function consultarMinorista($CodigoDespacho){

@@ -137,7 +137,7 @@
             //RECIBE SECCIONES
             // ********************************************************
             //Recibe las secciones por nombre (son las nuevas creadas)
-            if(array_keys($_POST['seccion']) != Array ()){
+            if(!empty($_POST['seccion'])){
                 foreach($_POST['seccion'] as $Seccion){
                     $Seccion = $_POST['seccion'];
                 }
@@ -160,7 +160,7 @@
             // echo 'Secciones existentes';
             // echo '<pre>';
             // print_r($SecccionesExistentes);
-            // // echo '</pre>';
+            // echo '</pre>';
             
             $Secciones = array_diff($SeccionesRecibidas, $SecccionesExistentes);
             // echo 'Secciones a insertar';
@@ -190,7 +190,7 @@
         	header('location:' . RUTA_URL. '/CuentaMayorista_C/configurar');
         }
 
-        //Invocado desde  A_Cuenta_editarMayorista.js
+        //Invocado desde A_Cuenta_editarMayorista.js
         public function ActualizarSeccion($Seccion, $ID_Seccion){
             //Se ACTUALIZA una seccion 
             $this->ConsultaMayorista_M->ActualizarSeccion($Seccion, $ID_Seccion);
@@ -263,7 +263,7 @@
             //     unset($_SESSION['verifica_2']);//se borra la sesión verifica. 
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicarMay_V.php se verifica que son enviados por POST y que no estan vacios
-                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccionMay']) && !empty($_POST['productoMay']) && !empty($_POST['descripcionMay']) && !empty($_POST['precioBsMay']) && (!empty($_POST['precioDolarMay']) || $_POST['precioDolarMay'] == 0)){
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccionMay']) && !empty($_POST['productoMay']) && !empty($_POST['precioBsMay']) && (!empty($_POST['precioDolarMay']) || $_POST['precioDolarMay'] == 0)){
                     // && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
@@ -367,10 +367,8 @@
                         exit();
                     }
                 }
-                else{//si no se selecciono ninguna imagen principal
-                    echo 'Debe introducir una imagen principal ';
-                    echo '<a href="javascript: history.go(-1)">Regresar</a>';
-                    exit();
+                else{//si no se selecciono ninguna imagen principal se inserta la imagen por defecto
+                    $ID_Imagen = $this->ConsultaMayorista_M->insertaImagenPorDefectoMayorista($ID_ProductoMay);
                 }
                 
                 $this->Productos();
@@ -404,7 +402,7 @@
             urldecode($Seccion);
 
             if($Seccion  == 'Todos'){
-                //CONSULTA todos los productos de una tienda
+                //CONSULTA todos los productos de un mayorista
                 $Productos = $this->ConsultaMayorista_M->consultarTodosProductosMayorista($this->ID_Mayorista);
                 // echo '<pre>';
                 // print_r($Productos);
@@ -667,7 +665,7 @@
         //Invocado desde cuenta_editar_prodMay_V.php
         public function recibeAtualizarProductoMay(){
             //Se reciben todos los campos del formulario, se verifica que son enviados por POST y que no estan vacios
-            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccionMay']) && !empty($_POST['productoMay']) && !empty($_POST['descripcionMay']) && !empty($_POST['precioBolivarMay']) && (!empty($_POST['precioDolarMay']) || $_POST['precioDolarMay'] == 0)){
+            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccionMay']) && !empty($_POST['productoMay']) && !empty($_POST['precioBolivarMay']) && (!empty($_POST['precioDolarMay']) || $_POST['precioDolarMay'] == 0)){
             // {&& !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])
 
                 $RecibeProducto = [
@@ -768,7 +766,7 @@
                 // $this->ConsultaMayorista_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);   actualizarImagenSeccionDeseleccionar
             }
             
-            //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección
+            //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección 
             $Seccion = $RecibeProducto['Seccion'];
 
             $this->Productos($Seccion);

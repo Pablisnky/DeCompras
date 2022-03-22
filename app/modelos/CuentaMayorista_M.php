@@ -139,6 +139,21 @@
             return $this->dbh->lastInsertId();
         } 
 
+        //INSERT de la imagen principal por defecto en caso de no seleccionar ninguna
+        public function insertaImagenPorDefectoMayorista($ID_Producto){
+            $stmt = $this->dbh->prepare(
+                "INSERT INTO imagenesmayorista(ID_ProductoMay, nombre_imgMay) 
+                VALUES(:ID_PRODUCTO, :NOMBRE_IMG)"
+            );
+
+            //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
+            $stmt->bindValue(':NOMBRE_IMG', 'imagen.png');
+
+            //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
+            $stmt->execute();
+        }
+
         //INSERT de datos de vendedor
         public function insertarVendeodr($ID_Mayorista, $RecibeVendedor, $nombre_imgVendedor, $tipo_imgVendedor, $tamanio_imgVendedor){
             $stmt = $this->dbh->prepare(
@@ -866,4 +881,25 @@
             //se recupera el ID del registro insertado
             // return $this->dbh->lastInsertId();
         } 
+                
+        //UPDATE del nombre de una sección
+        public function ActualizarSeccion($Seccion, $ID_Seccion){
+            $stmt = $this->dbh->prepare(
+                "UPDATE seccionesmayorista  
+                SET seccionMay  = :SECCION_MAY
+                WHERE ID_SeccionMay  = :ID_SECCION"
+                );
+
+            // Se vinculan los valores de las sentencias preparadas
+            $stmt->bindValue(':ID_SECCION', $ID_Seccion);
+            $stmt->bindValue(':SECCION_MAY', $Seccion );
+
+            // Se ejecuta la actualización de los datos en la tabla
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }

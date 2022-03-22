@@ -100,8 +100,8 @@
         </form>
     </div>
 
-    <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion() -->
-    <did id="ReadOnly"></did>
+    <!--div alimentado via Ajax por medio de la funcion Llamar_EliminarSeccion(), no devuelve ninguna información -->
+    <!-- <did id="ReadOnly"></did> -->
 
     <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editarMayorista.js?v=' . rand();?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editarMayorista.js?v=' . rand();?>"></script>

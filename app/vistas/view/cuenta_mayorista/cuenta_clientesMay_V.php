@@ -4,7 +4,7 @@
 
     // $ID_Tienda = $_SESSION["ID_Tienda"];
     ?>    
-    <div class="contenedor_108" id="Contenedor_42">  
+    <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
 
         <!-- LISTADO VENDEDORES -->      
         <p class="font--titulo">Clientes</p> 

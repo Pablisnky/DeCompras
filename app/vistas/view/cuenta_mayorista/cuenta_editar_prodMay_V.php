@@ -73,7 +73,7 @@
                         <!-- SECCION -->
                         <label>Sección</label>
                         <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccionMay" id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccionSeleccionadaMay('<?php echo $ID_Producto?>')">
-                        <br>
+                        <br><br><br>
 
                         <!-- PRECIO -->
                         <label>Precio de venta</label>            
@@ -90,7 +90,7 @@
                         </div> 
                         <small class="small_1">El sistema realiza automaticamente la conversión Bolivar / Dolar según BCV. <strong class="strong_1">( $ 1 = Bs. <?php echo number_format($Datos['dolarHoy'], 4, ",", ".");?>)</strong></small>
                         <input class="ocultar" id="CambioOficial" type="text" value="<?php echo $Datos['dolarHoy'];?>"/>
-                        <br>
+                        <br><br>
 
                         <!-- CANTIDAD EN EXISTENCIA -->
                         <div id="Contenedor_152">
@@ -113,13 +113,13 @@
         
                 <article>
                     <div class="contenedor_49 contenedor_81">
-                        <!-- <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda?>"/> -->
                         <input class="ocultar" type="text" name="id_productoMay" value="<?php echo $ID_Producto;?>">
                         <input class="ocultar" type="text" name="id_opcionMay" value="<?php echo $ID_Opcion;?>">
                         <input class="ocultar" type="text" name="id_seccionMay" id="ID_Seccion" value="<?php echo $ID_Seccion;?>"/>
                         <input class="ocultar" type="text" name="id_sp" value="<?php echo $ID_SP;?>"/>
-                        <!-- <input class="ocultar" type="text" name="id_imagenMay" value="<?php echo $ID_ImagenPrincipal;?>"/> -->
-                        <!-- <input class="ocultar" type="text" name="id_mayoristaMay" value="<?php echo $ID_Mayorista;?>"/> -->
+                        <!-- <input class="ocultar" type="text" name="id_imagenMay" value="<?php //echo $ID_ImagenPrincipal;?>"/> -->
+                        <!-- <input class="ocultar" type="text" name="id_mayoristaMay" value="<?php //echo $ID_Mayorista;?>"/> -->
+                        <!-- <input class="ocultar" type="text" name="id_tienda" value="<?php echo $ID_Tienda?>"/> -->
                         <input class="boton boton--largo" type="submit" value="Guardar cambios"/>
                     </div> 
                 </article>

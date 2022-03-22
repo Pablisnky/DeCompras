@@ -3,7 +3,7 @@ document.getElementById("Input_9").addEventListener('keyup', function(){Llamar_b
 //*********************************************************************************************** 
     //Busca un producto segun lo que escriba el usuario en el input de busqueda
     function Llamar_buscador(nombre){
-        console.log("Desde Llamar_buscador", nombre)
+        // console.log("Desde Llamar_buscador", nombre)
         var divContenedor = document.getElementById("Buscar_Pedido")
         var xmlhttp
         if(window.XMLHttpRequest){ //Mozilla, Safari, Chrome...

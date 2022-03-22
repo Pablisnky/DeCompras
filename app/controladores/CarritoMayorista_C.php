@@ -100,11 +100,20 @@
         
         //Invocado en A_VitrinaMayorista.js por medio de Llamar_listaMinorista
         public function listaMinorista($CodigoVenta){
-            //Se CONSULTA los minoristas asignados a un vnededor
+            //Se CONSULTA si el vendedor existe
+            $Vendedor = $this->ConsultaCarritoVitrina_M->consultarVendedor($CodigoVenta);
+
+            // echo "<pre>";
+            // print_r($Minorista);
+            // echo "</pre>";          
+            // exit();
+
+            //Se CONSULTA los minoristas asignados a un vendedor
             $MinoristaVen = $this->ConsultaCarritoVitrina_M->consultarMinoristasVen($CodigoVenta);
             
             $Datos = [
-                'minoristaVen' => $MinoristaVen, // nombre_AfiMin, rif_AfiMin, codigodespacho      
+                'vendedor' => $Vendedor, // ID_Vendedor
+                'minoristaVen' => $MinoristaVen // nombre_AfiMin, rif_AfiMin, codigodespacho      
             ];
 
             // echo "<pre>";
