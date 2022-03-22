@@ -380,9 +380,9 @@
 
         public function Productos($DatosAgrupados = 'Todos'){
             //$DatosAgrupados contiene una cadena con el separados por coma, se convierte en array para separar los elementos
-            // echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
-            // echo 'ID_Mayorista= ' . $this->ID_Mayorista . '<br>';
-            // exit;
+            echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
+            echo 'ID_Mayorista= ' . $this->ID_Mayorista . '<br>';
+            exit;
 
             $DatosAgrupados = explode(',', $DatosAgrupados);
 
@@ -766,10 +766,10 @@
                 // $this->ConsultaMayorista_M->actualizarDT_SecImg($RecibeProducto['ID_Seccion'], $RecibeProducto['ID_Imagen']);   actualizarImagenSeccionDeseleccionar
             }
             
-            //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección 
-            $Seccion = $RecibeProducto['Seccion'];
+            //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección, tambien se envia el ID_Producto para ponerle el cursor
+            $DatosAgrupados = $RecibeProducto['Seccion'] . ',' . $RecibeProducto['ID_Producto'];
 
-            $this->Productos($Seccion);
+            $this->Productos($DatosAgrupados);
         }   
 
         //llamado desde header_AfiMay.php
