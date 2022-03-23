@@ -39,6 +39,8 @@ Salvador labtop 6c:88:14:15:26:e4
 Salvador 98:f6:21:7d:f0:ca
 Esther 14:a3:64:83:e3:dc
 Esther 8c:79:67:1f:4f:b3
+Rosa vecina b8:1d:aa:b5:4f:4f
+rociel   d6:89:f5:ab:36:f1
 
 Karina 60:ab:67:9b:07:24    
 Xiomara c0:3f:d5:c6:d0:99

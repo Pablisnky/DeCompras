@@ -7,13 +7,12 @@ if(!empty($_SESSION["ID_Mayorista"])){
     $PrecioDolar = number_format($Datos['dolarHoy'], 4, ",", "."); 
       ?>       
         
-    <!-- Se coloca el SDN para la libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- SDN libreria JQuery, necesaria para la previsualización de la imagen del producto--> 
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
-    <div class="contenedor_108">  
+    <div class="contenedor_42 contenedor_108">  
         <form action="<?php echo RUTA_URL; ?>/CuentaMayorista_C/recibeProductoPublicarMay" method="POST" enctype="multipart/form-data" autocomplete="off" > <!-- onsubmit="return validarPublicacion()" -->
 
-            <a id="Ancla_01" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3"> 
                 <legend class="legend_1">Cargar producto</legend>
                 <div class="contenedor_47">    
@@ -82,7 +81,7 @@ if(!empty($_SESSION["ID_Mayorista"])){
     <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_publicarMay.js';?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_publicarMay.js';?>"></script> 
 
-    <script> 
+    <!-- <script> 
         //Da una vista previa de la imagen principal antes de guardarla en la BD
         function readImage(input){
             if(input.files && input.files[0]){
@@ -98,7 +97,7 @@ if(!empty($_SESSION["ID_Mayorista"])){
             // Código a ejecutar cuando se detecta un cambio de imagen individual
             readImage(this);
         });
-    </script>
+    </script> -->
 
     <?php include(RUTA_APP . "/vistas/footer/footer.php");
 }

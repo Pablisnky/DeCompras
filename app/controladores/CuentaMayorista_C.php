@@ -378,22 +378,26 @@
             // } 
         }
 
-        public function Productos($DatosAgrupados = 'Todos'){
+        // invocado desde el metodo eliminarProductoMay() - recibeProductoPublicarMay - recibeAtualizarProductoMay - header_AfiMay.php - 
+        public function Productos($DatosAgrupados = 'Todos,falas,false'){
             //$DatosAgrupados contiene una cadena con el separados por coma, se convierte en array para separar los elementos
-            echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
-            echo 'ID_Mayorista= ' . $this->ID_Mayorista . '<br>';
-            exit;
+            // echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
+            // echo 'ID_Mayorista= ' . $this->ID_Mayorista . '<br>';
+            // exit;
 
             $DatosAgrupados = explode(',', $DatosAgrupados);
 
             $Seccion = $DatosAgrupados[0];
+            $ID_Seccion = $DatosAgrupados[1];
+            $ID_Producto = $DatosAgrupados[2];
             //Mediante operador ternario
             // $ID_Seccion = empty($DatosAgrupados[1]) ? 'NoAplica' : $DatosAgrupados[1];
             // $Puntero =  empty($DatosAgrupados[2]) ? 'NoAplica' : $DatosAgrupados[2];
             // echo $Seccion . '<br>';
-            // echo $Puntero . '<br>';
-            // echo $ID_Seccion . '<br>';
-            // exit();
+            echo $Seccion . '<br>';
+            echo $ID_Seccion . '<br>';
+            echo $ID_Producto . '<br>';
+            exit();
 
             //$Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
             // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas

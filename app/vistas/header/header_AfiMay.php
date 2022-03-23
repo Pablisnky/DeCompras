@@ -41,9 +41,9 @@
 							foreach($Datos['seccionesMay'] as $arr) :	
 								$ID_Seccion = $arr['ID_SeccionMay'];	
 								$Seccion = $arr['seccionMay'];	?>
-								<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/CuentaMayorista_C/Productos/' . urlencode($Seccion) . ',' . $ID_Seccion . ',NoAplica'?>"><?php echo $Seccion;?></a></li>	<?php
+								<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/CuentaMayorista_C/Productos/' . urlencode($Seccion) . ',' . $ID_Seccion . ',false'?>"><?php echo $Seccion;?></a></li>	<?php
 							endforeach;	?>
-							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/CuentaMayorista_C/Productos/Todos';?>">Todos</a></li>
+							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/CuentaMayorista_C/Productos/Todos,false,false';?>">Todos</a></li>
 						</ul> 	
 					</li>
                     <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaMayorista_C/Publicar/';?>">Cargar producto</a></li>

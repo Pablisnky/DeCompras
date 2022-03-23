@@ -691,14 +691,13 @@
         public function actualizarProducto($RecibeProducto){
             $stmt = $this->dbh->prepare(
                 "UPDATE productosmayorista 
-                SET productoMay = :PRODUCTO, destacarMay = :DESTACAR 
+                SET productoMay = :PRODUCTO
                 WHERE ID_ProductoMay = :ID_PRODUCTO"
             );
 
             //Se vinculan los valores de las sentencias preparadas
             $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
             $stmt->bindValue(':PRODUCTO', $RecibeProducto['Producto']);
-            $stmt->bindValue(':DESTACAR', $RecibeProducto['producto_destacado']);
 
             //Se ejecuta la actualización de los datos en la tabla
             $stmt->execute();

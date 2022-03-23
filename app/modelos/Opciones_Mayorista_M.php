@@ -19,13 +19,12 @@
                 INNER JOIN productosmayorista_opcionesmayorista ON productosmayorista.ID_ProductoMay=productosmayorista_opcionesmayorista.ID_ProductoMay
                 INNER JOIN opcionesmayorista ON productosmayorista_opcionesmayorista.ID_OpcionMay=opcionesmayorista.ID_OpcionMay 
                 INNER JOIN imagenesmayorista ON productosmayorista.ID_ProductoMay=imagenesmayorista.ID_ProductoMay
-                WHERE mayorista.ID_Mayorista = :ID_MAYORISTA AND seccionesmayorista.ID_SeccionMay = :ID_SECCIONMAY AND imagenesmayorista.fotoPrincipalMay = :PRINCIPALMAY 
+                WHERE mayorista.ID_Mayorista = :ID_MAYORISTA AND seccionesmayorista.ID_SeccionMay = :ID_SECCIONMAY
                 ORDER BY seccionesmayorista.seccionMay, productosmayorista.productoMay, opcionesmayorista.opcionMay"
             );      
         
             $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
             $stmt->bindParam(':ID_SECCIONMAY', $ID_Seccion, PDO::PARAM_STR);
-            $stmt->bindValue(':PRINCIPALMAY', 1, PDO::PARAM_INT);
 
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
