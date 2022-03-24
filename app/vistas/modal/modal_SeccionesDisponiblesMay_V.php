@@ -11,9 +11,11 @@
               $ContadorSeccion = 1;
               //$Datos['seccion'] trae información desde Mayorista_C/SeccionesDisponiblesMay
               foreach($Datos['seccionesMay'] as $row){
-                $SeccionMayorista = $row['seccionMay']; ?>
+                $SeccionMayorista = $row['seccionMay']; 
+                $ID_SeccionMayorista = $row['ID_SeccionMay'];?>
                 <div class="contInputRadio contInputRadio--secciones ">
-                    <input class="" type="radio" name="seccionMay" id="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>" value="<?php echo $SeccionMayorista?>" onclick="transferirSeccionMay(this.form, 'SeccionPublicarMay')"/> 
+                    <input class="ocultar" type="text" name="id_seccion_may" value="<?php echo $ID_SeccionMayorista?>"/>
+                    <input class="" type="radio" name="seccionMay" id="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>" value="<?php echo $SeccionMayorista?>" onclick="transferirSeccionMay(this.form, 'SeccionPublicarMay','ID_Seccion')"/> 
                     <label class="contInputRadio__label" for="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>"> <?php echo $SeccionMayorista ?></label>
                 </div>
                 <?php

@@ -23,29 +23,29 @@ document.getElementById("PrecioDolar").addEventListener('focus', function(){Rein
 
 //************************************************************************************************
     //invocada desde Secciones_Ajax_V.php selecciona una sección donde estará un producto
-    function transferirSeccionActualizarMay(form){        
-        //Se reciben los elementos del formulario mediante su atributo name
-        let Seccion = form.secciones;
-        let ID_Seccion = form.ID_Seccion;
+    // function transferirSeccionActualizarMay(form){        
+    //     //Se reciben los elementos del formulario mediante su atributo name
+    //     let Seccion = form.secciones;
+    //     let ID_Seccion = form.ID_Seccion;
         
 
-        //Se recorre todos los elementos para encontrar el que esta seleccionado
-        for(let i = 0; i<Seccion.length; i++){ 
-            if(Seccion[i].checked){
-                //Se toma el valor del seleccionado
-                SeccionActulizada = Seccion[i].value
-                ID_SeccionActulizada = ID_Seccion[i].value
-            }            
-        } 
-        //Se transfiere el valor del radio boton seleccionado al input del formulario en cuenta_editar_prodMay_V.php
-        document.getElementById("Seccion").value = SeccionActulizada
-        document.getElementById("ID_Seccion").value = ID_SeccionActulizada
+    //     //Se recorre todos los elementos para encontrar el que esta seleccionado
+    //     for(let i = 0; i<Seccion.length; i++){ 
+    //         if(Seccion[i].checked){
+    //             //Se toma el valor del seleccionado
+    //             SeccionActulizada = Seccion[i].value
+    //             ID_SeccionActulizada = ID_Seccion[i].value
+    //         }            
+    //     } 
+    //     //Se transfiere el valor del radio boton seleccionado al input del formulario en cuenta_editar_prodMay_V.php
+    //     document.getElementById("Seccion").value = SeccionActulizada
+    //     document.getElementById("ID_Seccion").value = ID_SeccionActulizada
 
-        //Se coloca el foco en el input sección del formulario
-        document.getElementById("Seccion").focus()
+    //     //Se coloca el foco en el input sección del formulario
+    //     document.getElementById("Seccion").focus()
              
-        ocultar("MostrarSeccion") 
-    }
+    //     ocultar("MostrarSeccion") 
+    // }
 
 //************************************************************************************************ 
     //invocada desde cuenta_publicar.php selecciona una sección donde estará un producto
@@ -66,6 +66,35 @@ document.getElementById("PrecioDolar").addEventListener('focus', function(){Rein
 
         //Se transfiere el valor del radio boton seleccionado al input del formulario
         document.getElementById("Seccion").value = Seccion
+             
+        ocultar("MostrarSeccion") 
+    }
+
+//************************************************************************************************
+    //invocada desde modal_SeccionesDIsponiblesMay_V.php selecciona una sección donde estará un producto
+    function transferirSeccionMay(form, seccion, id_seccion){
+        //Se declara el array que contendra la cantidad de categorias seleccionadas
+        // var TotalCategoria = []
+
+        //Se reciben los elementos del formulario mediante su atributo name
+        SeccionMay = form.seccionMay
+        ID_SeccionMay = form.id_seccion_may
+
+        // console.log(SeccionMay);
+        // console.log(ID_SeccionMay)
+
+        //Se recorre todos los elementos para encontrar el que esta seleccionado
+        for(var i = 0; i<SeccionMay.length; i++){ 
+            if(SeccionMay[i].checked){
+                //Se toma el valor del seleccionado
+                Seleccionado = SeccionMay[i].value
+                ID_SeccionMay = ID_SeccionMay[i].value
+            }            
+        } 
+
+        //Se transfiere el valor del radio boton seleccionado al input del formulario
+        document.getElementById(seccion).value = Seleccionado
+        document.getElementById(id_seccion).value = ID_SeccionMay
              
         ocultar("MostrarSeccion") 
     }

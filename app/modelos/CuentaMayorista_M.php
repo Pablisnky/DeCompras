@@ -352,7 +352,7 @@
                 INNER JOIN opcionesmayorista ON productosmayorista_opcionesmayorista.ID_OpcionMay=opcionesmayorista.ID_OpcionMay 
                 INNER JOIN imagenesmayorista ON productosmayorista.ID_ProductoMay=imagenesmayorista.ID_ProductoMay 
                 WHERE mayorista.ID_Mayorista = :ID_MAYORISTA
-                ORDER BY seccionesmayorista.seccionMay, productosmayorista.productoMay, opcionesmayorista.opcionMay"
+                ORDER BY productosmayorista.productoMay ASC, opcionesmayorista.opcionMay"
             );
 
             $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);

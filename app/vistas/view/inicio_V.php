@@ -30,7 +30,7 @@
                 <a class="div__Botones--boton div__Botones--boton--uno" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ver tiendas</a>
             </div>
             
-            <p class="contenedor_34--p" id="Contenedor_34--p">Cambio oficial a tasa del BCV <br class="br_2">&nbsp&nbsp 1 $ = <?php echo number_format($Datos, 4, ",", ".");?> Bs.</p>
+            <p class="contenedor_34--p" id="Contenedor_34--p">Cambio oficial a tasa del BCV <br class="br_2"/>&nbsp&nbsp 1 $ = <?php echo number_format($Datos, 4, ",", ".");?> Bs.</p>
 
             <div class="slider">
                 <ul>
@@ -50,13 +50,6 @@
                         <label><span>e-commerce</span><br> con las tiendas que ya conoces.</label>
                     </li> 
                 </ul>    
-                <!-- <div class="section_1--cont__radios--cinco" id="Botones_radios_slider">
-                    <input class="section_1--radios--cinco" type="radio" name="slider_texto" id="Slider_Portada_1" checked/>
-                    <input class="section_1--radios--cinco" type="radio" name="slider_texto" id="Slider_Portada_2"/>
-                    <input class="section_1--radios--cinco" type="radio" name="slider_texto" id="Slider_Portada_3"/> 
-                    <input class="section_1--radios--cinco" type="radio" name="slider_texto" id="Slider_Portada_4"/> 
-                    <input class="section_1--radios--cinco" type="radio" name="slider_texto" id="Slider_Portada_5"/> 
-                </div> -->
             </div>    
         </div>
 

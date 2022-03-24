@@ -36,29 +36,25 @@
                         
                         <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $ContadorLabel;?>">
                             
-                            <!-- IMAGEN -->
+                            <!-- IMAGEN DEL PRODUCTO-->
                             <div class="contOpciones">
                                 <!-- se colocan el caracter | para usarlo como separardor en Opciones_C/productoAmpliado debido a que el usuario puede usar comas o punto y comas en el texto de opciones o del producto.  -->
                                 <?php 
                                 $Separador = '|';
-                                // foreach($Datos['Opcionesmay'] as $row) : 
-                                    // if($row['ID_Producto'] == $ID_Producto) :
-                                        $FotoPrincipal = $row['nombre_imgMay'];   
-                                        if($FotoPrincipal != 'imagen.png'){ ?> 
-                                            <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar.$Separador?>','<?php echo $Existencia.$Separador?>','<?php echo $Disponible?>')">
-                                                <figure>
-                                                    <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/proveedor/Don_Rigo/<?php echo $FotoPrincipal;?>"/> 
-                                                </figure>
-                                            </div>  <?php 
-                                        }
-                                        else{   ?>
-                                            <figure>
-                                                <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/proveedor/Don_Rigo/imagen.png"/> 
-                                            </figure>
-                                            <?php
-                                        }   
-                                    // endif;   
-                                // endforeach;   
+                                $FotoPrincipal = $row['nombre_imgMay'];   
+                                if($FotoPrincipal != 'imagen.png'){ ?> 
+                                    <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar.$Separador?>','<?php echo $Existencia.$Separador?>','<?php echo $Disponible?>')">
+                                        <figure>
+                                            <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/proveedor/Don_Rigo/<?php echo $FotoPrincipal;?>"/> 
+                                        </figure>
+                                    </div>  <?php 
+                                }
+                                else{   ?>
+                                    <figure>
+                                        <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/proveedor/Don_Rigo/imagen.png"/> 
+                                    </figure>
+                                    <?php
+                                }      
 
                                require(RUTA_APP . "/vistas/complementos/existencia.php"); ?>
                             </div>

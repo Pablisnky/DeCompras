@@ -349,7 +349,7 @@
                             move_uploaded_file($_FILES['foto_ProductoMay']['tmp_name'], $directorio_2.$nombre_imgProducto);
 
                             //Se INSERTA la imagen principal y devuelve el ID_Imagen
-                            $ID_Imagen = $this->ConsultaMayorista_M->insertaImagenPrincipalMayorista($ID_ProductoMay, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
+                            $this->ConsultaMayorista_M->insertaImagenPrincipalMayorista($ID_ProductoMay, $nombre_imgProducto, $tipo_imgProducto, $tamanio_imgProducto);
                             
                             //Se INSERTA la dependenciatransitiva entre secciones e imagenes
                             // $this->ConsultaMayorista_M->insertarDT_SecImg($ID_Seccion, $ID_Imagen);
@@ -368,10 +368,11 @@
                     }
                 }
                 else{//si no se selecciono ninguna imagen principal se inserta la imagen por defecto
-                    $ID_Imagen = $this->ConsultaMayorista_M->insertaImagenPorDefectoMayorista($ID_ProductoMay);
+                    $this->ConsultaMayorista_M->insertaImagenPorDefectoMayorista($ID_ProductoMay);
                 }
-                
-                $this->Productos();
+
+                $DatosAgrupados = $RecibeProducto['SeccionMay'] . ',false,' . $ID_ProductoMay;
+                $this->Productos($DatosAgrupados);
             // }
             // else{
             //     $this->Productos('Todos');
@@ -379,7 +380,7 @@
         }
 
         // invocado desde el metodo eliminarProductoMay() - recibeProductoPublicarMay - recibeAtualizarProductoMay - header_AfiMay.php - 
-        public function Productos($DatosAgrupados = 'Todos,falas,false'){
+        public function Productos($DatosAgrupados = 'Todos,false,false'){
             //$DatosAgrupados contiene una cadena con el separados por coma, se convierte en array para separar los elementos
             // echo 'Datos agrupados= ' . $DatosAgrupados . '<br>';
             // echo 'ID_Mayorista= ' . $this->ID_Mayorista . '<br>';
@@ -389,15 +390,12 @@
 
             $Seccion = $DatosAgrupados[0];
             $ID_Seccion = $DatosAgrupados[1];
-            $ID_Producto = $DatosAgrupados[2];
-            //Mediante operador ternario
-            // $ID_Seccion = empty($DatosAgrupados[1]) ? 'NoAplica' : $DatosAgrupados[1];
-            // $Puntero =  empty($DatosAgrupados[2]) ? 'NoAplica' : $DatosAgrupados[2];
+            $ID_ProductoAgregado = $DatosAgrupados[2];
+
             // echo $Seccion . '<br>';
-            echo $Seccion . '<br>';
-            echo $ID_Seccion . '<br>';
-            echo $ID_Producto . '<br>';
-            exit();
+            // echo $ID_Seccion . '<br>';
+            // echo $ID_ProductoAgregado . '<br>';
+            // exit();
 
             //$Seccion cuando es una frase de varias palabras, la cadena llega unida, por lo que la busqueda en la BD no es la esperada.
             // - poner cada inicio de palabra con mayuscula para separarlas por medio de array, esto conlleva a que al recibir las secciones por parte del usuario en el formulario de configuración se conviertan estas letrs en mayuscula porque el usuario puede ingresarlas en minusculas
@@ -455,7 +453,8 @@
             $Datos = [
                 'seccionInvocada' => $Seccion, //seccionMay 
                 'seccionesMay' => $this->SeccionesMay, //ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay
-                'productos' => $Productos, //ID_ProductoMay, destacarMay, productoMay, ID_OpcionMay, opcionMay, precioBolivarMay, precioDolarMay, cantidadMay, disponibleMay, seccionMay, nombre_imgMay               
+                'productos' => $Productos, //ID_ProductoMay, destacarMay, productoMay, ID_OpcionMay, opcionMay, precioBolivarMay, precioDolarMay, cantidadMay, disponibleMay, seccionMay, nombre_imgMay     
+                'id_productoAgregado' => $ID_ProductoAgregado         
             ];
             
             // echo '<pre>';
@@ -771,7 +770,7 @@
             }
             
             //Se envia la sección donde esta el producto actualizado para redireccionar a esa sección, tambien se envia el ID_Producto para ponerle el cursor
-            $DatosAgrupados = $RecibeProducto['Seccion'] . ',' . $RecibeProducto['ID_Producto'];
+            $DatosAgrupados = $RecibeProducto['Seccion'] . ',false,' . $RecibeProducto['ID_Producto'];
 
             $this->Productos($DatosAgrupados);
         }   

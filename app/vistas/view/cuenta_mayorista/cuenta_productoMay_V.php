@@ -53,7 +53,8 @@
                     </div>
                     <div>
                         <!-- PRODUCTO -->
-                        <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>" value="<?php echo $Producto;?>"/>
+                        <label class="input_8 input_8D hyphen" id="<?php echo 'EtiquetaProducto_' . $Contador;?>"><?php echo $Producto;?></label>
+                        <!-- <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php //echo 'EtiquetaProducto_' . $Contador;?>" value="<?php //echo $Producto;?>"/> -->
 
                         <!-- OPCION -->                        
                         <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" ><?php echo $Opcion;?></label>
@@ -71,72 +72,14 @@
                             <?php
                         endif;  ?>
 
+                        <!-- SECCION -->
+                        <label class="" ><?php echo $Seccion;?></label>
+
+
+
                         <!-- PRECIO -->
                         <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>">Bs.<?php echo $PrecioBolivar;?></label>
-                        <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>" > $ <?php echo $PrecioDolar;?></label>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        <?php 
-                                    //En caso de venir desde actualizar el producto se posiciona de primero entre todos los productos de la sección
-                                    // if($Opcion == $Datos['ProductoSelecion']){ ?>
-                                        <!-- <style>
-                                            @media (max-width: 800px){
-                                                .section_9{/*opciones - cuenta_productos*/
-                                                    padding-top: 75%;
-                                                }
-                                                #<?php echo 'Cont_Producto_' . $ContadorLabel;?>{
-                                                    background-color: var(--OficialClaro);
-                                                    position: absolute;
-                                                    height: 8%;
-                                                    top: 150px;
-                                                    z-index: 1 !important;
-                                                }
-                                                #<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>{
-                                                    background-color: var(--OficialClaro);
-                                                }
-                                                #<?php echo 'EtiquetaOpcion_' . $ContadorLabel;?>{
-                                                    background-color: var(--OficialClaro);
-                                                }
-                                                #<?php echo 'EtiquetaPrecio_' . $ContadorLabel;?>{
-                                                    background-color: var(--OficialClaro);
-                                                }
-                                            }
-                                        </style>  -->
-                                        <?php 
-                                    // }   
-                                    ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <label class="input_8" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>" > $ <?php echo $PrecioDolar;?></label>
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                
@@ -144,6 +87,25 @@
                             
                             <a class="a_9" href="<?php echo RUTA_URL . '/CuentaMayorista_C/eliminarProductoMay/' . $ID_Producto . ',' . $ID_Opcion . ',' . $Seccion?>">Eliminar</a>
                         </div>
+                        
+                        <?php 
+                            //En caso de venir desde actualizar el producto se posiciona de primero entre todos los productos de la sección
+                            if($Datos['id_productoAgregado'] == $ID_Producto){ ?>
+                                <style>
+                                    @media (max-width: 800px){
+                                        .section_9{
+                                            padding-top: 85%;
+                                        }
+                                        #<?php echo 'Cont_Producto_' . $Contador;?>{
+                                            position: absolute;
+                                            height: 8%;
+                                            top: 120px;
+                                        }
+                                    }
+                                </style> 
+                                <?php 
+                            }   
+                        ?>
                     </div>
                 </div>
                 <?php 

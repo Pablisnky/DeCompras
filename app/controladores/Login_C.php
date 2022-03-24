@@ -1,10 +1,11 @@
 <?php 
-    declare(strict_types = 1);
+    // declare(strict_types = 1);
 
     class Login_C extends Controlador{
         
         public function __construct(){  
             session_start();
+
             $this->ConsultaLogin_M = $this->modelo("Login_M");
 
             //La función ocultarErrores() se encuantra en la carpeta helpers, es accecible debido a que en iniciador.php se realizó el require respectivo
@@ -12,7 +13,7 @@
         }
 
         //Es llamadao desde Registro_C.php - Cuenta_C - header_inicio.php - cuenta_publicar_V.php
-        public function index(string $Datos){
+        public function index($Datos){
             // echo "Datos = " . $Datos;
             // exit();
 
@@ -109,14 +110,14 @@
 
                 $CuentaMay = true;
             }
-            else if($usuarioDes != Array() && $usuarioDes[0]['ID_AfiliadoDes'] != ""){
+            else if($usuarioDes != Array() && $usuarioDes[0]['ID_AfiliadoDes'] != ""){//Existe como despachador
                 $ID_Afiliado = $usuarioDes[0]['ID_AfiliadoDes'];
                 $CorreoBD = $usuarioDes[0]['correo_AfiDes'];
                 $Nombre = $usuarioDes[0]['nombre_AfiDes'];
                                 
                 $CuentaDes = true;
             }
-            else if($usuarioVen != Array() && $usuarioVen[0]['ID_AfiliadoVen'] != ""){
+            else if($usuarioVen != Array() && $usuarioVen[0]['ID_AfiliadoVen'] != ""){//Existe como vendedor
                 $ID_Afiliado = $usuarioVen[0]['ID_AfiliadoVen'];
                 $CorreoBD = $usuarioVen[0]['correo_AfiVen'];
                 $Nombre = $usuarioVen[0]['nombre_AfiVen'];
@@ -126,7 +127,7 @@
             else{                        
                 header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');
             }
-        
+            
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
             if(isset($_POST["recordar"]) && $_POST["recordar"] == 1): //si pidió memorizar el usuario, se recibe desde principal.php   
                  //1) Se crea una marca aleatoria en el registro de este usuario
@@ -138,15 +139,14 @@
                  //3) Se introduce una cookie en el ordenador del usuario con el identificador del usuario y la cookie aleatoria porque el usuario marca la casilla de recordar
                 setcookie("id_usuario", $ID_Afiliado, time()+365*24*60*60, "/");
                 setcookie("clave", $Clave, time()+365*24*60*60, "/");
-                //  echo "Se han creado las Cookies en validarSesion" . "<br>";
-        
-                // echo "La cookie ID_Usuario = " . $_COOKIE["id_usuario"] . "<br>";
-                // echo "La cookie clave = " . $_COOKIE["clave"] . "<br>"; 
             endif;
-
+            
+            echo 'La cookie ID_Usuario = ' . $_COOKIE['id_usuario'] . '<br>';
+            echo 'La cookie clave = ' . $_COOKIE['clave'] . '<br>'; 
+            exit;
             //Verifica si los campo que se van a recibir estan vacios
-            if(empty($_POST["correo_Arr"]) || empty($_POST["clave_Arr"])){        
-                echo "Debe Llenar todos los campos vacios". "<br>";
+            if(empty($_POST['correo_Arr']) || empty($_POST['clave_Arr'])){        
+                echo 'Debe Llenar todos los campos vacios'. '<br>';
                 echo "<a href='javascript:history.back()'>Regresar</a>";
             }
             else{

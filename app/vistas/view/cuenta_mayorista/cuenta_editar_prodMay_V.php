@@ -72,7 +72,7 @@
 
                         <!-- SECCION -->
                         <label>Sección</label>
-                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccionMay" id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccionSeleccionadaMay('<?php echo $ID_Producto?>')">
+                        <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccionMay" id="SeccionPublicarMay" value="<?php echo $Seccion;?>" onclick="Llamar_seccionSeleccionadaMay()">
                         <br><br><br>
 
                         <!-- PRECIO -->
@@ -150,6 +150,9 @@
     
     <!-- div alimentado desde Secciones_Ajax_V.php con la seccion que el usuario cargó en su cuenta  -->       
     <div id="Contenedor_80"></div> 
+
+    <!-- Recibe Ajax desde SeccionesDisponiblesMay_Ajax.php -->
+    <div id="Contenedor_80May"></div>
 
     <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prodMay.js?v=' . rand();?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prodMay.js?v=' . rand();?>"></script> 
