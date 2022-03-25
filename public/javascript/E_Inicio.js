@@ -36,16 +36,16 @@ document.getElementById("Span_5").addEventListener('click', function(){CerrarMod
 
 //************************************************************************************************
 //Detecta si se hace scrool hacia abajo para ocultar la cinta del precio del dolar (NO FUNCIONA)
-var scrollPos = 0;
-    window.addEventListener('scroll', function(){
-    if((document.body.getBoundingClientRect()).top > scrollPos){
-        document.getElementById("Contenedor_34--p").style.display = "none";
-    }
-    else{
-        scrollPos = (document.body.getBoundingClientRect()).top;
-        document.getElementById("Contenedor_34--p").style.display = "block";
-    }
-});
+// var scrollPos = 0;
+//     window.addEventListener('scroll', function(){
+//     if((document.body.getBoundingClientRect()).top > scrollPos){
+//         document.getElementById("Contenedor_34--p").style.display = "none";
+//     }
+//     else{
+//         scrollPos = (document.body.getBoundingClientRect()).top;
+//         document.getElementById("Contenedor_34--p").style.display = "block";
+//     }
+// });
 
 //************************************************************************************************
     //Muestra el formulario de busqueda
@@ -60,60 +60,4 @@ var scrollPos = 0;
         window.open(`../Vitrina_C/index/${ID_Tienda},${NombreTienda},${Seccion},${Opcion},${Disponibilidad},${ProximoApertura},${HoraApertura}`,"_self") 
     }
 
-//************************************************************************************************
-    //Cambia la imagen de portada y los colores de textos y cinta del menu principal
-    document.getElementById('Botones_radios').addEventListener('click', function(event){ 
-        if(event.target.id == "Portada_1"){ 
-            document.getElementById('ImgPortada').style.marginTop = "-0vh";
-            document.getElementById('ImgPortada').style.transition = ".5s ease" 
-            
-            document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-2')
-            document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-3')
-            document.getElementById("Aplicacion_PWA").classList.remove('cont_background') 
-            document.getElementById("MenuResponsive").style.backgroundColor = "rgb(206, 203, 222)";
-            document.getElementById("Titulo").classList.remove('font--white')
-            document.getElementById("SubTitulo").classList.remove('font--white')
-            let enlacesMenu = document.querySelectorAll("li a.a_3A");
-            for(let i = 0; i < enlacesMenu.length; i++){
-                enlacesMenu[i].style.color = "black";
-            }
-        }
-        else if(event.target.id == "Portada_2"){ 
-            // console.log(event.target.id )
-            document.getElementById('ImgPortada').style.marginTop = "-100vh";
-            document.getElementById('ImgPortada').style.transition = ".5s ease" 
-            
-            if(window.screen.width>800){
-                document.getElementById("Contenedor_37").classList.add('cont_background--titulo-2')
-                document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-3')
-            }
-            document.getElementById("Aplicacion_PWA").classList.add('cont_background') 
-            document.getElementById("MenuResponsive").style.backgroundColor = "rgb(44, 45, 49)";
-            document.getElementById("MenuResponsive").style.transitionDuration = "1s";
-            document.getElementById("Titulo").classList.add('font--white')
-            document.getElementById("SubTitulo").classList.add('font--white')
-            let enlacesMenu = document.querySelectorAll("li a.a_3A");
-            for(let i = 0; i < enlacesMenu.length; i++){
-                enlacesMenu[i].style.color = "white";
-            }
-        }
-        else if(event.target.id == "Portada_3"){ 
-            document.getElementById('ImgPortada').style.marginTop = "-200vh";
-            document.getElementById('ImgPortada').style.transition = ".5s ease" 
-            
-            if(window.screen.width>800){
-                document.getElementById("Contenedor_37").classList.add('cont_background--titulo-3')
-                document.getElementById("Contenedor_37").classList.remove('cont_background--titulo-2')                
-            }
-            document.getElementById("Aplicacion_PWA").classList.remove('cont_background') 
-            document.getElementById("MenuResponsive").style.backgroundColor = "rgb(225, 220, 216)";
-            document.getElementById("MenuResponsive").style.transitionDuration = "1s";
-            document.getElementById("Titulo").classList.remove('font--white')
-            document.getElementById("SubTitulo").classList.remove('font--white')
-            let enlacesMenu = document.querySelectorAll("li a.a_3A");
-            for(let i = 0; i < enlacesMenu.length; i++){
-                enlacesMenu[i].style.color = "black";
-            }
-        }
-    }, false); 
-    
+//************************************************************************************************    

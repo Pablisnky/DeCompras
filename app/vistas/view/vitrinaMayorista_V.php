@@ -42,8 +42,10 @@
                         $SeccionExiste = '';
                         ?>
 
+                        <!-- NOMBRE DE SECCION -->
+                        <h2 class="boton botonReverso borde_1 boton--largo font--subTitulo"><?php echo $Seccion;?></h2>
+                        
                         <!-- CIRCULO QUE INDICA CANTIDAD DE PRODUCTOS EN IMAGEN DE SECCION -->
-                        <h2 class="boton botonReverso borde_1 boton--largo"><?php echo $Seccion;?></h2>
                        <!--  <div class="contenedor_106--lineal">
                             <span class="span_21 borde_1">
                                 <?php 

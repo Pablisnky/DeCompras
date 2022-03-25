@@ -21,7 +21,7 @@ document.getElementById("ContenidoDes").addEventListener('keydown', function(){a
 //************************************************************************************************
 
 ///Escucha en cuenta_publicarMay_V.php por medio de delegación de eventos debido ya que el evento no esta cargado en el DOM por ser una solicitud Ajax   
-    document.getElementById('Contenedor_80May').addEventListener('click',function(event){    
+    document.getElementById('Mostrar_Secciones').addEventListener('click',function(event){    
     if(event.target.id == 'Span_5'){
         CerrarModal_X('MostrarSeccion')
     }

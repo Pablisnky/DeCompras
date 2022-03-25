@@ -125,12 +125,72 @@
             return $stmt;
         }
 
+        public function consultarUsuarioRecordado_Com($Cookie_usuario){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_AfiCom 
+                FROM afiliado_com 
+                WHERE ID_AfiliadoCom = :ID_AFILIADO_COM"
+            );
 
-        public function consultarUsuarioRecordado($Cookie_usuario){
-            $stmt = $this->dbh->prepare("SELECT correo_AfiCom FROM afiliado_com WHERE ID_AfiliadoCom = :ID_AFILIADO ");
-            $stmt->bindValue(':ID_AFILIADO', $Cookie_usuario, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt;
+            $stmt->bindValue(':ID_AFILIADO_COM', $Cookie_usuario, PDO::PARAM_INT);
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function consultarUsuarioRecordado_May($Cookie_usuario){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_AfiMay 
+                FROM afiliado_may 
+                WHERE ID_AfiliadoMay = :ID_AFILIADO_MAY "
+            );
+
+            $stmt->bindValue(':ID_AFILIADO_MAY', $Cookie_usuario, PDO::PARAM_INT);
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function consultarUsuarioRecordado_Ven($Cookie_usuario){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_AfiVen 
+                FROM afiliado_ven 
+                WHERE ID_AfiliadoVen = :ID_AFILIADO_VEN "
+            );
+
+            $stmt->bindValue(':ID_AFILIADO_VEN', $Cookie_usuario, PDO::PARAM_INT);
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function consultarUsuarioRecordado_Des($Cookie_usuario){
+            $stmt = $this->dbh->prepare(
+                "SELECT correo_AfiDes 
+                FROM afiliado_des 
+                WHERE ID_AfiliadoDes = :ID_AFILIADO_DES "
+            );
+
+            $stmt->bindValue(':ID_AFILIADO_DES', $Cookie_usuario, PDO::PARAM_INT);
+            
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return false;
+            }
         }
 
         public function consultarSecciones($ID_Tienda){

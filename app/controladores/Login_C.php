@@ -17,6 +17,8 @@
             // echo "Datos = " . $Datos;
             // exit();
 
+            // unset($_COOKIE ["id_usuario"]);
+            // unset($_COOKIE ["clave"]);
             //Se verifica si el usuario esta memorizado en las cookie de su computadora y las compara con la BD, para recuperar sus datos y autorellenar el formulario de inicio de sesion, las cookies de registro de usuario se crearon en validarSesion.php
             if(isset($_COOKIE["id_usuario"]) AND isset($_COOKIE["clave"])){//Si la variable $_COOKIE esta establecida o creada
                 // echo "Cookie afiliado =" . $_COOKIE["id_usuario"] ."<br>";
@@ -25,10 +27,23 @@
                 $Cookie_usuario = $_COOKIE["id_usuario"];
                 $Cookie_clave = $_COOKIE["clave"];
                             
-                //Se CONSULTA el correo registrado en el sistema con el ID_Usuario como argumento
-                $CorreoRecord = $this->ConsultaLogin_M->consultarUsuarioRecordado($Cookie_usuario);
-                while($arr = $CorreoRecord->fetch(PDO::FETCH_ASSOC)){
-                    $Correo = $arr['correo_AfiCom'];
+                //Se CONSULTA el correo guardado como Cookie con el ID_Usuario como argumento, se consulta en todos los tipos de usuario que existe
+                $CorreoRecord_Com = $this->ConsultaLogin_M->consultarUsuarioRecordado_Com($Cookie_usuario);
+                $CorreoRecord_May = $this->ConsultaLogin_M->consultarUsuarioRecordado_May($Cookie_usuario);
+                $CorreoRecord_Ven = $this->ConsultaLogin_M->consultarUsuarioRecordado_Ven($Cookie_usuario);
+                $CorreoRecord_Des = $this->ConsultaLogin_M->consultarUsuarioRecordado_Des($Cookie_usuario);
+
+                if(!empty($CorreoRecord_Com)){
+                    $Correo = $CorreoRecord_Com[0]['correo_AfiCom'];
+                }
+                else if(!empty($CorreoRecord_May)){
+                    $Correo = $CorreoRecord_May[0]['correo_AfiMay'];
+                }
+                else if(!empty($CorreoRecord_Ven)){
+                    $Correo = $CorreoRecord_Ven[0]['correo_AfiVen'];
+                }
+                else if(!empty($CorreoRecord_Des)){
+                    $Correo = $CorreoRecord_Des[0]['correo_AfiDes'];
                 }
 
                 $Datos=[
@@ -37,6 +52,7 @@
                 ];
 
                 //Se entra al formulario de sesion que esta rellenado con los datos del usuario
+                $this->vista("header/header");
                 $this->vista("view/login_Vrecord", $Datos);
             }
             else if($Datos == 1){
@@ -54,9 +70,15 @@
 
         //Invocado desde login_V
         public function ValidarSesion(){
-            $Recordar = isset($_POST["recordar"]) == 1 ? $_POST["recordar"] : "No desea recordar";
+            $Recordar = isset($_POST["recordar"]);
+            $No_Recordar = isset($_POST["no_recordar"]);
             $Clave = $_POST["clave_Arr"];
             $Correo = $_POST["correo_Arr"];
+            // echo 'Recordar: ' . $Recordar . '<br>';
+            // echo 'No_Recordar: ' . $No_Recordar . '<br>';
+            // echo 'Clave: ' . $Clave . '<br>';
+            // echo 'Correo: ' . $Correo . '<br>';
+            // exit;
 
             //Se CONSULTA si el correo existe como comerciante
             $usuarioCom = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
@@ -129,25 +151,25 @@
             }
             
             //Se crean las cookies para recordar al usuario en caso de que $Recordar exista
-            if(isset($_POST["recordar"]) && $_POST["recordar"] == 1): //si pidió memorizar el usuario, se recibe desde principal.php   
-                 //1) Se crea una marca aleatoria en el registro de este usuario
-                 //Se alimenta el generador de aleatorios
-                //  mt_srand (time());
-                //  //Se genera un número aleatorio
-                //  $Aleatorio = mt_rand(1000000,999999999);
-        
-                 //3) Se introduce una cookie en el ordenador del usuario con el identificador del usuario y la cookie aleatoria porque el usuario marca la casilla de recordar
-                setcookie("id_usuario", $ID_Afiliado, time()+365*24*60*60, "/");
-                setcookie("clave", $Clave, time()+365*24*60*60, "/");
-            endif;
+            if($Recordar == 1){ //si pidió memorizar el usuario, se recibe desde principal.php           
+                // Se introduce una cookie en el ordenador del usuario con el identificador del usuario y la cookie aleatoria porque el usuario marca la casilla de recordar
+                setcookie('id_usuario', $ID_Afiliado, time()+365*24*60*60, '/');
+                setcookie('clave', $Clave, time()+365*24*60*60, '/');
+            }
+                // Se destruyen las cookie para dejar de recordar a usuario
+            if($No_Recordar == 1){ 
+                setcookie('id_usuario','',time() - 3600,'/');
+                setcookie('clave','',time() - 3600,'/');
+            }
             
-            echo 'La cookie ID_Usuario = ' . $_COOKIE['id_usuario'] . '<br>';
-            echo 'La cookie clave = ' . $_COOKIE['clave'] . '<br>'; 
-            exit;
+            // echo 'La cookie ID_Usuario = ' . $_COOKIE['id_usuario'] . '<br>';
+            // echo 'La cookie clave = ' . $_COOKIE['clave'] . '<br>'; 
+            // exit;
+            
             //Verifica si los campo que se van a recibir estan vacios
             if(empty($_POST['correo_Arr']) || empty($_POST['clave_Arr'])){        
                 echo 'Debe Llenar todos los campos vacios'. '<br>';
-                echo "<a href='javascript:history.back()'>Regresar</a>";
+                echo '<a href="javascript:history.back()">Regresar</a>';
             }
             else{
                 //sino estan vacios se sanitizan y se reciben

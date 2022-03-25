@@ -152,7 +152,7 @@
     <div id="Contenedor_80"></div> 
 
     <!-- Recibe Ajax desde SeccionesDisponiblesMay_Ajax.php -->
-    <div id="Contenedor_80May"></div>
+    <div id="Mostrar_Secciones"></div>
 
     <script src="<?php echo RUTA_URL . '/public/javascript/E_Cuenta_editar_prodMay.js?v=' . rand();?>"></script> 
     <script src="<?php echo RUTA_URL . '/public/javascript/A_Cuenta_editar_prodMay.js?v=' . rand();?>"></script> 

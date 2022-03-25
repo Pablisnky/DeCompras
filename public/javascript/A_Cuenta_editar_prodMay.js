@@ -47,7 +47,7 @@ function respuesta_seccionMay(){
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
             
-            document.getElementById("Contenedor_80May").innerHTML = peticion.responseText
+            document.getElementById("Mostrar_Secciones").innerHTML = peticion.responseText
         } 
         else{
             alert('Problemas con la petición en "seccionesDisponibleMay"')

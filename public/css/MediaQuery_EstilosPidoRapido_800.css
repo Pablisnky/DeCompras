@@ -128,7 +128,7 @@
 	margin-top: 50% !important;
 }
 .contenedor_9{
-	height: 140px;
+	height: 100px;
 	width: 90%;
 	margin: 0% auto;
 }
@@ -143,9 +143,9 @@
 	row-gap: 2%;/*espacio entre filas*/
 }
 .contenedor_11{
-	margin: 12% auto 5% auto;
+	margin: 5% auto;
 	align-items: center;
-	width: 230px;
+	width: 90%;
 }
 .contenedor_12{
 	width: 100%;
@@ -666,7 +666,7 @@
 }
 .contenedor_110{
 	display: grid;
-	grid-template-columns: 100%;
+	grid-template-columns: 50% 50%;
 	width: 100%;
 	margin-bottom: 15%;
 	margin-top: 0%;
@@ -864,6 +864,9 @@
 }
 .figure_1{
 	width: 100%;
+}
+.font--subTitulo{
+	font-size: 5vw;
 }
 .footer{
 	margin-top: 0% !important;

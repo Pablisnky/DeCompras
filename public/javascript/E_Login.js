@@ -8,6 +8,25 @@ document.getElementById("Label_7").addEventListener('click', ReestablecerContras
         autofocus('Input_13_JS');        
     }
 
+//************************************************************************************************ 
+    //Impide que se sigan introduciendo caracteres al alcanzar el limite maximo en un elmento; invocado en quienesSomos_V.php - cuenta_publicar_V.php - registroCom_V.php - cuenta_editar_V.php
+    var contenidoControlado = "";    
+    function valida_LongitudDes(Max, ID_Contenido){
+        console.log("______Desde valida_LongitudDes()______", Max + " / "+ ID_Contenido) 
+                
+        var num_caracteres_permitidos = Max;
+
+        //se averigua la cantidad de caracteres escritos 
+        num_caracteresEscritos = document.getElementById(ID_Contenido).value.length
+
+        if(num_caracteresEscritos > num_caracteres_permitidos){ 
+            document.getElementById(ID_Contenido).value = contenidoControlado; 
+        }
+        else{ 
+            contenidoControlado = document.getElementById(ID_Contenido).value; 
+        } 
+    } 
+
 //************************************************************************************************
     //Valida el formulario de login
     function validarLogin(){

@@ -2,13 +2,6 @@
     <div class="preloder_tapa--total">
         <div class='preloder preloaderCentrar'></div>
     </div>
-
-    <!-- BOTONES RADIO -->
-    <div class="section_1--cont__radios" id="Botones_radios">
-        <input class="section_1--radios" type="radio" name="slider" id="Portada_1" checked/>
-        <input class="section_1--radios" type="radio" name="slider" id="Portada_2"/>
-        <input class="section_1--radios" type="radio" name="slider" id="Portada_3"/> 
-    </div>
     
     <!-- EXPLICACION PWA -->
     <div class="contenedor_98 contenedor_98--inicio" id="Aplicacion_PWA">
@@ -30,12 +23,12 @@
                 <a class="div__Botones--boton div__Botones--boton--uno" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ver tiendas</a>
             </div>
             
-            <p class="contenedor_34--p" id="Contenedor_34--p">Cambio oficial a tasa del BCV <br class="br_2"/>&nbsp&nbsp 1 $ = <?php echo number_format($Datos, 4, ",", ".");?> Bs.</p>
+            <p class="contenedor_34--p" id="Contenedor_34--p">Cambio oficial a tasa del BCV <br class="br_2"/>&nbsp; 1 $ = <?php echo number_format($Datos, 4, ",", ".");?> Bs.</p>
 
             <div class="slider">
                 <ul>
                     <li>
-                        <label><span>compras y despachos</span> en <br class="br_2">tiendas de tu ciudad.</label>
+                        <label><span>compras <br class="br_2">y despachos</span> en <br class="br_2">tiendas de tu ciudad.</label>
                     </li>
                     <li>
                         <label>Operamos en<br> <span>San Felipe e <br class="br_2"> Independencia</span><br> estado Yaracuy.</label>
@@ -51,61 +44,7 @@
                     </li> 
                 </ul>    
             </div>    
-        </div>
-
-        <div class="borrar section_1" id="ImgPortada_2" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_2.jpg');">            
-            <div class="slider slider--portada">
-                <span class="font--white">Sube tu cátalogo de productos<br> y vende las 24 horas</span>
-                <ul>
-                    <li>
-                        <label class="font--white">Diversidad en medios de pago en linea y logistica de envío</label>
-                    </li>
-                    <li>
-                        <label class="font--white">Crea tu tienda en línea y abre un nuevo canal de ventas.</label>
-                    </li> 
-                    <li>
-                        <label class="font--white">Afilia tu tienda <br>totalmente gratis</label>
-                    </li>
-                    <li>
-                        <label class="font--white">Comida rapida, panaderías, repuestos, bodegas, y más.</label>
-                    </li>
-                    <li>
-                        <label class="font--white">Ofrece a tus clientes compras <br class="br_2">en tu tienda virtual </label>
-                    </li>
-                </ul>
-            </div>
-            <div class="div__Botones" id="BotonRegistrar">
-                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Afiliar tienda</a>
-                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ver tiendas</a>
-            </div>
-        </div>    
-            
-        <div class="borrar section_1" id="Section_1" style="background-image: url('<?php echo RUTA_URL?>/public/images/Portada_3.jpg');">     
-            <div class="slider slider--portada">   
-                <span>Al registrar tu tienda, te<br class="br_2"> ayudamos con:</span>
-                <ul>
-                    <li>
-                        <label>Control de inventario y notificaciones administrativas.</label>
-                    </li>
-                    <li>
-                        <label>Reporte de ventas diarias, semanales y mensuales.</label>
-                    </li> 
-                    <li>
-                        <label>Alertas por productos proximos a agotarse.</label>
-                    </li>
-                    <li>
-                        <label>Ajuste diario automatico por cambio en tasa dolar BCV.</label>
-                    </li>
-                    <li>
-                        <label>Ajuste semanal automatico por variación en indice de inflación.</label>
-                    </li>
-                </ul>
-            </div>
-            <div class="div__Botones" id="BotonRegistrar">
-                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/menu_C/afiliacion';?>">Afiliar tienda</a>
-                <a class="div__Botones--boton" href="<?php echo RUTA_URL . '/Ciudades_C';?>">Ver tiendas</a>
-            </div>
-        </div>
+        </div>   
     </div>
     
     <!--BUSCADOR-->

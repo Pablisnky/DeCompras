@@ -1,4 +1,4 @@
-<!-- se muestra en login_V.php en div id = "Contenedor_43" -->
+<!-- se muestra en login_V.php por medio de require en div id = "Contenedor_43" -->
 
 <?php 
 // Entra en el if por defecto
@@ -59,11 +59,12 @@ else if($Datos['bandera'] == 'verificado'){   ?>
         <a href="<?php echo RUTA_URL . '/Login_C';?>"><i class="fas fa-times spanCerrar"></i></a>
         <br> 
         <div class="sectionModal__div sectionModal__div--corto">
-            <p class="sectionModal__div__p">Inserte nueva clave</p>
+            <p class="sectionModal__div__p">Nuevo código de acceso</p>
+            <P><small class="small_1 font--center">Debe contener seis digitos</small></p>
             <br>
             <form action="<?php echo RUTA_URL . '/Login_C/recibeCambioClave';?>" method="POST">
-                <input class="input_13" type="password" name="clave" placeholder="Nueva clave">
-                <input class="input_13" type="password" name="repiteClave" placeholder="Repetir clave">
+                <input class="input_13" type="password" name="clave" placeholder="Nuevo código" id="Clave"z>
+                <input class="input_13" type="password" name="repiteClave" placeholder="Repetir código">
                 <input type="text" value="<?php echo $Datos['correo'];?>" name="correo"  style="display:none"> 
                 <div class="contBoton">
                     <input class="boton"  type="submit" value="enviar" name="enviar_2">

@@ -1596,6 +1596,11 @@ body, html{
 .font--center{
 	text-align: center;
 }
+.font--subTitulo{
+	font-size: 1.5vw;
+	overflow-x: auto;
+	white-space: pre; /*para que el texto se mantenga en una sola linea*/
+}
 .h1_1{
 	font-weight: normal;
 	text-align: center;
