@@ -36,7 +36,7 @@
             }  
             else{   ?>
                 <tr>
-                    <td class=""><label class="td--alerta">Sin clientes registrados</label></tr>
+                    <td colspan="3"><p class="td--alerta">Sin clientes registrados</p></tr>
                 <?php
             }   ?>
         </table> 

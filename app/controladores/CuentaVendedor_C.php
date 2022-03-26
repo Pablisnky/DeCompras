@@ -33,7 +33,7 @@
                 'nombreMay' => $this->Mayorista,
                 'nombreVen' => $_SESSION['Nombre_Vendedor'],
                 'apellidoVen' => $_SESSION['Apellido_Vendedor'],
-                'comisiones' => $PediddosDeudas //montoTotal, fecha, nombre_AfiMin, pedidomayorista.numeroorden_May 
+                'comisiones' => $PediddosDeudas //factura, montoTotal, fecha, nombre_AfiMin, pedidomayorista.numeroorden_May 
             ];
             
             // echo '<pre>';
@@ -159,10 +159,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/minorista';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/minorista';
 
                             // usar en local
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/minorista';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/minorista';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['fotoMin']['tmp_name'], $directorio_2.$nombre_imgMinorista);
@@ -185,7 +185,7 @@
                     $tipo_imgMinorista = $_FILES['fotoMin']['name'] = 'jpg';
                     $tamanio_imgMinorista = $_FILES['fotoMin']['name'] = '20,0 KB';
                 }
-                
+
                 // SE GENERA EL CODIGO DE DESPACHO DEL MINORISTA
                 $Ale_CodigoMinorista = mt_rand(99999,999999);
 
@@ -319,7 +319,7 @@
             // echo '</pre>';
             // exit();
  
-            $this->vista('view/cuenta_vendedor/cuenta_PedidodetalleVen_V', $Datos);
+            $this->vista('view/cuenta_vendedor/cuenta_pedidodetalleVen_V', $Datos);
         }  
          
         //llamado desde cuenta_pedidodetallleVen_V.php y 

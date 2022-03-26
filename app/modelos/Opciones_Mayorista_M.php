@@ -58,34 +58,6 @@
                 return "No se pudo";
             }
         }
-        
-        //SELECT de las caracteristicas de un producto especifico
-        public function consultarCaracterisicaProductoEsp($ID_Producto){
-            $stmt = $this->dbh->prepare("SELECT ID_Producto, caracteristica FROM caracteristicaproducto WHERE ID_Producto = :ID_PRODUCTO");
-
-            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return "No se pudo";
-            }
-        }
-
-        //SELECT de las caracteristicas de los productos de una tienda
-        public function consultarImagenesProducto($ID_Producto){
-            $stmt = $this->dbh->prepare("SELECT nombre_img FROM imagenes WHERE ID_Producto = :ID_PRODUCTO");
-
-            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto, PDO::PARAM_INT);
-
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return "No se pudo";
-            }
-        }
 
         //SELECT de slogan de la tienda
         public function consultarSloganTienda($ID_Tienda){
@@ -101,21 +73,3 @@
             }
         }
     }
-
-//     SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, secciones.seccion, imagenes.nombre_img, fotoSeccion FROM tiendas 
-
-// INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda
-
-// INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
-
-// INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion 
-
-// INNER JOIN productos ON secciones_productos.ID_Producto=productos.ID_Producto 
-
-// INNER JOIN productos_opciones ON productos.ID_Producto=productos_opciones.ID_Producto 
-
-// INNER JOIN opciones ON productos_opciones.ID_Opcion=opciones.ID_Opcion 
-
-// INNER JOIN imagenes ON productos.ID_Producto=imagenes.ID_Producto 
-
-// WHERE tiendas_secciones.ID_Tienda = 225 AND seccion = 'Bebidas sin alcohol' AND imagenes.fotoPrincipal = 1 ORDER BY secciones.seccion, productos.producto, opciones.opcion

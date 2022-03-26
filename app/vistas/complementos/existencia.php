@@ -2,17 +2,17 @@
 <?php
     if($Disponible == 1){ 
         $NoAgrear = false; ?>
-        <label class="contenedor_9--label borde_3">En existencia</label>
+        <label class="contenedor_9--label borde_3">Existencia: <?php echo $Existencia?></label>
         <?php
     }    
     else if($Disponible == 0 && $Existencia == 1){ 
         $NoAgrear = false; ?>
-        <label class="contenedor_9--label borde_3">En existencia</label>
+        <label class="contenedor_9--label borde_3">Existencia: <?php echo $Existencia?></label>
         <?php
     }  
     else if($Disponible == 0 && $Existencia > 1){ 
         $NoAgrear = false; ?>
-        <label class="contenedor_9--label borde_3">En existencia</label>
+        <label class="contenedor_9--label borde_3">Existencia: <?php echo $Existencia?></label>
         <?php
     } 
     else if($Disponible == '0' && $Existencia == '0'){  

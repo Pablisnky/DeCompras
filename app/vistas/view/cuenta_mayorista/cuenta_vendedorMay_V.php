@@ -14,27 +14,25 @@
                 <th></th>
                 <th class="">Nombre</th>
                 <th class="">Apellido</th>
-                <!-- <th class="">Cedula</th>
-                <th class="">Telefono</th>
-                <th class="">correo</th> -->
+                <th class="ocultar-movil">Cedula</th>
+                <th class="ocultar-movil">Telefono</th>
+                <th class="ocultar-movil">correo</th>
                 <th class="">Zona</th>
-                <!-- <th class="tabla_inventario__th--fecha">Status</th> -->
             </thead>
             <tbody class="tabla_inventario--tbody">
                 <?php 
                 $Iterador = 1;
                 foreach($Datos['vendedores'] as $row)  :   ?>
-                <tr class="tabla_inventario__tr">
-                    <td class="td--center"><?php echo $Iterador; ?></td>
-                    <td class="td--left"><?php echo $row['nombre_AfiVen'];?></td>
-                    <td class="td--left"><?php echo $row['apellido_AfiVen'];?></td> 
-                    <!-- <td><?php //echo $row['cedula_AfiVen'];?></td> 
-                    <td><?php //echo $row['telefono_AfiVen'];?></td>
-                    <td><?php //echo $row['correo_AfiVen'];?></td> -->
-                    <td class="td--left"><?php echo $row['zona_AfiVen'];?></td> 
-                    <!-- <td class="tabla_inventario__td"><?php //echo $row['Status_AfiVen'];?></td>   -->
-                </tr> <?php
-                $Iterador ++;
+                    <tr class="tabla_inventario__tr">
+                        <td class="td--center"><?php echo $Iterador; ?></td>
+                        <td class="td--left"><?php echo $row['nombre_AfiVen'];?></td>
+                        <td class="td--left"><?php echo $row['apellido_AfiVen'];?></td> 
+                        <td class="ocultar-movil"><?php echo $row['cedula_AfiVen'];?></td> 
+                        <td class="ocultar-movil"><?php echo $row['telefono_AfiVen'];?></td>
+                        <td class="ocultar-movil"><?php echo $row['correo_AfiVen'];?></td>
+                        <td class="td--left"><?php echo $row['zona_AfiVen'];?></td> 
+                    </tr> <?php
+                    $Iterador ++;
                 endforeach; ?>
             </tbody>
         </table>

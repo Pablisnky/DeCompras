@@ -61,7 +61,7 @@
             $this->vista("view/opciones_V", $Datos);
         }       
         
-        //Invocado desde opciones_V.php por medio de mostrarDetalles()
+        //Invocado desde opciones_Mayorista_V.php por medio de mostrarDetalles()
         public function productoAmpliado($DatosAgrupados){
             // echo $DatosAgrupados;
             //$DatosAgrupados contiene una cadena con el ID_Tienda y el producto separados por coma, se convierte en array para separar los elementos
@@ -73,26 +73,18 @@
             
             $ID_EtiquetaAgregar = $DatosAgrupados[0];
             $NombreTienda = substr($DatosAgrupados[1], 1);
-            $SloganTienda = substr($DatosAgrupados[2], 1);
-            $ID_Tienda = substr($DatosAgrupados[3], 1);
-            $Producto = substr($DatosAgrupados[4], 1);
-            $Opcion = substr($DatosAgrupados[5], 1);
-            $PrecioBolivar = substr($DatosAgrupados[6], 1);
-            $Fotografia = substr($DatosAgrupados[7], 1);
-            $ID_Producto = substr($DatosAgrupados[8], 1);
-            $PrecioDolar = substr($DatosAgrupados[9], 1);
-            $Existencia = substr($DatosAgrupados[10], 1);
-            $Disponible = substr($DatosAgrupados[11], 1);
-            
-            //CONSULTA las caracteristicas del producto seleccionado
-            $Caracteristicas = $this->ConsultaOpciones_M->consultarCaracterisicaProductoEsp($ID_Producto);
-
-            //CONSULTA las imagenes del producto seleccionado
-            $Imagenes = $this->ConsultaOpciones_M->consultarImagenesProducto($ID_Producto);
+            $ID_Tienda = substr($DatosAgrupados[2], 1);
+            $Producto = substr($DatosAgrupados[3], 1);
+            $Opcion = substr($DatosAgrupados[4], 1);
+            $PrecioBolivar = substr($DatosAgrupados[5], 1);
+            $Fotografia = substr($DatosAgrupados[6], 1);
+            $ID_Producto = substr($DatosAgrupados[7], 1);
+            $PrecioDolar = substr($DatosAgrupados[8], 1);
+            $Existencia = substr($DatosAgrupados[9], 1);
+            $Disponible = substr($DatosAgrupados[10], 1);
 
             $Datos=[ 
                 'NombreTienda' => $NombreTienda, 
-                'SloganTienda' => $SloganTienda,
                 'ID_Tienda' => $ID_Tienda,
                 'Producto' => $Producto,
                 'Opcion' => $Opcion,
@@ -102,9 +94,7 @@
                 'Disponible' => $Disponible,
                 'Fotografia_1' => $Fotografia,
                 'ID_Producto' => $ID_Producto, 
-                'ID_EtiquetaAgregar' => $ID_EtiquetaAgregar, 
-                'Caracteristicas' => $Caracteristicas,
-                'Imagenes' => $Imagenes
+                'ID_EtiquetaAgregar' => $ID_EtiquetaAgregar
             ];      
 
             // echo "<pre>";
@@ -112,8 +102,8 @@
             // echo "</pre>";
             // exit();
             
-            $this->vista("header/headerProducto", $Datos);
-            $this->vista("view/descr_Producto_V", $Datos);
+            $this->vista("header/headerProductoMay", $Datos);
+            $this->vista("view/descr_ProductoMayorista_V", $Datos);
         } 
         
         public function imagenAmpliado($Fotografia){

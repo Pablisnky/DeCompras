@@ -34,10 +34,10 @@
         },
         series: [{
             name: 'Ventas',
-            data: [430, 568, 106, 389, 498]
+            data: [0, 0, 0, 0, 0]
             }, {
             name: 'Pago abonado',
-            data: [430, 560.0, 106, 371.6, 140.9]
+            data: [0, 0, 0, 0, 0]
         }],
         
         // series: [{

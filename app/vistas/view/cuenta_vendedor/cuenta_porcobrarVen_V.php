@@ -48,7 +48,7 @@
             endforeach; 
         }  
         else{   ?>
-                <label class="td--alerta" colspan="7">Sin pedidos registrados</label>
+                <p class="bandaAlerta">Sin cuentas por cobrar.</p>
             <?php
         }   ?>
             

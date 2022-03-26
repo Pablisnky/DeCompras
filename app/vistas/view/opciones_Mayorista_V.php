@@ -42,10 +42,10 @@
                                 <?php 
                                 $Separador = '|';
                                 $FotoPrincipal = $row['nombre_imgMay'];   
-                                if($FotoPrincipal != 'imagen.png'){ ?> 
+                                if($FotoPrincipal != 'imagen.png'){     ?> 
                                     <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar.$Separador?>','<?php echo $Existencia.$Separador?>','<?php echo $Disponible?>')">
                                         <figure>
-                                            <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/proveedor/Don_Rigo/<?php echo $FotoPrincipal;?>"/> 
+                                            <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/proveedor/Don_Rigo/productos/<?php echo $FotoPrincipal;?>"/> 
                                         </figure>
                                     </div>  <?php 
                                 }
@@ -56,12 +56,14 @@
                                     <?php
                                 }      
 
-                               require(RUTA_APP . "/vistas/complementos/existencia.php"); ?>
+                                // EXISTENCIA
+                                require(RUTA_APP . "/vistas/complementos/existencia.php"); ?>
                             </div>
                                         
                             <div> 
                                 <div style="min-height:80px">
                                     <div style="height: 75px;">
+
                                         <!-- PRODUCTO -->
                                         <label class="input_8 input_8D hyphen" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>"><?php echo $Producto;?></label>
     

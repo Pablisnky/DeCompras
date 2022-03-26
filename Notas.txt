@@ -2,16 +2,21 @@ pcabeza7@gmail.com      bbdd    la bodega digital
 sebastian@gmail.com     ssss    La Tienda de Sebastian    comerciante
 sebastian@gmail.com     ssss    La Tienda de Sebastian    mayorista
 alberto@gmail.com       aaaa    MiniMarket ALberto
-pablo@gmail.com      ppcc    Las Empanadas de Pablo
-monica@gmail.com     mmmm   Arte y moda     vendedor
+pablo@gmail.com         ppcc    Las Empanadas de Pablo
+monica@gmail.com        mmmm    Arte y moda  |   mmmmmm    vendedor
+jj@jj.jj                jjjjjj    vendedor
 albertcabeza76@gmail.com       cccc    Otaku Claud Gat
 vivas@gmail.com         vvvv
 lisbella@gmail.com      llll
 jean@gmail.com          jjjj    Chicha sabrosa
 
+*******************************************************************************
+
 En local y en remoto
     Cambiar en Configurar.php; 
     .htaccess de la carpeta public
+
+*******************************************************************************
 
 Resoluciones
     320 x 534 (Maria Esther Samsumg mini S3)
@@ -29,6 +34,8 @@ Resoluciones
     1280 x 1024 (Lisbella PC)
     1920 x 1080 (PC local)
 
+*******************************************************************************
+
 MAC en wifi
 Router 34:4d:ea:fa:8c:10
 Telefono Lisbella 7c:a1:77:17:4c:f0
@@ -45,12 +52,10 @@ rociel   d6:89:f5:ab:36:f1
 Karina 60:ab:67:9b:07:24    
 Xiomara c0:3f:d5:c6:d0:99
 
+*******************************************************************************
+
 Cinco razones para afiliar tu comercio a PedidoRemoto
 1.- Digitalizamos tu tienda y la convertimos en un e-commerce.
 2.- Virtualizamos los pedidos, pagos y despachos de tus clientes. 
 3.- Tiene un costo mensual 98% menos que un local comercial.
 4.- Estamos enfocados a impulsar el comercio citadino.
-
-5.- Compras y despachos en tiendas de tu ciudad.
-6.- e-commerce para pequeños comercios.
-7.- Panaderías, minimarket, comida rapida, frutería, ferretería, bodegas, y más.

@@ -647,7 +647,7 @@
 }
 .contenedor_108{
 	min-height: 100%;
-	padding-top: 8%;
+	/* padding-top: 2%; */
 	padding-bottom: 5%;
 }
 .contenedor_109{
@@ -715,7 +715,7 @@
 }
 .contenedor_122{
 	width: 100%;
-	margin-top: 15%;
+	margin-top: 5%;
 	margin-bottom: 3%;
 	grid-template-columns: 100fr;
 }
@@ -784,6 +784,9 @@
 }
 .contenedor_170{
 	display: block;	
+}
+.contenedor_171{
+	margin-bottom: 2%;
 }
 .contTabla{
 	overflow: auto; /*permite el scroll horizontal dentro del div*/
@@ -861,6 +864,7 @@
 	margin: 10% auto;
 	width: 95%;
 	padding: 2% ;
+	min-height: 100px;
 }
 .figure_1{
 	width: 100%;
@@ -918,7 +922,7 @@
 }
 .h1_11{
 	padding: 2% 5%;
-	padding-top: 8%;
+	padding-top: 5%;
 	font-size: 1em;
 }
 .h2_1{

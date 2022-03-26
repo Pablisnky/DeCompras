@@ -74,43 +74,18 @@
             $No_Recordar = isset($_POST["no_recordar"]);
             $Clave = $_POST["clave_Arr"];
             $Correo = $_POST["correo_Arr"];
-            // echo 'Recordar: ' . $Recordar . '<br>';
-            // echo 'No_Recordar: ' . $No_Recordar . '<br>';
-            // echo 'Clave: ' . $Clave . '<br>';
-            // echo 'Correo: ' . $Correo . '<br>';
-            // exit;
 
             //Se CONSULTA si el correo existe como comerciante
             $usuarioCom = $this->ConsultaLogin_M->consultarAfiliadosCom($Correo);
-            
-            // echo '<pre>';
-            // print_r($usuarioCom); 
-            // echo '</pre>';
-            // exit();
 
             //Se CONSULTA si el correo existe como mayorista
             $usuarioMay = $this->ConsultaLogin_M->consultarAfiliadosMay($Correo);
 
-            // echo '<pre>';
-            // print_r($usuarioMay); 
-            // echo '</pre>';
-            // exit();
-
             //Se CONSULTA si el correo existe como despachador            
             $usuarioDes = $this->ConsultaLogin_M->consultarAfiliadosDes($Correo);
 
-            // echo '<pre>';
-            // print_r($usuarioDes); 
-            // echo '</pre>';
-            // exit();
-
             //Se CONSULTA si el correo existe como vendedor            
             $usuarioVen = $this->ConsultaLogin_M->consultarAfiliadosVen($Correo);
-
-            // echo '<pre>';
-            // print_r($usuarioVen); 
-            // echo '</pre>';
-            // exit();
 
             if($usuarioCom != Array() && $usuarioMay != Array()){//Existe como comerciante y como mayorista
                 //Redirecciona a ventan donde se solicita que seleccione como desea ingresar, como comerciante o mayorista
@@ -161,11 +136,7 @@
                 setcookie('id_usuario','',time() - 3600,'/');
                 setcookie('clave','',time() - 3600,'/');
             }
-            
-            // echo 'La cookie ID_Usuario = ' . $_COOKIE['id_usuario'] . '<br>';
-            // echo 'La cookie clave = ' . $_COOKIE['clave'] . '<br>'; 
-            // exit;
-            
+                        
             //Verifica si los campo que se van a recibir estan vacios
             if(empty($_POST['correo_Arr']) || empty($_POST['clave_Arr'])){        
                 echo 'Debe Llenar todos los campos vacios'. '<br>';
@@ -319,10 +290,10 @@
             
             //Se envia correo al usuario informandole el código que debe insertar para verificar
             $email_to = $Correo;
-            $email_subject = "Recuperación de contraseña";  
-            $email_message ="Código de recuperación de contraseña: " . $Aleatorio;
-            $headers = 'From: '. "PedidoRemoto<administrador@pedidoremoto.com>" ."\r\n".       
-            'X-Mailer: PHP/' . phpversion();
+            $email_subject = 'Recuperación de contraseña';  
+            $email_message = 'Código de recuperación de contraseña: ' . $Aleatorio;
+            $headers = 'From: PedidoRemoto<administrador@pedidoremoto.com>';
+            // $headers .= '\r\n X-Mailer: PHP/' . phpversion();
         
             @mail($email_to, $email_subject, $email_message, $headers);
             
@@ -336,8 +307,8 @@
             // echo '</pre>';
             // exit;
 
-            $this->vista("header/header_Modal", $Datos); 
-            $this->vista("modal/modal_recuperarCorreo_V", $Datos); 
+            $this->vista('header/header_Modal', $Datos); 
+            $this->vista('modal/modal_recuperarCorreo_V', $Datos); 
         }
 
         //LLamado desde modal_recuperarCorreo_V.php

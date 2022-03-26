@@ -94,7 +94,7 @@
             endforeach; 
         }  
         else{   ?>
-                <label class="td--alerta" colspan="7">Sin pedidos registrados</label>
+                <p class="bandaAlerta">Sin pedidos registrados</p>
             <?php
         }   ?>
     </div>

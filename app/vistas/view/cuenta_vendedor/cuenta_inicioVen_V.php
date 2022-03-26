@@ -5,7 +5,7 @@
     // if(isset($_SESSION["ID_Tienda"])){         
         ?>
         <div class="section_8">
-            <!-- SALDO ACUMULADO -->
+            <!-- GRAFICO DE VENTAS SEMANALES -->
             <div class="section_8__div" id="Presentacion_1">
                 <fieldset class="fieldset_1" >
                     <legend class="legend_1">Ventas semanales</legend>  
@@ -19,7 +19,7 @@
             <!-- COMISIONES PENDIENTES -->
             <div class="section_8__div" id="Presentacion_2"">
                 <fieldset class="fieldset_1" >
-                    <legend class="legend_1">Comisiones pendientes</legend>    
+                    <legend class="legend_1">Comisiones pendientes</legend>   
                     <?php
                     if($Datos['comisiones'] != Array ()){ 
                         foreach($Datos['comisiones'] as $row)  : 
@@ -31,7 +31,7 @@
                                 </div> 
                                 <div style="grid-column-start: 1; grid-column-end: 2;">
                                     <label class="cont_clientesVen--renglon">FACTURA</label>
-                                    <label><?php echo $row['numeroorden_May'];?></label>
+                                    <label><?php echo $row['factura'];?></label>
                                 </div> 
                                 <div style="grid-column-start: 2; grid-column-end: 3;">
                                     <label class="cont_clientesVen--renglon">COMISIÓN</label>
@@ -44,7 +44,11 @@
                             </div>
                             <?php
                         endforeach; 
-                    }   ?>
+                    } 
+                    else{   ?>
+                        <p class="bandaAlerta">No hay pedidos facturados que generen comisiones.</p> 
+                        <?php
+                    }    ?>
                 </fieldset>
             </div>
 
@@ -52,13 +56,13 @@
             <div class="section_8__div" id="Presentacion_2">                
                 <fieldset class="fieldset_1" >
                     <legend class="legend_1">Comisiones ganadas</legend>  
-                    <p class="font--titulo bandaAlerta">130 $</p> 
+                    <p class="font--titulo bandaAlerta">0 $</p> 
                     <br>
                     <?php
-                    if($Datos['comisiones'] != Array ()){ 
-                        foreach($Datos['comisiones'] as $row)  : 
-                            $Nro_Orden = $row['numeroorden_May'];   ?>
-                            <div class="contenedor_106--pedidos">
+                    // if($Datos['comisiones'] = Array ()){ 
+                    //     foreach($Datos['comisiones'] as $row)  : 
+                    //         $Nro_Orden = $row['numeroorden_May'];   ?>
+                            <!-- <div class="contenedor_106--pedidos">
                                 <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-pencil-alt"></i></span>
                             </div>
                             <div class="cont_clientesVen cont_clientesVen--restringido borde_1 ">
@@ -74,10 +78,10 @@
                                     <label class="cont_clientesVen--renglon">COMISIÓN</label>
                                     <label><?php echo $row['montoTotal'];?></label>
                                 </div> 
-                            </div>
+                            </div> -->
                             <?php
-                        endforeach; 
-                    }   ?>
+                    //     endforeach; 
+                    // }    ?>
                 </fieldset>
             </div>
         </div>

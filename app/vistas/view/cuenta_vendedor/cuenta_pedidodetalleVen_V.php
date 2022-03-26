@@ -51,14 +51,14 @@
                 <br/>
 
                 <!-- DETALLE DE PAGO -->                         
-                <table class="tabla">   
+                <table class="tabla_inventario">   
                     <caption>Pagos<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarpagoVen/' . $Datos['NroOrden'] . '-' . $Datos['pedido'][0]['montoTotal']?>">Agregar</a></caption>   
-                    <thead class="">
-                        <th class="th_11 th_4"></th>
-                        <th class="th6 th_4 th_5">F. PAGO</th>
-                        <th class="th_6 th_4">MONTO</th>
-                        <th class="th_4">METODO PAGO</th>
-                        <th class="th_11 th_4"></th>
+                    <thead class="tabla_inventario--thead">
+                        <th class="th--n"></th>
+                        <th class="">F. Pago</th>
+                        <th class=" ">Monto</th>
+                        <th class="">Metodo de pago</th>
+                        <th class=""></th>
                     </thead>
                     <tbody class="tabla_inventario--tbody">
                         <?php 

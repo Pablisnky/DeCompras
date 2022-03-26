@@ -32,7 +32,8 @@
             // $this->ID_Mayorista = $_SESSION['ID_Mayorista'];
 
             $Datos = [
-                'nombreMay' => $this->Mayorista 
+                'nombreMay' => $this->Mayorista,
+                'seccionesMay' => $this->SeccionesMay //ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay 
             ];
             
             $this->vista("header/header_AfiMay", $Datos);

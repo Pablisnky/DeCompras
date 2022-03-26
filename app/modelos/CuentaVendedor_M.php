@@ -58,7 +58,7 @@
         //INSERT de datos de minorista
         public function insertarMinorista($RecibeMinorista, $nombre_imgMinorista, $tipo_imgMinorista, $tamanio_imgMinorista, $Ale_CodigoMinorista){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO minorista (ID_Vendedor, nombre_AfiMin, rif_AfiMin, codigodespacho, telefono_AfiMin, correo_AfiMin, Zona_AfiMin, direccion_AfiMin, nombreImg_AfiMin, tipo_AfiMin, tamanio_AfiMin, fecha, hora) 
+                "INSERT INTO minorista (ID_Vendedor, nombre_AfiMin, rif_AfiMin, codigodespacho, telefono_AfiMin, correo_AfiMin, zona_AfiMin, direccion_AfiMin, nombreImg_AfiMin, tipo_AfiMin, tamanio_AfiMin, fechaAfiliacion, horaAfiliacion) 
                 VALUES(:ID_VENDEDOR, :NOMBRE_AFIMIN, :RIF_AFIMIN, :CODIGO_AFIMIN, :TELEFONO_AFIMIN, :CORREO_AFIMIN, :ZONA_AFIMIN, :DIRECCION_AFIMIN, :NOMBREIMG_AFIMIN, :TIPOIMG_AFIMIN, :TAMANIOIMG_AFIMIN, CURDATE(), CURDATE())"
             );
 
@@ -140,10 +140,10 @@
         //SELECT de los pedidos por pagar de un vendedor especifico
         public function consultarPedidosPorCobrar_Ven($ID_Vendedor){
             $stmt = $this->dbh->prepare(
-                "SELECT montoTotal, pedidomayorista.fecha, minorista.nombre_AfiMin, pedidomayorista.numeroorden_May 
+                "SELECT factura, montoTotal, pedidomayorista.fecha, minorista.nombre_AfiMin, pedidomayorista.numeroorden_May 
                 FROM pedidomayorista                 
                 INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin =minorista.ID_AfiliadoMin  
-                WHERE minorista.ID_Vendedor = :ID_VENDEDOR AND pagado = 0 
+                WHERE minorista.ID_Vendedor = :ID_VENDEDOR AND pagado = 0 AND factura != 'No Asignada' 
                 ORDER BY fecha DESC"
             );
 
