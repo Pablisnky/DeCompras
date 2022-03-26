@@ -404,24 +404,9 @@
             }
         }
 
-        //SELECT de la IMAGEN de un producto determinado
-        public function consultarVendedoresMay($ID_Mayorista){
-            $stmt = $this->dbh->prepare(
-                "SELECT ID_AfiliadoVen, nombre_AfiVen, apellido_AfiVen, cedula_AfiVen, telefono_AfiVen, zona_AfiVen, codigo_AfiVen, Status_AfiVen
-                FROM  afiliado_ven  
-                WHERE ID_Mayorista = :ID_MAYORISTA"
-            );
 
-            $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
 
-            if($stmt->execute()){
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return  'Existe un fallo';
-            }
-
-        }
+        
         
 
 

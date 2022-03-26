@@ -47,6 +47,24 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }  
 
+        //SELECT de los datos de un vendedor
+        public function consultarVendedoresMay($ID_Mayorista){
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_AfiVen, telefono_AfiVen, zona_AfiVen, Status_AfiVen
+                FROM  afiliado_ven  
+                WHERE ID_Mayorista = :ID_MAYORISTA AND Status_AfiVen = 1"
+            );
+
+            $stmt->bindParam(':ID_MAYORISTA', $ID_Mayorista, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }
+
         //SELECT de las imagenes principales de cada sección establecida por el afiliado de una tienda
         // public function consultarImagenesSecciones($ID_Tienda){
         //     $stmt = $this->dbh->prepare(

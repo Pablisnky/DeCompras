@@ -31,7 +31,8 @@
 			<!-- BARRA DE NAVEGACION -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php //echo RUTA_URL . '/CerrarS_C';?>">Obtener código</a></li>
+					<!-- <li><a class="a_3" href="<?php echo RUTA_URL . '/VitrinaMayorista_C/vitrina_Mayorista';?>">Secciones</a></li>
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/VitrinaMayorista_C/solicitarCodigoDespacho';?>">Obtener código</a></li> -->
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Salir de la tienda</a></li>
 				</ul>
 			</nav>

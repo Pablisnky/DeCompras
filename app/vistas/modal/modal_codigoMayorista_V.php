@@ -10,7 +10,7 @@
             
         <article>
             <div class="contBoton" id="Contenedor_26">
-                <label class="boton"><a class="font--white" href="../../Mayorista_C/codigoMayorista">Solicitar código</a></label>
+                <!-- <label class="boton"><a class="font--white" href="../../Mayorista_C/codigoMayorista">Solicitar código</a></label> -->
                 <label class="boton" id="Label_1">Ver catalogo</label>
             </div>
         </article>

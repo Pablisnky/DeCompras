@@ -63,7 +63,7 @@
 
             <!-- CODIGO DE DESPACHO -->                         
             <div class="contFlex50">
-                <input class="input--despacho" id="CodigoVenta" placeholder="Código de despacho" onkeydown="codigoVenta(this.value)" onkeyup="codigoVenta(this.value)"/>
+                <input class="input--despacho" id="CodigoVenta" placeholder="Código de despacho" autocomplete="off" onkeydown="codigoVenta(this.value)" onkeyup="codigoVenta(this.value)"/>
             </div>
         </div>
     </section>

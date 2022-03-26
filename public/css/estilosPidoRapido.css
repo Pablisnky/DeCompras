@@ -1492,6 +1492,14 @@ body, html{
 	margin: 0% 4% 0% 95%; 
 	cursor: pointer;
 }
+.spanCerrar--fijo{
+	background-color: var(--FondoDivModal);
+	position: fixed;
+	margin: 0% 96% 0% 4%;
+	display: block;
+	width: 100%;
+	z-index: 2;
+}
 .spanCerrar_carrito{
 	color: white;
 	font-size: 2em;
@@ -1512,10 +1520,6 @@ body, html{
 	position: absolute;
 	margin: -1% 4% 0% 60%;
 	top: 8%;
-}
-.spanCerrar--fijo{
-	position: fixed;
-	margin: 0% 96% 0% 4%;
 }
 .contenedor_60__p1{
 	text-align: justify;

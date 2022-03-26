@@ -1,6 +1,5 @@
 <?php
     class VitrinaMayorista_C extends Controlador{
-        private $ID_Mayorista;
 
         public function __construct(){
             session_start();
@@ -14,10 +13,10 @@
         //llamado desde header_inicio
         public function index(){   
             //Se CONSULTAN los mayoristas que estan afiliados       
-            $this->Mayorista = $this->ConsultaVitrina_M->consultarMayorista(); 
+            $Mayorista = $this->ConsultaVitrina_M->consultarMayorista(); 
             
             $Datos = [
-                'mayoristas_afiliados' => $this->Mayorista, //ID_Mayorista, nombreMay, fotografiaMay, telefonoMay, direccionMay, municipioMay, estadoMay
+                'mayoristas_afiliados' => $Mayorista, //ID_Mayorista, nombreMay, fotografiaMay, telefonoMay, direccionMay, municipioMay, estadoMay
             ];
               
             // echo '<pre>';
@@ -27,6 +26,7 @@
 
             $this->vista("header/header");
             $this->vista("view/mayoristas_V", $Datos);
+            // $this->vista("footer/footer");
         }  
 
         //Llamado desde E_Mayorista.js - CuentaVendedor_C/agregarProductoAPedido
@@ -75,5 +75,24 @@
                 $this->vista("modal/modal_codigoMayorista_V", $Datos);
             }
             $this->vista("view/vitrinaMayorista_V", $Datos);
+        }
+        
+        //invocado en header_Maorista.php
+        public function solicitarCodigoDespacho(){
+            //CONSULTA los vendeoores activos segun la zona que atienden
+            $ID_Mayorista = 1; //ID_Mayorista de Don_Rigo
+            $VendedorActivo = $this->ConsultaVitrina_M->consultarVendedoresMay($ID_Mayorista);
+
+            $Datos = [
+                'nombreMayorista' => 'Distribuidora Don Rigo',
+                'vendedor_activo' => $VendedorActivo, //
+            ];
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit();
+
+            $this->vista("header/header_Mayorista", $Datos);
+            $this->vista('view/agregarMinorista_V', $Datos);
         }
     }

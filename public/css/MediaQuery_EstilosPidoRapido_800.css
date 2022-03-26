@@ -213,7 +213,7 @@
 	height: initial !important;
 }
 .contBoton{
-	margin-top: 15%;
+	margin-top: 8%;
 	width: 100%;
 }
 .contFlex{
@@ -715,9 +715,10 @@
 }
 .contenedor_122{
 	width: 100%;
-	margin-top: 5%;
+	margin-top: 3%;
 	margin-bottom: 3%;
 	grid-template-columns: 100fr;
+	height: 90vh;
 }
 .contenedor_126{
 	margin-top: 5%;
@@ -1306,7 +1307,7 @@
 	/* width: 100% !important; */
 }
 .section_9{
-	top: 35px !important;
+	top: 10px !important; /*antes 35px*/
 }
 .section_11{
 	padding-top: 15% !important;
@@ -1390,14 +1391,18 @@
 	font-size: 1.5em;
 	margin: -5% 4% 0% 85%;
 }
+.spanCerrar--fijo{
+	margin: -5% 0% 2% 0%;
+	padding-top: 3%;
+	padding-left: 3%;
+	padding-bottom: 1%;
+
+}
 .spanCerrar_carrito{
 	margin: -15% 4% 0% 95%;
 }
 .spanCerrar--modal{
 	top: 5%;
-}
-.spanCerrar--fijo{
-	margin: -2% 85% 2% 5%;
 }
 .strong_1{
 	font-size: 0.9em;

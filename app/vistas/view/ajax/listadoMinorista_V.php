@@ -3,7 +3,7 @@
 
         <i class="fas fa-times spanCerrar spanCerrar--fijo" onclick="ocultarListadoMay('ListadoMinorista')"></i>
         <br>
-    <!-- LISTADO DE PEDIDOS -->       
+    <!-- LISTADO DE CLIENTES -->       
     <div class="sectionModal__div">
             <?php
         if($Datos['vendedor'] != Array ()){
@@ -26,7 +26,9 @@
                             <label class="cont_clientesVen--renglon">Código despacho</label>
                             <label><?php echo $row['codigodespacho'];?></label>
                         </div> 
-                    </div><?php
+                    </div>
+                    </br>
+                    <?php
                 endforeach;  
             }
             else{   ?>

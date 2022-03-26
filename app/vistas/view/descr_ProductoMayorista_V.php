@@ -39,7 +39,7 @@
                         <label class="boton" onclick="cerrarRegresar()">Regresar</label>
                         <?php
                         // if(){   ?>
-                            <label class="boton" onclick="cerrarAgregar()">Agregar</label>   
+                            <!-- <label class="boton" onclick="cerrarAgregar()">Agregar</label>    -->
                             <?php
                         // }
                         ?>
