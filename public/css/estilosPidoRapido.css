@@ -1575,6 +1575,9 @@ body, html{
 	font-weight: normal;
 	font-size: 1em;
 }
+.font--bold{
+	font-weight: bold;
+}
 .font--negro{
 	color: black;
 }
@@ -1654,8 +1657,7 @@ body, html{
 }
 .h1_11{
 	display: block;
-	text-align: left;
-	font-weight: lighter;
+	font-weight: bold;
 	line-height: 25px;
 }
 .h1_12{

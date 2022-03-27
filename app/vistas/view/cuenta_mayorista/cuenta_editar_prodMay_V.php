@@ -45,13 +45,13 @@
                         <div class="contenedor_119 borde_1 borde_2">
                             <?php
                             if($ImagenProducto == ''){ ?>
-                                <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="../../public/images/imagen.png"/>
+                                <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                                 <label for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                                 <input class="ocultar" type="file" name="imagenProductorMay" id="imgInp"/>
                                 <?php
                             }  
                             else{ ?>
-                                <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="../../public/images/proveedor/Don_Rigo/productos/<?php echo $ImagenProducto;?>"/>
+                                <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/productos/<?php echo $ImagenProducto;?>"/>
                                 <label for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                                 <input class="ocultar" type="file" name="imagenProductorMay" id="imgInp"/>
                                 <?php

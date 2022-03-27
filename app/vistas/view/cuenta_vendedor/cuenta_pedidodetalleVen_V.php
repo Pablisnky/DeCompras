@@ -52,7 +52,7 @@
 
                 <!-- DETALLE DE PAGO -->                         
                 <table class="tabla_inventario">   
-                    <caption>Pagos<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarpagoVen/' . $Datos['NroOrden'] . '-' . $Datos['pedido'][0]['montoTotal']?>">Agregar</a></caption>   
+                    <caption>Saldo abonado<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarpagoVen/' . $Datos['NroOrden'] . '-' . $Datos['pedido'][0]['montoTotal']?>">Agregar</a></caption>   
                     <thead class="tabla_inventario--thead">
                         <th class="th--n"></th>
                         <th class="">F. Pago</th>
@@ -89,13 +89,13 @@
                 <br/>
 
                 <!-- DETALLE DEL PEDIDO -->        
-                <table class="tabla">       
+                <table class="tabla_inventario">       
                     <caption>Detalle del pedido<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarProductoAPedido/' . $Datos['NroOrden'] ?>">Agregar</a></caption>    
-                    <thead class="">
-                        <th class="th_1 th_4">CANT.</th>
-                        <th class="th_2 th_4">PRODUCTO</th>
-                        <th class="th_3 th_4">PRECIO UNITARIO</th>
-                        <th class="th_1 th_4">TOTAL</th>
+                    <thead class="tabla_inventario--thead">
+                        <th class="">Cant.</th>
+                        <th class="">Producto</th>
+                        <th class="">Precio</th>
+                        <th class="">Total</th>
                     </thead>
                     <tbody class="tabla_inventario--tbody">
                         <?php 

@@ -727,7 +727,7 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/productos/';
 
                         //usar en local
                         // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';

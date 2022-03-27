@@ -56,6 +56,11 @@
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>"><i class="fas fa-user-check icono_1 icono_6"></i>Inicio sesión</a></li>
 				</ul>
 			</nav>
+			
+			<div class="tapa-logo" id="Tapa_Logo">
+				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+				<h2 class="h2_5 font--white">MarketPlace</h2>
+			</div>
 		</header>
 
 		<!-- ICONO DE BUSQUEDA LUPA -->
@@ -70,10 +75,6 @@
 		
 		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
 		<div class="tapa" id="Tapa">
-			<div class="tapa-logo">
-				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
-				<h2 class="h2_5 font--white">MarketPlace</h2>
-			</div>
 		</div>
 
 <!-- ******************************************************************************************* -->

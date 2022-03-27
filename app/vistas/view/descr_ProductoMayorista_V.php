@@ -26,13 +26,13 @@
             </div>
 
             <div class="contGridUna">
-                <h1 class="h1_1 h1_1--margin"><?php echo $Producto?></h1>
+                <h1 class="h1_1 h1_1--margin font--bold"><?php echo $Producto?></h1>
+                <h3 class="h1_11 font--center"><?php echo $Opcion?></h3>
+
                 <div class="contenedor_171">
                     <?php require(RUTA_APP . "/vistas/complementos/existencia.php");    ?>
                 </div>
                 
-                <h3 class="h1_11"><?php echo $Opcion?></h3>
-
                 <div class="contGeneral">
                     <label class="label_22 borde_1 borde_2">Bs. <?php echo $PrecioBolivar?><br><small class="small_2">$ <?php echo $PrecioDolar?></small></label>
                     <div class="contBoton contBoton--100" id="Contenedor_26">                  

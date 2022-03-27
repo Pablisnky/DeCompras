@@ -50,6 +50,10 @@
 					<li><a class="a_3" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Salir de la tienda</a></li>
 				</ul>
 			</nav>
+
+			<div class="tapa-logo" id="Tapa_Logo">
+				<a class="a_1 font--white  font--ajustable" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">Distribuidora Don Rigo</a>
+			</div>
 		</header>
 		
 		<!-- MEMBRETE -->
@@ -60,10 +64,6 @@
 
 		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
 		<div class="tapa" id="Tapa">
-			<div class="tapa-logo">
-				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
-				<h2 class="h2_5 font--white">MarketPlace</h2>
-			</div>
 		</div>
 	
 <!-- ******************************************************************************************* -->

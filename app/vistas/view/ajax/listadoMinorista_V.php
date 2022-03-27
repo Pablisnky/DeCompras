@@ -14,7 +14,7 @@
                 foreach($Datos['minoristaVen'] as $row)  :  
                     $CodigoDespacho = $row['codigodespacho'] ?>
                     <div class="cont_clientesVen borde_1" onclick="Llamar_datosMinorista(<?php echo $CodigoDespacho;?>)">
-                        <div style="grid-column-start: 1; grid-column-end: 3;">
+                        <div style="grid-column-start: 1; grid-column-end: 4;">
                             <label class="cont_clientesVen--renglon">Razon social</label>
                             <label class="font--TituloTarjetaCliente"><?php echo $row['nombre_AfiMin'];?></label>
                         </div> 
