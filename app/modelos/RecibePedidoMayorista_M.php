@@ -52,12 +52,13 @@
             }
         }
 
-        // SELECT del detalle del pedido realizado
-        function consultarPedido($Ale_NroOrden){                    
+        // SELECT del detalle del pedido realizado  detallepedidomayorista.numeroorden
+        function consultarPedidoMayorista($Ale_NroOrden){                    
             $stmt = $this->dbh->prepare(
-                "SELECT ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, detallepedido.numeroorden, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i %p') AS hora, pedido.montoDelivery, pedido.montoTienda, pedido.montoTotal, pedido.despacho, pedido.formaPago, pedido.codigoPago, pedido.capture 
-                FROM detallepedido INNER JOIN pedido ON detallepedido.numeroorden=pedido.numeroorden 
-                WHERE detallepedido.numeroorden = :ALE_NUMERO_ORDEN"
+                "SELECT ID_Pedido_May, seccion_May, producto_May, cantidad_May, opcion_May, precio_May, total_May, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, DATE_FORMAT(hora, '%h:%i %p') AS hora, pedidomayorista.montoTotal, pedidomayorista.numeroorden_May
+                FROM detallepedidomayorista  
+                INNER JOIN pedidomayorista ON detallepedidomayorista.numeroorden_May=pedidomayorista.numeroorden_May 
+                WHERE detallepedidomayorista.numeroorden_May = :ALE_NUMERO_ORDEN"
             );
             
             $stmt->bindValue(':ALE_NUMERO_ORDEN', $Ale_NroOrden, PDO::PARAM_INT);
@@ -70,11 +71,15 @@
             }
         }
 
-        // SELECT 
-        function consultarCorreo($ID_Tienda){                    
-            $stmt = $this->dbh->prepare("SELECT ID_Tienda, correo_AfiCom, tiendas.nombre_Tien FROM afiliado_com INNER JOIN tiendas ON afiliado_com.ID_AfiliadoCom=tiendas.ID_AfiliadoCom WHERE ID_Tienda = :ID_TIENDA");
+        // SELECT del destinatario del correo
+        function consultarCorreo($Codigo_Venta){                    
+            $stmt = $this->dbh->prepare(
+                "SELECT nombre_AfiVen, apellido_AfiVen, correo_AfiVen
+                FROM  afiliado_ven 
+                WHERE codigoVenta_AfiVen = :CODIGO_VENTA"
+            );
             
-            $stmt->bindValue(':ID_TIENDA', $ID_Tienda, PDO::PARAM_INT);
+            $stmt->bindValue(':CODIGO_VENTA', $Codigo_Venta, PDO::PARAM_INT);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

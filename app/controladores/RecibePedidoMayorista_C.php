@@ -23,7 +23,10 @@
                         // DATOS DEL USUARIO                        
                         'ID_Minorista' => $_POST['id_minorista'],
                         'CodigoMinorista' => $_POST['codigoMinorista'],    
-                        'MontoTienda' => $_POST['montoTienda'], 
+                        'MontoTienda' => $_POST['montoTienda'],
+                        'codgoVenta_vendedor' => $_POST['codigo_venta'],
+                        'nombre_minorista' => $_POST['nombre_minorista'],
+                        'rif_minorista' => $_POST['rif_minorista'],
                     ];
                     // echo '<pre>';
                     // print_r($RecibeDatosMinorista);
@@ -86,46 +89,36 @@
                 }
 
                 // ****************************************
-                // //DATOS ENVIADOS POR CORREOS
-                // //Se CONSULTA el pedido recien ingresado a la BD
-                // $Pedido = $this->ConsultaRecibePedidoMayorista_M->consultarPedido($Ale_NroOrden);
-                
-                // //Se CONSULTA el usuario que realizó el pedido
-                // $Usuario = $this->ConsultaRecibePedidoMayorista_M->consultarUsuario($RecibeCodigoMinorista['Cedula']);
-                
-                // //Se CONSULTA el correo y el nombre de la tienda
-                // $Tienda = $this->ConsultaRecibePedidoMayorista_M->consultarCorreo($RecibeDatosPedido['ID_Tienda']);
+                //DATOS ENVIADOS POR CORREOS
+                //Se CONSULTA el pedido recien ingresado a la BD
+                $PedidoMayorista = $this->ConsultaRecibePedidoMayorista_M->consultarPedidoMayorista($Ale_NroOrden);
+                                
+                //Se CONSULTA DATOS DEL VENDEDOR QUE REALIZA EL EDIDO
+                $Vendedor = $this->ConsultaRecibePedidoMayorista_M->consultarCorreo($RecibeDatosMinorista['codgoVenta_vendedor']);
 
-                // // Se genera el código de despacho que será solicitado por el despachador
-                $Ale_CodigoDespacho = mt_rand(0001,9999);
-
-                // $DatosCorreo = [
-                //     'informacion_pedido' => $Pedido, // ID_Pedidos, seccion, producto, cantidad, opcion, precio, total, numeroorden, fecha, hora, montoDelivery, montoTienda, montoTotal, despacho, formaPago, codigoPago, capture
-                //     'informacion_usuario' => $Usuario, //nombre_usu, apellido_usu, cedula_usu, telefono_usu, correo_usu, Estado_usu, Ciudad_usu, direccion_usu
-                //     'informacion_tienda' => $Tienda, //ID_Tienda, correo_AfiCom, nombre_Tien
-                //     'Codigo_despacho' => $Ale_CodigoDespacho
-                // ];
-
-                // // echo '<pre>';
-                // // print_r($DatosCorreo);
-                // // echo '</pre>';
-                // // exit;
-
-                $Datos = [
-                    'Codigo_despacho' => $Ale_CodigoDespacho
+                $DatosCorreo = [
+                    'informacion_pedido' => $PedidoMayorista, // ID_Pedido_May, seccion_May, producto_May, cantidad_May, opcion_May, precio_May, total_May, numeroorden_May, fecha, hora, montoTotal
+                    'informacion_vendedor' => $Vendedor, // nombre_AfiVen, apellido_AfiVen, correo_AfiVen
+                    'nombre_minorista' => $RecibeDatosMinorista['nombre_minorista'],
+                    'rif_minorista' => $RecibeDatosMinorista['rif_minorista']
                 ];
+
+                // echo '<pre>';
+                // print_r($DatosCorreo);
+                // echo '</pre>';
+                // exit;
 
                 // // CORREOS
                 // // **************************************** 
                 // echo 'Correos';
-                // //Carga la plantilla de correo recibo de compra dirigida al usuario
+                //Carga la plantilla de correo recibo de compra dirigida al usuario
                 // $this->correo('reciboCompra_mail', $DatosCorreo); 
 
-                // //Carga la plantilla de correo orden de compra dirigida al cliente y al marketplace
-                // $this->correo('ordenCompra_mail', $DatosCorreo); 
+                //Carga la plantilla de correo orden de compra dirigida al cliente y al marketplace
+                $this->correo('ordenCompraMayorista_mail', $DatosCorreo); 
 
                 $this->vista('header/header');
-                $this->vista('view/RecibePedidoMayorista_V', $Datos);
+                $this->vista('view/RecibePedidoMayorista_V');
             }
             else{
                 header('location:' . RUTA_URL . '/Inicio_C/NoVerificaLink');

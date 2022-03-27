@@ -58,6 +58,16 @@
 .br_3{
 	display: none;
 }
+.caption--general{
+	font-weight: bold;
+	text-align: center !important;
+	margin-bottom: 1%
+}
+.Contenedor--centrado{
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
 .comandoMenu_Inicio{
 	background-color: var(--OficialClaro);
 	border-radius: 8px !important;

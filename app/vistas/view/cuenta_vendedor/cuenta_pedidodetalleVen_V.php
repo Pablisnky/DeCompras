@@ -94,7 +94,7 @@
                     <thead class="tabla_inventario--thead">
                         <th class="">Cant.</th>
                         <th class="">Producto</th>
-                        <th class="">Precio</th>
+                        <th class="">Precio ud</th>
                         <th class="">Total</th>
                     </thead>
                     <tbody class="tabla_inventario--tbody">

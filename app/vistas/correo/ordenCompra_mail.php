@@ -1,3 +1,4 @@
+<!-- Invocado desde sRecibePedidoMayorista_C.php -->
 <?php
     $email_subject = $DatosCorreo['informacion_tienda'][0]['nombre_Tien'] .", nuevo pedido para despachar";
     $email_to = $DatosCorreo['informacion_tienda'][0]['correo_AfiCom'] ;

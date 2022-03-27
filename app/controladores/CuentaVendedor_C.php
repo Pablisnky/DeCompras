@@ -69,10 +69,14 @@
         //llamado desde A_Cuenta_clientesVen.js
         public function detallesClientesVen($ID_Minorista){  
             //CONSULTA un cliente de un vendedor especifico
-            $Detalle_Cliente = $this->ConsultaVendedor_M->consultarDetalleClientes_Ven($ID_Minorista);
+            $Detalle_Cliente = $this->ConsultaVendedor_M->consultarDatosMinorista($ID_Minorista);
             
+            //CONSULTA el detalle de un pedido de un minorista especifico
+            $Pedido = $this->ConsultaVendedor_M->consultarPedidoMinorista($ID_Minorista);
+
             $Datos = [
-                'detallecliente' => $Detalle_Cliente, //ID_AfiliadoMin, nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, codigodespacho
+                'cliente' => $Detalle_Cliente,// nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, fechaAfiliacion
+                'pedido' => $Pedido, // numeroorden_May, factura, montoTotal, DATE_FORMAT(fecha,'%d-%m-%y') AS FechaPedido
                 'nombreMay' => $this->Mayorista,
                 'nombreVen' => $_SESSION['Nombre_Vendedor'],
                 'apellidoVen' => $_SESSION['Apellido_Vendedor']
@@ -83,7 +87,7 @@
             // echo '</pre>';
             // exit();
 
-            $this->vista('view/cuenta_vendedor/cuenta_ClientedetalleVen_V', $Datos);
+            $this->vista('view/cuenta_vendedor/cuenta_clientedetalleVen_V', $Datos);
         }
 
         //llamado desde cuenta_clientesVen_V.php

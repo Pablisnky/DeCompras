@@ -37,25 +37,25 @@
 
                 <div class="contGeneral">  
                     <div class="contInputRadio">     
-                        <!-- <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosUsuario"/> -->
+                        <!-- <input type="radio" name="entrega" id="Domicilio_No" value="Domicilio_No"  form="DatosPedido"/> -->
                         <!-- <label class="contInputRadio__label" for="Domicilio_No">Recoger pedido en tienda: 0,00 Bs.</label> -->
                     </div>                    
                     <div class="contInputRadio">
-                        <!-- <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosUsuario" checked/> -->
+                        <!-- <input type="radio" name="entrega" id="Domicilio_Si" value="Domicilio_Si" form="DatosPedido" checked/> -->
                         <!-- <label class="contInputRadio__label" for="Domicilio_Si">Entrega a domicilio: <?php echo number_format($Datos['Delivery'], 2, ",", ".");?> Bs.</label> -->
                         <input class="ocultar" type="text" id="PrecioEnvio" value="<?php echo $Datos['Delivery'];?>"/>
                     </div>     
                     
                     <!--DIV ALIMENTADO DESDE E_Vitrina.js PedidoEnCarrito() -->
                     <div>
-                        <h2 class="h2_2">Monto del pedido: <input type="text" form="DatosUsuario" name="montoTienda" class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
+                        <h2 class="h2_2">Monto del pedido: <input type="text" form="DatosPedido" name="montoTienda" class="input_6" id="MontoTienda" readonly="readondly"/> Bs.</h2>
 
                         <h2 class="h2_2 ocultar">Comisión PedidoRemoto: <input type="text" class="input_6" id="Comision" readonly="readondly"/> Bs.</h2>
 
-                        <!-- <h2 class='oculta'>Monto de envio:<input type='text' form="DatosUsuario" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['Delivery'], 2, ",", ".");?>' readonly="readondly"/> Bs.</h2> -->
+                        <!-- <h2 class='oculta'>Monto de envio:<input type='text' form="DatosPedido" name="despacho" id="Despacho_2" class='input_6' value='<?php echo number_format($Datos['Delivery'], 2, ",", ".");?>' readonly="readondly"/> Bs.</h2> -->
 
-                        <h2 class="h2_2 h2_3 ocultar">Monto del pedido: <input type="text" form="DatosUsuario" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
-                        <h2 class="h2_2 h2_3"><input type="text" form="DatosUsuario" name="" class="input_6 input_7" id="MontoTotalDolares" readonly="readondly"/> $</h2>
+                        <h2 class="h2_2 h2_3 ocultar">Monto del pedido: <input type="text" form="DatosPedido" name="montoTotal" class="input_6 input_7" id="MontoTotal" readonly="readondly"/> Bs.</h2>
+                        <h2 class="h2_2 h2_3"><input type="text" form="DatosPedido" name="" class="input_6 input_7" id="MontoTotalDolares" readonly="readondly"/> $</h2>
 
                         <small class="small_1 small_1A">Cambio oficial a tasa del BCV <strong class="strong_1">( 1 $ = <?php echo number_format($Datos['DolarHoy'], 4, ",", ".");?> Bs.)</strong></small>
                     </div>
@@ -63,14 +63,14 @@
 
             <!-- CODIGO DE DESPACHO -->                         
             <div class="contFlex50">
-                <input class="input--despacho" id="CodigoVenta" placeholder="Código de despacho" autocomplete="off" onkeydown="codigoVenta(this.value)" onkeyup="codigoVenta(this.value)"/>
+                <input class="input--despacho" name="codigo_venta" id="CodigoVenta" form="DatosPedido"  placeholder="Código de despacho" autocomplete="off" onkeydown="codigoVenta(this.value)" onkeyup="codigoVenta(this.value)"/>
             </div>
         </div>
     </section>
     
     <section>         
         <div class="contOculto" id="Muestra_datosMinorista">
-             <form action="../../RecibePedidoMayorista_C" method="POST" id="DatosUsuario"> <!-- onsubmit="return validarDespacho()" -->
+             <form action="../../RecibePedidoMayorista_C" method="POST" id="DatosPedido"> <!-- onsubmit="return validarDespacho()" -->
                 
                 <!--LOS DATOS DEL MINORISTA vienen de A_VitrinaMayorista.js por medio de Llamar_datosMinorista()-->
                 <article>
@@ -84,13 +84,13 @@
                             <!-- NOMBRE MINORISTA-->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>Nombre</label>
-                                <input class="input_13 borde_1" type="text" id="NombreMinorista"/>
+                                <input class="input_13 borde_1" type="text" name="nombre_minorista" id="NombreMinorista"/>
                             </div>
 
                             <!-- RIF MINORISTA -->
                             <div class="contenedor_29 contenedor_29--label">
                                 <label>RIF</label>
-                                <input class="input_13 borde_1" type="text" id="RifMinorista"/>
+                                <input class="input_13 borde_1" type="text" name="rif_minorista" id="RifMinorista"/>
                             </div>
 
                             <!-- CODIGO MINORISTA -->
