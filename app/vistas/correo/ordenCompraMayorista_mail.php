@@ -123,7 +123,6 @@
                 
                 <img src="https://pedidoremoto.com/public/images/logo.png">
                 <a href="https://www.pedidoremoto.com">www.pedidoremoto.com</a>
-                
             </body>
         </html>';
 

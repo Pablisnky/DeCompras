@@ -7,7 +7,7 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 4.3269;
+            $this->Dolar = 4.3642;
             $this->Reserve = 4;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar

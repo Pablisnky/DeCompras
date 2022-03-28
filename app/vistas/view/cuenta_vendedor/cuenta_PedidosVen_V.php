@@ -17,8 +17,14 @@
                 <div class="contenedor_106--pedidos">
                     <?php
                     // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
-                    if($row['factura'] != 'No Asignada' && $row['pagado'] == 0){    ?>
-                        <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check"></i></span> <?php 
+                    if($row['factura'] != 'No Asignada' && $row['pagado'] == 0){  
+                        foreach($Datos['dias'] as $Key) : 
+                            if($Key['factura'] == $row['factura']){    ?>
+                                <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check"></i></span> 
+                                <span class="span_21 span_22 borde_1"><?php echo $Key['dias'];?></span>
+                                <?php 
+                            }
+                        endforeach;
                     }
                     // PEDIDO FACTURADO Y PAGADO
                     else if($row['pagado'] == 1){  ?>

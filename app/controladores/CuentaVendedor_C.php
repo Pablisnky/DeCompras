@@ -207,7 +207,7 @@
                 
         //llamado desde header_AfiVen.php
         public function pedidosVen(){            
-            //CONSULTA las clientes de un vendedor especifico
+            //CONSULTA los pedidos de un vendedor especifico
             $PedidosVen = $this->ConsultaVendedor_M->consultarPedidos_Ven($_SESSION['ID_Vendedor']);//Sesion creadas en Login_C
 
             $Ordenes = []; //contiene todas las ordenes de un vendedor
@@ -215,24 +215,27 @@
                 $Nro_Orden = $Key['numeroorden_May'];
                 array_push($Ordenes, $Nro_Orden);
             endforeach;
+            // echo 'Pedidos de un vendedor';
             // echo '<pre>';
             // print_r($Ordenes);
             // echo '</pre>';
-            // exit;
+            // // exit;
 
-            //Consulta las ordenes que tienen pagos abonados
-            $OrdeneseAbonadas_2 = []; // Contienen solo ordenes abonadas
+            //Consulta las ordenes que tienen pagos abonados 
+            $PedidosFacturadosAbonados = []; // Contienen solo ordenes abonadas
             $OrdeneseAbonadas = $this->ConsultaVendedor_M->consultarOrdeneseAbonadas($Ordenes);
             foreach($OrdeneseAbonadas as $Key)    :
                 $Nro_Orden_2 = $Key['numeroorden_May'];
-                array_push($OrdeneseAbonadas_2, $Nro_Orden_2);
+                array_push($PedidosFacturadosAbonados, $Nro_Orden_2);
             endforeach;
+            // echo 'Pedidos Facturados';
             // echo '<pre>';
-            // print_r($OrdeneseAbonadas_2);
+            // print_r($PedidosFacturadosAbonados);
             // echo '</pre>';
             // // exit;
             
-            $OrdenesSinAbono = array_diff($Ordenes, $OrdeneseAbonadas_2);
+            $OrdenesSinAbono = array_diff($Ordenes, $PedidosFacturadosAbonados);
+            // echo 'Pedidos Sin Abonar';
             // echo '<pre>';
             // print_r($OrdenesSinAbono);
             // echo '</pre>';
@@ -240,11 +243,12 @@
 
             //CONSULTA el saldo total abonado en las ordenes seleccionadas  
             $Ordenesedefinitiva = [];
-            $DeudasEnPedido = $this->ConsultaVendedor_M->consultarDeudasEnPedido_Ven($OrdeneseAbonadas_2);
+            $DeudasEnPedido = $this->ConsultaVendedor_M->consultarDeudasEnPedido_Ven($PedidosFacturadosAbonados);
             // echo '<pre>';
             // print_r($DeudasEnPedido);
             // echo '</pre>';
 
+            //Se calcula cuanto es la deuda por pagar de cada pedido
             foreach($DeudasEnPedido as $Key)    :
                 $Nro_Orden_3 = $Key[0]['numeroorden_May']; 
                 $TotalAbonado = $Key[0]['TotalAbonado'];
@@ -265,13 +269,44 @@
             // echo '</pre>';
             // exit;
 
+            // Se calcula cuantos dias se tienen disponibles para pagar cada pedido
+            // Consulta pedidos facturados
+            $PedidosFacturados = $this->ConsultaVendedor_M->consultarPedidosFacturados($_SESSION['ID_Vendedor']);
+          
+            $DiasRestantes = [];
+            foreach($PedidosFacturados as $Key) :
+                //Se suman 15 dias a la fecha del pedido
+                $FechaMaximaPago = date("d-m-Y", strtotime($Key['FechaPedido'] . "+ 15 days"));
+                // echo $FechaMaximaPago . '<br>';
+
+                //Se convierten las fechas en un objeto
+                $datetime1 = date_create($Key['FechaPedido']);
+                $datetime2 = date_create($FechaMaximaPago);
+
+                $Hoy = date("d-m-Y");
+                $Hoy = date_create($Hoy);
+
+                if($datetime1 < $datetime2){
+                    //Se obtiene la diferencia en dias entre las dos fechas
+                    $interval = date_diff($datetime2, $Hoy);
+
+                    $OrdenesEnCurso = ['factura' => $Key['factura'], 'dias' => $interval->d];
+                    array_push($DiasRestantes, $OrdenesEnCurso);
+                }     
+            endforeach;
+            // echo '<pre>';
+            // print_r($DiasRestantes);
+            // echo '</pre>';
+            // exit;
+
             $Datos = [
                 'pedidos_ven' => $PedidosVen, //nombre_AfiMin, numeroorden_May, montoTotal, FechaPedido, HoraPedido, factura, pagado
-                'deuda' => $Ordenesedefinitiva, //deuda, numeroorden_May 
+                'deuda' => $Ordenesedefinitiva, // deuda, numeroorden_May 
                 'ordenesSinAbono' => $OrdenesSinAbono,
                 'nombreMay' => $this->Mayorista,
                 'nombreVen' => $_SESSION['Nombre_Vendedor'],
-                'apellidoVen' => $_SESSION['Apellido_Vendedor']
+                'apellidoVen' => $_SESSION['Apellido_Vendedor'],
+                'dias' => $DiasRestantes // factura, dias 
             ];
             
             // echo '<pre>';

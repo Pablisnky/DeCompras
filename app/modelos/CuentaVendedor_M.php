@@ -264,6 +264,25 @@
             }
         }   
 
+        // SELECT de pedidos facturados de un vendedor  
+        public function consultarPedidosFacturados($ID_Vendedor){ 
+            $stmt = $this->dbh->prepare(
+                "SELECT factura, DATE_FORMAT(fecha, '%d-%m-%Y') AS FechaPedido
+                FROM pedidomayorista  
+                INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin=minorista.ID_AfiliadoMin
+                WHERE minorista.ID_Vendedor  = :ID_VENDEDOR AND factura != 'No Asignada'"
+            );
+            
+            $stmt->bindParam(':ID_VENDEDOR', $ID_Vendedor, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }   
+
 
 
 
