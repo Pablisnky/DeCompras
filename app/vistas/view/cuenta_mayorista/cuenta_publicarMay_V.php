@@ -63,6 +63,14 @@ if(!empty($_SESSION["ID_Mayorista"])){
                         </div>  
                         <br>
                         
+                        <!-- DIAS DE CREDITO --> 
+                        <select class="select_2 borde_1" id="" name="diasCreditoMay">
+                            <option>Dias de credito</option>
+                            <option>8</option>
+                            <option>15</option>
+                        </select>
+                        <br>
+
                         <!-- Recibe Ajax desde SeccionesDisponiblesMay_Ajax.php -->
                         <div id="Mostrar_Secciones"></div>
                     </div>          

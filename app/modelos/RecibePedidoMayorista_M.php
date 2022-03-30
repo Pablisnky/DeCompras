@@ -42,6 +42,7 @@
             $stmt->bindParam(':CANTIDAD', $Cantidad);
             $stmt->bindParam(':PRECIO', $Precio);
             $stmt->bindParam(':TOTAL', $Total);
+            // $stmt->bindParam(':TOTAL', $RecibeDatosMinorista['']);
 
              //Se ejecuta la inserción de los datos en la tabla
             if($stmt->execute()){

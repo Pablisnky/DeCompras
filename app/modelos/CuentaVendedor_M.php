@@ -188,6 +188,7 @@
             }
         }     
 
+        // CONSULTA CON UN POSIBLE ERROR - VERIFICAR QUE NRO_ORDEN NO EXITE
         //SELECT del saldo total abonado a un pedido
         public function consultarOrdeneseAbonadas($Ordenes){ 
             //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
@@ -270,7 +271,7 @@
                 "SELECT factura, DATE_FORMAT(fecha, '%d-%m-%Y') AS FechaPedido
                 FROM pedidomayorista  
                 INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin=minorista.ID_AfiliadoMin
-                WHERE minorista.ID_Vendedor  = :ID_VENDEDOR AND factura != 'No Asignada'"
+                WHERE minorista.ID_Vendedor = :ID_VENDEDOR AND factura != 'No Asignada'"
             );
             
             $stmt->bindParam(':ID_VENDEDOR', $ID_Vendedor, PDO::PARAM_INT);
@@ -282,6 +283,40 @@
                 return  'Existe un fallo';
             }
         }   
+
+        // SELECT de dias de credito por cada factura de un vendedor especifico 
+        public function consultarDiasCredito($PedidosFacturados){
+            //Debido a que $PedidosFacturados es un array con todas los Nro. de factura del vendedor especificado, deben consultarse uno a uno mediante un ciclo
+            $AlmacenarDiasCredito = [];
+            foreach($PedidosFacturados as $key)  :
+                $stmt = $this->dbh->prepare(
+                    "SELECT DiasCreditoMay, factura, productosmayorista.ID_ProductoMay
+                    FROM productosmayorista 
+                    INNER JOIN detallepedidomayorista ON productosmayorista.ID_ProductoMay=detallepedidomayorista.ID_ProductoMay 
+                    INNER JOIN pedidomayorista ON detallepedidomayorista.numeroorden_May=pedidomayorista.numeroorden_May 
+                    WHERE factura = :FACTURA
+                    GROUP BY factura, DiasCreditoMay" 
+                );
+                
+                $stmt->bindParam(':FACTURA', $key['factura'], PDO::PARAM_INT);
+            
+                $stmt->execute();
+                
+                array_push($AlmacenarDiasCredito, $stmt->fetchAll(PDO::FETCH_ASSOC));
+            endforeach;
+            return $AlmacenarDiasCredito;
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

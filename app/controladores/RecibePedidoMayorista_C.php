@@ -11,10 +11,8 @@
         }
         
         //Invocado en carritoMayorista_V.php
-        public function index(){    
-            $Verfica_pedido = $_SESSION['verfica_pedido'];  
-            
-            if($Verfica_pedido == 2022){// Anteriormente en CarritoMayorista_C/index se generó la variable $_SESSION["verfica_pedido"] con un valor de 1906; con esto se evita que no se pueda recarga esta página.
+        public function index(){              
+            if($_SESSION['verfica_pedido'] == 'VER_PED'){// Anteriormente en CarritoMayorista_C/index se generó la variable $_SESSION["verfica_pedido"] con esto se evita que no se pueda recarga esta página.
                 unset($_SESSION['verfica_pedido']);//se borra la sesión verifica.        
             
                 if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['codigoMinorista'])){
@@ -36,7 +34,7 @@
                     //Se genera un número Ale_NroOrden que sera el numero de orden del pedido
                     $Ale_NroOrden = mt_rand(1000000,999999999);
                     
-                    //El pedido como es un string en formato json se recibe sin filtrar o sanear desde vitrina.js PedidoEnCarrito() para que el metodo jsodecode lo pueda reconocer y convertir en un array.
+                    //El pedido como es un string en formato json se recibe sin filtrar o sanear desde E_VitrinaMayorista.js por medio de PedidoEnCarrito() para que el metodo jsodecode lo pueda reconocer y convertir en un array.
                     $RecibeDirecto = $_POST['pedido'];
 
                     $Resultado = json_decode($RecibeDirecto, true); 
@@ -63,7 +61,6 @@
                             //Se INSERTAN los detalles del pedido en la BD
                             $this->ConsultaRecibePedidoMayorista_M->insertarDetallePedidoMayorista( $Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total);
                             
-                            // Se ACTUALIZA el inventario de los productos pedidos
                             //Se consulta la cantidad de existencia del producto
                             $Existencia = $this->ConsultaRecibePedidoMayorista_M->consultarExistenciaMayorista($ID_Opcion);
                         
@@ -74,6 +71,7 @@
                             //Se resta lo que el usuario pidio y el resultado se introduce en BD
                             $Inventario = $Key['cantidadMay'] - $Cantidad;
                             
+                            // Se ACTUALIZA el inventario de los productos pedidos
                             $this->ConsultaRecibePedidoMayorista_M->UpdateInventarioMayorista($ID_Opcion, $Inventario);
                         endforeach;
                     }

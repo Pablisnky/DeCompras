@@ -40,6 +40,9 @@ function conexionAJAX(){
     function respuesta_clientesVen(){
         if (peticion.readyState == 4){
             if(peticion.status == 200){
+                //Coloca el cursor en el top de la pagina
+                window.scroll(0, 0)
+                
                 document.getElementById('Mostrar_cliente').style.display = "block"
                 document.getElementById('Mostrar_cliente').innerHTML = peticion.responseText;
             } 

@@ -343,7 +343,7 @@
         //SELECT de todos los productos que tiene un mayorista especifico
         public function consultarTodosProductosMayorista($ID_Mayorista){
             $stmt = $this->dbh->prepare(
-                "SELECT productosmayorista.ID_ProductoMay, productosmayorista.destacarMay, productoMay, opcionesmayorista.ID_OpcionMay, opcionMay, opcionesmayorista.precioBolivarMay, opcionesmayorista.precioDolarMay, cantidadMay, disponibleMay, seccionesmayorista.seccionMay, imagenesmayorista.nombre_imgMay
+                "SELECT productosmayorista.ID_ProductoMay, productoMay, opcionesmayorista.ID_OpcionMay, opcionMay, opcionesmayorista.precioBolivarMay, opcionesmayorista.precioDolarMay, cantidadMay, disponibleMay, seccionesmayorista.seccionMay, imagenesmayorista.nombre_imgMay
                 FROM mayorista 
                 INNER JOIN seccionesmayorista ON mayorista.ID_Mayorista=seccionesmayorista.ID_Mayorista 
                 INNER JOIN seccionesmayorista_productosmayorista ON seccionesmayorista.ID_SeccionMay=seccionesmayorista_productosmayorista.ID_SeccionMay 
@@ -368,7 +368,7 @@
         //SELECT de los productos de una sección especifica en un mayorista
         public function consultarProductosMayorista($ID_Mayorista, $Seccion){
             $stmt = $this->dbh->prepare(
-                "SELECT productosmayorista.ID_ProductoMay, destacarMay, productoMay, opcionesmayorista.ID_OpcionMay, opcionMay, opcionesmayorista.precioBolivarMay, opcionesmayorista.precioDolarMay, cantidadMay, disponibleMay, seccionesmayorista.ID_SeccionMay, seccionesmayorista.seccionMay, imagenesmayorista.nombre_imgMay
+                "SELECT productosmayorista.ID_ProductoMay, productoMay, opcionesmayorista.ID_OpcionMay, opcionMay, opcionesmayorista.precioBolivarMay, opcionesmayorista.precioDolarMay, cantidadMay, disponibleMay, seccionesmayorista.ID_SeccionMay, seccionesmayorista.seccionMay, imagenesmayorista.nombre_imgMay
                 FROM mayorista
                 INNER JOIN seccionesmayorista ON mayorista.ID_Mayorista=seccionesmayorista.ID_Mayorista 
                 INNER JOIN seccionesmayorista_productosmayorista ON seccionesmayorista.ID_SeccionMay=seccionesmayorista_productosmayorista.ID_SeccionMay
@@ -430,7 +430,7 @@
         //SELECT de un producto especificao de un mayorista determinada
         public function consultarDescripcionProductoMay($ID_Mayorista, $ID_Producto){
             $stmt = $this->dbh->prepare(
-                "SELECT productosmayorista.ID_ProductoMay, destacarMay, opcionesmayorista.ID_OpcionMay, productoMay, opcionMay, precioBolivarMay, precioDolarMay, cantidadMay, disponibleMay, seccionMay, seccionesmayorista.ID_SeccionMay, seccionesmayorista_productosmayorista.ID_SP 
+                "SELECT productosmayorista.ID_ProductoMay, opcionesmayorista.ID_OpcionMay, productoMay, opcionMay, precioBolivarMay, precioDolarMay, cantidadMay, disponibleMay, seccionMay, seccionesmayorista.ID_SeccionMay, seccionesmayorista_productosmayorista.ID_SP 
                 FROM mayorista 
                 INNER JOIN seccionesmayorista ON mayorista.ID_Mayorista=seccionesmayorista.ID_Mayorista 
                 INNER JOIN seccionesmayorista_productosmayorista ON seccionesmayorista.ID_SeccionMay=seccionesmayorista_productosmayorista.ID_SeccionMay 

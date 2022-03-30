@@ -12,8 +12,7 @@
 
         // llamado desde A_VitrinaMayorista.js por medio de llamar_PedidoEnCarrito()
         public function index(){  
-            $Verfica_pedido = 2022;  
-            $_SESSION['verfica_pedido'] = $Verfica_pedido; 
+            $_SESSION['verfica_pedido'] = 'VER_PED'; 
             //Se crea esta sesion para impedir que se acceda a la pagina que procesa el formulario (RecibePedidoMayorista_V.php) o se recargue mandandolo varias veces a la base de datos
                         
             //Solicita el precio del dolar

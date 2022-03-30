@@ -12,38 +12,21 @@
         if($Datos['pedidos_ven'] != Array ()){ 
             foreach($Datos['pedidos_ven'] as $row)  : 
                 $Nro_Orden = $row['numeroorden_May'];   ?>
-
-                    <!-- INDICADOR DE DEUDA  -->
-                <div class="contenedor_106--pedidos">
-                    <?php
-                    // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
-                    if($row['factura'] != 'No Asignada' && $row['pagado'] == 0){  
-                        foreach($Datos['dias'] as $Key) : 
-                            if($Key['factura'] == $row['factura']){    ?>
-                                <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check"></i></span> 
-                                <span class="span_21 span_22 borde_1"><?php echo $Key['dias'];?></span>
-                                <?php 
-                            }
-                        endforeach;
-                    }
-                    // PEDIDO FACTURADO Y PAGADO
-                    else if($row['pagado'] == 1){  ?>
-                        <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check-double"></i></span>
-                        <?php
-                    }
-                    // PEDIDO SIN FACTURAR
-                    else if($row['factura'] == 'No Asignada') {  ?>
-                           <span class="span_21 borde_1" style="background-color:;"><i class="far fa-clock"></i></span>
-                        <?php
-                    }
-                    // PEDIDO FACTURADO Y QUE HA PERDIDO LA GANANCIA POR COMISION
-                    else{   ?>
-                        <span class="span_21 borde_1" style="background-color: yellow;"><i class="fas fa-times"></i></span>
-                        <?php 
-                    }   ?>
-                </div>
-
                 <div class="cont_clientesVen borde_1" onclick="Llamar_pedidosVen('<?php echo $Nro_Orden;?>')">
+
+                    <?php
+                    // // PEDIDO FACTURADO Y PAGADO
+                    // else if($row['pagado'] == 1){  ?>
+                         <!-- <span class="span_21 borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check-double"></i></span> -->
+                     <?php      
+                                
+                    // }
+                    // // PEDIDO FACTURADO Y QUE HA PERDIDO LA GANANCIA POR COMISION
+                    // else{   ?>
+                     <!-- <span class="span_21 borde_1" style="background-color: yellow;"><i class="fas fa-times"></i></span> -->
+                        <?php 
+                    // }   ?>
+
                     <div style="grid-column-start: 1; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">Razon social</label>
                         <label class="font--TituloTarjetaCliente"><?php echo $row['nombre_AfiMin'];?></label>
@@ -94,7 +77,28 @@
                     <div style="grid-column-start: 2; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">Hora</label>
                         <label><?php echo $row['HoraPedido'];?></label>
-                    </div> 
+                    </div>  
+                    <!-- INDICADOR DE DEUDA  -->
+                    <div style="background-color: ;grid-column-start: 1; grid-column-end: 4; position: relative; bottom: 140%">
+                    <?php
+                    // PEDIDO SIN FACTURAR
+                    if($row['factura'] == 'No Asignada') {  ?>
+                            <span class="span_21 borde_1" style="background-color:;"><i class="far fa-clock"></i></span>
+                         <?php
+                    }
+                    // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
+                    else if($row['factura'] != 'No Asignada' && $row['pagado'] == 0){                          
+                        foreach($Datos['dias'] as $Key) : 
+                            if($row['factura'] == $Key['factura']){    ?>
+                                <div class="contenedor_106--pedidos">
+                                    <span class="span_21 span_21_A borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check"></i></span> 
+                                    <span class="span_21 span_21_A borde_1"><?php echo $Key['dias'];?></span>
+                                </div>  
+                                <?php 
+                            }
+                       endforeach;
+                    }   ?>
+                </div> 
                 </div>
                 <?php
             endforeach; 

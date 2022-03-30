@@ -40,6 +40,9 @@ function conexionAJAX(){
     function respuesta_pedidosVen(){
         if (peticion.readyState == 4){
             if(peticion.status == 200){
+                //Coloca el cursor en el top de la pagina
+                window.scroll(0, 0)
+                
                 document.getElementById('Mostrar_detallepedidosVen').style.display = "block"
                 document.getElementById('Mostrar_detallepedidosVen').innerHTML = peticion.responseText;
             } 

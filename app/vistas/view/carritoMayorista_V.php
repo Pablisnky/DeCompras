@@ -77,7 +77,7 @@
                     <div class="contenedor_24">
                         <i class="fas fa-times spanCerrar font--negro" onclick="ocultarListadoMay('Muestra_datosMinorista')"></i> 
                         <header>
-                            <h1 class="h1_1">Datos del cliente <?php echo $_SESSION['verfica_pedido']?></h1>
+                            <h1 class="h1_1">Datos del cliente</h1>
                         </header>
 
                         <div class="contFlex" style="position: relative;">
