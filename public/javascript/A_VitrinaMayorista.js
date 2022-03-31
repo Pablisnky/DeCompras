@@ -92,7 +92,7 @@ function respuesta_AgregarPedidoEnCarrito(){
     }    
 }
 //****************************************************************************************************
-//Muestra los productos que tiene una sección
+//Muestra los productos que tiene una sección, invocada en 
 function llamar_OpcionesMayorista(ID_Mayorista, ID_Seccion){
     var url="../../Opciones_Mayorista_C/index/" + ID_Mayorista + "/" + ID_Seccion;
     http_request.open('GET', url, true);

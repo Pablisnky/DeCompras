@@ -10,7 +10,7 @@
             ocultarErrores();
         }
         
-        //Invocado en carritoMayorista_V.php
+        //Invocado en carritoMayorista_V.php 
         public function index(){              
             if($_SESSION['verfica_pedido'] == 'VER_PED'){// Anteriormente en CarritoMayorista_C/index se generó la variable $_SESSION["verfica_pedido"] con esto se evita que no se pueda recarga esta página.
                 unset($_SESSION['verfica_pedido']);//se borra la sesión verifica.        
@@ -39,10 +39,10 @@
 
                     $Resultado = json_decode($RecibeDirecto, true); 
 
-                    // echo '<pre>';
-                    // print_r($Resultado);
-                    // echo '</pre>';
-                    // exit();
+                    echo '<pre>';
+                    print_r($Resultado);
+                    echo '</pre>';
+                    exit();
                     
                     //Se INSERTA el pedido en la BD
                     $this->ConsultaRecibePedidoMayorista_M->insertarPedidoMayorista($RecibeDatosMinorista, $Ale_NroOrden);
@@ -57,9 +57,10 @@
                             $Precio = $Value['Precio'];
                             $Total = $Value['Total'];
                             $ID_Opcion = $Value['ID_Opcion'];
+                            $ID_Producto = $Value['ID_Producto'];
                             
                             //Se INSERTAN los detalles del pedido en la BD
-                            $this->ConsultaRecibePedidoMayorista_M->insertarDetallePedidoMayorista( $Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total);
+                            $this->ConsultaRecibePedidoMayorista_M->insertarDetallePedidoMayorista( $Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total, $ID_Producto);
                             
                             //Se consulta la cantidad de existencia del producto
                             $Existencia = $this->ConsultaRecibePedidoMayorista_M->consultarExistenciaMayorista($ID_Opcion);

@@ -51,7 +51,7 @@
                 <br/>
 
                 <!-- DETALLE DE PAGO -->                         
-                <table class="tabla_inventario">   
+                <table class="tabla">   
                     <caption>Saldo abonado<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarpagoVen/' . $Datos['NroOrden'] . '-' . $Datos['pedido'][0]['montoTotal']?>">Agregar</a></caption>   
                     <thead class="tabla_inventario--thead">
                         <th class="th--n"></th>
@@ -60,7 +60,7 @@
                         <th class="">Metodo de pago</th>
                         <th class=""></th>
                     </thead>
-                    <tbody class="tabla_inventario--tbody">
+                    <tbody class="">
                         <?php 
                         if($Datos['pagos'] != Array ()){ 
                             $Iterador = 1;
@@ -77,7 +77,7 @@
                         }
                         else{   ?>
                             <tr class="tabla_inventario__tr"> 
-                                <td class="td--alerta" colspan="7">Sin pagos registrados</td> 
+                                <td class="td--alerta tabla_inventario--tbody" colspan="7">Sin pagos registrados</td> 
                              </tr>
                                 <?php
                         }
@@ -89,23 +89,24 @@
                 <br/>
 
                 <!-- DETALLE DEL PEDIDO -->        
-                <table class="tabla_inventario">       
+                <table class="tabla">       
                     <caption>Detalle del pedido<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarProductoAPedido/' . $Datos['NroOrden'] ?>">Agregar</a></caption>    
                     <thead class="tabla_inventario--thead">
                         <th class="">Cant.</th>
                         <th class="">Producto</th>
-                        <th class="">Precio ud</th>
+                        <th class="">Precio</th>
                         <th class="">Total</th>
                     </thead>
-                    <tbody class="tabla_inventario--tbody">
+                    <tbody class="">
                         <?php 
                         foreach($Datos['detallepedido_ven'] as $row) :  ?>  
-                            <tr class=""> 
+                            <tr> 
                                 <td><?php echo $row['cantidad_May'];?></td>
                                 <td><?php echo $row['producto_May'];?></td>
                                 <td class="font--mono"><?php echo $row['precio_May'];?></td>
                                 <td class="font--mono"><?php echo $row['total_May'];?></td>
                             </tr> 
+                            <tr class="tabla--tr_1"></tr>
                             <?php 
                         endforeach; 
                         ?>

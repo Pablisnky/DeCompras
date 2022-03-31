@@ -2831,6 +2831,9 @@ body, html{
 	border-collapse: collapse;
 	width: 100%;
 }
+.tabla--tr_1{
+	height: 5px !important;
+}
 .tabla1{
 	width: 90%;
 	margin: auto;

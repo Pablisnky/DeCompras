@@ -243,27 +243,31 @@
 
             //CONSULTA el saldo total abonado en las ordenes seleccionadas
             $Ordenesedefinitiva = [];
-            $DeudasEnPedido = $this->ConsultaVendedor_M->consultarDeudasEnPedido_Ven($PedidosFacturadosAbonados);
+            $SaldoAbonado = $this->ConsultaVendedor_M->consultarDeudasEnPedido_Ven($PedidosFacturadosAbonados);
+            // echo 'SaldoAbonado';
             // echo '<pre>';
-            // print_r($DeudasEnPedido);
+            // print_r($SaldoAbonado);
             // echo '</pre>';
+            // exit;
 
-            //Se calcula cuanto es la deuda por pagar de cada pedido
-            foreach($DeudasEnPedido as $Key)    :
-                $Nro_Orden_3 = $Key[0]['numeroorden_May'];
-                $TotalAbonado = $Key[0]['TotalAbonado'];
-                $MontoTotal = $Key[0]['montoTotal'];
+            if($SaldoAbonado[0][0]['TotalAbonado'] != ''){
+                //Se calcula cuanto es la deuda por pagar de cada pedido
+                foreach($SaldoAbonado as $Key)    :
+                    $Nro_Orden_3 = $Key[0]['numeroorden_May'];
+                    $TotalAbonado = $Key[0]['TotalAbonado'];
+                    $MontoTotal = $Key[0]['montoTotal'];
 
-                // se cambia el formato de los decimales, de coma a punto, para procesar la operacion ( a pesar que en MySQL estan en formato decimal  .)
-                $Total = str_replace(',', '.', $MontoTotal);
-                $Deuda = str_replace(',', '.', $TotalAbonado);
+                    // se cambia el formato de los decimales, de coma a punto, para procesar la operacion ( a pesar que en MySQL estan en formato decimal  .)
+                    $Total = str_replace(',', '.', $MontoTotal);
+                    $Deuda = str_replace(',', '.', $TotalAbonado);
 
-                //Se calcula la deuda pendiente del pedido especifico
-                $Deuda = $Total - $TotalAbonado;
+                    //Se calcula la deuda pendiente del pedido especifico
+                    $Deuda = $Total - $TotalAbonado;
 
-                $OrdeneseAbonadas_3 = ['deuda' => $Deuda, 'numeroordenMay' => $Nro_Orden_3];
-                array_push($Ordenesedefinitiva, $OrdeneseAbonadas_3);
-            endforeach;
+                    $OrdeneseAbonadas_3 = ['deuda' => $Deuda, 'numeroordenMay' => $Nro_Orden_3];
+                    array_push($Ordenesedefinitiva, $OrdeneseAbonadas_3);
+                endforeach;
+            }
             // echo '<pre>';
             // print_r($Ordenesedefinitiva);
             // echo '</pre>';
@@ -400,10 +404,10 @@
                 'apellidoVen' => $_SESSION['Apellido_Vendedor']
             ];
 
-            // echo '<pre>';
-            // print_r($Datos);
-            // echo '</pre>';
-            // exit();
+            echo '<pre>';
+            print_r($Datos);
+            echo '</pre>';
+            exit();
 
             $this->vista('view/cuenta_vendedor/cuenta_pedidodetalleVen_V', $Datos);
         }

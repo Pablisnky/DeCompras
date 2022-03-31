@@ -22,7 +22,7 @@ function PedidoCar(Producto, Cantidad, Total){
 }
 
 //Mediante el constructor de objetos se crea un objeto con todos los productos del pedido, información solicitada al entrar al carrito, este objeto alimenta al array AlContenedor[]
-function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Agregar, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputDisplayCant, Cantidad, Seccion, ID_Opcion, Producto, Opcion, Precio,Total, Existencia, ID_BotonMas, ID_BotonBloqueo){
+function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Agregar, ID_InputCantidad, ID_InputProducto, ID_InputOpcion, ID_InputPrecio, ID_InputTotal, ID_InputDisplayCant, Cantidad, Seccion, ID_Opcion, Producto, Opcion, Precio,Total, Existencia, ID_BotonMas, ID_BotonBloqueo, ID_Producto){
     this.Cont_Seccion = Cont_Seccion
     this.Cont_Leyenda = Cont_Leyenda  
     this.ID_Input_Leyenda = ID_Input_Leyenda
@@ -43,6 +43,7 @@ function ContenedorCar(Cont_Seccion, Cont_Leyenda, ID_Input_Leyenda, ID_Boton_Ag
     this.Existencia = Existencia
     this.ID_BotonMas = ID_BotonMas
     this.ID_BotonBloqueo = ID_BotonBloqueo
+    this.ID_Producto = ID_Producto
 }
 
 // ************************************************************************************************** 
@@ -168,6 +169,7 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
         
         //Se recibe el control del formulario con el nombre "opcion"
         Opcion = form.opcion
+        // console.log(Opcion)  
 
         // En el caso que la seccion tenga un solo producto, se añade un input radio, sino se añade el Opcion.legth sera undefined y no entrará en el ciclo for
         if(Opcion.length == undefined){
@@ -248,14 +250,16 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
             if(Opcion[i].checked){
                 Opcion = Opcion[i].value 
                             
-                //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el producto, la opcion y el precio separados por un _ (guion bajo) es necesario separar estos valores, para convertirlos en un array
+                //La Opcion seleccionada contiene el ID_Opcion(asignado en BD), el producto, la opcion, el precio y el ID_Producto separados por un _ (guion bajo) es necesario separar estos valores, para convertirlos en un array
                 let Separado = Opcion.split("_")  
+                console.log(Separado)
 
                 //Se eliminan las comas al final de cada elemento del array
                 Separado[0] = Separado[0].slice(0,-1)//Seccion
                 Separado[1] = Separado[1].slice(0,-1)//ID_Opcion
                 Separado[2] = Separado[2].slice(0,-1)//Producto
                 Separado[3] = Separado[3].slice(0,-1)//Opcion
+                Separado[5] = Separado[5].slice(0,-1)//ID_Producto 
 
                 //Se oculta el boton "Agregar" del elemento donde se hizo click
                 document.getElementById(LabelClick).style.display = "none"
@@ -281,7 +285,7 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
 
                 //Se muestra el precio del producto donde se hizo click
                 Precio = document.getElementById(Input_PrecioClick).value = Separado[4]
-                // console.log(Precio)
+                console.log(Precio)
                    
                 //Si un producto se eliminó en una entrada anterior es necesario activar nuevamente el input donde ira la leyenda y los botones de más y menos
                 document.getElementById(Input_LeyendaClick).style.display = "block"          
@@ -300,7 +304,7 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
                 // console.log(ID_BotonMas + " " + ID_BotonBloqueo )
 
                 //Guarda en el objeto "AlContenedor", la leyenda del producto segun su contenedor de seccion, cada detalle en si es un array, por lo que AlContenedor es un array de objetos
-                Contenedores = new ContenedorCar(LS_ID_Cont_Seccion, LS_ID_Cont_Leyenda, LS_ID_InputLeyenda, LS_ID_BotonAgregar, LS_ID_InputCantidad, LS_ID_InputProducto, LS_ID_InputOpcion, LS_ID_InputPrecio, LS_ID_InputTotal, LS_ID_InputDisplayCant, Cantidad_uno, Separado[0], Separado[1], Separado[2], Separado[3], Separado[4], Separado[4], existencia, ID_BotonMas, ID_BotonBloqueo)
+                Contenedores = new ContenedorCar(LS_ID_Cont_Seccion, LS_ID_Cont_Leyenda, LS_ID_InputLeyenda, LS_ID_BotonAgregar, LS_ID_InputCantidad, LS_ID_InputProducto, LS_ID_InputOpcion, LS_ID_InputPrecio, LS_ID_InputTotal, LS_ID_InputDisplayCant, Cantidad_uno, Separado[0], Separado[1], Separado[2], Separado[3], Separado[4], Separado[4], existencia, ID_BotonMas, ID_BotonBloqueo, Separado[5])
                              
                 //Si la existencia en BD es igual a 1 se oculta el boton de mas y menos para que no se añadan más productos al carrito
                 if(existencia == Cantidad_uno){
@@ -560,11 +564,13 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
         //Se muestra el monto de total de la compra incluyendo comision y envio en Dolares
         document.getElementById("MontoTotalDolares").value = SeparadorMiles(MontoTotalDolares)
         
-        //Se envia a Carrito_V.php todo el pedido que se encuentra en el array de objeto JSON AlContenedor[]
+        //Se envia a CarritoMAyorista_V.php todo el pedido que se encuentra en el array de objeto JSON AlContenedor[]
         console.log(AlContenedor)
-        //1.- Se convierte el JSON en un string
+
+        //1.- Se convierte el JSON "AlContenedor" en un string
         var sendJSON = JSON.stringify(AlContenedor)
         console.log(sendJSON)
+
         //2.- Se envia al input que lo almacena en la vista carritoMayorista_V.php
         document.getElementById('Pedido').value = sendJSON
 

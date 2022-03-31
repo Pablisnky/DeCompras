@@ -64,10 +64,10 @@ if(!empty($_SESSION["ID_Mayorista"])){
                         <br>
                         
                         <!-- DIAS DE CREDITO --> 
-                        <select class="select_2 borde_1" id="" name="diasCreditoMay">
-                            <option>Dias de credito</option>
-                            <option>8</option>
-                            <option>15</option>
+                        <select class="select_2 borde_1" name="diasCreditoMay">
+                            <option value="">Dias de credito</option>
+                            <option value="8">8</option>
+                            <option value="15">15</option>
                         </select>
                         <br>
 

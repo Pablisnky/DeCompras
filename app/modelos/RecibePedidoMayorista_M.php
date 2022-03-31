@@ -27,10 +27,10 @@
             }
         }
         
-        function insertarDetallePedidoMayorista($Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total){
+        function insertarDetallePedidoMayorista($Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total, $ID_Producto){ 
             $stmt = $this->dbh->prepare(
-                "INSERT INTO detallepedidomayorista(numeroorden_May, seccion_May, producto_May, opcion_May,cantidad_May, precio_May, total_May)
-                VALUES(:ALE_N_ORDEN, :SECCION, :PRODUCTO, :OPCION, :CANTIDAD, :PRECIO, :TOTAL)"
+                "INSERT INTO detallepedidomayorista(numeroorden_May, seccion_May, producto_May, opcion_May,cantidad_May, precio_May, total_May, ID_ProductoMay)
+                VALUES(:ALE_N_ORDEN, :SECCION, :PRODUCTO, :OPCION, :CANTIDAD, :PRECIO, :TOTAL, :ID_PRODUCTO)"
             ); 
 
             //Se vinculan los valores de las sentencias preparadas
@@ -42,7 +42,7 @@
             $stmt->bindParam(':CANTIDAD', $Cantidad);
             $stmt->bindParam(':PRECIO', $Precio);
             $stmt->bindParam(':TOTAL', $Total);
-            // $stmt->bindParam(':TOTAL', $RecibeDatosMinorista['']);
+            $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
 
              //Se ejecuta la inserción de los datos en la tabla
             if($stmt->execute()){

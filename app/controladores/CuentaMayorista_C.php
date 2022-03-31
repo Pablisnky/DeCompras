@@ -249,8 +249,7 @@
             // echo "</pre>";
             // exit();
 
-            $verifica_3 = 1906;  
-            $_SESSION['verifica_3'] = $verifica_3; 
+            $_SESSION['PUBLICAR_PRODUCTO'] = 'PUB_PRO'; 
             //Se crea esta sesion para impedir que se recargue la información enviada por el formulario mandandolo varias veces a la base de datos
 
             $this->vista('header/header_AfiMay', $Datos);
@@ -258,13 +257,12 @@
         }
 
         //Invocado en cuenta_publicarMay_V.php recibe el formulario para cargar un nuevo producto de mayorista
-        public function recibeProductoPublicarMay(){
-            // $verifica_2 = $_SESSION['verifica_2'];  
-            // if($verifica_2 == 1906){// Anteriormente en se generó la variable $_SESSION["verfica_2"] con un valor de 1906; con esto se evita que no se pueda recarga la página que carga los productos.
-            //     unset($_SESSION['verifica_2']);//se borra la sesión verifica. 
+        public function recibeProductoPublicarMay(){  
+            if($_SESSION['PUBLICAR_PRODUCTO'] == 'PUB_PRO' ){// Anteriormente en se generó la variable $_SESSION["PUBLICAR_PRODUCTO"] con esto se evita que no se pueda recarga la página que carga los productos.
+                unset($_SESSION['PUBLICAR_PRODUCTO']);//se borra la sesión verifica. 
 
                 //Se reciben todos los campos del formulario, desde cuenta_publicarMay_V.php se verifica que son enviados por POST y que no estan vacios
-                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccionMay']) && !empty($_POST['productoMay']) && !empty($_POST['precioBsMay']) && (!empty($_POST['precioDolarMay']) || $_POST['precioDolarMay'] == 0)){
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccionMay']) && !empty($_POST['productoMay']) && !empty($_POST['precioBsMay']) && !empty($_POST['diasCreditoMay']) && (!empty($_POST['precioDolarMay']) || $_POST['precioDolarMay'] == 0)){
                     // && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
@@ -276,7 +274,8 @@
                         'CantidadMay' => empty($_POST['cantidadMay']) ? 0 : $_POST['cantidadMay'],
                         'DisponibleMay' => empty($_POST['disponibleMay']) ? 0 : 1,
                         'SeccionMay' => filter_input(INPUT_POST, "seccionMay", FILTER_SANITIZE_STRING),
-                        'ID_Mayorista' => filter_input(INPUT_POST, "id_mayorista", FILTER_SANITIZE_STRING)
+                        'ID_Mayorista' => filter_input(INPUT_POST, "id_mayorista", FILTER_SANITIZE_STRING), 
+                        'DiasCreditoMay' => filter_input(INPUT_POST, "diasCreditoMay", FILTER_SANITIZE_STRING)
                     ];
                     // echo '<pre>';
                     // print_r($RecibeProducto);
@@ -374,10 +373,10 @@
 
                 $DatosAgrupados = $RecibeProducto['SeccionMay'] . ',false,' . $ID_ProductoMay;
                 $this->Productos($DatosAgrupados);
-            // }
-            // else{
-            //     $this->Productos('Todos');
-            // } 
+            }
+            else{
+                $this->Productos('Todos');
+            } 
         }
 
         // invocado desde el metodo eliminarProductoMay() - recibeProductoPublicarMay - recibeAtualizarProductoMay - header_AfiMay.php - 
@@ -605,17 +604,19 @@
             // echo '</pre>';
             // exit;
             
-            //Se eliminan los archivo de la carpeta public/images/proveedor/Don_Rigo
+            //Se elimina el archivo de la carpeta public/images/proveedor/Don_Rigo/productos
             foreach($ImageneEliminarMay as $KeyImagenes)  :
                 $NombreImagenEliminar = $KeyImagenes['nombre_imgMay'];
-
-                //Usar en remoto
-                unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/' . $NombreImagenEliminar);
-                    
-                //usar en local
-                // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/' . $NombreImagenEliminar);                
+                if ($NombreImagenEliminar != 'imagen.png'){
+                    //Usar en remoto
+                    unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/productos/' . $NombreImagenEliminar);
+                        
+                    //usar en local
+                    // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/productos/' . $NombreImagenEliminar);   
+                }             
             endforeach;
               
+            $Seccion = $Seccion . ',false,false';
             //Se redirecciona a la vista donde se encontraba el producto eliminado
             $this->Productos($Seccion);
             // $this->vista('view/cuenta_comerciante/cuenta_productos_V', $Datos);

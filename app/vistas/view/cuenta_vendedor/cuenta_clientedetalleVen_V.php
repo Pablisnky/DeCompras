@@ -37,13 +37,13 @@
                 </div> 
             </div>
 
-            <br/>
+            <!-- <br/> -->
 
-            <div class="Contenedor--centrado">   
+            <!-- <div class="Contenedor--centrado">   
                 <label>Deuda Pendiente</label>
                 <br/>       
-                <p class="bandaAlerta">40 $</p> 
-            </div>
+                <p class="bandaAlerta">0 $</p> 
+            </div> -->
 
             <br/><br/>
             

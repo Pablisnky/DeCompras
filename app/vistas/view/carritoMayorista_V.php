@@ -124,6 +124,7 @@
                             </div>  
                         </div>   
                         <div class="contFlex50">
+                            <!-- INPUT id="Pedido" alimentado desde E_VitrinaMayorista por medio de un JSON convertido en string -->
                             <input class="ocultar" type="text" id="Pedido" name="pedido"/>
                             <input class="ocultar" type="text" id="ID_Minorista" name="id_minorista"/>
                             <input class="boton boton--alto boton--largo botonJS" type="submit" value="Generar pedido"/>

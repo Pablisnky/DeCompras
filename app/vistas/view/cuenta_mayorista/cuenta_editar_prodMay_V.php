@@ -16,17 +16,11 @@
         $Seccion = $arr['seccionMay'];
         $Disponible = $arr['disponibleMay'];
         $Cantidad = $arr['cantidadMay'];
-        $Pro_Destacado = $arr['destacarMay'];
     endforeach;  
 
     foreach($Datos['imagenProducto'] as $arr) :
         $ImagenProducto = $arr['nombre_imgMay'];
-    endforeach;  
-    
-    // echo "<pre>";
-    // print_r($Datos);
-    // echo "</pre>";
-    // exit();  
+    endforeach;   
     ?>
     
     <!-- CDN libreria JQuery, necesario para la previsualización de la imagen   --> 
@@ -44,7 +38,7 @@
                     <div>                    
                         <div class="contenedor_119 borde_1 borde_2">
                             <?php
-                            if($ImagenProducto == ''){ ?>
+                            if($ImagenProducto == 'imagen.png'){ ?>
                                 <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="<?php echo RUTA_URL?>/public/images/imagen.png"/>
                                 <label for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                                 <input class="ocultar" type="file" name="imagenProductorMay" id="imgInp"/>

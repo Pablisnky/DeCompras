@@ -42,7 +42,7 @@
             $this->vista("view/carritoMayorista_V", $Datos);
         }        
         
-        // llamado desde A_VitrinaMayorista.js por medio de llamar_PedidoEnCarrito()
+        // llamado desde A_VitrinaMayorista.js por medio de llamar_AgregarPedidoEnCarrito()
         public function AgregarA_PedidoPrevio(){  
             $Verfica_pedido = 2022;  
             $_SESSION['verfica_pedido'] = $Verfica_pedido; 

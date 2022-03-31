@@ -43,6 +43,7 @@
                     // print_r($Resultado);
                     // echo '</pre>';
                     // exit();
+                    // $Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total, $ID_Producto
                     
                     //Se INSERTA el pedido en la BD
                     $this->ConsultaRecibePedidoMayorista_M->insertarPedidoMayorista($RecibeDatosMinorista, $RecibeDatosMinorista['nro_Orden']);
@@ -57,9 +58,10 @@
                             $Precio = $Value['Precio'];
                             $Total = $Value['Total'];
                             $ID_Opcion = $Value['ID_Opcion'];
+                            $ID_Producto = $Value['ID_Producto'];
                             
                             //Se INSERTAN los detalles del pedido en la BD
-                            $this->ConsultaRecibePedidoMayorista_M->insertarDetallePedidoMayorista( $RecibeDatosMinorista['nro_Orden'], $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total);
+                            $this->ConsultaRecibePedidoMayorista_M->insertarDetallePedidoMayorista( $RecibeDatosMinorista['nro_Orden'], $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total, $ID_Producto);
                             
                             // Se ACTUALIZA el inventario de los productos pedidos
                             //Se consulta la cantidad de existencia del producto

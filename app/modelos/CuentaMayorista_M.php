@@ -8,12 +8,13 @@
         //INSERT de un producto
         public function insertarProductoMayorista($RecibeProducto){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO productosmayorista(productoMay) 
-                 VALUES (:PRODUCTO)
+                "INSERT INTO productosmayorista(productoMay, DiasCreditoMay) 
+                 VALUES (:PRODUCTO, :DIAS_CREDITO)
             ");
 
             //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-            $stmt->bindParam(':PRODUCTO', $RecibeProducto['ProductoMay']);
+            $stmt->bindParam(':PRODUCTO', $RecibeProducto['ProductoMay']); 
+            $stmt->bindParam(':DIAS_CREDITO', $RecibeProducto['DiasCreditoMay']); 
 
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){

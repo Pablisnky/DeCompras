@@ -207,7 +207,7 @@
             endforeach;
         }        
 
-        //SELECT del saldo total abonado a un pedido
+        //SELECT del saldo total abonado por cada pedido
         public function consultarDeudasEnPedido_Ven($Ordenes){ 
             //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
             $AlmacenarOrdenes = [];
