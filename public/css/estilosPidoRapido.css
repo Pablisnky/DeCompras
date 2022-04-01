@@ -2831,6 +2831,9 @@ body, html{
 	border-collapse: collapse;
 	width: 100%;
 }
+.tabla--thead{
+	background-color: var(--BordeClaro);
+}
 .tabla--tr_1{
 	height: 5px !important;
 }
@@ -2853,9 +2856,6 @@ body, html{
 }
 .tabla_inventario__td{
 	text-align: center;
-}
-.tabla_inventario--thead{
-	background-color: var(--BordeClaro);
 }
 .tabla_inventario--tbody{
 	line-height: 40px;

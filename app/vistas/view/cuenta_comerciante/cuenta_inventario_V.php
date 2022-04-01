@@ -5,7 +5,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
             
     <div class="contenedor_42">    
         <table class="tabla_inventario">
-            <thead class="tabla_inventario--thead">
+            <thead class="tabla--thead">
                 <th class="">Seccion</th>
                 <th class="">Producto</th>
                 <th class="">Descripcion</th>

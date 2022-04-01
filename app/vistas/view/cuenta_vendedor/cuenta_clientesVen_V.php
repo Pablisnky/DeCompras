@@ -11,7 +11,7 @@
         
         <!-- LISTADO CLIENTES --> 
         <table class="tabla_inventario">            
-            <thead class="tabla_inventario--thead">
+            <thead class="tabla--thead">
                 <th class="th--n"></th>
                 <th class="th_10">Razon social</th>
                 <th class="th_5">Código despacho</th>

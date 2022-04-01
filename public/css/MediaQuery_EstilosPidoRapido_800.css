@@ -1429,6 +1429,9 @@
 .strong_1{
 	font-size: 0.9em;
 }
+.tabla--thead--column--2{
+	width: 50%;
+}
 .tabla1{
 	width: 220%;
 }

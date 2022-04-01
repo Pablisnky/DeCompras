@@ -259,6 +259,7 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
                 Separado[1] = Separado[1].slice(0,-1)//ID_Opcion
                 Separado[2] = Separado[2].slice(0,-1)//Producto
                 Separado[3] = Separado[3].slice(0,-1)//Opcion
+                Separado[4] = Separado[4].slice(0,-1)//Precio
                 Separado[5] = Separado[5].slice(0,-1)//ID_Producto 
 
                 //Se oculta el boton "Agregar" del elemento donde se hizo click
@@ -285,7 +286,6 @@ document.getElementById('Mostrar_OrdenMayorista').addEventListener('click', func
 
                 //Se muestra el precio del producto donde se hizo click
                 Precio = document.getElementById(Input_PrecioClick).value = Separado[4]
-                console.log(Precio)
                    
                 //Si un producto se eliminó en una entrada anterior es necesario activar nuevamente el input donde ira la leyenda y los botones de más y menos
                 document.getElementById(Input_LeyendaClick).style.display = "block"          

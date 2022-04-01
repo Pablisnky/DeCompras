@@ -10,7 +10,7 @@
         <p class="font--titulo">Vendedores</p> 
         <a class="a--vendedor" href="<?php echo RUTA_URL . '/CuentaMayorista_C/agregarVendedor'?>">Agregar</a>     
         <table class="tabla_inventario">
-            <thead class="tabla_inventario--thead">
+            <thead class="tabla--thead">
                 <th></th>
                 <th class="">Nombre</th>
                 <th class="">Apellido</th>

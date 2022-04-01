@@ -376,7 +376,7 @@
 
             //CONSULTA el detalle de un pedido especifico de un vendedor
             $DetallePedidoVen = $this->ConsultaVendedor_M->consultarDetallePedido_Ven($Nro_Orden);
-
+           
             //CONSULTA los abonos parciales realizados un pedido
             $AbonosPedidoVen = $this->ConsultaVendedor_M->consultarAbonosPedido_Ven($Nro_Orden);
 
@@ -404,10 +404,10 @@
                 'apellidoVen' => $_SESSION['Apellido_Vendedor']
             ];
 
-            echo '<pre>';
-            print_r($Datos);
-            echo '</pre>';
-            exit();
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit();
 
             $this->vista('view/cuenta_vendedor/cuenta_pedidodetalleVen_V', $Datos);
         }

@@ -39,10 +39,10 @@
 
                     $Resultado = json_decode($RecibeDirecto, true); 
 
-                    echo '<pre>';
-                    print_r($Resultado);
-                    echo '</pre>';
-                    exit();
+                    // echo '<pre>';
+                    // print_r($Resultado);
+                    // echo '</pre>';
+                    // exit();
                     
                     //Se INSERTA el pedido en la BD
                     $this->ConsultaRecibePedidoMayorista_M->insertarPedidoMayorista($RecibeDatosMinorista, $Ale_NroOrden);

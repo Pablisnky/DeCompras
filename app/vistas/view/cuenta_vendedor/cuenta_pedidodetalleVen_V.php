@@ -53,9 +53,9 @@
                 <!-- DETALLE DE PAGO -->                         
                 <table class="tabla">   
                     <caption>Saldo abonado<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarpagoVen/' . $Datos['NroOrden'] . '-' . $Datos['pedido'][0]['montoTotal']?>">Agregar</a></caption>   
-                    <thead class="tabla_inventario--thead">
+                    <thead class="tabla--thead">
                         <th class="th--n"></th>
-                        <th class="">F. Pago</th>
+                        <th class="">Fecha</th>
                         <th class=" ">Monto</th>
                         <th class="">Metodo de pago</th>
                         <th class=""></th>
@@ -91,9 +91,9 @@
                 <!-- DETALLE DEL PEDIDO -->        
                 <table class="tabla">       
                     <caption>Detalle del pedido<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarProductoAPedido/' . $Datos['NroOrden'] ?>">Agregar</a></caption>    
-                    <thead class="tabla_inventario--thead">
+                    <thead class="tabla--thead">
                         <th class="">Cant.</th>
-                        <th class="">Producto</th>
+                        <th class="tabla--thead--column--2">Producto</th>
                         <th class="">Precio</th>
                         <th class="">Total</th>
                     </thead>
@@ -101,8 +101,8 @@
                         <?php 
                         foreach($Datos['detallepedido_ven'] as $row) :  ?>  
                             <tr> 
-                                <td><?php echo $row['cantidad_May'];?></td>
-                                <td><?php echo $row['producto_May'];?></td>
+                                <td class="td_1"><?php echo $row['cantidad_May'];?></td>
+                                <td class=""><?php echo $row['producto_May'];?></td>
                                 <td class="font--mono"><?php echo $row['precio_May'];?></td>
                                 <td class="font--mono"><?php echo $row['total_May'];?></td>
                             </tr> 

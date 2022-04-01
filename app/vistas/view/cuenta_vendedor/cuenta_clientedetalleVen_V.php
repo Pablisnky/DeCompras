@@ -50,7 +50,7 @@
             <!-- LISTADO DE PEDIDOS FACTURADOS -->        
             <table class="tabla_inventario">            
                 <caption class="caption--general">Pedidos facturados pendientes</caption>
-                <thead class="tabla_inventario--thead">
+                <thead class="tabla--thead">
                     <th class="th--n"></th>
                     <th class="th_5">Factura</th>
                     <th class="th_5">Monto</th>
@@ -58,16 +58,18 @@
                 </thead>
                 <tbody class="tabla_inventario--tbody">
                     <?php 
-                    if($Datos['pedido'] != Array() && $Datos['pedido'][0]['factura'] != 'No Asignada'){
+                    if($Datos['pedido'] != Array()){
                         $Iterador = 1;
-                        foreach($Datos['pedido'] as $row) :  ?>
-                            <tr class="tabla_inventario__tr"> 
-                                <td class="td--center"><?php echo $Iterador; ?></td>
-                                <td><?php echo $row['factura'];?></td>
-                                <td><?php echo $row['montoTotal'];?></td> 
-                                <td><?php echo $row['FechaPedido'];?></td>
-                            </tr> <?php 
+                        foreach($Datos['pedido'] as $row) :  
+                            if($row['factura'] != 'No Asignada'){   ?>
+                                <tr class="tabla_inventario__tr"> 
+                                    <td class="td--center"><?php echo $Iterador; ?></td>
+                                    <td><?php echo $row['factura'];?></td>
+                                    <td><?php echo $row['montoTotal'];?></td> 
+                                    <td><?php echo $row['FechaPedido'];?></td>
+                                </tr> <?php 
                             $Iterador ++;
+                            }
                         endforeach; 
                     }
                     else{   ?>
@@ -85,7 +87,7 @@
             <!-- LISTADO DE PEDIDOS POR DESPACHAR-->        
             <table class="tabla_inventario">            
                 <caption class="caption--general">Pedidos por despachar</caption>
-                <thead class="tabla_inventario--thead">
+                <thead class="tabla--thead">
                     <th class="th--n"></th>
                     <th class="th_5">Nro. Orden</th>
                     <th class="th_5">Monto</th>
@@ -93,16 +95,19 @@
                 </thead>
                 <tbody class="tabla_inventario--tbody">
                     <?php 
-                    if($Datos['pedido'] != Array() && $Datos['pedido'][0]['factura'] == 'No Asignada'){
+                    if($Datos['pedido'] != Array()){
                         $Iterador = 1;
-                        foreach($Datos['pedido'] as $row) :  ?>
-                            <tr class="tabla_inventario__tr"> 
-                                <td class="td--center"><?php echo $Iterador; ?></td>
-                                <td><?php echo $row['numeroorden_May'];?></td>
-                                <td><?php echo $row['montoTotal'];?></td>
-                                <td><?php echo $row['FechaPedido'];?></td> 
-                            </tr> <?php 
-                            $Iterador ++;
+                        foreach($Datos['pedido'] as $row) : 
+                            if($row['factura'] == 'No Asignada'){ ?>
+                                <tr class="tabla_inventario__tr"> 
+                                    <td class="td--center"><?php echo $Iterador; ?></td>
+                                    <td><?php echo $row['numeroorden_May'];?></td>
+                                    <td><?php echo $row['montoTotal'];?></td>
+                                    <td><?php echo $row['FechaPedido'];?></td> 
+                                </tr> 
+                                     <?php 
+                                $Iterador ++;
+                            }  
                         endforeach; 
                     }
                     else{   ?>

@@ -10,7 +10,7 @@
         <p class="font--titulo">Clientes</p> 
         <a class="a--vendedor" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarclienteVen'?>">Agregar</a>     
         <table class="tabla_inventario">
-            <thead class="tabla_inventario--thead">
+            <thead class="tabla--thead">
                 <th></th>
                 <th class="">Razón social</th>
                 <th class="ocultar-movil">Rif</th>
