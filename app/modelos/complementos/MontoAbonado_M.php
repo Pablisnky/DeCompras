@@ -5,22 +5,43 @@
             parent::__construct();  
         }
 
-        //SELECT del saldo de pedido de un vendedor especifico
-        public function consultarSaldoPedido_Ven($Nro_Orden){ 
-            $stmt = $this->dbh->prepare(
-                "SELECT montoTotal, abono
-                FROM pagosmayorista 
-                INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May 
-                WHERE pagosmayorista.numeroorden_May = :NRO_ORDEN"
-            );
+        // CONSULTA CON UN POSIBLE ERROR - VERIFICAR QUE NRO_ORDEN NO EXITE
+        //SELECT del saldo total abonado a un pedido
+        public function consultarOrdeneseAbonadas($Ordenes){ 
+            //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
+            foreach($Ordenes as $key)  :
+                $stmt = $this->dbh->prepare(
+                    "SELECT DISTINCT numeroorden_May 
+                    FROM pagosmayorista 
+                    WHERE abono != '' " 
+                );
+                
+                $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
             
-            $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
-
-            if($stmt->execute()){
+                $stmt->execute();
+                
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else{
-                return  'Existe un fallo';
-            }
-        }   
+            endforeach;
+        }        
+        
+        //SELECT del saldo total abonado por cada pedido
+        public function consultarDeudasEnPedido_Ven($Ordenes){ 
+            //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
+            $AlmacenarOrdenes = [];
+            foreach($Ordenes as $key)  :
+                $stmt = $this->dbh->prepare(
+                    "SELECT SUM(abono) AS TotalAbonado, pedidomayorista.numeroorden_May, montoTotal 
+                    FROM pagosmayorista 
+                    INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May 
+                    WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
+                );
+                
+                $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
+            
+                $stmt->execute();
+
+               array_push($AlmacenarOrdenes, $stmt->fetchAll(PDO::FETCH_ASSOC));
+            endforeach;
+            return $AlmacenarOrdenes;
+        }        
     }

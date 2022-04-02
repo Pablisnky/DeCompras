@@ -37,15 +37,14 @@
                 </div> 
             </div>
 
-            <!-- <br/> -->
 
-            <!-- <div class="Contenedor--centrado">   
+            <div class="Contenedor--centrado">   
                 <label>Deuda Pendiente</label>
                 <br/>       
-                <p class="bandaAlerta">0 $</p> 
-            </div> -->
+                <p class="bandaAlerta font--mono p_7"><?php echo $Datos['deudaCLiente'];?> $</p> 
+            </div>
 
-            <br/><br/>
+            <br/>
             
             <!-- LISTADO DE PEDIDOS FACTURADOS -->        
             <table class="tabla_inventario">            

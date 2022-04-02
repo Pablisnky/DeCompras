@@ -9,20 +9,55 @@
             ocultarErrores();
         }
         
-        public function saldopendiente($Nro_Orden){
-            //CONSULTA el saldo abonado de un pedido especifico de un vendedor
-            $PagoPedidoVen = $this->ConsultaMontoAbonado_M->consultarSaldoPedido_Ven($Nro_Orden);
+        public function facturasAbonadas($Ordenes){
+            //Consulta las facturas que tienen pagos abonados
+            $PedidosFacturadosAbonados = []; // Contienen solo ordenes abonadas
+            $OrdeneseAbonadas = $this->ConsultaMontoAbonado_M->consultarOrdeneseAbonadas($Ordenes);
 
-            $Total = $PagoPedidoVen[0]['montoTotal'];
-            $Abono = $PagoPedidoVen[0]['abono'];
-            // se cambia el formato de los decimales, de coma a punto, para procesar la operacion  
-            $Total = str_replace(',', '.', $Total);   
-            $Abono = str_replace(',', '.', $Abono);  
+            foreach($OrdeneseAbonadas as $Key)    :
+                $Nro_Orden_2 = $Key['numeroorden_May'];
+                array_push($PedidosFacturadosAbonados, $Nro_Orden_2);
+            endforeach;
 
-            //Se calcula la deuda pendiente del pedido especifico
-            $Deuda = $Total - $Abono;  
-            
-            // se cambia el formato de los decimales, de punto a coma, para mostrar en pantalla y guardar en BD  
-            $Deuda = str_replace('.', ',', $Deuda); 
+            return $PedidosFacturadosAbonados;
+        }
+        
+        public function OrdenesSinAbono($Ordenes){
+
+            $FacturadosAbonados = $this->facturasAbonadas($Ordenes);
+            $OrdenesSinAbono = array_diff($Ordenes, $FacturadosAbonados);
+
+            return $OrdenesSinAbono;
+        }
+        
+        public function DeudaEnFacturas($Facturas_Abonados){
+            $FacturasConDeudas = [];
+            $SaldoAbonado = $this->ConsultaMontoAbonado_M->consultarDeudasEnPedido_Ven($Facturas_Abonados);
+            // echo 'SaldoAbonado';
+            // echo '<pre>';
+            // print_r($SaldoAbonado);
+            // echo '</pre>';
+            // exit;
+
+            if($SaldoAbonado[0][0]['TotalAbonado'] != ''){
+                //Se calcula cuanto es la deuda por pagar de cada pedido
+                foreach($SaldoAbonado as $Key)    :
+                    $Nro_Orden_3 = $Key[0]['numeroorden_May'];
+                    $TotalAbonado = $Key[0]['TotalAbonado'];
+                    $MontoTotal = $Key[0]['montoTotal'];
+
+                    // se cambia el formato de los decimales, de coma a punto, para procesar la operacion ( a pesar que en MySQL estan en formato decimal  .)
+                    $Total = str_replace(',', '.', $MontoTotal);
+                    $Deuda = str_replace(',', '.', $TotalAbonado);
+
+                    //Se calcula la deuda pendiente del pedido especifico
+                    $Deuda = $Total - $TotalAbonado;
+
+                    $OrdeneseAbonadas_3 = ['deuda' => $Deuda, 'numeroordenMay' => $Nro_Orden_3];
+                    array_push($FacturasConDeudas, $OrdeneseAbonadas_3);
+                endforeach;
+            }
+
+            return $FacturasConDeudas;
         }
     }

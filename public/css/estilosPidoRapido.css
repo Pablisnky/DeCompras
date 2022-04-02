@@ -2833,6 +2833,7 @@ body, html{
 }
 .tabla--thead{
 	background-color: var(--BordeClaro);
+	height: 25px;
 }
 .tabla--tr_1{
 	height: 5px !important;

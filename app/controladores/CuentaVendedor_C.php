@@ -2,7 +2,7 @@
     class CuentaVendedor_C extends Controlador{
         private $Mayorista;
         private $ID_Mayorista;
-        public $SeccionesMay;
+        private $SeccionesMay;
 
         public function __construct(){
             session_start();
@@ -17,6 +17,10 @@
             // print_r($this->SeccionesMay); //ID_SeccionMay, ID_Mayorista, seccionMay, nombre_img_seccionMay, nombreMay
             // echo '</pre>';
             // exit;
+            
+            //Se instancia la clase que contiene las deudas de un cliente minorista
+            require(RUTA_APP . '/controladores/complementos/MontoAbonado_C.php');
+            $this->MontoAbonado = new MontoAbonado_C();
 
             $this->Mayorista = $this->SeccionesMay[0]['nombreMay'];
 
@@ -73,10 +77,42 @@
 
             //CONSULTA el detalle de un pedido de un minorista especifico
             $Pedido = $this->ConsultaVendedor_M->consultarPedidoMinorista($ID_Minorista);
+            
+            //CONSULTA el monto total de facturas pendientes por un minorista
+            $TotalFacturado = $this->ConsultaVendedor_M->consultarDeudaTotal($ID_Minorista);
+            // echo 'Total Facturado' . $TotalFacturado[0]['total_facturado'];
+            // echo '<pre>';
+            // print_r($TotalFacturado);
+            // echo '</pre>';
+            // exit();
+            
+            // CONSULTA los abonos realizados a facturas pendientes
+            $OrdenesPorPagar = $this->ConsultaVendedor_M->consultarFacturasPendientes($ID_Minorista);;
+            // echo 'Ordenes Por Pagar';
+            // echo '<pre>';
+            // print_r($OrdenesPorPagar);
+            // echo '</pre>';
+            // exit();
+            
+            // Se suman los montos abonados
+            $TotalAbonado = 0;
+            foreach($OrdenesPorPagar as $Key)   :
+                $TotalAbonado += array_sum($Key);
+            endforeach;
+
+            // se cambia el formato de los decimales, de coma a punto, para procesar la operacion (a pesar de que vienen de MySQL y estan en formato decimal con punto)
+            $TotalFacturado = str_replace(',', '.', $TotalFacturado[0]['total_facturado']);
+            $TotalAbonado = str_replace(',', '.', $TotalAbonado);
+
+            $DeudaCliente = $TotalFacturado - $TotalAbonado;
+
+            // Nuevamente se cambia el formato de los decimales, de punto a coma, para mostralo en pantalla
+            $DeudaCliente = str_replace('.', ',', $DeudaCliente);
 
             $Datos = [
                 'cliente' => $Detalle_Cliente,// nombre_AfiMin, rif_AfiMin, telefono_AfiMin, correo_AfiMin, direccion_AfiMin, fechaAfiliacion
                 'pedido' => $Pedido, // numeroorden_May, factura, montoTotal, DATE_FORMAT(fecha,'%d-%m-%y') AS FechaPedido
+                'deudaCLiente' => $DeudaCliente,
                 'nombreMay' => $this->Mayorista,
                 'nombreVen' => $_SESSION['Nombre_Vendedor'],
                 'apellidoVen' => $_SESSION['Apellido_Vendedor']
@@ -219,60 +255,31 @@
             // echo '<pre>';
             // print_r($Ordenes);
             // echo '</pre>';
-            // // exit;
+            // exit;
 
-            //Consulta las ordenes que tienen pagos abonados
-            $PedidosFacturadosAbonados = []; // Contienen solo ordenes abonadas
-            $OrdeneseAbonadas = $this->ConsultaVendedor_M->consultarOrdeneseAbonadas($Ordenes);
-            foreach($OrdeneseAbonadas as $Key)    :
-                $Nro_Orden_2 = $Key['numeroorden_May'];
-                array_push($PedidosFacturadosAbonados, $Nro_Orden_2);
-            endforeach;
-            // echo 'Facturas abonadas';
+            $Ordenes_Abonados = $this->MontoAbonado->facturasAbonadas($Ordenes);
+            // echo 'Ordenes abonadas';
             // echo '<pre>';
-            // print_r($PedidosFacturadosAbonados);
+            // print_r($Ordenes_Abonados);
             // echo '</pre>';
             // // exit;
 
-            $OrdenesSinAbono = array_diff($Ordenes, $PedidosFacturadosAbonados);
-            // echo 'Pedidos Sin Abonar';
+            $OrdenesSinAbono = $this->MontoAbonado->OrdenesSinAbono($Ordenes);
+            // echo 'Ordenes Sin Abonar';
             // echo '<pre>';
             // print_r($OrdenesSinAbono);
             // echo '</pre>';
             // exit;
 
             //CONSULTA el saldo total abonado en las ordenes seleccionadas
-            $Ordenesedefinitiva = [];
-            $SaldoAbonado = $this->ConsultaVendedor_M->consultarDeudasEnPedido_Ven($PedidosFacturadosAbonados);
-            // echo 'SaldoAbonado';
+            $DeudaEnFacturas = $this->MontoAbonado->DeudaEnFacturas($Ordenes_Abonados);
+            // echo 'Deuda en facturas';
             // echo '<pre>';
-            // print_r($SaldoAbonado);
+            // print_r($DeudaEnFacturas);
             // echo '</pre>';
             // exit;
 
-            if($SaldoAbonado[0][0]['TotalAbonado'] != ''){
-                //Se calcula cuanto es la deuda por pagar de cada pedido
-                foreach($SaldoAbonado as $Key)    :
-                    $Nro_Orden_3 = $Key[0]['numeroorden_May'];
-                    $TotalAbonado = $Key[0]['TotalAbonado'];
-                    $MontoTotal = $Key[0]['montoTotal'];
-
-                    // se cambia el formato de los decimales, de coma a punto, para procesar la operacion ( a pesar que en MySQL estan en formato decimal  .)
-                    $Total = str_replace(',', '.', $MontoTotal);
-                    $Deuda = str_replace(',', '.', $TotalAbonado);
-
-                    //Se calcula la deuda pendiente del pedido especifico
-                    $Deuda = $Total - $TotalAbonado;
-
-                    $OrdeneseAbonadas_3 = ['deuda' => $Deuda, 'numeroordenMay' => $Nro_Orden_3];
-                    array_push($Ordenesedefinitiva, $OrdeneseAbonadas_3);
-                endforeach;
-            }
-            // echo '<pre>';
-            // print_r($Ordenesedefinitiva);
-            // echo '</pre>';
-            // exit;
-
+            // *********************
             // Se calcula cuantos dias se tienen disponibles para pagar cada pedido
             // Consulta pedidos facturados
             $PedidosFacturados = $this->ConsultaVendedor_M->consultarPedidosFacturados($_SESSION['ID_Vendedor']);
@@ -352,7 +359,7 @@
 
             $Datos = [
                 'pedidos_ven' => $PedidosVen, //nombre_AfiMin, numeroorden_May, montoTotal, FechaPedido, HoraPedido, factura, pagado
-                'deuda' => $Ordenesedefinitiva, // deuda, numeroorden_May
+                'deuda' => $DeudaEnFacturas, // deuda, numeroorden_May
                 'ordenesSinAbono' => $OrdenesSinAbono,
                 'nombreMay' => $this->Mayorista,
                 'nombreVen' => $_SESSION['Nombre_Vendedor'],
@@ -560,7 +567,7 @@
                     // echo $PedidoMora[0]['abono']. "<br>";
                     // exit;
 
-                    // se cambia el formato de los decimales, de coma a punto, para procesar la operacion matematica
+                    // se cambia el formato de los decimales, de coma a punto, para procesar la operacion (a pesar de que vienen de MySQL y estan en formato decimal con punto
                     $MontoTotal_1 = str_replace(',', '.', $RecibeAbono['montoTotal']);
                     $Abono_1 = str_replace(',', '.', $PedidoMora[0]['abono']);
 
@@ -573,7 +580,7 @@
                     //CONSULTA el saldo total abonado a un pedido
                     $DeudaPedidoVen = $this->ConsultaVendedor_M->consultarDeudaPedido_Ven($RecibeAbono['Nro_Orden']);
 
-                    // se cambia el formato de los decimales, de coma a punto, para procesar la operacion matematica
+                    // se cambia el formato de los decimales, de coma a punto, para procesar la operacion ( a pesar de que vienen de MySQL y estan en formato decimal con punto
                     $Abono_2 = str_replace(',', '.', $DeudaPedidoVen[0]['TotalAbonado']);
 
                     if($MontoTotal_1 == $Abono_2){

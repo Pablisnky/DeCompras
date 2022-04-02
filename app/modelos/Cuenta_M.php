@@ -1304,7 +1304,7 @@
         public function actualizarMostarTienda($ID_Tienda){
             $stmt = $this->dbh->prepare(
                 "UPDATE tiendas 
-                SET publicar = 0 
+                SET publicar_Tien = 0 
                 WHERE ID_Tienda = :ID_TIENDA"
             );
 

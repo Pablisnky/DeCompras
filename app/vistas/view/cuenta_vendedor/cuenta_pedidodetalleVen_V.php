@@ -54,10 +54,10 @@
                 <table class="tabla">   
                     <caption>Saldo abonado<a class="" style="float:right" href="<?php echo RUTA_URL . '/CuentaVendedor_C/agregarpagoVen/' . $Datos['NroOrden'] . '-' . $Datos['pedido'][0]['montoTotal']?>">Agregar</a></caption>   
                     <thead class="tabla--thead">
-                        <th class="th--n"></th>
+                        <th class="tabla--thead--column--1"></th>
                         <th class="">Fecha</th>
                         <th class=" ">Monto</th>
-                        <th class="">Metodo de pago</th>
+                        <th class="">Forma de pago</th>
                         <th class=""></th>
                     </thead>
                     <tbody class="">
@@ -66,12 +66,13 @@
                             $Iterador = 1;
                             foreach($Datos['pagos'] as $row) :  ?>  
                                 <tr class="tabla_inventario__tr"> 
-                                    <td class=""><?php echo $Iterador; ?></td>
-                                    <td><?php echo $row['fechaabono'];?></td>
-                                    <td class="font--mono"><?php echo str_replace('.', ',', $row['abono']);?></td>
-                                    <td><?php echo $row['formapago'];?></td> 
+                                    <td class="td_1"><?php echo $Iterador; ?></td>
+                                    <td><?php echo $row['FechaAbono'];?></td>
+                                    <td class="font--mono tabla--thead--column--3 td_1"><?php echo str_replace('.', ',', $row['abono']);?></td>
+                                    <td class="td--left"><?php echo $row['formapago'];?></td> 
                                     <td><?php echo "O";?></td> 
-                                </tr><?php 
+                                </tr>
+                                <tr class="tabla--tr_1"></tr>   <?php 
                                 $Iterador ++;
                             endforeach; 
                         }

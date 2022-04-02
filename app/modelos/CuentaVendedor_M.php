@@ -173,7 +173,7 @@
         //SELECT del saldo total abonado a un pedido
         public function consultarDeudaPedido_Ven($Nro_Orden){ 
             $stmt = $this->dbh->prepare(
-                "SELECT  SUM(abono) AS TotalAbonado, numeroorden_May 
+                "SELECT SUM(abono) AS TotalAbonado, numeroorden_May 
                 FROM pagosmayorista 
                 WHERE numeroorden_May = :NRO_ORDEN"
             );
@@ -187,51 +187,11 @@
                 return  'Existe un fallo';
             }
         }     
-
-        // CONSULTA CON UN POSIBLE ERROR - VERIFICAR QUE NRO_ORDEN NO EXITE
-        //SELECT del saldo total abonado a un pedido
-        public function consultarOrdeneseAbonadas($Ordenes){ 
-            //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
-            foreach($Ordenes as $key)  :
-                $stmt = $this->dbh->prepare(
-                    "SELECT DISTINCT numeroorden_May 
-                    FROM pagosmayorista 
-                    WHERE abono != '' " 
-                );
-                
-                $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
-            
-                $stmt->execute();
-                
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            endforeach;
-        }        
-
-        //SELECT del saldo total abonado por cada pedido
-        public function consultarDeudasEnPedido_Ven($Ordenes){ 
-            //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
-            $AlmacenarOrdenes = [];
-            foreach($Ordenes as $key)  :
-                $stmt = $this->dbh->prepare(
-                    "SELECT SUM(abono) AS TotalAbonado, pedidomayorista.numeroorden_May, montoTotal 
-                    FROM pagosmayorista 
-                    INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May 
-                    WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
-                );
-                
-                $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
-            
-                $stmt->execute();
-
-               array_push($AlmacenarOrdenes, $stmt->fetchAll(PDO::FETCH_ASSOC));
-            endforeach;
-            return $AlmacenarOrdenes;
-        }        
         
         //SELECT del saldo total abonado a un pedido 
         public function consultarAbonosPedido_Ven($Nro_Orden){ 
             $stmt = $this->dbh->prepare(
-                "SELECT pedidomayorista.factura, abono, fechaabono, formapago
+                "SELECT pedidomayorista.factura, abono, DATE_FORMAT(fechaabono,'%d-%m-%y') AS FechaAbono, formapago
                 FROM pagosmayorista 
                 INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May
                 WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
@@ -306,6 +266,62 @@
             endforeach;
             return $AlmacenarDiasCredito;
         }
+
+        // CONSULTA el monto total de facturas pendientes por un minorista
+        public function consultarDeudaTotal($ID_Minorista){  
+            $stmt = $this->dbh->prepare( 
+                "SELECT SUM(montoTotal) AS total_facturado
+                FROM pedidomayorista 
+                WHERE ID_AfiliadoMin = :ID_MINORISTA AND pagado = 0 AND factura != 'No Asignada'"
+            );
+            
+            $stmt->bindParam(':ID_MINORISTA', $ID_Minorista, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        } 
+
+        // CONSULTA las facturas pendientes por un minorista
+        public function consultarFacturasPendientes($ID_Minorista){  
+            $stmt = $this->dbh->prepare( 
+                "SELECT abono
+                FROM pedidomayorista 
+                INNER JOIN pagosmayorista ON pedidomayorista.numeroorden_May=pagosmayorista.numeroorden_May
+                WHERE ID_AfiliadoMin = :ID_MINORISTA AND pagado = 0"
+            );
+            
+            $stmt->bindParam(':ID_MINORISTA', $ID_Minorista, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }  
+
+        // CONSULTA el monto total que un minorista a abonado
+        // public function consultarTotalAbonado($OrdenesPorPagar){  
+
+        //     $stmt = $this->dbh->prepare( 
+        //         "SELECT SUM(abono) AS TotalAbonado
+        //         FROM pagosmayorista  
+        //         WHERE numeroorden_May = :ORDEN"
+        //     );
+            
+        //     $stmt->bindParam(':ORDEN', $Nro_Orden, PDO::PARAM_INT);
+
+        //     if($stmt->execute()){
+        //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //     }
+        //     else{
+        //         return  'Existe un fallo';
+        //     }
+        // } 
 
 
 

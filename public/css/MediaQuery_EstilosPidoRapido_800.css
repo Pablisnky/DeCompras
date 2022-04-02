@@ -1226,9 +1226,6 @@
 	padding-top: 10%;
 	font-size: 1.2em;
 }
-.p_9{
-	/* margin-bottom: 10%; */
-}
 .p_11{
 	margin-top: 3%;
 	padding-bottom: 0% !important;
@@ -1429,8 +1426,14 @@
 .strong_1{
 	font-size: 0.9em;
 }
+.tabla--thead--column--1{
+	width: 8%;
+}
 .tabla--thead--column--2{
 	width: 50%;
+}
+.tabla--thead--column--3{
+	width: 20%;
 }
 .tabla1{
 	width: 220%;

@@ -17,19 +17,20 @@
             
                 if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['codigoMinorista'])){
                     //si son enviados por POST y sino estan vacios, entra aqui
+
+                    // se cambia el formato de los decimales, de coma a punto, para introducirlo a la BD)
+                    $Monto = $_POST['montoTienda'];
+                    $Monto = str_replace(',', '.', $Monto);
+
                     $RecibeDatosMinorista = [
                         // DATOS DEL USUARIO                        
                         'ID_Minorista' => $_POST['id_minorista'],
                         'CodigoMinorista' => $_POST['codigoMinorista'],    
-                        'MontoTienda' => $_POST['montoTienda'],
+                        'MontoTienda' => $Monto,
                         'codgoVenta_vendedor' => $_POST['codigo_venta'],
                         'nombre_minorista' => $_POST['nombre_minorista'],
                         'rif_minorista' => $_POST['rif_minorista'],
-                    ];
-                    // echo '<pre>';
-                    // print_r($RecibeDatosMinorista);
-                    // echo '</pre>';
-                    // exit();               
+                    ];              
                     
                     //Se genera un número Ale_NroOrden que sera el numero de orden del pedido
                     $Ale_NroOrden = mt_rand(1000000,999999999);
@@ -92,7 +93,7 @@
                 //Se CONSULTA el pedido recien ingresado a la BD
                 $PedidoMayorista = $this->ConsultaRecibePedidoMayorista_M->consultarPedidoMayorista($Ale_NroOrden);
                                 
-                //Se CONSULTA DATOS DEL VENDEDOR QUE REALIZA EL EDIDO
+                //Se CONSULTA DATOS DEL VENDEDOR QUE REALIZA EL PEDIDO
                 $Vendedor = $this->ConsultaRecibePedidoMayorista_M->consultarCorreo($RecibeDatosMinorista['codgoVenta_vendedor']);
 
                 $DatosCorreo = [
