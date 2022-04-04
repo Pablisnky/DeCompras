@@ -199,10 +199,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/minorista';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/mayorista/Don_Rigo/minorista';
 
                             // usar en local
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/minorista';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/mayorista/Don_Rigo/minorista';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['fotoMin']['tmp_name'], $directorio_2.$nombre_imgMinorista);

@@ -6,20 +6,20 @@
         <?php
     } 
     else{ ?>
-        <div class="contenedor_109 contenedor_109--mayorista" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/Portada.jpg"></div>  
+        <div class="contenedor_109 contenedor_109--mayorista" style="background-image: url('<?php echo RUTA_URL?>/public/images/mayorista/Don_Rigo/Portada.jpg"></div>  
         <?php
     }   ?>
 
     <div class="contenedor_156"> 
         <div>
-        <aside class="aside_1">
-            <p class="p_17 borde_1">SECCIONES</p>
-        </aside>
+            <aside class="aside_1">
+                <p class="p_17 borde_1">SECCIONES</p>
+            </aside>
         </div>
         <div class="contenedor_110" id="Section_4">
             <?php
             $Contador = 1;
-            //Se cargan todas las categorias de productos que tenga un mayorista
+            //Se cargan todas las secciones de productos que tenga un mayorista
             foreach($Datos['categoriaMayorista'] as $row) :
                 $Seccion = $row['seccionMay'];     
                 $ID_Seccion = $row['ID_SeccionMay']; 
@@ -31,11 +31,11 @@
 
                         // IMAGEN DE SECCION
                         if($row['nombre_img_seccionMay'] == ''){ ?>
-                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/imagen.png');">
+                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/mayorista/Don_Rigo/imagen.png');">
                             </div> <?php
                         }   
                         else{    ?>
-                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/secciones/<?php echo $row['nombre_img_seccionMay']?>');">
+                            <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/mayorista/Don_Rigo/secciones/<?php echo $row['nombre_img_seccionMay']?>');">
                             </div>  <?php
                         } ;  
 

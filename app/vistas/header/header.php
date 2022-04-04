@@ -49,26 +49,27 @@
 				</ul>
 			</nav>
 			
+			<!-- MEMBRETE DESLIZANTE -->
 			<div class="tapa-logo" id="Tapa_Logo">
 				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
 				<h2 class="h2_5 font--white">MarketPlace</h2>
 			</div>
 		</header>   
 
-		<!-- MEMBRETE -->
+		<!-- MEMBRETE FIJO-->
 		<div class="contenedor_111">
 			<a class="a_1 font--negro" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
 			<h2 class="h2_5">MarketPlace</h2>
+		</div>
+
+		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
+		<div class="tapa" id="Tapa">
 		</div>
 
 		<noscript>
 			<p>Bienvenido a PedidoRemoto.com</p>
 			<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
 		</noscript>
-
-		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
-		<div class="tapa" id="Tapa">
-		</div>
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

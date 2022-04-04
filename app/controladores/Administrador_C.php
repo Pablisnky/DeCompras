@@ -10,7 +10,7 @@
             ocultarErrores();
         }
 
-        //Es llamadao desde Registro_C.php por medio de recibeRegistro() - Cuenta_C - header_inicio.php - cuenta_publicar_V.php
+        //Es llamadao desde Registro_C.php por medio de recibeRegistro() - CuentaComerciante_C - header_inicio.php - cuenta_publicar_V.php
         public function index(){
             $this->vista("paginas/administrador_V");
         }

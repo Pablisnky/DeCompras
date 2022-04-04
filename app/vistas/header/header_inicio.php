@@ -56,7 +56,8 @@
 					<li><a class="a_3A" href="<?php echo RUTA_URL . '/Login_C/index/CE';?>"><i class="fas fa-user-check icono_1 icono_6"></i>Inicio sesión</a></li>
 				</ul>
 			</nav>
-			
+
+			<!-- MEMBRETE DESPLAZANTE -->
 			<div class="tapa-logo" id="Tapa_Logo">
 				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
 				<h2 class="h2_5 font--white">MarketPlace</h2>
@@ -68,14 +69,14 @@
             <span><i class="fas fa-search icono_3"></i></span>
         </div>
 		
+		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
+		<div class="tapa" id="Tapa">
+		</div>
+
 		<noscript>
 			<p>Bienvenido a PedidoRemoto.com</p>
 			<p>La tienda online requiere para su funcionamiento el uso de JavaScript, si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
 		</noscript>
-		
-		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->
-		<div class="tapa" id="Tapa">
-		</div>
 
 <!-- ******************************************************************************************* -->
 			<!-- No se cierrra la etiqueta <body> porque se cierra en el footer -->

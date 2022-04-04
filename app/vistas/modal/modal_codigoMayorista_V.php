@@ -1,4 +1,4 @@
-<!-- Archivo forma parte de vitrinaMayorista_V como un require -->
+<!-- Archivo cargado en vitrinaMayorista_V como un require -->
 
 <section class="sectionModal" id="Section_1">
     <a href="<?php echo RUTA_URL . '/VitrinaMayorista_C';?>"><i class="fas fa-times spanCerrar"></i></a>

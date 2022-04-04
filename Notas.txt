@@ -1,7 +1,6 @@
-pcabeza7@gmail.com      bbdd    la bodega digital
-pcabeza7@gmail.com      pppppp  vendedor
-sebastian@gmail.com     ssss    La Tienda de Sebastian    comerciante
-sebastian@gmail.com     ssss    La Tienda de Sebastian    mayorista
+pcabeza7@gmail.com      pppppp    la bodega digital   |     vendedor
+sebastian@gmail.com     ssss    mayorista
+sebastianandres@gmail.com     ssss    La Tienda de Sebastian  
 alberto@gmail.com       aaaa    MiniMarket ALberto
 pablo@gmail.com         ppcc    Las Empanadas de Pablo
 monica@gmail.com        mmmm    Arte y moda  |   mmmmmm    vendedor

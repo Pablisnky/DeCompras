@@ -4,7 +4,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];    
     ?>
 
-    <section class="section_3 section_9">
+    <section class="contenedor_42 contenedor_108">
         <div class="contenedor_90 contenedor_91">
             <h2 class="h2_9">Sección</h2>
             <!-- Mediante operador ternario -->
@@ -22,7 +22,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 }
             $Contador = 1; 
     
-            //$Datos viene de Cuenta_C/Productos
+            //$Datos viene de CuentaComerciante_C/Productos
             foreach($Datos['productos'] as $arr) :
                 $Seccion = $arr["seccion"]; 
                 $Producto = $arr["producto"]; 
@@ -35,11 +35,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $ID_Producto = $arr["ID_Producto"];
                 $ID_Opcion = $arr["ID_Opcion"];
                 $FotoPrincipal = $arr['nombre_img'];
-
-                // echo "<pre>";
-                // print_r($Datos['productos']);
-                // echo "</pre>";
-                // exit;
 
                 //Esta condición es para verificar si se viene desde el buscador
                 if($Datos['Apunta'] == $Opcion){   ?>
@@ -69,9 +64,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 }   ?>
 
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $Contador;?>">
-                        <!-- IMAGEN PRINCIPAL -->
+                    <!-- IMAGEN PRINCIPAL -->
                     <div class="contenedor_9 contenedor_9--pointer">
-                        <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/productos/<?php echo $FotoPrincipal;?>')">
+                        <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $_SESSION['nombre_Tien'];?>/productos/<?php echo $FotoPrincipal;?>')">
                             <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
                         </div>
                             <?php
@@ -106,9 +101,9 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                         <!-- ACTUALIZAR - ELIMINAR -->
                         <div class="contenedor_96">                
-                            <a class="a_9" href="<?php echo RUTA_URL?>/Cuenta_C/actualizarProducto/<?php echo $ID_Producto;?>,<?php echo $Opcion;?>">Actualizar</a>
+                            <a class="a_9" href="<?php echo RUTA_URL?>/CuentaComerciante_C/actualizarProducto/<?php echo $ID_Producto;?>,<?php echo $Opcion;?>">Actualizar</a>
                             
-                            <a class="a_9" href="<?php echo RUTA_URL . '/Cuenta_C/eliminarProducto/' . $ID_Producto . ',' . $ID_Opcion . ',' . $Seccion?>">Eliminar</a>
+                            <a class="a_9" href="<?php echo RUTA_URL . '/CuentaComerciante_C/eliminarProducto/' . $ID_Producto . ',' . $ID_Opcion . ',' . $Seccion?>">Eliminar</a>
                         </div>
                     </div>
                 </div>

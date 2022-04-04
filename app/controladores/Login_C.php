@@ -12,7 +12,7 @@
             ocultarErrores();
         }
 
-        //Es llamadao desde Registro_C.php - Cuenta_C - header_inicio.php - cuenta_publicar_V.php
+        //Es llamadao desde Registro_C.php - CuentaComerciante_C - header_inicio.php - cuenta_publicar_V.php
         public function index($Datos){
             // echo "Datos = " . $Datos;
             // exit();
@@ -118,7 +118,12 @@
                 $ID_Afiliado = $usuarioVen[0]['ID_AfiliadoVen'];
                 $CorreoBD = $usuarioVen[0]['correo_AfiVen'];
                 $Nombre = $usuarioVen[0]['nombre_AfiVen'];
-                                
+                
+                // echo $ID_Afiliado  . '<br>';
+                // echo $CorreoBD  . '<br>';
+                // echo $Nombre  . '<br>';
+                // exit;
+
                 $CuentaVen = true;
             }
             else{                        
@@ -175,7 +180,13 @@
                         
                         //Se crea la sesion que guarda el ID_Afiliado, pedida en archivo de login           
                         $_SESSION['ID_Afiliado'] = $ID_Afiliado;
-                            
+
+                        // Se eliminan espacios en blanco del nombre de la tienda, esto debido a que sera el nombre de la carpeta que contendra las imagenes
+                        $searchString = " ";
+                        $replaceString = "_";                         
+                        $NombreTienda = str_replace($searchString, $replaceString, $NombreTienda);
+                        $_SESSION['nombre_Tien'] = $NombreTienda;
+
                         // Se verifica a donde se redirecciona segun la condición de la tienda
                         if($Cant_Seccion == 0){//Sino hay seccion creada
                             header('location:' . RUTA_URL . '/Modal_C/tiendaSinSecciones'); 
@@ -187,7 +198,7 @@
                             header('location:' . RUTA_URL . '/Modal_C/tiendaDesactiva'); 
                         }
                         else{//Si hay seccion creada con producto
-                            header('location:' . RUTA_URL . '/Cuenta_C/Productos/Todos'); 
+                            header('location:' . RUTA_URL . '/CuentaComerciante_C/Productos/Todos'); 
                         }      
                     }
                     else{ 
@@ -263,7 +274,7 @@
                         // Se crea una sesión que almacena el nombre del despachador           
                         $_SESSION["NombreDespachador"] = $Nombre;
                             
-                        header('location:' . RUTA_URL . '/Cuenta_C/Despachador');          
+                        header('location:' . RUTA_URL . '/CuentaComerciante_C/Despachador');          
                     }
                     else{ 
                         header('location:' . RUTA_URL . '/Modal_C/loginIncorrecto');

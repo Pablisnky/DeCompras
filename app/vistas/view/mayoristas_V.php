@@ -24,7 +24,7 @@
                         <?php
                     } 
                     else{  ?>
-                        <div class="contenedor_120 contenedor_120__mayorista" style="background-image: url('public/images/proveedor/Don_Rigo/Portada.jpg')"> 
+                        <div class="contenedor_120 contenedor_120__mayorista" style="background-image: url('public/images/mayorista/Don_Rigo/Portada.jpg')"> 
                         </div>      
                         <p class="p_3"><?php echo $Nombre_Mayorista?></p>
                         <?php
@@ -96,7 +96,7 @@
 
                     <!-- IMAGENES MINIATURAS DE SLIDER -->
                     <article class="" >
-                        <img class="" alt="Fotografia del producto" src="public/images/proveedor//Don_Rigo/Portada_pos.jpg"/>   
+                        <img class="" alt="Fotografia del producto" src="public/images/mayorista//Don_Rigo/Portada_pos.jpg"/>   
                     </article>
 
                     <!-- DIRECCION Y CONTACTO -->

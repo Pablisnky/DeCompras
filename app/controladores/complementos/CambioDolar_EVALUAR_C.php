@@ -40,9 +40,9 @@
             foreach($Precios as $Key):
                 $ID_Opcion = $Key['ID_Opcion'];
 
-                // echo 'Precio proveedor = ' . round($Key['precioBolivar']) . '<br>';
+                // echo 'Precio mayorista = ' . round($Key['precioBolivar']) . '<br>';
 
-                //Se incrementa 0,5% al precio del proveedor para proteger la inversión
+                //Se incrementa 0,5% al precio del mayorista para proteger la inversión
                 $PrecioReposicion = ($Key['precioBolivar'] * 0.5)/100 + $Key['precioBolivar'];
                 // echo 'Precio reposicion = ' . round($PrecioReposicion) . '<br>';
                 // exit;  round(1.95583, 2)

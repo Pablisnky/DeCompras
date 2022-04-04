@@ -22,11 +22,11 @@
 		<!-- <link href='https://fonts.googleapis.com/css?family=Montserrat'/> -->
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
 		
-		<!-- CDN iconos de font-awesome-->
-		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
+		<!-- CDN ICONOS FONT-AWESOME -->
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body>	
-		<header class="header--inicio header borde_bottom--claro">
+		<header class="header header--inicio">
 
 			<!-- ICONO HAMBURGUESA -->
 			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio"></i></span></label>
@@ -34,40 +34,39 @@
 			<!-- BARRA DE NAVEGACION header__menuResponsive--tienda-->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Editar';?>">Configurar</a></li>
-					<!-- <li><a class="a_3" href="<?php //echo RUTA_URL . '/Cuenta_C/';?>">Documentación</a></li> -->
-					<!-- <li><a class="a_3" href="<?php //echo RUTA_URL . '/Cuenta_C/ventas';?>">Ventas</a></li> -->
+					<li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaComerciante_C/Editar';?>">Configurar</a></li>
 					<li class="menuLi_1"><a class="a_3">Productos</a>
 						<ul class="menuContenedor_3">
 							<?php
-							//$Datos proviene de Cuenta_C/index -  Cuenta_C/productos -  Cuenta_C/editar -  Cuenta_C/publicar
+							//$Datos proviene de CuentaComerciante_C/index -  CuentaComerciante_C/productos -  CuentaComerciante_C/editar -  CuentaComerciante_C/publicar
 							foreach($Datos['secciones'] as $arr) :	
 								$ID_Seccion = $arr['ID_Seccion'];	
 								$Seccion = $arr['seccion'];	?>
-								<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/Cuenta_C/Productos/' . urlencode($Seccion) . ',' . $ID_Seccion . ',NoAplica'?>"><?php echo $Seccion;?></a></li>	<?php
+								<li><a class="menuLi_2" href="<?php echo RUTA_URL .   '/CuentaComerciante_C/Productos/' . urlencode($Seccion) . ',' . $ID_Seccion . ',NoAplica'?>"><?php echo $Seccion;?></a></li>	<?php
 							endforeach;	?>
-							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/Cuenta_C/Productos/Todos';?>">Todos</a></li>
+							<li><a class="menuLi_2" href="<?php echo RUTA_URL . '/CuentaComerciante_C/Productos/Todos';?>">Todos</a></li>
 						</ul> 	
 					</li>
-                    <li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Publicar/';?>">Cargar producto</a></li>
-					<li><a class="a_3" href="<?php echo RUTA_URL . '/Cuenta_C/Inventario/';?>">Inventario</a></li>
+                    <li><a class="a_3" href="<?php echo RUTA_URL . '/CuentaComerciante_C/Publicar/';?>">Cargar producto</a></li>
                     <li><a class="a_3 a_4" href="<?php echo RUTA_URL . '/CerrarS_C';?>">Cerrar sesión</a></li>
 				</ul>
 			</nav>
+			
+			<!-- MEMBRETE DESLIZANTE (SOLO EN MOVIL) -->
+			<div class="tapa-logo" id="Tapa_Logo">
+				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
+				<h2 class="h2_5 font--white">MarketPlace</h2>
+			</div>
 		</header>	
 
-		<!-- MEMBRETE -->		
-		<div class="">
-			<label class="a_1 a_7 font--negro"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></label>			
+		<!-- MEMBRETE FIJO --->		
+		<div class="contenedor_111">
+			<label class="a_1 font--negro"><?php echo $Datos['datosTienda'][0]['nombre_Tien'];?></label>	
 			<h2 class="h2_5 h2_12"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
 		</div>
 
 		<!--div utilizado para tapar el body mientras esta el menu responsive -->
 		<div class="tapa" id="Tapa">
-			<!-- <div class="tapa-logo">
-				<a class="a_1 font--white" href="<?php echo RUTA_URL . '/Inicio_C/NoVerificaLink';?>">PedidoRemoto</a>
-				<h2 class="h2_5 font--white">MarketPlace</h2>
-			</div> -->
 		</div>
 
 <!-- ******************************************************************************************* -->

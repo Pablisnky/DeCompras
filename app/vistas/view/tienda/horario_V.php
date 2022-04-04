@@ -11,7 +11,7 @@
 			<div class="contHorario__div borde_1">
 				<div>
 					<p class="contHorario__p">Mañana</p>    <?php 
-					//$Datos proviene de Cuenta_C/Editar                              
+					//$Datos proviene de CuentaComerciante_C/Editar                              
 					foreach($Datos['horario_LV'] as $row) :   
 					endforeach; ?>
 					<div class="contInputRadio"> 
@@ -378,7 +378,7 @@
 			<div class="contHorario__div borde_1" >
 				<div>
 					<p class="contHorario__p">Mañana</p>  <?php 					
-					//$Datos proviene de Cuenta_C/Editar	 	                              
+					//$Datos proviene de CuentaComerciante_C/Editar	 	                              
 					foreach($Datos['horario_Esp'] as $row) :   
 					endforeach; ?>
 					<div class="contInputRadio"> 
@@ -442,7 +442,7 @@
 			<div class="contHorario__div borde_1">             
 				<div>
 					<p class="contHorario__p">Tarde</p>	    <?php 					
-					//$Datos proviene de Cuenta_C/Editar	             	                              
+					//$Datos proviene de CuentaComerciante_C/Editar	             	                              
 					foreach($Datos['horario_Esp'] as $row) :  
 					endforeach;  ?>
 					<div class="contInputRadio">

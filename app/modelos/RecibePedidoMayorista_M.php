@@ -80,7 +80,7 @@
                 WHERE codigoVenta_AfiVen = :CODIGO_VENTA"
             );
             
-            $stmt->bindValue(':CODIGO_VENTA', $Codigo_Venta, PDO::PARAM_INT);
+            $stmt->bindValue(':CODIGO_VENTA', $Codigo_Venta, PDO::PARAM_STR);
 
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);

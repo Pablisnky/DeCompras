@@ -1,7 +1,14 @@
 <!-- Invocado desde RecibePedidoMayorista_C.php -->
 <?php
     $email_subject = $DatosCorreo['nombre_minorista'] . ", nuevo pedido para despacharle.";
-    $email_to = $DatosCorreo['informacion_vendedor'][0]['correo_AfiVen'] ;
+    $email_to = $DatosCorreo['informacion_vendedor'][0]['correo_AfiVen'];
+    
+    // Para enviar un correo HTML, debe establecerse la cabecera Content-type
+    $headers = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+    $headers .= "From: PedidoRemoto<administrador@pedidoremoto.com>" . "\r\n";
+    $headers .= "Bcc: pcabeza7@gmail.com";
+
     $email_message =
         '<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -38,12 +45,6 @@
                 $email_message .= '</table>
             </body>
         </html>';
-
-    // Para enviar un correo HTML, debe establecerse la cabecera Content-type
-    $headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-    $headers .= "From: PedidoRemoto<administrador@pedidoremoto.com>" . "\r\n";
-    $headers .= "Bcc: pcabeza7@gmail.com" . "\r\n";
     
     $success = @mail($email_to, $email_subject, $email_message, $headers);
 

@@ -5,6 +5,8 @@
 
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia'];
+    $Tienda = $Datos['NombreTienda'];
+    $Tienda = str_replace(' ', '_', $Tienda); 
 
     //Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
     if($Datos['Seccion'] != 'NoNecesario_1'){//'NoNecesario_1' es creado en tiendas porque comparte el controlador index de Vitrina_C
@@ -24,7 +26,7 @@
         <?php
     } 
     else{   ?>
-        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>    
+        <div class="contenedor_109" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Tienda;?>/<?php echo $Fotografia[0]['fotografia_Tien'];?>');"></div>    
         <?php
     }   ?>
 
@@ -54,8 +56,8 @@
                                     <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png');">
                                     </div> <?php
                                 }   
-                                else{    ?>
-                                    <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/secciones/<?php echo $key['nombre_img_seccion']?>');">
+                                else{   ?>
+                                    <div class="contenedor_9" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Tienda;?>/secciones/<?php echo $key['nombre_img_seccion']?>');">
                                     </div>  <?php
                                 } ;  
                             endif;  
@@ -63,9 +65,11 @@
 
                         $SeccionExiste = '';
                         ?>
+                        
+                        <!-- NOMBRE DE SECCION -->
+                        <h2 class="boton botonReverso borde_1 boton--largo font--subTitulo"><?php echo $Seccion;?></h2>
 
                         <!-- CIRCULO QUE INDICA CANTIDAD DE PRODUCTOS EN IMAGEN DE SECCION -->
-                        <h2 class="boton botonReverso borde_1 boton--largo"><?php echo $Seccion;?></h2>
                         <div class="contenedor_106--lineal">
                             <span class="span_21 borde_1">
                                 <?php 

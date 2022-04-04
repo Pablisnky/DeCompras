@@ -21,7 +21,7 @@
 
                 <!-- IMAGEN PRINCIPAL -->
                 <div class="contenedor_124" id="Contenedor_124"> 
-                    <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/proveedor/Don_Rigo/productos/<?php echo $Datos['Fotografia_1'];?>?>">                         
+                    <img class="imagen_9 imagen_10" id="ImagenTemporal" alt="Imagen no disponible" src="<?php echo RUTA_URL?>/images/mayorista/Don_Rigo/productos/<?php echo $Datos['Fotografia_1'];?>?>">                         
                 </div>
             </div>
 

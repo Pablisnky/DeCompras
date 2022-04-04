@@ -1,5 +1,5 @@
 <?php
-    class Cuenta_M extends Conexion_BD{
+    class CuentaComerciante_M extends Conexion_BD{
 
         public function __construct(){
             parent::__construct();
@@ -1120,28 +1120,28 @@
         }
         
         //UPDATE de reposicion
-        public function actualizacionReposicion($RecibeProducto){ 
-            $stmt = $this->dbh->prepare(
-                "UPDATE fechareposicion  
-                 SET fecha_dotacion = :FECHA_DOTACION, incremento = :INCREMENTO, fecha_reposicion = :FECHA_REPOSICION
-                 WHERE ID_Producto = :ID_PRODUCTO"
-            );
+        // public function actualizacionReposicion($RecibeProducto){ 
+        //     $stmt = $this->dbh->prepare(
+        //         "UPDATE fechareposicion  
+        //          SET fecha_dotacion = :FECHA_DOTACION, incremento = :INCREMENTO, fecha_reposicion = :FECHA_REPOSICION
+        //          WHERE ID_Producto = :ID_PRODUCTO"
+        //     );
 
-            // Se vinculan los valores de las sentencias preparadas
-            //Se introduce la fecha en la BD en formato año - mes - dia
-            $stmt->bindValue(':FECHA_DOTACION', date('Y-m-d', strtotime($RecibeProducto['FechaDotacion'])));
-            $stmt->bindValue(':INCREMENTO', $RecibeProducto['Incremento']);
-            $stmt->bindValue(':FECHA_REPOSICION', date('Y-m-d', strtotime($RecibeProducto['FechaReposicion'])));
-            $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
+        //     // Se vinculan los valores de las sentencias preparadas
+        //     //Se introduce la fecha en la BD en formato año - mes - dia
+        //     $stmt->bindValue(':FECHA_DOTACION', date('Y-m-d', strtotime($RecibeProducto['FechaDotacion'])));
+        //     $stmt->bindValue(':INCREMENTO', $RecibeProducto['Incremento']);
+        //     $stmt->bindValue(':FECHA_REPOSICION', date('Y-m-d', strtotime($RecibeProducto['FechaReposicion'])));
+        //     $stmt->bindValue(':ID_PRODUCTO', $RecibeProducto['ID_Producto']);
 
-            // Se ejecuta la actualización de los datos en la tabla
-            if($stmt->execute()){    
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
+        //     // Se ejecuta la actualización de los datos en la tabla
+        //     if($stmt->execute()){    
+        //         return true;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
 
         //UPDATE de la fotografia principal de un producto
         public function actualizarImagenPrincipalProducto($ID_Producto, $nombre_imgProducto){

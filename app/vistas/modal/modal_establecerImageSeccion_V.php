@@ -1,4 +1,4 @@
-<!-- Ventana modal cargada por medio de Cuenta_C/EstablecerImageSeccion y por medio de CuentaMayorista_c/EstablecerImageSeccionMayorista-->
+<!-- Ventana modal cargada por medio de CuentaComerciante_C/EstablecerImageSeccion y por medio de CuentaMayorista_c/EstablecerImageSeccionMayorista-->
 
 <!-- CDN libreria JQuery, necesaria para la previsualización de la imagen-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -13,7 +13,7 @@
     if($Token == false){    ?>
         <section class="sectionModal"  id="Ejemplo_Secciones">
             <div class="sectionModal__div">
-                <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeImagenSeccion" method="POST" enctype="multipart/form-data" autocomplete="off">
+                <form action="<?php echo RUTA_URL; ?>/CuentaComerciante_C/recibeImagenSeccion" method="POST" enctype="multipart/form-data" autocomplete="off">
                     <label class="boton boton--largo" for="ImagenSeccion">Seleccione imagen</label>
                     <img class="imagen_12" id="Img_Seccion" alt="Fotografia de la tienda" src="../../public/images/secciones/imagen.png"/>
                     <input class="ocultar" type="file" name="img_Seccion" id="ImagenSeccion"/>

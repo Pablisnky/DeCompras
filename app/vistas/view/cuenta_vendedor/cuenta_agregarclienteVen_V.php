@@ -16,7 +16,7 @@
                     
                     <!-- IMAGEN MINORISTA -->
                     <div class="contenedor_129 borde_1 borde_2">
-                        <img class="contenedor_119__img" id="blah" alt="Fotografia del minorista" src="<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/minorista/tienda.png">
+                        <img class="contenedor_119__img" id="blah" alt="Fotografia del minorista" src="<?php echo RUTA_URL?>/public/images/mayorista/Don_Rigo/minorista/tienda.png">
                         <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                         <input class="ocultar" type="file" name="fotoMin" id="imgInp"/> 
                     </div>        

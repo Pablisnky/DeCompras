@@ -5,7 +5,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
-    //$Datos viene de Cuenta_C/Editar
+    //$Datos viene de CuentaComerciante_C/Editar
     foreach($Datos['datosResposable'] as $row){
         $Nombre_AfiCom =  $row['nombre_AfiCom'];
         $Apellido_AfiCom = $row['apellido_AfiCom']; 
@@ -15,7 +15,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Foto_AfiCom = $row['fotografia_AfiCom'];
     }
     
-    //$Datos viene de Cuenta_C/Editar
+    //$Datos viene de CuentaComerciante_C/Editar
     foreach($Datos['datosTienda'] as $row){
         $Nombre_Tien =  $row['nombre_Tien'];
         $Estado_Tien = $row['estado_Tien'];
@@ -39,7 +39,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
         <h1 class="h1_8">Configurar cuenta</h1>   
-        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" name="form_Configurar" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarDatosTienda()">
+        <form action="<?php echo RUTA_URL; ?>/CuentaComerciante_C/recibeRegistroEditado" method="POST" name="form_Configurar" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarDatosTienda()">
 
             <!-- PERSONA RESPONSABLE -->
             <a id="marcador_01" class="ancla_2"></a>
@@ -221,10 +221,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
             <!-- HORARIO -->
             <?php require(RUTA_APP . "/vistas/view/tienda/horario_V.php"); ?>
 
-            <!-- OFERTAS -->
-            
-            <!-- LO MÁS PEDIDO -->
-
             <!-- CUENTAS TRANSFERENCIAS -->
             <a id="marcador_06" class="ancla_2"></a>
             <fieldset class="fieldset_1 fieldset_2">
@@ -349,7 +345,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 <label>Información para recibir pagos por Reserve</label>   
                 <div id="Mostrar_PagoMovil">
                     <!-- Entra en el IF cuando no hay cuentas de reserve creadas -->
-                    <?php
+                    <?php 
                     if($Datos['datosReserve'] == Array ()){ ?>
                         <div class="contenedor_67 borde_1" id="Contenedor_68">
                             <span class="icon-cancel-circle span_10 span_14 span_15_js"></span>

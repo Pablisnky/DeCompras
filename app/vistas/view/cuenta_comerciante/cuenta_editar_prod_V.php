@@ -3,7 +3,7 @@
 if(!empty($_SESSION["ID_Afiliado"])){
     $ID_Tienda = $_SESSION["ID_Tienda"];
 
-    //$Datos viene del metodo Cuenta_C/actualizarProducto
+    //$Datos viene del metodo CuentaComerciante_C/actualizarProducto
     foreach($Datos['especificaciones'] as $arr) :
         $ID_Producto = $arr['ID_Producto'];
         $ID_Opcion = $arr['ID_Opcion'];
@@ -19,7 +19,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Pro_Destacado = $arr['destacar'];
     endforeach;  
 
-    //$Datos viene del metodo Cuenta_C/actualizarProducto
+    //$Datos viene del metodo CuentaComerciante_C/actualizarProducto
     foreach($Datos['imagenesVarias'] as $arr) :
         $Imagenes = $arr['nombre_img']; 
     endforeach;  
@@ -45,7 +45,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
     <div class="contenedor_42">    
-        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">
+        <form action="<?php echo RUTA_URL; ?>/CuentaComerciante_C/recibeAtualizarProducto" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validarActualizacion()">
 
             <a id="Ancla_01" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3">
@@ -55,7 +55,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                     <!-- IMAGEN PRINCIPAL -->
                     <div>                    
                         <div class="contenedor_119 borde_1 borde_2">
-                            <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="../../public/images/productos/<?php echo $ImagenPrincipal;?>"/>
+                            <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="../../public/images/tiendas/<?php echo $_SESSION['nombre_Tien'];?>/productos/<?php echo $ImagenPrincipal;?>"/>
                             <label for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                             <input class="ocultar" type="file" name="imagenPrinci_Editar" id="imgInp"/>
                         </div>
@@ -186,7 +186,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <div class="contenedor_170">
                             <?php
                             $Cont = 1;
-                            //Datos proviene de Cuenta_C/actualizarProducto
+                            //Datos proviene de CuentaComerciante_C/actualizarProducto
                             foreach($Datos['imagenesVarias'] as $arr) : 
                                 $ID_Imagen =  $arr['ID_Imagen']  ?>
                                 <div class="contenedor_119 contenedor_121" id="<?php echo 'DivImagenSecun_' . $Cont;?>">

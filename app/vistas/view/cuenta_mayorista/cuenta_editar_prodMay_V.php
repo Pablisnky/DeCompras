@@ -3,7 +3,7 @@
 // if(!empty($_SESSION["ID_Afiliado"])){
     // $ID_Tienda = $_SESSION["ID_Tienda"];
 
-    //$Datos viene del metodo Cuenta_C/actualizarProductoMay
+    //$Datos viene del metodo CuentaComerciante_C/actualizarProductoMay
     foreach($Datos['especificaciones'] as $arr) :
         $ID_Producto = $arr['ID_ProductoMay'];
         $ID_Opcion = $arr['ID_OpcionMay'];
@@ -45,7 +45,7 @@
                                 <?php
                             }  
                             else{ ?>
-                                <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/productos/<?php echo $ImagenProducto;?>"/>
+                                <img class="contenedor_119__img" id="blah_2" alt="Fotografia de producto" src="<?php echo RUTA_URL?>/public/images/mayorista/Don_Rigo/productos/<?php echo $ImagenProducto;?>"/>
                                 <label for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                                 <input class="ocultar" type="file" name="imagenProductorMay" id="imgInp"/>
                                 <?php

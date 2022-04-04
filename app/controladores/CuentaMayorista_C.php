@@ -101,10 +101,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/';
+                        $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/mayorista/Don_Rigo/';
 
                         //usar en local
-                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
+                        // $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/mayorista/Don_Rigo/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -340,10 +340,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/mayorista/Don_Rigo/';
 
                             // usar en local
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/mayorista/Don_Rigo/';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['foto_ProductoMay']['tmp_name'], $directorio_2.$nombre_imgProducto);
@@ -507,10 +507,10 @@
                     || ($tipo_imgSeccion == 'image/jpg') || ($tipo_imgSeccion == 'image/png')){
 
                     //Usar en remoto
-                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/secciones/';
+                    $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/mayorista/Don_Rigo/secciones/';
 
                     // usar en local
-                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/secciones/';
+                    // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/mayorista/Don_Rigo/secciones/';
 
                     //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                     move_uploaded_file($_FILES['img_SeccionMay']['tmp_name'], $directorio_6.$nombre_imgSeccionMayorista);
@@ -604,15 +604,15 @@
             // echo '</pre>';
             // exit;
             
-            //Se elimina el archivo de la carpeta public/images/proveedor/Don_Rigo/productos
+            //Se elimina el archivo de la carpeta public/images/mayorista/Don_Rigo/productos
             foreach($ImageneEliminarMay as $KeyImagenes)  :
                 $NombreImagenEliminar = $KeyImagenes['nombre_imgMay'];
                 if ($NombreImagenEliminar != 'imagen.png'){
                     //Usar en remoto
-                    unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/productos/' . $NombreImagenEliminar);
+                    unlink($_SERVER['DOCUMENT_ROOT'] . '/public/images/mayorista/Don_Rigo/productos/' . $NombreImagenEliminar);
                         
                     //usar en local
-                    // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/productos/' . $NombreImagenEliminar);   
+                    // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/mayorista/Don_Rigo/productos/' . $NombreImagenEliminar);   
                 }             
             endforeach;
               
@@ -728,10 +728,10 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Usar en remoto
-                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/productos/';
+                        $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/mayorista/Don_Rigo/productos/';
 
                         //usar en local
-                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/';
+                        // $directorio_4 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/mayorista/Don_Rigo/';
 
                         //se muestra el directorio temporal donde se guarda el archivo
                         //echo $_FILES['imagen']['tmp_name'];
@@ -861,10 +861,10 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                             //Usar en remoto
-                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/proveedor/Don_Rigo/equipo';
+                            $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/mayorista/Don_Rigo/equipo';
 
                             // usar en local
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/proveedor/Don_Rigo/equipo';
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/mayorista/Don_Rigo/equipo';
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['foto_vendedor']['tmp_name'], $directorio_2.$nombre_imgVendedor);

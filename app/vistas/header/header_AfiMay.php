@@ -17,9 +17,12 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
-		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
 		
-		<!-- CDN iconos de font-awesome-->
+		<!-- FUENTES DE GOOGLE FONT -->
+		<!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'/> -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"> 
+		
+		<!-- CDN ICONOS FONT-AWESOME -->
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body>	
@@ -37,7 +40,7 @@
 					<li class="menuLi_1"><a class="a_3">Productos</a>
 						<ul class="menuContenedor_3">
 							<?php
-							//$Datos proviene de Cuenta_C/index -  Cuenta_C/productos -  Cuenta_C/editar -  Cuenta_C/publicar
+							//$Datos proviene de CuentaComerciante_C/index -  CuentaComerciante_C/productos -  CuentaComerciante_C/editar -  CuentaComerciante_C/publicar
 							foreach($Datos['seccionesMay'] as $arr) :	
 								$ID_Seccion = $arr['ID_SeccionMay'];	
 								$Seccion = $arr['seccionMay'];	?>

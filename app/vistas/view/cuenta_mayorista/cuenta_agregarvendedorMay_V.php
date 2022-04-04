@@ -18,7 +18,7 @@ if(!empty($_SESSION['ID_Mayorista'])){
                     
                     <!-- IMAGEN VENDEDOR -->
                     <div class="contenedor_129 borde_1 borde_2">
-                        <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/proveedor/Don_Rigo/equipo/Perfil.jpg">
+                        <img class="contenedor_119__img" id="blah" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/mayorista/Don_Rigo/equipo/Perfil.jpg">
                         <label  for="imgInp"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                         <input class="ocultar" type="file" name="foto_vendedor" id="imgInp"/>   
                     </div>        

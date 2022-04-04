@@ -32,7 +32,7 @@ function conexionAJAX(){
 // *************************************************************************************************
     //Muestra todas las categorias que existen; invocada desde E_Cuenta_editar.js por medo de función anonima
     function Llamar_categorias(){
-        var url = "../Cuenta_C/Categorias/"
+        var url = "../CuentaComerciante_C/Categorias/"
         http_request.open('GET', url, true)  
         peticion.onreadystatechange = respuesta_categorias
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -63,7 +63,7 @@ function conexionAJAX(){
             return
         }
         else{
-            var url = "../Cuenta_C/eliminarSeccion/" + ID_Seccion + "/" + CantSeccion
+            var url = "../CuentaComerciante_C/eliminarSeccion/" + ID_Seccion + "/" + CantSeccion
             http_request.open('GET', url, true)  
             peticion.onreadystatechange = respuesta_EliminarSeccion
             peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -90,7 +90,7 @@ function conexionAJAX(){
     function Llamar_ActualizarSeccion(Seccion, ID_Seccion){
         // console.log("______Desde Llamar_ActualizarSeccion()______",Seccion + " / "  + ID_Seccion)
 
-        var url = "../Cuenta_C/ActualizarSeccion/" + Seccion + "/" + ID_Seccion
+        var url = "../CuentaComerciante_C/ActualizarSeccion/" + Seccion + "/" + ID_Seccion
         http_request.open('GET', url, true)  
         peticion.onreadystatechange = respuesta_ActualizarSeccion
         peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")
@@ -115,7 +115,7 @@ function conexionAJAX(){
     // function llamar_publicarTienda(){
     //     // console.log("______Desde llamar_publicarTienda()______")
 
-    //     var url = "../Cuenta_C/publicarTienda/"
+    //     var url = "../CuentaComerciante_C/publicarTienda/"
     //     http_request.open('GET', url, true)  
     //     peticion.onreadystatechange = respuesta_publicarTienda
     //     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")

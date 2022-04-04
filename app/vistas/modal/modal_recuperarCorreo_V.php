@@ -77,6 +77,7 @@ else{   ?>
     <section class="sectionModal"> 
         <div class="sectionModal__div sectionModal__div--corto"">
             <p class='sectionModal__div__p'>Contraseña cambiada exitosamente</p>
+            <br>
             <p class="bandaAlerta">ATENCION</p>
             <p class='sectionModal__div__p'>La contraseña tambien funciona como CÓDIGO DE VENTA, que es la llave de acceso a sus clientes.</p>
             <div class="contBoton">

@@ -26,7 +26,7 @@
             <fieldset class="fieldset_1 fieldset_2">
                 <legend class="legend_1">Datos de tienda</legend> 
                 <div class="contenedor_119 borde_1 borde_2">
-                    <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../public/images/proveedor/Don_Rigo/<?php echo $Foto_Tien;?>"/>
+                    <img class="contenedor_119__img" id="blah_2" alt="Fotografia de la tienda" src="../public/images/mayorista/Don_Rigo/<?php echo $Foto_Tien;?>"/>
                     <label for="imgInp_2"><span class="span_18 borde_1"><i class="fas fa-pencil-alt icono_4"></i></span></label>
                     <input class="ocultar" type="file" name="imagen_mayorista" id="imgInp_2"/>
                 </div>

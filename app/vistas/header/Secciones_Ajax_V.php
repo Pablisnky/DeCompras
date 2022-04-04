@@ -9,7 +9,7 @@
             <div class="contenedor_89">
                 <?php      
                 $ContadorSeccion = 1;
-                //$Datos['seccion'] trae información de la consulta Secciones() desde Cuenta_C.php con todas las secciones que tiene la tienda
+                //$Datos['seccion'] trae información de la consulta Secciones() desde CuentaComerciante_C.php con todas las secciones que tiene la tienda
                 // echo "<pre>";
                 // print_r($Datos['seccion']);
                 // echo "</pre>";
@@ -23,7 +23,7 @@
                     ?>
                     <div class="contenedor_115">
                     <?php
-                        // $Datos['seccionActiva'] trae información de la consulta seccionActiva() desde Cuenta_C con la sección a la que pertenece un producto
+                        // $Datos['seccionActiva'] trae información de la consulta seccionActiva() desde CuentaComerciante_C con la sección a la que pertenece un producto
                         $seccionActiva = $Datos['seccionActiva'][0]['seccion'];
                         ?>
                         <input type="radio" name="secciones" id="<?php echo 'ContadorSeccion_' . $ContadorSeccion;?>" value="<?php echo $SeccionTienda?>" onclick="transferirSeccionActualizar(this.form)" <?php if($SeccionTienda == $seccionActiva){echo "checked";}?>/> 

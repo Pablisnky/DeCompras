@@ -10,7 +10,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     // echo "</pre>";
     // exit();
 
-    //$Datos viene de Cuenta_C/Editar
+    //$Datos viene de CuentaComerciante_C/Editar
     foreach($Datos['datosResposable'] as $row){
         $Nombre_AfiCom =  $row['nombre_AfiCom'];
         $Apellido_AfiCom = $row['apellido_AfiCom']; 
@@ -20,7 +20,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
         $Foto_AfiCom = $row['fotografia_AfiCom'];
     }
     
-    //$Datos viene de Cuenta_C/Editar
+    //$Datos viene de CuentaComerciante_C/Editar
     foreach($Datos['datosTienda'] as $row){
         $Nombre_Tien =  $row['nombre_Tien'];
         $Direccion_Tien = $row['direccion_Tien']; 
@@ -42,7 +42,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
     
     <div class="contenedor_42 contenedor_108" id="Contenedor_42">  
         <h1 class="h1_8">Configurar cuenta</h1>   
-        <form action="<?php echo RUTA_URL; ?>/Cuenta_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarDatosTienda()">
+        <form action="<?php echo RUTA_URL; ?>/CuentaComerciante_C/recibeRegistroEditado" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validarDatosTienda()">
 
             <!-- PERSONA RESPONSABLE -->
             <a id="marcador_01" class="ancla_2"></a>

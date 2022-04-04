@@ -35,7 +35,7 @@ function conexionAJAX(){
 
 //-------------------------------------------------------------------------------------------------
 function Llamar_seccion(ID_Producto){    
-    var url = "../../Cuenta_C/Secciones/" + ID_Producto
+    var url = "../../CuentaComerciante_C/Secciones/" + ID_Producto
     http_request.open('GET', url, true)  
     peticion.onreadystatechange = respuesta_seccion
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded")

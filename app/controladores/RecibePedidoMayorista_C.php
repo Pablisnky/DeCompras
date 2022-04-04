@@ -32,6 +32,11 @@
                         'rif_minorista' => $_POST['rif_minorista'],
                     ];              
                     
+                    // echo '<pre>';
+                    // print_r($RecibeDatosMinorista);
+                    // echo '</pre>';
+                    // exit();
+
                     //Se genera un número Ale_NroOrden que sera el numero de orden del pedido
                     $Ale_NroOrden = mt_rand(1000000,999999999);
                     

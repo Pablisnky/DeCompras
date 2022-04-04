@@ -17,6 +17,8 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
+		
+		<!-- CDN iconos de fuentes de google-->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
 		
 		<!-- CDN iconos de font-awesome-->
@@ -38,7 +40,7 @@
 			</nav>
 		</header>
 
-		<!-- MEMBRETE -->
+		<!-- MEMBRETE FIJO --->	
 		<div class="contenedor_111" style="z-index:1">
 			<label class="a_1 a_7 font--negro"><?php echo $Datos['nombreMayorista']?></label>
 		</div>

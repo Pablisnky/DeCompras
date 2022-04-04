@@ -27,24 +27,21 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
+		
+		<!-- CDN iconos de fuentes de google-->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
 		
 		<!-- CDN iconos de font-awesome-->
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
     </head>
     <body onload="nobackbutton()">	
-		<header class="header header--tienda borde_bottom--claro">
-			<!-- ICONO HAMBURGUESA -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
-			
-			<!-- NOMBRE TIENDA-->
-			<div class="">
-				<label class="h1_10 font--negro label--block"><?php echo $Nombre_Tienda?></label>
-				<h2 class="h2_5 h2_12 font--negro"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
-			</div> 
+		<header class="header header--inicio">
 
+			<!-- ICONO HAMBURGUESA -->
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
+			
 			<!-- BARRA DE NAVEGACION -->
-			<nav id="MenuResponsive" class="header__menuResponsive header__menuResponsive--tienda header__nav_1">
+			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
 				<ul id="MenuContenedor">
 					<!-- <li><a class="a_3" href="#"><i class="fas fa-gift icono_1"></i>Ofertas</a></li>
 					<li><a class="a_3" href="#"><i class="far fa-chart-bar icono_1"></i>Lo más pedido</a></li> -->
@@ -55,10 +52,16 @@
 			</nav>
 		</header>
 
+		<!-- MEMBRETE FIJO --->	
+		<div class="contenedor_111" style="z-index:1">
+			<label class="h1_10 font--negro label--block"><?php echo $Nombre_Tienda?></label>
+			<h2 class="h2_5 h2_12 font--negro"><?php echo $Datos['slogan'][0]['slogan_Tien'];?></h2>
+		</div> 
+
 		<!-- ICONO DE BUSQUEDA LUPA -->
-        <div class="contIconoBuscador borde_1" id="Contenedor_34">
+        <!-- <div class="contIconoBuscador borde_1" id="Contenedor_34">
 			<i class="fas fa-search icono_3"></i>
-        </div>
+        </div> -->
 
 	<!--div utilizado para tapar el body mientras esta el menu responsive -->
 	<div class="tapa" id="Tapa"></div>

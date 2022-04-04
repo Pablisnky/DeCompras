@@ -1,6 +1,6 @@
 
 <?php   
-//Datos viene de Cuenta_C/eliminarImagen
+//Datos viene de CuentaComerciante_C/eliminarImagen
     // echo $Datos;
     if($Datos >= 5){ ?>
         <p class="p_5">Máximo de imagenes añadidas</p>

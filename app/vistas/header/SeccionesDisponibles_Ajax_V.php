@@ -9,7 +9,7 @@
           <div class="contenedor_89">
               <?php      
               $ContadorSeccion = 1;
-              //$Datos['seccion'] trae información desde Cuenta_C/SeccionesDisponibles
+              //$Datos['seccion'] trae información desde CuentaComerciante_C/SeccionesDisponibles
               foreach($Datos['seccion'] as $row){
                 $SeccionTienda = $row['seccion']; ?>
                 <div class="contInputRadio">
