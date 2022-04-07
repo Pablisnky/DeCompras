@@ -13,7 +13,7 @@
             // require(RUTA_APP . "/modelos/RecibePedidoMayorista_M.php");
         }
         
-        //Invocado en carritoMayoristaAgregar_V.php
+        //Invocado en carritoMayoristaAgregar_V.php recibe los productos que se añadieran al pedido existente
         public function index(){    
             $Verfica_pedido = $_SESSION['verfica_pedido'];  
             
@@ -46,7 +46,7 @@
                     // $Ale_NroOrden, $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total, $ID_Producto
                     
                     //Se INSERTA el pedido en la BD
-                    $this->ConsultaRecibePedidoMayorista_M->insertarPedidoMayorista($RecibeDatosMinorista, $RecibeDatosMinorista['nro_Orden']);
+                    // $this->ConsultaRecibePedidoMayorista_M->insertarPedidoMayorista($RecibeDatosMinorista, $RecibeDatosMinorista['nro_Orden']);
 
                     //Se reciben los detalles del pedido
                     if(is_array($Resultado) || is_object($Resultado)){

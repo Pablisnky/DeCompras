@@ -49,7 +49,7 @@
             $this->vista('view/cuenta_vendedor/cuenta_inicioVen_V', $Datos);
         }
 
-        //llamado desde header_AfiVen.php
+        //llamado desde header_AfiVen.php muestra el listado de clientes
         public function clienteVen(){
             //CONSULTA las clientes de un vendedor especifico
             $ClientesVen = $this->ConsultaVendedor_M->consultarClientes_Ven($_SESSION['ID_Vendedor']);//Sesion creadas en Login_C
@@ -70,7 +70,7 @@
             $this->vista('view/cuenta_vendedor/cuenta_clientesVen_V', $Datos);
         }
 
-        //llamado desde A_Cuenta_clientesVen.js
+        //llamado desde A_Cuenta_clientesVen.js muestra detalles de los clientes
         public function detallesClientesVen($ID_Minorista){
             //CONSULTA un cliente de un vendedor especifico
             $Detalle_Cliente = $this->ConsultaVendedor_M->consultarDatosMinorista($ID_Minorista);
@@ -126,7 +126,7 @@
             $this->vista('view/cuenta_vendedor/cuenta_clientedetalleVen_V', $Datos);
         }
 
-        //llamado desde cuenta_clientesVen_V.php
+        //llamado desde cuenta_clientesVen_V.php agrega un cliete nuevo
         public function agregarclienteVen(){
             //se crea una sesion llamada AGRECA_CLIENTE, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de nuevo cliente, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
             $_SESSION['AGREGA_MINORISTA'] = 'AGR_MIN';
@@ -241,7 +241,7 @@
             }
         }
 
-        //llamado desde header_AfiVen.php
+        //llamado desde header_AfiVen.php muestra todos los pedidos del vendedor
         public function pedidosVen(){
             //CONSULTA los pedidos de un vendedor especifico
             $PedidosVen = $this->ConsultaVendedor_M->consultarPedidos_Ven($_SESSION['ID_Vendedor']);//Sesion creadas en Login_C
@@ -278,8 +278,17 @@
             // print_r($DeudaEnFacturas);
             // echo '</pre>';
             // exit;
+            // *******************************************
 
-            // *********************
+            // CONSULTA el monto total de cada pedido, incluyendo productos agregados posteriormente
+            $MontoGlobal = $this->ConsultaVendedor_M->MontoGlobalPedido($Ordenes);
+            // echo 'Montos globales de pedidos';
+            // echo '<pre>';
+            // print_r($MontoGlobal);
+            // echo '</pre>';
+            // exit;
+
+            // *******************************************
             // Se calcula cuantos dias se tienen disponibles para pagar cada pedido
             // Consulta pedidos facturados
             $PedidosFacturados = $this->ConsultaVendedor_M->consultarPedidosFacturados($_SESSION['ID_Vendedor']);
@@ -359,6 +368,7 @@
 
             $Datos = [
                 'pedidos_ven' => $PedidosVen, //nombre_AfiMin, numeroorden_May, montoTotal, FechaPedido, HoraPedido, factura, pagado
+                'montoGlobal' => $MontoGlobal, //TotalGlobal, numeroorden_May
                 'deuda' => $DeudaEnFacturas, // deuda, numeroorden_May
                 'ordenesSinAbono' => $OrdenesSinAbono,
                 'nombreMay' => $this->Mayorista,
@@ -376,13 +386,16 @@
             $this->vista('view/cuenta_vendedor/cuenta_PedidosVen_V', $Datos);
         }
 
-        //llamado desde A_Cuenta_pedidosVen.js
+        //llamado desde A_Cuenta_pedidosVen.js muestra los detalles de cada pedido
         public function pedidodetalleVen($Nro_Orden){
             //CONSULTA un pedido especifico de un vendedor
             $PedidoVen = $this->ConsultaVendedor_M->consultarPedido_Ven($Nro_Orden);
 
             //CONSULTA el detalle de un pedido especifico de un vendedor
             $DetallePedidoVen = $this->ConsultaVendedor_M->consultarDetallePedido_Ven($Nro_Orden);
+            
+            // CONSULTA el monto total de un pedido especifico
+            $MontoGlobal = $this->ConsultaVendedor_M->MontoGlobalPedidoEspecifico($Nro_Orden);
            
             //CONSULTA los abonos parciales realizados un pedido
             $AbonosPedidoVen = $this->ConsultaVendedor_M->consultarAbonosPedido_Ven($Nro_Orden);
@@ -403,7 +416,8 @@
             $Datos = [
                 'NroOrden' => $Nro_Orden,
                 'pedido' => $PedidoVen, //numeroorden_May , montoTotal, factura
-                'detallepedido_ven' => $DetallePedidoVen, //nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, FechaPedido, HoraPedido
+                'detallepedido_ven' => $DetallePedidoVen, //nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, FechaPedido, HoraPedido, ID_DetallePedido_May
+                'montoGlobal' => $MontoGlobal, //TotalGlobal
                 'pagos' => $AbonosPedidoVen, //factura, abono, fechaabono, formapago, pagada
                 'deuda_May' => $Deuda,
                 'nombreMay' => $this->Mayorista,
@@ -419,7 +433,7 @@
             $this->vista('view/cuenta_vendedor/cuenta_pedidodetalleVen_V', $Datos);
         }
 
-        //llamado desde cuenta_pedidodetallleVen_V.php y
+        //llamado desde cuenta_pedidodetallleVen_V.php 
         public function asignarNroFactura($Nro_Orden){
             //se crea una sesion llamada ASIGNAR_FACTURA, esta sesión es exigida cuando se entra en la pagina que recibe los datos del formulario de asignar factura, para evitar que un usuario recarge la pagina que recibe y cargue los datos nuevamente a la BD
             $_SESSION['ASIGNAR_FACTURA'] = 'ASI_FAC';
@@ -601,7 +615,7 @@
             }
         }
 
-        //llamado desde A_Cuenta_pedidodetalleVen_V
+        //llamado desde A_Cuenta_pedidodetalleVen_V agraga unproducto a un pedido existente
         public function agregarProductoAPedido($Nro_Orden){
             //CONSULTA datos necesarios para pasar al controlador VitrinaMayorista_C
             $InformacionMayorista = $this->ConsultaVendedor_M->consultarDatosMayorista($_SESSION['ID_Mayorista']);
@@ -623,5 +637,41 @@
             $Token_A = true;
 
             header('location:' . RUTA_URL. '/VitrinaMayorista_C/vitrina_Mayorista/' . $_SESSION['ID_Mayorista'] . ',' . $NombreMayorista . ',' .  $FotografiaMayorista . ',' .  $Token_A);
+        }
+        
+        //llamado desde A_Cuenta_pedidodetalleVen_V elimina todo el pedido 
+        public function removerProductoAPedido($Nro_Orden){
+            // Consulta el detalle del pedido
+            //CONSULTA el detalle de un pedido especifico de un vendedor
+            $DetallePedidoVen = $this->ConsultaVendedor_M->consultarDetallePedido_Ven($Nro_Orden);
+
+            $Datos = [
+                'nroorden' => $Nro_Orden,
+                'detallePedido' => $DetallePedidoVen, //nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, FechaPedido, HoraPedido, ID_DetallePedido_May 
+                'nombreMay' => $this->Mayorista,
+                'nombreVen' => $_SESSION['Nombre_Vendedor'],
+                'apellidoVen' => $_SESSION['Apellido_Vendedor']
+            ];
+            // echo $Nro_Orden;
+            // echo '<pre>';
+            // print_r($Datos);
+            // echo '</pre>';
+            // exit;
+            
+            $this->vista('header/header_AfiVen', $Datos);
+            $this->vista('view/cuenta_vendedor/removerProductoVen_V', $Datos);
+
+        }
+
+        //Llamado desde A_Cuenta_pedidodetalleVen_V
+        public function eliminar_pedidoVen($Nro_Orden){
+            //Se elimina el pedido de la BD, por medio de Transacciones se realizan varias operaciones
+            $this->ConsultaVendedor_M->Transaccion_eliminarPedidoVen($Nro_Orden);
+        }
+        
+        //Llamado desde A_removeProductosVen.js
+        public function eliminar_productoVen($ID_DetallePedido){
+            //Se elimina un producto de un pedido
+            $this->ConsultaVendedor_M->Transaccion_EliminarProductoPedido($ID_DetallePedido);
         }
     }

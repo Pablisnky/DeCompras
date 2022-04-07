@@ -28,20 +28,22 @@
         public function consultarDeudasEnPedido_Ven($Ordenes){ 
             //Debido a que $Ordenes es un array con todas los Nro. de ordenes del vendedor especificado, deben consultarse uno a uno mediante un ciclo
             $AlmacenarOrdenes = [];
-            foreach($Ordenes as $key)  :
-                $stmt = $this->dbh->prepare(
-                    "SELECT SUM(abono) AS TotalAbonado, pedidomayorista.numeroorden_May, montoTotal 
-                    FROM pagosmayorista 
-                    INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May 
-                    WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
-                );
+            if(!empty($Ordenes)){
+                foreach($Ordenes as $key)  :
+                    $stmt = $this->dbh->prepare(
+                        "SELECT SUM(abono) AS TotalAbonado, pedidomayorista.numeroorden_May, montoTotal 
+                        FROM pagosmayorista 
+                        INNER JOIN pedidomayorista ON pagosmayorista.numeroorden_May=pedidomayorista.numeroorden_May 
+                        WHERE pedidomayorista.numeroorden_May = :NRO_ORDEN"
+                    );
+                    
+                    $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
                 
-                $stmt->bindParam(':NRO_ORDEN', $key, PDO::PARAM_INT);
-            
-                $stmt->execute();
+                    $stmt->execute();
 
-               array_push($AlmacenarOrdenes, $stmt->fetchAll(PDO::FETCH_ASSOC));
-            endforeach;
-            return $AlmacenarOrdenes;
+                array_push($AlmacenarOrdenes, $stmt->fetchAll(PDO::FETCH_ASSOC));
+                endforeach;
+                return $AlmacenarOrdenes;
+            }
         }        
     }

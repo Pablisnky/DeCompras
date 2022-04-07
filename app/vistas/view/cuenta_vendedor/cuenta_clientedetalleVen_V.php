@@ -5,7 +5,7 @@
     // $ID_Tienda = $_SESSION["ID_Tienda"];
     ?>    
     <section class="sectionModal">
-        <i class="fas fa-arrow-left spanCerrar spanCerrar--fijo" onclick="ocultarPedido()"></i>
+        <span class="material-icons-outlined spanCerrar spanCerrar--fijo" onclick="ocultarPedido()">arrow_back</span>
         <div class="contenedor_24">
             <div class="cont_clientesVen borde_1">
                 <!-- <div class="contenedor_42 contenedor_108"">  

@@ -30,49 +30,34 @@ function conexionAJAX(){
     } 
 
 //-------------------------------------------------------------------------------------------------
-    function Llamar_pedidosVen(Numero_Orden){
-        var url="../../CuentaVendedor_C/pedidodetalleVen/" + Numero_Orden;
-        http_request.open('GET',url,true);     
-        peticion.onreadystatechange = respuesta_pedidosVen;
-        peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
-        peticion.send("null");
-    }                                                           
-    function respuesta_pedidosVen(){
-        if (peticion.readyState == 4){
-            if(peticion.status == 200){
-                //Coloca el cursor en el top de la pagina
-                window.scroll(0, 0)
-                
-                document.getElementById('Mostrar_detallepedidosVen').style.display = "block"
-                document.getElementById('Mostrar_detallepedidosVen').innerHTML = peticion.responseText;
-            } 
-            else{
-                alert('Hubo problemas con la petición');
-            }
-        }
-    }
-
-//-------------------------------------------------------------------------------------------------
-// Invocada desde E_Cuenta_pedidoVen.js
-function Llamar_EliminarPedido(Numero_Orden){
-    var url="../../CuentaVendedor_C/eliminar_pedidoVen/" + Numero_Orden;
+// Invocada desde removerProductoVen_V.php
+function Llamar_EliminarProducto(ID_DetallePedido){
+    var url="../../CuentaVendedor_C/eliminar_productoVen/" + ID_DetallePedido;
     http_request.open('GET',url,true);     
-    peticion.onreadystatechange = respuesta_EliminarPedido;
+    peticion.onreadystatechange = respuesta_EliminarProducto;
     peticion.setRequestHeader("content-type","application/x-www-form-urlencoded");
     peticion.send("null");
+    
+    //se almacen en una variable el elemento que contiene el producto, para ocultarlo
+    localStorage.setItem('Producto_A_Eliminar', ID_DetallePedido) 
 }                                                           
-function respuesta_EliminarPedido(){
+function respuesta_EliminarProducto(){
     if (peticion.readyState == 4){
         if(peticion.status == 200){
             //Coloca el cursor en el top de la pagina
             window.scroll(0, 0)
-            
+
             //No trae ninguna respuesta porque solo ejecuta una oreden en el servidor
             // document.getElementById('Mostrar_detallepedidosVen').style.display = "block"
-            // document.getElementById('Mostrar_detallepedidosVen').innerHTML = peticion.responseText;
+            // document.getElementById('BORRAR').innerHTML = peticion.responseText;
+
+            // se encuentra en removeProductoVen_V.php
+            Producto_A_Eliminar = localStorage.getItem('Producto_A_Eliminar')
+
+            Regresa_A_Pedido_2(Producto_A_Eliminar)
         } 
         else{
             alert('Hubo problemas con la petición');
         }
     }
-}   
+} 

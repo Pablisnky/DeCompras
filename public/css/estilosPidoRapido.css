@@ -30,6 +30,7 @@ a{
 body, html{
 	height: 100%;
 }
+.material-icons-outlined{}
 
 /* ******************************************************************************** */
 	/* DECLARACION DE VARIABLES */
@@ -1434,6 +1435,9 @@ body, html{
 	background-color:  var(--rellenoTablas);
 	cursor: pointer;
 }
+.cursor--pointer{
+	cursor: pointer;
+}
 .div__Botones{
 	display: flex;
 	justify-content: space-between;
@@ -1646,9 +1650,10 @@ body, html{
 	display: none;
 }
 .h1_10{
-	font-size: 1.7vw;
+	font-size: 1.7vw; 
 	font-weight: normal;
-	text-align: center;
+	text-align: center;	
+	white-space: pre; /*para que el texto se mantenga en una sola linea*/
 }
 .h--producto{
 	color: white;
@@ -2840,6 +2845,9 @@ body, html{
 }
 .tabla--tr_1{
 	height: 5px !important;
+}
+.tabla--tr_2{
+	margin-bottom: 20px !important;
 }
 .tabla1{
 	width: 90%;

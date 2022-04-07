@@ -14,20 +14,25 @@
             $PedidosFacturadosAbonados = []; // Contienen solo ordenes abonadas
             $OrdeneseAbonadas = $this->ConsultaMontoAbonado_M->consultarOrdeneseAbonadas($Ordenes);
 
-            foreach($OrdeneseAbonadas as $Key)    :
-                $Nro_Orden_2 = $Key['numeroorden_May'];
-                array_push($PedidosFacturadosAbonados, $Nro_Orden_2);
-            endforeach;
+            if(!empty($OrdeneseAbonadas)){
+                foreach($OrdeneseAbonadas as $Key)    :
+                    $Nro_Orden_2 = $Key['numeroorden_May'];
+                    array_push($PedidosFacturadosAbonados, $Nro_Orden_2);
+                endforeach;
 
-            return $PedidosFacturadosAbonados;
+                return $PedidosFacturadosAbonados;
+            }
         }
         
         public function OrdenesSinAbono($Ordenes){
 
             $FacturadosAbonados = $this->facturasAbonadas($Ordenes);
-            $OrdenesSinAbono = array_diff($Ordenes, $FacturadosAbonados);
 
-            return $OrdenesSinAbono;
+            if(!empty($FacturadosAbonados)){
+                $OrdenesSinAbono = array_diff($Ordenes, $FacturadosAbonados);
+
+                return $OrdenesSinAbono;
+            }
         }
         
         public function DeudaEnFacturas($Facturas_Abonados){
@@ -39,7 +44,7 @@
             // echo '</pre>';
             // exit;
 
-            if($SaldoAbonado[0][0]['TotalAbonado'] != ''){
+            if(!empty($SaldoAbonado[0][0]['TotalAbonado']) != ''){
                 //Se calcula cuanto es la deuda por pagar de cada pedido
                 foreach($SaldoAbonado as $Key)    :
                     $Nro_Orden_3 = $Key[0]['numeroorden_May'];

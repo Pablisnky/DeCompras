@@ -12,7 +12,7 @@
         if($Datos['pedidos_ven'] != Array ()){ 
             foreach($Datos['pedidos_ven'] as $row)  : 
                 $Nro_Orden = $row['numeroorden_May'];   ?>
-                <div class="cont_clientesVen borde_1" onclick="Llamar_pedidosVen('<?php echo $Nro_Orden;?>')">
+                <div class="cont_clientesVen borde_1" id="<?php echo $Nro_Orden;?>" onclick="Llamar_pedidosVen('<?php echo $Nro_Orden;?>')">
 
                     <?php
                     // // PEDIDO FACTURADO Y PAGADO
@@ -27,10 +27,13 @@
                         <?php 
                     // }   ?>
 
+                    <!-- RAZON SOCIAL -->
                     <div style="grid-column-start: 1; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">Razon social</label>
                         <label class="font--TituloTarjetaCliente"><?php echo $row['nombre_AfiMin'];?></label>
                     </div> 
+
+                    <!-- NUMEO DE ORDEN O FACTURA-->
                     <div style="grid-column-start: 1; grid-column-end: 2;">
                         <?php
                         if($row['factura'] == 'No Asignada'){    ?>
@@ -43,62 +46,79 @@
                                 <label><?php echo $row['factura'];?></label><?php
                         }   ?>
                     </div> 
-                    <div style="grid-column-start: 2; grid-column-end: 3; text-align: center">
-                        <label class="cont_clientesVen--renglon">Total</label>
-                        <label><?php echo $row['montoTotal'];?> $</label>
-                    </div> 
-                         <?php                    
-                        //  ORDENES CON DEUDA PARCIAL
-                        foreach($Datos['deuda'] as $Key)  : 
-                            if($row['numeroorden_May'] == $Key['numeroordenMay']){ ?>
-                                <div style="grid-column-start:3 ; grid-column-end: 4;">
-                                    <label class="cont_clientesVen--renglon">Deuda</label>
-                                    <label><?php echo $Key['deuda'];?> $</label>
-                                </div> 
-                                <?php
-                            } 
-                        endforeach; 
-                                  
-                        // ORDENES CON DEUDA TOTAL
-                        foreach($Datos['ordenesSinAbono'] as $Key)  : 
-                            if($row['numeroorden_May'] == $Key){ ?>
-                                <div style="grid-column-start:3 ; grid-column-end: 4;">
-                                    <label class="cont_clientesVen--renglon">Deuda</label>
-                                    <label><?php echo $row['montoTotal'];?> $</label>
+
+                    <!-- MONTO TOTAL -->
+                    <?php
+                    foreach($Datos['montoGlobal'] as $Clave_1)  :  
+                        foreach($Clave_1 as $Clave_2)  :  
+                            if($row['numeroorden_May'] == $Clave_2['numeroorden_May']){  ?>
+                                <div style="grid-column-start: 2; grid-column-end: 3; text-align: center">
+                                    <label class="cont_clientesVen--renglon">Total</label>
+                                    <label><?php echo $Clave_2['TotalGlobal'];?> $</label>
                                 </div> 
                                 <?php
                             }
-                        endforeach; 
+                        endforeach;
+                    endforeach;
+                        ?>
+                    
+                    <!-- ORDENES CON DEUDA PARCIAL -->
+                         <?php                    
+                        // foreach($Datos['deuda'] as $Key)  : 
+                        //     if($row['numeroorden_May'] == $Key['numeroordenMay']){ ?>
+                                <!-- <div style="grid-column-start:3 ; grid-column-end: 4;"> -->
+                                    <!-- <label class="cont_clientesVen--renglon">Deuda</label>
+                                    <label><?php echo $Key['deuda'];?> $</label> -->
+                                <!-- </div>  -->
+                                <?php
+                        //     } 
+                        // endforeach; 
+                                  
+                        // ORDENES CON DEUDA TOTAL
+                        // foreach($Datos['ordenesSinAbono'] as $Key)  : 
+                        //     if($row['numeroorden_May'] == $Key){ ?>
+                                <!-- <div style="grid-column-start:3 ; grid-column-end: 4;">
+                                    <label class="cont_clientesVen--renglon">Deuda</label>
+                                    <label><?php echo $row['montoTotal'];?> $</label>
+                                </div>  -->
+                                <?php
+                        //     }
+                        // endforeach; 
                             ?>
+
+                    <!-- FECHA DEL PEDIDO -->
                     <div style="grid-column-start: 1; grid-column-end: 2;">
                         <label class="cont_clientesVen--renglon">Fecha</label>
                         <label><?php echo $row['FechaPedido'];?></label>
                     </div> 
+
+                    <!-- HORA DEL PEDIDO -->
                     <div style="grid-column-start: 2; grid-column-end: 4;">
                         <label class="cont_clientesVen--renglon">Hora</label>
                         <label><?php echo $row['HoraPedido'];?></label>
                     </div>  
+
                     <!-- INDICADOR DE DEUDA  -->
                     <div style="background-color: ;grid-column-start: 1; grid-column-end: 4; position: relative; bottom: 140%">
-                    <?php
-                    // PEDIDO SIN FACTURAR
-                    if($row['factura'] == 'No Asignada') {  ?>
-                            <span class="span_21 borde_1" style="background-color:;"><i class="far fa-clock"></i></span>
-                         <?php
-                    }
-                    // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
-                    else if($row['factura'] != 'No Asignada' && $row['pagado'] == 0){                          
-                        foreach($Datos['dias'] as $Key) : 
-                            if($row['factura'] == $Key['factura']){    ?>
-                                <div class="contenedor_106--pedidos">
-                                    <span class="span_21 span_21_A borde_1" style="background-color: var(--Aciertos);"><i class="fas fa-check"></i></span> 
-                                    <span class="span_21 span_21_A borde_1"><?php echo $Key['dias'];?></span>
-                                </div>  
-                                <?php 
-                            }
-                       endforeach;
-                    }   ?>
-                </div> 
+                        <?php
+                        // PEDIDO SIN FACTURAR
+                        if($row['factura'] == 'No Asignada') {  ?>
+                            <span class="material-icons-outlined span_21">schedule</span>
+                            <?php
+                        }
+                            // PEDIDO FACTURADO Y EN PERIODO DE GANAR COMISION
+                        else if($row['factura'] != 'No Asignada' && $row['pagado'] == 0){                          
+                            foreach($Datos['dias'] as $Key) : 
+                                if($row['factura'] == $Key['factura']){    ?>
+                                    <div class="contenedor_106--pedidos">
+                                        <span class="material-icons-outlined span_21 span_21_A" style="background-color: var(--Aciertos);">check_circle</span>
+                                        <span class="span_21 span_21_A borde_1"><?php echo $Key['dias'];?></span>
+                                    </div>  
+                                        <?php 
+                                }
+                            endforeach;
+                        }   ?>
+                    </div> 
                 </div>
                 <?php
             endforeach; 

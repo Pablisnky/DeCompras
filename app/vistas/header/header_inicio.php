@@ -25,7 +25,7 @@
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>	
 		<link rel="manifest" href="<?php echo RUTA_URL;?>/public/manifest.json"/>
 		
-		<!-- CDN iconos de fuentes de google-->
+		<!-- CDN fuentes de google-->
 		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
 
 		<!-- CDN iconos de font-awesome-->

@@ -115,7 +115,7 @@
         //SELECT del detalle de un pedido de un vendedor especifico
         public function consultarDetallePedido_Ven($Nro_Orden){
             $stmt = $this->dbh->prepare(
-                "SELECT nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, DATE_FORMAT(fecha,'%d-%m-%y') AS FechaPedido, DATE_FORMAT(hora,'%h:%i %p') AS HoraPedido
+                "SELECT nombre_AfiMin, seccion_May, producto_May, opcion_May, cantidad_May, precio_May, total_May, DATE_FORMAT(fecha,'%d-%m-%y') AS FechaPedido, DATE_FORMAT(hora,'%h:%i %p') AS HoraPedido, ID_DetallePedido_May 
                 FROM pedidomayorista 
                 INNER JOIN detallepedidomayorista ON pedidomayorista.numeroorden_May =detallepedidomayorista.numeroorden_May 
                 INNER JOIN minorista ON pedidomayorista.ID_AfiliadoMin=minorista.ID_AfiliadoMin 
@@ -304,24 +304,44 @@
             }
         }  
 
-        // CONSULTA el monto total que un minorista a abonado
-        // public function consultarTotalAbonado($OrdenesPorPagar){  
+        // CONSULTA el monto total de cada factura, incluyendo productos agregados posteriormente
+        public function MontoGlobalPedido($Ordenes){  
+            //Debido a que $Ordenes es un array con todas los Nro. de factura del vendedor especificado, deben consultarse uno a uno mediante un ciclo
+            $OrdenesMontoGlobal = [];
+            $i = 0;
+            foreach($Ordenes as $Key)  :
+                $stmt = $this->dbh->prepare( 
+                    "SELECT SUM(total_May) AS TotalGlobal, numeroorden_May
+                    FROM detallepedidomayorista   
+                    WHERE numeroorden_May = :ORDEN"
+                );
+                
+                $stmt->bindParam(':ORDEN', $Key, PDO::PARAM_INT);
 
-        //     $stmt = $this->dbh->prepare( 
-        //         "SELECT SUM(abono) AS TotalAbonado
-        //         FROM pagosmayorista  
-        //         WHERE numeroorden_May = :ORDEN"
-        //     );
+                $stmt->execute();
+                
+                array_push($OrdenesMontoGlobal, $stmt->fetchAll(PDO::FETCH_ASSOC));
+            endforeach;
+            return $OrdenesMontoGlobal;
+        } 
+
+        // CONSULTA el monto total de un pedido especifico
+        public function MontoGlobalPedidoEspecifico($Nro_Orden){  
+            $stmt = $this->dbh->prepare( 
+                "SELECT SUM(total_May) AS TotalGlobal
+                FROM detallepedidomayorista    
+                WHERE numeroorden_May = :ORDEN"
+            );
             
-        //     $stmt->bindParam(':ORDEN', $Nro_Orden, PDO::PARAM_INT);
+            $stmt->bindParam(':ORDEN', $Nro_Orden, PDO::PARAM_INT);
 
-        //     if($stmt->execute()){
-        //         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //     }
-        //     else{
-        //         return  'Existe un fallo';
-        //     }
-        // } 
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            else{
+                return  'Existe un fallo';
+            }
+        }  
 
 
 
@@ -454,4 +474,95 @@
                 return false;
             }
         }    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+        public function Transaccion_eliminarPedidoVen($Nro_Orden){  
+            try{  
+                $this->dbh->beginTransaction();  
+                
+                // *********** OPERACION 1 *******************
+                //DELETE del pedido de un mayorista
+                $stmt = $this->dbh->prepare(
+                    "DELETE FROM pedidomayorista  
+                    WHERE numeroorden_May = :NRO_ORDEN"
+                );
+                $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
+                $stmt->execute();
+
+                // *********** OPERACION 2 *******************  
+                //DELETE de detalles del pedido de un mayorista
+                $stmt = $this->dbh->prepare(
+                    "DELETE FROM detallepedidomayorista 
+                    WHERE numeroorden_May = :NRO_ORDEN"
+                );
+                $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
+                $stmt->execute();          
+
+                // *********** OPERACION 3 ******************* 
+                 //DELETE de pagos del pedido de un mayorista
+                $stmt = $this->dbh->prepare(
+                    "DELETE FROM pagosmayorista  
+                    WHERE numeroorden_May = :NRO_ORDEN"
+                );
+                $stmt->bindParam(':NRO_ORDEN', $Nro_Orden, PDO::PARAM_INT);
+                $stmt->execute();          
+                    
+                $this->dbh->commit();  
+            }
+            catch(PDOException $e){
+                $this->dbh->rollback();  
+                $this->error = $e->getMessage();
+                echo 'Error al conectarse con la base de datos: ' . $this->error;
+            }
+        }
+
+        // Elimina un producto de un pedido
+        public function Transaccion_EliminarProductoPedido($ID_DetallePedido){ 
+            try{  
+                $this->dbh->beginTransaction();  
+                
+                // *********** OPERACION 1 *******************
+                $stmt = $this->dbh->prepare(
+                    "DELETE FROM detallepedidomayorista   
+                    WHERE ID_DetallePedido_May  = :ID_DETALLEPEDIDO"
+                );
+                $stmt->bindParam(':ID_DETALLEPEDIDO', $ID_DetallePedido, PDO::PARAM_INT);
+                $stmt->execute();  
+
+                // *********** OPERACION 2 ******************* 
+                // $stmt = $this->dbh->prepare(
+                //     "DELETE FROM pedidomayorista    
+                //     WHERE ID_DetallePedido_May  = :ID_DETALLEPEDIDO"
+                // );
+                // $stmt->bindParam(':ID_DETALLEPEDIDO', $ID_DetallePedido, PDO::PARAM_INT);
+                // $stmt->execute();  
+
+                $this->dbh->commit();
+            }
+            catch(PDOException $e){
+                $this->dbh->rollback();  
+                $this->error = $e->getMessage();
+                echo 'Error al conectarse con la base de datos: ' . $this->error;
+            }
+                    
+        }
     }

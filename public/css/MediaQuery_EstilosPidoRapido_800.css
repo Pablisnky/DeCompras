@@ -875,6 +875,14 @@
 .contOpciones--pointer{
 	cursor: default;
 }
+.div_flotante{
+	position: absolute;
+	width: 5%;
+	top: 2%;
+	left: 90%;
+	display: flex;
+	justify-content: space-between;
+}
 .fieldset_1{
 	margin: 10% auto;
 	width: 95%;

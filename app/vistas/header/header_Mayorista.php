@@ -42,7 +42,7 @@
 
 		<!-- MEMBRETE FIJO --->	
 		<div class="contenedor_111" style="z-index:1">
-			<label class="a_1 a_7 font--negro"><?php echo $Datos['nombreMayorista']?></label>
+			<label class="a_1 a_7 font--negro h1_10"><?php echo $Datos['nombreMayorista']?></label>
 		</div>
 
 		<!-- DIV USADO PARA TAPAR EL BODY MIENTRAS ESTA EL MENU RESPONSIVE -->

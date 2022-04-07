@@ -17,16 +17,19 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_1300.css?v=<?php echo(rand());?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA_URL?>/css/MediaQuery_EstilosPidoRapido_350.css?v=<?php echo(rand());?>"/>
 		<link rel="shortcut icon" type="image/png" href="<?php echo RUTA_URL;?>/public/images/logo.png"/>
-		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
+
 		
-		<!-- CDN iconos de font-awesome-->
-		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'/>
+		<!-- CDN iconos de google-->
+		<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet"/>
+
+		<!-- CDN fuentes de google-->
+		<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat'/>
     </head>
     <body>	
 		<header class="header--inicio header borde_bottom--claro">
 
 			<!-- ICONO HAMBURGUESA -->
-			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio" onclick="mostrarMenu()"><span id="Span_6"><i class="fas fa-bars icono_3 span_15Inicio""></i></span></label>
+			<label id="ComandoMenu" class="comandoMenu_2 comandoMenu_Inicio borde_1" onclick="mostrarMenu()"><span id="Span_6"><span class="material-icons-outlined icono_3 span_15Inicio">menu</span></span></label>
 			
 			<!-- BARRA DE NAVEGACION -->
 			<nav id="MenuResponsive" class="header__menuResponsive header__nav_1">
