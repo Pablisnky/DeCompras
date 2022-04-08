@@ -60,6 +60,10 @@
                             $ID_Opcion = $Value['ID_Opcion'];
                             $ID_Producto = $Value['ID_Producto'];
                             
+                            // se cambia el formato de los decimales, de coma a punto, para introducirlo a la BD
+                            $Precio = str_replace(',', '.', $Precio);
+                            $Total = str_replace(',', '.', $Total);
+                            
                             //Se INSERTAN los detalles del pedido en la BD
                             $this->ConsultaRecibePedidoMayorista_M->insertarDetallePedidoMayorista( $RecibeDatosMinorista['nro_Orden'], $Seccion, $Producto, $Opcion, $Cantidad, $Precio, $Total, $ID_Producto);
                             

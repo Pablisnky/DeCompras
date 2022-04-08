@@ -25,7 +25,6 @@
                         $Opcion = $row['opcion'];                       
                         $PrecioBolivar = $row['precioBolivar'];         
                         $PrecioDolar = $row['precioDolar']; 
-                        $Disponible = $row['disponible'];
                         $Existencia = $row['cantidad']; 
                         $Seccion = $row['seccion'];
 
@@ -46,14 +45,23 @@
                                     if($row['ID_Producto'] == $ID_Producto) :
                                         $FotoPrincipal = $row['nombre_img'];    ?> 
                                         <div class="contenedor_97" onclick="mostrarDetalles('<?php echo $ContadorLabel.$Separador?>','<?php echo $Nombre_Tienda.$Separador?>','<?php echo $Slogan_Tienda.$Separador?>','<?php echo $ID_Tienda.$Separador?>','<?php echo $Producto.$Separador?>','<?php echo $Opcion.$Separador?>','<?php echo $PrecioBolivar.$Separador?>','<?php echo $FotoPrincipal.$Separador;?>','<?php echo $ID_Producto.$Separador?>','<?php echo $PrecioDolar.$Separador?>','<?php echo $Existencia.$Separador?>','<?php echo $Disponible?>')">
-                                            <figure>
-                                                <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/productos/<?php echo $FotoPrincipal;?>"/> 
-                                            </figure>
+                                            <?php
+                                            if($FotoPrincipal == 'imagen.png'){ ?>
+                                                <figure>
+                                                    <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/imagen.png"/> 
+                                                </figure>
+                                                <?php
+                                            }
+                                            else{   ?>
+                                                <figure>
+                                                    <img class="contOpciones__img" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/images/tiendas/<?php echo $Nombre_Tienda;?>/productos/<?php echo $FotoPrincipal;?>"/> 
+                                                </figure>
+                                                <?php 
+                                            }
+                                                ?>
                                         </div>  <?php  
                                     endif;   
-                                endforeach;   
-
-                                require(RUTA_APP . "/vistas/complementos/existencia.php"); ?>
+                                endforeach;  ?>
                             </div>
                                         
                             <div> 
@@ -105,7 +113,7 @@
                                 </div>
                                                                 
                                 <!-- BOTON AGREGAR -->
-                                <?php if($NoAgrear == true){ ?><!--SINO HAY PRODUCTOS EN INVENTARIO SE DESABILITA-->
+                                <?php if($Existencia == 0){ ?><!--SINO HAY PRODUCTOS EN INVENTARIO SE DESABILITA-->
                                     <label class="label_4 label_4--innabilitado">Agregar</label> 
                                     <?php
                                 }  

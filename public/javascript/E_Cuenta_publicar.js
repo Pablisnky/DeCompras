@@ -2,9 +2,9 @@
 
 document.getElementById("Label_5").addEventListener('click', AgregarCaracteristica, false)
 
-document.getElementById("Disponible").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
+// document.getElementById("Disponible").addEventListener('click', function(){deshabilitarCantidad('Cantidad','Disponible')}, false)
 
-document.getElementById("Cantidad").addEventListener('click', function(){deshabilitarCantidad('Cantidad')}, false)
+// document.getElementById("Cantidad").addEventListener('click', function(){deshabilitarDisponible('Cantidad','Disponible')}, false)
 
 document.getElementById("PrecioBs").addEventListener('keyup', function(){CambioMonetarioBolivar(this.value, "PrecioDolar")}, false)
 

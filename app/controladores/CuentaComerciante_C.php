@@ -517,12 +517,17 @@
                         // $_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
 
                         //Se crea el directorio donde iran las imagenes de la tienda
-                        $CarpetaImagenes = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'];
+                        // Usar en remoto
+                        $CarpetaImagenes = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/' . $_SESSION['nombre_Tien'] . $_SESSION['nombre_Tien'];
+
+                        // Usar en local
+                        // $CarpetaImagenes = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'];
 
                         if(!file_exists($CarpetaImagenes)){
                             mkdir($CarpetaImagenes, 0777, true);
                         }
                         
+                        // Se inserta la imagen en el directorio correspondiente
                         //Usar en remoto
                         $directorio_1 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/';
 
@@ -559,7 +564,7 @@
             }
             else{
                 //Se crea el directorio donde iran las imagenes de la tienda
-                $CarpetaImagenes = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'];
+                $CarpetaImagenes = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/' . $_SESSION['nombre_Tien'];
 
                 if(!file_exists($CarpetaImagenes)){
                     mkdir($CarpetaImagenes, 0777, true);
@@ -976,7 +981,6 @@
                 //Se reciben todos los campos del formulario, desde cuenta_publicar_V.php se verifica que son enviados por POST y que no estan vacios
                 //SECCION DATOS DEL PRODUCTO
                 if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['seccion']) && !empty($_POST['producto']) && !empty($_POST['descripcion']) && !empty($_POST['precioBs']) && (!empty($_POST['precioDolar']) || $_POST['precioDolar'] == 0)){
-                    // && !empty($_POST['fecha_dotacion']) && !empty($_POST['incremento']) && !empty($_POST['fecha_reposicion'])
                     $RecibeProducto = [
                         //Recibe datos del producto que se va a cargar al sistema
                         'Producto' => filter_input(INPUT_POST, 'producto', FILTER_SANITIZE_STRING),
@@ -986,12 +990,8 @@
                         'PrecioDolar' => filter_input(INPUT_POST, "precioDolar", FILTER_SANITIZE_STRING),
                         'Cantidad' => empty($_POST['cantidad']) ? 0 : $_POST['cantidad'],
                         'Producto_Destacado' => empty($_POST['produc_destacado']) ? 0 : 1,
-                        'Disponible' => empty($_POST['disponible']) ? 0 : 1,
                         'Seccion' => filter_input(INPUT_POST, "seccion", FILTER_SANITIZE_STRING),
                         'ID_Tienda' => filter_input(INPUT_POST, "id_tienda", FILTER_SANITIZE_STRING)
-                        // 'Fecha_dotacion' => $_POST['fecha_dotacion'],
-                        // 'Incremento' => $_POST['incremento'],
-                        // 'Fecha_reposicion' => $_POST['fecha_reposicion']
                     ];
                     // echo '<pre>';
                     // print_r($RecibeProducto);
@@ -1078,7 +1078,11 @@
                             //$_SERVER['DOCUMENT_ROOT'] nos coloca en la base de nuestro directorio en el servidor
                             
                             //Se crea el directorio donde iran las imagenes de la tienda
-                            $CarpetaProductos = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/productos';
+                            // Usar en remoto
+                            $CarpetaProductos = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/productos';
+
+                            // Usar en local
+                            // $CarpetaProductos = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/productos';
                             
                             if(!file_exists($CarpetaProductos)){
                                 mkdir($CarpetaProductos, 0777, true);
@@ -1088,16 +1092,7 @@
                             $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/';
 
                             //usar en local
-                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/';
-
-
-
-
-
-
-
-
-                            
+                            // $directorio_2 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/';                      
 
                             //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                             move_uploaded_file($_FILES['foto_Producto']['tmp_name'], $directorio_2.$nombre_imgProducto);
@@ -1122,9 +1117,17 @@
                     }
                 }
                 else{//si no se selecciono ninguna imagen principal
-                    echo 'Debe introducir una imagen principal ';
-                    echo '<a href="javascript: history.go(-1)">Regresar</a>';
-                    exit();
+                    //Se crea el directorio donde iran las imagenes de la tienda
+
+                    // Usar en remoto
+                    $CarpetaProductos = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/productos';
+
+                    // Usar en local
+                    // $CarpetaProductos = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/productos';
+                    
+                    if(!file_exists($CarpetaProductos)){
+                        mkdir($CarpetaProductos, 0777, true);
+                    }
                 }
 
                 //IMAGENES SECUNDARIAS
@@ -1138,24 +1141,11 @@
                         $tipo = $_FILES['imagenes']['type'][$i];
                         $tamanio = $_FILES['imagenes']['size'][$i];
 
-                            //Usar en remoto
-                            $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/';
+                        //Usar en remoto
+                        $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/';
 
-                            //usar en local
-                            // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/';
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        //usar en local
+                        // $directorio_3 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/';
 
                         //Subimos el fichero al servidor
                         move_uploaded_file($Ruta_Temporal, $directorio_3.$_FILES['imagenes']['name'][$i]);
@@ -1188,7 +1178,6 @@
                     'PrecioBolivar' => filter_input(INPUT_POST, 'precioBolivar', FILTER_SANITIZE_STRING),
                     'PrecioDolar' => filter_input(INPUT_POST, 'precioDolar', FILTER_SANITIZE_STRING),
                     'Cantidad' => empty($_POST['uni_existencia']) ? 0 : $_POST['uni_existencia'],
-                    'Disponible' => empty($_POST['disponible']) ? 0 : 1,
                     'ID_Producto' => filter_input(INPUT_POST, 'id_producto', FILTER_SANITIZE_STRING),
                     'ID_Opcion' => filter_input(INPUT_POST, 'id_opcion', FILTER_SANITIZE_STRING),
                     'Puntero' => filter_input(INPUT_POST, 'puntero', FILTER_SANITIZE_STRING),
@@ -1468,25 +1457,6 @@
                     
                 //usar en local
                 // unlink($_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/productos/' . $NombreImagenEliminar);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             endforeach;
               
             // *************************************************************************************
@@ -1586,7 +1556,11 @@
                     || ($tipo_imgSeccion == 'image/jpg') || ($tipo_imgSeccion == 'image/png')){
 
                     //Se crea el directorio donde iran las imagenes de la tienda
-                    $CarpetaSecciones = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/secciones';
+                    // Usar en remoto                    
+                    $CarpetaSecciones = $_SERVER['DOCUMENT_ROOT'] . '/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/secciones';
+
+                    // Usar en local
+                    // $CarpetaSecciones = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/' . $_SESSION['nombre_Tien'] . '/secciones';
                     
                     if(!file_exists($CarpetaSecciones)){
                         mkdir($CarpetaSecciones, 0777, true);
@@ -1597,22 +1571,6 @@
 
                     //usar en local
                     // $directorio_6 = $_SERVER['DOCUMENT_ROOT'] . '/proyectos/PidoRapido/public/images/tiendas/'. $_SESSION['nombre_Tien'] . '/secciones/';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     
                     //Se mueve la imagen desde el directorio temporal a nuestra ruta indicada anteriormente utilizando la función move_uploaded_files
                     move_uploaded_file($_FILES['img_Seccion']['tmp_name'], $directorio_6.$nombre_imgSeccion);

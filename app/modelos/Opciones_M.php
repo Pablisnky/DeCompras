@@ -10,7 +10,7 @@
         //SELECT de los productos de una sección en una tienda especifica
         public function consultarOpciones($ID_Tienda, $ID_Seccion){
             $stmt = $this->dbh->prepare(
-                "SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, opciones.cantidad, opciones.disponible, secciones.seccion, imagenes.nombre_img 
+                "SELECT tiendas.nombre_Tien, tiendas.slogan_Tien, productos.ID_Producto, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, opciones.cantidad, secciones.seccion, imagenes.nombre_img 
                 FROM tiendas 
                 INNER JOIN tiendas_secciones ON tiendas.ID_Tienda =tiendas_secciones.ID_Tienda 
                 INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 

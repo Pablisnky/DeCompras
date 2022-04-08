@@ -5,10 +5,10 @@
 
 //************************************************************************************************
     //obtiendo informacion del DOM para identificar el elemento donde se hizo click 
-    // window.addEventListener("click", function(e){   
-    //     var click = e.target
-    //     console.log("Se hizo click en: ", click)
-    // }, false)
+    window.addEventListener("click", function(e){   
+        var click = e.target
+        console.log("Se hizo click en: ", click)
+    }, false)
 
 //************************************************************************************************
    //Oculta el menu principal en responsive haciendo click por fuera del boton menu
@@ -273,19 +273,29 @@
     }
     
 //************************************************************************************************ 
-    function deshabilitarCantidad(id){
-        // console.log("______Desde deshabilitarCantidad______", id)
-        if(document.getElementById(id).disabled == false){
-            document.getElementById(id).value= ""
-            document.getElementById(id).disabled = true
-        }
-        else{
-            document.getElementById(id).disabled = false
-            document.getElementById(id).focus()
-        }
-    }
-
+    // function deshabilitarDisponible(id_Cantidad, id_Disponible){
+    //     if(document.getElementById(id_Cantidad).disabled == false){
+    //         document.getElementById(id_Cantidad).value= ""
+    //         document.getElementById(id_Cantidad).disabled = true
+    //         document.getElementById(id_Cantidad).focus()
+    //     }
+    //     else{
+    //         document.getElementById(id_Disponible).disabled = false
+    //     }
+    // }
+    
 //************************************************************************************************ 
+    // function deshabilitarCantidad(id_Cantidad, id_Disponible){
+    //     if(document.getElementById(id_Disponible).disabled == false){
+    //         document.getElementById(id_Disponible).value= ""
+    //         document.getElementById(id_Cantidad).disabled = true
+    //         document.getElementById(id_Cantidad).focus()
+    //     }
+    //     else{
+    //         document.getElementById(id_Cantidad).disabled = false
+    //         document.getElementById(id_Disponible).disabled = true
+    //     }
+    // }
     //Coloca la clase "activa" en el item seleccionado del menu 
     // function ActivarLink(id){
         // console.log("______Desde ActivarLink()______") 

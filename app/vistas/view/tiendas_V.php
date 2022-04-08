@@ -42,7 +42,7 @@
                         <?php
                     } 
                     else{  ?>
-                        <div class="contenedor_120" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/la_bodega_digital/<?php echo $Fotografia;?>')"> 
+                        <div class="contenedor_120" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Nombre;?>/<?php echo $Fotografia;?>')"> 
                         </div>
                         <?php
                     }   ?>
@@ -55,10 +55,9 @@
                         <div class="cont_miniaturaSlider__2" id="Cont_miniaturaSlider__2">
                             <?php       
                             //Se quitan los espacios en el nombre de la tienda para comparar con la carpeta donde se encuentran las imagenes de la tienda
-                            $CarpetaImagenes = str_replace(' ', '_', $Nombre);
                             foreach($Datos['tiendas_productosDestacados'] as $Row) : ?> 
                                 <div class="cont_miniaturaSlider__3" id="Cont_miniaturaSlider__3" >
-                                    <img class="contOpciones__img contOpciones__img--tienda" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $CarpetaImagenes?>/productos/<?php echo $Row['nombre_img'];?>"/>                      
+                                    <img class="contOpciones__img contOpciones__img--tienda" alt="Fotografia del producto" src="<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $Nombre?>/productos/<?php echo $Row['nombre_img'];?>"/>                      
                                     <label class="input_8 input_8E" id="<?php echo 'EtiquetaProducto_' . $ContadorLabel;?>">Bs. <?php echo number_format($Row['precioBolivar'], 2, ",", ".");?></label>
                                 </div>  
                                 <?php

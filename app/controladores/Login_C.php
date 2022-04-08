@@ -182,9 +182,9 @@
                         $_SESSION['ID_Afiliado'] = $ID_Afiliado;
 
                         // Se eliminan espacios en blanco del nombre de la tienda, esto debido a que sera el nombre de la carpeta que contendra las imagenes
-                        $searchString = " ";
-                        $replaceString = "_";                         
-                        $NombreTienda = str_replace($searchString, $replaceString, $NombreTienda);
+                        // $searchString = " ";
+                        // $replaceString = "_";                         
+                        // $NombreTienda = str_replace($searchString, $replaceString, $NombreTienda);
                         $_SESSION['nombre_Tien'] = $NombreTienda;
 
                         // Se verifica a donde se redirecciona segun la condición de la tienda

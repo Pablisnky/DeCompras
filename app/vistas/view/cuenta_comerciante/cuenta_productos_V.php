@@ -30,7 +30,6 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 $Opcion = $arr["opcion"];
                 $PrecioBolivar = number_format($arr["precioBolivar"], "2", ",", ".");//Se cambia el formato del precio, viene sin separador de miles
                 $PrecioDolar = number_format($arr["precioDolar"], "2", ",", ".");
-                $Disponible = $arr['disponible'];
                 $Existencia = $arr["cantidad"];
                 $ID_Producto = $arr["ID_Producto"];
                 $ID_Opcion = $arr["ID_Opcion"];
@@ -64,19 +63,30 @@ if(!empty($_SESSION["ID_Afiliado"])){
                 }   ?>
 
                 <div class="contenedor_95" id="<?php echo 'Cont_Producto_' . $Contador;?>">
+                
                     <!-- IMAGEN PRINCIPAL -->
                     <div class="contenedor_9 contenedor_9--pointer">
-                        <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $_SESSION['nombre_Tien'];?>/productos/<?php echo $FotoPrincipal;?>')">
-                            <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
-                        </div>
+                        <?php
+                        if($FotoPrincipal == 'imagen.png'){ ?>
+                            <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/imagen.png')">
+                                <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
+                            </div> 
                             <?php
+                        }
+                        else{   ?>
+                            <div class="contenedor_142" style="background-image: url('<?php echo RUTA_URL?>/public/images/tiendas/<?php echo $_SESSION['nombre_Tien'];?>/productos/<?php echo $FotoPrincipal;?>')">
+                                <input class="input_14 borde_1" type="text" value="<?php echo $Contador;?>"/>
+                            </div>
+                                <?php
                             if($Destacar == 1){   ?>
                                 <label class="contenedor_9--label borde_3">Producto destacado</label>
                                 <?php
-                            }   ?>
+                            }  
+                        } ?>
                     </div>
+
+                    <!-- PRODUCTO -->
                     <div>
-                        <!-- PRODUCTO -->
                         <input class="input_8 input_8D" type="text" readonly="readonly" id="<?php echo 'EtiquetaProducto_' . $Contador;?>" value="<?php echo $Producto;?>"/>
 
                         <!-- OPCION -->                        
@@ -84,16 +94,16 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                         <!-- UNIDADES EN EXISTNCIA -->    
                         <?php
-                        if($Existencia == 1) :  ?>                   
+                        if($Existencia == 1){  ?>                   
                             <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Ud.</label> <?php
-                        elseif($Existencia > 1) :   ?>
+                        }
+                        elseif($Existencia > 1){   ?>
                             <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: <?php echo $Existencia;?> Uds.</label> <?php
-                        elseif($Disponible == 1) :   ?>
-                            <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >En existencia</label> <?php
-                        elseif($Disponible == 0) :   ?>
+                        }
+                        else{  ?>
                             <label class="input_8 input_8C" id="<?php echo 'EtiquetaOpcion_' . $Contador;?>" >Existencia: Agotado</label>
                             <?php
-                        endif;  ?>
+                        }  ?>
 
                         <!-- PRECIO -->
                         <label class="input_8 input_8A" id="<?php echo 'EtiquetaPrecio_' . $Contador;?>">Bs.<?php echo $PrecioBolivar;?></label>

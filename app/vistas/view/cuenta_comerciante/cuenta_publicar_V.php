@@ -60,10 +60,10 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <!-- CANTIDAD EN EXISTENCIA -->
                         <div id="Contenedor_152">
                             <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="cantidad" id="Cantidad" placeholder="Unidades en existencia">
-                            <div class="contInputRadio">     
+                            <!-- <div class="contInputRadio">     
                                 <input type="checkbox" name="disponible" id="Disponible"/>
                                 <label class="contInputRadio__label small_3" for="Disponible">Siempre disponible</label>
-                            </div>   
+                            </div>    -->
                         </div>  
                         <br>
                         

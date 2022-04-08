@@ -95,7 +95,7 @@ function respuesta_Opciones(){
             ProductosEnCarrito()
         } 
         else{
-            alert('Hubo problemas con la petición en llamar_Opciones()')
+            alert('Hubo problemas con la petición')
         }
     }
     // else{ //en caso contrario, mostramos un gif simulando una precarga

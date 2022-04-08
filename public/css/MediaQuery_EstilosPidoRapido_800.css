@@ -878,8 +878,8 @@
 .div_flotante{
 	position: absolute;
 	width: 5%;
-	top: 2%;
-	left: 90%;
+	top: 2.2%;
+	left: 88%;
 	display: flex;
 	justify-content: space-between;
 }
@@ -1528,7 +1528,7 @@ ul .menuContenedor_3{
 	display: none;
 	position: absolute;
 	top: 0%;
-	left: 10%;
+	left: 50%;
 }
 .menuLi_1:hover > ul{/*Se aplica un hover a un elemento, seleccionando otro elemento distinto*/
 	display: block !important;

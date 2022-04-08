@@ -6,7 +6,7 @@
     $ID_Tienda = $Datos['id_tienda'] ;
     $Fotografia = $Datos['fotografia'];
     $Tienda = $Datos['NombreTienda'];
-    $Tienda = str_replace(' ', '_', $Tienda); 
+    // $Tienda = str_replace(' ', '_', $Tienda); 
 
     //Si viene de buscador se realiza el procedimiento para mostrar el producto seleccionado -->
     if($Datos['Seccion'] != 'NoNecesario_1'){//'NoNecesario_1' es creado en tiendas porque comparte el controlador index de Vitrina_C

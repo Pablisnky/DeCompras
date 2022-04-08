@@ -22,28 +22,32 @@
 //********************************************************************************************
         //Ulilizada en su momento para cargar o eliminar datos 
         
-        public function ConsultaPreciosBs(){
-
-            $stmt = $this->dbh->query("SELECT ID_Opcion, precioBolivar FROM opciones");
-
+        public function ConsultarMontos(){
+            $stmt = $this->dbh->query(
+                "SELECT ID_DetallePedido_May , precio_May, total_May 
+                FROM detallepedidomayorista"
+            );
             return  $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         }
         
-        // public function actualizarNuevoConoMonetario($NuevoPrecioBolivar){
+        // public function actualizarMontos($NuevoArrayMontos){
         //     // echo "<pre>";
-        //     // print_r($NuevoPrecioBolivar);
+        //     // print_r($NuevoArrayMontos);
         //     // echo "</pre>";
         //     // exit();
-        //     foreach($NuevoPrecioBolivar as $key)    :
+        //     foreach($NuevoArrayMontos as $key)    :
         //         $key;  
-        //         // echo $key['ID_Opcion'] . '<br>';
 
-        //         $stmt = $this->dbh->prepare("UPDATE opciones SET precioBolivar = :PRECIOBOLIVAR WHERE ID_Opcion = :ID_OPCION");
+        //         $stmt = $this->dbh->prepare(
+        //             "UPDATE detallepedidomayorista  
+        //             SET precio_May = :PRECIO, total_May = :TOTAL 
+        //             WHERE ID_DetallePedido_May  = :ID_DETALLE_PEDIDO"
+        //         );
 
         //         //Se vinculan los valores de las sentencias preparadas
-        //         $stmt->bindValue(':PRECIOBOLIVAR', $key['precioActualizadoBs']);
-        //         $stmt->bindValue(':ID_OPCION', $key['ID_Opcion']);
+        //         $stmt->bindValue(':PRECIO', $key['precio_May']);
+        //         $stmt->bindValue(':TOTAL', $key['total']);
+        //         $stmt->bindValue(':ID_DETALLE_PEDIDO', $key['ID_DetallePedido_May']);
 
         //         //Se ejecuta la actualización de los datos en la tabla
         //         $stmt->execute();

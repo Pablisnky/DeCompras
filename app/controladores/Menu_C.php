@@ -7,7 +7,7 @@
         public function __construct(){
             $this->ConsultaMenu_M = $this->modelo("Menu_M");
 
-            $this->Dolar = 4.4124;
+            $this->Dolar = 4.4189;
             $this->Reserve = 4;
             
             //Se conecta a la API de DolarToday para actualizar el valor del dolar
@@ -154,35 +154,41 @@
 //********************************************************************************************
         //Ulilizada en su momento para cargar o eliminar datos 
         // public function borrar(){
-        //     //Se consultan los precios en bolivares.
-        //     $Precios = $this->ConsultaMenu_M->ConsultaPreciosBs();
+        // //     //Se consultan los montos a os qque se va a cambiar el decimal
+        //     $Montos = $this->ConsultaMenu_M->ConsultarMontos();
+            // echo "<pre>";
+            // print_r($Montos);
+            // echo "</pre>";
+            // exit();
 
-        //     //Se quitan los seis ceros de la reconversion
             
         //     //Se declara un array donde se almacenaran los precios actualizados de cada producto
-        //     $NuevoPrecioBolivar = [];
-        //     $Intermedio = [];
+            // $NuevoArrayMontos = [];
+            // $Intermedio = [];
 
-        //     //Se cambian los precios al nuevo cono monetario
-        //     foreach($Precios as $Key):
-        //         $ID_Opcion = $Key['ID_Opcion'];
-        //         // $PrecioActualBs = ($Key['precioDolar'] * $this->PrecioDolar) + $this->TasaReserve;
-        //         $PrecioActualBs = ($Key['precioBolivar'] * 1000000);
+            // foreach($Montos as $Key):
+            //     // se cambia el formato de los decimales, de coma a punto, para introducirlo a la BD
+            //     $ID_DetallePedido_May = $Key['ID_DetallePedido_May'];
+            //     $Precio = str_replace(',', '.', $Key['precio_May']);
+            //     $Total = str_replace(',', '.', $Key['total_May']);
 
-        //         $Intermedio = [
-        //             'ID_Opcion' => $ID_Opcion, 
-        //             'precioActualizadoBs' => $PrecioActualBs
-        //         ];
+            //     $Intermedio = [
+            //         'ID_DetallePedido_May' => $ID_DetallePedido_May, 
+            //         'precio_May' => $Precio,
+            //         'total' => $Total                     
+            //     ];
 
-        //         array_push($NuevoPrecioBolivar, $Intermedio);
-        //     endforeach;
-        //     // echo "<pre>";
-        //     // print_r($NuevoPrecioBolivar);
-        //     // echo "</pre>";
-        //     // exit();
+            //     array_push($NuevoArrayMontos, $Intermedio);
+            // endforeach;
+            // // echo "<pre>";
+            // // print_r($NuevoArrayMontos);
+            // // echo "</pre>";
+            // // exit();
             
-        //     //Se ACTUALIZAN los precios en bolivares.
-        //     $this->ConsultaMenu_M->actualizarNuevoConoMonetario($NuevoPrecioBolivar);            
+            // //Se ACTUALIZAN los montos, estaban con decimal "," ahora seran decimal "."
+            // $this->ConsultaMenu_M->actualizarMontos($NuevoArrayMontos);   
+            
+            // echo 'actualizacion realizada';
         // }
         
     }

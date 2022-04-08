@@ -112,7 +112,7 @@
         //SELECT de los productos que tiene una tienda especifica 
         public function consultarTodosProductosTienda($ID_Tienda){
             $stmt = $this->dbh->prepare(
-                "SELECT productos.ID_Producto, productos.destacar, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, disponible, secciones.seccion, nombre_img
+                "SELECT productos.ID_Producto, productos.destacar, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, secciones.seccion, nombre_img
                 FROM tiendas_secciones 
                 INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
                 INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion 
@@ -136,7 +136,7 @@
         //SELECT de los productos de una sección en una tienda especifica
         public function consultarProductosTienda($ID_Tienda, $Seccion){
             $stmt = $this->dbh->prepare(
-                "SELECT productos.ID_Producto, destacar, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, disponible, secciones.ID_Seccion, secciones.seccion, imagenes.nombre_img 
+                "SELECT productos.ID_Producto, destacar, producto, opciones.ID_Opcion, opcion, opciones.precioBolivar, opciones.precioDolar, cantidad, secciones.ID_Seccion, secciones.seccion, imagenes.nombre_img 
                 FROM tiendas_secciones 
                 INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
                 INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion
@@ -282,7 +282,7 @@
         //SELECT de un producto especificao de una tienda determinada
         public function consultarDescripcionProducto($ID_Tienda, $ID_Producto){
             $stmt = $this->dbh->prepare(
-                "SELECT productos.ID_Producto, destacar, opciones.ID_Opcion, producto, opcion, precioBolivar, precioDolar, cantidad, disponible, seccion, secciones.ID_Seccion, secciones_productos.ID_SP 
+                "SELECT productos.ID_Producto, destacar, opciones.ID_Opcion, producto, opcion, precioBolivar, precioDolar, cantidad, seccion, secciones.ID_Seccion, secciones_productos.ID_SP 
                 FROM tiendas_secciones 
                 INNER JOIN secciones ON tiendas_secciones.ID_Seccion=secciones.ID_Seccion 
                 INNER JOIN secciones_productos ON secciones.ID_Seccion=secciones_productos.ID_Seccion 
@@ -1083,7 +1083,7 @@
         public function actualizarOpcion($RecibeProducto){   
             $stmt = $this->dbh->prepare(
                 "UPDATE opciones 
-                 SET opcion = :OPCION, precioBolivar = :PRECIOBOLIVAR, precioDolar = :PRECIODOLAR, cantidad = :CANTIDAD, disponible = :DISPONIBLE 
+                 SET opcion = :OPCION, precioBolivar = :PRECIOBOLIVAR, precioDolar = :PRECIODOLAR, cantidad = :CANTIDAD
                   WHERE ID_Opcion = :ID_OPCION"
             );
 
@@ -1092,7 +1092,6 @@
             $stmt->bindValue(':PRECIOBOLIVAR', $RecibeProducto['PrecioBolivar']);
             $stmt->bindValue(':PRECIODOLAR', $RecibeProducto['PrecioDolar']);
             $stmt->bindValue(':CANTIDAD', $RecibeProducto['Cantidad']);
-            $stmt->bindValue(':DISPONIBLE', $RecibeProducto['Disponible']);
             $stmt->bindValue(':ID_OPCION', $RecibeProducto['ID_Opcion']);
 
             // Se ejecuta la actualización de los datos en la tabla
@@ -1392,8 +1391,8 @@
         //INSERT de la opcion y el precio de un producto
         public function insertarOpcionesProducto($RecibeProducto){
             $stmt = $this->dbh->prepare(
-                "INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad, disponible) 
-                VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD, :DISPONIBLE)"
+                "INSERT INTO opciones(opcion, precioBolivar, precioDolar, cantidad) 
+                VALUES (:OPCION, :PRECIOBS, :PRECIODOLAR, :CANTIDAD)"
             );
 
             //Se da formato al precio, dos decimales
@@ -1404,7 +1403,6 @@
             $stmt->bindParam(':PRECIOBS', $RecibeProducto['PrecioBs']);
             $stmt->bindParam(':PRECIODOLAR', $PrecioDolar);
             $stmt->bindParam(':CANTIDAD', $RecibeProducto['Cantidad']);
-            $stmt->bindParam(':DISPONIBLE', $RecibeProducto['Disponible']);
             
             //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
             if($stmt->execute()){
@@ -1415,34 +1413,6 @@
                 return false;
             }
         }
-
-        //INSERT de la opcion y el precio de un producto
-        // public function insertarReposicion($RecibeProducto, $ID_Producto){
-        //     $stmt = $this->dbh->prepare(
-        //         "INSERT INTO  fechareposicion(ID_Producto, incremento, fecha_dotacion, fecha_reposicion) 
-        //         VALUES (:ID_PRODUCTO, :INCREMENTO, :FECHA_DOTACION, :FECHA_REPOSICION)"
-        //     );
-
-        //     //Se introduce la fecha en la BD en formato año - mes - dia
-        //     $FechaDotacion = date('Y-m-d', strtotime($RecibeProducto['Fecha_dotacion']));
-        //     $FechaReposicion =  date('Y-m-d', strtotime($RecibeProducto['Fecha_reposicion']));
-        //     $Incremento = $RecibeProducto['Incremento'];
-
-        //     //Se vinculan los valores de las sentencias preparadas, stmt es una abreviatura de statement
-        //     $stmt->bindParam(':ID_PRODUCTO', $ID_Producto);
-        //     $stmt->bindParam(':INCREMENTO', $Incremento);
-        //     $stmt->bindParam(':FECHA_DOTACION',  $FechaDotacion);
-        //     $stmt->bindParam(':FECHA_REPOSICION', $FechaReposicion);
-            
-        //     //Se ejecuta la inserción de los datos en la tabla(ejecuta una sentencia preparada )
-        //     if($stmt->execute()){
-        //         // se recupera el ID del registro insertado
-        //         return true;
-        //     }
-        //     else{
-        //         return false;
-        //     }
-        // }
 
         //INSERT de las caracteristicas de un producto
         public function insertarCaracteristicasProducto($RecibeProducto, $ID_Producto, $Caracteristica){

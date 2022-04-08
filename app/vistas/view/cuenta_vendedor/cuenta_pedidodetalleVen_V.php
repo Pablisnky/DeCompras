@@ -9,7 +9,7 @@
         <span class="material-icons-outlined spanCerrar spanCerrar--fijo" onclick="ocultarPedido()">arrow_back</span>
         <div class="contenedor_24">
 
-            <!-- DIV FLOTANTE -->
+            <!-- DIV FLOTANTE ELIMINA LA ORDEN-->
             <div class="div_flotante">
                 <!-- <span class="span_21 span_21_A borde_1"><i class="fas fa-times icono_4" ></i></span> -->
                 <label id="Padre"><span class="material-icons-outlined cursor--pointer" id="Cerrar_js">cancel</span></label>

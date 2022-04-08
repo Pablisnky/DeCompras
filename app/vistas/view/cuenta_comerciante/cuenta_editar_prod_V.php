@@ -79,22 +79,7 @@ if(!empty($_SESSION["ID_Afiliado"])){
                         <!-- SECCION -->
                         <label>Sección</label>
                         <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="seccion"  id="Seccion" value="<?php echo $Seccion;?>" onclick="Llamar_seccion('<?php echo $ID_Producto?>')">
-                        <br>
-
-                        <!-- CANTIDAD EN EXISTENCIA -->
-                        <!-- <label>Unidades en existencia</label>
-                        <?php
-                       // if($Disponible == 1){   ?>
-                            <input class="placeholder placeholder_2 placeholder_4" type="text" name="uni_existencia" id="Cantidad" disabled>
-                            <?php
-                       // else{   ?>                        
-                            <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="uni_existencia" id="Cantidad" value="<?php echo $Cantidad;?>">   <?php
-                       // }   ?>
-                        <div class="contInputRadio">     
-                            <input type="checkbox" name="disponible" id="Disponible" <?php if($Disponible == 1){echo 'checked';} ?>/>
-                            <label class="contInputRadio__label" for="Disponible">Siempre en existencia</label>
-                        </div>   
-                        <br> -->
+                        <br><br>
 
                         <!-- PRECIO -->
                         <label>Precio de venta</label>            
@@ -115,45 +100,13 @@ if(!empty($_SESSION["ID_Afiliado"])){
 
                         <!-- CANTIDAD EN EXISTENCIA -->
                         <div id="Contenedor_152">
-                            <label>Unidades cargadas</label>
-                            <?php
-                            if($Disponible == 1){   ?>
-                                <input class="placeholder placeholder_2 placeholder_4" type="text" name="uni_existencia" id="Cantidad" disabled>
-                                <?php
-                            }
-                            else{   ?>                        
-                                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="uni_existencia" id="Cantidad" value="<?php echo $Cantidad;?>">   <?php
-                            }   ?>
-                            <div class="contInputRadio">     
-                                <input type="checkbox" name="disponible" id="Disponible" <?php if($Disponible == 1){echo 'checked';} ?>/>
-                                <label class="contInputRadio__label small_3" for="Disponible">Siempre en existencia</label>
-                            </div>   
+                            <label>Unidades cargadas</label>                       
+                                <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="uni_existencia" id="Cantidad" value="<?php echo $Cantidad;?>">   
                         </div>  
                     </div>  
                 </div>
             </fieldset>   
             
-            <!-- <a id="Ancla_02" class="ancla_1"></a>
-            <fieldset class="fieldset_1 fieldset_3">
-                <legend class="legend_1">Actualizar reposición</legend> -->
-                    
-                    <!-- % REPOSICION -->
-                    <!-- <label>% de incremento por reposición</label>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="incremento" id="Incremento" value="<?php echo $Incremento;?>">
-                    <small class="small_1">Este % sera uzado para estimar cuanto costará el producto para la proxima fecha de reposición, de esta manera se garantiza el suministro de mercancia.</small>
-                    <br> -->
-                    
-                    <!-- FECHA DOTACION -->
-                    <!-- <label>Fecha dotación</label>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_dotacion" id="Fecha_Dotacion" value="<?php echo $Fecha_Dotacion;?>" onchange="sumaFecha(7, this.value)"/>
-                    <br>   -->
-                    
-                    <!-- FECHA REPOSICION -->
-                    <!-- <label>Fecha proxima reposición (sugerencia 7 dias)</label>
-                    <input class="placeholder placeholder_2 placeholder_4 borde_1" type="text" name="fecha_reposicion" id="Fecha_Reposicion" value="<?php echo $Fecha_Reposicion;?>">
-                    <small class="small_1">La fecha de reposición se recomienda sea de siete dias despues de la fecha de suministro, la tasa de incremento de inflación es alta y se ha observado cambios en 17% mensual en algunos productos de uso cotidiano.</small>
-            </fieldset>    -->
-
             <a id="Ancla_03" class="ancla_1"></a>
             <fieldset class="fieldset_1 fieldset_3">
                 <legend class="legend_1">Actualizar inf. Adicional</legend>
